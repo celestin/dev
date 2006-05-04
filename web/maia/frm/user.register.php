@@ -1,12 +1,12 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * New User Form
- * Copyright (c) 2006 frontburner.co.uk
+ * Maia Systems Website
+ * Copyright (c) 2006 Maia Systems
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/maia/frm/user.register.php $
- * 
- * 1     3/02/06 1:53 Craig
- * 1000
+ * New User Form
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Feb-2006  File created.

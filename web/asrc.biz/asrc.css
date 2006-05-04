@@ -1,0 +1,180 @@
+body {
+  background-color: #AACCFF;
+
+  scrollbar-3dlight-color:    #4A65C2;
+  scrollbar-arrow-color:      #ffffff;
+  scrollbar-base-color:       #ffffff;
+  scrollbar-darkshadow-color: #000000;
+  scrollbar-face-color:       #384C92;
+  scrollbar-highlight-color:  #4058A9;
+  scrollbar-shadow-color:     #0776A3;
+  scrollbar-track-color:      #0D445B;
+}
+
+p, table, td {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+td.cpyright {
+  TEXT-ALIGN: center;
+  FONT-SIZE: 8pt;
+}
+
+td.fld {
+  COLOR: #1880B5;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+td.courtview {
+  BACKGROUND-COLOR: #DBDDFF;
+  TEXT-ALIGN: center;
+}
+
+td.current {
+  COLOR: #FF7900;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+td.freeDel {
+  COLOR: #E2003B ;
+  TEXT-ALIGN: CENTER ;
+}
+
+td.sel {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 9pt;
+  FONT-WEIGHT: bold
+}
+
+td.sub {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold
+}
+
+td.topnav {
+  COLOR: #333333;
+  BACKGROUND-COLOR: #CCDDFF;
+}
+
+
+.titleBand {
+  BACKGROUND-COLOR: #FFF8E4;
+}
+
+.navBg {
+  BACKGROUND-COLOR: #DDEEFF;
+  BORDER-BOTTOM: #38218E 2px solid;
+  BORDER-LEFT: #38218E 2px solid;
+  BORDER-RIGHT: #38218E 2px solid;
+  BORDER-TOP: #38218E 2px solid;
+}
+
+.outerBox {
+  BACKGROUND-COLOR: #FFFFFF;
+  BORDER-TOP:    #315B7F 3px solid;
+  BORDER-LEFT:   #315B7F 3px solid;
+  BORDER-RIGHT:  #497FB1 3px solid;
+  BORDER-BOTTOM: #497FB1 3px solid;
+}
+
+.thinBox {
+  BORDER-TOP:    #497FB1 2px solid;
+  BORDER-LEFT:   #497FB1 2px solid;
+  BORDER-RIGHT:  #497FB1 2px solid;
+  BORDER-BOTTOM: #497FB1 2px solid;
+}
+
+td.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #0820F0;
+  TEXT-DECORATION: none
+  bgcolor: black ;
+  FONT-WEIGHT: bold
+}
+A:hover {
+  COLOR: #FF0000;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+INPUT {
+  BACKGROUND-COLOR: #EEEEFF;
+  BORDER-TOP:    #497FB1 2px solid;
+  BORDER-LEFT:   #497FB1 2px solid;
+  BORDER-BOTTOM: #315B7F 2px solid;
+  BORDER-RIGHT:  #315B7F 2px solid;
+  COLOR: #000000;
+  PADDING-BOTTOM: 0px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+INPUT.button {
+  BACKGROUND-COLOR: #AACCFF;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #FF7900;
+  FONT-WEIGHT: bold;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-SIZE: 12pt;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-SIZE: 12pt;
+}
+

@@ -3,7 +3,7 @@
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
  * Copyright (c) 2006 Frontburner
- * $Author$
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Database connection
  *

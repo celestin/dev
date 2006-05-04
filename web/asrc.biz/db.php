@@ -8,6 +8,7 @@
  * Database connection
  *
  * $Id: calc.c 148 2002-07-28 21:30:43Z craig $
+ * $copyright: $
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.

@@ -1,0 +1,209 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Style Sheet
+ * Copyright (c) 2005 Southesk.com
+ *
+ * $Log: /web/maia/maia.css $
+ * 
+ * 2     3/02/06 20:42 Craig
+ *
+ * 1     3/02/06 1:52 Craig
+ * 1000
+ *
+ * 2     28/12/05 15:32 Craig
+ *
+ * Who  When         Why
+ * CAM  02-Feb-2006  File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  BACKGROUND-COLOR: #FFFFFF;
+}
+
+.mainblue   { COLOR: #000066; }
+.orange     { COLOR: #FF9933; }
+.brightred  { COLOR: #FF0000; }
+.darkgreen  { COLOR: #003300; }
+
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+.fld {
+  COLOR: #003300;
+  FONT-WEIGHT: bold;
+}
+
+td.fldmand {
+  COLOR: #FF0000;
+  FONT-WEIGHT: bold;
+}
+
+
+td.current {
+  COLOR: #FF7900;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+.navbox {
+  BACKGROUND-COLOR: #EEEEEE;
+}
+
+.navboxtitle {
+  BACKGROUND-COLOR: #000066;
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT: 5px;
+}
+
+
+ul.menu {
+  list-style-position: outside;
+  margin-left: 0px;
+  padding-left: 20px;
+  list-style: square;
+  vertical-align: middle;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+li.menu {
+  margin: 0px;
+  padding: 1px;
+  list-style-image: url(img/bu3.gif);
+}
+
+.outerBox {
+  BACKGROUND-COLOR: #FFFFFF;
+}
+
+.thinBox {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER-BOTTOM: #497FB1 2px solid;
+}
+
+.topnav {
+  BACKGROUND-COLOR: #FFFFFF;
+  COLOR: #3300CC;
+  FONT-WEIGHT: bold;
+}
+
+.sep {
+  COLOR: #003300;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT:   4px;
+  PADDING-RIGHT:  4px;
+}
+
+.dummysep {
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+}
+
+.title {
+  COLOR: #000000;
+}
+
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+  PADDING-TOP:    5px;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  COLOR: #FF0000;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.nav:hover {
+  COLOR: #FF9933;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #003300;
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #FF9933;
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: underline;
+}
+
+A.sel,A.sel:visited,A.sel:active,A.sel:link,A.sel:visited {
+  COLOR: #FF0000;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: normal;
+}
+A.sel:hover {
+  COLOR: #FF9933;
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: underline;
+}
+
+input.button {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER:           #497FB1 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #BE0221;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

@@ -7,7 +7,7 @@
  *
  * Account activation form
  *
- * $Id: activate.php 39 2006-05-04 22:27:43Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.

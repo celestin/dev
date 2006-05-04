@@ -7,7 +7,7 @@
  *
  * Admin Original Member Search Form
  *
- * $Id: activate.php 39 2006-05-04 22:27:43Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  24-Aug-2004  File created.

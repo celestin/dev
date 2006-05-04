@@ -7,7 +7,7 @@
  *
  * Opponent Search Form
  *
- * $Id: activate.php 39 2006-05-04 22:27:43Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  08-Jun-2004  File created.

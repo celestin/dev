@@ -1,11 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Msg Class
- * Copyright (c) 2004-2005 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/WEB-INF/Msg.php $
- * 
- * 1     23/05/05 21:45 Craig
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Msg Class
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.

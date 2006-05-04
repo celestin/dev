@@ -1,14 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Action Utilities
- * Copyright (c) 2004-2005 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/WEB-INF/ActionUtil.php $
- * 
- * 2     30/05/05 21:50 Craig
- * 4
- * 
- * 1     23/05/05 21:45 Craig
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Action Utilities
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  23-Jun-2004  File created.

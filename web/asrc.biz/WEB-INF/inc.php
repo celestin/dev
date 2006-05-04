@@ -1,14 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Build Classes
- * Copyright (c) 2004-2006 frontburner.co.uk
  *
- * $Log: /web/asrc.biz/WEB-INF/inc.php $
- * 
- * 2     19/01/06 23:45 Craig
- * 9
- *
- * 1     23/05/05 21:45 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.

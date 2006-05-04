@@ -1,12 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * BlockSlot Class
- * Copyright (c) 2004-2006 frontburner.co.uk
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/WEB-INF/BlockSlot.php $
- * 
- * 1     19/01/06 23:45 Craig
- * 9
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * BlockSlot Class
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Jan-2006  9 : File created.

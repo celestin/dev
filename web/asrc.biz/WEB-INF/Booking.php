@@ -1,11 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Booking already made.
- * Copyright (c) 2004-2005 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/WEB-INF/Booking.php $
- * 
- * 1     23/05/05 21:45 Craig
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Booking already made.
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  06-May-2005  File created.

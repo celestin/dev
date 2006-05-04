@@ -1,16 +1,12 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * Maia Systems Website
+ * Copyright (c) 2006 Maia Systems
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * EmailMsg - Sends an Email
- * Copyright (c) 2006 frontburner.co.uk
  *
- * $Log: /web/maia/WEB-INF/EmailMsg.php $
- * 
- * 3     13/03/06 21:46 Craig
- *
- * 2     14/02/06 0:27 Craig
- *
- * 1     3/02/06 1:53 Craig
- * 1000
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Feb-2006  File created.

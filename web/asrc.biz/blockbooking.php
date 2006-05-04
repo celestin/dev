@@ -1,15 +1,13 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Block Booking Save
- * Copyright (c) 2004-2006 frontburner.co.uk
  *
- * $Log: /web/asrc.biz/blockbooking.php $
- * 
- * 2     6/02/06 22:37 Craig
- * 10
- *
- * 1     19/01/06 23:46 Craig
- * 9
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Jan-2006  9 : Block booking.

@@ -1,14 +1,12 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * Maia Systems Website
+ * Copyright (c) 2006 Maia Systems
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Main page setup
- * Copyright (c) 2006 frontburner.co.uk
  *
- * $Log: /web/maia/Main.php $
- * 
- * 2     3/02/06 20:42 Craig
- *
- * 1     3/02/06 1:52 Craig
- * 1000
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Feb-2006  File created.

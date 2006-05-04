@@ -1,16 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Javascript - Date validation 
- * Copyright (c) 2005 Southesk.com
+ * Maia Systems Website
+ * Copyright (c) 2006 Maia Systems
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/maia/date.js $
- * 
- * 1     3/02/06 1:52 Craig
- * 1000
- * 
- * 1     28/12/05 15:41 Craig
- * 
- * 2     28/12/05 15:32 Craig
- * 
+ * Javascript - Date validation 
+ *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  02-Feb-2006  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */

@@ -14,7 +14,7 @@
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght">Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner..co.uk</a></td></tr>
+<tr><td class="cpyrght">Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </td></tr>
 </table>
 </body>

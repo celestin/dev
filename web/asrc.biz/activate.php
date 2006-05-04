@@ -1,7 +1,13 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Account activation script
- * Copyright (c) 2004-2005 Southesk.com
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.

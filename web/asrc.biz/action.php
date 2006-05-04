@@ -7,7 +7,7 @@
  *
  * Booking Actions
  *
- * $Id: calc.c 148 2002-07-28 21:30:43Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  23-Jun-2004  File created.

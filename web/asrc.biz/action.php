@@ -1,7 +1,13 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Booking Actions
- * Copyright (c) 2004-2005 Southesk.com
+ *
+ * $Id: calc.c 148 2002-07-28 21:30:43Z craig $
  *
  * Who  When         Why
  * CAM  23-Jun-2004  File created.

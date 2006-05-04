@@ -75,7 +75,7 @@ if ($action == "C" || $action == "X") {
   if ($memberid) {
     $member = Person::getPerson($memberid);
   }
-  
+
   if (empty($proceed)) {
     Msg::question("Sure you wish to " . ActionUtil::getDesc($action) . " oustanding fines for " . $member->toString());
     print "<center><a href=\"". ActionUtil::urlPay($action, $memberid, 1) . "\">Yes</a> | <a href=javascript:history.back()>No</a>";

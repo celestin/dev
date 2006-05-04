@@ -1,13 +1,14 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * View and Manage Fines
- * Copyright (c) 2004-2005 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/fines.php $
- * 
- * 1     30/05/05 21:48 Craig
- * 4
- * 
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * View and Manage Fines
+ *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  30-May-2004  4 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
@@ -19,7 +20,7 @@ include 'tpl/top.php';
 if ($member->isAdmin()) {
   $memberid = NULL;         if (!empty($_GET['memberid'])) $memberid = $_GET['memberid'];
   $sb = "F";                if (!empty($_GET['sb']))       $sb = $_GET['sb'];
-  
+
   if ($memberid==NULL) {
 ?>
 <table cellspacing=0 cellpadding=0 width="100%" border=0>
@@ -40,7 +41,7 @@ if ($member->isAdmin()) {
 
     if ($sb == "F") $ssql .= "m.first_name";
     if ($sb == "L") $ssql .= "m.last_name";
-    if ($sb == "M") $ssql .= "SUBSTRING(CONCAT('0000000000',m.memberid),1+LENGTH(m.memberid),10)"; 
+    if ($sb == "M") $ssql .= "SUBSTRING(CONCAT('0000000000',m.memberid),1+LENGTH(m.memberid),10)";
 
     $sql = mysql_query($ssql) or die (mysql_error());
 
@@ -61,7 +62,7 @@ if ($member->isAdmin()) {
 <?
   } else {
     $member = Person::getPerson($memberid);
-    
+
     print "<p><b>Fine Report</b> for " . $member->toHtmlString(true) . "</p>";
 ?>
 <table cellspacing=0 cellpadding=0 width="100%" border=0>
@@ -98,7 +99,7 @@ if ($member->isAdmin()) {
       }
 
       $total_fines += $charge;
-      
+
       print "<tr>".
         "<td class=bc>$book_date_disp</td>".
         "<td class=bc>$start_time_fmt</td>".
@@ -106,7 +107,7 @@ if ($member->isAdmin()) {
         "<td class=bc title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>".
         "<td class=br>£$charge</td>".
         "<td><a href=\"". ActionUtil::url("C", $book_date, $court, $slot) . "\">confirm</a></td>".
-      "</tr>";      
+      "</tr>";
     }
 ?>
 <tr><td colspan=3>&nbsp;</td>
@@ -115,10 +116,10 @@ if ($member->isAdmin()) {
 <? print "<a href=\"". ActionUtil::urlPay("P", $memberid) . "\">pay all</a>"; ?>
 </td>
 </table></td></tr></table>
-<?         
+<?
   }
 }
-?>  
+?>
 
 <?
 include 'tpl/bot.php';

@@ -1,12 +1,13 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Standard Database Tasks
- * Copyright (c) 2004 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/task.php $
- * 
- * 2     6/02/06 22:38 Craig
- * 10
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Standard Database Tasks
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Aug-2004  File created.

@@ -7,6 +7,8 @@
  *
  * Logout of the system
  *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.
  * CAM  25-Apr-2006  14 : Show Courts View on logout.

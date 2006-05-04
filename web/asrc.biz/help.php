@@ -1,13 +1,14 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Help Page Context
- * Copyright (c) 2004-2005 Southesk.com
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * $Log: /web/asrc.biz/help.php $
- * 
- * 4     29/05/05 21:30 Craig
- * 5
- * 
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Help Page Context
+ *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  31-Aug-2004  File created.
  * CAM  29-May-2004  5 : Corrected PHP.

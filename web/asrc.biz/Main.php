@@ -1,7 +1,13 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
  * Main page setup
- * Copyright (c) 2004-2005 Southesk.com
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.
@@ -39,6 +45,6 @@ include_once 'task.php';
 
 <script language="Javascript">
   function getObjRef(p_ref) {
-    return document.all ? document.all[p_ref] : document.getElementById(p_ref);    
+    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
   }
 </script>

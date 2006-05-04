@@ -1,7 +1,17 @@
-/**
- * date.js
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- */
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Date validation
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  25-Apr-2006  File added.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
 
 // extract front part of string prior to searchString
 function getFront(mainStr,searchStr){

@@ -7,13 +7,7 @@
  *
  * Current Courts View
  *
- * $Log: /web/asrc.biz/courtsview.php $
- * 
- * 2     3/05/06 22:37 Craig
- * 14
- *
- * 1     3/05/06 22:27 Craig
- * 14
+ * $Id$
  *
  * Who  When         Why
  * CAM  25-Apr-2006  14 : File created.

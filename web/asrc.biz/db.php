@@ -14,9 +14,10 @@
  * CAM  06-Feb-2006  10: Added created_by.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$dbhost = 'mysql6.streamline.net';
+//SET PASSWORD FOR 'asrc'@'localhost' = OLD_PASSWORD('fred71');
 
-if (strtolower($_SERVER['SERVER_NAME']) == "localhost") {
+$dbhost = 'mysql6.streamline.net';
+if ((strtolower($_SERVER['SERVER_NAME']) == "localhost") || (strtolower($_SERVER['SERVER_NAME']) == "510m-0087")) {
   $dbhost = 'localhost';
 }
 

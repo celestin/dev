@@ -1,11 +1,12 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Email Verification Resend form
- * Copyright (c) 2006 frontburner.co.uk
+ * Parkers Retreat
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/parkersretreat/frm/user.verify.php $
- * 
- * 1     23/04/06 21:28 Craig
+ * Email Verification Resend form
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Apr-2006  File created.

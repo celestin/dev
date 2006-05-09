@@ -1,0 +1,209 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Style Sheet
+ * Copyright (c) 2006 frontburner.co.uk
+ *
+ * $Log: /web/parkersretreat/parkersretreat.css $
+ * 
+ * 1     23/04/06 21:27 Craig
+ * 
+ * Who  When         Why
+ * CAM  11-Apr-2006  File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  BACKGROUND-COLOR: #DCD1CB;
+}
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: Georgia, Arial, Helvetica;
+  FONT-SIZE: 12pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCCCFF;
+  COLOR: #000066;
+  FONT-WEIGHT: bold;
+}
+
+h3 {
+  COLOR: #000066;
+}
+
+.title {
+  COLOR: #0000CC;
+  FONT-SIZE: 24pt;  
+  PADDING-BOTTOM: 10px;
+  PADDING-LEFT:   10px;
+  PADDING-TOP:    10px;  
+}
+
+.fld {
+  COLOR: #003B9C;
+  FONT-WEIGHT: bold;
+}
+
+td.fldmand {
+  COLOR: #BE0221;
+  FONT-WEIGHT: bold;
+}
+
+.tabtop {
+  BACKGROUND-COLOR: #CCCCFF;
+}
+
+.tab {
+  color: #993333;
+  font-weight: bold;
+  background-color: #CCCCFF;
+  border-top: #3333FF 1px solid;
+  border-left: #0000CC 1px solid;
+  border-right: #0000CC 1px solid;
+  border-bottom: #000000 1px solid;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.tabsel {
+  color: #FFFFFF;
+  font-weight: bold;
+  background-color: #000066;
+  border-top: #000066 1px solid;
+  border-left: #000066 1px solid;
+  border-right: #000066 1px solid;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.tabspace {
+  border-bottom: #666633 1px solid;
+}
+
+.bodybox {
+  padding: 5px;
+  border-left: #666633 1px solid;
+  border-right: #666633 1px solid;
+  border-bottom: #666633 1px solid;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.price {
+  TEXT-ALIGN: right;
+}
+
+td.sel {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-WEIGHT: bold
+}
+
+.outerBox {
+  BACKGROUND-COLOR: #FFFFFF;
+}
+
+.cpyrght {
+  BACKGROUND-COLOR: #CCCCFF;
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+  PADDING-TOP:    5px;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+/************ NAVIGATION OPTIONS **************/
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  COLOR: #FFFFFF;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.nav:hover {
+  COLOR: #92B5F0;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A.itemnav,A.itemnav:visited,A.itemnav:active,A.itemnav:link,A.itemnav:visited {
+  COLOR: #0000CC;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.itemnav:hover {
+  COLOR: #3333FF;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+A.itemnavsel,A.itemnavsel:visited,A.itemnavsel:active,A.itemnavsel:link,A.itemnavsel:visited {
+  COLOR: #FFFFFF;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.itemnavsel:hover {
+  COLOR: #3333FF;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #002054;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #497FB1;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+
+input.button {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER:           #497FB1 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #BE0221;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

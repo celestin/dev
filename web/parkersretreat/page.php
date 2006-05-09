@@ -34,6 +34,14 @@ if ($utab == 1) {
 
   include 'tpl/home.php';
 
+} else if ($utab == 5) {
+
+  include 'tpl/local.php';
+
+} else if ($utab == 6) {
+
+  include 'tpl/parkers.php';
+
 } else if ($utab == 4) {
 
   include 'tpl/pricing.php';
@@ -69,6 +77,10 @@ if ($utab == 1) {
 
 <table border=0 cellspacing=0 cellpadding=2>
   <tr>
+    <td align="center" height=20><a href="page.php?&tab=2">Ground floor</a>&nbsp;|&nbsp;<a href="page.php?&tab=3">First floor</a></td>
+    <td rowspan=2 valign=top><p><? echo $short_text; ?></p><img width=375 height=200 src="img/room/<? echo $imgfile; ?>"><p><? echo $long_text; ?></p></td>
+  </tr>
+  <tr>
     <td valign=top><OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"  WIDTH=400 HEIGHT=335
                 codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0">
            <PARAM NAME=movie VALUE="<? echo $swf; ?>">
@@ -77,8 +89,8 @@ if ($utab == 1) {
            <EMBED src="<? echo $swf; ?>" loop=false quality=high bgcolor=#FFFFFF  WIDTH=400 HEIGHT=335 TYPE="application/x-shockwave-flash"
            PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED>
         </OBJECT></td>
-    <td valign=top><p><? echo $short_text; ?></p><img width=375 height=200 src="img/room/<? echo $imgfile; ?>"><p><? echo $long_text; ?></p></td>
   </tr>
+</table>
 
 <?
 }

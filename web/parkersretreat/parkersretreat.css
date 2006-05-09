@@ -1,17 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Style Sheet
- * Copyright (c) 2006 frontburner.co.uk
+ * Parkers Retreat
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/parkersretreat/parkersretreat.css $
- * 
- * 1     23/04/06 21:27 Craig
- * 
+ * Style Sheet
+ *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  11-Apr-2006  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  BACKGROUND-COLOR: #DCD1CB;
+  BACKGROUND-COLOR: #F3EFEF;
 }
 
 p, table, td, input, select, textarea {
@@ -22,7 +23,7 @@ p, table, td, input, select, textarea {
 }
 
 th {
-  BACKGROUND-COLOR: #CCCCFF;
+  BACKGROUND-COLOR: #D8C4C2;
   COLOR: #000066;
   FONT-WEIGHT: bold;
 }
@@ -33,10 +34,10 @@ h3 {
 
 .title {
   COLOR: #0000CC;
-  FONT-SIZE: 24pt;  
+  FONT-SIZE: 24pt;
   PADDING-BOTTOM: 10px;
   PADDING-LEFT:   10px;
-  PADDING-TOP:    10px;  
+  PADDING-TOP:    10px;
 }
 
 .fld {
@@ -49,14 +50,29 @@ td.fldmand {
   FONT-WEIGHT: bold;
 }
 
+.topstone   { BACKGROUND-COLOR: #C7ADA5; }
+.sidestone  { BACKGROUND-COLOR: #D8C4C2; }
+.stone1     { BACKGROUND-COLOR: #A77D6C; border: #A77D6C 2px solid; }
+.stone2     { BACKGROUND-COLOR: #AE8886; border: #AE8886 2px solid; }
+.stone3     { BACKGROUND-COLOR: #B58873; border: #B58873 2px solid; }
+.stone5     { BACKGROUND-COLOR: #A9998C; border: #A9998C 2px solid; }
+.stone6     { BACKGROUND-COLOR: #9E7E76; border: #9E7E76 2px solid; }
+.stone4     { BACKGROUND-COLOR: #DABBB3; border: #DABBB3 2px solid; }
+
+.selstone {
+  background-color: #F0DFE5;
+  border: #825C4D 2px solid;
+}
+
+
 .tabtop {
-  BACKGROUND-COLOR: #CCCCFF;
+  BACKGROUND-COLOR: #D8C4C2;
 }
 
 .tab {
   color: #993333;
   font-weight: bold;
-  background-color: #CCCCFF;
+  background-color: #D8C4C2;
   border-top: #3333FF 1px solid;
   border-left: #0000CC 1px solid;
   border-right: #0000CC 1px solid;
@@ -81,10 +97,12 @@ td.fldmand {
 }
 
 .bodybox {
+  background-color: #FFFFFF;
   padding: 5px;
-  border-left: #666633 1px solid;
-  border-right: #666633 1px solid;
-  border-bottom: #666633 1px solid;
+  border-top: #D8C4C2 1px solid;
+  border-left: #D8C4C2 1px solid;
+  border-right: #D8C4C2 1px solid;
+  border-bottom: #D8C4C2 1px solid;
 }
 
 td.fldopt {
@@ -117,7 +135,7 @@ td.sel {
 }
 
 .cpyrght {
-  BACKGROUND-COLOR: #CCCCFF;
+  BACKGROUND-COLOR: #F3EFEF;
   COLOR: #333333;
   FONT-SIZE: 7pt;
   TEXT-ALIGN: center;
@@ -132,35 +150,23 @@ td.cat {
 
 /************ NAVIGATION OPTIONS **************/
 
-A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
-  COLOR: #FFFFFF;
-  FONT-SIZE: 8pt;
-  TEXT-DECORATION: none;
-  FONT-WEIGHT: bold;
-}
-A.nav:hover {
-  COLOR: #92B5F0;
-  FONT-WEIGHT: bold;
-  TEXT-DECORATION: underline;
-}
-
 A.itemnav,A.itemnav:visited,A.itemnav:active,A.itemnav:link,A.itemnav:visited {
-  COLOR: #0000CC;
+  COLOR: #FFFFFF;
   TEXT-DECORATION: none;
   FONT-WEIGHT: bold;
 }
 A.itemnav:hover {
-  COLOR: #3333FF;
+  COLOR: #FFFFFF;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }
 A.itemnavsel,A.itemnavsel:visited,A.itemnavsel:active,A.itemnavsel:link,A.itemnavsel:visited {
-  COLOR: #FFFFFF;
+  COLOR: #825C4D;
   TEXT-DECORATION: none;
   FONT-WEIGHT: bold;
 }
 A.itemnavsel:hover {
-  COLOR: #3333FF;
+  COLOR: #AE8886;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }

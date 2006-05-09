@@ -1,14 +1,16 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Top of the page
- * Copyright (c) 2006 frontburner.co.uk
+ * Parkers Retreat
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/parkersretreat/tpl/top.php $
- * 
- * 1     23/04/06 21:28 Craig
+ * Top of Page template
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Apr-2006  File created.
+ * CAM  09-May-2006  Adjustments following meeting with AL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -24,6 +26,19 @@ if (empty($title)) {
   $title = $cfg['Site']['Name'] . " - $title";
 }
 
+function f_tab($tab_id, $tab_name) {
+  global $utab;
+
+  $cls = "";
+  $buttoncls="stone$tab_id";
+  if ($tab_id == $utab) {
+    $cls = "sel";
+    $buttoncls="selstone";
+  }
+
+  echo "<td class=\"$buttoncls\"><a class=\"itemnav$cls\" href=\"page.php?&tab=$tab_id\">$tab_name</a></td>";
+}
+
 ?>
 <head>
   <title><? echo $title;?></title>
@@ -33,49 +48,32 @@ if (empty($title)) {
 
 <body topmargin=0 leftmargin=0>
 
-<table border=0 cellpadding=0 cellspacing=0 align=center>
-<tr><td><table border=0 cellpadding=0 cellspacing=0 width="800" height="600" class=outerBox>
-  <tr>
-  <td valign=top><table border=0 cellpadding=0 cellspacing=0 width="100%" height="100%" class="tabtop">
-    <tr>
-      <td><img src="img/p2.gif" height=225 width=800></td>
-    </tr>
-
-    <tr>
-      <td><table border=0 cellpadding=2 cellspacing=0 class="tabtop" BACKGROUND="img/p3.gif"><tr>
-<?
-  if ($tabs == "ON") {
-    $prev = false;
-    $sql2 = mysql_query("SELECT id tab_id,tab ".
-                       "FROM tabs ".
-                       "ORDER BY disporder");
-
-    while ($row2 = mysql_fetch_array($sql2)) {
-      foreach($row2 AS $key2 => $val) {
-        $$key2 = stripslashes($val);
-      }
-
-      $cls = "";
-      if ($tab_id == $utab) {
-        $cls = "sel";
-      }
-?>
-        <td class="tabspace"><img width=8 src="img/f.gif"></td>
-        <td class="tab<? echo $cls;?>"><a class="itemnav<? echo $cls;?>" href="page.php?&tab=<? echo $tab_id;?>"><? echo $tab;?></a></td>
-<?
-
-      $prev = true;
-    }
-  } else {
-?>
-        <td class="tabspace"><img width=8 src="img/f.gif"></td>
-<?
-  }
-?>
-        <td class="tabspace" width="100%"><img src="img/f.gif"></td>
-      </tr></table></td>
-    </tr>
-
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+  <td width="50%" class="topstone">&nbsp;</td>
+  <td width="259"><img src="img/pc2top.jpg" width="259" height="50"></td>
+  <td width="541" align="center" class="topstone"><img src="img/pb3.gif" width="294" height="50"></td>
+  <td width="50%" class="topstone">&nbsp;</td>
+</tr>
+<tr>
+  <td rowspan=4>&nbsp;</td>
+  <td align="left"><img src="img/pc2bot.jpg" height=100></td>
+  <td align="center" valign="middle"><table border=0 cellpadding=0 cellspacing=0>
+    <tr><td align="center"><table border=0 cellpadding=6 cellspacing=6><tr>
+      <? f_tab(1, "Contact");?>
+      <? f_tab(2, "Accomodation");?>
+      <? f_tab(4, "Pricing");?>
+      <td class="stone3">Enquiry</td>
     </table></td></tr>
-
-    <tr><td colspan=2 width="100%" height="100%" valign=top class="bodybox">
+    <tr><td align="center"><table border=0 cellpadding=6 cellspacing=6><tr>
+      <? f_tab(5, "Local Information &amp; Attractions");?>
+      <? f_tab(6, "Parker&#039;s");?>
+    </table></td></tr>
+  </table></td>
+  <td rowspan=4>&nbsp;</td>
+</tr>
+<tr>
+  <td colspan=2><img src="img/wid.gif" width="800" height="4"></td>
+</tr>
+<tr>
+  <td colspan=2 width="800" valign=top class="bodybox">

@@ -1,15 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Javascript - Date validation 
- * Copyright (c) 2005 Southesk.com
+ * Parkers Retreat
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/parkersretreat/date.js $
- * 
- * 1     23/04/06 21:27 Craig
- * 
- * 1     28/12/05 15:41 Craig
- * 
- * 2     28/12/05 15:32 Craig
- * 
+ * Javascript - Date validation 
+ *
+ * $Id$
+ *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */

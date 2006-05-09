@@ -1,11 +1,12 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Session Registration
- * Copyright (c) 2006 frontburner.co.uk
+ * Parkers Retreat
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/parkersretreat/session_reg.php $
- * 
- * 1     23/04/06 21:27 Craig
+ * Session Registration
+ *
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Apr-2006  File created.

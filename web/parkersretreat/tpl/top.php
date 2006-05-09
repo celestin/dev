@@ -76,4 +76,4 @@ function f_tab($tab_id, $tab_name) {
   <td colspan=2><img src="img/wid.gif" width="800" height="4"></td>
 </tr>
 <tr>
-  <td colspan=2 width="800" valign=top class="bodybox">
+  <td colspan=2 width="775" valign=top class="bodybox">

@@ -1,10 +1,10 @@
-<?
+<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Help Page Context
+ * Request Quotation Page Context
  *
  * $Id$
  *
@@ -12,13 +12,14 @@
  * CAM  13-Apr-2006  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Help";
+$title = "Request Quotation";
 include 'tpl/top.php';
 ?>
 
-<table height="100%" width="100%" border=0>
-<tr><td align=center>help</td></tr>
-</table>
+<h3>Request Quotation</h3>
+
+
+
 
 <?
 include 'tpl/bot.php';

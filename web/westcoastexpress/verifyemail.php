@@ -6,7 +6,7 @@
  *
  * Verify Email Address
  *
- * $Id: activate.php 50 2006-05-04 23:09:33Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.

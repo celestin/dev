@@ -4,7 +4,7 @@
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Home Page Context
+ * Contact Page Context
  *
  * $Id$
  *
@@ -12,11 +12,11 @@
  * CAM  13-Apr-2006  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Boat Transport";
+$title = "Contact Bob";
 include 'tpl/top.php';
 ?>
 
-<h3>No. 1 for Boat Transport in Scotland</h3>
+<h3>Call Bob now!</h3>
 
 <table border=0 cellpadding=20 align=center >
   <tr>
@@ -37,7 +37,6 @@ include 'tpl/top.php';
     <td align="right"><img src="img/boat1.gif"></td>
   </tr>
 </table>
-
 
 <?
 include 'tpl/bot.php';

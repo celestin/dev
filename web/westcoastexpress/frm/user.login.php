@@ -14,7 +14,10 @@
 
 include_once 'Main.php';
 
-$retry = NULL;        if (!empty($_POST['retry'])) $retry = $_POST['retry'];
+$retry = NULL;            if (!empty($_POST['retry'])) $retry = $_POST['retry'];
+$boattype = NULL;         if (!empty($_POST['boattype'])) $boattype = $_POST['boattype'];
+$boatlength = NULL;       if (!empty($_POST['boatlength'])) $boatlength = $_POST['boatlength'];
+$boatweight = NULL;       if (!empty($_POST['boatweight'])) $boatweight = $_POST['boatweight'];
 
 if ($retry == NULL && !isset($_REQUEST['logmeout'])) {
   Msg::error("New user?  Please register.");

@@ -23,19 +23,19 @@ include_once 'Main.php';
 */
 class EmailMsg {
 
-  /**
-  * Email Type (Notification or Reminder).
-  * @private
-  * @type String
-  */
-  var $emailType;
-
-  /**
-  * Description of Email Type (Notification or Reminder).
-  * @private
-  * @type String
-  */
-  var $typeDesc;
+  var $boattype;
+  var $boatlength;
+  var $boatweight;
+  var $boatkeel;
+  var $boatloc;
+  var $boatdest;
+  var $earlydate;
+  var $estval;
+  var $owntrailer;
+  var $comments;
+  var $contactemail;
+  var $contactname;
+  var $contacttel;
 
   /**
   * Originator Member
@@ -44,15 +44,23 @@ class EmailMsg {
   */
   var $memPerson;
 
-  function EmailMsg($emailType, $memberId) {
-    $this->emailType = $emailType;
-    $this->memPerson = Person::getPerson($memberId);
+  function EmailMsg($boattype, $boatlength, $boatweight, $boatkeel,
+                    $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
+                    $contactemail, $contactname, $contacttel) {
+  $this->boattype =      $boattype;
+  $this->boatlength =    $boatlength;
+  $this->boatweight =    $boatweight;
+  $this->boatkeel =      $boatkeel;
+  $this->boatloc =       $boatloc;
+  $this->boatdest =      $boatdest;
+  $this->earlydate =     $earlydate;
+  $this->estval =        $estval;
+  $this->owntrailer =    $owntrailer;
+  $this->comments =      $comments;
+  $this->contactemail =  $contactemail;
+  $this->contactname =   $contactname;
+  $this->contacttel =    $contacttel;
 
-    if ($emailType == 'N') {
-      $this->typeDesc = "Notification";
-    } else {
-      $this->typeDesc = "Reminder";
-    }
   }
 
   function getHeaders($cc='') {
@@ -91,69 +99,31 @@ class EmailMsg {
     "</body></html>$cr";
   }
 
-  function sendVerify($verify_code) {
-    global $cfg;
-
-    $to = $this->memPerson->getEmail();
-    $cc = $cfg['Site']['Email'];
-    $subject = "Email Verification";
-    $cr = "\r\n";
-
-    $url = $cfg['Site']['URL'] . "/verifyemail.php?username=" . $this->memPerson->getID() .
-           "&code=$verify_code";
-
-    $message = $this->getHTMLStart($subject);
-    $message .= "<tr><td>Hi " . $this->memPerson->getFirstname() . ",<br><br>$cr$cr".
-            "Thank you for registering with Christian Corner.$cr".
-            "Please verify your email address by clicking on the link below:<br>$cr".
-            "<a href=\"$url\">$url</a>$cr".
-            "</td></tr>$cr";
-    $message .= $this->getHTMLEnd();
-
-    mail($to,$subject,$message,$this->getHeaders($cc));
-  }
-
-
-  function sendReviewQuestion($question) {
+  function sendRequest() {
     global $cfg;
 
     $to = $cfg['Site']['Email'];
-    $subject = "Review Question";
+    $cc = $this->contactemail;
+    $subject = "Request for Quotation";
     $cr = "\r\n";
 
-    $url = $cfg['Site']['URL'] . "/question.review.php?question=$question";
+    $message = $this->getHTMLStart($subject) .
+      "<tr><td class=fld>Type of Boat</td><td>" . $this->boattype . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Length of boat</td><td>" . $this->boatlength . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Weight of boat</td><td>" . $this->boatweight . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Type of Keel</td><td>" . $this->boatkeel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Location (present position)</td><td>" . $this->boatloc . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Destination</td><td>" . $this->boatdest . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Ealiest preferred date</td><td>" . $this->earlydate . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Estimated value</td><td>" . $this->estval . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Own trailer?</td><td>" . $this->owntrailer . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Additional comments</td><td>" . $this->comments . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Email Address</td><td>" . $this->contactemail . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Name</td><td>" . $this->contactname . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Tel</td><td>" . $this->contacttel . "</td></tr>$cr$cr".
+      $this->getHTMLEnd();
 
-    $message = $this->getHTMLStart($subject);
-    $message .= "<tr><td>" . $this->memPerson->getDesc() .
-            " has created a new question.<br>$cr".
-            "Please review by clicking on the link below:<br>$cr".
-            "<a href=\"$url\">$url</a></td></tr>$cr";
-    $message .= $this->getHTMLEnd();
-
-    mail($to,$subject,$message,$this->getHeaders());
-  }
-
-
-  function sendForgot($new_pwd) {
-    global $cfg;
-
-    $to = $this->memPerson->getEmail();
-    $subject = "Your " . $cfg['Site']['Name'] . " password for $memberid";
-    $cr = "\r\n";
-
-    $url = $cfg['Site']['URL'] . "/login.php";
-
-    $message = $this->getHTMLStart($subject);
-    $message .= "<tr><td>Hi " . $this->memPerson->getFirstname() . ",<br>$cr".
-            "We have reset your password to: $new_pwd.$cr".
-            "Please use the link below to login:<br>$cr".
-            "<a href=\"$url\">$url</a><br>$cr".
-            "Thanks!<br>$cr".
-            $cfg['Site']['Name'] . "<br>$cr".
-            "</td></tr>$cr";
-    $message .= $this->getHTMLEnd();
-
-    mail($to,$subject,$message,$this->getHeaders());
+    mail($to,$subject,$message,$this->getHeaders($cc));
   }
 }
 ?>

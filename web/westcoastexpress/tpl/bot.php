@@ -13,7 +13,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </tr>
-<tr><td colspan=3 class="cpyrght"><br>Copyright &copy; 2005 West Coast Express. All rights reserved.
+<tr><td colspan=3 class="cpyrght"><br>Copyright &copy; 2006 West Coast Express. All rights reserved.
 <br>Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </table>
 </body>

@@ -122,6 +122,19 @@ td.cpyrght {
   TEXT-ALIGN: center;
 }
 
+.fld {
+  COLOR: #006891;
+  FONT-WEIGHT: bold;
+}
+
+.fldmand {
+  COLOR: #BB0F18;
+  FONT-WEIGHT: bold;
+}
+
+
+/** Navigation */
+
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   COLOR: #FFFFFF;
   BORDER-BOTTOM: #F1F16B 1px dashed;
@@ -144,3 +157,21 @@ A:hover {
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }
+
+/** Message formats */
+
+p.err {
+  COLOR: #BB0F18;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

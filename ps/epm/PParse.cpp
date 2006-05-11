@@ -24,6 +24,8 @@ static SAXParser::ValSchemes valScheme = SAXParser::Val_Auto;
 Extension *ext;
 MetricSet *metSet;
 
+extern char szAppDirectory[];
+
 void xmlConfigParse() {
   try {
     XMLPlatformUtils::Initialize();
@@ -32,7 +34,10 @@ void xmlConfigParse() {
     return;
   }
 
-  xmlFile = "epm.xml";
+  char xmlFullpath[4096];
+  strcpy(xmlFullpath, szAppDirectory);
+  strcat(xmlFullpath, "epm.xml");
+  xmlFile = xmlFullpath;
 
   SAXParser* parser = new SAXParser;
   PParseHandlers handler;

@@ -127,6 +127,8 @@ extern int xmlConfig();
 extern Extension *ext;
 
 // Global Variables
+char szAppDirectory[MAX_PATH];
+
 int OPTION_MASK = 0;      // mask for options given at the command line
 int METRIC_MASK = 0;      // mask for metrics chosen at the command line
 
@@ -706,6 +708,11 @@ int main(int argc, char* argv[]) {
 
   cout << "\nEssential Project Manager (EPM) Version 1.10.001\n"
        << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n" << endl;
+
+  char szAppPath[MAX_PATH];
+  GetModuleFileName(NULL, szAppPath, MAX_PATH);
+  strncpy(szAppDirectory, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
+  szAppDirectory[strlen(szAppDirectory)] = '\0';
 
   if (!validLicense()) {
     cout << "You must have a valid license.dat file." << endl;

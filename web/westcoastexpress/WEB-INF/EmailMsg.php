@@ -80,7 +80,7 @@ class EmailMsg {
 
     $cr = "\r\n";
     return "<html><head>".
-          "<link href=" . $cfg['Site']['Name'] . "/wce.css rel=stylesheet type=text/css>".
+          "<link href=" . $cfg['Site']['URL'] . "/wce.css rel=stylesheet type=text/css>".
           "</head><body>".
           "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
             "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".

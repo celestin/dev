@@ -1,0 +1,25 @@
+s/j_comments/j_comments_s1/g
+s/c_comments/c_comments_s1/g
+s/cpp_comments/cpp_comments_s1/g
+s/com_loc/com_loc_s1/g
+s/prev_com_line/prev_com_line_s1/g
+s/comment_skip/comment_skip_s1/g
+s/lexclear/lexclear_s1/g
+s/nsemi/nsemi_s1/g
+s/operands/operands_s1/g
+s/operators/operators_s1/g
+s/sloc/sloc_s1/g
+s/store_operand/store_operand_s1/g
+s/store_operator/store_operator_s1/g
+s/yy_buffer_state/yy_buffer_state_s1/g
+s/yy_load_buffer_state/yy_load_buffer_state_s1/g
+s/yy_switch_to_buffer/yy_switch_to_buffer_s1/g
+s/yyin/yyin_s1/g
+s/yyleng/yyleng_s1/g
+s/yylex/yylex_s1/g
+s/yyout/yyout_s1/g
+s/yyrestart/yyrestart_s1/g
+s/yytext/yytext_s1/g
+s/yywrap/yywrap_s1/g
+s/string_literal/string_literal_s1s/g
+/#include <unistd.h>/d

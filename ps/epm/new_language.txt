@@ -1,0 +1,39 @@
+1. Create new lexer.pl.l
+2. Create new y.pl.l
+3. Create new pl.sed
+4. Amend make.cmd
+
+LicConfig.h:
+#define LIC_AD   "epmad"
+#define EPM_AD   32
+
+
+Flex.cpp:
+(98): case LANG_ADA:  return bLangAD;
+
+Lang.h
+(27): enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA };
+(54): theLang = LANG_ADA;
+(76): case LANG_ADA:
+
+
+main.cpp:
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada;
+
+extern void lexclear_ada();
+
+extern int yylex_cs();
+
+extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
+extern set<int> sloc_cs,operators_cs;
+extern vector<char*> operands_cs[255];
+
+
+
+top - setMetrics:
+main.cpp(254): case LANG_ADA:
+
+main.cpp(652): case LANG_ADA:
+
+
+

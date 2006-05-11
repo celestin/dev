@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+-- # EPM XML Specification
+-- #
+-- # $Header: /cspm/epm.dtd 3     29/03/05 23:15 Craig $
+-- #
+-- # $Log: /cspm/epm.dtd $
+-- # 
+-- # 3     29/03/05 23:15 Craig
+-- # 85
+-- # 
+-- # 2     29/03/05 22:10 Craig
+-- # 
+-- # Copyright 2005 Craig McKay <craig@southesk.com>
+-- #
+-- # $Revision: 3 $ Amendment History
+-- #
+-- # Who  When       Why
+-- # CAM  29-Mar-05    85 : file created.
+-->
+<!ENTITY % Datetime "CDATA">
+<!ENTITY % Text     "CDATA">
+<!ENTITY % LongText "CDATA">
+<!ENTITY % Integer  "CDATA">
+<!ENTITY % Decimal  "CDATA">
+<!ENTITY % Boolean  "(true|false)">
+
+<!ELEMENT epm (Project, Metrics)>
+
+<!ELEMENT Project (Items, Metrics)>
+<!ATTLIST Project
+  name                  %Text;          #REQUIRED
+  snapshotDate          %Datetime;      #REQUIRED
+>
+
+<!ELEMENT Items (File*)>
+
+<!ELEMENT File (Metrics)>
+<!ATTLIST File
+  id                    %Text;          #REQUIRED
+  name                  %Text;          #REQUIRED
+  status                %Text;          #IMPLIED
+>
+
+<!ELEMENT Metrics (Met*)>
+
+<!ELEMENT Met>
+<!ATTLIST Met
+  id                    %Text;          #REQUIRED
+  val                   %Decimal;       #REQUIRED
+  oldVal                %Decimal;       #IMPLIED
+  diffVal               %Decimal;       #IMPLIED
+  code                  %Text;          #IMPLIED
+  description           %Text;          #IMPLIED
+>

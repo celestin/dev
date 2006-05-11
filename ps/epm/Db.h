@@ -3,13 +3,14 @@
  * Copyright (c) 2004-2006 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Command Line Options
+ * MySQL Database Control through Registry and Services
  *
  * $Id$
  *
  * Who  When       Why
  * CAM  20-Dec-04  File added.
  * CAM  24-Nov-05  160 : Use Windows Services rather standalone mode.
+ * CAM  11-May-06  241 : Allow EPM to be run from any location.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef DB_HEADER

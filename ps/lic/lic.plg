@@ -6,6 +6,26 @@
 --------------------Configuration: lic - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP3A.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "C:\Program Files\FLEXlm\v7.2\machind" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "_AFXDLL" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Dev\PS\epm\lic\lic.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP3A.tmp" 
+Creating command line "link.exe lm_new.obj /nologo /subsystem:console /incremental:no /pdb:"Release/lic.pdb" /machine:I386 /nodefaultlib:"LIBCMT.lib" /out:"Release/lic.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3"  .\Release\lic.obj "
+<h3>Output Window</h3>
+Compiling...
+lic.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP3C.bat" with contents
+[
+@echo off
+xcopy /y "C:\Dev\PS\epm\lic\Release\lic.exe" "C:\Dev\PS\epm\epm\Release"
+]
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP3C.bat"
+
+C:\Dev\PS\epm\lic\Release\lic.exe
+1 File(s) copied
 
 
 

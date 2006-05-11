@@ -51,7 +51,7 @@ LINK32=link.exe
 # SUBTRACT LINK32 /nodefaultlib
 # Begin Special Build Tool
 SOURCE="$(InputPath)"
-PostBuild_Cmds=xcopy /y "C:\Dev\PS\cs\lic\Release\lic.exe" "C:\Dev\PS\cs\cspm\Release"
+PostBuild_Cmds=xcopy /y "C:\Dev\PS\epm\lic\Release\lic.exe" "C:\Dev\PS\epm\epm\Release"
 # End Special Build Tool
 # Begin Target
 

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 frontburner.co.uk
+ * Copyright (c) 2004-2006 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * CSV Reporting

@@ -12210,32 +12210,20 @@ char *yytext_ada;
 #line 1 "lexer.ada.l"
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * ADA Parser
- * Copyright (c) 2005-2006 frontburner.co.uk
+ * Essential Project Manager (EPM)
+ * Copyright (c) 2004-2005 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Ada Lexer
+ * ADA Parser
  *
- * $Log: /cspm/lexer.ada.l $
- * 
- * 4     8/04/06 16:46 Craig
- * 230
- * 
- * 3     18/03/06 12:30 Craig
- * 208
- *
- * 2     2/08/05 23:41 Craig
- * 76
- *
- * 1     2/08/05 23:39 Craig
- * 76
+ * $Id$
  *
  * Who  When       Why
  * CAM  02-Aug-05    76 : File created.
  * CAM  18-Mar-06   208 : Correctly handle APOSTROPHEs.
  * CAM  08-Apr-06   230 : Added several missing delimiters, and removed redundant entries.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#line 36 "lexer.ada.l"
+#line 24 "lexer.ada.l"
 
 #include <stdio.h>
 #include <string.h>
@@ -12309,7 +12297,7 @@ void eol_comment_skip_ada();
 
 #define DEFINE 1
 
-#line 12315 "lex.ada.tmp"
+#line 12303 "lex.ada.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -12450,10 +12438,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 113 "lexer.ada.l"
+#line 101 "lexer.ada.l"
 
 
-#line 12459 "lex.ada.tmp"
+#line 12447 "lex.ada.tmp"
 
 	if ( yy_init )
 		{
@@ -12527,600 +12515,600 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 115 "lexer.ada.l"
+#line 103 "lexer.ada.l"
 {eol_comment_skip_ada(); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 117 "lexer.ada.l"
+#line 105 "lexer.ada.l"
 {NOTE_SLOC(); BEGIN DEFINE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 118 "lexer.ada.l"
+#line 106 "lexer.ada.l"
 {NOTE_SLOC(); ada_lineno++; BEGIN 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 119 "lexer.ada.l"
+#line 107 "lexer.ada.l"
 {NOTE_SLOC(); ada_lineno++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 120 "lexer.ada.l"
+#line 108 "lexer.ada.l"
 {;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 122 "lexer.ada.l"
+#line 110 "lexer.ada.l"
 {store_operator_ada(ABORT);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 123 "lexer.ada.l"
+#line 111 "lexer.ada.l"
 {store_operator_ada(ABS);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 124 "lexer.ada.l"
+#line 112 "lexer.ada.l"
 {store_operator_ada(ABSTRACT);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 125 "lexer.ada.l"
+#line 113 "lexer.ada.l"
 {store_operator_ada(ACCEPT);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 126 "lexer.ada.l"
+#line 114 "lexer.ada.l"
 {store_operator_ada(ACCESS);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 127 "lexer.ada.l"
+#line 115 "lexer.ada.l"
 {store_operator_ada(ALIASED);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 128 "lexer.ada.l"
+#line 116 "lexer.ada.l"
 {store_operator_ada(ALL);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 129 "lexer.ada.l"
+#line 117 "lexer.ada.l"
 {store_operator_ada(AND);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 130 "lexer.ada.l"
+#line 118 "lexer.ada.l"
 {store_operator_ada(ARRAY);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 131 "lexer.ada.l"
+#line 119 "lexer.ada.l"
 {store_operator_ada(AT);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 132 "lexer.ada.l"
+#line 120 "lexer.ada.l"
 {store_operator_ada(BEGIN_KEYWORD);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 133 "lexer.ada.l"
+#line 121 "lexer.ada.l"
 {store_operator_ada(BODY);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 134 "lexer.ada.l"
+#line 122 "lexer.ada.l"
 {store_operator_ada(CASE);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 135 "lexer.ada.l"
+#line 123 "lexer.ada.l"
 {store_operator_ada(CONSTANT);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 136 "lexer.ada.l"
+#line 124 "lexer.ada.l"
 {store_operator_ada(DECLARE);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 137 "lexer.ada.l"
+#line 125 "lexer.ada.l"
 {store_operator_ada(DELAY);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 138 "lexer.ada.l"
+#line 126 "lexer.ada.l"
 {store_operator_ada(DELTA);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 139 "lexer.ada.l"
+#line 127 "lexer.ada.l"
 {store_operator_ada(DIGITS);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 140 "lexer.ada.l"
+#line 128 "lexer.ada.l"
 {store_operator_ada(DO);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 141 "lexer.ada.l"
+#line 129 "lexer.ada.l"
 {store_operator_ada(ELSE);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 142 "lexer.ada.l"
+#line 130 "lexer.ada.l"
 {store_operator_ada(ELSIF);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 143 "lexer.ada.l"
+#line 131 "lexer.ada.l"
 {store_operator_ada(END_KEYWORD);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 144 "lexer.ada.l"
+#line 132 "lexer.ada.l"
 {store_operator_ada(ENTRY);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 145 "lexer.ada.l"
+#line 133 "lexer.ada.l"
 {store_operator_ada(EXCEPTION);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 146 "lexer.ada.l"
+#line 134 "lexer.ada.l"
 {store_operator_ada(EXIT);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 147 "lexer.ada.l"
+#line 135 "lexer.ada.l"
 {store_operator_ada(FOR);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 148 "lexer.ada.l"
+#line 136 "lexer.ada.l"
 {store_operator_ada(FUNCTION);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 149 "lexer.ada.l"
+#line 137 "lexer.ada.l"
 {store_operator_ada(GENERIC);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 150 "lexer.ada.l"
+#line 138 "lexer.ada.l"
 {store_operator_ada(GOTO);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 151 "lexer.ada.l"
+#line 139 "lexer.ada.l"
 {store_operator_ada(IF);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 152 "lexer.ada.l"
+#line 140 "lexer.ada.l"
 {store_operator_ada(IN);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 153 "lexer.ada.l"
+#line 141 "lexer.ada.l"
 {store_operator_ada(INTERFACE);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 154 "lexer.ada.l"
+#line 142 "lexer.ada.l"
 {store_operator_ada(IS);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 155 "lexer.ada.l"
+#line 143 "lexer.ada.l"
 {store_operator_ada(LIMITED);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 156 "lexer.ada.l"
+#line 144 "lexer.ada.l"
 {store_operator_ada(LOOP);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 157 "lexer.ada.l"
+#line 145 "lexer.ada.l"
 {store_operator_ada(MOD);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 158 "lexer.ada.l"
+#line 146 "lexer.ada.l"
 {store_operator_ada(NEW);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 159 "lexer.ada.l"
+#line 147 "lexer.ada.l"
 {store_operator_ada(NOT);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 160 "lexer.ada.l"
+#line 148 "lexer.ada.l"
 {store_operator_ada(NULL_KEYWORD);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 161 "lexer.ada.l"
+#line 149 "lexer.ada.l"
 {store_operator_ada(OF);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 162 "lexer.ada.l"
+#line 150 "lexer.ada.l"
 {store_operator_ada(OR);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 163 "lexer.ada.l"
+#line 151 "lexer.ada.l"
 {store_operator_ada(OTHERS);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 164 "lexer.ada.l"
+#line 152 "lexer.ada.l"
 {store_operator_ada(OUT);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 165 "lexer.ada.l"
+#line 153 "lexer.ada.l"
 {store_operator_ada(OVERRIDING);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 166 "lexer.ada.l"
+#line 154 "lexer.ada.l"
 {store_operator_ada(PACKAGE);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 167 "lexer.ada.l"
+#line 155 "lexer.ada.l"
 {store_operator_ada(PRAGMA);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 168 "lexer.ada.l"
+#line 156 "lexer.ada.l"
 {store_operator_ada(PRIVATE);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 169 "lexer.ada.l"
+#line 157 "lexer.ada.l"
 {store_operator_ada(PROCEDURE);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 170 "lexer.ada.l"
+#line 158 "lexer.ada.l"
 {store_operator_ada(PROTECTED);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 171 "lexer.ada.l"
+#line 159 "lexer.ada.l"
 {store_operator_ada(RAISE);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 172 "lexer.ada.l"
+#line 160 "lexer.ada.l"
 {store_operator_ada(RANGE);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 173 "lexer.ada.l"
+#line 161 "lexer.ada.l"
 {store_operator_ada(RECORD);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 174 "lexer.ada.l"
+#line 162 "lexer.ada.l"
 {store_operator_ada(REM);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 175 "lexer.ada.l"
+#line 163 "lexer.ada.l"
 {store_operator_ada(RENAMES);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 176 "lexer.ada.l"
+#line 164 "lexer.ada.l"
 {store_operator_ada(REQUEUE);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 177 "lexer.ada.l"
+#line 165 "lexer.ada.l"
 {store_operator_ada(RETURN);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 178 "lexer.ada.l"
+#line 166 "lexer.ada.l"
 {store_operator_ada(REVERSE);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 179 "lexer.ada.l"
+#line 167 "lexer.ada.l"
 {store_operator_ada(SELECT);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 180 "lexer.ada.l"
+#line 168 "lexer.ada.l"
 {store_operator_ada(SEPARATE);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 181 "lexer.ada.l"
+#line 169 "lexer.ada.l"
 {store_operator_ada(SUBTYPE);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 182 "lexer.ada.l"
+#line 170 "lexer.ada.l"
 {store_operator_ada(SYNCHRONIZED);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 183 "lexer.ada.l"
+#line 171 "lexer.ada.l"
 {store_operator_ada(TAGGED);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 184 "lexer.ada.l"
+#line 172 "lexer.ada.l"
 {store_operator_ada(TASK);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 185 "lexer.ada.l"
+#line 173 "lexer.ada.l"
 {store_operator_ada(TERMINATE);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 186 "lexer.ada.l"
+#line 174 "lexer.ada.l"
 {store_operator_ada(THEN);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 187 "lexer.ada.l"
+#line 175 "lexer.ada.l"
 {store_operator_ada(TYPE);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 188 "lexer.ada.l"
+#line 176 "lexer.ada.l"
 {store_operator_ada(UNTIL);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 189 "lexer.ada.l"
+#line 177 "lexer.ada.l"
 {store_operator_ada(USE);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 190 "lexer.ada.l"
+#line 178 "lexer.ada.l"
 {store_operator_ada(WHEN);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 191 "lexer.ada.l"
+#line 179 "lexer.ada.l"
 {store_operator_ada(WHILE);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 192 "lexer.ada.l"
+#line 180 "lexer.ada.l"
 {store_operator_ada(WITH);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 193 "lexer.ada.l"
+#line 181 "lexer.ada.l"
 {store_operator_ada(XOR);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 195 "lexer.ada.l"
+#line 183 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 196 "lexer.ada.l"
+#line 184 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 197 "lexer.ada.l"
+#line 185 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 198 "lexer.ada.l"
+#line 186 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 199 "lexer.ada.l"
+#line 187 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 200 "lexer.ada.l"
+#line 188 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 201 "lexer.ada.l"
+#line 189 "lexer.ada.l"
 {store_operand_ada(strdup(yytext_ada));}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 202 "lexer.ada.l"
+#line 190 "lexer.ada.l"
 {sloc_ada.insert(ada_lineno); string_literal_ada();}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 204 "lexer.ada.l"
+#line 192 "lexer.ada.l"
 {NOTE_SLOC(); nsemi_ada++;}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 206 "lexer.ada.l"
+#line 194 "lexer.ada.l"
 {store_operator_ada(ARROW);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 207 "lexer.ada.l"
+#line 195 "lexer.ada.l"
 {store_operator_ada(ASSIGNMENT);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 208 "lexer.ada.l"
+#line 196 "lexer.ada.l"
 {store_operator_ada(EXPONENT);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 209 "lexer.ada.l"
+#line 197 "lexer.ada.l"
 {store_operator_ada(NOT_EQUAL);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 210 "lexer.ada.l"
+#line 198 "lexer.ada.l"
 {store_operator_ada(GREATER_EQUAL);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 211 "lexer.ada.l"
+#line 199 "lexer.ada.l"
 {store_operator_ada(LESS_EQUAL);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 212 "lexer.ada.l"
+#line 200 "lexer.ada.l"
 {store_operator_ada(LEFT_LABEL);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 213 "lexer.ada.l"
+#line 201 "lexer.ada.l"
 {store_operator_ada(RIGHT_LABEL);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 214 "lexer.ada.l"
+#line 202 "lexer.ada.l"
 {store_operator_ada(BOX);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 215 "lexer.ada.l"
+#line 203 "lexer.ada.l"
 {store_operator_ada(DOUBLE_DOT);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 217 "lexer.ada.l"
+#line 205 "lexer.ada.l"
 {store_operator_ada(AMPERSAND);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 218 "lexer.ada.l"
+#line 206 "lexer.ada.l"
 {store_operator_ada(APOSTROPHE);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 219 "lexer.ada.l"
+#line 207 "lexer.ada.l"
 {store_operator_ada(ASTERISK);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 220 "lexer.ada.l"
+#line 208 "lexer.ada.l"
 {store_operator_ada(PLUS);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 221 "lexer.ada.l"
+#line 209 "lexer.ada.l"
 {store_operator_ada(MINUS);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 222 "lexer.ada.l"
+#line 210 "lexer.ada.l"
 {store_operator_ada(SLASH);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 223 "lexer.ada.l"
+#line 211 "lexer.ada.l"
 {store_operator_ada(LESS_THAN);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 224 "lexer.ada.l"
+#line 212 "lexer.ada.l"
 {store_operator_ada(EQUAL);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 225 "lexer.ada.l"
+#line 213 "lexer.ada.l"
 {store_operator_ada(GREATER_THAN);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 226 "lexer.ada.l"
+#line 214 "lexer.ada.l"
 {store_operator_ada(DOT);}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 228 "lexer.ada.l"
+#line 216 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 229 "lexer.ada.l"
+#line 217 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 230 "lexer.ada.l"
+#line 218 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 231 "lexer.ada.l"
+#line 219 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 232 "lexer.ada.l"
+#line 220 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 233 "lexer.ada.l"
+#line 221 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 234 "lexer.ada.l"
+#line 222 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 235 "lexer.ada.l"
+#line 223 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 236 "lexer.ada.l"
+#line 224 "lexer.ada.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 238 "lexer.ada.l"
+#line 226 "lexer.ada.l"
 {;}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 239 "lexer.ada.l"
+#line 227 "lexer.ada.l"
 {ada_lineno++;}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 240 "lexer.ada.l"
+#line 228 "lexer.ada.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 241 "lexer.ada.l"
+#line 229 "lexer.ada.l"
 ECHO;
 	YY_BREAK
-#line 13126 "lex.ada.tmp"
+#line 13114 "lex.ada.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(DEFINE):
 	yyterminate();
@@ -14004,7 +13992,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 241 "lexer.ada.l"
+#line 229 "lexer.ada.l"
 
 int yywrap_ada() {
   return(1);

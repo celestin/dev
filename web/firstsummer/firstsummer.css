@@ -1,0 +1,319 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * First Summerhouses
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  10-Feb-2006  File created.
+ * CAM  08-Apr-2006  Development.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+/************ GENERAL OPTIONS **************/
+
+body {
+  BACKGROUND-COLOR: #FFFFFF;
+}
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none;
+}
+
+h3 {
+  COLOR: #993333;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+.fld {
+  COLOR: #003B9C;
+  FONT-WEIGHT: bold;
+}
+
+td.fldmand {
+  COLOR: #BE0221;
+  FONT-WEIGHT: bold;
+}
+
+
+td.current {
+  COLOR: #FF7900;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+td.sel {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-WEIGHT: bold
+}
+
+.past {
+  BACKGROUND-COLOR: #D8D8D8;
+}
+
+.topLogo {
+  PADDING-BOTTOM: 4px;
+  PADDING-LEFT:   6px;
+  PADDING-TOP:    6px;
+  BACKGROUND-COLOR: #FFFFFF;
+  BORDER-BOTTOM: #CC3333 8px solid;
+}
+
+td.category {
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #669933;
+}
+
+td.categorysel {
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #66CC33;
+}
+
+
+td.topnav {
+  HEIGHT: 25px;
+}
+
+.topnav2 {
+  PADDING-TOP: 4px;
+  PADDING-LEFT: 4px;
+  PADDING-BOTTOM: 4px;
+}
+
+.topnav3 {
+  BACKGROUND-COLOR: #669933;
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT: 4px;
+}
+
+.sep {
+  COLOR: #666633;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT:   4px;
+  PADDING-RIGHT:  4px;
+}
+
+.tab {
+  color: #993333;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  border-top: #669933 1px solid;
+  border-left: #669933 1px solid;
+  border-right: #669933 1px solid;
+  border-bottom: #666633 1px solid;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.tabsel {
+  color: #FFFFFF;
+  font-weight: bold;
+  background-color: #66CC33;
+  border-top: #666633 1px solid;
+  border-left: #666633 1px solid;
+  border-right: #666633 1px solid;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.tabspace {
+  border-bottom: #666633 1px solid;
+}
+
+.page {
+  border-left: #666633 1px solid;
+  border-right: #666633 1px solid;
+  border-bottom: #666633 1px solid;
+  padding: 8px;
+}
+
+.title {
+  COLOR: #CCCCFF;
+}
+
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+  PADDING-TOP:    5px;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+/************ TEXT OPTIONS **************/
+
+.fldlbl {
+  COLOR: #993333;
+  PADDING-RIGHT: 8px;
+  FONT-WEIGHT: bold;
+}
+
+.fldtxt {
+  COLOR: #666633;
+  FONT-WEIGHT: bold;
+}
+
+/************ NAVIGATION OPTIONS **************/
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #FFFFFF;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.nav:hover {
+  COLOR: #CCCC00;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+A.navsel,A.navsel:visited,A.navsel:active,A.navsel:link,A.navsel:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #FFFFFF;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.navsel:hover {
+  COLOR: #666633;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A.itemnav,A.itemnav:visited,A.itemnav:active,A.itemnav:link,A.itemnav:visited {
+  COLOR: #669933;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.itemnav:hover {
+  COLOR: #CC3333;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+A.itemnavsel,A.itemnavsel:visited,A.itemnavsel:active,A.itemnavsel:link,A.itemnavsel:visited {
+  COLOR: #CC3333;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.itemnavsel:hover {
+  COLOR: #66CC33;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #669933;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #CC3333;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+/************ PAGE SPECIFIC OPTIONS **************/
+
+/**
+ * PRODUCT
+ */
+
+td.prodnav {
+  BORDER-RIGHT: #CC3333 8px solid;
+}
+
+table.prodnav {
+  BORDER: #669933 1px solid;
+}
+
+
+/**
+ * PRODUCT - Main tab
+ */
+
+td.download {
+  BACKGROUND-COLOR: #CC3333;
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+  TEXT-ALIGN: center;
+}
+
+.shorttxt {
+  PADDING-LEFT:  20px;
+  PADDING-RIGHT: 20px;
+}
+
+/**
+ * PRODUCT - Gallery tab
+ */
+
+.ti {
+  PADDING-RIGHT:   12px;
+  PADDING-TOP:    12px;
+}
+
+
+input.button {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER:           #497FB1 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #BE0221;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

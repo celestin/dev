@@ -5,7 +5,7 @@
  *
  * Java parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  29-Apr-05  File added.

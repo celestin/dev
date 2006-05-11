@@ -5,7 +5,7 @@
  *
  * Perl parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  03-Aug-05   114 : File created.

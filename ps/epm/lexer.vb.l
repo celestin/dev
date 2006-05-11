@@ -5,7 +5,7 @@
  *
  * VB Parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  11-May-05    96 : File created.

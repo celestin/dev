@@ -5,7 +5,7 @@
  *
  * ADA Parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  02-Aug-05    76 : File created.

@@ -5,7 +5,7 @@
  *
  * C# Lexer
  *
- * $Id: $
+ * $Id$
  * 
  * Who  When       Why
  * CAM  19-Dec-04  File added.

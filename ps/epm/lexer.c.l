@@ -5,7 +5,7 @@
  *
  * C/C++ parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  12-Apr-05  File added.

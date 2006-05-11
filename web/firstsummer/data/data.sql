@@ -10,7 +10,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 15, 2006 at 06:44 PM
+-- Generation Time: May 11, 2006 at 07:59 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 -- 
@@ -180,7 +180,7 @@ INSERT INTO photos VALUES (34, 14, 'kota_k069_00680.jpg', 680, NULL, 0, NULL, NU
 INSERT INTO photos VALUES (35, 14, 'kota_k069_00700.jpg', 700, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (36, 14, 'kota_k069_00720.jpg', 720, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (37, 14, 'kota_k069_00740.jpg', 740, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO photos VALUES (165, 37, 'tyla_op_04380.jpg', 4380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO photos VALUES (165, 37, 'tyla_op_04380.jpg', 4380, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (108, 7, 'nida_nt_03660.jpg', 3660, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (40, 14, 'kota_k069_00800.jpg', 800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (107, 6, 'nida_ns_03640.jpg', 3640, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -272,8 +272,8 @@ INSERT INTO photos VALUES (156, 40, 'tyla_uf_04260.jpg', 4260, NULL, 0, NULL, NU
 INSERT INTO photos VALUES (157, 40, 'tyla_uf_04280.jpg', 4280, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (158, 40, 'tyla_uf_04300.jpg', 4300, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (164, 36, 'tyla_oc_04360.jpg', 4360, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO photos VALUES (166, 37, 'tyla_op_04400.jpg', 4400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO photos VALUES (167, 37, 'tyla_op_04420.jpg', 4420, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO photos VALUES (166, 43, 'tyla_op_04400.jpg', 4400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO photos VALUES (167, 44, 'tyla_op_04420.jpg', 4420, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (168, 38, 'tyla_pc_04440.jpg', 4440, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (169, 39, 'tyla_sw_04460.jpg', 4460, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (170, 18, 'tbuild_t10_04480.jpg', 4480, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -467,18 +467,20 @@ CREATE TABLE prodranges (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Ranges' AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM COMMENT='Product Ranges' AUTO_INCREMENT=12 ;
 
 -- 
 -- Dumping data for table prodranges
 -- 
 
-INSERT INTO prodranges VALUES (4, 'T-Buildings', 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodranges VALUES (5, 'Nida', 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodranges VALUES (6, 'Tyla', 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (4, 'T-Buildings', 2, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (5, 'Nida', 2, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (6, 'Holiday Houses', 2, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodranges VALUES (7, 'Kota', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodranges VALUES (8, 'Summerhouses', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodranges VALUES (9, 'Garages', 2, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (9, 'Garages', 2, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (10, 'Garden Cabins', 2, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodranges VALUES (11, 'Pavilions', 2, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -501,7 +503,7 @@ CREATE TABLE products (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Products' AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM COMMENT='Products' AUTO_INCREMENT=45 ;
 
 -- 
 -- Dumping data for table products
@@ -521,7 +523,7 @@ INSERT INTO products VALUES (16, '17.2m2', 7, 'kota_k172.pdf', 3, NULL, NULL, NU
 INSERT INTO products VALUES (17, '27m2', 7, 'kota_k288.pdf', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (18, 'T10', 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (19, 'Chalet T24', 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (20, 'Pavillion', 4, 'tbuild_pv.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (20, 'Pavillion', 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (21, 'T Garage', 9, 'tbuild_tg.pdf', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (22, 'T Shelter', 4, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (23, 'T Terrace', 4, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -535,13 +537,14 @@ INSERT INTO products VALUES (30, 'T21', 4, 'tbuild_t21.pdf', 80, NULL, NULL, NUL
 INSERT INTO products VALUES (31, 'T23', 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (34, 'Kaiserforst', 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (35, 'Laura', 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (36, 'Oct Cabin', 6, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (37, 'Oct Pavilion', 6, 'tyla_op.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (38, 'Pine Cabin', 6, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (39, 'Superior Wallace', 6, 'tyla_sw.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (36, 'Sida', 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (37, 'Kaunas Pavilion', 11, 'tyla_op.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (38, 'Borkum', 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (39, 'Superior Wallace', 10, 'tyla_sw.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (40, 'Ulmenfield', 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (41, 'T22', 4, 'tbuild_t22.pdf', 85, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (43, 'Vilnius Pavilion', 11, NULL, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (42, 'Nida D', 5, 'nida_na.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (44, 'Riga Pavilion', 11, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

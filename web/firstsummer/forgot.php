@@ -6,7 +6,7 @@
  *
  * Forgotten Password Workflow
  *
- * $Id: forgot.php 71 2006-05-09 21:09:10Z craig $
+ * $Id$
  *
  * Copyright (c) 2006 frontburner.co.uk
  *

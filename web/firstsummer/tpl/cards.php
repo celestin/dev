@@ -6,7 +6,7 @@
  *
  * Payment cards accepted
  *
- * $Id: forgot.php 71 2006-05-09 21:09:10Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  08-Apr-2006  File created.

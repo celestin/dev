@@ -108,19 +108,19 @@ class EmailMsg {
     $cr = "\r\n";
 
     $message = $this->getHTMLStart($subject) .
-      "<tr><td class=fld>Type of Boat</td><td>" . $this->boattype . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Length of boat</td><td>" . $this->boatlength . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Weight of boat</td><td>" . $this->boatweight . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Type of Keel</td><td>" . $this->boatkeel . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Location (present position)</td><td>" . $this->boatloc . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Destination</td><td>" . $this->boatdest . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Ealiest preferred date</td><td>" . $this->earlydate . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Estimated value</td><td>" . $this->estval . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Own trailer?</td><td>" . $this->owntrailer . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Additional comments</td><td>" . $this->comments . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Email Address</td><td>" . $this->contactemail . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Contact Name</td><td>" . $this->contactname . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Contact Tel</td><td>" . $this->contacttel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Type of Boat                </td><td>" . $this->boattype . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Length of boat              </td><td>" . $this->boatlength . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Weight of boat              </td><td>" . $this->boatweight . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Type of Keel                </td><td>" . $this->boatkeel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Location (present position) </td><td>" . $this->boatloc . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Destination                 </td><td>" . $this->boatdest . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Ealiest preferred date      </td><td>" . $this->earlydate . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Estimated value             </td><td>" . $this->estval . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Own trailer?                </td><td>" . $this->owntrailer . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Additional comments         </td><td>" . $this->comments . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Email Address               </td><td>" . $this->contactemail . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Name                </td><td>" . $this->contactname . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Tel                 </td><td>" . $this->contacttel . "</td></tr>$cr$cr".
       $this->getHTMLEnd();
 
     mail($to,$subject,$message,$this->getHeaders($cc));

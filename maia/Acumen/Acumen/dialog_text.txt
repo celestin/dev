@@ -1,0 +1,8 @@
+
+
+
+Danger, operating below acceptable speed for the seal face geometry. Face contact inevitable - shutdown immediately.
+
+Warning, operating below acceptable speed for the seal face geometry. Face contact possible, followed by loss of fluid film and catastrophic damage.  
+
+

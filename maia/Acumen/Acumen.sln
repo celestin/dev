@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acumen", "Acumen\Acumen.csproj", "{9D294513-66BF-4B38-BD35-2DD838C70F02}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		CD_ROM = CD_ROM
+		Custom = Custom
+		Debug = Debug
+		DVD-10 = DVD-10
+		DVD-18 = DVD-18
+		DVD-5 = DVD-5
+		DVD-9 = DVD-9
+		Release = Release
+		SingleImage = SingleImage
+		WebDeployment = WebDeployment
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.CD_ROM.ActiveCfg = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.CD_ROM.Build.0 = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Custom.ActiveCfg = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Custom.Build.0 = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Debug.ActiveCfg = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Debug.Build.0 = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-10.ActiveCfg = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-10.Build.0 = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-18.ActiveCfg = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-18.Build.0 = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-5.ActiveCfg = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-5.Build.0 = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-9.ActiveCfg = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.DVD-9.Build.0 = Debug|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Release.ActiveCfg = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.Release.Build.0 = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.SingleImage.ActiveCfg = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.SingleImage.Build.0 = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.WebDeployment.ActiveCfg = Release|.NET
+		{9D294513-66BF-4B38-BD35-2DD838C70F02}.WebDeployment.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

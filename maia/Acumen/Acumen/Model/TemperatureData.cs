@@ -5,7 +5,7 @@
  *
  * Temperature-specific graphing data
  *
- * $Id: $
+ * $Id$
  * 
  * Who  When       Why
  * CAM  6-Apr-06   100 : Added to Source Safe.

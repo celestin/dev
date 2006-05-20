@@ -10,7 +10,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: May 20, 2006 at 08:57 PM
+-- Generation Time: May 20, 2006 at 09:07 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 -- 
@@ -120,7 +120,7 @@ CREATE TABLE newsitems (
 -- 
 
 INSERT INTO newsitems VALUES (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO newsitems VALUES (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2004-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO newsitems VALUES (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -545,9 +545,9 @@ INSERT INTO products VALUES (37, 'Kaunas Pavilion', 11, 'tyla_op.pdf', 10, NULL,
 INSERT INTO products VALUES (38, 'Borkum', 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (39, 'Superior Wallace', 10, 'tyla_sw.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (40, 'Ulmenfield', 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (43, 'Vilnius Pavilion', 11, NULL, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (43, 'Vilnius Pavilion', 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (42, 'Nida D', 5, 'nida_na.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (44, 'Riga Pavilion', 11, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (44, 'Riga Pavilion', 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (45, 'Nida Panorama', 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (46, 'Nida TA', 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (47, 'Nida Tower', 5, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

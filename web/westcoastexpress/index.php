@@ -26,7 +26,7 @@ include 'tpl/top.php';
       luxury cabin cruiser. Routes from pick up to
       destination are carefully chosen to minimise any risk
       or damage. We can launch or retrieve where possible
-      without any fuss we get on withit and get the job done
+      without any fuss, we get on with it and get the job done
       to all our customers satisfaction.
     </td>
   <tr>

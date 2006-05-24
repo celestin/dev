@@ -46,7 +46,7 @@ if (empty($title)) {
       <td class="redbanner" width=150 align=center><a class="nav" href="contact.php">CONTACT</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="request.php">REQUEST QUOTE</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="photos.php">PHOTOS</a></td>
-      <td class="redbanner" align=center><a class="nav" href="parcels.php">PARCEL DELIVERY</a></td>
+      <td class="redbanner" align=center><a class="nav" href="express.php">EXPRESS DELIVERY</a></td>
     </tr>
   </table></td>
 </tr>

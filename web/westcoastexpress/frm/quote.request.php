@@ -42,7 +42,7 @@ global $boattype, $boatlength, $boatweight, $boatkeel,
 <tr><td class="<? f_mand($boatlength); ?>">Length of boat</td><td><input name="boatlength" size="20" value="<? echo $boatlength; ?>" /></td></tr>
 <tr><td class="<? f_mand($boatweight); ?>">Weight of boat</td><td><input name="boatweight" size="20" value="<? echo $boatweight; ?>" /></td></tr>
 
-<tr><td class="<? f_mand($boatkeel); ?>">Type of Keel</td><td><select name="boatkeel" />
+<tr><td class="<? f_mand($boatkeel); ?>">Type of Keel (Yacht only)</td><td><select name="boatkeel" />
 <option value="BILGE" <? echo (empty($boatkeel) || ($boatkeel == "BILGE")) ? "SELECTED" : "" ?>>Bilge</option>
 <option value="FIN" <? echo ($boatkeel == "FIN") ? "SELECTED" : "" ?>>Fin</option>
 </select></td></tr>
@@ -50,7 +50,7 @@ global $boattype, $boatlength, $boatweight, $boatkeel,
 <tr><td valign=top class="<? f_mand($boatloc); ?>">Location (present position)</td><td><textarea name="boatloc" rows="2" cols=50><? echo $boatloc; ?></textarea></td></tr>
 <tr><td valign=top class="<? f_mand($boatdest); ?>">Destination</td><td><textarea name="boatdest" rows="2" cols=50><? echo $boatdest; ?></textarea></td></tr>
 
-<tr><td class="<? f_mand($earlydate); ?>">Ealiest preferred date</td><td><input name="earlydate" size="12" value="<? echo $earlydate; ?>" onChange="checkDate(this);" /></td></tr>
+<tr><td class="<? f_mand($earlydate); ?>">Earliest preferred date</td><td><input name="earlydate" size="12" value="<? echo $earlydate; ?>" onChange="checkDate(this);" /></td></tr>
 <tr><td class="<? f_mand($estval); ?>">Estimated value</td><td><input name="estval" size="12" value="<? echo $estval; ?>" /></td></tr>
 <tr><td class="<? f_mand($owntrailer); ?>">Is the boat on its own trailer?</td><td><input name="owntrailer" size="5" value="<? echo $owntrailer; ?>" /></td></tr>
 

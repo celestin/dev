@@ -18,7 +18,17 @@ include 'tpl/top.php';
 
 <h3>No. 1 for Boat Transport in Scotland</h3>
 
-<table border=0 cellpadding=20 align=center >
+<table border=0 cellpadding=5 align=center width=700>
+  <tr>
+    <td colspan=2>
+      We pride ourselves in taking personal care of all
+      boats we transport whether it is a small dingy or a
+      luxury cabin cruiser. Routes from pick up to
+      destination are carefully chosen to minimise any risk
+      or damage. We can launch or retrieve where possible
+      without any fuss we get on withit and get the job done
+      to all our customers satisfaction.
+    </td>
   <tr>
     <td>
       <ul>
@@ -34,7 +44,7 @@ include 'tpl/top.php';
       <tr><td class="hi">Mob</td><td>07780 807 202</td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/boat1.gif"></td>
+    <td align="right"><img src="img/boat1.gif"><br><img src="img/boatsafe2.gif"></td>
   </tr>
 </table>
 

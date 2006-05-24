@@ -34,7 +34,7 @@ include 'tpl/top.php';
       <tr><td class="hi">Mob</td><td>07780 807 202</td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/boat1.gif"></td>
+    <td align="right"><img src="img/boat1.gif"><br><img src="img/boatsafe2.gif"></td>
   </tr>
 </table>
 

@@ -20,7 +20,7 @@ include 'tpl/top.php';
 <?
 
 $ssql = "SELECT newsitem, news_text, ".
-        "DATE_FORMAT(news_date,'%d %b %Y') news_date, news_img ".
+        "DATE_FORMAT(news_date,'%d %b %Y') news_date_fmt, news_img ".
         "FROM newsitems ".
         "ORDER BY news_date DESC ";
 $sql = mysql_query($ssql) or die (mysql_error());
@@ -49,7 +49,7 @@ while ($row = mysql_fetch_array($sql)) {
   }
 ?>
 <td rowspan=2><img align=right src="img/<? echo $news_img; ?>"></td>
-<td width="100"><b><? echo $news_date; ?></b></td><td><b><? echo $newsitem; ?></b></td></tr>
+<td width="100"><b><? echo $news_date_fmt; ?></b></td><td><b><? echo $newsitem; ?></b></td></tr>
 <tr><td colspan=2><? echo $news_text; ?></td></tr>
 <?
 }

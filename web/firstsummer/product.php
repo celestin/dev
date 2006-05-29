@@ -176,7 +176,37 @@ if ($row2 = mysql_fetch_array($sql2)) {
   </table></td>
 </tr>
 <tr>
-  <td colspan=2><? echo "Our $productname."; ?></td>
+  <td colspan=3><table border=1 cellpadding=4 cellspacing=0>
+    <tr>
+      <th>Product</th>
+      <th>Breadth</th>
+      <th>Width</th>
+      <th>Wood</th>
+    </tr>
+<?
+  $sql2 = mysql_query("SELECT IFNULL(v.variation, p.product) variation,".
+                      "v.vbreadth,v.vlength,c.pivot,c.price ".
+                      "FROM prodprices c, prodvariations v, products p ".
+                      "WHERE c.prodvariation_id = v.id ".
+                      "AND c.product_id = p.id ".
+                      "AND c.product_id = $uproduct ".
+                      "ORDER BY v.disporder");
+  while ($row2 = mysql_fetch_array($sql2)) {
+    foreach($row2 AS $key2 => $val) {
+      $$key2 = stripslashes($val);
+    }
+?>
+  <tr>
+    <td><? echo $variation; ?></td>
+    <td align=right><? echo number_format($vbreadth, 2); ?></td>
+    <td align=right><? echo number_format($vlength, 2); ?></td>
+    <td align=right>&pound;<? echo number_format($price, 2, '.', ','); ?></td>
+  </tr>
+<?
+  }
+
+?>
+  </table></td>
 </tr>
 </table>
 

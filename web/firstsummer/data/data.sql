@@ -10,9 +10,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2006 at 04:03 PM
--- Server version: 4.1.11
--- PHP Version: 4.4.1
+-- Generation Time: May 31, 2006 at 12:04 AM
+-- Server version: 4.1.16
+-- PHP Version: 5.1.1
 --
 -- Database: 1stsummerhouses_com_-_site
 -- --------------------------------------------------------
@@ -144,7 +144,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Photos' AUTO_INCREMENT=185 ;
+) ENGINE=MyISAM COMMENT='Photos' AUTO_INCREMENT=187 ;
 
 --
 -- Dumping data for table photos
@@ -254,8 +254,8 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (138, 27, 'tbuild_t17t_03900.jpg', 3900, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (139, 41, 'tbuild_t22_03920.jpg', 3920, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (140, 41, 'tbuild_t22_03940.jpg', 3940, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(141, 34, 'tyla_kf_03960.jpg', 3960, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(142, 34, 'tyla_kf_03980.jpg', 3980, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(141, 34, 'tyla_kf_03960.jpg', 3960, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(142, 34, 'tyla_kf_03980.jpg', 10, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (143, 34, 'tyla_kf_04000.jpg', 4000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (144, 34, 'tyla_kf_04020.jpg', 4020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (145, 35, 'tyla_la_04040.jpg', 4040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -270,7 +270,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (154, 35, 'tyla_la_04220.jpg', 4220, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (155, 35, 'tyla_la_04240.jpg', 4240, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (156, 40, 'tyla_uf_04260.jpg', 4260, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(157, 40, 'tyla_uf_04280.jpg', 4280, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(157, 40, 'tyla_uf_04280.jpg', 4280, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (158, 40, 'tyla_uf_04300.jpg', 4300, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (164, 36, 'tyla_oc_04360.jpg', 4360, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (166, 43, 'tyla_op_04400.jpg', 4400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -290,7 +290,9 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (180, 25, 'tbuild_t14_04520.jpg', 4520, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (181, 45, 'nida_np_04740.jpg', 4740, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (183, 47, 'nida_ntw_04780.jpg', 4780, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(184, 48, 'nida_nty_04800.jpg', 4800, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(184, 48, 'nida_nty_04800.jpg', 4800, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(185, 40, 'tyla_uf_05100.jpg', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(186, 34, 'tyla_kf_05000.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -311,7 +313,7 @@ CREATE TABLE plans (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Plan Images' AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM COMMENT='Plan Images' AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table plans
@@ -329,7 +331,52 @@ INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, create
 (10, 40, 'tyla_uf_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11, 40, 'tyla_uf_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (12, 40, 'tyla_uf_03.jpg', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 40, 'tyla_uf_04.jpg', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(13, 40, 'tyla_uf_04.jpg', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 5, 'nida_na_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 4, 'nida_nida_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 45, 'nida_np_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 6, 'nida_ns_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 7, 'nida_nt_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 46, 'nida_nta_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 47, 'nida_ntw_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 47, 'nida_ntw_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 48, 'nida_nty_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 9, 'nida_nv_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 20, 'tbuild_pv_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 20, 'tbuild_pv_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 18, 'tbuild_t10_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 24, 'tbuild_t12_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 24, 'tbuild_t12_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 25, 'tbuild_t14_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 25, 'tbuild_t14_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 26, 'tbuild_t15_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 26, 'tbuild_t15_01.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 28, 'tbuild_t17_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 28, 'tbuild_t17_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 27, 'tbuild_t17t_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 27, 'tbuild_t17t_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 29, 'tbuild_t20_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 29, 'tbuild_t20_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 30, 'tbuild_t21_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 30, 'tbuild_t21_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 31, 'tbuild_t23_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 31, 'tbuild_t23_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 19, 'tbuild_t24_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 19, 'tbuild_t24_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 21, 'tbuild_tg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 21, 'tbuild_tg_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 22, 'tbuild_ts_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 23, 'tbuild_tt_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 36, 'tyla_oc_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 36, 'tyla_oc_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 36, 'tyla_oc_03.jpg', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 37, 'tyla_op_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(53, 38, 'tyla_pc_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 38, 'tyla_pc_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 44, 'tyla_rg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 39, 'tyla_sw_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 39, 'tyla_sw_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 43, 'tyla_vn_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -787,14 +834,15 @@ CREATE TABLE tabs (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Tabs' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM COMMENT='Tabs' AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table tabs
 --
 
 INSERT INTO tabs (id, page, tab, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'product', 'Gallery', 20, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 'product', 'Gallery', 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'product', 'Plans', 30, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

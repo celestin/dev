@@ -12,6 +12,7 @@
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Added more functionality.
  * CAM  14-Apr-2006  Corrected gallery thumbnail link class.
+ * CAM  14-Apr-2006  Added Plans functionality.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -38,12 +39,14 @@ if ($row = mysql_fetch_array($sql)) {
 $title = "Product";
 include 'tpl/top.php';
 
-$sql2 = mysql_query("SELECT id,imgfile FROM photos WHERE product_id='$uproduct' ORDER BY rand() LIMIT 1 ");
-if ($row2 = mysql_fetch_array($sql2)) {
-  foreach($row2 AS $key2 => $val) {
-    $$key2 = stripslashes($val);
-  }
-  $rand_img = $imgfile;
+$sql = mysql_query("SELECT id,imgfile FROM photos WHERE product_id='$uproduct' ORDER BY rand() LIMIT 1 ");
+if ($row = mysql_fetch_array($sql)) {
+  $rand_img = $row[1];
+}
+$sql = mysql_query("SELECT count(*) plan_count FROM plans WHERE product_id='$uproduct'");
+$plan_count=0;
+if ($row = mysql_fetch_array($sql)) {
+  $plan_count = $row[0];
 }
 
 ?>
@@ -52,12 +55,12 @@ if ($row2 = mysql_fetch_array($sql2)) {
     <td><table border=0 cellpadding=2 cellspacing=0><tr>
 <?
   $prev = false;
-  $sql2 = mysql_query("SELECT id tab_id,tab ".
+  $sql = mysql_query("SELECT id tab_id,tab ".
                      "FROM tabs ".
                      "ORDER BY disporder");
 
-  while ($row2 = mysql_fetch_array($sql2)) {
-    foreach($row2 AS $key2 => $val) {
+  while ($row = mysql_fetch_array($sql)) {
+    foreach($row AS $key2 => $val) {
       $$key2 = stripslashes($val);
     }
 
@@ -74,6 +77,7 @@ if ($row2 = mysql_fetch_array($sql2)) {
 
     $show_tab = true;
     if ($tab_id == 2 && empty($rand_img)) $show_tab = false;
+    if ($tab_id == 3 && $plan_count<1) $show_tab = false;
 
     if ($show_tab) {
       if ($prev) {
@@ -100,7 +104,7 @@ if ($row2 = mysql_fetch_array($sql2)) {
 ?>
       <table border=0 cellpadding=0 cellspacing=0>
 <?
-      $sql2 = mysql_query("SELECT id,imgfile ".
+      $sql = mysql_query("SELECT id,imgfile ".
                           "FROM photos ".
                           "WHERE product_id='$uproduct' ".
                           "ORDER BY disporder");
@@ -109,8 +113,8 @@ if ($row2 = mysql_fetch_array($sql2)) {
       $phmax=5;
       $html = "";
       $main_pic = "_blank.jpg";
-      while ($row2 = mysql_fetch_array($sql2)) {
-        foreach($row2 AS $key2 => $val) {
+      while ($row = mysql_fetch_array($sql)) {
+        foreach($row AS $key2 => $val) {
           $$key2 = stripslashes($val);
         }
 
@@ -144,6 +148,23 @@ if ($row2 = mysql_fetch_array($sql2)) {
       echo $html;
 ?>
       </tr></table></td></tr></table>
+<?
+    } else if ($utab == 3) {
+?>
+<table align=center border=0 cellpadding=10 cellspacing=0>
+<?
+      $sql = mysql_query("SELECT id,imgfile ".
+                          "FROM plans ".
+                          "WHERE product_id='$uproduct' ".
+                          "ORDER BY disporder");
+
+      while ($row = mysql_fetch_array($sql)) {
+?>
+  <tr><td><img src="img/p/<? echo $row[1]; ?>"></td></tr>
+<?
+      }
+?>
+</table>
 <?
     } else {
 ?>
@@ -184,15 +205,15 @@ if ($row2 = mysql_fetch_array($sql2)) {
       <th>Wood</th>
     </tr>
 <?
-  $sql2 = mysql_query("SELECT IFNULL(v.variation, p.product) variation,".
+  $sql = mysql_query("SELECT IFNULL(v.variation, p.product) variation,".
                       "v.vbreadth,v.vlength,c.pivot,c.price ".
                       "FROM prodprices c, prodvariations v, products p ".
                       "WHERE c.prodvariation_id = v.id ".
                       "AND c.product_id = p.id ".
                       "AND c.product_id = $uproduct ".
                       "ORDER BY v.disporder");
-  while ($row2 = mysql_fetch_array($sql2)) {
-    foreach($row2 AS $key2 => $val) {
+  while ($row = mysql_fetch_array($sql)) {
+    foreach($row AS $key2 => $val) {
       $$key2 = stripslashes($val);
     }
 ?>

@@ -32,16 +32,14 @@ if (!isset($urange)) {
 $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['product'];
 
 ?>
+<html>
 <head>
   <title><? echo $title;?></title>
   <link href="firstsummer.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
 </head>
-
 <body topmargin=0 leftmargin=0>
-
 <table border=0 cellpadding=0 cellspacing=0 width="800">
-
   <tr>
     <td colspan=2 class="topLogo" height=75><table border=0 cellpadding=0 cellspacing=0 width="100%">
       <tr>
@@ -71,9 +69,7 @@ while ($row = mysql_fetch_array($sql)) {
     $cls = "sel";
   }
 ?>
-      <tr>
-        <td class="category<? echo $cls;?>"><a class="nav<? echo $cls;?>" href="category.php?category=<? echo $category_id;?>"><? echo $category;?></a></td>
-      </tr>
+<tr><td class="category<? echo $cls;?>"><a class="nav<? echo $cls;?>" href="category.php?category=<? echo $category_id;?>"><? echo $category;?></a></td></tr>
 <?
   $sql2 = mysql_query("SELECT id range_id,range ".
                      "FROM prodranges ".
@@ -90,9 +86,7 @@ while ($row = mysql_fetch_array($sql)) {
       $cls = "sel";
     }
 ?>
-        <tr>
-          <td><a class="itemnav<? echo $cls;?>" href="range.php?range=<? echo $range_id;?>&category=<? echo $category_id;?>"><? echo $range;?></a></td>
-        </tr>
+<tr><td><a class="itemnav<? echo $cls;?>" href="range.php?range=<? echo $range_id;?>&category=<? echo $category_id;?>"><? echo $range;?></a></td></tr>
 <?
     if ($range_id == $urange) {
       $sql3 = mysql_query("SELECT id product_id,product ".
@@ -110,9 +104,7 @@ while ($row = mysql_fetch_array($sql)) {
           $cls = "sel";
         }
 ?>
-        <tr>
-          <td><img src="img/bu1.gif"><a class="itemnav<? echo $cls;?>" href="product.php?product=<? echo $product_id;?>&range=<? echo $range_id;?>&category=<? echo $category_id;?>"><? echo $product;?></a></td>
-        </tr>
+<tr><td><img src="img/bu1.gif"><a class="itemnav<? echo $cls;?>" href="product.php?product=<? echo $product_id;?>&range=<? echo $range_id;?>&category=<? echo $category_id;?>"><? echo $product;?></a></td></tr>
 <?
       }
     }

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  31-May-2006  Added anchor class for toolbar navigation.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -75,9 +76,13 @@ td.sideblue {
 }
 
 .topbanner {
-  BORDER-TOP:     #006891 10px solid;
+  /*BORDER-TOP:     #006891 10px solid;*/
   FONT-SIZE: 8pt;
   COLOR: #FFFFFF;
+}
+
+.toolbar {
+  BACKGROUND-COLOR: #006891;
 }
 
 .redbanner {
@@ -143,6 +148,19 @@ A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
 A.nav:hover {
   COLOR: #F1F16B;
   FONT-WEIGHT: bold;
+  BORDER-BOTTOM: none;
+  TEXT-DECORATION: underline;
+}
+
+A.tbr,A.tbr:visited,A.tbr:active,A.tbr:link,A.tbr:visited {
+  FONT-SIZE: 7pt;
+  COLOR: #FFFFFF;
+  BORDER-BOTTOM: #F1F16B 1px dashed;
+  FONT-WEIGHT: normal;
+}
+A.tbr:hover {
+  COLOR: #F1F16B;
+  FONT-WEIGHT: normal;
   BORDER-BOTTOM: none;
   TEXT-DECORATION: underline;
 }

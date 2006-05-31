@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  31-May-2006  Fill out the page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Log out";
@@ -27,8 +28,9 @@ if(!isset($_REQUEST['logmeout'])){
 } else {
   if(!session_is_registered('memberid')){
     Msg::error("You are now logged out!");
-    include 'tpl/home.php';
   }
 }
+?><br><br><br><br><br><br><br><br><br><br><br><br><?
+
 include 'tpl/bot.php';
 ?>

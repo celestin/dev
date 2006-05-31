@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  31-May-2006  Added endsWith and moved getObjRef to ajax.js.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
@@ -39,15 +40,13 @@ function fldmand($value) {
   echo (!empty($retry) && empty($value)) ? "fldmand" : "fld";
 }
 
+function endsWith($str, $sub) {
+   return (substr($str, strlen($str) - strlen($sub)) === $sub);
+}
+
 session_start();
 error_reporting(E_ALL);
 
 include_once 'task.php';
 
 ?>
-
-<script language="Javascript">
-  function getObjRef(p_ref) {
-    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
-  }
-</script>

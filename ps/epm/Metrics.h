@@ -18,6 +18,7 @@
  * CAM  28-Jan-06   180 : metshow must be intialised for *all* metrics, then disabled.
  * CAM  14-Mar-06   202 : Calculate old and new projects when performing calculateHalstead.
  * CAM  23-Mar-06   218 : Hide Halstead metrics for Project level summary.
+ * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_METRICS
@@ -34,7 +35,7 @@ namespace metrics
   class Metrics
   {
   protected:
-    float met[METS][2];
+    float met[METS][5];
     bool metshow[METS][2];
 
   public:
@@ -55,10 +56,15 @@ namespace metrics
 
     void  set(int m, float value) { set(m,0,value); }
     void  add(int m, float value) { add(m,0,value); }
-    float get(int m)              { return get(m,0); }
 
     void set(int m, int p, float value) { met[m][p] = value; }
     void add(int m, int p, float value) { met[m][p] += value; }
+
+    void set(int m, float valmin, float valmax, float valavg) {
+      met[m][2] = valmin;
+      met[m][3] = valmax;
+      met[m][4] = valavg;
+    }
 
     void add(Metrics &m) {
       int i;
@@ -74,14 +80,19 @@ namespace metrics
     }
 
     float get(int m, int p) { return met[m][p]; }
+    float get(int m)        { return get(m,0); }
 
     bool isShow(ReportItem &rhs, long metId) {
       return metshow[metId][rhs.getType()];
     }
 
+    bool isShow(ItemTypes type, long metId) {
+      return metshow[metId][type];
+    }
+
     void clearMetrics() {
       for(int i=0; i<METS; i++) {
-        for(int j=0; j<2; j++) {
+        for(int j=0; j<5; j++) {
           met[i][j] = 0;
         }
       }

@@ -20,6 +20,7 @@
  * CAM  23-Mar-06   220 : Ensure New metric values are stored in position 1 (as are Deleted).
  * CAM  23-Mar-06   218 : Commented out the Project Halstead metrics retrieve.
  * CAM  25-Mar-06   220 : Above (220) comment is nonsense - new values should be in position 0.  Adjusted HTMLReport accordingly.
+ * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -220,32 +221,26 @@ void Report::getMetrics(ReportItem &currItem) {
 }
 
 void Report::calculateProjectMetrics() {
-  projMet.calculateHalstead();
+  //projMet.calculateHalstead();
 
   char sql[2048];
   //char mid[256];
   long f;
 
-/*
-  // Retrieve Halstead Error
-  strcpy(sql, "SELECT sf.projid,sm.mid,concat(truncate(sum(mvalue)/pow(10,floor(length(sum(mvalue)))-1),2),'E+',(length(sum(mvalue))-1)) ");
+  // Retrieve Min/Max/Avg
+  strcpy(sql, "SELECT sf.projid,sm.mid,MIN(mvalue) valmin, MAX(mvalue) valmax, AVG(mvalue) valavg ");
   strcat(sql, "FROM sourcemetric sm, sourcefile sf ");
-  strcat(sql, "WHERE sm.sfid = sf.sfid AND sm.mid BETWEEN ");
-  sprintf(mid, "%d ", V);
-  strcat(sql, mid);
-  strcat(sql, " AND ");
-  sprintf(mid, "%d ", E);
-  strcat(sql, mid);
-  strcat(sql, " GROUP BY sf.projid, sm.mid");
+  strcat(sql, "WHERE sm.sfid = sf.sfid ");
+  strcat(sql, "AND sf.projid = 1 AND mvalue>0 ");
+  strcat(sql, "GROUP BY sf.projid, sm.mid");
 
   if (theDb.executeQuery(sql)) {
     for (f=0; f<theDb.rows(); f++) {
       //Have to set in strings rather than numerics
-      //projMet.set(MET(theDb.longCell(f, 1)), theDb.longCell(f, 0)-1, theDb.longCell(f, 2));
+      projMet.set(MET(theDb.longCell(f, 1)), theDb.longCell(f, 2), theDb.longCell(f, 3), theDb.longCell(f, 4));
     }
     theDb.clearResults();
   }
-*/
 
   // Retrieve NFILE
   strcpy(sql, "SELECT projid, COUNT(*) nfile ");

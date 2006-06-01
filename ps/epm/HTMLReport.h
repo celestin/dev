@@ -17,6 +17,7 @@
  * CAM  24-Mar-05    83 : Represent Project E in 1000s.
  * CAM  26-Mar-05    79 : Moved common code to Report class.
  * CAM  28-Jan-06   168 : Added metTdVal.
+ * CAM  01-Jun-06   252 : Added metTdNA.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_HTMLREPORT
@@ -49,6 +50,7 @@ namespace metrics
 
     void metTd(std::ofstream&, ReportItem&, int);
     void metTdVal(ofstream&, int, long);
+    void metTdNA(ofstream&);
     void metTable(std::ofstream&, ReportItem&);
 
     void executeHTML();

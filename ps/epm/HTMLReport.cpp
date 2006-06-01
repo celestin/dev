@@ -26,6 +26,7 @@
  * CAM  28-Jan-06   168 : If a MetricSet has been specified, only display chosen metrics.
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  26-Mar-06   222 : Added link to new proof_ada.pdf.
+ * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -293,13 +294,15 @@ void HTMLReport::createFrameset() {
 
 void HTMLReport::metTd(ofstream &current, ReportItem &currItem, int metId) {
   if (isSetMember(METID(metId))) {
-    current << "<td class=metCode title=\"" << metDesc[metId];
+    current << "<td class=metCode title=\"" << metDesc[metId] <<  "\">" << metCode[metId];
 
+/*
     if (currItem.getType() == ITEM_PROJECT && metId == MET(E)) {
       current << " - value shown in thousands\">" << metCode[metId] << "&nbsp;(k)";
     } else {
       current << "\">" << metCode[metId];
     }
+*/
   } else {
     current << "<td class=metCode>&nbsp;</td>";
   }
@@ -335,6 +338,10 @@ void HTMLReport::metTdVal(ofstream &current, int metId, long value) {
   }
 
   current << "</td>" << flush;
+}
+
+void HTMLReport::metTdNA(ofstream &current) {
+  current << "<td align=right class=\"na\">-</td>" << flush;
 }
 
 void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
@@ -408,17 +415,41 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
 
   if (showStandard) {
     current << "<table border=1 cellspacing=0 cellpadding=2>"
-            << "<tr><th class=metHead width=90>Metric</th>"
-            << "<th class=metHead width=90>Value</th>" << endl;
+            << "<tr><th class=metHead width=90>Metric</th>" << flush;
+
+    if (currItem.getType() == ITEM_PROJECT && !isPM()) {
+      current << "<th class=metHead width=90>Sum</th>"
+              << "<th class=metHead width=90>Min</th>"
+              << "<th class=metHead width=90>Max</th>"
+              << "<th class=metHead width=90>Avg</th>" << endl;
+    } else {
+      current << "<th class=metHead width=90>Value</th>" << endl;
+    }
 
     for (i=vstart; i<=vend; i++) {
-      if (m.isShow(currItem, i)) {
+      if (isSetMember(METID(i))) {
+        current << "<tr>" << endl;
 
-        if (isSetMember(METID(i))) {
-          current << "<tr>" << endl;
-
+        if (m.isShow(currItem, i) || currItem.getType() == ITEM_PROJECT) {
           metTd(current, currItem, i);
-          metTdVal(current, i, (long) m.get(i,0));
+
+          if (m.isShow(currItem, i)) {
+            metTdVal(current, i, (long) m.get(i,0));
+          } else {
+            metTdNA(current);
+          }
+
+          if (currItem.getType() == ITEM_PROJECT && !isPM()) {
+            if (m.isShow(ITEM_FILE, i)) {
+              metTdVal(current, i, (long) m.get(i,2));
+              metTdVal(current, i, (long) m.get(i,3));
+              metTdVal(current, i, (long) m.get(i,4));
+            } else {
+              metTdNA(current);
+              metTdNA(current);
+              metTdNA(current);
+            }
+          }
 
           current << "</tr>" << endl;
         }

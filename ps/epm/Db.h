@@ -11,6 +11,9 @@
  * CAM  20-Dec-04  File added.
  * CAM  24-Nov-05  160 : Use Windows Services rather standalone mode.
  * CAM  11-May-06  241 : Allow EPM to be run from any location.
+ * CAM  30-May-06  244 : Ensure trailing slash is present on InstallDir.  
+ *                       Remove old service of the same name before installing.
+ *                       Wait for Service Remove/Install to complete before starting.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef DB_HEADER
@@ -40,23 +43,33 @@ string getInstallDir() {
     RegCloseKey(hkey);
   }
 
+  if (rval.substr(rval.length()-1,rval.length()).c_str()[0] != '\\') {
+    // Ensure there is a trailing slash
+    rval += '\\';
+  }
+
   return rval;
 }
 
 
 void startDatabase() {
   HANDLE pid;
-
+  char cmdLine[4096];
   string dir = getInstallDir();
 
-  char cmdLine[4096];
+  // Remove any old database service of the same name
+  strcpy(cmdLine, dir.c_str());
+  strcat(cmdLine, "db\\bin\\mysqld-nt --remove EPMdb");
+  pid = createProcess(cmdLine, true);
+  WaitForSingleObject(pid, TIME_TO_WAIT);
+
+  // Install the database service
   strcpy(cmdLine, dir.c_str());
   strcat(cmdLine, "db\\bin\\mysqld-nt --install EPMdb --basedir=\"");
   strcat(cmdLine, dir.c_str());
   strcat(cmdLine, "db\"");
-
-  // Install the database service
   pid = createProcess(cmdLine, true);
+  WaitForSingleObject(pid, TIME_TO_WAIT);
 
   // Start the Service
   pid = createProcess("net start EPMdb");

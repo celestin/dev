@@ -1,25 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2005-2006 Craig McKay <craig@southesk.com>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * A ListView for displaying ProjectItems
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/ProjectsView.cs $
- * 
- * 4     19/03/06 13:54 Craig
- * 210
- * 
- * 3     14/02/06 0:02 Craig
- * 185
- * 
- * 2     20/12/05 21:47 Craig
- * 170
- * 
- * 1     30/11/05 0:32 Craig
- * 160
- * 
- * 2     11/10/05 23:17 Craig
- * 152
+ * $Id$
  * 
  * Who  When       Why
  * CAM  29-Nov-05   160 : Class created.

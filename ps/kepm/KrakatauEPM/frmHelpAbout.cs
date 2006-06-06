@@ -1,46 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2005 Craig McKay <craig@southesk.com>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Help - About Dialog
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/frmHelpAbout.cs $
- * 
- * 13    8/04/06 17:11 Craig
- * 230
- * 
- * 12    26/03/06 19:48 Craig
- * 213
- * 
- * 11    24/03/06 0:20 Craig
- * 220
- * 
- * 10    19/03/06 13:54 Craig
- * 210
- * 
- * 9     14/03/06 23:54 Craig
- * 202
- * 
- * 8     12/03/06 23:37 Craig
- * 199
- * 
- * 7     13/02/06 23:59 Craig
- * 185
- * 
- * 6     28/01/06 19:48 Craig
- * 168
- * 
- * 5     24/01/06 23:42 Craig
- * 179
- * 
- * 4     20/12/05 22:06 Craig
- * 170
- * 
- * 3     30/11/05 0:33 Craig
- * 160
- * 
- * 2     11/10/05 23:17 Craig
- * 152
+ * $Id$
  * 
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
@@ -56,6 +21,7 @@
  * CAM  23-Mar-06   221 : Version 1.02.000; EPM Version 1.10.000.
  * CAM  08-Apr-06   230 : Version 1.02.001; EPM Version 1.10.001.
  * CAM  02-Jun-06   252 : Version 1.02.003; EPM Version 1.10.003.
+ * CAM  06-Jun-06   255 : Version 1.02.004; EPM Version 1.10.004.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -82,9 +48,9 @@ namespace KrakatauEPM
 		private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
 
-    private String sVersion = "1.02.002";
+    private String sVersion = "1.02.004";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.10.003";
+    private String sEpmVersion = "1.10.004";
 
 		public HelpAbout()
 		{

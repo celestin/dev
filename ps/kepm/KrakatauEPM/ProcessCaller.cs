@@ -1,13 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2005 Craig McKay <craig@southesk.com>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM Process Caller & Results Handler
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/ProcessCaller.cs $
- * 
- * 2     11/10/05 23:20 Craig
- * 152
+ * $Id$
  * 
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.

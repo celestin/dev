@@ -1,13 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2006 Craig McKay <craig@frontburner.co.uk>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Argument Parsing
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/Arguments.cs $
- * 
- * 1     26/03/06 19:49 Craig
- * 213
+ * $Id$
  * 
  * Who  When       Why
  * CAM  26-Mar-06   213 : Added to Source Safe.

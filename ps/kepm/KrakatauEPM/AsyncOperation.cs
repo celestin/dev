@@ -1,13 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2005 Craig McKay <craig@southesk.com>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Asynchronous Parsing
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/AsyncOperation.cs $
- * 
- * 2     11/10/05 23:16 Craig
- * 152
+ * $Id$
  * 
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.

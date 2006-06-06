@@ -1,16 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright 2005 Craig McKay <craig@southesk.com>
+ * Copyright (c) 2004-2006 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * New Project Wizard (Dialog)
  *
- * $Log: /kepm/KrakatauEPM.root/KrakatauEPM/KrakatauEPM/frmNewProject.cs $
- * 
- * 3     24/01/06 23:39 Craig
- * 179
- * 
- * 2     11/10/05 23:17 Craig
- * 152
+ * $Id$
  * 
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.

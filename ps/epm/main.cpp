@@ -44,6 +44,7 @@
  * CAM  08-Apr-06   230 : Version 1.10.001.
  * CAM  11-May-06   241 : Allow EPM to be run from any location.  Version 1.10.002.
  * CAM  11-May-06   252 : Min/Max/Avg in HTML Reports.  Version 1.10.003.
+ * CAM  06-Jun-06   255 : Version 1.10.004.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -708,7 +709,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.10.003\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.10.004\n"
        << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n" << endl;
 
   char szAppPath[MAX_PATH];

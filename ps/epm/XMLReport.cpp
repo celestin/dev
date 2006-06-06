@@ -11,6 +11,7 @@
  * CAM  29-Mar-05    85 : Class created.
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
+ * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -55,7 +56,7 @@ void XMLReport::xmlMetrics(ofstream &current, ReportItem &currItem, std::string 
   }
 
   for (i=0; i<lastMetric; i++) {
-    if (m.isShow(currItem, i)) {
+    if (m.isShow(currItem, i) && isSetMember(METID(i))) {
       float diff = (m.get(i,0) - m.get(i,1));
 
       sprintf(newVal, "val=\"%d\" ", (long) m.get(i,0));

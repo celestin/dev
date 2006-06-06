@@ -11,6 +11,7 @@
  * CAM  26-Mar-05    79 : Class created.
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
+ * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -71,22 +72,24 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
   strcat(oldLine, "O");
 
   for (i=0; i<lastMetric; i++) {
-    if (m.isShow(currItem, i)) {
-      float diff = (m.get(i,0) - m.get(i,1));
+    if (isSetMember(METID(i))) {
+      if (m.isShow(currItem, i)) {
+        float diff = (m.get(i,0) - m.get(i,1));
 
-      sprintf(metValue, ",%d", (long) m.get(i,0));
-      strcat(newLine, metValue);
+        sprintf(metValue, ",%d", (long) m.get(i,0));
+        strcat(newLine, metValue);
 
-      sprintf(metValue, ",%d", (long) m.get(i,1));
-      strcat(oldLine, metValue);
+        sprintf(metValue, ",%d", (long) m.get(i,1));
+        strcat(oldLine, metValue);
 
-      sprintf(metValue, ",%d", (long) diff);
-      strcat(diffLine, metValue);
-    } else {
-      strcpy(metValue, ",");
-      strcat(newLine, metValue);
-      strcat(oldLine, metValue);
-      strcat(diffLine, metValue);
+        sprintf(metValue, ",%d", (long) diff);
+        strcat(diffLine, metValue);
+      } else {
+        strcpy(metValue, ",");
+        strcat(newLine, metValue);
+        strcat(oldLine, metValue);
+        strcat(diffLine, metValue);
+      }
     }
   }
 
@@ -130,7 +133,9 @@ void CSVReport::executeCSV() {
   current << "id,item_type,name,snapshot,line_type" << flush;
 
   for (f=0; f<lastMetric; f++) {
-    current << ',' << metCode[f] << flush;
+    if (isSetMember(METID(f))) {
+      current << ',' << metCode[f] << flush;
+    }
   }
   current << endl;
 

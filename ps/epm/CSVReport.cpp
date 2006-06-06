@@ -12,6 +12,7 @@
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
  * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
+ * CAM  06-Jun-06   255 : Ensure DEL_SLOC and DEL_FILE appear on the Old Line for CSV.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -27,7 +28,7 @@ CSVReport::CSVReport(OurSQL &db, std::string path) : Report(db, path) {
 }
 
 void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
-  int i;
+  int i,nline,oline;
   char startLine[2048];
   char newLine[4096];
   char oldLine[4096];
@@ -76,10 +77,17 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
       if (m.isShow(currItem, i)) {
         float diff = (m.get(i,0) - m.get(i,1));
 
-        sprintf(metValue, ",%d", (long) m.get(i,0));
+        nline = 0;
+        oline = 1;
+        if ((i == MET(DLOC)) || (i == MET(DFILE))) {
+          nline = 1;
+          oline = 0;
+        }
+
+        sprintf(metValue, ",%d", (long) m.get(i,nline));
         strcat(newLine, metValue);
 
-        sprintf(metValue, ",%d", (long) m.get(i,1));
+        sprintf(metValue, ",%d", (long) m.get(i,oline));
         strcat(oldLine, metValue);
 
         sprintf(metValue, ",%d", (long) diff);

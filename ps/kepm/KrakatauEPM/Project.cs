@@ -12,6 +12,7 @@
  * CAM  24-Jan-06   179 : Ensure spaces in Project Titles are converted to underscores.
  * CAM  24-Jan-06   185 : Added New/Old awareness for saving/restoring projects.
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  08-Jun-06   243 : Remember selected file types.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -49,7 +50,7 @@ namespace KrakatauEPM
     {
       _ProjectFile = new FileInfo(sProjectFile);      
     }
-  
+
     public bool BuildFile(CheckedListBox.CheckedItemCollection checkedItems) 
     {
       string extList = "";
@@ -95,6 +96,60 @@ namespace KrakatauEPM
       p.WaitForExit();
 
       return true;
+    }
+
+    private string GetExtensions() 
+    {
+      TextReader tr = new StreamReader(this.ProjectBuildFile.FullName, false);
+      string line = null;
+      int p;
+      while ((line = tr.ReadLine()) != null) 
+      {
+        line = line.Trim();        
+        if (line.StartsWith("dir")) 
+        {
+          tr.Close();
+          line = line.Substring(3, line.Length-3);
+          if ((p = line.IndexOf("/s"))>=0) 
+          {
+            line = line.Substring(0, p);
+          }          
+          return line;
+        }        
+      }
+      tr.Close();
+      return null;
+    }
+
+    public void ReadExtensions(CheckedListBox clbFileTypes) 
+    {
+      string extList = this.GetExtensions();
+      if (extList == null) return;
+      char[] splitter  = {' '};
+      string[] exts = extList.Trim().Split(splitter);
+      Ext ex;
+      int i;
+
+      for (i=0; i<clbFileTypes.Items.Count; i++)
+      {
+        clbFileTypes.SetItemChecked(i, false);
+      }
+      
+      for(int n=0; n<exts.Length; n++)
+      {
+        string e = exts[n].Substring(2, exts[n].Length-2);                
+        for (i=0; i<clbFileTypes.Items.Count; i++)
+        {
+          if (clbFileTypes.Items[i] is Ext)
+          {
+            ex = (Ext) clbFileTypes.Items[i];
+            if (ex.Extension == e) 
+            {
+              clbFileTypes.SetItemChecked(i, true);
+            }
+          }          
+        }
+      }
     }
 
     public Arguments getAnalysisOptions() 

@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  24-Jan-06   179 : Project Title limited to 30 chars, Project Filename box readonly.
+ * CAM  08-Jun-06   243 : Remember selected file types.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -72,6 +73,8 @@ namespace KrakatauEPM
       {
         this.clbFileTypes.SetItemChecked(i, true);
       }
+
+      _project.ReadExtensions(this.clbFileTypes);
     }
 
 		protected override void Dispose( bool disposing )

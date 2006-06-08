@@ -12,7 +12,8 @@
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Added more functionality.
  * CAM  14-Apr-2006  Corrected gallery thumbnail link class.
- * CAM  14-Apr-2006  Added Plans functionality.
+ * CAM  30-May-2006  Added Plans functionality.
+ * CAM  08-Jun-2006  Continued development of pricing.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -202,28 +203,65 @@ if ($row = mysql_fetch_array($sql)) {
       <th>Product</th>
       <th>Breadth</th>
       <th>Width</th>
-      <th>Wood</th>
+<?
+  $pivots = array();
+  $sql = mysql_query("SELECT DISTINCT pivot, CONCAT(pivot, 'mm') pivotmm ".
+                     "FROM prodprices ".
+                     "WHERE product_id = $uproduct ".
+                     "AND pivot IS NOT NULL ".
+                     "ORDER BY pivot");
+  while ($row = mysql_fetch_array($sql)) {
+    $pivots[$row[0]] = $row[0];
+?>
+      <th><? echo $row[1]; ?></th>
+<?
+  }
+
+?>
     </tr>
 <?
-  $sql = mysql_query("SELECT IFNULL(v.variation, p.product) variation,".
+  $prevvarid = -1;
+  $rowhtm = "";
+  $pricepriv = array();
+  $sql = mysql_query("SELECT v.id varid, IFNULL(v.variation, p.product) variation,".
                       "v.vbreadth,v.vlength,c.pivot,c.price ".
                       "FROM prodprices c, prodvariations v, products p ".
                       "WHERE c.prodvariation_id = v.id ".
                       "AND c.product_id = p.id ".
                       "AND c.product_id = $uproduct ".
+                      "AND c.rangeoption_id IS NULL ".
                       "ORDER BY v.disporder");
   while ($row = mysql_fetch_array($sql)) {
     foreach($row AS $key2 => $val) {
       $$key2 = stripslashes($val);
     }
+    if ($varid != $prevvarid) {
+      if (!empty($rowhtm)) {
+        foreach ($pivots as $pp) {
+          $rowhtm .= "<td align=right>";
+
+          if (empty($pricepriv[$pp])) {
+            $rowhtm .= "-";
+          } else {
+            $rowhtm .= "&pound;" . number_format($pricepriv[$pp], 2, '.', ',');
+          }
+          $rowhtm .= "</td>";
+        }
+
+        echo "$rowhtm</tr>\n";
+      }
+
+      $rowhtm = "<tr><td>$variation</td>".
+                  "<td align=right>". number_format($vbreadth, 2) ."</td>".
+                  "<td align=right>". number_format($vlength, 2) ."</td>";
+      $pricepriv = array();
 ?>
-  <tr>
-    <td><? echo $variation; ?></td>
-    <td align=right><? echo number_format($vbreadth, 2); ?></td>
-    <td align=right><? echo number_format($vlength, 2); ?></td>
-    <td align=right>&pound;<? echo number_format($price, 2, '.', ','); ?></td>
   </tr>
 <?
+
+    }
+    $pricepriv[$pivot] = $price;
+    $prevvarid = $varid;
   }
 
 ?>

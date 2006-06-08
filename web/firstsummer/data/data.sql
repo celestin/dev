@@ -4,6 +4,8 @@
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$
+--
+-- SET PASSWORD FOR 'firstsummer'@'localhost' = OLD_PASSWORD('john21');
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 2.8.1

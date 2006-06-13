@@ -13,6 +13,7 @@
  * CAM  24-Jan-06   185 : Added New/Old awareness for saving/restoring projects.
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
  * CAM  08-Jun-06   243 : Remember selected file types.
+ * CAM  14-Jun-06   268 : Better error handling on files.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -100,7 +101,20 @@ namespace KrakatauEPM
 
     private string GetExtensions() 
     {
-      TextReader tr = new StreamReader(this.ProjectBuildFile.FullName, false);
+      TextReader tr = null;
+      if (_ProjectFile == null || !this.ProjectBuildFile.Exists) 
+      {
+        return null;
+      }
+      try 
+      {
+        tr = new StreamReader(this.ProjectBuildFile.FullName, false);
+      } 
+      catch 
+      {
+        return null;
+      }
+
       string line = null;
       int p;
       while ((line = tr.ReadLine()) != null) 
@@ -155,12 +169,20 @@ namespace KrakatauEPM
     public Arguments getAnalysisOptions() 
     {
       this.ProjectAnalysisFile.Refresh();
-      if (!this.ProjectAnalysisFile.Exists) 
+      if (_ProjectFile == null || !this.ProjectAnalysisFile.Exists) 
+      {
+        return null;
+      }
+      TextReader tr = null;
+      try 
+      {
+        tr = new StreamReader(this.ProjectAnalysisFile.FullName);      
+      } 
+      catch 
       {
         return null;
       }
 
-      TextReader tr = new StreamReader(this.ProjectAnalysisFile.FullName);      
       string line = null;
       while ((line = tr.ReadLine()) != null) 
       {
@@ -180,7 +202,16 @@ namespace KrakatauEPM
     {
       if (_ProjectFile != null) 
       {        
-        TextReader re = new StreamReader(_ProjectFile.FullName);
+        TextReader re = null;
+        try 
+        {
+          re = new StreamReader(_ProjectFile.FullName);
+        } 
+        catch 
+        {
+          return false;
+        }
+
         string input = null;
         if ((input = re.ReadLine()) != null) 
         {
@@ -238,6 +269,10 @@ namespace KrakatauEPM
     {
       get 
       {
+        if (_ProjectFile == null) 
+        {
+          return null;
+        }
         if (_fBuildFile == null)
         {
           _fBuildFile = new FileInfo(_ProjectFile.FullName + ".cmd");

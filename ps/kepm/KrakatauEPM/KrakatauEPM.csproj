@@ -128,6 +128,16 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "FormMetricSets.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FormMetricSets.resx"
+                    DependentUpon = "FormMetricSets.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "frmHelpAbout.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
@@ -156,6 +166,16 @@
                     RelPath = "frmNewProject.resx"
                     DependentUpon = "frmNewProject.cs"
                     BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "MetricDef.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "MetricSet.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
                     RelPath = "Prefs.cs"

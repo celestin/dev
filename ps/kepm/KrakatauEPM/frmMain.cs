@@ -59,6 +59,8 @@ namespace KrakatauEPM
     private System.Windows.Forms.StatusBar stbMain;
     private System.Windows.Forms.StatusBarPanel sbpMessage;
     private System.Windows.Forms.StatusBarPanel sbpAnalysisType;
+    private System.Windows.Forms.MenuItem mnuMetrics;
+    private System.Windows.Forms.MenuItem mnuSets;
     ProjectsView lsvProjects;
 
     public EpmApp()
@@ -80,6 +82,7 @@ namespace KrakatauEPM
       {
         Prefs p = Prefs.Preferences;
         p.SaveSettings(lsvProjects);
+        _xmlConfig.SaveConfig();
 
         if (components != null) 
         {
@@ -107,6 +110,8 @@ namespace KrakatauEPM
       this.mnuExit = new System.Windows.Forms.MenuItem();
       this.mnuProject = new System.Windows.Forms.MenuItem();
       this.mnuAnalyse = new System.Windows.Forms.MenuItem();
+      this.mnuMetrics = new System.Windows.Forms.MenuItem();
+      this.mnuSets = new System.Windows.Forms.MenuItem();
       this.mnuHelp = new System.Windows.Forms.MenuItem();
       this.mnuAbout = new System.Windows.Forms.MenuItem();
       this.lsvProjects = new KrakatauEPM.ProjectsView();
@@ -133,6 +138,7 @@ namespace KrakatauEPM
       this.mnuApp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                            this.mnuFile,
                                                                            this.mnuProject,
+                                                                           this.mnuMetrics,
                                                                            this.mnuHelp});
       // 
       // mnuFile
@@ -188,9 +194,22 @@ namespace KrakatauEPM
       this.mnuAnalyse.Text = "&Analyse";
       this.mnuAnalyse.Click += new System.EventHandler(this.mnuAnalyse_Click);
       // 
+      // mnuMetrics
+      // 
+      this.mnuMetrics.Index = 2;
+      this.mnuMetrics.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                                               this.mnuSets});
+      this.mnuMetrics.Text = "&Metrics";
+      // 
+      // mnuSets
+      // 
+      this.mnuSets.Index = 0;
+      this.mnuSets.Text = "&Sets...";
+      this.mnuSets.Click += new System.EventHandler(this.mnuSets_Click);
+      // 
       // mnuHelp
       // 
-      this.mnuHelp.Index = 2;
+      this.mnuHelp.Index = 3;
       this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                             this.mnuAbout});
       this.mnuHelp.Text = "&Help";
@@ -213,6 +232,7 @@ namespace KrakatauEPM
       // 
       // imlProj
       // 
+      this.imlProj.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
       this.imlProj.ImageSize = new System.Drawing.Size(48, 48);
       this.imlProj.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlProj.ImageStream")));
       this.imlProj.TransparentColor = System.Drawing.Color.Transparent;
@@ -273,9 +293,10 @@ namespace KrakatauEPM
       // 
       // imlToolbar
       // 
+      this.imlToolbar.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
       this.imlToolbar.ImageSize = new System.Drawing.Size(32, 32);
       this.imlToolbar.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlToolbar.ImageStream")));
-      this.imlToolbar.TransparentColor = System.Drawing.Color.Transparent;
+      this.imlToolbar.TransparentColor = System.Drawing.SystemColors.Control;
       // 
       // ofdProj
       // 
@@ -463,6 +484,12 @@ namespace KrakatauEPM
     private void mnuAnalyse_Click(object sender, System.EventArgs e)
     {
       this.AnalyseSelected();
+    }
+
+    private void mnuSets_Click(object sender, System.EventArgs e)
+    {
+      FormMetricSets sets = new FormMetricSets(this._xmlConfig.GetMetricSets());
+      sets.ShowDialog(this);
     }
 
     private void tbrMenu_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)

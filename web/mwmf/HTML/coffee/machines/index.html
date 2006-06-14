@@ -1,0 +1,207 @@
+<html>
+<head>
+  <title>MidWest Market Force Ltd - Coffee Machines</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Description" content="MidWest Market Force Ltd.  Check out - Coffee Machines">
+  <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
+
+  <link href="../../style.css" rel=stylesheet type="text/css">
+  <Script Language="JavaScript">
+  <!-- hide
+    var phData = new Array();
+    var prData = new Array();
+    prData[106] = new Array("Palson, Black 5 Cup Filter Machine","Permanent 1x2 filter, 550 watts","","","","","","0.6 litre jug","","Coffee Filter Machines","");
+    phData["106.jpg"] = new Array("106");
+    prData[166] = new Array("1 Cup Filter Machine","","","","Black","","","","","Coffee Filter Machines","");
+    phData["166.jpg"] = new Array("166");
+    prData[175] = new Array("Melitta Aromaboy","","","","White","","","","","Coffee Filter Machines","Melitta");
+    phData["175.jpg"] = new Array("175");
+    prData[177] = new Array("Melitta Aromaboy","","","","Aubergine","","","","","Coffee Filter Machines","Melitta");
+    phData["177.jpg"] = new Array("177");
+    prData[178] = new Array("Melitta Aromaboy","","","","Beige / Brown","","","","","Coffee Filter Machines","Melitta");
+    phData["178.jpg"] = new Array("178");
+    prData[179] = new Array("Melitta Linea Unica Deluxe","Elegant glass jug with Stainless Steel outer cage.  Hot plate with separate heating element.  Transparent water level display.  Illuminated on-off switch.  Watts 800.  Filter paper size 102.","","8","Stainless Steel","","","","","Coffee Filter Machines","Melitta");
+    phData["179.jpg"] = new Array("179");
+    prData[182] = new Array("Melitta Look Fun","","","","Blue ","","","","","Coffee Filter Machines","Melitta");
+    phData["182a.jpg"] = new Array("182");
+    prData[183] = new Array("Melitta Look Fun","","","","White","","","","","Coffee Filter Machines","Melitta");
+    phData["183.jpg"] = new Array("183");
+    prData[184] = new Array("Melitta Single 5 Filter Machine","1x2 filter, 650 watts","","","Dark Blue / Light Blue","","","0.7 litre jug","","Coffee Filter Machines","");
+    phData["184.jpg"] = new Array("184");
+    prData[185] = new Array("Melitta Single 5 Filter Machine","1x2 filter, 650 watts","","","White/Grey","","","0.7 litre jug","","Coffee Filter Machines","");
+    phData["185.jpg"] = new Array("185");
+    prData[186] = new Array("Melitta Look Therm","","","","Black","","","","","Coffee Filter Machines","Melitta");
+    phData["186.jpg"] = new Array("186");
+    prData[187] = new Array("Melitta Linea Unica Therm","Stainless Steel Thermos Flask with Stainless Steel Inner.  Transparent water level display.  Illuminated on-off switch.  Watts 750.  Filter paper size 102.","","8","Stainless Steel","","","","","Coffee Filter Machines","Melitta");
+    phData["187.jpg"] = new Array("187");
+    prData[188] = new Array("Melitta Look Aromagic","","","","Black","","","","","Coffee Filter Machines","Melitta");
+    phData["188.jpg"] = new Array("188");
+    prData[189] = new Array("Melitta Linea Unica","Stainless Steel front and back.  Elegant glass jug.  Filter paper size 102.","","8","","","","","","Coffee Filter Machines","Melitta");
+    phData["189.jpg"] = new Array("189");
+
+    function getObjRef(p_ref, p_frame) {
+      if (!p_frame) p_frame = window ;
+      return p_frame.document.all ? p_frame.document.all[p_ref] : p_frame.document.getElementById(p_ref);
+    }
+
+    function addField(fieldValue, fieldDesc) {
+      if (fieldValue != null) return "<tr><td class=prName>" + fieldDesc + "</td><td class=prVal>" + fieldValue + "</td></tr>";
+    }
+
+    function showDetail(photo) {
+      var divContent = getObjRef("divContent");
+      var tabContent = getObjRef("tabContent");
+      var divDetail = getObjRef("divDetail");
+      var tdMore = getObjRef("tdMore");
+      var prod, prods = phData[photo];
+      var sTop,i,j;
+      var rowd = new Array();
+      var rowb = new Array();
+
+      tabContent.style.display = "none";
+      divDetail.style.display = "inline";
+      divDetail.style.left = divContent.offsetLeft;
+      divDetail.style.top = divContent.offsetTop;
+
+      var s = "<table border=0 cellspacing=0 cellpadding=0 width=\"100%\"><tr><td colspan=2 align=center><img src=\"../../img/f/" + photo + "\"></td></tr>";
+
+      s += "<tr><td align=center><br><table border=0 class=pr cellspacing=2 cellpadding=2><tr><td>&nbsp;</td>";
+      rowd[0] = "<tr><td class=prName>Product</td>";
+      rowd[1] = "<tr><td class=prName>Desc</td>";
+      rowd[2] = "<tr><td class=prName>Left-Right</td>";
+      rowd[3] = "<tr><td class=prName>Cups</td>";
+      rowd[4] = "<tr><td class=prName>Colour</td>";
+      rowd[5] = "<tr><td class=prName>See also</td>";
+      rowd[6] = "<tr><td class=prName>Size (Imp)</td>";
+      rowd[7] = "<tr><td class=prName>Size (Met)</td>";
+      rowd[8] = "<tr><td class=prName>Capacity</td>";
+
+      for (i=0; i<prods.length; i++) {
+        if (prods[i]) {
+          prod = prData[prods[i]];
+          s += "<td class=btitle>" + prods[i] + "</td>";
+
+          for (j=0; j<prod.length; j++) {
+            if (prod[j] != "" && j<9) {
+              rowb[j] = true;
+              rowd[j] += "<td class=prVal>" + prod[j] + "</td>";
+            } else {
+              rowd[j] += "<td>&nbsp;</td>";
+            }
+          }
+        }
+      }
+
+      s += "</tr>\n";
+      for (i=0; i<rowb.length; i++) {
+        if (rowb[i] != null && rowd[i] != null) s += rowd[i] + "</tr>";
+      }
+
+      s += "</table></td></tr></table>";
+      tdMore.innerHTML = s;
+    }
+
+    function showContent() {
+      var divDetail = getObjRef("divDetail");
+      var tabContent = getObjRef("tabContent");
+
+      divDetail.style.display = "none";
+      tabContent.style.display = "inline";
+    }
+
+  //-->
+  </script>
+
+</head>
+
+<body background="../../img/beans1.gif" bgcolor="#FFFFFF" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+<table cellspacing=12 cellpadding=0 border=0 width="100%" height="100%">
+  <tr>
+    <td><table cellspacing=0 cellpadding=0 height="100%" class=pageBg>
+      <tr>
+        <td valign=top>
+          <table border=0 height="100%" class=navBg>
+            <tr height=100><td width=200 align=center><img src="../../img/mwmf.gif"></td></tr>
+            <tr valign=top><td align=left><table border=0 cellspacing=4 cellpadding=0>
+<tr><td width=15><img width=28 src="../../img/m/bean.png"></td>
+<td colspan=2><a class=nav href="../../">Home</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/espresso.png"></td>
+<td colspan=2><a class=nav href="../../espresso/ferrari/">Espresso Machines</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/coffee_machine.png"></td>
+<td class=sel colspan=2><b>Coffee Machines</b></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/coffee_grinder.png"></td>
+<td colspan=2><a class=nav href="../../coffee/grinders/">Coffee Grinders</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/manual_systems.png"></td>
+<td colspan=2><a class=nav href="../../roasters/">Roaster & Manual Systems</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/manual_espresso.png"></td>
+<td colspan=2><a class=nav href="../../espresso/">Manual Espresso Machines</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/porcelain.png"></td>
+<td colspan=2><a class=nav href="../../espresso/porcelain_stainless/">Porcelain &amp; Stainless<br>Steel Espresso Machines</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/jug.png"></td>
+<td colspan=2><a class=nav href="../../jugs/">Jugs & Glassware</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/cone.png"></td>
+<td colspan=2><a class=nav href="../../filters/cones/">Filter Cones</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/misc.png"></td>
+<td colspan=2><a class=nav href="../../misc/">Miscellaneous Accessories</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/paper.png"></td>
+<td colspan=2><a class=nav href="../../filters/papers/">Filter Papers & Descalers</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/cup.png"></td>
+<td colspan=2><a class=nav href="../../cups/">Coffee & Espresso Cups</a></td>
+</tr>
+<tr><td width=15><img width=28 src="../../img/m/phonebox.png"></td>
+<td colspan=2><a class=nav href="../../contact/index.php">Contact</a></td>
+</tr>
+            </table></td></tr>
+          </table>
+        </td>
+        <td rowspan=2 width=588 valign=top><div id=divContent style="position:absolute"></div><table id=tabContent cellspacing=5 width="100%" height="100%">
+          <tr height=10><td class=titleBand>&nbsp;</td></tr>
+          <tr valign=top><td>
+<h2>Coffee Machines</h2><table border=0 cellspacing=5 cellpadding=0>
+<tr><td class=btitle>106</td><td class=btitle>166</td><td class=btitle>175</td></tr>
+<tr><td class=bname>Palson, Black 5 Cup Filter Machine</td><td class=bname>1 Cup Filter Machine</td><td class=bname>Melitta Aromaboy</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('106.jpg');return false;"><img border=0 src="../../img/t/106.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('166.jpg');return false;"><img border=0 src="../../img/t/166.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('175.jpg');return false;"><img border=0 src="../../img/t/175.jpg"></a></td></tr>
+<tr><td class=btitle>177</td><td class=btitle>178</td><td class=btitle>179</td></tr>
+<tr><td class=bname>Melitta Aromaboy</td><td class=bname>Melitta Aromaboy</td><td class=bname>Melitta Linea Unica Deluxe</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('177.jpg');return false;"><img border=0 src="../../img/t/177.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('178.jpg');return false;"><img border=0 src="../../img/t/178.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('179.jpg');return false;"><img border=0 src="../../img/t/179.jpg"></a></td></tr>
+<tr><td class=btitle>182a</td><td class=btitle>183</td><td class=btitle>184</td></tr>
+<tr><td class=bname>Melitta Look Fun</td><td class=bname>Melitta Look Fun</td><td class=bname>Melitta Single 5 Filter Machine</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('182a.jpg');return false;"><img border=0 src="../../img/t/182a.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('183.jpg');return false;"><img border=0 src="../../img/t/183.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('184.jpg');return false;"><img border=0 src="../../img/t/184.jpg"></a></td></tr>
+<tr><td class=btitle>185</td><td class=btitle>186</td><td class=btitle>187</td></tr>
+<tr><td class=bname>Melitta Single 5 Filter Machine</td><td class=bname>Melitta Look Therm</td><td class=bname>Melitta Linea Unica Therm</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('185.jpg');return false;"><img border=0 src="../../img/t/185.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('186.jpg');return false;"><img border=0 src="../../img/t/186.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('187.jpg');return false;"><img border=0 src="../../img/t/187.jpg"></a></td></tr>
+<tr><td class=btitle>188</td><td class=btitle>189</td></tr>
+<tr><td class=bname>Melitta Look Aromagic</td><td class=bname>Melitta Linea Unica</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('188.jpg');return false;"><img border=0 src="../../img/t/188.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('189.jpg');return false;"><img border=0 src="../../img/t/189.jpg"></a></td></tr>
+</table>
+          </td></tr>
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2006 Mid West Market Force Ltd. All rights reserved.<br />
+          Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+
+<div id=divDetail style="position:absolute;display:none">
+<table cellspacing=5 width=588 border=0>
+<tr>
+  <td height=10 width="100%" class=titleBand>&nbsp;</td>
+  <td><img src="../../img/close1.gif" onClick="showContent();return false;" onMouseOver="this.src='../../img/closeh2.gif'" onMouseOut="this.src='../../img/close1.gif'"></td>
+</tr>
+<tr><td id=tdMore colspan=3></td></tr></table>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
  * Copyright (c) 2004-2006 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Help - About Dialog
+ * Dialog to maintain Metric Sets.
  *
  * $Id: frmHelpAbout.cs 151 2006-06-08 22:17:10Z craig $
  * 
@@ -72,13 +72,13 @@ namespace KrakatauEPM
       this.components = new System.ComponentModel.Container();
       System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FormMetricSets));
       this.livMetricSets = new System.Windows.Forms.ListView();
+      this.imlListView = new System.Windows.Forms.ImageList(this.components);
       this.tlbMetricSets = new System.Windows.Forms.ToolBar();
       this.tbbNew = new System.Windows.Forms.ToolBarButton();
       this.tbbEdit = new System.Windows.Forms.ToolBarButton();
       this.tbbDel = new System.Windows.Forms.ToolBarButton();
       this.imlMetricSets = new System.Windows.Forms.ImageList(this.components);
       this.btnOK = new System.Windows.Forms.Button();
-      this.imlListView = new System.Windows.Forms.ImageList(this.components);
       this.SuspendLayout();
       // 
       // livMetricSets
@@ -88,6 +88,14 @@ namespace KrakatauEPM
       this.livMetricSets.Name = "livMetricSets";
       this.livMetricSets.Size = new System.Drawing.Size(456, 320);
       this.livMetricSets.TabIndex = 0;
+      this.livMetricSets.ItemActivate += new System.EventHandler(this.livMetricSets_ItemActivate);
+      // 
+      // imlListView
+      // 
+      this.imlListView.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
+      this.imlListView.ImageSize = new System.Drawing.Size(48, 48);
+      this.imlListView.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlListView.ImageStream")));
+      this.imlListView.TransparentColor = System.Drawing.Color.Transparent;
       // 
       // tlbMetricSets
       // 
@@ -103,6 +111,7 @@ namespace KrakatauEPM
       this.tlbMetricSets.ShowToolTips = true;
       this.tlbMetricSets.Size = new System.Drawing.Size(474, 44);
       this.tlbMetricSets.TabIndex = 1;
+      this.tlbMetricSets.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.tlbMetricSets_ButtonClick);
       // 
       // tbbNew
       // 
@@ -134,15 +143,9 @@ namespace KrakatauEPM
       this.btnOK.Text = "&OK";
       this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
       // 
-      // imlListView
-      // 
-      this.imlListView.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
-      this.imlListView.ImageSize = new System.Drawing.Size(48, 48);
-      this.imlListView.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlListView.ImageStream")));
-      this.imlListView.TransparentColor = System.Drawing.Color.Transparent;
-      // 
       // FormMetricSets
       // 
+      this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.ClientSize = new System.Drawing.Size(474, 423);
       this.ControlBox = false;
@@ -165,6 +168,21 @@ namespace KrakatauEPM
     private void btnOK_Click(object sender, System.EventArgs e)
     {
       this.Dispose();
+    }
+
+    private void tlbMetricSets_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+    {
+      if (e.Button == tbbNew) 
+      {
+        FormMetricSet mset = new FormMetricSet();
+        mset.ShowDialog(this);
+      }
+    }
+
+    private void livMetricSets_ItemActivate(object sender, System.EventArgs e)
+    {
+      FormMetricSet mset = new FormMetricSet();
+      mset.ShowDialog(this);    
     }
 	}
 }

@@ -6,21 +6,22 @@
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
 
   <link href="../../style.css" rel=stylesheet type="text/css">
+  <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <Script Language="JavaScript">
   <!-- hide
     var phData = new Array();
     var prData = new Array();
-    prData[107] = new Array("Palson, Small Espresso Machine","With heated top for cups.  2 cups & saucers and SS milk jug included","","","","","","15 bar / 1 litre","","Coffee Espresso Machines","");
+    prData[107] = new Array("Palson, Small Espresso Machine","With heated top for cups.  2 cups & saucers and SS milk jug included","","","","","","15 bar / 1 litre","","1150 Watts","");
     phData["107.jpg"] = new Array("107");
-    prData[680] = new Array("Ferrari Millenium Espresso Super Auto","Bean to Cup","","","","","","","","Coffee Espresso Machines","G3 Ferrari");
+    prData[680] = new Array("Ferrari Millenium Espresso Super Auto","Bean to Cup","","","","","","","","","G3 Ferrari");
     phData["680.jpg"] = new Array("680");
-    prData[681] = new Array("Ferrari Steam Generator / Milk Frother","","","","","","","","","Coffee Espresso Machines","G3 Ferrari");
+    prData[681] = new Array("Ferrari Steam Generator / Milk Frother","","","","","","","","","","G3 Ferrari");
     phData["681.jpg"] = new Array("681");
-    prData[682] = new Array("Ferrari Bella 044 Espresso","Beans or Ground Coffee","","","","","","","","Coffee Espresso Machines","G3 Ferrari");
+    prData[682] = new Array("Ferrari Bella 044 Espresso","Beans or Ground Coffee","","","","","","","","","G3 Ferrari");
     phData["682.jpg"] = new Array("682");
-    prData[683] = new Array("Ferrari Bella 825 Espresso","Beans","","","","","","","","Coffee Espresso Machines","G3 Ferrari");
+    prData[683] = new Array("Ferrari Bella 825 Espresso","Beans","","","","","","","","","G3 Ferrari");
     phData["683.jpg"] = new Array("683");
-    prData[687] = new Array("Ferrari Lady 034 Manual Espresso","","","","Blue","","","","","Coffee Espresso Machines","G3 Ferrari");
+    prData[687] = new Array("Ferrari Lady 034 Manual Espresso","","","","Blue","","","","","","G3 Ferrari");
     phData["687.jpg"] = new Array("687");
 
     function getObjRef(p_ref, p_frame) {
@@ -59,6 +60,8 @@
       rowd[6] = "<tr><td class=prName>Size (Imp)</td>";
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
+      rowd[9] = "<tr><td class=prName>Power</td>";
+      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {
@@ -66,7 +69,7 @@
           s += "<td class=btitle>" + prods[i] + "</td>";
 
           for (j=0; j<prod.length; j++) {
-            if (prod[j] != "" && j<9) {
+            if (prod[j] != "" && j<rowd.length) {
               rowb[j] = true;
               rowd[j] += "<td class=prVal>" + prod[j] + "</td>";
             } else {

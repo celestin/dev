@@ -6,19 +6,20 @@
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
 
   <link href="../style.css" rel=stylesheet type="text/css">
+  <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <Script Language="JavaScript">
   <!-- hide
     var phData = new Array();
     var prData = new Array();
-    prData[925] = new Array("Set of 6 Espresso Cups and Saucers","Chicco","1","","","973","","","","Porcelain Cups","");
-    prData[926] = new Array("Set of 2 Cappuccino Cups and Saucers","Chicco","2","","","973","","","","Porcelain Cups","");
+    prData[925] = new Array("Set of 6 Espresso Cups and Saucers","Chicco","1","","","973","","","","","");
+    prData[926] = new Array("Set of 2 Cappuccino Cups and Saucers","Chicco","2","","","973","","","","","");
     phData["925.jpg"] = new Array("925","926");
-    prData[927] = new Array("Set of 6 Espresso Cups and Saucers","Italiano","1","","","","","","","Porcelain Cups","");
-    prData[928] = new Array("Set of 2 Cappuccino Cups and Saucers","Italiano","2","","","","","","","Porcelain Cups","");
+    prData[927] = new Array("Set of 6 Espresso Cups and Saucers","Italiano","1","","","","","","","","");
+    prData[928] = new Array("Set of 2 Cappuccino Cups and Saucers","Italiano","2","","","","","","","","");
     phData["927.jpg"] = new Array("927","928");
-    prData[930] = new Array("Set of 2 Espresso Cups and Saucers","Stainless Steel Double-walled","","","","","","","","Coffee Measures","");
+    prData[930] = new Array("Set of 2 Espresso Cups and Saucers","Stainless Steel Double-walled","","","","","","","","","");
     phData["930.jpg"] = new Array("930");
-    prData[932] = new Array("Set of 2 Cappuccino Cups and Saucers","Stainless Steel Double-walled","","","","","","","","Coffee Measures","");
+    prData[932] = new Array("Set of 2 Cappuccino Cups and Saucers","Stainless Steel Double-walled","","","","","","","","","");
     phData["932.jpg"] = new Array("932");
 
     function getObjRef(p_ref, p_frame) {
@@ -57,6 +58,8 @@
       rowd[6] = "<tr><td class=prName>Size (Imp)</td>";
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
+      rowd[9] = "<tr><td class=prName>Power</td>";
+      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {
@@ -64,7 +67,7 @@
           s += "<td class=btitle>" + prods[i] + "</td>";
 
           for (j=0; j<prod.length; j++) {
-            if (prod[j] != "" && j<9) {
+            if (prod[j] != "" && j<rowd.length) {
               rowb[j] = true;
               rowd[j] += "<td class=prVal>" + prod[j] + "</td>";
             } else {

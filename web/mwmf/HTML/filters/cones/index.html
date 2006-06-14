@@ -6,29 +6,30 @@
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
 
   <link href="../../style.css" rel=stylesheet type="text/css">
+  <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <Script Language="JavaScript">
   <!-- hide
     var phData = new Array();
     var prData = new Array();
-    prData[401] = new Array("101","Box of 12","1","","","","","","","Filter Cones","");
-    prData[402] = new Array("102","Box of 12","2","","","","","","","Filter Cones","");
+    prData[401] = new Array("01 (1K)","Box of 12","1","","","","","","","","");
+    prData[402] = new Array("02 (3K)","Box of 12","2","","","","","","","","");
     phData["401-402.jpg"] = new Array("401","402");
-    prData[411] = new Array("1 x 2","Single","1","","","","","","","Filter Cones","");
-    prData[424] = new Array("1 x 4","Single - Flat Bottom","2","","","","","","","Filter Cones","");
+    prData[411] = new Array("2K","Single","1","","","","","","","","");
+    prData[424] = new Array("4K","Single - Flat Bottom","2","","","","","","","","");
     phData["411-424.jpg"] = new Array("411","424");
-    prData[428] = new Array("1 x 4","Single - With Four Feet","1","","","","","","","Filter Cones","");
-    prData[431] = new Array("1 x 6","Single","2","","","","","","","Filter Cones","");
+    prData[428] = new Array("4K","Single - With Four Feet","1","","","","","","","","");
+    prData[431] = new Array("6K","Single","2","","","","","","","","");
     phData["428-431.jpg"] = new Array("428","431");
-    prData[452] = new Array("Permanent Filter S.S.","Single","","","","","","","","Filter Cones","");
+    prData[452] = new Array("Permanent Filter S.S. Rings inc. to make filter fit most 3K & 4K machines","Single","","","","","","","","","");
     phData["452.jpg"] = new Array("452");
-    prData[453] = new Array("Plastic Coffee Filter Set","Filter and Measuring Spoon - Boxed","","1","","","","","","Filter Cones","");
+    prData[453] = new Array("Plastic Coffee Filter Set to fit 4K Plastic Filter Cones","Filter and Measuring Spoon - Boxed","","1","","","","","","","");
     phData["453.jpg"] = new Array("453");
-    prData[454] = new Array("SS Permanent Filter","To fit 1x4 Plastic Cone","","","","","","","","Filter Cones","");
+    prData[454] = new Array("SS Permanent Filter","To fit 1x4 Plastic Cone","","","","","","","","","");
     phData["454.jpg"] = new Array("454");
-    prData[461] = new Array("Nylon Coffee Filter","Bagged with header card","","","","","","","","Filter Cones","Kitchen Craft");
+    prData[461] = new Array("Nylon Coffee Filter","Bagged with header card","","","","","","","","","Kitchen Craft");
     phData["461.jpg"] = new Array("461");
-    prData[490] = new Array("TEELI Tea Filter M","","1","","","","","","","Filter Cones","");
-    prData[491] = new Array("TEELI Tea Filter L","","2","","","","","","","Filter Cones","");
+    prData[490] = new Array("TEELI Tea Filter M","","1","","","","","","","","");
+    prData[491] = new Array("TEELI Tea Filter L","","2","","","","","","","","");
     phData["490-491.jpg"] = new Array("490","491");
 
     function getObjRef(p_ref, p_frame) {
@@ -67,6 +68,8 @@
       rowd[6] = "<tr><td class=prName>Size (Imp)</td>";
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
+      rowd[9] = "<tr><td class=prName>Power</td>";
+      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {
@@ -74,7 +77,7 @@
           s += "<td class=btitle>" + prods[i] + "</td>";
 
           for (j=0; j<prod.length; j++) {
-            if (prod[j] != "" && j<9) {
+            if (prod[j] != "" && j<rowd.length) {
               rowb[j] = true;
               rowd[j] += "<td class=prVal>" + prod[j] + "</td>";
             } else {

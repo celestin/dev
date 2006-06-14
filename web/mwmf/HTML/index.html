@@ -6,6 +6,7 @@
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
 
   <link href="./style.css" rel=stylesheet type="text/css">
+  <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <Script Language="JavaScript">
   <!-- hide
     var phData = new Array();
@@ -47,6 +48,8 @@
       rowd[6] = "<tr><td class=prName>Size (Imp)</td>";
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
+      rowd[9] = "<tr><td class=prName>Power</td>";
+      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {
@@ -54,7 +57,7 @@
           s += "<td class=btitle>" + prods[i] + "</td>";
 
           for (j=0; j<prod.length; j++) {
-            if (prod[j] != "" && j<9) {
+            if (prod[j] != "" && j<rowd.length) {
               rowb[j] = true;
               rowd[j] += "<td class=prVal>" + prod[j] + "</td>";
             } else {

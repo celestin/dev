@@ -44,19 +44,18 @@ namespace KrakatauEPM
     protected SortedList _mets1;
     protected SortedList _mets2;
     protected int _tabIndex;
+    protected MetricSetItem _msi;
     /// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public FormMetricSet()
+		public FormMetricSet(MetricSetItem msi)
 		{
-			//
-			// Required for Windows Form Designer support
-			//
+      this._msi = msi;
 			InitializeComponent();
-
-      AddExtraMetrics();			
+      AddExtraMetrics();
+      this.txtName.Text = this._msi.Text;
 		}
 
     private void SetLocation(GroupBox grp, Control refObj, Control newObj, bool bold) 
@@ -214,7 +213,6 @@ namespace KrakatauEPM
       }
     }
 
-
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -230,6 +228,13 @@ namespace KrakatauEPM
 			base.Dispose( disposing );
 		}
 
+    private void btnOK_Click(object sender, System.EventArgs e)
+    {
+      //this._msi.MetricSet.Name = this.txtName.Text;
+      //this._msi.RefreshSet();
+    }
+
+
 		#region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -244,15 +249,15 @@ namespace KrakatauEPM
       this.grpChgMet = new System.Windows.Forms.GroupBox();
       this.chkLower2 = new System.Windows.Forms.CheckBox();
       this.txtLower2 = new System.Windows.Forms.TextBox();
-      this.chkUpper2 = new System.Windows.Forms.CheckBox();
       this.chkMet2 = new System.Windows.Forms.CheckBox();
       this.txtUpper2 = new System.Windows.Forms.TextBox();
+      this.chkUpper2 = new System.Windows.Forms.CheckBox();
       this.label1 = new System.Windows.Forms.Label();
       this.grpFileMet = new System.Windows.Forms.GroupBox();
       this.chkLower1 = new System.Windows.Forms.CheckBox();
       this.txtLower1 = new System.Windows.Forms.TextBox();
-      this.chkUpper1 = new System.Windows.Forms.CheckBox();
       this.chkMet1 = new System.Windows.Forms.CheckBox();
+      this.chkUpper1 = new System.Windows.Forms.CheckBox();
       this.txtUpper1 = new System.Windows.Forms.TextBox();
       this.grpChgMet.SuspendLayout();
       this.grpFileMet.SuspendLayout();
@@ -267,6 +272,7 @@ namespace KrakatauEPM
       this.btnOK.Size = new System.Drawing.Size(96, 32);
       this.btnOK.TabIndex = 0;
       this.btnOK.Text = "&OK";
+      this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
       // 
       // btnCancel
       // 
@@ -320,15 +326,6 @@ namespace KrakatauEPM
       this.txtLower2.TabIndex = 9;
       this.txtLower2.Text = "";
       // 
-      // chkUpper2
-      // 
-      this.chkUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-      this.chkUpper2.Location = new System.Drawing.Point(264, 24);
-      this.chkUpper2.Name = "chkUpper2";
-      this.chkUpper2.Size = new System.Drawing.Size(64, 24);
-      this.chkUpper2.TabIndex = 8;
-      this.chkUpper2.Text = "Upper";
-      // 
       // chkMet2
       // 
       this.chkMet2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -346,6 +343,15 @@ namespace KrakatauEPM
       this.txtUpper2.Size = new System.Drawing.Size(72, 21);
       this.txtUpper2.TabIndex = 5;
       this.txtUpper2.Text = "";
+      // 
+      // chkUpper2
+      // 
+      this.chkUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+      this.chkUpper2.Location = new System.Drawing.Point(264, 24);
+      this.chkUpper2.Name = "chkUpper2";
+      this.chkUpper2.Size = new System.Drawing.Size(64, 24);
+      this.chkUpper2.TabIndex = 8;
+      this.chkUpper2.Text = "Upper";
       // 
       // label1
       // 
@@ -389,15 +395,6 @@ namespace KrakatauEPM
       this.txtLower1.TabIndex = 9;
       this.txtLower1.Text = "";
       // 
-      // chkUpper1
-      // 
-      this.chkUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-      this.chkUpper1.Location = new System.Drawing.Point(264, 24);
-      this.chkUpper1.Name = "chkUpper1";
-      this.chkUpper1.Size = new System.Drawing.Size(64, 24);
-      this.chkUpper1.TabIndex = 8;
-      this.chkUpper1.Text = "Upper";
-      // 
       // chkMet1
       // 
       this.chkMet1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -406,6 +403,15 @@ namespace KrakatauEPM
       this.chkMet1.Size = new System.Drawing.Size(96, 24);
       this.chkMet1.TabIndex = 7;
       this.chkMet1.Text = "LOC";
+      // 
+      // chkUpper1
+      // 
+      this.chkUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+      this.chkUpper1.Location = new System.Drawing.Point(264, 24);
+      this.chkUpper1.Name = "chkUpper1";
+      this.chkUpper1.Size = new System.Drawing.Size(64, 24);
+      this.chkUpper1.TabIndex = 8;
+      this.chkUpper1.Text = "Upper";
       // 
       // txtUpper1
       // 

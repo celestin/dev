@@ -41,8 +41,7 @@ namespace KrakatauEPM
       while (metricSets.MoveNext()) 
       {
         MetricSet ms = (MetricSet) metricSets.Current;
-        ListViewItem lvi = new ListViewItem(ms.Name);
-        lvi.ImageIndex = 0;
+        ListViewItem lvi = new MetricSetItem(ms);        
         this.livMetricSets.Items.Add(lvi);
       }
 		}
@@ -61,6 +60,31 @@ namespace KrakatauEPM
 			}
 			base.Dispose( disposing );
 		}
+
+    private void btnOK_Click(object sender, System.EventArgs e)
+    {
+      this.Dispose();
+    }
+
+    private void tlbMetricSets_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+    {
+      if (e.Button == tbbNew) 
+      {
+        MetricSetItem msi = new MetricSetItem();
+        this.livMetricSets.Items.Add(msi);
+
+        FormMetricSet mset = new FormMetricSet(msi);
+        mset.ShowDialog(this);
+      }
+    }
+
+    private void livMetricSets_ItemActivate(object sender, System.EventArgs e)
+    {
+      MetricSetItem msi = (MetricSetItem)this.livMetricSets.FocusedItem;
+      FormMetricSet mset = new FormMetricSet(msi);
+      mset.ShowDialog(this);
+      msi.RefreshSet();
+    }
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -99,12 +123,14 @@ namespace KrakatauEPM
       // 
       // tlbMetricSets
       // 
+      this.tlbMetricSets.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
       this.tlbMetricSets.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
                                                                                      this.tbbNew,
                                                                                      this.tbbEdit,
                                                                                      this.tbbDel});
       this.tlbMetricSets.ButtonSize = new System.Drawing.Size(32, 32);
       this.tlbMetricSets.DropDownArrows = true;
+      this.tlbMetricSets.Enabled = false;
       this.tlbMetricSets.ImageList = this.imlMetricSets;
       this.tlbMetricSets.Location = new System.Drawing.Point(0, 0);
       this.tlbMetricSets.Name = "tlbMetricSets";
@@ -164,25 +190,5 @@ namespace KrakatauEPM
 
     }
 		#endregion
-
-    private void btnOK_Click(object sender, System.EventArgs e)
-    {
-      this.Dispose();
-    }
-
-    private void tlbMetricSets_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
-    {
-      if (e.Button == tbbNew) 
-      {
-        FormMetricSet mset = new FormMetricSet();
-        mset.ShowDialog(this);
-      }
-    }
-
-    private void livMetricSets_ItemActivate(object sender, System.EventArgs e)
-    {
-      FormMetricSet mset = new FormMetricSet();
-      mset.ShowDialog(this);    
-    }
 	}
 }

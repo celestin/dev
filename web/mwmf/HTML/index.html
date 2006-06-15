@@ -49,7 +49,9 @@
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
       rowd[9] = "<tr><td class=prName>Power</td>";
-      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
+      rowd[10] = "<tr><td class=prName>Jug Model</td>";
+      rowd[11] = "<tr><td class=prName>Filter Paper</td>";
+      rowd[12] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {

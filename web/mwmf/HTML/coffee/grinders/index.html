@@ -11,23 +11,29 @@
   <!-- hide
     var phData = new Array();
     var prData = new Array();
-    prData[118] = new Array("++ Bosch Electric Grinder (see 113)","","","","Black","","","","","","Bosch");
+    prData[112] = new Array("Emide KM12","Coffee Burr Grinder with adjustable grind.  Spares available.","","","White","","","","70gms Coffee Beans","100 Watts","","","");
+    phData["112.jpg"] = new Array("112");
+    prData[118] = new Array("++ Bosch Electric Grinder (see 113)","","","","Black","","","","","","","","Bosch");
     phData["113.jpg"] = new Array("118");
-    prData[114] = new Array("Ferrari Grinder / Blender","","","","","","","","","","G3 Ferrari");
+    prData[114] = new Array("Ferrari Grinder / Blender","","","","","","","","","","","","G3 Ferrari");
     phData["114.jpg"] = new Array("114");
-    prData[121] = new Array("++ Manual Coffee Grinder Bronze Hopper / Light wood","","","","","","","","","","");
+    prData[121] = new Array("++ Manual Coffee Grinder Bronze Hopper / Light wood","","","","","","","","","","","","");
     phData["121.jpg"] = new Array("121");
-    prData[122] = new Array("++ Manual Coffee Grinder Bronze Hopper / Dark wood","","","","","","","","","","");
+    prData[122] = new Array("++ Manual Coffee Grinder Bronze Hopper / Dark wood","","","","","","","","","","","","");
     phData["122.jpg"] = new Array("122");
-    prData[660] = new Array("Santos No 4 Shop Coffee Grinder","","","","","","","","","","Santos");
+    prData[126] = new Array("Manual Coffee Grinder","Beech base / Ceramic top","","","","","","","","","","","");
+    phData["126.jpg"] = new Array("126");
+    prData[129] = new Array("Manual Coffee Grinder","","","","Black","","","","","","","","");
+    phData["129.jpg"] = new Array("129");
+    prData[660] = new Array("Santos No 4 Shop Coffee Grinder","","","","","","","","","","","","Santos");
     phData["660.jpg"] = new Array("660");
-    prData[661] = new Array("Santos 40A Expresso Grinder","","","","","","","","","","Santos");
+    prData[661] = new Array("Santos 40A Expresso Grinder","","","","","","","","","","","","Santos");
     phData["661.jpg"] = new Array("661");
-    prData[662] = new Array("Santos No. 43  S.S. Shop Grinder","","","","","","","","","","Santos");
+    prData[662] = new Array("Santos No. 43  S.S. Shop Grinder","","","","","","","","","","","","Santos");
     phData["662.jpg"] = new Array("662");
-    prData[663] = new Array("Santos No. 1 with Plastic Tray","","","","","","","","","","Santos");
+    prData[663] = new Array("Santos No. 1 with Plastic Tray","","","","","","","","","","","","Santos");
     phData["663.jpg"] = new Array("663");
-    prData[664] = new Array("Santos No. 42 with Drawer","Silent Portion Coffee Grinder - Brew basket or drawer","","","","","0.3oz to 27oz","10g to 750g","","","Santos");
+    prData[664] = new Array("Santos No. 42 with Drawer","Silent Portion Coffee Grinder - Brew basket or drawer","","","","","0.3oz to 27oz","10g to 750g","","","","","Santos");
     phData["664.jpg"] = new Array("664");
 
     function getObjRef(p_ref, p_frame) {
@@ -67,7 +73,9 @@
       rowd[7] = "<tr><td class=prName>Size (Met)</td>";
       rowd[8] = "<tr><td class=prName>Capacity</td>";
       rowd[9] = "<tr><td class=prName>Power</td>";
-      rowd[10] = "<tr><td class=prName>Manufacturer</td>";
+      rowd[10] = "<tr><td class=prName>Jug Model</td>";
+      rowd[11] = "<tr><td class=prName>Filter Paper</td>";
+      rowd[12] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {
@@ -162,12 +170,15 @@
           <tr height=10><td class=titleBand>&nbsp;</td></tr>
           <tr valign=top><td>
 <h2>Coffee Grinders</h2><table border=0 cellspacing=5 cellpadding=0>
-<tr><td class=btitle>113</td><td class=btitle>114</td><td class=btitle>121</td></tr>
-<tr><td class=bname>++ Bosch Electric Grinder (see 113)</td><td class=bname>Ferrari Grinder / Blender</td><td class=bname>++ Manual Coffee Grinder Bronze Hopper / Light wood</td></tr>
-<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('113.jpg');return false;"><img border=0 src="../../img/t/113.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('114.jpg');return false;"><img border=0 src="../../img/t/114.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('121.jpg');return false;"><img border=0 src="../../img/t/121.jpg"></a></td></tr>
-<tr><td class=btitle>122</td><td class=btitle>660</td><td class=btitle>661</td></tr>
-<tr><td class=bname>++ Manual Coffee Grinder Bronze Hopper / Dark wood</td><td class=bname>Santos No 4 Shop Coffee Grinder</td><td class=bname>Santos 40A Expresso Grinder</td></tr>
-<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('122.jpg');return false;"><img border=0 src="../../img/t/122.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('660.jpg');return false;"><img border=0 src="../../img/t/660.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('661.jpg');return false;"><img border=0 src="../../img/t/661.jpg"></a></td></tr>
+<tr><td class=btitle>112</td><td class=btitle>113</td><td class=btitle>114</td></tr>
+<tr><td class=bname>Emide KM12</td><td class=bname>++ Bosch Electric Grinder (see 113)</td><td class=bname>Ferrari Grinder / Blender</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('112.jpg');return false;"><img border=0 src="../../img/t/112.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('113.jpg');return false;"><img border=0 src="../../img/t/113.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('114.jpg');return false;"><img border=0 src="../../img/t/114.jpg"></a></td></tr>
+<tr><td class=btitle>121</td><td class=btitle>122</td><td class=btitle>126</td></tr>
+<tr><td class=bname>++ Manual Coffee Grinder Bronze Hopper / Light wood</td><td class=bname>++ Manual Coffee Grinder Bronze Hopper / Dark wood</td><td class=bname>Manual Coffee Grinder</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('121.jpg');return false;"><img border=0 src="../../img/t/121.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('122.jpg');return false;"><img border=0 src="../../img/t/122.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('126.jpg');return false;"><img border=0 src="../../img/t/126.jpg"></a></td></tr>
+<tr><td class=btitle>129</td><td class=btitle>660</td><td class=btitle>661</td></tr>
+<tr><td class=bname>Manual Coffee Grinder</td><td class=bname>Santos No 4 Shop Coffee Grinder</td><td class=bname>Santos 40A Expresso Grinder</td></tr>
+<tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('129.jpg');return false;"><img border=0 src="../../img/t/129.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('660.jpg');return false;"><img border=0 src="../../img/t/660.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('661.jpg');return false;"><img border=0 src="../../img/t/661.jpg"></a></td></tr>
 <tr><td class=btitle>662</td><td class=btitle>663</td><td class=btitle>664</td></tr>
 <tr><td class=bname>Santos No. 43  S.S. Shop Grinder</td><td class=bname>Santos No. 1 with Plastic Tray</td><td class=bname>Santos No. 42 with Drawer</td></tr>
 <tr><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('662.jpg');return false;"><img border=0 src="../../img/t/662.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('663.jpg');return false;"><img border=0 src="../../img/t/663.jpg"></a></td><td align=center valign=middle style="width:180;height:150"><a href="Javascript:void();" onClick="showDetail('664.jpg');return false;"><img border=0 src="../../img/t/664.jpg"></a></td></tr>

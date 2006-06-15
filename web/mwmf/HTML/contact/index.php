@@ -51,7 +51,11 @@
       rowd[9] = "<tr><td class=prName>Power</td>";
       rowd[10] = "<tr><td class=prName>Jug Model</td>";
       rowd[11] = "<tr><td class=prName>Filter Paper</td>";
-      rowd[12] = "<tr><td class=prName>Manufacturer</td>";
+      rowd[12] = "<tr><td class=prName>Hopper Capacity</td>";
+      rowd[13] = "<tr><td class=prName>Average Output</td>";
+      rowd[14] = "<tr><td class=prName>Weight</td>";
+      rowd[15] = "<tr><td class=prName>Maximum Bag Height</td>";
+      rowd[16] = "<tr><td class=prName>Manufacturer</td>";
 
       for (i=0; i<prods.length; i++) {
         if (prods[i]) {

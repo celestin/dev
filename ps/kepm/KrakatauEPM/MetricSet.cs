@@ -5,7 +5,7 @@
  *
  * Representation of Metric Definition in Metric Set
  *
- * $Id: Prefs.cs 147 2006-06-06 23:06:48Z craig $
+ * $Id$
  * 
  * Who  When       Why
  * CAM  13-Jun-06   258 : File created.

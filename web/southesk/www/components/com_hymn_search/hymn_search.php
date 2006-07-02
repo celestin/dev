@@ -1,4 +1,16 @@
 <?php
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Southesk.com
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Hymn Search View
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  02-Jul-2006  File added to source control.
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 /** Ensure this file is being included by a parent file */
 defined('_VALID_MOS') or die('Direct Access to this location is not allowed.');

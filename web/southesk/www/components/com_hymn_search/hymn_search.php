@@ -255,8 +255,8 @@ function author_search($authorList, $searchType) {
 ?>
   <table border=0 cellspacing=0 cellpadding=4>
 <?
-  $verseSql = "SELECT author,fullname,surname,firstnames,author_life,bio_url ".
-              "FROM author $whereClause order by surname,fullname";
+  $verseSql = "SELECT id,fullname,surname,firstnames,author_life,bio_url ".
+              "FROM authors $whereClause order by surname,fullname";
   $verseRes = mysql_query($verseSql) or die("<h1>Query failed</h1><pre>$verseSql</pre>");
 
   for ($count = 1; $row = mysql_fetch_row($verseRes); ++$count) {
@@ -276,7 +276,7 @@ function author_search($authorList, $searchType) {
                "WHERE h.hymn_no = d.hymn_no " .
                "AND d.line_no = 1 " .
                "AND d.vers_no = 1 " .
-               "AND h.author = $row[0] " .
+               "AND h.author_id = $row[0] " .
                "ORDER BY h.hymn_no";
 
 ?><tr><td colspan=4><?
@@ -356,7 +356,7 @@ function show_hymn($hymn, $language) {
 <?
   }
 
-  $hymnSql = "SELECT a.fullname FROM hymn$language h, author a where h.author = a.author and h.hymn_no=$hymn";
+  $hymnSql = "SELECT a.fullname FROM hymn$language h, authors a where h.author_id = a.id and h.hymn_no=$hymn";
   $database->setQuery($hymnSql);
   $authors = $database->loadObjectlist();
   echo "<tr><td colspan=2 class=author><a href=\"javascript:void();\" onclick=\"view_author('" . $authors[0]->fullname . "');\">" . $authors[0]->fullname . "</a></td></tr>\n";

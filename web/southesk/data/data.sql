@@ -18,236 +18,239 @@
 -- --------------------------------------------------------
 
 --
--- Table structure for table author
+-- Table structure for table authors
 --
 
-CREATE TABLE author (
-  author int(10) NOT NULL default '0',
+CREATE TABLE authors (
+  id int(10) unsigned NOT NULL auto_increment,
   fullname varchar(50) default NULL,
   surname varchar(50) default NULL,
   firstnames varchar(50) default NULL,
   author_life varchar(50) default NULL,
   bio_url varchar(255) default NULL,
-  PRIMARY KEY  (author)
-) TYPE=MyISAM;
+  created datetime default NULL,
+  modified datetime default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM AUTO_INCREMENT=10000 ;
 
 --
--- Dumping data for table author
+-- Dumping data for table authors
 --
 
-INSERT INTO author VALUES (1, 'A. B. Temple', 'Temple', '', '', NULL);
-INSERT INTO author VALUES (2, 'A. Becker', 'Becker', '', '', NULL);
-INSERT INTO author VALUES (3, 'A. C. Craig', 'Craig', '', '', NULL);
-INSERT INTO author VALUES (4, 'A. C. S. Price', 'Price', '', '', NULL);
-INSERT INTO author VALUES (5, 'A. Carruthers', 'Carruthers', '', '', NULL);
-INSERT INTO author VALUES (6, 'A. E. Mayo', 'Mayo', '', '', NULL);
-INSERT INTO author VALUES (7, 'A. E. West', 'West', '', '', NULL);
-INSERT INTO author VALUES (8, 'A. F. G. Ward', 'Ward', '', '', NULL);
-INSERT INTO author VALUES (9, 'A. G. Doughty', 'Doughty', '', '', NULL);
-INSERT INTO author VALUES (10, 'A. H. Griffiths', 'Griffiths', '', '', NULL);
-INSERT INTO author VALUES (11, 'A. J. Gardiner', 'Gardiner', '', '', NULL);
-INSERT INTO author VALUES (12, 'A. J. H. Brown', 'Brown', '', '', NULL);
-INSERT INTO author VALUES (13, 'A. J. Wigginton', 'Wigginton', '', '', NULL);
-INSERT INTO author VALUES (14, 'A. M. Toplady', 'Toplady', 'Augustus Montague', '(1740-1778)', 'http://www.cyberhymnal.org/bio/t/o/p/toplady_am.htm');
-INSERT INTO author VALUES (15, 'A. Midlane', 'Midlane', 'Albert', '(1825-1909)', 'http://www.cyberhymnal.org/bio/m/i/midlane_a.htm');
-INSERT INTO author VALUES (16, 'A. O. R. Labett', 'Labett', '', '', NULL);
-INSERT INTO author VALUES (17, 'A. P. Bodman', 'Bodman', '', '', NULL);
-INSERT INTO author VALUES (18, 'A. P. Cecil', 'Cecil', 'Lord Adalbert', '(1841-1889)', 'http://www.stempublishing.com/hymns/biographies/cecil.html');
-INSERT INTO author VALUES (19, 'A. P. Gipps', 'Gipps', '', '', NULL);
-INSERT INTO author VALUES (20, 'A. Steven', 'Steven', '', '', NULL);
-INSERT INTO author VALUES (21, 'A. W. G. Turner', 'Turner', '', '', NULL);
-INSERT INTO author VALUES (22, 'A. W. Roach', 'Roach', '', '', NULL);
-INSERT INTO author VALUES (25, 'B. M. Deck', 'Deck', '', '', NULL);
-INSERT INTO author VALUES (26, 'B. Schmolck', 'Schmolck', 'Benjamin', '(1672-1737)', 'http://www.cyberhymnal.org/bio/s/c/schmolck_b.htm');
-INSERT INTO author VALUES (27, 'Bernard of Clairvaux', NULL, 'Bernard', '(1091-1153)', 'http://www.stempublishing.com/hymns/biographies/clairvaux.html');
-INSERT INTO author VALUES (28, 'C. A. Bernstein', 'Bernstein', 'Christian Andreas', '(1672-1699)', 'http://www.stempublishing.com/hymns/biographies/bernstein.html');
-INSERT INTO author VALUES (29, 'C. A. Coates', 'Coates', 'Charles Andrew', '(1862-1945)', 'http://www.mybrethren.org/bios/framcac.htm');
-INSERT INTO author VALUES (30, 'C. C. Elliott', 'Elliott', '', '', NULL);
-INSERT INTO author VALUES (31, 'C. Deayton', 'Deayton', '', '', NULL);
-INSERT INTO author VALUES (32, 'C. M. Menzies', 'Menzies', '', '', NULL);
-INSERT INTO author VALUES (33, 'C. Muller', 'Muller', '', '', NULL);
-INSERT INTO author VALUES (34, 'C. T. Lambert', 'Lambert', '', '', NULL);
-INSERT INTO author VALUES (35, 'C. Wesley', 'Wesley', 'Charles', '(1707-1788)', 'http://www.cyberhymnal.org/bio/w/e/wesley_c.htm');
-INSERT INTO author VALUES (37, 'D. G. Samuels', 'Samuels', '', '', NULL);
-INSERT INTO author VALUES (38, 'D. H. Aris', 'Aris', '', '', NULL);
-INSERT INTO author VALUES (39, 'D. L. Stewart', 'Stewart', '', '', NULL);
-INSERT INTO author VALUES (40, 'D. Lindberg', 'Lindberg', '', '', NULL);
-INSERT INTO author VALUES (41, 'D. O''Prey', 'O''Prey', '', '', NULL);
-INSERT INTO author VALUES (42, 'D. Otsing', 'Otsing', '', '', 'http://www.mybrethren.org/memora/ma23ears.htm#russia');
-INSERT INTO author VALUES (43, 'D. Robertson', 'Robertson', '', '', NULL);
-INSERT INTO author VALUES (44, 'D. T. Holding', 'Holding', '', '', NULL);
-INSERT INTO author VALUES (45, 'E. A.', 'Lee', '', '', NULL);
-INSERT INTO author VALUES (46, 'E. C. Burr', 'Burr', '', '', NULL);
-INSERT INTO author VALUES (47, 'E. Carren', 'Carren', '', '', NULL);
-INSERT INTO author VALUES (48, 'E. Denny', 'Edward', 'Denny', '(1796-1889)', 'http://www.cyberhymnal.org/bio/d/e/denny_e.htm');
-INSERT INTO author VALUES (49, 'E. E. Nichols', 'Nichols', '', '', NULL);
-INSERT INTO author VALUES (50, 'E. G. Green', 'Green', '', '', NULL);
-INSERT INTO author VALUES (51, 'E. H. Chater', 'Green', '', '', NULL);
-INSERT INTO author VALUES (52, 'E. J. Boyt', 'Green', '', '', NULL);
-INSERT INTO author VALUES (53, 'E. L. Bevir', 'Bevir', '', '', NULL);
-INSERT INTO author VALUES (54, 'E. Markham', 'Markham', '', '', NULL);
-INSERT INTO author VALUES (55, 'E. Perronet', 'Perronet', '', '(1726-1792)', NULL);
-INSERT INTO author VALUES (56, 'E. Petersson', 'Petersson', '', '', NULL);
-INSERT INTO author VALUES (57, 'E. R. Patchett', 'Patchett', '', '', NULL);
-INSERT INTO author VALUES (58, 'E. Rubie', 'Rubie', '', '', NULL);
-INSERT INTO author VALUES (59, 'E. Williams', 'Williams', '', '', NULL);
-INSERT INTO author VALUES (60, 'F. D. Waterfall', 'Waterfall', '', '', NULL);
-INSERT INTO author VALUES (61, 'F. H. Parrot', 'Parrot', '', '', NULL);
-INSERT INTO author VALUES (62, 'F. Whitfield', 'Frederick', 'Whitfield', '(1827-1904)', 'http://www.cyberhymnal.org/bio/w/h/whitfield_f.htm');
-INSERT INTO author VALUES (63, 'F. Wompra', 'Wompra', 'Forrest', '', NULL);
-INSERT INTO author VALUES (64, 'G. C. Pearse', 'Pearse', '', '', NULL);
-INSERT INTO author VALUES (65, 'G. Cowie', 'Cowie', '', '', NULL);
-INSERT INTO author VALUES (66, 'G. Gilpin', 'Gilpin', '', '', NULL);
-INSERT INTO author VALUES (67, 'G. Gustafsson', 'Gustafsson', '', '', NULL);
-INSERT INTO author VALUES (68, 'G. H. Brown', 'Brown', '', '', NULL);
-INSERT INTO author VALUES (69, 'G. H. S. Price', 'Price', '', '', NULL);
-INSERT INTO author VALUES (70, 'G. J. Abernethie', 'Abernethie', '', '', NULL);
-INSERT INTO author VALUES (71, 'G. R. Greeves', 'Greeves', '', '', NULL);
-INSERT INTO author VALUES (72, 'G. V. Wigram', 'Wigram', 'George Vicesimus', '(1805-1879)', 'http://www.mybrethren.org/bios/framgvw.htm');
-INSERT INTO author VALUES (73, 'G. W. Fraser', 'Fraser', '', '(1840-1896)', NULL);
-INSERT INTO author VALUES (74, 'H. Alien', 'Alien', '', '', NULL);
-INSERT INTO author VALUES (75, 'H. Bonar', 'Bonar', 'Horatius', '(1808 -1889)', 'http://www.stempublishing.com/hymns/biographies/bonar.html');
-INSERT INTO author VALUES (76, 'H. F. Nunnerley', 'Nunnerley', 'H. F.', '(1873 -1953)', 'http://www.stempublishing.com/hymns/biographies/nunnerley.html');
-INSERT INTO author VALUES (77, 'H. G. Spafford', 'Spafford', '', '', NULL);
-INSERT INTO author VALUES (78, 'H. J. Middleton', 'Middleton', '', '', NULL);
-INSERT INTO author VALUES (79, 'H. J. Miles', 'Miles', '', '', NULL);
-INSERT INTO author VALUES (80, 'H. P. Wells', 'Wells', '', '', NULL);
-INSERT INTO author VALUES (81, 'H. S. T. Bullock', 'Bullock', '', '', NULL);
-INSERT INTO author VALUES (82, 'H. Wreford', 'Wreford', '', '', NULL);
-INSERT INTO author VALUES (83, 'H.D''A. Champney', 'Champney', 'H. D''Arcy', '(1854 -1942)', 'http://www.mybrethren.org/bios/by00bios.htm#champney');
-INSERT INTO author VALUES (84, 'I. Fleming', 'Fleming', '', '', NULL);
-INSERT INTO author VALUES (85, 'I. G. Prestidge', 'Prestidge', '', '', NULL);
-INSERT INTO author VALUES (86, 'I. Watts', 'Watts', 'Isaac', '(1674-1748)', 'http://www.stempublishing.com/hymns/biographies/watts.html');
-INSERT INTO author VALUES (87, 'J. A. v. Poseck', 'Poseck', '', '(1816-1896)', NULL);
-INSERT INTO author VALUES (88, 'J. B. Stoney', 'Stoney', 'James Butler', '(1814-1897)', 'http://www.mybrethren.org/bios/framjbs.htm');
-INSERT INTO author VALUES (89, 'J. Bakewell', 'Bakewell', 'John', '(1721-1819)', 'http://www.cyberhymnal.org/bio/b/a/bakewell_j.htm');
-INSERT INTO author VALUES (90, 'J. Brewer', 'Brewer', '', '', NULL);
-INSERT INTO author VALUES (91, 'J. C. Tozer', 'Tozer', '', '', NULL);
-INSERT INTO author VALUES (92, 'J. Clark', 'Clark', '', '', NULL);
-INSERT INTO author VALUES (93, 'J. Condor', 'Condor', 'Josiah', '(1789-1855)', 'http://www.stempublishing.com/hymns/biographies/condor.html');
-INSERT INTO author VALUES (94, 'J. E. Mutton', 'Mutton', '', '', NULL);
-INSERT INTO author VALUES (95, 'J. Earl', 'Earl', '', '', NULL);
-INSERT INTO author VALUES (96, 'J. F. Garland', 'Garland', '', '', NULL);
-INSERT INTO author VALUES (97, 'J. G. Deck', 'Deck', 'James George', '(1807-1884)', 'http://www.cyberhymnal.org/bio/d/e/deck_jg.htm');
-INSERT INTO author VALUES (98, 'J. G. Small', 'Small', 'James Grindlay', '(1817-1888)', 'http://www.cyberhymnal.org/bio/s/m/small_jg.htm');
-INSERT INTO author VALUES (99, 'J. H. Eames', 'Eames', '', '', NULL);
-INSERT INTO author VALUES (100, 'J. Hart', 'Hart', 'Joseph', '(1712-1768)', 'http://www.cyberhymnal.org/bio/h/a/hart_j.htm');
-INSERT INTO author VALUES (101, 'J. Hutton', 'Hutton', 'James', '(1715-1795)', 'http://www.stempublishing.com/hymns/biographies/hutton.html');
-INSERT INTO author VALUES (102, 'J. Jay', 'Jay', '', '', NULL);
-INSERT INTO author VALUES (103, 'J. K. Pollock', 'Pollock', '', '', NULL);
-INSERT INTO author VALUES (104, 'J. LePanse', 'LePanse', '', '', NULL);
-INSERT INTO author VALUES (105, 'J. Molines', 'Molines', '', '', NULL);
-INSERT INTO author VALUES (106, 'J. Montgomery', 'Montgomery', 'James', '(1771-1854)', 'http://www.cyberhymnal.org/bio/m/o/montgomery_j.htm');
-INSERT INTO author VALUES (107, 'J. N. Darby', 'John Nelson', 'Darby', '(1800-1882)', 'http://www.mybrethren.org/bios/framjnd.htm');
-INSERT INTO author VALUES (108, 'J. N. Grace', 'Grace', '', '', NULL);
-INSERT INTO author VALUES (109, 'J. Newton', 'Newton', 'John', '(1725-1807)', 'http://www.cyberhymnal.org/bio/n/e/newton_j.htm');
-INSERT INTO author VALUES (110, 'J. Pellatt', 'Pellatt', 'Joseph', '(1843 -1913)', 'http://www.mybrethren.org/bios/by00bios.htm#pellatt');
-INSERT INTO author VALUES (111, 'J. Revell', 'Revell', '', '(d. 1900)', NULL);
-INSERT INTO author VALUES (112, 'J. Ryland', 'Ryland', 'John', '(1753-1825)', 'http://www.cyberhymnal.org/bio/r/y/ryland_j.htm');
-INSERT INTO author VALUES (113, 'J. Stennett', 'Stennett', 'Joseph', '(1663-1713)', 'http://www.stempublishing.com/hymns/biographies/stennett.html');
-INSERT INTO author VALUES (114, 'J. Swain', 'Swain', 'Joseph', '(1761-1796)', 'http://www.cyberhymnal.org/bio/s/w/swain_j.htm');
-INSERT INTO author VALUES (115, 'J. T. Ellis', 'Ellis', '', '', NULL);
-INSERT INTO author VALUES (116, 'J. Taylor', 'Taylor', 'James', '(1870-1953)', 'http://www.mybrethren.org/bios/framjt.htm');
-INSERT INTO author VALUES (117, 'J. Taylor, 3rd', 'Taylor', 'James, 3rd', '', NULL);
-INSERT INTO author VALUES (118, 'J. Taylor, Jr.', 'Taylor', 'James, Jr.', '', NULL);
-INSERT INTO author VALUES (119, 'J. W. Parry', 'Parry', '', '', NULL);
-INSERT INTO author VALUES (120, 'J. Watson', 'Watson', '', '', NULL);
-INSERT INTO author VALUES (121, 'L. G. Milner', 'Milner', '', '', NULL);
-INSERT INTO author VALUES (122, 'L. H. Farrell', 'Farrell', '', '', NULL);
-INSERT INTO author VALUES (123, 'L. H. Railton', 'Railton', '', '', NULL);
-INSERT INTO author VALUES (124, 'L. J. Gilmore', 'Gilmore', '', '', NULL);
-INSERT INTO author VALUES (125, 'M. Cosido', 'Cosido', '', '', NULL);
-INSERT INTO author VALUES (126, 'M. W. Biggs', 'Biggs', 'Malcolm W.', '(1875 -1941)', 'http://www.mybrethren.org/minist00/my26mwba.htm');
-INSERT INTO author VALUES (127, 'Miss A. E. Price', 'Price', '', '(1838 -1919)', NULL);
-INSERT INTO author VALUES (128, 'Miss A. M. Harding', 'Harding', 'Agnes Mary', '(1887-1966)', 'http://www.stempublishing.com/hymns/biographies/harding.html');
-INSERT INTO author VALUES (129, 'Miss A. Naesseth', 'Naesseth', '', '', NULL);
-INSERT INTO author VALUES (130, 'Miss A. Ross', 'Ross', '', '', NULL);
-INSERT INTO author VALUES (131, 'Miss A. S. Ormsby', 'Ormsby', '', '', NULL);
-INSERT INTO author VALUES (132, 'Miss A. Taylor', 'Taylor', 'Ann (Mrs Gilbert)', '(1782-1866)', 'http://www.stempublishing.com/hymns/biographies/ataylor.html');
-INSERT INTO author VALUES (133, 'Miss C. Elliott', 'Elliott', 'Charlotte', '(1789-1871)', 'http://www.cyberhymnal.org/bio/e/l/elliott_c.htm');
-INSERT INTO author VALUES (134, 'Miss C. Thompson', 'Thompson', 'Miss Cenita', '(1822-1909)', 'http://www.stempublishing.com/hymns/biographies/thompson.html');
-INSERT INTO author VALUES (135, 'Miss E. C. Shanks', 'Shanks', '', '', NULL);
-INSERT INTO author VALUES (136, 'Miss E. Clewley', 'Clewley', '', '', NULL);
-INSERT INTO author VALUES (137, 'Miss F. J. Elwood', 'Elwood', '', '', NULL);
-INSERT INTO author VALUES (138, 'Miss F. R. Havergal', 'Havergal', 'Frances Ridley', '(1836-1879)', 'http://www.cyberhymnal.org/bio/h/a/havergal_fr.htm');
-INSERT INTO author VALUES (139, 'Miss F. T. Wigram', 'Wigram', 'Fanny Theodora', '(1831-1871)', 'http://www.stempublishing.com/hymns/biographies/ftwigram.html');
-INSERT INTO author VALUES (140, 'Miss H. K. Burlingham', 'Burlingham', 'Hannah K.', '(1842-1901)', 'http://www.stempublishing.com/hymns/biographies/burlingham.html');
-INSERT INTO author VALUES (141, 'Miss H. M. Raikes', 'Raikes', '', '', NULL);
-INSERT INTO author VALUES (142, 'Miss I. Stevenson', 'Stevenson', '', '(1843-1890)', NULL);
-INSERT INTO author VALUES (143, 'Miss J. E. Gresswell', 'Gresswell', '', '', NULL);
-INSERT INTO author VALUES (144, 'Miss J. Wickens', 'Wickens', '', '', NULL);
-INSERT INTO author VALUES (145, 'Miss L. Barnett', 'Barnett', '', '', NULL);
-INSERT INTO author VALUES (146, 'Miss M. Bowly', 'Bowly Peters', 'Mary', '(1813-1856)', 'http://www.cyberhymnal.org/bio/p/e/peters_mb.htm');
-INSERT INTO author VALUES (147, 'Miss N. Vergette', 'Vergette', '', '', NULL);
-INSERT INTO author VALUES (148, 'Miss S. M. Walker', 'Walker', 'Mary Jane Deck', '(1816-1878)', 'http://www.cyberhymnal.org/bio/w/a/walker_mjd.htm');
-INSERT INTO author VALUES (149, 'Mrs. A. Dent', 'Dent', '', '', NULL);
-INSERT INTO author VALUES (150, 'Mrs. A. M. Fennell', 'Fennell', '', '', NULL);
-INSERT INTO author VALUES (151, 'Mrs. A. M. Hayward', 'Hayward', '', '', NULL);
-INSERT INTO author VALUES (152, 'Mrs. A. R. C. Cousin', 'Cousin', 'Anne Ross Cundell', '(1824-1906)', 'http://www.cyberhymnal.org/bio/c/o/cousin_arc.htm');
-INSERT INTO author VALUES (153, 'Mrs. C. A. Markham', 'Markham', '', '', NULL);
-INSERT INTO author VALUES (154, 'Mrs. D. Pallister', 'Pallister', '', '', NULL);
-INSERT INTO author VALUES (155, 'Mrs. G. Helyar', 'Helyar', 'Gertude', '', 'http://www.stempublishing.com/hymns/biographies/helyar.html');
-INSERT INTO author VALUES (156, 'Mrs. G. J. Scarlett', 'Scarlett', '', '', NULL);
-INSERT INTO author VALUES (157, 'Mrs. H. A. Berg', 'Berg', '', '', NULL);
-INSERT INTO author VALUES (158, 'Mrs. H. B. Burr', 'Burr', '', '', NULL);
-INSERT INTO author VALUES (159, 'Mrs. J. S. Pigott', 'Pigott', '', '', NULL);
-INSERT INTO author VALUES (160, 'Mrs. K. G. Teiffel', 'Teiffel', '', '', NULL);
-INSERT INTO author VALUES (161, 'Mrs. K. W Sandell-Berg', 'Sandell-Berg', 'Karolina Wilhelmina', ' (1832-1903)', 'http://www.cyberhymnal.org/bio/s/a/sandell-berg_kw.htm');
-INSERT INTO author VALUES (162, 'Mrs. M. Carlsson-Carren', 'Carlsson-Carren', '', '', NULL);
-INSERT INTO author VALUES (163, 'Mrs. P. R. Morford', 'Morford', '', '', NULL);
-INSERT INTO author VALUES (164, 'Mrs. S. A. Haughton', 'Morford', '', '', NULL);
-INSERT INTO author VALUES (165, 'Mrs. S. Hedman', 'Hedman', '', '', NULL);
-INSERT INTO author VALUES (166, 'Mrs. W. T. Petersen', 'Petersen', '', '', NULL);
-INSERT INTO author VALUES (167, 'N. B. Stewart', 'Stewart', '', '', NULL);
-INSERT INTO author VALUES (168, 'N. L. v. Zinzendorf', 'Zinzendorf, von', 'Nikolaus Ludwig', '(1700-1760)', 'http://www.cyberhymnal.org/bio/v/o/vonzinzendorf_nl.htm');
-INSERT INTO author VALUES (169, 'P. Ellis', 'Ellis', '', '', NULL);
-INSERT INTO author VALUES (170, 'P. F. Hiller', 'Hiller', 'Philipp Friedrich', '(1699-1769)', 'http://www.cyberhymnal.org/bio/h/i/hiller_fp.htm');
-INSERT INTO author VALUES (171, 'P. G. Blanc', 'Blanc', '', '', NULL);
-INSERT INTO author VALUES (172, 'P. Gerhardt', 'Gerhardt', 'Paul', '(1607-1676)', 'http://www.cyberhymnal.org/bio/g/e/gerhardt_p.htm');
-INSERT INTO author VALUES (173, 'P. H. Hardwick', 'Hardwick', '', '', NULL);
-INSERT INTO author VALUES (174, 'P. Lyon', 'Lyon', 'Percy', '(1881 -1966)', 'http://www.mybrethren.org/bios/by00bios.htm#lyon');
-INSERT INTO author VALUES (175, 'P. P. Bliss', 'Bliss', 'Philip Paul', '(1838-1876)', 'http://www.cyberhymnal.org/bio/b/l/bliss_pp.htm');
-INSERT INTO author VALUES (176, 'P. S. Pugh', 'Pugh', '', '', NULL);
-INSERT INTO author VALUES (177, 'P. van den Berg', 'van den Berg', '', '', NULL);
-INSERT INTO author VALUES (178, 'P. W. Dolton', 'Dolton', '', '', NULL);
-INSERT INTO author VALUES (179, 'R. Arras', 'Arras', '', '', NULL);
-INSERT INTO author VALUES (180, 'R. D. Edwards', 'Edwards', '', '', NULL);
-INSERT INTO author VALUES (181, 'R. G. Fear', 'Fear', '', '', NULL);
-INSERT INTO author VALUES (182, 'R. H. Grace', 'Grace', '', '', NULL);
-INSERT INTO author VALUES (183, 'R. Holden', 'Holden', '', '', NULL);
-INSERT INTO author VALUES (184, 'R. Peart', 'Peart', '', '', NULL);
-INSERT INTO author VALUES (185, 'R. Robinson', 'Robinson', 'Robert', '(1735-1790)', 'http://www.cyberhymnal.org/bio/r/o/robinson_r.htm');
-INSERT INTO author VALUES (186, 'R. Sandeman', 'Sandeman', '', '', NULL);
-INSERT INTO author VALUES (187, 'R. Stott', 'Stott', '', '', NULL);
-INSERT INTO author VALUES (188, 'S. Chareyre', 'Chareyre', '', '', NULL);
-INSERT INTO author VALUES (189, 'S. Davies', 'Davies', 'Samuel', '(1723-1761)', 'http://www.cyberhymnal.org/bio/d/a/davies_s.htm');
-INSERT INTO author VALUES (190, 'S. M. Watson', 'Watson', '', '', NULL);
-INSERT INTO author VALUES (191, 'S. McCallum', 'McCallum', 'Stanley', '(1904 - 1987)', 'http://www.mybrethren.org/bios/by00bios.htm#mccallum');
-INSERT INTO author VALUES (192, 'S. Medley', 'Medley', 'Samuel', '(1738-1799)', 'http://www.stempublishing.com/hymns/biographies/medley.html');
-INSERT INTO author VALUES (193, 'S. W. Gandy', 'Gandy', '', '(d. 1851)', NULL);
-INSERT INTO author VALUES (194, 'T. E. Purdom', 'Purdom', 'Thomas Edie', '(1852 -1942)', 'http://www.stempublishing.com/hymns/biographies/purdom.html');
-INSERT INTO author VALUES (195, 'T. Haweis', 'Haweis', 'Thomas', '(1734-1820)', 'http://www.cyberhymnal.org/bio/h/a/haweis_t.htm');
-INSERT INTO author VALUES (196, 'T. Kelly', 'Kelly', 'Thomas', '(1769-1855)', 'http://www.cyberhymnal.org/bio/k/e/l/kelly_t.htm');
-INSERT INTO author VALUES (197, 'T. Porter', 'Porter', '', '', NULL);
-INSERT INTO author VALUES (198, 'T. Rofe', 'Rofe', '', '', NULL);
-INSERT INTO author VALUES (199, 'T. Thorstensen', 'Thorstensen', '', '', NULL);
-INSERT INTO author VALUES (200, 'T. Willey', 'Willey', '', '', NULL);
-INSERT INTO author VALUES (202, 'V. C. Lock', 'Lock', '', '', NULL);
-INSERT INTO author VALUES (203, 'W. B. Harris', 'Harris', '', '', NULL);
-INSERT INTO author VALUES (204, 'W. C. Booth', 'Booth', '', '', NULL);
-INSERT INTO author VALUES (205, 'W. C. Powell', 'Booth', '', '', NULL);
-INSERT INTO author VALUES (206, 'W. Cowper', 'Cowper', 'William', '(1731-1800)', 'http://www.cyberhymnal.org/bio/c/o/cowper_w.htm');
-INSERT INTO author VALUES (207, 'W. F. Lloyd', 'Lloyd', 'William Freeman', '(1791-1853)', 'http://www.cyberhymnal.org/bio/l/l/lloyd_wf.htm');
-INSERT INTO author VALUES (208, 'W. H. Trowbridge', 'Trowbridge', '', '', NULL);
-INSERT INTO author VALUES (209, 'W. Lawrence', 'Lawrence', '', '', NULL);
-INSERT INTO author VALUES (210, 'W. Lewis', 'Lawrence', '', '', NULL);
-INSERT INTO author VALUES (211, 'W. M. Brown', 'Brown', '', '', NULL);
-INSERT INTO author VALUES (212, 'W. Meyer', 'Meyer', '', '', NULL);
-INSERT INTO author VALUES (213, 'W. P. Smith', 'Smith', '', '', NULL);
-INSERT INTO author VALUES (214, 'W. R. Mason', 'Mason', '', '', NULL);
-INSERT INTO author VALUES (215, 'W. Trotter', 'Trotter', '', '(d. 1865)', NULL);
-INSERT INTO author VALUES (9998, 'Unknown', NULL, '', '', NULL);
-INSERT INTO author VALUES (9999, 'Anonymous', NULL, '', '', NULL);
+INSERT INTO authors (id, fullname, surname, firstnames, author_life, bio_url, created, modified) VALUES (1, 'A. B. Temple', 'Temple', NULL, NULL, NULL, NULL, '2006-07-02 20:25:00'),
+(2, 'A. Becker', 'Becker', NULL, NULL, NULL, NULL, NULL),
+(3, 'A. C. Craig', 'Craig', NULL, NULL, NULL, NULL, NULL),
+(4, 'A. C. S. Price', 'Price', NULL, NULL, NULL, NULL, NULL),
+(5, 'A. Carruthers', 'Carruthers', NULL, NULL, NULL, NULL, NULL),
+(6, 'A. E. Mayo', 'Mayo', NULL, NULL, NULL, NULL, NULL),
+(7, 'A. E. West', 'West', NULL, NULL, NULL, NULL, NULL),
+(8, 'A. F. G. Ward', 'Ward', NULL, NULL, NULL, NULL, NULL),
+(9, 'A. G. Doughty', 'Doughty', NULL, NULL, NULL, NULL, NULL),
+(10, 'A. H. Griffiths', 'Griffiths', NULL, NULL, NULL, NULL, NULL),
+(11, 'A. J. Gardiner', 'Gardiner', NULL, NULL, NULL, NULL, NULL),
+(12, 'A. J. H. Brown', 'Brown', NULL, NULL, NULL, NULL, NULL),
+(13, 'A. J. Wigginton', 'Wigginton', NULL, NULL, NULL, NULL, NULL),
+(14, 'A. M. Toplady', 'Toplady', 'Augustus Montague', '(1740-1778)', 'http://www.cyberhymnal.org/bio/t/o/p/toplady_am.htm', NULL, '2006-07-02 20:45:51'),
+(15, 'A. Midlane', 'Midlane', 'Albert', '(1825-1909)', 'http://www.cyberhymnal.org/bio/m/i/midlane_a.htm', NULL, NULL),
+(16, 'A. O. R. Labett', 'Labett', NULL, NULL, NULL, NULL, NULL),
+(17, 'A. P. Bodman', 'Bodman', NULL, NULL, NULL, NULL, NULL),
+(18, 'A. P. Cecil', 'Cecil', 'Lord Adalbert', '(1841-1889)', 'http://www.stempublishing.com/hymns/biographies/cecil.html', NULL, NULL),
+(19, 'A. P. Gipps', 'Gipps', NULL, NULL, NULL, NULL, NULL),
+(20, 'A. Steven', 'Steven', NULL, NULL, NULL, NULL, NULL),
+(21, 'A. W. G. Turner', 'Turner', NULL, NULL, NULL, NULL, NULL),
+(22, 'A. W. Roach', 'Roach', NULL, NULL, NULL, NULL, NULL),
+(25, 'B. M. Deck', 'Deck', NULL, NULL, NULL, NULL, NULL),
+(26, 'B. Schmolck', 'Schmolck', 'Benjamin', '(1672-1737)', 'http://www.cyberhymnal.org/bio/s/c/schmolck_b.htm', NULL, NULL),
+(27, 'Bernard of Clairvaux', NULL, 'Bernard', '(1091-1153)', 'http://www.stempublishing.com/hymns/biographies/clairvaux.html', NULL, NULL),
+(28, 'C. A. Bernstein', 'Bernstein', 'Christian Andreas', '(1672-1699)', 'http://www.stempublishing.com/hymns/biographies/bernstein.html', NULL, NULL),
+(29, 'C. A. Coates', 'Coates', 'Charles Andrew', '(1862-1945)', 'http://www.mybrethren.org/bios/framcac.htm', NULL, NULL),
+(30, 'C. C. Elliott', 'Elliott', NULL, NULL, NULL, NULL, NULL),
+(31, 'C. Deayton', 'Deayton', NULL, NULL, NULL, NULL, NULL),
+(32, 'C. M. Menzies', 'Menzies', NULL, NULL, NULL, NULL, NULL),
+(33, 'C. Muller', 'Muller', NULL, NULL, NULL, NULL, NULL),
+(34, 'C. T. Lambert', 'Lambert', NULL, NULL, NULL, NULL, NULL),
+(35, 'C. Wesley', 'Wesley', 'Charles', '(1707-1788)', 'http://www.cyberhymnal.org/bio/w/e/s/wesley_c.htm', NULL, '2006-07-02 20:46:37'),
+(37, 'D. G. Samuels', 'Samuels', NULL, NULL, NULL, NULL, NULL),
+(38, 'D. H. Aris', 'Aris', NULL, NULL, NULL, NULL, NULL),
+(39, 'D. L. Stewart', 'Stewart', NULL, NULL, NULL, NULL, NULL),
+(40, 'D. Lindberg', 'Lindberg', NULL, NULL, NULL, NULL, NULL),
+(41, 'D. O''Prey', 'O''Prey', NULL, NULL, NULL, NULL, NULL),
+(42, 'D. Otsing', 'Otsing', NULL, NULL, 'http://www.mybrethren.org/memora/ma23ears.htm#russia', NULL, NULL),
+(43, 'D. Robertson', 'Robertson', NULL, NULL, NULL, NULL, NULL),
+(44, 'D. T. Holding', 'Holding', NULL, NULL, NULL, NULL, NULL),
+(45, 'E. A.', 'Lee', NULL, NULL, NULL, NULL, NULL),
+(46, 'E. C. Burr', 'Burr', NULL, NULL, NULL, NULL, NULL),
+(47, 'E. Carren', 'Carren', NULL, NULL, NULL, NULL, NULL),
+(48, 'E. Denny', 'Edward', 'Denny', '(1796-1889)', 'http://www.cyberhymnal.org/bio/d/e/denny_e.htm', NULL, NULL),
+(49, 'E. E. Nichols', 'Nichols', NULL, NULL, NULL, NULL, NULL),
+(50, 'E. G. Green', 'Green', NULL, NULL, NULL, NULL, NULL),
+(51, 'E. H. Chater', 'Green', NULL, NULL, NULL, NULL, NULL),
+(52, 'E. J. Boyt', 'Green', NULL, NULL, NULL, NULL, NULL),
+(53, 'E. L. Bevir', 'Bevir', NULL, NULL, NULL, NULL, NULL),
+(54, 'E. Markham', 'Markham', NULL, NULL, NULL, NULL, NULL),
+(55, 'E. Perronet', 'Perronet', NULL, '(1726-1792)', NULL, NULL, NULL),
+(56, 'E. Petersson', 'Petersson', NULL, NULL, NULL, NULL, NULL),
+(57, 'E. R. Patchett', 'Patchett', NULL, NULL, NULL, NULL, NULL),
+(58, 'E. Rubie', 'Rubie', NULL, NULL, NULL, NULL, NULL),
+(59, 'E. Williams', 'Williams', NULL, NULL, NULL, NULL, NULL),
+(60, 'F. D. Waterfall', 'Waterfall', NULL, NULL, NULL, NULL, NULL),
+(61, 'F. H. Parrot', 'Parrot', NULL, NULL, NULL, NULL, NULL),
+(62, 'F. Whitfield', 'Frederick', 'Whitfield', '(1827-1904)', 'http://www.cyberhymnal.org/bio/w/h/whitfield_f.htm', NULL, NULL),
+(63, 'F. Wompra', 'Wompra', 'Forrest', NULL, NULL, NULL, NULL),
+(64, 'G. C. Pearse', 'Pearse', NULL, NULL, NULL, NULL, NULL),
+(65, 'G. Cowie', 'Cowie', NULL, NULL, NULL, NULL, NULL),
+(66, 'G. Gilpin', 'Gilpin', NULL, NULL, NULL, NULL, NULL),
+(67, 'G. Gustafsson', 'Gustafsson', NULL, NULL, NULL, NULL, NULL),
+(68, 'G. H. Brown', 'Brown', NULL, NULL, NULL, NULL, NULL),
+(69, 'G. H. S. Price', 'Price', NULL, NULL, NULL, NULL, NULL),
+(70, 'G. J. Abernethie', 'Abernethie', NULL, NULL, NULL, NULL, NULL),
+(71, 'G. R. Greeves', 'Greeves', NULL, NULL, NULL, NULL, NULL),
+(72, 'G. V. Wigram', 'Wigram', 'George Vicesimus', '(1805-1879)', 'http://www.mybrethren.org/bios/framgvw.htm', NULL, NULL),
+(73, 'G. W. Fraser', 'Fraser', NULL, '(1840-1896)', NULL, NULL, NULL),
+(74, 'H. Alien', 'Alien', '', '', '', NULL, '2006-07-02 20:48:54'),
+(75, 'H. Bonar', 'Bonar', 'Horatius', '(1808 -1889)', 'http://www.stempublishing.com/hymns/biographies/bonar.html', NULL, NULL),
+(76, 'H. F. Nunnerley', 'Nunnerley', 'H. F.', '(1873 -1953)', 'http://www.stempublishing.com/hymns/biographies/nunnerley.html', NULL, NULL),
+(77, 'H. G. Spafford', 'Spafford', NULL, NULL, NULL, NULL, NULL),
+(78, 'H. J. Middleton', 'Middleton', NULL, NULL, NULL, NULL, NULL),
+(79, 'H. J. Miles', 'Miles', NULL, NULL, NULL, NULL, NULL),
+(80, 'H. P. Wells', 'Wells', NULL, NULL, NULL, NULL, NULL),
+(81, 'H. S. T. Bullock', 'Bullock', NULL, NULL, NULL, NULL, NULL),
+(82, 'H. Wreford', 'Wreford', NULL, NULL, NULL, NULL, NULL),
+(83, 'H.D''A. Champney', 'Champney', 'H. D''Arcy', '(1854 -1942)', 'http://www.mybrethren.org/bios/by00bios.htm#champney', NULL, NULL),
+(84, 'I. Fleming', 'Fleming', NULL, NULL, NULL, NULL, NULL),
+(85, 'I. G. Prestidge', 'Prestidge', NULL, NULL, NULL, NULL, NULL),
+(86, 'I. Watts', 'Watts', 'Isaac', '(1674-1748)', 'http://www.stempublishing.com/hymns/biographies/watts.html', NULL, NULL),
+(87, 'J. A. v. Poseck', 'Poseck', NULL, '(1816-1896)', NULL, NULL, NULL),
+(88, 'J. B. Stoney', 'Stoney', 'James Butler', '(1814-1897)', 'http://www.mybrethren.org/bios/framjbs.htm', NULL, NULL),
+(89, 'J. Bakewell', 'Bakewell', 'John', '(1721-1819)', 'http://www.cyberhymnal.org/bio/b/a/k/bakewell_j.htm', NULL, '2006-07-02 20:47:11'),
+(90, 'J. Brewer', 'Brewer', NULL, NULL, NULL, NULL, NULL),
+(91, 'J. C. Tozer', 'Tozer', NULL, NULL, NULL, NULL, NULL),
+(92, 'J. Clark', 'Clark', NULL, NULL, NULL, NULL, NULL),
+(93, 'J. Condor', 'Condor', 'Josiah', '(1789-1855)', 'http://www.stempublishing.com/hymns/biographies/condor.html', NULL, NULL),
+(94, 'J. E. Mutton', 'Mutton', NULL, NULL, NULL, NULL, NULL),
+(95, 'J. Earl', 'Earl', NULL, NULL, NULL, NULL, NULL),
+(96, 'J. F. Garland', 'Garland', NULL, NULL, NULL, NULL, NULL),
+(97, 'J. G. Deck', 'Deck', 'James George', '(1807-1884)', 'http://www.cyberhymnal.org/bio/d/e/deck_jg.htm', NULL, NULL),
+(98, 'J. G. Small', 'Small', 'James Grindlay', '(1817-1888)', 'http://www.cyberhymnal.org/bio/s/m/small_jg.htm', NULL, NULL),
+(99, 'J. H. Eames', 'Eames', NULL, NULL, NULL, NULL, NULL),
+(100, 'J. Hart', 'Hart', 'Joseph', '(1712-1768)', 'http://www.cyberhymnal.org/bio/h/a/r/hart_j.htm', NULL, '2006-07-02 20:47:45'),
+(101, 'J. Hutton', 'Hutton', 'James', '(1715-1795)', 'http://www.stempublishing.com/hymns/biographies/hutton.html', NULL, NULL),
+(102, 'J. Jay', 'Jay', NULL, NULL, NULL, NULL, NULL),
+(103, 'J. K. Pollock', 'Pollock', NULL, NULL, NULL, NULL, NULL),
+(104, 'J. LePanse', 'LePanse', NULL, NULL, NULL, NULL, NULL),
+(105, 'J. Molines', 'Molines', NULL, NULL, NULL, NULL, NULL),
+(106, 'J. Montgomery', 'Montgomery', 'James', '(1771-1854)', 'http://www.cyberhymnal.org/bio/m/o/n/montgomery_j.htm', NULL, '2006-07-02 20:48:05'),
+(107, 'J. N. Darby', 'John Nelson', 'Darby', '(1800-1882)', 'http://www.mybrethren.org/bios/framjnd.htm', NULL, NULL),
+(108, 'J. N. Grace', 'Grace', NULL, NULL, NULL, NULL, NULL),
+(109, 'J. Newton', 'Newton', 'John', '(1725-1807)', 'http://www.cyberhymnal.org/bio/n/e/w/newton_j.htm', NULL, '2006-07-02 20:50:09'),
+(110, 'J. Pellatt', 'Pellatt', 'Joseph', '(1843 -1913)', 'http://www.mybrethren.org/bios/by00bios.htm#pellatt', NULL, NULL),
+(111, 'J. Revell', 'Revell', NULL, '(d. 1900)', NULL, NULL, NULL),
+(112, 'J. Ryland', 'Ryland', 'John', '(1753-1825)', 'http://www.cyberhymnal.org/bio/r/y/ryland_j.htm', NULL, NULL),
+(113, 'J. Stennett', 'Stennett', 'Joseph', '(1663-1713)', 'http://www.stempublishing.com/hymns/biographies/stennett.html', NULL, NULL),
+(114, 'J. Swain', 'Swain', 'Joseph', '(1761-1796)', 'http://www.cyberhymnal.org/bio/s/w/swain_j.htm', NULL, NULL),
+(115, 'J. T. Ellis', 'Ellis', NULL, NULL, NULL, NULL, NULL),
+(116, 'J. Taylor', 'Taylor', 'James', '(1870-1953)', 'http://www.mybrethren.org/bios/framjt.htm', NULL, NULL),
+(117, 'J. Taylor, 3rd', 'Taylor', 'James, 3rd', NULL, NULL, NULL, NULL),
+(118, 'J. Taylor, Jr.', 'Taylor', 'James, Jr.', NULL, NULL, NULL, NULL),
+(119, 'J. W. Parry', 'Parry', NULL, NULL, NULL, NULL, NULL),
+(120, 'J. Watson', 'Watson', NULL, NULL, NULL, NULL, NULL),
+(121, 'L. G. Milner', 'Milner', NULL, NULL, NULL, NULL, NULL),
+(122, 'L. H. Farrell', 'Farrell', NULL, NULL, NULL, NULL, NULL),
+(123, 'L. H. Railton', 'Railton', NULL, NULL, NULL, NULL, NULL),
+(124, 'L. J. Gilmore', 'Gilmore', NULL, NULL, NULL, NULL, NULL),
+(125, 'M. Cosido', 'Cosido', NULL, NULL, NULL, NULL, NULL),
+(126, 'M. W. Biggs', 'Biggs', 'Malcolm W.', '(1875 -1941)', 'http://www.mybrethren.org/minist00/my26mwba.htm', NULL, NULL),
+(127, 'Miss A. E. Price', 'Price', NULL, '(1838 -1919)', NULL, NULL, NULL),
+(128, 'Miss A. M. Harding', 'Harding', 'Agnes Mary', '(1887-1966)', 'http://www.stempublishing.com/hymns/biographies/harding.html', NULL, NULL),
+(129, 'Miss A. Naesseth', 'Naesseth', NULL, NULL, NULL, NULL, NULL),
+(130, 'Miss A. Ross', 'Ross', NULL, NULL, NULL, NULL, NULL),
+(131, 'Miss A. S. Ormsby', 'Ormsby', NULL, NULL, NULL, NULL, NULL),
+(132, 'Miss A. Taylor', 'Taylor', 'Ann (Mrs Gilbert)', '(1782-1866)', 'http://www.stempublishing.com/hymns/biographies/ataylor.html', NULL, NULL),
+(133, 'Miss C. Elliott', 'Elliott', 'Charlotte', '(1789-1871)', 'http://www.cyberhymnal.org/bio/e/l/elliott_c.htm', NULL, NULL),
+(134, 'Miss C. Thompson', 'Thompson', 'Miss Cenita', '(1822-1909)', 'http://www.stempublishing.com/hymns/biographies/thompson.html', NULL, NULL),
+(135, 'Miss E. C. Shanks', 'Shanks', NULL, NULL, NULL, NULL, NULL),
+(136, 'Miss E. Clewley', 'Clewley', NULL, NULL, NULL, NULL, NULL),
+(137, 'Miss F. J. Elwood', 'Elwood', NULL, NULL, NULL, NULL, NULL),
+(138, 'Miss F. R. Havergal', 'Havergal', 'Frances Ridley', '(1836-1879)', 'http://www.cyberhymnal.org/bio/h/a/v/havergal_fr.htm', NULL, '2006-07-02 20:50:52'),
+(139, 'Miss F. T. Wigram', 'Wigram', 'Fanny Theodora', '(1831-1871)', 'http://www.stempublishing.com/hymns/biographies/ftwigram.html', NULL, NULL),
+(140, 'Miss H. K. Burlingham', 'Burlingham', 'Hannah K.', '(1842-1901)', 'http://www.stempublishing.com/hymns/biographies/burlingham.html', NULL, NULL),
+(141, 'Miss H. M. Raikes', 'Raikes', NULL, NULL, NULL, NULL, NULL),
+(142, 'Miss I. Stevenson', 'Stevenson', NULL, '(1843-1890)', NULL, NULL, NULL),
+(143, 'Miss J. E. Gresswell', 'Gresswell', NULL, NULL, NULL, NULL, NULL),
+(144, 'Miss J. Wickens', 'Wickens', NULL, NULL, NULL, NULL, NULL),
+(145, 'Miss L. Barnett', 'Barnett', NULL, NULL, NULL, NULL, NULL),
+(146, 'Miss M. Bowly', 'Bowly Peters', 'Mary', '(1813-1856)', 'http://www.cyberhymnal.org/bio/p/e/peters_mb.htm', NULL, NULL),
+(147, 'Miss N. Vergette', 'Vergette', NULL, NULL, NULL, NULL, NULL),
+(148, 'Miss S. M. Walker', 'Walker', 'Mary Jane Deck', '(1816-1878)', 'http://www.cyberhymnal.org/bio/w/a/l/walker_mjd.htm', NULL, '2006-07-02 20:51:17'),
+(149, 'Mrs. A. Dent', 'Dent', NULL, NULL, NULL, NULL, NULL),
+(150, 'Mrs. A. M. Fennell', 'Fennell', NULL, NULL, NULL, NULL, NULL),
+(151, 'Mrs. A. M. Hayward', 'Hayward', NULL, NULL, NULL, NULL, NULL),
+(152, 'Mrs. A. R. C. Cousin', 'Cousin', 'Anne Ross Cundell', '(1824-1906)', 'http://www.cyberhymnal.org/bio/c/o/u/cousin_arc.htm', NULL, '2006-07-02 20:51:37'),
+(153, 'Mrs. C. A. Markham', 'Markham', NULL, NULL, NULL, NULL, NULL),
+(154, 'Mrs. D. Pallister', 'Pallister', NULL, NULL, NULL, NULL, NULL),
+(155, 'Mrs. G. Helyar', 'Helyar', 'Gertude', NULL, 'http://www.stempublishing.com/hymns/biographies/helyar.html', NULL, NULL),
+(156, 'Mrs. G. J. Scarlett', 'Scarlett', NULL, NULL, NULL, NULL, NULL),
+(157, 'Mrs. H. A. Berg', 'Berg', NULL, NULL, NULL, NULL, NULL),
+(158, 'Mrs. H. B. Burr', 'Burr', NULL, NULL, NULL, NULL, NULL),
+(159, 'Mrs. J. S. Pigott', 'Pigott', NULL, NULL, NULL, NULL, NULL),
+(160, 'Mrs. K. G. Teiffel', 'Teiffel', NULL, NULL, NULL, NULL, NULL),
+(161, 'Mrs. K. W Sandell-Berg', 'Sandell-Berg', 'Karolina Wilhelmina', ' (1832-1903)', 'http://www.cyberhymnal.org/bio/s/a/n/sandell-berg_kw.htm', NULL, '2006-07-02 20:51:59'),
+(162, 'Mrs. M. Carlsson-Carren', 'Carlsson-Carren', NULL, NULL, NULL, NULL, NULL),
+(163, 'Mrs. P. R. Morford', 'Morford', NULL, NULL, NULL, NULL, NULL),
+(164, 'Mrs. S. A. Haughton', 'Morford', NULL, NULL, NULL, NULL, NULL),
+(165, 'Mrs. S. Hedman', 'Hedman', NULL, NULL, NULL, NULL, NULL),
+(166, 'Mrs. W. T. Petersen', 'Petersen', NULL, NULL, NULL, NULL, NULL),
+(167, 'N. B. Stewart', 'Stewart', NULL, NULL, NULL, NULL, NULL),
+(168, 'N. L. v. Zinzendorf', 'Zinzendorf, von', 'Nikolaus Ludwig', '(1700-1760)', 'http://www.cyberhymnal.org/bio/z/i/zinzendorf_nlv.htm', NULL, '2006-07-02 20:53:20'),
+(169, 'P. Ellis', 'Ellis', NULL, NULL, NULL, NULL, NULL),
+(170, 'P. F. Hiller', 'Hiller', 'Philipp Friedrich', '(1699-1769)', 'http://www.cyberhymnal.org/bio/h/i/hiller_fp.htm', NULL, NULL),
+(171, 'P. G. Blanc', 'Blanc', NULL, NULL, NULL, NULL, NULL),
+(172, 'P. Gerhardt', 'Gerhardt', 'Paul', '(1607-1676)', 'http://www.cyberhymnal.org/bio/g/e/gerhardt_p.htm', NULL, NULL),
+(173, 'P. H. Hardwick', 'Hardwick', NULL, NULL, NULL, NULL, NULL),
+(174, 'P. Lyon', 'Lyon', 'Percy', '(1881 -1966)', 'http://www.mybrethren.org/bios/by00bios.htm#lyon', NULL, NULL),
+(175, 'P. P. Bliss', 'Bliss', 'Philip Paul', '(1838-1876)', 'http://www.cyberhymnal.org/bio/b/l/bliss_pp.htm', NULL, NULL),
+(176, 'P. S. Pugh', 'Pugh', NULL, NULL, NULL, NULL, NULL),
+(177, 'P. van den Berg', 'van den Berg', NULL, NULL, NULL, NULL, NULL),
+(178, 'P. W. Dolton', 'Dolton', NULL, NULL, NULL, NULL, NULL),
+(179, 'R. Arras', 'Arras', NULL, NULL, NULL, NULL, NULL),
+(180, 'R. D. Edwards', 'Edwards', NULL, NULL, NULL, NULL, NULL),
+(181, 'R. G. Fear', 'Fear', NULL, NULL, NULL, NULL, NULL),
+(182, 'R. H. Grace', 'Grace', NULL, NULL, NULL, NULL, NULL),
+(183, 'R. Holden', 'Holden', NULL, NULL, NULL, NULL, NULL),
+(184, 'R. Peart', 'Peart', NULL, NULL, NULL, NULL, NULL),
+(185, 'R. Robinson', 'Robinson', 'Robert', '(1735-1790)', 'http://www.cyberhymnal.org/bio/r/o/b/robinson_r.htm', NULL, '2006-07-02 20:53:51'),
+(186, 'R. Sandeman', 'Sandeman', NULL, NULL, NULL, NULL, NULL),
+(187, 'R. Stott', 'Stott', NULL, NULL, NULL, NULL, NULL),
+(188, 'S. Chareyre', 'Chareyre', NULL, NULL, NULL, NULL, NULL),
+(189, 'S. Davies', 'Davies', 'Samuel', '(1723-1761)', 'http://www.cyberhymnal.org/bio/d/a/davies_s.htm', NULL, NULL),
+(190, 'S. M. Watson', 'Watson', NULL, NULL, NULL, NULL, NULL),
+(191, 'S. McCallum', 'McCallum', 'Stanley', '(1904 - 1987)', 'http://www.mybrethren.org/bios/by00bios.htm#mccallum', NULL, NULL),
+(192, 'S. Medley', 'Medley', 'Samuel', '(1738-1799)', 'http://www.stempublishing.com/hymns/biographies/medley.html', NULL, NULL),
+(193, 'S. W. Gandy', 'Gandy', NULL, '(d. 1851)', NULL, NULL, NULL),
+(194, 'T. E. Purdom', 'Purdom', 'Thomas Edie', '(1852 -1942)', 'http://www.stempublishing.com/hymns/biographies/purdom.html', NULL, NULL),
+(195, 'T. Haweis', 'Haweis', 'Thomas', '(1734-1820)', 'http://www.cyberhymnal.org/bio/h/a/w/haweis_t.htm', NULL, '2006-07-02 20:54:15'),
+(196, 'T. Kelly', 'Kelly', 'Thomas', '(1769-1855)', 'http://www.cyberhymnal.org/bio/k/e/l/kelly_t.htm', NULL, NULL),
+(197, 'T. Porter', 'Porter', NULL, NULL, NULL, NULL, NULL),
+(198, 'T. Rofe', 'Rofe', NULL, NULL, NULL, NULL, NULL),
+(199, 'T. Thorstensen', 'Thorstensen', NULL, NULL, NULL, NULL, NULL),
+(200, 'T. Willey', 'Willey', NULL, NULL, NULL, NULL, NULL),
+(202, 'V. C. Lock', 'Lock', NULL, NULL, NULL, NULL, NULL),
+(203, 'W. B. Harris', 'Harris', NULL, NULL, NULL, NULL, NULL),
+(204, 'W. C. Booth', 'Booth', NULL, NULL, NULL, NULL, NULL),
+(205, 'W. C. Powell', 'Booth', NULL, NULL, NULL, NULL, NULL),
+(206, 'W. Cowper', 'Cowper', 'William', '(1731-1800)', 'http://www.cyberhymnal.org/bio/c/o/w/cowper_w.htm', NULL, '2006-07-02 20:38:36'),
+(207, 'W. F. Lloyd', 'Lloyd', 'William Freeman', '(1791-1853)', 'http://www.cyberhymnal.org/bio/l/l/lloyd_wf.htm', NULL, NULL),
+(208, 'W. H. Trowbridge', 'Trowbridge', NULL, NULL, NULL, NULL, NULL),
+(209, 'W. Lawrence', 'Lawrence', NULL, NULL, NULL, NULL, NULL),
+(210, 'W. Lewis', 'Lawrence', NULL, NULL, NULL, NULL, NULL),
+(211, 'W. M. Brown', 'Brown', NULL, NULL, NULL, NULL, NULL),
+(212, 'W. Meyer', 'Meyer', NULL, NULL, NULL, NULL, NULL),
+(213, 'W. P. Smith', 'Smith', NULL, NULL, NULL, NULL, NULL),
+(214, 'W. R. Mason', 'Mason', NULL, NULL, NULL, NULL, NULL),
+(215, 'W. Trotter', 'Trotter', NULL, '(d. 1865)', NULL, NULL, NULL),
+(9998, 'Unknown', NULL, NULL, NULL, NULL, NULL, NULL),
+(9999, 'Anonymous', NULL, NULL, NULL, NULL, NULL, NULL);
+
 
 -- --------------------------------------------------------
 

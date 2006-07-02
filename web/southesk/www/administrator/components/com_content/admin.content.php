@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: admin.content.php,v 1.62.2.2 2004/10/01 10:16:30 saka Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

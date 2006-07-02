@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: pclerror.lib.php,v 1.2 2004/08/26 05:20:52 rcastley Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 */
 

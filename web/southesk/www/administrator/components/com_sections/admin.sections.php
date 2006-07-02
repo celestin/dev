@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: admin.sections.php,v 1.20 2004/09/17 16:32:00 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

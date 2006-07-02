@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: mod_rssfeed.php,v 1.15 2004/09/19 18:16:59 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

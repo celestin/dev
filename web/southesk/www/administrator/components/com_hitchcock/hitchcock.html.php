@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: hitchcock.html.php,v 1.35 2004/09/26 10:37:23 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

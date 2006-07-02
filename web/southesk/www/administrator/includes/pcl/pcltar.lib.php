@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: pcltar.lib.php,v 1.4 2004/09/22 06:41:22 prazgod Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 */
 

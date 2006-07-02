@@ -6,7 +6,7 @@
  *
  * Hymn Search View
  *
- * $Id: blockbooking.php 37 2006-05-04 22:21:18Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Jul-2006  File added to source control.

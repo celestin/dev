@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: content_archive_section.menu.html.php,v 1.27 2004/09/22 23:31:23 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

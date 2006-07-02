@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: weblink_category_table.menu.php,v 1.1 2004/09/22 07:23:22 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: logout.php,v 1.5 2004/09/01 04:02:38 eddieajau Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

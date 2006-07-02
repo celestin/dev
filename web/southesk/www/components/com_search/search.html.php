@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: search.html.php,v 1.15 2004/09/07 04:30:03 eddieajau Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

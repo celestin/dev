@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: messages.class.php,v 1.7 2004/09/09 08:54:13 rcastley Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

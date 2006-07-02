@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.banners.php,v 1.16 2004/01/13 00:57:16 eddieajau Exp $
+// $Id$
 /**
 * Template Generator admin
 * @package Mambo Open Source

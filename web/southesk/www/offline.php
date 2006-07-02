@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: offline.php,v 1.19 2004/09/26 08:26:59 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

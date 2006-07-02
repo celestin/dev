@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: component_item_link.menu.html.php,v 1.5 2004/09/11 04:50:15 tbroeker Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

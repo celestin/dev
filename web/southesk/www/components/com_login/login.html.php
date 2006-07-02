@@ -1,6 +1,6 @@
 <?php
 /**
-* @version $Id: login.html.php,v 1.11 2004/09/19 09:52:45 stingrey Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 * @copyright (C) 2000 - 2004 Miro International Pty Ltd
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL

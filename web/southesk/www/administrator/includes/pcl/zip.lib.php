@@ -1,13 +1,13 @@
 <?php
 /**
-* @version $Id: zip.lib.php,v 1.2 2004/08/26 05:20:52 rcastley Exp $
+* @version $Id$
 * @package Mambo_4.5.1
 */
 
 /** ensure this file is being included by a parent file */
 defined( '_VALID_MOS' ) or die( 'Direct Access to this location is not allowed.' );
 
-// $Id: zip.lib.php,v 1.2 2004/08/26 05:20:52 rcastley Exp $
+// $Id$
 //
 // The "GNU General Public License" (GPL) is available at
 // http://www.gnu.org/copyleft/gpl.html.

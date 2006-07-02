@@ -1,0 +1,46 @@
+                     -1933617090a:2:{s:6:"output";s:1583:"		<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="contentpane">
+					<tr>
+				<td colspan="2" class="componentheading" width="100%">
+				The News				</td>
+			</tr>
+					<tr>
+			<td width="60%" valign="top" class="contentdescription" colspan="2">
+							<img src="http://www.southesk.com/images/stories/articles.jpg" align="right" hspace="6" alt="articles.jpg" />
+				Select a news topic from the list below, then select a news article to read.			</td>
+		</tr>
+		<tr>
+			<td>
+						</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+					<ul>
+							<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=73&amp;Itemid=2" class="category">
+					Things the kids have said					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=70&amp;Itemid=2" class="category">
+					Christian Contact					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=71&amp;Itemid=2" class="category">
+					Projects					</a>
+											&nbsp;<i>( 9 items )</i>
+											</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=69&amp;Itemid=2" class="category">
+					Gospel Thoughts					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+						</ul>
+					</td>
+		</tr>
+		</table>
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[ Back ]			</a>
+			</div>
+					";s:6:"result";N;}

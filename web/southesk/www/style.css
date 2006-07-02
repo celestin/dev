@@ -1,0 +1,335 @@
+body, p, table, td {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  TEXT-DECORATION: none
+}
+
+td.catText {
+  FONT-SIZE: 8pt;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+td.freeDel {
+  COLOR: #E2003B ;
+  TEXT-ALIGN: CENTER ;
+}
+
+p.phoneNo {
+  FONT-SIZE: 16pt;
+  FONT-WEIGHT: bold
+}
+
+td.sel {
+  COLOR: #BE3E79;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+td.linksite {
+  COLOR: #BE3E79;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: normal;
+}
+
+td.bar {
+  COLOR: #29166F;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: normal;
+}
+
+.titleBand {
+  BACKGROUND-COLOR: #FFF8E4;
+}
+
+.navBg {
+  BACKGROUND-COLOR: #FFEEEE;
+}
+
+td.btitle {
+  COLOR: #FFF0D2;
+  BACKGROUND-COLOR: #cc9900;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  TEXT-ALIGN: center;
+}
+
+td.sub {
+  COLOR: #FFFFFF;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold
+}
+
+td.pageTitle {
+  COLOR: #444444;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold
+}
+
+th.minTitle {
+  COLOR: #D0D7F5;
+  BACKGROUND-COLOR: #042598;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold
+}
+
+h1 {
+  COLOR: #444444;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 12pt;
+  TEXT-DECORATION: none
+}
+h2 {
+  COLOR: #444444;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none
+}
+
+td.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 8pt;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+td.gb {
+  COLOR: #444444;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  FONT-WEIGHT: bold
+}
+
+td.gbt {
+  COLOR: #FFCC66;
+  BACKGROUND-COLOR: #666666;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold ;
+}
+
+td.gbtr {
+  COLOR: #FFCC66;
+  BACKGROUND-COLOR: #666666;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold ;
+  TEXT-ALIGN: right ;
+}
+
+td.anniv {
+  COLOR: #000000;
+  BACKGROUND-COLOR: #EEEEFF;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+}
+
+td.annivRed {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #DD137B;
+}
+
+td.actionBar {
+  background-color: #29166F;
+}
+
+A.action {
+  color: #FFFFFF;
+  text-decoration: none
+  font-weight: bold;
+  font-size: 8pt;
+}
+A.action:visited {
+  COLOR: #FFFFFF;
+}
+A.action:active {
+  COLOR: #FFFFFF;
+}
+A.action:link {
+  COLOR: #FFFFFF;
+}
+A.action:hover {
+  color: #FFBAC8;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+A {
+  COLOR: #D77C00;
+  TEXT-DECORATION: none
+  bgcolor: black ;
+  FONT-WEIGHT: bold
+}
+A:visited {
+  COLOR: #D77C00;
+  FONT-WEIGHT: bold
+}
+
+A:hover {
+  COLOR: #D9BA00;
+  FONT-WEIGHT: bold
+}
+A:active {
+  COLOR: #D77C00;
+  FONT-WEIGHT: bold
+}
+A:link {
+  COLOR: #D77C00;
+  FONT-WEIGHT: bold
+}
+
+A.sub {
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  COLOR: #E7622A;
+  TEXT-DECORATION: none
+  FONT-WEIGHT: bold
+}
+A.sub:visited {
+  COLOR: #FFF0D2;
+  FONT-WEIGHT: bold
+}
+
+A.sub:hover {
+  COLOR: #FCC545;
+  FONT-WEIGHT: bold
+}
+A.sub:active {
+  COLOR: #FFF0D2;
+  FONT-WEIGHT: bold
+}
+A.sub:link {
+  COLOR: #FFF0D2;
+  FONT-WEIGHT: bold
+}
+
+
+
+A.nav {
+  FONT-FAMILY: Tahoma,Helvetica;
+  COLOR: #29166F;
+  TEXT-DECORATION: none;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+A.nav:visited {
+  COLOR: #29166F;
+}
+A.nav:hover {
+  COLOR: #DD137B;
+}
+A.nav:active {
+  COLOR: #29166F;
+}
+A.nav:link {
+  COLOR: #29166F;
+}
+
+p.findlay {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:000000;
+}
+td.caption {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:222200;
+}
+A.findlay,A.findlay:Link,A.findlay:Visited {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:0011aa;
+}
+A.findlay:Hover {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:underline;
+  color:dd1100 ;
+}
+A.ministry,A.ministry:Link,A.ministry:Visited {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:042598;
+}
+A.ministry:Hover {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:D0D7F5 ;
+}
+td.nodeName {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:11px;
+  text-decoration:none;
+  color:0011aa;
+}
+td.bver {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:9px;
+  text-decoration:none;
+  color:1166BB;
+}
+td.lastupd {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:9px;
+  text-decoration:none;
+  color:2277CC;
+}
+td.lastupdm {
+  font-family: verdana,ms sans serif,arial,helvetica;
+  font-size:9px;
+  text-decoration:none;
+  color:D0D7F5;
+}
+td.stats {
+  font-size:10px;
+  color:000000;
+  text-align: right;
+}
+td.pink {
+  background-color:CC0066;
+}
+
+table.sites {
+  BORDER-LEFT:  #000000 2px solid;
+  BORDER-RIGHT: #000000 2px solid;
+  BORDER-TOP:   #000000 2px solid;
+}
+
+tr.site {
+  background-color: #29166F;
+}
+
+td.siteName {
+  color:#FFFFFF;
+  font-weight: bold;
+}
+
+
+td.highlite {
+  font-weight: bold;
+  font-size: 8pt;
+  color:#FFFFFF;
+  background-color:CC0066;
+  BORDER-BOTTOM:#000000 2px solid;
+}

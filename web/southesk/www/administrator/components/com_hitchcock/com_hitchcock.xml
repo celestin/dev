@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>hitchcock</name>
+  <creationDate>16-Oct-2005</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>Hitchcock Proper Names Search Component</description>
+  <files>
+    <filename>hitchcock.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.hitchcock.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.hitchcock.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Hitchcock Proper Names Search</menu>
+    <files>
+      <filename>hitchcock.html.php</filename>
+      <filename>hitchcock.php</filename>
+     </files>
+  </administration>
+</mosinstall>

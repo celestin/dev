@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>min_search</name>
+  <creationDate>14-Dec-2004</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>Ministry Search Component</description>
+  <files>
+    <filename>min_search.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.min_search.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.min_search.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Ministry Search</menu>
+    <files>
+      <filename>min_search.html.php</filename>
+      <filename>min_search.php</filename>
+     </files>
+  </administration>
+</mosinstall>

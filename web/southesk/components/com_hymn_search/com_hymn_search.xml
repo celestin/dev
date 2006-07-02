@@ -1,0 +1,42 @@
+<!-- ------------------------------------------------------ 
+  -- Southesk.com
+  -- Copyright (c) 2006 Frontburner
+  -- Author Craig McKay <craig@frontburner.co.uk>
+  --
+  -- Hymn Search component package
+  --
+  -- $Id$
+  --
+  -- Who  When         Why
+  -- CAM  02-Jul-2006  File created.
+  -- ------------------------------------------------------ !>
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>hymn_search</name>
+  <creationDate>14-Dec-2004</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>1962 Hymn Book Search Component</description>
+  <files>
+    <filename>hymn_search.php</filename>
+    <filename>meter.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.hymn_search.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.hymn_search.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Hymn Search</menu>
+    <files>
+      <filename>hymn_search.html.php</filename>
+      <filename>hymn_search.php</filename>
+     </files>
+  </administration>
+</mosinstall>

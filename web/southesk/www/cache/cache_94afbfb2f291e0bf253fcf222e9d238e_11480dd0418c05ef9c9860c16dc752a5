@@ -1,0 +1,80 @@
+                     -1376783031a:2:{s:6:"output";s:3446:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Panoramic Pictures!								</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=33', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.southesk.com/images/M_images/pdf_button.png" alt="PDF" align="middle" name="image" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;task=view&amp;id=33&amp;Itemid=2&amp;pop=1&amp;page=0', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Print">
+				<img src="http://www.southesk.com/images/M_images/printButton.png" alt="Print" align="middle" name="image" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;task=emailform&amp;id=33', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.southesk.com/images/M_images/emailButton.png" alt="E-mail" align="middle" name="image" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td width="70%" align="left" valign="top" colspan="2">
+			<span class="small">
+			 Written by Craig McKay			</span>
+			&nbsp;&nbsp;
+			</td>
+		</tr>
+					<tr>
+				<td valign="top" colspan="2" class="createdate">
+				Wednesday, 05 April 2006				</td>
+			</tr>
+					<tr>
+			<td valign="top" colspan="2">
+			<p>Finally, after my new manfrotto tripod arrived, I have been able to get all my gear together and produce a panorama!</p>
+
+<p>It's the kitchen...</p>
+<center>
+<APPLET MAYSCRIPT code="PanoViewer.class" archive="PanoViewer.zip" codebase="360dof" name="applet" width="400" height="209">
+<PARAM name="rooms[0]" value="SpheriCylinderRoom" />
+<PARAM name="rooms[0].name" value="Kitchen" />
+<PARAM name="rooms[0].desc" value="Kitchen" />
+<PARAM name="rooms[0].image" value="360dof/kitchen.jpg" />
+<PARAM name="startroom" value="0" />
+<PARAM name="logo.image" value="360dof/defaultImage.gif" />
+</APPLET></center>
+
+<ul>
+<li>Nikon D70</li>
+<li>Remote control (to ensure no shoogle!)</li>
+<li>Sigma 8mm Fisheye</li>
+<li>360dof panoramic head/vr stitching software</li>
+<li>Manfrotto 190 tripod</li>
+</ul>			</td>
+		</tr>
+					<tr>
+				<td colspan="2" align="left" class="modifydate">
+				Last Updated ( Wednesday, 05 April 2006 )
+				</td>
+			</tr>
+					</table>
+				<table align="center" style="margin-top: 25px;">
+		<tr>
+							<th class="pagenav">
+				<a href="index.php?option=com_content&amp;task=view&amp;id=34&amp;Itemid=2">
+				&lt; Prev				</a>
+				</th>
+								<td width="50px">&nbsp;
+
+				</td>
+								<th class="pagenav">
+				<a href="index.php?option=com_content&amp;task=view&amp;id=28&amp;Itemid=2">
+				Next &gt;				</a>
+				</th>
+						</tr>
+		</table>
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[ Back ]			</a>
+			</div>
+			";s:6:"result";N;}

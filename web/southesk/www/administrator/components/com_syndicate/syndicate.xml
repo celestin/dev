@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="4.5.1">
+	<name>Syndicate</name>
+	<author>Mambo Project</author>
+	<copyright>(C) 2000 - 2004 Miro International Pty Ltd</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>admin@mamboserver.com</authorEmail>
+	<authorUrl>www.mamboserver.com</authorUrl>
+	<version>4.5.1</version>
+	<description>This component controls the Syndication settings</description>
+	<params>
+		<param name="cache" type="radio" default="1" label="Cache" description="Cache the feed files">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="cache_time" type="text" size="8" default="3600" label="Cache Time" description="Cache file will refresh every x seconds" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="count" type="text" size="4" default="5" label="# Items" description="Number of Items to syndicate" />
+		<param name="title" type="text" size="40" default="Powered by Mambo 4.5.1" label="Title" description="Syndication Title" />
+		<param name="description" type="textarea" rows="5" cols="30" default="Mambo site syndication" label="Description" description="Syndication Description" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="image_file" type="imagelist" directory="/images/M_images" default="" label="Image" description="Image to be included in feed" />
+		<param name="image_alt" type="text" size="30" default="Powered by Mambo 4.5.1" label="Image Alt" description="Alt text for image" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="limit_text" type="radio" default="1" label="Limit Text" description="Limit the article text to the value indicated below">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="text_length" type="text" size="4" default="20" label="Text Length" description="The word length of the article text - 0 will show no text" />
+	</params>
+</mosinstall>

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>hymn_search</name>
+  <creationDate>12-Oct-2004</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>Hymn Search Component</description>
+  <files>
+    <filename>hymn_search.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.hymn_search.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.hymn_search.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Hymn Search</menu>
+  </administration>
+</mosinstall>

@@ -1,0 +1,30 @@
+<html>
+<head><title>whois</title></head>
+<body>
+
+<form action="http://www.google.com/search" name=f>
+<table cellspacing=0 cellpadding=0 border=1>
+<tr>
+<td><img src="google.gif"></td>
+<td align=center>
+<input type=hidden name=hl value=en>
+<span id=hf>
+</span>
+<input type=hidden name=ie value="UTF-8">
+<input type=hidden name=oe value="UTF-8">
+<input maxLength=256 size=55 name=q value="">
+<br>
+<input type=submit value="Google Search" name=btnG>
+</td>
+</tr>
+</table>
+</form>
+
+
+<form method="get" action="http://reports.internic.net/cgi-bin/whois">
+<input type=text name=whois_nic>
+<input type=hidden name=type value="domain">
+<input type=submit value="Whois">
+</form>
+</body>
+</html>

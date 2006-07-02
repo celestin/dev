@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+	<name>template_gen</name>
+	<creationDate>25/04/2004</creationDate>
+	<author>Sabina Helmgens</author>
+	<copyright>This component is released under the GNU/GPL License</copyright>
+	<authorEmail>sabina@thehorsehost.com</authorEmail>
+	<authorUrl>www.thehorsehost.com</authorUrl>
+	<version>0.2</version>
+	<description>Template Generator for Mambo 4.5.1</description>
+	<installfile>install.template_gen.php</installfile>
+	<uninstallfile>uninstall.template_gen.php</uninstallfile>
+	<administration>
+		<menu>Template Generator</menu>
+		<files>
+			<filename>admin.template_gen.php</filename>
+			<filename>index.php</filename>
+			<filename>ColorEditor.html</filename>
+			<filename>includes/form1.php</filename>
+			<filename>includes/include.php</filename>
+			<filename>includes/previewform.php</filename>
+			<filename>includes/templatedetails.php</filename>
+			<filename>includes/style.php</filename>
+			<filename>includes/formtags.php</filename>
+			<filename>includes/index_html.php</filename>
+			<filename>includes/leftcolumn.php</filename>
+			<filename>includes/javascript.js</filename>
+      	</files>
+		<images>
+			<filename>images/arrow.gif</filename>
+			<filename>images/colors.jpg</filename>
+			<filename>images/blank.gif</filename>
+			<filename>images/cross.gif</filename>
+		</images>
+	</administration>
+</mosinstall>

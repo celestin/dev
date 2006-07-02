@@ -1,0 +1,96 @@
+                       311663332a:2:{s:6:"output";s:5417:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Hymn Search fully working								</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;do_pdf=1&amp;id=34', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.southesk.com/images/M_images/pdf_button.png" alt="PDF" align="middle" name="image" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;task=view&amp;id=34&amp;Itemid=2&amp;pop=1&amp;page=0', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Print">
+				<img src="http://www.southesk.com/images/M_images/printButton.png" alt="Print" align="middle" name="image" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void window.open('http://www.southesk.com/index2.php?option=com_content&amp;task=emailform&amp;id=34', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.southesk.com/images/M_images/emailButton.png" alt="E-mail" align="middle" name="image" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td width="70%" align="left" valign="top" colspan="2">
+			<span class="small">
+			 Written by Craig McKay			</span>
+			&nbsp;&nbsp;
+			</td>
+		</tr>
+					<tr>
+				<td valign="top" colspan="2" class="createdate">
+				Saturday, 01 July 2006				</td>
+			</tr>
+					<tr>
+			<td valign="top" colspan="2">
+			<p>The <a href="http://www.southesk.com/index.php?option=com_hymn_search&Itemid=46">1962 Hymn Book Search</a> has been a little flaky for some time, and missing some functionality, so following some constructive complaints (!) I have fixed it.</p>
+
+<p>All very well and good, you cry, but how on earth does it work?  Again, following emails with pleas for help, I include here a brief description of how to use the Hymn Search.</p>
+
+<h3>Searching</h3>
+<ul>
+<li>If you want to simply view a hymn, and you know its number, type it into the <b>Hymn No.</b> box and press Enter or click Search Hymn (from now I will refer to this as "press Enter").</li>
+<li>Need to search the text of the Hymn?
+<ul>
+<li>Well, type a few words into the <b>Search for</b> box and press Enter</li>
+<li>Want to limit the search results to a particular meter?  Selecting a Meter from the drop-down list will do just that!</li>
+</ul></li>
+<li>Looking for a particular author's hymns?  Enter part of the author's name (e.g. <b>dar</b> for J.N.Darby - initials don't work... yet) in the <b>Author</b> box and press Enter.</li>
+<li>If you simply want to see all the Hymns for a particular meter but don't want to search for text, leave the <b>Search for</b> and <b>Author</b> boxes empty, select a meter and press Enter.</li>
+</ul>
+<h3>Note Bene</h3>
+<ul>
+<li>Selecting a meter and entering an author will not restrict the author's hymns by meter.</li>
+<li>If you enter both <b>Search for</b> and <b>Author</b> the search will only filter for text, not author.</li>
+</ul>
+<h3>Using the Results</h3>
+<ul>
+<li>The search results are returned on the right half of the page.  Clicking on a Hymn No. loads that Hymn on the left half, and retains your search.</li>
+<li>If you have entered an <b>Author</b> and the search returns some authors, you can view view biographies for certain authors if they have a link under their name.  I would like to add more of these - any sources welcomed.</li>
+<li>As a handy shortcut, the author's name at the bottom of each Hymn is link - clicking this clears the <b>Search for</b> box, enters the name into the <b>Author</b> box and refreshes.</li>
+</ul>
+
+<h3>Multi-Language</h3>
+<ul>
+<li>The search is currently available for English and German translations.  The Van Den Bergs kindly gave me the Dutch translation an embarrassing length of time ago and I still haven't added it...  I will get round to this too.</li>
+</ul>
+
+<h3>Other Search "Dimensions"</h3>
+<ul>
+<li>There are two classifications of the 1962 Hymn book, useful for study purposes.
+<ul>
+<li>Alan Davies' version, sent to me recently hard copy in the post (very kindly) by person or persons unknown!</li>
+<li>George Murray's version - hoping to find out more about this one soon...</li></ul>
+</li>
+<li>I have not added these attributes to the Hymns yet (the perennial <b>yet</b>) but plan to do so...</li>
+</ul>
+
+<p>I hope this helps!  Feedback welcomed.</p>			</td>
+		</tr>
+					<tr>
+				<td colspan="2" align="left" class="modifydate">
+				Last Updated ( Saturday, 01 July 2006 )
+				</td>
+			</tr>
+					</table>
+				<table align="center" style="margin-top: 25px;">
+		<tr>
+							<th class="pagenav">
+				<a href="index.php?option=com_content&amp;task=view&amp;id=33&amp;Itemid=2">
+				Next &gt;				</a>
+				</th>
+						</tr>
+		</table>
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[ Back ]			</a>
+			</div>
+			";s:6:"result";N;}

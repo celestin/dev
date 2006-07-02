@@ -1,0 +1,27 @@
+<?xml version="1.0" ?> 
+<rdf:RDF xml:base="http://www.southesk.com/craig/foaf.rdf#" 
+         xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#"           
+         xmlns:airport="http://www.daml.org/2001/10/html/airport-ont#"          
+         xmlns:pos="http://www.w3.org/2003/01/geo/wgs84_pos#"          
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"          
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"          
+         xmlns:vc="http://www.w3.org/2001/vcard-rdf/3.0#"          
+         xmlns:ical="http://www.w3.org/2000/10/swap/pim/ical#"          
+         xmlns:jim="http://jibbering.com/2002/9/time#"          
+         xmlns:iata="http://www.megginson.com/exp/ns/airports#"          
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"          
+         xmlns:wot="http://xmlns.com/wot/0.1/">
+  <foaf:Person>
+  <foaf:name>Craig McKay</foaf:name>
+  <foaf:title>Mr</foaf:title>
+  <foaf:firstName>Craig</foaf:firstName>
+  <foaf:surname>McKay</foaf:surname>
+  <foaf:mbox rdf:resource="mailto:TheMcMoose@hotmail.com"/>
+  <foaf:homepage rdf:resource="http://www.southesk.com/craig"/>
+  <foaf:workplaceHomepage rdf:resource="http://www.monitor-mpower.com/"/>
+  <foaf:workInfoHomepage rdf:resource="Software Engineer"/></foaf:Person>
+  <foaf:nick>McMoose</foaf:nick>
+  <contact:nearestAirport>
+    <airport:Airport rdf:about="http://www.daml.org/cgi-bin/airport?ABZ" /> 
+  </contact:nearestAirport>
+</rdf:RDF>

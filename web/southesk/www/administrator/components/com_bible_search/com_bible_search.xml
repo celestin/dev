@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>bible_search</name>
+  <creationDate>11-Oct-2004</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>Bible Search Component</description>
+  <files>
+    <filename>bible_search.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.bible_search.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.bible_search.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Bible Search</menu>
+    <files>
+      <filename>bible_search.class.php</filename>
+      <filename>bible_search.html.php</filename>
+      <filename>bible_search.php</filename>
+     </files>
+  </administration>
+</mosinstall>

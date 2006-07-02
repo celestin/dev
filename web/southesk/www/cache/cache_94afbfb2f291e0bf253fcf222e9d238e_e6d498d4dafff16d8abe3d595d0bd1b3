@@ -1,0 +1,223 @@
+                     -1825116460a:2:{s:6:"output";s:7231:"		<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="contentpane">
+					<tr>
+				<td colspan="2" class="componentheading" width="100%">
+				Projects				</td>
+			</tr>
+					<tr>
+			<td width="60%" valign="top" class="contentdescription" colspan="2">
+						</td>
+		</tr>
+		<tr>
+			<td>
+					<form action="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=71&amp;Itemid=2" method="post" name="adminForm">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="4">
+				<table>
+				<tr>
+											<td align="right" width="100%" nowrap="nowrap">
+						Filter&nbsp;						<input type="text" name="filter" value="" class="inputbox" onchange="document.adminForm.submit();" />
+						</td>
+												<td align="right" width="100%" nowrap="nowrap">
+						&nbsp;&nbsp;&nbsp;Order&nbsp;
+<select name="order" class="inputbox" size="1"  onchange="document.adminForm.submit();">
+	<option value="date">Date asc</option>
+	<option value="rdate" selected="selected">Date desc</option>
+	<option value="alpha">Title asc</option>
+	<option value="ralpha">Title desc</option>
+	<option value="hits">Hits asc</option>
+	<option value="rhits">Hits desc</option>
+	<option value="author">Author asc</option>
+	<option value="rauthor">Author desc</option>
+	<option value="order">Ordering</option>
+</select>
+						</td>
+												<td align="right" width="100%" nowrap="nowrap">
+						&nbsp;&nbsp;&nbsp;Display #&nbsp;
+<select name="limit" class="inputbox" size="1" onchange="document.location.href='index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=71&amp;Itemid=2&amp;limit=' + this.options[selectedIndex].value + '&amp;limitstart=0';">
+	<option value="5">5</option>
+	<option value="10" selected="selected">10</option>
+	<option value="15">15</option>
+	<option value="20">20</option>
+	<option value="25">25</option>
+	<option value="30">30</option>
+	<option value="50">50</option>
+</select>
+						</td>
+										</tr>
+				</table>
+			</td>
+		</tr>
+					<tr>
+									<td class="sectiontableheader" width="35%">
+					&nbsp;Date					</td>
+										<td class="sectiontableheader" width="45%">
+					Item Title					</td>
+										<td class="sectiontableheader" align="left" width="25%">
+					Author					</td>
+										<td align="center" class="sectiontableheader" width="5%">
+					Hits					</td>
+								</tr>
+						<tr>
+									<td>
+					Saturday, 01 July 2006					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=34&amp;Itemid=2">
+						Hymn Search fully working						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					1					</td>
+						</tr>
+					<tr>
+									<td>
+					Wednesday, 05 April 2006					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=33&amp;Itemid=2">
+						Panoramic Pictures!						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					36					</td>
+						</tr>
+					<tr>
+									<td>
+					Tuesday, 29 November 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=29&amp;Itemid=2">
+						Ministry Search Engine						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					57					</td>
+						</tr>
+					<tr>
+									<td>
+					Thursday, 10 November 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=28&amp;Itemid=2">
+						West Coast Express						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					58					</td>
+						</tr>
+					<tr>
+									<td>
+					Wednesday, 31 August 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=26&amp;Itemid=2">
+						Parkers Retreat						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					104					</td>
+						</tr>
+					<tr>
+									<td>
+					Wednesday, 31 August 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=25&amp;Itemid=2">
+						Aberdeen Wedding Cars						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					114					</td>
+						</tr>
+					<tr>
+									<td>
+					Tuesday, 08 February 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=18&amp;Itemid=2">
+						Olive Tree - NIV on PDA						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					104					</td>
+						</tr>
+					<tr>
+									<td>
+					Monday, 24 January 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=17&amp;Itemid=2">
+						Early Brethren Ministry						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					147					</td>
+						</tr>
+					<tr>
+									<td>
+					Monday, 17 January 2005					</td>
+											<td>
+						<a href="index.php?option=com_content&amp;task=view&amp;id=16&amp;Itemid=2">
+						Hymn Book (1962)						</a>
+												</td>
+											<td align="left">
+					Craig McKay					</td>
+										<td align="center">
+					109					</td>
+						</tr>
+					<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="4" class="sectiontablefooter">
+				<span class="pagenav">&lt;&lt; Start</span> <span class="pagenav">&lt; Prev</span> <span class="pagenav">1</span> <span class="pagenav">Next &gt;</span> <span class="pagenav">End &gt;&gt;</span>				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right">
+				Results 1 - 9 of 9				</td>
+			</tr>
+							</table>
+		<input type="hidden" name="id" value="71" />
+		<input type="hidden" name="sectionid" value="1" />
+		<input type="hidden" name="task" value="category" />
+		<input type="hidden" name="option" value="com_content" />
+		</form>
+					</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+					<ul>
+							<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=73&amp;Itemid=2" class="category">
+					Things the kids have said					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=70&amp;Itemid=2" class="category">
+					Christian Contact					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+								<li>
+				&nbsp;
+				<b>Projects</b>
+				</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=69&amp;Itemid=2" class="category">
+					Gospel Thoughts					</a>
+											&nbsp;<i>( 1 items )</i>
+											</li>
+									<li>
+					<a href="index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=1&amp;Itemid=2" class="category">
+					Latest News					</a>
+											&nbsp;<i>( 4 items )</i>
+						<br />The latest news from the Mambo Team					</li>
+						</ul>
+					</td>
+		</tr>
+		</table>
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[ Back ]			</a>
+			</div>
+					";s:6:"result";N;}

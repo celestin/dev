@@ -465,7 +465,7 @@ function search_hymns($con_id, $option) {
   }
 
   if (!empty($keywords) > 0) {
-    body_search($keywordsList, "Hymns $metdesc containing \"$keywords\"");
+    body_search($keywordsList, "Hymns $metdesc $catdesc containing \"$keywords\"");
   } else if (!empty($author) > 0) {
     author_search($authorList, "Authors like \"$author\" and their hymns");
   } else if ($meter_id != "ALL" || $category_id != "ALL") {

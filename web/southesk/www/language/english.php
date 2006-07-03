@@ -1,18 +1,23 @@
 <?php
-/**
-* @version $Id$
-* @package Mambo_4.5.1
-* @copyright (C) 2000 - 2004 Miro International Pty Ltd
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
-* Mambo is Free Software
-*/
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Southesk.com
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * English Language File
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  03-Jul-2006  Changed _HYMNSEARCH_HYMN to "Search Hymns"
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 /** ensure this file is being included by a parent file */
 defined( '_VALID_MOS' ) or die( 'Direct Access to this location is not allowed.' );
 
 /** common */
 DEFINE('_LANGUAGE','en');
-DEFINE('_NOT_AUTH','You are not authorized to view this resource.');
+DEFINE('_NOT_AUTH','You are not authorised to view this resource.');
 DEFINE('_DO_LOGIN','You need to login.');
 DEFINE('_VALID_AZ09',"Please enter a valid %s.  No spaces, more than %d characters and contain 0-9,a-z,A-Z");
 DEFINE('_CMN_YES','Yes');
@@ -508,7 +513,7 @@ DEFINE('_HYMNSEARCH_TITLE', 'Hymn Search');
 DEFINE('_HYMNSEARCH_NO',    'Hymn No.:');
 DEFINE('_HYMNSEARCH_TEXT',  'Search for:');
 DEFINE('_HYMNSEARCH_AUTHOR','Author:');
-DEFINE('_HYMNSEARCH_HYMN',  'Search Hymn');
+DEFINE('_HYMNSEARCH_HYMN',  'Search Hymns');
 
 /** components/com_bible_search */
 DEFINE('_BIBLESEARCH_TITLE', 'Bible Search');

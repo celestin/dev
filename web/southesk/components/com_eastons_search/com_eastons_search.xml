@@ -1,0 +1,41 @@
+<!-- ------------------------------------------------------
+  -- Southesk.com
+  -- Copyright (c) 2006 Frontburner
+  -- Author Craig McKay <craig@frontburner.co.uk>
+  --
+  -- Easton's Bible Dictionary Search component package
+  --
+  -- $Id: com_hymn_search.xml 176 2006-07-02 17:21:02Z craig $
+  --
+  -- Who  When         Why
+  -- CAM  02-Jul-2006  File created.
+  -- ------------------------------------------------------ !>
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>eastons_search</name>
+  <creationDate>05-Jul-2006</creationDate>
+  <author>Craig McKay</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>craig@southesk.com</authorEmail>
+  <authorUrl>www.southesk.com</authorUrl>
+  <version>1.0</version>
+  <description>Easton's Bible Dictionary Search Component</description>
+  <files>
+    <filename>eastons_search.php</filename>
+  </files>
+
+  <installfile>
+    <filename>install.eastons_search.php</filename>
+  </installfile>
+  <uninstallfile>
+    <filename>uninstall.eastons_search.php</filename>
+  </uninstallfile>
+
+  <administration>
+    <menu>Easton's Search</menu>
+    <files>
+      <filename>eastons_search.html.php</filename>
+      <filename>eastons_search.php</filename>
+     </files>
+  </administration>
+</mosinstall>

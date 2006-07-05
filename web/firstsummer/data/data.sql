@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 31, 2006 at 12:04 AM
+-- Generation Time: Jul 05, 2006 at 01:22 AM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -72,7 +72,7 @@ CREATE TABLE member (
 -- Dumping data for table member
 --
 
-INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2005-11-26 10:20:00');
+INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-07-05 00:05:03');
 
 -- --------------------------------------------------------
 
@@ -146,7 +146,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Photos' AUTO_INCREMENT=187 ;
+) ENGINE=MyISAM COMMENT='Photos' AUTO_INCREMENT=201 ;
 
 --
 -- Dumping data for table photos
@@ -260,7 +260,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (142, 34, 'tyla_kf_03980.jpg', 10, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (143, 34, 'tyla_kf_04000.jpg', 4000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (144, 34, 'tyla_kf_04020.jpg', 4020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(145, 35, 'tyla_la_04040.jpg', 4040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(187, 19, 'tbuild_t24_04820.jpg', 4820, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (146, 35, 'tyla_la_04060.jpg', 4060, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (147, 35, 'tyla_la_04080.jpg', 4080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (148, 35, 'tyla_la_04100.jpg', 4100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -277,7 +277,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (164, 36, 'tyla_oc_04360.jpg', 4360, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (166, 43, 'tyla_op_04400.jpg', 4400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (167, 44, 'tyla_op_04420.jpg', 4420, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(168, 38, 'tyla_pc_04440.jpg', 4440, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(168, 38, 'tyla_pc_04440.jpg', 5082, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (182, 46, 'nida_nta_04760.jpg', 4760, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (170, 18, 'tbuild_t10_04480.jpg', 4480, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (171, 26, 'tbuild_t15_04540.jpg', 4540, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -285,7 +285,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (173, 29, 'tbuild_t20_04560.jpg', 4560, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (174, 30, 'tbuild_t21_04580.jpg', 4580, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (175, 31, 'tbuild_t23_04600.jpg', 4600, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(176, 19, 'tbuild_t24_04620.jpg', 4620, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(192, 39, 'gc_tornio_04920.jpg', 4920, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (177, 20, 'tbuild_pv_04640.jpg', 4640, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (178, 22, 'tbuild_ts_04680.jpg', 4680, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (179, 23, 'tbuild_tt_04700.jpg', 4700, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -294,7 +294,19 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (183, 47, 'nida_ntw_04780.jpg', 4780, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (184, 48, 'nida_nty_04800.jpg', 4800, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (185, 40, 'tyla_uf_05100.jpg', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(186, 34, 'tyla_kf_05000.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(186, 34, 'tyla_kf_05000.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(188, 19, 'tbuild_t24_04840.jpg', 4840, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(189, 19, 'tbuild_t24_04860.jpg', 4860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(190, 19, 'tbuild_t24_04880.jpg', 4880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(191, 19, 'tbuild_t24_04900.jpg', 4900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(193, 39, 'gc_tornio_04940.jpg', 4940, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(194, 39, 'gc_tornio_04960.jpg', 4960, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(195, 39, 'gc_tornio_04980.jpg', 4980, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(196, 39, 'gc_tornio_05000.jpg', 5000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(197, 39, 'gc_tornio_05020.jpg', 5020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(198, 39, 'gc_tornio_05040.jpg', 5040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(199, 38, 'gc_borkum_05060.jpg', 5060, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(200, 38, 'gc_borkum_05080.jpg', 5080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -632,10 +644,10 @@ CREATE TABLE products (
   short_text varchar(255) default NULL,
   long_text mediumtext,
   created_by varchar(50) default NULL,
-  created_on date default NULL,
+  created datetime default NULL,
   created_at time default NULL,
   updated_by varchar(50) default NULL,
-  updated_on date default NULL,
+  updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM COMMENT='Products' AUTO_INCREMENT=49 ;
@@ -644,22 +656,22 @@ CREATE TABLE products (
 -- Dumping data for table products
 --
 
-INSERT INTO products (id, product, prodrange_id, brochure, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (4, 'Nida', 5, 'nida_nida.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO products (id, product, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES (4, 'Nida', 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ‘n‘ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
 (5, 'Nida A', 5, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Nida S', 5, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Nida T', 5, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, 'Nida V', 5, 'nida_nv.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Nida TAS', 5, 'nida_ntas.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(33, 'Cottage with Terrace', 6, 'tyla_ct.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Nida TAS', 5, 'nida_ntas.pdf', 80, 'Nida.', '', NULL, NULL, NULL, NULL, '2006-07-05 00:51:19', NULL),
+(33, 'Cottage with Terrace', 6, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
 (32, 'Cottage', 6, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, '6.9m2', 7, 'kota_k069.pdf', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, '9.9m2', 7, 'kota_k099.pdf', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '9.9m2', 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
 (16, '17.2m2', 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '27m2', 7, 'kota_k288.pdf', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '27m2', 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
 (18, 'T10', 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19, 'Chalet T24', 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Pavillion', 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(21, 'T Garage', 9, 'tbuild_tg.pdf', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'T Garage', 9, 'tbuild_tg.pdf', 0, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:40', NULL),
 (22, 'T Shelter', 4, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (23, 'T Terrace', 4, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (24, 'T12', 4, 'tbuild_t12.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -667,18 +679,18 @@ INSERT INTO products (id, product, prodrange_id, brochure, disporder, short_text
 (26, 'T15', 4, 'tbuild_t15.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (27, 'T17+Terrace', 4, 'tbuild_t17t.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (28, 'T17', 4, 'tbuild_t17.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 'T20', 4, 'tbuild_t20.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 'T20', 4, 'tbuild_t20.pdf', 70, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:35', NULL),
 (30, 'T21', 4, 'tbuild_t21.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (31, 'T23', 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (34, 'Kaiserforst', 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (35, 'Laura', 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (36, 'Sida', 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, 'Kaunas Pavilion', 11, 'tyla_op.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'Kaunas Pavilion', 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
 (38, 'Borkum', 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, 'Superior Wallace', 10, 'tyla_sw.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'Tornio', 10, 'gc_tornio.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 'Ulmenfield', 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (43, 'Vilnius Pavilion', 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(42, 'Nida D', 5, 'nida_na.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 'Nida D', 5, 'nida_na.pdf', 30, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:40', NULL),
 (44, 'Riga Pavilion', 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (45, 'Nida Panorama', 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (46, 'Nida TA', 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),

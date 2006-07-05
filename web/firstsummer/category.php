@@ -37,11 +37,15 @@ $title = "$category_name Category";
 include 'tpl/top.php';
 
 ?>
-<table border=0>
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr>
   <td><h3><? echo $category_name; ?></h3></td>
 </tr><tr>
-  <td><img height=376 src="img/g/f/<? echo $rand_img; ?>"></td>
+  <td align=center align=top>
+    <table border=0 cellspacing=0 cellpadding=0 class=msg1tab><tr><td><div class=msg1>Please select a Range underneath <? echo $category_name; ?> to view specific products.</div></td></tr></table>
+  </td>
+</tr><tr>
+  <td align=center><img height=376 src="img/g/f/<? echo $rand_img; ?>"></td>
 </tr>
 </table>
 <?

@@ -22,6 +22,32 @@ $utab = NULL;          if (!empty($_GET['tab'])) $utab = $_GET['tab'];
 $uproduct = NULL;      if (!empty($_GET['product'])) $uproduct = $_GET['product'];
 $uphoto = NULL;        if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
 
+function output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro) {
+  foreach ($pivots as $pp) {
+    $rowhtm .= "<td align=right>";
+
+    if (empty($pricepriv[$pp])) {
+      $rowhtm .= "-";
+    } else {
+      $rowhtm .= "&pound;" . number_format($pricepriv[$pp], 2, '.', ',');
+    }
+    $rowhtm .= "</td>";
+  }
+
+  foreach ($roptions as $ro) {
+    $rowhtm .= "<td align=right>";
+
+    if (empty($priceprivro[$ro])) {
+      $rowhtm .= "-";
+    } else {
+      $rowhtm .= "&pound;" . number_format($priceprivro[$ro], 2, '.', ',');
+    }
+    $rowhtm .= "</td>";
+  }
+
+  echo "$rowhtm</tr>\n";
+}
+
 if (empty($utab)) $utab = 1;
 $productname = NULL;
 
@@ -40,7 +66,7 @@ if ($row = mysql_fetch_array($sql)) {
 $title = "Product";
 include 'tpl/top.php';
 
-$sql = mysql_query("SELECT id,imgfile FROM photos WHERE product_id='$uproduct' ORDER BY rand() LIMIT 1 ");
+$sql = mysql_query("SELECT id,imgfile FROM photos WHERE product_id='$uproduct' AND default_flag=1 ORDER BY rand() LIMIT 1 ");
 if ($row = mysql_fetch_array($sql)) {
   $rand_img = $row[1];
 }
@@ -133,7 +159,7 @@ if ($row = mysql_fetch_array($sql)) {
           $html .= "</tr><tr>";
           $phcount = 1;
         }
-        $html .= "<td class=\"ti\"><a class=\"itemnav$cls\" href=\"product.php?product=$uproduct&tab=$utab&photo=$id\"><img width=100 height=100 src=\"img/g/t/$imgfile\"></a><!--<br>delete from photos where imgfile='$imgfile'--></td>\n";
+        $html .= "<td class=\"ti\"><a class=\"imgnav$cls\" href=\"product.php?product=$uproduct&tab=$utab&photo=$id\"><img width=100 height=100 src=\"img/g/t/$imgfile\"></a><!--<br>delete from photos where imgfile='$imgfile'--></td>\n";
       }
 
       if ($phcount < $phmax) {
@@ -194,75 +220,122 @@ if ($row = mysql_fetch_array($sql)) {
     </tr>
 <?
       }
+
+  $ropivots = false;
+  $sql = mysql_query("SELECT IFNULL(COUNT(*),0) pivot_count ".
+                     "FROM prodprices c, rangeoptions o ".
+                     "WHERE c.rangeoption_id = o.id ".
+                     "AND c.product_id = $uproduct ".
+                     "and c.rangeoption_id IS NOT NULL ".
+                     "AND c.pivot IS NOT NULL");
+  if ($row = mysql_fetch_array($sql)) {
+    $ropivots = ($row[0] > 0);
+  }
 ?>
   </table></td>
 </tr>
 <tr>
   <td colspan=3><table border=1 cellpadding=4 cellspacing=0>
     <tr>
-      <th>Product</th>
-      <th>Breadth</th>
-      <th>Width</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Product</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Breadth</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Width</th>
 <?
   $pivots = array();
+  $roptions = array();
   $sql = mysql_query("SELECT DISTINCT pivot, CONCAT(pivot, 'mm') pivotmm ".
                      "FROM prodprices ".
-                     "WHERE product_id = $uproduct ".
+                     "WHERE product_id = '$uproduct' ".
                      "AND pivot IS NOT NULL ".
                      "ORDER BY pivot");
   while ($row = mysql_fetch_array($sql)) {
     $pivots[$row[0]] = $row[0];
-?>
-      <th><? echo $row[1]; ?></th>
-<?
+
+    echo "<th";
+    if ($ropivots) echo " rowspan=2";
+    echo ">";
+    if ($row[1] == "0mm") {
+      echo "Price";
+    } else {
+      echo $row[1];
+    }
+    echo "</th>\n";
   }
 
+  $prev_ropt = "";
+  $pivotrow = "";
+  $sql = mysql_query("SELECT DISTINCT o.id,o.rangeoption,c.pivot ".
+                     "FROM prodprices c, rangeoptions o ".
+                     "WHERE c.rangeoption_id = o.id ".
+                     "AND c.product_id = '$uproduct' ".
+                     "ORDER BY o.disporder");
+  while ($row = mysql_fetch_array($sql)) {
+    $roptions[$row[0].":".$row[2]] = $row[0].":".$row[2];
+
+    if ($row[0] != $prev_ropt) {
+      echo "<th";
+      if (empty($row[2]) && $ropivots) {
+        echo " rowspan=2";
+      } else if (!empty($row[2])) {
+        echo " colspan=2";
+      }
+      echo ">$row[1]</th>";
+    }
+
+    if (!empty($row[2])) {
+      $pivotrow .= "<th>$row[2]mm</th>";
+    }
+
+    $prev_ropt = $row[0];
+  }
 ?>
     </tr>
 <?
+  if (!empty($pivotrow)) {
+    echo "<tr>$pivotrow</tr>";
+  }
+
   $prevvarid = -1;
   $rowhtm = "";
   $pricepriv = array();
+  $priceprivro = array();
   $sql = mysql_query("SELECT v.id varid, IFNULL(v.variation, p.product) variation,".
-                      "v.vbreadth,v.vlength,c.pivot,c.price ".
+                      "v.vbreadth,v.vlength,c.pivot,c.price,c.rangeoption_id ".
                       "FROM prodprices c, prodvariations v, products p ".
                       "WHERE c.prodvariation_id = v.id ".
                       "AND c.product_id = p.id ".
-                      "AND c.product_id = $uproduct ".
-                      "AND c.rangeoption_id IS NULL ".
-                      "ORDER BY v.disporder");
+                      "AND c.product_id = '$uproduct' ".
+                      "ORDER BY v.disporder,v.vbreadth,v.vlength");
   while ($row = mysql_fetch_array($sql)) {
     foreach($row AS $key2 => $val) {
       $$key2 = stripslashes($val);
     }
     if ($varid != $prevvarid) {
       if (!empty($rowhtm)) {
-        foreach ($pivots as $pp) {
-          $rowhtm .= "<td align=right>";
-
-          if (empty($pricepriv[$pp])) {
-            $rowhtm .= "-";
-          } else {
-            $rowhtm .= "&pound;" . number_format($pricepriv[$pp], 2, '.', ',');
-          }
-          $rowhtm .= "</td>";
-        }
-
-        echo "$rowhtm</tr>\n";
+        output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro);
       }
 
       $rowhtm = "<tr><td>$variation</td>".
                   "<td align=right>". number_format($vbreadth, 2) ."</td>".
                   "<td align=right>". number_format($vlength, 2) ."</td>";
       $pricepriv = array();
+      $priceprivro = array();
 ?>
   </tr>
 <?
 
     }
-    $pricepriv[$pivot] = $price;
+
+    if (empty($rangeoption_id)) {
+      $pricepriv[$pivot] = $price;
+    } else {
+      $priceprivro[$rangeoption_id.":".$pivot] = $price;
+    }
+
     $prevvarid = $varid;
   }
+
+  output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro);
 
 ?>
   </table></td>

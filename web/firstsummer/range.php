@@ -38,11 +38,15 @@ $title = "$range_name Range";
 include 'tpl/top.php';
 
 ?>
-<table border=0>
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr>
   <td><h3><? echo $category_name; ?> :: <? echo $range_name; ?></h3></td>
 </tr><tr>
-  <td>
+  <td align=center align=top>
+    <table border=0 cellspacing=0 cellpadding=0 class=msg1tab><tr><td><div class=msg1>Please click on an image to view specific <? echo $range_name; ?> information.</div></td></tr></table>
+  </td>
+</tr><tr>
+  <td align=center>
         <table border=0 cellpadding=0 cellspacing=0><tr>
   <?
         $ssql = "SELECT p.id product_id, p.product product_name, h.id photo_id,imgfile ".
@@ -74,8 +78,8 @@ include 'tpl/top.php';
           if (strlen($pname) > 10) {
             $pname = str_replace(" ", "<br>", $product_name);
           }
-
-          $html .= "<td height=170 width=120 align=center valign=top><a class=\"itemnav\" href=\"product.php?product=$product_id&tab=1\"><img width=100 height=100 src=\"img/g/t/$imgfile\"></a><br>$pname</td>\n";
+          $url = "<a class=\"imgnav\" href=\"product.php?product=$product_id&tab=1\">";
+          $html .= "<td height=170 width=120 align=center valign=top>$url<img border=0 width=100 height=100 src=\"img/g/t/$imgfile\"><br>$pname</a></td>\n";
         }
 
         if (fmod($phmax, $phtcount+1) > 0) {

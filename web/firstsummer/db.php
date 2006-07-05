@@ -14,6 +14,8 @@
 
 global $cfg;
 
+$cfg['Site']['Db']['Username'];
+
 $connection = mysql_pconnect($cfg['Site']['Db']['Hostname'],
                              $cfg['Site']['Db']['Username'],
                              $cfg['Site']['Db']['Password'])

@@ -189,6 +189,23 @@ td.cat {
   FONT-WEIGHT: bold;
 }
 
+.msg1 {
+  BACKGROUND-COLOR: #FFFFCC;
+  BORDER:           #FFCC00 1px solid;
+  COLOR:            #993333;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+  PADDING-TOP: 5px;
+  PADDING-BOTTOM: 5px;
+  PADDING-LEFT: 15px;
+  PADDING-RIGHT: 15px;
+}
+
+.msg1tab {
+  PADDING-BOTTOM: 8px;
+}
+
+
 /************ NAVIGATION OPTIONS **************/
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
@@ -233,6 +250,47 @@ A.itemnavsel:hover {
   COLOR: #66CC33;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
+}
+
+.imgnav img {
+  BORDER: 2px solid #669933;
+}
+
+.imgnav:hover img {
+  BORDER: 2px solid #CC3333;
+}
+
+.imgnav:hover {
+  COLOR: #CC3333; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
+.imgnavsel img {
+  BORDER: 2px solid #CC3333;
+}
+
+.imgnavsel:hover img {
+  BORDER: 2px solid #66CC33;
+}
+
+.imgnavsel:hover {
+  COLOR: #66CC33; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
+.highlightit img {
+  BORDER: 2px solid #669933;
+}
+
+.highlightit:hover img {
+  BORDER: 2px solid #CC3333;
+}
+
+.highlightit:hover {
+  COLOR: #CC3333; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
 }
 
 A,A:visited,A:active,A:link,A:visited {

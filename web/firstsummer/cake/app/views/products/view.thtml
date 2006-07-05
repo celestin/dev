@@ -1,0 +1,11 @@
+<div class="title">
+    <h4><?php echo $data['Product']['product']; ?></h4>
+</div>
+<div class="content">
+    <p><small>Created: <?php echo $data['Product']['created']; ?></small></p>
+    <p><?php echo $data['Product']['short_text']; ?></p>
+    <p><?php echo $data['Product']['long_text']; ?></p>
+</div>
+<div>
+  <?php echo $html->link('Edit', '/products/edit/'.$data['Product']['id']) ?>
+</div>

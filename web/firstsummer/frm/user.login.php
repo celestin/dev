@@ -17,7 +17,7 @@ include_once 'Main.php';
 $retry = NULL;        if (!empty($_POST['retry'])) $retry = $_POST['retry'];
 
 if ($retry == NULL && !isset($_REQUEST['logmeout'])) {
-  Msg::error("New user?  Please register.");
+  //Msg::error("New user?  Please register.");
 } else if ($memberid == NULL && !isset($_REQUEST['logmeout'])) {
   Msg::error("Please enter your Username!");
 }
@@ -27,11 +27,11 @@ if ($retry == NULL && !isset($_REQUEST['logmeout'])) {
 <form action="login.php" method="post" name="" id="login">
   <table border="0" align="center" cellpadding="0" cellspacing="8">
     <tr>
-      <td class="fld">Username</td>
+      <td class="fldlbl">Username</td>
       <td colspan=2><input name="memberid" type="text" id="memberid" value="<? echo $memberid; ?>"></td>
     </tr>
     <tr>
-      <td class="fld">Password</td>
+      <td class="fldlbl">Password</td>
       <td colspan=2><input name="password" type="password" id="password"></td>
     </tr>
     <tr>

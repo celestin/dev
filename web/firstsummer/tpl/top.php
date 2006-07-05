@@ -37,6 +37,7 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
   <title><? echo $title;?></title>
   <link href="firstsummer.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
+  <script language="Javascript" src="photo.js"></script>
 </head>
 <body topmargin=0 leftmargin=0>
 <table border=0 cellpadding=0 cellspacing=0 width="800">
@@ -116,9 +117,14 @@ while ($row = mysql_fetch_array($sql)) {
     <td class="topnav" valign=top><table border=0 cellpadding=0 cellspacing=0 width="620" class="topnav2">
       <tr><td><table border=0 cellpadding=3 cellspacing=0 class="topnav3" width="100%">
       <tr>
-      <td><a class="nav" href="index.php">home</a><span class="sep">|</sep>
-      <a class="nav" href="contact.php">contact</a><!--<span class="sep">|</sep>
-      <a class="nav" href="home.php">instructions</a>--></td>
+      <td>
+        <a class="nav" href="index.php">home</a><span class="sep">|</sep>
+        <a class="nav" href="contact.php">contact</a><?
+  if ($loggedin) {
+      ?><span class="sep">|</sep>
+      <a class="nav" href="echo.php">edit</a><?
+  }
+      ?></td>
       </tr>
     </table>
     </td></tr>

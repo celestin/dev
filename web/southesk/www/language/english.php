@@ -530,4 +530,10 @@ DEFINE('_HITCHCOCK_NAME',    'Name');
 DEFINE('_HITCHCOCK_MEANING', 'Meaning');
 DEFINE('_HITCHCOCK_GO',      'Search');
 
+/** components/com_hitchcock */
+DEFINE('_EASTONS_TITLE',     'Eastons Bible Dictionary');
+DEFINE('_EASTONS_WORD',      'Word');
+DEFINE('_EASTONS_MEANING',   'Meaning');
+DEFINE('_EASTONS_GO',        'Search');
+
 ?>

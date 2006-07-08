@@ -47,16 +47,14 @@ namespace KrakatauEPM
     private System.Windows.Forms.TextBox txtProj;
     private System.Windows.Forms.SaveFileDialog sfdProj;
     private System.Windows.Forms.Label label6;
-    private XMLConfig _config = null;
 
-		public NewProject(XMLConfig config): this(config, new Project())
+		public NewProject(): this(new Project())
 		{
 		}
 
-    public NewProject(XMLConfig config, Project p) 
+    public NewProject(Project p) 
     {
       InitializeComponent();
-      this._config = config;
       this.AcceptButton = this.cmdOK;
       this._project = p;
 
@@ -68,7 +66,7 @@ namespace KrakatauEPM
       this.dtpSnapshot.Value = _project.Snapshot;
       this.txtBase.Text = _project.Basedir;
 
-      this.clbFileTypes.Items.AddRange(this._config.Extensions());
+      this.clbFileTypes.Items.AddRange(XmlConfig.Config.Extensions());
       for (int i=0; i<this.clbFileTypes.Items.Count; i++)
       {
         this.clbFileTypes.SetItemChecked(i, true);

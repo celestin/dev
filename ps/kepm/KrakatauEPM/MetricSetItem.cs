@@ -34,9 +34,16 @@ namespace KrakatauEPM
       this.ImageIndex = 0;
     }
 
-    public void RefreshSet() 
+    public new string Text 
     {
-      base.Text = _mset.Name;
+      get
+      {
+        return _mset.Name;
+      }
+      set 
+      {
+        base.Text = _mset.Name = value;
+      }
     }
 
     public MetricSet MetricSet 

@@ -31,7 +31,7 @@ namespace KrakatauEPM
     private const string PROJECT_NEW = "project_new";
     private const string PROJECT_OLD = "project_old";
     private ArrayList _projects = null;
-    public FileInfo InstallDir;
+    private DirectoryInfo _installDir;
 
 		private Prefs()
 		{
@@ -45,6 +45,7 @@ namespace KrakatauEPM
         if (_prefs == null) 
         {
           _prefs = new Prefs();
+          _prefs.GetSettings();
         }
         return _prefs;
       }
@@ -186,11 +187,11 @@ namespace KrakatauEPM
 
       if (key.GetValue("InstallDir") == null) 
       {
-        InstallDir = new FileInfo("C:\\Program Files\\Power Software\\Krakatau EPM\\");
+        SetInstallDir("C:\\Program Files\\Power Software\\Krakatau EPM\\");
       } 
       else 
       {
-        InstallDir = new FileInfo(key.GetValue("InstallDir").ToString());
+        SetInstallDir(key.GetValue("InstallDir").ToString());
       }      
     }
   
@@ -204,11 +205,29 @@ namespace KrakatauEPM
       return key;
     }
 
+    public DirectoryInfo InstallDir
+    {
+      get
+      {
+        return this._installDir;
+      }
+    }
+
+    protected void SetInstallDir(string path) 
+    {
+      string p = path;
+      if (!p.EndsWith("\\")) 
+      {
+        p += "\\";        
+      }
+      this._installDir = new DirectoryInfo(p);
+    }
+
     public string InstallDrive
     {
       get
       {
-        return InstallDir.DirectoryName.Substring(0,2);
+        return InstallDir.FullName.Substring(0,2);
       }
     }
   }

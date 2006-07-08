@@ -61,6 +61,8 @@ namespace KrakatauEPM
     private ProcessCaller processCaller;
     private System.Windows.Forms.RichTextBox rtbResults;
     private System.Windows.Forms.Button cmdParse;
+    private System.Windows.Forms.CheckBox chkMetSet;
+    private System.Windows.Forms.ComboBox cmbMetSet;
 
 
     /// <summary>
@@ -72,7 +74,7 @@ namespace KrakatauEPM
     {
     }
 
-    private void setOption(string option, CheckBox chk, TextBox txt) 
+    private void setOption(string option, CheckBox chk, Control txt) 
     {
       if (option != null) 
       {
@@ -97,7 +99,7 @@ namespace KrakatauEPM
       chkH2.Checked = chkCSV.Checked = chkXML.Checked = chkMyServer.Checked = chkMyUser.Checked = chkMyPwd.Checked = false;
       txtH2.Text =  txtCSV.Text = txtXML.Text = txtMyServer.Text = txtMyUser.Text = txtMyPwd.Text = "";
 
-      Arguments a = newProject.getAnalysisOptions();
+      Arguments a = newProject.GetAnalysisOptions();
       if (a != null) 
       {
         setOption(a["h2"], chkH2, txtH2);
@@ -105,30 +107,39 @@ namespace KrakatauEPM
         setOption(a["x"], chkXML, txtXML);
         setOption(a["s"], chkMyServer, txtMyServer);
         setOption(a["u"], chkMyUser, txtMyUser);
-        setOption(a["p"], chkMyPwd, txtMyPwd);
+        setOption(a["p"], chkMyPwd, txtMyPwd);        
+        setOption(a["m"], chkMetSet, cmbMetSet);        
       }
 
       this.txtH2.Visible = this.cmdH2Browse.Visible = this.chkH2.Checked;
       this.txtCSV.Visible = this.cmdCSVBrowse.Visible = this.chkCSV.Checked;    
       this.txtXML.Visible = this.cmdXMLBrowse.Visible = this.chkXML.Checked;        
+      this.cmbMetSet.Visible = this.chkMetSet.Checked;  
+
       this.txtMyServer.Visible = this.chkMyServer.Checked;            
       this.txtMyUser.Visible = this.chkMyUser.Checked;                
       this.txtMyPwd.Visible = this.chkMyPwd.Checked;
+
+      IEnumerator sets = XmlConfig.Config.GetMetricSets();
+      while (sets.MoveNext()) 
+      {
+        this.cmbMetSet.Items.Add(sets.Current);
+      }
     }
 
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
-    protected override void Dispose( bool disposing )
+    protected override void Dispose(bool disposing)
     {
-      if( disposing )
+      if(disposing)
       {
         if(components != null)
         {
           components.Dispose();
         }
       }
-      base.Dispose( disposing );
+      base.Dispose(disposing);
     }
 
     #region Windows Form Designer generated code
@@ -167,6 +178,8 @@ namespace KrakatauEPM
       this.cmdOK = new System.Windows.Forms.Button();
       this.rtbResults = new System.Windows.Forms.RichTextBox();
       this.cmdParse = new System.Windows.Forms.Button();
+      this.chkMetSet = new System.Windows.Forms.CheckBox();
+      this.cmbMetSet = new System.Windows.Forms.ComboBox();
       this.SuspendLayout();
       // 
       // chkH2
@@ -270,7 +283,7 @@ namespace KrakatauEPM
       // txtMyServer
       // 
       this.txtMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.txtMyServer.Location = new System.Drawing.Point(128, 256);
+      this.txtMyServer.Location = new System.Drawing.Point(128, 280);
       this.txtMyServer.Name = "txtMyServer";
       this.txtMyServer.Size = new System.Drawing.Size(144, 21);
       this.txtMyServer.TabIndex = 11;
@@ -280,7 +293,7 @@ namespace KrakatauEPM
       // chkMyServer
       // 
       this.chkMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.chkMyServer.Location = new System.Drawing.Point(16, 256);
+      this.chkMyServer.Location = new System.Drawing.Point(16, 280);
       this.chkMyServer.Name = "chkMyServer";
       this.chkMyServer.TabIndex = 10;
       this.chkMyServer.Text = "Server";
@@ -289,7 +302,7 @@ namespace KrakatauEPM
       // label2
       // 
       this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.label2.Location = new System.Drawing.Point(8, 232);
+      this.label2.Location = new System.Drawing.Point(8, 256);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(304, 23);
       this.label2.TabIndex = 12;
@@ -298,7 +311,7 @@ namespace KrakatauEPM
       // txtMyUser
       // 
       this.txtMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.txtMyUser.Location = new System.Drawing.Point(128, 288);
+      this.txtMyUser.Location = new System.Drawing.Point(128, 312);
       this.txtMyUser.Name = "txtMyUser";
       this.txtMyUser.Size = new System.Drawing.Size(96, 21);
       this.txtMyUser.TabIndex = 14;
@@ -308,7 +321,7 @@ namespace KrakatauEPM
       // chkMyUser
       // 
       this.chkMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.chkMyUser.Location = new System.Drawing.Point(16, 288);
+      this.chkMyUser.Location = new System.Drawing.Point(16, 312);
       this.chkMyUser.Name = "chkMyUser";
       this.chkMyUser.TabIndex = 13;
       this.chkMyUser.Text = "Username";
@@ -317,7 +330,7 @@ namespace KrakatauEPM
       // txtMyPwd
       // 
       this.txtMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.txtMyPwd.Location = new System.Drawing.Point(128, 320);
+      this.txtMyPwd.Location = new System.Drawing.Point(128, 344);
       this.txtMyPwd.Name = "txtMyPwd";
       this.txtMyPwd.PasswordChar = '*';
       this.txtMyPwd.Size = new System.Drawing.Size(96, 21);
@@ -328,7 +341,7 @@ namespace KrakatauEPM
       // chkMyPwd
       // 
       this.chkMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.chkMyPwd.Location = new System.Drawing.Point(16, 320);
+      this.chkMyPwd.Location = new System.Drawing.Point(16, 344);
       this.chkMyPwd.Name = "chkMyPwd";
       this.chkMyPwd.TabIndex = 15;
       this.chkMyPwd.Text = "Password";
@@ -384,7 +397,7 @@ namespace KrakatauEPM
       // 
       this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.cmdCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.cmdCancel.Location = new System.Drawing.Point(440, 520);
+      this.cmdCancel.Location = new System.Drawing.Point(440, 544);
       this.cmdCancel.Name = "cmdCancel";
       this.cmdCancel.TabIndex = 22;
       this.cmdCancel.Text = "&Cancel";
@@ -393,34 +406,53 @@ namespace KrakatauEPM
       // 
       this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
       this.cmdOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.cmdOK.Location = new System.Drawing.Point(352, 520);
+      this.cmdOK.Location = new System.Drawing.Point(352, 544);
       this.cmdOK.Name = "cmdOK";
       this.cmdOK.TabIndex = 23;
       this.cmdOK.Text = "&OK";
       this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
       // 
-      // cmdParse
-      // 
-      this.cmdParse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.cmdParse.Location = new System.Drawing.Point(440, 320);
-      this.cmdParse.Name = "cmdParse";
-      this.cmdParse.TabIndex = 24;
-      this.cmdParse.Text = "&Parse";
-      this.cmdParse.Click += new System.EventHandler(this.cmdParse_Click);
-      // 
       // rtbResults
       // 
-      this.rtbResults.Location = new System.Drawing.Point(8, 352);
+      this.rtbResults.Location = new System.Drawing.Point(8, 376);
       this.rtbResults.Name = "rtbResults";
       this.rtbResults.Size = new System.Drawing.Size(512, 160);
       this.rtbResults.TabIndex = 25;
       this.rtbResults.Text = "";
       // 
+      // cmdParse
+      // 
+      this.cmdParse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdParse.Location = new System.Drawing.Point(440, 344);
+      this.cmdParse.Name = "cmdParse";
+      this.cmdParse.TabIndex = 24;
+      this.cmdParse.Text = "&Parse";
+      this.cmdParse.Click += new System.EventHandler(this.cmdParse_Click);
+      // 
+      // chkMetSet
+      // 
+      this.chkMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkMetSet.Location = new System.Drawing.Point(16, 224);
+      this.chkMetSet.Name = "chkMetSet";
+      this.chkMetSet.TabIndex = 26;
+      this.chkMetSet.Text = "Metric Set";
+      this.chkMetSet.CheckedChanged += new System.EventHandler(this.chkMetSet_CheckedChanged);
+      // 
+      // cmbMetSet
+      // 
+      this.cmbMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmbMetSet.Location = new System.Drawing.Point(128, 224);
+      this.cmbMetSet.Name = "cmbMetSet";
+      this.cmbMetSet.Size = new System.Drawing.Size(224, 21);
+      this.cmbMetSet.TabIndex = 28;
+      // 
       // Analyse
       // 
       this.AcceptButton = this.cmdParse;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-      this.ClientSize = new System.Drawing.Size(528, 551);
+      this.ClientSize = new System.Drawing.Size(528, 591);
+      this.Controls.Add(this.cmbMetSet);
+      this.Controls.Add(this.chkMetSet);
       this.Controls.Add(this.cmdParse);
       this.Controls.Add(this.rtbResults);
       this.Controls.Add(this.cmdOK);
@@ -472,6 +504,11 @@ namespace KrakatauEPM
     private void chkXML_CheckedChanged(object sender, System.EventArgs e)
     {
       this.txtXML.Visible = this.cmdXMLBrowse.Visible = this.chkXML.Checked;        
+    }
+
+    private void chkMetSet_CheckedChanged(object sender, System.EventArgs e)
+    {
+      this.cmbMetSet.Visible = this.chkMetSet.Checked;  
     }
 
     private void chkMyServer_CheckedChanged(object sender, System.EventArgs e)
@@ -544,7 +581,7 @@ namespace KrakatauEPM
       TextWriter tw = new StreamWriter(_newProject.ProjectAnalysisFile.FullName, false);
       tw.WriteLine("@echo off");
       tw.WriteLine(pf.InstallDrive);
-      tw.WriteLine("cd \"" + pf.InstallDir.DirectoryName + "\"");
+      tw.WriteLine("cd \"" + pf.InstallDir.FullName + "\"");
       
       tw.Write("epm");
 
@@ -568,6 +605,11 @@ namespace KrakatauEPM
       if (this.chkXML.Checked) 
       {
         tw.Write(" -x \"" + this.txtXML.Text + "\"");
+      }
+
+      if (this.chkMetSet.Checked) 
+      {
+        tw.Write(" -m \"" + this.cmbMetSet.Text + "\"");
       }
 
       if (this.chkMyServer.Checked) 

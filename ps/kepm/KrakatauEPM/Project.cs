@@ -166,7 +166,7 @@ namespace KrakatauEPM
       }
     }
 
-    public Arguments getAnalysisOptions() 
+    public Arguments GetAnalysisOptions() 
     {
       this.ProjectAnalysisFile.Refresh();
       if (_ProjectFile == null || !this.ProjectAnalysisFile.Exists) 

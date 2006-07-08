@@ -55,19 +55,19 @@ namespace KrakatauEPM
     private System.Windows.Forms.MenuItem menuItem2;
     private System.Windows.Forms.MenuItem mnuOpen;
     private System.Windows.Forms.MenuItem mnuClose;
-    private XMLConfig _xmlConfig;
     private System.Windows.Forms.StatusBar stbMain;
     private System.Windows.Forms.StatusBarPanel sbpMessage;
     private System.Windows.Forms.StatusBarPanel sbpAnalysisType;
     private System.Windows.Forms.MenuItem mnuMetrics;
     private System.Windows.Forms.MenuItem mnuSets;
+    private System.Windows.Forms.ToolBarButton tlbMetSet;
+    private System.Windows.Forms.ToolBarButton tlbSep2;
     ProjectsView lsvProjects;
 
     public EpmApp()
     {
       InitializeComponent();
-      _xmlConfig = new XMLConfig();
-      _xmlConfig.ParseFile();
+      XmlConfig.Config.ParseFile();
 
       Prefs p = Prefs.Preferences;
       p.GetSettings(lsvProjects);
@@ -82,7 +82,7 @@ namespace KrakatauEPM
       {
         Prefs p = Prefs.Preferences;
         p.SaveSettings(lsvProjects);
-        _xmlConfig.SaveConfig();
+        XmlConfig.Config.SaveConfig();
 
         if (components != null) 
         {
@@ -121,6 +121,8 @@ namespace KrakatauEPM
       this.tlbOpen = new System.Windows.Forms.ToolBarButton();
       this.tlbDel = new System.Windows.Forms.ToolBarButton();
       this.tlbSep1 = new System.Windows.Forms.ToolBarButton();
+      this.tlbMetSet = new System.Windows.Forms.ToolBarButton();
+      this.tlbSep2 = new System.Windows.Forms.ToolBarButton();
       this.tlbOldProj = new System.Windows.Forms.ToolBarButton();
       this.tlbNewProj = new System.Windows.Forms.ToolBarButton();
       this.tlbAnalyse = new System.Windows.Forms.ToolBarButton();
@@ -244,6 +246,8 @@ namespace KrakatauEPM
                                                                                this.tlbOpen,
                                                                                this.tlbDel,
                                                                                this.tlbSep1,
+                                                                               this.tlbMetSet,
+                                                                               this.tlbSep2,
                                                                                this.tlbOldProj,
                                                                                this.tlbNewProj,
                                                                                this.tlbAnalyse});
@@ -275,6 +279,15 @@ namespace KrakatauEPM
       // tlbSep1
       // 
       this.tlbSep1.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+      // 
+      // tlbMetSet
+      // 
+      this.tlbMetSet.ImageIndex = 6;
+      this.tlbMetSet.ToolTipText = "Manage Metric Sets";
+      // 
+      // tlbSep2
+      // 
+      this.tlbSep2.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
       // 
       // tlbOldProj
       // 
@@ -384,7 +397,7 @@ namespace KrakatauEPM
 
     private void FileNew() 
     {
-      NewProject wizard = new NewProject(this._xmlConfig);
+      NewProject wizard = new NewProject();
         
       if (wizard.ShowDialog(this) == DialogResult.OK) 
       {
@@ -488,7 +501,7 @@ namespace KrakatauEPM
 
     private void mnuSets_Click(object sender, System.EventArgs e)
     {
-      FormMetricSets sets = new FormMetricSets(this._xmlConfig.GetMetricSets());
+      FormMetricSets sets = new FormMetricSets(XmlConfig.Config.GetMetricSets());
       sets.ShowDialog(this);
     }
 
@@ -506,6 +519,10 @@ namespace KrakatauEPM
       {
         lsvProjects.closeProject();
       } 
+      else if (e.Button == this.tlbMetSet) 
+      {
+        (new FormMetricSets(XmlConfig.Config.GetMetricSets())).ShowDialog(this);
+      }
       else if (e.Button == tlbOldProj)
       {
         lsvProjects.setAsOld();
@@ -523,7 +540,7 @@ namespace KrakatauEPM
     private void lsvProjects_ItemActivate(object sender, System.EventArgs e)
     {      
       ProjectItem pi = (ProjectItem) this.lsvProjects.FocusedItem;
-      NewProject wizard = new NewProject(this._xmlConfig, pi.Project);
+      NewProject wizard = new NewProject(pi.Project);
       wizard.ShowDialog(this);
       pi.RefreshProject();
     }

@@ -30,8 +30,8 @@ namespace KrakatauEPM
     private System.Windows.Forms.ToolBarButton tbbEdit;
     private System.Windows.Forms.ToolBarButton tbbDel;
     private System.Windows.Forms.Button btnOK;
-    private System.Windows.Forms.ListView livMetricSets;
     private System.Windows.Forms.ImageList imlListView;
+    private System.Windows.Forms.ListView lsvMetricSets;
     private System.ComponentModel.IContainer components;
 
 		public FormMetricSets(IEnumerator metricSets)
@@ -42,23 +42,23 @@ namespace KrakatauEPM
       {
         MetricSet ms = (MetricSet) metricSets.Current;
         ListViewItem lvi = new MetricSetItem(ms);        
-        this.livMetricSets.Items.Add(lvi);
+        this.lsvMetricSets.Items.Add(lvi);
       }
 		}
 
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if(disposing)
 			{
 				if(components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 		}
 
     private void btnOK_Click(object sender, System.EventArgs e)
@@ -68,22 +68,48 @@ namespace KrakatauEPM
 
     private void tlbMetricSets_ButtonClick(object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
     {
-      if (e.Button == tbbNew) 
+      MetricSetItem msi = (MetricSetItem) lsvMetricSets.FocusedItem;
+      if (e.Button == tbbNew)
       {
-        MetricSetItem msi = new MetricSetItem();
-        this.livMetricSets.Items.Add(msi);
-
+        msi = new MetricSetItem();        
         FormMetricSet mset = new FormMetricSet(msi);
-        mset.ShowDialog(this);
+        if (mset.ShowDialog(this) == DialogResult.OK) 
+        {
+          this.lsvMetricSets.Items.Add(msi);
+          XmlConfig.Config.AddMetricSet(msi.MetricSet);
+          XmlConfig.Config.SaveConfig();
+        }
+      }
+      else if (e.Button == tbbEdit)
+      {
+        if (msi != null) 
+        {
+          FormMetricSet mset = new FormMetricSet(msi);
+          mset.ShowDialog(this);
+          XmlConfig.Config.SaveConfig();
+        }
+      }
+      else if (e.Button == tbbDel)
+      {
+        if (msi != null) 
+        {
+          if (MessageBox.Show(this, "Are you sure you wish to delete this Metric Set?", "Really Delete " + msi.Text + "?", 
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+          {
+            XmlConfig.Config.RemoveMetricSet(msi.MetricSet);
+            lsvMetricSets.Items.Remove(msi);
+            XmlConfig.Config.SaveConfig();
+          }
+        }
       }
     }
 
     private void livMetricSets_ItemActivate(object sender, System.EventArgs e)
     {
-      MetricSetItem msi = (MetricSetItem)this.livMetricSets.FocusedItem;
+      MetricSetItem msi = (MetricSetItem) lsvMetricSets.FocusedItem;
       FormMetricSet mset = new FormMetricSet(msi);
       mset.ShowDialog(this);
-      msi.RefreshSet();
+      XmlConfig.Config.SaveConfig();
     }
 
 		#region Windows Form Designer generated code
@@ -95,7 +121,7 @@ namespace KrakatauEPM
 		{
       this.components = new System.ComponentModel.Container();
       System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FormMetricSets));
-      this.livMetricSets = new System.Windows.Forms.ListView();
+      this.lsvMetricSets = new System.Windows.Forms.ListView();
       this.imlListView = new System.Windows.Forms.ImageList(this.components);
       this.tlbMetricSets = new System.Windows.Forms.ToolBar();
       this.tbbNew = new System.Windows.Forms.ToolBarButton();
@@ -105,14 +131,14 @@ namespace KrakatauEPM
       this.btnOK = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
-      // livMetricSets
+      // lsvMetricSets
       // 
-      this.livMetricSets.LargeImageList = this.imlListView;
-      this.livMetricSets.Location = new System.Drawing.Point(8, 56);
-      this.livMetricSets.Name = "livMetricSets";
-      this.livMetricSets.Size = new System.Drawing.Size(456, 320);
-      this.livMetricSets.TabIndex = 0;
-      this.livMetricSets.ItemActivate += new System.EventHandler(this.livMetricSets_ItemActivate);
+      this.lsvMetricSets.LargeImageList = this.imlListView;
+      this.lsvMetricSets.Location = new System.Drawing.Point(8, 56);
+      this.lsvMetricSets.Name = "lsvMetricSets";
+      this.lsvMetricSets.Size = new System.Drawing.Size(456, 320);
+      this.lsvMetricSets.TabIndex = 0;
+      this.lsvMetricSets.ItemActivate += new System.EventHandler(this.livMetricSets_ItemActivate);
       // 
       // imlListView
       // 
@@ -123,14 +149,12 @@ namespace KrakatauEPM
       // 
       // tlbMetricSets
       // 
-      this.tlbMetricSets.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
       this.tlbMetricSets.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
                                                                                      this.tbbNew,
                                                                                      this.tbbEdit,
                                                                                      this.tbbDel});
       this.tlbMetricSets.ButtonSize = new System.Drawing.Size(32, 32);
       this.tlbMetricSets.DropDownArrows = true;
-      this.tlbMetricSets.Enabled = false;
       this.tlbMetricSets.ImageList = this.imlMetricSets;
       this.tlbMetricSets.Location = new System.Drawing.Point(0, 0);
       this.tlbMetricSets.Name = "tlbMetricSets";
@@ -177,7 +201,7 @@ namespace KrakatauEPM
       this.ControlBox = false;
       this.Controls.Add(this.btnOK);
       this.Controls.Add(this.tlbMetricSets);
-      this.Controls.Add(this.livMetricSets);
+      this.Controls.Add(this.lsvMetricSets);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;

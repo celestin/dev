@@ -21,16 +21,17 @@ using System.Collections;
 namespace KrakatauEPM
 {
 	/// <summary>
-	/// Summary description for XMLConfig.
+	/// Summary description for XmlConfig.
 	/// </summary>
-  public class XMLConfig
+  public class XmlConfig
   {
+    private static XmlConfig _xmlConfig = null;
     private Hashtable _config;
     private SortedList _list;
     private XmlDocument _doc;
     private Hashtable _sets;
 
-    public XMLConfig()
+    private XmlConfig()
     {
       _config = new Hashtable();
       _list = new SortedList();
@@ -38,16 +39,28 @@ namespace KrakatauEPM
       _sets = new Hashtable();
     }
 
+    public static XmlConfig Config
+    {
+      get
+      {
+        if (_xmlConfig == null) 
+        {
+          _xmlConfig = new XmlConfig();
+        }
+        return _xmlConfig;
+      }
+    }
+
     public void ParseFile()
     {
       XmlTextReader txtreader = null;
       XmlValidatingReader reader = null;
-      IEnumerator el, ef, ee = null;     
+      IEnumerator el, ef, ee = null;
 
       try
       {  
         // Load the reader with the data file and ignore all whitespace nodes.
-        txtreader = new XmlTextReader("epm.xml");
+        txtreader = new XmlTextReader(Prefs.Preferences.InstallDir.FullName + "epm.xml");
         txtreader.WhitespaceHandling = WhitespaceHandling.None;
 
         // Implement the validating reader over the text reader. 
@@ -122,7 +135,7 @@ namespace KrakatauEPM
                 if (a != null && !"".Equals(a.Value)) 
                 {
                   MetricSet ms = new MetricSet(a.Value);
-                  _sets[a.Value] = ms;
+                  _sets.Add(ms.Name, ms);
                   ee = ftype.ChildNodes.GetEnumerator();
                   while (ee.MoveNext()) 
                   {
@@ -160,26 +173,28 @@ namespace KrakatauEPM
       }
     }
 
-    private void AppendMetricSets() 
+    private XmlDocument AppendMetricSets() 
     {
       XmlNode setsNode=null;
       XmlNode setNode=null;
       XmlNode metNode=null;
       XmlAttribute setName, metId, metBound;
+      XmlDocument upd = (XmlDocument) _doc.Clone();
+
       if (_sets.Count > 0) 
       {
-        setsNode = _doc.CreateElement("sets");
-        _doc.DocumentElement.AppendChild(setsNode);
-      }
+        setsNode = upd.CreateElement("sets");
+        upd.DocumentElement.AppendChild(setsNode);
+      }    
 
-      if (setsNode == null) return;
+      if (setsNode == null) return null;
 
       IEnumerator e = _sets.Values.GetEnumerator();
       while (e.MoveNext()) 
       {
         MetricSet ms = (MetricSet) e.Current;
-        setNode = _doc.CreateElement("set");
-        setName = _doc.CreateAttribute("name");
+        setNode = upd.CreateElement("set");
+        setName = upd.CreateAttribute("name");
         setName.Value = ms.Name;
         setNode.Attributes.Append(setName);
 
@@ -187,21 +202,21 @@ namespace KrakatauEPM
         while (ed.MoveNext()) 
         {
           MetricDef md = (MetricDef) ed.Current;
-          metNode = _doc.CreateElement("met");
-          metId = _doc.CreateAttribute("id");
+          metNode = upd.CreateElement("met");
+          metId = upd.CreateAttribute("id");
           metId.Value = md.Id.ToString();
           metNode.Attributes.Append(metId);
 
           if (md.LowerBound) 
           {
-            metBound = _doc.CreateAttribute("lower");
+            metBound = upd.CreateAttribute("lower");
             metBound.Value = md.LowerValue.ToString();
             metNode.Attributes.Append(metBound);
           }
 
           if (md.UpperBound) 
           {
-            metBound = _doc.CreateAttribute("upper");
+            metBound = upd.CreateAttribute("upper");
             metBound.Value = md.UpperValue.ToString();
             metNode.Attributes.Append(metBound);
           }
@@ -211,22 +226,25 @@ namespace KrakatauEPM
 
         setsNode.AppendChild(setNode);
       }
+
+      return upd;
     }
 
     public void SaveConfig()
     {
-      AppendMetricSets();
-
       XmlTextWriter txtwriter = null;
       TextWriter tw = null;
+      XmlDocument upd = AppendMetricSets();
+      if (upd == null) return;
+
       try 
       {
-        tw = new StreamWriter("epm.xml", false);
+        tw = new StreamWriter(Prefs.Preferences.InstallDir.FullName + "epm.xml", false);
         txtwriter = new XmlTextWriter(tw);
         txtwriter.Formatting = Formatting.Indented;
-        if (_doc != null) 
+        if (upd != null) 
         {
-          _doc.Save(txtwriter);
+          upd.Save(txtwriter);
         }
       }
       finally
@@ -250,6 +268,21 @@ namespace KrakatauEPM
     public IEnumerator GetMetricSets()
     {
       return _sets.Values.GetEnumerator();
+    }
+
+    public void AddMetricSet(MetricSet ms) 
+    {
+      _sets.Add(ms.Name, ms);
+    }
+
+    public void RemoveMetricSet(MetricSet ms) 
+    {
+      _sets.Remove(ms.Name);      
+    }
+
+    public MetricSet GetMetricSet(string name) 
+    {
+      return (MetricSet) _sets[name];
     }
   }
 }

@@ -45,6 +45,7 @@ namespace KrakatauEPM
     protected SortedList _mets2;
     protected int _tabIndex;
     protected MetricSetItem _msi;
+    private System.Windows.Forms.StatusBar stbMsg;
     /// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -66,15 +67,17 @@ namespace KrakatauEPM
       if (newObj is CheckBox) 
       {
         newObj.Text = refObj.Text;
-        if (bold) 
-        {
-          newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-        }
-        else 
-        {
-          newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-        }
       }
+
+      if (bold)
+      {
+        newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      }
+      else 
+      {
+        newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      }
+
       grp.Controls.Add(newObj);
     }
 
@@ -100,6 +103,7 @@ namespace KrakatauEPM
       SetLocation(grp, txtRefUpper, txtUpper, false);
       chkMet.Text = name;
 
+      MetricDef md = new MetricDef(id, chkMet, chkLower, txtLower, chkUpper, txtUpper, this._msi.MetricSet);
       f = new Hashtable();
       f["id"] = id;
       f["name"] = name;
@@ -108,6 +112,7 @@ namespace KrakatauEPM
       f["txtLower"] = txtLower;
       f["chkUpper"] = chkUpper;
       f["txtUpper"] = txtUpper;
+      f["MetricDef"] = md;
       m.Add(id, f);
     }
 
@@ -119,24 +124,28 @@ namespace KrakatauEPM
       _mets1 = new SortedList();
       _mets2 = new SortedList();
 
+      MetricDef md = new MetricDef(100, this.chkMet1, this.chkLower1, this.txtLower1, this.chkUpper1, this.txtUpper1, this._msi.MetricSet);
       f = new Hashtable();
-      f["id"] = 100;
+      f["id"] = md.Id;
       f["name"] = "LOC";
       f["chkMet"] = this.chkMet1;
       f["chkLower"] = this.chkLower1;
       f["txtLower"] = this.txtLower1;
       f["chkUpper"] = this.chkUpper1;
-      f["txtUpper"] = this.txtUpper1;
+      f["txtUpper"] = this.txtUpper1;   
+      f["MetricDef"] = md;
       _mets1.Add(f["id"], f);
 
+      md = new MetricDef(119, this.chkMet2, this.chkLower2, this.txtLower2, this.chkUpper2, this.txtUpper2, this._msi.MetricSet);
       f = new Hashtable();
-      f["id"] = 119;
+      f["id"] = md.Id;
       f["name"] = "CHG_SLOC";
       f["chkMet"] = this.chkMet2;
       f["chkLower"] = this.chkLower2;
       f["txtLower"] = this.txtLower2;
       f["chkUpper"] = this.chkUpper2;
       f["txtUpper"] = this.txtUpper2;
+      f["MetricDef"] = md;
       _mets2.Add(f["id"], f);
       
       AddMetric(_mets1, grpFileMet, 101, "SLOC");
@@ -207,7 +216,7 @@ namespace KrakatauEPM
       if (grp == this.grpFileMet) 
       {
         this.Size = new Size(this.Size.Width, this.Size.Height + shift);
-        shift = (grp.Size.Height + winsize) - (this.btnOK.Size.Height/2);
+        shift = (grp.Size.Height + winsize) - (this.btnOK.Size.Height);
         this.btnOK.Location = new Point(this.btnOK.Location.X, shift);
         this.btnCancel.Location = new Point(this.btnCancel.Location.X, shift);
       }
@@ -228,12 +237,29 @@ namespace KrakatauEPM
 			base.Dispose( disposing );
 		}
 
-    private void btnOK_Click(object sender, System.EventArgs e)
+    private void AppendMetricDefs(SortedList mets) 
     {
-      //this._msi.MetricSet.Name = this.txtName.Text;
-      //this._msi.RefreshSet();
+      MetricSet ms = this._msi.MetricSet;
+      IEnumerator defs = mets.Values.GetEnumerator();
+      Hashtable f;      
+      while (defs.MoveNext()) 
+      {
+        f = (Hashtable) defs.Current;
+        MetricDef md = (MetricDef) f["MetricDef"];
+        if (md != null && md.Active) 
+        {
+          ms.Add(md);
+        }
+      }
     }
 
+    private void btnOK_Click(object sender, System.EventArgs e)
+    {
+      this._msi.Text = this.txtName.Text;      
+      this._msi.MetricSet.Clear();
+      AppendMetricDefs(this._mets1);
+      AppendMetricDefs(this._mets2);
+    }
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -259,6 +285,7 @@ namespace KrakatauEPM
       this.chkMet1 = new System.Windows.Forms.CheckBox();
       this.chkUpper1 = new System.Windows.Forms.CheckBox();
       this.txtUpper1 = new System.Windows.Forms.TextBox();
+      this.stbMsg = new System.Windows.Forms.StatusBar();
       this.grpChgMet.SuspendLayout();
       this.grpFileMet.SuspendLayout();
       this.SuspendLayout();
@@ -266,6 +293,7 @@ namespace KrakatauEPM
       // btnOK
       // 
       this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.btnOK.Enabled = false;
       this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.btnOK.Location = new System.Drawing.Point(632, 120);
       this.btnOK.Name = "btnOK";
@@ -292,6 +320,8 @@ namespace KrakatauEPM
       this.txtName.Size = new System.Drawing.Size(152, 21);
       this.txtName.TabIndex = 0;
       this.txtName.Text = "";
+      this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+      this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
       // 
       // grpChgMet
       // 
@@ -422,12 +452,21 @@ namespace KrakatauEPM
       this.txtUpper1.TabIndex = 5;
       this.txtUpper1.Text = "";
       // 
+      // stbMsg
+      // 
+      this.stbMsg.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.stbMsg.Location = new System.Drawing.Point(0, 153);
+      this.stbMsg.Name = "stbMsg";
+      this.stbMsg.Size = new System.Drawing.Size(842, 22);
+      this.stbMsg.TabIndex = 13;
+      // 
       // FormMetricSet
       // 
       this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-      this.ClientSize = new System.Drawing.Size(842, 159);
+      this.ClientSize = new System.Drawing.Size(842, 175);
       this.ControlBox = false;
+      this.Controls.Add(this.stbMsg);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.txtName);
       this.Controls.Add(this.btnCancel);
@@ -442,11 +481,47 @@ namespace KrakatauEPM
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Metric Set";
+      this.Closing += new System.ComponentModel.CancelEventHandler(this.FormMetricSet_Closing);
       this.grpChgMet.ResumeLayout(false);
       this.grpFileMet.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
 		#endregion
+
+    private void txtName_TextChanged(object sender, System.EventArgs e)
+    {
+      if (txtName.Text.IndexOf(" ")>0) 
+      {
+        stbMsg.Text = "No spaces in Metric Set names, please... they will be removed.";
+      }
+      else 
+      {
+        stbMsg.Text = "";
+      }
+      
+      btnOK.Enabled = false;
+      if (txtName.Text.Length>0) 
+      {
+        btnOK.Enabled = true;
+      }
+    }
+
+    private void txtName_Leave(object sender, System.EventArgs e)
+    {
+      txtName.Text = txtName.Text.Replace(" ", "");
+      stbMsg.Text = "";
+    }
+
+    private void FormMetricSet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      MetricSet ms = XmlConfig.Config.GetMetricSet(txtName.Text);
+      if (ms != null && ms != this._msi.MetricSet) 
+      {
+        btnOK.Enabled = false;
+        stbMsg.Text = "The name you have entered already exists - please specify another.";        
+        e.Cancel = true;
+      }
+    }
 	}
 }

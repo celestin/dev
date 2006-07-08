@@ -35,10 +35,25 @@ namespace KrakatauEPM
       this._defs[d.Id] = d;
     }
 
+    public MetricDef Get(int id) 
+    {
+      return (MetricDef) _defs[id];
+    }
+
     public IEnumerator GetEnumerator() 
     {
       return this._defs.Values.GetEnumerator();
     }   
+
+    public void Clear() 
+    {
+      this._defs.Clear();
+    }
+
+    public override string ToString() 
+    {
+      return this._name;
+    }
    
     public string Name 
     {

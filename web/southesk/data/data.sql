@@ -10,9 +10,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2006 at 11:08 PM
--- Server version: 4.1.11
--- PHP Version: 4.4.1
+-- Generation Time: Jul 09, 2006 at 12:19 AM
+-- Server version: 4.1.16
+-- PHP Version: 5.1.1
 --
 -- Database: `southesk_com_-_cms`
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `authors` (
   `created` datetime default NULL,
   `modified` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10000 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=10000 ;
 
 --
 -- Dumping data for table `authors`
@@ -261,7 +261,7 @@ CREATE TABLE `easton_lex` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(200) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB COMMENT='Easton''s Words' AUTO_INCREMENT=3965 ;
+) ENGINE=InnoDB  COMMENT='Easton''s Words' AUTO_INCREMENT=3965 ;
 
 --
 -- Dumping data for table `easton_lex`
@@ -4243,7 +4243,7 @@ CREATE TABLE `easton_lines` (
   `para` int(10) unsigned NOT NULL default '0',
   `line` text NOT NULL,
   PRIMARY KEY  (`lex_id`,`para`)
-) ENGINE=InnoDB COMMENT='Easton''s Lines';
+) ENGINE=InnoDB  COMMENT='Easton''s Lines';
 
 --
 -- Dumping data for table `easton_lines`
@@ -11693,7 +11693,7 @@ CREATE TABLE `hymn` (
   `meter_id` int(11) default NULL,
   `author_id` int(10) NOT NULL default '0',
   PRIMARY KEY  (`hymn_no`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `hymn`
@@ -12166,7 +12166,7 @@ CREATE TABLE `hymn_categories` (
   `hymn_no` int(10) unsigned NOT NULL default '0',
   `category_id` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`hymn_no`,`category_id`)
-) ENGINE=InnoDB COMMENT='Hymn Categories';
+) ENGINE=InnoDB  COMMENT='Hymn Categories';
 
 --
 -- Dumping data for table `hymn_categories`
@@ -12729,7 +12729,7 @@ CREATE TABLE `hymn_de` (
   `meter_id` int(11) default NULL,
   `author_id` int(10) NOT NULL default '0',
   PRIMARY KEY  (`hymn_no`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `hymn_de`
@@ -13205,7 +13205,7 @@ CREATE TABLE `hymn_line` (
   `line_text` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `hymn_line`
@@ -21834,7 +21834,7 @@ CREATE TABLE `hymn_line_de` (
   `line_text` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `hymn_line_de`
@@ -30565,7 +30565,7 @@ CREATE TABLE `hymn_meter` (
   `chorus` varchar(50) default NULL,
   `disp_order` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM COMMENT='Hymn Meters' AUTO_INCREMENT=132 ;
+) ENGINE=MyISAM  COMMENT='Hymn Meters' AUTO_INCREMENT=132 ;
 
 --
 -- Dumping data for table `hymn_meter`
@@ -30693,7 +30693,7 @@ CREATE TABLE `hymn_scheme_categories` (
   `scheme_id` int(10) unsigned NOT NULL default '0',
   `disp_order` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB COMMENT='Hymn Scheme Categories' AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  COMMENT='Hymn Scheme Categories' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `hymn_scheme_categories`
@@ -30725,7 +30725,7 @@ CREATE TABLE `hymn_schemes` (
   `code` char(3) NOT NULL default '',
   `name` varchar(100) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB COMMENT='Hymn Schemes' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  COMMENT='Hymn Schemes' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `hymn_schemes`
@@ -30745,7 +30745,7 @@ CREATE TABLE `lex` (
   `defn` varchar(50) default NULL,
   `link` varchar(50) default NULL,
   PRIMARY KEY  (`word`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `lex`
@@ -33517,7 +33517,7 @@ CREATE TABLE `mos_banner` (
   `custombannercode` text,
   PRIMARY KEY  (`bid`),
   KEY `viewbanner` (`showBanner`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_banner`
@@ -33540,7 +33540,7 @@ CREATE TABLE `mos_bannerclient` (
   `checked_out_time` time default NULL,
   `editor` varchar(50) default NULL,
   PRIMARY KEY  (`cid`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_bannerclient`
@@ -33564,7 +33564,7 @@ CREATE TABLE `mos_bannerfinish` (
   `datestart` datetime default NULL,
   `dateend` datetime default NULL,
   PRIMARY KEY  (`bid`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_bannerfinish`
@@ -33599,7 +33599,7 @@ CREATE TABLE `mos_categories` (
   KEY `idx_section` (`section`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`)
-) ENGINE=MyISAM AUTO_INCREMENT=74 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `mos_categories`
@@ -33636,7 +33636,7 @@ CREATE TABLE `mos_components` (
   `iscore` tinyint(4) NOT NULL default '0',
   `params` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `mos_components`
@@ -33697,7 +33697,7 @@ CREATE TABLE `mos_contact_details` (
   `catid` int(11) NOT NULL default '0',
   `access` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mos_contact_details`
@@ -33747,7 +33747,7 @@ CREATE TABLE `mos_content` (
   KEY `idx_state` (`state`),
   KEY `idx_catid` (`catid`),
   KEY `idx_mask` (`mask`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `mos_content`
@@ -33792,7 +33792,7 @@ CREATE TABLE `mos_content_frontpage` (
   `content_id` int(11) NOT NULL default '0',
   `ordering` int(11) NOT NULL default '0',
   PRIMARY KEY  (`content_id`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_content_frontpage`
@@ -33818,7 +33818,7 @@ CREATE TABLE `mos_content_rating` (
   `rating_count` int(11) unsigned NOT NULL default '0',
   `lastip` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`content_id`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_content_rating`
@@ -33843,7 +33843,7 @@ CREATE TABLE `mos_core_acl_aro` (
   UNIQUE KEY `mos_gacl_section_value_value_aro` (`section_value`,`value`),
   KEY `hidden_aro` (`hidden`),
   KEY `mos_gacl_hidden_aro` (`hidden`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mos_core_acl_aro`
@@ -33868,7 +33868,7 @@ CREATE TABLE `mos_core_acl_aro_groups` (
   KEY `parent_id_aro_groups` (`parent_id`),
   KEY `mos_gacl_parent_id_aro_groups` (`parent_id`),
   KEY `mos_gacl_lft_rgt_aro_groups` (`lft`,`rgt`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `mos_core_acl_aro_groups`
@@ -33903,7 +33903,7 @@ CREATE TABLE `mos_core_acl_aro_sections` (
   UNIQUE KEY `mos_gacl_value_aro_sections` (`value`),
   KEY `hidden_aro_sections` (`hidden`),
   KEY `mos_gacl_hidden_aro_sections` (`hidden`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `mos_core_acl_aro_sections`
@@ -33922,7 +33922,7 @@ CREATE TABLE `mos_core_acl_groups_aro_map` (
   `section_value` varchar(240) NOT NULL default '',
   `aro_id` int(11) NOT NULL default '0',
   UNIQUE KEY `group_id_aro_id_groups_aro_map` (`group_id`,`section_value`,`aro_id`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_core_acl_groups_aro_map`
@@ -33942,7 +33942,7 @@ CREATE TABLE `mos_core_log_items` (
   `item_table` varchar(50) NOT NULL default '',
   `item_id` int(11) unsigned NOT NULL default '0',
   `hits` int(11) unsigned NOT NULL default '0'
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_core_log_items`
@@ -33958,7 +33958,7 @@ CREATE TABLE `mos_core_log_items` (
 CREATE TABLE `mos_core_log_searches` (
   `search_term` varchar(128) NOT NULL default '',
   `hits` int(11) unsigned NOT NULL default '0'
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_core_log_searches`
@@ -33975,7 +33975,7 @@ CREATE TABLE `mos_groups` (
   `id` tinyint(3) unsigned NOT NULL default '0',
   `name` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_groups`
@@ -34006,7 +34006,7 @@ CREATE TABLE `mos_mambots` (
   `params` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `idx_folder` (`published`,`client_id`,`access`,`folder`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `mos_mambots`
@@ -34053,7 +34053,7 @@ CREATE TABLE `mos_menu` (
   PRIMARY KEY  (`id`),
   KEY `componentid` (`componentid`,`menutype`,`published`,`access`),
   KEY `menutype` (`menutype`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `mos_menu`
@@ -34113,7 +34113,7 @@ CREATE TABLE `mos_messages` (
   `subject` varchar(230) NOT NULL default '',
   `message` text NOT NULL,
   PRIMARY KEY  (`message_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `mos_messages`
@@ -34132,7 +34132,7 @@ CREATE TABLE `mos_messages_cfg` (
   `cfg_name` varchar(100) NOT NULL default '',
   `cfg_value` varchar(255) NOT NULL default '',
   UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_messages_cfg`
@@ -34164,7 +34164,7 @@ CREATE TABLE `mos_modules` (
   PRIMARY KEY  (`id`),
   KEY `published` (`published`,`access`),
   KEY `newsfeeds` (`module`,`published`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `mos_modules`
@@ -34212,7 +34212,7 @@ CREATE TABLE `mos_modules_menu` (
   `moduleid` int(11) NOT NULL default '0',
   `menuid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`moduleid`,`menuid`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_modules_menu`
@@ -34262,7 +34262,7 @@ CREATE TABLE `mos_newsfeeds` (
   `ordering` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `published` (`published`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `mos_newsfeeds`
@@ -34282,7 +34282,7 @@ CREATE TABLE `mos_poll_data` (
   `hits` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `pollid` (`pollid`,`text`(1))
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_poll_data`
@@ -34302,7 +34302,7 @@ CREATE TABLE `mos_poll_date` (
   `poll_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `poll_id` (`poll_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_poll_date`
@@ -34319,7 +34319,7 @@ CREATE TABLE `mos_poll_menu` (
   `pollid` int(11) NOT NULL default '0',
   `menuid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`pollid`,`menuid`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_poll_menu`
@@ -34342,7 +34342,7 @@ CREATE TABLE `mos_polls` (
   `access` int(11) NOT NULL default '0',
   `lag` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `mos_polls`
@@ -34372,7 +34372,7 @@ CREATE TABLE `mos_sections` (
   `params` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `idx_scope` (`scope`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mos_sections`
@@ -34397,14 +34397,13 @@ CREATE TABLE `mos_session` (
   `gid` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`),
   KEY `whosonline` (`guest`,`usertype`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_session`
 --
 
-INSERT INTO `mos_session` (`username`, `time`, `session_id`, `guest`, `userid`, `usertype`, `gid`) VALUES ('', '1152106364', '903a499052b34f070b346407791ff1f0', 1, 0, NULL, 0),
-('admin', '1152106346', '5d84dd5590cb1fb6f21f0db1192ff22e', 1, 62, 'Super Administrator', 0);
+INSERT INTO `mos_session` (`username`, `time`, `session_id`, `guest`, `userid`, `usertype`, `gid`) VALUES ('', '1152400688', 'c10b1cd2ebcef1a78d49dc543435dfb6', 1, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -34416,7 +34415,7 @@ CREATE TABLE `mos_stats_agents` (
   `agent` varchar(255) NOT NULL default '',
   `type` tinyint(1) unsigned NOT NULL default '0',
   `hits` int(11) unsigned NOT NULL default '1'
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_stats_agents`
@@ -34434,7 +34433,7 @@ CREATE TABLE `mos_template_positions` (
   `position` varchar(10) NOT NULL default '',
   `description` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `mos_template_positions`
@@ -34479,7 +34478,7 @@ CREATE TABLE `mos_templates_menu` (
   `menuid` int(11) NOT NULL default '0',
   `client_id` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`template`,`menuid`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_templates_menu`
@@ -34511,7 +34510,7 @@ CREATE TABLE `mos_users` (
   PRIMARY KEY  (`id`),
   KEY `usertype` (`usertype`),
   KEY `idx_name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=64 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `mos_users`
@@ -34531,7 +34530,7 @@ CREATE TABLE `mos_usertypes` (
   `name` varchar(50) NOT NULL default '',
   `mask` varchar(11) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM word;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `mos_usertypes`
@@ -34569,7 +34568,7 @@ CREATE TABLE `mos_weblinks` (
   `params` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `catid` (`catid`,`published`,`archived`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mos_weblinks`
@@ -34600,7 +34599,7 @@ CREATE TABLE `shoutbox` (
   `c_respon` tinytext NOT NULL,
   `c_banned` char(1) NOT NULL default '',
   KEY `n_id` (`n_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `shoutbox`

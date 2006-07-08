@@ -11693,7 +11693,7 @@ CREATE TABLE `hymn` (
   `meter_id` int(11) default NULL,
   `author_id` int(10) NOT NULL default '0',
   PRIMARY KEY  (`hymn_no`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `hymn`
@@ -12729,7 +12729,7 @@ CREATE TABLE `hymn_de` (
   `meter_id` int(11) default NULL,
   `author_id` int(10) NOT NULL default '0',
   PRIMARY KEY  (`hymn_no`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `hymn_de`
@@ -13205,7 +13205,7 @@ CREATE TABLE `hymn_line` (
   `line_text` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `hymn_line`
@@ -21834,7 +21834,7 @@ CREATE TABLE `hymn_line_de` (
   `line_text` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `hymn_line_de`
@@ -30745,7 +30745,7 @@ CREATE TABLE `lex` (
   `defn` varchar(50) default NULL,
   `link` varchar(50) default NULL,
   PRIMARY KEY  (`word`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `lex`
@@ -33792,7 +33792,7 @@ CREATE TABLE `mos_content_frontpage` (
   `content_id` int(11) NOT NULL default '0',
   `ordering` int(11) NOT NULL default '0',
   PRIMARY KEY  (`content_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_content_frontpage`
@@ -33818,7 +33818,7 @@ CREATE TABLE `mos_content_rating` (
   `rating_count` int(11) unsigned NOT NULL default '0',
   `lastip` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`content_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_content_rating`
@@ -33922,7 +33922,7 @@ CREATE TABLE `mos_core_acl_groups_aro_map` (
   `section_value` varchar(240) NOT NULL default '',
   `aro_id` int(11) NOT NULL default '0',
   UNIQUE KEY `group_id_aro_id_groups_aro_map` (`group_id`,`section_value`,`aro_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_core_acl_groups_aro_map`
@@ -33942,7 +33942,7 @@ CREATE TABLE `mos_core_log_items` (
   `item_table` varchar(50) NOT NULL default '',
   `item_id` int(11) unsigned NOT NULL default '0',
   `hits` int(11) unsigned NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_core_log_items`
@@ -33958,7 +33958,7 @@ CREATE TABLE `mos_core_log_items` (
 CREATE TABLE `mos_core_log_searches` (
   `search_term` varchar(128) NOT NULL default '',
   `hits` int(11) unsigned NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_core_log_searches`
@@ -33975,7 +33975,7 @@ CREATE TABLE `mos_groups` (
   `id` tinyint(3) unsigned NOT NULL default '0',
   `name` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_groups`
@@ -34132,7 +34132,7 @@ CREATE TABLE `mos_messages_cfg` (
   `cfg_name` varchar(100) NOT NULL default '',
   `cfg_value` varchar(255) NOT NULL default '',
   UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_messages_cfg`
@@ -34212,7 +34212,7 @@ CREATE TABLE `mos_modules_menu` (
   `moduleid` int(11) NOT NULL default '0',
   `menuid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`moduleid`,`menuid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_modules_menu`
@@ -34319,7 +34319,7 @@ CREATE TABLE `mos_poll_menu` (
   `pollid` int(11) NOT NULL default '0',
   `menuid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`pollid`,`menuid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_poll_menu`
@@ -34397,7 +34397,7 @@ CREATE TABLE `mos_session` (
   `gid` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`),
   KEY `whosonline` (`guest`,`usertype`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_session`
@@ -34416,7 +34416,7 @@ CREATE TABLE `mos_stats_agents` (
   `agent` varchar(255) NOT NULL default '',
   `type` tinyint(1) unsigned NOT NULL default '0',
   `hits` int(11) unsigned NOT NULL default '1'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_stats_agents`
@@ -34479,7 +34479,7 @@ CREATE TABLE `mos_templates_menu` (
   `menuid` int(11) NOT NULL default '0',
   `client_id` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`template`,`menuid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_templates_menu`
@@ -34531,7 +34531,7 @@ CREATE TABLE `mos_usertypes` (
   `name` varchar(50) NOT NULL default '',
   `mask` varchar(11) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM word;
 
 --
 -- Dumping data for table `mos_usertypes`

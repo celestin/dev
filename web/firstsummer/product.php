@@ -14,6 +14,7 @@
  * CAM  14-Apr-2006  Corrected gallery thumbnail link class.
  * CAM  30-May-2006  Added Plans functionality.
  * CAM  08-Jun-2006  Continued development of pricing.
+ * CAM  08-Jul-2006  1004 : Completed pricing.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -320,10 +321,6 @@ if ($row = mysql_fetch_array($sql)) {
                   "<td align=right>". number_format($vlength, 2) ."</td>";
       $pricepriv = array();
       $priceprivro = array();
-?>
-  </tr>
-<?
-
     }
 
     if (empty($rangeoption_id)) {

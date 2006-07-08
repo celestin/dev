@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 05, 2006 at 01:22 AM
+-- Generation Time: Jul 08, 2006 at 01:04 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -412,7 +412,7 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Prices' AUTO_INCREMENT=695 ;
+) ENGINE=MyISAM COMMENT='Product Prices' AUTO_INCREMENT=750 ;
 
 --
 -- Dumping data for table prodprices
@@ -556,10 +556,10 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (655, 17, 60, NULL, 40, 14700, NULL, NULL, NULL, NULL, NULL, NULL),
 (656, 18, 29, NULL, 45, 1742, NULL, NULL, NULL, NULL, NULL, NULL),
 (657, 19, 38, NULL, 45, 3242, NULL, NULL, NULL, NULL, NULL, NULL),
-(658, 20, 70, NULL, 0, 727, NULL, NULL, NULL, NULL, NULL, NULL),
+(658, 20, 70, NULL, NULL, 727, NULL, NULL, NULL, NULL, NULL, NULL),
 (659, 21, 61, NULL, 45, 2025, NULL, NULL, NULL, NULL, NULL, NULL),
-(660, 22, 39, NULL, 0, 161, NULL, NULL, NULL, NULL, NULL, NULL),
-(661, 23, 40, NULL, 0, 223, NULL, NULL, NULL, NULL, NULL, NULL),
+(660, 22, 39, NULL, NULL, 161, NULL, NULL, NULL, NULL, NULL, NULL),
+(661, 23, 40, NULL, NULL, 223, NULL, NULL, NULL, NULL, NULL, NULL),
 (662, 24, 30, NULL, 45, 1863, NULL, NULL, NULL, NULL, NULL, NULL),
 (663, 25, 31, NULL, 45, 1215, NULL, NULL, NULL, NULL, NULL, NULL),
 (664, 26, 32, NULL, 45, 1315, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -583,7 +583,7 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (682, 36, 74, NULL, 45, 2330, NULL, NULL, NULL, NULL, NULL, NULL),
 (683, 36, 75, NULL, 45, 2600, NULL, NULL, NULL, NULL, NULL, NULL),
 (684, 36, 76, NULL, 45, 3415, NULL, NULL, NULL, NULL, NULL, NULL),
-(685, 37, 67, NULL, 0, 1675, NULL, NULL, NULL, NULL, NULL, NULL),
+(685, 37, 67, NULL, NULL, 1675, NULL, NULL, NULL, NULL, NULL, NULL),
 (686, 38, 62, NULL, 45, 1660, NULL, NULL, NULL, NULL, NULL, NULL),
 (687, 39, 63, NULL, 45, 1523, NULL, NULL, NULL, NULL, NULL, NULL),
 (688, 39, 64, NULL, 45, 1775, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -591,8 +591,62 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (690, 39, 66, NULL, 45, 2543, NULL, NULL, NULL, NULL, NULL, NULL),
 (691, 40, 56, NULL, 60, 11354, NULL, NULL, NULL, NULL, NULL, NULL),
 (692, 40, 56, NULL, 95, 15054, NULL, NULL, NULL, NULL, NULL, NULL),
-(693, 43, 69, NULL, 0, 1995, NULL, NULL, NULL, NULL, NULL, NULL),
-(694, 44, 68, NULL, 0, 1910, NULL, NULL, NULL, NULL, NULL, NULL);
+(693, 43, 69, NULL, NULL, 1995, NULL, NULL, NULL, NULL, NULL, NULL),
+(694, 44, 68, NULL, NULL, 1910, NULL, NULL, NULL, NULL, NULL, NULL),
+(696, 32, 52, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL),
+(697, 33, 53, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL),
+(698, 34, 54, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL),
+(699, 35, 55, 7, NULL, 335, NULL, NULL, NULL, NULL, NULL, NULL),
+(700, 14, 57, 10, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL),
+(701, 15, 58, 10, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL),
+(702, 16, 59, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL),
+(703, 17, 60, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL),
+(704, 14, 57, 11, NULL, 400, NULL, NULL, NULL, NULL, NULL, NULL),
+(705, 15, 58, 11, NULL, 400, NULL, NULL, NULL, NULL, NULL, NULL),
+(706, 16, 59, 11, NULL, 500, NULL, NULL, NULL, NULL, NULL, NULL),
+(707, 17, 60, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL),
+(708, 39, 77, NULL, 45, 3197, NULL, NULL, NULL, NULL, NULL, NULL),
+(709, 38, 62, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL),
+(710, 39, 63, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL),
+(711, 39, 64, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(712, 39, 65, 8, NULL, 240, NULL, NULL, NULL, NULL, NULL, NULL),
+(713, 39, 77, 8, NULL, 300, NULL, NULL, NULL, NULL, NULL, NULL),
+(714, 39, 66, 8, NULL, 375, NULL, NULL, NULL, NULL, NULL, NULL),
+(715, 39, 63, 11, NULL, 300, NULL, NULL, NULL, NULL, NULL, NULL),
+(716, 39, 64, 11, NULL, 350, NULL, NULL, NULL, NULL, NULL, NULL),
+(717, 39, 65, 11, NULL, 400, NULL, NULL, NULL, NULL, NULL, NULL),
+(718, 39, 77, 11, NULL, 500, NULL, NULL, NULL, NULL, NULL, NULL),
+(719, 39, 66, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL),
+(720, 39, 63, 13, NULL, 138, NULL, NULL, NULL, NULL, NULL, NULL),
+(721, 39, 64, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL),
+(722, 39, 65, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL),
+(723, 39, 77, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL),
+(724, 39, 66, 13, NULL, 218, NULL, NULL, NULL, NULL, NULL, NULL),
+(725, 37, 67, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(726, 44, 68, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(727, 43, 69, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(728, 36, 71, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL),
+(729, 36, 72, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(730, 36, 73, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL),
+(731, 36, 74, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL),
+(732, 36, 75, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(733, 36, 76, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL),
+(734, 37, 67, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(735, 44, 68, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(736, 43, 69, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(737, 36, 71, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL),
+(738, 36, 72, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(739, 36, 73, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL),
+(740, 36, 74, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL),
+(741, 36, 75, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(742, 36, 76, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL),
+(743, 20, 70, 15, NULL, 91, NULL, NULL, NULL, NULL, NULL, NULL),
+(744, 36, 71, 9, NULL, 120, NULL, NULL, NULL, NULL, NULL, NULL),
+(745, 36, 72, 9, NULL, 130, NULL, NULL, NULL, NULL, NULL, NULL),
+(746, 36, 73, 9, NULL, 140, NULL, NULL, NULL, NULL, NULL, NULL),
+(747, 36, 74, 9, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL),
+(748, 36, 75, 9, NULL, 165, NULL, NULL, NULL, NULL, NULL, NULL),
+(749, 36, 76, 9, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -717,7 +771,7 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Variations' AUTO_INCREMENT=77 ;
+) ENGINE=MyISAM COMMENT='Product Variations' AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table prodvariations
@@ -787,7 +841,8 @@ INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, dispor
 (73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL),
 (74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', 36, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL),
 (75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', 36, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', 36, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL);
+(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', 36, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 'Tornio', 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -814,8 +869,7 @@ CREATE TABLE rangeoptions (
 -- Dumping data for table rangeoptions
 --
 
-INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'Roof Insulation', 5, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Single Window', 5, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Double Window', 5, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Single Door', 5, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL),

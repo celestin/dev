@@ -15,6 +15,7 @@
  * CAM  30-May-2006  Added Plans functionality.
  * CAM  08-Jun-2006  Continued development of pricing.
  * CAM  08-Jul-2006  1004 : Completed pricing.
+ * CAM  09-Jul-2006  10014 : Show product Dimensions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -51,8 +52,9 @@ function output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro)
 
 if (empty($utab)) $utab = 1;
 $productname = NULL;
+$htmlname = NULL;
 
-$sql = mysql_query("SELECT p.id product_id, p.product, p.brochure, p.prodrange_id urange, r.category_id ucategory ".
+$sql = mysql_query("SELECT p.id product_id, p.product, IFNULL(p.htmlname, p.product) htmlname, p.brochure, p.prodrange_id urange, r.category_id ucategory ".
                    "FROM products p, prodranges r  ".
                    "WHERE p.prodrange_id = r.id ".
                    "AND p.id = '$uproduct'");
@@ -62,6 +64,7 @@ if ($row = mysql_fetch_array($sql)) {
     $$key = stripslashes($val);
   }
   $productname = $product;
+  $htmlname = $htmlname;
 }
 
 $title = "Product";
@@ -235,6 +238,71 @@ if ($row = mysql_fetch_array($sql)) {
 ?>
   </table></td>
 </tr>
+
+<!-- Dimensions -->
+<tr>
+  <td colspan=3><table border=0 cellpadding=0 cellspacing=0>
+<?
+  $dimtypes = array();
+  $sql = mysql_query("SELECT distinct(d.dim_type) dim_type ".
+                     "FROM proddimensions pd, dimensions d ".
+                     "WHERE pd.dimension_id = d.id ".
+                     "AND pd.product_id = $uproduct");
+  while ($row = mysql_fetch_array($sql)) {
+    $dimtypes[count($dimtypes)+1] = $row[0];
+  }
+
+  $htmlnameoutput = false;
+  foreach($dimtypes AS $dt) {
+
+    if ($dt == 1) {
+      echo "<tr><td colspan=2><h4>$htmlname</h4></td></tr>\n";
+      $htmlnameoutput = true;
+
+    } else if ($dt == 2) {
+      echo "<tr><td colspan=2><h4>";
+      if (!$htmlnameoutput) {
+        echo "$htmlname&nbsp;";
+        $htmlnameoutput = true;
+      }
+
+      echo "Included Extras</h4></td></tr>\n";
+
+    } else if ($dt == 3) {
+      echo "<tr><td colspan=2><h4>";
+      if (!$htmlnameoutput) {
+        echo "$htmlname&nbsp;";
+        $htmlnameoutput = true;
+      }
+      echo "Optional Extras</h4></td></tr>\n";
+    }
+
+    $sql = mysql_query("SELECT d.dimension, pd.textvalue, pd.numvalue ".
+                       "FROM proddimensions pd, dimensions d ".
+                       "WHERE pd.dimension_id = d.id ".
+                       "AND pd.product_id = $uproduct ".
+                       "AND d.dim_type = $dt ".
+                       "ORDER BY d.disp_order");
+    while ($row = mysql_fetch_array($sql)) {
+      if ($dt == 1) {
+        echo "<tr><td class=fldlbl width=160>$row[0]</td><td>$row[1]</td></tr>";
+      } else {
+        if (empty($row[1])) {
+        echo "<tr><td colspan=2>$row[0]</td></tr>";
+        } else {
+        echo "<tr><td colspan=2>$row[1]</td></tr>";
+        }
+      }
+    }
+
+    echo "<tr><td colspan=2><br></td></tr>";
+  }
+
+?>
+  </table></td>
+</tr>
+
+<!-- Prices -->
 <tr>
   <td colspan=3><table border=1 cellpadding=4 cellspacing=0>
     <tr>

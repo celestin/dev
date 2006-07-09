@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Development.
+ * CAM  09-Jul-2006  10014 : Added H4.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -30,6 +31,10 @@ h3 {
   COLOR: #993333;
 }
 
+h4 {
+  COLOR: #669933;
+}
+
 th {
   BACKGROUND-COLOR: #CCDDFF;
   COLOR: #000000;
@@ -45,7 +50,6 @@ td.fldmand {
   COLOR: #BE0221;
   FONT-WEIGHT: bold;
 }
-
 
 td.current {
   COLOR: #FF7900;

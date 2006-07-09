@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2006 at 01:04 PM
+-- Generation Time: Jul 09, 2006 at 10:26 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -36,7 +36,7 @@ CREATE TABLE categories (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Categories' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  COMMENT='Product Categories' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table categories
@@ -44,6 +44,78 @@ CREATE TABLE categories (
 
 INSERT INTO categories (id, category, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'BBQ Huts', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Log Cabins', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table dimensions
+--
+
+CREATE TABLE dimensions (
+  id int(11) NOT NULL auto_increment,
+  dim_type tinyint(4) NOT NULL default '1',
+  dimension varchar(50) default NULL,
+  disp_order smallint(6) default NULL,
+  created datetime default NULL,
+  updated datetime default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM  COMMENT='Dimensions' AUTO_INCREMENT=52 ;
+
+--
+-- Dumping data for table dimensions
+--
+
+INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) VALUES (1, 1, 'Roof projection - Front', 10, NULL, NULL),
+(2, 1, 'Roof projection - Back', 20, NULL, NULL),
+(3, 1, 'Roof projection - Side', 30, NULL, NULL),
+(4, 1, 'Walls', 40, NULL, NULL),
+(5, 1, 'Floor', 50, NULL, NULL),
+(6, 1, 'Roof', 60, NULL, NULL),
+(7, 1, 'Outer Doors', 70, NULL, NULL),
+(8, 1, 'Windows', 80, NULL, NULL),
+(9, 2, 'An octagonal grill', 100, NULL, NULL),
+(10, 2, 'A round table around the grill', 110, NULL, NULL),
+(11, 2, 'A grill set', 120, NULL, NULL),
+(12, 2, 'A brick pan', 130, NULL, NULL),
+(13, 2, 'A steel kettle', 140, NULL, NULL),
+(14, 2, 'Reindeer skins', 150, NULL, NULL),
+(15, 2, 'A coffee pot warmer', 160, NULL, NULL),
+(16, 2, 'A pillow', 170, NULL, NULL),
+(17, 2, 'Santa Claus', 180, NULL, NULL),
+(18, 2, 'A visitors book', 190, NULL, NULL),
+(19, 2, 'Wood cups', 200, NULL, NULL),
+(20, 2, 'A pan watch', 210, NULL, NULL),
+(21, 2, 'A Lapp knife', 220, NULL, NULL),
+(22, 2, 'A four-cornered hat and scarf', 230, NULL, NULL),
+(23, 2, 'Juniper bun dishes', 240, NULL, NULL),
+(24, 2, 'Juniper servers', 250, NULL, NULL),
+(25, 2, 'Bottle binoculars', 260, NULL, NULL),
+(26, 2, 'Striped wooden mugs', 270, NULL, NULL),
+(27, 2, 'A bottle opener', 280, NULL, NULL),
+(28, 2, 'Juniper underlay', 290, NULL, NULL),
+(29, 2, 'A leather coffee bag', 300, NULL, NULL),
+(30, 2, 'Reindeer horn exact', 310, NULL, NULL),
+(31, 2, 'Toggle tables', 320, NULL, NULL),
+(32, 2, 'A pot mitten and patches', 330, NULL, NULL),
+(33, 2, 'A thermometer', 340, NULL, NULL),
+(34, 2, 'An axe block', 350, NULL, NULL),
+(35, 2, 'A fillet knife', 360, NULL, NULL),
+(36, 2, 'Fork and knife sets', 370, NULL, NULL),
+(37, 2, 'A jingle bell', 380, NULL, NULL),
+(38, 2, 'A Lapp willow grouse', 390, NULL, NULL),
+(39, 2, 'A reindeer paw', 400, NULL, NULL),
+(40, 2, 'Flower boxes', 410, NULL, NULL),
+(41, 1, 'Sides', 90, NULL, NULL),
+(42, 1, 'Apex Height', 65, NULL, NULL),
+(43, 1, 'Terrace', 55, NULL, NULL),
+(44, 3, 'Terrace', 1000, NULL, NULL),
+(45, 1, 'Inner Doors', 75, NULL, NULL),
+(46, 1, 'Roof Height - Eves', 66, NULL, NULL),
+(47, 1, 'Roof Height - Ridge', 67, NULL, NULL),
+(48, 1, 'Living Space', 68, NULL, NULL),
+(49, 1, 'Second Floor', 55, NULL, NULL),
+(50, 1, 'Stairs', 95, NULL, NULL),
+(51, 1, 'Diameter', 35, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +138,7 @@ CREATE TABLE member (
   last_login datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (memberid),
   KEY i_email_address (email_address)
-) ENGINE=MyISAM COMMENT='User Information';
+) ENGINE=MyISAM  COMMENT='User Information';
 
 --
 -- Dumping data for table member
@@ -86,7 +158,7 @@ CREATE TABLE member_type (
   comments varchar(255) default NULL,
   disp_order int(11) NOT NULL default '0',
   PRIMARY KEY  (member_type)
-) ENGINE=MyISAM COMMENT='User Types';
+) ENGINE=MyISAM  COMMENT='User Types';
 
 --
 -- Dumping data for table member_type
@@ -115,7 +187,7 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='News Items' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  COMMENT='News Items' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table newsitems
@@ -146,7 +218,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Photos' AUTO_INCREMENT=201 ;
+) ENGINE=MyISAM  COMMENT='Photos' AUTO_INCREMENT=201 ;
 
 --
 -- Dumping data for table photos
@@ -327,7 +399,7 @@ CREATE TABLE plans (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Plan Images' AUTO_INCREMENT=59 ;
+) ENGINE=MyISAM  COMMENT='Plan Images' AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table plans
@@ -395,6 +467,276 @@ INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, create
 -- --------------------------------------------------------
 
 --
+-- Table structure for table proddimensions
+--
+
+CREATE TABLE proddimensions (
+  id int(11) NOT NULL auto_increment,
+  product_id int(11) NOT NULL default '0',
+  dimension_id int(11) NOT NULL default '0',
+  textvalue varchar(255) default NULL,
+  numvalue double default NULL,
+  created datetime default NULL,
+  updated datetime default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM  COMMENT='Product Dimensions' AUTO_INCREMENT=251 ;
+
+--
+-- Dumping data for table proddimensions
+--
+
+INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES (1, 14, 41, 'Octagonal – Seating for 8 persons', 8, NULL, NULL),
+(2, 14, 3, '0.37 m', 0.37, NULL, NULL),
+(3, 14, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
+(4, 14, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
+(5, 14, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(6, 14, 7, '1 door', 1, NULL, NULL),
+(7, 14, 8, '4 windows, double glazed', 4, NULL, NULL),
+(8, 15, 41, 'Octagonal – Seating for 10 persons', 8, NULL, NULL),
+(9, 15, 3, '0.37 m', 0.37, NULL, NULL),
+(10, 15, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
+(11, 15, 5, 'Decking that can be removed for cleaning. 3.54m x 3.54m.', NULL, NULL, NULL),
+(12, 15, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(13, 15, 42, '3.75 m', 3.75, NULL, NULL),
+(14, 15, 7, '1 door at 146/61', 1, NULL, NULL),
+(15, 15, 8, '4 windows 62/30, double glazed', 4, NULL, NULL),
+(16, 16, 41, 'Octagonal – Seating for 30 persons', 8, NULL, NULL),
+(17, 16, 3, '0.37 m', 0.37, NULL, NULL),
+(18, 16, 4, '40 mm double tongue and groove logs from Red Pine. 4.65m x 4.65m', 40, NULL, NULL),
+(19, 16, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
+(20, 16, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(21, 16, 42, '4.08 m', 4.08, NULL, NULL),
+(22, 16, 7, '1 door', 1, NULL, NULL),
+(23, 16, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
+(24, 17, 41, '10 Sides – Seating for 40 persons', 10, NULL, NULL),
+(25, 17, 3, '0.37 m', 0.37, NULL, NULL),
+(26, 17, 4, '40 mm double tongue and groove logs from Red Pine. 6.00m x 6.05m', 40, NULL, NULL),
+(27, 17, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
+(28, 17, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(29, 17, 42, '4.60 m', 4.6, NULL, NULL),
+(30, 17, 7, '1 door', 1, NULL, NULL),
+(31, 17, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
+(33, 14, 9, NULL, NULL, NULL, NULL),
+(34, 14, 10, NULL, NULL, NULL, NULL),
+(35, 14, 11, NULL, NULL, NULL, NULL),
+(36, 14, 12, NULL, NULL, NULL, NULL),
+(37, 14, 13, NULL, NULL, NULL, NULL),
+(38, 14, 14, NULL, NULL, NULL, NULL),
+(39, 14, 15, NULL, NULL, NULL, NULL),
+(40, 14, 16, NULL, NULL, NULL, NULL),
+(41, 14, 17, NULL, NULL, NULL, NULL),
+(42, 14, 18, NULL, NULL, NULL, NULL),
+(43, 14, 19, NULL, NULL, NULL, NULL),
+(44, 14, 20, NULL, NULL, NULL, NULL),
+(45, 14, 21, NULL, NULL, NULL, NULL),
+(46, 14, 22, NULL, NULL, NULL, NULL),
+(47, 14, 23, NULL, NULL, NULL, NULL),
+(48, 14, 24, NULL, NULL, NULL, NULL),
+(49, 14, 25, NULL, NULL, NULL, NULL),
+(50, 14, 26, NULL, NULL, NULL, NULL),
+(51, 14, 27, NULL, NULL, NULL, NULL),
+(52, 14, 28, NULL, NULL, NULL, NULL),
+(53, 14, 29, NULL, NULL, NULL, NULL),
+(54, 14, 30, NULL, NULL, NULL, NULL),
+(55, 14, 31, NULL, NULL, NULL, NULL),
+(56, 14, 32, NULL, NULL, NULL, NULL),
+(57, 14, 33, NULL, NULL, NULL, NULL),
+(58, 14, 34, NULL, NULL, NULL, NULL),
+(59, 14, 35, NULL, NULL, NULL, NULL),
+(60, 14, 36, NULL, NULL, NULL, NULL),
+(61, 14, 37, NULL, NULL, NULL, NULL),
+(62, 14, 38, NULL, NULL, NULL, NULL),
+(63, 14, 39, NULL, NULL, NULL, NULL),
+(64, 14, 40, NULL, NULL, NULL, NULL),
+(65, 15, 9, NULL, NULL, NULL, NULL),
+(66, 15, 10, NULL, NULL, NULL, NULL),
+(67, 15, 11, NULL, NULL, NULL, NULL),
+(68, 15, 12, NULL, NULL, NULL, NULL),
+(69, 15, 13, NULL, NULL, NULL, NULL),
+(70, 15, 14, NULL, NULL, NULL, NULL),
+(71, 15, 15, NULL, NULL, NULL, NULL),
+(72, 15, 16, NULL, NULL, NULL, NULL),
+(73, 15, 17, NULL, NULL, NULL, NULL),
+(74, 15, 18, NULL, NULL, NULL, NULL),
+(75, 15, 19, NULL, NULL, NULL, NULL),
+(76, 15, 20, NULL, NULL, NULL, NULL),
+(77, 15, 21, NULL, NULL, NULL, NULL),
+(78, 15, 22, NULL, NULL, NULL, NULL),
+(79, 15, 23, NULL, NULL, NULL, NULL),
+(80, 15, 24, NULL, NULL, NULL, NULL),
+(81, 15, 25, NULL, NULL, NULL, NULL),
+(82, 15, 26, NULL, NULL, NULL, NULL),
+(83, 15, 27, NULL, NULL, NULL, NULL),
+(84, 15, 28, NULL, NULL, NULL, NULL),
+(85, 15, 29, NULL, NULL, NULL, NULL),
+(86, 15, 30, NULL, NULL, NULL, NULL),
+(87, 15, 31, NULL, NULL, NULL, NULL),
+(88, 15, 32, NULL, NULL, NULL, NULL),
+(89, 15, 33, NULL, NULL, NULL, NULL),
+(90, 15, 34, NULL, NULL, NULL, NULL),
+(91, 15, 35, NULL, NULL, NULL, NULL),
+(92, 15, 36, NULL, NULL, NULL, NULL),
+(93, 15, 37, NULL, NULL, NULL, NULL),
+(94, 15, 38, NULL, NULL, NULL, NULL),
+(95, 15, 39, NULL, NULL, NULL, NULL),
+(96, 15, 40, NULL, NULL, NULL, NULL),
+(97, 16, 9, NULL, NULL, NULL, NULL),
+(98, 16, 10, NULL, NULL, NULL, NULL),
+(99, 16, 11, NULL, NULL, NULL, NULL),
+(100, 16, 12, NULL, NULL, NULL, NULL),
+(101, 16, 13, NULL, NULL, NULL, NULL),
+(102, 16, 14, NULL, NULL, NULL, NULL),
+(103, 16, 15, NULL, NULL, NULL, NULL),
+(104, 16, 16, NULL, NULL, NULL, NULL),
+(105, 16, 17, NULL, NULL, NULL, NULL),
+(106, 16, 18, NULL, NULL, NULL, NULL),
+(107, 16, 19, NULL, NULL, NULL, NULL),
+(108, 16, 20, NULL, NULL, NULL, NULL),
+(109, 16, 21, NULL, NULL, NULL, NULL),
+(110, 16, 22, NULL, NULL, NULL, NULL),
+(111, 16, 23, NULL, NULL, NULL, NULL),
+(112, 16, 24, NULL, NULL, NULL, NULL),
+(113, 16, 25, NULL, NULL, NULL, NULL),
+(114, 16, 26, NULL, NULL, NULL, NULL),
+(115, 16, 27, NULL, NULL, NULL, NULL),
+(116, 16, 28, NULL, NULL, NULL, NULL),
+(117, 16, 29, NULL, NULL, NULL, NULL),
+(118, 16, 30, NULL, NULL, NULL, NULL),
+(119, 16, 31, NULL, NULL, NULL, NULL),
+(120, 16, 32, NULL, NULL, NULL, NULL),
+(121, 16, 33, NULL, NULL, NULL, NULL),
+(122, 16, 34, NULL, NULL, NULL, NULL),
+(123, 16, 35, NULL, NULL, NULL, NULL),
+(124, 16, 36, NULL, NULL, NULL, NULL),
+(125, 16, 37, NULL, NULL, NULL, NULL),
+(126, 16, 38, NULL, NULL, NULL, NULL),
+(127, 16, 39, NULL, NULL, NULL, NULL),
+(128, 16, 40, NULL, NULL, NULL, NULL),
+(129, 17, 9, NULL, NULL, NULL, NULL),
+(130, 17, 10, NULL, NULL, NULL, NULL),
+(131, 17, 11, NULL, NULL, NULL, NULL),
+(132, 17, 12, NULL, NULL, NULL, NULL),
+(133, 17, 13, NULL, NULL, NULL, NULL),
+(134, 17, 14, NULL, NULL, NULL, NULL),
+(135, 17, 15, NULL, NULL, NULL, NULL),
+(136, 17, 16, NULL, NULL, NULL, NULL),
+(137, 17, 17, NULL, NULL, NULL, NULL),
+(138, 17, 18, NULL, NULL, NULL, NULL),
+(139, 17, 19, NULL, NULL, NULL, NULL),
+(140, 17, 20, NULL, NULL, NULL, NULL),
+(141, 17, 21, NULL, NULL, NULL, NULL),
+(142, 17, 22, NULL, NULL, NULL, NULL),
+(143, 17, 23, NULL, NULL, NULL, NULL),
+(144, 17, 24, NULL, NULL, NULL, NULL),
+(145, 17, 25, NULL, NULL, NULL, NULL),
+(146, 17, 26, NULL, NULL, NULL, NULL),
+(147, 17, 27, NULL, NULL, NULL, NULL),
+(148, 17, 28, NULL, NULL, NULL, NULL),
+(149, 17, 29, NULL, NULL, NULL, NULL),
+(150, 17, 30, NULL, NULL, NULL, NULL),
+(151, 17, 31, NULL, NULL, NULL, NULL),
+(152, 17, 32, NULL, NULL, NULL, NULL),
+(153, 17, 33, NULL, NULL, NULL, NULL),
+(154, 17, 34, NULL, NULL, NULL, NULL),
+(155, 17, 35, NULL, NULL, NULL, NULL),
+(156, 17, 36, NULL, NULL, NULL, NULL),
+(157, 17, 37, NULL, NULL, NULL, NULL),
+(158, 17, 38, NULL, NULL, NULL, NULL),
+(159, 17, 39, NULL, NULL, NULL, NULL),
+(160, 17, 40, NULL, NULL, NULL, NULL),
+(162, 38, 1, '1.5 m', 1.5, NULL, NULL),
+(163, 38, 2, '0.2 m', 0.2, NULL, NULL),
+(164, 38, 3, '0.3 m', 0.3, NULL, NULL),
+(165, 38, 4, '45 mm double tongue and groove logs from Northern Pine', 45, NULL, NULL),
+(166, 38, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
+(167, 38, 43, '1.5 x 3.0 m', NULL, NULL, NULL),
+(168, 38, 6, '20 mm tongue and groove roof boards on the roof beams', 20, NULL, NULL),
+(169, 38, 7, '1 half-glazed door 86/185', 1, NULL, NULL),
+(170, 38, 8, '1 80/86 tilt ''n'' turn unit', 1, NULL, NULL),
+(171, 39, 1, '1.0 m', 1, NULL, NULL),
+(172, 39, 2, '0.2 m', 0.2, NULL, NULL),
+(173, 39, 3, '0.3 m', 0.3, NULL, NULL),
+(174, 39, 4, '45 mm double tongue and groove logs', 45, NULL, NULL),
+(175, 39, 5, '20 mm tongue and groove floor boards on an impregnated base frame', 20, NULL, NULL),
+(176, 39, 6, '20 mm tongue and groove roof boards supported on the 5 roof beams', 20, NULL, NULL),
+(177, 39, 7, 'Double-glazed doors', NULL, NULL, NULL),
+(178, 39, 8, 'Double-glazed tilt ''n'' turn units', NULL, NULL, NULL),
+(179, 39, 44, '1m Terrace and hand rail extending full width of Cabin', 1, NULL, NULL),
+(180, 32, 4, 'Sturdy 60 mm double tongue and groove from northern fir. 8 tightening bars.', 60, NULL, NULL),
+(181, 32, 5, '28 mm internally - tongue and groove boards', 28, NULL, NULL),
+(182, 32, 6, '20 mm tongue and groove boards', 20, NULL, NULL),
+(183, 32, 46, '2.21 m', 2.21, NULL, NULL),
+(184, 32, 47, '3.82 m', 3.82, NULL, NULL),
+(185, 32, 48, '61.1 m2 internally', 61.1, NULL, NULL),
+(186, 32, 7, '1 unit. 90/200', 1, NULL, NULL),
+(187, 32, 45, '5 units 89/200', 5, NULL, NULL),
+(188, 32, 8, '5 units 120/94, 1 unit 80/94', 6, NULL, NULL),
+(189, 33, 4, 'Sturdy 60 mm double tongue and groove from northern fir. 8 tightening bars.', 60, NULL, NULL),
+(190, 33, 5, '28 mm internally, 45mm externally - tongue and groove boards', 28, NULL, NULL),
+(191, 33, 6, '20 mm tongue and groove boards', 20, NULL, NULL),
+(192, 33, 46, '2.21 m', 2.21, NULL, NULL),
+(193, 33, 47, '3.82 m', 3.82, NULL, NULL),
+(194, 33, 48, '61.1 m2 internally, 29.3 m2 terrace', 61.1, NULL, NULL),
+(195, 33, 7, '1 unit. 90/200, 2 units 140/200', 3, NULL, NULL),
+(196, 33, 45, '5 units 89/200', 5, NULL, NULL),
+(197, 33, 8, '3 units 120/94, 1 unit 80/94', 4, NULL, NULL),
+(198, 34, 1, '0.60 m', 0.6, NULL, NULL),
+(199, 34, 2, '0.50 m', 0.5, NULL, NULL),
+(200, 34, 3, '0.50 m', 0.5, NULL, NULL),
+(201, 34, 4, 'From 45mm walls with double tongue and groove, 4 thread clamping bars', 45, NULL, NULL),
+(202, 34, 5, 'From 20 mm tongue and groove on impregnated basic frame', 20, NULL, NULL),
+(203, 34, 49, 'From 28 mm tongue and groove', 28, NULL, NULL),
+(204, 34, 6, 'From 20 mm tongue and groove on glued purlins', 20, NULL, NULL),
+(205, 34, 7, '1 door 90/196, 2 doors 70/196', 3, NULL, NULL),
+(206, 34, 8, '5 double-glazed windows', 5, NULL, NULL),
+(207, 35, 1, '0.50 m', 0.5, NULL, NULL),
+(208, 35, 2, '0.50 m', 0.5, NULL, NULL),
+(209, 35, 3, '0.30 m', 0.3, NULL, NULL),
+(210, 35, 4, 'From 45 mm (glued 60 and 95 mm) double tongue and groove logs', 45, NULL, NULL),
+(211, 35, 5, 'From 20 mm of plane halls on impregnated camp woods', 20, NULL, NULL),
+(212, 35, 49, 'From 28 mm of combination halls on glued bars', 28, NULL, NULL),
+(213, 35, 46, '2.34 m', 2.34, NULL, NULL),
+(214, 35, 47, '3.84 m', 3.84, NULL, NULL),
+(215, 35, 7, '1 unit 90/196 with seal, 1 unit 70/196 with seal', 2, NULL, NULL),
+(216, 35, 8, '1 double-glazed 170/94 with seal and rungs, 4 double-glazed 80/94 with seal and rungs', 5, NULL, NULL),
+(217, 35, 50, 'Space saving stairs with railing.', NULL, NULL, NULL),
+(218, 40, 1, '0.70 m', 0.7, NULL, NULL),
+(219, 40, 2, '0.60 m', 0.6, NULL, NULL),
+(220, 40, 3, '0.60 m', 0.6, NULL, NULL),
+(221, 40, 4, '60 mm walls with double tongue and groove', 60, NULL, NULL),
+(222, 40, 5, '20 mm – tongue and groove', 20, NULL, NULL),
+(223, 40, 6, '20 mm – tongue and groove', 20, NULL, NULL),
+(224, 40, 48, '57 m2 (77m2 including loft area)', 77, NULL, NULL),
+(225, 40, 46, '2.86 m', 2.86, NULL, NULL),
+(226, 40, 47, '4.61 m', 4.61, NULL, NULL),
+(227, 40, 7, '1 door 100/200 half glazed, 2 doors 70/196, 1 Terrace door 140/200', 4, NULL, NULL),
+(228, 40, 8, '1 window 150/94, 4 windows 100/94, 1 window 70/94', 6, NULL, NULL),
+(229, 40, 50, 'Spruce stairs with railing.', NULL, NULL, NULL),
+(230, 37, 3, '0.30 m', 0.3, NULL, NULL),
+(231, 37, 51, '3.40 m', 3.4, NULL, NULL),
+(232, 37, 5, '8 pre-mounted, base sections with 40mm planks.', 40, NULL, NULL),
+(233, 37, 6, '8 roof sections made from 20 mm tongue and groove boards.', 20, NULL, NULL),
+(234, 37, 41, '8 posts, 7 pre-mounted balustrade sections and 8 pre-mounted roof pelmet sections.', 8, NULL, NULL),
+(235, 44, 3, '0.30 m', 0.3, NULL, NULL),
+(236, 44, 51, '3.40 m', 3.4, NULL, NULL),
+(237, 44, 5, '8 pre-mounted, base sections with 40mm planks.', 40, NULL, NULL),
+(238, 44, 6, '8 roof sections made from 20 mm tongue and groove boards.', 20, NULL, NULL),
+(239, 44, 41, '8 posts, 7 pre-mounted balustrade sections and 8 pre-mounted roof pelmet sections.', 8, NULL, NULL),
+(240, 43, 3, '0.30 m', 0.3, NULL, NULL),
+(241, 43, 51, '3.40 m', 3.4, NULL, NULL),
+(242, 43, 5, '8 pre-mounted, base sections with 40mm planks.', 40, NULL, NULL),
+(243, 43, 6, '8 roof sections made from 20 mm tongue and groove boards.', 20, NULL, NULL),
+(244, 43, 41, '8 posts, 7 pre-mounted balustrade sections and 8 pre-mounted roof pelmet sections.', 8, NULL, NULL),
+(245, 36, 3, '0.30 m', 0.3, NULL, NULL),
+(246, 36, 4, '45 mm double tongue and groove block planks.', 45, NULL, NULL),
+(247, 36, 5, '20 mm tongue and groove with impregnated basic frame.', 20, NULL, NULL),
+(248, 36, 6, '20 mm roof sections.', 20, NULL, NULL),
+(249, 36, 7, '1 glued cartridge door with seal.', 1, NULL, NULL),
+(250, 36, 8, '2 Double-Glazed tilt ''n'' turn windows with seal and rungs.', 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table prodprices
 --
 
@@ -412,7 +754,7 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Prices' AUTO_INCREMENT=750 ;
+) ENGINE=MyISAM  COMMENT='Product Prices' AUTO_INCREMENT=750 ;
 
 --
 -- Dumping data for table prodprices
@@ -668,7 +1010,7 @@ CREATE TABLE prodranges (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Ranges' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  COMMENT='Product Ranges' AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table prodranges
@@ -692,6 +1034,7 @@ INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text
 CREATE TABLE products (
   id int(11) NOT NULL auto_increment,
   product varchar(50) default NULL,
+  htmlname varchar(255) default NULL,
   prodrange_id int(11) NOT NULL default '0',
   brochure varchar(50) default NULL,
   disporder smallint(6) default NULL,
@@ -704,52 +1047,52 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Products' AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM  COMMENT='Products' AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table products
 --
 
-INSERT INTO products (id, product, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES (4, 'Nida', 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt â€˜nâ€˜ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
-(5, 'Nida A', 5, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Nida S', 5, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Nida T', 5, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Nida V', 5, 'nida_nv.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Nida TAS', 5, 'nida_ntas.pdf', 80, 'Nida.', '', NULL, NULL, NULL, NULL, '2006-07-05 00:51:19', NULL),
-(33, 'Cottage with Terrace', 6, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
-(32, 'Cottage', 6, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '6.9m2', 7, 'kota_k069.pdf', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, '9.9m2', 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
-(16, '17.2m2', 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '27m2', 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
-(18, 'T10', 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 'Chalet T24', 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, 'Pavillion', 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(21, 'T Garage', 9, 'tbuild_tg.pdf', 0, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:40', NULL),
-(22, 'T Shelter', 4, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 'T Terrace', 4, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 'T12', 4, 'tbuild_t12.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 'T14', 4, 'tbuild_t14.pdf', 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 'T15', 4, 'tbuild_t15.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'T17+Terrace', 4, 'tbuild_t17t.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 'T17', 4, 'tbuild_t17.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 'T20', 4, 'tbuild_t20.pdf', 70, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:35', NULL),
-(30, 'T21', 4, 'tbuild_t21.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 'T23', 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(34, 'Kaiserforst', 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(35, 'Laura', 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, 'Sida', 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, 'Kaunas Pavilion', 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
-(38, 'Borkum', 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, 'Tornio', 10, 'gc_tornio.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(40, 'Ulmenfield', 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, 'Vilnius Pavilion', 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(42, 'Nida D', 5, 'nida_na.pdf', 30, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:40', NULL),
-(44, 'Riga Pavilion', 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(45, 'Nida Panorama', 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(46, 'Nida TA', 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(47, 'Nida Tower', 5, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(48, 'Nida Tyla', 5, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES (4, 'Nida', NULL, 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ''n'' turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
+(5, 'Nida A', NULL, 5, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Nida S', NULL, 5, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Nida T', NULL, 5, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Nida V', NULL, 5, 'nida_nv.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Nida TAS', NULL, 5, 'nida_ntas.pdf', 80, 'Nida.', '', NULL, NULL, NULL, NULL, '2006-07-05 00:51:19', NULL),
+(33, 'Cottage with Terrace', NULL, 6, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
+(32, 'Cottage', NULL, 6, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '6.9m2', 'Finnish BBQ Hut 6.9 m<sup>2</sup>', 7, 'kota_k069.pdf', 1, '', 'Finnish BBQ Hut 6.9m2\r\n\r\nproperties\r\nSides:    Octagonal - Seating for 8 persons\r\nRoof projection: 0.37 m\r\nWalls:    40 mm double tongue and groove logs from Red Pine.\r\nFlooring:   Decking that can be removed for cleaning.\r\nRoof:    20 mm tongue and groove roof boards.\r\nDoors:    1 door\r\nWindows:  4 windows, double glazed\r\n\r\nequipment\r\n\r\nIncluded Equipment:\r\nAn octagonal grill \r\nA round table around the grill \r\nA grill set \r\nA brick pan \r\nA steel kettle \r\nReindeer skins \r\nA coffee pot warmer \r\nA pillow \r\nSanta Claus \r\nA visitors book \r\nWood cups \r\nA pan watch \r\nA Lapp knife \r\nA four-cornered hat and scarf \r\nJuniper bun dishes \r\nJuniper servers \r\n\r\nBottle binoculars\r\nStriped wooden mugs\r\nA bottle opener\r\nJuniper underlay\r\nA leather coffee bag\r\nReindeer horn exact\r\nToggle tables\r\nA pot mitten and patches\r\nA thermometer\r\nAn axe block\r\nA fillet knife\r\nFork and knife sets\r\nA jingle bell\r\nA Lapp willow grouse\r\nA reindeer paw\r\nFlower boxes', NULL, NULL, NULL, NULL, '2006-07-09 20:14:52', NULL),
+(15, '9.9m2', NULL, 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
+(16, '17.2m2', NULL, 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '27m2', NULL, 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
+(18, 'T10', NULL, 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'Chalet T24', NULL, 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'Pavillion', NULL, 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'T Garage', NULL, 9, 'tbuild_tg.pdf', 0, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:40', NULL),
+(22, 'T Shelter', NULL, 4, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 'T Terrace', NULL, 4, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'T12', NULL, 4, 'tbuild_t12.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 'T14', NULL, 4, 'tbuild_t14.pdf', 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 'T15', NULL, 4, 'tbuild_t15.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 'T17+Terrace', NULL, 4, 'tbuild_t17t.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'T17', NULL, 4, 'tbuild_t17.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 'T20', NULL, 4, 'tbuild_t20.pdf', 70, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:35', NULL),
+(30, 'T21', NULL, 4, 'tbuild_t21.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'T23', NULL, 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'Kaiserforst', NULL, 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 'Laura', NULL, 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'Sida', NULL, 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'Kaunas Pavilion', NULL, 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
+(38, 'Borkum', NULL, 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'Tornio', NULL, 10, 'gc_tornio.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 'Ulmenfield', NULL, 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 'Vilnius Pavilion', NULL, 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 'Nida D', NULL, 5, 'nida_na.pdf', 30, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:40', NULL),
+(44, 'Riga Pavilion', NULL, 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 'Nida Panorama', NULL, 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 'Nida TA', NULL, 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 'Nida Tower', NULL, 5, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 'Nida Tyla', NULL, 5, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -771,7 +1114,7 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Product Variations' AUTO_INCREMENT=78 ;
+) ENGINE=MyISAM  COMMENT='Product Variations' AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table prodvariations
@@ -863,7 +1206,7 @@ CREATE TABLE rangeoptions (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Range Options' AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  COMMENT='Range Options' AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table rangeoptions
@@ -902,7 +1245,7 @@ CREATE TABLE tabs (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM COMMENT='Tabs' AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  COMMENT='Tabs' AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table tabs
@@ -923,7 +1266,7 @@ CREATE TABLE upload (
   docdate date NOT NULL default '0000-00-00',
   doctype char(1) NOT NULL default 'I',
   PRIMARY KEY  (uplfile)
-) ENGINE=MyISAM COMMENT='Uploaded Files';
+) ENGINE=MyISAM  COMMENT='Uploaded Files';
 
 --
 -- Dumping data for table upload

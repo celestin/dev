@@ -15,7 +15,7 @@
 </p>
 <p>
   Long Text:<br/>
-  <?php echo $html->textarea('Product/long_text',array('columns'=>'5','rows'=>'10')) ?>
+  <?php echo $html->textarea('Product/long_text',array('cols'=>'120','rows'=>'30')) ?>
     <?php echo $html->tagErrorMsg('Product/long_text', 'Long Text is required.') ?>
 </p>
 <p>

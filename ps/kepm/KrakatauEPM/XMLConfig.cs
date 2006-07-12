@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  13-Jun-06   258 : Added reading/writing of Metric Sets.
+ * CAM  12-Jul-06   282 : Ensure renames to Sets are reflected in the _sets hashtable.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -180,6 +181,7 @@ namespace KrakatauEPM
       XmlNode metNode=null;
       XmlAttribute setName, metId, metBound;
       XmlDocument upd = (XmlDocument) _doc.Clone();
+      Hashtable renamed = new Hashtable();
 
       if (_sets.Count > 0) 
       {
@@ -190,9 +192,10 @@ namespace KrakatauEPM
       if (setsNode == null) return null;
 
       IEnumerator e = _sets.Values.GetEnumerator();
-      while (e.MoveNext()) 
+      while (e.MoveNext())
       {
         MetricSet ms = (MetricSet) e.Current;
+        renamed[ms.Name] = ms;
         setNode = upd.CreateElement("set");
         setName = upd.CreateAttribute("name");
         setName.Value = ms.Name;
@@ -227,6 +230,7 @@ namespace KrakatauEPM
         setsNode.AppendChild(setNode);
       }
 
+      _sets = renamed;
       return upd;
     }
 
@@ -237,7 +241,7 @@ namespace KrakatauEPM
       XmlDocument upd = AppendMetricSets();
       if (upd == null) return;
 
-      try 
+      try
       {
         tw = new StreamWriter(Prefs.Preferences.InstallDir.FullName + "epm.xml", false);
         txtwriter = new XmlTextWriter(tw);

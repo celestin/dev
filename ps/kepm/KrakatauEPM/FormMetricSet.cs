@@ -9,6 +9,7 @@
  * 
  * Who  When       Why
  * CAM  14-Jun-06   258 : File created.
+ * CAM  12-Jul-06   282 : Ensure Cancel button can be pressed even if Metric Set exists.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -40,12 +41,14 @@ namespace KrakatauEPM
     private System.Windows.Forms.CheckBox chkUpper1;
     private System.Windows.Forms.CheckBox chkMet1;
     private System.Windows.Forms.TextBox txtUpper1;
+    private System.Windows.Forms.StatusBar stbMsg;
 
     protected SortedList _mets1;
     protected SortedList _mets2;
     protected int _tabIndex;
     protected MetricSetItem _msi;
-    private System.Windows.Forms.StatusBar stbMsg;
+    protected Button _btnLastPressed;
+
     /// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -255,10 +258,55 @@ namespace KrakatauEPM
 
     private void btnOK_Click(object sender, System.EventArgs e)
     {
+      _btnLastPressed = btnOK;
+
       this._msi.Text = this.txtName.Text;      
       this._msi.MetricSet.Clear();
       AppendMetricDefs(this._mets1);
       AppendMetricDefs(this._mets2);
+    }
+
+    private void btnCancel_Click(object sender, System.EventArgs e)
+    {
+      _btnLastPressed = btnCancel;   
+    }
+
+    private void FormMetricSet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      if (_btnLastPressed != null && _btnLastPressed == btnOK) 
+      {
+        MetricSet ms = XmlConfig.Config.GetMetricSet(txtName.Text);
+        if (ms != null && ms != this._msi.MetricSet)
+        {
+          btnOK.Enabled = false;
+          stbMsg.Text = "The name you have entered already exists - please specify another.";        
+          e.Cancel = true;
+        }
+      }
+    }
+
+    private void txtName_TextChanged(object sender, System.EventArgs e)
+    {
+      if (txtName.Text.IndexOf(" ")>0)
+      {
+        stbMsg.Text = "No spaces in Metric Set names, please... they will be removed.";
+      }
+      else 
+      {
+        stbMsg.Text = "";
+      }
+      
+      btnOK.Enabled = false;
+      if (txtName.Text.Length>0)
+      {
+        btnOK.Enabled = true;
+      }
+    }
+
+    private void txtName_Leave(object sender, System.EventArgs e)
+    {
+      txtName.Text = txtName.Text.Replace(" ", "");
+      stbMsg.Text = "";
     }
 
 		#region Windows Form Designer generated code
@@ -311,6 +359,7 @@ namespace KrakatauEPM
       this.btnCancel.Size = new System.Drawing.Size(96, 32);
       this.btnCancel.TabIndex = 1;
       this.btnCancel.Text = "&Cancel";
+      this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
       // 
       // txtName
       // 
@@ -489,39 +538,5 @@ namespace KrakatauEPM
     }
 		#endregion
 
-    private void txtName_TextChanged(object sender, System.EventArgs e)
-    {
-      if (txtName.Text.IndexOf(" ")>0) 
-      {
-        stbMsg.Text = "No spaces in Metric Set names, please... they will be removed.";
-      }
-      else 
-      {
-        stbMsg.Text = "";
-      }
-      
-      btnOK.Enabled = false;
-      if (txtName.Text.Length>0) 
-      {
-        btnOK.Enabled = true;
-      }
-    }
-
-    private void txtName_Leave(object sender, System.EventArgs e)
-    {
-      txtName.Text = txtName.Text.Replace(" ", "");
-      stbMsg.Text = "";
-    }
-
-    private void FormMetricSet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-      MetricSet ms = XmlConfig.Config.GetMetricSet(txtName.Text);
-      if (ms != null && ms != this._msi.MetricSet) 
-      {
-        btnOK.Enabled = false;
-        stbMsg.Text = "The name you have entered already exists - please specify another.";        
-        e.Cancel = true;
-      }
-    }
 	}
 }

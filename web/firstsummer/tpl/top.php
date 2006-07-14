@@ -45,9 +45,9 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
     <td colspan=2 class="topLogo" height=75><table border=0 cellpadding=0 cellspacing=0 width="100%">
       <tr>
         <td rowspan=2 width="100%"><img width="455" height="50" src="img/first_main1.png"></td>
-        <td class="fldlbl">email</td><td><a href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry">Sales</a></td>
+        <td class="toplbl">email</td><td><a class="topemail" href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry">Sales</a></td>
       </tr><tr>
-        <td class="fldlbl">tel</td><td class="fldtxt">01475&nbsp;522999</td>
+        <td class="toplbl">tel</td><td class="toptxt">01475&nbsp;522999</td>
       </tr>
     </table><td>
   </tr>

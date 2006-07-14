@@ -12,9 +12,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2006 at 10:26 PM
--- Server version: 4.1.16
--- PHP Version: 5.1.1
+-- Generation Time: Jul 14, 2006 at 04:52 PM
+-- Server version: 4.1.11
+-- PHP Version: 4.4.1
 --
 -- Database: 1stsummerhouses_com_-_site
 -- --------------------------------------------------------
@@ -485,14 +485,14 @@ CREATE TABLE proddimensions (
 -- Dumping data for table proddimensions
 --
 
-INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES (1, 14, 41, 'Octagonal – Seating for 8 persons', 8, NULL, NULL),
+INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES (1, 14, 41, 'Octagonal - Seating for 8 persons', 8, NULL, NULL),
 (2, 14, 3, '0.37 m', 0.37, NULL, NULL),
 (3, 14, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
 (4, 14, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
 (5, 14, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
 (6, 14, 7, '1 door', 1, NULL, NULL),
 (7, 14, 8, '4 windows, double glazed', 4, NULL, NULL),
-(8, 15, 41, 'Octagonal – Seating for 10 persons', 8, NULL, NULL),
+(8, 15, 41, 'Octagonal - Seating for 10 persons', 8, NULL, NULL),
 (9, 15, 3, '0.37 m', 0.37, NULL, NULL),
 (10, 15, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
 (11, 15, 5, 'Decking that can be removed for cleaning. 3.54m x 3.54m.', NULL, NULL, NULL),
@@ -500,7 +500,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (13, 15, 42, '3.75 m', 3.75, NULL, NULL),
 (14, 15, 7, '1 door at 146/61', 1, NULL, NULL),
 (15, 15, 8, '4 windows 62/30, double glazed', 4, NULL, NULL),
-(16, 16, 41, 'Octagonal – Seating for 30 persons', 8, NULL, NULL),
+(16, 16, 41, 'Octagonal - Seating for 30 persons', 8, NULL, NULL),
 (17, 16, 3, '0.37 m', 0.37, NULL, NULL),
 (18, 16, 4, '40 mm double tongue and groove logs from Red Pine. 4.65m x 4.65m', 40, NULL, NULL),
 (19, 16, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
@@ -508,7 +508,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (21, 16, 42, '4.08 m', 4.08, NULL, NULL),
 (22, 16, 7, '1 door', 1, NULL, NULL),
 (23, 16, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
-(24, 17, 41, '10 Sides – Seating for 40 persons', 10, NULL, NULL),
+(24, 17, 41, '10 Sides - Seating for 40 persons', 10, NULL, NULL),
 (25, 17, 3, '0.37 m', 0.37, NULL, NULL),
 (26, 17, 4, '40 mm double tongue and groove logs from Red Pine. 6.00m x 6.05m', 40, NULL, NULL),
 (27, 17, 5, 'Decking that can be removed for cleaning.', NULL, NULL, NULL),
@@ -704,8 +704,8 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (219, 40, 2, '0.60 m', 0.6, NULL, NULL),
 (220, 40, 3, '0.60 m', 0.6, NULL, NULL),
 (221, 40, 4, '60 mm walls with double tongue and groove', 60, NULL, NULL),
-(222, 40, 5, '20 mm – tongue and groove', 20, NULL, NULL),
-(223, 40, 6, '20 mm – tongue and groove', 20, NULL, NULL),
+(222, 40, 5, '20 mm - tongue and groove', 20, NULL, NULL),
+(223, 40, 6, '20 mm - tongue and groove', 20, NULL, NULL),
 (224, 40, 48, '57 m2 (77m2 including loft area)', 77, NULL, NULL),
 (225, 40, 46, '2.86 m', 2.86, NULL, NULL),
 (226, 40, 47, '4.61 m', 4.61, NULL, NULL),
@@ -927,10 +927,10 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (684, 36, 76, NULL, 45, 3415, NULL, NULL, NULL, NULL, NULL, NULL),
 (685, 37, 67, NULL, NULL, 1675, NULL, NULL, NULL, NULL, NULL, NULL),
 (686, 38, 62, NULL, 45, 1660, NULL, NULL, NULL, NULL, NULL, NULL),
-(687, 39, 63, NULL, 45, 1523, NULL, NULL, NULL, NULL, NULL, NULL),
-(688, 39, 64, NULL, 45, 1775, NULL, NULL, NULL, NULL, NULL, NULL),
+(687, 39, 63, NULL, 45, 2319, NULL, NULL, NULL, NULL, NULL, NULL),
+(688, 39, 64, NULL, 45, 2488, NULL, NULL, NULL, NULL, NULL, NULL),
 (689, 39, 65, NULL, 45, 2126, NULL, NULL, NULL, NULL, NULL, NULL),
-(690, 39, 66, NULL, 45, 2543, NULL, NULL, NULL, NULL, NULL, NULL),
+(690, 39, 66, NULL, 45, 3571, NULL, NULL, NULL, NULL, NULL, NULL),
 (691, 40, 56, NULL, 60, 11354, NULL, NULL, NULL, NULL, NULL, NULL),
 (692, 40, 56, NULL, 95, 15054, NULL, NULL, NULL, NULL, NULL, NULL),
 (693, 43, 69, NULL, NULL, 1995, NULL, NULL, NULL, NULL, NULL, NULL),

@@ -23,15 +23,28 @@ include 'tpl/top.php';
   <a href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry"><? echo $cfg['Site']['Email']; ?></a>.</p></td>
 </tr>
 <?
-$sql2 = mysql_query("SELECT id,imgfile FROM photos ORDER BY rand() LIMIT 1");
-if ($row2 = mysql_fetch_array($sql2)) {
-  foreach($row2 AS $key2 => $val) {
-    $$key2 = stripslashes($val);
-  }
-  $rand_img = $imgfile;
+$sql = mysql_query("SELECT h.imgfile, p.id, p.product ".
+                    "FROM photos h, products p ".
+                    "WHERE h.product_id = p.id ".
+                    "ORDER BY rand() LIMIT 1");
+if ($row = mysql_fetch_array($sql)) {
+  $rand_link = "<a class=imgnav href=\"product.php?product=$row[1]\">".
+               "<img src=\"img/g/m/$row[0]\"><br>$row[2]</a>";
 }
 ?>
-<tr><td align=center><img src="img/g/f/<? echo $rand_img; ?>"></td></tr>
+<tr>
+  <td align=center>
+    <table border=0 class=modbod cellpadding=10 cellspacing=0>
+      <tr>
+      <td>Bellhouse<br>
+    Langhouse Rd<br>
+    Inverkip<br>
+    PA16 0DE.</td>
+      <td align=center><? echo $rand_link; ?></td>
+      </tr>
+    </table>
+  </td>
+</tr>
 <tr valign=bottom><td align=center>
 <?
 include 'tpl/cards.php';

@@ -209,6 +209,28 @@ td.cat {
   PADDING-BOTTOM: 8px;
 }
 
+.modbod {
+  BACKGROUND-COLOR: #FFFFCC;
+  BORDER:           #FFCC00 1px solid;
+  COLOR:            #993333;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+  PADDING: 5px;
+}
+
+.toplbl {
+  COLOR: #993333;
+  PADDING-RIGHT: 8px;
+  FONT-WEIGHT: normal;
+  FONT-SIZE: 16pt;
+  TEXT-ALIGN: right;
+}
+
+.toptxt {
+  COLOR: #666633;
+  FONT-WEIGHT: normal;
+  FONT-SIZE: 16pt;
+}
 
 /************ NAVIGATION OPTIONS **************/
 
@@ -306,6 +328,19 @@ A:hover {
   COLOR: #CC3333;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
+}
+
+A.topemail,A.topemail:visited,A.topemail:active,A.topemail:link,A.topemail:visited {
+  COLOR: #669933;
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: none;
+  FONT-SIZE: 16pt;
+}
+A.topemail:hover {
+  COLOR: #CC3333;
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: underline;
+  FONT-SIZE: 16pt;
 }
 
 /************ PAGE SPECIFIC OPTIONS **************/

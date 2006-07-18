@@ -27,6 +27,8 @@
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  26-Mar-06   222 : Added link to new proof_ada.pdf.
  * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
+ * CAM  18-Jul-06   265 : Added MetricsHelp legend.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -46,6 +48,7 @@ void HTMLReport::htmlStart(ofstream &current, string &title, int border, string 
   current << "<html><head>" << endl
           << "<title>" << title << "</title>" << endl
           << "<link href=style.css rel=stylesheet type=text/css>" << endl
+          << "<script language=\"Javascript\" src=\"metrics.js\" \\>" << endl
           << "</head>" << endl
           << "<body ";
 
@@ -54,6 +57,24 @@ void HTMLReport::htmlStart(ofstream &current, string &title, int border, string 
   }
 
   current << " topmargin=" << border << " leftmargin=" << border << ">" << endl;
+
+  // MetricsHelp Div
+  current <<
+    "<div id=\"mhTable\" name=\"methelp\" style=\"display:none;position:absolute;\">" << endl <<
+    "  <table class=\"mhBox\" onclick=\"smhClose();\" border=0 cellspacing=0 cellpadding=4 width=\"500\">" << endl <<
+    "    <tr>" << endl <<
+    "      <td class=\"mhMetCode\" width=\"100\" id=\"mhCode\"></td>" << endl <<
+    "      <td class=\"mhMetName\" id=\"mhName\"></td>" << endl <<
+    "      <td class=\"mhMetName\" width=\"10\"><img width=\"10\" height=\"10\" " <<
+            "src=\"http://www.powersoftware.com/img/epm/close_off.gif\" " <<
+            "onClick=\"smhClose();return false;\" " <<
+            "onMouseOver=\"this.src='http://www.powersoftware.com/img/epm/close_on.gif';\" " <<
+            "onMouseOut=\"this.src='http://www.powersoftware.com/img/epm/close_off.gif';\"></td>" << endl <<
+    "    </tr>" << endl <<
+    "    <tr><td id=\"mhDesc\" colspan=2></td></tr>" << endl <<
+    "  </table>" << endl <<
+    "</div>" << endl;
+
 }
 
 void HTMLReport::htmlStart(ofstream &current, string &title) {
@@ -293,16 +314,15 @@ void HTMLReport::createFrameset() {
 }
 
 void HTMLReport::metTd(ofstream &current, ReportItem &currItem, int metId) {
-  if (isSetMember(METID(metId))) {
-    current << "<td class=metCode title=\"" << metDesc[metId] <<  "\">" << metCode[metId];
 
-/*
-    if (currItem.getType() == ITEM_PROJECT && metId == MET(E)) {
-      current << " - value shown in thousands\">" << metCode[metId] << "&nbsp;(k)";
-    } else {
-      current << "\">" << metCode[metId];
-    }
-*/
+  char itemType = 'P';
+  if (currItem.getType() == ITEM_FILE) {
+    itemType = 'F';
+  }
+
+  if (isSetMember(METID(metId))) {
+    current << "<td class=metCode title=\"" << metDesc[metId] <<  "\">" <<
+      "<a href=\"javascript:void();\" onclick=\"smh('" << itemType << "','" << METID(metId) << "');\">" << metCode[metId] << "</a>";
   } else {
     current << "<td class=metCode>&nbsp;</td>";
   }
@@ -315,14 +335,17 @@ void HTMLReport::metTdVal(ofstream &current, int metId, long value) {
 
   switch (metId) {
   case MET(CLOC):
+  case MET(CLLOC):
   case MET(CFILE):
     className = "diffChg";
     break;
   case MET(DLOC):
+  case MET(DLLOC):
   case MET(DFILE):
     className = "diffDel";
     break;
   case MET(ALOC):
+  case MET(ALLOC):
   case MET(AFILE):
     className = "diffAdd";
     break;
@@ -430,7 +453,12 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
       if (isSetMember(METID(i))) {
         current << "<tr>" << endl;
 
-        if (m.isShow(currItem, i) || currItem.getType() == ITEM_PROJECT) {
+        bool showMet = true;
+        if ((i >= MET(CLLOC)) && (i <= MET(ALLOC))) {
+          showMet = currItem.getLang().hasLogicalLines();
+        }
+
+        if ((showMet && m.isShow(currItem, i)) || currItem.getType() == ITEM_PROJECT) {
           metTd(current, currItem, i);
 
           if (m.isShow(currItem, i)) {

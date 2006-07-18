@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  29-Dec-04  File added.
  * CAM  11-Mar-06   199 : Separate Diff by Language.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -19,19 +20,8 @@ using namespace std;
 
 int ntimes = 0;
 
-Diff::Diff() : theTrace()
-{
-  theFilename1 = NULL;
-  theFilename2 = NULL;
 
-  level=0;
-
-  theChangedLines = theDeletedLines = theInsertedLines = 0;
-
-  theMultiLine = false;
-}
-
-Diff::Diff(const char *filename1, const char *filename2) : theTrace()
+Diff::Diff(const char *filename1, const char *filename2, bool nscValid) : theTrace()
 {
   theFilename1 = filename1;
   theFilename2 = filename2;
@@ -41,6 +31,8 @@ Diff::Diff(const char *filename1, const char *filename2) : theTrace()
   theChangedLines = theDeletedLines = theInsertedLines = 0;
 
   theMultiLine = false;
+  theNSC = false;
+  theNSCValid = nscValid;
 }
 
 
@@ -346,25 +338,20 @@ int Diff::hash(const char *str)
   return retval;
 }
 
-
-void Diff::compare(const char *filename1, const char *filename2,bool hc)
+void Diff::compare(bool nsc)
 {
-  theFilename1 = filename1;
-  theFilename2 = filename2;
-
+  theNSC = nsc;
   compare();
-
-  if (hc) {
-   ;
-  }
 }
-
 
 void Diff::compare()
 {
+  theChangedLines = theDeletedLines = theInsertedLines = 0;
+  theMultiLine = false;
+
+  if (theNSC && !theNSCValid) return; // Trying to perform an Logical Line diff on a language that doesn't support it
   if ((theFilename1 == NULL) || (theFilename2 == NULL)) return;
 
-  theChangedLines = theDeletedLines = theInsertedLines = 0;
   theTrace.clear();
 
   FILE *file1, *file2;
@@ -373,7 +360,7 @@ void Diff::compare()
   file2 = fopen(theFilename2,"r");
 
   // Do not try to compare file if there has been a problem when opening
-  if ( file1!=NULL && file2!=NULL)
+  if (file1!=NULL && file2!=NULL)
   {
     char *currString = NULL;
     int length = 0;
@@ -396,7 +383,6 @@ void Diff::compare()
       if (fsize>=avail_size)
       {
         avail_size+=increment;
-
         first = (int*) realloc(first, avail_size*sizeof(int));
       }
       getLine(file1, currString);
@@ -435,6 +421,14 @@ void Diff::compare()
   }
   if (file2) {
     fclose (file2);
+  }
+}
+
+void Diff::getLine(FILE *input, char *&currline) {
+  if (theNSC) {
+    getLineSC(input, currline);
+  } else {
+    getLineCR(input, currline);
   }
 }
 

@@ -12,6 +12,7 @@
  * CAM  09-May-05    49 : Added more languages.
  * CAM  02-Aug-05    76 : Added ADA.
  * CAM  13-Aug-05   114 : Added Perl.
+ * CAM  18-Jul-06   272 : Added hasLogicalLines.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -77,6 +78,25 @@ namespace metrics
       }
 
       return "Other";
+    }
+
+    bool hasLogicalLines() {
+      switch (theLang) {
+        case LANG_ADA:
+        case LANG_CPP:
+        case LANG_CS:
+        case LANG_JAVA:
+          return true;
+          break;
+
+        case LANG_VB:
+        case LANG_S1:
+        case LANG_PERL:
+          return false;
+          break;
+      }
+
+      return false;
     }
   };
 };

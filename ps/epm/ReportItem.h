@@ -15,6 +15,7 @@
  * CAM  03-Feb-05    39 : Added Text1.
  * CAM  04-May-05    50 : Added Language.
  * CAM  28-Jan-06   168 : Added getLastMetric.
+ * CAM  18-Jul-06   272 : Added getLang.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_REPORTITEM
@@ -89,7 +90,7 @@ namespace metrics
       if (theType == ITEM_PROJECT) {
         return AFILE;
       }
-      return ALOC;
+      return ALLOC;
     }
 
     string getReportFile()                { return theReportFile; }
@@ -115,8 +116,10 @@ namespace metrics
     }
 
     void setLanguage(string lang)     { theLang.setLanguage(lang); }
-    Langs getLanguage()               { return theLang.getLanguage(); }
+    Lang getLang()                    { return theLang; }
+    //Langs getLanguage()               { return theLang.getLanguage(); }
     string getLangDesc()              { return theLang.getDescription(); }
+
 
     void setText1(string text1)       { theText1 = text1; }
 

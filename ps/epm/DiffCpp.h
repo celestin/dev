@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  11-Mar-06   199 : Separate Diff by Language.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_DIFFCPP
@@ -25,10 +26,11 @@
 class DiffCpp : public Diff
 {
   protected:
-    void getLine(FILE*, char*&);
+    void getLineCR(FILE*, char*&);
+    void getLineSC(FILE*, char*&);
 
   public:
-    DiffCpp();
+    //DiffCpp();
     DiffCpp(const char *filename1, const char *filename2);
     ~DiffCpp() {}
 };

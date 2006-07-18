@@ -13,12 +13,13 @@
  * CAM  03-Feb-05    40 : Added Changed FILE metrics
  * CAM  25-Nov-05   164 : Added NFILE metric.
  * CAM  28-Jan-06   168 : Added METID.
+ * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LOG2 0.693147
 
-#define METS    25
-#define METFILE 22
+#define METS    28
+#define METFILE 25
 
 #define LOC     100
 #define SLOC    101
@@ -44,9 +45,13 @@
 #define DLOC    120
 #define ALOC    121
 
-#define CFILE   122
-#define DFILE   123
-#define AFILE   124
+#define CLLOC   122
+#define DLLOC   123
+#define ALLOC   124
+
+#define CFILE   125
+#define DFILE   126
+#define AFILE   127
 
 #define MET(X)   (X-100)
 #define METID(X) (X+100)

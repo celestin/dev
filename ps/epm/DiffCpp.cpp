@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  14-Mar-06   202 : Remove redundant output.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -17,16 +18,13 @@
 #include <iostream>
 using namespace std;
 
-DiffCpp::DiffCpp() : Diff()
+DiffCpp::DiffCpp(const char *filename1, const char *filename2) : Diff(filename1, filename2, true)
 {
-}
-
-DiffCpp::DiffCpp(const char *filename1, const char *filename2) : Diff(filename1, filename2)
-{
+  theNSCValid = true;
 }
 
 
-void DiffCpp::getLine(FILE *input, char *&currline)
+void DiffCpp::getLineCR(FILE *input, char *&currline)
 {
   try
   {
@@ -272,3 +270,119 @@ void DiffCpp::getLine(FILE *input, char *&currline)
     return;
   }
 }
+
+void DiffCpp::getLineSC(FILE *input, char *&currline)
+{
+  char *retval = (char*) malloc(65536*sizeof(char));
+  int b = 0;
+
+  bool debugon = false;
+/*
+  string f = theFilename1;
+  f = f.substr(f.length()-5,5);
+  if (!strcmp(f.c_str(), "hps.c")) {
+    debugon = true;
+  }
+*/
+
+  try
+  {
+
+    int nc,nc2 = 0;
+    bool skip = false;
+    bool comskip = false;
+
+    while ((nc=fgetc(input))!=EOF) {
+      switch (nc)
+      {
+      case '"':
+        {
+          if (skip) {
+            skip = false;
+          } else {
+            skip = true;
+          }
+          break;
+        }
+      case ';':
+        {
+          if (!skip && !comskip && !theMultiLine) {
+            retval[b++] = ';';
+            retval[b++] = '\0';
+            if (debugon) cout << currline << endl;
+            currline = retval;
+            return;
+          }
+        }
+      case '\n':
+        {
+          comskip = false;
+          break;
+        }
+      case '/':
+        {
+          if (skip) {
+            // Ignore
+          } else {
+            if ((nc2=fgetc(input))!=EOF) {
+              if (nc2 == '/') {
+                comskip = true;
+              } else if (nc2 == '*') {
+                theMultiLine = true;
+              } else if (!comskip && !theMultiLine) {
+                retval[b++] = nc;
+                retval[b++] = nc2;
+              }
+            }
+          }
+          break;
+        }
+      case '*':
+        {
+          if (skip) {
+            // Ignore
+          } else {
+            if ((nc2=fgetc(input))!=EOF) {
+              if (nc2 == '/') {
+                theMultiLine = false;
+              } else if (!comskip && !theMultiLine) {
+                retval[b++] = nc;
+                retval[b++] = nc2;
+              }
+            }
+          }
+          break;
+        }
+      case '\\':
+        {
+          if (skip)
+          {
+            // We are in a string so this is the start of an escape sequence
+            // so output the '\' then move onto the next char
+            if (!skip && !comskip && !theMultiLine) retval[b++] = nc;
+          }
+          break;
+        }
+      default:
+        {
+          if (!skip && !comskip && !theMultiLine) retval[b++] = nc;
+          break;
+        }
+      }
+    }
+  }
+  catch (...)
+  {
+    currline = strdup("");
+    return;
+  }
+
+  if (b == 0) {
+    currline = NULL;
+    return;
+  }
+
+  retval[b++] = '\0';
+  currline = retval;
+}
+

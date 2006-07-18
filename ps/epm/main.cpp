@@ -45,6 +45,7 @@
  * CAM  11-May-06   241 : Allow EPM to be run from any location.  Version 1.10.002.
  * CAM  11-May-06   252 : Min/Max/Avg in HTML Reports.  Version 1.10.003.
  * CAM  06-Jun-06   255 : Version 1.10.004.
+ * CAM  18-Jul-06   272 : Version 1.10.005.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -324,7 +325,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_VB:
     d = new DiffVB(filename2.c_str(), filename.c_str());
     break;
-}
+  }
 
   d->compare();
 
@@ -332,9 +333,21 @@ void calcDiff(int sfid, string &filename, string &filename2) {
   met.set(MET(DLOC), d->getDeletedLines());
   met.set(MET(ALOC), d->getInsertedLines());
 
+/*
+  cout << "MET(CLOC)=" << d->getChangedLines() << endl
+       << "MET(DLOC)=" << d->getDeletedLines() << endl
+       << "MET(ALOC)=" << d->getInsertedLines() << endl;
+*/
+
+  d->compare(true);
+
+  met.set(MET(CLLOC), d->getChangedLines());
+  met.set(MET(DLLOC), d->getDeletedLines());
+  met.set(MET(ALLOC), d->getInsertedLines());
+
   delete d;
 
-  saveDb(sfid, met, MET(CLOC), MET(ALOC));
+  saveDb(sfid, met, MET(CLOC), MET(ALLOC));
 }
 
 void calcDiff(int sfid, char status, float sloc) {
@@ -709,8 +722,9 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.10.004\n"
-       << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n" << endl;
+  cout << "\nEssential Project Manager (EPM) Version 1.10.005\n"
+       << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n\n"
+       << "Now with our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 
   char szAppPath[MAX_PATH];
   GetModuleFileName(NULL, szAppPath, MAX_PATH);

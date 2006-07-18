@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  18-Mar-06   212 : File created.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_DIFFPERL
@@ -25,10 +26,11 @@
 class DiffPerl : public Diff
 {
   protected:
-    void getLine(FILE*, char*&);
+    void getLineCR(FILE*, char*&);
+    void getLineSC(FILE*, char*&);
 
   public:
-    DiffPerl();
+    //DiffPerl();
     DiffPerl(const char *filename1, const char *filename2);
     ~DiffPerl() {}
 };

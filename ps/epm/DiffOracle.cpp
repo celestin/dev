@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  18-Mar-06   212 : File created.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffOracle.h"
@@ -16,16 +17,13 @@
 #include <iostream>
 using namespace std;
 
-DiffOracle::DiffOracle() : Diff()
+DiffOracle::DiffOracle(const char *filename1, const char *filename2) : Diff(filename1, filename2, false)
 {
-}
-
-DiffOracle::DiffOracle(const char *filename1, const char *filename2) : Diff(filename1, filename2)
-{
+  theNSCValid = false;
 }
 
 
-void DiffOracle::getLine(FILE *input, char *&currline)
+void DiffOracle::getLineCR(FILE *input, char *&currline)
 {
   try
   {
@@ -313,3 +311,5 @@ void DiffOracle::getLine(FILE *input, char *&currline)
     return;
   }
 }
+
+void DiffOracle::getLineSC(FILE *input, char *&currline) {}

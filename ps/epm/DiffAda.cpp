@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  11-Mar-06   199 : Separate Diff by Language.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -16,16 +17,11 @@
 #include <iostream>
 using namespace std;
 
-DiffAda::DiffAda() : Diff()
+DiffAda::DiffAda(const char *filename1, const char *filename2) : Diff(filename1, filename2, true)
 {
 }
 
-DiffAda::DiffAda(const char *filename1, const char *filename2) : Diff(filename1, filename2)
-{
-}
-
-
-void DiffAda::getLine(FILE *input, char *&currline)
+void DiffAda::getLineCR(FILE *input, char *&currline)
 {
 
 //cout << "new " << flush;
@@ -259,4 +255,91 @@ void DiffAda::getLine(FILE *input, char *&currline)
   }
 }
 
+
+void DiffAda::getLineSC(FILE *input, char *&currline)
+{
+  char *retval = (char*) malloc(65536*sizeof(char));
+  int b = 0;
+
+  try
+  {
+
+    int nc,nc2 = 0;
+    bool skip = false;
+    bool comskip = false;
+
+    while ((nc=fgetc(input))!=EOF) {
+      switch (nc)
+      {
+      case '"':
+        {
+          if (skip) {
+            skip = false;
+          } else {
+            skip = true;
+          }
+          break;
+        }
+      case ';':
+        {
+          if (!skip && !comskip) {
+            retval[b++] = ';';
+            retval[b++] = '\0';
+            currline = retval;
+            return;
+          }
+        }
+      case '\n':
+        {
+          comskip = false;
+          break;
+        }
+      case '-':
+        {
+          if (skip) {
+            // Ignore
+          } else {
+            if ((nc2=fgetc(input))!=EOF) {
+              if (nc2 == '-') {
+                comskip = true;
+              } else if (!comskip) {
+                retval[b++] = nc;
+                retval[b++] = nc2;
+              }
+            }
+          }
+          break;
+        }
+      case '\\':
+        {
+          if (skip)
+          {
+            // We are in a string so this is the start of an escape sequence
+            // so output the '\' then move onto the next char
+            if (!skip && !comskip) retval[b++] = nc;
+          }
+          break;
+        }
+      default:
+        {
+          if (!skip && !comskip) retval[b++] = nc;
+          break;
+        }
+      }
+    }
+  }
+  catch (...)
+  {
+    currline = strdup("");
+    return;
+  }
+
+  if (b == 0) {
+    currline = NULL;
+    return;
+  }
+
+  retval[b++] = '\0';
+  currline = retval;
+}
 

@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  29-Dec-04  File added.
  * CAM  11-Mar-06   199 : Separate Diff by Language.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_STANDARD_DIFF
@@ -57,8 +58,9 @@ class TraceElement {
 class Diff
 {
   protected:
-    const char *theFilename1;  // Name of first file
-    const char *theFilename2;  // Name of second file
+    const char *theFilename1;   // Name of first file
+    const char *theFilename2;   // Name of second file
+    bool theNSC;                // Semi-colon (NSC) Diff or standard Newline Diff
 
     std::vector<TraceElement> theTrace;
 
@@ -67,6 +69,7 @@ class Diff
     int theInsertedLines;
 
     bool theMultiLine;
+    bool theNSCValid;
 
     int max;
     int *Vfor, *Vrev;
@@ -82,7 +85,9 @@ class Diff
 
     int level;
 
-    virtual void getLine(FILE*, char*&) {}
+    void getLine(FILE*, char*&);
+    virtual void getLineCR(FILE*, char*&) {}
+    virtual void getLineSC(FILE*, char*&) {}
 
     void greedy(const int *A, const int Aoffset, const int N, const int *B, const int Boffset, const int M);
     void dncSES(const int *A, const int Aoffset, const int N, const int *B, const int Boffset, const int M);
@@ -92,11 +97,11 @@ class Diff
 
   public:
 
-    Diff();
-    Diff(const char *filename1, const char *filename2);
+    //Diff();
+    Diff(const char*, const char*, bool);
     ~Diff() {}
 
-    void compare(const char *filename1, const char *filename2, bool hc=false);
+    void compare(bool);
     void compare();
 
     int getChangedLines() { return theChangedLines; }

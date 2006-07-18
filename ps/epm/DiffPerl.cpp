@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  18-Mar-06   212 : File created.
+ * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffPerl.h"
@@ -16,16 +17,13 @@
 #include <iostream>
 using namespace std;
 
-DiffPerl::DiffPerl() : Diff()
+DiffPerl::DiffPerl(const char *filename1, const char *filename2) : Diff(filename1, filename2, false)
 {
-}
-
-DiffPerl::DiffPerl(const char *filename1, const char *filename2) : Diff(filename1, filename2)
-{
+  theNSCValid = false;
 }
 
 
-void DiffPerl::getLine(FILE *input, char *&currline)
+void DiffPerl::getLineCR(FILE *input, char *&currline)
 {
 
   try
@@ -219,4 +217,4 @@ void DiffPerl::getLine(FILE *input, char *&currline)
   }
 }
 
-
+void DiffPerl::getLineSC(FILE *input, char *&currline) {}

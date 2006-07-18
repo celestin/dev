@@ -1,0 +1,235 @@
+body {
+  BACKGROUND-COLOR: #D3EAF1;
+}
+
+p, table, td {
+  COLOR: #333333;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  TEXT-DECORATION: none;
+}
+
+.popup {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  BORDER-BOTTOM:    #0052AF 2px solid;
+  BORDER-LEFT:      #0052AF 2px solid;
+  BORDER-RIGHT:     #0052AF 2px solid;
+  BORDER-TOP:       #0052AF 2px solid;
+  PADDING:          8px;
+  BACKGROUND-COLOR: #F7FCFD;
+}
+
+.rxbox {
+  BORDER-BOTTOM: #0052AF 2px solid;
+  BORDER-LEFT:   #0052AF 2px solid;
+  BORDER-RIGHT:  #0052AF 2px solid;
+  BORDER-TOP:    #0052AF 2px solid;
+  BACKGROUND-COLOR: #E2EEF2;
+}
+
+.bcbox {
+  BORDER-BOTTOM: #7C9B93 2px solid;
+  BORDER-LEFT:   #7C9B93 2px solid;
+  BORDER-RIGHT:  #7C9B93 2px solid;
+  BORDER-TOP:    #7C9B93 2px solid;
+  BACKGROUND-COLOR: #F7FCFD;
+}
+
+.thumb {
+  BORDER-BOTTOM: #0052AF 2px solid;
+  BORDER-LEFT:   #0052AF 2px solid;
+  BORDER-RIGHT:  #0052AF 2px solid;
+  BORDER-TOP:    #0052AF 2px solid;
+}
+
+.tubnav {
+  BORDER-RIGHT:  #066EE2 2px solid;
+}
+
+.phnav {
+  BORDER-TOP:    #066EE2 2px solid;
+}
+
+.phbox {
+  BORDER-BOTTOM: #7C9B93 2px solid;
+  BORDER-LEFT:   #7C9B93 2px solid;
+  BORDER-RIGHT:  #7C9B93 2px solid;
+  BORDER-TOP:    #7C9B93 2px solid;
+}
+
+.phsel {
+  BORDER-BOTTOM: #066EE2 2px dashed;
+  BORDER-LEFT:   #066EE2 2px dashed;
+  BORDER-RIGHT:  #066EE2 2px dashed;
+  BORDER-TOP:    #066EE2 2px dashed;
+}
+
+.series {
+  BORDER-BOTTOM:  #066EE2 2px solid;
+  BACKGROUND-COLOR: #D3EAF1;
+  FONT-WEIGHT: bold;
+}
+
+.tubname {
+  COLOR: #333399;
+  FONT-SIZE: 14pt;
+  FONT-WEIGHT: bold;
+  TEXT-ALIGN: right;
+}
+
+.bigquot {
+  FONT-FAMILY: Times New Roman, Serif;
+  FONT-WEIGHT: bold;
+}
+
+.custquot {
+  FONT-STYLE: italic;
+  TEXT-ALIGN: right;
+}
+
+.fldlbl {
+  COLOR: #0052AF;
+  FONT-WEIGHT: bold;
+}
+
+.tubsel {
+  BACKGROUND-COLOR: #F7FCFD;
+}
+
+.tuboth {
+  BORDER-RIGHT:  #066EE2 2px solid;
+  BACKGROUND-COLOR: #E2EEF2;
+}
+
+.rxtop {
+  BACKGROUND-COLOR: #0052AF;
+  COLOR: white;
+}
+
+.rxtxt {
+  COLOR: white;
+  PADDING-LEFT: 8px;
+  PADDING-RIGHT: 8px;
+}
+
+.annot {
+  COLOR: 004936;
+  TEXT-ALIGN: center;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+a.rxnav {
+  COLOR: white;
+  PADDING-LEFT: 8px;
+  PADDING-RIGHT: 8px;
+}
+a.rxnav:hover {
+  COLOR: white;
+  TEXT-DECORATION: underline;
+}
+
+
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 8pt;
+}
+
+.pgbak {
+  BACKGROUND-COLOR: white;
+}
+
+p.bht {
+  COLOR: #333333;
+  FONT-FAMILY: serif;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold;
+}
+
+.desc {
+  COLOR: #004936;
+  FONT-SIZE: 13pt;
+  TEXT-ALIGN: justify;
+}
+
+.desc2, li {
+  COLOR: #004936;
+  FONT-SIZE: 10pt;
+  TEXT-ALIGN: justify;
+}
+
+.faqno {
+  COLOR: #333333;
+  FONT-SIZE: 16pt;
+}
+
+.faqsum {
+  COLOR: #0052AF;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 12pt;
+}
+
+.faqq {
+  COLOR: #004936;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+}
+
+.faqa {
+  COLOR: #333333;
+  FONT-SIZE: 10pt;
+}
+
+.hte2 {
+  COLOR: #0052AF;
+  FONT-SIZE: 7pt;
+  FONT-WEIGHT: bold;
+  TEXT-ALIGN: center;
+}
+
+.hte3 {
+  COLOR: #000000;
+  FONT-SIZE: 9pt;
+  TEXT-ALIGN: left;
+}
+
+.hte3a {
+  COLOR: #004936;
+  FONT-SIZE: 9pt;
+  TEXT-ALIGN: left;
+}
+
+.pro {
+  COLOR: #004936;
+  FONT-SIZE: 11pt;
+  TEXT-ALIGN: left;
+}
+
+h5 {
+  COLOR: #56563B;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none
+}
+
+
+A {
+  COLOR: #00037f;
+  TEXT-DECORATION: none
+  bgcolor: black ;
+}
+A:hover {
+  COLOR: #5aa6e1;
+  TEXT-DECORATION: underline;
+}
+
+INPUT {
+  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+}
+TEXTAREA {
+  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+}
+SELECT {
+  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+}

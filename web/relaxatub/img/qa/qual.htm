@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<script language="javascript">
+
+  var currentItem = null;
+
+  function showDiv(item, x, y) {
+    if (currentItem == item) return;
+
+    var d = document.all.desc;
+
+    d.style.width = 300;
+    d.style.height = 200;
+    d.style.left = x;
+    d.style.top = y-200;
+    d.innerHTML = "Hello";
+    d.style.backgroundColor = "yellow";
+    d.style.display = "inline";
+
+    currentItem = item;
+  }
+
+  function hideDiv() {
+    var d = document.all.desc;
+    d.style.display = "none";
+    currentItem = null;
+  }
+</script>
+
+</head>
+
+<body>
+
+<img src="file:///W:\Relaxatub\HTML\img\qa\qual.gif" usemap="#qual" border="0">
+<MAP NAME="qual">
+	<AREA SHAPE=RECT HREF="08" TARGET="_self" COORDS="149,371,207,394">
+	<AREA SHAPE=RECT HREF="07" TARGET="_self" COORDS="3,339,56,366">
+	<AREA SHAPE=RECT HREF="06" TARGET="_self" COORDS="100,303,141,331">
+	<AREA SHAPE=RECT HREF="05" TARGET="_self" COORDS="297,251,368,278">
+	<AREA SHAPE=RECT HREF="04" TARGET="_self" COORDS="213,232,285,258">
+	<AREA SHAPE=RECT HREF="03" TARGET="_self" COORDS="188,172,235,195">
+	<AREA SHAPE=RECT HREF="02" TARGET="_self" COORDS="352,77,402,106">
+	<AREA SHAPE=RECT HREF="01" TARGET="_self" COORDS="201,4,272,27">
+</MAP>
+
+<div id=desc style="position:absolute"></div>
+
+</body>
+</html>

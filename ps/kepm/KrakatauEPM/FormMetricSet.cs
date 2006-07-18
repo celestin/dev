@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  14-Jun-06   258 : File created.
  * CAM  12-Jul-06   282 : Ensure Cancel button can be pressed even if Metric Set exists.
+ * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -152,7 +153,7 @@ namespace KrakatauEPM
       _mets2.Add(f["id"], f);
       
       AddMetric(_mets1, grpFileMet, 101, "SLOC");
-      AddMetric(_mets1, grpFileMet, 102, "NSC");
+      AddMetric(_mets1, grpFileMet, 102, "LLOC");
       AddMetric(_mets1, grpFileMet, 103, "N1");
       AddMetric(_mets1, grpFileMet, 104, "N2");
       AddMetric(_mets1, grpFileMet, 105, "N1S");
@@ -172,9 +173,12 @@ namespace KrakatauEPM
 
       AddMetric(_mets2, grpChgMet, 120, "DEL_SLOC");
       AddMetric(_mets2, grpChgMet, 121, "ADD_SLOC");
-      AddMetric(_mets2, grpChgMet, 122, "CHG_FILE");
-      AddMetric(_mets2, grpChgMet, 123, "DEL_FILE");
-      AddMetric(_mets2, grpChgMet, 124, "ADD_FILE");
+      AddMetric(_mets2, grpChgMet, 122, "CHG_LLOC");
+      AddMetric(_mets2, grpChgMet, 123, "DEL_LLOC");
+      AddMetric(_mets2, grpChgMet, 124, "ADD_LLOC");
+      AddMetric(_mets2, grpChgMet, 125, "CHG_FILE");
+      AddMetric(_mets2, grpChgMet, 126, "DEL_FILE");
+      AddMetric(_mets2, grpChgMet, 127, "ADD_FILE");
 
       SetLayout(this._mets1, this.grpFileMet);
       SetLayout(this._mets2, this.grpChgMet);

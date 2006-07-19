@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  19-Jul-06   284 : Add Defensive checks for style.css and metrics.js.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -670,12 +671,54 @@ namespace KrakatauEPM
       if (this.chkH2.Checked) 
       {
         FileInfo h2Html = new FileInfo(this.txtH2.Text + "\\index.html");
-        FileInfo styleCss = new FileInfo(Prefs.Preferences.InstallDir + "\\style.css");
+        DirectoryInfo installedHtml = new DirectoryInfo(Prefs.Preferences.InstallDir + "\\html");
+        FileInfo styleCss = new FileInfo(installedHtml.FullName + "\\style.css");
+        FileInfo metricsJs = new FileInfo(installedHtml.FullName + "\\metrics.js");
+
+        string sError = "";
 
         if (h2Html.Exists)
         {
-          FileInfo repStyleCss = new FileInfo(h2Html.Directory.FullName + "\\style.css");
-          if (!repStyleCss.Exists) styleCss.CopyTo(repStyleCss.FullName, false);
+          if (styleCss.Exists) 
+          {
+            FileInfo repStyleCss = new FileInfo(h2Html.Directory.FullName + "\\" + styleCss.Name);
+            try 
+            {
+              styleCss.CopyTo(repStyleCss.FullName, true);
+            } 
+            catch 
+            {
+              sError += "Could not overwrite " + repStyleCss.FullName + "\nPlease check you have the right permissions.\n\n";
+            }
+          } 
+          else 
+          {
+            sError += "Could not find " + styleCss.FullName + "\nPlease check that Krakatau EPM is correctly installed.\n\n";
+          }
+
+          if (metricsJs.Exists) 
+          {
+            
+            FileInfo repMetricsJs = new FileInfo(h2Html.Directory.FullName + "\\" + metricsJs.Name);
+            try 
+            {
+              metricsJs.CopyTo(repMetricsJs.FullName, true);
+            } 
+            catch 
+            {
+              sError += "Could not overwrite " + repMetricsJs.FullName + "\nPlease check you have the right permissions.\n\n";
+            }
+          } 
+          else 
+          {
+            sError += "Could not find " + metricsJs.FullName + "\nPlease check that Krakatau EPM is correctly installed.\n\n";
+          }
+
+          if (sError.Length>0) 
+          {
+            MessageBox.Show(this, sError, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          }
+
           System.Diagnostics.Process.Start(h2Html.FullName);
         }
       }

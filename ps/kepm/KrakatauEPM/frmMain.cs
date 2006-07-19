@@ -14,6 +14,7 @@
  * CAM  24-Jan-06   179 : Added Help when the user clicks Analyse without having defined New/Old.
  * CAM  09-Feb-06   185 : Save/Restore open Projects to Windows Registry.
  * CAM  08-Apr-06   230 : Added Status Bar.
+ * CAM  08-Apr-06   284 : Make the application window slightly larger.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -228,7 +229,7 @@ namespace KrakatauEPM
       this.lsvProjects.LargeImageList = this.imlProj;
       this.lsvProjects.Location = new System.Drawing.Point(8, 56);
       this.lsvProjects.Name = "lsvProjects";
-      this.lsvProjects.Size = new System.Drawing.Size(576, 235);
+      this.lsvProjects.Size = new System.Drawing.Size(576, 272);
       this.lsvProjects.TabIndex = 1;
       this.lsvProjects.ItemActivate += new System.EventHandler(this.lsvProjects_ItemActivate);
       // 
@@ -320,7 +321,7 @@ namespace KrakatauEPM
       // 
       // stbMain
       // 
-      this.stbMain.Location = new System.Drawing.Point(0, 301);
+      this.stbMain.Location = new System.Drawing.Point(0, 339);
       this.stbMain.Name = "stbMain";
       this.stbMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
                                                                                this.sbpMessage,
@@ -343,14 +344,14 @@ namespace KrakatauEPM
       // EpmApp
       // 
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-      this.ClientSize = new System.Drawing.Size(592, 323);
+      this.ClientSize = new System.Drawing.Size(592, 361);
       this.Controls.Add(this.stbMain);
       this.Controls.Add(this.tbrMenu);
       this.Controls.Add(this.lsvProjects);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.MaximumSize = new System.Drawing.Size(600, 350);
+      this.MaximumSize = new System.Drawing.Size(600, 408);
       this.Menu = this.mnuApp;
-      this.MinimumSize = new System.Drawing.Size(600, 350);
+      this.MinimumSize = new System.Drawing.Size(600, 408);
       this.Name = "EpmApp";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Krakatau EPM";

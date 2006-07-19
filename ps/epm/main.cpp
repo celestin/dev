@@ -46,6 +46,7 @@
  * CAM  11-May-06   252 : Min/Max/Avg in HTML Reports.  Version 1.10.003.
  * CAM  06-Jun-06   255 : Version 1.10.004.
  * CAM  18-Jul-06   272 : Version 1.11.000.
+ * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -350,16 +351,22 @@ void calcDiff(int sfid, string &filename, string &filename2) {
   saveDb(sfid, met, MET(CLOC), MET(ALLOC));
 }
 
-void calcDiff(int sfid, char status, float sloc) {
+void calcAddDel(int sfid, char status, int metid, float mvalue) {
   met.clearMetrics();
 
   if (status == 'A') {
-    met.set(MET(ALOC), sloc);
+    if (metid == SLOC) met.set(MET(ALOC), mvalue);
+    if (metid == NSC)  met.set(MET(ALLOC), mvalue);
   } else {
-    met.set(MET(DLOC), sloc);
+    if (metid == SLOC) met.set(MET(DLOC), mvalue);
+    if (metid == NSC)  met.set(MET(DLLOC), mvalue);
   }
 
-  saveDb(sfid, met, MET(CLOC), MET(ALOC));
+  if (metid == SLOC) {
+    saveDb(sfid, met, MET(CLOC), MET(ALOC));
+  } else if (metid == NSC) {
+    saveDb(sfid, met, MET(CLLOC), MET(ALLOC));
+  }
 }
 
 
@@ -797,6 +804,7 @@ int main(int argc, char* argv[]) {
     int pct;
     int lastpct=-1;
     long mvalue;
+    long metid;
 
     // Metrics Analysis
     for (i=0; i<nProjects; i++) {
@@ -854,11 +862,11 @@ int main(int argc, char* argv[]) {
         projDb.clearResults();
       }
 
-      strcpy(sql, "SELECT cf.sfid, cf.status, sm.mvalue, sf1.sf_type ");
+      strcpy(sql, "SELECT cf.sfid, cf.status, sm.mvalue, sf1.sf_type, sm.mid ");
       strcat(sql, "FROM sourcefile sf1, comparefile cf, sourcemetric sm ");
       strcat(sql, "WHERE sf1.sfid = cf.sfid ");
       strcat(sql, "AND cf.sfid = sm.sfid ");
-      sprintf(mid, "AND sm.mid = %d ", SLOC);
+      sprintf(mid, "AND sm.mid IN (%d,%d) ", SLOC, NSC);
       strcat(sql, mid);
       strcat(sql, "AND cf.status in ('A','D') ");
 
@@ -869,12 +877,13 @@ int main(int argc, char* argv[]) {
           status = projDb.cell(r,1).c_str()[0];
           mvalue = projDb.longCell(r,2);
           lang.setLanguage(projDb.cell(r,3));
+          metid = projDb.longCell(r,4);
 
           pct = (int)((double)r/(double)projDb.rows()*100);
 
           if (validLanguage(lang.getLanguage())) {
             if (pct > lastpct) cout << "add/del " << sfid << " (" << pct << "%)" << endl;
-            calcDiff(sfid, status, mvalue);
+            calcAddDel(sfid, status, metid, mvalue);
           }
           lastpct = pct;
         }

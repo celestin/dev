@@ -6,13 +6,14 @@
 --------------------Configuration: csp - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP67.tmp" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPFE.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /I "c:\appserv\mysql\include" /I "C:\Dev\PS\epm\lic" /I "C:\Dev\PS\epm\xerces\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fo"Release/" /Fd"Release/" /FD /Zm512 /c 
-"C:\Dev\PS\epm\epm\HTMLReport.cpp"
+"C:\Dev\PS\epm\epm\main.cpp"
+"C:\Dev\PS\epm\epm\Report.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP67.tmp" 
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP68.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPFE.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPFF.tmp" with contents
 [
 xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/epm.pdb" /machine:I386 /out:"Release/epm.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" /libpath:"c:\appserv\mysql\lib\opt" /libpath:"C:\Dev\PS\epm\xerces\lib" 
 .\Release\CSVReport.obj
@@ -38,17 +39,19 @@ xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell
 .\Release\Report.obj
 .\Release\XMLReport.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP68.tmp"
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPFF.tmp"
 <h3>Output Window</h3>
 Compiling...
-HTMLReport.cpp
+main.cpp
+Report.cpp
+Generating Code...
 Linking...
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP6A.bat" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP101.bat" with contents
 [
 @echo off
 C:\Dev\PS\epm\epm\Release\epm.copy.cmd
 ]
-Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP6A.bat"
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP101.bat"
 
         1 file(s) copied.
 

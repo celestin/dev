@@ -21,6 +21,7 @@
  * CAM  23-Mar-06   218 : Commented out the Project Halstead metrics retrieve.
  * CAM  25-Mar-06   220 : Above (220) comment is nonsense - new values should be in position 0.  Adjusted HTMLReport accordingly.
  * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -208,7 +209,7 @@ void Report::getMetrics(ReportItem &currItem) {
       }
 
       // Ensure Changed metrics are always in position 0
-      k = ((mid >= CLOC) && (mid <= ALOC)) ? 0 : j;
+      k = ((mid >= CLOC) && (mid <= ALLOC)) ? 0 : j;
 
       met.set(MET(mid), k, value);
     }

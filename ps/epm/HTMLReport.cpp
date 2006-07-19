@@ -29,6 +29,7 @@
  * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
  * CAM  18-Jul-06   265 : Added MetricsHelp legend.
+ * CAM  19-Jul-06   285 : Change script tag in EPM HTML H2 report to </script>.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -48,7 +49,7 @@ void HTMLReport::htmlStart(ofstream &current, string &title, int border, string 
   current << "<html><head>" << endl
           << "<title>" << title << "</title>" << endl
           << "<link href=style.css rel=stylesheet type=text/css>" << endl
-          << "<script language=\"Javascript\" src=\"metrics.js\" \\>" << endl
+          << "<script language=\"Javascript\" src=\"metrics.js\"></script>" << endl
           << "</head>" << endl
           << "<body ";
 

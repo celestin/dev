@@ -30,6 +30,7 @@
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
  * CAM  18-Jul-06   265 : Added MetricsHelp legend.
  * CAM  19-Jul-06   285 : Change script tag in EPM HTML H2 report to </script>.
+ * CAM  20-Jul-06   285 : Changed MetricsHelp to call javascript in the href rather than onclick.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -323,7 +324,7 @@ void HTMLReport::metTd(ofstream &current, ReportItem &currItem, int metId) {
 
   if (isSetMember(METID(metId))) {
     current << "<td class=metCode title=\"" << metDesc[metId] <<  "\">" <<
-      "<a href=\"javascript:void();\" onclick=\"smh('" << itemType << "','" << METID(metId) << "');\">" << metCode[metId] << "</a>";
+      "<a href=\"javascript:smh('" << itemType << "','" << METID(metId) << "');\">" << metCode[metId] << "</a>";
   } else {
     current << "<td class=metCode>&nbsp;</td>";
   }

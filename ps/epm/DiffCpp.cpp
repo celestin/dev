@@ -11,6 +11,7 @@
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  14-Mar-06   202 : Remove redundant output.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -302,6 +303,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
           } else {
             skip = true;
           }
+          retval[b++] = nc;
           break;
         }
       case ';':
@@ -309,13 +311,14 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
           if (!skip && !comskip && !theMultiLine) {
             retval[b++] = ';';
             retval[b++] = '\0';
-            if (debugon) cout << currline << endl;
             currline = retval;
+            if (debugon) cout << '[' << currline << ']' << endl;
             return;
           }
         }
       case '\n':
         {
+          // This is where we *could* (and should) reset b to 0 if the only thing in the retval so far is spaces - to chop trailing
           comskip = false;
           break;
         }
@@ -355,17 +358,18 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
         }
       case '\\':
         {
+          retval[b++] = nc;
           if (skip)
           {
-            // We are in a string so this is the start of an escape sequence
-            // so output the '\' then move onto the next char
-            if (!skip && !comskip && !theMultiLine) retval[b++] = nc;
+            if ((nc2=fgetc(input))!=EOF) {
+              retval[b++] = nc2;
+            }
           }
           break;
         }
       default:
         {
-          if (!skip && !comskip && !theMultiLine) retval[b++] = nc;
+          if (!comskip && !theMultiLine) retval[b++] = nc;
           break;
         }
       }

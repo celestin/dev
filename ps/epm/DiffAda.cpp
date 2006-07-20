@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -167,7 +168,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           {
             retval[retLength] = '\0';
             currline = retval;
-//cout << "ret6::" << currline << ' ' << flush;
+//cout << "sloc [" << currline << ']' << endl;
             return;
           }
           c++;
@@ -278,14 +279,16 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
           } else {
             skip = true;
           }
+          retval[b++] = nc;
           break;
         }
       case ';':
         {
-          if (!skip && !comskip) {
+          if (!comskip) {
             retval[b++] = ';';
             retval[b++] = '\0';
             currline = retval;
+            //cout << '[' << currline << ']' << endl;
             return;
           }
         }
@@ -312,17 +315,18 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
         }
       case '\\':
         {
+          retval[b++] = nc;
           if (skip)
           {
-            // We are in a string so this is the start of an escape sequence
-            // so output the '\' then move onto the next char
-            if (!skip && !comskip) retval[b++] = nc;
+            if ((nc2=fgetc(input))!=EOF) {
+              retval[b++] = nc2;
+            }
           }
           break;
         }
       default:
         {
-          if (!skip && !comskip) retval[b++] = nc;
+          if (!comskip) retval[b++] = nc;
           break;
         }
       }

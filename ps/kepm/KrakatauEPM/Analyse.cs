@@ -88,10 +88,16 @@ namespace KrakatauEPM
         if (txt is ComboBox) 
         {
           ComboBox cmb = (ComboBox) txt;
-          if (cmb.Items.Contains(option)) 
+          IEnumerator sets = cmb.Items.GetEnumerator();
+          while (sets.MoveNext()) 
           {
-            cmb.Text = option;
-          } 
+            if (sets.Current.ToString().Equals(option)) 
+            {
+              cmb.Text = option;
+              return;
+            } 
+          }
+
         }
         else 
         {

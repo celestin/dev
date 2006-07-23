@@ -9,6 +9,7 @@
  * 
  * Who  When       Why
  * CAM  13-Jun-06   258 : File created.
+ * CAM  22-Jul-06   291 : Add tooltips for each button.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -166,14 +167,17 @@ namespace KrakatauEPM
       // tbbNew
       // 
       this.tbbNew.ImageIndex = 0;
+      this.tbbNew.ToolTipText = "Create a new Metric Set";
       // 
       // tbbEdit
       // 
       this.tbbEdit.ImageIndex = 1;
+      this.tbbEdit.ToolTipText = "Edit the selected Metric Set";
       // 
       // tbbDel
       // 
       this.tbbDel.ImageIndex = 2;
+      this.tbbDel.ToolTipText = "Delete the selected Metric Set";
       // 
       // imlMetricSets
       // 

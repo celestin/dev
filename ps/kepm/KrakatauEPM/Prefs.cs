@@ -11,6 +11,7 @@
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  09-Feb-06   185 : Save/Restore open Projects to Windows Registry.
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  22-Jul-06   291 : Increase remembered projects from 20 to 50.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -30,6 +31,7 @@ namespace KrakatauEPM
     private const string PROJECT_LIST = "project";
     private const string PROJECT_NEW = "project_new";
     private const string PROJECT_OLD = "project_old";
+    private const int MAX_PROJECTS = 50;
     private ArrayList _projects = null;
     private DirectoryInfo _installDir;
 
@@ -87,7 +89,7 @@ namespace KrakatauEPM
 
           i++;
         }
-        while (i<20) 
+        while (i<MAX_PROJECTS) 
         {
           // Remove unrequired keys
           if (key.GetValue(PROJECT_LIST+i) != null) key.DeleteValue(PROJECT_LIST+i);
@@ -156,7 +158,7 @@ namespace KrakatauEPM
       long lOld = getLongValue(key, PROJECT_OLD);
 
       _projects = new System.Collections.ArrayList();
-      for (int i=0; i<20; i++) 
+      for (int i=0; i<MAX_PROJECTS; i++) 
       {        
         if (key.GetValue(PROJECT_LIST + i) != null) 
         {        

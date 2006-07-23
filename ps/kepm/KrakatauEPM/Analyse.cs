@@ -11,6 +11,7 @@
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
  * CAM  19-Jul-06   284 : Add Defensive checks for style.css and metrics.js.
+ * CAM  22-Jul-06   291 : Add some tooltips and help around the reporting options.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -55,15 +56,16 @@ namespace KrakatauEPM
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label label5;
-
-    private Project _newProject = null;
-    private Project _oldProject = null;
-
     private ProcessCaller processCaller;
     private System.Windows.Forms.RichTextBox rtbResults;
     private System.Windows.Forms.Button cmdParse;
     private System.Windows.Forms.CheckBox chkMetSet;
     private System.Windows.Forms.ComboBox cmbMetSet;
+    private System.Windows.Forms.Label lblHelp;
+
+    private Project _newProject = null;
+    private Project _oldProject = null;
+
 
 
     /// <summary>
@@ -77,10 +79,24 @@ namespace KrakatauEPM
 
     private void setOption(string option, CheckBox chk, Control txt) 
     {
+      txt.Text = "";
+
       if (option != null) 
       {
         chk.Checked = true;
-        txt.Text = option;
+
+        if (txt is ComboBox) 
+        {
+          ComboBox cmb = (ComboBox) txt;
+          if (cmb.Items.Contains(option)) 
+          {
+            cmb.Text = option;
+          } 
+        }
+        else 
+        {
+          txt.Text = option;
+        }
       }
     }
 
@@ -95,6 +111,12 @@ namespace KrakatauEPM
       if (this._oldProject != null) 
       {
         this.txtOldProj.Text = this._oldProject.Title + " (" + this._oldProject.ProjectFile.FullName + ")";
+      }
+
+      IEnumerator sets = XmlConfig.Config.GetMetricSets();
+      while (sets.MoveNext()) 
+      {
+        this.cmbMetSet.Items.Add(sets.Current);
       }
 
       chkH2.Checked = chkCSV.Checked = chkXML.Checked = chkMyServer.Checked = chkMyUser.Checked = chkMyPwd.Checked = false;
@@ -115,16 +137,29 @@ namespace KrakatauEPM
       this.txtH2.Visible = this.cmdH2Browse.Visible = this.chkH2.Checked;
       this.txtCSV.Visible = this.cmdCSVBrowse.Visible = this.chkCSV.Checked;    
       this.txtXML.Visible = this.cmdXMLBrowse.Visible = this.chkXML.Checked;        
-      this.cmbMetSet.Visible = this.chkMetSet.Checked;  
+      ReportHelp();
 
+      this.cmbMetSet.Visible = this.chkMetSet.Checked;
       this.txtMyServer.Visible = this.chkMyServer.Checked;            
       this.txtMyUser.Visible = this.chkMyUser.Checked;                
       this.txtMyPwd.Visible = this.chkMyPwd.Checked;
 
-      IEnumerator sets = XmlConfig.Config.GetMetricSets();
-      while (sets.MoveNext()) 
+      ToolTip tt = new ToolTip();
+      tt.SetToolTip(txtH2, "Use the Browse button to specify the PATH (a folder)\nto which the HTML files will be written.");
+      tt.SetToolTip(cmdH2Browse, "Use this button to specify the PATH (a folder)\nto which the HTML files will be written.");
+      tt.SetToolTip(txtCSV, "Use the Browse button to specify the filename for the CSV report.");
+      tt.SetToolTip(cmdCSVBrowse, "Use this button to specify the filename for the CSV report.");
+      tt.SetToolTip(txtXML, "Use the Browse button to specify the filename for the XML report.");
+      tt.SetToolTip(cmdXMLBrowse, "Use this button to specify the filename for the XML report.");
+    }
+
+    protected void ReportHelp() 
+    {
+      this.lblHelp.Visible = false;
+      if (!this.chkH2.Checked && !this.chkCSV.Checked && !this.chkXML.Checked) 
       {
-        this.cmbMetSet.Items.Add(sets.Current);
+        this.lblHelp.Visible = true;
+        this.lblHelp.Text = "Select a reporting option by clicking one of the checkboxes.\n\nOnce you have clicked a checkbox, you can specify the output path or filename (as required).";
       }
     }
 
@@ -181,6 +216,7 @@ namespace KrakatauEPM
       this.cmdParse = new System.Windows.Forms.Button();
       this.chkMetSet = new System.Windows.Forms.CheckBox();
       this.cmbMetSet = new System.Windows.Forms.ComboBox();
+      this.lblHelp = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // chkH2
@@ -447,6 +483,17 @@ namespace KrakatauEPM
       this.cmbMetSet.Size = new System.Drawing.Size(224, 21);
       this.cmbMetSet.TabIndex = 28;
       // 
+      // lblHelp
+      // 
+      this.lblHelp.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(255)), ((System.Byte)(255)), ((System.Byte)(204)));
+      this.lblHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.lblHelp.Location = new System.Drawing.Point(128, 120);
+      this.lblHelp.Name = "lblHelp";
+      this.lblHelp.Size = new System.Drawing.Size(360, 96);
+      this.lblHelp.TabIndex = 29;
+      this.lblHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblHelp.Visible = false;
+      // 
       // Analyse
       // 
       this.AcceptButton = this.cmdParse;
@@ -480,6 +527,7 @@ namespace KrakatauEPM
       this.Controls.Add(this.cmdH2Browse);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.chkH2);
+      this.Controls.Add(this.lblHelp);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
@@ -495,16 +543,19 @@ namespace KrakatauEPM
     private void chkH2_CheckedChanged(object sender, System.EventArgs e)
     {
       this.txtH2.Visible = this.cmdH2Browse.Visible = this.chkH2.Checked;
+      ReportHelp();
     }
 
     private void chkCSV_CheckedChanged(object sender, System.EventArgs e)
     {
       this.txtCSV.Visible = this.cmdCSVBrowse.Visible = this.chkCSV.Checked;    
+      ReportHelp();
     }
 
     private void chkXML_CheckedChanged(object sender, System.EventArgs e)
     {
       this.txtXML.Visible = this.cmdXMLBrowse.Visible = this.chkXML.Checked;        
+      ReportHelp();
     }
 
     private void chkMetSet_CheckedChanged(object sender, System.EventArgs e)

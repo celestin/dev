@@ -47,6 +47,7 @@
  * CAM  06-Jun-06   255 : Version 1.10.004.
  * CAM  18-Jul-06   272 : Version 1.11.000.
  * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
+ * CAM  22-Jul-06   291 : Ensure "lines" of 64Kb semi-colon are truncated and diff'ing continues.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"

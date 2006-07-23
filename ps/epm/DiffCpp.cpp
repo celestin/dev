@@ -12,6 +12,7 @@
  * CAM  14-Mar-06   202 : Remove redundant output.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
+ * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -274,7 +275,7 @@ void DiffCpp::getLineCR(FILE *input, char *&currline)
 
 void DiffCpp::getLineSC(FILE *input, char *&currline)
 {
-  char *retval = (char*) malloc(65536*sizeof(char));
+  char *retval = (char*) malloc(MAX_LLOC_LEN*sizeof(char));
   int b = 0;
 
   bool debugon = false;
@@ -293,7 +294,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
     bool skip = false;
     bool comskip = false;
 
-    while ((nc=fgetc(input))!=EOF) {
+    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
       switch (nc)
       {
       case '"':

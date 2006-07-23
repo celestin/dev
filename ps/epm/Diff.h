@@ -11,10 +11,13 @@
  * CAM  29-Dec-04  File added.
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  22-Jul-06   291 : Added constant MAX_LLOC_LEN.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_STANDARD_DIFF
 #define CLASS_STANDARD_DIFF
+
+#define MAX_LLOC_LEN 65536
 
 #include <stdio.h>
 #include <math.h>

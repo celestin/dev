@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.
+ * CAM  29-Jul-2006  10021 : Added correct font for all input types.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -156,7 +157,7 @@ A:hover {
   TEXT-DECORATION: underline;
 }
 
-INPUT {
+INPUT,SELECT {
   BACKGROUND-COLOR: #EEEEFF;
   BORDER-TOP:    #497FB1 2px solid;
   BORDER-LEFT:   #497FB1 2px solid;
@@ -167,11 +168,15 @@ INPUT {
   PADDING-LEFT:   1px;
   PADDING-RIGHT:  1px;
   PADDING-TOP:    1px;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
 }
 
 
 INPUT.button {
   BACKGROUND-COLOR: #AACCFF;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
 }
 
 

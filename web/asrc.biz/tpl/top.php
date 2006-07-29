@@ -13,6 +13,7 @@
  * CAM  19-Mar-2004  File created.
  * CAM  30-May-2004  4 : Added Fines menu.
  * CAM  25-Apr-2006  14 : Show Courts View to admin toolbar.
+ * CAM  29-Jul-2006  10021 : Show flash messages if they exist.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -71,7 +72,7 @@ if (empty($hide_toolbar)) {
             print '<td><a href="logout.php">logout</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             print '<td><a href="changepass.php">change password</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             if ($member->isAdmin()) {
-              print '<td><a href="newuser.php">new user</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
+              print '<td><a href="users.php">users</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
               print '<td><a href="courtsview.php">courts</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             }
           } else {
@@ -84,3 +85,9 @@ if (empty($hide_toolbar)) {
     </table></td></tr>
 
     <tr><td colspan=2 width="100%" height="100%" valign=top>
+<?
+if (session_is_registered('flash') && !empty($_SESSION['flash'])) {
+  Msg::statement($_SESSION['flash']);
+  $_SESSION['flash'] = "";
+}
+?>

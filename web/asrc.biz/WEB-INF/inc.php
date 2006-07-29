@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
  * CAM  19-Jan-2006  9 : Added Block, BlockSlot.
+ * CAM  29-Jul-2006  10021 : Added Filter.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Util.php';
@@ -27,5 +28,6 @@ include_once 'BlockSlot.php';
 include_once 'Slot.php';
 include_once 'ActionUtil.php';
 include_once 'EmailMsg.php';
+include_once 'Filter.php';
 
 ?>

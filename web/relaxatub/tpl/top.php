@@ -15,6 +15,7 @@
 <html>
 <head>
   <title>Relaxatub (Aberdeen UK) - <? print $pageTitle; ?></title>
+  <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <meta name="Description" content="Hot Tubs Aberdeen UK, Spas.  Check out - <? print $pageTitle; ?>">
   <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh">
 

@@ -63,37 +63,44 @@
 ?>
   </table></td>
 
-  <td width="100%" align=center><table border=0 cellpadding=5>
-    <tr><td colspan="2" class="tubname"><? print $_tub; ?></td></tr>
+  <td align=center width="100%"><table border=0 cellpadding=3 cellspacing=0>
+    <tr><td width=120>&nbsp;</td><td width=110>&nbsp;</td><td width=270 class="tubname"><? print $_tub; ?></td></tr>
     <tr>
-      <td><table border=0 cellspacing=0 cellpadding=2>
-        <tr>
-          <td class="fldlbl">Dimensions</td><td class="fldtxt"><? print $dimen ?></td>
-          <td rowspan=7 align=right><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_tub; ?>"></td>
-        </tr>
-        <tr><td class="fldlbl">Water Capacity</td><td class="fldtxt"><? print $_t->capacity ?></td></tr>
-        <tr><td class="fldlbl">Dry Weight</td><td class="fldtxt"><? print $_t->dry_weight ?></td></tr>
-        <tr><td class="fldlbl">Filled Weight</td><td class="fldtxt"><? print $_t->fill_weight ?></td></tr>
-        <tr><td class="fldlbl">Massaging Pumps</td><td class="fldtxt"><? print $_t->pumps ?></td></tr>
-        <tr><td class="fldlbl">Heatshield Cover</td><td class="fldtxt"><? print $_t->shield ?></td></tr>
-        <tr><td class="fldlbl">Safety Approval</td><td class="fldtxt"><? print $_t->safety ?></td></tr>
+      <td class="fldlbl">Dimensions</td><td class="fldtxt"><? print $dimen ?></td>
+      <td rowspan=8 align=right>
+      <table border=0 width=270 cellspacing=0 cellpadding=0>
+      <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_tub; ?>"></td></tr>
+<!--
+      <tr>
+        <td align=center><img src="img/col/cobalt.jpg"></td>
+        <td align=center><img src="img/col/natural_enviroskirt.jpg"></td>
+      </tr>
+-->
+      </table>
+      </td>
+    </tr>
+    <tr><td class="fldlbl">Water Capacity</td><td class="fldtxt"><? print $_t->capacity ?></td></tr>
+    <tr><td class="fldlbl">Dry Weight</td><td class="fldtxt"><? print $_t->dry_weight ?></td></tr>
+    <tr><td class="fldlbl">Filled Weight</td><td class="fldtxt"><? print $_t->fill_weight ?></td></tr>
+    <tr><td class="fldlbl">Massaging Pumps</td><td class="fldtxt"><? print $_t->pumps ?></td></tr>
+    <tr><td class="fldlbl">Heatshield Cover</td><td class="fldtxt"><? print $_t->shield ?></td></tr>
+    <tr><td class="fldlbl">Safety Approval</td><td class="fldtxt"><? print $_t->safety ?></td></tr>
 
-        <tr><td class="fldlbl">Water Ports System</td><td colspan=2 class="fldtxt"><? print $_t->ports ?></td></tr>
-        <tr><td class="fldlbl">Personal Customised Therapeutic Jetting</td><td colspan=2 class="fldtxt"><? print $_t->custom ?></td></tr>
-        <tr><td class="fldlbl">Microfilter Filtration</td><td colspan=2 class="fldtxt"><? print $_t->filter ?></td></tr>
-        <tr><td class="fldlbl">Automatic Controls</td><td colspan=2 class="fldtxt"><? print $_t->auto ?></td></tr>
-        <tr><td class="fldlbl">Underwater Lighting</td><td colspan=2 class="fldtxt"><? print $_t->light ?></td></tr>
-        <tr><td class="fldlbl">Customer Protection</td><td colspan=2 class="fldtxt"><? print $_t->protect ?></td></tr>
+    <tr><td class="fldlbl">Water Ports System</td><td class="fldtxt"><? print $_t->ports ?></td></tr>
+    <tr><td class="fldlbl">Customised Jetting</td><td colspan=2 class="fldtxt"><? print $_t->custom ?></td></tr>
+    <tr><td class="fldlbl">Microfilter Filtration</td><td colspan=2 class="fldtxt"><? print $_t->filter ?></td></tr>
+    <tr><td class="fldlbl">Automatic Controls</td><td colspan=2 class="fldtxt"><? print $_t->auto ?></td></tr>
+    <tr><td class="fldlbl">Underwater Lighting</td><td colspan=2 class="fldtxt"><? print $_t->light ?></td></tr>
+    <tr><td class="fldlbl">Customer Protection</td><td colspan=2 class="fldtxt"><? print $_t->protect ?></td></tr>
 
-    </table></td></tr>
-    <tr><td colspan="2" align=center><img width="500" src="<? print $_t->imgFile("fb"); ?>" alt="Plan view of <? echo $_tub; ?>"></td></tr>
+    <tr><td colspan="3" align=center valign=top><img width="500" src="<? print $_t->imgFile("fb"); ?>" alt="Plan view of <? echo $_tub; ?>"></td></tr>
 
 <?
   if ($_t->hasQuote1()) {
-    print "<tr><td colspan=\"2\">" . $_t->getQuote1() . "</td></tr>";
+    print "<tr><td colspan=\"3\">" . $_t->getQuote1() . "</td></tr>";
   }
   if ($_t->hasQuote2()) {
-    print "<tr><td colspan=\"2\">" . $_t->getQuote2() . "</td></tr>";
+    print "<tr><td colspan=\"3\">" . $_t->getQuote2() . "</td></tr>";
   }
 ?>
   </table></td>

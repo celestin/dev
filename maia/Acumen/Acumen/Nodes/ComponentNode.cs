@@ -19,7 +19,16 @@ namespace frontburner.maia.Acumen.Nodes
   public enum ComponentTypes 
   {
     SealChip,
-    Wireless
+    Wireless,
+    Dart1,
+    Dart2
+  }
+
+  public enum MeasurementTypes 
+  {
+    Speed=1,
+    Temperature=2,
+    Vibration=3
   }
 
 	/// <summary>
@@ -29,20 +38,32 @@ namespace frontburner.maia.Acumen.Nodes
   {
     protected ComponentTypes _compType;
     protected int _physicalEnd;
+    protected long _lastData;
 
     public ComponentNode(int id, string code, string name, int ctype, int physicalEnd) : base(id, code, name)
     {
       this._physicalEnd = physicalEnd;
+      this._lastData = 0;
 
       if (ctype == 0) 
       {
         this._compType = ComponentTypes.Wireless;
         this.ImageIndex = 6;
       } 
-      else 
+      else if (ctype == 1)
       {
         this._compType = ComponentTypes.SealChip;
         this.ImageIndex = 5;
+      }
+      else if (ctype == 2) 
+      {
+        this._compType = ComponentTypes.Dart1;
+        this.ImageIndex = 5;
+      }
+      else if (ctype == 3) 
+      {
+        this._compType = ComponentTypes.Dart2;
+        this.ImageIndex = 6;
       }
 
       this.SelectedImageIndex = this.ImageIndex;
@@ -61,6 +82,18 @@ namespace frontburner.maia.Acumen.Nodes
       get 
       {
         return this._compType;
+      }
+    }
+
+    public long LastData 
+    {
+      get 
+      {
+        return this._lastData;
+      }
+      set 
+      {
+        this._lastData = value;
       }
     }
   }

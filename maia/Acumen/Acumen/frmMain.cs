@@ -172,13 +172,30 @@ namespace frontburner.maia.Acumen
     private System.Windows.Forms.Button btnC12;
     private System.Windows.Forms.Button btnC11;
     private System.Windows.Forms.Button btnC10;
+    private System.Windows.Forms.TabPage tabDemoRig;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.PictureBox pictureBox6;
+    private System.Windows.Forms.PictureBox pictureBox12;
+    private System.Windows.Forms.Button btnD1;
+    private System.Windows.Forms.Button btnD2A;
+    private System.Windows.Forms.Button btnD2B;
+    private System.Windows.Forms.Button btnD2C;
     private bool warning=true;
+    private System.Windows.Forms.PictureBox pictureBox11;
+    private Hashtable dartButtons;
 
 		public frmMain()
 		{
 			InitializeComponent();
 
-      DataLayer.getDataLayer().populateTree(trvNav);
+      dartButtons = new Hashtable();
+      dartButtons.Add(btnD1.Tag, btnD1);
+      dartButtons.Add(btnD2A.Tag, btnD2A);
+      dartButtons.Add(btnD2B.Tag, btnD2B);
+      dartButtons.Add(btnD2C.Tag, btnD2C);
+
+      DataLayer.getDataLayer().populateTree(trvNav, dartButtons);
 
       this.tbcResults.Region =
         new Region(
@@ -259,6 +276,23 @@ namespace frontburner.maia.Acumen
       this.trvNav = new System.Windows.Forms.TreeView();
       this.imlTree = new System.Windows.Forms.ImageList(this.components);
       this.tbcResults = new System.Windows.Forms.TabControl();
+      this.tabContract = new System.Windows.Forms.TabPage();
+      this.btnC12 = new System.Windows.Forms.Button();
+      this.btnC11 = new System.Windows.Forms.Button();
+      this.btnC10 = new System.Windows.Forms.Button();
+      this.btnC09 = new System.Windows.Forms.Button();
+      this.btnC08 = new System.Windows.Forms.Button();
+      this.btnC07 = new System.Windows.Forms.Button();
+      this.btnC06 = new System.Windows.Forms.Button();
+      this.btnC05 = new System.Windows.Forms.Button();
+      this.btnC04 = new System.Windows.Forms.Button();
+      this.btnC03 = new System.Windows.Forms.Button();
+      this.btnC02 = new System.Windows.Forms.Button();
+      this.btnC01 = new System.Windows.Forms.Button();
+      this.label1 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
+      this.pictureBox4 = new System.Windows.Forms.PictureBox();
+      this.pictureBox5 = new System.Windows.Forms.PictureBox();
       this.tabCompany = new System.Windows.Forms.TabPage();
       this.btnYellow = new System.Windows.Forms.Button();
       this.btnOrange = new System.Windows.Forms.Button();
@@ -309,23 +343,16 @@ namespace frontburner.maia.Acumen
       this.pegVibr = new Gigasoft.ProEssentials.Pego();
       this.pegSped = new Gigasoft.ProEssentials.Pego();
       this.lblGraphTitles = new System.Windows.Forms.Label();
-      this.tabContract = new System.Windows.Forms.TabPage();
-      this.btnC12 = new System.Windows.Forms.Button();
-      this.btnC11 = new System.Windows.Forms.Button();
-      this.btnC10 = new System.Windows.Forms.Button();
-      this.btnC09 = new System.Windows.Forms.Button();
-      this.btnC08 = new System.Windows.Forms.Button();
-      this.btnC07 = new System.Windows.Forms.Button();
-      this.btnC06 = new System.Windows.Forms.Button();
-      this.btnC05 = new System.Windows.Forms.Button();
-      this.btnC04 = new System.Windows.Forms.Button();
-      this.btnC03 = new System.Windows.Forms.Button();
-      this.btnC02 = new System.Windows.Forms.Button();
-      this.btnC01 = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
-      this.label3 = new System.Windows.Forms.Label();
-      this.pictureBox4 = new System.Windows.Forms.PictureBox();
-      this.pictureBox5 = new System.Windows.Forms.PictureBox();
+      this.tabDemoRig = new System.Windows.Forms.TabPage();
+      this.btnD1 = new System.Windows.Forms.Button();
+      this.btnD2C = new System.Windows.Forms.Button();
+      this.btnD2B = new System.Windows.Forms.Button();
+      this.btnD2A = new System.Windows.Forms.Button();
+      this.pictureBox12 = new System.Windows.Forms.PictureBox();
+      this.label4 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.pictureBox6 = new System.Windows.Forms.PictureBox();
+      this.pictureBox11 = new System.Windows.Forms.PictureBox();
       this.btnProcess = new System.Windows.Forms.Button();
       this.pbxMaia = new System.Windows.Forms.PictureBox();
       this.tmrVibr = new System.Windows.Forms.Timer(this.components);
@@ -369,12 +396,13 @@ namespace frontburner.maia.Acumen
       ((System.ComponentModel.ISupportInitialize)(this.sbpWarning)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpError)).BeginInit();
       this.tbcResults.SuspendLayout();
+      this.tabContract.SuspendLayout();
       this.tabCompany.SuspendLayout();
       this.tabAsset.SuspendLayout();
       this.tabSchem.SuspendLayout();
       this.tabTag.SuspendLayout();
       this.tabComp.SuspendLayout();
-      this.tabContract.SuspendLayout();
+      this.tabDemoRig.SuspendLayout();
       this.SuspendLayout();
       // 
       // stbMain
@@ -389,6 +417,7 @@ namespace frontburner.maia.Acumen
       this.stbMain.Size = new System.Drawing.Size(1042, 22);
       this.stbMain.TabIndex = 0;
       this.stbMain.Text = "Ready";
+      this.stbMain.PanelClick += new System.Windows.Forms.StatusBarPanelClickEventHandler(this.stbMain_PanelClick);
       // 
       // sbpMessage
       // 
@@ -596,17 +625,215 @@ namespace frontburner.maia.Acumen
       // 
       // tbcResults
       // 
+      this.tbcResults.Controls.Add(this.tabContract);
       this.tbcResults.Controls.Add(this.tabCompany);
       this.tbcResults.Controls.Add(this.tabAsset);
       this.tbcResults.Controls.Add(this.tabSchem);
       this.tbcResults.Controls.Add(this.tabTag);
       this.tbcResults.Controls.Add(this.tabComp);
-      this.tbcResults.Controls.Add(this.tabContract);
+      this.tbcResults.Controls.Add(this.tabDemoRig);
       this.tbcResults.Location = new System.Drawing.Point(392, 48);
       this.tbcResults.Name = "tbcResults";
       this.tbcResults.SelectedIndex = 0;
       this.tbcResults.Size = new System.Drawing.Size(640, 592);
       this.tbcResults.TabIndex = 2;
+      // 
+      // tabContract
+      // 
+      this.tabContract.BackColor = System.Drawing.Color.White;
+      this.tabContract.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.tabContract.Controls.Add(this.btnC12);
+      this.tabContract.Controls.Add(this.btnC11);
+      this.tabContract.Controls.Add(this.btnC10);
+      this.tabContract.Controls.Add(this.btnC09);
+      this.tabContract.Controls.Add(this.btnC08);
+      this.tabContract.Controls.Add(this.btnC07);
+      this.tabContract.Controls.Add(this.btnC06);
+      this.tabContract.Controls.Add(this.btnC05);
+      this.tabContract.Controls.Add(this.btnC04);
+      this.tabContract.Controls.Add(this.btnC03);
+      this.tabContract.Controls.Add(this.btnC02);
+      this.tabContract.Controls.Add(this.btnC01);
+      this.tabContract.Controls.Add(this.label1);
+      this.tabContract.Controls.Add(this.label3);
+      this.tabContract.Controls.Add(this.pictureBox4);
+      this.tabContract.Controls.Add(this.pictureBox5);
+      this.tabContract.Location = new System.Drawing.Point(4, 22);
+      this.tabContract.Name = "tabContract";
+      this.tabContract.Size = new System.Drawing.Size(632, 566);
+      this.tabContract.TabIndex = 7;
+      this.tabContract.Text = "Contract";
+      // 
+      // btnC12
+      // 
+      this.btnC12.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC12.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC12.ForeColor = System.Drawing.Color.White;
+      this.btnC12.Location = new System.Drawing.Point(424, 448);
+      this.btnC12.Name = "btnC12";
+      this.btnC12.Size = new System.Drawing.Size(184, 80);
+      this.btnC12.TabIndex = 19;
+      this.btnC12.Text = "Solvay, Livorno, Italy";
+      // 
+      // btnC11
+      // 
+      this.btnC11.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC11.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC11.ForeColor = System.Drawing.Color.White;
+      this.btnC11.Location = new System.Drawing.Point(224, 448);
+      this.btnC11.Name = "btnC11";
+      this.btnC11.Size = new System.Drawing.Size(184, 80);
+      this.btnC11.TabIndex = 18;
+      this.btnC11.Text = "Shell Pernis, NL";
+      // 
+      // btnC10
+      // 
+      this.btnC10.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC10.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC10.ForeColor = System.Drawing.Color.White;
+      this.btnC10.Location = new System.Drawing.Point(24, 448);
+      this.btnC10.Name = "btnC10";
+      this.btnC10.Size = new System.Drawing.Size(184, 80);
+      this.btnC10.TabIndex = 17;
+      this.btnC10.Text = "SASOL, South Africa";
+      // 
+      // btnC09
+      // 
+      this.btnC09.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC09.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC09.ForeColor = System.Drawing.Color.White;
+      this.btnC09.Location = new System.Drawing.Point(424, 336);
+      this.btnC09.Name = "btnC09";
+      this.btnC09.Size = new System.Drawing.Size(184, 80);
+      this.btnC09.TabIndex = 16;
+      this.btnC09.Text = "Innovene (Ex BP) Grangemouth, UK";
+      // 
+      // btnC08
+      // 
+      this.btnC08.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC08.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC08.ForeColor = System.Drawing.Color.White;
+      this.btnC08.Location = new System.Drawing.Point(224, 336);
+      this.btnC08.Name = "btnC08";
+      this.btnC08.Size = new System.Drawing.Size(184, 80);
+      this.btnC08.TabIndex = 15;
+      this.btnC08.Text = "ExxonMobil, Dunkirk, France";
+      // 
+      // btnC07
+      // 
+      this.btnC07.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC07.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC07.ForeColor = System.Drawing.Color.White;
+      this.btnC07.Location = new System.Drawing.Point(24, 336);
+      this.btnC07.Name = "btnC07";
+      this.btnC07.Size = new System.Drawing.Size(184, 80);
+      this.btnC07.TabIndex = 14;
+      this.btnC07.Text = "Conoco, Immingham";
+      // 
+      // btnC06
+      // 
+      this.btnC06.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC06.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC06.ForeColor = System.Drawing.Color.White;
+      this.btnC06.Location = new System.Drawing.Point(424, 224);
+      this.btnC06.Name = "btnC06";
+      this.btnC06.Size = new System.Drawing.Size(184, 80);
+      this.btnC06.TabIndex = 13;
+      this.btnC06.Text = "Chevron, Pembroke, Wales";
+      // 
+      // btnC05
+      // 
+      this.btnC05.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC05.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC05.ForeColor = System.Drawing.Color.White;
+      this.btnC05.Location = new System.Drawing.Point(222, 224);
+      this.btnC05.Name = "btnC05";
+      this.btnC05.Size = new System.Drawing.Size(184, 80);
+      this.btnC05.TabIndex = 12;
+      this.btnC05.Text = "Cepsa, Petresa, Spain";
+      // 
+      // btnC04
+      // 
+      this.btnC04.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC04.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC04.ForeColor = System.Drawing.Color.White;
+      this.btnC04.Location = new System.Drawing.Point(24, 224);
+      this.btnC04.Name = "btnC04";
+      this.btnC04.Size = new System.Drawing.Size(184, 80);
+      this.btnC04.TabIndex = 11;
+      this.btnC04.Text = "Conoco, Immingham";
+      // 
+      // btnC03
+      // 
+      this.btnC03.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC03.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC03.ForeColor = System.Drawing.Color.White;
+      this.btnC03.Location = new System.Drawing.Point(424, 112);
+      this.btnC03.Name = "btnC03";
+      this.btnC03.Size = new System.Drawing.Size(184, 80);
+      this.btnC03.TabIndex = 10;
+      this.btnC03.Text = "BP Nerefco, NL";
+      // 
+      // btnC02
+      // 
+      this.btnC02.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC02.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC02.ForeColor = System.Drawing.Color.White;
+      this.btnC02.Location = new System.Drawing.Point(224, 112);
+      this.btnC02.Name = "btnC02";
+      this.btnC02.Size = new System.Drawing.Size(184, 80);
+      this.btnC02.TabIndex = 9;
+      this.btnC02.Text = "BP UKCS";
+      this.btnC02.Click += new System.EventHandler(this.btnC02_Click);
+      // 
+      // btnC01
+      // 
+      this.btnC01.BackColor = System.Drawing.Color.ForestGreen;
+      this.btnC01.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnC01.ForeColor = System.Drawing.Color.White;
+      this.btnC01.Location = new System.Drawing.Point(24, 112);
+      this.btnC01.Name = "btnC01";
+      this.btnC01.Size = new System.Drawing.Size(184, 80);
+      this.btnC01.TabIndex = 8;
+      this.btnC01.Text = "BP Forties Pipeline, UK";
+      // 
+      // label1
+      // 
+      this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label1.Location = new System.Drawing.Point(136, 40);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(400, 24);
+      this.label1.TabIndex = 7;
+      this.label1.Text = "Contract Management";
+      this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+      // 
+      // label3
+      // 
+      this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label3.Location = new System.Drawing.Point(136, 8);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(400, 23);
+      this.label3.TabIndex = 6;
+      this.label3.Text = "Performance Plus";
+      this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+      // 
+      // pictureBox4
+      // 
+      this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+      this.pictureBox4.Location = new System.Drawing.Point(8, 8);
+      this.pictureBox4.Name = "pictureBox4";
+      this.pictureBox4.Size = new System.Drawing.Size(120, 56);
+      this.pictureBox4.TabIndex = 4;
+      this.pictureBox4.TabStop = false;
+      // 
+      // pictureBox5
+      // 
+      this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+      this.pictureBox5.Location = new System.Drawing.Point(568, 8);
+      this.pictureBox5.Name = "pictureBox5";
+      this.pictureBox5.Size = new System.Drawing.Size(56, 64);
+      this.pictureBox5.TabIndex = 5;
+      this.pictureBox5.TabStop = false;
       // 
       // tabCompany
       // 
@@ -1154,202 +1381,125 @@ namespace frontburner.maia.Acumen
       this.lblGraphTitles.TabIndex = 1;
       this.lblGraphTitles.Text = "TAG :: COMPONENT";
       // 
-      // tabContract
+      // tabDemoRig
       // 
-      this.tabContract.BackColor = System.Drawing.Color.White;
-      this.tabContract.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.tabContract.Controls.Add(this.btnC12);
-      this.tabContract.Controls.Add(this.btnC11);
-      this.tabContract.Controls.Add(this.btnC10);
-      this.tabContract.Controls.Add(this.btnC09);
-      this.tabContract.Controls.Add(this.btnC08);
-      this.tabContract.Controls.Add(this.btnC07);
-      this.tabContract.Controls.Add(this.btnC06);
-      this.tabContract.Controls.Add(this.btnC05);
-      this.tabContract.Controls.Add(this.btnC04);
-      this.tabContract.Controls.Add(this.btnC03);
-      this.tabContract.Controls.Add(this.btnC02);
-      this.tabContract.Controls.Add(this.btnC01);
-      this.tabContract.Controls.Add(this.label1);
-      this.tabContract.Controls.Add(this.label3);
-      this.tabContract.Controls.Add(this.pictureBox4);
-      this.tabContract.Controls.Add(this.pictureBox5);
-      this.tabContract.Location = new System.Drawing.Point(4, 22);
-      this.tabContract.Name = "tabContract";
-      this.tabContract.Size = new System.Drawing.Size(632, 566);
-      this.tabContract.TabIndex = 7;
-      this.tabContract.Text = "Contract";
+      this.tabDemoRig.BackColor = System.Drawing.Color.White;
+      this.tabDemoRig.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.tabDemoRig.Controls.Add(this.btnD1);
+      this.tabDemoRig.Controls.Add(this.btnD2C);
+      this.tabDemoRig.Controls.Add(this.btnD2B);
+      this.tabDemoRig.Controls.Add(this.btnD2A);
+      this.tabDemoRig.Controls.Add(this.pictureBox12);
+      this.tabDemoRig.Controls.Add(this.label4);
+      this.tabDemoRig.Controls.Add(this.label5);
+      this.tabDemoRig.Controls.Add(this.pictureBox6);
+      this.tabDemoRig.Controls.Add(this.pictureBox11);
+      this.tabDemoRig.Location = new System.Drawing.Point(4, 22);
+      this.tabDemoRig.Name = "tabDemoRig";
+      this.tabDemoRig.Size = new System.Drawing.Size(632, 566);
+      this.tabDemoRig.TabIndex = 8;
+      this.tabDemoRig.Text = "DemoRig";
       // 
-      // btnC12
+      // btnD1
       // 
-      this.btnC12.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC12.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC12.ForeColor = System.Drawing.Color.White;
-      this.btnC12.Location = new System.Drawing.Point(424, 448);
-      this.btnC12.Name = "btnC12";
-      this.btnC12.Size = new System.Drawing.Size(184, 80);
-      this.btnC12.TabIndex = 19;
-      this.btnC12.Text = "Solvay, Livorno, Italy";
+      this.btnD1.BackColor = System.Drawing.Color.Orange;
+      this.btnD1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnD1.ForeColor = System.Drawing.Color.Navy;
+      this.btnD1.Location = new System.Drawing.Point(274, 360);
+      this.btnD1.Name = "btnD1";
+      this.btnD1.Size = new System.Drawing.Size(72, 32);
+      this.btnD1.TabIndex = 16;
+      this.btnD1.Tag = "D1";
+      this.btnD1.Text = "D1";
+      this.btnD1.Click += new System.EventHandler(this.btnD1_Click);
       // 
-      // btnC11
+      // btnD2C
       // 
-      this.btnC11.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC11.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC11.ForeColor = System.Drawing.Color.White;
-      this.btnC11.Location = new System.Drawing.Point(224, 448);
-      this.btnC11.Name = "btnC11";
-      this.btnC11.Size = new System.Drawing.Size(184, 80);
-      this.btnC11.TabIndex = 18;
-      this.btnC11.Text = "Shell Pernis, NL";
+      this.btnD2C.BackColor = System.Drawing.Color.Orange;
+      this.btnD2C.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnD2C.ForeColor = System.Drawing.Color.Navy;
+      this.btnD2C.Location = new System.Drawing.Point(106, 458);
+      this.btnD2C.Name = "btnD2C";
+      this.btnD2C.Size = new System.Drawing.Size(48, 40);
+      this.btnD2C.TabIndex = 15;
+      this.btnD2C.Tag = "D2C";
+      this.btnD2C.Text = "D2";
+      this.btnD2C.Click += new System.EventHandler(this.btnD2C_Click);
       // 
-      // btnC10
+      // btnD2B
       // 
-      this.btnC10.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC10.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC10.ForeColor = System.Drawing.Color.White;
-      this.btnC10.Location = new System.Drawing.Point(24, 448);
-      this.btnC10.Name = "btnC10";
-      this.btnC10.Size = new System.Drawing.Size(184, 80);
-      this.btnC10.TabIndex = 17;
-      this.btnC10.Text = "SASOL, South Africa";
+      this.btnD2B.BackColor = System.Drawing.Color.Orange;
+      this.btnD2B.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnD2B.ForeColor = System.Drawing.Color.Navy;
+      this.btnD2B.Location = new System.Drawing.Point(254, 232);
+      this.btnD2B.Name = "btnD2B";
+      this.btnD2B.Size = new System.Drawing.Size(48, 40);
+      this.btnD2B.TabIndex = 14;
+      this.btnD2B.Tag = "D2B";
+      this.btnD2B.Text = "D2";
+      this.btnD2B.Click += new System.EventHandler(this.btnD2B_Click);
       // 
-      // btnC09
+      // btnD2A
       // 
-      this.btnC09.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC09.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC09.ForeColor = System.Drawing.Color.White;
-      this.btnC09.Location = new System.Drawing.Point(424, 336);
-      this.btnC09.Name = "btnC09";
-      this.btnC09.Size = new System.Drawing.Size(184, 80);
-      this.btnC09.TabIndex = 16;
-      this.btnC09.Text = "Innovene (Ex BP) Grangemouth, UK";
+      this.btnD2A.BackColor = System.Drawing.Color.Orange;
+      this.btnD2A.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnD2A.ForeColor = System.Drawing.Color.Navy;
+      this.btnD2A.Location = new System.Drawing.Point(16, 232);
+      this.btnD2A.Name = "btnD2A";
+      this.btnD2A.Size = new System.Drawing.Size(48, 40);
+      this.btnD2A.TabIndex = 13;
+      this.btnD2A.Tag = "D2A";
+      this.btnD2A.Text = "D2";
+      this.btnD2A.Click += new System.EventHandler(this.btnD2A_Click);
       // 
-      // btnC08
+      // pictureBox12
       // 
-      this.btnC08.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC08.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC08.ForeColor = System.Drawing.Color.White;
-      this.btnC08.Location = new System.Drawing.Point(224, 336);
-      this.btnC08.Name = "btnC08";
-      this.btnC08.Size = new System.Drawing.Size(184, 80);
-      this.btnC08.TabIndex = 15;
-      this.btnC08.Text = "ExxonMobil, Dunkirk, France";
+      this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+      this.pictureBox12.Location = new System.Drawing.Point(8, 80);
+      this.pictureBox12.Name = "pictureBox12";
+      this.pictureBox12.Size = new System.Drawing.Size(632, 464);
+      this.pictureBox12.TabIndex = 12;
+      this.pictureBox12.TabStop = false;
       // 
-      // btnC07
+      // label4
       // 
-      this.btnC07.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC07.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC07.ForeColor = System.Drawing.Color.White;
-      this.btnC07.Location = new System.Drawing.Point(24, 336);
-      this.btnC07.Name = "btnC07";
-      this.btnC07.Size = new System.Drawing.Size(184, 80);
-      this.btnC07.TabIndex = 14;
-      this.btnC07.Text = "Conoco, Immingham";
+      this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label4.Location = new System.Drawing.Point(136, 40);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(360, 24);
+      this.label4.TabIndex = 11;
+      this.label4.Text = "ONS Demo Rig";
+      this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // btnC06
+      // label5
       // 
-      this.btnC06.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC06.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC06.ForeColor = System.Drawing.Color.White;
-      this.btnC06.Location = new System.Drawing.Point(424, 224);
-      this.btnC06.Name = "btnC06";
-      this.btnC06.Size = new System.Drawing.Size(184, 80);
-      this.btnC06.TabIndex = 13;
-      this.btnC06.Text = "Chevron, Pembroke, Wales";
+      this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label5.Location = new System.Drawing.Point(136, 8);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(360, 23);
+      this.label5.TabIndex = 10;
+      this.label5.Text = "Performance Plus";
+      this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // btnC05
+      // pictureBox6
       // 
-      this.btnC05.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC05.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC05.ForeColor = System.Drawing.Color.White;
-      this.btnC05.Location = new System.Drawing.Point(222, 224);
-      this.btnC05.Name = "btnC05";
-      this.btnC05.Size = new System.Drawing.Size(184, 80);
-      this.btnC05.TabIndex = 12;
-      this.btnC05.Text = "Cepsa, Petresa, Spain";
+      this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+      this.pictureBox6.Location = new System.Drawing.Point(8, 8);
+      this.pictureBox6.Name = "pictureBox6";
+      this.pictureBox6.Size = new System.Drawing.Size(120, 56);
+      this.pictureBox6.TabIndex = 8;
+      this.pictureBox6.TabStop = false;
       // 
-      // btnC04
+      // pictureBox11
       // 
-      this.btnC04.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC04.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC04.ForeColor = System.Drawing.Color.White;
-      this.btnC04.Location = new System.Drawing.Point(24, 224);
-      this.btnC04.Name = "btnC04";
-      this.btnC04.Size = new System.Drawing.Size(184, 80);
-      this.btnC04.TabIndex = 11;
-      this.btnC04.Text = "Conoco, Immingham";
-      // 
-      // btnC03
-      // 
-      this.btnC03.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC03.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC03.ForeColor = System.Drawing.Color.White;
-      this.btnC03.Location = new System.Drawing.Point(424, 112);
-      this.btnC03.Name = "btnC03";
-      this.btnC03.Size = new System.Drawing.Size(184, 80);
-      this.btnC03.TabIndex = 10;
-      this.btnC03.Text = "BP Nerefco, NL";
-      // 
-      // btnC02
-      // 
-      this.btnC02.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC02.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC02.ForeColor = System.Drawing.Color.White;
-      this.btnC02.Location = new System.Drawing.Point(224, 112);
-      this.btnC02.Name = "btnC02";
-      this.btnC02.Size = new System.Drawing.Size(184, 80);
-      this.btnC02.TabIndex = 9;
-      this.btnC02.Text = "BP UKCS";
-      this.btnC02.Click += new System.EventHandler(this.btnC02_Click);
-      // 
-      // btnC01
-      // 
-      this.btnC01.BackColor = System.Drawing.Color.ForestGreen;
-      this.btnC01.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.btnC01.ForeColor = System.Drawing.Color.White;
-      this.btnC01.Location = new System.Drawing.Point(24, 112);
-      this.btnC01.Name = "btnC01";
-      this.btnC01.Size = new System.Drawing.Size(184, 80);
-      this.btnC01.TabIndex = 8;
-      this.btnC01.Text = "BP Forties Pipeline, UK";
-      // 
-      // label1
-      // 
-      this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.label1.Location = new System.Drawing.Point(136, 40);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(400, 24);
-      this.label1.TabIndex = 7;
-      this.label1.Text = "Contract Management";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-      // 
-      // label3
-      // 
-      this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-      this.label3.Location = new System.Drawing.Point(136, 8);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(400, 23);
-      this.label3.TabIndex = 6;
-      this.label3.Text = "Performance Plus";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-      // 
-      // pictureBox4
-      // 
-      this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-      this.pictureBox4.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox4.Name = "pictureBox4";
-      this.pictureBox4.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox4.TabIndex = 4;
-      this.pictureBox4.TabStop = false;
-      // 
-      // pictureBox5
-      // 
-      this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-      this.pictureBox5.Location = new System.Drawing.Point(568, 8);
-      this.pictureBox5.Name = "pictureBox5";
-      this.pictureBox5.Size = new System.Drawing.Size(56, 64);
-      this.pictureBox5.TabIndex = 5;
-      this.pictureBox5.TabStop = false;
+      this.pictureBox11.BackColor = System.Drawing.Color.White;
+      this.pictureBox11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+      this.pictureBox11.Location = new System.Drawing.Point(496, 8);
+      this.pictureBox11.Name = "pictureBox11";
+      this.pictureBox11.Size = new System.Drawing.Size(128, 64);
+      this.pictureBox11.TabIndex = 9;
+      this.pictureBox11.TabStop = false;
       // 
       // btnProcess
       // 
@@ -1571,7 +1721,6 @@ namespace frontburner.maia.Acumen
       // 
       // tmrFlash
       // 
-      this.tmrFlash.Enabled = true;
       this.tmrFlash.Interval = 15000;
       this.tmrFlash.Tick += new System.EventHandler(this.tmrFlash_Tick);
       // 
@@ -1603,12 +1752,13 @@ namespace frontburner.maia.Acumen
       ((System.ComponentModel.ISupportInitialize)(this.sbpWarning)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpError)).EndInit();
       this.tbcResults.ResumeLayout(false);
+      this.tabContract.ResumeLayout(false);
       this.tabCompany.ResumeLayout(false);
       this.tabAsset.ResumeLayout(false);
       this.tabSchem.ResumeLayout(false);
       this.tabTag.ResumeLayout(false);
       this.tabComp.ResumeLayout(false);
-      this.tabContract.ResumeLayout(false);
+      this.tabDemoRig.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -1642,21 +1792,17 @@ namespace frontburner.maia.Acumen
 
     private void trvNav_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
     {
-      if (e.Node is CompanyNode) 
+      if (e.Node is CompanyNode)
       {
-        tbcResults.SelectedIndex = 5;
-        //MessageBox.Show("CompanyNode " + e.ToString());
+        tbcResults.SelectedIndex = 0;
       } 
       else if (e.Node is ContractNode) 
       {
-        //MessageBox.Show("AssetNode " + e.ToString());
-        tbcResults.SelectedIndex = 0;
+        tbcResults.SelectedIndex = 1;
       }
       else if (e.Node is AssetNode) 
       {
-        //MessageBox.Show("AssetNode " + e.ToString());
-
-        tbcResults.SelectedIndex = 1;
+        tbcResults.SelectedIndex = 2;
         this.lblAssetName.Text = ((AssetNode)e.Node).Name;
         FileInfo fi = new FileInfo(Application.StartupPath + "\\img\\asset_thumb\\bp" + ((AssetNode)e.Node).Code.ToLower() + ".gif");
         if (fi.Exists) 
@@ -1666,9 +1812,7 @@ namespace frontburner.maia.Acumen
       }
       else if (e.Node is SchematicNode) 
       {
-        //MessageBox.Show("SchematicNode " + e.ToString());
-
-        tbcResults.SelectedIndex = 2;
+        tbcResults.SelectedIndex = 3;
         this._currentSchematic = (SchematicNode) e.Node;
         this.lblSchemSub.Text = this._currentSchematic.Name;
     
@@ -1716,7 +1860,7 @@ namespace frontburner.maia.Acumen
       }
       else if (e.Node is TagNode) 
       {
-        tbcResults.SelectedIndex = 3;
+        tbcResults.SelectedIndex = 4;
         this._currentTag = (TagNode) e.Node;
         this.lblTagSub.Text = ((TagNode)e.Node).Text;
 
@@ -1726,14 +1870,7 @@ namespace frontburner.maia.Acumen
       }
       else if ((e.Node is ComponentNode))
       {
-        //MessageBox.Show("ComponentNode " + e.Node.ToString());
-
-        //if ((this._currentComponent != null) && (e.Node.Equals(_currentComponent)))
-        //{
-        //  return;
-        //}
-
-        tbcResults.SelectedIndex = 4;
+        tbcResults.SelectedIndex = 5;
         this._currentComponent = (ComponentNode) e.Node;        
         lblGraphTitles.Text = this._currentComponent.Name + " (" + this._currentComponent.Code + ")";
 
@@ -1748,7 +1885,11 @@ namespace frontburner.maia.Acumen
         _dm.getTemperature(this._currentComponent).ResetGraph(this.pegTemp, this.tabComp);
 
         this.tmrVibr.Start();
-        this.tmrAlert.Start();
+        //this.tmrAlert.Start();
+      } 
+      else if ((e.Node is DemoRigNode)) 
+      {
+        tbcResults.SelectedIndex = 6;
       }
     }
 
@@ -1763,8 +1904,12 @@ namespace frontburner.maia.Acumen
         _dm.getTemperature(this._currentComponent).UpdateGraph(this.pegTemp, this.sbpMessage);
         _dm.getVibration(this._currentComponent).UpdateGraph(this.pegVibr, this.sbpMessage);
         _dm.getSpeed(this._currentComponent).UpdateGraph(this.pegSped, this.sbpMessage);
+
+        DataLayer.getDataLayer().CheckEventHistory();
         
-        if (this._currentComponent.ComponentType == ComponentTypes.Wireless) 
+        if (this._currentComponent.ComponentType == ComponentTypes.Wireless || 
+            this._currentComponent.ComponentType == ComponentTypes.Dart1 ||
+            this._currentComponent.ComponentType == ComponentTypes.Dart2) 
         {
           // Keep looking for more data
           this.tmrVibr.Start();
@@ -1783,16 +1928,16 @@ namespace frontburner.maia.Acumen
       IEnumerator seals = this._currentTag.Nodes.GetEnumerator();
       while (seals.MoveNext()) 
       {
-        if (seals.Current is ComponentNode) 
+        if (seals.Current is ComponentNode)
         {
           ComponentNode c = (ComponentNode) seals.Current;
-          if (c.PhysicalEnd == 1) 
+          if (c.PhysicalEnd == 1)
           {
             trvNav.SelectedNode = c;
             trvNav.Select();
           }
         }
-      }    
+      }
     }
 
     private void btnSeal2_Click(object sender, System.EventArgs e)
@@ -1819,6 +1964,40 @@ namespace frontburner.maia.Acumen
 
       trvNav.SelectedNode = this._currentSchematic.Nodes[i-1];
       trvNav.Select();
+    }
+
+    private void SelectComponentButton(string code) 
+    {
+      Object o = dartButtons[code];
+      if (o != null && o is Button) 
+      {
+        Button btn = (Button) o;
+        if (btn.Tag != null && btn.Tag is ComponentNode) 
+        {
+          trvNav.SelectedNode = (ComponentNode) btn.Tag;
+          trvNav.Select();
+        }
+      }
+    }
+
+    private void btnD2A_Click(object sender, System.EventArgs e)
+    {
+      SelectComponentButton("D2A");
+    }
+
+    private void btnD2B_Click(object sender, System.EventArgs e)
+    {
+      SelectComponentButton("D2B");    
+    }
+
+    private void btnD2C_Click(object sender, System.EventArgs e)
+    {
+      SelectComponentButton("D2C");    
+    }
+
+    private void btnD1_Click(object sender, System.EventArgs e)
+    {
+      SelectComponentButton("D1");    
     }
 
     private void btnPump1_Click(object sender, System.EventArgs e)
@@ -1914,6 +2093,15 @@ namespace frontburner.maia.Acumen
         warning = true;
       }
       tmrAlert.Start();
+    }
+
+    private void stbMain_PanelClick(object sender, System.Windows.Forms.StatusBarPanelClickEventArgs e)
+    {      
+      if (e.Clicks == 2 && (e.StatusBarPanel.Equals(this.sbpWarning) || e.StatusBarPanel.Equals(this.sbpError)))
+      {
+        EventHistory events = new EventHistory();
+        events.Show();
+      }
     }
   }
 }

@@ -44,11 +44,11 @@ namespace frontburner.maia.Acumen.Model
       sbp.Parent.Refresh();
     }
 
-    public override int MeasurementType 
+    public override MeasurementTypes MeasurementType 
     {
       get 
       {
-        return 3;
+        return MeasurementTypes.Temperature;
       }
     }
   }

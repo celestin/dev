@@ -113,13 +113,6 @@
                     HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.Services.dll"
                 />
                 <Reference
-                    Name = "MySql.Data"
-                    AssemblyName = "MySql.Data"
-                    HintPath = "..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
-                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
-                    Private = "True"
-                />
-                <Reference
                     Name = "System.ServiceProcess"
                     AssemblyName = "System.ServiceProcess"
                     HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.ServiceProcess.dll"
@@ -165,6 +158,17 @@
                     AssemblyName = "MenuImageLib"
                     HintPath = "..\..\..\MenuImageLib\bin\Release\MenuImageLib.dll"
                 />
+                <Reference
+                    Name = "Npgsql"
+                    AssemblyName = "Npgsql"
+                    HintPath = "Npgsql.dll"
+                />
+                <Reference
+                    Name = "FlexCell"
+                    AssemblyName = "FlexCell"
+                    HintPath = "..\..\..\..\Program Files\FlexCell Technologies\FlexCell.NET\Bin\FlexCell.dll"
+                    AssemblyFolderKey = "hklm\dn\flexcell grid control for .net"
+                />
             </References>
         </Build>
         <Files>
@@ -185,6 +189,21 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "Event.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EventHistory.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EventHistory.resx"
+                    DependentUpon = "EventHistory.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "frmMain.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
@@ -197,6 +216,11 @@
                 <File
                     RelPath = "maia.ico"
                     BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Prefs.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
                     RelPath = "SensorData.cs"
@@ -250,6 +274,11 @@
                 />
                 <File
                     RelPath = "Nodes\ContractNode.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Nodes\DemoRigNode.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

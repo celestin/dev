@@ -51,7 +51,7 @@ namespace frontburner.maia.Acumen.Model
 		{
 		}
 
-    public abstract int MeasurementType
+    public abstract MeasurementTypes MeasurementType
     {
       get;
     }
@@ -69,11 +69,18 @@ namespace frontburner.maia.Acumen.Model
     protected abstract void StartMessage(StatusBarPanel sbp);
     protected abstract void CompleteMessage(StatusBarPanel sbp);
 
-    public void UpdateGraphFull(Pego peg, StatusBarPanel sbp) 
-    {      
+    public void UpdateGraphFull(Pego peg, StatusBarPanel sbp)
+    {
       StartMessage(sbp);
       DataLayer.getDataLayer().UpdateMeasurementData(this._component, peg, this._sets, this.MeasurementType);
       CompleteMessage(sbp);
+    }
+
+    public void UpdateGraphMote(Pego peg, StatusBarPanel sbp) 
+    {      
+      //StartMessage(sbp);
+      DataLayer.getDataLayer().UpdateMoteData(this._component, peg, this.MeasurementType);
+      //CompleteMessage(sbp);
     }
 
     protected float RandomValue(int i)
@@ -89,6 +96,18 @@ namespace frontburner.maia.Acumen.Model
       if (this._component.ComponentType == ComponentTypes.SealChip) 
       {
         UpdateGraphFull(peg, sbp);
+        return;
+      }
+
+      if (this._component.ComponentType == ComponentTypes.Dart1) 
+      {
+        UpdateGraphMote(peg, sbp);
+        return;
+      }
+
+      if (this._component.ComponentType == ComponentTypes.Dart2) 
+      {
+        UpdateGraphMote(peg, sbp);
         return;
       }
 
@@ -175,18 +194,18 @@ namespace frontburner.maia.Acumen.Model
       // Set Subsets and Points //
       peg.PeData.Subsets = this._sets;      // set number of subsets
 
-      if (this._component.ComponentType == ComponentTypes.Wireless) 
-      {
-        peg.PeData.Points = 200;
-        peg.PeUserInterface.Scrollbar.PointsToGraph = 120;
+      //if (this._component.ComponentType == ComponentTypes.Wireless || this._component.ComponentType == ComponentTypes.Dart2) 
+      //{
+        peg.PeData.Points = 300;
+        peg.PeUserInterface.Scrollbar.PointsToGraph = 260;
         peg.PeUserInterface.Scrollbar.PointsToGraphInit = PointsToGraphInit.Last;
-      } 
-      else 
-      {
-        peg.PeData.Points = 5000;
-        peg.PeUserInterface.Scrollbar.PointsToGraph = peg.PeData.Points;
-        peg.PeUserInterface.Scrollbar.PointsToGraphInit = PointsToGraphInit.First;
-      }
+      //} 
+      //else 
+      //{
+      //  peg.PeData.Points = 5000;
+      //  peg.PeUserInterface.Scrollbar.PointsToGraph = peg.PeData.Points;
+      //  peg.PeUserInterface.Scrollbar.PointsToGraphInit = PointsToGraphInit.First;
+      //}
 
       // Needed to allocate point labels so append logic works //
       // Set last point label, Points - 1 //

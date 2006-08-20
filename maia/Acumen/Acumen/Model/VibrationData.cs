@@ -33,8 +33,8 @@ namespace frontburner.maia.Acumen.Model
       this._setLabels[1] = "Radial (Y)";
       this._setLabels[2] = "Axial";
 
-      this._min = 1;
-      this._max = 3.2f;
+      this._min = 0.0f;
+      this._max = 1.0f;
     }
 
     protected override void StartMessage(StatusBarPanel sbp) 

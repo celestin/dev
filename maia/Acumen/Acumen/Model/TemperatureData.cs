@@ -28,9 +28,9 @@ namespace frontburner.maia.Acumen.Model
   {    
     public TemperatureData(ComponentNode component): base(component, "Temperature oC", 1)
     {
-      double[] minmax = DataLayer.getDataLayer().GetMinMax(3);
-      this._min = (float)minmax[0]*0.95f;
-      this._max = (float)minmax[1]*1.05f;
+      //double[] minmax = DataLayer.getDataLayer().GetMinMax(3);
+      this._min = 20.0f;
+      this._max = 50.0f;
     }
 
     protected override void StartMessage(StatusBarPanel sbp) 

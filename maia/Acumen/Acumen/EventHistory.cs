@@ -16,6 +16,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.IO;
 using FlexCell;
 
 namespace frontburner.maia.Acumen
@@ -164,8 +165,10 @@ namespace frontburner.maia.Acumen
 
       fgdEvents.Rows = 1;
 
-      fgdEvents.Images.Add("C:\\Dev\\Maia\\Acumen\\Acumen\\img\\events\\warning.png", "W");
-      fgdEvents.Images.Add("C:\\Dev\\Maia\\Acumen\\Acumen\\img\\events\\error.png", "D");
+      FileInfo fi = new FileInfo(Application.StartupPath + "\\img\\events\\warning.png");
+      if (fi.Exists) fgdEvents.Images.Add(fi.FullName, "W");
+      fi = new FileInfo(Application.StartupPath + "\\img\\events\\error.png");
+      if (fi.Exists) fgdEvents.Images.Add(fi.FullName, "D");
 
       ArrayList events = DataLayer.getDataLayer().GetEvents();
       IEnumerator ev = events.GetEnumerator();

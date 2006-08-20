@@ -28,9 +28,9 @@ namespace frontburner.maia.Acumen.Model
   {
     public SpeedData(ComponentNode component): base(component, "Speed RPM x 1000", 1)
     {
-      double[] minmax = DataLayer.getDataLayer().GetMinMax(2);
-      this._min = (float)minmax[0]*0.95f;
-      this._max = (float)minmax[1]*1.05f;
+      //double[] minmax = DataLayer.getDataLayer().GetMinMax(2);
+      this._min = 0.0f;
+      this._max = 3000.0f;
     }
 
     protected override void StartMessage(StatusBarPanel sbp) 

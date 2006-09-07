@@ -122,9 +122,6 @@
 <tr><td width=15><img width=28 src="../img/m/manual_espresso.png"></td>
 <td colspan=2><a class=nav href="../espresso/">Manual Espresso Machines</a></td>
 </tr>
-<tr><td width=15><img width=28 src="../img/m/porcelain.png"></td>
-<td colspan=2><a class=nav href="../espresso/porcelain_stainless/">Porcelain &amp; Stainless<br>Steel Espresso Machines</a></td>
-</tr>
 <tr><td width=15><img width=28 src="../img/m/jug.png"></td>
 <td colspan=2><a class=nav href="../jugs/">Jugs & Glassware</a></td>
 </tr>
@@ -136,9 +133,6 @@
 </tr>
 <tr><td width=15><img width=28 src="../img/m/paper.png"></td>
 <td colspan=2><a class=nav href="../filters/papers/">Filter Papers & Descalers</a></td>
-</tr>
-<tr><td width=15><img width=28 src="../img/m/cup.png"></td>
-<td colspan=2><a class=nav href="../cups/">Coffee & Espresso Cups</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/phonebox.png"></td>
 <td class=sel colspan=2><b>Contact</b></td>

@@ -16,6 +16,8 @@
  * CAM  08-Jun-2006  Continued development of pricing.
  * CAM  08-Jul-2006  1004 : Completed pricing.
  * CAM  09-Jul-2006  10014 : Show product Dimensions.
+ * CAM  21-Sep-2006  10028 : Changed Breadth and Width to Width and Depth.
+ * CAM  21-Sep-2006  10029 : Changed HTML Page Title to include Product Name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -68,6 +70,7 @@ if ($row = mysql_fetch_array($sql)) {
 }
 
 $title = "Product";
+if (!empty($productname)) $title .= " - $productname";
 include 'tpl/top.php';
 
 $sql = mysql_query("SELECT id,imgfile FROM photos WHERE product_id='$uproduct' AND default_flag=1 ORDER BY rand() LIMIT 1 ");
@@ -307,8 +310,8 @@ if ($row = mysql_fetch_array($sql)) {
   <td colspan=3><table border=1 cellpadding=4 cellspacing=0>
     <tr>
       <th<? if ($ropivots) echo " rowspan=2";?>>Product</th>
-      <th<? if ($ropivots) echo " rowspan=2";?>>Breadth</th>
       <th<? if ($ropivots) echo " rowspan=2";?>>Width</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Depth</th>
 <?
   $pivots = array();
   $roptions = array();

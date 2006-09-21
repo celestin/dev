@@ -1,4 +1,4 @@
-CREATE OR REPLACE FORCE VIEW v_rep_sales_invoice AS
+CREATE OR REPLACE VIEW v_rep_sales_invoice AS
   SELECT s.invoice_no, s.raised_date, s.description invoice_description,
     s.project, s.project_title,
     a.activity, a.description activity_description,
@@ -19,14 +19,19 @@ CREATE OR REPLACE FORCE VIEW v_rep_sales_invoice AS
   AND j.job_code = si.key4;
 
 
-CREATE OR REPLACE FORCE VIEW v_rep_sales_invoice_backup AS
-  SELECT b.sales_invoice_no, j.job_code, j.description job_description,
+CREATE OR REPLACE VIEW v_rep_sales_invoice_backup AS
+  SELECT b.sales_invoice_no,
+         p.project, p.project_title,
+         j.job_code, j.description job_description, j.hard_status,
          b.booking_date,b.normal normal_hours
   FROM t_ts_bookings b,
-       t_job_codes j
+       t_job_codes j,
+       t_project p
   WHERE b.unit = j.unit
   AND b.project = j.parent_project
   AND b.job_code = j.job_code
+  AND p.unit = b.unit
+  AND p.project = b.project
   AND NVL(j.billing_type, '301') = '101';
 
 

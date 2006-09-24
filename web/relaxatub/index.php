@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  24-Sep-2006  10031 : Added 350SE advert to home page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -21,6 +22,12 @@ include "tpl/top.php";
       </table>
 -->
 
+      <table border=0 cellspacing=0 cellpadding=0 valign=middle>
+      <tr><td><img src="img/pro/350se1.jpg" width=502 height=354></td></tr>
+      <tr><td><img src="img/pro/350se2.jpg" width=502 height=356></td></tr>
+      </table>
+
+<!--
       <table border=0 cellpadding=5 valign=middle>
 
       <tr><td align=center><table border=0 cellpadding=0 cellspacing=0>
@@ -49,6 +56,7 @@ include "tpl/top.php";
       </table></td></tr>
 
       </table>
+-->
 <?
   include "tpl/bot.php";
 ?>

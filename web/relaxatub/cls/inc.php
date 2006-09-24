@@ -13,7 +13,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'cls/Tuple.php';
-include_once 'cls/ClassTub.php';
+include_once 'cls/Tub.php';
 include_once 'cls/Photo.php';
 
 ?>

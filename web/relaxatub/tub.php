@@ -58,19 +58,19 @@
         $td = "<td>";
       }
 
-      print "<tr>$td$href$tub</a></td>";
-      print "$td$href<img height=60 border=0 src=\"" . $currTub->imgFile("t") . "\" alt=\"Beachcomber " . $tub . "\"></a></td></tr>\n";
+      print "<tr>$td$href". $currTub->id ."</a></td>";
+      print "$td$href<img height=60 border=0 src=\"" . $currTub->imgFile("t") . "\" alt=\"Beachcomber " . $currTub->id . "\"></a></td></tr>\n";
     }
 ?>
   </table></td>
 
   <td align=center width="100%"><table border=0 cellpadding=3 cellspacing=0>
-    <tr><td width=120>&nbsp;</td><td width=110>&nbsp;</td><td width=270 class="tubname"><? print $_tub; ?></td></tr>
+    <tr><td width=120>&nbsp;</td><td width=110>&nbsp;</td><td width=270 class="tubname"><? print $_t->id; ?></td></tr>
     <tr>
       <td class="fldlbl">Dimensions</td><td class="fldtxt"><? print $dimen ?></td>
       <td rowspan=8 align=right>
       <table border=0 width=270 cellspacing=0 cellpadding=0>
-      <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_tub; ?>"></td></tr>
+      <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_t->id; ?>"></td></tr>
       <tr>
         <td align=center><img src="img/col/<? print $_t->colour; ?>"></td>
         <td align=center><img src="img/col/<? print $_t->wood; ?>"></td>
@@ -92,7 +92,7 @@
     <tr><td class="fldlbl">Underwater Lighting</td><td colspan=2 class="fldtxt"><? print $_t->light ?></td></tr>
     <tr><td class="fldlbl">Customer Protection</td><td colspan=2 class="fldtxt"><? print $_t->protect ?></td></tr>
 
-    <tr><td colspan="3" align=center valign=top><img width="500" src="<? print $_t->imgFile("fb"); ?>" alt="Plan view of <? echo $_tub; ?>"></td></tr>
+    <tr><td colspan="3" align=center valign=top><img width="500" src="<? print $_t->imgFile("fb"); ?>" alt="Plan view of <? echo $_t->id; ?>"></td></tr>
 
 <?
   if ($_t->hasQuote1()) {

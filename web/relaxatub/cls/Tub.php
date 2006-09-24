@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
+ * CAM  24-Sep-2006  10030 : Ensure Tub IDs are uppercase.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Tub extends Tuple {
@@ -145,7 +146,7 @@ class Tub extends Tuple {
   function Tub($tub, $series='') {
 
     if (!empty($series)) {
-      $this->id = $tub;
+      $this->id = strtoupper($tub);
       $this->series = $series;
     } else {
       $sql = "SELECT * FROM tub WHERE tub='" .$tub . "'";
@@ -156,7 +157,7 @@ class Tub extends Tuple {
           $$key = stripslashes($val);
         }
 
-        $this->id = $tub;
+        $this->id = strtoupper($tub);
         $this->series = $series;
 
         $this->colour = $colour;
@@ -199,7 +200,7 @@ class Tub extends Tuple {
       $ftype = ".gif";
     }
 
-    return "img/tub/" . $folder . "/" . $this->id . $ftype;
+    return "img/tub/" . $folder . "/" . strtolower($this->id) . $ftype;
   }
 
   /**

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -70,12 +71,10 @@
       <td rowspan=8 align=right>
       <table border=0 width=270 cellspacing=0 cellpadding=0>
       <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_tub; ?>"></td></tr>
-<!--
       <tr>
-        <td align=center><img src="img/col/cobalt.jpg"></td>
-        <td align=center><img src="img/col/natural_enviroskirt.jpg"></td>
+        <td align=center><img src="img/col/<? print $_t->colour; ?>"></td>
+        <td align=center><img src="img/col/<? print $_t->wood; ?>"></td>
       </tr>
--->
       </table>
       </td>
     </tr>

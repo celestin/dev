@@ -10,12 +10,25 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Tub extends Tuple {
 
   // ----- Instance Variables --------------------------------------------- //
 
+  /**
+  * Inside Colour.
+  * @private
+  * @type String
+  */
+  var $colour = NULL;
+  /**
+  * Wood Colour.
+  * @private
+  * @type String
+  */
+  var $wood = NULL;
   /**
   * Series to which the Tub belongs.
   * @private
@@ -145,6 +158,9 @@ class Tub extends Tuple {
 
         $this->id = $tub;
         $this->series = $series;
+
+        $this->colour = $colour;
+        $this->wood = $wood;
         $this->capacity = $capacity;
         $this->dry_weight = $dry_weight;
         $this->fill_weight = $fill_weight;

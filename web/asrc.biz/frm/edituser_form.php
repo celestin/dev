@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.
+ * CAM  27-Sep-2006  10035 : Ensure Member ID field on Edit User is readonly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $member_id = NULL;        if (!empty($_POST['member_id'])) $member_id = strtoupper($_POST['member_id']);
@@ -52,7 +53,7 @@ if (!empty($id)){
   <table border="0" align="center" cellpadding="0" cellspacing="8">
     <tr>
       <td class="fld">Member ID</td>
-      <td><input name="member_id" type="text" id="member_id" size=6
+      <td><input readonly name="member_id" type="text" id="member_id" size=6
       <?php print 'value="'. $member_id . '">';?></td>
     </tr>
     <tr title="Enter the parent or main Membership No. for Family/Corporate memberships">

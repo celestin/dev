@@ -11,7 +11,7 @@
  *
  * Who  When         Why
  * CAM  31-Aug-2004  File created.
- * CAM  27-Sep-2006  Fixed bug.
+ * CAM  27-Sep-2006  10034 : Fixed bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';

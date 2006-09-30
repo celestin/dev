@@ -3,7 +3,7 @@
  * Logout of the system
  * Copyright (c) 2006 frontburner.co.uk
  *
- * $Id: /web/autowatcherlogout.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  30-Sep-2006  File created.

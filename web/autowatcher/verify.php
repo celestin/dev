@@ -3,7 +3,7 @@
  * Admin Verify: People and Questions
  * Copyright (c) 2006 frontburner.co.uk
  *
- * $Id: /web/autowatcherverify.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  30-Sep-2006  File created.

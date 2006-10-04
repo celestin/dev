@@ -1498,11 +1498,11 @@ CREATE TABLE resellers (
 -- Dumping data for table resellers
 --
 
-INSERT INTO resellers (id, reseller, address1, address2, town, county, postcode, telephone, email, website, locx, locy, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
-(1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Champfleurie Estate', 'Champfleurie House', NULL, 'Linlithgow', NULL, 'EH51 0AU', '01506 847999', 'info@champfleurieestate.co.uk', 'http://www.champfleurieestate.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Hilton Court Nursery', 'Roch', NULL, 'Haverfordwest', 'Pembrokeshire', 'SA62 6AE', '01437 710262', 'information@hiltongardensandcrafts.co.uk', 'http://www.hiltongardensandcrafts.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `resellers` (`id`, `reseller`, `address1`, `address2`, `town`, `county`, `postcode`, `telephone`, `email`, `website`, `locx`, `locy`, `created_by`, `created_on`, `created_at`, `updated_by`, `updated_on`, `updated_at`) VALUES
+(1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', 550, 330, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', 670, 495, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Champfleurie Estate', 'Champfleurie House', NULL, 'Linlithgow', NULL, 'EH51 0AU', '01506 847999', 'info@champfleurieestate.co.uk', 'http://www.champfleurieestate.co.uk/', 642, 275, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Hilton Court Nursery', 'Roch', NULL, 'Haverfordwest', 'Pembrokeshire', 'SA62 6AE', '01437 710262', 'information@hiltongardensandcrafts.co.uk', 'http://www.hiltongardensandcrafts.co.uk/', 602, 453, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

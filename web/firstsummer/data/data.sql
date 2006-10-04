@@ -8,11 +8,11 @@
 -- SET PASSWORD FOR 'firstsummer'@'localhost' = OLD_PASSWORD('john21');
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
--- version 2.8.1
+-- version 2.9.0-rc1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 08, 2006 at 12:11 AM
+-- Generation Time: Oct 04, 2006 at 10:12 AM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -27,6 +27,7 @@ CREATE TABLE categories (
   id int(11) NOT NULL auto_increment,
   category varchar(50) default NULL,
   disporder tinyint(4) default NULL,
+  show_ranges int(11) default NULL,
   short_text varchar(255) default NULL,
   long_text mediumtext,
   created_by varchar(50) default NULL,
@@ -36,14 +37,15 @@ CREATE TABLE categories (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Product Categories' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Categories' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table categories
 --
 
-INSERT INTO categories (id, category, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'BBQ Huts', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Log Cabins', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO categories (id, category, disporder, show_ranges, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'BBQ Huts', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Log Cabins', 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -59,13 +61,14 @@ CREATE TABLE dimensions (
   created datetime default NULL,
   updated datetime default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Dimensions' AUTO_INCREMENT=53 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Dimensions' AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table dimensions
 --
 
-INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) VALUES (1, 1, 'Roof projection - Front', 10, NULL, NULL),
+INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) VALUES
+(1, 1, 'Roof projection - Front', 10, NULL, NULL),
 (2, 1, 'Roof projection - Back', 20, NULL, NULL),
 (3, 1, 'Roof projection - Side', 30, NULL, NULL),
 (4, 1, 'Walls', 40, NULL, NULL),
@@ -139,13 +142,15 @@ CREATE TABLE member (
   last_login datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (memberid),
   KEY i_email_address (email_address)
-) ENGINE=MyISAM  COMMENT='User Information';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Information';
 
 --
 -- Dumping data for table member
 --
 
-INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-07-05 00:05:03');
+INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-04 10:04:07'),
+('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '', 1, 'A', '', 0, '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -159,13 +164,14 @@ CREATE TABLE member_type (
   comments varchar(255) default NULL,
   disp_order int(11) NOT NULL default '0',
   PRIMARY KEY  (member_type)
-) ENGINE=MyISAM  COMMENT='User Types';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Types';
 
 --
 -- Dumping data for table member_type
 --
 
-INSERT INTO member_type (member_type, type_name, comments, disp_order) VALUES ('U', 'User', 'Ability to View all details on the site', 1),
+INSERT INTO member_type (member_type, type_name, comments, disp_order) VALUES
+('U', 'User', 'Ability to View all details on the site', 1),
 ('N', 'New User', 'No permissions yet - waiting verification', 3),
 ('A', 'Administrator', 'Full Administrative capabilities', 2);
 
@@ -188,13 +194,14 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='News Items' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table newsitems
 --
 
-INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -219,13 +226,14 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Photos' AUTO_INCREMENT=201 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=201 ;
 
 --
 -- Dumping data for table photos
 --
 
-INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, comments, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 16, 'kota_k172_00020.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, comments, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 16, 'kota_k172_00020.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 16, 'kota_k172_00040.jpg', 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 16, 'kota_k172_00060.jpg', 60, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 16, 'kota_k172_00100.jpg', 100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -237,7 +245,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (92, 5, 'nida_na_03340.jpg', 3340, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (90, 5, 'nida_na_03300.jpg', 3300, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, 16, 'kota_k172_00320.jpg', 320, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(89, 5, 'nida_na_03280.jpg', 3280, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(89, 46, 'nida_na_03280.jpg', 3280, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19, 16, 'kota_k172_00380.jpg', 380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (87, 5, 'nida_na_03240.jpg', 3240, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (88, 5, 'nida_na_03260.jpg', 3260, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -259,7 +267,6 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (165, 37, 'tyla_op_04380.jpg', 4380, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (108, 7, 'nida_nt_03660.jpg', 3660, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 14, 'kota_k069_00800.jpg', 800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(107, 6, 'nida_ns_03640.jpg', 3640, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (42, 15, 'kota_k099_00840.jpg', 840, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (43, 15, 'kota_k099_00860.jpg', 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (106, 6, 'nida_ns_03600.jpg', 3600, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -273,7 +280,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (52, 15, 'kota_k099_01040.jpg', 1040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (53, 15, 'kota_k099_01060.jpg', 1060, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (54, 15, 'kota_k099_01080.jpg', 1080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(103, 42, 'nida_na_03560.jpg', 3560, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(103, 4, 'nida_na_03560.jpg', 3560, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (56, 15, 'kota_k099_01120.jpg', 1120, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (57, 15, 'kota_k099_01140.jpg', 1140, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (58, 15, 'kota_k099_01160.jpg', 1160, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -299,7 +306,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (98, 5, 'nida_na_03460.jpg', 3460, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (97, 5, 'nida_na_03440.jpg', 3440, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (110, 10, 'nida_ntas_03700.jpg', 3700, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(111, 10, 'nida_ntas_03720.jpg', 3720, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 5, 'nida_ntas_03720.jpg', 3720, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (161, 33, 'tyla_ct_04340.jpg', 4340, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (160, 32, 'tyla_cg_04320.jpg', 4320, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (159, 21, 'tbuild_tg_04620.jpg', 4620, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -307,23 +314,23 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (116, 9, 'nida_nv_03820.jpg', 3820, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (117, 9, 'nida_nv_03840.jpg', 3840, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (118, 9, 'nida_nv_03860.jpg', 3860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(119, 4, 'nida_nida_02840.jpg', 2840, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(120, 4, 'nida_nida_02860.jpg', 2860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(119, 46, 'nida_nida_02840.jpg', 2840, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(120, 9, 'nida_nida_02860.jpg', 2860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (121, 4, 'nida_nida_02880.jpg', 2880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(122, 4, 'nida_nida_02900.jpg', 2900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(122, 5, 'nida_nida_02900.jpg', 2900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (123, 4, 'nida_nida_02940.jpg', 2940, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(124, 4, 'nida_nida_02960.jpg', 2960, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(125, 4, 'nida_nida_02980.jpg', 2980, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(126, 4, 'nida_nida_03000.jpg', 3000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(127, 4, 'nida_nida_03020.jpg', 3020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(124, 6, 'nida_nida_02960.jpg', 2960, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(125, 6, 'nida_nida_02980.jpg', 2980, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(126, 7, 'nida_nida_03000.jpg', 3000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(127, 6, 'nida_nida_03020.jpg', 3020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (128, 4, 'nida_nida_03040.jpg', 3040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(129, 4, 'nida_nida_03060.jpg', 3060, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(130, 4, 'nida_nida_03080.jpg', 3080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(131, 4, 'nida_nida_03100.jpg', 3100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(129, 9, 'nida_nida_03060.jpg', 3060, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(130, 7, 'nida_nida_03080.jpg', 3080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(131, 7, 'nida_nida_03100.jpg', 3100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (132, 4, 'nida_nida_02920.jpg', 2920, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (133, 4, 'nida_nida_03120.jpg', 3120, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(134, 4, 'nida_nida_03140.jpg', 3140, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(135, 4, 'nida_nida_03160.jpg', 3160, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(134, 4, 'nida_nida_03140.jpg', 3140, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(135, 6, 'nida_nida_03160.jpg', 3160, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (136, 4, 'nida_nida_03180.jpg', 3180, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (137, 24, 'tbuild_t12_03880.jpg', 3880, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (138, 27, 'tbuild_t17t_03900.jpg', 3900, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -400,13 +407,14 @@ CREATE TABLE plans (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Plan Images' AUTO_INCREMENT=59 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Plan Images' AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table plans
 --
 
-INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 32, 'tyla_cg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 32, 'tyla_cg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 32, 'tyla_cg_01.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 33, 'tyla_ct_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 33, 'tyla_ct_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -480,13 +488,14 @@ CREATE TABLE proddimensions (
   created datetime default NULL,
   updated datetime default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Product Dimensions' AUTO_INCREMENT=382 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=382 ;
 
 --
 -- Dumping data for table proddimensions
 --
 
-INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES (1, 14, 41, 'Octagonal ? Seating for 8 persons', 8, NULL, NULL),
+INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES
+(1, 14, 41, 'Octagonal ? Seating for 8 persons', 8, NULL, NULL),
 (2, 14, 3, '0.37 m', 0.37, NULL, NULL),
 (3, 14, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
 (4, 14, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
@@ -741,7 +750,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (253, 4, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (254, 4, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (255, 4, 7, '1 glued cartridge door 90/196 with seal', 1, NULL, NULL),
-(256, 4, 8, '2 double-glazed 80/94 tilt''n''turn units', 2, NULL, NULL),
+(256, 4, 8, '1 double-glazed 80/94 tilt''n''turn unit', 1, NULL, NULL),
 (257, 5, 1, '0.70 m', 0.7, NULL, NULL),
 (258, 5, 2, '0.20 m', 0.2, NULL, NULL),
 (259, 5, 3, '0.30 m', 0.3, NULL, NULL),
@@ -749,7 +758,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (261, 5, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (262, 5, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (263, 5, 7, '1 glued cartridge door 90/196 with seal', 1, NULL, NULL),
-(264, 5, 8, '2 double-glazed 800/940 tilt''n''turn units', 2, NULL, NULL),
+(264, 5, 8, '1 double-glazed 800/940 tilt''n''turn unit', 1, NULL, NULL),
 (265, 45, 1, '0.70 m', 0.7, NULL, NULL),
 (266, 45, 2, '0.20 m', 0.2, NULL, NULL),
 (267, 45, 3, '0.30 m', 0.3, NULL, NULL),
@@ -765,7 +774,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (277, 6, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (278, 6, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (279, 6, 7, '1 glued cartridge door 90/196 with seal', 1, NULL, NULL),
-(280, 6, 8, '2 double-glazed 800/940 tilt''n''turn units', 2, NULL, NULL),
+(280, 6, 8, '1 double-glazed 800/940 tilt''n''turn unit', 1, NULL, NULL),
 (281, 6, 52, 'Height of shelter supports (H1=1.64 m)', 0, NULL, NULL),
 (282, 7, 1, '0.70 m', 0.7, NULL, NULL),
 (283, 7, 2, '0.20 m', 0.2, NULL, NULL),
@@ -774,7 +783,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (286, 7, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (287, 7, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (288, 7, 7, '1 glued cartridge door 90/196 with seal', 1, NULL, NULL),
-(289, 7, 8, '2 double-glazed 800/940 tilt''n''turn units', 2, NULL, NULL),
+(289, 7, 8, '1 double-glazed 800/940 tilt''n''turn unit', 1, NULL, NULL),
 (290, 9, 1, '0.70 m', 0.7, NULL, NULL),
 (291, 9, 2, '0.20 m', 0.2, NULL, NULL),
 (292, 9, 3, '0.30 m', 0.3, NULL, NULL),
@@ -782,7 +791,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (294, 9, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (295, 9, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (296, 9, 7, '1 glued cartridge door 90/196 with seal', 1, NULL, NULL),
-(297, 9, 8, '2 double-glazed 800/940 tilt''n''turn units', 2, NULL, NULL),
+(297, 9, 8, '1 double-glazed 800/940 tilt''n''turn unit', 1, NULL, NULL),
 (298, 46, 1, '0.70 m', 0.7, NULL, NULL),
 (299, 46, 2, '0.20 m', 0.2, NULL, NULL),
 (300, 46, 3, '0.30 m', 0.3, NULL, NULL),
@@ -790,7 +799,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (302, 46, 5, '20 mm tongue and groove floor boards on the impregnated base frame', 20, NULL, NULL),
 (303, 46, 6, '20 mm tongue and groove roof boards', 20, NULL, NULL),
 (304, 46, 7, '1 glued cartridge doors 90/196 with seal, 1 glued cartridge doors 90/193 with seal', 2, NULL, NULL),
-(305, 46, 8, '2 double-glazed 80/94 tilt''n''turn units', 2, NULL, NULL),
+(305, 46, 8, '1 double-glazed 80/94 tilt''n''turn unit', 1, NULL, NULL),
 (306, 10, 1, '0.70 m', 0.7, NULL, NULL),
 (307, 10, 2, '0.20 m', 0.2, NULL, NULL),
 (308, 10, 3, '0.30 m', 0.3, NULL, NULL),
@@ -886,13 +895,14 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Product Prices' AUTO_INCREMENT=809 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=809 ;
 
 --
 -- Dumping data for table prodprices
 --
 
-INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (651, 7, 28, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(651, 7, 28, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL),
 (650, 7, 27, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL),
 (649, 7, 26, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL),
 (648, 7, 25, 2, NULL, 238, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1075,10 +1085,10 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (701, 15, 58, 10, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL),
 (702, 16, 59, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL),
 (703, 17, 60, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL),
-(704, 14, 57, 11, NULL, 400, NULL, NULL, NULL, NULL, NULL, NULL),
-(705, 15, 58, 11, NULL, 400, NULL, NULL, NULL, NULL, NULL, NULL),
-(706, 16, 59, 11, NULL, 500, NULL, NULL, NULL, NULL, NULL, NULL),
-(707, 17, 60, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL),
+(704, 14, 57, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL),
+(705, 15, 58, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL),
+(706, 16, 59, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL),
+(707, 17, 60, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL),
 (708, 39, 77, NULL, 45, 3197, NULL, NULL, NULL, NULL, NULL, NULL),
 (709, 38, 62, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL),
 (710, 39, 63, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1157,20 +1167,21 @@ CREATE TABLE prodranges (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Product Ranges' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Ranges' AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table prodranges
 --
 
-INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (4, 'T-Buildings', 2, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Nida', 2, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Holiday Houses', 2, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(4, 'Standard Cabins', 2, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'Premier Cabins', 2, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Holiday Houses', 2, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Kota', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 'Summerhouses', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Garages', 2, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Garden Cabins', 2, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'Pavilions', 2, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(9, 'Garages', 2, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Custom Cabins', 2, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'Pavilions', 2, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1194,13 +1205,14 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Products' AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table products
 --
 
-INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES (4, 'Nida', NULL, 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ‘n‘ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
+INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES
+(4, 'Nida', NULL, 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ‘n‘ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
 (5, 'Nida A', NULL, 5, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Nida S', NULL, 5, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Nida T', NULL, 5, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1230,11 +1242,10 @@ INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, 
 (35, 'Laura', NULL, 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (36, 'Sida', NULL, 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (37, 'Kaunas Pavilion', NULL, 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
-(38, 'Borkum', NULL, 10, 'tyla_pc.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, 'Tornio', NULL, 10, 'gc_tornio.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 'Borkum', NULL, 4, 'tyla_pc.pdf', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'Tornio', NULL, 5, 'gc_tornio.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 'Ulmenfield', NULL, 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (43, 'Vilnius Pavilion', NULL, 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(42, 'Nida D', NULL, 5, 'nida_na.pdf', 30, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:40', NULL),
 (44, 'Riga Pavilion', NULL, 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (45, 'Nida Panorama', NULL, 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (46, 'Nida TA', NULL, 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1261,13 +1272,14 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Product Variations' AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=102 ;
 
 --
 -- Dumping data for table prodvariations
 --
 
-INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (9, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(9, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1377,13 +1389,14 @@ CREATE TABLE rangeoptions (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Range Options' AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Range Options' AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table rangeoptions
 --
 
-INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Single Window', 5, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Double Window', 5, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Single Door', 5, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1397,6 +1410,44 @@ INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, 
 (13, 'Terrace', 0, 140, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'Furniture', 0, 150, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15, 'Single Fence', 0, 160, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table resellers
+--
+
+CREATE TABLE resellers (
+  id int(11) NOT NULL auto_increment,
+  reseller varchar(50) default NULL,
+  address1 varchar(100) default NULL,
+  address2 varchar(100) default NULL,
+  town varchar(100) default NULL,
+  county varchar(100) default NULL,
+  postcode varchar(100) default NULL,
+  telephone varchar(100) default NULL,
+  email varchar(100) default NULL,
+  website varchar(100) default NULL,
+  locx int(11) default NULL,
+  locy int(11) default NULL,
+  created_by varchar(50) default NULL,
+  created_on date default NULL,
+  created_at time default NULL,
+  updated_by varchar(50) default NULL,
+  updated_on date default NULL,
+  updated_at time default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Resellers' AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table resellers
+--
+
+INSERT INTO resellers (id, reseller, address1, address2, town, county, postcode, telephone, email, website, locx, locy, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Champfleurie Estate', 'Champfleurie House', NULL, 'Linlithgow', NULL, 'EH51 0AU', '01506 847999', 'info@champfleurieestate.co.uk', 'http://www.champfleurieestate.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Hilton Court Nursery', 'Roch', NULL, 'Haverfordwest', 'Pembrokeshire', 'SA62 6AE', '01437 710262', 'information@hiltongardensandcrafts.co.uk', 'http://www.hiltongardensandcrafts.co.uk/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1416,13 +1467,14 @@ CREATE TABLE tabs (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  COMMENT='Tabs' AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tabs' AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table tabs
 --
 
-INSERT INTO tabs (id, page, tab, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO tabs (id, page, tab, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'product', 'Gallery', 20, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'product', 'Plans', 30, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -1437,7 +1489,7 @@ CREATE TABLE upload (
   docdate date NOT NULL default '0000-00-00',
   doctype char(1) NOT NULL default 'I',
   PRIMARY KEY  (uplfile)
-) ENGINE=MyISAM  COMMENT='Uploaded Files';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Uploaded Files';
 
 --
 -- Dumping data for table upload

@@ -54,14 +54,15 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
       </tr><tr>
         <td class="toplbl">tel</td><td class="toptxt">01475&nbsp;522999</td>
       </tr><tr>
-        <td colspan=3 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;" class="menu" href="index.php">home</a><span class="sep">|</sep>
-                <a class="menu" href="about.php">about us</a><span class="sep">|</sep>
-                <a class="menu" href="resellers.php">find a reseller</a><span class="sep">|</sep>
-                <a class="menu" href="contact.php">contact</a><?
+        <td colspan=3 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;"
+            class="menu" href="index.php">home</a><span class="sep">|</span><a
+            class="menu" href="about.php">about us</a><span class="sep">|</span><a
+            class="menu" href="resellers.php">find a reseller</a><span class="sep">|</span><a
+            class="menu" href="contact.php">contact</a><?
           if ($loggedin) {
-              ?><span class="sep">|</sep>
-              <a class="menu" href="changepass.php">change password</a><span class="sep">|</sep>
-              <a class="menu" href="logout.php">logout</a><?
+              ?><span class="sep">|</span><a
+              class="menu" href="changepass.php">change password</a><span class="sep">|</span><a
+              class="menu" href="logout.php">logout</a><?
           }
               ?>
 

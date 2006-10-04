@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2006 at 10:12 AM
+-- Generation Time: Oct 04, 2006 at 10:04 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -124,6 +124,32 @@ INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table featuredproducts
+--
+
+CREATE TABLE featuredproducts (
+  id int(11) NOT NULL auto_increment,
+  product_id int(11) default NULL,
+  product varchar(255) default NULL,
+  description varchar(255) default NULL,
+  price smallint(6) default NULL,
+  feature varchar(255) default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Featured Products' AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table featuredproducts
+--
+
+INSERT INTO featuredproducts (id, product_id, product, description, price, feature) VALUES
+(1, NULL, 'Tornio 4x3 (45mm)', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles with this cabin, was £190 now £95'),
+(2, NULL, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was £399 now £199'),
+(3, NULL, '9.9m2 BBQ Hut', 'Have the ultimate BBQ.', 5675, '0% APR over 2 years'),
+(4, NULL, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was £470 now £235');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table member
 --
 
@@ -149,7 +175,7 @@ CREATE TABLE member (
 --
 
 INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
-('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-04 10:04:07'),
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-04 10:31:44'),
 ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '', 1, 'A', '', 0, '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -226,7 +252,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=201 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=226 ;
 
 --
 -- Dumping data for table photos
@@ -267,6 +293,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (165, 37, 'tyla_op_04380.jpg', 4380, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (108, 7, 'nida_nt_03660.jpg', 3660, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 14, 'kota_k069_00800.jpg', 800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(201, 18, 'tbuild_t10_04720.jpg', 4720, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (42, 15, 'kota_k099_00840.jpg', 840, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (43, 15, 'kota_k099_00860.jpg', 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (106, 6, 'nida_ns_03600.jpg', 3600, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -364,7 +391,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (172, 28, 'tbuild_t17_04720.jpg', 4720, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (173, 29, 'tbuild_t20_04560.jpg', 4560, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (174, 30, 'tbuild_t21_04580.jpg', 4580, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(175, 31, 'tbuild_t23_04600.jpg', 4600, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(175, 49, 'tbuild_t23_04600.jpg', 4600, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (192, 39, 'gc_tornio_04920.jpg', 4920, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (177, 20, 'tbuild_pv_04640.jpg', 4640, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (178, 22, 'tbuild_ts_04680.jpg', 4680, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -386,7 +413,28 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (197, 39, 'gc_tornio_05020.jpg', 5020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (198, 39, 'gc_tornio_05040.jpg', 5040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (199, 38, 'gc_borkum_05060.jpg', 5060, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(200, 38, 'gc_borkum_05080.jpg', 5080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(200, 38, 'gc_borkum_05080.jpg', 5080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(202, 18, 'tbuild_t10_04740.jpg', 4740, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(203, 19, 'tbuild_t24_04760.jpg', 4760, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(204, 19, 'tbuild_t24_04780.jpg', 4780, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(205, 19, 'tbuild_t24_04800.jpg', 4800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(209, 24, 'tbuild_t12_04880.jpg', 4880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(210, 24, 'tbuild_t12_04900.jpg', 4900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(211, 24, 'tbuild_t12_04920.jpg', 4920, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(212, 25, 'tbuild_t14_04940.jpg', 4940, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(213, 27, 'tbuild_t17t_04960.jpg', 4960, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(214, 27, 'tbuild_t17t_04980.jpg', 4980, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(215, 28, 'tbuild_t17_05000.jpg', 5000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(216, 29, 'tbuild_t20_05020.jpg', 5020, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(217, 29, 'tbuild_t20_05040.jpg', 5040, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(218, 31, 'tbuild_t23_05060.jpg', 5060, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 31, 'tbuild_t23_05080.jpg', 5080, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(220, 31, 'tbuild_t23_05100.jpg', 5100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(221, 49, 'tbuild_t23_05120.jpg', 5120, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(222, 49, 'tbuild_t23_05140.jpg', 5140, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(223, 19, 'tbuild_t24_05160.jpg', 5160, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(224, 19, 'tbuild_t24_05180.jpg', 5180, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(225, 19, 'tbuild_t24_05200.jpg', 5200, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -488,7 +536,7 @@ CREATE TABLE proddimensions (
   created datetime default NULL,
   updated datetime default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=382 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=386 ;
 
 --
 -- Dumping data for table proddimensions
@@ -873,7 +921,11 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (376, 19, 7, '1 unit 90/195, 1 unit 63/195. The doors could be fully glazed, glass on top half or without glass.', 2, NULL, NULL),
 (377, 19, 8, '2 tilt''n''turn units 120/91, 2 units 70/65, 1 unit 70/88.', 5, NULL, NULL),
 (380, 23, 43, '20 mm floor boards with inter-board spaces on the impregnated fundament frame. 4 units of fences with railings. It is possible to join to log cabins T12, T14, T15, T17, T23.', 0, NULL, NULL),
-(381, 22, 52, 'Beam, attached to log cabin wall, other beam is on two wooden pillars; roof boards, storm protection beams. Roof coating is not included in the price. It is possible to join to log cabins T10, T12, T14, T15, T17, T20, T23.', 0, NULL, NULL);
+(381, 22, 52, 'Beam, attached to log cabin wall, other beam is on two wooden pillars; roof boards, storm protection beams. Roof coating is not included in the price. It is possible to join to log cabins T10, T12, T14, T15, T17, T20, T23.', 0, NULL, NULL),
+(382, 49, 4, 'Sturdy 30 mm double tongue and groove wall boarding from northern fir.', 30, NULL, NULL),
+(383, 49, 5, '20 mm tongue and groove floor boards on the impregnated fundament frame. Floor fringes.', 20, NULL, NULL),
+(384, 49, 6, '20 mm tongue and groove roof boards on the roof beams.Overhanging canapy - 40 cm. Roof coating is not included in the price.', 20, NULL, NULL),
+(385, 49, 7, '1 unit 135/185. The doors could be fully glazed, glass on top half or without glass.', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -895,7 +947,7 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=809 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=810 ;
 
 --
 -- Dumping data for table prodprices
@@ -1145,7 +1197,8 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (805, 9, 98, NULL, 45, 2465, NULL, NULL, NULL, NULL, NULL, NULL),
 (806, 9, 99, NULL, 45, 2545, NULL, NULL, NULL, NULL, NULL, NULL),
 (807, 9, 100, NULL, 45, 2080, NULL, NULL, NULL, NULL, NULL, NULL),
-(808, 47, 101, NULL, 45, 4690, NULL, NULL, NULL, NULL, NULL, NULL);
+(808, 47, 101, NULL, 45, 4690, NULL, NULL, NULL, NULL, NULL, NULL),
+(809, 49, 102, NULL, 30, 1034, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1205,7 +1258,7 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table products
@@ -1246,6 +1299,7 @@ INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, 
 (39, 'Tornio', NULL, 5, 'gc_tornio.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 'Ulmenfield', NULL, 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (43, 'Vilnius Pavilion', NULL, 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 'T23D', NULL, 4, 'tbuild_t23.pdf', 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (44, 'Riga Pavilion', NULL, 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (45, 'Nida Panorama', NULL, 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (46, 'Nida TA', NULL, 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1272,7 +1326,7 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=103 ;
 
 --
 -- Dumping data for table prodvariations
@@ -1368,7 +1422,8 @@ INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, dispor
 (98, NULL, 9, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (99, NULL, 9, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (100, NULL, 9, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(101, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(101, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(102, NULL, 49, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

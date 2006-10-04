@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
+ * CAM  04-Oct-2006  10047 : Include name in Forgotten password email.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -138,7 +139,7 @@ class EmailMsg {
     global $cfg;
 
     $to = $this->memPerson->getEmail();
-    $subject = "Your " . $cfg['Site']['Name'] . " password for $memberid";
+    $subject = "Your " . $cfg['Site']['Name'] . " password for " . $this->memPerson->getID();
     $cr = "\r\n";
 
     $url = $cfg['Site']['URL'] . "/login.php";

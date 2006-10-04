@@ -13,6 +13,7 @@
  * CAM  09-Mar-2006  Design begun.
  * CAM  02-Oct-2006  10037 : Added login by clicking on logo.
  * CAM  04-Oct-2006  10046 : Remove ranges from navigation where Category show_ranges<>1.
+ * CAM  04-Oct-2006  10047 : Add Change Password.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -48,21 +49,23 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
   <tr>
     <td colspan=2 class="topLogo" height=75><table border=0 cellpadding=0 cellspacing=0 width="100%">
       <tr>
-        <td width="560"><img width="455" height="50" src="img/first_main1.png" onclick="top.location.href='login.php';"></td>
+        <td rowspan=2 width="560"><img width="455" height="50" src="img/first_main1.png" onclick="top.location.href='login.php';"></td>
         <td class="toplbl" width="100" valign=bottom>email</td><td valign=bottom><a class="topemail" href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry">Sales</a></td>
       </tr><tr>
-        <td colspan=1 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;" class="menu" href="index.php">home</a><span class="sep">|</sep>
+        <td class="toplbl">tel</td><td class="toptxt">01475&nbsp;522999</td>
+      </tr><tr>
+        <td colspan=3 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;" class="menu" href="index.php">home</a><span class="sep">|</sep>
                 <a class="menu" href="about.php">about us</a><span class="sep">|</sep>
                 <a class="menu" href="resellers.php">find a reseller</a><span class="sep">|</sep>
                 <a class="menu" href="contact.php">contact</a><?
           if ($loggedin) {
               ?><span class="sep">|</sep>
+              <a class="menu" href="changepass.php">change password</a><span class="sep">|</sep>
               <a class="menu" href="logout.php">logout</a><?
           }
               ?>
 
         </td>
-        <td class="toplbl">tel</td><td class="toptxt">01475&nbsp;522999</td>
       </tr>
     </table><td>
   </tr>

@@ -234,6 +234,18 @@ td.cat {
 
 /************ NAVIGATION OPTIONS **************/
 
+A.menu,A.menu:visited,A.menu:active,A.menu:link,A.menu:visited {
+  COLOR: #669933;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 11pt;
+}
+A.menu:hover {
+  COLOR: #CC3333;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+  FONT-SIZE: 11pt;
+}
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   COLOR: #FFFFFF;

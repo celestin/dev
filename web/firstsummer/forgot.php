@@ -12,6 +12,7 @@
  *
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
+ * CAM  04-Oct-2006  10037 : Fixed framework bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -26,7 +27,6 @@ function retry_login($error='') {
 }
 
 $memberid = NULL;     if (!empty($_POST['memberid'])) $memberid = strtoupper($_POST['memberid']);
-$pwd = NULL;          if (!empty($_POST['password'])) $pwd = $_POST['password'];
 
 if(!$memberid){
   retry_login();

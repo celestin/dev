@@ -13,6 +13,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once dirname(__FILE__).'/config.php';
+include_once dirname(__FILE__).'/groups.php';
 include_once dirname(__FILE__).'/db.php';
 include_once dirname(__FILE__).'/WEB-INF/inc.php';
 

@@ -11,11 +11,15 @@
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
  * CAM  09-Mar-2006  Design begun.
+ * CAM  02-Oct-2006  10037 : Added login by clicking on logo.
+ * CAM  04-Oct-2006  10046 : Remove ranges from navigation where Category show_ranges<>1.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = session_is_registered('memberid');
+
+global $cfg;
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];
@@ -44,9 +48,20 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
   <tr>
     <td colspan=2 class="topLogo" height=75><table border=0 cellpadding=0 cellspacing=0 width="100%">
       <tr>
-        <td rowspan=2 width="100%"><img width="455" height="50" src="img/first_main1.png"></td>
-        <td class="toplbl">email</td><td><a class="topemail" href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry">Sales</a></td>
+        <td width="560"><img width="455" height="50" src="img/first_main1.png" onclick="top.location.href='login.php';"></td>
+        <td class="toplbl" width="100" valign=bottom>email</td><td valign=bottom><a class="topemail" href="mailto:<? echo $cfg['Site']['Email']; ?>?Subject=Sales%20Inquiry">Sales</a></td>
       </tr><tr>
+        <td colspan=1 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;" class="menu" href="index.php">home</a><span class="sep">|</sep>
+                <a class="menu" href="about.php">about us</a><span class="sep">|</sep>
+                <a class="menu" href="resellers.php">find a reseller</a><span class="sep">|</sep>
+                <a class="menu" href="contact.php">contact</a><?
+          if ($loggedin) {
+              ?><span class="sep">|</sep>
+              <a class="menu" href="logout.php">logout</a><?
+          }
+              ?>
+
+        </td>
         <td class="toplbl">tel</td><td class="toptxt">01475&nbsp;522999</td>
       </tr>
     </table><td>
@@ -56,7 +71,7 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
     <td valign=top class="prodnav"><table border=0 cellpadding=4 cellspacing=0 width="180"><tr><td>
     <table border=0 cellpadding=3 cellspacing=0 width="100%" class="prodnav">
 <?
-$sql = mysql_query("SELECT id category_id,category ".
+$sql = mysql_query("SELECT id category_id,category,show_ranges ".
                    "FROM categories ".
                    "ORDER BY disporder");
 
@@ -72,6 +87,14 @@ while ($row = mysql_fetch_array($sql)) {
 ?>
 <tr><td class="category<? echo $cls;?>"><a class="nav<? echo $cls;?>" href="category.php?category=<? echo $category_id;?>"><? echo $category;?></a></td></tr>
 <?
+
+  if (($category_id <> $ucategory) && ($show_ranges <> '1')) {
+    // For categories with only one range, just show a blank space
+?>
+<tr><td style="height:2px;"></td></tr>
+<?
+  }
+
   $sql2 = mysql_query("SELECT id range_id,range ".
                      "FROM prodranges ".
                      "WHERE category_id='$category_id'".
@@ -86,9 +109,13 @@ while ($row = mysql_fetch_array($sql)) {
     if ($range_id == $urange) {
       $cls = "sel";
     }
+
+    if ($show_ranges === '1') {
 ?>
 <tr><td><a class="itemnav<? echo $cls;?>" href="range.php?range=<? echo $range_id;?>&category=<? echo $category_id;?>"><? echo $range;?></a></td></tr>
 <?
+    }
+
     if ($range_id == $urange) {
       $sql3 = mysql_query("SELECT id product_id,product ".
                          "FROM products ".
@@ -115,18 +142,4 @@ while ($row = mysql_fetch_array($sql)) {
     </table></td></tr></table></td>
 
     <td class="topnav" valign=top><table border=0 cellpadding=0 cellspacing=0 width="620" class="topnav2">
-      <tr><td><table border=0 cellpadding=3 cellspacing=0 class="topnav3" width="100%">
-      <tr>
-      <td>
-        <a class="nav" href="index.php">home</a><span class="sep">|</sep>
-        <a class="nav" href="contact.php">contact</a><?
-  if ($loggedin) {
-      ?><span class="sep">|</sep>
-      <a class="nav" href="echo.php">edit</a><?
-  }
-      ?></td>
-      </tr>
-    </table>
-    </td></tr>
-
     <tr valign=top><td style="padding-top:5px">

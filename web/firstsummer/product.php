@@ -18,23 +18,47 @@
  * CAM  09-Jul-2006  10014 : Show product Dimensions.
  * CAM  21-Sep-2006  10028 : Changed Breadth and Width to Width and Depth.
  * CAM  21-Sep-2006  10029 : Changed HTML Page Title to include Product Name.
+ * CAM  02-Oct-2006  10038 : Make Prices editable.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
+$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
+$loggedin = session_is_registered('memberid');
 
 $utab = NULL;          if (!empty($_GET['tab'])) $utab = $_GET['tab'];
 $uproduct = NULL;      if (!empty($_GET['product'])) $uproduct = $_GET['product'];
 $uphoto = NULL;        if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
 
-function output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro) {
+function get_price_format($price) {
+  if ($price == '-1') {
+    return "Free";
+  } else if ($price == '-2') {
+    return "Included";
+  }
+
+  return "&pound;" . number_format($price, 2, '.', ',');
+}
+
+function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions, $priceprivro, $priceprivroid) {
+  global $loggedin;
+
   foreach ($pivots as $pp) {
     $rowhtm .= "<td align=right>";
 
     if (empty($pricepriv[$pp])) {
       $rowhtm .= "-";
     } else {
-      $rowhtm .= "&pound;" . number_format($pricepriv[$pp], 2, '.', ',');
+      if ($loggedin) {
+        $rowhtm .= "<a href=\"price.edit.php?price_id=" . $priceprivid[$pp] . "\">";
+      }
+
+      $rowhtm .= get_price_format($pricepriv[$pp]);
+
+      if ($loggedin) {
+        $rowhtm .= "</a>";
+      }
     }
+
     $rowhtm .= "</td>";
   }
 
@@ -44,8 +68,17 @@ function output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro)
     if (empty($priceprivro[$ro])) {
       $rowhtm .= "-";
     } else {
-      $rowhtm .= "&pound;" . number_format($priceprivro[$ro], 2, '.', ',');
+      if ($loggedin) {
+        $rowhtm .= "<a href=\"price.edit.php?price_id=" . $priceprivroid[$ro] . "\">";
+      }
+
+      $rowhtm .= get_price_format($priceprivro[$ro]);
+
+      if ($loggedin) {
+        $rowhtm .= "</a>";
+      }
     }
+
     $rowhtm .= "</td>";
   }
 
@@ -371,8 +404,10 @@ if ($row = mysql_fetch_array($sql)) {
   $rowhtm = "";
   $pricepriv = array();
   $priceprivro = array();
+  $priceprivid = array();
+  $priceprivroid = array();
   $sql = mysql_query("SELECT v.id varid, IFNULL(v.variation, p.product) variation,".
-                      "v.vbreadth,v.vlength,c.pivot,c.price,c.rangeoption_id ".
+                      "v.vbreadth,v.vlength,c.pivot,c.price,c.rangeoption_id, c.id price_id ".
                       "FROM prodprices c, prodvariations v, products p ".
                       "WHERE c.prodvariation_id = v.id ".
                       "AND c.product_id = p.id ".
@@ -384,7 +419,7 @@ if ($row = mysql_fetch_array($sql)) {
     }
     if ($varid != $prevvarid) {
       if (!empty($rowhtm)) {
-        output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro);
+        output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions, $priceprivro, $priceprivroid);
       }
 
       $rowhtm = "<tr><td>$variation</td>".
@@ -392,18 +427,22 @@ if ($row = mysql_fetch_array($sql)) {
                   "<td align=right>". number_format($vlength, 2) ."</td>";
       $pricepriv = array();
       $priceprivro = array();
+      $priceprivid = array();
+      $priceprivroid = array();
     }
 
     if (empty($rangeoption_id)) {
       $pricepriv[$pivot] = $price;
+      $priceprivid[$pivot] = $price_id;
     } else {
       $priceprivro[$rangeoption_id.":".$pivot] = $price;
+      $priceprivroid[$rangeoption_id.":".$pivot] = $price_id;
     }
 
     $prevvarid = $varid;
   }
 
-  output_price_row($rowhtm, $pivots, $pricepriv, $roptions, $priceprivro);
+  output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions, $priceprivro, $priceprivroid);
 
 ?>
   </table></td>

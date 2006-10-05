@@ -1,6 +1,8 @@
 CREATE OR REPLACE VIEW v_rep_sales_invoice AS
   SELECT s.invoice_no, s.raised_date, s.description invoice_description,
     s.project, s.project_title,
+    s.company,
+    trim(both chr(13) from replace(replace(s.address||chr(13)||s.address2||chr(13)||s.address3||chr(13)||s.address4||chr(13)||s.address5||chr(13)||s.address6||chr(13)||s.post_code,chr(13)||chr(13),chr(13)),chr(13)||chr(13),chr(13))) address,
     a.activity, a.description activity_description,
     j.job_code, j.description job_description,
     decode(si.billing_type,'301',null,si.total_hours)*1.00 total_hours, si.total_price
@@ -36,3 +38,6 @@ CREATE OR REPLACE VIEW v_rep_sales_invoice_backup AS
 
 
 
+select invoice_no,
+from t_sales_invoices
+/

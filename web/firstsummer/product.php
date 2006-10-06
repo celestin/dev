@@ -19,6 +19,7 @@
  * CAM  21-Sep-2006  10028 : Changed Breadth and Width to Width and Depth.
  * CAM  21-Sep-2006  10029 : Changed HTML Page Title to include Product Name.
  * CAM  02-Oct-2006  10038 : Make Prices editable.
+ * CAM  06-Oct-2006  10017 : Add (m) after Width and Depth.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -343,8 +344,8 @@ if ($row = mysql_fetch_array($sql)) {
   <td colspan=3><table border=1 cellpadding=4 cellspacing=0>
     <tr>
       <th<? if ($ropivots) echo " rowspan=2";?>>Product</th>
-      <th<? if ($ropivots) echo " rowspan=2";?>>Width</th>
-      <th<? if ($ropivots) echo " rowspan=2";?>>Depth</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Width (m)</th>
+      <th<? if ($ropivots) echo " rowspan=2";?>>Depth (m)</th>
 <?
   $pivots = array();
   $roptions = array();

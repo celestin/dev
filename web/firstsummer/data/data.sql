@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2006 at 10:04 PM
+-- Generation Time: Oct 06, 2006 at 01:36 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -252,7 +252,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=226 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=227 ;
 
 --
 -- Dumping data for table photos
@@ -418,6 +418,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (203, 19, 'tbuild_t24_04760.jpg', 4760, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (204, 19, 'tbuild_t24_04780.jpg', 4780, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (205, 19, 'tbuild_t24_04800.jpg', 4800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(226, 50, 'tyla_sp_05220.jpg', 5220, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (209, 24, 'tbuild_t12_04880.jpg', 4880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (210, 24, 'tbuild_t12_04900.jpg', 4900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (211, 24, 'tbuild_t12_04920.jpg', 4920, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -455,7 +456,7 @@ CREATE TABLE plans (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Plan Images' AUTO_INCREMENT=59 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Plan Images' AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table plans
@@ -519,7 +520,10 @@ INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, create
 (55, 44, 'tyla_rg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (56, 39, 'tyla_sw_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (57, 39, 'tyla_sw_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(58, 43, 'tyla_vn_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(58, 43, 'tyla_vn_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 50, 'tyla_oc_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 50, 'tyla_oc_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(61, 50, 'tyla_oc_03.jpg', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -536,7 +540,7 @@ CREATE TABLE proddimensions (
   created datetime default NULL,
   updated datetime default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=386 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=392 ;
 
 --
 -- Dumping data for table proddimensions
@@ -925,7 +929,13 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (382, 49, 4, 'Sturdy 30 mm double tongue and groove wall boarding from northern fir.', 30, NULL, NULL),
 (383, 49, 5, '20 mm tongue and groove floor boards on the impregnated fundament frame. Floor fringes.', 20, NULL, NULL),
 (384, 49, 6, '20 mm tongue and groove roof boards on the roof beams.Overhanging canapy - 40 cm. Roof coating is not included in the price.', 20, NULL, NULL),
-(385, 49, 7, '1 unit 135/185. The doors could be fully glazed, glass on top half or without glass.', 1, NULL, NULL);
+(385, 49, 7, '1 unit 135/185. The doors could be fully glazed, glass on top half or without glass.', 1, NULL, NULL),
+(386, 50, 3, '0.30 m', 0.3, NULL, NULL),
+(387, 50, 4, '45 mm double tongue and groove block planks.', 45, NULL, NULL),
+(388, 50, 5, '20 mm tongue and groove with impregnated basic frame.', 20, NULL, NULL),
+(389, 50, 6, '20 mm roof sections.', 20, NULL, NULL),
+(390, 50, 7, '1 glued cartridge door with seal.', 1, NULL, NULL),
+(391, 50, 8, '2 Double-Glazed tilt''n''turn windows with seal and rungs.', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1104,29 +1114,29 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (667, 29, 35, NULL, 30, 724, NULL, NULL, NULL, NULL, NULL, NULL),
 (668, 30, 36, NULL, 30, 620, NULL, NULL, NULL, NULL, NULL, NULL),
 (669, 31, 37, NULL, 30, 1034, NULL, NULL, NULL, NULL, NULL, NULL),
-(670, 32, 52, NULL, 60, 12522, NULL, NULL, NULL, NULL, NULL, NULL),
-(671, 32, 52, NULL, 95, -1, NULL, NULL, NULL, NULL, NULL, NULL),
-(672, 33, 53, NULL, 60, 14100, NULL, NULL, NULL, NULL, NULL, NULL),
-(673, 33, 53, NULL, 95, -1, NULL, NULL, NULL, NULL, NULL, NULL),
+(670, 32, 52, NULL, 60, 16687, NULL, NULL, NULL, NULL, NULL, NULL),
+(671, 32, 52, NULL, 95, 21802, NULL, NULL, NULL, NULL, NULL, NULL),
+(672, 33, 53, NULL, 60, 20387, NULL, NULL, NULL, NULL, NULL, NULL),
+(673, 33, 53, NULL, 95, 25502, NULL, NULL, NULL, NULL, NULL, NULL),
 (674, 34, 54, NULL, 45, 6645, NULL, NULL, NULL, NULL, NULL, NULL),
 (675, 34, 54, NULL, 60, 8765, NULL, NULL, NULL, NULL, NULL, NULL),
-(676, 35, 55, NULL, 45, 4968, NULL, NULL, NULL, NULL, NULL, NULL),
-(677, 35, 55, NULL, 60, 6919, NULL, NULL, NULL, NULL, NULL, NULL),
-(678, 35, 55, NULL, 95, 9868, NULL, NULL, NULL, NULL, NULL, NULL),
+(676, 35, 55, NULL, 45, 7162, NULL, NULL, NULL, NULL, NULL, NULL),
+(677, 35, 55, NULL, 60, 8378, NULL, NULL, NULL, NULL, NULL, NULL),
+(678, 35, 55, NULL, 95, 11282, NULL, NULL, NULL, NULL, NULL, NULL),
 (679, 36, 71, NULL, 45, 2250, NULL, NULL, NULL, NULL, NULL, NULL),
 (680, 36, 72, NULL, 45, 2500, NULL, NULL, NULL, NULL, NULL, NULL),
 (681, 36, 73, NULL, 45, 3300, NULL, NULL, NULL, NULL, NULL, NULL),
-(682, 36, 74, NULL, 45, 2330, NULL, NULL, NULL, NULL, NULL, NULL),
-(683, 36, 75, NULL, 45, 2600, NULL, NULL, NULL, NULL, NULL, NULL),
-(684, 36, 76, NULL, 45, 3415, NULL, NULL, NULL, NULL, NULL, NULL),
+(682, 50, 74, NULL, 45, 2330, NULL, NULL, NULL, NULL, NULL, NULL),
+(683, 50, 75, NULL, 45, 2600, NULL, NULL, NULL, NULL, NULL, NULL),
+(684, 50, 76, NULL, 45, 3415, NULL, NULL, NULL, NULL, NULL, NULL),
 (685, 37, 67, NULL, NULL, 1675, NULL, NULL, NULL, NULL, NULL, NULL),
 (686, 38, 62, NULL, 45, 1660, NULL, NULL, NULL, NULL, NULL, NULL),
 (687, 39, 63, NULL, 45, 2319, NULL, NULL, NULL, NULL, NULL, NULL),
 (688, 39, 64, NULL, 45, 2488, NULL, NULL, NULL, NULL, NULL, NULL),
 (689, 39, 65, NULL, 45, 2505, NULL, NULL, NULL, NULL, NULL, NULL),
 (690, 39, 66, NULL, 45, 3571, NULL, NULL, NULL, NULL, NULL, NULL),
-(691, 40, 56, NULL, 60, 11354, NULL, NULL, NULL, NULL, NULL, NULL),
-(692, 40, 56, NULL, 95, 15054, NULL, NULL, NULL, NULL, NULL, NULL),
+(691, 40, 56, NULL, 60, 13040, NULL, NULL, NULL, NULL, NULL, NULL),
+(692, 40, 56, NULL, 95, 17095, NULL, NULL, NULL, NULL, NULL, NULL),
 (693, 43, 69, NULL, NULL, 1995, NULL, NULL, NULL, NULL, NULL, NULL),
 (694, 44, 68, NULL, NULL, 1910, NULL, NULL, NULL, NULL, NULL, NULL),
 (696, 32, 52, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1164,25 +1174,25 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (728, 36, 71, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL),
 (729, 36, 72, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
 (730, 36, 73, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL),
-(731, 36, 74, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL),
-(732, 36, 75, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
-(733, 36, 76, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL),
+(731, 50, 74, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL),
+(732, 50, 75, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL),
+(733, 50, 76, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL),
 (734, 37, 67, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
 (735, 44, 68, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
 (736, 43, 69, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
 (737, 36, 71, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL),
 (738, 36, 72, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
 (739, 36, 73, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL),
-(740, 36, 74, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL),
-(741, 36, 75, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
-(742, 36, 76, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL),
+(740, 50, 74, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL),
+(741, 50, 75, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL),
+(742, 50, 76, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL),
 (743, 20, 70, 15, NULL, 91, NULL, NULL, NULL, NULL, NULL, NULL),
 (744, 36, 71, 9, NULL, 120, NULL, NULL, NULL, NULL, NULL, NULL),
 (745, 36, 72, 9, NULL, 130, NULL, NULL, NULL, NULL, NULL, NULL),
 (746, 36, 73, 9, NULL, 140, NULL, NULL, NULL, NULL, NULL, NULL),
-(747, 36, 74, 9, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL),
-(748, 36, 75, 9, NULL, 165, NULL, NULL, NULL, NULL, NULL, NULL),
-(749, 36, 76, 9, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL),
+(747, 50, 74, 9, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL),
+(748, 50, 75, 9, NULL, 165, NULL, NULL, NULL, NULL, NULL, NULL),
+(749, 50, 76, 9, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL),
 (794, 9, 98, 2, NULL, 194, NULL, NULL, NULL, NULL, NULL, NULL),
 (795, 9, 99, 2, NULL, 194, NULL, NULL, NULL, NULL, NULL, NULL),
 (796, 9, 100, 2, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1258,7 +1268,7 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table products
@@ -1293,7 +1303,7 @@ INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, 
 (31, 'T23', NULL, 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (34, 'Kaiserforst', NULL, 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (35, 'Laura', NULL, 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, 'Sida', NULL, 11, 'tyla_oc.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'Sida', NULL, 11, 'tyla_si.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (37, 'Kaunas Pavilion', NULL, 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
 (38, 'Borkum', NULL, 4, 'tyla_pc.pdf', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (39, 'Tornio', NULL, 5, 'gc_tornio.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1304,7 +1314,8 @@ INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, 
 (45, 'Nida Panorama', NULL, 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (46, 'Nida TA', NULL, 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (47, 'Nida Tower', NULL, 5, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(48, 'Nida Tyla', NULL, 5, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(48, 'Nida Tyla', NULL, 5, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 'Sida Plus', NULL, 11, 'tyla_sp.pdf', 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1395,9 +1406,9 @@ INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, dispor
 (71, 'Type 1: 1/2 glazed door 70/193 and 2 windows 70/94', 36, 2.8, 3.03, 10, NULL, NULL, NULL, NULL, NULL, NULL),
 (72, 'Type 2: 1/2 glazed door 90/193 and 2 windows 90/94', 36, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
 (73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', 36, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', 36, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', 36, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL),
+(74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', 50, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', 50, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL),
+(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', 50, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL),
 (77, 'Tornio', 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL),
 (78, NULL, 45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (79, NULL, 45, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1498,7 +1509,7 @@ CREATE TABLE resellers (
 -- Dumping data for table resellers
 --
 
-INSERT INTO `resellers` (`id`, `reseller`, `address1`, `address2`, `town`, `county`, `postcode`, `telephone`, `email`, `website`, `locx`, `locy`, `created_by`, `created_on`, `created_at`, `updated_by`, `updated_on`, `updated_at`) VALUES
+INSERT INTO resellers (id, reseller, address1, address2, town, county, postcode, telephone, email, website, locx, locy, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
 (1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', 550, 330, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', 670, 495, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Champfleurie Estate', 'Champfleurie House', NULL, 'Linlithgow', NULL, 'EH51 0AU', '01506 847999', 'info@champfleurieestate.co.uk', 'http://www.champfleurieestate.co.uk/', 642, 275, NULL, NULL, NULL, NULL, NULL, NULL),

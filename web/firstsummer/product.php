@@ -30,16 +30,6 @@ $utab = NULL;          if (!empty($_GET['tab'])) $utab = $_GET['tab'];
 $uproduct = NULL;      if (!empty($_GET['product'])) $uproduct = $_GET['product'];
 $uphoto = NULL;        if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
 
-function get_price_format($price) {
-  if ($price == '-1') {
-    return "Free";
-  } else if ($price == '-2') {
-    return "Included";
-  }
-
-  return "&pound;" . number_format($price, 2, '.', ',');
-}
-
 function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions, $priceprivro, $priceprivroid) {
   global $loggedin;
 
@@ -53,7 +43,7 @@ function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions,
         $rowhtm .= "<a href=\"price.edit.php?price_id=" . $priceprivid[$pp] . "\">";
       }
 
-      $rowhtm .= get_price_format($pricepriv[$pp]);
+      $rowhtm .= Util::getHtmlPrice($pricepriv[$pp]);
 
       if ($loggedin) {
         $rowhtm .= "</a>";
@@ -73,7 +63,7 @@ function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions,
         $rowhtm .= "<a href=\"price.edit.php?price_id=" . $priceprivroid[$ro] . "\">";
       }
 
-      $rowhtm .= get_price_format($priceprivro[$ro]);
+      $rowhtm .= Util::getHtmlPrice($priceprivro[$ro]);
 
       if ($loggedin) {
         $rowhtm .= "</a>";

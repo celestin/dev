@@ -156,6 +156,10 @@ td.topnav {
   border-bottom: #666633 1px solid;
 }
 
+.leftspace {
+  PADDING-LEFT:   4px;
+}
+
 .page {
   border-left: #666633 1px solid;
   border-right: #666633 1px solid;
@@ -229,6 +233,27 @@ td.cat {
 .toptxt {
   COLOR: #666633;
   FONT-WEIGHT: normal;
+  FONT-SIZE: 16pt;
+}
+
+.eyecatch {
+  BACKGROUND-COLOR: #9BDF79;
+  PADDING: 8px;
+}
+
+.feature {
+  BACKGROUND-COLOR: #FFFFCC;
+  BORDER:           #FFCC00 1px solid;
+  COLOR:            #993333;
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+  PADDING: 6px;
+}
+
+.price {
+  COLOR: #CC3333;
+  FONT-WEIGHT: bold;
+  TEXT-ALIGN: center;
   FONT-SIZE: 16pt;
 }
 

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
+ * CAM  06-Oct-2006  10040 : Fixed tod bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // extract front part of string prior to searchString
@@ -135,9 +136,11 @@ function isDate(gField, validateTime) {
   // Check for "today", and replace with today's date
   if (inputStr.substring(0,3) == "tod") {
     var today = new Date() ;
-    gField.focus() ;
-    gField.select() ;
-    gField.value = (today.getDate()<10?"0":"") + today.getDate() + "-" + dispMonths[today.getMonth()+1] + "-" + today.getYear();
+    gField.focus();
+    gField.select();
+    yr = today.getYear() + "";
+    yr = yr.substr(1,2);
+    gField.value = (today.getDate()<10?"0":"") + today.getDate() + "-" + dispMonths[today.getMonth()+1] + "-" + yr;
     if (validateTime){
       var todayHours = today.getHours();
       var todayMins  = today.getMinutes();

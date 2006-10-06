@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
+ * CAM  06-Oct-2006  10040 : Added textToSql, getHtmlPrice.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Util {
@@ -23,6 +24,33 @@ class Util {
   function displayToSqlDate($displayDate) {
     return date("Y-m-d", strtotime($displayDate));
   }
+
+  /**
+  * Return the String encoded for saving to SQL
+  *
+  * @public
+  * @returns String
+  */
+  function textToSql($text) {
+    return str_replace("'", "'", $text);
+  }
+
+  /**
+  * Return the number formatted as an HTML Price
+  *
+  * @public
+  * @returns String
+  */
+  function getHtmlPrice($price) {
+    if ($price == '-1') {
+      return "Free";
+    } else if ($price == '-2') {
+      return "Included";
+    }
+
+    return "&pound;" . number_format($price, 0, '.', ',');
+  }
+
 
   /**
   * Return a String time (16:30) as timestamp

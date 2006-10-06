@@ -26,6 +26,25 @@ function fldmand($value) {
   echo (!empty($retry) && empty($value)) ? "fldmand" : "fld";
 }
 
+function storeFlash($flash) {
+  session_register('flash');
+  $_SESSION['flash'] = $flash;
+}
+
+function showFlash() {
+  if (session_is_registered('flash')) {
+    $flash = $_SESSION['flash'];
+    if (!empty($flash)) Msg::error($flash);
+    session_unregister('flash');
+  }
+}
+
+function redirect($url) {
+?>
+<script language="javascript">top.location.href="<? echo $url; ?>";</script>
+<?
+}
+
 session_start();
 error_reporting(E_ALL);
 

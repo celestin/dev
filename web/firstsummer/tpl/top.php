@@ -146,4 +146,4 @@ while ($row = mysql_fetch_array($sql)) {
     </table></td></tr></table></td>
 
     <td class="topnav" valign=top><table border=0 cellpadding=0 cellspacing=0 width="620" class="topnav2">
-    <tr valign=top><td style="padding-top:5px">
+    <tr valign=top><td>

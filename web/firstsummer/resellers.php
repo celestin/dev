@@ -47,7 +47,7 @@ while ($row = mysql_fetch_array($sql)) {
   if ($id === $reseller_id || empty($reseller_id)) {
     $reseller_id = $id;
 
-    $address = "$address1";
+    $address = "<b>$reseller</b><br>$address1";
     if (!empty($address2)) $address .= "<br>$address2";
     if (!empty($town)) $address .= "<br>$town";
     if (!empty($county)) $address .= "<br>$county";
@@ -77,9 +77,24 @@ while ($row = mysql_fetch_array($sql)) {
 
 <tr>
 
-  <td valign=top><h3>Products</h3></td>
+  <td valign=top><h3>Products</h3><ul>
+<?
+$sql = mysql_query("SELECT e.product_id, IFNULL(p.htmlname,p.product) htmlname ".
+                   "FROM resellerproducts e, products p ".
+                   "WHERE e.product_id = p.id ".
+                   "AND e.reseller_id = '$reseller_id' ".
+                   "ORDER BY p.disporder");
 
-</tr>
+while ($row = mysql_fetch_array($sql)) {
+  foreach($row AS $key => $val) {
+    $$key = stripslashes($val);
+  }
+?>
+<li><a href="product.php?product=<? echo $product_id; ?>"><? echo $htmlname; ?></a></li>
+<?
+}
+?>
+</ul></td></tr>
 
 </table>
 

@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2006 at 01:36 PM
+-- Generation Time: Oct 06, 2006 at 08:34 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -142,10 +142,10 @@ CREATE TABLE featuredproducts (
 --
 
 INSERT INTO featuredproducts (id, product_id, product, description, price, feature) VALUES
-(1, NULL, 'Tornio 4x3 (45mm)', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles with this cabin, was £190 now £95'),
-(2, NULL, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was £399 now £199'),
-(3, NULL, '9.9m2 BBQ Hut', 'Have the ultimate BBQ.', 5675, '0% APR over 2 years'),
-(4, NULL, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was £470 now £235');
+(1, 39, 'Tornio (45mm) 4x3', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was £190 now £95'),
+(2, 19, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was £399 now £199'),
+(3, 15, '9.9m2 BBQ Hut', 'Have the ultimate BBQ.', 5675, '0% APR over 2 years'),
+(4, 35, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was £470 now £235');
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,7 @@ CREATE TABLE member (
 --
 
 INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
-('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-04 10:31:44'),
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-06 19:46:09'),
 ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '', 1, 'A', '', 0, '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -220,7 +220,7 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table newsitems
@@ -229,7 +229,7 @@ CREATE TABLE newsitems (
 INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
 (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL);
+(3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +540,7 @@ CREATE TABLE proddimensions (
   created datetime default NULL,
   updated datetime default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=392 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=410 ;
 
 --
 -- Dumping data for table proddimensions
@@ -562,22 +562,6 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (13, 15, 42, '3.75 m', 3.75, NULL, NULL),
 (14, 15, 7, '1 door at 146/61', 1, NULL, NULL),
 (15, 15, 8, '4 windows 62/30, double glazed', 4, NULL, NULL),
-(16, 16, 41, 'Octagonal ? Seating for 30 persons', 8, NULL, NULL),
-(17, 16, 3, '0.37 m', 0.37, NULL, NULL),
-(18, 16, 4, '40 mm double tongue and groove logs from Red Pine. 4.65m x 4.65m', 40, NULL, NULL),
-(19, 16, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
-(20, 16, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
-(21, 16, 42, '4.08 m', 4.08, NULL, NULL),
-(22, 16, 7, '1 door', 1, NULL, NULL),
-(23, 16, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
-(24, 17, 41, '10 Sides ? Seating for 40 persons', 10, NULL, NULL),
-(25, 17, 3, '0.37 m', 0.37, NULL, NULL),
-(26, 17, 4, '40 mm double tongue and groove logs from Red Pine. 6.00m x 6.05m', 40, NULL, NULL),
-(27, 17, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
-(28, 17, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
-(29, 17, 42, '4.60 m', 4.6, NULL, NULL),
-(30, 17, 7, '1 door', 1, NULL, NULL),
-(31, 17, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
 (32, 14, 9, '', 0, NULL, NULL),
 (33, 14, 10, '', 0, NULL, NULL),
 (34, 14, 11, '', 0, NULL, NULL),
@@ -642,70 +626,24 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (93, 15, 38, '', 0, NULL, NULL),
 (94, 15, 39, '', 0, NULL, NULL),
 (95, 15, 40, '', 0, NULL, NULL),
-(96, 16, 9, '', 0, NULL, NULL),
-(97, 16, 10, '', 0, NULL, NULL),
-(98, 16, 11, '', 0, NULL, NULL),
-(99, 16, 12, '', 0, NULL, NULL),
-(100, 16, 13, '', 0, NULL, NULL),
-(101, 16, 14, '', 0, NULL, NULL),
-(102, 16, 15, '', 0, NULL, NULL),
-(103, 16, 16, '', 0, NULL, NULL),
-(104, 16, 17, '', 0, NULL, NULL),
-(105, 16, 18, '', 0, NULL, NULL),
-(106, 16, 19, '', 0, NULL, NULL),
-(107, 16, 20, '', 0, NULL, NULL),
-(108, 16, 21, '', 0, NULL, NULL),
-(109, 16, 22, '', 0, NULL, NULL),
-(110, 16, 23, '', 0, NULL, NULL),
-(111, 16, 24, '', 0, NULL, NULL),
-(112, 16, 25, '', 0, NULL, NULL),
-(113, 16, 26, '', 0, NULL, NULL),
-(114, 16, 27, '', 0, NULL, NULL),
-(115, 16, 28, '', 0, NULL, NULL),
-(116, 16, 29, '', 0, NULL, NULL),
-(117, 16, 30, '', 0, NULL, NULL),
-(118, 16, 31, '', 0, NULL, NULL),
-(119, 16, 32, '', 0, NULL, NULL),
-(120, 16, 33, '', 0, NULL, NULL),
-(121, 16, 34, '', 0, NULL, NULL),
-(122, 16, 35, '', 0, NULL, NULL),
-(123, 16, 36, '', 0, NULL, NULL),
-(124, 16, 37, '', 0, NULL, NULL),
-(125, 16, 38, '', 0, NULL, NULL),
-(126, 16, 39, '', 0, NULL, NULL),
-(127, 16, 40, '', 0, NULL, NULL),
-(128, 17, 9, '', 0, NULL, NULL),
-(129, 17, 10, '', 0, NULL, NULL),
-(130, 17, 11, '', 0, NULL, NULL),
-(131, 17, 12, '', 0, NULL, NULL),
-(132, 17, 13, '', 0, NULL, NULL),
-(133, 17, 14, '', 0, NULL, NULL),
-(134, 17, 15, '', 0, NULL, NULL),
-(135, 17, 16, '', 0, NULL, NULL),
-(136, 17, 17, '', 0, NULL, NULL),
-(137, 17, 18, '', 0, NULL, NULL),
-(138, 17, 19, '', 0, NULL, NULL),
-(139, 17, 20, '', 0, NULL, NULL),
-(140, 17, 21, '', 0, NULL, NULL),
-(141, 17, 22, '', 0, NULL, NULL),
-(142, 17, 23, '', 0, NULL, NULL),
-(143, 17, 24, '', 0, NULL, NULL),
-(144, 17, 25, '', 0, NULL, NULL),
-(145, 17, 26, '', 0, NULL, NULL),
-(146, 17, 27, '', 0, NULL, NULL),
-(147, 17, 28, '', 0, NULL, NULL),
-(148, 17, 29, '', 0, NULL, NULL),
-(149, 17, 30, '', 0, NULL, NULL),
-(150, 17, 31, '', 0, NULL, NULL),
-(151, 17, 32, '', 0, NULL, NULL),
-(152, 17, 33, '', 0, NULL, NULL),
-(153, 17, 34, '', 0, NULL, NULL),
-(154, 17, 35, '', 0, NULL, NULL),
-(155, 17, 36, '', 0, NULL, NULL),
-(156, 17, 37, '', 0, NULL, NULL),
-(157, 17, 38, '', 0, NULL, NULL),
-(158, 17, 39, '', 0, NULL, NULL),
-(159, 17, 40, '', 0, NULL, NULL),
+(409, 17, 40, '', 0, NULL, NULL),
+(408, 17, 31, '', 0, NULL, NULL),
+(407, 17, 28, '', 0, NULL, NULL),
+(406, 17, 14, '', 0, NULL, NULL),
+(405, 17, 13, '', 0, NULL, NULL),
+(404, 17, 12, '', 0, NULL, NULL),
+(403, 17, 11, '', 0, NULL, NULL),
+(402, 17, 10, '', 0, NULL, NULL),
+(401, 17, 9, '', 0, NULL, NULL),
+(400, 16, 40, '', 0, NULL, NULL),
+(399, 16, 31, '', 0, NULL, NULL),
+(398, 16, 28, '', 0, NULL, NULL),
+(397, 16, 14, '', 0, NULL, NULL),
+(396, 16, 13, '', 0, NULL, NULL),
+(395, 16, 12, '', 0, NULL, NULL),
+(394, 16, 11, '', 0, NULL, NULL),
+(393, 16, 10, '', 0, NULL, NULL),
+(392, 16, 9, '', 0, NULL, NULL),
 (160, 38, 1, '1.5 m', 1.5, NULL, NULL),
 (161, 38, 2, '0.2 m', 0.2, NULL, NULL),
 (162, 38, 3, '0.3 m', 0.3, NULL, NULL),
@@ -1284,9 +1222,9 @@ INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, 
 (33, 'Cottage with Terrace', NULL, 6, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
 (32, 'Cottage', NULL, 6, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, '6.9m2', 'Finnish BBQ Hut 6.9 m<sup>2</sup>', 7, 'kota_k069.pdf', 1, '', 'Finnish BBQ Hut 6.9m2\r\n\r\nproperties\r\nSides:    Octagonal - Seating for 8 persons\r\nRoof projection: 0.37 m\r\nWalls:    40 mm double tongue and groove logs from Red Pine.\r\nFlooring:   Decking that can be removed for cleaning.\r\nRoof:    20 mm tongue and groove roof boards.\r\nDoors:    1 door\r\nWindows:  4 windows, double glazed\r\n\r\nequipment\r\n\r\nIncluded Equipment:\r\nAn octagonal grill \r\nA round table around the grill \r\nA grill set \r\nA brick pan \r\nA steel kettle \r\nReindeer skins \r\nA coffee pot warmer \r\nA pillow \r\nSanta Claus \r\nA visitors book \r\nWood cups \r\nA pan watch \r\nA Lapp knife \r\nA four-cornered hat and scarf \r\nJuniper bun dishes \r\nJuniper servers \r\n\r\nBottle binoculars\r\nStriped wooden mugs\r\nA bottle opener\r\nJuniper underlay\r\nA leather coffee bag\r\nReindeer horn exact\r\nToggle tables\r\nA pot mitten and patches\r\nA thermometer\r\nAn axe block\r\nA fillet knife\r\nFork and knife sets\r\nA jingle bell\r\nA Lapp willow grouse\r\nA reindeer paw\r\nFlower boxes', NULL, NULL, NULL, NULL, '2006-07-09 20:14:52', NULL),
-(15, '9.9m2', NULL, 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
-(16, '17.2m2', NULL, 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '27m2', NULL, 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
+(15, '9.9m2', 'Finnish BBQ Hut 9.9 m<sup>2</sup>', 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
+(16, '17.2m2', 'Finnish BBQ Hut 17.2 m<sup>2</sup>', 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '28.8m2', 'Finnish BBQ Hut 28.8 m<sup>2</sup>', 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
 (18, 'T10', NULL, 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19, 'Chalet T24', NULL, 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Pavillion', NULL, 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1476,6 +1414,47 @@ INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, 
 (13, 'Terrace', 0, 140, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'Furniture', 0, 150, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15, 'Single Fence', 0, 160, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table resellerproducts
+--
+
+CREATE TABLE resellerproducts (
+  id int(11) NOT NULL auto_increment,
+  reseller_id int(11) NOT NULL default '0',
+  product_id int(11) NOT NULL default '0',
+  created_by varchar(50) default NULL,
+  created_on date default NULL,
+  created_at time default NULL,
+  updated_by varchar(50) default NULL,
+  updated_on date default NULL,
+  updated_at time default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Reseller Products' AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table resellerproducts
+--
+
+INSERT INTO resellerproducts (id, reseller_id, product_id, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 1, 14, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 2, 14, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 3, 14, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 4, 14, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 15, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 2, 15, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 3, 15, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 4, 15, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 1, 16, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 2, 16, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 3, 16, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 4, 16, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 1, 17, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 2, 17, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 3, 17, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 4, 17, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

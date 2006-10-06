@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  06-Oct-2006  10053 : Changed sort order of photos.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -26,7 +27,7 @@
   include "tpl/top.php";
 
   $html = "";
-  $sql = "SELECT * FROM photo ORDER BY photo";
+  $sql = "SELECT * FROM photo ORDER BY photo DESC";
   $res = mysql_query($sql) or die('<pre>Error in <b>'.$sql.'</b><br>' . mysql_error() . '</pre>');
   $phcount=0;
   $phmax=6;

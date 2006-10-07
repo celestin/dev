@@ -3,7 +3,7 @@
  * New Search form
  * Copyright (c) 2006 frontburner.co.uk
  *
- * $Id: user.login.php 263 2006-09-30 20:31:40Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  30-Sep-2006  File created.

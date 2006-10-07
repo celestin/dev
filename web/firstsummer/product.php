@@ -23,8 +23,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
 
 $utab = NULL;          if (!empty($_GET['tab'])) $utab = $_GET['tab'];
 $uproduct = NULL;      if (!empty($_GET['product'])) $uproduct = $_GET['product'];

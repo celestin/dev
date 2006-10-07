@@ -15,9 +15,6 @@
 $title = "News Archive";
 include 'tpl/top.php';
 
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
-
 global $flash;
 
 showFlash();

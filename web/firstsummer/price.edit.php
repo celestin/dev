@@ -13,8 +13,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;        if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
+
 $price_id = NULL;      if (!empty($_GET['price_id'])) $price_id = $_GET['price_id'];
                        if (empty($price_id) && (!empty($_POST['price_id']))) $price_id = $_POST['price_id'];
 $confirm = NULL;       if (!empty($_POST['confirm'])) $confirm = $_POST['confirm'];

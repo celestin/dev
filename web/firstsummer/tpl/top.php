@@ -18,7 +18,7 @@
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
+$loggedin = (session_is_registered('memberid') && session_is_registered('1stsummerhouses_com'));
 
 global $cfg;
 

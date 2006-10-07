@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Added newsitems.
+ * CAM  07-Oct-2006  10037 : Corrected Image border/class on featured products for IE.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -89,7 +90,7 @@ while ($row = mysql_fetch_array($sql)) {
     }
 ?>
 <td width="50%" class="feature" valign=top><table border=0 cellpadding=0 cellspacing=4 width="100%">
-  <tr><td width="100" rowspan=3 class="price" valign=top><a href="product.php?product=<? echo $product_id; ?>"><img border=2 src="img/g/t/<? echo $imgfile; ?>"></a>
+  <tr><td width="100" rowspan=3 class="price" valign=top><a class="imgnav" href="product.php?product=<? echo $product_id; ?>"><img border=0 src="img/g/t/<? echo $imgfile; ?>"></a>
     <br><? echo Util::getHtmlPrice($price); ?></td>
     <td class="leftspace" valign=top><a href="product.php?product=<? echo $product_id; ?>"><? echo $product; ?></a></td>
   </tr>

@@ -1,3 +1,16 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id: firstsummer.css 290 2006-10-06 18:46:10Z craig $
+ *
+ * Who  When         Why
+ * CAM  07-Oct-2006  10055 : Added promotion for DIV and P.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
 body {
   BACKGROUND-COLOR: #D3EAF1;
 }
@@ -18,6 +31,17 @@ p, table, td {
   BORDER-TOP:       #0052AF 2px solid;
   PADDING:          8px;
   BACKGROUND-COLOR: #F7FCFD;
+}
+
+div.promotion {
+  BACKGROUND-COLOR: #0052AF;
+  PADDING: 12px;
+}
+
+p.promotion {
+  COLOR: white;
+  FONT-WEIGHT: normal;
+  FONT-SIZE: 11pt;
 }
 
 .rxbox {
@@ -233,3 +257,4 @@ TEXTAREA {
 SELECT {
   BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
 }
+

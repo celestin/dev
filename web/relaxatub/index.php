@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  24-Sep-2006  10031 : Added 350SE advert to home page.
+ * CAM  07-Oct-2006  10055 : Added October offer and Finance Deal.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -23,9 +24,22 @@ include "tpl/top.php";
 -->
 
       <table border=0 cellspacing=0 cellpadding=0 valign=middle>
-      <tr><td><img src="img/pro/350se1.jpg" width=502 height=354></td></tr>
-      <tr><td><img src="img/pro/350se2.jpg" width=502 height=356></td></tr>
+      <tr><td><img src="img/pro/2006oct1.jpg" width=620 height=355></td></tr>
+      <tr><td><img src="img/pro/2006oct2.jpg" width=620 height=355></td></tr>
       </table>
+
+<div class="promotion" style="position:absolute; z-index:1; left:490px; top:480px; width:200px;"><p class="promotion">From <b>25th September 2006</b> to
+<b>31st October 2006</b> you can buy a
+Beachcomber Stock Hot Tub on</p>
+
+<p class="promotion"><b>12 months interest free credit</b>,</p>
+
+<p class="promotion">or if you prefer you can</p>
+
+<p class="promotion"><b>Buy Now, Pay in 6 months</b>...</p>
+
+<p class="promotion">the choice is yours!</p></div>
+
 
 <!--
       <table border=0 cellpadding=5 valign=middle>

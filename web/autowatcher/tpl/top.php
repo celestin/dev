@@ -11,7 +11,7 @@
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
+$loggedin = (session_is_registered('memberid') && session_is_registered('autowatcher_co_uk'));
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];
@@ -29,8 +29,8 @@ if (empty($title)) {
 
 <body topmargin=0 leftmargin=0>
 
-<table border=0 cellpadding=0 cellspacing=0 align=center>
-<tr><td><table border=0 cellpadding=0 cellspacing=0 width="600" height="450" class=outerBox>
+<table border=0 cellpadding=0 cellspacing=0 align=left>
+<tr><td><table border=0 cellpadding=0 cellspacing=0 width="800" height="450" class=outerBox>
   <tr>
   <td valign=top><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="thinBox">
     <tr><td class="title"><b><? echo $cfg['Site']['Name']; ?></b>&nbsp;-&nbsp;<? echo strftime("%a %d %b %H:%M"); ?></td>
@@ -49,12 +49,11 @@ if (empty($title)) {
         <?
           if ($loggedin) {
 ?>
-            <td><a class="nav" href="search.view.php">view searches</a><span class="sep">|</sep></td>
-            <td><a class="nav" href="search.add.php">new search</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="view.search.php">view searches</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="new.search.php">new search</a><span class="sep">|</sep></td>
 <?
             if ($member->isAdmin()) {
 ?>
-            <td><a class="nav" href="pdfupload.php">pdf upload</a><span class="sep">|</sep></td>
 <?
             }
 ?>

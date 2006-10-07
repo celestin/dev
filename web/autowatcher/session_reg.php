@@ -19,8 +19,10 @@ session_register('last_name');
 $_SESSION['last_name'] = $last_name;
 session_register('email_address');
 $_SESSION['email_address'] = $email_address;
-session_register('special_user');
+session_register('user_level');
 $_SESSION['user_level'] = $user_level;
+session_register('autowatcher_co_uk');
+$_SESSION['autowatcher_co_uk'] = "autowatcher_co_uk";
 
 session_register('member_person');
 $_SESSION['member_person'] = Person::getPerson($memberid);

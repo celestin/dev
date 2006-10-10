@@ -6,7 +6,7 @@
  *
  * News Archive
  *
- * $Id: index.php 122 2006-05-29 16:34:16Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.

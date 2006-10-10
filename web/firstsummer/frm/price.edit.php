@@ -6,7 +6,7 @@
  *
  * Price Edit form
  *
- * $Id: user.verify.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  04-Oct-2006  10038 : File created.

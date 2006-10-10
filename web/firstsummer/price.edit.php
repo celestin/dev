@@ -6,7 +6,7 @@
  *
  * Price Edit page
  *
- * $Id: range.php 184 2006-07-05 00:15:13Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Oct-2006  10038 : Make Prices editable.

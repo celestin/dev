@@ -6,7 +6,7 @@
  *
  * Main page setup
  *
- * $Id: Main.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  10-Feb-2006  File created.

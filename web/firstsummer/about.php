@@ -6,7 +6,7 @@
  *
  * About Us page
  *
- * $Id: contact.php 199 2006-07-14 15:51:13Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Oct-2006  10003 : File created.

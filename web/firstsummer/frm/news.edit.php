@@ -6,7 +6,7 @@
  *
  * News Item Form
  *
- * $Id: user.register.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.

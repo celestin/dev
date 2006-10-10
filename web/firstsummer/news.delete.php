@@ -6,7 +6,7 @@
  *
  * Delete a News Item.
  *
- * $Id: logout.php 266 2006-10-04 08:52:03Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.

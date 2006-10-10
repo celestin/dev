@@ -1,0 +1,155 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * TC Munro
+ * Copyright (c) 2006 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  10-Oct-2006  File added to svn.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+/************ GENERAL OPTIONS **************/
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: sans-serif;
+  FONT-SIZE: ppt;
+  TEXT-DECORATION: none;
+}
+
+.timetext {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+.table {
+  border: 1px inset;
+  background-position: center;
+  padding: 2px;
+}
+.tablehighlight {
+  background-color: #FFFFCC;
+}
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 8pt;
+}
+
+.style9 {color: #000000}
+.style10 {color: #0000FF}
+.style11 {
+  font-size: xx-large;
+  font-weight: bold;
+  font-style: italic;
+}
+.style12 {font-size: large}
+.style13 {font-size: medium}
+.style14 {
+  font-size: large;
+  font-weight: bold;
+}
+
+.sitetitle {
+  FONT-SIZE: x-large;
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+}
+
+.itemtitle {
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: bold;
+}
+.itemdesc {
+  COLOR: #FFFFFF;
+  FONT-WEIGHT: normal;
+}
+
+.producttitle {
+  FONT-SIZE: 14px;
+  FONT-WEIGHT: bold;
+  COLOR: #0B7A35;
+}
+
+.sep {
+  COLOR: #6BBD52;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 11pt;
+  PADDING-LEFT:   4px;
+  PADDING-RIGHT:  4px;
+}
+
+/************ NAVIGATION OPTIONS **************/
+
+a:link,a:visited {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+a:hover {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #66CC66;
+  text-decoration: none;
+}
+a:active {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFF33;
+  text-decoration: none;
+}
+
+a.prod:link,a.prod:visited {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #0B7A35;
+  text-decoration: none;
+}
+a.prod:hover {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+a.prod:active {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFF33;
+  text-decoration: none;
+}
+
+a.page:link,a.page:visited {
+  FONT-FAMILY: sans-serif;
+  FONT-WEIGHT: bold;
+  COLOR: #0B7A35;
+  TEXT-DECORATION: none;
+  FONT-SIZE: 8pt;
+}
+a.page:hover {
+  FONT-FAMILY: sans-serif;
+  FONT-WEIGHT: bold;
+  COLOR: #66CC66;
+  TEXT-DECORATION: none;
+  FONT-SIZE: 8pt;
+}
+a.page:active {
+  FONT-FAMILY: sans-serif;
+  FONT-WEIGHT: bold;
+  COLOR: #6BBD52;
+  TEXT-DECORATION: none;
+  FONT-SIZE: 8pt;
+}
+

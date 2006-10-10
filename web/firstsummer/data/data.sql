@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2006 at 08:34 PM
+-- Generation Time: Oct 10, 2006 at 10:40 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -142,10 +142,10 @@ CREATE TABLE featuredproducts (
 --
 
 INSERT INTO featuredproducts (id, product_id, product, description, price, feature) VALUES
-(1, 39, 'Tornio (45mm) 4x3', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was £190 now £95'),
-(2, 19, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was £399 now £199'),
+(1, 39, 'Tornio (45mm) 4x3', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was &pound;190 now &pound;95'),
+(2, 19, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was &pound;399 now &pound;199'),
 (3, 15, '9.9m2 BBQ Hut', 'Have the ultimate BBQ.', 5675, '0% APR over 2 years'),
-(4, 35, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was £470 now £235');
+(4, 35, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was &pound;470 now &pound;235');
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,7 @@ CREATE TABLE member (
 --
 
 INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
-('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-06 19:46:09'),
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-07 18:41:51'),
 ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '', 1, 'A', '', 0, '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -220,7 +220,7 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table newsitems
@@ -229,7 +229,8 @@ CREATE TABLE newsitems (
 INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
 (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL);
+(3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Website Re-design', 'Welcome to 1st Summerhouses, we hope you find this website more user friendly.  If you have any questions or comments about our new website please contact us at sales@1stsummerhouses.com', '2006-10-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -252,7 +253,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=227 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=243 ;
 
 --
 -- Dumping data for table photos
@@ -336,7 +337,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (111, 5, 'nida_ntas_03720.jpg', 3720, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (161, 33, 'tyla_ct_04340.jpg', 4340, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (160, 32, 'tyla_cg_04320.jpg', 4320, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(159, 21, 'tbuild_tg_04620.jpg', 4620, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(159, 21, 'tbuild_tg_04620.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (115, 10, 'nida_ntas_03800.jpg', 3800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (116, 9, 'nida_nv_03820.jpg', 3820, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (117, 9, 'nida_nv_03840.jpg', 3840, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -418,6 +419,8 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (203, 19, 'tbuild_t24_04760.jpg', 4760, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (204, 19, 'tbuild_t24_04780.jpg', 4780, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (205, 19, 'tbuild_t24_04800.jpg', 4800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(228, 21, 'tbuild_tg_05260.jpg', 10, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(227, 21, 'tbuild_tg_05240.jpg', 25, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (226, 50, 'tyla_sp_05220.jpg', 5220, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (209, 24, 'tbuild_t12_04880.jpg', 4880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (210, 24, 'tbuild_t12_04900.jpg', 4900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -435,7 +438,20 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (222, 49, 'tbuild_t23_05140.jpg', 5140, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (223, 19, 'tbuild_t24_05160.jpg', 5160, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (224, 19, 'tbuild_t24_05180.jpg', 5180, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(225, 19, 'tbuild_t24_05200.jpg', 5200, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(225, 19, 'tbuild_t24_05200.jpg', 5200, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(229, 21, 'tbuild_tg_05280.jpg', 15, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(230, 21, 'tbuild_tg_05300.jpg', 16, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(238, 51, 'custom_cc_05460.jpg', 5460, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(232, 22, 'tbuild_ts_05340.jpg', 5340, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(233, 29, 'tbuild_ts_05360.jpg', 5360, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(234, 29, 'tbuild_ts_05380.jpg', 5380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(235, 29, 'tbuild_ts_05400.jpg', 5400, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(236, 29, 'tbuild_ts_05420.jpg', 5420, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(237, 29, 'tbuild_ts_05440.jpg', 5440, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(239, 51, 'custom_cc_05480.jpg', 10, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(240, 51, 'custom_cc_05500.jpg', 5500, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(241, 51, 'custom_cc_05520.jpg', 5520, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(242, 51, 'custom_cc_05540.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -878,6 +894,38 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table prodgroups
+--
+
+CREATE TABLE prodgroups (
+  id int(11) NOT NULL auto_increment,
+  prodgroup varchar(50) default NULL,
+  prodrange_id int(11) NOT NULL default '0',
+  disporder tinyint(4) default NULL,
+  created_by varchar(50) default NULL,
+  created_on date default NULL,
+  created_at time default NULL,
+  updated_by varchar(50) default NULL,
+  updated_on date default NULL,
+  updated_at time default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Groups' AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table prodgroups
+--
+
+INSERT INTO prodgroups (id, prodgroup, prodrange_id, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, '30mm', 4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '45mm', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Extras for', 4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '45mm', 6, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '60mm', 6, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '45mm', 5, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table prodprices
 --
 
@@ -1046,7 +1094,7 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (661, 23, 40, NULL, NULL, 223, NULL, NULL, NULL, NULL, NULL, NULL),
 (662, 24, 30, NULL, 45, 1863, NULL, NULL, NULL, NULL, NULL, NULL),
 (663, 25, 31, NULL, 45, 1215, NULL, NULL, NULL, NULL, NULL, NULL),
-(664, 26, 32, NULL, 45, 1315, NULL, NULL, NULL, NULL, NULL, NULL),
+(664, 26, 32, NULL, 45, 1215, NULL, NULL, NULL, NULL, NULL, NULL),
 (665, 27, 34, NULL, 45, 1519, NULL, NULL, NULL, NULL, NULL, NULL),
 (666, 28, 33, NULL, 45, 1296, NULL, NULL, NULL, NULL, NULL, NULL),
 (667, 29, 35, NULL, 30, 724, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1195,6 +1243,7 @@ CREATE TABLE products (
   product varchar(50) default NULL,
   htmlname varchar(255) default NULL,
   prodrange_id int(11) NOT NULL default '0',
+  prodgroup_id int(11) default NULL,
   brochure varchar(50) default NULL,
   disporder smallint(6) default NULL,
   short_text varchar(255) default NULL,
@@ -1206,54 +1255,55 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=51 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=52 ;
 
 --
 -- Dumping data for table products
 --
 
-INSERT INTO products (id, product, htmlname, prodrange_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES
-(4, 'Nida', NULL, 5, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt â€˜nâ€˜ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
-(5, 'Nida A', NULL, 5, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Nida S', NULL, 5, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Nida T', NULL, 5, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Nida V', NULL, 5, 'nida_nv.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Nida TAS', NULL, 5, 'nida_ntas.pdf', 80, 'Nida.', '', NULL, NULL, NULL, NULL, '2006-07-05 00:51:19', NULL),
-(33, 'Cottage with Terrace', NULL, 6, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
-(32, 'Cottage', NULL, 6, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '6.9m2', 'Finnish BBQ Hut 6.9 m<sup>2</sup>', 7, 'kota_k069.pdf', 1, '', 'Finnish BBQ Hut 6.9m2\r\n\r\nproperties\r\nSides:    Octagonal - Seating for 8 persons\r\nRoof projection: 0.37 m\r\nWalls:    40 mm double tongue and groove logs from Red Pine.\r\nFlooring:   Decking that can be removed for cleaning.\r\nRoof:    20 mm tongue and groove roof boards.\r\nDoors:    1 door\r\nWindows:  4 windows, double glazed\r\n\r\nequipment\r\n\r\nIncluded Equipment:\r\nAn octagonal grill \r\nA round table around the grill \r\nA grill set \r\nA brick pan \r\nA steel kettle \r\nReindeer skins \r\nA coffee pot warmer \r\nA pillow \r\nSanta Claus \r\nA visitors book \r\nWood cups \r\nA pan watch \r\nA Lapp knife \r\nA four-cornered hat and scarf \r\nJuniper bun dishes \r\nJuniper servers \r\n\r\nBottle binoculars\r\nStriped wooden mugs\r\nA bottle opener\r\nJuniper underlay\r\nA leather coffee bag\r\nReindeer horn exact\r\nToggle tables\r\nA pot mitten and patches\r\nA thermometer\r\nAn axe block\r\nA fillet knife\r\nFork and knife sets\r\nA jingle bell\r\nA Lapp willow grouse\r\nA reindeer paw\r\nFlower boxes', NULL, NULL, NULL, NULL, '2006-07-09 20:14:52', NULL),
-(15, '9.9m2', 'Finnish BBQ Hut 9.9 m<sup>2</sup>', 7, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
-(16, '17.2m2', 'Finnish BBQ Hut 17.2 m<sup>2</sup>', 7, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '28.8m2', 'Finnish BBQ Hut 28.8 m<sup>2</sup>', 7, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
-(18, 'T10', NULL, 4, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 'Chalet T24', NULL, 4, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, 'Pavillion', NULL, 11, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(21, 'T Garage', NULL, 9, 'tbuild_tg.pdf', 0, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:40', NULL),
-(22, 'T Shelter', NULL, 4, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 'T Terrace', NULL, 4, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 'T12', NULL, 4, 'tbuild_t12.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 'T14', NULL, 4, 'tbuild_t14.pdf', 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 'T15', NULL, 4, 'tbuild_t15.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'T17+Terrace', NULL, 4, 'tbuild_t17t.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 'T17', NULL, 4, 'tbuild_t17.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 'T20', NULL, 4, 'tbuild_t20.pdf', 70, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:35', NULL),
-(30, 'T21', NULL, 4, 'tbuild_t21.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 'T23', NULL, 4, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(34, 'Kaiserforst', NULL, 6, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(35, 'Laura', NULL, 6, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, 'Sida', NULL, 11, 'tyla_si.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, 'Kaunas Pavilion', NULL, 11, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
-(38, 'Borkum', NULL, 4, 'tyla_pc.pdf', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, 'Tornio', NULL, 5, 'gc_tornio.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(40, 'Ulmenfield', NULL, 6, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, 'Vilnius Pavilion', NULL, 11, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(49, 'T23D', NULL, 4, 'tbuild_t23d.pdf', 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 'Riga Pavilion', NULL, 11, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(45, 'Nida Panorama', NULL, 5, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(46, 'Nida TA', NULL, 5, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(47, 'Nida Tower', NULL, 5, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(48, 'Nida Tyla', NULL, 5, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(50, 'Sida Plus', NULL, 11, 'tyla_sp.pdf', 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES
+(4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt â€˜nâ€˜ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
+(5, 'Nida A', NULL, 5, 6, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Nida S', NULL, 5, 6, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Nida T', NULL, 5, 6, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Nida V', NULL, 5, 6, 'nida_nv.pdf', 70, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Nida TAS', NULL, 5, 6, 'nida_ntas.pdf', 80, 'Nida.', '', NULL, NULL, NULL, NULL, '2006-07-05 00:51:19', NULL),
+(33, 'Cottage with Terrace', NULL, 6, 5, 'tyla_ct.pdf', 20, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:03:05', NULL),
+(32, 'Cottage', NULL, 6, 5, 'tyla_cg.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '6.9m2', 'Finnish BBQ Hut 6.9 m<sup>2</sup>', 7, NULL, 'kota_k069.pdf', 1, '', 'Finnish BBQ Hut 6.9m2\r\n\r\nproperties\r\nSides:    Octagonal - Seating for 8 persons\r\nRoof projection: 0.37 m\r\nWalls:    40 mm double tongue and groove logs from Red Pine.\r\nFlooring:   Decking that can be removed for cleaning.\r\nRoof:    20 mm tongue and groove roof boards.\r\nDoors:    1 door\r\nWindows:  4 windows, double glazed\r\n\r\nequipment\r\n\r\nIncluded Equipment:\r\nAn octagonal grill \r\nA round table around the grill \r\nA grill set \r\nA brick pan \r\nA steel kettle \r\nReindeer skins \r\nA coffee pot warmer \r\nA pillow \r\nSanta Claus \r\nA visitors book \r\nWood cups \r\nA pan watch \r\nA Lapp knife \r\nA four-cornered hat and scarf \r\nJuniper bun dishes \r\nJuniper servers \r\n\r\nBottle binoculars\r\nStriped wooden mugs\r\nA bottle opener\r\nJuniper underlay\r\nA leather coffee bag\r\nReindeer horn exact\r\nToggle tables\r\nA pot mitten and patches\r\nA thermometer\r\nAn axe block\r\nA fillet knife\r\nFork and knife sets\r\nA jingle bell\r\nA Lapp willow grouse\r\nA reindeer paw\r\nFlower boxes', NULL, NULL, NULL, NULL, '2006-07-09 20:14:52', NULL),
+(15, '9.9m2', 'Finnish BBQ Hut 9.9 m<sup>2</sup>', 7, NULL, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
+(16, '17.2m2', 'Finnish BBQ Hut 17.2 m<sup>2</sup>', 7, NULL, 'kota_k172.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '28.8m2', 'Finnish BBQ Hut 28.8 m<sup>2</sup>', 7, NULL, 'kota_k288.pdf', 4, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:34', NULL),
+(18, 'T10', NULL, 4, 2, 'tbuild_t10.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'Chalet T24', NULL, 4, 2, 'tbuild_t24.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'Pavillion', NULL, 11, NULL, 'tbuild_pv.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'T Garage', NULL, 9, NULL, 'tbuild_tg.pdf', 0, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:40', NULL),
+(22, 'T Shelter', NULL, 4, 3, 'tbuild_ts.pdf', 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 'T Terrace', NULL, 4, 3, 'tbuild_tt.pdf', 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'T12', NULL, 4, 2, 'tbuild_t12.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 'T14', NULL, 4, 2, 'tbuild_t14.pdf', 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 'T15', NULL, 4, 2, 'tbuild_t15.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 'T17+Terrace', NULL, 4, 2, 'tbuild_t17t.pdf', 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'T17', NULL, 4, 2, 'tbuild_t17.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 'T20', NULL, 4, 1, 'tbuild_t20.pdf', 70, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:08:35', NULL),
+(30, 'T21', NULL, 4, 1, 'tbuild_t21.pdf', 80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'T23', NULL, 4, 1, 'tbuild_t23.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'Kaiserforst', NULL, 6, 4, 'tyla_kf.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 'Laura', NULL, 6, 4, 'tyla_la.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'Sida', NULL, 11, NULL, 'tyla_si.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'Kaunas Pavilion', NULL, 11, NULL, 'tyla_op.pdf', 10, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:12:44', NULL),
+(38, 'Borkum', NULL, 4, 2, 'tyla_pc.pdf', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'Tornio', NULL, 5, 6, 'gc_tornio.pdf', 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 'Ulmenfield', NULL, 6, 5, 'tyla_uf.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 'Vilnius Pavilion', NULL, 11, NULL, 'tyla_vn.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 'T23D', NULL, 4, 1, 'tbuild_t23d.pdf', 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 'Riga Pavilion', NULL, 11, NULL, 'tyla_rg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 'Nida Panorama', NULL, 5, 6, 'nida_np.pdf', 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 'Nida TA', NULL, 5, 6, 'nida_nta.pdf', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 'Nida Tower', NULL, 5, 6, 'nida_ntw.pdf', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 'Nida Tyla', NULL, 5, 6, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 'Sida Plus', NULL, 11, NULL, 'tyla_sp.pdf', 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 'Custom build', NULL, 10, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

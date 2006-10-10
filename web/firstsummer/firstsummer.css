@@ -11,6 +11,7 @@
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Development.
  * CAM  09-Jul-2006  10014 : Added H4.
+ * CAM  10-Oct-2006  10059 : Added msg2, msg2tab.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -201,16 +202,32 @@ td.cat {
   BACKGROUND-COLOR: #FFFFCC;
   BORDER:           #FFCC00 1px solid;
   COLOR:            #993333;
-  FONT-SIZE: 10pt;
-  FONT-WEIGHT: bold;
-  PADDING-TOP: 5px;
-  PADDING-BOTTOM: 5px;
-  PADDING-LEFT: 15px;
-  PADDING-RIGHT: 15px;
+  TEXT-ALIGN:       center;
+  FONT-SIZE:        10pt;
+  FONT-WEIGHT:      bold;
+  PADDING-TOP:      5px;
+  PADDING-BOTTOM:   5px;
+  PADDING-LEFT:     15px;
+  PADDING-RIGHT:    15px;
 }
 
 .msg1tab {
   PADDING-BOTTOM: 8px;
+}
+
+.msg2 {
+  COLOR:            #993333;
+  TEXT-ALIGN:       center;
+  FONT-SIZE:        10pt;
+  FONT-WEIGHT:      bold;
+  PADDING-TOP:      5px;
+  PADDING-BOTTOM:   8px;
+}
+
+.msg2tab {
+  BACKGROUND-COLOR: #FFFFCC;
+  BORDER:           #FFCC00 1px solid;
+  COLOR:            #993333;
 }
 
 .modbod {
@@ -432,6 +449,15 @@ input.button {
   PADDING-RIGHT:  1px;
   PADDING-TOP:    1px;
 }
+
+/**
+ * RANGE
+ */
+
+.thumb {
+  PADDING-BOTTOM: 10px;
+}
+
 
 
 /** Message formats. */

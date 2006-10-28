@@ -13,6 +13,7 @@
  * CAM  02-Aug-05    76 : Added ADA.
  * CAM  13-Aug-05   114 : Added Perl.
  * CAM  19-Sep-05   138 : Added KEPM.
+ * CAM  27-Oct-06   117 : Added ASP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -25,6 +26,7 @@
 #define LIC_S1   "epms1"
 #define LIC_AD   "epmad"
 #define LIC_PL   "epmpl"
+#define LIC_AS   "epmas"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -34,3 +36,4 @@
 #define EPM_AD   32
 #define EPM_PL   64
 #define EPM_KR   128
+#define EPM_AS   256

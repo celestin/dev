@@ -55,5 +55,11 @@
       <ext name="General Source" value="ads" />
     </filetype>
   </lang>
+  <lang name="ASP" parser="AS">
+    <filetype name="Source">
+      <ext name="General Source" value="asp" />
+      <ext name="General Source" value="aspx" />
+    </filetype>
+  </lang>
 </epm>
 

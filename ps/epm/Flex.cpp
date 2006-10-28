@@ -16,6 +16,7 @@
  * CAM  12-Aug-05   110 : Glorious Twelfth - Correct license problems.
  * CAM  13-Aug-05   114 : Added Perl.
  * CAM  23-Aug-05   115 : Standard Code/Error in brackets.
+ * CAM  19-Sep-06   117 : Added ASP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -29,6 +30,7 @@ bool bLangVB = false;
 bool bLangS1 = false;
 bool bLangAD = false;
 bool bLangPL = false;
+bool bLangAS = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -66,6 +68,7 @@ bool validLicense() {
   bLangS1 = (lpExitCode & EPM_S1);
   bLangAD = (lpExitCode & EPM_AD);
   bLangPL = (lpExitCode & EPM_PL);
+  bLangAS = (lpExitCode & EPM_AS);
 
   /**
   if (bLangCS) cout << "bLangCS" << endl;
@@ -75,9 +78,10 @@ bool validLicense() {
   if (bLangS1) cout << "bLangS1" << endl;
   if (bLangAD) cout << "bLangAD" << endl;
   if (bLangPL) cout << "bLangPL" << endl;
+  if (bLangAS) cout << "bLangAS" << endl;
   **/
 
-  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL);
+  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS);
 }
 
 bool validLanguage(Langs l) {
@@ -89,6 +93,7 @@ bool validLanguage(Langs l) {
     case LANG_S1:   return bLangS1;
     case LANG_ADA:  return bLangAD;
     case LANG_PERL: return bLangPL;
+    case LANG_ASP:  return bLangPL;
   }
 
   return false;

@@ -109,6 +109,10 @@ SOURCE=.\DiffAda.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\DiffASP.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\DiffCpp.cpp
 # End Source File
 # Begin Source File
@@ -134,6 +138,10 @@ SOURCE=.\HTMLReport.cpp
 # Begin Source File
 
 SOURCE=.\lex.ada.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\lex.asp.cpp
 # End Source File
 # Begin Source File
 
@@ -206,6 +214,10 @@ SOURCE=.\Diff.h
 # Begin Source File
 
 SOURCE=.\DiffAda.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\DiffASP.h
 # End Source File
 # Begin Source File
 

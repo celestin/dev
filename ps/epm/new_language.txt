@@ -3,10 +3,14 @@
 3. Create new pl.sed
 4. Amend make.cmd
 
+5. Create new DiffAda??
+
 LicConfig.h:
 #define LIC_AD   "epmad"
 #define EPM_AD   32
 
+lic.cpp
+inc(EPM_AD, LIC_AD);
 
 Flex.cpp:
 (98): case LANG_ADA:  return bLangAD;
@@ -18,6 +22,8 @@ Lang.h
 
 
 main.cpp:
+#include "DiffAda.h"
+
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada;
 
 extern void lexclear_ada();
@@ -37,3 +43,7 @@ main.cpp(652): case LANG_ADA:
 
 
 
+
+License Generator
+
+C:\Dev\PS\EPMLicGen\ProductOptions.bas  AddProduct "epmpl", "Perl"

@@ -48,10 +48,12 @@
  * CAM  18-Jul-06   272 : Version 1.11.000.
  * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
  * CAM  22-Jul-06   291 : Ensure "lines" of 64Kb semi-colon are truncated and diff'ing continues.
+ * CAM  19-Sep-06   117 : Added ASP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
 #include "DiffAda.h"
+#include "DiffASP.h"
 #include "DiffCpp.h"
 #include "DiffOracle.h"
 #include "DiffPerl.h"
@@ -82,7 +84,7 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -90,6 +92,7 @@ extern void lexclear_vb();
 extern void lexclear_s1();
 extern void lexclear_ada();
 extern void lexclear_pl();
+extern void lexclear_asp();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -97,6 +100,7 @@ extern int yylex_vb();
 extern int yylex_s1();
 extern int yylex_ada();
 extern int yylex_pl();
+extern int yylex_asp();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -125,6 +129,11 @@ extern vector<char*> operands_ada[255];
 extern int c_comments_pl,cpp_comments_pl,com_loc_pl,nsemi_pl,noperands_pl,noperators_pl;
 extern set<int> sloc_pl,operators_pl;
 extern vector<char*> operands_pl[255];
+
+extern int c_comments_asp,cpp_comments_asp,com_loc_asp,nsemi_asp,noperands_asp,noperators_asp;
+extern set<int> sloc_asp,operators_asp;
+extern set<int> slnat_asp,sltag_asp,slhtm_asp,slscr_asp;
+extern vector<char*> operands_asp[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -288,6 +297,35 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_pl;
     com_loc = com_loc_pl;
     break;
+
+    case LANG_ASP:
+    sloc = sloc_asp.size();                     // Source Lines of Code
+    met.set(MET(SLOC_TAG), sltag_asp.size());   // Source Lines containing ASP Tags
+    met.set(MET(SLOC_HTM), slhtm_asp.size());   // Source Lines containing HTML
+    met.set(MET(SLOC_NAT), slnat_asp.size());   // Source Lines containing native, server-side code
+    met.set(MET(SLOC_SCR), slscr_asp.size());   // Source Lines containing client-side script
+
+/*
+    set<int>::const_iterator pos;
+    int cam=0;
+    for (pos = slhtm_asp.begin(); pos != slhtm_asp.end(); ++pos) {
+        cout << (*pos)+1 << "," << flush;
+    }
+    cout << endl;
+*/
+
+    met.set(MET(NSC), nsemi_asp);               // Halstead
+    met.set(MET(N1), noperators_asp);
+    met.set(MET(N1S), operators_asp.size());
+    met.set(MET(N2), noperands_asp);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_asp[i].size());
+    }
+
+    c_com = c_comments_asp;                   // Comments
+    cpp_com = cpp_comments_asp;
+    com_loc = com_loc_asp;
+    break;
   }
 
   met.set(MET(SLOC), sloc);
@@ -326,6 +364,10 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_VB:
     d = new DiffVB(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_ASP:
+    d = new DiffASP(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -718,6 +760,11 @@ bool analyse(string &filename) {
       yyin_pl = src;
       lexclear_pl();
       yylex_pl();
+      break;
+    case LANG_ASP:
+      yyin_asp = src;
+      lexclear_asp();
+      yylex_asp();
       break;
   }
 

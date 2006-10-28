@@ -14,45 +14,72 @@
  * CAM  25-Nov-05   164 : Added NFILE metric.
  * CAM  28-Jan-06   168 : Added METID.
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC.
+ * CAM  19-Sep-06   117 : Added SLOC* metrics for html-generating languages.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LOG2 0.693147
 
-#define METS    28
-#define METFILE 25
+#define METS      32
+#define METFILE   29
 
-#define LOC     100
-#define SLOC    101
-#define NSC     102
-#define N1      103
-#define N2      104
-#define N1S     105
-#define N2S     106
-#define N       107
-#define NS      108
-#define V       109
-#define D       110
-#define E       111
-#define B       112
-#define J_COM   113
-#define C_COM   114
-#define CPP_COM 115
-#define COM_LOC 116
-#define BYTES   117
-#define NFILE   118
+#define LOC       100
+#define SLOC      101
+#define SLOC_NAT  102
+#define SLOC_TAG  103
+#define SLOC_HTM  104
+#define SLOC_SCR  105
+#define NSC       106
+#define N1        107
+#define N2        108
+#define N1S       109
+#define N2S       110
+#define N         111
+#define NS        112
+#define V         113
+#define D         114
+#define E         115
+#define B         116
+#define J_COM     117
+#define C_COM     118
+#define CPP_COM   119
+#define COM_LOC   120
+#define BYTES     121
+#define NFILE     122
 
-#define CLOC    119
-#define DLOC    120
-#define ALOC    121
+#define CLOC      123
+#define DLOC      124
+#define ALOC      125
 
-#define CLLOC   122
-#define DLLOC   123
-#define ALLOC   124
+#define CLLOC     126
+#define DLLOC     127
+#define ALLOC     128
 
-#define CFILE   125
-#define DFILE   126
-#define AFILE   127
+#define CFILE     129
+#define DFILE     130
+#define AFILE     131
 
-#define MET(X)   (X-100)
-#define METID(X) (X+100)
+#define MET(X)    (X-100)
+#define METID(X)  (X+100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

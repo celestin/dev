@@ -13,6 +13,7 @@
  * CAM  02-Aug-05    76 : Added ADA.
  * CAM  13-Aug-05   114 : Added Perl.
  * CAM  18-Jul-06   272 : Added hasLogicalLines.
+ * CAM  19-Sep-06   117 : Added ASP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -20,7 +21,7 @@
 
 using namespace std;
 
-enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA, LANG_PERL };
+enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP };
 
 namespace metrics
 {
@@ -50,6 +51,8 @@ namespace metrics
         theLang = LANG_ADA;
       } else if (!stricmp(lang.c_str(), "PL")) {
         theLang = LANG_PERL;
+      } else if (!stricmp(lang.c_str(), "AS")) {
+        theLang = LANG_ASP;
       }
 
       return theLang;
@@ -75,6 +78,8 @@ namespace metrics
         return "ADA";
         case LANG_PERL:
         return "Perl";
+        case LANG_ASP:
+        return "ASP";
       }
 
       return "Other";
@@ -92,6 +97,7 @@ namespace metrics
         case LANG_VB:
         case LANG_S1:
         case LANG_PERL:
+        case LANG_ASP:
           return false;
           break;
       }

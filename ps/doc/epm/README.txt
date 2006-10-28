@@ -16,6 +16,7 @@ Line 4-end:  full path and filename of each file
 
 EPM supports multiple parser language types.  By default these are:
  * C# as before (files ending .cs)
+ * ASP (files ending .asp, .aspx)
  * Java (files ending .java)
  * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
  * Perl (files ending .pl)

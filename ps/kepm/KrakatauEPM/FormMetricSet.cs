@@ -6,11 +6,12 @@
  * Dialog to edit a Metric Set.
  *
  * $Id: frmHelpAbout.cs 151 2006-06-08 22:17:10Z craig $
- * 
+ *
  * Who  When       Why
  * CAM  14-Jun-06   258 : File created.
  * CAM  12-Jul-06   282 : Ensure Cancel button can be pressed even if Metric Set exists.
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
+ * CAM  02-Nov-06   117 : Renumber Metric IDs to suit new SLOC* metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,11 +22,11 @@ using System.Windows.Forms;
 
 namespace KrakatauEPM
 {
-	/// <summary>
-	/// Allowing the editing of a Metric Set.
-	/// </summary>
-	public class FormMetricSet : System.Windows.Forms.Form
-	{
+  /// <summary>
+  /// Allowing the editing of a Metric Set.
+  /// </summary>
+  public class FormMetricSet : System.Windows.Forms.Form
+  {
     private System.Windows.Forms.Button btnOK;
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.TextBox txtName;
@@ -51,24 +52,24 @@ namespace KrakatauEPM
     protected Button _btnLastPressed;
 
     /// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.Container components = null;
 
-		public FormMetricSet(MetricSetItem msi)
-		{
+    public FormMetricSet(MetricSetItem msi)
+    {
       this._msi = msi;
-			InitializeComponent();
+      InitializeComponent();
       AddExtraMetrics();
       this.txtName.Text = this._msi.Text;
-		}
+    }
 
-    private void SetLocation(GroupBox grp, Control refObj, Control newObj, bool bold) 
+    private void SetLocation(GroupBox grp, Control refObj, Control newObj, bool bold)
     {
       newObj.Location = new Point(refObj.Location.X, refObj.Location.Y + 24);
       newObj.Size = new Size(refObj.Size.Width, refObj.Size.Height);
 
-      if (newObj is CheckBox) 
+      if (newObj is CheckBox)
       {
         newObj.Text = refObj.Text;
       }
@@ -77,7 +78,7 @@ namespace KrakatauEPM
       {
         newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       }
-      else 
+      else
       {
         newObj.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       }
@@ -85,8 +86,8 @@ namespace KrakatauEPM
       grp.Controls.Add(newObj);
     }
 
-    private void AddMetric(SortedList m, GroupBox grp, int id, string name) 
-    {      
+    private void AddMetric(SortedList m, GroupBox grp, int id, string name)
+    {
       Hashtable f = (Hashtable) m.GetByIndex(m.Count-1);
       CheckBox chkMet = new CheckBox();
       CheckBox chkLower = new CheckBox();
@@ -120,7 +121,7 @@ namespace KrakatauEPM
       m.Add(id, f);
     }
 
-    private void AddExtraMetrics() 
+    private void AddExtraMetrics()
     {
       Hashtable f;
       _tabIndex = 1;
@@ -136,7 +137,7 @@ namespace KrakatauEPM
       f["chkLower"] = this.chkLower1;
       f["txtLower"] = this.txtLower1;
       f["chkUpper"] = this.chkUpper1;
-      f["txtUpper"] = this.txtUpper1;   
+      f["txtUpper"] = this.txtUpper1;
       f["MetricDef"] = md;
       _mets1.Add(f["id"], f);
 
@@ -151,43 +152,47 @@ namespace KrakatauEPM
       f["txtUpper"] = this.txtUpper2;
       f["MetricDef"] = md;
       _mets2.Add(f["id"], f);
-      
-      AddMetric(_mets1, grpFileMet, 101, "SLOC");
-      AddMetric(_mets1, grpFileMet, 102, "LLOC");
-      AddMetric(_mets1, grpFileMet, 103, "N1");
-      AddMetric(_mets1, grpFileMet, 104, "N2");
-      AddMetric(_mets1, grpFileMet, 105, "N1S");
-      AddMetric(_mets1, grpFileMet, 106, "N2S");
-      AddMetric(_mets1, grpFileMet, 107, "N");
-      AddMetric(_mets1, grpFileMet, 108, "NS");
-      AddMetric(_mets1, grpFileMet, 109, "V");
-      AddMetric(_mets1, grpFileMet, 110, "D");
-      AddMetric(_mets1, grpFileMet, 111, "E");
-      AddMetric(_mets1, grpFileMet, 112, "B");
-      AddMetric(_mets1, grpFileMet, 113, "J_COM");
-      AddMetric(_mets1, grpFileMet, 114, "C_COM");
-      AddMetric(_mets1, grpFileMet, 115, "CPP_COM");
-      AddMetric(_mets1, grpFileMet, 116, "COM_LOC");
-      AddMetric(_mets1, grpFileMet, 117, "BYTES");
-      AddMetric(_mets1, grpFileMet, 118, "NFILE");
 
-      AddMetric(_mets2, grpChgMet, 120, "DEL_SLOC");
-      AddMetric(_mets2, grpChgMet, 121, "ADD_SLOC");
-      AddMetric(_mets2, grpChgMet, 122, "CHG_LLOC");
-      AddMetric(_mets2, grpChgMet, 123, "DEL_LLOC");
-      AddMetric(_mets2, grpChgMet, 124, "ADD_LLOC");
-      AddMetric(_mets2, grpChgMet, 125, "CHG_FILE");
-      AddMetric(_mets2, grpChgMet, 126, "DEL_FILE");
-      AddMetric(_mets2, grpChgMet, 127, "ADD_FILE");
+      AddMetric(_mets1, grpFileMet, 101, "SLOC");
+      AddMetric(_mets1, grpFileMet, 102, "SLOC_NAT");
+      AddMetric(_mets1, grpFileMet, 103, "SLOC_TAG");
+      AddMetric(_mets1, grpFileMet, 104, "SLOC_HTM");
+      AddMetric(_mets1, grpFileMet, 105, "SLOC_SCR");
+      AddMetric(_mets1, grpFileMet, 106, "LLOC");
+      AddMetric(_mets1, grpFileMet, 107, "N1");
+      AddMetric(_mets1, grpFileMet, 108, "N2");
+      AddMetric(_mets1, grpFileMet, 109, "N1S");
+      AddMetric(_mets1, grpFileMet, 110, "N2S");
+      AddMetric(_mets1, grpFileMet, 111, "N");
+      AddMetric(_mets1, grpFileMet, 112, "NS");
+      AddMetric(_mets1, grpFileMet, 113, "V");
+      AddMetric(_mets1, grpFileMet, 114, "D");
+      AddMetric(_mets1, grpFileMet, 115, "E");
+      AddMetric(_mets1, grpFileMet, 116, "B");
+      AddMetric(_mets1, grpFileMet, 117, "J_COM");
+      AddMetric(_mets1, grpFileMet, 118, "C_COM");
+      AddMetric(_mets1, grpFileMet, 120, "CPP_COM");
+      AddMetric(_mets1, grpFileMet, 121, "COM_LOC");
+      AddMetric(_mets1, grpFileMet, 122, "BYTES");
+      AddMetric(_mets1, grpFileMet, 123, "NFILE");
+
+      AddMetric(_mets2, grpChgMet,  124, "DEL_SLOC");
+      AddMetric(_mets2, grpChgMet,  125, "ADD_SLOC");
+      AddMetric(_mets2, grpChgMet,  126, "CHG_LLOC");
+      AddMetric(_mets2, grpChgMet,  127, "DEL_LLOC");
+      AddMetric(_mets2, grpChgMet,  128, "ADD_LLOC");
+      AddMetric(_mets2, grpChgMet,  129, "CHG_FILE");
+      AddMetric(_mets2, grpChgMet,  130, "DEL_FILE");
+      AddMetric(_mets2, grpChgMet,  131, "ADD_FILE");
 
       SetLayout(this._mets1, this.grpFileMet);
       SetLayout(this._mets2, this.grpChgMet);
 
       this.btnOK.TabIndex = _tabIndex++;
-      this.btnCancel.TabIndex = _tabIndex++;      
+      this.btnCancel.TabIndex = _tabIndex++;
     }
 
-    protected void SetLayout(SortedList m, GroupBox grp) 
+    protected void SetLayout(SortedList m, GroupBox grp)
     {
       CheckBox chkRefMet = null;
       CheckBox chkRefLower = null;
@@ -199,7 +204,7 @@ namespace KrakatauEPM
       grp.TabIndex = _tabIndex++;
 
       IEnumerator e = m.GetEnumerator();
-      while (e.MoveNext()) 
+      while (e.MoveNext())
       {
         f = (Hashtable) ((DictionaryEntry) e.Current).Value;
         chkRefMet = (CheckBox) f["chkMet"];
@@ -207,7 +212,7 @@ namespace KrakatauEPM
         txtRefLower = (TextBox) f["txtLower"];
         chkRefUpper = (CheckBox) f["chkUpper"];
         txtRefUpper = (TextBox) f["txtUpper"];
-        
+
         chkRefMet.TabIndex = _tabIndex++;
         chkRefLower.TabIndex = _tabIndex++;
         txtRefLower.TabIndex = _tabIndex++;
@@ -220,7 +225,7 @@ namespace KrakatauEPM
       int shift = (chkRefMet.Location.Y - this.chkMet1.Location.Y);
       grp.Size = new Size(grp.Size.Width, grp.Size.Height + shift);
 
-      if (grp == this.grpFileMet) 
+      if (grp == this.grpFileMet)
       {
         this.Size = new Size(this.Size.Width, this.Size.Height + shift);
         shift = (grp.Size.Height + winsize) - (this.btnOK.Size.Height);
@@ -229,31 +234,31 @@ namespace KrakatauEPM
       }
     }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected override void Dispose( bool disposing )
+    {
+      if( disposing )
+      {
+        if(components != null)
+        {
+          components.Dispose();
+        }
+      }
+      base.Dispose( disposing );
+    }
 
-    private void AppendMetricDefs(SortedList mets) 
+    private void AppendMetricDefs(SortedList mets)
     {
       MetricSet ms = this._msi.MetricSet;
       IEnumerator defs = mets.Values.GetEnumerator();
-      Hashtable f;      
-      while (defs.MoveNext()) 
+      Hashtable f;
+      while (defs.MoveNext())
       {
         f = (Hashtable) defs.Current;
         MetricDef md = (MetricDef) f["MetricDef"];
-        if (md != null && md.Active) 
+        if (md != null && md.Active)
         {
           ms.Add(md);
         }
@@ -264,7 +269,7 @@ namespace KrakatauEPM
     {
       _btnLastPressed = btnOK;
 
-      this._msi.Text = this.txtName.Text;      
+      this._msi.Text = this.txtName.Text;
       this._msi.MetricSet.Clear();
       AppendMetricDefs(this._mets1);
       AppendMetricDefs(this._mets2);
@@ -272,18 +277,18 @@ namespace KrakatauEPM
 
     private void btnCancel_Click(object sender, System.EventArgs e)
     {
-      _btnLastPressed = btnCancel;   
+      _btnLastPressed = btnCancel;
     }
 
     private void FormMetricSet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
-      if (_btnLastPressed != null && _btnLastPressed == btnOK) 
+      if (_btnLastPressed != null && _btnLastPressed == btnOK)
       {
         MetricSet ms = XmlConfig.Config.GetMetricSet(txtName.Text);
         if (ms != null && ms != this._msi.MetricSet)
         {
           btnOK.Enabled = false;
-          stbMsg.Text = "The name you have entered already exists - please specify another.";        
+          stbMsg.Text = "The name you have entered already exists - please specify another.";
           e.Cancel = true;
         }
       }
@@ -295,11 +300,11 @@ namespace KrakatauEPM
       {
         stbMsg.Text = "No spaces in Metric Set names, please... they will be removed.";
       }
-      else 
+      else
       {
         stbMsg.Text = "";
       }
-      
+
       btnOK.Enabled = false;
       if (txtName.Text.Length>0)
       {
@@ -313,13 +318,13 @@ namespace KrakatauEPM
       stbMsg.Text = "";
     }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+    #region Windows Form Designer generated code
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
       System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FormMetricSet));
       this.btnOK = new System.Windows.Forms.Button();
       this.btnCancel = new System.Windows.Forms.Button();
@@ -341,9 +346,9 @@ namespace KrakatauEPM
       this.grpChgMet.SuspendLayout();
       this.grpFileMet.SuspendLayout();
       this.SuspendLayout();
-      // 
+      //
       // btnOK
-      // 
+      //
       this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
       this.btnOK.Enabled = false;
       this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -353,9 +358,9 @@ namespace KrakatauEPM
       this.btnOK.TabIndex = 0;
       this.btnOK.Text = "&OK";
       this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-      // 
+      //
       // btnCancel
-      // 
+      //
       this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.btnCancel.Location = new System.Drawing.Point(736, 120);
@@ -364,9 +369,9 @@ namespace KrakatauEPM
       this.btnCancel.TabIndex = 1;
       this.btnCancel.Text = "&Cancel";
       this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-      // 
+      //
       // txtName
-      // 
+      //
       this.txtName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.txtName.Location = new System.Drawing.Point(128, 13);
       this.txtName.Name = "txtName";
@@ -375,9 +380,9 @@ namespace KrakatauEPM
       this.txtName.Text = "";
       this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
       this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
-      // 
+      //
       // grpChgMet
-      // 
+      //
       this.grpChgMet.Controls.Add(this.chkLower2);
       this.grpChgMet.Controls.Add(this.txtLower2);
       this.grpChgMet.Controls.Add(this.chkMet2);
@@ -390,63 +395,63 @@ namespace KrakatauEPM
       this.grpChgMet.TabIndex = 11;
       this.grpChgMet.TabStop = false;
       this.grpChgMet.Text = "Changed Metrics";
-      // 
+      //
       // chkLower2
-      // 
+      //
       this.chkLower2.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkLower2.Location = new System.Drawing.Point(104, 24);
       this.chkLower2.Name = "chkLower2";
       this.chkLower2.Size = new System.Drawing.Size(64, 24);
       this.chkLower2.TabIndex = 10;
       this.chkLower2.Text = "Lower";
-      // 
+      //
       // txtLower2
-      // 
+      //
       this.txtLower2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.txtLower2.Location = new System.Drawing.Point(168, 25);
       this.txtLower2.Name = "txtLower2";
       this.txtLower2.Size = new System.Drawing.Size(72, 21);
       this.txtLower2.TabIndex = 9;
       this.txtLower2.Text = "";
-      // 
+      //
       // chkMet2
-      // 
+      //
       this.chkMet2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.chkMet2.Location = new System.Drawing.Point(8, 24);
       this.chkMet2.Name = "chkMet2";
       this.chkMet2.Size = new System.Drawing.Size(96, 24);
       this.chkMet2.TabIndex = 7;
       this.chkMet2.Text = "CHG_SLOC";
-      // 
+      //
       // txtUpper2
-      // 
+      //
       this.txtUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.txtUpper2.Location = new System.Drawing.Point(328, 25);
       this.txtUpper2.Name = "txtUpper2";
       this.txtUpper2.Size = new System.Drawing.Size(72, 21);
       this.txtUpper2.TabIndex = 5;
       this.txtUpper2.Text = "";
-      // 
+      //
       // chkUpper2
-      // 
+      //
       this.chkUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkUpper2.Location = new System.Drawing.Point(264, 24);
       this.chkUpper2.Name = "chkUpper2";
       this.chkUpper2.Size = new System.Drawing.Size(64, 24);
       this.chkUpper2.TabIndex = 8;
       this.chkUpper2.Text = "Upper";
-      // 
+      //
       // label1
-      // 
+      //
       this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.label1.Location = new System.Drawing.Point(16, 16);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(104, 16);
       this.label1.TabIndex = 4;
       this.label1.Text = "Metric Set Name";
-      // 
+      //
       // grpFileMet
-      // 
+      //
       this.grpFileMet.Controls.Add(this.chkLower1);
       this.grpFileMet.Controls.Add(this.txtLower1);
       this.grpFileMet.Controls.Add(this.chkMet1);
@@ -459,62 +464,62 @@ namespace KrakatauEPM
       this.grpFileMet.TabIndex = 12;
       this.grpFileMet.TabStop = false;
       this.grpFileMet.Text = "File Metrics";
-      // 
+      //
       // chkLower1
-      // 
+      //
       this.chkLower1.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkLower1.Location = new System.Drawing.Point(104, 24);
       this.chkLower1.Name = "chkLower1";
       this.chkLower1.Size = new System.Drawing.Size(64, 24);
       this.chkLower1.TabIndex = 10;
       this.chkLower1.Text = "Lower";
-      // 
+      //
       // txtLower1
-      // 
+      //
       this.txtLower1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.txtLower1.Location = new System.Drawing.Point(168, 25);
       this.txtLower1.Name = "txtLower1";
       this.txtLower1.Size = new System.Drawing.Size(72, 21);
       this.txtLower1.TabIndex = 9;
       this.txtLower1.Text = "";
-      // 
+      //
       // chkMet1
-      // 
+      //
       this.chkMet1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.chkMet1.Location = new System.Drawing.Point(8, 24);
       this.chkMet1.Name = "chkMet1";
       this.chkMet1.Size = new System.Drawing.Size(96, 24);
       this.chkMet1.TabIndex = 7;
       this.chkMet1.Text = "LOC";
-      // 
+      //
       // chkUpper1
-      // 
+      //
       this.chkUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkUpper1.Location = new System.Drawing.Point(264, 24);
       this.chkUpper1.Name = "chkUpper1";
       this.chkUpper1.Size = new System.Drawing.Size(64, 24);
       this.chkUpper1.TabIndex = 8;
       this.chkUpper1.Text = "Upper";
-      // 
+      //
       // txtUpper1
-      // 
+      //
       this.txtUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.txtUpper1.Location = new System.Drawing.Point(328, 25);
       this.txtUpper1.Name = "txtUpper1";
       this.txtUpper1.Size = new System.Drawing.Size(72, 21);
       this.txtUpper1.TabIndex = 5;
       this.txtUpper1.Text = "";
-      // 
+      //
       // stbMsg
-      // 
+      //
       this.stbMsg.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.stbMsg.Location = new System.Drawing.Point(0, 153);
       this.stbMsg.Name = "stbMsg";
       this.stbMsg.Size = new System.Drawing.Size(842, 22);
       this.stbMsg.TabIndex = 13;
-      // 
+      //
       // FormMetricSet
-      // 
+      //
       this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.ClientSize = new System.Drawing.Size(842, 175);
@@ -540,7 +545,7 @@ namespace KrakatauEPM
       this.ResumeLayout(false);
 
     }
-		#endregion
+    #endregion
 
-	}
+  }
 }

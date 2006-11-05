@@ -1,0 +1,69 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPM License Generator", "EPM License Generator.csproj", "{574F877D-5A0B-4ED6-955A-7C8276F38EB4}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{ACA99D24-2A4B-4C16-9E92-13D6ABC4AC35}") = "EPMLicGen", "EPMLicGen.ise", "{70FA2FE1-7158-4B09-A6D2-ED48B774E418}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		CD_ROM = CD_ROM
+		Custom = Custom
+		Debug = Debug
+		DVD-10 = DVD-10
+		DVD-18 = DVD-18
+		DVD-5 = DVD-5
+		DVD-9 = DVD-9
+		Release = Release
+		SingleImage = SingleImage
+		WebDeployment = WebDeployment
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.CD_ROM.ActiveCfg = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.CD_ROM.Build.0 = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Custom.ActiveCfg = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Custom.Build.0 = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Debug.ActiveCfg = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Debug.Build.0 = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-10.ActiveCfg = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-10.Build.0 = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-18.ActiveCfg = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-18.Build.0 = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-5.ActiveCfg = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-5.Build.0 = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-9.ActiveCfg = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-9.Build.0 = Debug|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Release.ActiveCfg = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Release.Build.0 = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.SingleImage.ActiveCfg = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.SingleImage.Build.0 = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.WebDeployment.ActiveCfg = Release|.NET
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.WebDeployment.Build.0 = Release|.NET
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.CD_ROM.ActiveCfg = CD_ROM
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.CD_ROM.Build.0 = CD_ROM
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Custom.ActiveCfg = Custom
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Custom.Build.0 = Custom
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Debug.ActiveCfg = DVD-9
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Debug.Build.0 = DVD-9
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-10.ActiveCfg = DVD-10
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-10.Build.0 = DVD-10
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-18.ActiveCfg = DVD-18
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-18.Build.0 = DVD-18
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-5.ActiveCfg = DVD-5
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-5.Build.0 = DVD-5
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-9.ActiveCfg = DVD-9
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.DVD-9.Build.0 = DVD-9
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Release.ActiveCfg = WebDeployment
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.Release.Build.0 = WebDeployment
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.SingleImage.ActiveCfg = SingleImage
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.SingleImage.Build.0 = SingleImage
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.WebDeployment.ActiveCfg = WebDeployment
+		{70FA2FE1-7158-4B09-A6D2-ED48B774E418}.WebDeployment.Build.0 = WebDeployment
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

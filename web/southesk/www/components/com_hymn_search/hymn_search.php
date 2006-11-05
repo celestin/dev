@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  02-Jul-2006  File added to source control.
  * CAM  03-Jul-2006  Added George Murray's Categories.
+ * CAM  05-Nov-2006  Added Netherlands Lofzangen.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /** Ensure this file is being included by a parent file */
@@ -101,6 +102,7 @@ function hymn_searchpage($option, $hymn_search_id) {
       <td><select name="language" id="language" class="dropdown" onchange="toggle_language();">
       <option value="" <? echo ($language == "" ? "SELECTED" : ""); ?>>English</option>
       <option value="_de" <? echo ($language == "_de" ? "SELECTED" : ""); ?>>Deutsche</option>
+      <option value="_nl" <? echo ($language == "_nl" ? "SELECTED" : ""); ?>>Netherlands</option>
       </select></td>
 
       <td><select name="meter_id" id="meter_id" class="dropdown">

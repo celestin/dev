@@ -5,7 +5,7 @@
  *
  * Lic Gen Form
  *
- * $Id: ProjectItem.cs 147 2006-06-06 23:06:48Z craig $
+ * $Id$
  * 
  * Who  When       Why
  * CAM  11-Oct-05   301 : File created.

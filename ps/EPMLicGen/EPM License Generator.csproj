@@ -109,6 +109,16 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
+                    RelPath = "EPMOptions.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EPMOptions.resx"
+                    DependentUpon = "EPMOptions.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "LicenseKey.ico"
                     BuildAction = "Content"
                 />

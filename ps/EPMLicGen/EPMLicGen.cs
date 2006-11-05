@@ -9,6 +9,7 @@
  * 
  * Who  When       Why
  * CAM  11-Oct-05   301 : File created.
+ * CAM  05-Nov-06   301 : Added ASP (omission).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -52,6 +53,7 @@ namespace EPM_License_Generator
     private System.ComponentModel.IContainer components;
     public System.Windows.Forms.TextBox txtQty;
     public System.Windows.Forms.CheckBox chkProd;
+    EPMOptions _opt;
 
     private string LICENSE_FILE = "license.dat";
     private string FLEXLM = "lmcrypt.exe";
@@ -73,6 +75,7 @@ namespace EPM_License_Generator
       InitializeComponent();
       CreateProductOptions();
       RefreshControls();
+      _opt = new EPMOptions();
     }
 
     /// <summary>
@@ -242,6 +245,7 @@ namespace EPM_License_Generator
       // 
       this.mnuOptions.Index = 0;
       this.mnuOptions.Text = "&Options";
+      this.mnuOptions.Click += new System.EventHandler(this.mnuOptions_Click);
       // 
       // optLicFloat
       // 
@@ -294,7 +298,7 @@ namespace EPM_License_Generator
       this.optLicHost.Location = new System.Drawing.Point(176, 32);
       this.optLicHost.Name = "optLicHost";
       this.optLicHost.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.optLicHost.Size = new System.Drawing.Size(81, 17);
+      this.optLicHost.Size = new System.Drawing.Size(96, 17);
       this.optLicHost.TabIndex = 16;
       this.optLicHost.TabStop = true;
       this.optLicHost.Text = "&Host-locked";
@@ -447,14 +451,15 @@ namespace EPM_License_Generator
       _txtQtys.Add(this.txtQty);
 
       AddProduct("epmkr", "Krakatau EPM");
+      AddProduct("epmad", "ADA");
+      AddProduct("epmas", "ASP");
       AddProduct("epmcp", "C/C++");
       AddProduct("epmcs", "C# (C Sharp)");
       AddProduct("epmjv", "Java");
-      AddProduct("epmvb", "Visual Basic");
       AddProduct("epms1", "Oracle PL/SQL");
-      AddProduct("epmad", "ADA");
       AddProduct("epmpl", "Perl");
       AddProduct("epmph", "PHP");
+      AddProduct("epmvb", "Visual Basic");
     }
 
     private void AddProduct(string strName, string strDesc) 
@@ -562,7 +567,7 @@ namespace EPM_License_Generator
       txtOutput.Text = "";
       Refresh();
 
-      _licenseDat = new FileInfo(Application.StartupPath + "\\" + LICENSE_FILE);
+      _licenseDat = new FileInfo(_opt.LicenseFilePath + "\\" + LICENSE_FILE);
 		  
       TextWriter tw = new StreamWriter(_licenseDat.FullName, false);
       tw.WriteLine(LicenseString());
@@ -616,6 +621,11 @@ namespace EPM_License_Generator
     {
       Application.Exit();
     }    
+
+    private void mnuOptions_Click(object sender, System.EventArgs e)
+    {
+      _opt.ShowDialog(this);    
+    }
 
     private void mnuAbout_Click(object sender, System.EventArgs e)
     {

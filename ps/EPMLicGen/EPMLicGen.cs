@@ -128,14 +128,14 @@ namespace EPM_License_Generator
       // 
       this.cmbHostid.BackColor = System.Drawing.SystemColors.Window;
       this.cmbHostid.Cursor = System.Windows.Forms.Cursors.Default;
-      this.cmbHostid.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmbHostid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.cmbHostid.ForeColor = System.Drawing.SystemColors.WindowText;
       this.cmbHostid.Items.AddRange(new object[] {
                                                    "Any"});
       this.cmbHostid.Location = new System.Drawing.Point(304, 80);
       this.cmbHostid.Name = "cmbHostid";
       this.cmbHostid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.cmbHostid.Size = new System.Drawing.Size(105, 22);
+      this.cmbHostid.Size = new System.Drawing.Size(105, 21);
       this.cmbHostid.TabIndex = 25;
       this.cmbHostid.Text = "Any";
       // 
@@ -247,7 +247,7 @@ namespace EPM_License_Generator
       // 
       this.optLicFloat.BackColor = System.Drawing.SystemColors.Control;
       this.optLicFloat.Cursor = System.Windows.Forms.Cursors.Default;
-      this.optLicFloat.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.optLicFloat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.optLicFloat.ForeColor = System.Drawing.SystemColors.ControlText;
       this.optLicFloat.Location = new System.Drawing.Point(328, 32);
       this.optLicFloat.Name = "optLicFloat";
@@ -289,7 +289,7 @@ namespace EPM_License_Generator
       // 
       this.optLicHost.BackColor = System.Drawing.SystemColors.Control;
       this.optLicHost.Cursor = System.Windows.Forms.Cursors.Default;
-      this.optLicHost.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.optLicHost.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.optLicHost.ForeColor = System.Drawing.SystemColors.ControlText;
       this.optLicHost.Location = new System.Drawing.Point(176, 32);
       this.optLicHost.Name = "optLicHost";
@@ -305,7 +305,7 @@ namespace EPM_License_Generator
       this.optLicTimed.BackColor = System.Drawing.SystemColors.Control;
       this.optLicTimed.Checked = true;
       this.optLicTimed.Cursor = System.Windows.Forms.Cursors.Default;
-      this.optLicTimed.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.optLicTimed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.optLicTimed.ForeColor = System.Drawing.SystemColors.ControlText;
       this.optLicTimed.Location = new System.Drawing.Point(24, 32);
       this.optLicTimed.Name = "optLicTimed";
@@ -320,7 +320,7 @@ namespace EPM_License_Generator
       // 
       this.cmdGenerate.BackColor = System.Drawing.SystemColors.Control;
       this.cmdGenerate.Cursor = System.Windows.Forms.Cursors.Default;
-      this.cmdGenerate.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdGenerate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.cmdGenerate.ForeColor = System.Drawing.SystemColors.ControlText;
       this.cmdGenerate.Location = new System.Drawing.Point(8, 184);
       this.cmdGenerate.Name = "cmdGenerate";
@@ -333,7 +333,7 @@ namespace EPM_License_Generator
       // frmLicType
       // 
       this.frmLicType.BackColor = System.Drawing.SystemColors.Control;
-      this.frmLicType.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.frmLicType.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.frmLicType.ForeColor = System.Drawing.SystemColors.ControlText;
       this.frmLicType.Location = new System.Drawing.Point(8, 8);
       this.frmLicType.Name = "frmLicType";
@@ -363,9 +363,10 @@ namespace EPM_License_Generator
       // 
       // dtpDate
       // 
+      this.dtpDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.dtpDate.Location = new System.Drawing.Point(64, 80);
       this.dtpDate.Name = "dtpDate";
-      this.dtpDate.Size = new System.Drawing.Size(128, 20);
+      this.dtpDate.Size = new System.Drawing.Size(128, 21);
       this.dtpDate.TabIndex = 26;
       // 
       // EPMLicGen

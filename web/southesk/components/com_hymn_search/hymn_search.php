@@ -10,6 +10,8 @@
  *
  * Who  When         Why
  * CAM  02-Jul-2006  File added to source control.
+ * CAM  03-Jul-2006  Added George Murray's Categories.
+ * CAM  05-Nov-2006  Added Netherlands Lofzangen.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /** Ensure this file is being included by a parent file */
@@ -46,6 +48,7 @@ function hymn_searchpage($option, $hymn_search_id) {
   $keywords = trim(mosGetParam($_POST, 'keywords', ''));
   $author = trim(mosGetParam($_POST, 'author', ''));
   $meter_id = trim(mosGetParam($_POST, 'meter_id', ''));
+  $category_id = trim(mosGetParam($_POST, 'category_id', ''));
   $language = trim(mosGetParam($_POST, 'language', ''));
 
   stylesheet();
@@ -88,17 +91,22 @@ function hymn_searchpage($option, $hymn_search_id) {
     <tr>
       <td><input type="text" name="hymn_no" size="10" class="inputbox" value="<?php echo $hymn_no;?>" /></td>
       <td><input type="text" name="keywords" size="40" class="inputbox" value="<?php echo $keywords;?>" /></td>
-      <td><input type="text" name="author" size="20" class="inputbox" value="<?php echo $author;?>" /></td>
+      <td>
+        <input type="text" name="author" size="20" class="inputbox" value="<?php echo $author;?>" />
+        <input type="submit" name="hymn_search" value="<?php echo(_HYMNSEARCH_HYMN);?>" class="button" />
+        <a href="<? echo $mosConfig_live_site; ?>index.php?option=com_content&task=view&id=34&Itemid=2">Need help?</a>
+      </td>
     </tr>
 
     <tr>
-    <td><select name="language" id="language" class="dropdown" onchange="toggle_language();">
-    <option value="" <? echo ($language == "" ? "SELECTED" : ""); ?>>English</option>
-    <option value="_de" <? echo ($language == "_de" ? "SELECTED" : ""); ?>>Deutsche</option>
-    </select></td>
+      <td><select name="language" id="language" class="dropdown" onchange="toggle_language();">
+      <option value="" <? echo ($language == "" ? "SELECTED" : ""); ?>>English</option>
+      <option value="_de" <? echo ($language == "_de" ? "SELECTED" : ""); ?>>Deutsche</option>
+      <option value="_nl" <? echo ($language == "_nl" ? "SELECTED" : ""); ?>>Netherlands</option>
+      </select></td>
 
-    <td><select name="meter_id" id="meter_id" class="dropdown">
-    <option value="ALL">All Meters</option>
+      <td><select name="meter_id" id="meter_id" class="dropdown">
+      <option value="ALL">All Meters</option>
 <?
   $meterSql = "SELECT m.id, m.meter, m.rhythm, m.chorus, m.disp_order ".
               "FROM hymn$language h, hymn_meter m ".
@@ -120,9 +128,31 @@ function hymn_searchpage($option, $hymn_search_id) {
   mysql_free_result($meterRes);
 
 ?>
-    </select></td>
-    <td colspan=2><input type="submit" name="hymn_search" value="<?php echo(_HYMNSEARCH_HYMN);?>" class="button" />
-    <a href="http://www.southesk.com/index.php?option=com_content&task=view&id=34&Itemid=2">Need help?</a></td>
+      </select></td>
+
+      <td><select name="category_id" id="category_id" class="dropdown">
+      <option value="ALL">All Categories</option>
+<?
+  $meterSql = "SELECT c.id, s.code scheme_code, c.code category, c.name ".
+              "FROM hymn_scheme_categories c, hymn_schemes s ".
+              "WHERE c.scheme_id = s.id ".
+              "ORDER BY c.disp_order, c.name";
+  $meterRes = mysql_query($meterSql) or die("</select><h1>Query failed</h1><pre>$meterSql</pre>");
+
+  while ($row = mysql_fetch_row($meterRes)) {
+    $sel = "";
+    if ($row[0] == $category_id) {
+      $sel = "SELECTED ";
+    }
+?>
+      <option <?echo $sel; ?>value="<? echo $row[0]; ?>"><? echo trim("$row[3]"); ?></option>
+<?
+  }
+
+  mysql_free_result($meterRes);
+
+?>
+      </select></td>
     </tr>
   </table>
   <input type="hidden" name="sitename" value="<?php echo $sitename; ?>" />
@@ -217,11 +247,12 @@ function output_hymn_lines($hymn_lines) {
 }
 
 function body_search($keywordsList, $searchType) {
-  global $database, $language, $meter_id;
+  global $database, $language, $meter_id, $category_id;
 
   describe_search($searchType);
 
   $whereClause = "";
+  $extraTables = "";
 
   $i = 0;
   foreach($keywordsList as $keyword) {
@@ -232,14 +263,22 @@ function body_search($keywordsList, $searchType) {
   }
 
   if (!empty($meter_id) && $meter_id != "ALL") {
-    $whereClause = $whereClause . "and h.meter_id='$meter_id' ";
+    $whereClause .= "AND h.meter_id='$meter_id' ";
     if ($i == 0) {
-      $whereClause = $whereClause . "and d.vers_no=1 and d.line_no=1 ";
+      $whereClause .= "AND d.vers_no=1 and d.line_no=1 ";
+    }
+  }
+
+  if (!empty($category_id) && $category_id != "ALL") {
+    $whereClause .= "AND h.hymn_no = c.hymn_no AND c.category_id = '$category_id' ";
+    $extraTables .= ", hymn_categories c ";
+    if ($i == 0) {
+      $whereClause .= "AND d.vers_no=1 and d.line_no=1 ";
     }
   }
 
   $verseSql = "SELECT DISTINCT d.hymn_no, d.line_text " . //, d.vers_no, d.line_no, d.line_text, h.meter ".
-              "FROM hymn_line$language d, hymn$language h ".
+              "FROM hymn_line$language d, hymn$language h $extraTables ".
               "WHERE d.hymn_no = h.hymn_no $whereClause ".
               "ORDER BY d.hymn_no,d.vers_no,d.line_no";
 
@@ -267,8 +306,8 @@ function author_search($authorList, $searchType) {
 ?>
   <table border=0 cellspacing=0 cellpadding=4>
 <?
-  $verseSql = "SELECT author,fullname,surname,firstnames,author_life,bio_url ".
-              "FROM author $whereClause order by surname,fullname";
+  $verseSql = "SELECT id,fullname,surname,firstnames,author_life,bio_url ".
+              "FROM authors $whereClause order by surname,fullname";
   $verseRes = mysql_query($verseSql) or die("<h1>Query failed</h1><pre>$verseSql</pre>");
 
   for ($count = 1; $row = mysql_fetch_row($verseRes); ++$count) {
@@ -288,7 +327,7 @@ function author_search($authorList, $searchType) {
                "WHERE h.hymn_no = d.hymn_no " .
                "AND d.line_no = 1 " .
                "AND d.vers_no = 1 " .
-               "AND h.author = $row[0] " .
+               "AND h.author_id = $row[0] " .
                "ORDER BY h.hymn_no";
 
 ?><tr><td colspan=4><?
@@ -368,7 +407,7 @@ function show_hymn($hymn, $language) {
 <?
   }
 
-  $hymnSql = "SELECT a.fullname FROM hymn$language h, author a where h.author = a.author and h.hymn_no=$hymn";
+  $hymnSql = "SELECT a.fullname FROM hymn$language h, authors a where h.author_id = a.id and h.hymn_no=$hymn";
   $database->setQuery($hymnSql);
   $authors = $database->loadObjectlist();
   echo "<tr><td colspan=2 class=author><a href=\"javascript:void();\" onclick=\"view_author('" . $authors[0]->fullname . "');\">" . $authors[0]->fullname . "</a></td></tr>\n";
@@ -382,6 +421,7 @@ function search_hymns($con_id, $option) {
   $keywords = trim(mosGetParam($_POST, 'keywords', ''));
   $author = trim(mosGetParam($_POST, 'author', ''));
   $meter_id = trim(mosGetParam($_POST, 'meter_id', ''));
+  $category_id = trim(mosGetParam($_POST, 'category_id', ''));
   $language = trim(mosGetParam($_POST, 'language', ''));
 
 ?>
@@ -401,8 +441,9 @@ function search_hymns($con_id, $option) {
   $authorList = explode(" ", $author);
 
   $metdesc = "";
-  if ($meter_id != "ALL") {
+  $catdesc = "";
 
+  if ($meter_id != "ALL") {
     $sql = "SELECT m.meter, m.rhythm, m.chorus ".
            "FROM hymn_meter m ".
            "WHERE m.id = $meter_id";
@@ -415,12 +456,22 @@ function search_hymns($con_id, $option) {
     $metdesc = "of meter \"$metdesc\"";
   }
 
+  if ($category_id != "ALL") {
+    $sql = "SELECT name ".
+           "FROM hymn_scheme_categories ".
+           "WHERE id = $category_id";
+
+    $database->setQuery($sql);
+    $category_list = $database->loadObjectlist();
+    $catdesc = "in category \"" . $category_list[0]->name . "\"";
+  }
+
   if (!empty($keywords) > 0) {
-    body_search($keywordsList, "Hymns $metdesc containing \"$keywords\"");
+    body_search($keywordsList, "Hymns $metdesc $catdesc containing \"$keywords\"");
   } else if (!empty($author) > 0) {
     author_search($authorList, "Authors like \"$author\" and their hymns");
-  } else if ($meter_id != "ALL") {
-    body_search($keywordsList, "Hymns $metdesc");
+  } else if ($meter_id != "ALL" || $category_id != "ALL") {
+    body_search($keywordsList, "Hymns $metdesc $catdesc");
   }
 ?>
 </td></tr>

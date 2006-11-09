@@ -5,7 +5,7 @@
  *
  * ASP Parser
  *
- * $Id: lexer.asp.l 312 2006-10-28 19:24:51Z craig $
+ * $Id$
  *
  * Who  When       Why
  * CAM  04-Nov-06   301 : File created.

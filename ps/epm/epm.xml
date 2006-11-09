@@ -61,5 +61,10 @@
       <ext name="General Source" value="aspx" />
     </filetype>
   </lang>
+  <lang name="PHP" parser="PH">
+    <filetype name="Source">
+      <ext name="General Source" value="php" />
+    </filetype>
+  </lang>
 </epm>
 

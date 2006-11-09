@@ -46,4 +46,4 @@ main.cpp(652): case LANG_ADA:
 
 License Generator
 
-C:\Dev\PS\EPMLicGen\ProductOptions.bas  AddProduct "epmpl", "Perl"
+C:\Dev\PS\EPMLicGen\EPM License Generator\EPM License Generator\EPMLicGen.cs   AddProduct("epmad", "ADA");

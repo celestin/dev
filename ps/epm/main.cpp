@@ -85,7 +85,7 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -94,6 +94,7 @@ extern void lexclear_s1();
 extern void lexclear_ada();
 extern void lexclear_pl();
 extern void lexclear_asp();
+extern void lexclear_php();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -102,6 +103,7 @@ extern int yylex_s1();
 extern int yylex_ada();
 extern int yylex_pl();
 extern int yylex_asp();
+extern int yylex_php();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -135,6 +137,11 @@ extern int c_comments_asp,cpp_comments_asp,com_loc_asp,nsemi_asp,noperands_asp,n
 extern set<int> sloc_asp,operators_asp;
 extern set<int> slnat_asp,sltag_asp,slhtm_asp,slscr_asp;
 extern vector<char*> operands_asp[255];
+
+extern int c_comments_php,cpp_comments_php,com_loc_php,nsemi_php,noperands_php,noperators_php;
+extern set<int> sloc_php,operators_php;
+extern set<int> slnat_php,slhtm_php,slscr_php;
+extern vector<char*> operands_php[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -306,15 +313,6 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(SLOC_NAT), slnat_asp.size());   // Source Lines containing native, server-side code
     met.set(MET(SLOC_SCR), slscr_asp.size());   // Source Lines containing client-side script
 
-/*
-    set<int>::const_iterator pos;
-    int cam=0;
-    for (pos = slhtm_asp.begin(); pos != slhtm_asp.end(); ++pos) {
-        cout << (*pos)+1 << "," << flush;
-    }
-    cout << endl;
-*/
-
     met.set(MET(NSC), nsemi_asp);               // Halstead
     met.set(MET(N1), noperators_asp);
     met.set(MET(N1S), operators_asp.size());
@@ -326,6 +324,25 @@ void setMetrics(int sfid, string filename) {
     c_com = c_comments_asp;                   // Comments
     cpp_com = cpp_comments_asp;
     com_loc = com_loc_asp;
+    break;
+
+    case LANG_PHP:
+    sloc = sloc_php.size();                     // Source Lines of Code
+    met.set(MET(SLOC_HTM), slhtm_php.size());   // Source Lines containing HTML
+    met.set(MET(SLOC_NAT), slnat_php.size());   // Source Lines containing native, server-side code
+    met.set(MET(SLOC_SCR), slscr_php.size());   // Source Lines containing client-side script
+
+    met.set(MET(NSC), nsemi_php);               // Halstead
+    met.set(MET(N1), noperators_php);
+    met.set(MET(N1S), operators_php.size());
+    met.set(MET(N2), noperands_php);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_php[i].size());
+    }
+
+    c_com = c_comments_php;                   // Comments
+    cpp_com = cpp_comments_php;
+    com_loc = com_loc_php;
     break;
   }
 
@@ -368,6 +385,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     break;
 
     case LANG_ASP:
+    case LANG_PHP:
     d = new DiffASP(filename2.c_str(), filename.c_str());
     break;
   }
@@ -377,12 +395,6 @@ void calcDiff(int sfid, string &filename, string &filename2) {
   met.set(MET(CLOC), d->getChangedLines());
   met.set(MET(DLOC), d->getDeletedLines());
   met.set(MET(ALOC), d->getInsertedLines());
-
-/*
-  cout << "MET(CLOC)=" << d->getChangedLines() << endl
-       << "MET(DLOC)=" << d->getDeletedLines() << endl
-       << "MET(ALOC)=" << d->getInsertedLines() << endl;
-*/
 
   d->compare(true);
 

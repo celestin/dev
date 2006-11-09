@@ -14,6 +14,7 @@
  * CAM  13-Aug-05   114 : Added Perl.
  * CAM  18-Jul-06   272 : Added hasLogicalLines.
  * CAM  19-Sep-06   117 : Added ASP.
+ * CAM  04-Nov-06   301 : Added PHP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -21,7 +22,7 @@
 
 using namespace std;
 
-enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP };
+enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP, LANG_PHP };
 
 namespace metrics
 {
@@ -53,6 +54,8 @@ namespace metrics
         theLang = LANG_PERL;
       } else if (!stricmp(lang.c_str(), "AS")) {
         theLang = LANG_ASP;
+      } else if (!stricmp(lang.c_str(), "PH")) {
+        theLang = LANG_PHP;
       }
 
       return theLang;
@@ -80,6 +83,8 @@ namespace metrics
         return "Perl";
         case LANG_ASP:
         return "ASP";
+        case LANG_PHP:
+        return "PHP";
       }
 
       return "Other";
@@ -91,13 +96,14 @@ namespace metrics
         case LANG_CPP:
         case LANG_CS:
         case LANG_JAVA:
+        case LANG_ASP:
+        case LANG_PHP:
           return true;
           break;
 
         case LANG_VB:
         case LANG_S1:
         case LANG_PERL:
-        case LANG_ASP:
           return false;
           break;
       }

@@ -49,4 +49,9 @@ flex -i -olex.asp.tmp -8 -f lexer.asp.l
 sed -f sed/asp.sed <lex.asp.tmp >lex.asp.cpp
 del lex.asp.tmp
 
+echo Generating parser... PHP
+flex -i -olex.php.tmp -8 -f lexer.php.l
+sed -f sed/php.sed <lex.php.tmp >lex.php.cpp
+del lex.php.tmp
+
 echo.

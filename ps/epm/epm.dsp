@@ -157,6 +157,10 @@ SOURCE=.\lex.j.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\lex.php.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\lex.pl.cpp
 # End Source File
 # Begin Source File
@@ -350,6 +354,10 @@ SOURCE=.\y.cs.h
 # Begin Source File
 
 SOURCE=.\y.j.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\y.php.h
 # End Source File
 # Begin Source File
 

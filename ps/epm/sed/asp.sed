@@ -5,6 +5,7 @@ s/com_loc/com_loc_asp/g
 s/prev_com_line/prev_com_line_asp/g
 s/comment_skip/comment_skip_asp/g
 s/lexclear/lexclear_asp/g
+s/eat_eol/eat_eol_asp/g
 s/nsemi/nsemi_asp/g
 s/operands/operands_asp/g
 s/operators/operators_asp/g

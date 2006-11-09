@@ -16,6 +16,7 @@
  * CAM  13-Aug-05   114 : Added Perl.
  * CAM  19-Sep-05   138 : Added KEPM.
  * CAM  27-Oct-06   117 : Added ASP.
+ * CAM  04-Nov-06   301 : Added PHP.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"
@@ -69,6 +70,7 @@ DWORD main(int argc, char* argv[]) {
   inc(EPM_AD, LIC_AD);
   inc(EPM_PL, LIC_PL);
   inc(EPM_AS, LIC_AS);
+  inc(EPM_PH, LIC_PH);
   inc(EPM_KR, LIC_KR);
 
   if (debug) cout << endl << "Total:" << rval << endl;

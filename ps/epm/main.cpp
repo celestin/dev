@@ -50,6 +50,7 @@
  * CAM  22-Jul-06   291 : Ensure "lines" of 64Kb semi-colon are truncated and diff'ing continues.
  * CAM  19-Sep-06   117 : Added ASP.
  * CAM  27-Oct-06   117 : Version 1.12.000.
+ * CAM  09-Nov-06   301 : Version 1.13.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -790,7 +791,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.12.000\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.13.000\n"
        << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n\n"
        << "Now with our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 

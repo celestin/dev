@@ -10,6 +10,7 @@ KEPM supports multiple parser language types.  By default these are:
  * Java (files ending .java)
  * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
  * Perl (files ending .pl)
+ * PHP (files ending .php)
  * PL/SQL (files ending .sql, .ora)
  * ADA (files ending .a, .ada, .adb, .ads)
  * C/C++ (all other file extensions)

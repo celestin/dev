@@ -1,0 +1,183 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * SourceCodeMetrics.com
+ * Copyright (c) 2006 SourceCodeMetrics.com
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  18-Nov-2006  File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  BACKGROUND-COLOR: #D8D8D8;
+}
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+.fld {
+  COLOR: #003B9C;
+  FONT-WEIGHT: bold;
+}
+
+td.fldmand {
+  COLOR: #BE0221;
+  FONT-WEIGHT: bold;
+}
+
+
+td.current {
+  COLOR: #FF7900;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+td.sel {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-WEIGHT: bold
+}
+
+.past {
+  BACKGROUND-COLOR: #D8D8D8;
+}
+
+td.sub {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-WEIGHT: bold
+}
+
+.navBg {
+  BACKGROUND-COLOR: #DDEEFF;
+  BORDER-BOTTOM: #38218E 2px solid;
+  BORDER-LEFT: #38218E 2px solid;
+  BORDER-RIGHT: #38218E 2px solid;
+  BORDER-TOP: #38218E 2px solid;
+}
+
+.outerBox {
+  BACKGROUND-COLOR: #FFFFFF;
+}
+
+.thinBox {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER-BOTTOM: #497FB1 2px solid;
+}
+
+.topnav {
+  BACKGROUND-COLOR: #002054;
+  COLOR: #497FB1;
+  FONT-WEIGHT: bold;
+}
+
+.sep {
+  COLOR: #497FB1;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT:   4px;
+  PADDING-RIGHT:  4px;
+}
+
+.title {
+  COLOR: #CCCCFF;
+}
+
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+  PADDING-TOP:    5px;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #FFFFFF;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold;
+}
+A.nav:hover {
+  COLOR: #92B5F0;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #002054;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #497FB1;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+
+input.button {
+  BACKGROUND-COLOR: #003B9C;
+  BORDER:           #497FB1 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #BE0221;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

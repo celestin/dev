@@ -41,6 +41,7 @@ function showMenu($sMenuName, $sUrl) {
 
 
 ?>
+<html>
 <head>
   <title><? echo $title;?></title>
   <link href="scm.css" rel=stylesheet type="text/css" />

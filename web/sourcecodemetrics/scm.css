@@ -12,14 +12,40 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  BACKGROUND-COLOR: #D8D8D8;
+  BACKGROUND-COLOR: #FFFFFF;
 }
 
 p, table, td, input, select, textarea {
   COLOR: #000000;
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 10pt;
+  FONT-FAMILY: sans-serif;
+  FONT-SIZE: 11pt;
   TEXT-DECORATION: none;
+}
+
+.menuBackground {
+  BACKGROUND-COLOR: #FFFEDD;
+  TEXT-ALIGN: center;
+}
+
+.menuNormal {
+  BACKGROUND-COLOR: #FFEECC;
+  TEXT-ALIGN: center;
+  PADDING-TOP: 5px;
+  PADDING-BOTTOM: 5px;
+}
+
+.menuActive {
+  BACKGROUND-COLOR: #F3D19C;
+  TEXT-ALIGN: center;
+  PADDING-TOP: 5px;
+  PADDING-BOTTOM: 5px;
+}
+
+.menuHover {
+  BACKGROUND-COLOR: black;
+  TEXT-ALIGN: center;
+  PADDING-TOP: 5px;
+  PADDING-BOTTOM: 5px;
 }
 
 th {
@@ -64,42 +90,7 @@ td.navText {
 td.sel {
   COLOR: #FFFFFF;
   BACKGROUND-COLOR: #3C6C9E;
-  FONT-FAMILY: Tahoma, Helvetica;
   FONT-WEIGHT: bold
-}
-
-.past {
-  BACKGROUND-COLOR: #D8D8D8;
-}
-
-td.sub {
-  COLOR: #FFFFFF;
-  BACKGROUND-COLOR: #3C6C9E;
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-WEIGHT: bold
-}
-
-.navBg {
-  BACKGROUND-COLOR: #DDEEFF;
-  BORDER-BOTTOM: #38218E 2px solid;
-  BORDER-LEFT: #38218E 2px solid;
-  BORDER-RIGHT: #38218E 2px solid;
-  BORDER-TOP: #38218E 2px solid;
-}
-
-.outerBox {
-  BACKGROUND-COLOR: #FFFFFF;
-}
-
-.thinBox {
-  BACKGROUND-COLOR: #003B9C;
-  BORDER-BOTTOM: #497FB1 2px solid;
-}
-
-.topnav {
-  BACKGROUND-COLOR: #002054;
-  COLOR: #497FB1;
-  FONT-WEIGHT: bold;
 }
 
 .sep {
@@ -109,8 +100,20 @@ td.sub {
   PADDING-RIGHT:  4px;
 }
 
+.toplogo {
+  BACKGROUND-COLOR: #000000;
+}
+
 .title {
-  COLOR: #CCCCFF;
+  COLOR: #333333;
+  FONT-WEIGHT: bold;
+}
+
+.strapline {
+  COLOR: #333333;
+  FONT-STYLE: italic;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 10pt;
 }
 
 .cpyrght {
@@ -127,16 +130,14 @@ td.cat {
 }
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  COLOR: #FFFFFF;
-  FONT-SIZE: 8pt;
-  TEXT-DECORATION: none;
+  COLOR: #333333;
   FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
 }
 A.nav:hover {
-  COLOR: #92B5F0;
+  COLOR: white;
   FONT-WEIGHT: bold;
-  TEXT-DECORATION: underline;
+  TEXT-DECORATION: none;
 }
 
 A,A:visited,A:active,A:link,A:visited {

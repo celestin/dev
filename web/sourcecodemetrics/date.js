@@ -1,4 +1,3 @@
-<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * SourceCodeMetrics.com
  * Copyright (c) 2006 SourceCodeMetrics.com

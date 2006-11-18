@@ -12,7 +12,7 @@
  * CAM  18-Nov-2006  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$cfg['Site']['Name']  = "sourcecodemetrics.com";
+$cfg['Site']['Name']  = "Source Code Metrics";
 $cfg['Site']['URL']   = "http://www.sourcecodemetrics.com";                 // no trailing slash
 $cfg['Site']['Email'] = "laurence.arthur@powersoftware.com";
 

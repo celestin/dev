@@ -6,7 +6,7 @@
  *
  * Top of the page
  *
- * $Id: top.php 298 2006-10-07 17:35:31Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  18-Nov-2006  File created.
@@ -27,6 +27,7 @@ if (empty($title)) {
 <head>
   <title><? echo $title;?></title>
   <link href="scm.css" rel=stylesheet type="text/css" />
+  <link rel="shortcut icon" href="sourcecodemetrics.ico" type="image/x-icon" />
   <script language="Javascript" src="date.js"></script>
 </head>
 

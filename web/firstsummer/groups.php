@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  02-Oct-2006  10046 : File created.
  * CAM  10-Oct-2006  10059 : Added get_group.
+ * CAM  25-Nov-2006  10012 : Added new Range Text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function get_category($ucategory) {
@@ -104,7 +105,7 @@ function get_group($urange, $message, $ugroup='') {
 }
 
 function get_range($urange) {
-  $ssql = "SELECT c.category category_name, r.range range_name ".
+  $ssql = "SELECT c.category category_name, r.range range_name, r.long_text ".
           "FROM products p, prodranges r, categories c ".
           "WHERE r.id = p.prodrange_id ".
           "AND c.id = r.category_id ".
@@ -125,6 +126,21 @@ function get_range($urange) {
   ?>
   <!--<h3><? echo $category_name; ?> :: <? echo $range_name; ?></h3>-->
   <table border=0 cellpadding=5 cellspacing=0 width="100%">
+<?
+  if (!empty($long_text)) {
+?>
+  <tr>
+    <td>
+      <table width="100%" border=0 cellspacing=0 cellpadding=0 class="eyecatch">
+        <tr>
+          <td><? echo $long_text; ?></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+<?
+  }
+?>
   <tr>
     <?
       $ssql = "SELECT id prodgroup_id, prodgroup ".

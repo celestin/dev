@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 10, 2006 at 10:40 PM
+-- Generation Time: Nov 25, 2006 at 12:27 PM
 -- Server version: 4.1.16
 -- PHP Version: 5.1.1
 --
@@ -175,8 +175,8 @@ CREATE TABLE member (
 --
 
 INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
-('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-10-07 18:41:51'),
-('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '', 1, 'A', '', 0, '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2006-11-05 12:06:09'),
+('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '283bc91fe140624d92d9156c08f19093', 1, 'A', '', 1, '0000-00-00', '0000-00-00 00:00:00', '2006-11-07 11:47:57');
 
 -- --------------------------------------------------------
 
@@ -220,7 +220,7 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table newsitems
@@ -230,7 +230,8 @@ INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by,
 (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'Website Re-design', 'Welcome to 1st Summerhouses, we hope you find this website more user friendly.  If you have any questions or comments about our new website please contact us at sales@1stsummerhouses.com', '2006-10-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(8, 'Website Re-design', 'Welcome to 1st Summerhouses, we hope you find this website more user friendly.  If you have any questions or comments about our new website please contact us at sales@1stsummerhouses.com', '2006-10-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'WINTER SALE', 'For some fantastic offers on Log Cabins and BBQ Huts please refer to our November "Featured Products" - SAVE UP TO ?235', '2006-11-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1223,14 +1224,14 @@ CREATE TABLE prodranges (
 --
 
 INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
-(4, 'Standard Cabins', 2, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Premier Cabins', 2, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Holiday Houses', 2, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Kota', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Standard Cabins', 2, 10, NULL, 'The 1st Summerhouses Standard Cabins comprises the T-buildings and Borkum.  A well-designed and well-built range of buildings in 45mm wood, suitable  \r\nfor many uses.  Whether it is a children''s playhouse, home office, home beauty salon or smoking room we have something for every purpose.  From the T24, our  \r\nmost popular model, to the T23, the baby of the family, the T buildings are excellent quality and unbelievable value for money.  The Borkum is a 3m x 3m  \r\ncabin with 1.5m terrace ideal for alfresco dining.  With the attention to detail and quality of workmanship standard in all our cabins this range is  \r\nexcellent value for money.', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'Premier Cabins', 2, 20, NULL, 'The 1st Summerhouses Premier Cabins comprises of the Nida and the Tornio Log Cabins.  The Nida range offers a choice of styles in 45mm wood (60mm  \r\noption) with double glazing as standard. The Chalet Nida, coming in 7 different sizes, from 3m x 3m to 5m x 5m and offering add-on choices of terrace,  \r\nshelter or annex in any combination (or all three!) this is true versatility!  The Nida Panorama, a log cabin with the benefits of double doors and window  \r\npanels (all double glazed) has the warmth and strength of a cabin and the advantages of a summerhouse. The Tornio has the advantage of glazed double doors,  \r\n11/2 in the 3m width.   Garden room, hot tub house, spare bedroom, dining room the reasons to buy are too many to mention.', NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Multi-Room Cabins', 2, 30, NULL, 'Our multi-room cabins offer a wide choice of styles suitable for holiday use or longer alternative accommodation.  With double glazing as standard, option of  \r\ndifferent wood thickness and our usual attention to detail the holiday house range are superior buildings in every way.', NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Kota', 1, 1, NULL, 'The range of 1st Summerhouses BBQ Huts has something for every situation.  The 6.9sqm which is ideal for the smaller garden up to the 28.8sqm suitable for  \r\nanything from a  party venue to a prayer hut.  The traditional 8-sided build and steeply pitched roof offer an unbelievable amount of space.  Coming with a  \r\ncomplete package (from fur rugs to butter knife) all you need to buy are the steaks.  For an unforgettable evening try a Finnish BBQ Hut!', NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 'Summerhouses', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Garages', 2, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Garages', 2, 50, NULL, 'A 1st Summerhouses garage is traditionally styled with the advantage of 45mm wood and solid double doors.  Quality is paramount in all our cabins and the  \r\ngarage range is no exception.  The standard size is listed here but a double garage can be custom built to your dimensions.', NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 'Custom Cabins', 2, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'Pavilions', 2, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(11, 'Pavilions', 2, 40, NULL, '1st Summerhouses offers a range of Pavilions.  The Sida pavilion comes in 2 styles and 3 sizes, the Sida with 1/2 glazed door and windows and window boxes,  \r\nand the Sida Plus 3/4 glazed door and windows is ideal for a corner site.  With 45mm wood and double glazing as standard this is a retreat suitable for  \r\nsummer and winter use.  The Vilnius pavilion has a fairytale quality, too pretty to hide away, it would be a feature in any garden.  All our pavilions are  \r\nbuilt with the careful attention to detail and quality of workmanship which is a feature of all 1st Summerhouses Cabins.', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1262,7 +1263,7 @@ CREATE TABLE products (
 --
 
 INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES
-(4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ‘n‘ turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
+(4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ?n? turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
 (5, 'Nida A', NULL, 5, 6, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Nida S', NULL, 5, 6, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Nida T', NULL, 5, 6, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),

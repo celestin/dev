@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  25-Nov-2006  10066 : Removed Robinsons Structures and County.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Products";

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  07-Oct-2006  10055 : Added promotion for DIV and P.
+ * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -35,13 +36,22 @@ p, table, td {
 
 div.promotion {
   BACKGROUND-COLOR: #0052AF;
-  PADDING: 12px;
+  PADDING-LEFT: 10px;
+  PADDING-RIGHT: 10px;
+  PADDING-TOP: 1px;
+  PADDING-BOTTOM: 1px;
 }
 
 p.promotion {
   COLOR: white;
   FONT-WEIGHT: normal;
   FONT-SIZE: 11pt;
+}
+
+p.legal {
+  COLOR: white;
+  FONT-WEIGHT: normal;
+  FONT-SIZE: 16pt;
 }
 
 .rxbox {

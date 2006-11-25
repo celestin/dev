@@ -34,7 +34,7 @@ include $toroot ."tpl/top.php";
                   Dwarf wall models and bespoke buildings can be built to suit
                   particular sites. Robinsons customers are SATISFIED customers!<br></td>
               </tr>
-
+<!--
               <tr>
                 <td><a href="<? echo $toroot; ?>products/RobinsonsStructures.php"><img src="images/45rgest.jpg" width="178" height="125" border="0"></a></td>
                 <td valign="top"><span class="producttitle">Robinsons Structures</span><br>
@@ -44,7 +44,7 @@ include $toroot ."tpl/top.php";
                   including custom-made. Finish can be Aluminium or Colour. Options include toughened
                   Glass, Manual or motorised roof ventilation, Side Louvres etc.<br></td>
               </tr>
-
+-->
               <tr>
                 <td><a href="<? echo $toroot; ?>products/simplicity.php"><img src="images/88millhg.jpg" alt="Simplicity Greenhouse" name="simplicity" width="178" height="149" border="0"></a></td>
                 <td valign="top"><span class="producttitle">Simplicity</span><br>
@@ -78,6 +78,7 @@ include $toroot ."tpl/top.php";
                   and a wide range of accessories with timber or aluminium staging
                   and shelving.</td>
               </tr>
+<!--
               <tr>
                 <td height="141"><a href="<? echo $toroot; ?>products/County.php"><img src="images/bespokeagainstwall.jpg" alt="County Greenhouses" name="County" width="178" height="130" border="0" id="County"></a></td>
                 <td valign="top"><span class="producttitle">County Greenhouses</span><br>
@@ -90,6 +91,7 @@ include $toroot ."tpl/top.php";
                   with the larger areas required. Available in powder coated green
                   or white or mill finish.</td>
               </tr>
+-->
               <tr>
                 <td><a href="<? echo $toroot; ?>products/Alton.php"><img src="images/amature.jpg" alt="Alton Greenhouse" name="Alton" width="178" height="125" border="0" id="Alton"></a></td>
                 <td valign="top"><span class="producttitle">Alton</span><br>

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to source control.
+ * CAM  25-Nov-2006  Removed Agents.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -56,8 +57,8 @@ body,td,th {
           </tr>
           <tr bgcolor="#0B7A35">
             <td colspan="2" align="center"><a href="<? echo $toroot; ?>index.php">Home</a><span class="sep">|</span><a
-            href="<? echo $toroot; ?>aboutus.php">About Us</a><span class="sep">|</span><a
-            href="<? echo $toroot; ?>agents.php">Agents</a><span class="sep">|</span><a
+            href="<? echo $toroot; ?>aboutus.php">About Us</a><span class="sep">|</span><!--<a
+            href="<? echo $toroot; ?>agents.php">Agents</a><span class="sep">|</span>--><a
             href="<? echo $toroot; ?>products.php">Products</a><span class="sep">|</span><a
             href="<? echo $toroot; ?>ourservice.php">Our Service</a><span class="sep">|</span><a
             href="<? echo $toroot; ?>contactus.php">Contact Us</a><span class="sep">|</span><a

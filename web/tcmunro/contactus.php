@@ -20,10 +20,10 @@ include $toroot ."tpl/top.php";
           <table width="100%"  border="0" cellpadding="5" cellspacing="8">
             <tr>
               <td valign="top"><img src="images/pic11.jpg" width="100" height="106" align="top"></td>
-              <td bgcolor="#CCCCCC"><form name="form1" method="post" action="http://www.tcmunro.co.uk/formmail2/FormMail.pl">
+              <td bgcolor="#CCCCCC"><form name="form1" method="post" action="/cgi-bin/nmsfm.pl">
                 <table width="472" border="0">
                   <tr>
-                    <td width="62"><input name="recipient" type="hidden" value="info@tcmunro.co.uk">
+                    <td width="62"><input name="recipient" type="hidden" value="craig@frontburner.co.uk">
                         <input name="subject" type="hidden" id="subject2" value="Brochure Request">
                         <input name="redirect" type="hidden" id="redirect2" value="http://www.tcmunro.co.uk/"></td>
                     <td width="353" align="center"><span class="szrzbLabel3" id="szrzbLabel5" name="szrzbLabel5"><strong>Contact Us</strong></span></td>

@@ -21,6 +21,7 @@ $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION
 $loggedin = (session_is_registered('memberid') && session_is_registered('1stsummerhouses_com'));
 
 global $cfg;
+global $productname;
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];
@@ -41,8 +42,17 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
 <head>
   <title><? echo $title;?></title>
   <link href="firstsummer.css" rel=stylesheet type="text/css" />
+  <link rel="shortcut icon" href="img/ico/firstsummer.ico" type="image/x-icon" />
   <script language="Javascript" src="date.js"></script>
+  <script language="Javascript" src="contact.js"></script>
   <script language="Javascript" src="photo.js"></script>
+<?
+  if (!empty($productname)) {
+?>
+  <script language="Javascript">gblProduct = "<? echo $productname; ?>";</script>
+<?
+  }
+?>
 </head>
 <body topmargin=0 leftmargin=0>
 <table border=0 cellpadding=0 cellspacing=0 width="800">
@@ -56,8 +66,8 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
       </tr><tr>
         <td colspan=3 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;"
             class="menu" href="index.php">home</a><span class="sep">|</span><a
-            class="menu" href="about.php">about us</a><span class="sep">|</span><a
-            class="menu" href="resellers.php">find a reseller</a><span class="sep">|</span><a
+            class="menu" href="about.php">about us</a><span class="sep">|</span><!--<a
+            class="menu" href="resellers.php">find a reseller</a><span class="sep">|</span>--><a
             class="menu" href="contact.php">contact</a><?
           if ($loggedin) {
               ?><span class="sep">|</span><a

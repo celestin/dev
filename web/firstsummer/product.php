@@ -20,6 +20,7 @@
  * CAM  21-Sep-2006  10029 : Changed HTML Page Title to include Product Name.
  * CAM  02-Oct-2006  10038 : Make Prices editable.
  * CAM  06-Oct-2006  10017 : Add (m) after Width and Depth.
+ * CAM  14-Nov-2006  10012 : Added Call/Email me about this product.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -224,6 +225,34 @@ if ($row = mysql_fetch_array($sql)) {
 <?
     } else {
 ?>
+<div id="cmTable" name="methelp" style="display:none;position:relative;">
+  <form action="contactme.php" method="post">
+  <table class="cmBox" border=0 cellspacing=0 cellpadding=4 width="100%">
+    <tr onclick="contact_popupClose();">
+      <td class="cmTitle" width="100" id="cmTitle">Call me now about the <? echo $productname ?></td>
+      <td class="cmTitle" width="10" align=right><img width="10" height="10" src="img/ico/small/close_off.gif" onClick="contact_popupClose();return false;" onMouseOver="this.src='img/ico/small/close_on.gif';" onMouseOut="this.src='img/ico/small/close_off.gif';"></td>
+    </tr>
+    <tr>
+      <td colspan=2><table border=0 cellspacing=0 cellpadding=4>
+        <tr>
+          <td rowspan=5 width=60 valign=top><img width=48 height=48 id="cmIcon" src="img/ico/large/phone_me.png"></td>
+          <td id="cmProduct">Product</td><td><input size=24 value="<? echo $productname ?>" readonly name="contactProd" id="contactProd"></td>
+        </tr><tr>
+          <td id="cmName" width=80>Name</td><td><input size=30 name="contactName" id="contactName"></td>
+        </tr><tr>
+          <td id="cmTxt1">Txt1</td><td><input size=40 name="contactTxt1" id="contactTxt1"></td>
+        </tr><tr>
+          <td id="cmComments" valign=top>Comments</td><td><textarea rows=6 cols=40 name="contactComments" id="contactComments"></textarea></td>
+        </tr><tr>
+          <td>&nbsp;</td><td><input type=submit value="Call me now!" id="cmButton"><input type="hidden" value="" name="contactType" id="contactType"></td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+  </form>
+  <br>
+</div>
+
 <table border=0 width="100%">
 <tr>
 <?
@@ -238,17 +267,28 @@ if ($row = mysql_fetch_array($sql)) {
       }
 ?>
   <td class="shorttxt"><!--very brief text goes here. very brief text goes here. very brief text goes here--></td>
-  <td width=120 valign=top><table border=0 cellpadding=4 cellspacing=0 width="100%">
-    <tr><td colspan=2 class="download">DOWNLOAD</td></tr>
+  <td width=290 valign=top><table border=0 cellpadding=4 cellspacing=1 width="100%">
+    <tr><td colspan=2 class="download">MORE INFORMATION</td></tr>
 <?
       if (!empty($brochure)) {
 ?>
     <tr>
-      <td><a target="_blank" href="upl/<? echo $brochure; ?>"><img border=0 src="img/pdf2.png"></a></td>
-      <td><a target="_blank" href="upl/<? echo $brochure; ?>">Brochure</a></td>
+      <td width=32><a target="_blank" href="upl/<? echo $brochure; ?>"><img border=0 width=32 height=32 src="img/ico/small/pdf.png"></a></td>
+      <td><a target="_blank" href="upl/<? echo $brochure; ?>">Download Product Brochure</a></td>
     </tr>
 <?
       }
+
+?>
+    <tr>
+      <td><a href="javascript:void();" onclick="contact_callme();"><img border=0 width=32 height=32 src="img/ico/small/phone_me.png"></a></td>
+      <td><a href="javascript:void();" onclick="contact_callme();">Call me now about <?echo $productname; ?></a></td>
+    </tr>
+    <tr>
+      <td><a href="javascript:void();" onclick="contact_emailme();"><img border=0 width=32 height=32 src="img/ico/small/email_me.png"></a></td>
+      <td><a href="javascript:void();" onclick="contact_emailme();">Email me now about <?echo $productname; ?></a></td>
+    </tr>
+<?
 
   $ropivots = false;
   $sql = mysql_query("SELECT IFNULL(COUNT(*),0) pivot_count ".
@@ -444,6 +484,7 @@ if ($row = mysql_fetch_array($sql)) {
     </td>
   </tr>
 </table>
+
 <?
 include 'tpl/bot.php';
 ?>

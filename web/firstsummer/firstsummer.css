@@ -451,6 +451,30 @@ input.button {
 }
 
 /**
+ * PRODUCT - Contact popup
+ */
+
+.cmBox {
+  BACKGROUND-COLOR: #FFFFCC;
+  BORDER:           #FFCC00 2px solid;
+  COLOR:            #993333;
+  FONT-SIZE: 10pt;
+}
+
+.cmTitle {
+  BACKGROUND-COLOR: #FFCC00;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 10pt;
+}
+
+.cmMetName {
+  BACKGROUND-COLOR: #FFCC00;
+  FONT-SIZE: 10pt;
+}
+
+
+
+/**
  * RANGE
  */
 

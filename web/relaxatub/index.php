@@ -13,6 +13,7 @@
  * CAM  24-Sep-2006  10031 : Added 350SE advert to home page.
  * CAM  07-Oct-2006  10055 : Added October offer and Finance Deal.
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
+ * CAM  16-Dec-2006  10055 : Removed Interest-free credit offer.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -28,7 +29,7 @@ include "tpl/top.php";
       <tr><td><img src="img/pro/2006oct1.jpg" width=620 height=355></td></tr>
       <tr><td><img src="img/pro/2006oct2.jpg" width=620 height=355></td></tr>
       </table>
-
+<!--
 <div class="promotion" style="position:relative; z-index:1; left:-180px; top:-330px; width:200px;"><p class="promotion">From <b>25th September 2006</b> to
 <b>15th December 2006</b> you can buy a
 Beachcomber Stock Hot Tub on</p>
@@ -42,7 +43,7 @@ Beachcomber Stock Hot Tub on</p>
 <p class="promotion">the choice is yours!</p>
 
 <p class="legal">Typical 0% APR</p></div>
-
+-->
 
 <!--
       <table border=0 cellpadding=5 valign=middle>

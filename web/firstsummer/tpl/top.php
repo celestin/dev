@@ -14,6 +14,7 @@
  * CAM  02-Oct-2006  10037 : Added login by clicking on logo.
  * CAM  04-Oct-2006  10046 : Remove ranges from navigation where Category show_ranges<>1.
  * CAM  04-Oct-2006  10047 : Add Change Password.
+ * CAM  21-Dec-2006  10071 : Added meta tags.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -43,6 +44,12 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
   <title><? echo $title;?></title>
   <link href="firstsummer.css" rel=stylesheet type="text/css" />
   <link rel="shortcut icon" href="img/ico/firstsummer.ico" type="image/x-icon" />
+
+  <meta name=keywords  content="log cabins, log homes, holiday homes, leisure buildings, timber homes, logs, log built holiday homes">
+  <meta name=description  content="We construct high quality log cabins homes that blend beautifully into natural settings, creating a unique living environment. Our exclusive versatile designs  bringing together an extensive selection of comfortable and affordable authentic log cabin homes.">
+  <meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+  <meta name=Language content=en-gb>
+
   <script language="Javascript" src="date.js"></script>
   <script language="Javascript" src="contact.js"></script>
   <script language="Javascript" src="photo.js"></script>

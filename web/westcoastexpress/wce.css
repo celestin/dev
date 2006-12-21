@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added anchor class for toolbar navigation.
+ * CAM  21-Dec-2006  10069 : Tidied up photo classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -93,24 +94,11 @@ td.sideblue {
 }
 
 
-.redbox {
-  BORDER-BOTTOM:  #BB0F18 3px solid;
-  BORDER-LEFT:    #BB0F18 3px solid;
-  BORDER-RIGHT:   #BB0F18 3px solid;
-  BORDER-TOP:     #BB0F18 3px solid;
-  BACKGROUND-COLOR: #BB0F18;
-  FONT-SIZE: 8pt;
-  COLOR: #FFFFFF;
-}
-
 .bluebox {
-  BORDER-BOTTOM:  #006891 3px solid;
-  BORDER-LEFT:    #006891 3px solid;
-  BORDER-RIGHT:   #006891 3px solid;
-  BORDER-TOP:     #006891 3px solid;
-  BACKGROUND-COLOR: #006891;
-  FONT-SIZE: 8pt;
-  COLOR: #FFFFFF;
+  BORDER-BOTTOM:  #006891 2px solid;
+  BORDER-LEFT:    #006891 2px solid;
+  BORDER-RIGHT:   #006891 2px solid;
+  BORDER-TOP:     #006891 2px solid;
 }
 
 .sep {
@@ -118,6 +106,11 @@ td.sideblue {
   PADDING-RIGHT: 20px;
   COLOR: #F1F16B;
   FONT-WEIGHT: bold;
+}
+
+.ti {
+  PADDING-LEFT: 20px;
+  PADDING-BOTTOM: 20px;
 }
 
 

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  02-Oct-2006  10044 : File created.
+ * CAM  21-Dec-2006  10070 : File renamed to prevent being used in the meantime.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';

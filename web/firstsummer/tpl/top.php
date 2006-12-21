@@ -45,10 +45,9 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
   <link href="firstsummer.css" rel=stylesheet type="text/css" />
   <link rel="shortcut icon" href="img/ico/firstsummer.ico" type="image/x-icon" />
 
-  <meta name=keywords  content="log cabins, log homes, holiday homes, leisure buildings, timber homes, logs, log built holiday homes">
-  <meta name=description  content="We construct high quality log cabins homes that blend beautifully into natural settings, creating a unique living environment. Our exclusive versatile designs  bringing together an extensive selection of comfortable and affordable authentic log cabin homes.">
+  <meta name="description " content="We construct high quality log cabins homes that blend beautifully into natural settings, creating a unique living environment. Our exclusive versatile designs  bringing together an extensive selection of comfortable and affordable authentic log cabin homes.">
   <meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
-  <meta name=Language content=en-gb>
+  <meta name="Language" content="en-gb">
 
   <script language="Javascript" src="date.js"></script>
   <script language="Javascript" src="contact.js"></script>

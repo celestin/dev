@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added endsWith and moved getObjRef to ajax.js.
+ * CAM  21-Dec-2006  10068 : Specify correct paths.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
@@ -18,9 +19,9 @@ $cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no
 $cfg['Site']['Email'] = "waveney77@yahoo.com";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
-  $cfg['Site']['Db']['Hostname'] = "c:/appserv/www/";
+  $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
 } else {
-  $cfg['Site']['Dir']   = "/home/virtual/site215/fst/var/www/cc/";  // trailing slash
+  $cfg['Site']['Dir'] = "/home/virtual/westcoastexpress.net/var/www/html/";  // trailing slash
 }
 
 $cfg['Site']['Db']['Hostname'] = "localhost";

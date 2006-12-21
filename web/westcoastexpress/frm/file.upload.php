@@ -17,7 +17,7 @@
 ?>
 
 <form enctype="multipart/form-data" action="fileupload.php" method="POST">
-  <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+  <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 <table border=0 cellspacing=0 cellpadding=5>
 <tr><td class="<? echo (empty($uplfilename)) ? "fldmand" : "fld" ?>">File</td><td><input name="uplfile" type="file" /></td></tr>
 

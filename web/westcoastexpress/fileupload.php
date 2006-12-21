@@ -140,14 +140,13 @@ if (!($loggedin && $member->isAdmin())) {
   exit();
 }
 
-
 if (empty($uplfilename)) {
   Msg::error("Please enter filename.");
   include 'frm/file.upload.php';
 } else {
 
-  $fulldir = $cfg['Site']['Dir'] . 'img/ph/f/';
-  $thumbdir = $cfg['Site']['Dir'] . 'img/ph/t/';
+  $fulldir = $cfg['Site']['Dir'] . "/img/ph/f/";
+  $thumbdir = $cfg['Site']['Dir'] . "/img/ph/t/";
   $uploadbase = basename($_FILES['uplfile']['name']);
   $fullfile = $fulldir . $uploadbase;
   $thumbfile = $thumbdir . $uploadbase;
@@ -157,8 +156,7 @@ if (empty($uplfilename)) {
 
   Msg::statement("File successfully uploaded.");
 ?>
-<img src="img/ph/f/<? echo $uploadbase; ?>"><br>
-<?
+<img src="img/ph/f/<? echo $uploadbase; ?>"><?
 
   $ssql = "REPLACE INTO photos (photo) VALUES ('$uploadbase') ";
   $sql = mysql_query($ssql) or die (mysql_error());

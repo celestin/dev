@@ -10,7 +10,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
-  $rval = $text;
+  $rval = str_replace("@", "", $text);
 
   $midp = strlen($rval)*0.254;
   if (($backpoint > 0) && (($atpos = strpos($rval, " ")) !== FALSE) && $atpos < $midp) {
@@ -89,6 +89,7 @@ function f_show_books() {
 
 function f_show_chapters() {
   global $stext, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
+
   $sql = "SELECT DISTINCT chapter ".
          "FROM mse_bible_ref ".
          "WHERE bookid = $ubookid ";
@@ -100,7 +101,7 @@ function f_show_chapters() {
   }
   $sql .= "ORDER BY chapter";
 ?>
-<tr><td><a href="index.php?level=5">Books</a>&nbsp;|&nbsp;<? echo "$bookname"; ?></td></tr><tr><td>Chapters
+<tr><td><a href="index.php?level=5<? echo f_url(false,false,false,false,false); ?>">Books</a>&nbsp;|&nbsp;<? echo "$bookname"; ?></td></tr><tr><td>Chapters
 <?
 
   $ssql = mysql_query($sql);
@@ -151,12 +152,12 @@ Chapter <? echo $uchapter; ?></td></tr><tr><td>Verses
   }
 }
 
-function f_show_scripture_table() {
-  global $stext, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
+function f_show_results_table() {
+  global $stext, $sql_text, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
 ?>
-<table border=1 cellpadding=2 cellspacing=0>
+<table border=1 cellpadding=2 cellspacing=0 width="650">
 <tr>
-  <th>Verses</th>
+  <th>Ch:Vs</th>
   <th>Servant</th>
   <th>Vol.</th>
   <th>Page</th>
@@ -166,32 +167,49 @@ function f_show_scripture_table() {
 <?
   $maxrows = 200;
 
-  $sql = "SELECT r.ref, r.vstart, r.vend, t.author, t.vol, t.page, t.para, t.text, b.bookname ".
-         "FROM mse_bible_ref r, mse_text t, mse_bible_book b ".
-         "WHERE r.author = t.author ".
-         "AND r.vol = t.vol ".
-         "AND r.page = t.page ".
-         "AND r.para = t.para ".
-         "AND r.bookid = b.bookid ".
-         "AND r.bookid = $ubookid ";
+  if (!empty($ubookid)) {
+    $sql = "SELECT r.ref, r.chapter, r.vstart, r.vend, t.author, t.vol, t.page, t.para, t.text, b.bookname \n".
+           "FROM mse_text t, mse_bible_ref r, mse_bible_book b \n".
+           "WHERE r.author = t.author \n".
+           "AND r.vol = t.vol \n".
+           "AND r.page = t.page \n".
+           "AND r.para = t.para \n".
+           "AND r.bookid = b.bookid \n".
+           "AND r.bookid = '$ubookid' \n";
+  } else {
+    $sql = "SELECT NULL ref, NULL chapter, NULL vstart, NULL vend, t.author, t.vol, t.page, t.para, t.text, NULL bookname \n".
+           "FROM mse_text t \n".
+           "WHERE 1=1 \n";
+  }
 
-  if ($singlechap != 1) $sql .= "AND r.chapter = $uchapter ";
+  if (!empty($uchapter) && ($singlechap != 1)) {
+    $sql .= "AND r.chapter = '$uchapter' \n";
+  }
 
   if (!empty($uauthor)) {
-    $sql .= "AND r.author = '$uauthor' ";
+    $sql .= "AND r.author = '$uauthor' \n";
   }
   if (!empty($uvol)) {
-    $sql .= "AND r.vol = $uvol ";
+    $sql .= "AND r.vol = $uvol \n";
   }
 
   if (!empty($uvstart)) {
-    $sql .= "AND r.vstart = $uvstart ";
+    $sql .= "AND r.vstart = $uvstart \n";
   } else {
     $maxrows = 20;
   }
 
-  $sql .= "ORDER BY chapter, vstart, t.author, t.vol, t.page, t.para";
-//echo "<pre>$sql</pre>";
+  if (!empty($sql_text)) {
+    $sql .= "AND t.text LIKE '%$sql_text%' \n";
+  }
+
+  $sql .= "ORDER BY ";
+  if (!empty($ubookid)) {
+    $sql .= "chapter, vstart, ";
+  }
+  $sql .= "t.author, t.vol, t.page, t.para\n";
+
+echo "<pre>$sql</pre>";
   $currrow=0;
 
   $ssql = mysql_query($sql);
@@ -201,34 +219,53 @@ function f_show_scripture_table() {
     }
 
     $verses = "&nbsp;";
-    if ($vstart > 0) $verses = $vstart;
+    if (!empty($chapter))$verses = "<b>$chapter</b>";
+    if ($vstart > 0) $verses .= ":$vstart";
     if ($vend == ($vstart+1)) {
       $verses .= ", $vend";
     } else if ($vend > 0) {
       $verses .= " - $vend";
     }
 
-    $atpos = -1;
-    $nextpos = $prevpos = 0;
-    for ($curr = 0; $curr < $ref; $curr++) {
-      $prevpos = $atpos;
-      $atpos = strpos($text, "@", $atpos+1);
+    if (!empty($stext)) {
+      if (($atpos = strpos(strtolower($text), strtolower($stext))) === FALSE) {
+        $atpos = 0;
+      }
+      $backpoint = max(0, $atpos-60);
+      $backtrail = $atpos-$backpoint;
+      $headtrail = 60;
+
+      $booklen = strlen($stext);
+      $backs = substr($text, $backpoint, $backtrail);
+      $heads = substr($text, $atpos+$booklen, $headtrail-$booklen);
+      $rtext = substr($text, $atpos, $booklen);
+
+      $hi_text = trim("$backs<b>$rtext</b>$heads");
+      $text = f_neat_truncate($hi_text, $backpoint);
+
+    } else if (!empty($ref)) {
+      $atpos = -1;
+      $nextpos = $prevpos = 0;
+      for ($curr = 0; $curr < $ref; $curr++) {
+        $prevpos = $atpos;
+        $atpos = strpos($text, "@", $atpos+1);
+      }
+      if (($nextpos = strpos($text, "@", $atpos+1)) === FALSE) {
+        $nextpos = strlen($text);
+      }
+
+      $backpoint = max(0, max($prevpos+1, $atpos-60));
+      $backtrail = $atpos-$backpoint;
+      $headtrail = min(60, ($nextpos-$atpos)-1);
+
+      $booklen = strlen($bookname);
+      $backs = substr($text, $backpoint, ($atpos-$backpoint));
+      $heads = substr($text, $atpos+$booklen+1, $headtrail-$booklen);
+
+      $text = trim("$backs<b>$bookname</b>$heads");
+
+      $text = f_neat_truncate($text, $backpoint);
     }
-    if (($nextpos = strpos($text, "@", $atpos+1)) === FALSE) {
-      $nextpos = strlen($text);
-    }
-
-    $backpoint = max(0, max($prevpos+1, $atpos-60));
-    $backtrail = $atpos-$backpoint;
-    $headtrail = min(60, ($nextpos-$atpos)-1);
-
-    $booklen = strlen($bookname);
-    $backs = substr($text, $backpoint, ($atpos-$backpoint));
-    $heads = substr($text, $atpos+$booklen+1, $headtrail-$booklen);
-
-    $text = trim("$backs<b>$bookname</b>$heads");
-
-    $text = f_neat_truncate($text, $backpoint);
 
 ?>
 <tr><td><?echo $verses;?></td><td><?echo $author;?></td><td><b><?echo $vol;?></b></td><td><a href="vol.php?<?echo "author=$author&vol=$vol&page=$page";?>"><?echo $page;?></a></td><td><?echo $para;?></td><td class="dt"><?echo $text;?></td></tr>
@@ -242,7 +279,7 @@ function f_show_scripture_table() {
 function f_show_table() {
   global $stext, $sql_text, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
 ?>
-<table border=1 cellpadding=2 cellspacing=0>
+<table border=1 cellpadding=2 cellspacing=0 width="650">
 <tr>
   <th>Servant</th>
   <th>Vol.</th>
@@ -299,68 +336,6 @@ function f_show_table() {
   alt="Paragraph" border=0 src="pa.png"></a>&nbsp;<a href="index.php?level=10&section=1<? echo f_url(true,true,true,true,true); ?>"><img
   alt="Whole Page" border=0 src="pg.png"></a></td>
 <td class="dt"><?echo $hi_text;?></td></tr>
-<?
-  }
-?>
-</table>
-<?
-}
-
-
-function f_show_single_section() {
-  global $stext, $sql_text, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap,
-         $raut, $rvol, $rpag, $rpar;
-?>
-<table border=1 cellpadding=2 cellspacing=0>
-<?
-  $maxrows = 200;
-
-  $sql = "SELECT author, vol, page, para, text ".
-         "FROM mse_text t ".
-         "WHERE author = '$raut' ".
-         "AND vol = $rvol ";
-
-  if (!empty($rpag)) {
-    $sql .= "AND page = $rpag ";
-  }
-  if (!empty($rpar)) {
-    $sql .= "AND para = $rpar ";
-  }
-
-  $sql .= "ORDER BY author, vol, page, para";
-echo "<pre>$sql</pre>";
-  $currrow=0;
-
-  $ssql = mysql_query($sql);
-  while (($row = mysql_fetch_array($ssql)) && ($currrow++ < $maxrows)) {
-    foreach($row AS $key => $val) {
-      $$key = stripslashes($val);
-    }
-
-    if (($atpos = strpos(strtolower($text), strtolower($stext))) === FALSE) {
-      $atpos = 0;
-    }
-    $jim = "<b>$atpos</b>";
-
-    $hi_text = $text;
-?>
-
-<tr>
-  <td>Servant</td><td><?echo $author;?></td>
-<tr></tr>
-  <td>Vol.</td><td><b><?echo $vol;?></b></td>
-<tr></tr>
-  <td>Page</td><td><?echo $page;?></td>
-<tr></tr>
-  <td>Para</td><td><?echo $para;?></td>
-<tr></tr>
-  <td>More</td><td align=center><a href="index.php?level=11&section=1<? echo f_url(true,true,true,true,true); ?>"><img
-  alt="Paragraph" border=0 src="pa.png"></a>&nbsp;<a href="index.php?level=11&section=1<? echo f_url(true,true,true,true,true); ?>"><img
-  alt="Whole Page" border=0 src="pg.png"></a></td>
-<tr></tr>
-  <td>Text</td><td><?echo $hi_text;?></td>
-</tr>
-
 <?
   }
 ?>

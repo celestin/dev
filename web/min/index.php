@@ -55,7 +55,7 @@ if ($ubookid != NULL) {
 <table border=0 cellpadding=4 cellspacing=0>
 
 <tr><td class=bardesc valign=top>Text<br>Search</td>
-<td>
+<td width="400" class="filterText">
   <form method=get name="action_form" action="index.php">
   <table border=1 cellpadding=2 cellspacing=0>
   <tr><td width="300"><input type=hidden name=author id=author size=4 value="<? echo $uauthor;?>"><input
@@ -74,14 +74,18 @@ if ($ubookid != NULL) {
   ?></td></tr>
   </table></form>
 </td>
+
+<td rowspan=3 width="350" class="resultScripture" valign="top"><p>Scripture Reference</p>
+
+<a href="javascript:void()" onclick="do_xml();return false;">Lookup</a>
+
+</td>
+
 </tr>
 
-<?
-  if (empty($stext)) {
-?>
 <tr><td class=bardesc valign=top>Scripture<br>Filter</td>
-<td>
-  <table border=1 cellpadding=2 cellspacing=0>
+<td class="filterScripture">
+  <table border=0 cellpadding=2 cellspacing=0 width="650">
 <?
     if (empty($ubookid)) {
       f_show_books();
@@ -94,13 +98,10 @@ if ($ubookid != NULL) {
   </td></tr></table>
 </td>
 </tr>
-<?
-  }
-?>
 
 <tr><td class=bardesc valign=top>Author<br>Filter</td>
-<td>
-  <table border=1 cellpadding=2 cellspacing=0>
+<td class="filterAuthor">
+  <table border=0 cellpadding=2 cellspacing=0 width="650">
   <tr><td>
   <a href="index.php?level=1<? echo f_url(false,false,true,true,true); ?>">All</a>&nbsp;
   <?
@@ -153,40 +154,22 @@ if ($ubookid != NULL) {
 </td>
 </tr>
 
-<?
-    if (!empty($ubookid) && !empty($uchapter)) {
-?>
-<tr><td class=bardesc valign=top>Scripture<br>Results</td>
-<td>
-<?
-      f_show_scripture_table();
-  ?>
-</td>
-</tr>
-  <?
-    }
-  if (empty($section)) {
-?>
 <tr><td class=bardesc valign=top>Search<br>Results</td>
 <td>
 <?
-    f_show_table();
-?>
-</td>
-</tr>
-<?
-  } else {
-?>
-<tr><td class=bardesc valign=top>Single<br>Entry</td>
-<td>
-<?
-    f_show_single_section();
-?>
-</td>
-</tr>
-<?
+  if ( (!empty($stext)) || (!empty($ubookid)) ) {
+    f_show_results_table();
   }
-?>
+  ?>
+</td>
+
+<td rowspan=3 class="resultMinistry" valign="top"><p>Ministry Reference</p>
+<div id="minres" name="minres"></div>
+</td>
+
+</tr>
+
+
 <tr height=40>
   <td class=bardesc>&nbsp;</td>
   <td class="cpyrght" valign=bottom><b>V1.00</b> Search designed and maintained by <a href="http://www.southesk.com/">Southesk.com</a></td>

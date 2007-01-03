@@ -30,6 +30,26 @@ th {
   FONT-WEIGHT: bold;
 }
 
+.filterText {
+  BACKGROUND-COLOR: #CCCCCC;
+}
+
+.filterScripture {
+  BACKGROUND-COLOR: #AAAAAA;
+}
+
+.filterAuthor {
+  BACKGROUND-COLOR: #CCCCCC;
+}
+
+.resultScripture {
+  BACKGROUND-COLOR: #CCFFFF;
+}
+
+.resultMinistry {
+  BACKGROUND-COLOR: #FFCCFF;
+}
+
 .dt {
   FONT-FAMILY: Georgia, Times New Roman, Serif;
   FONT-SIZE: 9pt;

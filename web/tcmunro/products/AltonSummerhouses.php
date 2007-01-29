@@ -16,7 +16,6 @@ $title = "Alton Summerhouses";
 $toroot = "../";
 include $toroot ."tpl/top.php";
 ?>
-        <td><!-- InstanceBeginEditable name="Content" -->
           <table width="100%"  border="0" cellpadding="5">
             <tr>
               <td width="43%"><img src="../images/altonlogo.jpg" width="298" height="65"></td>
@@ -152,8 +151,6 @@ include $toroot ."tpl/top.php";
                 <td>&nbsp;</td>
               </tr>
             </table>
-          <!-- InstanceEndEditable --></td>
-      </tr>
 <?
 include $toroot . "tpl/bot.php";
 ?>

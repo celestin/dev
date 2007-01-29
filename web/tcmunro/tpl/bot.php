@@ -12,7 +12,7 @@
  * CAM  10-Oct-2006  File added to source control.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
-      <tr>
+      </td><tr>
         <td align="center"><img src="<? echo $toroot; ?>images/footer1.gif" width="770" height="93"></td>
       </tr><tr>
         <td align=center class=cpyrght>Copyright &copy; 2006 TC Munro. All rights reserved.<br />

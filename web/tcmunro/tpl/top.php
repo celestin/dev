@@ -12,6 +12,9 @@
  * CAM  10-Oct-2006  File added to source control.
  * CAM  25-Nov-2006  10066 : Removed Agents.
  * * * * * * * * * * * * * * * * * * * * * * * */
+
+include_once $toroot . 'Main.php';
+
 ?>
 <html>
 <head>
@@ -66,4 +69,4 @@ body,td,th {
           </tr>
         </table></td>
       </tr>
-      <tr>
+      <tr><td>

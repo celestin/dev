@@ -16,8 +16,7 @@ $title = "Malvern";
 $toroot = "../";
 include $toroot ."tpl/top.php";
 ?>
-        <td>            <table width="100%"  border="0" cellpadding="5">
-
+<table width="100%"  border="0" cellpadding="5">
             <tr>
                 <td width="43%" class="style11">Malvern</td>
                 <td width="57%" rowspan="2" valign="top"><p style="margin-top: 0; margin-bottom: 0">The
@@ -778,8 +777,7 @@ include $toroot ."tpl/top.php";
                 <td align="left" valign="top"></td>
                 <td align="left" valign="top"></td>
               </tr>
-          </table></td>
-      </tr>
+          </table>
 <?
 include $toroot . "tpl/bot.php";
 ?>

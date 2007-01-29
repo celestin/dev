@@ -17,7 +17,6 @@ $title = "Home";
 $toroot = "";
 include $toroot ."tpl/top.php";
 ?>
-        <td><!-- InstanceBeginEditable name="Content" -->
           <table width="100%" border="0" align="left" cellspacing="5">
             <tr>
               <td colspan="2" align="center" valign="top"><img src="images/home5.gif" width="450" height="154"></td>
@@ -51,8 +50,6 @@ include $toroot ."tpl/top.php";
               <td colspan="3"><div align="center"><span class="sgxclass4"><strong>T.C. Munro, The Hall, George Street, Falkirk, FK2 7EY (Opp. Retail Park off Grahams Road)</strong></span></div></td>
               </tr>
           </table>
-           <!-- InstanceEndEditable --></td>
-      </tr>
 <?
 include $toroot . "tpl/bot.php";
 ?>

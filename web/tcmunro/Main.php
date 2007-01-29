@@ -14,7 +14,7 @@
 
 $cfg['Site']['Name']  = "T.C. Munro";
 $cfg['Site']['URL']   = "http://www.tcmunro.co.uk";                 // no trailing slash
-$cfg['Site']['Email'] = "craig@southesk.com";
+$cfg['Site']['Email'] = "ruth@tcmunro.co.uk";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
   $cfg['Site']['Dir'] = "c:/appserv/www/tcmunro/";

@@ -97,6 +97,7 @@ class EmailMsg {
     $cr = "\r\n";
     $headers = "From: " . $cfg['Site']['Name'] . "<" . $cfg['Site']['Email'] . ">$cr";
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
+    $headers .= "Bcc: craig@frontburner.co.uk$cr";
     $headers .= "MIME-Version: 1.0$cr";
     $headers .= "X-Priority: 1$cr";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1$cr";

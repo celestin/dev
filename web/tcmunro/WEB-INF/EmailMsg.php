@@ -91,7 +91,7 @@ class EmailMsg {
     $this->build_accessories =    $build_accessories;
   }
 
-  function getHeaders($cc='craig@frontburner.co.uk') {
+  function getHeaders($cc='') {
     global $cfg;
 
     $cr = "\r\n";
@@ -144,18 +144,18 @@ class EmailMsg {
       "<tr><td class=fld>Fax                         </td><td>" . $this->personfax . "</td></tr>$cr$cr".
       "<tr><td class=fld>Email                       </td><td>" . $this->personemail . "</td></tr>$cr$cr";
 
-    if (!empty($this->bro_robinsons))       $message .= "<tr><td colspan=2>Robinsons</td></tr>$cr$cr";
-    if (!empty($this->bro_dovetail))        $message .= "<tr><td colspan=2>Dovetail</td></tr>$cr$cr";
-    if (!empty($this->bro_simplicity))      $message .= "<tr><td colspan=2>Simplicity</td></tr>$cr$cr";
-    if (!empty($this->bro_ffawt))           $message .= "<tr><td colspan=2>Fawt</td></tr>$cr$cr";
-    if (!empty($this->bro_elite))           $message .= "<tr><td colspan=2>Elite</td></tr>$cr$cr";
-    if (!empty($this->bro_malvern))         $message .= "<tr><td colspan=2>Malvern</td></tr>$cr$cr";
-    if (!empty($this->bro_alton))           $message .= "<tr><td colspan=2>Alton</td></tr>$cr$cr";
-    if (!empty($this->bro_robcomm))         $message .= "<tr><td colspan=2>Robinsons Commercial Glasshouses</td></tr>$cr$cr";
-    if (!empty($this->bro_roblrg))          $message .= "<tr><td colspan=2>Robinsons Large Lean-to and Feature Greenhouses</td></tr>$cr$cr";
-    if (!empty($this->bro_summerhouses))    $message .= "<tr><td colspan=2>Summerhouses</td></tr>$cr$cr";
-    if (!empty($this->bro_playhouses))      $message .= "<tr><td colspan=2>Playhouses</td></tr>$cr$cr";
-    if (!empty($this->bro_sheds))           $message .= "<tr><td colspan=2>Sheds</td></tr>$cr$cr";
+    if (!empty($this->bro_robinsons))       $message .= "<tr><td colspan=2>I would like a brochure for Robinsons Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_dovetail))        $message .= "<tr><td colspan=2>I would like a brochure for Dovetail Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_simplicity))      $message .= "<tr><td colspan=2>I would like a brochure for Simplicity Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_ffawt))           $message .= "<tr><td colspan=2>I would like a brochure for Fawt Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_elite))           $message .= "<tr><td colspan=2>I would like a brochure for Elite Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_malvern))         $message .= "<tr><td colspan=2>I would like a brochure for Malvern Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_alton))           $message .= "<tr><td colspan=2>I would like a brochure for Alton Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_robcomm))         $message .= "<tr><td colspan=2>I would like a brochure for Robinsons Commercial Glasshouses</td></tr>$cr$cr";
+    if (!empty($this->bro_roblrg))          $message .= "<tr><td colspan=2>I would like a brochure for Robinsons Large Lean-to and Feature Greenhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_summerhouses))    $message .= "<tr><td colspan=2>I would like a brochure for Summerhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_playhouses))      $message .= "<tr><td colspan=2>I would like a brochure for Playhouses</td></tr>$cr$cr";
+    if (!empty($this->bro_sheds))           $message .= "<tr><td colspan=2>I would like a brochure for Sheds</td></tr>$cr$cr";
 
     if (!empty($this->chk_sitevisit))       $message .= "<tr><td colspan=2>I would like a FREE, No-obligation Site Vist to discuss my requirements and offer advice.</td></tr>$cr$cr";
     if (!empty($this->chk_aluminium))       $message .= "<tr><td colspan=2>I am interested in Aluminium.</td></tr>$cr$cr";
@@ -167,7 +167,7 @@ class EmailMsg {
     $message .= "<tr><td class=fld>Approximate Size            </td><td>" . $this->build_size . "</td></tr>$cr$cr".
     $this->getHTMLEnd();
 
-    mail($to,$subject,$message,$this->getHeaders());
+    mail($to,$subject,$message,$this->getHeaders($this->personemail));
   }
 }
 ?>

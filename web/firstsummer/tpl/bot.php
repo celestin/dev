@@ -19,7 +19,7 @@
   <tr><td colspan=2 class="cpyrght">Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </table>
 <?
-if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
+if (strpos(strtolower($_SERVER['SERVER_ADDR']), "192.168") === FALSE) {
 ?>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 </script>

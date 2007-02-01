@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Style Sheet
@@ -12,6 +12,7 @@
  * CAM  08-Apr-2006  Development.
  * CAM  09-Jul-2006  10014 : Added H4.
  * CAM  10-Oct-2006  10059 : Added msg2, msg2tab.
+ * CAM  01-Feb-2007  10081 : Added testthumb.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -480,6 +481,14 @@ input.button {
 
 .thumb {
   PADDING-BOTTOM: 10px;
+}
+
+/**
+ * TESTIMONALS
+ */
+
+.testthumb {
+  PADDING-LEFT: 10px;
 }
 
 

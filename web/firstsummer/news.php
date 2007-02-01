@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * News Archive
@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.
+ * CAM  01-Feb-2007  10081 : Ensure style variable initialised.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "News Archive";
@@ -28,6 +29,7 @@ $ssql = "SELECT id newsitem_id, newsitem, news_text, ".
         "ORDER BY news_date DESC ";
 $sql = mysql_query($ssql) or die (mysql_error());
 $counter=0;
+$style = "";
 
 while ($row = mysql_fetch_array($sql)) {
   foreach($row AS $key => $val) {

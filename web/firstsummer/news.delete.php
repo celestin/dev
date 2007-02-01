@@ -10,9 +10,10 @@
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.
+ * CAM  01-Feb-2007  10081 : Correct the page title.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Log out";
+$title = "Delete a News Item";
 include_once 'Main.php';
 
 $newsitem_id = NULL;         if (!empty($_GET['newsitem_id'])) $newsitem_id = $_GET['newsitem_id'];

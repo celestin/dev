@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Top of the page
@@ -15,6 +15,7 @@
  * CAM  04-Oct-2006  10046 : Remove ranges from navigation where Category show_ranges<>1.
  * CAM  04-Oct-2006  10047 : Add Change Password.
  * CAM  21-Dec-2006  10071 : Added meta tags.
+ * CAM  01-Feb-2007  10081 : Added Testimonals link.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -72,7 +73,8 @@ $uproduct = NULL;           if (!empty($_GET['product'])) $uproduct = $_GET['pro
       </tr><tr>
         <td colspan=3 style="padding-top:5px;padding-bottom:1px;"><a style="padding-left: 95px;"
             class="menu" href="index.php">home</a><span class="sep">|</span><a
-            class="menu" href="about.php">about us</a><span class="sep">|</span><!--<a
+            class="menu" href="about.php">about us</a><span class="sep">|</span><a
+            class="menu" href="testimonals.php">testimonals</a><span class="sep">|</span><!--<a
             class="menu" href="resellers.php">find a reseller</a><span class="sep">|</span>--><a
             class="menu" href="contact.php">contact</a><?
           if ($loggedin) {

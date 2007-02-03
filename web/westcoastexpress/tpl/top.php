@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added hidden toolbar navigation.
+ * CAM  02-Feb-2007  10069 : Added Change Password.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -53,6 +54,7 @@ if (!$loggedin) {
 }
 if ($loggedin) {
 ?>
+          <td><a class="tbr" href="changepass.php">CHANGE PASSWORD</a></td>
           <td><a class="tbr" href="logout.php">LOGOUT</a></td>
 <?
 }

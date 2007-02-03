@@ -6,13 +6,13 @@
 -- $Id$
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
--- version 2.6.1-pl3
+-- version 2.8.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 24, 2006 at 01:08 PM
--- Server version: 4.0.18
--- PHP Version: 4.3.10
+-- Generation Time: Feb 03, 2007 at 08:10 AM
+-- Server version: 4.1.20
+-- PHP Version: 4.4.2
 --
 -- Database: westcoastexpress_net_-_site
 -- --------------------------------------------------------
@@ -36,13 +36,14 @@ CREATE TABLE member (
   last_login datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (memberid),
   KEY i_email_address (email_address)
-) TYPE=MyISAM COMMENT='User Information';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Information';
 
 --
 -- Dumping data for table member
 --
 
-INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2005-11-26 10:20:00');
+INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', 'b193cacd08f36cfa4f0c165a48255497', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2007-02-03 08:02:37'),
+('BOB', 'Bob', 'Bain', '', 'b193cacd08f36cfa4f0c165a48255497', 1, 'A', '0', 1, '1950-01-01', '0000-00-00 00:00:00', '2007-02-03 08:06:43');
 
 -- --------------------------------------------------------
 
@@ -56,15 +57,15 @@ CREATE TABLE member_type (
   comments varchar(255) default NULL,
   disp_order int(11) NOT NULL default '0',
   PRIMARY KEY  (member_type)
-) TYPE=MyISAM COMMENT='User Types';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Types';
 
 --
 -- Dumping data for table member_type
 --
 
-INSERT INTO member_type VALUES ('U', 'User', 'Ability to View all details on the site', 1);
-INSERT INTO member_type VALUES ('N', 'New User', 'No permissions yet - waiting verification', 3);
-INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capabilities', 2);
+INSERT INTO member_type (member_type, type_name, comments, disp_order) VALUES ('U', 'User', 'Ability to View all details on the site', 1),
+('N', 'New User', 'No permissions yet - waiting verification', 3),
+('A', 'Administrator', 'Full Administrative capabilities', 2);
 
 -- --------------------------------------------------------
 
@@ -76,19 +77,20 @@ CREATE TABLE photos (
   id int(11) NOT NULL auto_increment,
   photo varchar(100) NOT NULL default '',
   boat varchar(100) NOT NULL default '',
-  location varchar(255) NOT NULL default '',
+  location mediumtext NOT NULL,
   disporder int(11) NOT NULL default '0',
   PRIMARY KEY  (id)
-) TYPE=MyISAM COMMENT='Photo Gallery' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photo Gallery' AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table photos
 --
 
-INSERT INTO photos VALUES (1, 'boat1.jpg', 'Yacht', '', 1);
-INSERT INTO photos VALUES (2, 'boat2.jpg', 'Yacht', '', 2);
-INSERT INTO photos VALUES (3, 'boat3.jpg', 'Yacht', '', 3);
-INSERT INTO photos VALUES (4, 'boat4.jpg', 'Yacht', '', 4);
+INSERT INTO photos (id, photo, boat, location, disporder) VALUES (1, 'boat1.jpg', 'Yacht', '', 60),
+(2, 'boat2.jpg', 'Yacht', '', 20),
+(3, 'boat3.jpg', 'Yacht', '', 30),
+(4, 'boat4.jpg', 'Yacht', '', 40),
+(30, 'PA2700412.jpg', '', 'Falkirk Wheel', 10);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,7 @@ CREATE TABLE upload (
   docdate date NOT NULL default '0000-00-00',
   doctype char(1) NOT NULL default 'I',
   PRIMARY KEY  (uplfile)
-) TYPE=MyISAM COMMENT='Uploaded Files';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Uploaded Files';
 
 --
 -- Dumping data for table upload

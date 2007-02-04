@@ -564,14 +564,14 @@ CREATE TABLE proddimensions (
 -- Dumping data for table proddimensions
 --
 
-INSERT INTO proddimensions VALUES (1, 14, 41, 'Octagonal ? Seating for 8 persons', 8, NULL, NULL);
+INSERT INTO proddimensions VALUES (1, 14, 41, 'Octagonal - Seating for 8 persons', 8, NULL, NULL);
 INSERT INTO proddimensions VALUES (2, 14, 3, '0.37 m', 0.37, NULL, NULL);
 INSERT INTO proddimensions VALUES (3, 14, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL);
 INSERT INTO proddimensions VALUES (4, 14, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL);
 INSERT INTO proddimensions VALUES (5, 14, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL);
 INSERT INTO proddimensions VALUES (6, 14, 7, '1 door', 1, NULL, NULL);
 INSERT INTO proddimensions VALUES (7, 14, 8, '4 windows, double glazed', 4, NULL, NULL);
-INSERT INTO proddimensions VALUES (8, 15, 41, 'Octagonal ? Seating for 10 persons', 8, NULL, NULL);
+INSERT INTO proddimensions VALUES (8, 15, 41, 'Octagonal - Seating for 10 persons', 8, NULL, NULL);
 INSERT INTO proddimensions VALUES (9, 15, 3, '0.37 m', 0.37, NULL, NULL);
 INSERT INTO proddimensions VALUES (10, 15, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL);
 INSERT INTO proddimensions VALUES (11, 15, 5, 'Decking that can be removed for cleaning. 3.54m x 3.54m.', 0, NULL, NULL);
@@ -721,8 +721,8 @@ INSERT INTO proddimensions VALUES (216, 40, 1, '0.70 m', 0.7, NULL, NULL);
 INSERT INTO proddimensions VALUES (217, 40, 2, '0.60 m', 0.6, NULL, NULL);
 INSERT INTO proddimensions VALUES (218, 40, 3, '0.60 m', 0.6, NULL, NULL);
 INSERT INTO proddimensions VALUES (219, 40, 4, '60 mm walls with double tongue and groove', 60, NULL, NULL);
-INSERT INTO proddimensions VALUES (220, 40, 5, '20 mm ? tongue and groove', 20, NULL, NULL);
-INSERT INTO proddimensions VALUES (221, 40, 6, '20 mm ? tongue and groove', 20, NULL, NULL);
+INSERT INTO proddimensions VALUES (220, 40, 5, '20 mm - tongue and groove', 20, NULL, NULL);
+INSERT INTO proddimensions VALUES (221, 40, 6, '20 mm - tongue and groove', 20, NULL, NULL);
 INSERT INTO proddimensions VALUES (222, 40, 48, '57 m2 (77m2 including loft area)', 77, NULL, NULL);
 INSERT INTO proddimensions VALUES (223, 40, 46, '2.86 m', 2.86, NULL, NULL);
 INSERT INTO proddimensions VALUES (224, 40, 47, '4.61 m', 4.61, NULL, NULL);
@@ -1273,7 +1273,7 @@ CREATE TABLE products (
 -- Dumping data for table products
 --
 
-INSERT INTO products VALUES (4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ?n? turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL);
+INSERT INTO products VALUES (4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ''n'' turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL);
 INSERT INTO products VALUES (5, 'Nida A', NULL, 5, 6, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (6, 'Nida S', NULL, 5, 6, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (7, 'Nida T', NULL, 5, 6, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

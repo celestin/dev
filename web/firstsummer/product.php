@@ -22,6 +22,7 @@
  * CAM  06-Oct-2006  10017 : Add (m) after Width and Depth.
  * CAM  14-Nov-2006  10012 : Added Call/Email me about this product.
  * CAM  06-Feb-2007  10082 : Added Variation Images.
+ * CAM  06-Feb-2007  10082 : Fixed JS Error onclick.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -253,7 +254,7 @@ if ($example_count > 0) {
   <form action="contactme.php" method="post">
   <table class="cmBox" border=0 cellspacing=0 cellpadding=4 width="100%">
     <tr onclick="contact_popupClose();">
-      <td class="cmTitle" width="100" id="cmTitle">Call me now about the <? echo $productname ?></td>
+      <td class="cmTitle" width="100%" id="cmTitle">Call me now about the <? echo $productname ?></td>
       <td class="cmTitle" width="10" align=right><img width="10" height="10" src="img/ico/small/close_off.gif" onClick="contact_popupClose();return false;" onMouseOver="this.src='img/ico/small/close_on.gif';" onMouseOut="this.src='img/ico/small/close_off.gif';"></td>
     </tr>
     <tr>
@@ -282,20 +283,19 @@ if ($example_count > 0) {
 <?
       if (!empty($variation_img)) {
 ?>
-      <td valign=top class=fldlbl><img height=250 width=250 src="img/v/m/<? echo $variation_img; ?>"><br><? echo $variation_text; ?></td>
+      <td valign=top class=fldlbl width="250"><img height=250 width=250 src="img/v/m/<? echo $variation_img; ?>"><br><? echo $variation_text; ?></td>
 <?
       } else if (!empty($rand_img)) {
 ?>
-      <td valign=top><img height=200 src="img/g/m/<? echo $rand_img; ?>"></td>
+      <td valign=top width="250"><img height=200 src="img/g/m/<? echo $rand_img; ?>"></td>
 <?
       } else {
 ?>
-      <td valign=top><img height=200 src="img/g/m/_blank.jpg"></td>
+      <td valign=top width="250"><img height=200 src="img/g/m/_blank.jpg"></td>
 <?
       }
 ?>
-  <td class="shorttxt"><!--very brief text goes here. very brief text goes here. very brief text goes here--></td>
-  <td width=290 valign=top><table border=0 cellpadding=4 cellspacing=1 width="100%">
+  <td valign=top align=right><table border=0 cellpadding=4 cellspacing=1 width="300">
     <tr><td colspan=2 class="download">MORE INFORMATION</td></tr>
 <?
       if (!empty($brochure)) {
@@ -309,12 +309,12 @@ if ($example_count > 0) {
 
 ?>
     <tr>
-      <td align=center><a href="javascript:void();" onclick="contact_callme();"><img border=0 width=32 height=32 src="img/ico/small/phone_me.png"></a></td>
-      <td><a href="javascript:void();" onclick="contact_callme();">Call me now about <?echo $productname; ?></a></td>
+      <td align=center><a href="javascript:void();" onclick="contact_callme();return false;"><img border=0 width=32 height=32 src="img/ico/small/phone_me.png"></a></td>
+      <td><a href="javascript:void();" onclick="contact_callme();return false;">Call me now about <?echo $productname; ?></a></td>
     </tr>
     <tr>
-      <td align=center><a href="javascript:void();" onclick="contact_emailme();"><img border=0 width=32 height=32 src="img/ico/small/email_me.png"></a></td>
-      <td><a href="javascript:void();" onclick="contact_emailme();">Email me now about <?echo $productname; ?></a></td>
+      <td align=center><a href="javascript:void();" onclick="contact_emailme();return false;"><img border=0 width=32 height=32 src="img/ico/small/email_me.png"></a></td>
+      <td><a href="javascript:void();" onclick="contact_emailme();return false;">Email me now about <?echo $productname; ?></a></td>
     </tr>
 <?
   if ($example_count>0) {

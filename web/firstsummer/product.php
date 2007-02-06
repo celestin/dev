@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Product Page
@@ -21,6 +21,7 @@
  * CAM  02-Oct-2006  10038 : Make Prices editable.
  * CAM  06-Oct-2006  10017 : Add (m) after Width and Depth.
  * CAM  14-Nov-2006  10012 : Added Call/Email me about this product.
+ * CAM  06-Feb-2007  10082 : Added Variation Images.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -28,6 +29,7 @@ include_once 'Main.php';
 $utab = NULL;          if (!empty($_GET['tab'])) $utab = $_GET['tab'];
 $uproduct = NULL;      if (!empty($_GET['product'])) $uproduct = $_GET['product'];
 $uphoto = NULL;        if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
+$uvariation = NULL;    if (!empty($_GET['variation'])) $uvariation = $_GET['variation'];
 
 function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions, $priceprivro, $priceprivroid) {
   global $loggedin;
@@ -78,6 +80,9 @@ function output_price_row($rowhtm, $pivots, $pricepriv, $priceprivid, $roptions,
 if (empty($utab)) $utab = 1;
 $productname = NULL;
 $htmlname = NULL;
+$rand_img = "";
+$variation_img = "";
+$variation_text = "";
 
 $sql = mysql_query("SELECT p.id product_id, p.product, IFNULL(p.htmlname, p.product) htmlname, p.brochure, p.prodrange_id urange, r.category_id ucategory ".
                    "FROM products p, prodranges r  ".
@@ -104,6 +109,25 @@ $sql = mysql_query("SELECT count(*) plan_count FROM plans WHERE product_id='$upr
 $plan_count=0;
 if ($row = mysql_fetch_array($sql)) {
   $plan_count = $row[0];
+}
+$sql = mysql_query("SELECT count(*) example_count FROM prodvariations WHERE product_id='$uproduct' AND imgfile IS NOT NULL");
+$example_count=0;
+if ($row = mysql_fetch_array($sql)) {
+  $example_count = $row[0];
+}
+if ($example_count > 0) {
+  $ssql = "SELECT imgfile, variation FROM prodvariations ".
+          "WHERE product_id='$uproduct' ".
+          "AND imgfile IS NOT NULL ";
+  if (!empty($uvariation)) {
+    $ssql .= "AND id='$uvariation' ";
+  }
+  $ssql .= "ORDER BY disporder LIMIT 1";
+  $sql = mysql_query($ssql);
+  if ($row = mysql_fetch_array($sql)) {
+    $variation_img = $row[0];
+    $variation_text = $row[1];
+  }
 }
 
 ?>
@@ -133,7 +157,7 @@ if ($row = mysql_fetch_array($sql)) {
     }
 
     $show_tab = true;
-    if ($tab_id == 2 && empty($rand_img)) $show_tab = false;
+    if ($tab_id == 2 && (empty($rand_img) || !empty($variation_img))) $show_tab = false;
     if ($tab_id == 3 && $plan_count<1) $show_tab = false;
 
     if ($show_tab) {
@@ -256,13 +280,17 @@ if ($row = mysql_fetch_array($sql)) {
 <table border=0 width="100%">
 <tr>
 <?
-      if (!empty($rand_img)) {
+      if (!empty($variation_img)) {
 ?>
-      <td><img height=200 src="img/g/m/<? echo $rand_img; ?>"></td>
+      <td valign=top class=fldlbl><img height=250 width=250 src="img/v/m/<? echo $variation_img; ?>"><br><? echo $variation_text; ?></td>
+<?
+      } else if (!empty($rand_img)) {
+?>
+      <td valign=top><img height=200 src="img/g/m/<? echo $rand_img; ?>"></td>
 <?
       } else {
 ?>
-      <td><img height=200 src="img/g/m/_blank.jpg"></td>
+      <td valign=top><img height=200 src="img/g/m/_blank.jpg"></td>
 <?
       }
 ?>
@@ -281,14 +309,32 @@ if ($row = mysql_fetch_array($sql)) {
 
 ?>
     <tr>
-      <td><a href="javascript:void();" onclick="contact_callme();"><img border=0 width=32 height=32 src="img/ico/small/phone_me.png"></a></td>
+      <td align=center><a href="javascript:void();" onclick="contact_callme();"><img border=0 width=32 height=32 src="img/ico/small/phone_me.png"></a></td>
       <td><a href="javascript:void();" onclick="contact_callme();">Call me now about <?echo $productname; ?></a></td>
     </tr>
     <tr>
-      <td><a href="javascript:void();" onclick="contact_emailme();"><img border=0 width=32 height=32 src="img/ico/small/email_me.png"></a></td>
+      <td align=center><a href="javascript:void();" onclick="contact_emailme();"><img border=0 width=32 height=32 src="img/ico/small/email_me.png"></a></td>
       <td><a href="javascript:void();" onclick="contact_emailme();">Email me now about <?echo $productname; ?></a></td>
     </tr>
 <?
+  if ($example_count>0) {
+?>
+    <tr><td colspan=2 class="download"><? echo strtoupper($productname); ?> EXAMPLES</td></tr>
+<?
+
+    $sql = mysql_query("SELECT id variation_id, imgfile, variation ".
+                       "FROM prodvariations ".
+                       "WHERE product_id = $uproduct ".
+                       "AND imgfile IS NOT NULL");
+    while ($row = mysql_fetch_array($sql)) {
+?>
+  <tr>
+    <td><a href="product.php?product=<? echo $uproduct; ?>&variation=<? echo $row[0]; ?>"><img border=0 width=40 height=40 src="img/v/t/<? echo $row[1]; ?>"></a></td>
+    <td><a href="product.php?product=<? echo $uproduct; ?>&variation=<? echo $row[0]; ?>"><? echo $row[2]; ?></a></td>
+  </tr>
+<?
+    }
+  }
 
   $ropivots = false;
   $sql = mysql_query("SELECT IFNULL(COUNT(*),0) pivot_count ".

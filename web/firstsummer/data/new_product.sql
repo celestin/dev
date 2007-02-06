@@ -8,13 +8,19 @@ INSERT INTO proddimensions (product_id, dimension_id, textvalue, numvalue, creat
 ( 52, 7, '1 door at 146/61', 1, NULL, NULL),
 ( 52, 8, '4 windows 62/30, double glazed', 4, NULL, NULL);
 
+UPDATE prodvariations SET imgfile=NULL WHERE LENGTH(imgfile)=0;
+
 
 INSERT INTO prodvariations ( variation, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
-( NULL, 52, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+( 'Four-room Therapy', 59, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 INSERT INTO prodprices (product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
-(52, 103, NULL, 40, 5675, NULL, NULL, NULL, NULL, NULL, NULL);
+(59, 114 , NULL, 45, 4550, NULL, NULL, NULL, NULL, NULL, NULL);
+
+INSERT INTO prodprices (product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(59, 114 , NULL, 60, 5720, NULL, NULL, NULL, NULL, NULL, NULL);
+
 
 
 INSERT INTO prodprices (product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES

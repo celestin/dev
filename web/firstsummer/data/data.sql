@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- First Summerhouses
--- Copyright (c) 2006 Frontburner
+-- Copyright (c) 2006-2007 Frontburner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$
@@ -12,7 +12,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2007 at 08:37 PM
+-- Generation Time: Feb 06, 2007 at 09:24 PM
 -- Server version: 4.1.11
 -- PHP Version: 4.4.1
 --
@@ -252,7 +252,7 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=258 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=269 ;
 
 --
 -- Dumping data for table photos
@@ -334,7 +334,7 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (110, 10, 'nida_ntas_03700.jpg', 3700, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (111, 5, 'nida_ntas_03720.jpg', 3720, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (161, 33, 'tyla_ct_04340.jpg', 4340, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(160, 32, 'tyla_cg_04320.jpg', 4320, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(258, 32, 'tyla_cg_05820.jpg', 5820, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (159, 21, 'tbuild_tg_04620.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (115, 10, 'nida_ntas_03800.jpg', 3800, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (116, 9, 'nida_nv_03820.jpg', 3820, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -462,7 +462,17 @@ INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, com
 (255, 56, 'carport_sb1_05760.jpg', 5760, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (254, 55, 'carport_f2_05740.jpg', 5740, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (256, 56, 'carport_sb1_05780.jpg', 5780, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(257, 57, 'carport_sb2_05800.jpg', 5800, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(257, 57, 'carport_sb2_05800.jpg', 5800, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(259, 32, 'tyla_cg_05840.jpg', 5840, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(260, 32, 'tyla_cg_05860.jpg', 5860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(261, 32, 'tyla_cg_05880.jpg', 5880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(262, 32, 'tyla_cg_05900.jpg', 5900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(263, 33, 'tyla_cg_05840.jpg', 5840, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(264, 33, 'tyla_cg_05860.jpg', 5860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(265, 33, 'tyla_cg_05880.jpg', 5880, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(266, 33, 'tyla_cg_05900.jpg', 5900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(267, 58, 'wfm_of_05920.jpg', 5920, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(268, 59, 'wfm_th_05940.jpg', 5940, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -966,7 +976,7 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=818 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=828 ;
 
 --
 -- Dumping data for table prodprices
@@ -1223,7 +1233,17 @@ INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot,
 (814, 54, 106, NULL, 40, 1500, NULL, NULL, NULL, NULL, NULL, NULL),
 (815, 55, 107, NULL, 40, 3100, NULL, NULL, NULL, NULL, NULL, NULL),
 (816, 56, 108, NULL, 40, 3100, NULL, NULL, NULL, NULL, NULL, NULL),
-(817, 57, 109, NULL, 40, 4000, NULL, NULL, NULL, NULL, NULL, NULL);
+(817, 57, 109, NULL, 40, 4000, NULL, NULL, NULL, NULL, NULL, NULL),
+(818, 58, 110, NULL, 45, 3375, NULL, NULL, NULL, NULL, NULL, NULL),
+(819, 58, 110, NULL, 60, 4130, NULL, NULL, NULL, NULL, NULL, NULL),
+(820, 58, 111, NULL, 45, 3820, NULL, NULL, NULL, NULL, NULL, NULL),
+(821, 58, 111, NULL, 60, 4290, NULL, NULL, NULL, NULL, NULL, NULL),
+(822, 58, 112, NULL, 45, 3920, NULL, NULL, NULL, NULL, NULL, NULL),
+(823, 58, 112, NULL, 60, 4400, NULL, NULL, NULL, NULL, NULL, NULL),
+(824, 59, 113, NULL, 45, 3075, NULL, NULL, NULL, NULL, NULL, NULL),
+(825, 59, 113, NULL, 60, 3780, NULL, NULL, NULL, NULL, NULL, NULL),
+(826, 59, 114, NULL, 45, 4550, NULL, NULL, NULL, NULL, NULL, NULL),
+(827, 59, 114, NULL, 60, 5720, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1245,7 +1265,7 @@ CREATE TABLE prodranges (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Ranges' AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Ranges' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table prodranges
@@ -1260,7 +1280,8 @@ INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text
 (10, 'Custom Cabins', 2, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11, 'Pavilions', 2, 40, NULL, '1st Summerhouses offers a range of Pavilions.  The Sida pavilion comes in 2 styles and 3 sizes, the Sida with 1/2 glazed door and windows and window boxes,  \r\nand the Sida Plus 3/4 glazed door and windows is ideal for a corner site.  With 45mm wood and double glazing as standard this is a retreat suitable for  \r\nsummer and winter use.  The Vilnius pavilion has a fairytale quality, too pretty to hide away, it would be a feature in any garden.  All our pavilions are  \r\nbuilt with the careful attention to detail and quality of workmanship which is a feature of all 1st Summerhouses Cabins.', NULL, NULL, NULL, NULL, NULL, NULL),
 (12, 'Saunas', 1, 2, NULL, 'To traditional sauna enthusiasts, the wood burning sauna is something special. Soft heat, soft steam, the crackling fire.  Even the ritual of tending the fire.', NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 'Car Ports', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(13, 'Car Ports', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'Work from Home', 2, 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1285,7 +1306,7 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=58 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=60 ;
 
 --
 -- Dumping data for table products
@@ -1335,10 +1356,12 @@ INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochur
 (51, 'Custom build', NULL, 10, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (52, '9.9m2 Sauna', 'Finnish Sauna 9.9 m<sup>2</sup>', 12, NULL, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL),
 (53, 'Double T Garage', NULL, 9, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(54, 'F1', NULL, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(55, 'F2', NULL, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(56, 'SB1', NULL, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(57, 'SB2', NULL, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(54, 'F1', NULL, 13, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 'F2', NULL, 13, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 'SB1', NULL, 13, NULL, NULL, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 'SB2', NULL, 13, NULL, NULL, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 'Office', NULL, 14, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 'Therapy', NULL, 14, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1349,6 +1372,7 @@ INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochur
 CREATE TABLE prodvariations (
   id int(11) NOT NULL auto_increment,
   variation varchar(50) default NULL,
+  imgfile varchar(40) default NULL,
   product_id int(11) NOT NULL default '0',
   vlength float default NULL,
   vbreadth float default NULL,
@@ -1360,109 +1384,114 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=110 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=115 ;
 
 --
 -- Dumping data for table prodvariations
 --
 
-INSERT INTO prodvariations (id, variation, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (9, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, NULL, 5, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, NULL, 5, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, NULL, 5, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, NULL, 7, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, NULL, 7, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, NULL, 7, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, NULL, 7, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, NULL, 7, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, NULL, 7, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, NULL, 7, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(21, NULL, 6, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, NULL, 6, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, 5, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, NULL, 6, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, NULL, 6, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, 6, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, NULL, 6, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, NULL, 6, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, NULL, 4, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, NULL, 4, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, NULL, 4, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, NULL, 4, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, NULL, 5, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, NULL, 18, 3.25, 4.45, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(30, NULL, 24, 3.25, 4.45, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, NULL, 25, 2.95, 3.25, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(32, NULL, 26, 2.95, 3.25, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(33, NULL, 28, 2.95, 3.25, 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(34, NULL, 27, 2.95, 3.25, 60, NULL, NULL, NULL, NULL, NULL, NULL),
-(35, NULL, 29, 2.95, 2.5, 70, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, NULL, 30, 2.2, 2.5, 80, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, NULL, 31, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL),
-(38, NULL, 19, 4, 6.5, 100, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, NULL, 22, 3.35, 1.8, 110, NULL, NULL, NULL, NULL, NULL, NULL),
-(40, NULL, 23, 1.5, 3.05, 120, NULL, NULL, NULL, NULL, NULL, NULL),
-(52, NULL, 32, 7, 8.5, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(53, NULL, 33, 10.45, 8.5, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(54, NULL, 34, 4.7, 5.1, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(55, NULL, 35, 4.3, 5.5, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(56, NULL, 40, 6.45, 6.2, 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(57, NULL, 14, 3.149, 3.149, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(58, NULL, 15, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(59, NULL, 16, 5.009, 5.009, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(60, NULL, 17, 6.05, 6.05, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(61, NULL, 21, 5.36, 3.8, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(62, NULL, 38, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(63, NULL, 39, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(64, NULL, 39, 3, 4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(65, NULL, 39, 4, 4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(66, NULL, 39, 5, 5, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(67, NULL, 37, 3.14, 3.4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(68, NULL, 44, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(69, NULL, 43, 3.14, 3.4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(70, NULL, 20, 3, 3, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(71, 'Type 1: 1/2 glazed door 70/193 and 2 windows 70/94', 36, 2.8, 3.03, 10, NULL, NULL, NULL, NULL, NULL, NULL),
-(72, 'Type 2: 1/2 glazed door 90/193 and 2 windows 90/94', 36, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL),
-(74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', 50, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL),
-(75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', 50, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL),
-(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', 50, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL),
-(77, 'Tornio', 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL),
-(78, NULL, 45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(79, NULL, 45, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(80, NULL, 45, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(81, NULL, 45, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(82, NULL, 45, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(83, NULL, 45, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(84, NULL, 45, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(85, NULL, 48, 4.5, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(86, NULL, 10, 3.5, 3.5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(87, NULL, 46, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(88, NULL, 46, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(89, NULL, 46, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(90, NULL, 46, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(91, NULL, 46, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(92, NULL, 46, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(93, NULL, 46, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(94, NULL, 9, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(95, NULL, 9, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(96, NULL, 9, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(97, NULL, 9, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(98, NULL, 9, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(99, NULL, 9, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(100, NULL, 9, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(101, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(102, NULL, 49, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL),
-(103, NULL, 52, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(105, NULL, 53, 5.7, 5.7, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(106, NULL, 54, 3.35, 4.93, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(107, NULL, 55, 3.56, 7.9, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(108, NULL, 56, 3.3, 6.44, 20, NULL, NULL, NULL, NULL, NULL, NULL),
-(109, NULL, 57, 6, 7, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations (id, variation, imgfile, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (9, NULL, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, NULL, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, NULL, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, NULL, NULL, 5, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, NULL, NULL, 5, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, NULL, NULL, 5, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, NULL, NULL, 7, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, NULL, NULL, 7, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, NULL, NULL, 7, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, NULL, NULL, 7, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, NULL, NULL, 7, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, NULL, NULL, 7, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, NULL, NULL, 7, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, NULL, NULL, 6, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, NULL, NULL, 6, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, NULL, NULL, 5, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, NULL, NULL, 6, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, NULL, NULL, 6, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, NULL, NULL, 6, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, NULL, NULL, 6, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, NULL, NULL, 6, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, NULL, NULL, 4, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, NULL, NULL, 4, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, NULL, NULL, 4, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, NULL, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, NULL, NULL, 4, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, NULL, NULL, 5, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, NULL, NULL, 18, 3.25, 4.45, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, NULL, NULL, 24, 3.25, 4.45, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, NULL, NULL, 25, 2.95, 3.25, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, NULL, NULL, 26, 2.95, 3.25, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, NULL, NULL, 28, 2.95, 3.25, 50, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, NULL, NULL, 27, 2.95, 3.25, 60, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, NULL, NULL, 29, 2.95, 2.5, 70, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, NULL, NULL, 30, 2.2, 2.5, 80, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, NULL, NULL, 31, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, NULL, NULL, 19, 4, 6.5, 100, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, NULL, NULL, 22, 3.35, 1.8, 110, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, NULL, NULL, 23, 1.5, 3.05, 120, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, NULL, NULL, 32, 7, 8.5, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(53, NULL, NULL, 33, 10.45, 8.5, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(54, NULL, NULL, 34, 4.7, 5.1, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(55, NULL, NULL, 35, 4.3, 5.5, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(56, NULL, NULL, 40, 6.45, 6.2, 50, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, NULL, NULL, 14, 3.149, 3.149, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, NULL, NULL, 15, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, NULL, NULL, 16, 5.009, 5.009, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(60, NULL, NULL, 17, 6.05, 6.05, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(61, NULL, NULL, 21, 5.36, 3.8, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(62, NULL, NULL, 38, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(63, NULL, NULL, 39, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(64, NULL, NULL, 39, 3, 4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(65, NULL, NULL, 39, 4, 4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(66, NULL, NULL, 39, 5, 5, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(67, NULL, NULL, 37, 3.14, 3.4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(68, NULL, NULL, 44, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(69, NULL, NULL, 43, 3.14, 3.4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(70, NULL, NULL, 20, 3, 3, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 'Type 1: 1/2 glazed door 70/193 and 2 windows 70/94', NULL, 36, 2.8, 3.03, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(72, 'Type 2: 1/2 glazed door 90/193 and 2 windows 90/94', NULL, 36, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', NULL, 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', NULL, 50, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL),
+(75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', NULL, 50, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL),
+(76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', NULL, 50, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 'Tornio', NULL, 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL),
+(78, NULL, NULL, 45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(79, NULL, NULL, 45, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(80, NULL, NULL, 45, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(81, NULL, NULL, 45, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, NULL, NULL, 45, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(83, NULL, NULL, 45, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(84, NULL, NULL, 45, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(85, NULL, NULL, 48, 4.5, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(86, NULL, NULL, 10, 3.5, 3.5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(87, NULL, NULL, 46, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(88, NULL, NULL, 46, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(89, NULL, NULL, 46, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(90, NULL, NULL, 46, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(91, NULL, NULL, 46, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(92, NULL, NULL, 46, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(93, NULL, NULL, 46, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(94, NULL, NULL, 9, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(95, NULL, NULL, 9, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(96, NULL, NULL, 9, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(97, NULL, NULL, 9, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(98, NULL, NULL, 9, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(99, NULL, NULL, 9, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(100, NULL, NULL, 9, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(101, NULL, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(102, NULL, NULL, 49, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL),
+(103, NULL, NULL, 52, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(105, NULL, NULL, 53, 5.7, 5.7, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(106, NULL, NULL, 54, 3.35, 4.93, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(107, NULL, NULL, 55, 3.56, 7.9, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(108, NULL, NULL, 56, 3.3, 6.44, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(109, NULL, NULL, 57, 6, 7, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(110, 'Office with Waiting room', '44_office.jpg', 58, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 'Cyclists Office', '55_office.jpg', 58, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(112, 'L-Shaped Office', '55_officetwo.jpg', 58, 5, 5, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+(113, 'Therapy Room with W/C', '44_therapy.jpg', 59, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+(114, 'Two Therapy Rooms', '55_therapytwo.jpg', 59, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

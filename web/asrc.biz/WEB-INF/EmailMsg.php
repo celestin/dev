@@ -1,16 +1,16 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * EmailMsg - Sends an Email
+ * Sends Emails for the system
  *
  * $Id$
  *
  * Who  When         Why
- * CAM  4-May-2005  File created.
+ * CAM  4-May-2005   File created.
+ * CAM  08-Feb-2007  10098 : Added Valentines Dance.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -154,6 +154,21 @@ class EmailMsg {
           $message .= "</table></td>".
         "</tr></table>".
       "</td></tr>".
+      "<tr><td>A.S.R.C. are celebrating <br>$cr".
+              "<b>Valentine's Day</b> by holding <br>$cr".
+              "a Valentine Dance <br>$cr".
+              "on <b>Saturday 17th February</b> <br>$cr".
+              "in our Newly-refurbished Lounge Bar.<br>$cr".
+              "<br>$cr".
+              "<b>Tickets are only &pound;10.</b><br>$cr".
+              "<br>$cr".
+              "Dancing from <b>8pm to 1am</b> to <br>$cr".
+              "the extraordinary sound of <br>$cr".
+              "<b>The Smokin' Bert Cooper Band</b><br>$cr".
+              "Sumptuous buffet included! <br>$cr".
+              "Don't miss this great night out...<br>$cr".
+              "get your tickets from reception.<br>$cr".
+              "Numbers restricted - <b>so be quick</b>!</td></tr>".
     "</table>".
     "</body></html>";
 

@@ -24,13 +24,12 @@ $cfg['Site']['Db']['Password'] = "fred71";
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
   $cfg['Site']['Db']['Hostname'] = 'localhost';
   $cfg['Site']['URL']   = "http://asrc.southesk.com";
-} else if (strpos(strtolower($_SERVER['SERVER_NAME']), "goblin") !== FALSE) {
+} else if (strpos(strtolower($_SERVER['SERVER_NAME']), "southesk") !== FALSE) {
   $cfg['Site']['Db']['Hostname'] = 'localhost';
   $cfg['Site']['URL']   = "http://asrc.southesk.com";
   $cfg['Site']['Db']['Database'] = "southesk_com_-_asrc";
   $cfg['Site']['Db']['Username'] = "southesk";
   $cfg['Site']['Db']['Password'] = "psalm45";
-} else {
 }
 
 

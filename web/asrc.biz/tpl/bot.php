@@ -1,8 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Bottom of the page
@@ -18,13 +17,13 @@
  * CAM  19-Jan-2006  9 : Version 1.03 - Block Booking.
  * CAM  06-Feb-2006  10 : Version 1.04 - Created_by.
  * CAM  06-Feb-2006   8 : Version 1.05 - Guest User.
- * CAM  25-Apr-2006  14 : Version 1.06 - Courts View.
+ * CAM  08-Feb-2007  10098 : Include the Valentines Image.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->
 </td></tr>
 </table></td>
-<td align=center valign=top><a target="_blank" href="http://www.kingstreetcars.co.uk/"><img border=0 src="img/ad/ksc1.gif"></a></td></tr>
+<td align=center valign=top><a target="_blank" href="mailto:info@asrc.co.uk?Subject=ASRC Valentine&#039;s Dance"><img border=0 src="img/ad/valentine.gif"></a></td></tr>
 <tr>
   <td align=center valign=top><a target="_blank" href="http://www.active-aircon.co.uk/"><img border=0 width=180 height=220 src="img/ad/active4.png"></a></td>
   <td align=center valign=top><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 4"><img border=0 src="img/size1e.jpg"></a></td>

@@ -1,8 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Current Courts View
@@ -11,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  25-Apr-2006  14 : File created.
+ * CAM  08-Feb-2007  10097 : Include Courts 1-3.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Current Courts View";
@@ -39,6 +39,9 @@ if ($book_date==NULL) {
 ?><table cellspacing=0 cellpadding=5 border=1>
 <tr>
   <th with=50>time</th>
+  <th width=150>Court 1</th>
+  <th width=150>Court 2</th>
+  <th width=150>Court 3</th>
   <th width=150>Court 4</th>
   <th width=150>Court 5</th>
   <th width=150>Court 6</th>
@@ -87,7 +90,7 @@ if ($book_date==NULL) {
   $diff = 1;
 
   $courts = array();
-  for ($i=4; $i<=7; $i++) {
+  for ($i=1; $i<=7; $i++) {
     $courts[$i] = array();
     $courts[$i][0] = 0;
     $courts[$i][1] = 0;
@@ -97,7 +100,7 @@ if ($book_date==NULL) {
   }
 
 
-  while ($curr_time < $end_time) {
+  while ($curr_time <= $end_time) {
 
     ?><tr><td width=50><? echo date('H:i', $curr_time ); ?></td><?
 
@@ -140,7 +143,7 @@ if ($book_date==NULL) {
       $courts[$court][4] = trim($opponent_name);
     }
 
-    for ($i=4; $i<=7; $i++) {
+    for ($i=1; $i<=7; $i++) {
 
       if ($courts[$i][0] == 1) {
         ?><td class=courtview rowspan=<? echo $courts[$i][1]; ?>><?

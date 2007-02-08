@@ -1,8 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Database connection
@@ -11,19 +10,9 @@
  *
  * Who  When         Why
  * CAM  19-Mar-2004  File created.
- * CAM  06-Feb-2006  10: Added created_by.
+ * CAM  08-Feb-2007  10097 : Moved parameters to config.php.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-//SET PASSWORD FOR 'asrc'@'localhost' = OLD_PASSWORD('fred71');
-
-$dbhost = 'mysql6.streamline.net';
-if ((strtolower($_SERVER['SERVER_NAME']) == "localhost") || (strtolower($_SERVER['SERVER_NAME']) == "510m-0087")) {
-  $dbhost = 'localhost';
-}
-
-$dbusername = 'asrc';$dbpasswd = 'fred71';
-$database_name = 'asrc';
-
-$connection = mysql_pconnect("$dbhost","$dbusername","$dbpasswd", MYSQL_CLIENT_INTERACTIVE) or die ("Couldn't connect to server.");
-$db = mysql_select_db("$database_name", $connection) or die("Couldn't select database.");
+$connection = mysql_pconnect($cfg['Site']['Db']['Hostname'],$cfg['Site']['Db']['Username'],$cfg['Site']['Db']['Password'], MYSQL_CLIENT_INTERACTIVE) or die ("Couldn't connect to server.");
+$db = mysql_select_db($cfg['Site']['Db']['Database'], $connection) or die("Couldn't select database.");
 ?>

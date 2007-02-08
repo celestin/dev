@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  31-Aug-2004  File created.
  * CAM  27-Sep-2006  10034 : Fixed bug.
+ * CAM  08-Feb-2007  10097 : Ensure the correct URL is used when sending emails.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -61,19 +62,17 @@ if(!$memberid){
       // Convert password to md5 hash
       $new_pwd = strtolower(substr(md5(time()),0,8));
       $pwd = md5($new_pwd);
+      $cr = "\r\n";
 
       $sql = mysql_query("UPDATE member SET password='$pwd' WHERE memberid='$memberid'");
 
       $subject = "Your ASRC Online Booking password for $memberid" ;
-      $message = "Hi $first_name,
-
-We have reset your password to: $new_pwd
-
-Click on http://asrc.southesk.com/login.php to login
-
-Thanks!
-Aberdeen Squash Racquets Club
-(This is an automated response, please do not reply)";
+      $message = "Hi $first_name,$cr$cr".
+                 "We have reset your password to: $new_pwd$cr$cr".
+                 "Click on " . $cfg['Site']['URL'] . "/login.php to login$cr$cr".
+                 "Thanks!$cr".
+                 "Aberdeen Squash Racquets Club$cr".
+                 "(This is an automated response, please do not reply)$cr";
 
       mail($email_address, $subject, $message, "From: ASRC <craig@southesk.com>\nX-Mailer: PHP/" . phpversion());
       Msg::statement("Your password has been sent.  Please check your email!");

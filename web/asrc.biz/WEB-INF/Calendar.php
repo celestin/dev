@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
+ * CAM  08-Feb-2007  10097 : Correct Sort order.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'inc.php';
@@ -82,7 +83,7 @@ class Calendar {
     $this->court = array();
     $i=0;
 
-    $sql = mysql_query("SELECT court,name,week_cutoff FROM court");
+    $sql = mysql_query("SELECT court,name,week_cutoff FROM court ORDER BY court");
     while ($row = mysql_fetch_array($sql)) {
       foreach($row AS $key => $val) {
         $$key = stripslashes($val);
@@ -128,7 +129,7 @@ class Calendar {
       $ssql .= "AND b.slot IS NULL ";
     }
 
-    $ssql .= "ORDER BY 4";
+    $ssql .= "ORDER BY 1,4";
 
     $sql = mysql_query($ssql) or die (mysql_error());
     while ($row = mysql_fetch_array($sql)) {

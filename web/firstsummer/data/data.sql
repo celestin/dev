@@ -8,13 +8,13 @@
 -- SET PASSWORD FOR 'firstsummer'@'localhost' = OLD_PASSWORD('john21');
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
--- version 2.8.1
+-- version 2.9.0.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2007 at 09:24 PM
--- Server version: 4.1.11
--- PHP Version: 4.4.1
+-- Generation Time: Feb 13, 2007 at 11:44 PM
+-- Server version: 4.1.22
+-- PHP Version: 5.1.6
 --
 -- Database: 1stsummerhouses_com_-_site
 -- --------------------------------------------------------
@@ -43,7 +43,8 @@ CREATE TABLE categories (
 -- Dumping data for table categories
 --
 
-INSERT INTO categories (id, category, disporder, show_ranges, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'BBQ Huts', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO categories (id, category, disporder, show_ranges, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'BBQ Huts', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Log Cabins', 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Garages', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -67,7 +68,8 @@ CREATE TABLE dimensions (
 -- Dumping data for table dimensions
 --
 
-INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) VALUES (1, 1, 'Roof projection - Front', 10, NULL, NULL),
+INSERT INTO dimensions (id, dim_type, dimension, disp_order, created, updated) VALUES
+(1, 1, 'Roof projection - Front', 10, NULL, NULL),
 (2, 1, 'Roof projection - Back', 20, NULL, NULL),
 (3, 1, 'Roof projection - Side', 30, NULL, NULL),
 (4, 1, 'Walls', 40, NULL, NULL),
@@ -142,7 +144,8 @@ CREATE TABLE featuredproducts (
 -- Dumping data for table featuredproducts
 --
 
-INSERT INTO featuredproducts (id, product_id, product, description, price, feature) VALUES (1, 39, 'Tornio (45mm) 4x3', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was &pound;190 now &pound;95'),
+INSERT INTO featuredproducts (id, product_id, product, description, price, feature) VALUES
+(1, 39, 'Tornio (45mm) 4x3', 'The ultimate double-glazed garden room or office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was &pound;190 now &pound;95'),
 (2, 19, 'Chalet T24 (45mm) 6.5x4', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was &pound;399 now &pound;199'),
 (3, 15, '9.9m2 BBQ Hut', 'Have the ultimate BBQ.', 5675, '0% APR over 2 years'),
 (4, 35, 'Laura (45mm) 5.5x4.3', 'A great multi-room cabin with gallery level.', 7162, 'Half Price roof Shingles with this cabin, was &pound;470 now &pound;235');
@@ -174,7 +177,8 @@ CREATE TABLE member (
 -- Dumping data for table member
 --
 
-INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2007-02-01 22:37:43'),
+INSERT INTO member (memberid, first_name, last_name, email_address, password, admin, member_type, verify_code, active, dob, signup_date, last_login) VALUES
+('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2007-02-13 23:42:47'),
 ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '283bc91fe140624d92d9156c08f19093', 1, 'A', '', 1, '0000-00-00', '0000-00-00 00:00:00', '2007-01-12 11:42:47');
 
 -- --------------------------------------------------------
@@ -195,7 +199,8 @@ CREATE TABLE member_type (
 -- Dumping data for table member_type
 --
 
-INSERT INTO member_type (member_type, type_name, comments, disp_order) VALUES ('U', 'User', 'Ability to View all details on the site', 1),
+INSERT INTO member_type (member_type, type_name, comments, disp_order) VALUES
+('U', 'User', 'Ability to View all details on the site', 1),
 ('N', 'New User', 'No permissions yet - waiting verification', 3),
 ('A', 'Administrator', 'Full Administrative capabilities', 2);
 
@@ -224,7 +229,8 @@ CREATE TABLE newsitems (
 -- Dumping data for table newsitems
 --
 
-INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO newsitems (id, newsitem, news_text, news_date, news_img, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'IDEAL HOME AND GARDEN SHOW', 'From the 5th - 9th April we will be at the <a target="_blank" href="http://www.secc.co.uk/whatson/index.cfm?inc_dsp=view&eventRef=E67C67E6-508B-E9FB-9810CA3259FDBB77">SECC</a> in Glasgow for the <a target="_blank" href="http://www.idealhomeandgardenshow.co.uk/">Ideal Home and Garden Show</a> - come and see us there!', '2006-04-02', 'secc.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'NEW SITE LAUNCHED', 'Our new-look website has been launched, corresponding with the fantastic new ranges of log cabins and BBQ huts we have added to our portfolio.  <a href="mailto:firstsummerhouses@msn.com?Subject=New%20Website">Let us know</a> what you think!', '2006-03-31', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 'Website Re-design', 'Welcome to 1st Summerhouses, we hope you find this website more user friendly.  If you have any questions or comments about our new website please contact us at sales@1stsummerhouses.com', '2006-10-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -258,7 +264,8 @@ CREATE TABLE photos (
 -- Dumping data for table photos
 --
 
-INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, comments, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 16, 'kota_k172_00020.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO photos (id, product_id, imgfile, disporder, title, default_flag, comments, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 16, 'kota_k172_00020.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 16, 'kota_k172_00040.jpg', 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 16, 'kota_k172_00060.jpg', 60, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 16, 'kota_k172_00100.jpg', 100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -499,7 +506,8 @@ CREATE TABLE plans (
 -- Dumping data for table plans
 --
 
-INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 32, 'tyla_cg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO plans (id, product_id, imgfile, disporder, title, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 32, 'tyla_cg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 32, 'tyla_cg_01.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 33, 'tyla_ct_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 33, 'tyla_ct_02.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -579,20 +587,22 @@ CREATE TABLE proddimensions (
   numvalue double default NULL,
   created datetime default NULL,
   updated datetime default NULL,
-  PRIMARY KEY  (id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=421 ;
+  PRIMARY KEY  (id),
+  UNIQUE KEY product_id (product_id,dimension_id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=439 ;
 
 --
 -- Dumping data for table proddimensions
 --
 
-INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES (1, 14, 41, 'Octagonal - Seating for 8 persons', 8, NULL, NULL),
+INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, created, updated) VALUES
+(1, 14, 41, 'Octagonal - Seating for 8 persons', 8, NULL, NULL),
 (2, 14, 3, '0.37 m', 0.37, NULL, NULL),
 (3, 14, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
 (4, 14, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
 (5, 14, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
 (6, 14, 7, '1 door', 1, NULL, NULL),
-(7, 14, 8, '4 windows, double glazed', 4, NULL, NULL),
+(7, 14, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
 (8, 15, 41, 'Octagonal - Seating for 10 persons', 8, NULL, NULL),
 (9, 15, 3, '0.37 m', 0.37, NULL, NULL),
 (10, 15, 4, '40 mm double tongue and groove logs from Red Pine.', 40, NULL, NULL),
@@ -600,7 +610,7 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (12, 15, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
 (13, 15, 42, '3.75 m', 3.75, NULL, NULL),
 (14, 15, 7, '1 door at 146/61', 1, NULL, NULL),
-(15, 15, 8, '4 windows 62/30, double glazed', 4, NULL, NULL),
+(15, 15, 8, '4 windows 62/30 (1 window opens), double glazed', 4, NULL, NULL),
 (32, 14, 9, '', 0, NULL, NULL),
 (33, 14, 10, '', 0, NULL, NULL),
 (34, 14, 11, '', 0, NULL, NULL),
@@ -923,7 +933,23 @@ INSERT INTO proddimensions (id, product_id, dimension_id, textvalue, numvalue, c
 (417, 52, 8, '2 opening windows, double glazed with privacy blinds', 4, NULL, NULL),
 (418, 52, 33, '', 0, NULL, NULL),
 (419, 52, 53, '', 0, NULL, NULL),
-(420, 52, 54, '', 0, NULL, NULL);
+(420, 52, 54, '', 0, NULL, NULL),
+(423, 16, 41, 'Octagonal - Seating for 30 persons', 30, NULL, NULL),
+(424, 16, 3, '0.37 m', 0.37, NULL, NULL),
+(425, 16, 4, '40 mm double tongue and groove logs from Red Pine. 4.65m x 4.65m', 40, NULL, NULL),
+(426, 16, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
+(427, 16, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(428, 16, 42, '4.08 m', 4.08, NULL, NULL),
+(429, 16, 7, '1 door', 1, NULL, NULL),
+(430, 16, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL),
+(431, 17, 41, '10 Sides - Seating for 40 persons', 40, NULL, NULL),
+(432, 17, 3, '0.37 m', 0.37, NULL, NULL),
+(433, 17, 4, '40 mm double tongue and groove logs from Red Pine. 6.00m x 6.05m', 40, NULL, NULL),
+(434, 17, 5, 'Decking that can be removed for cleaning.', 0, NULL, NULL),
+(435, 17, 6, '20 mm tongue and groove roof boards.', 20, NULL, NULL),
+(436, 17, 42, '4.60 m', 4.6, NULL, NULL),
+(437, 17, 7, '1 door', 1, NULL, NULL),
+(438, 17, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -949,7 +975,8 @@ CREATE TABLE prodgroups (
 -- Dumping data for table prodgroups
 --
 
-INSERT INTO prodgroups (id, prodgroup, prodrange_id, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, '30mm', 4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodgroups (id, prodgroup, prodrange_id, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, '30mm', 4, 10, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, '45mm', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Extras for', 4, 30, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '45mm', 6, 10, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -982,7 +1009,8 @@ CREATE TABLE prodprices (
 -- Dumping data for table prodprices
 --
 
-INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (651, 7, 28, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodprices (id, product_id, prodvariation_id, rangeoption_id, pivot, price, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(651, 7, 28, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL),
 (650, 7, 27, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL),
 (649, 7, 26, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL),
 (648, 7, 25, 2, NULL, 238, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1271,7 +1299,8 @@ CREATE TABLE prodranges (
 -- Dumping data for table prodranges
 --
 
-INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (4, 'Standard Cabins', 2, 10, NULL, 'The 1st Summerhouses Standard Cabins comprises the T-buildings and Borkum.  A well-designed and well-built range of buildings in 45mm wood, suitable  \r\nfor many uses.  Whether it is a children''s playhouse, home office, home beauty salon or smoking room we have something for every purpose.  From the T24, our  \r\nmost popular model, to the T23, the baby of the family, the T buildings are excellent quality and unbelievable value for money.  The Borkum is a 3m x 3m  \r\ncabin with 1.5m terrace ideal for alfresco dining.  With the attention to detail and quality of workmanship standard in all our cabins this range is  \r\nexcellent value for money.', NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodranges (id, range, category_id, disporder, short_text, long_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(4, 'Standard Cabins', 2, 10, NULL, 'The 1st Summerhouses Standard Cabins comprises the T-buildings and Borkum.  A well-designed and well-built range of buildings in 45mm wood, suitable  \r\nfor many uses.  Whether it is a children''s playhouse, home office, home beauty salon or smoking room we have something for every purpose.  From the T24, our  \r\nmost popular model, to the T23, the baby of the family, the T buildings are excellent quality and unbelievable value for money.  The Borkum is a 3m x 3m  \r\ncabin with 1.5m terrace ideal for alfresco dining.  With the attention to detail and quality of workmanship standard in all our cabins this range is  \r\nexcellent value for money.', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Premier Cabins', 2, 20, NULL, 'The 1st Summerhouses Premier Cabins comprises of the Nida and the Tornio Log Cabins.  The Nida range offers a choice of styles in 45mm wood (60mm  \r\noption) with double glazing as standard. The Chalet Nida, coming in 7 different sizes, from 3m x 3m to 5m x 5m and offering add-on choices of terrace,  \r\nshelter or annex in any combination (or all three!) this is true versatility!  The Nida Panorama, a log cabin with the benefits of double doors and window  \r\npanels (all double glazed) has the warmth and strength of a cabin and the advantages of a summerhouse. The Tornio has the advantage of glazed double doors,  \r\n11/2 in the 3m width.   Garden room, hot tub house, spare bedroom, dining room the reasons to buy are too many to mention.', NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Multi-Room Cabins', 2, 30, NULL, 'Our multi-room cabins offer a wide choice of styles suitable for holiday use or longer alternative accommodation.  With double glazing as standard, option of  \r\ndifferent wood thickness and our usual attention to detail the holiday house range are superior buildings in every way.', NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Huts', 1, 1, NULL, 'The range of 1st Summerhouses BBQ Huts has something for every situation.  The 6.9sqm which is ideal for the smaller garden up to the 28.8sqm suitable for  \r\nanything from a  party venue to a prayer hut.  The traditional 8-sided build and steeply pitched roof offer an unbelievable amount of space.  Coming with a  \r\ncomplete package (from fur rugs to butter knife) all you need to buy are the steaks.  For an unforgettable evening try a Finnish BBQ Hut!', NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1312,7 +1341,8 @@ CREATE TABLE products (
 -- Dumping data for table products
 --
 
-INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES (4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ''n'' turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
+INSERT INTO products (id, product, htmlname, prodrange_id, prodgroup_id, brochure, disporder, short_text, long_text, created_by, created, created_at, updated_by, updated, updated_at) VALUES
+(4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ''n'' turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL),
 (5, 'Nida A', NULL, 5, 6, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Nida S', NULL, 5, 6, 'nida_ns.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'Nida T', NULL, 5, 6, 'nida_nt.pdf', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1390,7 +1420,8 @@ CREATE TABLE prodvariations (
 -- Dumping data for table prodvariations
 --
 
-INSERT INTO prodvariations (id, variation, imgfile, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (9, NULL, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO prodvariations (id, variation, imgfile, product_id, vlength, vbreadth, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(9, NULL, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, NULL, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, NULL, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, NULL, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1518,7 +1549,8 @@ CREATE TABLE rangeoptions (
 -- Dumping data for table rangeoptions
 --
 
-INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO rangeoptions (id, rangeoption, prodrange_id, disporder, short_text, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Single Window', 5, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Double Window', 5, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Single Door', 5, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1556,7 +1588,8 @@ CREATE TABLE resellerproducts (
 -- Dumping data for table resellerproducts
 --
 
-INSERT INTO resellerproducts (id, reseller_id, product_id, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 1, 14, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO resellerproducts (id, reseller_id, product_id, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 1, 14, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 2, 14, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 3, 14, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 4, 14, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1605,7 +1638,8 @@ CREATE TABLE resellers (
 -- Dumping data for table resellers
 --
 
-INSERT INTO resellers (id, reseller, address1, address2, town, county, postcode, telephone, email, website, locx, locy, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', 550, 330, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO resellers (id, reseller, address1, address2, town, county, postcode, telephone, email, website, locx, locy, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', 550, 330, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', 670, 495, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Champfleurie Estate', 'Champfleurie House', NULL, 'Linlithgow', NULL, 'EH51 0AU', '01506 847999', 'info@champfleurieestate.co.uk', 'http://www.champfleurieestate.co.uk/', 642, 275, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Hilton Court Nursery', 'Roch', NULL, 'Haverfordwest', 'Pembrokeshire', 'SA62 6AE', '01437 710262', 'information@hiltongardensandcrafts.co.uk', 'http://www.hiltongardensandcrafts.co.uk/', 602, 453, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1634,7 +1668,8 @@ CREATE TABLE tabs (
 -- Dumping data for table tabs
 --
 
-INSERT INTO tabs (id, page, tab, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO tabs (id, page, tab, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'product', 'Gallery', 20, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'product', 'Plans', 30, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -1662,7 +1697,8 @@ CREATE TABLE testimonalphotos (
 -- Dumping data for table testimonalphotos
 --
 
-INSERT INTO testimonalphotos (id, testimonal_id, imgfile, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (1, 5, 'busby1.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO testimonalphotos (id, testimonal_id, imgfile, disporder, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(1, 5, 'busby1.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 4, 'irvine1.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 4, 'irvine2.jpg', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 4, 'irvine3.jpg', 3, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1692,7 +1728,8 @@ CREATE TABLE testimonals (
 -- Dumping data for table testimonals
 --
 
-INSERT INTO testimonals (id, testimonal_date, customer_name, testimonal, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES (6, '2007-01-30', 'Chris Currie', 'That''s a year now we''ve had our barbecue house and if I am 100% honest, probably the best money we''ve ever spent socially. My friends love coming round and we have some great nights.', NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO testimonals (id, testimonal_date, customer_name, testimonal, created_by, created_on, created_at, updated_by, updated_on, updated_at) VALUES
+(6, '2007-01-30', 'Chris Currie', 'That''s a year now we''ve had our barbecue house and if I am 100% honest, probably the best money we''ve ever spent socially. My friends love coming round and we have some great nights.', NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '2004-01-01', 'Scott Irvine (Edinburgh)', 'We are delighted with it and we are already onto BBQ number 6 and the grandchildren have already slept in it overnight once and have booked another overnight stay.\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, '2007-01-30', 'Gary Busby', 'Went together great and looks even better, looking forward to some great parties.', NULL, NULL, NULL, NULL, NULL, NULL),
 (7, '2007-01-01', 'Susan Lambert (Woodend Farm)', 'We just love our bbq hut!', NULL, NULL, NULL, NULL, NULL, NULL);

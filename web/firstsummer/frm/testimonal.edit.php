@@ -4,7 +4,7 @@
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Testinomal Form
+ * Testimonal Form
  *
  * $Id: news.edit.php 310 2006-10-10 21:31:17Z craig $
  *

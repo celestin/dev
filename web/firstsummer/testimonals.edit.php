@@ -4,12 +4,13 @@
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Testimonal Creation
+ * Editing of a Testimonal
  *
  * $Id: news.edit.php 310 2006-10-10 21:31:17Z craig $
  *
  * Who  When         Why
  * CAM  01-Feb-2007  10081 : File created.
+ * CAM  13-Feb-2007  10079 : Corrected Flash message.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Edit Testimonal";
@@ -65,8 +66,7 @@ if (!$retry) {
 } else if (!$testimonal) {
   retry_create("You must enter the text of the Testimonal.");
 } else {
-echo "<h3>!!!!</h3>";
-  storeFlash("News Item <b>$testimonal_date - $customer_name</b> edited.");
+  storeFlash("Testimonal <b>$testimonal_date - $customer_name</b> edited.");
 
   $testimonal_date = Util::displayToSqlDate($testimonal_date);
   $customer_name = Util::textToSql($customer_name);

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Home Page Context
@@ -12,6 +12,7 @@
  * CAM  10-Feb-2006  File created.
  * CAM  08-Apr-2006  Added newsitems.
  * CAM  07-Oct-2006  10037 : Corrected Image border/class on featured products for IE.
+ * CAM  13-Feb-2007  10079 : Editable Featured Products. Show Flash (after Featured Products edit, or anything else).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -23,7 +24,7 @@ We also custom build Log Cabins to customer specifications.</p>
 <p>Our products are sourced from only the best manufacturers, and from ordering to completion we will keep you informed every step of the way.</p>
 </td>
 <td width="65%" valign=top style="padding-left:5px"><table border=0 cellpadding=4 cellspacing=0>
-<tr><td align=left><img style="padding-right:8px" src="img/title/news.gif" width="49" height="15" alt="News"></td></tr>
+<tr><td align=left><? showFlash(); ?><img style="padding-right:8px" src="img/title/news.gif" width="49" height="15" alt="News"></td></tr>
 
 <?
 
@@ -70,7 +71,7 @@ while ($row = mysql_fetch_array($sql)) {
   <td colspan=2 align=center><table border=0 cellpadding=0 cellspacing=8 width="100%">
     <tr>
 <?
-  $ssql = "SELECT f.product_id,f.product,f.description,f.price,f.feature,h.imgfile ".
+  $ssql = "SELECT f.id feature_id,f.product_id,f.product,f.description,f.price,f.feature,h.imgfile ".
           "FROM featuredproducts f, photos h ".
           "WHERE f.product_id = h.product_id ".
           "AND h.default_flag = 1 ".
@@ -91,9 +92,21 @@ while ($row = mysql_fetch_array($sql)) {
 ?>
 <td width="50%" class="feature" valign=top><table border=0 cellpadding=0 cellspacing=4 width="100%">
   <tr><td width="100" rowspan=3 class="price" valign=top><a class="imgnav" href="product.php?product=<? echo $product_id; ?>"><img border=0 src="img/g/t/<? echo $imgfile; ?>"></a>
-    <br><? echo Util::getHtmlPrice($price); ?></td>
-    <td class="leftspace" valign=top><a href="product.php?product=<? echo $product_id; ?>"><? echo $product; ?></a></td>
-  </tr>
+    <br><? echo Util::getHtmlPrice($price); ?></td><td class="leftspace" valign=top>
+<?
+  if ($loggedin && $member->isAdmin()) {
+    $href = "featured.edit.php?feature_id=$feature_id";
+?>
+    <a href="<? echo $href; ?>"><img border=0 class="sep" src="img/edit/edit.png"></a>
+    <a href="<? echo $href; ?>"><? echo $product; ?></a>
+<?
+  } else {
+?>
+    <a href="product.php?product=<? echo $product_id; ?>"><? echo $product; ?></a>
+<?
+  }
+?>
+  </td></tr>
   <tr><td class="leftspace"><? echo $description; ?></td></tr>
   <tr><td class="leftspace" valign=bottom><? echo $feature; ?></td></tr>
 </table></td>

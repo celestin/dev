@@ -23,6 +23,7 @@
  * CAM  14-Nov-2006  10012 : Added Call/Email me about this product.
  * CAM  06-Feb-2007  10082 : Added Variation Images.
  * CAM  06-Feb-2007  10082 : Fixed JS Error onclick.
+ * CAM  13-Feb-2007  10075 : Included order in Dimensions to ensure consistent results.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -358,7 +359,8 @@ if ($example_count > 0) {
   $sql = mysql_query("SELECT distinct(d.dim_type) dim_type ".
                      "FROM proddimensions pd, dimensions d ".
                      "WHERE pd.dimension_id = d.id ".
-                     "AND pd.product_id = $uproduct");
+                     "AND pd.product_id=$uproduct ".
+                     "ORDER BY 1");
   while ($row = mysql_fetch_array($sql)) {
     $dimtypes[count($dimtypes)+1] = $row[0];
   }

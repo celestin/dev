@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * General Utilities
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
  * CAM  06-Oct-2006  10040 : Added textToSql, getHtmlPrice.
+ * CAM  13-Feb-2007  10079 : Ensure textToSql encodes pound symbols correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Util {
@@ -32,7 +33,9 @@ class Util {
   * @returns String
   */
   function textToSql($text) {
-    return str_replace("'", "'", $text);
+    $ret = str_replace("'", "'", $text);
+    $ret = str_replace("£", "&pound;", $ret);
+    return $ret;
   }
 
   /**

@@ -84,16 +84,16 @@ if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
 ?>
       <tr><td align=top><img width=361 class="bluebox" src="img/ph/f/<? echo $main_pic; ?>"></td><td rowspan=2 align=left valign=top><table border=0 cellpadding=0 cellspacing=0><tr>
 <?
+      echo $html;
       if ($loggedin && $member->isAdmin()) {
 ?>
-      <p><center><a href="fileupload.php">Upload a new photo</a></center></p>
+      </tr><tr><td colspan=<? echo $phmax; ?>><center><a href="fileupload.php">Upload a New Photo</a></center></td></tr>
 <?
       }
-      echo $html;
 ?>
-      </tr></table></td></tr>
+      </table></td></tr>
 
-      <tr><td
+      <tr><td>
 <?
       if ($loggedin && $member->isAdmin()) {
         include 'frm/photo.update.php';

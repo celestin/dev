@@ -6,7 +6,7 @@
  *
  * Photo text update
  *
- * $Id: file.upload.php 76 2006-05-10 22:47:06Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  10-May-2006  File created.

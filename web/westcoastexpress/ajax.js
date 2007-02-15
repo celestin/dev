@@ -5,7 +5,7 @@
  *
  * Javascript - AJAXesque stuff!
  *
- * $Id: date.js 76 2006-05-10 22:47:06Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  31-May-2006  File created.

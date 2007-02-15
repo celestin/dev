@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Photo Gallery Page Context
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  21-Dec-2006  10069 : Allow editing of photo details.
+ * CAM  15-Feb-2007  10102 : Ensure the default Photo the page opens with can be edited.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Photo Gallery";
@@ -61,6 +62,7 @@ if (!empty($_GET['photo'])) $uphoto = $_GET['photo'];
           $uboat = $boat;
           $ulocation = $location;
           $udisporder = $disporder;
+          $uphoto = $id;
         }
 
         $phcount++;

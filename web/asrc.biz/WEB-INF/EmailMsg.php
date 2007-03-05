@@ -12,6 +12,7 @@
  * CAM  4-May-2005   File created.
  * CAM  08-Feb-2007  10098 : Added Valentines Dance.
  * CAM  05-Mar-2007  10098 : Removed Valentines Dance.
+ * CAM  05-Mar-2007  10098 : Corrected CSS.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -130,7 +131,7 @@ class EmailMsg {
     $subject = $title . ": " . $this->bookDate . " at " . $this->startTime;
 
     $message = "<html><head>".
-    "<link href=$base/asrc.css rel=stylesheet type=text/css>".
+    "<link href=\"$base/asrc.css\" rel=stylesheet type=text/css>".
     "</head><body>".
     "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
       "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".

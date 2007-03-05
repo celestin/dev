@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  4-May-2005   File created.
  * CAM  08-Feb-2007  10098 : Added Valentines Dance.
+ * CAM  05-Mar-2007  10098 : Removed Valentines Dance.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -153,8 +154,10 @@ class EmailMsg {
 
           $message .= "</table></td>".
         "</tr></table>".
-      "</td></tr>".
-      "<tr><td>A.S.R.C. are celebrating <br>$cr".
+      "</td></tr>";
+
+/*
+      $message .= "<tr><td>A.S.R.C. are celebrating <br>$cr".
               "<b>Valentine's Day</b> by holding <br>$cr".
               "a Valentine Dance <br>$cr".
               "on <b>Saturday 17th February</b> <br>$cr".
@@ -168,8 +171,10 @@ class EmailMsg {
               "Sumptuous buffet included! <br>$cr".
               "Don't miss this great night out...<br>$cr".
               "get your tickets from reception.<br>$cr".
-              "Numbers restricted - <b>so be quick</b>!</td></tr>".
-    "</table>".
+              "Numbers restricted - <b>so be quick</b>!</td></tr>";
+*/
+
+    $message .= "</table>".
     "</body></html>";
 
     mail($to,$subject,$message,$headers);

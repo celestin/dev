@@ -224,7 +224,7 @@ include $toroot ."tpl/top.php";
       </td>
     </tr>
     <tr>
-      <td><img name="greenhouse" src="../images/image_na.jpg" width="164" height="104" alt=""></td>
+      <td><img name="greenhouse" src="../images/robinsons/dwarfwall1.jpg" width="160" height="139" alt=""></td>
       <td><p style="margin-top: 0; margin-bottom: 0">Dwarf Wall Model</p>
         <p style="margin-top: 0; margin-bottom: 0;">To fit on standard
           2&#39; (600mm) high wall.</p>

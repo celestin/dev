@@ -144,7 +144,7 @@ include $toroot ."tpl/top.php";
   </tr>
 
   <tr>
-    <td><img name="greenhouse" src="../images/alton/dwarfwall1.jpg" width="163" height="145" alt=""></td>
+    <td><img name="greenhouse" src="../images/image_na.jpg" width="164" height="104" alt=""></td>
     <td>Traditional Dwarf Wall</td>
     <td>
       <p style="margin-top: 0; margin-bottom: 0">7&#039;7&quot;</p>

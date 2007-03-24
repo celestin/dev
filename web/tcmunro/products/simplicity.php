@@ -45,6 +45,7 @@ include $toroot ."tpl/top.php";
       request a brochure </a></td>
   </tr>
 </table>
+
 <table width="100%"  border="1" cellspacing="0" cellpadding="2">
   <tr align="center" bgcolor="#339933">
     <td width="23%"><p>&nbsp;</p>
@@ -57,106 +58,104 @@ include $toroot ."tpl/top.php";
     <td width="19%"><strong>Doors</strong></td>
   </tr>
   <tr>
-    <td height="110"><img name="greenhouse" src="../images/24hemillpolycarbonatea.jpg" width="181" height="291" alt=""></td>
-    <td><p style="margin-top: 0"><strong> &nbsp;&nbsp;&nbsp; Simplicity
-        4HE</strong></p></td>
-    <td>1240mm(4')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-        620mm&nbsp;&nbsp; &nbsp; (2')</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 1245mm
-        (4'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 1860mm
-        (6'1&quot;)&nbsp;&nbsp;&nbsp; </p></td>
-    <td>&nbsp;&nbsp; 1520mm (5')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-        0</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p></td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2
-        x 1' Doors</p></td>
+    <td><img name="greenhouse" src="../images/simplicity/sandon1.jpg" width="181" height="189" alt=""></td>
+    <td><p style="margin-top: 0"><strong>Simplicity Sandon</strong></p></td>
+    <td>1295mm (4&#039;4&quot;)</td>
+    <td><p style="margin-top: 0; margin-bottom: 0">620mm (2&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1245mm (4&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1860mm (6&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2530mm (8&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3150mm (10&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3770mm (12&#039;4&quot;)</p>
+    </td>
+    <td>1520mm (5&#039;4&quot;)</td>
+    <td>
+      <p style="margin-top: 0; margin-bottom: 0">0</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3</p>
+      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+    </td>
+    <td><p style="margin-top: 0; margin-bottom: 0">2 x 1&#039; Doors</p></td>
   </tr>
   <tr>
-    <td height="110"><img name="greenhouse" src="../images/image_na.jpg" width="164" height="104" alt=""></td>
-    <td><p style="margin-top: 0"><strong> &nbsp;&nbsp;&nbsp; Simplicity
-        6</strong></p></td>
-    <td>1860mm(6'1&quot;')</td>
-    <td><p style="margin-bottom: 0;">&nbsp;&nbsp; 1240mm
-        (4'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 1860mm
-        (6'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 2480mm(8'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 3100mm(10'1&quot;)&nbsp;&nbsp;&nbsp;
-      </p></td>
-    <td>&nbsp;&nbsp; 1220mm (4')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-        1 </p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        2 </p></td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
-        x 2' Doors</p></td>
+    <td><img name="greenhouse" src="../images/simplicity/stramshall1.jpg" width="181" height="181" alt=""></td>
+    <td><p style="margin-top: 0"><strong>Simplicity Stramshall</strong></p></td>
+    <td>1910mm (6&#039;5&quot;)</td>
+    <td>
+      <p style="margin-bottom: 0;">1295mm (4&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1910mm (6&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2530mm (8&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3150mm (10&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3770mm (12&#039;4&quot;)</p>
+    </td>
+    <td>1295mm (4&#039;4&quot;)</td>
+    <td>
+      <p style="margin-top: 0; margin-bottom: 0">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3</p>
+      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+    </td>
+    <td><p style="margin-top: 0; margin-bottom: 0">1 x 2&#039; Door</p></td>
   </tr>
+
   <tr>
     <td height="110"><img name="greenhouse" src="../images/66hemillhg.jpg" width="181" height="188" alt=""></td>
-    <td><p style="margin-top: 0"><strong> &nbsp;&nbsp;&nbsp; Simplicity
-        6HE</strong></p></td>
-    <td>1860mm(6'1&quot;')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 1245mm
-        (4'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 1860mm
-        (6'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 2480mm(8'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 3100mm(10'1&quot;)&nbsp;</p>
-      <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-      </p>
+    <td><p style="margin-top: 0"><strong>Simplicity Shugborough</strong></p></td>
+    <td>1910mm (6&#039;3&quot;)</td>
+    <td>
+      <p style="margin-bottom: 0;">1295mm (4&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1910mm (6&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2530mm (8&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3150mm (10&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3770mm (12&#039;4&quot;)</p>
     </td>
-    <td>&nbsp;&nbsp; 1520mm (5')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-        1 </p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        2 </p></td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;1
-        x 2' Doors</p></td>
+    <td>5&#039;4&quot;</td>
+    <td>
+      <p style="margin-top: 0; margin-bottom: 0">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3</p>
+      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+    </td>
+    <td><p style="margin-top: 0; margin-bottom: 0">1 x 2&#039; Door</p></td>
   </tr>
+
   <tr>
     <td height="110"><img name="greenhouse" src="../images/86millhortiglass.jpg" width="181" height="134" alt=""></td>
-    <td><p style="margin-top: 0"><strong> &nbsp;&nbsp;&nbsp; Simplicity
-        8 </strong></p></td>
-    <td>2480mm(8'1&quot;')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 2480mm(8'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 3100mm(10'1&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;3720mm(12'2&quot;)</p>
-      <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
-      </p>
+    <td><p style="margin-top: 0"><strong>Simplicity Stableford</strong></p></td>
+    <td>1910mm (8&#039;5&quot;)</td>
+    <td>
+      <p style="margin-bottom: 0;">1295mm (4&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1910mm (6&#039;3&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2530mm (8&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3150mm (10&#039;4&quot;)</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3770mm (12&#039;4&quot;)</p>
     </td>
-    <td>&nbsp;&nbsp; 1520mm (4')</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp; 4</p>
+    <td>5&#039;4&quot;</td>
+    <td>
+      <p style="margin-top: 0; margin-bottom: 0">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">1</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p style="margin-top: 0; margin-bottom: 0;">3</p>
+      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+    <td>
+      <p style="margin-top: 0; margin-bottom: 0">1 x 2&#039; Door</p>
+      <p style="margin-top: 0; margin-bottom: 0;">or</p>
+      <p style="margin-top: 0; margin-bottom: 0;">2 x 2&#039; Door</p>
     </td>
-    <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
-        x 2' Door</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        or</p>
-      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;
-        &nbsp; 2 x 2' Doors</p></td>
   </tr>
   <tr>
     <td height="51">Accessories available: Autovents, Louvres, Staging,
       Shelving, Seed Tray Frames.</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td> <p>&nbsp;</p>
-      <p style="margin-bottom: 0;">&nbsp;</p></td>
+    <td>
+      <p>&nbsp;</p>
+      <p style="margin-bottom: 0;">&nbsp;</p>
+    </td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>

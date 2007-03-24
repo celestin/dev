@@ -114,7 +114,7 @@ include $toroot ."tpl/top.php";
     <tr>
       <td><a href="<? echo $toroot; ?>products/Malvern.php"><img src="images/montana.jpg" alt="Malvern Range" name="Malvern" width="178" height="182" border="0" id="Malvern"></a></td>
       <td valign="top"><span class="producttitle">Malvern Range</span><br>
-        Wide variety of Timber Greenhouses, Summerhouses, Gazebos and
+        Wide variety of Timber Greenhouses, Summerhouses, Garages, Gazebos and
         children&rsquo;s Playhouses in Cedar, Deal and Logroll options.
         Also good quality sheds. Supply and erection service. Greenhouses
         have option of glass to ground or timber base panels. </td>

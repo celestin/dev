@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  24-Mar-2007  10105 : Updated text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Elite";
@@ -102,7 +103,7 @@ include $toroot ."tpl/top.php";
                 </td>
                 <td><p style="margin-top: 0">4'11&quot;</p></td>
                 <td><p style="margin-top: 0">1</p></td>
-                <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;Single Silding
+                <td><p style="margin-top: 0; margin-bottom: 0">Single Silding
                     Door 2' wide.</p>
                   <p style="margin-top: 0; margin-bottom: 0;">Separate base to
                     increase Ht by 5&quot;.</p>
@@ -124,15 +125,13 @@ include $toroot ."tpl/top.php";
                 <td><p style="margin-top: 0; margin-bottom: 0">1</p>
                   <p style="margin-top: 0; margin-bottom: 0;">2</p>
                   <p style="margin-top: 0;">2</p></td>
-                <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;Single Silding
+                <td><p style="margin-top: 0; margin-bottom: 0">Single Silding
                     Door 2' wide.</p>
-                  <p style="margin-top: 0; margin-bottom: 0;">Separate base to
-                    increase Ht by 5&quot;.</p>
+                  <p style="margin-top: 0; margin-bottom: 0;">Separate base to increase Ht by 5&quot;.</p>
                   <p style="margin-top: 0; margin-bottom: 0;">Powder-coated Colours.</p>
-                  <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass
-                    or Polycarbonate Option.</p>
-                  <p style="margin-top: 0; margin-bottom: 0;">Extra Roof Bracing.
-                    Partition. </p></td>
+                  <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass or Polycarbonate Option.</p>
+                  <p style="margin-top: 0; margin-bottom: 0;">Extra Roof Bracing. Partition. </p>
+                  <p style="margin-top: 0; margin-bottom: 0;">Double door Option.</p></td>
               </tr>
               <tr>
                 <td><img name="greenhouse" src="../images/elite/supreme.jpg" width="163" height="109" alt=""></td>
@@ -183,7 +182,8 @@ include $toroot ."tpl/top.php";
                   <p style="margin-top: 0; margin-bottom: 0;">8'4&quot;</p></td>
                 <td><p style="margin-top: 0; margin-bottom: 0">6'5&quot;</p>
                   <p style="margin-top: 0; margin-bottom: 0;">8'5&quot;</p>
-                  <p style="margin-top: 0; margin-bottom: 0;">10'5&quot;</p></td>
+                  <p style="margin-top: 0; margin-bottom: 0;">10'5&quot;</p>
+                  <p style="margin-top: 0; margin-bottom: 0;">etc</p></td>
                 <td><p style="margin-top: 0; margin-bottom: 0">5'11&quot;</p></td>
                 <td><p style="margin-top: 0">1</p></td>
                 <td><p style="margin-top: 0; margin-bottom: 0"><br>

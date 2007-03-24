@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  24-Mar-2007  10105 : Removed products.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Dovetail";
@@ -212,6 +213,7 @@ include $toroot ."tpl/top.php";
                   1 </td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2' wide</td>
               </tr>
+<!--
               <tr>
                 <td><img src="../images/patio_planthouse_s.jpg" width="160" height="107"></td>
                 <td>&nbsp;&nbsp;&nbsp; Patio Planthouse</td>
@@ -250,6 +252,7 @@ include $toroot ."tpl/top.php";
                     2' wide</p>
                 </td>
               </tr>
+-->
               <tr>
                 <td><img src="../images/image_na.jpg" width="164" height="104"></td>
                 <td><p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;

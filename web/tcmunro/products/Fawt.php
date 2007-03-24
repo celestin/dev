@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  24-Mar-2007  10105 : Tidied formatting.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Fawt";
@@ -81,7 +82,7 @@ include $toroot ."tpl/top.php";
                 <td align="center" valign="top">8'</td>
                 <td align="center" valign="top">11'</td>
                 <td align="center" valign="top">5'8&quot; </td>
-                <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0"><span class="style12">2</span> <span class="style12">Roof</span></p>
+                <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">2 Roof</p>
                   <p style="margin-top: 0; margin-bottom: 0;">2 Side</p>
                 <p style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
                 <td align="center" valign="top">1 Hinged</td>
@@ -119,30 +120,30 @@ include $toroot ."tpl/top.php";
               <tr>
                 <td><img name="greenhouse" src="../images/image_na.jpg" width="164" height="104" alt=""></td>
                 <td align="center" valign="top">Solar V</td>
-                <td align="center" valign="top"><span class="style12">7'1&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">10'9&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">5' </span></td>
-                <td align="center" valign="top"><p class="style12" style="margin-top: 0; margin-bottom: 0">2 Roof</p>
-                <p class="style12" style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
-                <td align="center" valign="top"><span class="style12">1 Sliding</span></td>
+                <td align="center" valign="top">7'1&quot;</td>
+                <td align="center" valign="top">10'9&quot;</td>
+                <td align="center" valign="top">5'</td>
+                <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">2 Roof</p>
+                <p style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
+                <td align="center" valign="top">1 Sliding</td>
               </tr>
               <tr>
                 <td><img name="greenhouse" src="../images/solarews.jpg" width="190" height="138" alt=""></td>
                 <td align="center" valign="top">Solar EW8</td>
-                <td align="center" valign="top"><span class="style12">9'2&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">8'8&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">5' </span></td>
-                <td align="center" valign="top"><p class="style12" style="margin-top: 0; margin-bottom: 0">2 Roof</p>
-                <p class="style12" style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
+                <td align="center" valign="top">9'2&quot;</td>
+                <td align="center" valign="top">8'8&quot;</td>
+                <td align="center" valign="top">5'</td>
+                <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">2 Roof</p>
+                <p style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
                 <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">Double</p>
                 <p style="margin-top: 0; margin-bottom: 0;">Sliding</p></td>
               </tr>
               <tr>
                 <td><img name="greenhouse" src="../images/solarews.jpg" width="190" height="138" alt=""></td>
-                <td align="center" valign="top"><span class="style12">Solar EW10</span></td>
-                <td align="center" valign="top"><span class="style12">9'2&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">10'9&quot;</span></td>
-                <td align="center" valign="top"><span class="style12">5' </span></td>
+                <td align="center" valign="top">Solar EW10</td>
+                <td align="center" valign="top">9'2&quot;</td>
+                <td align="center" valign="top">10'9&quot;</td>
+                <td align="center" valign="top">5'</td>
                 <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">2 Roof</p>
                 <p style="margin-top: 0; margin-bottom: 0;">2 Base</p></td>
                 <td align="center" valign="top"><p style="margin-top: 0; margin-bottom: 0">Double</p>

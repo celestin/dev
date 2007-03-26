@@ -12,6 +12,7 @@
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added endsWith and moved getObjRef to ajax.js.
  * CAM  21-Dec-2006  10068 : Specify correct paths.
+ * CAM  26-Mar-2007  Fixed bug with server paths.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
@@ -21,7 +22,7 @@ $cfg['Site']['Email'] = "waveney77@yahoo.com";
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
   $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
 } else {
-  $cfg['Site']['Dir'] = "/home/virtual/westcoastexpress.net/var/www/html/";  // trailing slash
+  $cfg['Site']['Dir'] = "/var/www/html/";  // trailing slash
 }
 
 $cfg['Site']['Db']['Hostname'] = "localhost";

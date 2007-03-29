@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  29-Mar-2007  10109 : Added link to Garden page (Decking).
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -36,9 +37,11 @@
       <tr><td align=center>[ <a href="tub.php?series=300">300 series</a> ]</td></tr>
       <tr><td align=center>[ <a href="tub.php?series=500">500 series</a> ]</td></tr>
       <tr><td align=center>[ <a href="tub.php?series=700">700 series</a> ]</td></tr>
-      <tr><td align=center><div><img src="img/ico_new2.gif" alt="New!"></div>[ <a href="accessories.php">accessories</a> ]</td></tr>
+      <tr><td align=center><div><img src="img/ico_new2.gif"></div>[ <a href="garden.php">decking ideas</a> ]</td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><div><img src="img/ico_new2.gif" alt="New!"></div>[ <a href="photo.php">photo album</a> ]</td></tr>
+      <tr><td align=center>[ <a href="accessories.php">accessories</a> ]</td></tr>
+      <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center>[ <a href="photo.php">photo album</a> ]</td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center>[ <a href="protec.php">protec</a> ]</td></tr>
       <tr><td align=center>[ <a href="evolution.php">hot tub evolution</a> ]</td></tr>

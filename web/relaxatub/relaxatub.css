@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  07-Oct-2006  10055 : Added promotion for DIV and P.
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
+ * CAM  29-Mar-2007  10109 : Added h2.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -20,6 +21,14 @@ p, table, td {
   COLOR: #333333;
   FONT-FAMILY: Arial, Helvetica;
   FONT-SIZE: 9pt;
+  TEXT-DECORATION: none;
+}
+
+h2 {
+  COLOR: #0052AF;
+  FONT-FAMILY: Times New Roman, Serif;
+  FONT-SIZE: 20pt;
+  FONT-STYLE: italic;
   TEXT-DECORATION: none;
 }
 
@@ -184,7 +193,6 @@ p.bht {
 .desc {
   COLOR: #004936;
   FONT-SIZE: 13pt;
-  TEXT-ALIGN: justify;
 }
 
 .desc2, li {

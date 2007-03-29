@@ -14,6 +14,7 @@
  * CAM  07-Oct-2006  10055 : Added October offer and Finance Deal.
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
  * CAM  16-Dec-2006  10055 : Removed Interest-free credit offer.
+ * CAM  29-Mar-2007  10109 : Exposed original design until "Beach Scene" is created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -23,7 +24,6 @@ include "tpl/top.php";
       <table border=0 cellpadding=5 valign=middle>
       <tr><td align=center><img src="img/xmas01.jpg" width=269 height=415></td></tr>
       </table>
--->
 
       <table border=0 cellspacing=0 cellpadding=0 valign=middle>
       <tr><td><img src="img/pro/2006oct1.jpg" width=620 height=355></td></tr>
@@ -45,7 +45,6 @@ Beachcomber Stock Hot Tub on</p>
 <p class="legal">Typical 0% APR</p></div>
 -->
 
-<!--
       <table border=0 cellpadding=5 valign=middle>
 
       <tr><td align=center><table border=0 cellpadding=0 cellspacing=0>
@@ -74,7 +73,7 @@ Beachcomber Stock Hot Tub on</p>
       </table></td></tr>
 
       </table>
--->
+
 <?
   include "tpl/bot.php";
 ?>

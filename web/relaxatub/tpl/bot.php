@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  29-Mar-2007  10109 : Added new date.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
       </td></tr>
@@ -18,7 +19,7 @@
 
   <tr>
     <td><img src="img/f.gif"></td>
-    <td align=center class=cpyrght>Copyright &copy; 2006 Relaxatub. All rights reserved.<br />
+    <td align=center class=cpyrght>Copyright &copy; 2003-2007 Relaxatub. All rights reserved.<br />
     Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td>
   </tr>
   </table></td></tr>

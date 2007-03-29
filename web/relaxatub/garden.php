@@ -14,7 +14,7 @@
 
 include_once 'main.php';
 
-$pageTitle = "Protec";
+$pageTitle = "Garden &amp; Decking Ideas";
 include "tpl/top.php";
 ?>
 

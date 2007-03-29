@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * TC Munro
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Products page: Robinsons Structures
@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  29-Mar-2007  10105 : Improved CSS.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Robinsons Structures";
@@ -48,8 +49,8 @@ include $toroot ."tpl/top.php";
       <td>To suit site</td>
       <td>7'</td>
       <td>Full length 1 side of ridge. Option to have both sides.</td>
-      <td><p style="margin-top: 0; margin-bottom: 0">Single</p>
-        <p style="margin-top: 0; margin-bottom: 0;">1.35 x 2.35</p></td>
+      <td><p class="tight">Single</p>
+        <p class="tight">1.35 x 2.35</p></td>
     </tr>
     <tr>
       <td><img name="greenhouse" src="../images/67rg.jpg" width="160" height="108" alt=""></td>
@@ -58,10 +59,10 @@ include $toroot ."tpl/top.php";
       <td>To suit site</td>
       <td>7'</td>
       <td>Full length 1 side of ridge. Option to have both sides.</td>
-      <td><p style="margin-top: 0; margin-bottom: 0">Single</p>
-        <p style="margin-top: 0; margin-bottom: 0;">1.35 x 2.35</p>
-        <p style="margin-top: 0; margin-bottom: 0;">Double</p>
-        <p style="margin-top: 0; margin-bottom: 0;">2.7x2.35</p></td>
+      <td><p class="tight">Single</p>
+        <p class="tight">1.35 x 2.35</p>
+        <p class="tight">Double</p>
+        <p class="tight">2.7x2.35</p></td>
     </tr>
     <tr>
       <td><img name="greenhouse" src="../images/90rg.jpg" width="160" height="106" alt=""></td>
@@ -70,10 +71,10 @@ include $toroot ."tpl/top.php";
       <td>To suit site</td>
       <td>7'</td>
       <td>Full length 1 side of ridge. Option to have both sides.</td>
-      <td><p style="margin-top: 0; margin-bottom: 0">Single</p>
-        <p style="margin-top: 0; margin-bottom: 0;">1.35 x 2.35</p>
-        <p style="margin-top: 0; margin-bottom: 0;">Double</p>
-        <p style="margin-top: 0; margin-bottom: 0;">2.7x2.35</p></td>
+      <td><p class="tight">Single</p>
+        <p class="tight">1.35 x 2.35</p>
+        <p class="tight">Double</p>
+        <p class="tight">2.7x2.35</p></td>
     </tr>
     <tr>
       <td><img name="greenhouse" src="../images/90rgs.jpg" width="160" height="161" alt=""></td>
@@ -87,7 +88,7 @@ include $toroot ."tpl/top.php";
     <tr>
       <td><p style="margin-bottom: 0;">Bespoke buildings
           and Multispan available.</p>
-        <p style="margin-top: 0; margin-bottom: 0;">Range of Accessories
+        <p class="tight">Range of Accessories
           including Heavy-duty Benching made to order.</p></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>

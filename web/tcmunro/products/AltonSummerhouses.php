@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * TC Munro
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Products page: Alton Summerhouses
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
  * CAM  24-Mar-2007  10105 : Updated text.
+ * CAM  29-Mar-2007  10105 : Improved CSS.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Alton Summerhouses";
@@ -20,10 +21,10 @@ include $toroot ."tpl/top.php";
 <table width="100%"  border="0" cellpadding="5">
   <tr>
     <td width="43%"><img src="../images/altonlogo.jpg" width="298" height="65"></td>
-      <td width="57%" rowspan="2" valign="top"><p style="margin-top: 0; margin-bottom: 0">Alton
+      <td width="57%" rowspan="2" valign="top"><p class="tight">Alton
           Summerhouses are constructed from Western Red Cedar or Redwood.
         </p>
-        <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass
+        <p class="tight">Toughened Glass
           is standard, as is the green Felt Roof and Lockable Doors.
           1 year Guarantee. Options include Window Boxes, Cedar slatted roof.</p></td>
   </tr>
@@ -50,8 +51,8 @@ include $toroot ."tpl/top.php";
     <td>6&#039;6&quot;</td>
     <td>Cedar</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Single Door 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
+      <p class="tight">Single Door 2&#039; wide.</p>
+      <p class="tight">Ground Bearers.</p>
     </td>
   </tr>
   <tr>
@@ -62,8 +63,8 @@ include $toroot ."tpl/top.php";
     <td>6&#039;6&quot;</td>
     <td>Cedar</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Double Doors each 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
+      <p class="tight">Double Doors each 2&#039; wide.</p>
+      <p class="tight">Ground Bearers.</p>
     </td>
   </tr>
   <tr>
@@ -74,8 +75,8 @@ include $toroot ."tpl/top.php";
     <td>6&#039;6&quot;</td>
     <td>Cedar</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Double Doors each 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
+      <p class="tight">Double Doors each 2&#039; wide.</p>
+      <p class="tight">Ground Bearers.</p>
     </td>
   </tr>
   <tr>
@@ -86,8 +87,8 @@ include $toroot ."tpl/top.php";
     <td>6&#039;6&quot;</td>
     <td>Cedar</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Double Doors each 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
+      <p class="tight">Double Doors each 2&#039; wide.</p>
+      <p class="tight">Ground Bearers.</p>
     </td>
   </tr>
   <tr>
@@ -98,8 +99,8 @@ include $toroot ."tpl/top.php";
     <td>6&#039;6&quot;</td>
     <td>Cedar</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Double Doors each 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
+      <p class="tight">Double Doors each 2&#039; wide.</p>
+      <p class="tight">Ground Bearers.</p>
     </td>
   </tr>
   <tr>
@@ -109,10 +110,10 @@ include $toroot ."tpl/top.php";
     <td>6&#039;2&quot;</td>
     <td>6&#039;6&quot;</td>
     <td>Redwood</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">Single Door 2&#039;
+    <td><p class="tight">Single Door 2&#039;
         wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Red Felt Roof. </p></td>
+      <p class="tight">Ground Bearers.</p>
+      <p class="tight">Red Felt Roof. </p></td>
   </tr>
   <tr>
     <td><img src="../images/chesterton.jpg" width="163" height="162"></td>
@@ -121,10 +122,10 @@ include $toroot ."tpl/top.php";
     <td>8&#039;</td>
     <td>6&#039;6&quot;</td>
     <td>Redwood</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">Double Doors each
+    <td><p class="tight">Double Doors each
         2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Red Felt Roof. </p></td>
+      <p class="tight">Ground Bearers.</p>
+      <p class="tight">Red Felt Roof. </p></td>
   </tr>
   <tr>
     <td><img src="../images/charlecote.jpg" width="163" height="162"></td>
@@ -133,10 +134,10 @@ include $toroot ."tpl/top.php";
     <td>8&#039;</td>
     <td>6&#039;6&quot;</td>
     <td>Redwood</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">Double Doors each
+    <td><p class="tight">Double Doors each
         2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Ground Bearers.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Red Felt Roof. </p></td>
+      <p class="tight">Ground Bearers.</p>
+      <p class="tight">Red Felt Roof. </p></td>
   </tr>
 </table>
 <?

@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * TC Munro
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Products page: Alton
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
  * CAM  24-Mar-2007  10105 : Updated text.
+ * CAM  29-Mar-2007  10105 : Improved CSS.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Alton";
@@ -20,12 +21,12 @@ include $toroot ."tpl/top.php";
 <table width="100%"  border="0" cellpadding="5">
   <tr>
     <td width="43%"><div align="center"><img src="../images/altonlogo.jpg" width="298" height="65"></div></td>
-      <td width="57%" rowspan="2" valign="top"><p style="margin-top: 0; margin-bottom: 0">Alton
+      <td width="57%" rowspan="2" valign="top"><p class="tight">Alton
           Cedar Greenhouses are designed for the Professional Gardener.
           Solid Construction and Practical Designs make for Low Maintenance
           and Heavier Crops. Guaranteed for 10 years. Delivered Free
           to your door.&nbsp; </p>
-        <p style="margin-top: 0; margin-bottom: 0;">Unique Low-level
+        <p class="tight">Unique Low-level
           Ventilation. Concrete Base Kerbs and Factory-applied preservative included.</p></td>
   </tr>
   <tr>
@@ -47,67 +48,67 @@ include $toroot ."tpl/top.php";
     <td><img src="../images/amature.jpg" alt="Amateur" name="greenhouse" width="163" height="116"></td>
     <td>Amateur</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">6&#039;5&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">8&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">10&#039;</p>
+      <p class="tight">6&#039;5&quot;</p>
+      <p class="tight">8&#039;</p>
+      <p class="tight">10&#039;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">5&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">8&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">10&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">13&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">15&#039;7&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">18&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">20&#039;7&quot;</p>
+      <p class="tight">5&#039;6&quot;</p>
+      <p class="tight">8&#039;</p>
+      <p class="tight">10&#039;6&quot;</p>
+      <p class="tight">13&#039;</p>
+      <p class="tight">15&#039;7&quot;</p>
+      <p class="tight">18&#039;</p>
+      <p class="tight">20&#039;7&quot;</p>
     </td>
     <td>5&#039;5&quot;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">3</p>
-      <p style="margin-top: 0; margin-bottom: 0;">4</p>
-      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+      <p class="tight">1</p>
+      <p class="tight">1</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">3</p>
+      <p class="tight">4</p>
+      <p class="tight">4</p>
     </td>
-    <td><p style="margin-top: 0; margin-bottom: 0"><br>
+    <td><p class="tight"><br>
         Single Door 2&#039;6&quot; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Timber Cladding
+      <p class="tight">Guttering and Downpipes</p>
+      <p class="tight">Timber Cladding
         option.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass,
+      <p class="tight">Toughened Glass,
         Louvre Side Vents.</p></td>
   </tr>
   <tr>
     <td><img src="../images/amateurleanto.jpg" width="163" height="132"></td>
     <td>Amateur Lean-to</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">7&#039;</p>
+    <td><p class="tight">7&#039;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">5&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">8&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">10&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">13&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">15&#039;7&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">18&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">20&#039;7&quot;</p>
+      <p class="tight">5&#039;6&quot;</p>
+      <p class="tight">8&#039;</p>
+      <p class="tight">10&#039;6&quot;</p>
+      <p class="tight">13&#039;</p>
+      <p class="tight">15&#039;7&quot;</p>
+      <p class="tight">18&#039;</p>
+      <p class="tight">20&#039;7&quot;</p>
     </td>
     <td>5&#039;5&quot;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p class="tight">1</p>
+      <p class="tight">1</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
     </td>
-    <td><p style="margin-top: 0; margin-bottom: 0"><br>
+    <td><p class="tight"><br>
         Single Door 2&#039;6&quot; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Timber Cladding
+      <p class="tight">Guttering and Downpipes</p>
+      <p class="tight">Timber Cladding
         option.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass,
+      <p class="tight">Toughened Glass,
         Louvre Side Vents.</p></td>
   </tr>
 
@@ -115,138 +116,138 @@ include $toroot ."tpl/top.php";
     <td><img name="greenhouse" src="../images/traditional.jpg" width="163" height="141" alt="Traditional"></td>
     <td>Traditional</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">6&#039;3&quot;</p>
+      <p class="tight">6&#039;3&quot;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">5&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">10&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">13&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">15&#039;7&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">18&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">20&#039;7&quot;</p>
+      <p class="tight">5&#039;6&quot;</p>
+      <p class="tight">8&#039;</p>
+      <p class="tight">10&#039;6&quot;</p>
+      <p class="tight">13&#039;</p>
+      <p class="tight">15&#039;7&quot;</p>
+      <p class="tight">18&#039;</p>
+      <p class="tight">20&#039;7&quot;</p>
     </td>
     <td>5&#039;4&quot;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">3</p>
-      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+      <p class="tight">1</p>
+      <p class="tight">1</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">3</p>
+      <p class="tight">4</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Single Door 2&#039;6&quot; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Timber Cladding option.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass, Louvre Side Vents.</p></td>
+      <p class="tight">Single Door 2&#039;6&quot; wide.</p>
+      <p class="tight">Guttering and Downpipes</p>
+      <p class="tight">Timber Cladding option.</p>
+      <p class="tight">Toughened Glass, Louvre Side Vents.</p></td>
   </tr>
 
   <tr>
     <td><img name="greenhouse" src="../images/image_na.jpg" width="164" height="104" alt=""></td>
     <td>Traditional Dwarf Wall</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">7&#039;7&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">10&#039;</p>
+      <p class="tight">7&#039;7&quot;</p>
+      <p class="tight">10&#039;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">5&#039;4&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">7&#039;10&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">10&#039;4&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">12&#039;11&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">15&#039;5&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">17&#039;11&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0">20&#039;5&quot;</p>
+      <p class="tight">5&#039;4&quot;</p>
+      <p class="tight">7&#039;10&quot;</p>
+      <p class="tight">10&#039;4&quot;</p>
+      <p class="tight">12&#039;11&quot;</p>
+      <p class="tight">15&#039;5&quot;</p>
+      <p class="tight">17&#039;11&quot;</p>
+      <p class="tight">20&#039;5&quot;</p>
     </td>
     <td>6&#039;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">3</p>
-      <p style="margin-top: 0; margin-bottom: 0;">4</p>
+      <p class="tight">1</p>
+      <p class="tight">1</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
+      <p class="tight">3</p>
+      <p class="tight">4</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Single Door 6&#039;6&quot; high.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass, Louvre Side Vents.</p></td>
+      <p class="tight">Single Door 6&#039;6&quot; high.</p>
+      <p class="tight">Guttering and Downpipes.</p>
+      <p class="tight">Toughened Glass, Louvre Side Vents.</p></td>
   </tr>
 
   <tr>
     <td><img src="../images/tradleanto.jpg" width="163" height="134"></td>
     <td>Traditional Lean-to</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">5&#039;</p>
+    <td><p class="tight">5&#039;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">10&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">13&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">15&#039;7&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">18&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">20&#039;7&quot;</p>
+      <p class="tight">8&#039;</p>
+      <p class="tight">10&#039;6&quot;</p>
+      <p class="tight">13&#039;</p>
+      <p class="tight">15&#039;7&quot;</p>
+      <p class="tight">18&#039;</p>
+      <p class="tight">20&#039;7&quot;</p>
     </td>
     <td>5&#039;4&quot;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
+      <p class="tight">1</p>
     </td>
-    <td><p style="margin-top: 0; margin-bottom: 0"><br>
+    <td><p class="tight"><br>
         Single Door 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Timber Cladding
+      <p class="tight">Guttering and Downpipes</p>
+      <p class="tight">Timber Cladding
         option.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass,
+      <p class="tight">Toughened Glass,
         Louvre Side Vents.</p></td>
   </tr>
   <tr>
     <td><img src="../images/popular.jpg" width="163" height="140"></td>
     <td>Popular</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">6&#039;4&quot;</p>
+    <td><p class="tight">6&#039;4&quot;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">5&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;</p>
+      <p class="tight">5&#039;6&quot;</p>
+      <p class="tight">8&#039;</p>
     </td>
     <td>5&#039;4&quot;</td>
-    <td><p style="margin-top: 0; margin-bottom: 0">1</p>
+    <td><p class="tight">1</p>
     </td>
-    <td><p style="margin-top: 0; margin-bottom: 0"><br>
+    <td><p class="tight"><br>
         Single Door 2&#039; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Guttering and Downpipes</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Timber Cladding
+      <p class="tight">Guttering and Downpipes</p>
+      <p class="tight">Timber Cladding
         option.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass,
+      <p class="tight">Toughened Glass,
         Louvre Side Vents.</p></td>
   </tr>
   <tr>
     <td><img name="greenhouse" src="../images/octagonal.jpg" width="163" height="163" alt="Octagonal"></td>
     <td>Octagonal</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">6&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;6&quot;</p>
+      <p class="tight">6&#039;</p>
+      <p class="tight">8&#039;6&quot;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">6&#039;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">8&#039;6&quot;</p>
-      <p style="margin-top: 0; margin-bottom: 0;">11&#039;1&quot;</p>
+      <p class="tight">6&#039;</p>
+      <p class="tight">8&#039;6&quot;</p>
+      <p class="tight">8&#039;6&quot;</p>
+      <p class="tight">11&#039;1&quot;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0;">6&#039;2&quot;</p>
+      <p class="tight">6&#039;2&quot;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">0</p>
-      <p style="margin-top: 0; margin-bottom: 0">1</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p class="tight">0</p>
+      <p class="tight">1</p>
+      <p class="tight">2</p>
+      <p class="tight">2</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">Single Door 2&#039;2&quot; wide.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Partially-clad sides.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Toughened Glass as standard.</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Automatic roof vent openers.</p>
+      <p class="tight">Single Door 2&#039;2&quot; wide.</p>
+      <p class="tight">Partially-clad sides.</p>
+      <p class="tight">Toughened Glass as standard.</p>
+      <p class="tight">Automatic roof vent openers.</p>
     </td>
   </tr>
 
@@ -254,31 +255,31 @@ include $toroot ."tpl/top.php";
     <td><img name="greenhouse" src="../images/alton/alpine1.jpg" width="163" height="138" alt=""></td>
     <td>Alpine House</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">6&#039;</p>
+      <p class="tight">6&#039;</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">8&#039;6&quot;</p>
+      <p class="tight">8&#039;6&quot;</p>
     </td>
     <td>6&#039;</td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0;">2</p>
+      <p class="tight">2</p>
     </td>
     <td>
-      <p style="margin-top: 0; margin-bottom: 0">As per Octagonal, plus 9 Side Vents, 4 Louvre Vents and 9 Low-level Vents.</p>
+      <p class="tight">As per Octagonal, plus 9 Side Vents, 4 Louvre Vents and 9 Low-level Vents.</p>
   </tr>
 
 
   <tr>
     <td><img src="../images/altonacc.jpg" width="163" height="140"></td>
-    <td><p style="margin-top: 0; margin-bottom: 0">Accessories:</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Louvre Vents,Extra
+    <td><p class="tight">Accessories:</p>
+      <p class="tight">Louvre Vents,Extra
         Roof Vents,Guttering Adaptor,Shading,Extra Door,Partition,Autovents,</p>
-      <p style="margin-top: 0; margin-bottom: 0;">Staging and Shelving.</p></td>
+      <p class="tight">Staging and Shelving.</p></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp; </td>
     <td>&nbsp;</td>
-    <td><p style="margin-top: 0; margin-bottom: 0"><br>
+    <td><p class="tight"><br>
         &nbsp; </p>
     </td>
   </tr>

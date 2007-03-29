@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * TC Munro
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Style Sheet
@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  10-Oct-2006  File added to svn.
+ * CAM  29-Mar-2007  10105 : Added tight.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -28,6 +29,12 @@ p, table, td, input, select, textarea {
   font-weight: bold;
   color: #CCCCCC;
 }
+
+.tight {
+  margin-top: 0; 
+  margin-bottom: 0;
+}
+
 
 .table {
   border: 1px inset;

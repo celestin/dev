@@ -100,7 +100,7 @@ while ($row = mysql_fetch_array($sql)) {
     print "<tr>";
   }
 
-  print "<td$attr><a href=\"index.php?piece=$thispiece&cat=$category\"><img border=0 src=\"img/p/$imgPath/$thispiece.jpg\"></a></td>\n";
+  print "<td$attr><a href=\"index.php?piece=$thispiece&cat=$category\"><img border=0 title=\"$pieceName\" src=\"img/p/$imgPath/$thispiece.jpg\"></a></td>\n";
 }
 
 print "</table></td></tr>";

@@ -7,7 +7,7 @@
     >
         <Build>
             <Settings
-                ApplicationIcon = "..\..\maia.ico"
+                ApplicationIcon = "jcams.ico"
                 AssemblyKeyContainerName = ""
                 AssemblyName = "Acumen"
                 AssemblyOriginatorKeyFile = ""

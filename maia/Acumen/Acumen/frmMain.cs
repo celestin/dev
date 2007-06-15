@@ -43,9 +43,7 @@ namespace frontburner.maia.Acumen
     private System.ComponentModel.IContainer components=null;
     private System.Windows.Forms.TabPage tabSchem;
     private System.Windows.Forms.PictureBox pbxMaia;
-    private System.Windows.Forms.PictureBox pbxJC;
     private System.Windows.Forms.PictureBox pbxBP;
-    private System.Windows.Forms.PictureBox pictureBox1;
     private System.Windows.Forms.PictureBox pictureBox2;
     private System.Windows.Forms.Label lblAssetTitle;
     private System.Windows.Forms.Label lblAssetSub;
@@ -54,7 +52,6 @@ namespace frontburner.maia.Acumen
     private System.Windows.Forms.TabPage tabAsset;
     private System.Windows.Forms.Label lblAssetName;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.PictureBox pictureBox7;
     private System.Windows.Forms.PictureBox pictureBox8;
     private Gigasoft.ProEssentials.Pego pegVibr;
     private System.Windows.Forms.Label lblSchemTitle;
@@ -86,7 +83,6 @@ namespace frontburner.maia.Acumen
     private TagNode _currentTag;
     private System.Windows.Forms.Label lblTagSub;
     private System.Windows.Forms.Label lblTagTitle;
-    private System.Windows.Forms.PictureBox pictureBox9;
     private System.Windows.Forms.PictureBox pictureBox10;
     private System.Windows.Forms.PictureBox pbxPump;
     private System.Windows.Forms.Button btnSeal1;
@@ -146,7 +142,6 @@ namespace frontburner.maia.Acumen
     private System.Windows.Forms.Button button2;
     private System.Windows.Forms.Button button3;
     private System.Windows.Forms.Button button4;
-    private System.Windows.Forms.PictureBox pictureBox3;
     private System.Windows.Forms.Timer tmrFlash;
     private System.Windows.Forms.Button btnOrange;
     private System.Windows.Forms.Button btnYellow;
@@ -157,7 +152,6 @@ namespace frontburner.maia.Acumen
     private System.Windows.Forms.TabPage tabContract;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.PictureBox pictureBox4;
     private System.Windows.Forms.PictureBox pictureBox5;
     private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button btnC01;
@@ -174,7 +168,6 @@ namespace frontburner.maia.Acumen
     private System.Windows.Forms.Button btnC10;
     private System.Windows.Forms.TabPage tabDemoRig;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.PictureBox pictureBox6;
     private System.Windows.Forms.PictureBox pictureBox12;
     private System.Windows.Forms.Button btnD1;
     private System.Windows.Forms.Button btnD2A;
@@ -294,7 +287,6 @@ namespace frontburner.maia.Acumen
       this.btnC01 = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
-      this.pictureBox4 = new System.Windows.Forms.PictureBox();
       this.pictureBox5 = new System.Windows.Forms.PictureBox();
       this.tabCompany = new System.Windows.Forms.TabPage();
       this.btnYellow = new System.Windows.Forms.Button();
@@ -309,7 +301,6 @@ namespace frontburner.maia.Acumen
       this.lklAssetBruce = new System.Windows.Forms.LinkLabel();
       this.lblAssetSub = new System.Windows.Forms.Label();
       this.lblAssetTitle = new System.Windows.Forms.Label();
-      this.pbxJC = new System.Windows.Forms.PictureBox();
       this.pbxBP = new System.Windows.Forms.PictureBox();
       this.tabAsset = new System.Windows.Forms.TabPage();
       this.button4 = new System.Windows.Forms.Button();
@@ -319,7 +310,6 @@ namespace frontburner.maia.Acumen
       this.btnAsset1 = new System.Windows.Forms.Button();
       this.lblAssetName = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.pictureBox7 = new System.Windows.Forms.PictureBox();
       this.pictureBox8 = new System.Windows.Forms.PictureBox();
       this.tabSchem = new System.Windows.Forms.TabPage();
       this.btnPump4 = new System.Windows.Forms.Button();
@@ -329,7 +319,6 @@ namespace frontburner.maia.Acumen
       this.pbxSchematic = new System.Windows.Forms.PictureBox();
       this.lblSchemSub = new System.Windows.Forms.Label();
       this.lblSchemTitle = new System.Windows.Forms.Label();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.pictureBox2 = new System.Windows.Forms.PictureBox();
       this.tabTag = new System.Windows.Forms.TabPage();
       this.button1 = new System.Windows.Forms.Button();
@@ -339,7 +328,6 @@ namespace frontburner.maia.Acumen
       this.pbxPump = new System.Windows.Forms.PictureBox();
       this.lblTagSub = new System.Windows.Forms.Label();
       this.lblTagTitle = new System.Windows.Forms.Label();
-      this.pictureBox9 = new System.Windows.Forms.PictureBox();
       this.pictureBox10 = new System.Windows.Forms.PictureBox();
       this.tabComp = new System.Windows.Forms.TabPage();
       this.pegTemp = new Gigasoft.ProEssentials.Pego();
@@ -347,13 +335,16 @@ namespace frontburner.maia.Acumen
       this.pegSped = new Gigasoft.ProEssentials.Pego();
       this.lblGraphTitles = new System.Windows.Forms.Label();
       this.tabDemoRig = new System.Windows.Forms.TabPage();
+      this.pictureBox15 = new System.Windows.Forms.PictureBox();
+      this.pictureBox14 = new System.Windows.Forms.PictureBox();
+      this.pictureBox13 = new System.Windows.Forms.PictureBox();
+      this.pbxD2A = new System.Windows.Forms.PictureBox();
       this.btnD1 = new System.Windows.Forms.Button();
       this.btnD2C = new System.Windows.Forms.Button();
       this.btnD2B = new System.Windows.Forms.Button();
       this.btnD2A = new System.Windows.Forms.Button();
       this.pictureBox12 = new System.Windows.Forms.PictureBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.pictureBox6 = new System.Windows.Forms.PictureBox();
       this.pictureBox11 = new System.Windows.Forms.PictureBox();
       this.btnProcess = new System.Windows.Forms.Button();
       this.pbxMaia = new System.Windows.Forms.PictureBox();
@@ -391,13 +382,8 @@ namespace frontburner.maia.Acumen
       this.toolBarButton13 = new System.Windows.Forms.ToolBarButton();
       this.imlActions = new System.Windows.Forms.ImageList(this.components);
       this.imlTraffic = new System.Windows.Forms.ImageList(this.components);
-      this.pictureBox3 = new System.Windows.Forms.PictureBox();
       this.tmrFlash = new System.Windows.Forms.Timer(this.components);
       this.tmrAlert = new System.Windows.Forms.Timer(this.components);
-      this.pbxD2A = new System.Windows.Forms.PictureBox();
-      this.pictureBox13 = new System.Windows.Forms.PictureBox();
-      this.pictureBox14 = new System.Windows.Forms.PictureBox();
-      this.pictureBox15 = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(this.sbpMessage)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpWarning)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpError)).BeginInit();
@@ -413,14 +399,14 @@ namespace frontburner.maia.Acumen
       // 
       // stbMain
       // 
-      this.stbMain.Location = new System.Drawing.Point(0, 653);
+      this.stbMain.Location = new System.Drawing.Point(0, 691);
       this.stbMain.Name = "stbMain";
       this.stbMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
                                                                                this.sbpMessage,
                                                                                this.sbpWarning,
                                                                                this.sbpError});
       this.stbMain.ShowPanels = true;
-      this.stbMain.Size = new System.Drawing.Size(1042, 22);
+      this.stbMain.Size = new System.Drawing.Size(1042, 24);
       this.stbMain.TabIndex = 0;
       this.stbMain.Text = "Ready";
       this.stbMain.PanelClick += new System.Windows.Forms.StatusBarPanelClickEventHandler(this.stbMain_PanelClick);
@@ -618,7 +604,7 @@ namespace frontburner.maia.Acumen
       this.trvNav.ImageList = this.imlTree;
       this.trvNav.Location = new System.Drawing.Point(8, 32);
       this.trvNav.Name = "trvNav";
-      this.trvNav.Size = new System.Drawing.Size(376, 520);
+      this.trvNav.Size = new System.Drawing.Size(376, 648);
       this.trvNav.TabIndex = 1;
       this.trvNav.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvNav_AfterSelect);
       // 
@@ -638,7 +624,7 @@ namespace frontburner.maia.Acumen
       this.tbcResults.Controls.Add(this.tabTag);
       this.tbcResults.Controls.Add(this.tabComp);
       this.tbcResults.Controls.Add(this.tabDemoRig);
-      this.tbcResults.Location = new System.Drawing.Point(392, 48);
+      this.tbcResults.Location = new System.Drawing.Point(392, 88);
       this.tbcResults.Name = "tbcResults";
       this.tbcResults.SelectedIndex = 0;
       this.tbcResults.Size = new System.Drawing.Size(640, 592);
@@ -662,13 +648,13 @@ namespace frontburner.maia.Acumen
       this.tabContract.Controls.Add(this.btnC01);
       this.tabContract.Controls.Add(this.label1);
       this.tabContract.Controls.Add(this.label3);
-      this.tabContract.Controls.Add(this.pictureBox4);
       this.tabContract.Controls.Add(this.pictureBox5);
       this.tabContract.Location = new System.Drawing.Point(4, 22);
       this.tabContract.Name = "tabContract";
       this.tabContract.Size = new System.Drawing.Size(632, 566);
       this.tabContract.TabIndex = 7;
       this.tabContract.Text = "Contract";
+      this.tabContract.Click += new System.EventHandler(this.tabContract_Click);
       // 
       // btnC12
       // 
@@ -823,15 +809,6 @@ namespace frontburner.maia.Acumen
       this.label3.Text = "Performance Plus";
       this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pictureBox4
-      // 
-      this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-      this.pictureBox4.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox4.Name = "pictureBox4";
-      this.pictureBox4.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox4.TabIndex = 4;
-      this.pictureBox4.TabStop = false;
-      // 
       // pictureBox5
       // 
       this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
@@ -857,7 +834,6 @@ namespace frontburner.maia.Acumen
       this.tabCompany.Controls.Add(this.lklAssetBruce);
       this.tabCompany.Controls.Add(this.lblAssetSub);
       this.tabCompany.Controls.Add(this.lblAssetTitle);
-      this.tabCompany.Controls.Add(this.pbxJC);
       this.tabCompany.Controls.Add(this.pbxBP);
       this.tabCompany.Location = new System.Drawing.Point(4, 22);
       this.tabCompany.Name = "tabCompany";
@@ -986,15 +962,6 @@ namespace frontburner.maia.Acumen
       this.lblAssetTitle.Text = "BP Asset Management";
       this.lblAssetTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pbxJC
-      // 
-      this.pbxJC.Image = ((System.Drawing.Image)(resources.GetObject("pbxJC.Image")));
-      this.pbxJC.Location = new System.Drawing.Point(8, 8);
-      this.pbxJC.Name = "pbxJC";
-      this.pbxJC.Size = new System.Drawing.Size(120, 56);
-      this.pbxJC.TabIndex = 0;
-      this.pbxJC.TabStop = false;
-      // 
       // pbxBP
       // 
       this.pbxBP.Image = ((System.Drawing.Image)(resources.GetObject("pbxBP.Image")));
@@ -1015,7 +982,6 @@ namespace frontburner.maia.Acumen
       this.tabAsset.Controls.Add(this.btnAsset1);
       this.tabAsset.Controls.Add(this.lblAssetName);
       this.tabAsset.Controls.Add(this.label2);
-      this.tabAsset.Controls.Add(this.pictureBox7);
       this.tabAsset.Controls.Add(this.pictureBox8);
       this.tabAsset.Location = new System.Drawing.Point(4, 22);
       this.tabAsset.Name = "tabAsset";
@@ -1097,15 +1063,6 @@ namespace frontburner.maia.Acumen
       this.label2.Text = "BP Asset Management";
       this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pictureBox7
-      // 
-      this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-      this.pictureBox7.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox7.Name = "pictureBox7";
-      this.pictureBox7.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox7.TabIndex = 8;
-      this.pictureBox7.TabStop = false;
-      // 
       // pictureBox8
       // 
       this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
@@ -1126,7 +1083,6 @@ namespace frontburner.maia.Acumen
       this.tabSchem.Controls.Add(this.pbxSchematic);
       this.tabSchem.Controls.Add(this.lblSchemSub);
       this.tabSchem.Controls.Add(this.lblSchemTitle);
-      this.tabSchem.Controls.Add(this.pictureBox1);
       this.tabSchem.Controls.Add(this.pictureBox2);
       this.tabSchem.Location = new System.Drawing.Point(4, 22);
       this.tabSchem.Name = "tabSchem";
@@ -1211,15 +1167,6 @@ namespace frontburner.maia.Acumen
       this.lblSchemTitle.Text = "BP Asset Management";
       this.lblSchemTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-      this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox1.TabIndex = 4;
-      this.pictureBox1.TabStop = false;
-      // 
       // pictureBox2
       // 
       this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -1240,7 +1187,6 @@ namespace frontburner.maia.Acumen
       this.tabTag.Controls.Add(this.pbxPump);
       this.tabTag.Controls.Add(this.lblTagSub);
       this.tabTag.Controls.Add(this.lblTagTitle);
-      this.tabTag.Controls.Add(this.pictureBox9);
       this.tabTag.Controls.Add(this.pictureBox10);
       this.tabTag.Location = new System.Drawing.Point(4, 22);
       this.tabTag.Name = "tabTag";
@@ -1321,15 +1267,6 @@ namespace frontburner.maia.Acumen
       this.lblTagTitle.Text = "BP Asset Management";
       this.lblTagTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pictureBox9
-      // 
-      this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-      this.pictureBox9.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox9.Name = "pictureBox9";
-      this.pictureBox9.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox9.TabIndex = 8;
-      this.pictureBox9.TabStop = false;
-      // 
       // pictureBox10
       // 
       this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
@@ -1401,13 +1338,52 @@ namespace frontburner.maia.Acumen
       this.tabDemoRig.Controls.Add(this.btnD2A);
       this.tabDemoRig.Controls.Add(this.pictureBox12);
       this.tabDemoRig.Controls.Add(this.label4);
-      this.tabDemoRig.Controls.Add(this.pictureBox6);
       this.tabDemoRig.Controls.Add(this.pictureBox11);
       this.tabDemoRig.Location = new System.Drawing.Point(4, 22);
       this.tabDemoRig.Name = "tabDemoRig";
       this.tabDemoRig.Size = new System.Drawing.Size(632, 566);
       this.tabDemoRig.TabIndex = 8;
       this.tabDemoRig.Text = "DemoRig";
+      // 
+      // pictureBox15
+      // 
+      this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
+      this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+      this.pictureBox15.Location = new System.Drawing.Point(288, 440);
+      this.pictureBox15.Name = "pictureBox15";
+      this.pictureBox15.Size = new System.Drawing.Size(48, 48);
+      this.pictureBox15.TabIndex = 20;
+      this.pictureBox15.TabStop = false;
+      // 
+      // pictureBox14
+      // 
+      this.pictureBox14.BackColor = System.Drawing.Color.Gainsboro;
+      this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+      this.pictureBox14.Location = new System.Drawing.Point(48, 456);
+      this.pictureBox14.Name = "pictureBox14";
+      this.pictureBox14.Size = new System.Drawing.Size(48, 48);
+      this.pictureBox14.TabIndex = 19;
+      this.pictureBox14.TabStop = false;
+      // 
+      // pictureBox13
+      // 
+      this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
+      this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+      this.pictureBox13.Location = new System.Drawing.Point(320, 232);
+      this.pictureBox13.Name = "pictureBox13";
+      this.pictureBox13.Size = new System.Drawing.Size(48, 48);
+      this.pictureBox13.TabIndex = 18;
+      this.pictureBox13.TabStop = false;
+      // 
+      // pbxD2A
+      // 
+      this.pbxD2A.BackColor = System.Drawing.Color.Gainsboro;
+      this.pbxD2A.Image = ((System.Drawing.Image)(resources.GetObject("pbxD2A.Image")));
+      this.pbxD2A.Location = new System.Drawing.Point(72, 232);
+      this.pbxD2A.Name = "pbxD2A";
+      this.pbxD2A.Size = new System.Drawing.Size(48, 48);
+      this.pbxD2A.TabIndex = 17;
+      this.pbxD2A.TabStop = false;
       // 
       // btnD1
       // 
@@ -1482,15 +1458,6 @@ namespace frontburner.maia.Acumen
       this.label4.Text = "ONS Demo Rig";
       this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
-      // pictureBox6
-      // 
-      this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-      this.pictureBox6.Location = new System.Drawing.Point(8, 8);
-      this.pictureBox6.Name = "pictureBox6";
-      this.pictureBox6.Size = new System.Drawing.Size(120, 56);
-      this.pictureBox6.TabIndex = 8;
-      this.pictureBox6.TabStop = false;
-      // 
       // pictureBox11
       // 
       this.pictureBox11.BackColor = System.Drawing.Color.White;
@@ -1511,11 +1478,12 @@ namespace frontburner.maia.Acumen
       // pbxMaia
       // 
       this.pbxMaia.Image = ((System.Drawing.Image)(resources.GetObject("pbxMaia.Image")));
-      this.pbxMaia.Location = new System.Drawing.Point(392, 8);
+      this.pbxMaia.Location = new System.Drawing.Point(392, 32);
       this.pbxMaia.Name = "pbxMaia";
       this.pbxMaia.Size = new System.Drawing.Size(656, 72);
       this.pbxMaia.TabIndex = 3;
       this.pbxMaia.TabStop = false;
+      this.pbxMaia.Click += new System.EventHandler(this.pbxMaia_Click);
       // 
       // tmrVibr
       // 
@@ -1627,10 +1595,10 @@ namespace frontburner.maia.Acumen
       this.tlbActions.Dock = System.Windows.Forms.DockStyle.None;
       this.tlbActions.DropDownArrows = true;
       this.tlbActions.ImageList = this.imlActions;
-      this.tlbActions.Location = new System.Drawing.Point(400, 16);
+      this.tlbActions.Location = new System.Drawing.Point(600, 16);
       this.tlbActions.Name = "tlbActions";
       this.tlbActions.ShowToolTips = true;
-      this.tlbActions.Size = new System.Drawing.Size(360, 26);
+      this.tlbActions.Size = new System.Drawing.Size(328, 26);
       this.tlbActions.TabIndex = 5;
       // 
       // toolBarButton1
@@ -1711,76 +1679,28 @@ namespace frontburner.maia.Acumen
       this.imlTraffic.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlTraffic.ImageStream")));
       this.imlTraffic.TransparentColor = System.Drawing.Color.Transparent;
       // 
-      // pictureBox3
-      // 
-      this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-      this.pictureBox3.Location = new System.Drawing.Point(8, 560);
-      this.pictureBox3.Name = "pictureBox3";
-      this.pictureBox3.Size = new System.Drawing.Size(376, 80);
-      this.pictureBox3.TabIndex = 6;
-      this.pictureBox3.TabStop = false;
-      // 
       // tmrFlash
       // 
+      this.tmrFlash.Enabled = true;
       this.tmrFlash.Interval = 15000;
       this.tmrFlash.Tick += new System.EventHandler(this.tmrFlash_Tick);
       // 
       // tmrAlert
       // 
+      this.tmrAlert.Enabled = true;
       this.tmrAlert.Interval = 15000;
       this.tmrAlert.Tick += new System.EventHandler(this.tmrAlert_Tick);
-      // 
-      // pbxD2A
-      // 
-      this.pbxD2A.BackColor = System.Drawing.Color.Gainsboro;
-      this.pbxD2A.Image = ((System.Drawing.Image)(resources.GetObject("pbxD2A.Image")));
-      this.pbxD2A.Location = new System.Drawing.Point(72, 232);
-      this.pbxD2A.Name = "pbxD2A";
-      this.pbxD2A.Size = new System.Drawing.Size(48, 48);
-      this.pbxD2A.TabIndex = 17;
-      this.pbxD2A.TabStop = false;
-      // 
-      // pictureBox13
-      // 
-      this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
-      this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-      this.pictureBox13.Location = new System.Drawing.Point(320, 232);
-      this.pictureBox13.Name = "pictureBox13";
-      this.pictureBox13.Size = new System.Drawing.Size(48, 48);
-      this.pictureBox13.TabIndex = 18;
-      this.pictureBox13.TabStop = false;
-      // 
-      // pictureBox14
-      // 
-      this.pictureBox14.BackColor = System.Drawing.Color.Gainsboro;
-      this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-      this.pictureBox14.Location = new System.Drawing.Point(48, 456);
-      this.pictureBox14.Name = "pictureBox14";
-      this.pictureBox14.Size = new System.Drawing.Size(48, 48);
-      this.pictureBox14.TabIndex = 19;
-      this.pictureBox14.TabStop = false;
-      // 
-      // pictureBox15
-      // 
-      this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
-      this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-      this.pictureBox15.Location = new System.Drawing.Point(288, 440);
-      this.pictureBox15.Name = "pictureBox15";
-      this.pictureBox15.Size = new System.Drawing.Size(48, 48);
-      this.pictureBox15.TabIndex = 20;
-      this.pictureBox15.TabStop = false;
       // 
       // frmMain
       // 
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-      this.ClientSize = new System.Drawing.Size(1042, 675);
-      this.Controls.Add(this.pictureBox3);
+      this.ClientSize = new System.Drawing.Size(1042, 715);
       this.Controls.Add(this.tlbActions);
       this.Controls.Add(this.tbcResults);
-      this.Controls.Add(this.pbxMaia);
       this.Controls.Add(this.tlbMain);
       this.Controls.Add(this.trvNav);
       this.Controls.Add(this.stbMain);
+      this.Controls.Add(this.pbxMaia);
       this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1788,7 +1708,7 @@ namespace frontburner.maia.Acumen
       this.Menu = this.mmuMain;
       this.Name = "frmMain";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-      this.Text = "Maia Systems Acumen";
+      this.Text = "JCAMS Acumen Client";
       ((System.ComponentModel.ISupportInitialize)(this.sbpMessage)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpWarning)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpError)).EndInit();
@@ -2144,6 +2064,16 @@ namespace frontburner.maia.Acumen
         EventHistory events = new EventHistory();
         events.Show();
       }
+    }
+
+    private void tabContract_Click(object sender, System.EventArgs e)
+    {
+    
+    }
+
+    private void pbxMaia_Click(object sender, System.EventArgs e)
+    {
+      MessageBox.Show("Hi!");
     }
   }
 }

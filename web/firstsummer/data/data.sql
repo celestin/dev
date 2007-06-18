@@ -8,20 +8,22 @@
 -- SET PASSWORD FOR 'firstsummer'@'localhost' = OLD_PASSWORD('john21');
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
--- version 2.9.0.2
+-- version 2.9.2
 -- http://www.phpmyadmin.net
---
+-- 
 -- Host: localhost
--- Generation Time: Apr 05, 2007 at 10:52 AM
--- Server version: 4.1.22
--- PHP Version: 5.1.6
---
+-- Generation Time: Jun 19, 2007 at 12:54 AM
+-- Server version: 5.0.27
+-- PHP Version: 4.4.5
+-- 
 -- Database: 1stsummerhouses_com_-_site
+-- 
+
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table categories
---
+-- 
 
 CREATE TABLE categories (
   id int(11) NOT NULL auto_increment,
@@ -39,9 +41,9 @@ CREATE TABLE categories (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Categories' AUTO_INCREMENT=5 ;
 
---
+-- 
 -- Dumping data for table categories
---
+-- 
 
 INSERT INTO categories VALUES (1, 'BBQ Huts', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO categories VALUES (2, 'Log Cabins', 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -49,9 +51,9 @@ INSERT INTO categories VALUES (4, 'Garages', 3, 1, NULL, NULL, NULL, NULL, NULL,
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table dimensions
---
+-- 
 
 CREATE TABLE dimensions (
   id int(11) NOT NULL auto_increment,
@@ -63,9 +65,9 @@ CREATE TABLE dimensions (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Dimensions' AUTO_INCREMENT=55 ;
 
---
+-- 
 -- Dumping data for table dimensions
---
+-- 
 
 INSERT INTO dimensions VALUES (1, 1, 'Roof projection - Front', 10, NULL, NULL);
 INSERT INTO dimensions VALUES (2, 1, 'Roof projection - Back', 20, NULL, NULL);
@@ -124,9 +126,9 @@ INSERT INTO dimensions VALUES (54, 2, 'Ladle and pale', 110, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table featuredproducts
---
+-- 
 
 CREATE TABLE featuredproducts (
   id int(11) NOT NULL auto_increment,
@@ -138,20 +140,20 @@ CREATE TABLE featuredproducts (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Featured Products' AUTO_INCREMENT=5 ;
 
---
+-- 
 -- Dumping data for table featuredproducts
---
+-- 
 
-INSERT INTO featuredproducts VALUES (1, 39, 'Tornio - 4x3m', 'The ultimate double-glazed Garden room, Spa House or Office, with 2 double opening windows and double door.', 2488, 'Half Price roof Shingles, was &pound;190 now &pound;95');
-INSERT INTO featuredproducts VALUES (2, 19, 'Chalet T24 -6.5x4m', 'A great guest or leisure suite.', 3242, 'Half Price roof Shingles with this cabin, was &pound;399 now &pound;199');
-INSERT INTO featuredproducts VALUES (3, 21, 'T Garage', 'Single Garage - 3.8m x 5.36m, with room to move around.', 2025, 'Our lowest priced garage.');
+INSERT INTO featuredproducts VALUES (1, 39, 'Tornio - 4x3m', 'The ultimate Garden room, Spa House or Office, with 2 double opening windows and double door.', 2488, 'Double-glazed windows and doors!');
+INSERT INTO featuredproducts VALUES (2, 19, 'Chalet T24 -6.5x4m', 'A great guest or leisure suite.', 3648, 'Fantastic Price!');
+INSERT INTO featuredproducts VALUES (3, 21, 'T Garage', 'Single Garage - 3.8m x 5.36m, with room to move around.', 2307, 'Our lowest priced garage.');
 INSERT INTO featuredproducts VALUES (4, 52, '9.9m2 Sauna', 'Wood burning sauna with 8 seats in a stepped circle around the heat.', 6000, 'New to Collection!');
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table member
---
+-- 
 
 CREATE TABLE member (
   memberid varchar(20) NOT NULL default '',
@@ -170,18 +172,18 @@ CREATE TABLE member (
   KEY i_email_address (email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Information';
 
---
+-- 
 -- Dumping data for table member
---
+-- 
 
 INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2007-02-15 16:00:04');
-INSERT INTO member VALUES ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '283bc91fe140624d92d9156c08f19093', 1, 'A', '', 1, '0000-00-00', '0000-00-00 00:00:00', '2007-04-01 20:52:59');
+INSERT INTO member VALUES ('AUSTIN', 'Austin', 'Newberry', 'austinjnewberry@googlemail.com', '283bc91fe140624d92d9156c08f19093', 1, 'A', '', 1, '0000-00-00', '0000-00-00 00:00:00', '2007-06-18 00:35:45');
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table member_type
---
+-- 
 
 CREATE TABLE member_type (
   member_type char(2) NOT NULL default '',
@@ -191,9 +193,9 @@ CREATE TABLE member_type (
   PRIMARY KEY  (member_type)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Types';
 
---
+-- 
 -- Dumping data for table member_type
---
+-- 
 
 INSERT INTO member_type VALUES ('U', 'User', 'Ability to View all details on the site', 1);
 INSERT INTO member_type VALUES ('N', 'New User', 'No permissions yet - waiting verification', 3);
@@ -201,9 +203,9 @@ INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capab
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table newsitems
---
+-- 
 
 CREATE TABLE newsitems (
   id int(11) NOT NULL auto_increment,
@@ -218,23 +220,23 @@ CREATE TABLE newsitems (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='News Items' AUTO_INCREMENT=14 ;
 
---
+-- 
 -- Dumping data for table newsitems
---
+-- 
 
+INSERT INTO newsitems VALUES (12, 'THE ROYAL HIGHLAND SHOW 2007', 'We will be showing at The Royal Highland Show 2007 on Thursday 21st, Friday 22nd, Saturday 23rd & Sunday 24th June at The Royal Highland Centre Ingliston, EDINBURGH. Come along and see our quality Log Cabins firsthand.', '2007-06-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO newsitems VALUES (3, 'GARDENING SCOTLAND 2006', 'We will be showing at <a target="_blank" href="http://www.gardeningscotland.com/">Gardening Scotland</a> on Friday 2nd, Saturday 3rd &\r\nSunday 4th June at <a target="_blank" href="http://www.royalhighlandcentre.co.uk/">The Royal Highland Centre</a> Ingliston, Edinburgh.  See our quality Log Cabins firsthand.\r\n', '2006-05-29', 'gs06.gif', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO newsitems VALUES (8, 'Website Redesign', 'Welcome to 1st Summerhouses, we hope you find this website more user friendly.  If you have any questions or comments about our new website please contact us at sales@1stsummerhouses.com', '2006-10-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO newsitems VALUES (9, 'WINTER SALE', 'For some fantastic offers on Log Cabins and BBQ Huts please refer to our November "Featured Products" - SAVE UP TO ?235', '2006-11-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO newsitems VALUES (13, 'SEE US AT THESE SHOWS', '21/6/07-24/6/07    The Royal Highland Show at The Royal Highland Centre Ingliston, EDINBURGH; --\r\n21/7/07-26/7/07   The Royal Welsh Show at The showground, Llanelwedd, near BUILTH WELLS; --\r\n27/7/07-29/7/07   The CLA Game Fair at Harewood House Nr Leeds, YORKSHIRE', '2007-06-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO newsitems VALUES (10, 'The Year of the Cabin', 'Over the next few weeks we will be introducing new products for 2007- Car Ports, Larger Garages, Saunas and Offices.\r\n\r\nWATCH THIS SPACE!', '2007-01-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO newsitems VALUES (11, 'New Products introduced', '1st Summerhouses can now offer a 8 person Sauna, Double Garage, 4 different styles of Car Port, 3 different Home office layouts and Therapy Rooms.', '2007-03-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table photos
---
+-- 
 
 CREATE TABLE photos (
   id int(11) NOT NULL auto_increment,
@@ -251,11 +253,11 @@ CREATE TABLE photos (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=269 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Photos' AUTO_INCREMENT=270 ;
 
---
+-- 
 -- Dumping data for table photos
---
+-- 
 
 INSERT INTO photos VALUES (1, 16, 'kota_k172_00020.jpg', 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (2, 16, 'kota_k172_00040.jpg', 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -472,12 +474,13 @@ INSERT INTO photos VALUES (265, 33, 'tyla_cg_05880.jpg', 5880, NULL, 0, NULL, NU
 INSERT INTO photos VALUES (266, 33, 'tyla_cg_05900.jpg', 5900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (267, 58, 'wfm_of_05920.jpg', 5920, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO photos VALUES (268, 59, 'wfm_th_05940.jpg', 5940, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO photos VALUES (269, 60, 'tyla_sp_05960.jpg', 5960, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table plans
---
+-- 
 
 CREATE TABLE plans (
   id int(11) NOT NULL auto_increment,
@@ -494,9 +497,9 @@ CREATE TABLE plans (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Plan Images' AUTO_INCREMENT=66 ;
 
---
+-- 
 -- Dumping data for table plans
---
+-- 
 
 INSERT INTO plans VALUES (1, 32, 'tyla_cg_01.jpg', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO plans VALUES (2, 32, 'tyla_cg_01.jpg', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -566,9 +569,9 @@ INSERT INTO plans VALUES (65, 55, 'carport_f2_020.jpg', 20, NULL, NULL, NULL, NU
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table proddimensions
---
+-- 
 
 CREATE TABLE proddimensions (
   id int(11) NOT NULL auto_increment,
@@ -580,11 +583,11 @@ CREATE TABLE proddimensions (
   updated datetime default NULL,
   PRIMARY KEY  (id),
   UNIQUE KEY product_id (product_id,dimension_id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=439 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Dimensions' AUTO_INCREMENT=445 ;
 
---
+-- 
 -- Dumping data for table proddimensions
---
+-- 
 
 INSERT INTO proddimensions VALUES (1, 14, 41, 'Octagonal - Seating for 8 persons', 8, NULL, NULL);
 INSERT INTO proddimensions VALUES (2, 14, 3, '0.37 m', 0.37, NULL, NULL);
@@ -940,12 +943,14 @@ INSERT INTO proddimensions VALUES (435, 17, 6, '20 mm tongue and groove roof boa
 INSERT INTO proddimensions VALUES (436, 17, 42, '4.60 m', 4.6, NULL, NULL);
 INSERT INTO proddimensions VALUES (437, 17, 7, '1 door', 1, NULL, NULL);
 INSERT INTO proddimensions VALUES (438, 17, 8, '4 windows (1 window opens), double glazed', 4, NULL, NULL);
+INSERT INTO proddimensions VALUES (441, 60, 4, '4 posts, 8 lattice panels, 3 drop-folding panels', 4, NULL, NULL);
+INSERT INTO proddimensions VALUES (443, 60, 6, '4 roof sections made from 20 mm tongue and groove boards.', 20, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table prodgroups
---
+-- 
 
 CREATE TABLE prodgroups (
   id int(11) NOT NULL auto_increment,
@@ -961,9 +966,9 @@ CREATE TABLE prodgroups (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Groups' AUTO_INCREMENT=7 ;
 
---
+-- 
 -- Dumping data for table prodgroups
---
+-- 
 
 INSERT INTO prodgroups VALUES (1, '30mm', 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodgroups VALUES (2, '45mm', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -974,9 +979,9 @@ INSERT INTO prodgroups VALUES (6, '45mm', 5, 10, NULL, NULL, NULL, NULL, NULL, N
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table prodprices
---
+-- 
 
 CREATE TABLE prodprices (
   id int(11) NOT NULL auto_increment,
@@ -992,11 +997,11 @@ CREATE TABLE prodprices (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=828 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Prices' AUTO_INCREMENT=830 ;
 
---
+-- 
 -- Dumping data for table prodprices
---
+-- 
 
 INSERT INTO prodprices VALUES (651, 7, 28, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (650, 7, 27, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1030,17 +1035,17 @@ INSERT INTO prodprices VALUES (793, 9, 97, 2, NULL, 238, NULL, NULL, NULL, NULL,
 INSERT INTO prodprices VALUES (792, 9, 96, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (791, 9, 95, 2, NULL, 270, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (790, 9, 94, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (789, 46, 93, NULL, 45, 2911, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (788, 46, 92, NULL, 45, 3330, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (787, 46, 91, NULL, 45, 3330, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (786, 46, 90, NULL, 45, 3892, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (785, 46, 89, NULL, 45, 4283, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (784, 46, 88, NULL, 45, 4283, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (783, 46, 87, NULL, 45, 4690, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (782, 46, 90, NULL, 60, 4792, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (781, 46, 89, NULL, 60, 5172, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (780, 46, 88, NULL, 60, 5172, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (779, 46, 87, NULL, 60, 5580, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (789, 46, 93, NULL, 45, 3821, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (788, 46, 92, NULL, 45, 4598, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (787, 46, 91, NULL, 45, 4368, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (786, 46, 90, NULL, 45, 5127, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (785, 46, 89, NULL, 45, 6108, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (784, 46, 88, NULL, 45, 5878, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (783, 46, 87, NULL, 45, 6661, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (782, 46, 90, NULL, 60, 5713, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (781, 46, 89, NULL, 60, 6796, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (780, 46, 88, NULL, 60, 6567, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (779, 46, 87, NULL, 60, 7419, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (778, 46, 93, 2, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (777, 46, 92, 2, NULL, 219, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (776, 46, 91, 2, NULL, 219, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1048,10 +1053,10 @@ INSERT INTO prodprices VALUES (775, 46, 90, 2, NULL, 238, NULL, NULL, NULL, NULL
 INSERT INTO prodprices VALUES (774, 46, 89, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (773, 46, 88, 2, NULL, 295, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (772, 46, 87, 2, NULL, 320, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (771, 10, 86, 2, NULL, 195, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (770, 10, 86, NULL, 60, 4780, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (769, 10, 86, NULL, 45, 4199, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (768, 48, 85, NULL, 45, 2660, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (771, 10, 86, 2, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (770, 10, 86, NULL, 60, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (769, 10, 86, NULL, 45, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (768, 48, 85, NULL, 45, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (767, 45, 84, NULL, 45, 2479, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (766, 45, 83, NULL, 45, 2963, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (765, 45, 82, NULL, 45, 2963, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1070,48 +1075,48 @@ INSERT INTO prodprices VALUES (753, 45, 81, 2, NULL, 145, NULL, NULL, NULL, NULL
 INSERT INTO prodprices VALUES (752, 45, 80, 2, NULL, 218, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (751, 45, 79, 2, NULL, 218, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (750, 45, 78, 2, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (579, 7, 28, NULL, 60, 5114, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (578, 7, 27, NULL, 60, 4481, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (577, 7, 26, NULL, 60, 4232, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (579, 7, 28, NULL, 60, 5272, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (578, 7, 27, NULL, 60, 4850, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (577, 7, 26, NULL, 60, 4651, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (576, 7, 25, NULL, 60, 4068, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (575, 6, 21, NULL, 60, 4578, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (574, 6, 20, NULL, 60, 4019, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (573, 6, 19, NULL, 60, 4019, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (574, 6, 20, NULL, 60, 4053, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (573, 6, 19, NULL, 60, 4103, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (572, 6, 18, NULL, 60, 3622, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (571, 5, 7, NULL, 60, 5433, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (570, 5, 6, NULL, 60, 4875, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (569, 5, 5, NULL, 60, 4675, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (568, 5, 4, NULL, 60, 4462, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (571, 5, 7, NULL, 60, 6422, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (570, 5, 6, NULL, 60, 5571, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (569, 5, 5, NULL, 60, 6000, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (568, 5, 4, NULL, 60, 4916, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (567, 4, 14, NULL, 60, 4324, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (566, 4, 13, NULL, 60, 3765, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (565, 4, 12, NULL, 60, 3447, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (566, 4, 13, NULL, 60, 3853, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (565, 4, 12, NULL, 60, 3853, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (564, 4, 11, NULL, 60, 3383, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (563, 7, 28, NULL, 45, 4084, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (562, 7, 27, NULL, 45, 3632, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (561, 7, 26, NULL, 45, 3746, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (560, 7, 25, NULL, 45, 3304, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (559, 7, 24, NULL, 45, 2692, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (558, 7, 23, NULL, 45, 2869, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (557, 7, 22, NULL, 45, 2363, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (556, 6, 21, NULL, 45, 3612, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (555, 6, 20, NULL, 45, 3232, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (554, 6, 19, NULL, 45, 3263, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (563, 7, 28, NULL, 45, 4515, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (562, 7, 27, NULL, 45, 4160, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (561, 7, 26, NULL, 45, 3961, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (560, 7, 25, NULL, 45, 3409, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (559, 7, 24, NULL, 45, 3080, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (558, 7, 23, NULL, 45, 2880, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (557, 7, 22, NULL, 45, 2533, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (556, 6, 21, NULL, 45, 3768, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (555, 6, 20, NULL, 45, 3364, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (554, 6, 19, NULL, 45, 3414, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (553, 6, 18, NULL, 45, 2914, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (552, 6, 17, NULL, 45, 2520, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (551, 6, 16, NULL, 45, 2520, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (550, 6, 15, NULL, 45, 2114, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (549, 5, 7, NULL, 45, 4262, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (548, 5, 6, NULL, 45, 3884, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (547, 5, 5, NULL, 45, 3899, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (546, 5, 4, NULL, 45, 3550, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (545, 5, 3, NULL, 45, 3157, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (544, 5, 2, NULL, 45, 3031, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (543, 5, 1, NULL, 45, 2658, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (549, 5, 7, NULL, 45, 5665, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (548, 5, 6, NULL, 45, 4881, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (547, 5, 5, NULL, 45, 5310, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (546, 5, 4, NULL, 45, 4329, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (545, 5, 3, NULL, 45, 3570, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (544, 5, 2, NULL, 45, 4000, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (543, 5, 1, NULL, 45, 3223, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (542, 4, 9, NULL, 45, 2281, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (541, 4, 8, NULL, 45, 1909, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (540, 4, 14, NULL, 45, 3358, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (539, 4, 13, NULL, 45, 2978, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (538, 4, 12, NULL, 45, 3024, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (541, 4, 8, NULL, 45, 1935, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (540, 4, 14, NULL, 45, 3518, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (539, 4, 13, NULL, 45, 3164, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (538, 4, 12, NULL, 45, 3164, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (537, 4, 11, NULL, 45, 2675, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (536, 4, 10, NULL, 45, 2281, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (535, 4, NULL, 6, NULL, 267, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1134,51 +1139,51 @@ INSERT INTO prodprices VALUES (652, 14, 57, NULL, 40, 4800, NULL, NULL, NULL, NU
 INSERT INTO prodprices VALUES (653, 15, 58, NULL, 40, 5675, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (654, 16, 59, NULL, 40, 9200, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (655, 17, 60, NULL, 40, 14700, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (656, 18, 29, NULL, 45, 1742, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (657, 19, 38, NULL, 45, 3242, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (658, 20, 70, NULL, NULL, 727, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (659, 21, 61, NULL, 45, 2025, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (656, 18, 29, NULL, 45, 1946, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (657, 19, 38, NULL, 45, 3648, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (658, 20, 70, NULL, 40, 727, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (659, 21, 61, NULL, 45, 2307, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (660, 22, 39, NULL, NULL, 161, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (661, 23, 40, NULL, NULL, 223, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (662, 24, 30, NULL, 45, 1863, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (663, 25, 31, NULL, 45, 1215, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (664, 26, 32, NULL, 45, 1215, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (665, 27, 34, NULL, 45, 1519, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (666, 28, 33, NULL, 45, 1296, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (667, 29, 35, NULL, 30, 724, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (668, 30, 36, NULL, 30, 620, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (669, 31, 37, NULL, 30, 1034, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (670, 32, 52, NULL, 60, 16687, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (671, 32, 52, NULL, 95, 21802, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (672, 33, 53, NULL, 60, 20387, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (673, 33, 53, NULL, 95, 25502, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (674, 34, 54, NULL, 45, 6645, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (675, 34, 54, NULL, 60, 8765, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (676, 35, 55, NULL, 45, 7162, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (677, 35, 55, NULL, 60, 8378, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (678, 35, 55, NULL, 95, 11282, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (679, 36, 71, NULL, 45, 2250, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (680, 36, 72, NULL, 45, 2500, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (662, 24, 30, NULL, 45, 2089, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (663, 25, 31, NULL, 45, 1554, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (664, 26, 32, NULL, 45, 1418, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (665, 27, 34, NULL, 45, 1710, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (666, 28, 33, NULL, 45, 1485, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (667, 29, 35, NULL, 30, 938, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (668, 30, 36, NULL, 30, 864, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (669, 31, 37, NULL, 30, 1138, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (670, 32, 52, NULL, 60, 19693, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (671, 32, 52, NULL, 95, 25899, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (672, 33, 53, NULL, 60, 21088, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (673, 33, 53, NULL, 95, 27295, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (674, 34, 54, NULL, 45, 7447, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (675, 34, 54, NULL, 60, 8925, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (676, 35, 55, NULL, 45, 7285, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (677, 35, 55, NULL, 60, 8517, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (678, 35, 55, NULL, 95, 11469, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (679, 36, 71, NULL, 45, 2338, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (680, 36, 72, NULL, 45, 2579, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (681, 36, 73, NULL, 45, 3300, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (682, 50, 74, NULL, 45, 2330, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (683, 50, 75, NULL, 45, 2600, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (684, 50, 76, NULL, 45, 3415, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (685, 37, 67, NULL, NULL, 1675, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (686, 38, 62, NULL, 45, 1660, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (682, 50, 74, NULL, 45, 2419, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (683, 50, 75, NULL, 45, 2871, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (684, 50, 76, NULL, 45, 3840, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (685, 37, 67, NULL, 40, 1675, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (686, 38, 62, NULL, 45, 1769, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (687, 39, 63, NULL, 45, 2319, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (688, 39, 64, NULL, 45, 2488, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (689, 39, 65, NULL, 45, 2805, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (690, 39, 66, NULL, 45, 3571, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (691, 40, 56, NULL, 60, 13040, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (692, 40, 56, NULL, 95, 17095, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (693, 43, 69, NULL, NULL, 1995, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (694, 44, 68, NULL, NULL, 1910, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (696, 32, 52, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (697, 33, 53, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (698, 34, 54, 7, NULL, 427, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (699, 35, 55, 7, NULL, 335, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (700, 14, 57, 10, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (701, 15, 58, 10, NULL, 250, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (691, 40, 56, NULL, 60, 14833, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (692, 40, 56, NULL, 95, 19140, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (693, 43, 69, NULL, 40, 1995, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (694, 44, 68, NULL, 40, 1910, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (696, 32, 52, 7, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (697, 33, 53, 7, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (698, 34, 54, 7, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (699, 35, 55, 7, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (700, 14, 57, 10, NULL, 350, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (701, 15, 58, 10, NULL, 350, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (702, 16, 59, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (703, 17, 60, 10, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (704, 14, 57, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1186,22 +1191,22 @@ INSERT INTO prodprices VALUES (705, 15, 58, 11, NULL, -1, NULL, NULL, NULL, NULL
 INSERT INTO prodprices VALUES (706, 16, 59, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (707, 17, 60, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (708, 39, 77, NULL, 45, 3197, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (709, 38, 62, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (709, 38, 62, 8, NULL, 165, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (710, 39, 63, 8, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (711, 39, 64, 8, NULL, 190, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (712, 39, 65, 8, NULL, 240, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (713, 39, 77, 8, NULL, 300, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (714, 39, 66, 8, NULL, 375, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (715, 39, 63, 11, NULL, 450, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (716, 39, 64, 11, NULL, 450, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (717, 39, 65, 11, NULL, 450, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (718, 39, 77, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (719, 39, 66, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (720, 39, 63, 13, NULL, 138, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (721, 39, 64, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (722, 39, 65, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (723, 39, 77, 13, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (724, 39, 66, 13, NULL, 218, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (715, 39, 63, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (716, 39, 64, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (717, 39, 65, 11, NULL, 600, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (718, 39, 77, 11, NULL, 750, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (719, 39, 66, 11, NULL, 800, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (720, 39, 63, 13, NULL, 549, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (721, 39, 64, 13, NULL, 562, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (722, 39, 65, 13, NULL, 562, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (723, 39, 77, 13, NULL, 562, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (724, 39, 66, 13, NULL, 676, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (725, 37, 67, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (726, 44, 68, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (727, 43, 69, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1211,22 +1216,22 @@ INSERT INTO prodprices VALUES (730, 36, 73, 8, NULL, 245, NULL, NULL, NULL, NULL
 INSERT INTO prodprices VALUES (731, 50, 74, 8, NULL, 160, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (732, 50, 75, 8, NULL, 180, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (733, 50, 76, 8, NULL, 245, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (734, 37, 67, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (735, 44, 68, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (736, 43, 69, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (737, 36, 71, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (738, 36, 72, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (739, 36, 73, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (740, 50, 74, 14, NULL, 470, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (741, 50, 75, 14, NULL, 505, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (742, 50, 76, 14, NULL, 580, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (743, 20, 70, 15, NULL, 91, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (744, 36, 71, 9, NULL, 120, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (745, 36, 72, 9, NULL, 130, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (746, 36, 73, 9, NULL, 140, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (747, 50, 74, 9, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (748, 50, 75, 9, NULL, 165, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (749, 50, 76, 9, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (734, 37, 67, 14, NULL, 606, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (735, 44, 68, 14, NULL, 606, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (736, 43, 69, 14, NULL, 606, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (737, 36, 71, 14, NULL, 564, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (738, 36, 72, 14, NULL, 606, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (739, 36, 73, 14, NULL, 696, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (740, 50, 74, 14, NULL, 564, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (741, 50, 75, 14, NULL, 606, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (742, 50, 76, 14, NULL, 696, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (743, 20, 70, 15, NULL, 110, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (744, 36, 71, 9, NULL, 149, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (745, 36, 72, 9, NULL, 166, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (746, 36, 73, 9, NULL, 172, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (747, 50, 74, 9, NULL, 179, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (748, 50, 75, 9, NULL, 196, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (749, 50, 76, 9, NULL, 207, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (794, 9, 98, 2, NULL, 194, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (795, 9, 99, 2, NULL, 194, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (796, 9, 100, 2, NULL, 145, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1235,37 +1240,38 @@ INSERT INTO prodprices VALUES (798, 9, 95, NULL, 60, 4310, NULL, NULL, NULL, NUL
 INSERT INTO prodprices VALUES (799, 9, 96, NULL, 60, 4410, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (800, 9, 97, NULL, 60, 3710, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (801, 9, 94, NULL, 45, 4202, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (802, 9, 95, NULL, 45, 3529, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (802, 9, 95, NULL, 45, 3603, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (803, 9, 96, NULL, 45, 3620, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (804, 9, 97, NULL, 45, 2912, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (805, 9, 98, NULL, 45, 2465, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (804, 9, 97, NULL, 45, 2964, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (805, 9, 98, NULL, 45, 2634, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (806, 9, 99, NULL, 45, 2545, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (807, 9, 100, NULL, 45, 2080, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (808, 47, 101, NULL, 45, 4690, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (809, 49, 102, NULL, 30, 1034, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (807, 9, 100, NULL, 45, 2199, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (808, 47, 101, NULL, 45, 5173, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (809, 49, 102, NULL, 30, 1138, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (810, 52, 103, NULL, 40, 6000, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodprices VALUES (812, 52, 103, 11, NULL, -1, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (813, 53, 105, NULL, 40, 3230, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (814, 54, 106, NULL, 40, 1500, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (815, 55, 107, NULL, 40, 3100, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (816, 56, 108, NULL, 40, 3100, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (817, 57, 109, NULL, 40, 4000, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (818, 58, 110, NULL, 45, 3375, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (819, 58, 110, NULL, 60, 4130, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (820, 58, 111, NULL, 45, 3820, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (821, 58, 111, NULL, 60, 4290, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (822, 58, 112, NULL, 45, 3920, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (823, 58, 112, NULL, 60, 4400, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (824, 59, 113, NULL, 45, 3075, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (825, 59, 113, NULL, 60, 3780, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (826, 59, 114, NULL, 45, 4550, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodprices VALUES (827, 59, 114, NULL, 60, 5720, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (813, 53, 105, NULL, 40, 4288, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (814, 54, 106, NULL, 40, 2516, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (815, 55, 107, NULL, 40, 4863, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (816, 56, 108, NULL, 40, 3812, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (817, 57, 109, NULL, 40, 5247, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (818, 58, 110, NULL, 45, 4175, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (819, 58, 110, NULL, 60, 4930, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (820, 58, 111, NULL, 45, 3620, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (821, 58, 111, NULL, 60, 4990, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (822, 58, 112, NULL, 45, 3720, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (823, 58, 112, NULL, 60, 5200, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (824, 59, 113, NULL, 45, 3875, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (825, 59, 113, NULL, 60, 4580, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (826, 59, 114, NULL, 45, 5350, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (827, 59, 114, NULL, 60, 6520, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodprices VALUES (829, 60, 115, NULL, 40, 1500, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table prodranges
---
+-- 
 
 CREATE TABLE prodranges (
   id int(11) NOT NULL auto_increment,
@@ -1283,9 +1289,9 @@ CREATE TABLE prodranges (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Ranges' AUTO_INCREMENT=15 ;
 
---
+-- 
 -- Dumping data for table prodranges
---
+-- 
 
 INSERT INTO prodranges VALUES (4, 'Standard Cabins', 2, 10, NULL, 'The 1st Summerhouses Standard Cabins comprises the T-buildings and Borkum.  A well-designed and well-built range of buildings in 45mm wood, suitable  \r\nfor many uses.  Whether it is a children''s playhouse, home office, home beauty salon or smoking room we have something for every purpose.  From the T24, our  \r\nmost popular model, to the T23, the baby of the family, the T buildings are excellent quality and unbelievable value for money.  The Borkum is a 3m x 3m  \r\ncabin with 1.5m terrace ideal for alfresco dining.  With the attention to detail and quality of workmanship standard in all our cabins this range is  \r\nexcellent value for money.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO prodranges VALUES (5, 'Premier Cabins', 2, 20, NULL, 'The 1st Summerhouses Premier Cabins comprises of the Nida and the Tornio Log Cabins.  The Nida range offers a choice of styles in 45mm wood (60mm  \r\noption) with double glazing as standard. The Chalet Nida, coming in 7 different sizes, from 3m x 3m to 5m x 5m and offering add-on choices of terrace,  \r\nshelter or annex in any combination (or all three!) this is true versatility!  The Nida Panorama, a log cabin with the benefits of double doors and window  \r\npanels (all double glazed) has the warmth and strength of a cabin and the advantages of a summerhouse. The Tornio has the advantage of glazed double doors,  \r\n11/2 in the 3m width.   Garden room, hot tub house, spare bedroom, dining room the reasons to buy are too many to mention.', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1301,9 +1307,9 @@ INSERT INTO prodranges VALUES (14, 'Work from Home', 2, 45, NULL, NULL, NULL, NU
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table products
---
+-- 
 
 CREATE TABLE products (
   id int(11) NOT NULL auto_increment,
@@ -1322,11 +1328,11 @@ CREATE TABLE products (
   updated datetime default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Products' AUTO_INCREMENT=61 ;
 
---
+-- 
 -- Dumping data for table products
---
+-- 
 
 INSERT INTO products VALUES (4, 'Nida', NULL, 5, 6, 'nida_nida.pdf', 10, '', 'Roof projection: Front 0.70 m\r\nBack 0.20 m\r\nSide 0.30 m\r\nWalls: 45 mm or (60 mm glued) double tongue and groove logs\r\nFloor: 20 mm tongue and groove floor boards on the impregnated base frame\r\nRoof: 20 mm tongue and groove roof boards\r\nDoor: 1 glued cartridge door 90/196 with seal\r\nWindows: 2 double-glazed 80/94 tilt ''n'' turn units', NULL, NULL, NULL, NULL, '2006-07-05 01:13:24', NULL);
 INSERT INTO products VALUES (5, 'Nida A', NULL, 5, 6, 'nida_na.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1370,25 +1376,27 @@ INSERT INTO products VALUES (47, 'Nida Tower', NULL, 5, 6, 'nida_ntw.pdf', 90, N
 INSERT INTO products VALUES (48, 'Nida Tyla', NULL, 5, 6, 'nida_nty.pdf', 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (50, 'Sida Plus', NULL, 11, NULL, 'tyla_sp.pdf', 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (51, 'Custom build', NULL, 10, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (52, '9.9m2 Sauna', 'Finnish Sauna 9.9 m<sup>2</sup>', 12, NULL, 'kota_k099.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL);
-INSERT INTO products VALUES (53, 'Double T Garage', NULL, 9, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (54, 'F1', NULL, 13, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (55, 'F2', NULL, 13, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (56, 'SB1', NULL, 13, NULL, NULL, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO products VALUES (57, 'SB2', NULL, 13, NULL, NULL, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (52, '9.9m2 Sauna', 'Finnish Sauna 9.9 m<sup>2</sup>', 12, NULL, 'sauna_s99.pdf', 2, '', '', NULL, NULL, NULL, NULL, '2006-07-05 01:07:22', NULL);
+INSERT INTO products VALUES (53, 'Large T Garage', NULL, 9, NULL, 'tbuild_dg.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (54, 'F1', NULL, 13, NULL, 'f1.pdf', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (55, 'F2', NULL, 13, NULL, 'f2.pdf', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (56, 'SB1', NULL, 13, NULL, 'sb1.pdf', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (57, 'SB2', NULL, 13, NULL, 'sb2.pdf', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (58, 'Office', NULL, 14, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO products VALUES (59, 'Therapy', NULL, 14, NULL, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO products VALUES (60, 'Spa Pavilion', NULL, 11, NULL, 'tyla_sa.pdf', 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table prodvariations
---
+-- 
 
 CREATE TABLE prodvariations (
   id int(11) NOT NULL auto_increment,
   variation varchar(50) default NULL,
   imgfile varchar(40) default NULL,
+  brochure varchar(50) default NULL,
   product_id int(11) NOT NULL default '0',
   vlength float default NULL,
   vbreadth float default NULL,
@@ -1400,120 +1408,121 @@ CREATE TABLE prodvariations (
   updated_on date default NULL,
   updated_at time default NULL,
   PRIMARY KEY  (id)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=115 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Product Variations' AUTO_INCREMENT=116 ;
 
---
+-- 
 -- Dumping data for table prodvariations
---
+-- 
 
-INSERT INTO prodvariations VALUES (9, NULL, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (8, NULL, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (7, NULL, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (6, NULL, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (5, NULL, NULL, 5, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (4, NULL, NULL, 5, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (3, NULL, NULL, 5, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (28, NULL, NULL, 7, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (27, NULL, NULL, 7, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (26, NULL, NULL, 7, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (25, NULL, NULL, 7, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (24, NULL, NULL, 7, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (23, NULL, NULL, 7, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (22, NULL, NULL, 7, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (21, NULL, NULL, 6, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (20, NULL, NULL, 6, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (2, NULL, NULL, 5, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (19, NULL, NULL, 6, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (18, NULL, NULL, 6, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (17, NULL, NULL, 6, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (16, NULL, NULL, 6, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (15, NULL, NULL, 6, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (14, NULL, NULL, 4, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (13, NULL, NULL, 4, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (12, NULL, NULL, 4, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (11, NULL, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (10, NULL, NULL, 4, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (1, NULL, NULL, 5, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (29, NULL, NULL, 18, 3.25, 4.45, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (30, NULL, NULL, 24, 3.25, 4.45, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (31, NULL, NULL, 25, 2.95, 3.25, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (32, NULL, NULL, 26, 2.95, 3.25, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (33, NULL, NULL, 28, 2.95, 3.25, 50, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (34, NULL, NULL, 27, 2.95, 3.25, 60, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (35, NULL, NULL, 29, 2.95, 2.5, 70, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (36, NULL, NULL, 30, 2.2, 2.5, 80, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (37, NULL, NULL, 31, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (38, NULL, NULL, 19, 4, 6.5, 100, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (39, NULL, NULL, 22, 3.35, 1.8, 110, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (40, NULL, NULL, 23, 1.5, 3.05, 120, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (52, NULL, NULL, 32, 7, 8.5, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (53, NULL, NULL, 33, 10.45, 8.5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (54, NULL, NULL, 34, 4.7, 5.1, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (55, NULL, NULL, 35, 4.3, 5.5, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (56, NULL, NULL, 40, 6.45, 6.2, 50, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (57, NULL, NULL, 14, 3.149, 3.149, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (58, NULL, NULL, 15, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (59, NULL, NULL, 16, 5.009, 5.009, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (60, NULL, NULL, 17, 6.05, 6.05, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (61, NULL, NULL, 21, 5.36, 3.8, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (62, NULL, NULL, 38, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (63, NULL, NULL, 39, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (64, NULL, NULL, 39, 3, 4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (65, NULL, NULL, 39, 4, 4, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (66, NULL, NULL, 39, 5, 5, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (67, NULL, NULL, 37, 3.14, 3.4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (68, NULL, NULL, 44, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (69, NULL, NULL, 43, 3.14, 3.4, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (70, NULL, NULL, 20, 3, 3, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (71, 'Type 1: 1/2 glazed door 70/193 and 2 windows 70/94', NULL, 36, 2.8, 3.03, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (72, 'Type 2: 1/2 glazed door 90/193 and 2 windows 90/94', NULL, 36, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', NULL, 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', NULL, 50, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', NULL, 50, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', NULL, 50, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (77, 'Tornio', NULL, 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (78, NULL, NULL, 45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (79, NULL, NULL, 45, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (80, NULL, NULL, 45, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (81, NULL, NULL, 45, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (82, NULL, NULL, 45, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (83, NULL, NULL, 45, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (84, NULL, NULL, 45, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (85, NULL, NULL, 48, 4.5, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (86, NULL, NULL, 10, 3.5, 3.5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (87, NULL, NULL, 46, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (88, NULL, NULL, 46, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (89, NULL, NULL, 46, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (90, NULL, NULL, 46, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (91, NULL, NULL, 46, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (92, NULL, NULL, 46, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (93, NULL, NULL, 46, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (94, NULL, NULL, 9, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (95, NULL, NULL, 9, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (96, NULL, NULL, 9, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (97, NULL, NULL, 9, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (98, NULL, NULL, 9, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (99, NULL, NULL, 9, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (100, NULL, NULL, 9, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (101, NULL, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (102, NULL, NULL, 49, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (103, NULL, NULL, 52, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (105, NULL, NULL, 53, 5.7, 5.7, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (106, NULL, NULL, 54, 3.35, 4.93, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (107, NULL, NULL, 55, 3.56, 7.9, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (108, NULL, NULL, 56, 3.3, 6.44, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (109, NULL, NULL, 57, 6, 7, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (110, 'Office with Waiting room', '44_office.jpg', 58, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (111, 'Cyclists Office', '55_office.jpg', 58, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (112, 'L-Shaped Office', '55_officetwo.jpg', 58, 5, 5, 30, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (113, 'Therapy Room with W/C', '44_therapy.jpg', 59, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO prodvariations VALUES (114, 'Two Therapy Rooms', '55_therapytwo.jpg', 59, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (9, NULL, NULL, NULL, 4, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (8, NULL, NULL, NULL, 4, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (7, NULL, NULL, NULL, 5, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (6, NULL, NULL, NULL, 5, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (5, NULL, NULL, NULL, 5, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (4, NULL, NULL, NULL, 5, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (3, NULL, NULL, NULL, 5, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (28, NULL, NULL, NULL, 7, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (27, NULL, NULL, NULL, 7, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (26, NULL, NULL, NULL, 7, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (25, NULL, NULL, NULL, 7, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (24, NULL, NULL, NULL, 7, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (23, NULL, NULL, NULL, 7, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (22, NULL, NULL, NULL, 7, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (21, NULL, NULL, NULL, 6, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (20, NULL, NULL, NULL, 6, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (2, NULL, NULL, NULL, 5, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (19, NULL, NULL, NULL, 6, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (18, NULL, NULL, NULL, 6, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (17, NULL, NULL, NULL, 6, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (16, NULL, NULL, NULL, 6, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (15, NULL, NULL, NULL, 6, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (14, NULL, NULL, NULL, 4, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (13, NULL, NULL, NULL, 4, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (12, NULL, NULL, NULL, 4, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (11, NULL, NULL, NULL, 4, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (10, NULL, NULL, NULL, 4, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (1, NULL, NULL, NULL, 5, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (29, NULL, NULL, NULL, 18, 3.25, 4.45, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (30, NULL, NULL, NULL, 24, 3.25, 4.45, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (31, NULL, NULL, NULL, 25, 2.95, 3.25, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (32, NULL, NULL, NULL, 26, 2.95, 3.25, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (33, NULL, NULL, NULL, 28, 2.95, 3.25, 50, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (34, NULL, NULL, NULL, 27, 2.95, 3.25, 60, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (35, NULL, NULL, NULL, 29, 2.95, 2.5, 70, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (36, NULL, NULL, NULL, 30, 2.2, 2.5, 80, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (37, NULL, NULL, NULL, 31, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (38, NULL, NULL, NULL, 19, 4, 6.5, 100, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (39, NULL, NULL, NULL, 22, 3.35, 1.8, 110, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (40, NULL, NULL, NULL, 23, 1.5, 3.05, 120, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (52, NULL, NULL, NULL, 32, 7, 8.5, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (53, NULL, NULL, NULL, 33, 10.45, 8.5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (54, NULL, NULL, NULL, 34, 4.7, 5.1, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (55, NULL, NULL, NULL, 35, 4.3, 5.5, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (56, NULL, NULL, NULL, 40, 6.45, 6.2, 50, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (57, NULL, NULL, NULL, 14, 3.149, 3.149, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (58, NULL, NULL, NULL, 15, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (59, NULL, NULL, NULL, 16, 5.009, 5.009, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (60, NULL, NULL, NULL, 17, 6.05, 6.05, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (61, NULL, NULL, NULL, 21, 5.36, 3.8, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (62, NULL, NULL, NULL, 38, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (63, NULL, NULL, NULL, 39, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (64, NULL, NULL, NULL, 39, 3, 4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (65, NULL, NULL, NULL, 39, 4, 4, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (66, NULL, NULL, NULL, 39, 5, 5, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (67, NULL, NULL, NULL, 37, 3.14, 3.4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (68, NULL, NULL, NULL, 44, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (69, NULL, NULL, NULL, 43, 3.14, 3.4, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (70, NULL, NULL, NULL, 20, 3, 3, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (71, 'Type 1: 1/2 glazed door 70/193 and 2 windows 70/94', NULL, NULL, 36, 2.8, 3.03, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (72, 'Type 2: 1/2 glazed door 90/193 and 2 windows 90/94', NULL, NULL, 36, 3.14, 3.4, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (73, 'Type 3: 1/2 glazed door 90/193 and 2 windows 100/9', NULL, NULL, 36, 4, 4.34, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (74, 'Type 1: 3/4 glazed door 70/193 and 2 windows 70/13', NULL, NULL, 50, 2.8, 3.03, 40, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (75, 'Type 2: 3/4 glazed door 90/193 and 2 windows 90/13', NULL, NULL, 50, 3.14, 3.4, 50, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (76, 'Type 3: 3/4 glazed door 90/193 and 2 windows 100/1', NULL, NULL, 50, 4, 4.34, 60, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (77, 'Tornio', NULL, NULL, 39, 5, 4, 35, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (78, NULL, NULL, NULL, 45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (79, NULL, NULL, NULL, 45, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (80, NULL, NULL, NULL, 45, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (81, NULL, NULL, NULL, 45, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (82, NULL, NULL, NULL, 45, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (83, NULL, NULL, NULL, 45, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (84, NULL, NULL, NULL, 45, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (85, NULL, NULL, NULL, 48, 4.5, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (86, NULL, NULL, NULL, 10, 3.5, 3.5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (87, NULL, NULL, NULL, 46, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (88, NULL, NULL, NULL, 46, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (89, NULL, NULL, NULL, 46, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (90, NULL, NULL, NULL, 46, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (91, NULL, NULL, NULL, 46, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (92, NULL, NULL, NULL, 46, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (93, NULL, NULL, NULL, 46, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (94, NULL, NULL, NULL, 9, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (95, NULL, NULL, NULL, 9, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (96, NULL, NULL, NULL, 9, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (97, NULL, NULL, NULL, 9, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (98, NULL, NULL, NULL, 9, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (99, NULL, NULL, NULL, 9, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (100, NULL, NULL, NULL, 9, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (101, NULL, NULL, NULL, 47, 3.1, 2.51, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (102, NULL, NULL, NULL, 49, 2.95, 3.25, 90, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (103, NULL, NULL, NULL, 52, 3.81, 3.81, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (105, NULL, NULL, NULL, 53, 5.7, 5.7, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (106, NULL, NULL, NULL, 54, 3.35, 4.93, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (107, NULL, NULL, NULL, 55, 3.56, 7.9, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (108, NULL, NULL, NULL, 56, 3.3, 6.44, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (109, NULL, NULL, NULL, 57, 6, 7, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (110, 'Office with Waiting room', '44_office.jpg', '44_office.pdf', 58, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (111, 'Cyclists Office', '55_office.jpg', '55_office.pdf', 58, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (112, 'L-Shaped Office', '55_officetwo.jpg', '55_officetwo.pdf', 58, 5, 5, 30, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (113, 'Therapy Room with W/C', '44_therapy.jpg', '44_therapy.pdf', 59, 4, 4, 10, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (114, 'Two Therapy Rooms', '55_therapytwo.jpg', '55_therapytwo.pdf', 59, 5, 5, 20, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO prodvariations VALUES (115, NULL, NULL, NULL, 60, 3, 3, 10, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table rangeoptions
---
+-- 
 
 CREATE TABLE rangeoptions (
   id int(11) NOT NULL auto_increment,
@@ -1530,9 +1539,9 @@ CREATE TABLE rangeoptions (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Range Options' AUTO_INCREMENT=16 ;
 
---
+-- 
 -- Dumping data for table rangeoptions
---
+-- 
 
 INSERT INTO rangeoptions VALUES (2, 'Shingles', 5, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO rangeoptions VALUES (3, 'Single Window', 5, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1551,9 +1560,9 @@ INSERT INTO rangeoptions VALUES (15, 'Single Fence', 0, 160, NULL, NULL, NULL, N
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table resellerproducts
---
+-- 
 
 CREATE TABLE resellerproducts (
   id int(11) NOT NULL auto_increment,
@@ -1568,9 +1577,9 @@ CREATE TABLE resellerproducts (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Reseller Products' AUTO_INCREMENT=17 ;
 
---
+-- 
 -- Dumping data for table resellerproducts
---
+-- 
 
 INSERT INTO resellerproducts VALUES (1, 1, 14, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO resellerproducts VALUES (2, 2, 14, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1591,9 +1600,9 @@ INSERT INTO resellerproducts VALUES (16, 4, 17, NULL, NULL, NULL, NULL, NULL, NU
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table resellers
---
+-- 
 
 CREATE TABLE resellers (
   id int(11) NOT NULL auto_increment,
@@ -1617,9 +1626,9 @@ CREATE TABLE resellers (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Resellers' AUTO_INCREMENT=5 ;
 
---
+-- 
 -- Dumping data for table resellers
---
+-- 
 
 INSERT INTO resellers VALUES (1, 'Hillmount Nursery Centre', '56-58 Upper Braniel Road', 'Gillnahirk', 'Belfast', NULL, 'BT5 7TX', '(028) 9044 8213', 'info@hillmount.co.uk', 'http://www.hillmount.co.uk/', 550, 330, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO resellers VALUES (2, 'Noah''s Workshop', '190 New Road', 'West Parley', 'Ferndown', 'Dorset', 'BH22 8EN', '01202 581400', 'info@noahsworkshop.co.uk', 'http://www.noahsworkshop.co.uk/', 670, 495, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1628,9 +1637,9 @@ INSERT INTO resellers VALUES (4, 'Hilton Court Nursery', 'Roch', NULL, 'Haverfor
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table tabs
---
+-- 
 
 CREATE TABLE tabs (
   id int(11) NOT NULL auto_increment,
@@ -1646,9 +1655,9 @@ CREATE TABLE tabs (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Tabs' AUTO_INCREMENT=6 ;
 
---
+-- 
 -- Dumping data for table tabs
---
+-- 
 
 INSERT INTO tabs VALUES (1, 'product', 'Product', 10, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO tabs VALUES (2, 'product', 'Gallery', 20, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1656,9 +1665,9 @@ INSERT INTO tabs VALUES (3, 'product', 'Plans', 30, NULL, NULL, NULL, NULL, NULL
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table testimonalphotos
---
+-- 
 
 CREATE TABLE testimonalphotos (
   id int(11) NOT NULL auto_increment,
@@ -1674,9 +1683,9 @@ CREATE TABLE testimonalphotos (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Testimonal Photos' AUTO_INCREMENT=6 ;
 
---
+-- 
 -- Dumping data for table testimonalphotos
---
+-- 
 
 INSERT INTO testimonalphotos VALUES (1, 5, 'busby1.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO testimonalphotos VALUES (2, 4, 'irvine1.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1686,9 +1695,9 @@ INSERT INTO testimonalphotos VALUES (5, 7, 'lambert1.jpg', 1, NULL, NULL, NULL, 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table testimonals
---
+-- 
 
 CREATE TABLE testimonals (
   id int(11) NOT NULL auto_increment,
@@ -1704,9 +1713,9 @@ CREATE TABLE testimonals (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Testimonals' AUTO_INCREMENT=8 ;
 
---
+-- 
 -- Dumping data for table testimonals
---
+-- 
 
 INSERT INTO testimonals VALUES (6, '2007-01-30', 'Chris Currie', 'That''s a year now we''ve had our barbecue house and if I am 100% honest, probably the best money we''ve ever spent socially. My friends love coming round and we have some great nights.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO testimonals VALUES (4, '2004-01-01', 'Scott Irvine (Edinburgh)', 'We are delighted with it and we are already onto BBQ number 6 and the grandchildren have already slept in it overnight once and have booked another overnight stay.\r\n', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1715,9 +1724,9 @@ INSERT INTO testimonals VALUES (7, '2007-01-01', 'Susan Lambert (Woodend Farm)',
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table upload
---
+-- 
 
 CREATE TABLE upload (
   uplfile varchar(255) NOT NULL default '',
@@ -1726,7 +1735,7 @@ CREATE TABLE upload (
   PRIMARY KEY  (uplfile)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Uploaded Files';
 
---
+-- 
 -- Dumping data for table upload
---
+-- 
 

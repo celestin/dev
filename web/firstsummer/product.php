@@ -24,6 +24,7 @@
  * CAM  06-Feb-2007  10082 : Added Variation Images.
  * CAM  06-Feb-2007  10082 : Fixed JS Error onclick.
  * CAM  13-Feb-2007  10075 : Included order in Dimensions to ensure consistent results.
+ * CAM  19-Jun-2007  10122 : Allow Brochures on Variations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -118,7 +119,7 @@ if ($row = mysql_fetch_array($sql)) {
   $example_count = $row[0];
 }
 if ($example_count > 0) {
-  $ssql = "SELECT imgfile, variation FROM prodvariations ".
+  $ssql = "SELECT imgfile, brochure, variation FROM prodvariations ".
           "WHERE product_id='$uproduct' ".
           "AND imgfile IS NOT NULL ";
   if (!empty($uvariation)) {
@@ -128,7 +129,8 @@ if ($example_count > 0) {
   $sql = mysql_query($ssql);
   if ($row = mysql_fetch_array($sql)) {
     $variation_img = $row[0];
-    $variation_text = $row[1];
+    $brochure = $row[1];
+    $variation_text = $row[2];
   }
 }
 

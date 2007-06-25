@@ -11,7 +11,7 @@
  *
  * Who  When         Why
  * CAM  06-Feb-2006  8: File created.
- * CAM  25-Jun-2007  10134: Order by Date correctly.
+ * CAM  25-Jun-2007  10134 : Order by Date correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - News";

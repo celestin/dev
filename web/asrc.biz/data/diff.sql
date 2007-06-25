@@ -7,6 +7,7 @@
 --
 -- Who  When         Why
 -- CAM  22-Jun-2007  10130 : Diff created.
+-- CAM  25-Jun-2007  10134 : Added News.
 -- --------------------------------------------------------
 
 INSERT INTO member_type (member_type, type_name, comments1, comments2, valid, limits, disp_order) VALUES 
@@ -22,6 +23,12 @@ INSERT INTO court (court, week_cutoff, name, online) VALUES (1, 13, 'One', 1),
 (5, 0, 'Five', 1),
 (6, 0, 'Six', 1),
 (7, 0, 'Seven', 1);
+
+
+DELETE FROM news;
+INSERT INTO news VALUES ('2006-02-06 00:00:00', 'You can now choose opponent ''GUEST''', '<p>To distinguish between an unspecified opponent (i.e. when you don''t specify your opponent after booking your court) and a Guest, we have created a GUEST user that you should use when you know you are playing a guest.</p>\r\n\r\n<p>Just type <b>GUEST</b> into either the <u>Member ID</u> or <u>Member Name</u> boxes when asked to search for your opponent, and then click on <u>Guest to the club (GUEST)</u>.\r\n\r\n<p>Coming soon - ability to set/change your opponent <i>after</i> you have made the booking...</p>');
+INSERT INTO news VALUES ('2006-04-26 00:00:00', 'At-a-glance Courts View', '<p>A new view has been added to the system so that you can see <i>at a glance</i> all courts that have been booked up to two hours previously, and for the next five hours.</p>\r\n\r\n<p>This view is activated every time you log out, and also as an option to the Administrators.</p>\r\n\r\n<p>Once on the screen, the view will refresh every minute.</p>');
+INSERT INTO news VALUES ('2007-06-25 00:00:00', 'Fine Board', '<p>If you are on the "Fine Board" <i>(i.e. you have an outstanding fine(s) on the system)</i> you cannot book any new games, although you can continue to play those you have already booked.</p>\r\n\r\n<p>You can pay your fines at Reception, and they can register them as having been paid within the system.</p>\r\n\r\n<p>The Bookings view now looks very colourful!  Alternate times are highlighted using white/orange and Members are coloured according to their Membership Type.  If you would like to know more about the types, click on ''help''.</p>');
 
 
 DELETE FROM slot;

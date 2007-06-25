@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * New Booking Workflow
@@ -14,6 +14,7 @@
  * CAM  01-Jun-2004  9 : Admin members see 15 days ahead.
  * CAM  19-Jan-2006  9 : Block booking.
  * CAM  06-Feb-2006  10: Added created_by.
+ * CAM  25-Jun-2007  10128 : No more New Bookings if on "Fine Board".
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -52,24 +53,88 @@ if (empty($memberOrig)) {
   include 'frm/orig_form.php';
 
 } else if (!$book_date) {
-  if ($member->isAdmin()) {
-    Msg::question("What day would " . $memberOrig->getFirstname() . " like to play");
+  // Check if Member is on "Fine Board"
+  $fines = false;
+
+  $ssql = "SELECT DATE_FORMAT(b.book_date,'%a') book_day,".
+                 "DATE_FORMAT(b.book_date,'%d %b %Y') book_date_disp,".
+                 "s.duration,b.court,b.opponentid,".
+                 "TIME_FORMAT(s.start_time,'%H:%i') start_time_fmt, ".
+                 "b.memberid, b.court, b.slot ".
+          "FROM booking b, slot s ".
+          "WHERE b.court = s.court ".
+          "AND b.slot = s.slot ".
+          "AND b.status = 'X' ".
+          "AND b.memberid='" . $memberOrig->getID() . "' ".
+          "ORDER BY b.book_date, s.start_time";
+
+  $sql = mysql_query($ssql) or die (mysql_error());
+
+  while ($row = mysql_fetch_array($sql)) {
+    foreach($row AS $key => $val) {
+      $$key = stripslashes($val);
+    }
+
+    if (!$fines) {
+      if ($member->isAdmin()) {
+        Msg::error($memberOrig->getFirstname() . " has the following outstanding fines, and cannot book any more courts util they are paid:");
+      } else {
+        Msg::error("You have the following outstanding fines, and you cannot book any more courts util they are paid:");
+      }
+?>
+      <table border=1 cellspacing=0 cellpadding=2>
+      <tr>
+        <th width="35">day</th>
+        <th width="70">date</th>
+        <th width="35">start</th>
+        <th width="55">duration</th>
+        <th width="35">court</th>
+        <th width="140">opponent</th>
+      </tr>
+<?
+    }
+    $fines = true;
+
+    if ($opponentid) {
+      $tupOpponent = Person::getPerson($opponentid);
+    } else {
+      $tupOpponent = new Person("?", "Unspecified", "", "", "", 0, "Y", 0);
+    }
+
+    echo "<tr>".
+           "<td class=bc>$book_day</td>".
+           "<td class=bc>$book_date_disp</td>".
+           "<td class=bc>$start_time_fmt</td>".
+           "<td class=bc>$duration</td>".
+           "<td class=bc>$court</td>".
+           "<td class=" . $tupOpponent->getClass() . " title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>".
+         "</tr>";
+  }
+
+  if ($fines) {
+    echo "</table>";
+
   } else {
-    Msg::question("What day would you like to play, " . $memberOrig->getFirstname());
-  }
 
-  $cal = new Calendar($memberOrig->getID());
-  print "<table border=0 cellspacing=10 cellpadding=0>";
+    if ($member->isAdmin()) {
+      Msg::question("What day would " . $memberOrig->getFirstname() . " like to play");
+    } else {
+      Msg::question("What day would you like to play, " . $memberOrig->getFirstname());
+    }
 
-  $daysAhead = 8;
-  if ($member->isAdmin()) {
-    $daysAhead = 15;
-  }
+    $cal = new Calendar($memberOrig->getID());
+    print "<table border=0 cellspacing=10 cellpadding=0>";
 
-  for ($i=0; $i<$daysAhead; $i++) {
-    print "<tr><td>" . $cal->dateLink($i) . "</td></tr>";
+    $daysAhead = 8;
+    if ($member->isAdmin()) {
+      $daysAhead = 15;
+    }
+
+    for ($i=0; $i<$daysAhead; $i++) {
+      print "<tr><td>" . $cal->dateLink($i) . "</td></tr>";
+    }
+    print "</table>";
   }
-  print "</table>";
 
 } else if ($book_date && !$book_time && $memberOrig->isBlockBooker()) {
 ?>

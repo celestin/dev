@@ -15,11 +15,14 @@
  * CAM  06-Feb-2006  8 : Changed 'Guest' for null opponent to 'Unspecified'.
  * CAM  22-Jun-2007  10132 : Distinguish between Unspecified, Unknown and Guest.
  * CAM  22-Jun-2007  10130 : Added Key to Colour-coding.
+ * CAM  25-Jun-2007  10129 : Colour alternate rows.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Bookings";
 include_once 'Main.php';
 include 'tpl/top.php';
+$alternate=true;
+$prev_time="";
 
 if ($member->isAdmin()) {
   $book_date = NULL;        if (!empty($_GET['book_date'])) $book_date = $_GET['book_date'];
@@ -120,12 +123,24 @@ if ($member->isAdmin()) {
       $tupOpponent = new Person("?", "Unspecified", "", "", "", 0, "Y", 0);
     }
 
+    $rowclass="bc";
+    $start_time = $start_time_fmt;
+
+    if ($start_time_fmt != $prev_time) {
+      $alternate = (!$alternate);
+      $start_time = "<b>$start_time_fmt</b>";
+    }
+
+    if ($alternate) {
+      $rowclass="alt";
+    }
+
     print "<tr>".
-      "<td class=bc>$book_day</td>".
-      "<td class=bc>$book_date_disp</td>".
-      "<td class=bc>$start_time_fmt</td>".
-      "<td class=bc>$duration</td>".
-      "<td class=bc>$court</td>";
+      "<td class=$rowclass>$book_day</td>".
+      "<td class=$rowclass>$book_date_disp</td>".
+      "<td class=$rowclass>$start_time</td>".
+      "<td class=$rowclass>$duration</td>".
+      "<td class=$rowclass>$court</td>";
 
     if ($member->isAdmin()) {
       $tupMember = Person::getPerson($memberid);
@@ -135,18 +150,20 @@ if ($member->isAdmin()) {
     print "<td class=" . $tupOpponent->getClass() . " title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>";
 
     if (empty($confirm_date) && (strtotime("$book_date $start_time_fmt") - time()) > 1800) {
-      print "<td class=bc><a href=\"". ActionUtil::url('X', $book_date, $court, $slot) . "\">cancel</a></td>";
+      print "<td class=$rowclass><a href=\"". ActionUtil::url('X', $book_date, $court, $slot) . "\">cancel</a></td>";
     } else {
-      print "<td>&nbsp</td>";
+      print "<td class=$rowclass>&nbsp</td>";
     }
 
     if ($member->isAdmin()) {
       if (empty($confirm_date)) {
-        print "<td class=bc><a href=\"". ActionUtil::url('C', $book_date, $court, $slot) . "\">confirm</a></td>";
+        print "<td class=$rowclass><a href=\"". ActionUtil::url('C', $book_date, $court, $slot) . "\">confirm</a></td>";
       } else {
-        print "<td>&nbsp</td>";
+        print "<td class=$rowclass>&nbsp</td>";
       }
     }
+
+    $prev_time = $start_time_fmt;
 
     print "</tr>";
   }

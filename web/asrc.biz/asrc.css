@@ -12,6 +12,7 @@
  * CAM  19-Mar-2004  File created.
  * CAM  29-Jul-2006  10021 : Added correct font for all input types.
  * CAM  22-Jun-2007  10130 : Added Membership Colour-coding classes.
+ * CAM  25-Jun-2007  10129 : Added 'alt' for alternate rows.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -68,6 +69,11 @@ td.fldopt {
 }
 
 td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.alt {
+  BACKGROUND-COLOR: #FFDDAA;
   TEXT-ALIGN: center;
 }
 

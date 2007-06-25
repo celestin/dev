@@ -1,6 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
+
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -11,6 +12,7 @@
  * Who  When         Why
  * CAM  25-Apr-2006  14 : File created.
  * CAM  08-Feb-2007  10097 : Include Courts 1-3.
+ * CAM  25-Jun-2007  10129 : Corrected join SQL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Current Courts View";
@@ -108,7 +110,7 @@ if ($book_date==NULL) {
                    "b.court, b.memberid, s.duration, s.duration/10 blocks, ".
                    "CONCAT(m.first_name, ' ', m.last_name) member_name, ".
                    "CONCAT(o.first_name, ' ', o.last_name) opponent_name ".
-            "FROM booking b, slot s ".
+            "FROM slot s, booking b ".
             "LEFT OUTER JOIN member o ON b.opponentid = o.memberid ".
             "LEFT OUTER JOIN member m ON b.memberid = m.memberid ".
             "WHERE b.court = s.court ".
@@ -121,7 +123,7 @@ if ($book_date==NULL) {
                    "b.court, b.memberid, s.duration, s.duration/10 blocks, ".
                    "CONCAT(m.first_name, ' ', m.last_name) member_name, ".
                    "CONCAT(o.first_name, ' ', o.last_name) opponent_name ".
-            "FROM booking_arc b, slot s ".
+            "FROM slot s, booking_arc b ".
             "LEFT OUTER JOIN member o ON b.opponentid = o.memberid ".
             "LEFT OUTER JOIN member m ON b.memberid = m.memberid ".
             "WHERE b.court = s.court ".

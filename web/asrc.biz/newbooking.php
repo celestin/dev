@@ -77,9 +77,9 @@ if (empty($memberOrig)) {
 
     if (!$fines) {
       if ($member->isAdmin()) {
-        Msg::error($memberOrig->getFirstname() . " has the following outstanding fines, and cannot book any more courts util they are paid:");
+        Msg::error($memberOrig->getFirstname() . " has the following outstanding fines, and cannot book any more courts until they are paid:");
       } else {
-        Msg::error("You have the following outstanding fines, and you cannot book any more courts util they are paid:");
+        Msg::error("You have the following outstanding fines, and you cannot book any more courts until they are paid:");
       }
 ?>
       <table border=1 cellspacing=0 cellpadding=2>

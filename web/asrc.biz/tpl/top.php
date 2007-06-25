@@ -1,6 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -13,6 +14,7 @@
  * CAM  30-May-2004  4 : Added Fines menu.
  * CAM  25-Apr-2006  14 : Show Courts View to admin toolbar.
  * CAM  29-Jul-2006  10021 : Show flash messages if they exist.
+ * CAM  25-Jun-2007  10134: Add News to members toolbar.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -73,6 +75,8 @@ if (empty($hide_toolbar)) {
             if ($member->isAdmin()) {
               print '<td><a href="users.php">users</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
               print '<td><a href="courtsview.php">courts</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
+            } else {
+              print '<td><a href="news.php">news</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             }
           } else {
             print '<td><a href="login.php">login</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';

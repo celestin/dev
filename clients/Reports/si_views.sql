@@ -25,7 +25,7 @@ CREATE OR REPLACE VIEW v_rep_sales_invoice_backup AS
   SELECT b.sales_invoice_no,
          p.project, p.project_title,
          j.job_code, j.description job_description, j.hard_status,
-         b.booking_date,b.normal normal_hours
+         b.booking_date,NVL(b.normal,0)*1.00 normal_hours
   FROM t_ts_bookings b,
        t_job_codes j,
        t_project p

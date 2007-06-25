@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Delete an existing user
@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.
+ * CAM  22-Jun-2007  10132 : Removed session_register.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Log out";
@@ -33,7 +34,6 @@ if(!isset($_REQUEST['confirm'])){
           "WHERE memberid = '$member_id' ";
   $sql = mysql_query($ssql) or die(mysql_error());
 
-  session_register('flash');
   $_SESSION['flash'] = "User $member_id deleted.";
 
 ?>

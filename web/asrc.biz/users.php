@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * User Administration
@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.
+ * CAM  22-Jun-2007  10132 : Removed session_register.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - User Administration";
@@ -30,7 +31,6 @@ $filter_type = NULL;      if (!empty($_POST['filter_type'])) $filter_type = $_PO
 
 $ftr = new Filter($filter_id, $filter_parent, $filter_fname, $filter_lname, $filter_type);
 if ($ftr->isFiltered()) {
-  session_register('filter');
   $_SESSION['filter'] = $ftr;
 } else {
   if (session_is_registered('filter')) $ftr = $_SESSION['filter'];

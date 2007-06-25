@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Calendar Class
@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
  * CAM  08-Feb-2007  10097 : Correct Sort order.
+ * CAM  25-Jun-2007  10132 : Corrected SQL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'inc.php';
@@ -105,7 +106,7 @@ class Calendar {
       $ssql .= "c.court,c.name court_name,s.slot,s.start_time,s.duration ";
     }
 
-    $ssql .= "FROM slot s, court c " .
+    $ssql .= "FROM court c, slot s " .
              "LEFT JOIN booking b " .
              "ON s.slot = b.slot " .
              "AND s.court = b.court  " .
@@ -130,6 +131,7 @@ class Calendar {
     }
 
     $ssql .= "ORDER BY 1,4";
+    //echo "<pre>$ssql</pre>\n";
 
     $sql = mysql_query($ssql) or die (mysql_error());
     while ($row = mysql_fetch_array($sql)) {

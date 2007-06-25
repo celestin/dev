@@ -12,6 +12,8 @@
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
  * CAM  19-Jan-2006  9 : Added Blockbooker flag.
+ * CAM  22-Jun-2007  10132 : Added 'Unknown User' if problem with SQL query.
+ * CAM  22-Jun-2007  10130 : Added getClass.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -232,6 +234,8 @@ class Person extends Tuple {
 
       return new Person($memberid,$first_name,$last_name,$email_address,$dob,$admin,$mt,$bb);
     }
+
+    return new Person($memberid, "Unknown", "User", "", "", 0, "Z", 0);
   }
 
   function toHtmlString($showID=false) {
@@ -244,5 +248,18 @@ class Person extends Tuple {
     return $rval;
   }
 
+  function getClass() {
+    $mtype = "";
+
+    if (get_class($this->membertype) !== FALSE) {
+      $mtype = $this->membertype->getID();
+    } else {
+      $mtype = $this->membertype;
+    }
+
+    $rval = "member_type_" . strtolower($mtype);
+
+    return $rval;
+  }
 }
 ?>

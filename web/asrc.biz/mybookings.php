@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * View My Bookings
@@ -13,6 +13,8 @@
  * CAM  19-Mar-2004  File created.
  * CAM  29-May-2004  5 : View Admin Bookings by Day.
  * CAM  06-Feb-2006  8 : Changed 'Guest' for null opponent to 'Unspecified'.
+ * CAM  22-Jun-2007  10132 : Distinguish between Unspecified, Unknown and Guest.
+ * CAM  22-Jun-2007  10130 : Added Key to Colour-coding.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Bookings";
@@ -115,7 +117,7 @@ if ($member->isAdmin()) {
     if ($opponentid) {
       $tupOpponent = Person::getPerson($opponentid);
     } else {
-      $tupOpponent = new Tuple("UNSPEC", "Unspecified");
+      $tupOpponent = new Person("?", "Unspecified", "", "", "", 0, "Y", 0);
     }
 
     print "<tr>".
@@ -127,10 +129,10 @@ if ($member->isAdmin()) {
 
     if ($member->isAdmin()) {
       $tupMember = Person::getPerson($memberid);
-      print "<td class=bc title=\"" . $tupMember->toString(true) . "\">" . $tupMember->getDesc() . "</td>";
+      print "<td class=" . $tupMember->getClass() . " title=\"" . $tupMember->toString(true) . "\">" . $tupMember->getDesc() . "</td>";
     }
 
-    print "<td class=bc title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>";
+    print "<td class=" . $tupOpponent->getClass() . " title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>";
 
     if (empty($confirm_date) && (strtotime("$book_date $start_time_fmt") - time()) > 1800) {
       print "<td class=bc><a href=\"". ActionUtil::url('X', $book_date, $court, $slot) . "\">cancel</a></td>";
@@ -191,7 +193,7 @@ if ($member->isAdmin()) {
     if ($opponentid) {
       $tupOpponent = Person::getPerson($opponentid);
     } else {
-      $tupOpponent = new Tuple("Guest", "Guest");
+      $tupOpponent = new Person("Guest", "Guest", "", "", "", 0, "U", 0);
     }
 
     print "<tr>";

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  08-Feb-2007  10097 : File created.
+ * CAM  22-Jun-2007  10132 : Corrected Local Server name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Aberdeen Squash Racquets Club";
@@ -21,9 +22,9 @@ $cfg['Site']['Db']['Database'] = "asrc";
 $cfg['Site']['Db']['Username'] = "asrc";
 $cfg['Site']['Db']['Password'] = "fred71";
 
-if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
+if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
   $cfg['Site']['Db']['Hostname'] = 'localhost';
-  $cfg['Site']['URL']   = "http://asrc.southesk.com";
+  $cfg['Site']['URL']   = "http://localhost/asrc";
 } else if (strpos(strtolower($_SERVER['SERVER_NAME']), "southesk") !== FALSE) {
   $cfg['Site']['Db']['Hostname'] = 'localhost';
   $cfg['Site']['URL']   = "http://asrc.southesk.com";
@@ -31,6 +32,5 @@ if (strpos(strtolower($_SERVER['SERVER_NAME']), "local") !== FALSE) {
   $cfg['Site']['Db']['Username'] = "southesk";
   $cfg['Site']['Db']['Password'] = "psalm45";
 }
-
 
 ?>

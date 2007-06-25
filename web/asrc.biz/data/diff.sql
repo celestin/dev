@@ -10,7 +10,7 @@
 -- CAM  25-Jun-2007  10134 : Added News.
 -- --------------------------------------------------------
 
-INSERT INTO member_type (member_type, type_name, comments1, comments2, valid, limits, disp_order) VALUES 
+REPLACE INTO member_type (member_type, type_name, comments1, comments2, valid, limits, disp_order) VALUES 
 ('Y', 'Unspecified', NULL, NULL, NULL, NULL, '0'), 
 ('Z', 'Unknown', NULL, NULL, NULL, NULL, '0');
 

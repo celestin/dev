@@ -13,6 +13,7 @@
  * CAM  08-Feb-2007  10098 : Added Valentines Dance.
  * CAM  05-Mar-2007  10098 : Removed Valentines Dance.
  * CAM  05-Mar-2007  10098 : Corrected CSS.
+ * CAM  25-Jun-2007  10133 : Ensure Test emails are sent to the Development email.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -99,6 +100,8 @@ class EmailMsg {
   }
 
   function send() {
+    global $cfg;
+
     $memPerson = Person::getPerson($this->memberId);
 
     $opp = false;
@@ -119,6 +122,11 @@ class EmailMsg {
       if ($opp) $cc = $oppPerson->getEmail();
     }
 
+    if ($cfg['Site']['Test'] === TRUE) {
+      $to = $cfg['Site']['Email'];
+      $cc = "";
+    }
+
     $headers = "From: ASRC <bookings@asrc.biz>$cr";
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
     $headers .= "MIME-Version: 1.0$cr";
@@ -129,6 +137,10 @@ class EmailMsg {
 
     $title = "Squash Booking " . $this->typeDesc;
     $subject = $title . ": " . $this->bookDate . " at " . $this->startTime;
+
+    if ($cfg['Site']['Test'] === TRUE) {
+      $subject .= " (TEST SYSTEM)";
+    }
 
     $message = "<html><head>".
     "<link href=\"$base/asrc.css\" rel=stylesheet type=text/css>".

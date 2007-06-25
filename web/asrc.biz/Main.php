@@ -12,11 +12,12 @@
  * CAM  19-Mar-2004  File created.
  * CAM  19-May-2005  Added Javascript.
  * CAM  08-Feb-2007  10097 : Include config.
+ * CAM  25-Jun-2007  10133 : Changed includes to be consistent with other systems.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once dirname(__FILE__).'/config.php';
-include_once './WEB-INF/inc.php';
-include_once 'db.php';
+include_once dirname(__FILE__).'/db.php';
+include_once dirname(__FILE__).'/WEB-INF/inc.php';
 
 session_start();
 error_reporting(E_ALL);

@@ -108,9 +108,6 @@
 <tr><td width=15><img width=28 src="../img/m/bean.png"></td>
 <td colspan=2><a class=nav href="../">Home</a></td>
 </tr>
-<tr><td width=15><img width=28 src="../img/m/espresso.png"></td>
-<td colspan=2><a class=nav href="../espresso/ferrari/">Espresso Machines</a></td>
-</tr>
 <tr><td width=15><img width=28 src="../img/m/coffee_machine.png"></td>
 <td colspan=2><a class=nav href="../coffee/machines/">Coffee Machines</a></td>
 </tr>

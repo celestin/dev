@@ -1,0 +1,76 @@
+td {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+td.comptitle {
+  FONT-SIZE: 48pt;
+  TEXT-ALIGN: center;
+}
+
+
+td.desc {
+  background-color: #0066CC;
+  COLOR: #FFFFFF;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 11pt;
+  TEXT-ALIGN: left;
+  FONT-WEIGHT: bold;
+  BORDER-BOTTOM: white 8px solid;
+}
+
+td.sitetitle {
+  font-size: 10pt;
+  font-weight: bold;
+  text-align: center;
+  background-color: #0099CC;
+}
+
+
+blockquote {
+  COLOR: white;
+  BACKGROUND-COLOR: #0066CC;
+  PADDING: 5px;
+}
+
+.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 8pt;
+  TEXT-ALIGN: center;
+  PADDING-TOP: 10px;
+  BORDER-TOP: #0066CC 8px solid;
+}
+
+td.companylegal {
+  font-size: 8pt;
+  text-align: center;
+  color: #666666;
+  PADDING-TOP: 5px;
+  PADDING-BOTTOM: 20px;
+}
+
+A.domain,A.domain:visited,A.domain:active,A.domain:link {
+  color: #0066CC;
+  text-decoration: none;
+  font-weight: bold;
+  FONT-SIZE: 7pt;
+}
+A.domain:hover {
+  color: #0099CC;
+  text-decoration: underline;
+  font-weight: bold;
+  FONT-SIZE: 7pt;
+}
+
+A,A:visited,A:active,A:link {
+  color: #0066CC;
+  text-decoration: none;
+  font-weight: bold;
+}
+A:hover {
+  color: #0099CC;
+  text-decoration: underline;
+  font-weight: bold;
+}

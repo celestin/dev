@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * FLEXlm License Verifier
- * Copyright 2004-2005 Power Software
+ * Copyright 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Configure the various licensing options
@@ -15,6 +15,7 @@
  * CAM  19-Sep-05   138 : Added KEPM.
  * CAM  27-Oct-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
+ * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -29,6 +30,7 @@
 #define LIC_PL   "epmpl"
 #define LIC_AS   "epmas"
 #define LIC_PH   "epmph"
+#define LIC_ID   "epmid"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -40,3 +42,4 @@
 #define EPM_KR   128
 #define EPM_AS   256
 #define EPM_PH   512
+#define EPM_ID   1024

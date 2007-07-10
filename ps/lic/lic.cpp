@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * FLEXlm License Verifier
- * Copyright 2004-2005 Power Software
+ * Copyright 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Performs the FLEXlm check
@@ -17,6 +17,7 @@
  * CAM  19-Sep-05   138 : Added KEPM.
  * CAM  27-Oct-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
+ * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"
@@ -71,6 +72,7 @@ DWORD main(int argc, char* argv[]) {
   inc(EPM_PL, LIC_PL);
   inc(EPM_AS, LIC_AS);
   inc(EPM_PH, LIC_PH);
+  inc(EPM_ID, LIC_ID);
   inc(EPM_KR, LIC_KR);
 
   if (debug) cout << endl << "Total:" << rval << endl;

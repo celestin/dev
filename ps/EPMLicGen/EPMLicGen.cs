@@ -1,15 +1,16 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * EPM License Generator (.net)
- * Copyright (c) 2004-2006 SourceCodeMetrics.com
+ * Copyright (c) 2004-2007 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Lic Gen Form
  *
  * $Id$
- * 
+ *
  * Who  When       Why
  * CAM  11-Oct-05   301 : File created.
  * CAM  05-Nov-06   301 : Added ASP (omission).
+ * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -62,7 +63,7 @@ namespace EPM_License_Generator
     //private string FRAME_FLOAT = "Select Products && Quantities";
     private int MAX_LIC_LINE_LEN = 45;
     private int HORZ_INC = 24;
-    
+
     private ArrayList _chkProds;
     private ArrayList _txtQtys;
     private FileInfo _licenseDat;
@@ -85,7 +86,7 @@ namespace EPM_License_Generator
     {
       if( disposing )
       {
-        if (components != null) 
+        if (components != null)
         {
           components.Dispose();
         }
@@ -126,9 +127,9 @@ namespace EPM_License_Generator
       this.dtpDate = new System.Windows.Forms.DateTimePicker();
       this.fmeProds.SuspendLayout();
       this.SuspendLayout();
-      // 
+      //
       // cmbHostid
-      // 
+      //
       this.cmbHostid.BackColor = System.Drawing.SystemColors.Window;
       this.cmbHostid.Cursor = System.Windows.Forms.Cursors.Default;
       this.cmbHostid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -141,9 +142,9 @@ namespace EPM_License_Generator
       this.cmbHostid.Size = new System.Drawing.Size(105, 21);
       this.cmbHostid.TabIndex = 25;
       this.cmbHostid.Text = "Any";
-      // 
+      //
       // txtName
-      // 
+      //
       this.txtName.AcceptsReturn = true;
       this.txtName.AutoSize = false;
       this.txtName.BackColor = System.Drawing.SystemColors.Window;
@@ -157,9 +158,9 @@ namespace EPM_License_Generator
       this.txtName.Size = new System.Drawing.Size(161, 21);
       this.txtName.TabIndex = 18;
       this.txtName.Text = "";
-      // 
+      //
       // fmeProds
-      // 
+      //
       this.fmeProds.BackColor = System.Drawing.SystemColors.Control;
       this.fmeProds.Controls.Add(this.txtQty);
       this.fmeProds.Controls.Add(this.chkProd);
@@ -172,9 +173,9 @@ namespace EPM_License_Generator
       this.fmeProds.TabIndex = 23;
       this.fmeProds.TabStop = false;
       this.fmeProds.Text = "&Select Products";
-      // 
+      //
       // txtQty
-      // 
+      //
       this.txtQty.AcceptsReturn = true;
       this.txtQty.AutoSize = false;
       this.txtQty.BackColor = System.Drawing.SystemColors.Window;
@@ -188,9 +189,9 @@ namespace EPM_License_Generator
       this.txtQty.Size = new System.Drawing.Size(57, 19);
       this.txtQty.TabIndex = 12;
       this.txtQty.Text = "";
-      // 
+      //
       // chkProd
-      // 
+      //
       this.chkProd.BackColor = System.Drawing.SystemColors.Control;
       this.chkProd.Cursor = System.Windows.Forms.Cursors.Default;
       this.chkProd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -201,22 +202,22 @@ namespace EPM_License_Generator
       this.chkProd.Size = new System.Drawing.Size(73, 17);
       this.chkProd.TabIndex = 11;
       this.chkProd.Text = "krakatau";
-      // 
+      //
       // mnuFile
-      // 
+      //
       this.mnuFile.Index = 0;
       this.mnuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                             this.mnuExit});
       this.mnuFile.Text = "&File";
-      // 
+      //
       // mnuExit
-      // 
+      //
       this.mnuExit.Index = 0;
       this.mnuExit.Text = "E&xit";
       this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
-      // 
+      //
       // lblHostid
-      // 
+      //
       this.lblHostid.BackColor = System.Drawing.SystemColors.Control;
       this.lblHostid.Cursor = System.Windows.Forms.Cursors.Default;
       this.lblHostid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -227,9 +228,9 @@ namespace EPM_License_Generator
       this.lblHostid.Size = new System.Drawing.Size(49, 17);
       this.lblHostid.TabIndex = 24;
       this.lblHostid.Text = "Host &ID";
-      // 
+      //
       // lblDesc
-      // 
+      //
       this.lblDesc.BackColor = System.Drawing.SystemColors.Control;
       this.lblDesc.Cursor = System.Windows.Forms.Cursors.Default;
       this.lblDesc.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -240,15 +241,15 @@ namespace EPM_License_Generator
       this.lblDesc.Size = new System.Drawing.Size(48, 17);
       this.lblDesc.TabIndex = 21;
       this.lblDesc.Text = "&Expiry";
-      // 
+      //
       // mnuOptions
-      // 
+      //
       this.mnuOptions.Index = 0;
       this.mnuOptions.Text = "&Options";
       this.mnuOptions.Click += new System.EventHandler(this.mnuOptions_Click);
-      // 
+      //
       // optLicFloat
-      // 
+      //
       this.optLicFloat.BackColor = System.Drawing.SystemColors.Control;
       this.optLicFloat.Cursor = System.Windows.Forms.Cursors.Default;
       this.optLicFloat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -261,36 +262,36 @@ namespace EPM_License_Generator
       this.optLicFloat.TabStop = true;
       this.optLicFloat.Text = "&Floating";
       this.optLicFloat.CheckedChanged += new System.EventHandler(this.optLicFloat_CheckedChanged);
-      // 
+      //
       // MainMenu1
-      // 
+      //
       this.MainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                               this.mnuFile,
                                                                               this.mnuTools,
                                                                               this.mnuHelp});
-      // 
+      //
       // mnuTools
-      // 
+      //
       this.mnuTools.Index = 1;
       this.mnuTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                              this.mnuOptions});
       this.mnuTools.Text = "&Tools";
-      // 
+      //
       // mnuHelp
-      // 
+      //
       this.mnuHelp.Index = 2;
       this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                                                                             this.mnuAbout});
       this.mnuHelp.Text = "&Help";
-      // 
+      //
       // mnuAbout
-      // 
+      //
       this.mnuAbout.Index = 0;
       this.mnuAbout.Text = "&About";
       this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
-      // 
+      //
       // optLicHost
-      // 
+      //
       this.optLicHost.BackColor = System.Drawing.SystemColors.Control;
       this.optLicHost.Cursor = System.Windows.Forms.Cursors.Default;
       this.optLicHost.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -303,9 +304,9 @@ namespace EPM_License_Generator
       this.optLicHost.TabStop = true;
       this.optLicHost.Text = "&Host-locked";
       this.optLicHost.CheckedChanged += new System.EventHandler(this.optLicHost_CheckedChanged);
-      // 
+      //
       // optLicTimed
-      // 
+      //
       this.optLicTimed.BackColor = System.Drawing.SystemColors.Control;
       this.optLicTimed.Checked = true;
       this.optLicTimed.Cursor = System.Windows.Forms.Cursors.Default;
@@ -319,9 +320,9 @@ namespace EPM_License_Generator
       this.optLicTimed.TabStop = true;
       this.optLicTimed.Text = "&Timed Expiry";
       this.optLicTimed.CheckedChanged += new System.EventHandler(this.optLicTimed_CheckedChanged);
-      // 
+      //
       // cmdGenerate
-      // 
+      //
       this.cmdGenerate.BackColor = System.Drawing.SystemColors.Control;
       this.cmdGenerate.Cursor = System.Windows.Forms.Cursors.Default;
       this.cmdGenerate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -333,9 +334,9 @@ namespace EPM_License_Generator
       this.cmdGenerate.TabIndex = 19;
       this.cmdGenerate.Text = "&Generate";
       this.cmdGenerate.Click += new System.EventHandler(this.cmdGenerate_Click);
-      // 
+      //
       // frmLicType
-      // 
+      //
       this.frmLicType.BackColor = System.Drawing.SystemColors.Control;
       this.frmLicType.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.frmLicType.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -346,9 +347,9 @@ namespace EPM_License_Generator
       this.frmLicType.TabIndex = 22;
       this.frmLicType.TabStop = false;
       this.frmLicType.Text = "License Type";
-      // 
+      //
       // txtOutput
-      // 
+      //
       this.txtOutput.AcceptsReturn = true;
       this.txtOutput.AutoSize = false;
       this.txtOutput.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(240)), ((System.Byte)(169)), ((System.Byte)(72)));
@@ -364,17 +365,17 @@ namespace EPM_License_Generator
       this.txtOutput.Size = new System.Drawing.Size(209, 48);
       this.txtOutput.TabIndex = 20;
       this.txtOutput.Text = "";
-      // 
+      //
       // dtpDate
-      // 
+      //
       this.dtpDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
       this.dtpDate.Location = new System.Drawing.Point(64, 80);
       this.dtpDate.Name = "dtpDate";
       this.dtpDate.Size = new System.Drawing.Size(128, 21);
       this.dtpDate.TabIndex = 26;
-      // 
+      //
       // EPMLicGen
-      // 
+      //
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.ClientSize = new System.Drawing.Size(424, 233);
       this.Controls.Add(this.dtpDate);
@@ -403,33 +404,33 @@ namespace EPM_License_Generator
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main() 
+    static void Main()
     {
       Application.Run(new EPMLicGen());
     }
 
-    private void RefreshControls() 
+    private void RefreshControls()
     {
 
       bool blnDate=true;
       bool blnNumLic=true;
 
-      if (optLicTimed.Checked) 
+      if (optLicTimed.Checked)
       {
         lblDesc.Text = "&Expiry";
         blnDate = true;
         blnNumLic = false;
 
       }
-      else if (optLicHost.Checked) 
+      else if (optLicHost.Checked)
       {
         lblDesc.Text = "H&ost";
         blnDate = false;
         blnNumLic = false;
 
       }
-      else if (optLicFloat.Checked) 
-      { 
+      else if (optLicFloat.Checked)
+      {
         lblDesc.Text = "&Server";
         blnDate = false;
         blnNumLic = true;
@@ -442,7 +443,7 @@ namespace EPM_License_Generator
       this.Refresh();
     }
 
-    private void CreateProductOptions() 
+    private void CreateProductOptions()
     {
       this._chkProds = new ArrayList();
       this._txtQtys = new ArrayList();
@@ -460,9 +461,10 @@ namespace EPM_License_Generator
       AddProduct("epmpl", "Perl");
       AddProduct("epmph", "PHP");
       AddProduct("epmvb", "Visual Basic");
+      AddProduct("epmid", "IDL");
     }
 
-    private void AddProduct(string strName, string strDesc) 
+    private void AddProduct(string strName, string strDesc)
     {
       CheckBox cb = (CheckBox) _chkProds[0];
       TextBox tb;
@@ -471,8 +473,8 @@ namespace EPM_License_Generator
       {
         cb.Text = strName;
         ToolTip1.SetToolTip(cb, strDesc);
-      } 
-      else 
+      }
+      else
       {
         cb = new CheckBox();
         tb = new TextBox();
@@ -503,40 +505,40 @@ namespace EPM_License_Generator
 
         _chkProds.Add(cb);
         _txtQtys.Add(tb);
-      } 
+      }
     }
 
-    protected string FLEXlmDate() 
+    protected string FLEXlmDate()
     {
       DateTime dt = dtpDate.Value;
       return dt.ToString("dd-MMM-yyyy").ToLower();
     }
 
-    public string LicenseString() 
+    public string LicenseString()
     {
       string rval="";
-		
-      if (optLicFloat.Checked) 
+
+      if (optLicFloat.Checked)
       {
         rval = "SERVER " + txtName.Text + " " + cmbHostid.Text + (char)13 + (char)10 + "VENDOR KRAKATAU" + (char)13 + (char)10;
       }
-			
-      for (int i=0; i<_chkProds.Count; i++) 
+
+      for (int i=0; i<_chkProds.Count; i++)
       {
         CheckBox cb = ((CheckBox)_chkProds[i]);
         TextBox tb = ((TextBox)_txtQtys[i]);
 
-        if (cb.Checked) 
+        if (cb.Checked)
         {
-          if (optLicTimed.Checked) 
+          if (optLicTimed.Checked)
           {
             rval += "FEATURE " + cb.Text + " KRAKATAU 1.0 " + FLEXlmDate() + " uncounted HOSTID=ANY ck=0 SIGN=0" + (char)13 + (char)10;
           }
-          else if (optLicHost.Checked) 
+          else if (optLicHost.Checked)
           {
             rval += "FEATURE " + cb.Text + " KRAKATAU 1.0 " + "permanent uncounted HOSTID=HOSTNAME=" + txtName.Text + " SIGN=0" + (char)13 + (char)10;
           }
-          else if (optLicFloat.Checked) 
+          else if (optLicFloat.Checked)
           {
             rval += "FEATURE " + cb.Text + " KRAKATAU 1.0 " + "permanent " + tb.Text + " SIGN=0" + (char)13 + (char)10;
           }
@@ -553,12 +555,12 @@ namespace EPM_License_Generator
 
     private void optLicHost_CheckedChanged(object sender, System.EventArgs e)
     {
-      RefreshControls();    
+      RefreshControls();
     }
 
     private void optLicFloat_CheckedChanged(object sender, System.EventArgs e)
     {
-      RefreshControls();    
+      RefreshControls();
     }
 
     private void cmdGenerate_Click(object sender, System.EventArgs e)
@@ -568,7 +570,7 @@ namespace EPM_License_Generator
       Refresh();
 
       _licenseDat = new FileInfo(_opt.LicenseFilePath + "\\" + LICENSE_FILE);
-		  
+
       TextWriter tw = new StreamWriter(_licenseDat.FullName, false);
       tw.WriteLine(LicenseString());
       tw.Close();
@@ -609,7 +611,7 @@ namespace EPM_License_Generator
             }
           }
         }
-        
+
         txtOutput.Text += ChopUp(line);
       }
       tr.Close();
@@ -620,37 +622,38 @@ namespace EPM_License_Generator
     private void mnuExit_Click(object sender, System.EventArgs e)
     {
       Application.Exit();
-    }    
+    }
 
     private void mnuOptions_Click(object sender, System.EventArgs e)
     {
-      _opt.ShowDialog(this);    
+      _opt.ShowDialog(this);
     }
 
     private void mnuAbout_Click(object sender, System.EventArgs e)
     {
-      MessageBox.Show(this, "EPM License Generator (.net)\n" + 
-                            "by Craig A McKay 04-Nov-2006\n\n"+
-                            "Copyright (c) 2006 SourceCodeMetrics.com", "About EPM License Generator", 
+      MessageBox.Show(this, "EPM License Generator (.net)\n" +
+                            "Version 2.00.003\n\n" +
+                            "by Craig A McKay 28-Jun-2007\n\n"+
+                            "Copyright (c) 2006 SourceCodeMetrics.com", "About EPM License Generator",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
-    protected string ChopUp(string strLine) 
+    protected string ChopUp(string strLine)
     {
       string rval="";
 
-      if (strLine.Length > MAX_LIC_LINE_LEN) 
+      if (strLine.Length > MAX_LIC_LINE_LEN)
       {
         int p = MAX_LIC_LINE_LEN;
         string ch = strLine.Substring(p, 1);
-        while (p>1 && !ch.Equals(" ")) 
+        while (p>1 && !ch.Equals(" "))
         {
           ch = strLine.Substring(--p, 1);
         }
 
         rval = strLine.Substring(0, p) + " \\ " + (char)13 + (char)10 + ChopUp(strLine.Substring(p, strLine.Length-p).Trim());
-      } 
-      else 
+      }
+      else
       {
         rval = strLine.Trim() + (char)13 + (char)10;
       }

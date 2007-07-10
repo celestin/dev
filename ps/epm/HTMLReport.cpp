@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * HTML Reporting
@@ -237,7 +237,7 @@ void HTMLReport::createFrameset() {
         << "<img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td><td>&nbsp;"
         << "<a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a>"
         << "</td></tr></table></td>" << endl;
-  frame << "<td width=\"40%\" align=center class=\"pstext\">Copyright &copy; 2004-2006 Powersoftware.com</td>" << endl;
+  frame << "<td width=\"40%\" align=center class=\"pstext\">Copyright &copy; 2004-2007 Powersoftware.com</td>" << endl;
   frame << "<td width=\"30%\" align=right><table border=0 cellspacing=0 cellpadding=0><tr><td>"
         << "<img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td><td>&nbsp;"
         << "<a class=top href=\"http://www.powersoftware.com/epm/epm_chg_ex.pdf\" target=\"_blank\">EPM Changed Metrics</a>"

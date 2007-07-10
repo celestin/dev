@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM entry point
@@ -51,6 +51,8 @@
  * CAM  19-Sep-06   117 : Added ASP.
  * CAM  27-Oct-06   117 : Version 1.12.000.
  * CAM  09-Nov-06   301 : Version 1.13.000.
+ * CAM  10-Jul-07   314 : Added IDL.
+ * CAM  10-Jul-07   314 : Version 1.13.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -86,7 +88,7 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -96,6 +98,7 @@ extern void lexclear_ada();
 extern void lexclear_pl();
 extern void lexclear_asp();
 extern void lexclear_php();
+extern void lexclear_idl();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -105,6 +108,7 @@ extern int yylex_ada();
 extern int yylex_pl();
 extern int yylex_asp();
 extern int yylex_php();
+extern int yylex_idl();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -143,6 +147,10 @@ extern int c_comments_php,cpp_comments_php,com_loc_php,nsemi_php,noperands_php,n
 extern set<int> sloc_php,operators_php;
 extern set<int> slnat_php,slhtm_php,slscr_php;
 extern vector<char*> operands_php[255];
+
+extern int j_comments_idl,c_comments_idl,cpp_comments_idl,com_loc_idl,nsemi_idl,noperands_idl,noperators_idl;
+extern set<int> sloc_idl,operators_idl;
+extern vector<char*> operands_idl[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -345,6 +353,21 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_php;
     com_loc = com_loc_php;
     break;
+
+    case LANG_IDL:
+    sloc = sloc_idl.size();                   // Source Lines of Code
+    met.set(MET(NSC), nsemi_idl);             // Halstead
+    met.set(MET(N1), noperators_idl);
+    met.set(MET(N1S), operators_idl.size());
+    met.set(MET(N2), noperands_idl);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_idl[i].size());
+    }
+
+    c_com = c_comments_idl;                   // Comments
+    cpp_com = cpp_comments_idl;
+    com_loc = com_loc_idl;
+    break;
   }
 
   met.set(MET(SLOC), sloc);
@@ -366,6 +389,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_CPP:
     case LANG_CS:
     case LANG_JAVA:
+    case LANG_IDL:
     d = new DiffCpp(filename2.c_str(), filename.c_str());
     break;
 
@@ -780,6 +804,11 @@ bool analyse(string &filename) {
       lexclear_asp();
       yylex_asp();
       break;
+    case LANG_IDL:
+      yyin_idl = src;
+      lexclear_idl();
+      yylex_idl();
+      break;
   }
 
   fclose(src);
@@ -791,8 +820,8 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.13.000\n"
-       << "Copyright (c) 2004-2006 Powersoftware.com.  All rights reserved.\n\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.14.000\n"
+       << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
        << "Now with our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 
   char szAppPath[MAX_PATH];

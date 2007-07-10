@@ -1,7 +1,7 @@
 @echo off
 
 echo Parser Makefile
-echo Copyright 2004-2006 Power Software
+echo Copyright 2004-2007 Power Software
 echo Author Craig McKay craig@frontburner.co.uk
 echo $Id$
 
@@ -43,15 +43,20 @@ rem echo Generating parser... Perl
 rem flex -i -olex.pl.tmp -8 -f lexer.pl.l
 rem sed -f sed/pl.sed <lex.pl.tmp >lex.pl.cpp
 rem del lex.pl.tmp
+rem 
+rem echo Generating parser... ASP
+rem flex -i -olex.asp.tmp -8 -f lexer.asp.l
+rem sed -f sed/asp.sed <lex.asp.tmp >lex.asp.cpp
+rem del lex.asp.tmp
+rem 
+rem echo Generating parser... PHP
+rem flex -i -olex.php.tmp -8 -f lexer.php.l
+rem sed -f sed/php.sed <lex.php.tmp >lex.php.cpp
+rem del lex.php.tmp
 
-echo Generating parser... ASP
-flex -i -olex.asp.tmp -8 -f lexer.asp.l
-sed -f sed/asp.sed <lex.asp.tmp >lex.asp.cpp
-del lex.asp.tmp
-
-echo Generating parser... PHP
-flex -i -olex.php.tmp -8 -f lexer.php.l
-sed -f sed/php.sed <lex.php.tmp >lex.php.cpp
-del lex.php.tmp
+echo Generating parser... Ericsson IDL
+flex -i -olex.idl.tmp -8 -f lexer.idl.l
+sed -f sed/idl.sed <lex.idl.tmp >lex.idl.cpp
+del lex.idl.tmp
 
 echo.

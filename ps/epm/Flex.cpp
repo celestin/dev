@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * License Validation
@@ -18,6 +18,7 @@
  * CAM  23-Aug-05   115 : Standard Code/Error in brackets.
  * CAM  19-Sep-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
+ * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -33,6 +34,7 @@ bool bLangAD = false;
 bool bLangPL = false;
 bool bLangAS = false;
 bool bLangPH = false;
+bool bLangID = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -72,6 +74,7 @@ bool validLicense() {
   bLangPL = (lpExitCode & EPM_PL);
   bLangAS = (lpExitCode & EPM_AS);
   bLangPH = (lpExitCode & EPM_PH);
+  bLangID = (lpExitCode & EPM_ID);
 
   /**
   if (bLangCS) cout << "bLangCS" << endl;
@@ -83,9 +86,10 @@ bool validLicense() {
   if (bLangPL) cout << "bLangPL" << endl;
   if (bLangAS) cout << "bLangAS" << endl;
   if (bLangPH) cout << "bLangPH" << endl;
+  if (bLangID) cout << "bLangID" << endl;
   **/
 
-  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH);
+  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||bLangID);
 }
 
 bool validLanguage(Langs l) {
@@ -99,6 +103,7 @@ bool validLanguage(Langs l) {
     case LANG_PERL: return bLangPL;
     case LANG_ASP:  return bLangAS;
     case LANG_PHP:  return bLangPH;
+    case LANG_IDL:  return bLangID;
   }
 
   return false;

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * MySQL Database Control through Registry and Services
@@ -11,7 +11,7 @@
  * CAM  20-Dec-04  File added.
  * CAM  24-Nov-05  160 : Use Windows Services rather standalone mode.
  * CAM  11-May-06  241 : Allow EPM to be run from any location.
- * CAM  30-May-06  244 : Ensure trailing slash is present on InstallDir.  
+ * CAM  30-May-06  244 : Ensure trailing slash is present on InstallDir.
  *                       Remove old service of the same name before installing.
  *                       Wait for Service Remove/Install to complete before starting.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */

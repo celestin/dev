@@ -153,6 +153,10 @@ SOURCE=.\lex.cs.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\lex.idl.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\lex.j.cpp
 # End Source File
 # Begin Source File
@@ -269,6 +273,10 @@ SOURCE=.\lexer.cs.l
 # End Source File
 # Begin Source File
 
+SOURCE=.\lexer.idl.l
+# End Source File
+# Begin Source File
+
 SOURCE=.\lexer.j.l
 # End Source File
 # Begin Source File
@@ -350,6 +358,10 @@ SOURCE=.\y.c.h
 # Begin Source File
 
 SOURCE=.\y.cs.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\y.idl.h
 # End Source File
 # Begin Source File
 

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Language Utility Class
@@ -22,7 +22,11 @@
 
 using namespace std;
 
-enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP, LANG_PHP };
+enum Langs {
+  LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB,
+  LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP, LANG_PHP,
+  LANG_IDL
+};
 
 namespace metrics
 {
@@ -56,6 +60,8 @@ namespace metrics
         theLang = LANG_ASP;
       } else if (!stricmp(lang.c_str(), "PH")) {
         theLang = LANG_PHP;
+      } else if (!stricmp(lang.c_str(), "ID")) {
+        theLang = LANG_IDL;
       }
 
       return theLang;
@@ -85,6 +91,8 @@ namespace metrics
         return "ASP";
         case LANG_PHP:
         return "PHP";
+        case LANG_IDL:
+        return "IDL";
       }
 
       return "Other";
@@ -98,6 +106,7 @@ namespace metrics
         case LANG_JAVA:
         case LANG_ASP:
         case LANG_PHP:
+        case LANG_IDL:
           return true;
           break;
 

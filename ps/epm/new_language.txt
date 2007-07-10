@@ -12,6 +12,8 @@ LicConfig.h:
 lic.cpp
 inc(EPM_AD, LIC_AD);
 
+(Remember to copy lic.exe, epm.xml to prog files after compiling new lang)
+
 Flex.cpp:
 (98): case LANG_ADA:  return bLangAD;
 
@@ -19,7 +21,7 @@ Lang.h
 (27): enum Langs { LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB, LANG_S1, LANG_ADA };
 (54): theLang = LANG_ADA;
 (76): case LANG_ADA:
-
+(102):     bool hasLogicalLines() {
 
 main.cpp:
 #include "DiffAda.h"
@@ -35,6 +37,11 @@ extern set<int> sloc_cs,operators_cs;
 extern vector<char*> operands_cs[255];
 
 
+Extension.h:
+
+#define MAXLANG 20   <--- ensure this is large enough (!!! - CAM 9-Jul-2007 - half an hour - shocking... late night dev for you)
+
+
 
 top - setMetrics:
 main.cpp(254): case LANG_ADA:
@@ -46,4 +53,6 @@ main.cpp(652): case LANG_ADA:
 
 License Generator
 
-C:\Dev\PS\EPMLicGen\EPM License Generator\EPM License Generator\EPMLicGen.cs   AddProduct("epmad", "ADA");
+C:\Dev\PS\EPMLicGen\EPMLicGen.cs   AddProduct("epmad", "ADA");
+
+mnuAbout_Click - change version

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2006 Power Software
+ * Copyright (c) 2006-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * ADA Parser lexemes

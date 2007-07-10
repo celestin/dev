@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Extension Class to manage Languages, File Types and Extensions.
@@ -15,7 +15,7 @@
 #ifndef EXTENSION_H
 #define EXTENSION_H
 
-#define MAXLANG 10
+#define MAXLANG 20
 #define MAXTYPE 5
 #define MAXEXT  10
 

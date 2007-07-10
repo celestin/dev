@@ -66,5 +66,9 @@
       <ext name="General Source" value="php" />
     </filetype>
   </lang>
+  <lang name="IDL" parser="ID">
+    <filetype name="Source">
+      <ext name="General Source" value="idl" />
+    </filetype>
+  </lang>
 </epm>
-

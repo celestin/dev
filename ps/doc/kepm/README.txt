@@ -8,6 +8,7 @@ KEPM supports multiple parser language types.  By default these are:
  * C# as before (files ending .cs)
  * ASP (files ending .asp, .aspx)
  * Java (files ending .java)
+ * IDL (files ending .idl)
  * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
  * Perl (files ending .pl)
  * PHP (files ending .php)

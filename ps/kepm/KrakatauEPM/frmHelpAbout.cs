@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Help - About Dialog
@@ -31,6 +31,7 @@
  * CAM  18-Jul-06   291 : Version 1.03.001; EPM Version 1.11.000.
  * CAM  02-Nov-06   117 : Version 1.04.000; EPM Version 1.12.000.
  * CAM  09-Nov-06   301 : Version 1.05.000; EPM Version 1.13.000.
+ * CAM  09-Nov-06   314 : Version 1.06.000; EPM Version 1.14.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -57,9 +58,9 @@ namespace KrakatauEPM
     private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
 
-    private String sVersion = "1.05.000";
+    private String sVersion = "1.06.000";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.13.000";
+    private String sEpmVersion = "1.14.000";
 
     public HelpAbout()
     {

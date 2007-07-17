@@ -11,6 +11,7 @@
  * CAM  11-Oct-05   301 : File created.
  * CAM  05-Nov-06   301 : Added ASP (omission).
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
+ * CAM  17-Juj-07   316 : Added VHDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -462,6 +463,7 @@ namespace EPM_License_Generator
       AddProduct("epmph", "PHP");
       AddProduct("epmvb", "Visual Basic");
       AddProduct("epmid", "IDL");
+      AddProduct("epmvh", "VHDL");
     }
 
     private void AddProduct(string strName, string strDesc)
@@ -632,9 +634,9 @@ namespace EPM_License_Generator
     private void mnuAbout_Click(object sender, System.EventArgs e)
     {
       MessageBox.Show(this, "EPM License Generator (.net)\n" +
-                            "Version 2.00.003\n\n" +
-                            "by Craig A McKay 28-Jun-2007\n\n"+
-                            "Copyright (c) 2006 SourceCodeMetrics.com", "About EPM License Generator",
+                            "Version 2.00.004\n\n" +
+                            "by Craig A McKay 17-Jul-2007\n\n"+
+                            "Copyright (c) 2006-2007 SourceCodeMetrics.com", "About EPM License Generator",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 

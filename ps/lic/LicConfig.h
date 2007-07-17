@@ -16,6 +16,7 @@
  * CAM  27-Oct-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
+ * CAM  17-Juj-07   316 : Added VHDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -31,6 +32,7 @@
 #define LIC_AS   "epmas"
 #define LIC_PH   "epmph"
 #define LIC_ID   "epmid"
+#define LIC_VH   "epmvh"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -43,3 +45,4 @@
 #define EPM_AS   256
 #define EPM_PH   512
 #define EPM_ID   1024
+#define EPM_VH   2048

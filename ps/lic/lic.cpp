@@ -18,6 +18,7 @@
  * CAM  27-Oct-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
+ * CAM  17-Juj-07   316 : Added VHDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"
@@ -73,6 +74,7 @@ DWORD main(int argc, char* argv[]) {
   inc(EPM_AS, LIC_AS);
   inc(EPM_PH, LIC_PH);
   inc(EPM_ID, LIC_ID);
+  inc(EPM_VH, LIC_VH);
   inc(EPM_KR, LIC_KR);
 
   if (debug) cout << endl << "Total:" << rval << endl;

@@ -1,0 +1,63 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * First Summerhouses
+ * Copyright (c) 2006-2007 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id: firstsummer.css 366 2007-02-01 21:32:25Z craig $
+ *
+ * Who  When         Why
+ * CAM  10-Feb-2006  File created.
+ * CAM  08-Apr-2006  Development.
+ * CAM  09-Jul-2006  10014 : Added H4.
+ * CAM  10-Oct-2006  10059 : Added msg2, msg2tab.
+ * CAM  01-Feb-2007  10081 : Added testthumb.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+/************ GENERAL OPTIONS **************/
+
+body, p, table, td, input, select, textarea {
+  BACKGROUND-COLOR: #666666;
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+.fld {
+  COLOR: #003B9C;
+  FONT-WEIGHT: bold;
+}
+
+.fldlbl {
+  BACKGROUND-COLOR: #999966;
+  COLOR: white;
+  FONT-WEIGHT: bold;
+}
+
+.fldtxt {
+  BACKGROUND-COLOR: #396186;
+  COLOR: white;
+  FONT-WEIGHT: normal;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #999966;
+  TEXT-DECORATION: none;
+  bgcolor: black ;
+  FONT-WEIGHT: bold
+}
+A:hover {
+  COLOR: #396186;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+

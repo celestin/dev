@@ -5,15 +5,16 @@ Krakatau Essential Project Manager (KEPM)
 Please read the UserGuideKEPM.pdf to learn how to operate KEPM.
 
 KEPM supports multiple parser language types.  By default these are:
- * C# as before (files ending .cs)
+ * ADA (files ending .a, .ada, .adb, .ads)
  * ASP (files ending .asp, .aspx)
- * Java (files ending .java)
+ * C# as before (files ending .cs)
  * IDL (files ending .idl)
- * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
- * Perl (files ending .pl)
+ * Java (files ending .java)
  * PHP (files ending .php)
  * PL/SQL (files ending .sql, .ora)
- * ADA (files ending .a, .ada, .adb, .ads)
+ * Perl (files ending .pl)
+ * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
+ * VHDL (files ending .vhdl)
  * C/C++ (all other file extensions)
 
 Please consult UserGuide.pdf for detailed information regarding

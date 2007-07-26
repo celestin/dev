@@ -6,11 +6,126 @@
 --------------------Configuration: csp - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA9.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "c:\appserv\mysql\include" /I "C:\Dev\PS\epm\lic" /I "C:\Dev\PS\epm\xerces\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fo"Release/" /Fd"Release/" /FD /Zm512 /c 
+"C:\Dev\PS\epm\epm\CSVReport.cpp"
+"C:\Dev\PS\epm\epm\Diff.cpp"
+"C:\Dev\PS\epm\epm\DiffAda.cpp"
+"C:\Dev\PS\epm\epm\DiffASP.cpp"
+"C:\Dev\PS\epm\epm\DiffCpp.cpp"
+"C:\Dev\PS\epm\epm\DiffOracle.cpp"
+"C:\Dev\PS\epm\epm\DiffPerl.cpp"
+"C:\Dev\PS\epm\epm\DiffVB.cpp"
+"C:\Dev\PS\epm\epm\Flex.cpp"
+"C:\Dev\PS\epm\epm\HTMLReport.cpp"
+"C:\Dev\PS\epm\epm\lex.ada.cpp"
+"C:\Dev\PS\epm\epm\lex.asp.cpp"
+"C:\Dev\PS\epm\epm\lex.c.cpp"
+"C:\Dev\PS\epm\epm\lex.cs.cpp"
+"C:\Dev\PS\epm\epm\lex.idl.cpp"
+"C:\Dev\PS\epm\epm\lex.j.cpp"
+"C:\Dev\PS\epm\epm\lex.php.cpp"
+"C:\Dev\PS\epm\epm\lex.pl.cpp"
+"C:\Dev\PS\epm\epm\lex.s1.cpp"
+"C:\Dev\PS\epm\epm\lex.vb.cpp"
+"C:\Dev\PS\epm\epm\lex.vhdl.cpp"
+"C:\Dev\PS\epm\epm\main.cpp"
+"C:\Dev\PS\epm\epm\OurSQL.cpp"
+"C:\Dev\PS\epm\epm\PParse.cpp"
+"C:\Dev\PS\epm\epm\PParseHandlers.cpp"
+"C:\Dev\PS\epm\epm\Report.cpp"
+"C:\Dev\PS\epm\epm\XMLReport.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA9.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPAA.tmp" with contents
+[
+xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/epm.pdb" /machine:I386 /out:"Release/epm.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" /libpath:"c:\appserv\mysql\lib\opt" /libpath:"C:\Dev\PS\epm\xerces\lib" 
+.\Release\CSVReport.obj
+.\Release\Diff.obj
+.\Release\DiffAda.obj
+.\Release\DiffASP.obj
+.\Release\DiffCpp.obj
+.\Release\DiffOracle.obj
+.\Release\DiffPerl.obj
+.\Release\DiffVB.obj
+.\Release\Flex.obj
+.\Release\HTMLReport.obj
+.\Release\lex.ada.obj
+.\Release\lex.asp.obj
+.\Release\lex.c.obj
+.\Release\lex.cs.obj
+.\Release\lex.idl.obj
+.\Release\lex.j.obj
+.\Release\lex.php.obj
+.\Release\lex.pl.obj
+.\Release\lex.s1.obj
+.\Release\lex.vb.obj
+.\Release\lex.vhdl.obj
+.\Release\main.obj
+.\Release\OurSQL.obj
+.\Release\PParse.obj
+.\Release\PParseHandlers.obj
+.\Release\Report.obj
+.\Release\XMLReport.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPAA.tmp"
+<h3>Output Window</h3>
+Compiling...
+CSVReport.cpp
+Diff.cpp
+DiffAda.cpp
+DiffASP.cpp
+DiffCpp.cpp
+DiffOracle.cpp
+DiffPerl.cpp
+DiffVB.cpp
+Flex.cpp
+C:\Dev\PS\epm\epm\Flex.cpp(71) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(72) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(73) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(74) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(75) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(76) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(77) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(78) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(79) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+C:\Dev\PS\epm\epm\Flex.cpp(80) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+HTMLReport.cpp
+lex.ada.cpp
+lex.asp.cpp
+lex.c.cpp
+lex.cs.cpp
+lex.idl.cpp
+lex.j.cpp
+lex.php.cpp
+lex.pl.cpp
+lex.s1.cpp
+lex.vb.cpp
+Generating Code...
+Compiling...
+lex.vhdl.cpp
+main.cpp
+OurSQL.cpp
+PParse.cpp
+PParseHandlers.cpp
+Report.cpp
+XMLReport.cpp
+Generating Code...
+Linking...
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPAC.bat" with contents
+[
+@echo off
+C:\Dev\PS\epm\epm\Release\epm.copy.cmd
+]
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPAC.bat"
+
+        1 file(s) copied.
 
 
 
 <h3>Results</h3>
-epm.exe - 0 error(s), 0 warning(s)
+epm.exe - 0 error(s), 10 warning(s)
 </pre>
 </body>
 </html>

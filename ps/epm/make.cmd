@@ -53,10 +53,15 @@ rem echo Generating parser... PHP
 rem flex -i -olex.php.tmp -8 -f lexer.php.l
 rem sed -f sed/php.sed <lex.php.tmp >lex.php.cpp
 rem del lex.php.tmp
-
-echo Generating parser... Ericsson IDL
-flex -i -olex.idl.tmp -8 -f lexer.idl.l
-sed -f sed/idl.sed <lex.idl.tmp >lex.idl.cpp
-del lex.idl.tmp
+rem 
+rem echo Generating parser... Ericsson IDL
+rem flex -i -olex.idl.tmp -8 -f lexer.idl.l
+rem sed -f sed/idl.sed <lex.idl.tmp >lex.idl.cpp
+rem del lex.idl.tmp
+rem 
+echo Generating parser... VHDL
+flex -i -olex.vhdl.tmp -8 -f lexer.vhdl.l
+sed -f sed/vhdl.sed <lex.vhdl.tmp >lex.vhdl.cpp
+del lex.vhdl.tmp
 
 echo.

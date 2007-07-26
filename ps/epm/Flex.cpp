@@ -19,6 +19,7 @@
  * CAM  19-Sep-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
+ * CAM  26-Jul-07   316 : Added VHDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -35,6 +36,7 @@ bool bLangPL = false;
 bool bLangAS = false;
 bool bLangPH = false;
 bool bLangID = false;
+bool bLangVH = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -75,6 +77,7 @@ bool validLicense() {
   bLangAS = (lpExitCode & EPM_AS);
   bLangPH = (lpExitCode & EPM_PH);
   bLangID = (lpExitCode & EPM_ID);
+  bLangVH = (lpExitCode & EPM_VH);
 
   /**
   if (bLangCS) cout << "bLangCS" << endl;
@@ -87,6 +90,7 @@ bool validLicense() {
   if (bLangAS) cout << "bLangAS" << endl;
   if (bLangPH) cout << "bLangPH" << endl;
   if (bLangID) cout << "bLangID" << endl;
+  if (bLangVH) cout << "bLangVH" << endl;
   **/
 
   return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||bLangID);
@@ -104,6 +108,7 @@ bool validLanguage(Langs l) {
     case LANG_ASP:  return bLangAS;
     case LANG_PHP:  return bLangPH;
     case LANG_IDL:  return bLangID;
+    case LANG_VHDL: return bLangVH;
   }
 
   return false;

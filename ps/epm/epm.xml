@@ -71,4 +71,9 @@
       <ext name="General Source" value="idl" />
     </filetype>
   </lang>
+  <lang name="VHDL" parser="VH">
+    <filetype name="Source">
+      <ext name="General Source" value="vhdl" />
+    </filetype>
+  </lang>
 </epm>

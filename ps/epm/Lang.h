@@ -15,6 +15,8 @@
  * CAM  18-Jul-06   272 : Added hasLogicalLines.
  * CAM  19-Sep-06   117 : Added ASP.
  * CAM  04-Nov-06   301 : Added PHP.
+ * CAM  28-Jun-07   314 : Added Ericsson IDL.
+ * CAM  26-Jul-07   316 : Added VHDL.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -25,7 +27,7 @@ using namespace std;
 enum Langs {
   LANG_OTHER, LANG_CPP, LANG_CS, LANG_JAVA, LANG_VB,
   LANG_S1, LANG_ADA, LANG_PERL, LANG_ASP, LANG_PHP,
-  LANG_IDL
+  LANG_IDL, LANG_VHDL
 };
 
 namespace metrics
@@ -62,6 +64,8 @@ namespace metrics
         theLang = LANG_PHP;
       } else if (!stricmp(lang.c_str(), "ID")) {
         theLang = LANG_IDL;
+      } else if (!stricmp(lang.c_str(), "VH")) {
+        theLang = LANG_VHDL;
       }
 
       return theLang;
@@ -93,6 +97,8 @@ namespace metrics
         return "PHP";
         case LANG_IDL:
         return "IDL";
+        case LANG_VHDL:
+        return "VHDL";
       }
 
       return "Other";
@@ -107,6 +113,7 @@ namespace metrics
         case LANG_ASP:
         case LANG_PHP:
         case LANG_IDL:
+        case LANG_VHDL:
           return true;
           break;
 

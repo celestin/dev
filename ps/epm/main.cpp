@@ -52,7 +52,9 @@
  * CAM  27-Oct-06   117 : Version 1.12.000.
  * CAM  09-Nov-06   301 : Version 1.13.000.
  * CAM  10-Jul-07   314 : Added IDL.
- * CAM  10-Jul-07   314 : Version 1.13.000.
+ * CAM  10-Jul-07   314 : Version 1.14.000.
+ * CAM  26-Jul-07   316 : Added VHDL.
+ * CAM  10-Jul-07   314 : Version 1.15.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -88,7 +90,7 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl, *yyin_vhdl;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -99,6 +101,7 @@ extern void lexclear_pl();
 extern void lexclear_asp();
 extern void lexclear_php();
 extern void lexclear_idl();
+extern void lexclear_vhdl();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -109,6 +112,7 @@ extern int yylex_pl();
 extern int yylex_asp();
 extern int yylex_php();
 extern int yylex_idl();
+extern int yylex_vhdl();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -151,6 +155,10 @@ extern vector<char*> operands_php[255];
 extern int j_comments_idl,c_comments_idl,cpp_comments_idl,com_loc_idl,nsemi_idl,noperands_idl,noperators_idl;
 extern set<int> sloc_idl,operators_idl;
 extern vector<char*> operands_idl[255];
+
+extern int j_comments_vhdl,c_comments_vhdl,cpp_comments_vhdl,com_loc_vhdl,nsemi_vhdl,noperands_vhdl,noperators_vhdl;
+extern set<int> sloc_vhdl,operators_vhdl;
+extern vector<char*> operands_vhdl[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -368,6 +376,21 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_idl;
     com_loc = com_loc_idl;
     break;
+
+    case LANG_VHDL:
+    sloc = sloc_vhdl.size();                   // Source Lines of Code
+    met.set(MET(NSC), nsemi_vhdl);             // Halstead
+    met.set(MET(N1), noperators_vhdl);
+    met.set(MET(N1S), operators_vhdl.size());
+    met.set(MET(N2), noperands_vhdl);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_vhdl[i].size());
+    }
+
+    c_com = c_comments_vhdl;                   // Comments
+    cpp_com = cpp_comments_vhdl;
+    com_loc = com_loc_vhdl;
+    break;
   }
 
   met.set(MET(SLOC), sloc);
@@ -394,6 +417,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     break;
 
     case LANG_ADA:
+    case LANG_VHDL:
     d = new DiffAda(filename2.c_str(), filename.c_str());
     break;
 
@@ -809,6 +833,11 @@ bool analyse(string &filename) {
       lexclear_idl();
       yylex_idl();
       break;
+    case LANG_VHDL:
+      yyin_vhdl = src;
+      lexclear_vhdl();
+      yylex_vhdl();
+      break;
   }
 
   fclose(src);
@@ -820,9 +849,9 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.14.000\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.15.000\n"
        << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
-       << "Now with our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
+       << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 
   char szAppPath[MAX_PATH];
   GetModuleFileName(NULL, szAppPath, MAX_PATH);

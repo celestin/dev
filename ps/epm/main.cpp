@@ -54,7 +54,8 @@
  * CAM  10-Jul-07   314 : Added IDL.
  * CAM  10-Jul-07   314 : Version 1.14.000.
  * CAM  26-Jul-07   316 : Added VHDL.
- * CAM  10-Jul-07   314 : Version 1.15.000.
+ * CAM  26-Jul-07   316 : Version 1.15.000.
+ * CAM  26-Jul-07   317 : Version 1.15.001.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -849,7 +850,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.15.000\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.15.001\n"
        << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 

@@ -1,0 +1,92 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Ministry Web Search
+ * Copyright (c) 2006 Southesk.com
+ *
+ * $Log: /web/cc/db.php $
+ *
+ * Who  When         Why
+ * CAM  15-Feb-2006  File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+}
+
+p, table, td {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica, Sans Serif;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+.bardesc {
+  BACKGROUND-COLOR: #003B9C;
+  COLOR: #CCCCFF;
+  FONT-WEIGHT: bold;
+}
+
+.dt {
+  FONT-FAMILY: Georgia, Times New Roman, Serif;
+  FONT-SIZE: 9pt;
+}
+
+td.cpyrght {
+  TEXT-ALIGN: center;
+  FONT-SIZE: 8pt;
+}
+
+td.fld {
+  COLOR: #1880B5;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #0820F0;
+  TEXT-DECORATION: none
+  bgcolor: black ;
+  FONT-WEIGHT: bold
+}
+A:hover {
+  COLOR: #FF0000;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+INPUT {
+  FONT-FAMILY: Tahoma, Arial, Helvetica, Sans Serif;
+  FONT-SIZE: 8pt;
+  BACKGROUND-COLOR: #EEEEFF;
+  BORDER-TOP:    #497FB1 2px solid;
+  BORDER-LEFT:   #497FB1 2px solid;
+  BORDER-BOTTOM: #315B7F 2px solid;
+  BORDER-RIGHT:  #315B7F 2px solid;
+  COLOR: #000000;
+  PADDING-BOTTOM: 0px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #FF7900;
+  FONT-WEIGHT: bold;
+}
+
+p.quest {
+  COLOR: #120966;
+}
+
+p.statement {
+  COLOR: #120966;
+}
+

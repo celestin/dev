@@ -61,7 +61,7 @@ if (!$retry) {
       "email_address,member_type,dob,verify_code".
     ") VALUES (".
       "'$username','$password1','$first_name','$last_name',".
-      "'$email_address','N','$dob', '$verify_code'".
+      "'$email_address','U','$dob', '$verify_code'".
     ")";
 
   $sql = mysql_query($ssql);

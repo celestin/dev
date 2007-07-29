@@ -25,14 +25,14 @@ if (empty($title)) {
 ?>
 <head>
   <title><? echo $title;?></title>
-  <link href="cc.css" rel=stylesheet type="text/css" />
+  <link href="mse.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
 </head>
 
 <body topmargin=0 leftmargin=0>
 
 <table border=0 cellpadding=0 cellspacing=0 align=center>
-<tr><td><table border=0 cellpadding=0 cellspacing=0 width="600" height="450" class=outerBox>
+<tr><td><table border=0 cellpadding=0 cellspacing=0 width="800" height="600" class=outerBox>
   <tr>
   <td valign=top><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="thinBox">
     <tr><td class="title"><b><? echo $cfg['Site']['Name']; ?></b>&nbsp;-&nbsp;<? echo strftime("%a %d %b %H:%M"); ?></td>
@@ -48,18 +48,15 @@ if (empty($title)) {
     </tr>
     <tr><td colspan=2 class="topnav"><table border=0 cellpadding=0 cellspacing=0 class="topnav">
       <tr>
+        <td><a class="nav" href="index.php">new search</a><span class="sep">|</sep></td>
         <?
           if ($loggedin) {
+            // Nothing currently
 ?>
-            <td><a class="nav" href="list.php">list</a><span class="sep">|</sep></td>
-            <td><a class="nav" href="question.add.php">add question</a><span class="sep">|</sep></td>
-            <td><a class="nav" href="quiz.php">quiz me</a><span class="sep">|</sep></td>
-            <td><a class="nav" href="changepass.php">change password</a><span class="sep">|</sep></td>
 <?
             if ($member->isAdmin()) {
+            // Nothing currently
 ?>
-            <td><a class="nav" href="verify.php">verify</a><span class="sep">|</sep></td>
-            <td><a class="nav" href="pdfupload.php">pdf upload</a><span class="sep">|</sep></td>
 <?
             }
 ?>

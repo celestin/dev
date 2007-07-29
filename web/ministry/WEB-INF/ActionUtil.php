@@ -46,5 +46,27 @@ class ActionUtil {
 
     return $rval;
   }
+
+  /**
+  * Return the HTML for an Action Button
+  *
+  * @public
+  * @returns String
+  */
+  function linkButton($action, $buttonText) {
+    $rval = "<input class=\"button\" type=\"submit\" onclick=\"top.location.href='$action';\" value=\"". $buttonText . "\">";
+
+    return $rval;
+  }
+
+  /**
+  * Return the HTML for a Submit Button
+  *
+  * @public
+  * @returns String
+  */
+  function submitButton($buttonText) {
+    return "<input class=\"button\" type=\"submit\" value=\"". $buttonText . "\">";
+  }
 }
 ?>

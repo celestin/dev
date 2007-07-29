@@ -13,6 +13,6 @@
 
 $title = "Home";
 include 'tpl/top.php';
-include 'tpl/home.php';
+include 'tpl/newsearch.php';
 include 'tpl/bot.php';
 ?>

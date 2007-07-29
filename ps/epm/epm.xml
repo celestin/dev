@@ -73,7 +73,7 @@
   </lang>
   <lang name="VHDL" parser="VH">
     <filetype name="Source">
-      <ext name="General Source" value="vhdl" />
+      <ext name="General Source" value="vhd" />
     </filetype>
   </lang>
 </epm>

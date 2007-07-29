@@ -5,7 +5,7 @@
  *
  * Database Connectivity
  *
- * $Id: /web/cc/db.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

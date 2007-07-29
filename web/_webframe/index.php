@@ -5,7 +5,7 @@
  *
  * Home Page Context
  *
- * $Id: /web/cc/index.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

@@ -5,7 +5,7 @@
  *
  * Logout of the system
  *
- * $Id: /web/cc/logout.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

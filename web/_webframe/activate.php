@@ -5,7 +5,7 @@
  *
  * Account activation script
  *
- * $Id: /web/cc/activate.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

@@ -5,7 +5,7 @@
  *
  * Admin Verify: People and Questions
  *
- * $Id: /web/cc/verify.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

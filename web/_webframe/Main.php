@@ -5,7 +5,7 @@
  *
  * Main page setup
  *
- * $Id: /web/cc/Main.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

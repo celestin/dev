@@ -5,7 +5,7 @@
  *
  * Session Registration
  *
- * $Id: /web/cc/session_reg.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

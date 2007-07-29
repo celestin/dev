@@ -5,7 +5,7 @@
  *
  * Verify Email Address
  *
- * $Id: /web/cc/verifyemail.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

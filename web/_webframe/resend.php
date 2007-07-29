@@ -5,7 +5,7 @@
  *
  * Resend Email Verification
  *
- * $Id: /web/cc/resend.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

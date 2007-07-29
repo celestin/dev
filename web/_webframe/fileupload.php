@@ -5,7 +5,7 @@
  *
  * File upload
  *
- * $Id: /web/cc/pdfupload.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

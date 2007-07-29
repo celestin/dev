@@ -1,14 +1,14 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WEBSITE_NAME
+ * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Session Registration
  *
- * $Id: /web/cc/session_reg.php $
+ * $Id$
  *
  * Who  When         Why
- * CAM  27-Dec-2005  File created.
+ * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -23,8 +23,8 @@ session_register('email_address');
 $_SESSION['email_address'] = $email_address;
 session_register('special_user');
 $_SESSION['user_level'] = $user_level;
-session_register('WEBSITE_NAME');
-$_SESSION['WEBSITE_NAME'] = "WEBSITE_NAME";
+session_register('Ministry Search Engine');
+$_SESSION['Ministry Search Engine'] = "Ministry Search Engine";
 
 session_register('member_person');
 $_SESSION['member_person'] = Person::getPerson($memberid);

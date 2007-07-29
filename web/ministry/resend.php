@@ -1,14 +1,14 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WEBSITE_NAME
+ * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Resend Email Verification
  *
- * $Id: /web/cc/resend.php $
+ * $Id$
  *
  * Who  When         Why
- * CAM  27-Dec-2005  File created.
+ * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Resend Email Verification";

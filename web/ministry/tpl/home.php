@@ -3,16 +3,16 @@
  * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
- * Home Page Context
+ * Home page
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
-
-$title = "Home";
-include 'tpl/top.php';
-include 'tpl/home.php';
-include 'tpl/bot.php';
 ?>
+
+<table height="100%" width="100%" border=0>
+<tr><td align=center>&nbsp;</td></tr>
+</table>
+

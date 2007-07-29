@@ -1,14 +1,14 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WEBSITE_NAME
+ * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Admin Verify: People and Questions
  *
- * $Id: /web/cc/verify.php $
+ * $Id$
  *
  * Who  When         Why
- * CAM  27-Dec-2005  File created.
+ * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Verify";

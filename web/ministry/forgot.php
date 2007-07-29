@@ -1,14 +1,14 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WEBSITE_NAME
+ * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Forgotten Password Workflow
  *
- * $Id: /web/cc/forgot.php $
+ * $Id$
  *
  * Who  When         Why
- * CAM  27-Dec-2005  File created.
+ * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';

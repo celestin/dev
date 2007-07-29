@@ -3,7 +3,7 @@
  * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
- * Home Page Context
+ * Build Classes
  *
  * $Id$
  *
@@ -11,8 +11,11 @@
  * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Home";
-include 'tpl/top.php';
-include 'tpl/home.php';
-include 'tpl/bot.php';
+include_once 'Util.php';
+include_once 'Tuple.php';
+include_once 'Person.php';
+include_once 'Msg.php';
+include_once 'ActionUtil.php';
+include_once 'EmailMsg.php';
+
 ?>

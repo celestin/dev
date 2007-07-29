@@ -3,16 +3,18 @@
  * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
- * Home Page Context
+ * Bottom of the page
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
-
-$title = "Home";
-include 'tpl/top.php';
-include 'tpl/home.php';
-include 'tpl/bot.php';
 ?>
+</td></tr>
+</table></td></tr>
+<tr><td class="cpyrght"><b>V1.00</b> System designed and maintained by <a href="http://www.southesk.com/">Southesk.com</a></td></tr>
+</td></tr>
+</table>
+</body>
+</html>

@@ -4,7 +4,7 @@
  *
  * Javascript - Date validation 
  *
- * $Id: /web/cc/date.js $
+ * $Id$
  * 
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

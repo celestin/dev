@@ -13,6 +13,7 @@
  * CAM  31-Aug-2004  File created.
  * CAM  29-May-2004  5 : Corrected PHP.
  * CAM  22-Jun-2007  10130 : Added Key to Colour-coding.
+ * CAM  31-Jul-2007  10147 : Remove Gym, Social and Social Restricted.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Help";
@@ -24,12 +25,9 @@ include 'tpl/top.php';
 <tr><td class="keyitem">OP</td><td class="member_type_op">Off Peak</tr>
 <tr><td class="keyitem">BG</td><td class="member_type_bg">Business Group</tr>
 <tr><td class="keyitem">F</td><td class="member_type_f">Family</tr>
-<tr><td class="keyitem">G</td><td class="member_type_g">Gym</tr>
 <tr><td class="keyitem">I</td><td class="member_type_i">Intermediate</tr>
 <tr><td class="keyitem">J</td><td class="member_type_j">Junior</tr>
 <tr><td class="keyitem">O</td><td class="member_type_o">Ordinary</tr>
-<tr><td class="keyitem">S</td><td class="member_type_s">Social</tr>
-<tr><td class="keyitem">SR</td><td class="member_type_sr">Social Restricted</tr>
 <tr><td class="keyitem">ST</td><td class="member_type_st">Student</tr>
 <tr><td class="keyitem">A</td><td class="member_type_a">Admin</tr>
 <tr><td class="keyitem">U</td><td class="member_type_u">Guest</tr>

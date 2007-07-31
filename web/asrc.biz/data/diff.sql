@@ -11,8 +11,6 @@
 -- CAM  23-Jul-2007  10152 : Added Court Online dates.
 -- --------------------------------------------------------
 
-UPDATE member SET password='5f4dcc3b5aa765d61d8327deb882cf99';
-
 REPLACE INTO member_type (member_type, type_name, comments1, comments2, valid, limits, disp_order) VALUES 
 ('Y', 'Unspecified', NULL, NULL, NULL, NULL, '0'), 
 ('Z', 'Unknown', NULL, NULL, NULL, NULL, '0');

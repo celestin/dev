@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Block Class
@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2006  9 : File created.
+ * CAM  23-Jul-2007  10152 : Ensure Court Online date is observed.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'inc.php';
@@ -64,7 +65,7 @@ class Block {
     $this->courtmap = array();
     $i=0;
 
-    $sql = mysql_query("SELECT court,name,week_cutoff FROM court WHERE online=1");
+    $sql = mysql_query("SELECT court,name,week_cutoff FROM court");
     while ($row = mysql_fetch_array($sql)) {
       foreach($row AS $key => $val) {
         $$key = stripslashes($val);
@@ -83,12 +84,12 @@ class Block {
     $i=0;
 
     $ssql = "SELECT c.court, s.slot, s.start_time, s.duration, b.memberid ".
-            "FROM slot s, court c ".
+            "FROM court c, slot s ".
             "LEFT JOIN booking b ON s.slot = b.slot ".
             "AND s.court = b.court ".
             "AND b.book_date = '" . Util::displayToSqlDate($this->bookdate) . "'".
             "WHERE s.court = c.court ".
-            "AND c.online = 1 ".
+            "AND c.online <= '" . Util::displayToSqlDate($this->bookdate) . "'".
             "ORDER BY 1,2";
 
     $sql = mysql_query($ssql) or die (mysql_error());

@@ -15,6 +15,7 @@
  * CAM  19-Jan-2006  9 : Block booking.
  * CAM  06-Feb-2006  10: Added created_by.
  * CAM  25-Jun-2007  10128 : No more New Bookings if on "Fine Board".
+ * CAM  23-Jul-2007  10152 : Ensure Block bookings appear correctly for Courts not yet online.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -155,6 +156,9 @@ if (empty($memberOrig)) {
     for ($j=0; $j<$block->getSlotCount($i); $j++) {
       $bbs = $block->getSlot($i, $j);
       echo $bbs->toFormString();
+    }
+    if ($j==0) {
+      echo "<tr><td>&nbsp;</td></tr>\n";
     }
     echo "</table></td>\n";
   }

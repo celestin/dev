@@ -13,6 +13,7 @@
  * CAM  20-Mar-2004  File created.
  * CAM  08-Feb-2007  10097 : Correct Sort order.
  * CAM  25-Jun-2007  10132 : Corrected SQL.
+ * CAM  23-Jul-2007  10152 : Ensure Court Online date is observed.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'inc.php';
@@ -112,7 +113,7 @@ class Calendar {
              "AND s.court = b.court  " .
              "AND b.book_date = '" . Util::displayToSqlDate($bookDate) . "' " .
              "WHERE s.court = c.court " .
-             "AND c.online = 1 ";
+             "AND c.online <= '" . Util::displayToSqlDate($bookDate) . "' ";
              "AND b.slot IS NULL ";
 
     if (!empty($bookTime)) {

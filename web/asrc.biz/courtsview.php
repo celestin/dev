@@ -13,6 +13,7 @@
  * CAM  25-Apr-2006  14 : File created.
  * CAM  08-Feb-2007  10097 : Include Courts 1-3.
  * CAM  25-Jun-2007  10129 : Corrected join SQL.
+ * CAM  23-Jul-2007  10152 : Correctly handle completely empty system.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Current Courts View";
@@ -87,8 +88,10 @@ if ($book_date==NULL) {
     exit();
   }
 
-  $curr_time = strtotime($start_time_first);
-  $end_time = strtotime($start_time_last);
+  $curr_time = "";
+  $end_time = "";
+  if (!empty($start_time_first)) $curr_time = strtotime($start_time_first);
+  if (!empty($start_time_last))  $end_time = strtotime($start_time_last);
   $diff = 1;
 
   $courts = array();
@@ -101,8 +104,7 @@ if ($book_date==NULL) {
     $courts[$i][4] = "";
   }
 
-
-  while ($curr_time <= $end_time) {
+  while (($curr_time <= $end_time) && !empty($curr_time) && !empty($end_time)) {
 
     ?><tr><td width=50><? echo date('H:i', $curr_time ); ?></td><?
 

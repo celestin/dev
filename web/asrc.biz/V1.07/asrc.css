@@ -1,0 +1,297 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * ASRC.biz (Aberdeen Squash Racquets Club)
+ *
+ * Copyright (c) 2006-2007 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Stylesheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  19-Mar-2004  File created.
+ * CAM  29-Jul-2006  10021 : Added correct font for all input types.
+ * CAM  22-Jun-2007  10130 : Added Membership Colour-coding classes.
+ * CAM  25-Jun-2007  10129 : Added 'alt' for alternate rows.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  background-color: #AACCFF;
+
+  scrollbar-3dlight-color:    #4A65C2;
+  scrollbar-arrow-color:      #ffffff;
+  scrollbar-base-color:       #ffffff;
+  scrollbar-darkshadow-color: #000000;
+  scrollbar-face-color:       #384C92;
+  scrollbar-highlight-color:  #4058A9;
+  scrollbar-shadow-color:     #0776A3;
+  scrollbar-track-color:      #0D445B;
+}
+
+p, table, td {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+th {
+  BACKGROUND-COLOR: #CCDDFF;
+  COLOR: #000000;
+  FONT-WEIGHT: bold;
+}
+
+td.cpyright {
+  TEXT-ALIGN: center;
+  FONT-SIZE: 8pt;
+}
+
+td.fld {
+  COLOR: #1880B5;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+td.courtview {
+  BACKGROUND-COLOR: #DBDDFF;
+  TEXT-ALIGN: center;
+}
+
+td.current {
+  COLOR: #FF7900;
+}
+
+td.fldopt {
+  COLOR: #189999;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  FONT-STYLE: italic;
+}
+
+td.bc {
+  TEXT-ALIGN: center;
+}
+
+td.alt {
+  BACKGROUND-COLOR: #FFDDAA;
+  TEXT-ALIGN: center;
+}
+
+td.br {
+  TEXT-ALIGN: right;
+}
+
+td.navText {
+  COLOR: #FFFFFF;
+}
+
+td.freeDel {
+  COLOR: #E2003B ;
+  TEXT-ALIGN: CENTER ;
+}
+
+td.sel {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Helvetica;
+  FONT-SIZE: 9pt;
+  FONT-WEIGHT: bold
+}
+
+td.sub {
+  COLOR: #FFFFFF;
+  BACKGROUND-COLOR: #3C6C9E;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold
+}
+
+td.topnav {
+  COLOR: #333333;
+  BACKGROUND-COLOR: #CCDDFF;
+}
+
+
+.titleBand {
+  BACKGROUND-COLOR: #FFF8E4;
+}
+
+.navBg {
+  BACKGROUND-COLOR: #DDEEFF;
+  BORDER-BOTTOM: #38218E 2px solid;
+  BORDER-LEFT: #38218E 2px solid;
+  BORDER-RIGHT: #38218E 2px solid;
+  BORDER-TOP: #38218E 2px solid;
+}
+
+.outerBox {
+  BACKGROUND-COLOR: #FFFFFF;
+  BORDER-TOP:    #315B7F 3px solid;
+  BORDER-LEFT:   #315B7F 3px solid;
+  BORDER-RIGHT:  #497FB1 3px solid;
+  BORDER-BOTTOM: #497FB1 3px solid;
+}
+
+.thinBox {
+  BORDER-TOP:    #497FB1 2px solid;
+  BORDER-LEFT:   #497FB1 2px solid;
+  BORDER-RIGHT:  #497FB1 2px solid;
+  BORDER-BOTTOM: #497FB1 2px solid;
+}
+
+td.cpyrght {
+  COLOR: #333333;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+}
+
+td.cat {
+  COLOR: #333333;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #0820F0;
+  TEXT-DECORATION: none
+  bgcolor: black ;
+  FONT-WEIGHT: bold
+}
+A:hover {
+  COLOR: #FF0000;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+INPUT,SELECT {
+  BACKGROUND-COLOR: #EEEEFF;
+  BORDER-TOP:    #497FB1 2px solid;
+  BORDER-LEFT:   #497FB1 2px solid;
+  BORDER-BOTTOM: #315B7F 2px solid;
+  BORDER-RIGHT:  #315B7F 2px solid;
+  COLOR: #000000;
+  PADDING-BOTTOM: 0px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+}
+
+
+INPUT.button {
+  BACKGROUND-COLOR: #AACCFF;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+}
+
+/** MEMBERSHIP TYPES */
+
+.keyitem {
+  FONT-WEIGHT: bold;
+}
+
+/** Off Peak */
+.member_type_op {
+  BACKGROUND-COLOR: #FF9900;
+  COLOR: black;
+}
+
+/** Business Group */
+.member_type_bg {
+  BACKGROUND-COLOR: #CC3333;
+  COLOR: white;
+}
+
+/** Family */
+.member_type_f {
+  BACKGROUND-COLOR: #993366;
+  COLOR: white;
+}
+
+/** Gym */
+.member_type_g {
+  BACKGROUND-COLOR: #330000;
+  COLOR: white;
+}
+
+/** Intermediate */
+.member_type_i {
+  BACKGROUND-COLOR: #CC99FF;
+  COLOR: black;
+}
+
+/** Junior */
+.member_type_j {
+  BACKGROUND-COLOR: #33AA33;
+  COLOR: black;
+}
+
+/** Ordinary */
+.member_type_o {
+  BACKGROUND-COLOR: #3333CC;
+  COLOR: white;
+}
+
+/** Social */
+.member_type_s {
+  BACKGROUND-COLOR: #330000;
+  COLOR: white;
+}
+
+/** Social Restricted */
+.member_type_sr {
+  BACKGROUND-COLOR: #330000;
+  COLOR: white;
+}
+
+/** Student */
+.member_type_st {
+  BACKGROUND-COLOR: #003366;
+  COLOR: white;
+}
+
+/** Admin */
+.member_type_a {
+  BACKGROUND-COLOR: #FF0066;
+  COLOR: white;
+}
+
+/** Guest */
+.member_type_u {
+  BACKGROUND-COLOR: #EEEE33;
+  COLOR: black;
+}
+
+/** Unspecified */
+.member_type_y {
+  BACKGROUND-COLOR: #CCCCCC;
+  COLOR: black;
+}
+
+/** Unknown */
+.member_type_z {
+  BACKGROUND-COLOR: #999999;
+  COLOR: white;
+}
+
+
+
+/** Message formats. */
+
+p.err {
+  COLOR: #FF7900;
+  FONT-WEIGHT: bold;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-SIZE: 12pt;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-SIZE: 12pt;
+}
+

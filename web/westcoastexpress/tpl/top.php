@@ -75,7 +75,7 @@ if ($loggedin) {
     <tr height=26>
       <td class="redbanner" align=center><a class="nav" href="index.php">BOAT TRANSPORT</a></td>
       <td class="redbanner" align=center><a class="nav" href="feedback.php">FEEDBACK</a></td>
-      <td class="redbanner" width=150 align=center><a class="nav" href="contact.php">CONTACT</a></td>
+      <td class="redbanner" width=150 align=center><a class="nav" href="contact.php">CONTACT US</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="request.php">REQUEST QUOTE</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="photos.php">PHOTOS</a></td>
       <td class="redbanner" align=center><a class="nav" href="express.php">EXPRESS DELIVERY</a></td>

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Top of the page
@@ -12,6 +12,7 @@
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added hidden toolbar navigation.
  * CAM  02-Feb-2007  10069 : Added Change Password.
+ * CAM  11-Aug-2007  10149 : Remove height restriction on table.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -38,7 +39,7 @@ if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
   <script language="Javascript" src="ajax.js"></script>
 </head>
 <body topmargin=8 leftmargin=0>
-<table border=0 cellspacing=0 cellpadding=0 align=center height=650><tr>
+<table border=0 cellspacing=0 cellpadding=0 align=center ><tr>
 <td valign=top><table border=0 cellspacing=0 cellpadding=0 align=center>
 
 <tr>

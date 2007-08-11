@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-May-2006  File created.
+ * CAM  11-Aug-2007  10149 : Call appropriate EmailMsg.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request Quotation";
@@ -69,10 +70,11 @@ if (empty($retry)) {
 
   Msg::statement("Thank you - your request for quotation has been submitted.");
 
-  $em = new EmailMsg($boattype, $boatlength, $boatweight, $boatkeel,
-                     $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
-                     $contactemail, $contactname, $contacttel);
-  $em->sendRequest();
+  $em = new EmailMsg('R');
+
+  $em->sendRequest($boattype, $boatlength, $boatweight, $boatkeel,
+                   $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
+                   $contactemail, $contactname, $contacttel);
 
   echo "<br><br><br><br><br><br>";
 

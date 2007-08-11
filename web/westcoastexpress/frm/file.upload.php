@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * File Upload
@@ -11,12 +11,13 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  21-Dec-2006  10068 : Enable uploading of new photos.
+ * CAM  11-Aug-2007  10149 : Changed to 'photo.upload.php'.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once "db.php";
 ?>
 
-<form enctype="multipart/form-data" action="fileupload.php" method="POST">
+<form enctype="multipart/form-data" action="photo.upload.php" method="POST">
   <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 <table border=0 cellspacing=0 cellpadding=5>
 <tr><td class="<? echo (empty($uplfilename)) ? "fldmand" : "fld" ?>">File</td><td><input name="uplfile" type="file" /></td></tr>

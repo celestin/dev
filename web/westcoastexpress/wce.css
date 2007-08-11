@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Style Sheet
@@ -11,6 +11,7 @@
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added anchor class for toolbar navigation.
  * CAM  21-Dec-2006  10069 : Tidied up photo classes.
+ * CAM  11-Aug-2007  10149 : Added options for Pagination and corrected ImgNav.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -31,7 +32,7 @@ h3 {
 td.slogan {
   FONT-SIZE: 16pt;
   BACKGROUND-COLOR: #BB0F18;
-  COLOR: #FFFFFF;
+  COLOR: white;
 }
 
 .hi {
@@ -43,7 +44,7 @@ td.sidered {
   FONT-SIZE: 12pt;
   FONT-WEIGHT: bold;
   BACKGROUND-COLOR: #BB0F18;
-  COLOR: #FFFFFF;
+  COLOR: white;
   PADDING: 6px;
 }
 
@@ -51,35 +52,35 @@ td.sideblue {
   FONT-SIZE: 12pt;
   FONT-WEIGHT: bold;
   BACKGROUND-COLOR: #006891;
-  COLOR: #FFFFFF;
+  COLOR: white;
   PADDING: 6px;
 }
 
 .news {
   FONT-SIZE: 10pt;
   FONT-WEIGHT: normal;
-  COLOR: #FFFFFF;
+  COLOR: white;
 }
 
 .wcelink {
   FONT-SIZE: 10pt;
   FONT-WEIGHT: bold;
-  COLOR: #FFFFFF;
+  COLOR: white;
 }
 
 .whitebox {
-  BACKGROUND-COLOR: #FFFFFF;
+  BACKGROUND-COLOR: white;
 }
 
 .bodybox {
-  BACKGROUND-COLOR: #FFFFFF;
+  BACKGROUND-COLOR: white;
   PADDING: 8px;
 }
 
 .topbanner {
   /*BORDER-TOP:     #006891 10px solid;*/
   FONT-SIZE: 8pt;
-  COLOR: #FFFFFF;
+  COLOR: white;
 }
 
 .toolbar {
@@ -89,10 +90,36 @@ td.sideblue {
 .redbanner {
   BACKGROUND-COLOR: #BB0F18;
   FONT-SIZE: 8pt;
-  COLOR: #FFFFFF;
+  COLOR: white;
   PADDING: 4px;
 }
 
+.pagebox {
+  BORDER:#999999 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  COLOR: #006891;
+  FONT-WEIGHT: bold;
+}
+
+.pageboxhover {
+  BORDER:#006891 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  BACKGROUND-COLOR: #006891;
+  COLOR: white;
+  FONT-WEIGHT: bold;
+  CURSOR: pointer;
+}
+
+.pageboxsel {
+  BORDER:#BB0F18 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  BACKGROUND-COLOR: #BB0F18;
+  COLOR: white;
+  FONT-WEIGHT: bold;
+}
 
 .bluebox {
   BORDER-BOTTOM:  #006891 2px solid;
@@ -130,11 +157,41 @@ td.cpyrght {
   FONT-WEIGHT: bold;
 }
 
+/** Image Navigation */
+
+.imgnav img {
+  BORDER: 2px solid #CCCCCC;
+}
+
+.imgnav:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnav:hover {
+  COLOR: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
+.imgnavsel img {
+  BORDER: 2px solid #BB0F18;
+}
+
+.imgnavsel:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnavsel:hover {
+  COLOR: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
 
 /** Navigation */
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
-  COLOR: #FFFFFF;
+  COLOR: white;
   BORDER-BOTTOM: #F1F16B 1px dashed;
   FONT-WEIGHT: bold;
 }
@@ -147,7 +204,7 @@ A.nav:hover {
 
 A.tbr,A.tbr:visited,A.tbr:active,A.tbr:link,A.tbr:visited {
   FONT-SIZE: 7pt;
-  COLOR: #FFFFFF;
+  COLOR: white;
   BORDER-BOTTOM: #F1F16B 1px dashed;
   FONT-WEIGHT: normal;
 }

@@ -1,10 +1,10 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * File upload
+ * Photo upload
  *
  * $Id$
  *

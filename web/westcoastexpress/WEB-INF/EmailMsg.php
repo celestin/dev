@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EmailMsg - Sends an Email
@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  11-Aug-2007  10149 : Ensure Forgotten Passwords send correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -23,19 +24,19 @@ include_once 'Main.php';
 */
 class EmailMsg {
 
-  var $boattype;
-  var $boatlength;
-  var $boatweight;
-  var $boatkeel;
-  var $boatloc;
-  var $boatdest;
-  var $earlydate;
-  var $estval;
-  var $owntrailer;
-  var $comments;
-  var $contactemail;
-  var $contactname;
-  var $contacttel;
+  /**
+  * Email Type (Notification or Reminder).
+  * @private
+  * @type String
+  */
+  var $emailType;
+
+  /**
+  * Description of Email Type (Notification or Reminder).
+  * @private
+  * @type String
+  */
+  var $typeDesc;
 
   /**
   * Originator Member
@@ -44,23 +45,17 @@ class EmailMsg {
   */
   var $memPerson;
 
-  function EmailMsg($boattype, $boatlength, $boatweight, $boatkeel,
-                    $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
-                    $contactemail, $contactname, $contacttel) {
-  $this->boattype =      $boattype;
-  $this->boatlength =    $boatlength;
-  $this->boatweight =    $boatweight;
-  $this->boatkeel =      $boatkeel;
-  $this->boatloc =       $boatloc;
-  $this->boatdest =      $boatdest;
-  $this->earlydate =     $earlydate;
-  $this->estval =        $estval;
-  $this->owntrailer =    $owntrailer;
-  $this->comments =      $comments;
-  $this->contactemail =  $contactemail;
-  $this->contactname =   $contactname;
-  $this->contacttel =    $contacttel;
+  function EmailMsg($emailType, $memberId='') {
+    $this->emailType = $emailType;
+    $this->memPerson = Person::getPerson($memberId);
 
+    if ($emailType == 'I') {
+      $this->typeDesc = "Information Request";
+    } else if ($emailType == 'V') {
+      $this->typeDesc = "User Verification";
+    } else {
+      $this->typeDesc = "Password Reminder";
+    }
   }
 
   function getHeaders($cc='') {
@@ -80,7 +75,7 @@ class EmailMsg {
 
     $cr = "\r\n";
     return "<html><head>".
-          "<link href=" . $cfg['Site']['URL'] . "/wce.css rel=stylesheet type=text/css>".
+          "<link href=\"" . $cfg['Site']['URL'] . "/wce.css\" rel=stylesheet type=text/css>".
           "</head><body>".
           "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
             "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".
@@ -99,31 +94,55 @@ class EmailMsg {
     "</body></html>$cr";
   }
 
-  function sendRequest() {
+  function sendRequest($boattype, $boatlength, $boatweight, $boatkeel,
+                       $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
+                       $contactemail, $contactname, $contacttel) {
     global $cfg;
 
     $to = $cfg['Site']['Email'];
-    $cc = $this->contactemail;
+    $cc = $contactemail;
     $subject = "Request for Quotation";
     $cr = "\r\n";
 
     $message = $this->getHTMLStart($subject) .
-      "<tr><td class=fld>Type of Boat                </td><td>" . $this->boattype . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Length of boat              </td><td>" . $this->boatlength . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Weight of boat              </td><td>" . $this->boatweight . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Type of Keel                </td><td>" . $this->boatkeel . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Location (present position) </td><td>" . $this->boatloc . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Destination                 </td><td>" . $this->boatdest . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Ealiest preferred date      </td><td>" . $this->earlydate . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Estimated value             </td><td>" . $this->estval . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Own trailer?                </td><td>" . $this->owntrailer . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Additional comments         </td><td>" . $this->comments . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Email Address               </td><td>" . $this->contactemail . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Contact Name                </td><td>" . $this->contactname . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Contact Tel                 </td><td>" . $this->contacttel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Type of Boat                </td><td>" . $boattype . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Length of boat              </td><td>" . $boatlength . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Weight of boat              </td><td>" . $boatweight . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Type of Keel                </td><td>" . $boatkeel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Location (present position) </td><td>" . $boatloc . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Destination                 </td><td>" . $boatdest . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Ealiest preferred date      </td><td>" . $earlydate . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Estimated value             </td><td>" . $estval . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Own trailer?                </td><td>" . $owntrailer . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Additional comments         </td><td>" . $comments . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Email Address               </td><td>" . $contactemail . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Name                </td><td>" . $contactname . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Contact Tel                 </td><td>" . $contacttel . "</td></tr>$cr$cr".
       $this->getHTMLEnd();
 
     mail($to,$subject,$message,$this->getHeaders($cc));
+  }
+
+  function sendForgot($new_pwd) {
+    global $cfg;
+
+    $to = $this->memPerson->getEmail();
+    $subject = "Your " . $cfg['Site']['Name'] . " password for " . $this->memPerson->getID();
+    $cr = "\r\n";
+
+    $url = $cfg['Site']['URL'] . "/login.php";
+
+    $message = $this->getHTMLStart($subject);
+    $message .= "<tr><td><p>Hi " . $this->memPerson->getFirstname() . ",</p>$cr$cr".
+            "<p>We have reset your password to: <b>$new_pwd</b>.</p>$cr".
+            "<p>Please use the link below to login:<br>$cr".
+            "<a href=\"$url\">$url</a></p>$cr$cr".
+            "<p>Thanks!<br>$cr".
+            "<b>" . $cfg['Site']['Name'] . "</b></p>$cr".
+            "</td></tr>$cr";
+    $message .= $this->getHTMLEnd();
+
+    mail($to,$subject,$message,$this->getHeaders());
   }
 }
 ?>

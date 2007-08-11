@@ -13,6 +13,7 @@
  * CAM  31-May-2006  Added hidden toolbar navigation.
  * CAM  02-Feb-2007  10069 : Added Change Password.
  * CAM  11-Aug-2007  10149 : Remove height restriction on table.
+ * CAM  11-Aug-2007  10151 : Display a random boattrans image - either 2 or 3.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -29,6 +30,8 @@ $toolbar = "none";
 if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
   $toolbar = "inline";
 }
+
+$boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
 
 ?>
 <html>
@@ -64,7 +67,7 @@ if ($loggedin) {
       </table></td>
     </tr>
     <tr>
-      <td width=175 align=center><img src="img/boattrans1.jpg"></td>
+      <td width=175 align=center><img src="img/boattrans<? echo $boattrans_idx; ?>.jpg"></td>
       <td colspan=3 class="whitebox" align=center><img src="img/wce1.gif"></td>
       <td width=175 align=center><img onclick="toogleToolbar();" src="img/parceldel1.jpg"></td>
     </tr>

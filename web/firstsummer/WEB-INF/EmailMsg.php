@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * First Summerhouses
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EmailMsg - Sends an Email
@@ -11,13 +11,45 @@
  * Who  When         Why
  * CAM  10-Feb-2006  File created.
  * CAM  25-Nov-2006  10012 : File added.
+ * CAM  11-Aug-2007  10158 : Added missing properties and methods to support sendForgot.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 
 class EmailMsg {
 
-  function EmailMsg() {
+  /**
+  * Email Type (Notification or Reminder).
+  * @private
+  * @type String
+  */
+  var $emailType;
+
+  /**
+  * Description of Email Type (Notification or Reminder).
+  * @private
+  * @type String
+  */
+  var $typeDesc;
+
+  /**
+  * Originator Member
+  * @private
+  * @type Person
+  */
+  var $memPerson;
+
+  function EmailMsg($emailType, $memberId) {
+    $this->emailType = $emailType;
+    $this->memPerson = Person::getPerson($memberId);
+
+    if ($emailType == 'N') {
+      $this->typeDesc = "Notification";
+    } else if ($emailType == 'F') {
+      $this->typeDesc = "Password Reminder";
+    } else {
+      $this->typeDesc = "Reminder";
+    }
   }
 
   function getHeaders($cc='') {
@@ -90,5 +122,26 @@ class EmailMsg {
     mail($to,$subject,$message,$this->getHeaders($cc));
   }
 
+  function sendForgot($new_pwd) {
+    global $cfg;
+
+    $to = $this->memPerson->getEmail();
+    $subject = "Your " . $cfg['Site']['Name'] . " password for " . $this->memPerson->getID();
+    $cr = "\r\n";
+
+    $url = $cfg['Site']['URL'] . "/login.php";
+
+    $message = $this->getHTMLStart($subject);
+    $message .= "<tr><td><p>Hi " . $this->memPerson->getFirstname() . ",</p>$cr$cr".
+            "<p>We have reset your password to: <b>$new_pwd</b>.</p>$cr".
+            "<p>Please use the link below to login:<br>$cr".
+            "<a href=\"$url\">$url</a></p>$cr$cr".
+            "<p>Thanks!<br>$cr".
+            "<b>" . $cfg['Site']['Name'] . "</b></p>$cr".
+            "</td></tr>$cr";
+    $message .= $this->getHTMLEnd();
+
+    mail($to,$subject,$message,$this->getHeaders());
+  }
 }
 ?>

@@ -12,6 +12,7 @@
  * CAM  13-Apr-2006  File created.
  * CAM  11-Aug-2007  10149 : Ensure Forgotten Passwords send correctly.
  * CAM  11-Aug-2007  10150 : Changed 'Request for Quotation' to 'Confirmation of Request'.
+ * CAM  11-Aug-2007  10150 : Changed back to 'Request for Quotation' and set email as though it has come from form filler.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -59,11 +60,13 @@ class EmailMsg {
     }
   }
 
-  function getHeaders($cc='') {
+  function getHeaders($cc='', $from='') {
     global $cfg;
 
+    if (empty($from)) $from = $cfg['Site']['Name'] . "<" . $cfg['Site']['Email'] . ">";
+
     $cr = "\r\n";
-    $headers = "From: " . $cfg['Site']['Name'] . "<" . $cfg['Site']['Email'] . ">$cr";
+    $headers = "From: $from$cr";
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
     $headers .= "MIME-Version: 1.0$cr";
     $headers .= "X-Priority: 1$cr";
@@ -76,8 +79,8 @@ class EmailMsg {
 
     $cr = "\r\n";
     return "<html><head>".
-          "<link href=\"" . $cfg['Site']['URL'] . "/wce.css\" rel=stylesheet type=text/css>".
-          "</head><body>".
+          "<link href=" . $cfg['Site']['URL'] . "/wce.css rel=stylesheet type=text/css>".
+          "</head><body style='background-color:white'>".
           "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
             "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".
               "<tr>".
@@ -101,8 +104,7 @@ class EmailMsg {
     global $cfg;
 
     $to = $cfg['Site']['Email'];
-    $cc = $contactemail;
-    $subject = "Confirmation of Request";
+    $subject = "Request for Quotation";
     $cr = "\r\n";
 
     $message = $this->getHTMLStart($subject) .
@@ -121,7 +123,7 @@ class EmailMsg {
       "<tr><td class=fld>Contact Tel                 </td><td>" . $contacttel . "</td></tr>$cr$cr".
       $this->getHTMLEnd();
 
-    mail($to,$subject,$message,$this->getHeaders($cc));
+    mail($to,$subject,$message,$this->getHeaders('', "\"$contactname (via " . $cfg['Site']['Name'] . ")\" <$contactemail>"));
   }
 
   function sendForgot($new_pwd) {

@@ -4,7 +4,7 @@
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Request Quotation Page Context
+ * Request for Quotation Page Context
  *
  * $Id$
  *
@@ -12,12 +12,13 @@
  * CAM  10-May-2006  File created.
  * CAM  11-Aug-2007  10149 : Call appropriate EmailMsg.
  * CAM  11-Aug-2007  10150 : Removed 'Quotation' in the information message.
+ * CAM  11-Aug-2007  10150 : Add 'Quotation' back into the information message.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Request Quotation";
+$title = "Request for Quotation";
 include 'tpl/top.php';
 ?>
-<h3>Request Quotation</h3>
+<h3>Request for Quotation</h3>
 <?
 
 $retry = NULL;            if (!empty($_POST['retry'])) $retry = $_POST['retry'];
@@ -69,7 +70,7 @@ if (empty($retry)) {
   include 'frm/quote.request.php';
 } else {
 
-  Msg::statement("Thank you - your request has been submitted.");
+  Msg::statement("Thank you - your Request for Quotation has been submitted.");
 
   $em = new EmailMsg('R');
 

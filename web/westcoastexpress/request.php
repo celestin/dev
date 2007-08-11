@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  10-May-2006  File created.
  * CAM  11-Aug-2007  10149 : Call appropriate EmailMsg.
+ * CAM  11-Aug-2007  10150 : Removed 'Quotation' in the information message.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request Quotation";
@@ -68,7 +69,7 @@ if (empty($retry)) {
   include 'frm/quote.request.php';
 } else {
 
-  Msg::statement("Thank you - your request for quotation has been submitted.");
+  Msg::statement("Thank you - your request has been submitted.");
 
   $em = new EmailMsg('R');
 

@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  11-Aug-2007  10149 : Ensure Forgotten Passwords send correctly.
+ * CAM  11-Aug-2007  10150 : Changed 'Request for Quotation' to 'Confirmation of Request'.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -50,7 +51,7 @@ class EmailMsg {
     $this->memPerson = Person::getPerson($memberId);
 
     if ($emailType == 'I') {
-      $this->typeDesc = "Information Request";
+      $this->typeDesc = "Confirmation of Request";
     } else if ($emailType == 'V') {
       $this->typeDesc = "User Verification";
     } else {
@@ -101,7 +102,7 @@ class EmailMsg {
 
     $to = $cfg['Site']['Email'];
     $cc = $contactemail;
-    $subject = "Request for Quotation";
+    $subject = "Confirmation of Request";
     $cr = "\r\n";
 
     $message = $this->getHTMLStart($subject) .

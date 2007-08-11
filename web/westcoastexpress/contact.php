@@ -10,13 +10,14 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Contact Bob";
 include 'tpl/top.php';
 ?>
 
-<h3>Call Bob now!</h3>
+<center><img src="img/title/contact.png"></center>
 
 <table border=0 cellpadding=20 align=center >
   <tr>
@@ -34,7 +35,7 @@ include 'tpl/top.php';
       <tr><td class="hi">Mob</td><td>07780 807 202</td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/boat1.gif"><br><img src="img/boatsafe2.gif"></td>
+    <td align="right"><img src="img/boat1.gif"><br><img src="img/boatsafe3.png"></td>
   </tr>
 </table>
 

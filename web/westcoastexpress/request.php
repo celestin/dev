@@ -13,12 +13,13 @@
  * CAM  11-Aug-2007  10149 : Call appropriate EmailMsg.
  * CAM  11-Aug-2007  10150 : Removed 'Quotation' in the information message.
  * CAM  11-Aug-2007  10150 : Add 'Quotation' back into the information message.
+ * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request for Quotation";
 include 'tpl/top.php';
 ?>
-<h3>Request for Quotation</h3>
+<center><img style="padding-bottom:5px" src="img/title/rfq.png"></center>
 <?
 
 $retry = NULL;            if (!empty($_POST['retry'])) $retry = $_POST['retry'];

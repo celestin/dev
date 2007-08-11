@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  11-Aug-2007  10154 : File created.
+ * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Customer Feedback";
@@ -40,6 +41,10 @@ while ($row = mysql_fetch_array($sql)) {
   if ($counter>0) {
 ?>
   <tr><td align=right height=2><img src="img/f.gif" width=1 height=1></td></tr>
+<?
+  } else {
+?>
+  <tr><td align=center><img style="padding-bottom:5px" src="img/title/feedback.png"></td></tr>
 <?
   }
 
@@ -83,8 +88,8 @@ if ($loggedin && $member->isAdmin()) {
 </table></td>
 <td width=250 valign=top><table border=0 cellpadding=0 cellspacing=0>
   <tr><td align=right><img src="img/feedback1.jpg"></td></tr>
-  <tr><td align=right><p class="underpicture">We pride ourselves in our reputation.</p>
-    <p>Here's what some of our happy customers have said about our service and their experiences.</p></td></tr>
+  <tr><td align=right><img src="img/priderep1.png"></td></tr>
+  <tr><td align=right>Here's what some of our happy customers have said about our service and their experiences.</td></tr>
 </table></td></tr></table>
 <?
 include 'tpl/bot.php';

@@ -6,7 +6,7 @@
  *
  * Editing of Customer Feedback
  *
- * $Id: news.edit.php 310 2006-10-10 21:31:17Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Aug-2007  10154 : File created.

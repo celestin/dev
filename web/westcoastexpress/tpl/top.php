@@ -14,6 +14,7 @@
  * CAM  02-Feb-2007  10069 : Added Change Password.
  * CAM  11-Aug-2007  10149 : Remove height restriction on table.
  * CAM  11-Aug-2007  10151 : Display a random boattrans image - either 2 or 3.
+ * CAM  11-Aug-2007  10154 : Added Feedback option.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -48,7 +49,7 @@ $boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
 <tr>
   <td><table border=0 cellpadding=0 cellspacing=0 class="topbanner" width=800>
     <tr>
-      <td align=right class="toolbar" colspan=5 height=10 id="tb"><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
+      <td align=right class="toolbar" colspan=6 height=10 id="tb"><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
         <tr height=24>
 <?
 if (!$loggedin) {
@@ -68,11 +69,12 @@ if ($loggedin) {
     </tr>
     <tr>
       <td width=175 align=center><img src="img/boattrans<? echo $boattrans_idx; ?>.jpg"></td>
-      <td colspan=3 class="whitebox" align=center><img src="img/wce1.gif"></td>
+      <td colspan=4 class="whitebox" align=center><img src="img/wce1.gif"></td>
       <td width=175 align=center><img onclick="toogleToolbar();" src="img/parceldel1.jpg"></td>
     </tr>
     <tr height=26>
       <td class="redbanner" align=center><a class="nav" href="index.php">BOAT TRANSPORT</a></td>
+      <td class="redbanner" align=center><a class="nav" href="feedback.php">FEEDBACK</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="contact.php">CONTACT</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="request.php">REQUEST QUOTE</a></td>
       <td class="redbanner" width=150 align=center><a class="nav" href="photos.php">PHOTOS</a></td>

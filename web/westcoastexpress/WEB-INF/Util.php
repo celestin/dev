@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * General Utilities
@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  11-Aug-2007  10154 : Added textToSql.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Util {
@@ -22,6 +23,18 @@ class Util {
   */
   function displayToSqlDate($displayDate) {
     return date("Y-m-d", strtotime($displayDate));
+  }
+
+  /**
+  * Return the String encoded for saving to SQL
+  *
+  * @public
+  * @returns String
+  */
+  function textToSql($text) {
+    $ret = str_replace("'", "'", $text);
+    $ret = str_replace("£", "&pound;", $ret);
+    return $ret;
   }
 
   /**

@@ -12,6 +12,7 @@
  * CAM  31-May-2006  Added anchor class for toolbar navigation.
  * CAM  21-Dec-2006  10069 : Tidied up photo classes.
  * CAM  11-Aug-2007  10149 : Added options for Pagination and corrected ImgNav.
+ * CAM  11-Aug-2007  10154 : Added options for Feedback.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -112,6 +113,21 @@ td.sideblue {
   CURSOR: pointer;
 }
 
+.quote {
+  BACKGROUND-COLOR: #E0E0E0;
+  COLOR: #333333;
+}
+
+.underpicture {
+  BACKGROUND-COLOR: #BB0F18;
+  FONT-FAMILY: Times New Roman, Serif;
+  FONT-STYLE: italic;
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 18pt;
+  COLOR: white;
+  PADDING: 4px;
+}
+
 .pageboxsel {
   BORDER:#BB0F18 1px solid;
   TEXT-ALIGN:center;
@@ -129,8 +145,8 @@ td.sideblue {
 }
 
 .sep {
-  PADDING-LEFT: 20px;
-  PADDING-RIGHT: 20px;
+  PADDING-LEFT: 5px;
+  PADDING-RIGHT: 5px;
   COLOR: #F1F16B;
   FONT-WEIGHT: bold;
 }

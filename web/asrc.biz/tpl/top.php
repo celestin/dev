@@ -14,7 +14,8 @@
  * CAM  30-May-2004  4 : Added Fines menu.
  * CAM  25-Apr-2006  14 : Show Courts View to admin toolbar.
  * CAM  29-Jul-2006  10021 : Show flash messages if they exist.
- * CAM  25-Jun-2007  10134: Add News to members toolbar.
+ * CAM  25-Jun-2007  10134 : Add News to members toolbar.
+ * CAM  12-Aug-2007  10157 : Add TBC to Admin toolbar.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -68,6 +69,7 @@ if (empty($hide_toolbar)) {
             print '<td><a href="mybookings.php">' . $bookDesc . ' bookings</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             print '<td><a href="newbooking.php">make booking</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             if ($member->isAdmin()) {
+              print '<td><a href="unconfirmed.php">tbc</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
               print '<td><a href="fines.php">fines</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
             }
             print '<td><a href="logout.php">logout</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
@@ -89,8 +91,5 @@ if (empty($hide_toolbar)) {
 
     <tr><td colspan=2 width="100%" height="100%" valign=top>
 <?
-if (session_is_registered('flash') && !empty($_SESSION['flash'])) {
-  Msg::statement($_SESSION['flash']);
-  $_SESSION['flash'] = "";
-}
+  showFlash();
 ?>

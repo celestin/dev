@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  05-Apr-2004  File created.
+ * CAM  09-Aug-2007  10157 : Added myNextday to calculate the next MySQL weekday ordinal.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Util {
@@ -44,6 +45,18 @@ class Util {
   function myWeekday($date) {
     $dow = (date("w", strtotime($date)) - 1);
     if ($dow == -1) $dow = 6;
+    return $dow;
+  }
+
+  /**
+  * Return the next MySQL weekday ordinal for a given ordinal.
+  *
+  * @public
+  * @returns int
+  */
+  function myNextday($day) {
+    $dow = $day+1;
+    if ($dow > 6) $dow = 0;
     return $dow;
   }
 }

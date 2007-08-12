@@ -7,7 +7,7 @@
  *
  * Filter Class
  *
- * $Id: Block.php 41 2006-05-04 22:31:06Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.

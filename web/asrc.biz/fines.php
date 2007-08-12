@@ -114,7 +114,7 @@ if ($member->isAdmin()) {
 <td class=br>Total</td><td class=br>£<? print $total_fines  ?>
 </td><td>
 <? print "<a href=\"". ActionUtil::urlPay("P", $memberid) . "\">pay all</a>"; ?>
-</td>
+</td></tr>
 </table></td></tr></table>
 <?
   }

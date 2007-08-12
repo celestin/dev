@@ -7,7 +7,7 @@
  *
  * Edit User Form
  *
- * $Id: newuser_form.php 44 2006-05-04 22:34:22Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.

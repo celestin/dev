@@ -14,6 +14,7 @@
  * CAM  05-Mar-2007  10098 : Removed Valentines Dance.
  * CAM  05-Mar-2007  10098 : Corrected CSS.
  * CAM  25-Jun-2007  10133 : Ensure Test emails are sent to the Development email.
+ * CAM  12-Aug-2007  10157 : Improve HTML emails.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -133,8 +134,6 @@ class EmailMsg {
     $headers .= "X-Priority: 1$cr";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1$cr";
 
-    $base = "http://www.asrc.biz";
-
     $title = "Squash Booking " . $this->typeDesc;
     $subject = $title . ": " . $this->bookDate . " at " . $this->startTime;
 
@@ -142,9 +141,9 @@ class EmailMsg {
       $subject .= " (TEST SYSTEM)";
     }
 
-    $message = "<html><head>".
-    "<link href=\"$base/asrc.css\" rel=stylesheet type=text/css>".
-    "</head><body>".
+    $message = "<html><head>$cr".
+    "<link href=" . $cfg['Site']['URL'] . "/asrc.css rel=stylesheet type=text/css>".
+    "</head><body>$cr".
     "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
       "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".
         "<tr>".

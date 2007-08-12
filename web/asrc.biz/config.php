@@ -6,12 +6,13 @@
  *
  * Configuration Data
  *
- * $Id: config.php 310 2006-10-10 21:31:17Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  08-Feb-2007  10097 : File created.
  * CAM  22-Jun-2007  10132 : Corrected Local Server name.
  * CAM  25-Jun-2007  10133 : Added 'Test' boolean.
+ * CAM  12-Aug-2007  10157 : Changed Test URL to reflect king machine.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Aberdeen Squash Racquets Club";
@@ -25,7 +26,7 @@ $cfg['Site']['Db']['Username'] = "asrc";
 $cfg['Site']['Db']['Password'] = "fred71";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
-  $cfg['Site']['URL']   = "http://localhost/asrc";
+  $cfg['Site']['URL']   = "http://king/asrc";
 
   $cfg['Site']['Db']['Hostname'] = 'localhost';
 

@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  23-Jun-2004  File created.
  * CAM  30-May-2004  4 : Added Paying of Fines.
+ * CAM  12-Aug-2007  10157 : Modified wording of Actions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Action";
@@ -47,6 +48,8 @@ if ($action == "C" || $action == "X") {
       $$key = stripslashes($val);
     }
 
+    $tupMember = Person::getPerson($memberid);
+
     if ($opponentid) {
       $tupOpponent = Person::getPerson($opponentid);
     } else {
@@ -54,8 +57,16 @@ if ($action == "C" || $action == "X") {
     }
 
     if (empty($proceed)) {
-      Msg::question("Sure you wish to " . ActionUtil::getDesc($action) . " this game with " . $tupOpponent->toString());
+
+      if ($action == 'X') {
+        Msg::question("Sure you wish to Cancel this game with " . $tupOpponent->toString());
+      } else if ($action == 'C') {
+        Msg::question("Do you want to Confirm that " . $tupMember->toString() . " played this game");
+      }
+
       print "<center><a href=\"". ActionUtil::url($action, $book_date, $court, $slot, 1) . "\">Yes</a> | <a href=javascript:history.back()>No</a>";
+
+
     } else if ($action == 'X') {
       $ssql = "DELETE FROM booking ".
               "WHERE book_date='$book_date' ".
@@ -63,7 +74,9 @@ if ($action == "C" || $action == "X") {
               "AND slot='$slot' ";
       $sql = mysql_query($ssql) or die (mysql_error());
 
-      Msg::statement("Booking cancelled.");
+      storeFlash("Booking cancelled.");
+      redirect("mybookings.php");
+
     } else if ($action == 'C') {
       $ssql = "UPDATE booking ".
               "SET confirm_date = NOW(), confirm_user = '" . $member->getID() . "', status = 'C' ".
@@ -72,10 +85,11 @@ if ($action == "C" || $action == "X") {
               "AND slot='$slot' ";
       $sql = mysql_query($ssql) or die (mysql_error());
 
-      Msg::statement("Booking confirmed.");
+      storeFlash("Booking confirmed.");
+      redirect("mybookings.php");
     }
-
   }
+
 } else if ($action == "P") {
 
   if ($memberid) {
@@ -92,7 +106,8 @@ if ($action == "C" || $action == "X") {
             "AND status='X'";
     $sql = mysql_query($ssql) or die (mysql_error());
 
-    Msg::statement("All Fines Paid.");
+    storeFlash("All fines paid for " . $member->toString() . ".");
+    redirect("fines.php");
   }
 }
 

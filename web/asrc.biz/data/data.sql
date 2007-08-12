@@ -3,7 +3,7 @@
 -- Copyright (c) 2006 Frontburner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
--- $Id: data.sql 199 2006-07-14 15:51:13Z craig $
+-- $Id$
 --
 -- SET PASSWORD FOR 'asrc'@'localhost' = OLD_PASSWORD('fred71');
 -- --------------------------------------------------------

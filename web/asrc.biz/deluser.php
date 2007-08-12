@@ -7,11 +7,12 @@
  *
  * Delete an existing user
  *
- * $Id: logout.php 40 2006-05-04 22:27:56Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.
  * CAM  22-Jun-2007  10132 : Removed session_register.
+ * CAM  12-Aug-2007  10157 : Use Flash/redirect.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Log out";
@@ -34,11 +35,8 @@ if(!isset($_REQUEST['confirm'])){
           "WHERE memberid = '$member_id' ";
   $sql = mysql_query($ssql) or die(mysql_error());
 
-  $_SESSION['flash'] = "User $member_id deleted.";
-
-?>
-<script language="javascript">top.location.href="users.php";</script>
-<?
+  storeFlash("User $member_id deleted.");
+  redirect("users.php");
 }
 include 'tpl/bot.php';
 ?>

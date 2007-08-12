@@ -19,3 +19,16 @@ INSERT INTO news VALUES ('2007-08-01 00:00:00', 'Seven Courts Online!', '<p>All 
 INSERT INTO news VALUES ('2007-08-12 00:00:00', 'Out of Hours games', '<p>When you play out of hours games, you will no longer be immediately fined because there is no one to Confirm your game.  Instead, these games will be reviewed the next working day and confirmed against the sheet at Reception.  If there is no record of a confirmation, you will be placed on the Fine Board and you will not be able to book any more games until these fines are paid.</p>');
 
 
+CREATE TABLE shift (
+  member_type char(2) NOT NULL,
+  day int(1) NOT NULL,
+  start_time time NOT NULL,
+  end_time time NOT NULL,
+  PRIMARY KEY  (member_type,day)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Shift Hours';
+
+INSERT INTO shift VALUES ('A', 0, '09:00:00', '19:00:00');
+INSERT INTO shift VALUES ('A', 1, '09:00:00', '19:00:00');
+INSERT INTO shift VALUES ('A', 2, '09:00:00', '19:00:00');
+INSERT INTO shift VALUES ('A', 3, '09:00:00', '19:00:00');
+INSERT INTO shift VALUES ('A', 4, '09:00:00', '19:00:00');

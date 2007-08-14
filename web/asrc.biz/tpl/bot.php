@@ -21,6 +21,7 @@
  * CAM  08-Feb-2007  10098 : Include the Valentines Image.
  * CAM  05-Mar-2007  10098 : Remove the Valentines Image.
  * CAM  25-Jun-2007  10128 : Version 1.07 - No Bookings if on Fine Board, and colour coding.
+ * CAM  12-Aug-2007  10157 : Version 1.08 - Added Unconfirmed Bookings (if booked outwith Reception hours).
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->
@@ -40,7 +41,7 @@
   </table></td>
 </tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V1.07</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
+<tr><td class="cpyrght"><b>V1.08</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </td></tr>
 </table>
 </body>

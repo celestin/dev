@@ -48,13 +48,5 @@ namespace frontburner.maia.Acumen.Nodes
         return this._code;
       }
     }
-
-    public string Name
-    {
-      get 
-      {
-        return this._name;
-      }
-    }
   }
 }

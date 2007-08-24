@@ -129,9 +129,9 @@ namespace frontburner.maia.Acumen
     {
       fgdEvents.Cols = 10;
       fgdEvents.ExtendLastCol = true;
-      fgdEvents.FixedRowColStyle = FlexCell.Grid.FixedRowColStyleEnum.Flat;
+      fgdEvents.FixedRowColStyle = FixedRowColStyleEnum.Flat;
       fgdEvents.DefaultFont = new Font("Tahoma", 8);
-      fgdEvents.BorderStyle = FlexCell.Grid.BorderStyleEnum.FixedSingle; 
+      fgdEvents.BorderStyle = BorderStyleEnum.FixedSingle; 
 
       fgdEvents.BackColorFixed = Color.FromArgb(90, 158, 214);
       fgdEvents.BackColorFixedSel = Color.FromArgb(110, 180, 230);

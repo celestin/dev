@@ -5,7 +5,7 @@
  *
  * New Search Wizard
  *
- * $Id: keyword.php 486 2007-07-29 21:35:11Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.

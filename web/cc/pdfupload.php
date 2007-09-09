@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  09-Sep-2007  Added chmod.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Register";
@@ -39,6 +40,9 @@ if (empty($retry)) {
   //$mdocumentdate = mdate($documentdate);
 
   if (move_uploaded_file($_FILES['pdffile']['tmp_name'], $uploadfile)) {
+
+    chmod($uploadfile, 644);
+
     Msg::statement("File successfully uploaded.");
 
     $ssql = "REPLACE INTO pdf (pdffile, docdate, doctype) VALUES ".

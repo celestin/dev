@@ -19,8 +19,8 @@
   <th class="resultsheader">Preview Pane</th>
 </tr>
 <tr>
-  <td height="100" class="searchresults" valign=top><? include 'tpl\search_results.php'; ?></td>
+  <td height="100" class="searchresults" valign=top><? include 'tpl/search_results.php'; ?></td>
   <td class="resultsheader"><img src="img/f.gif" border=0 width=12></td>
-  <td class="pageresults" valign=top><? include 'tpl\page.php'; ?></td>
+  <td class="pageresults" valign=top><? include 'tpl/page.php'; ?></td>
 </tr>
 <?

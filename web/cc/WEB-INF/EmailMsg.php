@@ -1,14 +1,9 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * EmailMsg - Sends an Email
- * Copyright (c) 2004-2005 Southesk.com
+ * Copyright (c) 2004-2005 frontburner.co.uk
  *
- * $Log: /web/cc/WEB-INF/EmailMsg.php $
- *
- * 2     29/12/05 15:24 Craig
- * Css Amendments
- *
- * 1     28/12/05 15:49 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  4-May-2005  File created.

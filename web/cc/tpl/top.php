@@ -1,10 +1,10 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Top of the page
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/tpl/top.php $
- * 
+ * $Id$
+ *
  * 2     11/02/06 22:14 Craig
  *
  * 1     28/12/05 15:47 Craig

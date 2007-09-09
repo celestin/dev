@@ -1,11 +1,9 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Home page
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/tpl/home.php $
- * 
- * 1     28/12/05 15:47 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  24-Nov-2005  File created.

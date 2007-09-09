@@ -1,11 +1,9 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Change Password
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/changepass.php $
- * 
- * 1     28/12/05 15:33 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

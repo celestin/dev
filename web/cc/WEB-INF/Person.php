@@ -1,11 +1,9 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Person Class
- * Copyright (c) 2004-2005 Southesk.com
+ * Copyright (c) 2004-2005 frontburner.co.uk
  *
- * $Log: /web/cc/WEB-INF/Person.php $
- * 
- * 1     28/12/05 15:49 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.

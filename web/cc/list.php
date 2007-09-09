@@ -1,18 +1,10 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * List
- * Copyright (c) 2005-2006 Southesk.com
+ * Copyright (c) 2005-2006 frontburner.co.uk
  * Author Craig McKay <craig@southesk.com>
  *
- * $Log: /web/cc/list.php $
- * 
- * 4     8/04/06 20:37 Craig
- *
- * 3     14/02/06 1:17 Craig
- *
- * 2     11/02/06 22:13 Craig
- *
- * 1     28/12/05 15:43 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

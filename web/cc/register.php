@@ -1,10 +1,10 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * New User Creation
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/register.php $
- * 
+ * $Id$
+ *
  * 1     28/12/05 15:43 Craig
  *
  * Who  When         Why

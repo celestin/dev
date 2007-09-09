@@ -1,12 +1,10 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Form - Edit List entry
- * Copyright (c) 2006 Southesk.com
+ * Copyright (c) 2006 frontburner.co.uk
  * Author Craig McKay <craig@southesk.com>
  *
- * $Log: /web/cc/frm/list.edit.php $
- * 
- * 1     8/04/06 20:41 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  08-Apr-2006  File created.

@@ -1,12 +1,10 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Address Query Form
- * Copyright (c) 2006 Southesk.com
+ * Copyright (c) 2006 frontburner.co.uk
  * Author Craig McKay <craig@southesk.com>
  *
- * $Log: /web/cc/frm/address.query.php $
- * 
- * 1     8/04/06 20:42 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Feb-2006  File created.

@@ -1,13 +1,9 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Database Connectivity
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/db.php $
- * 
- * 2     11/02/06 22:13 Craig
- *
- * 1     28/12/05 15:43 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

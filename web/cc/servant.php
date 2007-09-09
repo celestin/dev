@@ -1,11 +1,11 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Add a Servant
- * Copyright (c) 2006 Southesk.com
+ * Copyright (c) 2006 frontburner.co.uk
  * Author Craig McKay <craig@southesk.com>
  *
- * $Log: /web/cc/servant.php $
- * 
+ * $Id$
+ *
  * 1     8/04/06 20:38 Craig
  *
  * Who  When         Why

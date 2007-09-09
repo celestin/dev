@@ -1,14 +1,9 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * PDF file upload
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/pdfupload.php $
- * 
- * 2     28/12/05 15:56 Craig
- * Upload dir
- *
- * 1     28/12/05 15:43 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

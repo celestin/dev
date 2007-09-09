@@ -1,18 +1,9 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Main page setup
- * Copyright (c) 2005 Southesk.com
+ * Copyright (c) 2005 frontburner.co.uk
  *
- * $Log: /web/cc/Main.php $
- *
- * 4     11/02/06 22:13 Craig
- *
- * 3     29/12/05 15:24 Craig
- * Remove trailing slash
- *
- * 2     28/12/05 15:56 Craig
- *
- * 1     28/12/05 15:43 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.

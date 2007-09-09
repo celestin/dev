@@ -12,7 +12,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 
-<table border=0 cellpadding=10>
+<table border=0 cellpadding=10 cellspacing=0>
 <tr><td align=left colspan=2>
 <?
   $q = "What would you like to do";
@@ -25,11 +25,11 @@
 
 ?></td></tr>
 <tr>
-  <td valign=middle><? echo ActionUtil::linkButton('scripture.php', 'Search by Scripture Reference');?></td>
-  <td class="toolTip">Looking for ministry on a particular passage of Scripture?</td>
-</tr><tr>
-  <td><? echo ActionUtil::linkButton('keyword.php', 'Search by Keyword');?></td>
+  <td><? echo ActionUtil::linkButton('keyword.php', 'Search by Keyword', 'keywordbutton', 'keywordbuttonhover');?></td>
   <td class="toolTip">Interested in ministry relating to one or more specific words?</td>
+</tr><tr>
+  <td valign=middle><? echo ActionUtil::linkButton('scripture.php', 'Search by Scripture Reference', 'scripturebutton', 'scripturebuttonhover');?></td>
+  <td class="toolTip">Looking for ministry on a particular passage of Scripture?</td>
 </tr>
 
 </table>

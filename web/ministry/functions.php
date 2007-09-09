@@ -42,6 +42,71 @@ function f_url($a,$v,$b,$c,$s) {
   return $rval;
 }
 
+function remove_inits($text, $inits) {
+  if (substr($text, 0, strlen($inits)) == $inits) {
+    $text = trim(substr($text, strlen($inits), strlen($text)));
+  }
+  return $text;
+}
+
+function highlight_text($text, $inits, $stext, $ref='') {
+  $bold = true;
+
+  $text = remove_inits($text, $inits);
+  $text = remove_inits($text, 'Ques.');
+  $text = remove_inits($text, 'Rem.');
+  $text = str_replace('@', '', $text);
+
+  if (!empty($stext)) {
+    if (($atpos = strpos(strtolower($text), strtolower($stext))) === FALSE) {
+      $atpos = 0;
+      $bold = false;
+    }
+    $backpoint = max(0, $atpos-60);
+    $backtrail = $atpos-$backpoint;
+    $headtrail = 60;
+
+    $booklen = strlen($stext);
+    $backs = substr($text, $backpoint, $backtrail);
+    $heads = substr($text, $atpos+$booklen, $headtrail-$booklen);
+    $rtext = substr($text, $atpos, $booklen);
+
+    $hi_text = $backs;
+    if ($bold) {
+      $hi_text .= "<b>$rtext</b>";
+    } else {
+      $hi_text .= "$rtext";
+    }
+    $hi_text .= $heads;
+    $hi_text = trim($hi_text);
+
+    return f_neat_truncate($hi_text, $backpoint);
+
+  } else if (!empty($ref)) {
+    $atpos = -1;
+    $nextpos = $prevpos = 0;
+    for ($curr = 0; $curr < $ref; $curr++) {
+      $prevpos = $atpos;
+      $atpos = strpos($text, "@", $atpos+1);
+    }
+    if (($nextpos = strpos($text, "@", $atpos+1)) === FALSE) {
+      $nextpos = strlen($text);
+    }
+
+    $backpoint = max(0, max($prevpos+1, $atpos-60));
+    $backtrail = $atpos-$backpoint;
+    $headtrail = min(60, ($nextpos-$atpos)-1);
+
+    $booklen = strlen($bookname);
+    $backs = substr($text, $backpoint, ($atpos-$backpoint));
+    $heads = substr($text, $atpos+$booklen+1, $headtrail-$booklen);
+
+    $text = trim("$backs<b>$bookname</b>$heads");
+
+    return f_neat_truncate($text, $backpoint);
+  }
+}
+
 function f_url_ref($a,$v,$pg,$pa) {
   return "&raut=$a&rvol=$v&rpag=$pg&rpar=$pa";
 }
@@ -80,7 +145,7 @@ function f_show_books() {
       $prevtest = $testament;
     }
 ?>
-<a href="scripture.php?level=4&bookid=<? echo $bookid . f_url(true,true,false,false,false); ?>"><? echo $bookname; ?></a>&nbsp;
+<a href="scripture.php?level=4&bookid=<? echo $bookid . f_url(true,true,false,false,false); ?>"><? echo str_replace(" ", "&nbsp;", $bookname); ?></a>&nbsp;
 <?
   }
 }

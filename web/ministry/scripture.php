@@ -12,32 +12,29 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Scripture Search";
+$tab = "scripture";
+$tabs = true;
 include 'tpl/top.php';
 include_once('functions.php');
+
 ?>
 
 <table border=0 cellpadding=10>
 <tr><td align=left colspan=2>
 <?
-  $q = "Firstly";
+  $q = "Select your Book";
 
   if ($loggedin) {
-    $q .= ", " . $member->getFirstname() . ",";
+    $q .= ", " . $member->getFirstname();
   }
 
-  $q .= " select your Book:";
+  $q .= ":";
 
   Msg::statement($q);
 
-?></td></tr>
-
-</table>
-
-<?
 /**** START ****/
 ?>
-
-  <table border=1 cellpadding=2 cellspacing=0>
+<table border=1 cellpadding=2 cellspacing=0 width="750">
 <?
     if (empty($ubookid)) {
       f_show_books();
@@ -52,8 +49,8 @@ include_once('functions.php');
 </tr>
   <?
 
-    if (!empty($ubookid) && !empty($uchapter)) {
-      f_show_scripture_table();
+  if (!empty($ubookid) && !empty($uchapter)) {
+    f_show_scripture_table();
 }
   ?>
 
@@ -62,11 +59,9 @@ include_once('functions.php');
 /**** END ****/
 ?>
 
-
-
-
-
-
+</td></tr>
+</table>
 <?
+include 'tpl/results.php';
 include 'tpl/bot.php';
 ?>

@@ -11,7 +11,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  BACKGROUND-COLOR: #EEEEEE;
+  BACKGROUND-COLOR: #66B7E2;
 }
 
 p, table, td, input, select, textarea {
@@ -21,10 +21,57 @@ p, table, td, input, select, textarea {
   TEXT-DECORATION: none;
 }
 
-th {
-  BACKGROUND-COLOR: #CCDDFF;
-  COLOR: #000000;
+.topnav {
+  BACKGROUND-COLOR: #66B7E2;
+  COLOR: #0093D8;
+}
+
+.red {
+  color: #DB0954;
+}
+
+.orange {
+  color: #F6B33A;
+}
+
+.green {
+  color: #91CC1A;
+}
+
+.blue {
+  color: #0093D8;
+}
+
+.resultsheader {
+  PADDING-TOP:      5px;
+  PADDING-BOTTOM:   5px;
+  BACKGROUND-COLOR: #66B7E2;
+  COLOR:            #333333;
+  FONT-WEIGHT:      bold;
+}
+
+.searchresults {
+  BORDER:  #0A6CDA 4px solid;
+  BACKGROUND-COLOR: white;
+  COLOR: #333333;
+  FONT-WEIGHT: normal;
+}
+
+.pageresults {
+  BORDER:           #0A6CDA 4px solid;
+  BACKGROUND-COLOR: white;
+  COLOR:            #333333;
+  FONT-WEIGHT:      normal;
+  PADDING:          5px;
+}
+
+.rh {
+  BORDER-BOTTOM:  #0A6CDA 2px solid;
   FONT-WEIGHT: bold;
+}
+
+.rd {
+  BORDER-BOTTOM:  #0A6CDA 1px solid;
 }
 
 .fld {
@@ -40,6 +87,11 @@ td.fldmand {
 
 td.current {
   COLOR: #FF7900;
+}
+
+td.loggedin {
+  COLOR: #333333;
+  FONT-SIZE: 8pt;
 }
 
 td.fldopt {
@@ -71,10 +123,6 @@ td.sel {
   FONT-WEIGHT: bold
 }
 
-.past {
-  BACKGROUND-COLOR: #D8D8D8;
-}
-
 td.sub {
   COLOR: #FFFFFF;
   BACKGROUND-COLOR: #3C6C9E;
@@ -82,38 +130,15 @@ td.sub {
   FONT-WEIGHT: bold
 }
 
-.navBg {
-  BACKGROUND-COLOR: #DDEEFF;
-  BORDER-BOTTOM: #38218E 2px solid;
-  BORDER-LEFT: #38218E 2px solid;
-  BORDER-RIGHT: #38218E 2px solid;
-  BORDER-TOP: #38218E 2px solid;
-}
-
 .outerBox {
   BACKGROUND-COLOR: #FFFFFF;
 }
 
-.thinBox {
-  BACKGROUND-COLOR: #D00040;
-  BORDER-BOTTOM: #DE8499 2px solid;
-}
-
-.topnav {
-  BACKGROUND-COLOR: #88142F;
-  COLOR: #DE8499;
-  FONT-WEIGHT: bold;
-}
-
 .sep {
-  COLOR: #DE8499;
+  COLOR: #DB0954;
   FONT-WEIGHT: bold;
   PADDING-LEFT:   4px;
   PADDING-RIGHT:  4px;
-}
-
-.title {
-  COLOR: #F2AABB;
 }
 
 .cpyrght {
@@ -137,7 +162,7 @@ A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   FONT-WEIGHT: bold;
 }
 A.nav:hover {
-  COLOR: #92B5F0;
+  COLOR: #F6B33A;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }
@@ -151,19 +176,6 @@ A:hover {
   COLOR: #DE8499;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
-}
-
-
-input.button {
-  BACKGROUND-COLOR: #D00040;
-  BORDER:           #DE8499 1px solid;
-  COLOR:            #FFFFFF;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
-  PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
-  PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
 }
 
 
@@ -189,4 +201,208 @@ p.statement {
   COLOR: #120966;
   FONT-WEIGHT: normal;
 }
+
+/** Tab colours */
+
+.keywordtab {
+  background-color: #DB0954;
+  color: white;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+}
+
+.scripturetab {
+  background-color: #F6B33A;
+  color: white;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+}
+
+.authortab {
+  background-color: #91CC1A;
+  color: white;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+}
+
+
+.keywordtabhover {
+  background-color: #DC909B;
+  color: #333333;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+  cursor: pointer;
+}
+
+.scripturetabhover {
+  background-color: #FAD28B;
+  color: #333333;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+  cursor: pointer;
+}
+
+.authortabhover {
+  background-color: #C9DC92;
+  color: #333333;
+  font-weight: bold;
+  width:150px;
+  text-align:center;
+  cursor: pointer;
+}
+
+/** Buttons */
+
+input.previewbutton {
+  BACKGROUND-COLOR: white;
+  BORDER:           #66B7E2 1px solid;
+  COLOR:            blue;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+input.previewbuttonhover {
+  BACKGROUND-COLOR: #66B7E2;
+  BORDER:           #0093D8 1px solid;
+  COLOR:            #333333;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+  cursor: pointer;
+}
+
+input.button {
+  BACKGROUND-COLOR: #0093D8;
+  BORDER:           #66B7E2 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+}
+
+input.buttonhover {
+  BACKGROUND-COLOR: #66B7E2;
+  BORDER:           #0093D8 1px solid;
+  COLOR:            #333333;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+  cursor: pointer;
+}
+
+input.keywordbutton {
+  BACKGROUND-COLOR: #DB0954;
+  BORDER:           #DC909B 1px solid;
+  COLOR:            white;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+}
+
+input.scripturebutton {
+  BACKGROUND-COLOR: #F6B33A;
+  BORDER:           #FAD28B 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+}
+
+input.authorbutton {
+  BACKGROUND-COLOR: #F6B33A;
+  BORDER:           #FAD28B 1px solid;
+  COLOR:            #FFFFFF;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+}
+
+input.keywordbuttonhover {
+  BACKGROUND-COLOR: #DC909B;
+  BORDER:           #DB0954 1px solid;
+  COLOR:            #333333;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+  cursor: pointer;
+}
+
+input.scripturebuttonhover {
+  BACKGROUND-COLOR: #FAD28B;
+  BORDER:           #F6B33A 1px solid;
+  COLOR:            #333333;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+  cursor: pointer;
+}
+
+input.authorbuttonhover {
+  BACKGROUND-COLOR: #C9DC92;
+  BORDER:           #0093D8 1px solid;
+  COLOR:            #333333;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 3px;
+  PADDING-LEFT:   2px;
+  PADDING-RIGHT:  2px;
+  PADDING-TOP:    2px;
+  cursor: pointer;
+}
+
+
+/** Borders */
+
+.mainborder {
+  PADDING: 5px;
+}
+
+.keywordborder {
+  BORDER:  #DB0954 4px solid;
+  PADDING: 5px;
+}
+
+.scriptureborder {
+  BORDER:  #F6B33A 4px solid;
+  PADDING: 5px;
+}
+
+.authorborder {
+  BORDER:  #91CC1A 4px solid;
+  PADDING: 5px;
+}
+
 

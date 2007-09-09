@@ -214,6 +214,10 @@ class Person extends Tuple {
     }
   }
 
+  function getFullname() {
+    return $this->firstname . " " . $this->lastname;
+  }
+
   function toHtmlString($showID=false) {
     $rval = parent::toHtmlString($showID);
 

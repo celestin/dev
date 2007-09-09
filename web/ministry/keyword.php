@@ -12,9 +12,12 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
+$tab = "KEYWORD";
+$tabs = true;
 include 'tpl/top.php';
 
-$keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+$keywords = $_SESSION['search_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+$_SESSION['search_keywords'] = $keywords;
 
 
 ?>
@@ -38,6 +41,8 @@ $keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywor
 </tr>
 </table>
 </form>
+
 <?
+include 'tpl/results.php';
 include 'tpl/bot.php';
 ?>

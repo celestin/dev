@@ -53,8 +53,15 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function linkButton($action, $buttonText) {
-    $rval = "<input class=\"button\" type=\"submit\" onclick=\"top.location.href='$action';\" value=\"". $buttonText . "\">";
+  function linkButton($action, $buttonText, $className='button', $hoverClass='') {
+
+    $hover = "";
+
+    if (!empty($hoverClass)) {
+      $hover = " onmouseover=\"this.className='$hoverClass';\" onmouseout=\"this.className='$className'\" ";
+    }
+
+    $rval = "<input class=\"$className\" type=\"submit\" $hover onclick=\"top.location.href='$action';\" value=\"". $buttonText . "\">";
 
     return $rval;
   }
@@ -65,8 +72,8 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function submitButton($buttonText) {
-    return "<input class=\"button\" type=\"submit\" value=\"". $buttonText . "\">";
+  function submitButton($buttonText, $className='button', $hoverClassName='buttonhover') {
+    return "<input class=\"$className\" onmouseover=\"this.className='$hoverClassName';\" onmouseout=\"this.className='$className'\" type=\"submit\" value=\"". $buttonText . "\">";
   }
 }
 ?>

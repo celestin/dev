@@ -14,6 +14,7 @@
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = (session_is_registered('memberid') && session_is_registered('Ministry Search Engine'));
+global $tab,$tabs;
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];
@@ -29,24 +30,29 @@ if (empty($title)) {
   <script language="Javascript" src="date.js"></script>
 </head>
 
-<body topmargin=0 leftmargin=0>
+<body topmargin=2 leftmargin=0>
 
-<table border=0 cellpadding=0 cellspacing=0 align=center>
-<tr><td><table border=0 cellpadding=0 cellspacing=0 width="800" height="600" class=outerBox>
+<table border=0 cellpadding=0 cellspacing=0 align=center cols=3>
+<tr><td><table border=0 cellpadding=0 cellspacing=0 class=outerBox width="900">
   <tr>
-  <td valign=top><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="thinBox">
-    <tr><td class="title"><b><? echo $cfg['Site']['Name']; ?></b>&nbsp;-&nbsp;<? echo strftime("%a %d %b %H:%M"); ?></td>
+    <td class="topnav"><img src="img/f.gif" border=0 width=500 height=0></td>
+    <td class="topnav"><img src="img/f.gif" border=0 width=20 height=0></td>
+    <td class="topnav"><img src="img/f.gif" border=0 width=460 height=0></td>
+  </tr>
+  <tr>
+  <td valign=top colspan=3><table border=0 cellpadding=0 cellspacing=0 width="100%" height="100%" class="topnav">
+    <tr><td rowspan=2><b><? echo str_replace(" ", "&nbsp;", $cfg['Site']['Name']); ?></b></td>
 
-    <td class="title" align=right><?php
+    <td width="100%" class="loggedin" align=right><?php
       if ($loggedin) {
-        echo $member->toHtmlString(true);
+        echo "Logged in as <b>" . $member->getFullname() . "</b>";
       } else {
         echo "&nbsp;";
       }
     ?></td>
 
     </tr>
-    <tr><td colspan=2 class="topnav"><table border=0 cellpadding=0 cellspacing=0 class="topnav">
+    <tr><td><table border=0 cellpadding=0 cellspacing=0 class="topnav" align=right>
       <tr>
         <td><a class="nav" href="index.php">new search</a><span class="sep">|</sep></td>
         <?
@@ -72,6 +78,20 @@ if (empty($title)) {
         <td><a class="nav" href="help.php">help</a></td>
       </tr>
     </table></td></tr>
+
+<?
+    if ($tabs) {
+      $className = $tab . "border";
+?>
+    <tr><td colspan=3><? include 'tpl/tabs.php'; ?></td></tr>
+<?
+    } else {
+      $className = "mainborder";
+?>
+    <tr><td colspan=3><img src="img/f.gif" height=10></td></tr>
+<?
+    }
+?>
     </table></td></tr>
 
-    <tr><td colspan=2 width="100%" height="100%" valign=top style="padding:5px">
+    <tr><td colspan=3 width="100%" height="100%" valign=top class="<? echo $className; ?>">

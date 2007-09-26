@@ -39,6 +39,7 @@ namespace FrontBurner.Ministry.MseBuilder
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MseBuilder));
       this.btnBuild = new System.Windows.Forms.Button();
       this.cmbAuthor = new System.Windows.Forms.ComboBox();
@@ -47,6 +48,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this.txtVol = new System.Windows.Forms.TextBox();
       this.pgbVol = new System.Windows.Forms.ProgressBar();
       this.grdArticle = new FlexCell.Grid();
+      this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
       this.SuspendLayout();
       // 
       // btnBuild
@@ -113,6 +115,10 @@ namespace FrontBurner.Ministry.MseBuilder
       this.grdArticle.TabIndex = 6;
       this.grdArticle.UncheckedImage = ((System.Drawing.Bitmap)(resources.GetObject("grdArticle.UncheckedImage")));
       // 
+      // tmrRefresh
+      // 
+      this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
+      // 
       // MseBuilder
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +148,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.TextBox txtVol;
     private System.Windows.Forms.ProgressBar pgbVol;
     private FlexCell.Grid grdArticle;
+    private System.Windows.Forms.Timer tmrRefresh;
   }
 }
 

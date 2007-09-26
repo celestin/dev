@@ -38,9 +38,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Article.cs" />
     <Compile Include="Abstract\BibleBook.cs" />
     <Compile Include="Abstract\BibleRef.cs" />
     <Compile Include="Abstract\Volume.cs" />
+    <Compile Include="BusinessLayer.cs" />
     <Compile Include="DatabaseLayer.cs" />
     <Compile Include="MseEngine.cs" />
     <Compile Include="MseParser.cs" />

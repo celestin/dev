@@ -33,10 +33,10 @@ namespace FrontBurner.Ministry.MseBuilder
 
     protected MySqlCommand _cmdVolume;
     protected MySqlCommand _cmdBooks;
+    protected MySqlCommand _cmdInsertText;
+    protected MySqlCommand _cmdInsertBibleRef;
 
     protected MySqlDataAdapter _dadAuthor;
-
-    protected BibleBookCollection _books;
 
     private DatabaseLayer()
     {
@@ -98,40 +98,37 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public BibleBookCollection GetBooks()
     {
-      if (_books == null)
+      String sql;
+      MySqlDataReader dr;
+      BibleBook book;
+      BibleBookCollection books = new BibleBookCollection();
+
+      sql = "SELECT bookid, bookname, singlechap " +
+            "FROM mse_bible_book ";
+
+      lock (_semaphore)
       {
-        String sql;
-        MySqlDataReader dr;
-        BibleBook book;
-        _books = new BibleBookCollection();
-
-        sql = "SELECT bookid, bookname, singlechap " +
-              "FROM mse_bible_book ";
-
-        lock (_semaphore)
+        if (_cmdBooks == null)
         {
-          if (_cmdBooks == null)
-          {
-            _cmdBooks = new MySqlCommand(sql, _conn);
-          }
-          dr = _cmdBooks.ExecuteReader();
+          _cmdBooks = new MySqlCommand(sql, _conn);
         }
-
-        do
-        {
-          while (dr.Read())
-          {
-            book = new BibleBook(dr.GetInt32(0), dr.GetString(1));
-            if (!dr.IsDBNull(2)) book.SingleChap = (dr.GetInt32(2)==1);
-
-            _books.Add(book);
-          }
-        } while (dr.NextResult());
-
-        dr.Close();
+        dr = _cmdBooks.ExecuteReader();
       }
 
-      return _books;
+      do
+      {
+        while (dr.Read())
+        {
+          book = new BibleBook(dr.GetInt32(0), dr.GetString(1));
+          if (!dr.IsDBNull(2)) book.SingleChap = (dr.GetInt32(2)==1);
+
+          books.Add(book);
+        }
+      } while (dr.NextResult());
+
+      dr.Close();
+
+      return books;
     }
 
     public VolumeCollection GetVolumes()
@@ -151,113 +148,26 @@ namespace FrontBurner.Ministry.MseBuilder
           _cmdVolume = new MySqlCommand(sql, _conn);
         }
         dr = _cmdVolume.ExecuteReader();
-      }
 
-      do
-      {
-        while (dr.Read())
+        do
         {
-          vol = new Volume(dr.GetString(0), dr.GetInt32(1));
+          while (dr.Read())
+          {
+            vol = new Volume(dr.GetString(0), dr.GetInt32(1));
 
-          if (!dr.IsDBNull(2)) vol.Title = dr.GetString(2);
-          if (!dr.IsDBNull(3)) vol.Added = dr.GetDateTime(3);
-          if (!dr.IsDBNull(4)) vol.LocalFile = dr.GetString(4);
+            if (!dr.IsDBNull(2)) vol.Title = dr.GetString(2);
+            if (!dr.IsDBNull(3)) vol.Added = dr.GetDateTime(3);
+            if (!dr.IsDBNull(4)) vol.LocalFile = dr.GetString(4);
 
-          rval.Add(vol);
-        }
-      } while (dr.NextResult());
+            rval.Add(vol);
+          }
+        } while (dr.NextResult());
 
-      dr.Close();
+        dr.Close();
+      }
 
       return rval;
     }
-
-    /*
-    public void GetStateDefinition(Instrument instrument, Sensor sensor)
-    {
-      String sql;
-      SqlDataReader dr;
-      StateDefinition sd;
-      StateSequence ss;
-
-      lock (_semaphore)
-      {
-        if (_cmdStateDefinition == null)
-        {
-          sql =
-            "SELECT state_id, hysteresis " +
-            "FROM tbl_sensor_state " +
-            "WHERE instrument_id = @fieldUnitSerial " +
-            "AND sensor_id = @sensorId ";
-
-          _cmdStateDefinition = new SqlCommand(sql, _conn);
-          _cmdStateDefinition.Parameters.Add(new SqlParameter("@fieldUnitSerial", SqlDbType.Int, 0));
-          _cmdStateDefinition.Parameters.Add(new SqlParameter("@sensorId", SqlDbType.Int, 0));
-          _cmdStateDefinition.Prepare();
-        }
-
-        _cmdStateDefinition.Parameters[0].Value = instrument.InstrumentId;
-        _cmdStateDefinition.Parameters[1].Value = sensor.SensorId;
-
-        dr = _cmdStateDefinition.ExecuteReader();
-      }
-
-      do
-      {
-        while (dr.Read())
-        {
-          sd = new StateDefinition(dr.GetGuid(0));
-          if (!dr.IsDBNull(1)) sd.Hysteresis = dr.GetDouble(1);
-          sensor.Add(sd);
-        }
-      } while (dr.NextResult());
-      dr.Close();
-
-      lock (_semaphore)
-      {
-        if (_cmdStateSequence == null)
-        {
-          sql =
-            "SELECT sq.state_id, sq.state_seq, sq.state_level, sq.state_code, sq.state_description, sq.upper_limit " +
-            "FROM tbl_sensor_state_seq sq, tbl_sensor_state ss " +
-            "WHERE sq.state_id = ss.state_id " +
-            "AND ss.instrument_id = @fieldUnitSerial " +
-            "AND ss.sensor_id = @sensorId ";
-
-          _cmdStateSequence = new SqlCommand(sql, _conn);
-          _cmdStateSequence.Parameters.Add(new SqlParameter("@fieldUnitSerial", SqlDbType.Int, 0));
-          _cmdStateSequence.Parameters.Add(new SqlParameter("@sensorId", SqlDbType.Int, 0));
-          _cmdStateSequence.Prepare();
-        }
-
-        _cmdStateSequence.Parameters[0].Value = instrument.InstrumentId;
-        _cmdStateSequence.Parameters[1].Value = sensor.SensorId;
-
-        dr = _cmdStateSequence.ExecuteReader();
-      }
-
-      do
-      {
-        while (dr.Read())
-        {
-          sd = sensor[dr.GetGuid(0)];
-          if (sd != null)
-          {
-            ss = new StateSequence();
-            ss.Sequence = dr.GetInt16(1);
-            ss.Level = (StateLevel)dr.GetByte(2);
-            ss.Code = dr.GetString(3);
-
-            if (!dr.IsDBNull(4)) ss.Description = dr.GetString(4);
-            if (!dr.IsDBNull(5)) ss.UpperLimit = dr.GetDouble(5);
-
-            sd.Add(ss);
-          }
-        }
-      } while (dr.NextResult());
-      dr.Close();
-    }
-    */
 
     public DataSet GetAuthors()
     {
@@ -280,16 +190,135 @@ namespace FrontBurner.Ministry.MseBuilder
       return ds;
     }
 
+    public void InsertParagraph(Volume vol, int pageNo, int para, int localRow, string inits, string text)
+    {
+      if (_cmdInsertText == null)
+      {
+        string sql =
+          "INSERT INTO mse_text (" +
+            "author, vol, page, para, localrow, inits, text" +
+          ") VALUES (" +
+            "?author, ?vol, ?pageNo, ?para, ?localRow, ?inits, ?text" +
+          ")";
+
+        _cmdInsertText = new MySqlCommand(sql, _conn);
+        _cmdInsertText.Prepare();
+
+        _cmdInsertText.Parameters.Add("?author", MySqlDbType.String);
+        _cmdInsertText.Parameters.Add("?vol", MySqlDbType.Int32);
+        _cmdInsertText.Parameters.Add("?pageNo", MySqlDbType.Int32);
+        _cmdInsertText.Parameters.Add("?para", MySqlDbType.Int32);
+        _cmdInsertText.Parameters.Add("?localRow", MySqlDbType.Int32);
+        _cmdInsertText.Parameters.Add("?inits", MySqlDbType.String);
+        _cmdInsertText.Parameters.Add("?text", MySqlDbType.String);
+      }
+      
+      _cmdInsertText.Parameters["?author"].Value = vol.Author;
+      _cmdInsertText.Parameters["?vol"].Value = vol.Vol;
+      _cmdInsertText.Parameters["?pageNo"].Value = pageNo;
+      _cmdInsertText.Parameters["?para"].Value = para;
+      _cmdInsertText.Parameters["?localRow"].Value = localRow;
+      _cmdInsertText.Parameters["?inits"].Value = inits;
+      _cmdInsertText.Parameters["?text"].Value = SqlText(text);
+
+      _cmdInsertText.ExecuteNonQuery();
+    }
+
+    public void InsertBibleRef(Volume vol, int pageNo, int para, int refNo, BibleRef bref)
+    {
+      if (_cmdInsertBibleRef == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_ref (" +
+           "author, vol, page, para, ref, " +
+            "bookid, chapter, vstart, vend" +
+          ") VALUES (" +
+            "?author, ?vol, ?pageNo, ?para, ?ref, " +
+            "?bookId, ?chapter, ?vStart, ?vEnd" +
+          ")";
+
+        _cmdInsertBibleRef = new MySqlCommand(sql, _conn);
+        _cmdInsertBibleRef.Prepare();
+
+        _cmdInsertBibleRef.Parameters.Add("?author", MySqlDbType.String);
+        _cmdInsertBibleRef.Parameters.Add("?vol", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?pageNo", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?para", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?ref", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?bookId", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?vStart", MySqlDbType.Int32);
+        _cmdInsertBibleRef.Parameters.Add("?vEnd", MySqlDbType.Int32);
+      }
+
+      _cmdInsertBibleRef.Parameters["?author"].Value = vol.Author;
+      _cmdInsertBibleRef.Parameters["?vol"].Value = vol.Vol;
+      _cmdInsertBibleRef.Parameters["?pageNo"].Value = pageNo;
+      _cmdInsertBibleRef.Parameters["?para"].Value = para;
+      _cmdInsertBibleRef.Parameters["?ref"].Value = refNo;
+      _cmdInsertBibleRef.Parameters["?bookId"].Value = bref.Book.BookId;
+      _cmdInsertBibleRef.Parameters["?chapter"].Value = bref.Chapter;
+      _cmdInsertBibleRef.Parameters["?vStart"].Value = bref.VerseStart;
+      _cmdInsertBibleRef.Parameters["?vEnd"].Value = bref.VerseEnd;
+
+      _cmdInsertBibleRef.ExecuteNonQuery();      
+    }
+
+    public void UpdateArticle(Article art)
+    {
+      string sql;
+
+      if (art.Scriptures == null)
+      {
+        sql = String.Format(
+          "REPLACE INTO mse_article ( " +
+            "author, vol, article, localrow, page " +
+          ") VALUES (" +
+            "'{0}', '{1}', '{2}', '{3}', '{4}')",
+          art.Volume.Author, art.Volume.Vol, DatabaseLayer.SqlText(art.Title), art.Para, art.PageNo);
+      }
+      else
+      {
+        sql = String.Format(
+          "UPDATE mse_article " +
+          "SET scriptures = '{0}' " +
+          "WHERE author = '{1}' " +
+          "AND vol = '{2}' " +
+          "AND localrow = '{3}'", 
+          DatabaseLayer.SqlText(art.Scriptures), art.Volume.Author, art.Volume.Vol, art.Para);
+      }
+
+      ExecuteSql(sql);
+    }
+
+    public void TruncateTables()
+    {
+      this.ExecuteSql("TRUNCATE TABLE mse_article");
+      this.ExecuteSql("TRUNCATE TABLE mse_text");
+      this.ExecuteSql("TRUNCATE TABLE mse_bible_ref");
+    }
+
     public void DeleteVolume(Volume vol)
     {
-      this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol));
-      this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol));
-      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol));
+      this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
     }
 
     public void ExecuteSql(string sql)
     {
+      ExecuteSql(sql, false);
+    }
+
+    public void ExecuteSql(string sql, bool longRunning)
+    {
       MySqlCommand cmd = new MySqlCommand(sql, _conn);
+
+      if (longRunning)
+      {
+        cmd.CommandTimeout = 300;
+      }
+
       cmd.ExecuteNonQuery();
     }
 

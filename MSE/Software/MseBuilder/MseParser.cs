@@ -20,19 +20,10 @@ namespace FrontBurner.Ministry.MseBuilder
 {
   class MseParser
   {
-    protected MseBuilder _mseBuilder;
     protected Volume _vol;
 
     public static readonly string REMARK = "Rem.";
     public static readonly string QUESTION = "Ques.";
-
-    public MseBuilder BuilderForm
-    {
-      set
-      {
-        _mseBuilder = value;
-      }
-    }
 
     public MseParser(Volume vol)
     {
@@ -90,13 +81,12 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       StreamReader sr = new StreamReader(_vol.GetFile().FullName);
       string buffer;
-      int rows=0;
-      string sql;
-      int cb=0;
-      string pageNo="";
-      int para=0;
+      int rows = 0;
+      int cb = 0;
+      int pageNo = 0;
+      int para = 0;
       string inits;
-      int initsPos=0;
+      int initsPos = 0;
 
       while ((buffer = sr.ReadLine()) != null)
       {
@@ -106,12 +96,12 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           if ((cb = buffer.IndexOf("}")) >= 0) 
           {
-            pageNo = buffer.Substring(1, cb-1);
+            pageNo = int.Parse(buffer.Substring(1, cb-1));
           }
 
           para = 0;
         } 
-        else if (buffer.Substring(0, 2).Equals("{#")) 
+        else if ((buffer.Length > 1) && buffer.Substring(0, 2).Equals("{#")) 
         {
           // Volume title - do nothing
         }
@@ -128,13 +118,8 @@ namespace FrontBurner.Ministry.MseBuilder
             inits = DatabaseLayer.SqlText(buffer.Substring(0, initsPos).Trim(), true);
             buffer = buffer.Substring(initsPos, buffer.Length - initsPos).Trim();
           }
-
-          sql = String.Format("INSERT INTO mse_text (" +
-                                "author, vol, page, para, localrow, inits, text" +
-                              ") VALUES (" +
-                                "'{0}', {1}, {2}, {3}, {4}, {5}, '{6}'" +
-                              ")", _vol.Author, _vol.Vol, pageNo, para, rows, inits, DatabaseLayer.SqlText(buffer));
-          DatabaseLayer.Instance.ExecuteSql(sql);
+          
+          DatabaseLayer.Instance.InsertParagraph(_vol, pageNo, para, rows, inits, buffer);
         }
         
         // Parse Scriptures
@@ -146,19 +131,11 @@ namespace FrontBurner.Ministry.MseBuilder
             BibleRef bref = new BibleRef(a[ai]);
 
             if (bref.RefValid) {
-              sql = String.Format("INSERT INTO mse_bible_ref (" +
-                                   "author, vol, page, para, ref, " +
-                                    "bookid, chapter, vstart, vend" +
-                                  ") VALUES (" +
-                                    "'{0}', {1}, {2}, {3}, {4}, " +
-                                    "{5}, {6}, {7}, {8}" +
-                                  ")", _vol.Author, _vol.Vol, pageNo, para, ai, bref.Book.BookId, bref.Chapter, bref.VerseStart, bref.VerseEnd);
-              DatabaseLayer.Instance.ExecuteSql(sql);
-
-              //MessageBox.Show(String.Format("VALID\n\n{0} {1} {2} {3} {4}\n{5}", _vol.Author, _vol.Vol, pageNo, rows, a[ai], bref.ToString()));
+              DatabaseLayer.Instance.InsertBibleRef(_vol, pageNo, para, ai, bref);
             } 
             else 
             {
+              // TODO Log these
               //MessageBox.Show(String.Format("INVALID\n\n{0} {1} {2} {3} {4} {5}", _vol.Author, _vol.Vol, pageNo, rows, bref.ErrCode, a[ai]));
             }
           }
@@ -179,7 +156,7 @@ namespace FrontBurner.Ministry.MseBuilder
       int html;
       int other;
       int c;
-      string sql;
+      Article art;
 
       while ((buffer = sr.ReadLine()) != null)
       {
@@ -192,14 +169,8 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           if ((trbuff.Substring(0, 1) == "@") && prevTitle)
           {
-
-            sql = String.Format("UPDATE mse_article " +
-                                "SET scriptures = '{0}' " +
-                                "WHERE author = '{1}' " +
-                                "AND vol = '{2}' " +
-                                "AND localrow = '{3}'", DatabaseLayer.SqlText(trbuff), _vol.Author, _vol.Vol, (rows - 1));
-
-            DatabaseLayer.Instance.ExecuteSql(sql);
+            art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows - 1))];
+            DatabaseLayer.Instance.UpdateArticle(art);
           }
 
           if ((buffer.Substring(0, 1) == "{") && (buffer.Substring(0, 2) != "{#"))
@@ -243,15 +214,9 @@ namespace FrontBurner.Ministry.MseBuilder
           {
             if ((upper / (upper + lower + other)) > 0.7)
             {
-              sql = String.Format("REPLACE INTO mse_article ( " +
-                "author, vol, article, scriptures, localrow, page " +
-                ") VALUES (" +
-                "'{0}', '{1}', '{2}', '', '{3}', '{4}')",
-                _vol.Author, _vol.Vol, DatabaseLayer.SqlText(buffer), rows, pageNo);
-
-              if (_mseBuilder != null) _mseBuilder.AddArticle(pageNo, rows, buffer);
-
-              DatabaseLayer.Instance.ExecuteSql(sql);
+              art = new Article(_vol, pageNo, rows, buffer);
+              BusinessLayer.Instance.Articles.Add(art);
+              DatabaseLayer.Instance.UpdateArticle(art);
 
               prevTitle = true;
             }

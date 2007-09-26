@@ -83,5 +83,4 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       return book.BookId;
     }
   }
-
 }

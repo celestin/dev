@@ -21,19 +21,25 @@ namespace FrontBurner.Ministry.MseBuilder
 {
   public class MseEngine
   {
-    protected MseBuilder _mseBuilder;
+    protected int _current;
+
+    public int Current
+    {
+      get
+      {
+        return _current;
+      }
+    }
 
     public MseEngine()
     {
       DatabaseLayer.Instance.Open();
     }
 
-    public void Build(string author, int vol, MseBuilder mseBuilder)
+    public void Build(string author, int vol)
     {
-      VolumeCollection vols = DatabaseLayer.Instance.GetVolumes();
+      VolumeCollection vols = BusinessLayer.Instance.GetVolumes();
       Volume vol1 = null;
-
-      _mseBuilder = mseBuilder;
 
       try
       {
@@ -57,8 +63,6 @@ namespace FrontBurner.Ministry.MseBuilder
       DatabaseLayer.Instance.DeleteVolume(vol);
       MseParser parser = new MseParser(vol);
 
-      if (_mseBuilder != null) parser.BuilderForm = _mseBuilder;
-
       parser.ParseArticles();
       parser.ParseText();
     }
@@ -66,11 +70,15 @@ namespace FrontBurner.Ministry.MseBuilder
     public void Build()
     {
       VolumeCollection vols = DatabaseLayer.Instance.GetVolumes();
+      _current = 0;
+
+      DatabaseLayer.Instance.TruncateTables();
 
       foreach (Volume vol in vols)
       {
         Build(vol);
-        Thread.Sleep(100);
+        _current++;
+        Thread.Sleep(2000);
       }
     }
   }

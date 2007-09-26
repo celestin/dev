@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
-  class BibleRef
+  public class BibleRef
   {
     protected BibleBook _book;
     protected string _chapter;
@@ -91,7 +91,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       {
         ouc = (int)buffa[i];
         if (ouc >= 48 && ouc <= 57) {
-          return text.Substring(0, i+1);
+          return text.Substring(0, i+1).Trim();
         }
       }
 
@@ -119,7 +119,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {      
       string start = scripture;
       string rem = "";
-      BibleBookCollection books = DatabaseLayer.Instance.GetBooks();
+      BibleBookCollection books = BusinessLayer.Instance.GetBooks();
       int ap=0;
       int j = 0;
       bool colon;
@@ -128,7 +128,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       int chp;
       string cv;
 
-      for (j=1; j<books.Count; j++) 
+      for (j=1; j<=books.Count; j++) 
       {
         if (books[j].Matches(start)) 
         {
@@ -200,15 +200,15 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           cv = rem.Trim();
         }
                 
-        if (cv.Length == 0) {
-          _refValid = true;
+        if (cv.Length == 0) {          
+          _refValid = false;
           return;
         }
 
         cv = RemoveNonNumeric(cv);
 
         if (cv.Length == 0) {
-          _refValid = true;
+          _refValid = false;
           return;
         }
 
@@ -289,7 +289,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         if ((_chapter.Length == 0) || !DatabaseLayer.IsInteger(_chapter) || !DatabaseLayer.IsInteger(_vStart) || !DatabaseLayer.IsInteger(_vEnd)) 
         {
           // Non-numerics
-          MessageBox.Show(String.Format("{0} {1} {2}", _chapter, _vStart, _vEnd));
           _errCode = 'N';
           _refValid = false;
           return;

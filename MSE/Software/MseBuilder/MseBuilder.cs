@@ -18,10 +18,17 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+using FrontBurner.Ministry.MseBuilder.Abstract;
+
 namespace FrontBurner.Ministry.MseBuilder
 {
   public partial class MseBuilder : Form
   {
+    protected string _author;
+    protected int _vol;
+    protected bool _specificVolume;
+    protected BuilderThread _builder;
+
     public MseBuilder()
     {
       InitializeComponent();
@@ -31,35 +38,42 @@ namespace FrontBurner.Ministry.MseBuilder
     private void btnBuild_Click(object sender, EventArgs e)
     {
       btnBuild.Enabled = false;
+
       grdArticle.Rows = 1;
 
-      Thread process = new Thread(new ThreadStart(Build));
-      process.Start();
+      ClearArticles();
 
-      process.Join();
-      btnBuild.Enabled = true;
+      if (_specificVolume = ((txtVol.Text.Length > 0) && (int.Parse(txtVol.Text) > 0)))
+      {
+        _author = cmbAuthor.SelectedValue.ToString();
+        _vol = int.Parse(txtVol.Text);
+      }
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+
+      _builder = new BuilderThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
     }
 
-    private void Build()
+    private void tmrRefresh_Tick(object sender, EventArgs e)
     {
-      MseEngine engine = new MseEngine();
-
-      if ((cmbAuthor.Text.Length > 0) && (txtVol.Text.Length > 0))
+      if (_builder.Process.IsAlive)
       {
-        //try
-        //{
-        engine.Build(cmbAuthor.SelectedValue.ToString(), Int32.Parse(txtVol.Text), this);
-        //}
-        //catch (Exception ex)
-        //{
-        //MessageBox.Show("That Volume does not exist for Author \n\n" + cmbAuthor.Text + ex.ToString());          
-        //}
+        if (_builder.Engine != null) pgbVol.Value = _builder.Engine.Current;
+        this.Refresh();
+        this.Update();
       }
       else
       {
-        engine.Build();
-      }
+        tmrRefresh.Enabled = false;
 
+        if (_specificVolume) ShowArticles();
+
+        btnBuild.Enabled = true;
+      }
     }
 
     private void MseBuilder_Load(object sender, EventArgs e)
@@ -84,13 +98,81 @@ namespace FrontBurner.Ministry.MseBuilder
       grdArticle.Column(3).Width = 100;
     }
 
-    public void AddArticle(int pageNo, int row, string article)
+    protected void ClearArticles()
+    {
+      BusinessLayer.Instance.Articles.Clear();
+      grdArticle.Rows = 1;
+    }
+
+    protected void ShowArticles()
+    {
+      grdArticle.AutoRedraw = false;
+
+      foreach (Article art in BusinessLayer.Instance.Articles)
+      {
+        AddArticle(art);
+      }
+
+      grdArticle.AutoRedraw = true;
+      grdArticle.Refresh();
+    }
+
+    protected void AddArticle(Article art)
     {
       grdArticle.Rows++;
 
-      grdArticle.Cell(grdArticle.Rows - 1, 1).Text = pageNo.ToString();
-      grdArticle.Cell(grdArticle.Rows - 1, 2).Text = row.ToString();
-      grdArticle.Cell(grdArticle.Rows - 1, 3).Text = article;
+      grdArticle.Cell(grdArticle.Rows - 1, 1).Text = art.PageNo.ToString();
+      grdArticle.Cell(grdArticle.Rows - 1, 2).Text = art.Para.ToString();
+      grdArticle.Cell(grdArticle.Rows - 1, 3).Text = art.Title;
+    }
+
+    public class BuilderThread
+    {
+      protected Thread _process;
+      protected string _author;
+      protected int _vol;
+      protected bool _specificVolume;
+      protected MseEngine _engine;
+      
+      public Thread Process
+      {
+        get
+        {
+          return _process;
+        }
+      }
+      public MseEngine Engine
+      {
+        get
+        {
+          return _engine;
+        }
+      }
+
+      public BuilderThread(string author, int vol, bool specificVolume)
+      {
+        _author = author;
+        _vol = vol;
+        _specificVolume = specificVolume;
+
+        _process = new Thread(new ThreadStart(Build));
+        _process.IsBackground = true;
+        _process.Start();
+      }
+
+      private void Build()
+      {
+        _engine = new MseEngine();
+
+        if (_specificVolume)
+        {
+          _engine.Build(_author, _vol);
+        }
+        else
+        {
+          _engine.Build();
+        }
+      }
     }
   }
 }

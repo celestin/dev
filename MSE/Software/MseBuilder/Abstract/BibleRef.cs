@@ -139,7 +139,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
           rem = start.Substring(_book.BookName.Length, len - _book.BookName.Length).Trim();
 
-          if (rem.Substring(0, 1).Equals(".")) 
+          if (rem.StartsWith(".")) 
           {
             rem = rem.Substring(1).Trim();
           }

@@ -81,6 +81,21 @@ CREATE TABLE mse_bible_ref (
   PRIMARY KEY  (author,vol,page,para,ref)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Table structure for table mse_bible_ref_error
+--
+
+CREATE TABLE mse_bible_ref_error (
+  author varchar(10) NOT NULL,
+  vol int(3) NOT NULL default '0',
+  page int(4) NOT NULL default '0',
+  para int(2) NOT NULL default '0',
+  ref int(11) NOT NULL default '0',
+  error_code char(1) NULL,
+  text varchar(1000) NULL,
+  PRIMARY KEY  (author,vol,page,para,ref)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --

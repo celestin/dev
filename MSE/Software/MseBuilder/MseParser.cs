@@ -30,20 +30,40 @@ namespace FrontBurner.Ministry.MseBuilder
       _vol = vol;
     }
 
-    protected int GetInitials(string text) 
+    protected bool GetInitials(string text, out int start, out int finish) 
     {
       bool halt=false;
       bool inits=false;
       int dotCount=0;
       int c=0;
       int i=0;
-      int start = 0;
+      start = 0;
+      finish = 0;
 
-      if (text.Length <= REMARK.Length) return -1; // Don't look for initials in very short lines
-      if (text.Substring(0, 1).Equals(".")) start++;    // Remove the very first period if there is one
+      if (text.Length <= REMARK.Length)
+      {
+        // Don't look for initials in very short lines        
+        return false; 
+      }
 
-      if (text.Substring(start, REMARK.Length).Equals(REMARK)) return REMARK.Length;
-      if (text.Substring(start, QUESTION.Length).Equals(QUESTION)) return QUESTION.Length;
+      if (text.StartsWith("."))
+      {
+        // Ignore the very first period if there is one
+        start++;
+      }
+
+      if (text.Substring(start, REMARK.Length).Equals(REMARK))
+      {
+        // A "Remark"
+        finish = REMARK.Length;
+        return true;
+      }
+      if (text.Substring(start, QUESTION.Length).Equals(QUESTION))
+      {
+        // A "Question"
+        finish = QUESTION.Length;
+        return true;
+      }
 
       char[] buffa = text.ToCharArray();
       for (i = start; i < buffa.Length && !halt && (i < 11); i++) 
@@ -71,10 +91,14 @@ namespace FrontBurner.Ministry.MseBuilder
       if (inits && (i>0)) 
       {
         text = text.Substring(0, i).Trim();
-        if (!text.Equals("..")) return i;
+        if (!text.StartsWith(".."))
+        {
+          finish = i;
+          return true;
+        }
       }
 
-      return -1;
+      return false;
     }
 
     public void ParseText()
@@ -85,8 +109,9 @@ namespace FrontBurner.Ministry.MseBuilder
       int cb = 0;
       int pageNo = 0;
       int para = 0;
+      int initStart = 0;
+      int initFinish = 0;
       string inits;
-      int initsPos = 0;
 
       while ((buffer = sr.ReadLine()) != null)
       {
@@ -109,14 +134,12 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           para++;
 
-          if ((initsPos = GetInitials(buffer))<0) 
+          inits = null;
+
+          if (GetInitials(buffer, out initStart, out initFinish)) 
           {
-            inits = "NULL";
-          } 
-          else 
-          {
-            inits = DatabaseLayer.SqlText(buffer.Substring(0, initsPos).Trim(), true);
-            buffer = buffer.Substring(initsPos, buffer.Length - initsPos).Trim();
+            inits = buffer.Substring(initStart, initFinish - initStart).Replace(".", "").Replace(" ", "");
+            buffer = buffer.Substring(initFinish, buffer.Length - initFinish).Trim();
           }
           
           DatabaseLayer.Instance.InsertParagraph(_vol, pageNo, para, rows, inits, buffer);
@@ -135,8 +158,7 @@ namespace FrontBurner.Ministry.MseBuilder
             } 
             else 
             {
-              // TODO Log these
-              //MessageBox.Show(String.Format("INVALID\n\n{0} {1} {2} {3} {4} {5}", _vol.Author, _vol.Vol, pageNo, rows, bref.ErrCode, a[ai]));
+              DatabaseLayer.Instance.InsertBadBibleRef(_vol, pageNo, para, ai, bref.ErrCode, a[ai]);
             }
           }
         }

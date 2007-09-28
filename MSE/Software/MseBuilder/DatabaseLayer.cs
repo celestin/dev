@@ -35,6 +35,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected MySqlCommand _cmdBooks;
     protected MySqlCommand _cmdInsertText;
     protected MySqlCommand _cmdInsertBibleRef;
+    protected MySqlCommand _cmdInsertBadBibleRef;
 
     protected MySqlDataAdapter _dadAuthor;
 
@@ -133,18 +134,19 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public VolumeCollection GetVolumes()
     {
-      String sql;
       MySqlDataReader dr;
       Volume vol;
       VolumeCollection rval = new VolumeCollection();
-
-      sql = "SELECT author,vol,title,added,localfile " +
-            "FROM mse_volume ";
 
       lock (_semaphore)
       {
         if (_cmdVolume == null)
         {
+          string sql =
+            "SELECT author,vol,title,added,localfile " +
+            "FROM mse_volume " +
+            "WHERE author <> 'GRC' ";
+
           _cmdVolume = new MySqlCommand(sql, _conn);
         }
         dr = _cmdVolume.ExecuteReader();
@@ -179,7 +181,8 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           string sql =
             "SELECT author, name " +
-            "FROM mse_author";
+            "FROM mse_author " +
+            "WHERE author <> 'GRC' ";
 
           _dadAuthor = new MySqlDataAdapter(sql, _conn);
         }
@@ -219,7 +222,7 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertText.Parameters["?para"].Value = para;
       _cmdInsertText.Parameters["?localRow"].Value = localRow;
       _cmdInsertText.Parameters["?inits"].Value = inits;
-      _cmdInsertText.Parameters["?text"].Value = SqlText(text);
+      _cmdInsertText.Parameters["?text"].Value = text;
 
       _cmdInsertText.ExecuteNonQuery();
     }
@@ -262,6 +265,42 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertBibleRef.Parameters["?vEnd"].Value = bref.VerseEnd;
 
       _cmdInsertBibleRef.ExecuteNonQuery();      
+    }
+
+    public void InsertBadBibleRef(Volume vol, int pageNo, int para, int refNo, char errCode, string text)
+    {
+      if (_cmdInsertBadBibleRef == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_ref_error (" +
+           "author, vol, page, para, ref, " +
+            "error_code, text" +
+          ") VALUES (" +
+            "?author, ?vol, ?pageNo, ?para, ?ref, " +
+            "?errCode, ?text" +
+          ")";
+
+        _cmdInsertBadBibleRef = new MySqlCommand(sql, _conn);
+        _cmdInsertBadBibleRef.Prepare();
+
+        _cmdInsertBadBibleRef.Parameters.Add("?author", MySqlDbType.String);
+        _cmdInsertBadBibleRef.Parameters.Add("?vol", MySqlDbType.Int32);
+        _cmdInsertBadBibleRef.Parameters.Add("?pageNo", MySqlDbType.Int32);
+        _cmdInsertBadBibleRef.Parameters.Add("?para", MySqlDbType.Int32);
+        _cmdInsertBadBibleRef.Parameters.Add("?ref", MySqlDbType.Int32);
+        _cmdInsertBadBibleRef.Parameters.Add("?errCode", MySqlDbType.String);
+        _cmdInsertBadBibleRef.Parameters.Add("?text", MySqlDbType.String);
+      }
+
+      _cmdInsertBadBibleRef.Parameters["?author"].Value = vol.Author;
+      _cmdInsertBadBibleRef.Parameters["?vol"].Value = vol.Vol;
+      _cmdInsertBadBibleRef.Parameters["?pageNo"].Value = pageNo;
+      _cmdInsertBadBibleRef.Parameters["?para"].Value = para;
+      _cmdInsertBadBibleRef.Parameters["?ref"].Value = refNo;
+      _cmdInsertBadBibleRef.Parameters["?errCode"].Value = errCode;
+      _cmdInsertBadBibleRef.Parameters["?text"].Value = text;
+
+      _cmdInsertBadBibleRef.ExecuteNonQuery();
     }
 
     public void UpdateArticle(Article art)

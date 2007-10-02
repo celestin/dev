@@ -63,7 +63,7 @@ namespace FrontBurner.Ministry.MseBuilder
       DatabaseLayer.Instance.DeleteVolume(vol);
       MseParser parser = new MseParser(vol);
 
-      parser.ParseArticles();
+      //parser.ParseArticles();
       parser.ParseText();
     }
 

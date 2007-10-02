@@ -22,6 +22,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     protected Volume _vol;
     protected int _pageNo;
     protected int _para;
+    protected int _localRow;
     protected string _title;
     protected string _scriptures;
 
@@ -29,7 +30,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        return GetId(_vol, _para);
+        return GetId(_vol, _localRow);
       }
     }
     public Volume Volume
@@ -50,15 +51,15 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _pageNo = value;
       }
     }
-    public int Para
+    public int LocalRow
     {
       get
       {
-        return _para;
+        return _localRow;
       }
       set
       {
-        _para = value;
+        _localRow = value;
       }
     }
     public string Title
@@ -84,17 +85,23 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
-    public Article(Volume vol, int pageNo, int para, string title)
+    public Article(Volume vol, int pageNo, int para, int localRow, string title)
     {
       _vol = vol;
       _pageNo = pageNo;
       _para = para;
+      _localRow = localRow;
       _title = title;
     }
 
-    public static string GetId(Volume vol, int para)
+    public override string ToString()
     {
-      return String.Format("{0}-{1}", vol.Id, para);
+      return String.Format("{0}-{1}: {2}", _vol.Id, _para, _title);
+    }
+
+    public static string GetId(Volume vol, int localRow)
+    {
+      return String.Format("{0}-{1}", vol.Id, localRow);
     }
   }
 

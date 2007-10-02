@@ -112,12 +112,28 @@ namespace FrontBurner.Ministry.MseBuilder
       int initStart = 0;
       int initFinish = 0;
       string inits;
+      bool prevTitle = false;
+      bool scriptures = false;
+      Paragraph paraPrevious = null;
+      Paragraph paraCurrent = null;
+      Article art;
 
       while ((buffer = sr.ReadLine()) != null)
       {
         rows++;
+        //MessageBox.Show(string.Format("{0}\n{1}", rows, buffer));
+        buffer = buffer.Trim();
 
-        if ((buffer.Substring(0, 1).Equals("{")) && (!buffer.Substring(0, 2).Equals("{#"))) 
+        scriptures = false;
+        if ((buffer.StartsWith("@")) && prevTitle)
+        {
+          art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows-1))];
+          art.Scriptures = buffer;
+          DatabaseLayer.Instance.UpdateArticle(art);
+          scriptures = true;
+        }
+
+        if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#"))) 
         {
           if ((cb = buffer.IndexOf("}")) >= 0) 
           {
@@ -141,30 +157,46 @@ namespace FrontBurner.Ministry.MseBuilder
             inits = buffer.Substring(initStart, initFinish - initStart).Replace(".", "").Replace(" ", "");
             buffer = buffer.Substring(initFinish, buffer.Length - initFinish).Trim();
           }
-          
-          DatabaseLayer.Instance.InsertParagraph(_vol, pageNo, para, rows, inits, buffer);
-        }
-        
-        // Parse Scriptures
-        if (buffer.IndexOf("@") >= 0) 
-        {
-          string[] a = buffer.Split(new Char[] { '@' });
 
-          for (int ai = 1; ai < a.Length; ai++) {
-            BibleRef bref = new BibleRef(a[ai]);
+          paraCurrent = new Paragraph(_vol, pageNo, para, rows, inits, buffer);
 
-            if (bref.RefValid) {
-              DatabaseLayer.Instance.InsertBibleRef(_vol, pageNo, para, ai, bref);
-            } 
-            else 
+          prevTitle = false;
+          if (paraCurrent.IsTitle())
+          {
+            art = paraCurrent.Article;
+            BusinessLayer.Instance.Articles.Add(art);
+            DatabaseLayer.Instance.UpdateArticle(art);
+            DatabaseLayer.Instance.InsertParagraph(paraCurrent);
+
+            prevTitle = true;
+            paraPrevious = null;
+          }
+          else
+          {
+            if (paraPrevious != null)
             {
-              DatabaseLayer.Instance.InsertBadBibleRef(_vol, pageNo, para, ai, bref.ErrCode, a[ai]);
+              // If the previous paragraph was not written out, add to it
+              paraCurrent.Augment(paraPrevious);
+            }
+
+            if (paraCurrent.EndsAbruptly(scriptures))
+            {
+              // The paragraph is not complete, so remember it for next iteration
+              paraPrevious = paraCurrent;
+            }
+            else
+            {
+              // The paragraph ends normally - save it
+              paraCurrent.SaveToDatabase();
+              paraPrevious = null;
             }
           }
-        }
+        }        
       }
+      sr.Close();
     }
 
+    /* ParseArticles -- surplus to requirement
     public void ParseArticles()
     {
       StreamReader sr = new StreamReader(_vol.GetFile().FullName);
@@ -173,11 +205,7 @@ namespace FrontBurner.Ministry.MseBuilder
       string trbuff;
       bool prevTitle = false;
       int pageNo = 0;
-      int upper;
-      int lower;
-      int html;
-      int other;
-      int c;
+      Paragraph paragraph;
       Article art;
 
       while ((buffer = sr.ReadLine()) != null)
@@ -192,59 +220,29 @@ namespace FrontBurner.Ministry.MseBuilder
           if ((trbuff.Substring(0, 1) == "@") && prevTitle)
           {
             art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows - 1))];
+            art.Scriptures = trbuff;
             DatabaseLayer.Instance.UpdateArticle(art);
           }
 
-          if ((buffer.Substring(0, 1) == "{") && (buffer.Substring(0, 2) != "{#"))
+          if ((trbuff.Substring(0, 1) == "{") && (trbuff.Substring(0, 2) != "{#"))
           {
-            pageNo = Int32.Parse(buffer.Substring(1, buffer.IndexOf('}')-1));
+            pageNo = Int32.Parse(trbuff.Substring(1, trbuff.IndexOf('}') - 1));
           }
 
-          upper = lower = html = other = 0;
-          char[] buffa = buffer.ToCharArray();
-          for (int i = 0; i < buffa.Length; i++)
-          {
-            c = (int)buffa[i];
-            if (c >= 65 && c <= 90)
-            {
-              upper++;
-            }
-            else if (c >= 97 && c <= 122)
-            {
-              lower++;
-            }
-            else if (c == 60 || c == 62)
-            {
-              html++;
-            }
-            else if (c == 34 || c == 39 || c == 32 || c == 13 || c == 10 || c == 58 || c == 45)
-            {
-              // ignore quotes/ws in the 'other' count
-            }
-            else if (c == 46)
-            {
-              other++;
-            }
-            else
-            {
-              // other++;
-            }
-          }
+          paragraph = new Paragraph(_vol, pageNo, 0, rows, null, trbuff);
 
           prevTitle = false;
-          if (((upper + lower) > 0) && (html == 0) && (!trbuff.Equals("PREFATORY NOTE")) && (!trbuff.Equals("*NOTE*")))
+          if (paragraph.IsTitle())
           {
-            if ((upper / (upper + lower + other)) > 0.7)
-            {
-              art = new Article(_vol, pageNo, rows, buffer);
-              BusinessLayer.Instance.Articles.Add(art);
-              DatabaseLayer.Instance.UpdateArticle(art);
+            art = paragraph.Article;
+            BusinessLayer.Instance.Articles.Add(art);
+            DatabaseLayer.Instance.UpdateArticle(art);
 
-              prevTitle = true;
-            }
+            prevTitle = true;
           }
         }
       }
     }
+    */
   }
 }

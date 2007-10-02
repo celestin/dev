@@ -84,7 +84,7 @@ namespace FrontBurner.Ministry.MseBuilder
       cmbAuthor.ValueMember = "Author.author";
 
       // Article Grid
-      grdArticle.Cols = 4;
+      grdArticle.Cols = 5;
       grdArticle.ExtendLastCol = true;
       grdArticle.Column(0).Visible = false;
       grdArticle.Rows = 1;
@@ -92,10 +92,11 @@ namespace FrontBurner.Ministry.MseBuilder
       grdArticle.Cell(0, 1).Text = "Page No";
       grdArticle.Cell(0, 2).Text = "Row";
       grdArticle.Cell(0, 3).Text = "Article";
+      grdArticle.Cell(0, 4).Text = "Scriptures";
 
       grdArticle.Column(1).Width = 65;
       grdArticle.Column(2).Width = 40;
-      grdArticle.Column(3).Width = 100;
+      grdArticle.Column(3).Width = 320;
     }
 
     protected void ClearArticles()
@@ -122,8 +123,9 @@ namespace FrontBurner.Ministry.MseBuilder
       grdArticle.Rows++;
 
       grdArticle.Cell(grdArticle.Rows - 1, 1).Text = art.PageNo.ToString();
-      grdArticle.Cell(grdArticle.Rows - 1, 2).Text = art.Para.ToString();
+      grdArticle.Cell(grdArticle.Rows - 1, 2).Text = art.LocalRow.ToString();
       grdArticle.Cell(grdArticle.Rows - 1, 3).Text = art.Title;
+      grdArticle.Cell(grdArticle.Rows - 1, 4).Text = art.Scriptures;
     }
 
     public class BuilderThread

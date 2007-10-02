@@ -54,7 +54,7 @@ namespace FrontBurner.Ministry.MseBuilder
       // btnBuild
       // 
       this.btnBuild.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnBuild.Location = new System.Drawing.Point(397, 21);
+      this.btnBuild.Location = new System.Drawing.Point(650, 21);
       this.btnBuild.Name = "btnBuild";
       this.btnBuild.Size = new System.Drawing.Size(196, 53);
       this.btnBuild.TabIndex = 0;
@@ -101,17 +101,17 @@ namespace FrontBurner.Ministry.MseBuilder
       // 
       // pgbVol
       // 
-      this.pgbVol.Location = new System.Drawing.Point(19, 96);
+      this.pgbVol.Location = new System.Drawing.Point(12, 96);
       this.pgbVol.Name = "pgbVol";
-      this.pgbVol.Size = new System.Drawing.Size(574, 23);
+      this.pgbVol.Size = new System.Drawing.Size(834, 23);
       this.pgbVol.TabIndex = 5;
       // 
       // grdArticle
       // 
       this.grdArticle.CheckedImage = ((System.Drawing.Bitmap)(resources.GetObject("grdArticle.CheckedImage")));
-      this.grdArticle.Location = new System.Drawing.Point(19, 136);
+      this.grdArticle.Location = new System.Drawing.Point(12, 136);
       this.grdArticle.Name = "grdArticle";
-      this.grdArticle.Size = new System.Drawing.Size(574, 467);
+      this.grdArticle.Size = new System.Drawing.Size(834, 467);
       this.grdArticle.TabIndex = 6;
       this.grdArticle.UncheckedImage = ((System.Drawing.Bitmap)(resources.GetObject("grdArticle.UncheckedImage")));
       // 
@@ -123,7 +123,7 @@ namespace FrontBurner.Ministry.MseBuilder
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(614, 621);
+      this.ClientSize = new System.Drawing.Size(858, 621);
       this.Controls.Add(this.grdArticle);
       this.Controls.Add(this.pgbVol);
       this.Controls.Add(this.txtVol);

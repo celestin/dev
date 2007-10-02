@@ -193,7 +193,7 @@ namespace FrontBurner.Ministry.MseBuilder
       return ds;
     }
 
-    public void InsertParagraph(Volume vol, int pageNo, int para, int localRow, string inits, string text)
+    public void InsertParagraph(Paragraph para)
     {
       if (_cmdInsertText == null)
       {
@@ -215,19 +215,19 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertText.Parameters.Add("?inits", MySqlDbType.String);
         _cmdInsertText.Parameters.Add("?text", MySqlDbType.String);
       }
-      
-      _cmdInsertText.Parameters["?author"].Value = vol.Author;
-      _cmdInsertText.Parameters["?vol"].Value = vol.Vol;
-      _cmdInsertText.Parameters["?pageNo"].Value = pageNo;
-      _cmdInsertText.Parameters["?para"].Value = para;
-      _cmdInsertText.Parameters["?localRow"].Value = localRow;
-      _cmdInsertText.Parameters["?inits"].Value = inits;
-      _cmdInsertText.Parameters["?text"].Value = text;
+
+      _cmdInsertText.Parameters["?author"].Value = para.Volume.Author;
+      _cmdInsertText.Parameters["?vol"].Value = para.Volume.Vol;
+      _cmdInsertText.Parameters["?pageNo"].Value = para.PageNo;
+      _cmdInsertText.Parameters["?para"].Value = para.Para;
+      _cmdInsertText.Parameters["?localRow"].Value = para.LocalRow;
+      _cmdInsertText.Parameters["?inits"].Value = para.Inits;
+      _cmdInsertText.Parameters["?text"].Value = para.Text;
 
       _cmdInsertText.ExecuteNonQuery();
     }
 
-    public void InsertBibleRef(Volume vol, int pageNo, int para, int refNo, BibleRef bref)
+    public void InsertBibleRef(Paragraph paragraph, int refNo, BibleRef bref)
     {
       if (_cmdInsertBibleRef == null)
       {
@@ -254,10 +254,10 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertBibleRef.Parameters.Add("?vEnd", MySqlDbType.Int32);
       }
 
-      _cmdInsertBibleRef.Parameters["?author"].Value = vol.Author;
-      _cmdInsertBibleRef.Parameters["?vol"].Value = vol.Vol;
-      _cmdInsertBibleRef.Parameters["?pageNo"].Value = pageNo;
-      _cmdInsertBibleRef.Parameters["?para"].Value = para;
+      _cmdInsertBibleRef.Parameters["?author"].Value = paragraph.Volume.Author;
+      _cmdInsertBibleRef.Parameters["?vol"].Value = paragraph.Volume.Vol;
+      _cmdInsertBibleRef.Parameters["?pageNo"].Value = paragraph.PageNo;
+      _cmdInsertBibleRef.Parameters["?para"].Value = paragraph.Para;
       _cmdInsertBibleRef.Parameters["?ref"].Value = refNo;
       _cmdInsertBibleRef.Parameters["?bookId"].Value = bref.Book.BookId;
       _cmdInsertBibleRef.Parameters["?chapter"].Value = bref.Chapter;
@@ -314,7 +314,7 @@ namespace FrontBurner.Ministry.MseBuilder
             "author, vol, article, localrow, page " +
           ") VALUES (" +
             "'{0}', '{1}', '{2}', '{3}', '{4}')",
-          art.Volume.Author, art.Volume.Vol, DatabaseLayer.SqlText(art.Title), art.Para, art.PageNo);
+          art.Volume.Author, art.Volume.Vol, DatabaseLayer.SqlText(art.Title), art.LocalRow, art.PageNo);
       }
       else
       {
@@ -323,8 +323,8 @@ namespace FrontBurner.Ministry.MseBuilder
           "SET scriptures = '{0}' " +
           "WHERE author = '{1}' " +
           "AND vol = '{2}' " +
-          "AND localrow = '{3}'", 
-          DatabaseLayer.SqlText(art.Scriptures), art.Volume.Author, art.Volume.Vol, art.Para);
+          "AND localrow = '{3}'",
+          DatabaseLayer.SqlText(art.Scriptures), art.Volume.Author, art.Volume.Vol, art.LocalRow);
       }
 
       ExecuteSql(sql);

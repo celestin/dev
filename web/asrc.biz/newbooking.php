@@ -16,6 +16,7 @@
  * CAM  06-Feb-2006  10: Added created_by.
  * CAM  25-Jun-2007  10128 : No more New Bookings if on "Fine Board".
  * CAM  23-Jul-2007  10152 : Ensure Block bookings appear correctly for Courts not yet online.
+ * CAM  05-Oct-2007  10155 : Ensure next Wednesday's courts cannot be booked until after 1pm this Wednesday .
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -129,6 +130,11 @@ if (empty($memberOrig)) {
     $daysAhead = 8;
     if ($member->isAdmin()) {
       $daysAhead = 15;
+    } else {
+      // 7 days only after 1pm
+      if (date("H:i") < '13:00') {
+        $daysAhead--;
+      }
     }
 
     for ($i=0; $i<$daysAhead; $i++) {

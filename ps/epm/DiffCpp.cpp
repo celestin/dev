@@ -13,6 +13,7 @@
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
+ * CAM  11-Oct-07   318 : Corrected getLineSC button - theMultiLine.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -277,19 +278,10 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
 {
   char *retval = (char*) malloc(MAX_LLOC_LEN*sizeof(char));
   int b = 0;
-
   bool debugon = false;
-/*
-  string f = theFilename1;
-  f = f.substr(f.length()-5,5);
-  if (!strcmp(f.c_str(), "hps.c")) {
-    debugon = true;
-  }
-*/
 
   try
   {
-
     int nc,nc2 = 0;
     bool skip = false;
     bool comskip = false;
@@ -309,7 +301,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
         }
       case ';':
         {
-          if (!skip && !comskip && !theMultiLine) {
+          if (!skip && !comskip) {
             retval[b++] = ';';
             retval[b++] = '\0';
             currline = retval;
@@ -332,8 +324,9 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
               if (nc2 == '/') {
                 comskip = true;
               } else if (nc2 == '*') {
-                theMultiLine = true;
-              } else if (!comskip && !theMultiLine) {
+                // Skip C-style comments
+                while (((nc2=fgetc(input))!=EOF) && (nc2 != '/'));
+              } else if (!comskip) {
                 retval[b++] = nc;
                 retval[b++] = nc2;
               }
@@ -346,13 +339,9 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
           if (skip) {
             // Ignore
           } else {
-            if ((nc2=fgetc(input))!=EOF) {
-              if (nc2 == '/') {
-                theMultiLine = false;
-              } else if (!comskip && !theMultiLine) {
-                retval[b++] = nc;
-                retval[b++] = nc2;
-              }
+            if (!comskip) {
+              retval[b++] = nc;
+              retval[b++] = nc2;
             }
           }
           break;
@@ -370,7 +359,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
         }
       default:
         {
-          if (!comskip && !theMultiLine) retval[b++] = nc;
+          if (!comskip) retval[b++] = nc;
           break;
         }
       }

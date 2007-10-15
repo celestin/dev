@@ -11,46 +11,22 @@
  * CAM  19-Aug-2007  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
+include_once('functions.php');
+
 $keywords = $_SESSION['search_keywords'];
 $author   = $_SESSION['search_author'];
 
-$sql_text = str_replace(" ", "%", $keywords);
-
-include_once('functions.php');
-
-$sql = "SELECT t.author, t.vol, t.page, t.para, t.inits, t.text ".
-       "FROM mse_text t ".
-       "WHERE 1=1 ";
-
-$no_search = true;
+$sqlFactory = new SqlFactory("mse_text", "author, vol, page, para, inits, text", "author, vol, page");
 
 if (!empty($keywords)) {
-  $no_search = false;
-
-  $sql .= "AND t.text LIKE '%$sql_text%' ";
+  $sqlFactory->setSearchText($keywords);
 }
 
 if ((count($author)>0) && (empty($author['ALL']))) {
-  $asql = "";
-
-  foreach ($author as $currentauthor) {
-    if (empty($asql)) {
-      $asql = "AND t.author IN (";
-    } else {
-      $asql .= ",";
-    }
-
-    $asql .= "'$currentauthor'";
-  }
-
-  $asql .= ") ";
-  $sql .= $asql;
+  $sqlFactory->setAuthors($author);
 }
-
-$sql .= "ORDER BY 1,2,3,4 ";
-
-//echo "<p>$sql</p>";
-
+$sql = $sqlFactory->getSql();
+//echo "<pre>$sql</pre>";
 ?>
 <table border=0 cellpadding=3 cellspacing=0 width="100%">
   <tr>
@@ -60,9 +36,8 @@ $sql .= "ORDER BY 1,2,3,4 ";
     <th class="rh">Text</th>
   </tr>
 <?
-
-if (!$no_search) {
-  $ssql = mysql_query($sql);
+if ($sqlFactory->isSearch()) {
+  $ssql = mysql_query($sqlFactory->getSql()) or die(mysql_error());
   while ($row = mysql_fetch_array($ssql)) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);

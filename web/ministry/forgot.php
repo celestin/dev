@@ -61,7 +61,7 @@ if(!$memberid){
 
       $sql = mysql_query("UPDATE member SET password='$pwd' WHERE memberid='$memberid'");
 
-      em$ = new EmailMsg("F", $memberid);
+      $em = new EmailMsg("F", $memberid);
       $em->sendForgot($new_pwd);
 
       Msg::statement("Your password has been sent.  Please check your email!");

@@ -3,7 +3,7 @@
  * Functions
  * Copyright (c) 2006 Southesk.com
  *
- * $Log: /web/cc/db.php $
+ * $Id$
  *
  * Who  When         Why
  * CAM  15-Feb-2006  File created.

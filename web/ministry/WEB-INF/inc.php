@@ -17,5 +17,6 @@ include_once 'Person.php';
 include_once 'Msg.php';
 include_once 'ActionUtil.php';
 include_once 'EmailMsg.php';
+include_once 'SqlFactory.php';
 
 ?>

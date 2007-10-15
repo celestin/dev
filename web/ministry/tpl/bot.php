@@ -13,7 +13,7 @@
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V0.01A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
+<tr><td class="cpyrght"><b>V0.02A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </td></tr>
 </table>
 </body>

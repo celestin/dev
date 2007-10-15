@@ -14,7 +14,7 @@
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V0.02A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><b>V0.03A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

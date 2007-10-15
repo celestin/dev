@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  15-Oct-2007  10187 : Attempt to send empty using NULL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
@@ -17,11 +18,16 @@ $tabs = true;
 include 'tpl/top.php';
 
 $keywords = $_SESSION['search_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+
+if ($keywords == "NULL") {
+  $keywords = "";
+}
+
 $_SESSION['search_keywords'] = $keywords;
 
 
 ?>
-<form action="keyword.php" method="post">
+<form action="keyword.php" method="post" name=searchText id=searchText>
 <table border=0 cellpadding=10>
 <tr><td align=left colspan=2>
 <?
@@ -37,7 +43,7 @@ $_SESSION['search_keywords'] = $keywords;
 ?></td></tr>
 <tr>
   <td><input name="keywords" id="keywords" size=50 value="<? echo $keywords; ?>"></td>
-  <td width="100%"><? echo ActionUtil::submitButton("Search"); ?></td>
+  <td width="100%"><? echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>
 </tr>
 </table>
 </form>

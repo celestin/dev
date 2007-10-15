@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  15-Oct-2007  10187 : Include form.js.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -28,6 +29,7 @@ if (empty($title)) {
   <title><? echo $title;?></title>
   <link href="mse.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
+  <script language="Javascript" src="form.js"></script>
 </head>
 
 <body topmargin=2 leftmargin=0>

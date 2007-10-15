@@ -9,12 +9,16 @@
  *
  * Who  When         Why
  * CAM  19-Aug-2007  File created.
+ * CAM  15-Oct-2007  10187 : Pass Book reference to SqlFactory.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
 
 $keywords = $_SESSION['search_keywords'];
 $author   = $_SESSION['search_author'];
+$author   = $_SESSION['search_author'];
+$bookid   = $_SESSION['search_bookid'];
+$chapter  = $_SESSION['search_chapter'];
 
 $sqlFactory = new SqlFactory("mse_text", "author, vol, page, para, inits, text", "author, vol, page");
 
@@ -25,6 +29,11 @@ if (!empty($keywords)) {
 if ((count($author)>0) && (empty($author['ALL']))) {
   $sqlFactory->setAuthors($author);
 }
+
+if (!empty($bookid) && !empty($chapter)) {
+  $sqlFactory->setBookRef($bookid, $chapter);
+}
+
 $sql = $sqlFactory->getSql();
 //echo "<pre>$sql</pre>";
 ?>

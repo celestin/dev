@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  15-Oct-2007  10187 : More useful Submit button (note - not called on pressing Enter).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -72,8 +73,16 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function submitButton($buttonText, $className='button', $hoverClassName='buttonhover') {
-    return "<input class=\"$className\" onmouseover=\"this.className='$hoverClassName';\" onmouseout=\"this.className='$className'\" type=\"submit\" value=\"". $buttonText . "\">";
+  function submitButton($buttonText, $className='button', $hoverClassName='buttonhover', $action='submit') {
+    $button = "<input class=\"$className\" onmouseover=\"this.className='$hoverClassName';\" onmouseout=\"this.className='$className'\" value=\"". $buttonText . "\"";
+
+    if ($action == 'submit') {
+      $button .= " type=\"submit\">";
+    } else {
+      $button .= " type=\"button\" onClick=\"$action\">";
+    }
+
+    return $button;
   }
 }
 ?>

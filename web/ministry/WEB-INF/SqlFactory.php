@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  15-Oct-2007  File created.
+ * CAM  15-Oct-2007  10187 : Added Book Reference search, improved tests for valid search and included all functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class SqlFactory {
@@ -23,6 +24,11 @@ class SqlFactory {
 
   var $authors;
 
+  var $bookId;
+  var $chapter;
+  var $vStart;
+  var $vEnd;
+
   var $whereConjunct;
 
   // ----- Constructors --------------------------------------------------- //
@@ -31,7 +37,7 @@ class SqlFactory {
     $this->tableName = $tableName;
     $this->fieldList = $fieldList;
     $this->orderBy = $orderBy;
-    
+
     $this->deriveFulltextKey();
   }
 
@@ -46,16 +52,33 @@ class SqlFactory {
     $this->authors = $authors;
   }
 
-  function isSearch() {
-  	return ((!empty($this->searchText)) || (count($this->authors) > 0)); 
+  function setBookRef($bookid, $chapter) {
+    $this->bookId = $bookid;
+    $this->chapter = $chapter;
   }
-  
+
+  function isSearchText() {
+    return (!empty($this->searchText));
+  }
+
+  function isAuthorFilter() {
+    return (count($this->authors) > 0);
+  }
+
+  function isBookRef() {
+    return (!empty($this->bookId) && !empty($this->chapter));
+  }
+
+  function isSearch() {
+    return ($this->isSearchText() || $this->isBookRef());
+  }
+
   function getSql() {
-  	$this->whereConjunct = "WHERE";
-  	
+    $this->whereConjunct = "WHERE";
+
     $sql = "SELECT " . $this->fieldList . ",\n";
 
-    if (empty($this->searchText)) {
+    if (!$this->isSearchText()) {
       // No Search Text - add dummy relevance
       $sql .= "1";
     } else {
@@ -67,11 +90,25 @@ class SqlFactory {
       " as relevance \n" .
       "FROM " . $this->tableName . "\n";
 
-    if (!empty($this->searchText)) {
+    if ($this->isSearchText()) {
       $sql .= $this->whereClause($this->boolean_sql_where($this->searchText, $this->fulltextKey));
     }
 
-    if (count($this->authors) > 0) {
+    if ($this->isBookRef()) {
+      $sql .= $this->whereClause(
+        " EXISTS ( \n".
+          "SELECT 1 \n".
+          "FROM mse_bible_ref \n".
+          "WHERE author = mse_text.author \n".
+          "AND vol = mse_text.vol \n".
+          "AND page = mse_text.page \n".
+          "AND para = mse_text.para \n".
+          "AND bookid = $this->bookId \n".
+          "AND chapter = $this->chapter \n".
+        ")\n");
+    }
+
+    if ($this->isAuthorFilter()) {
       $sql .= $this->whereClause("author IN ('" . implode("','", $this->authors) . "')");
     }
 
@@ -162,13 +199,13 @@ class SqlFactory {
       $result);
     $result = $result[0];
     for($cth=0;$cth<count($result);$cth++) {
-      if(strlen($result[$cth])>=4) {
+      //if(strlen($result[$cth])>=4) {
         $stringsum_long .=
           " $result[$cth] ";
-      }else{
-        $stringsum_a[] =
-          ' '.$this->boolean_sql_select_short($result[$cth],$match).' ';
-      }
+      //}else{
+      //  $stringsum_a[] =
+      //    ' '.$this->boolean_sql_select_short($result[$cth],$match).' ';
+      //}
     }
     if(strlen($stringsum_long)>0) {
         $stringsum_a[] = " match ($match) against ('$stringsum_long') ";
@@ -240,7 +277,7 @@ class SqlFactory {
    *  nesting by letting the mysql boolean parser evaluate
    *  grouped statements
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-  function boolean_sql_where($string,$match) {
+  function boolean_sql_where($string,$match){
     $result = $this->boolean_mark_atoms($string);
 
     /* dispatch 'foo[(#)]bar to actual sql involving (#) */
@@ -250,7 +287,7 @@ class SqlFactory {
       $result);
     $result=preg_replace(
       "/foo\[\(\'([^\)]{1,3})\'\)\]bar/e",
-      " '('.boolean_sql_where_short(\"$1\",\"$match\").')' ",
+      " '('.\$this->boolean_sql_where_short(\"$1\",\"$match\").')' ",
       $result);
 
     return $result;
@@ -264,7 +301,6 @@ class SqlFactory {
    *  keep in mind that allowing this functionality may have serious
    *  performance issues, especially with large datasets
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/*
   function boolean_sql_where_short($string,$match) {
     $match_a = explode(',',$match);
     for($ith=0;$ith<count($match_a);$ith++) {
@@ -274,7 +310,6 @@ class SqlFactory {
 
     return $like;
   }
-*/
 
   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
    *  :: boolean_sql_select_short($string,$match) ::
@@ -283,7 +318,6 @@ class SqlFactory {
    *  keep in mind that allowing this functionality may have serious
    *  performance issues, especially with large datasets
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/*
   function boolean_sql_select_short($string,$match) {
     $match_a = explode(',',$match);
     $score_unit_weight = .2;
@@ -298,7 +332,6 @@ class SqlFactory {
 
     return $score;
   }
-*/
 
   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
    *  :: boolean_parsed_as($string) ::

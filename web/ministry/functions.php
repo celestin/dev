@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Feb-2006  File created.
+ * CAM  15-Oct-2007  10187 : Modified functions to work in new interface.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -134,36 +135,36 @@ function f_show_books() {
     }
 
     if ($testament <> $prevtest) {
-      if ($prevtest <> "") {
 ?>
-</td></tr>
-<?
-      }
-?>
-<tr><td><b><? echo $testament; ?></b></td><td>
+<h3><? echo $testament; ?></h3>
 <?
       $prevtest = $testament;
     }
-?>
-<a href="scripture.php?level=4&bookid=<? echo $bookid . f_url(true,true,false,false,false); ?>"><? echo str_replace(" ", "&nbsp;", $bookname); ?></a>&nbsp;
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bookid; ?>)"><?
+echo str_replace(" ", "&nbsp;", $bookname); ?></a>
 <?
   }
 }
 
 function f_show_chapters() {
-  global $stext, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
-  $sql = "SELECT DISTINCT chapter ".
-         "FROM mse_bible_ref ".
-         "WHERE bookid = $ubookid ";
+  global $bibleBook;
+
+  $sql = "SELECT DISTINCT chapter \n".
+         "FROM mse_bible_ref \n".
+         "WHERE bookid = " . $bibleBook->getBookId() . "\n";
+/** // TODO put back
   if (!empty($uauthor)) {
     $sql .= "AND author = '$uauthor' ";
   }
+*/
+  /** // TODO implement this
   if (!empty($uvol)) {
     $sql .= "AND vol = $uvol ";
   }
-  $sql .= "ORDER BY chapter";
+*/
+  $sql .= "ORDER BY chapter \n";
 ?>
-<tr><td><a href="index.php?level=5">Books</a>&nbsp;|&nbsp;<? echo "$bookname"; ?></td></tr><tr><td>Chapters
+<a href="javascript:void" onclick="submitBookRef('NULL');">Books</a>&nbsp;|&nbsp;<? echo $bibleBook->getBookName(); ?></td></tr><tr><td>Chapters
 <?
 
   $ssql = mysql_query($sql);
@@ -171,37 +172,42 @@ function f_show_chapters() {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?>
-<a href="index.php?level=6&chapter=<? echo $chapter . f_url(true,true,true,false,false); ?>"><? echo $chapter; ?></a>&nbsp;
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>)"><?
+echo $chapter; ?></a>
 <?
   }
 }
 
 function f_show_verses() {
-  global $stext, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap;
+  global $bibleBook, $chapter;
 
   $sql = "SELECT DISTINCT vstart ".
-         "FROM mse_bible_ref ".
-         "WHERE bookid = $ubookid ";
+         "FROM mse_bible_ref \n".
+         "WHERE bookid = " . $bibleBook->getBookId() . "\n";
 
-  if (!$singlechap) {
-    $sql .= "AND chapter = $uchapter ";
+  if (!$bibleBook->isSingleChap()) {
+    $sql .= "AND chapter = $chapter ";
   }
 
+/** // TODO
   if (!empty($uauthor)) {
     $sql .= "AND author = '$uauthor' ";
   }
   if (!empty($uvol)) {
     $sql .= "AND vol = $uvol ";
   }
-
+*/
   $sql .= "ORDER BY vstart";
 
   //echo "<pre>$sql</pre>";
 ?>
-<tr><td><a href="index.php?level=7<? echo f_url(true,true,false,false,false); ?>">Books</a>&nbsp;|
-<a href="index.php?level=8&bookid=<? echo $ubookid . f_url(true,true,false,false,false); ?>"><? echo "$bookname"; ?></a>&nbsp;|
-Chapter <? echo $uchapter; ?></td></tr><tr><td>Verses
+<a href="javascript:void" onclick="submitBookRef('NULL');">Books</a>&nbsp;|
+<a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, 'NULL')"><? echo $bibleBook->getBookName(); ?></a>
+<?
+if (!$bibleBook->isSingleChap()) {
+  echo "&nbsp;|&nbsp;Chapter $chapter";
+}
+?></td></tr><tr><td>Verses
 <?
   $ssql = mysql_query($sql);
   while ($row = mysql_fetch_array($ssql)) {
@@ -209,7 +215,7 @@ Chapter <? echo $uchapter; ?></td></tr><tr><td>Verses
       $$key = stripslashes($val);
     }
 ?>
-<a href="index.php?level=9&vstart=<? echo $vstart . f_url(true,true,true,true,false); ?>"><? echo ($vstart==0) ? "All" : $vstart; ?></a>&nbsp;
+<a href=""><? echo ($vstart==0) ? "All" : $vstart; ?></a>&nbsp;
 <?
   }
 }

@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2004-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * New Booking Workflow
@@ -17,6 +17,7 @@
  * CAM  25-Jun-2007  10128 : No more New Bookings if on "Fine Board".
  * CAM  23-Jul-2007  10152 : Ensure Block bookings appear correctly for Courts not yet online.
  * CAM  05-Oct-2007  10155 : Ensure next Wednesday's courts cannot be booked until after 1pm this Wednesday .
+ * CAM  15-Oct-2007  10155 : Moved code from here into Calendar.php - it only applies to Courts 1 & 2.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -124,17 +125,12 @@ if (empty($memberOrig)) {
       Msg::question("What day would you like to play, " . $memberOrig->getFirstname());
     }
 
-    $cal = new Calendar($memberOrig->getID());
+    $cal = new Calendar($member, $memberOrig->getID());
     print "<table border=0 cellspacing=10 cellpadding=0>";
 
     $daysAhead = 8;
     if ($member->isAdmin()) {
       $daysAhead = 15;
-    } else {
-      // 7 days only after 1pm
-      if (date("H:i") < '13:00') {
-        $daysAhead--;
-      }
     }
 
     for ($i=0; $i<$daysAhead; $i++) {
@@ -185,7 +181,7 @@ if (empty($memberOrig)) {
     Msg::question("What time would you like to play, " . $memberOrig->getFirstname());
   }
 
-  $cal = new Calendar($memberOrig->getID(), $book_date);
+  $cal = new Calendar($member, $memberOrig->getID(), $book_date);
   print "<table border=0 cellspacing=10 cellpadding=0 width=\"100%\">";
 
   for ($i=0; $i<$cal->getSlotCount(); $i++) {
@@ -212,7 +208,7 @@ if (empty($memberOrig)) {
     Msg::question("Which Court would you like to play on, " . $memberOrig->getFirstname());
   }
 
-  $cal = new Calendar($memberOrig->getID(), $book_date, $book_time, $duration);
+  $cal = new Calendar($member, $memberOrig->getID(), $book_date, $book_time, $duration);
   print "<table border=0 cellspacing=10 cellpadding=0 width=\"100%\">";
 
   for ($i=0; $i<$cal->getSlotCount(); $i++) {
@@ -242,7 +238,7 @@ if (empty($memberOrig)) {
   echo $s . "&confirm=Y\">I confirm</a>";
 
 } else {
-  $cal = new Calendar($memberOrig->getID(), $book_date, $book_time, $duration, $court, $slot);
+  $cal = new Calendar($member, $memberOrig->getID(), $book_date, $book_time, $duration, $court, $slot);
   $success = false;
   //print "<table border=0 cellspacing=10 cellpadding=0 width=\"100%\"><tr><td>";
   $memid = $member->getID();

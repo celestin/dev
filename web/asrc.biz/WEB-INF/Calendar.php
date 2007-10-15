@@ -14,6 +14,7 @@
  * CAM  08-Feb-2007  10097 : Correct Sort order.
  * CAM  25-Jun-2007  10132 : Corrected SQL.
  * CAM  23-Jul-2007  10152 : Ensure Court Online date is observed.
+ * CAM  15-Oct-2007  10155 : Ensure 8th day on Courts 1 & 2 for non-admin members can only be booked after 1pm.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'inc.php';
@@ -33,6 +34,13 @@ class Calendar {
   * @type String
   */
   var $today;
+
+  /**
+  * Member creating the Booking
+  * @private
+  * @type Member
+  */
+  var $member_booker;
 
   /**
   * Originator Member - for whom Court bookings will be made.
@@ -69,8 +77,9 @@ class Calendar {
   */
   var $bookings;
 
-  function Calendar($member_orig='', $bookDate='', $bookTime='', $duration='', $court='', $slot='') {
+  function Calendar($member_booker, $member_orig, $bookDate='', $bookTime='', $duration='', $court='', $slot='') {
     $this->today = time();
+    $this->member_booker = $member_booker;
     $this->member_orig = $member_orig;
 
     $this->retrieveRestrictions();
@@ -115,6 +124,11 @@ class Calendar {
              "WHERE s.court = c.court " .
              "AND c.online <= '" . Util::displayToSqlDate($bookDate) . "' ";
              "AND b.slot IS NULL ";
+
+    if ((!$this->member_booker->isAdmin()) && (date("H:i") < '13:00')) {
+      // For Courts 1 & 2 only: 8th day is only available to non-admin member after 1pm
+      $ssql .= "AND c.court NOT IN (1,2) ";
+    }
 
     if (!empty($bookTime)) {
       $ssql .= "AND s.start_time = '" . $bookTime . "' ";

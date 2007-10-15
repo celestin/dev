@@ -15,8 +15,8 @@
  * CAM  25-Jun-2007  10132 : Corrected SQL.
  * CAM  23-Jul-2007  10152 : Ensure Court Online date is observed.
  * CAM  15-Oct-2007  10155 : Ensure 8th day on Courts 1 & 2 for non-admin members can only be booked after 1pm.
+ * CAM  15-Oct-2007  10184 : Ensure you cannot book immediately preceeding slots.
  * * * * * * * * * * * * * * * * * * * * * * * */
-
 include_once 'inc.php';
 
 /**
@@ -111,7 +111,7 @@ class Calendar {
     $ssql = "SELECT ";
 
     if (empty($bookTime)) {
-      $ssql .= "DISTINCT -1 court,null court_name, -1 slot,s.start_time, -1 duration ";
+      $ssql .= "-1 court,null court_name, -1 slot,s.start_time,MAX(s.duration) as duration ";
     } else {
       $ssql .= "c.court,c.name court_name,s.slot,s.start_time,s.duration ";
     }
@@ -143,6 +143,10 @@ class Calendar {
       $ssql .= "AND s.slot = '" . $slot . "' ";
     } else {
       $ssql .= "AND b.slot IS NULL ";
+    }
+    
+    if (empty($bookTime)) {
+      $ssql .= "GROUP BY s.start_time ";
     }
 
     $ssql .= "ORDER BY 1,4";

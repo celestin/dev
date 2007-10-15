@@ -11,8 +11,8 @@
  *
  * Who  When         Why
  * CAM  06-May-2005  File created.
+ * CAM  15-Oct-2007  10184 : Ensure you cannot book immediately preceeding slots.
  * * * * * * * * * * * * * * * * * * * * * * * */
-
 include_once 'inc.php';
 
 /**
@@ -50,12 +50,16 @@ class Booking {
     $this->timeEnd = $this->timeStart + ($duration * 60);
   }
 
-  function isValid($slot) {
-    $dateStart = Util::strToTimestamp($slot->getStartTime());
-    $dateEnd = $dateStart + ($slot->getDuration() * 60);
+  function isValid($slot) {           
+    $dateStart = Util::strToTimestamp($slot->getStartTime());    
+    
+    if ($dateStart < $this->timeStart) {
+      // If the Slot is BEFORE to this Booking, check it is not immedately before 
+      return $dateStart < ($this->timeStart - ($slot->getDuration()*60));
+    }
 
-    return ((($dateStart < $this->timeStart) && ($dateEnd < $this->timeEnd))
-         || (($dateStart > $this->timeStart) && ($dateEnd > $this->timeEnd)));
+    // The Slot must be AFTER this Booking: check it is not immedately after 
+    return $dateStart > $this->timeEnd;
   }
 }
 ?>

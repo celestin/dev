@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  22-Oct-2007  10186 : Added methods for exporting.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -33,6 +34,10 @@ namespace FrontBurner.Ministry.MseBuilder
 
     protected MySqlCommand _cmdVolume;
     protected MySqlCommand _cmdBooks;
+    protected MySqlCommand _cmdArticles;
+    protected MySqlCommand _cmdText;
+    protected MySqlCommand _cmdBibleRef;
+
     protected MySqlCommand _cmdInsertText;
     protected MySqlCommand _cmdInsertBibleRef;
     protected MySqlCommand _cmdInsertBadBibleRef;
@@ -69,7 +74,7 @@ namespace FrontBurner.Ministry.MseBuilder
           ";Database=" + Database +
           ";User ID=" + UserID +
           ";Password=" + Password;
-        
+
       lock (_semaphore)
       {
         try
@@ -193,6 +198,87 @@ namespace FrontBurner.Ministry.MseBuilder
       return ds;
     }
 
+    public DataTable GetArticles(Volume vol)
+    {
+      if (_cmdArticles == null)
+      {
+        string sql =
+          "SELECT page,article,scriptures,localrow " +
+          "FROM mse_article " +
+          "WHERE author = ?author " +
+          "AND vol = ?vol " +
+          "ORDER BY page DESC";
+
+        _cmdArticles = new MySqlCommand(sql, _conn);
+        _cmdArticles.Prepare();
+
+        _cmdArticles.Parameters.Add("?author", MySqlDbType.String);
+        _cmdArticles.Parameters.Add("?vol", MySqlDbType.Int32);
+      }
+
+      _cmdArticles.Parameters["?author"].Value = vol.Author;
+      _cmdArticles.Parameters["?vol"].Value = vol.Vol;
+
+      DataTable dt = new DataTable("mse_article");
+      MySqlDataAdapter da = new MySqlDataAdapter(_cmdArticles);
+      da.Fill(dt);
+      return dt;
+    }
+
+    public DataTable GetText(Volume vol)
+    {
+      if (_cmdText == null)
+      {
+        string sql =
+          "SELECT page,para,article_page,text,inits " +
+          "FROM mse_text " +
+          "WHERE author = ?author " +
+          "AND vol = ?vol " +
+          "ORDER BY page,para";
+
+        _cmdText = new MySqlCommand(sql, _conn);
+        _cmdText.Prepare();
+
+        _cmdText.Parameters.Add("?author", MySqlDbType.String);
+        _cmdText.Parameters.Add("?vol", MySqlDbType.Int32);
+      }
+
+      _cmdText.Parameters["?author"].Value = vol.Author;
+      _cmdText.Parameters["?vol"].Value = vol.Vol;
+
+      DataTable dt = new DataTable("mse_text");
+      MySqlDataAdapter da = new MySqlDataAdapter(_cmdText);
+      da.Fill(dt);
+      return dt;
+    }
+
+    public DataTable GetBibleRefs(Volume vol)
+    {
+      if (_cmdBibleRef == null)
+      {
+        string sql =
+          "SELECT page,para,ref,bookid,chapter,vstart,vend " +
+          "FROM mse_bible_ref " +
+          "WHERE author = ?author " +
+          "AND vol = ?vol " +
+          "ORDER BY page,para,ref";
+
+        _cmdBibleRef = new MySqlCommand(sql, _conn);
+        _cmdBibleRef.Prepare();
+
+        _cmdBibleRef.Parameters.Add("?author", MySqlDbType.String);
+        _cmdBibleRef.Parameters.Add("?vol", MySqlDbType.Int32);
+      }
+
+      _cmdBibleRef.Parameters["?author"].Value = vol.Author;
+      _cmdBibleRef.Parameters["?vol"].Value = vol.Vol;
+
+      DataTable dt = new DataTable("mse_bible_ref");
+      MySqlDataAdapter da = new MySqlDataAdapter(_cmdBibleRef);
+      da.Fill(dt);
+      return dt;
+    }
+
     public void InsertParagraph(Paragraph para)
     {
       if (_cmdInsertText == null)
@@ -264,7 +350,7 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertBibleRef.Parameters["?vStart"].Value = bref.VerseStart;
       _cmdInsertBibleRef.Parameters["?vEnd"].Value = bref.VerseEnd;
 
-      _cmdInsertBibleRef.ExecuteNonQuery();      
+      _cmdInsertBibleRef.ExecuteNonQuery();
     }
 
     public void InsertBadBibleRef(Volume vol, int pageNo, int para, int refNo, char errCode, string text)
@@ -359,6 +445,11 @@ namespace FrontBurner.Ministry.MseBuilder
       }
 
       cmd.ExecuteNonQuery();
+    }
+
+    public static string SqlText(object text)
+    {
+      return SqlText(text.ToString(), false);
     }
 
     public static string SqlText(string text)

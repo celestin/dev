@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  22-Oct-2007  10186 : Added Zip! (export).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,6 +29,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected int _vol;
     protected bool _specificVolume;
     protected BuilderThread _builder;
+    protected ZipperThread _zipper;
 
     public MseBuilder()
     {
@@ -37,7 +39,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     private void btnBuild_Click(object sender, EventArgs e)
     {
-      btnBuild.Enabled = false;
+      _btnZip.Enabled = _btnBuild.Enabled = false;
 
       grdArticle.Rows = 1;
 
@@ -58,21 +60,54 @@ namespace FrontBurner.Ministry.MseBuilder
       tmrRefresh.Enabled = true;
     }
 
+    private void _btnZip_Click(object sender, EventArgs e)
+    {
+      _btnZip.Enabled = _btnBuild.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+
+      _zipper = new ZipperThread();
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
     private void tmrRefresh_Tick(object sender, EventArgs e)
     {
-      if (_builder.Process.IsAlive)
+      if (_builder != null)
       {
-        if (_builder.Engine != null) pgbVol.Value = _builder.Engine.Current;
-        this.Refresh();
-        this.Update();
+        if (_builder.Process.IsAlive)
+        {
+          if (_builder.Engine != null) pgbVol.Value = _builder.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          tmrRefresh.Enabled = false;
+
+          if (_specificVolume) ShowArticles();
+          _builder = null;
+
+          _btnZip.Enabled = _btnBuild.Enabled = true;
+        }
       }
-      else
+      else if (_zipper != null)
       {
-        tmrRefresh.Enabled = false;
+        if (_zipper.Process.IsAlive)
+        {
+          if (_zipper.Engine != null) pgbVol.Value = _zipper.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          tmrRefresh.Enabled = false;
+          _zipper = null;
 
-        if (_specificVolume) ShowArticles();
-
-        btnBuild.Enabled = true;
+          _btnZip.Enabled = _btnBuild.Enabled = true;
+        }
       }
     }
 
@@ -135,7 +170,7 @@ namespace FrontBurner.Ministry.MseBuilder
       protected int _vol;
       protected bool _specificVolume;
       protected MseEngine _engine;
-      
+
       public Thread Process
       {
         get
@@ -174,6 +209,40 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           _engine.Build();
         }
+      }
+    }
+
+    public class ZipperThread
+    {
+      protected Thread _process;
+      protected MseEngine _engine;
+
+      public Thread Process
+      {
+        get
+        {
+          return _process;
+        }
+      }
+      public MseEngine Engine
+      {
+        get
+        {
+          return _engine;
+        }
+      }
+
+      public ZipperThread()
+      {
+        _process = new Thread(new ThreadStart(Zip));
+        _process.IsBackground = true;
+        _process.Start();
+      }
+
+      private void Zip()
+      {
+        _engine = new MseEngine();
+        _engine.Zip();
       }
     }
   }

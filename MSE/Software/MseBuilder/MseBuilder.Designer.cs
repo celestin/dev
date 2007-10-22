@@ -41,7 +41,7 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MseBuilder));
-      this.btnBuild = new System.Windows.Forms.Button();
+      this._btnBuild = new System.Windows.Forms.Button();
       this.cmbAuthor = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
@@ -49,18 +49,19 @@ namespace FrontBurner.Ministry.MseBuilder
       this.pgbVol = new System.Windows.Forms.ProgressBar();
       this.grdArticle = new FlexCell.Grid();
       this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
+      this._btnZip = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
-      // btnBuild
+      // _btnBuild
       // 
-      this.btnBuild.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnBuild.Location = new System.Drawing.Point(650, 21);
-      this.btnBuild.Name = "btnBuild";
-      this.btnBuild.Size = new System.Drawing.Size(196, 53);
-      this.btnBuild.TabIndex = 0;
-      this.btnBuild.Text = "Build!";
-      this.btnBuild.UseVisualStyleBackColor = true;
-      this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
+      this._btnBuild.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._btnBuild.Location = new System.Drawing.Point(556, 21);
+      this._btnBuild.Name = "_btnBuild";
+      this._btnBuild.Size = new System.Drawing.Size(142, 53);
+      this._btnBuild.TabIndex = 0;
+      this._btnBuild.Text = "Build!";
+      this._btnBuild.UseVisualStyleBackColor = true;
+      this._btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
       // 
       // cmbAuthor
       // 
@@ -119,18 +120,30 @@ namespace FrontBurner.Ministry.MseBuilder
       // 
       this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
       // 
+      // _btnZip
+      // 
+      this._btnZip.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._btnZip.Location = new System.Drawing.Point(704, 21);
+      this._btnZip.Name = "_btnZip";
+      this._btnZip.Size = new System.Drawing.Size(142, 53);
+      this._btnZip.TabIndex = 7;
+      this._btnZip.Text = "Zip!";
+      this._btnZip.UseVisualStyleBackColor = true;
+      this._btnZip.Click += new System.EventHandler(this._btnZip_Click);
+      // 
       // MseBuilder
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(858, 621);
+      this.Controls.Add(this._btnZip);
       this.Controls.Add(this.grdArticle);
       this.Controls.Add(this.pgbVol);
       this.Controls.Add(this.txtVol);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.cmbAuthor);
-      this.Controls.Add(this.btnBuild);
+      this.Controls.Add(this._btnBuild);
       this.Name = "MseBuilder";
       this.Text = "Ministry Search Engine Data Builder";
       this.Load += new System.EventHandler(this.MseBuilder_Load);
@@ -141,7 +154,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     #endregion
 
-    private System.Windows.Forms.Button btnBuild;
+    private System.Windows.Forms.Button _btnBuild;
     private System.Windows.Forms.ComboBox cmbAuthor;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
@@ -149,6 +162,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.ProgressBar pgbVol;
     private FlexCell.Grid grdArticle;
     private System.Windows.Forms.Timer tmrRefresh;
+    private System.Windows.Forms.Button _btnZip;
   }
 }
 

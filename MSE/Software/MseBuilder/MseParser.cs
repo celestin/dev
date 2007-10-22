@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  22-Oct-2007  10189 : Catch all initials, and tidy them up appropriately.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,29 +22,37 @@ namespace FrontBurner.Ministry.MseBuilder
   class MseParser
   {
     protected Volume _vol;
-
-    public static readonly string REMARK = "Rem.";
-    public static readonly string QUESTION = "Ques.";
+    protected List<string> _constantIntials;
 
     public MseParser(Volume vol)
     {
       _vol = vol;
     }
 
-    protected bool GetInitials(string text, out int start, out int finish) 
+    protected bool GetInitials(string text, out int start, out int finish)
     {
-      bool halt=false;
-      bool inits=false;
-      int dotCount=0;
-      int c=0;
-      int i=0;
+      bool halt = false;
+      bool inits = false;
+      int dotCount = 0;
+      int c = 0;
+      int i = 0;
+      int window = 11;
       start = 0;
       finish = 0;
 
-      if (text.Length <= REMARK.Length)
+      if (_constantIntials == null)
       {
-        // Don't look for initials in very short lines        
-        return false; 
+        _constantIntials = new List<string>();
+        _constantIntials.Add("Rem.");
+        _constantIntials.Add("Ques.");
+        _constantIntials.Add("*Rem*.");
+        _constantIntials.Add("*Ques*.");
+      }
+
+      if (text.Length <= 3)
+      {
+        // Don't look for initials in very short lines
+        return false;
       }
 
       if (text.StartsWith("."))
@@ -52,21 +61,18 @@ namespace FrontBurner.Ministry.MseBuilder
         start++;
       }
 
-      if (text.Substring(start, REMARK.Length).Equals(REMARK))
+      // Look for any of the Constant Initials first
+      foreach (string s in _constantIntials)
       {
-        // A "Remark"
-        finish = REMARK.Length;
-        return true;
-      }
-      if (text.Substring(start, QUESTION.Length).Equals(QUESTION))
-      {
-        // A "Question"
-        finish = QUESTION.Length;
-        return true;
+        if ((text.Length >= s.Length) && (text.Substring(start, s.Length).Equals(s)))
+        {
+          finish = s.Length;
+          return true;
+        }
       }
 
       char[] buffa = text.ToCharArray();
-      for (i = start; i < buffa.Length && !halt && (i < 11); i++) 
+      for (i = start; i < buffa.Length && !halt && (i < window); i++)
       {
         c = (int)buffa[i];
 
@@ -79,18 +85,13 @@ namespace FrontBurner.Ministry.MseBuilder
           if (dotCount > 1) {
             inits = true;
           }
-
-        } else if ((c >= 65 && c <= 90) || (c == 39)) {
-          // continue
-        } else {
-          halt = true;
-          inits = false;
         }
       }
 
-      if (inits && (i>0)) 
+      if (inits && (i>0))
       {
         text = text.Substring(0, i).Trim();
+
         if (!text.StartsWith(".."))
         {
           finish = i;
@@ -99,6 +100,18 @@ namespace FrontBurner.Ministry.MseBuilder
       }
 
       return false;
+    }
+
+    public string TidyInitials(string inits)
+    {
+      string rval = inits.Replace(".", "").Replace(" ", "").Replace("*", "").Replace(",", "");
+
+      while (rval.StartsWith("-"))
+      {
+        rval = rval.Substring(1);
+      }
+
+      return rval;
     }
 
     public void ParseText()
@@ -133,28 +146,28 @@ namespace FrontBurner.Ministry.MseBuilder
           scriptures = true;
         }
 
-        if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#"))) 
+        if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#")))
         {
-          if ((cb = buffer.IndexOf("}")) >= 0) 
+          if ((cb = buffer.IndexOf("}")) >= 0)
           {
             pageNo = int.Parse(buffer.Substring(1, cb-1));
           }
 
           para = 0;
-        } 
-        else if ((buffer.Length > 1) && buffer.Substring(0, 2).Equals("{#")) 
+        }
+        else if ((buffer.Length > 1) && buffer.Substring(0, 2).Equals("{#"))
         {
           // Volume title - do nothing
         }
-        else 
+        else
         {
           para++;
 
           inits = null;
 
-          if (GetInitials(buffer, out initStart, out initFinish)) 
+          if (GetInitials(buffer, out initStart, out initFinish))
           {
-            inits = buffer.Substring(initStart, initFinish - initStart).Replace(".", "").Replace(" ", "");
+            inits = TidyInitials(buffer.Substring(initStart, initFinish - initStart));
             buffer = buffer.Substring(initFinish, buffer.Length - initFinish).Trim();
           }
 
@@ -191,7 +204,7 @@ namespace FrontBurner.Ministry.MseBuilder
               paraPrevious = null;
             }
           }
-        }        
+        }
       }
       sr.Close();
     }

@@ -7,6 +7,7 @@
 --
 -- Who  When         Why
 -- CAM  09-Oct-2007  10170 : Recreated for Changes to valid booking hours.
+-- CAM  23-Oct-2007  10182 : Added table event.
 -- --------------------------------------------------------
 
 UPDATE member_limit SET time_end = '16:40:00' WHERE member_type='J' AND day=0 AND time_start = '09:00:00';

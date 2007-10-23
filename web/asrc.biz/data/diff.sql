@@ -24,3 +24,12 @@ UPDATE member_limit SET time_end = '16:40:00' WHERE member_type='OP' AND day=4 A
 
 UPDATE member_limit SET time_end = '16:40:00' WHERE member_type='ST' AND time_start = '09:00:00';
 
+
+CREATE TABLE event (
+  id int(11) NOT NULL auto_increment,
+  event_title varchar(50) default NULL,
+  event_text mediumtext,
+  event_date date default NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Events';
+

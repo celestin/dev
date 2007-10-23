@@ -1,11 +1,8 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * Bottom of the page
  *
  * $Id$
  *
@@ -22,6 +19,7 @@
  * CAM  05-Mar-2007  10098 : Remove the Valentines Image.
  * CAM  25-Jun-2007  10128 : Version 1.07 - No Bookings if on Fine Board, and colour coding.
  * CAM  12-Aug-2007  10157 : Version 1.08 - Added Unconfirmed Bookings (if booked outwith Reception hours).
+ * CAM  23-Oct-2007  10182 : Version 1.09 - Added Events.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->

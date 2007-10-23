@@ -1,17 +1,15 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * News Items
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  06-Feb-2006  8: File created.
  * CAM  25-Jun-2007  10134 : Order by Date correctly.
+ * CAM  22-Oct-2007  10182 : Use new item classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - News";
@@ -36,8 +34,8 @@ while ($row = mysql_fetch_array($sql)) {
   }
 
 ?>
-<tr><td width="100"><b><? echo $post_date_fmt; ?></b></td><td><b><? echo $post_title; ?></b></td></tr>
-<tr><td colspan=2><? echo $post_text . $spacer;  $spacer=""; ?></td></tr>
+<tr><td class="item_date" width="100"><? echo $post_date_fmt; ?></td><td class="item_title"><? echo $post_title; ?></td></tr>
+<tr><td class="item_text" colspan=2><? echo $post_text . $spacer;  $spacer=""; ?></td></tr>
 <?
 
 }

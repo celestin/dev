@@ -1,6 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -13,6 +12,7 @@
  * CAM  29-Jul-2006  10021 : Added correct font for all input types.
  * CAM  22-Jun-2007  10130 : Added Membership Colour-coding classes.
  * CAM  25-Jun-2007  10129 : Added 'alt' for alternate rows.
+ * CAM  23-Oct-2007  10182 : Added blink anchor for events.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -151,17 +151,38 @@ td.cat {
   FONT-WEIGHT: bold
 }
 
+/** LINKS */
+
+/** Standard */
+
 A,A:visited,A:active,A:link,A:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   COLOR: #0820F0;
-  TEXT-DECORATION: none
-  bgcolor: black ;
+  TEXT-DECORATION: none;
+  bgcolor: black;
   FONT-WEIGHT: bold
 }
 A:hover {
-  COLOR: #FF0000;
+  COLOR: #FF6600;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
+}
+
+/** Events */
+
+A.blink,A.blink:visited,A.blink:active,A.blink:link,A.blink:visited {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  COLOR: #FF3366;
+  TEXT-DECORATION: none;
+  bgcolor: black;
+  FONT-WEIGHT: bold;
+  display: inline;
+}
+A.blink:hover {
+  COLOR: #FF6600;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+  display: inline;
 }
 
 INPUT,SELECT {
@@ -295,3 +316,27 @@ p.statement {
   FONT-SIZE: 12pt;
 }
 
+/** APPLICATIONS */
+
+/** Events */
+
+.item_date {
+  COLOR: #0066FF;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 11pt;
+  FONT-WEIGHT: bold;
+}
+.item_title {
+  COLOR: #333333;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 11pt;
+  FONT-WEIGHT: bold;
+  PADDING-LEFT: 5px;
+}
+.item_text {
+  COLOR: #000000;
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  padding-top: 4px;
+  padding-bottom: 8px;
+}

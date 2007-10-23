@@ -1,11 +1,8 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * Top of the page
  *
  * $Id$
  *
@@ -16,11 +13,17 @@
  * CAM  29-Jul-2006  10021 : Show flash messages if they exist.
  * CAM  25-Jun-2007  10134 : Add News to members toolbar.
  * CAM  12-Aug-2007  10157 : Add TBC to Admin toolbar.
+ * CAM  22-Oct-2007  10182 : Split Admin toolbar onto second line.  Adding blinking Events.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = session_is_registered('memberid');
+
+global $events_read;
+if ($events_read) {
+  $_SESSION['events_read'] = "true";
+}
 
 if (empty($title)) {
   $title = "ASRC Online Booking";
@@ -30,15 +33,26 @@ if (empty($hide_toolbar)) {
   $hide_toolbar = false;
 }
 
+function ToolbarOption($action, $label, $last=false, $class="") {
+  $sep = "";
+  if (!$last) {
+    $sep = "&nbsp;&nbsp;|&nbsp;&nbsp;";
+  }
+  if (!empty($class)) {
+    $class="class=\"$class\"";
+  }
+  ?><td><a href="<? echo $action; ?>" <? echo $class; ?>><? echo $label; ?></a><? echo $sep; ?></td><?
+}
 
 ?>
 <head>
   <title><?php print $title;?></title>
   <link href="asrc.css" rel=stylesheet type="text/css" />
+  <script language="Javascript" src="dhtml.js"></script>
   <script language="Javascript" src="date.js"></script>
 </head>
 
-<body topmargin=2 leftmargin=0>
+<body topmargin=2 leftmargin=0 onload="<? if (!session_is_registered('events_read')) echo "blink();"; ?>">
 
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td><table border=0 cellpadding=0 cellspacing=8>
@@ -58,35 +72,40 @@ if (empty($hide_toolbar)) {
     ?></td>
 
     </tr>
-    <tr><td colspan=2 class="topnav" height=30><table border=0 cellpadding=0 cellspacing=0>
+    <tr><td colspan=2 class="topnav"><table border=0 cellpadding=0 cellspacing=0>
       <tr>
         <?php
           if ($loggedin && !$hide_toolbar) {
-            $bookDesc = "my";
-            if ($member->isAdmin()) {
-              $bookDesc = "";
-            }
-            print '<td><a href="mybookings.php">' . $bookDesc . ' bookings</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            print '<td><a href="newbooking.php">make booking</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            if ($member->isAdmin()) {
-              print '<td><a href="unconfirmed.php">tbc</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-              print '<td><a href="fines.php">fines</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            }
-            print '<td><a href="logout.php">logout</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            print '<td><a href="changepass.php">change password</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            if ($member->isAdmin()) {
-              print '<td><a href="users.php">users</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-              print '<td><a href="courtsview.php">courts</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            } else {
-              print '<td><a href="news.php">news</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
-            }
+            ToolbarOption("mybookings.php", $member->getBookingsDescription());
+            ToolbarOption("newbooking.php", "make booking");
+            ToolbarOption("events.php", "events", false, "blink");
+            ToolbarOption("news.php", "news");
+            ToolbarOption("changepass.php", "change password");
+            ToolbarOption("logout.php", "logout");
           } else {
-            print '<td><a href="login.php">login</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>';
+            ToolbarOption("login.php", "login");
           }
+          ToolbarOption("help.php", "help", true);
         ?>
-        <td><a href="help.php">help</a></td>
       </tr>
     </table></td></tr>
+    <?
+    if ($loggedin && !$hide_toolbar && $member->isAdmin()) {
+    ?>
+    <tr><td colspan=2 class="topnav" align=right><table border=0 cellpadding=0 cellspacing=0>
+      <tr>
+        <td class="topnav"><b><? echo $member->getFirstname(); ?>'s admin options</b>&nbsp;&gt;&gt;&nbsp;</td>
+        <?php
+          ToolbarOption("unconfirmed.php", "tbc");
+          ToolbarOption("fines.php", "fines");
+          ToolbarOption("users.php", "users");
+          ToolbarOption("courtsview.php", "courts", true);
+        ?>
+      </tr>
+    </table></td></tr>
+    <?
+    }
+    ?>
     </table></td></tr>
 
     <tr><td colspan=2 width="100%" height="100%" valign=top>

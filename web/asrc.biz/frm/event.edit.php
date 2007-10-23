@@ -17,16 +17,16 @@
     <tr>
       <td class="<? echo (!empty($retry) && empty($event_date)) ? "fldmand" : "fld" ?>">Event Date</td>
       <td><input name="event_date" type="text" id="event_date" size=10 onChange="checkDate(this);"
-      <? echo 'value="'. $event_date . '">';?></td>
+      value="<? echo $event_date;?>"></td>
     </tr>
     <tr>
       <td class="<? echo (!empty($retry) && empty($event_title)) ? "fldmand" : "fld" ?>">Event Title</td>
-      <td><input name="event_title" type="text" id="event_title" size=30
-      <? echo 'value="'. $event_title . '">';?></td>
+      <td><input name="event_title" type="text" id="event_title" size=45
+      value="<? echo $event_title;?>"></td>
     </tr>
     <tr>
       <td class="<? echo (!empty($retry) && empty($event_text)) ? "fldmand" : "fld" ?>">Text</td>
-      <td><textarea name="event_text" type="text" id="event_text" rows=8 cols=80><? echo $event_text;?></textarea>
+      <td><textarea name="event_text" type="text" id="event_text" rows=8 cols=55><? echo $event_text;?></textarea>
     </tr>
     <tr>
       <td>&nbsp;</td>

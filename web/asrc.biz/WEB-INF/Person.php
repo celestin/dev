@@ -1,11 +1,8 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * Person Class
  *
  * $Id$
  *
@@ -14,6 +11,7 @@
  * CAM  19-Jan-2006  9 : Added Blockbooker flag.
  * CAM  22-Jun-2007  10132 : Added 'Unknown User' if problem with SQL query.
  * CAM  22-Jun-2007  10130 : Added getClass.
+ * CAM  23-Oct-2007  10182 : Added getBookingsDescription.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -246,6 +244,14 @@ class Person extends Tuple {
     $rval = $this->membertype->getDesc() . " member " . $rval;
 
     return $rval;
+  }
+
+  function getBookingsDescription() {
+    $bookDesc = "";
+    if (!$this->admin) {
+      $bookDesc = "my ";
+    }
+    return $bookDesc . "bookings";
   }
 
   function getClass() {

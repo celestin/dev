@@ -1,15 +1,13 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * Date validation
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  25-Apr-2006  File added.
+ * CAM  23-Oct-2007  10182 : Fixed tod bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -137,9 +135,13 @@ function isDate(gField, validateTime) {
   // Check for "today", and replace with today's date
   if (inputStr.substring(0,3) == "tod") {
     var today = new Date() ;
-    gField.focus() ;
-    gField.select() ;
-    gField.value = (today.getDate()<10?"0":"") + today.getDate() + "-" + dispMonths[today.getMonth()+1] + "-" + today.getYear() ;
+    gField.focus();
+    gField.select();
+
+    yr = today.getYear() + "";    
+    if (yr.length == 3) yr = "20" + yr.substr(1,2);
+    
+    gField.value = (today.getDate()<10?"0":"") + today.getDate() + "-" + dispMonths[today.getMonth()+1] + "-" + yr;
     if (validateTime){
       var todayHours = today.getHours();
       var todayMins  = today.getMinutes();

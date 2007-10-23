@@ -39,7 +39,7 @@
   </table></td>
 </tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V1.08</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
+<tr><td class="cpyrght"><b>V1.09</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </td></tr>
 </table>
 </body>

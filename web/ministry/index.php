@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Reset the Scripture vars.
+ * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -21,6 +22,7 @@ $_SESSION['search_author'] = array('ALL'=>'ALL');
 
 $_SESSION['search_bookid'] = "";
 $_SESSION['search_chapter'] = "";
+$_SESSION['search_vstart'] = "";
 
 $_SESSION['preview_author'] = "";
 $_SESSION['preview_vol'] = "";

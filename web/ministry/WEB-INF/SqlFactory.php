@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  15-Oct-2007  File created.
  * CAM  15-Oct-2007  10187 : Added Book Reference search, improved tests for valid search and included all functions.
+ * CAM  25-Oct-2007  10187 : Correctly return references when Scripture searching.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class SqlFactory {
@@ -52,9 +53,10 @@ class SqlFactory {
     $this->authors = $authors;
   }
 
-  function setBookRef($bookid, $chapter) {
+  function setBookRef($bookid, $chapter, $vStart) {
     $this->bookId = $bookid;
     $this->chapter = $chapter;
+    $this->vStart = $vStart;
   }
 
   function isSearchText() {
@@ -69,6 +71,10 @@ class SqlFactory {
     return (!empty($this->bookId) && !empty($this->chapter));
   }
 
+  function isShowBookRef() {
+    return ($this->isBookRef() && !$this->isSearchText());
+  }
+
   function isSearch() {
     return ($this->isSearchText() || $this->isBookRef());
   }
@@ -76,6 +82,7 @@ class SqlFactory {
   function getSql() {
     $this->whereConjunct = "WHERE";
 
+    // SELECTION
     $sql = "SELECT " . $this->fieldList . ",\n";
 
     if (!$this->isSearchText()) {
@@ -86,30 +93,44 @@ class SqlFactory {
       $sql .= $this->boolean_sql_select($this->boolean_inclusive_atoms($this->searchText), $this->fulltextKey);
     }
 
-    $sql .=
-      " as relevance \n" .
-      "FROM " . $this->tableName . "\n";
+    $sql .= " as relevance, ";
 
+    if ($this->isBookRef()) {
+      $sql .= "b.bookname, b.singlechap, r.ref, r.vstart, r.vend \n" ;
+    } else {
+      $sql .= "'' as bookname, 0 as singlechap, 0 as ref, 0 as vstart, 0 as vend \n" ;
+    }
+
+    // TABLES
+    $sql .= "FROM " . $this->tableName . " t ";
+
+    if ($this->isBookRef()) {
+      $sql .= ", mse_bible_ref r, mse_bible_book b " ;
+    }
+    $sql .= "\n";
+
+    // WHERE
     if ($this->isSearchText()) {
       $sql .= $this->whereClause($this->boolean_sql_where($this->searchText, $this->fulltextKey));
     }
 
     if ($this->isBookRef()) {
       $sql .= $this->whereClause(
-        " EXISTS ( \n".
-          "SELECT 1 \n".
-          "FROM mse_bible_ref \n".
-          "WHERE author = mse_text.author \n".
-          "AND vol = mse_text.vol \n".
-          "AND page = mse_text.page \n".
-          "AND para = mse_text.para \n".
-          "AND bookid = $this->bookId \n".
-          "AND chapter = $this->chapter \n".
-        ")\n");
+          "r.bookid = b.bookid \n".
+          "AND r.author = t.author \n".
+          "AND r.vol = t.vol \n".
+          "AND r.page = t.page \n".
+          "AND r.para = t.para \n".
+          "AND r.bookid = " . $this->bookId . "\n".
+          "AND r.chapter = " . $this->chapter . "\n");
+
+      if ($this->vStart > 0) {
+        $sql .= "AND r.vstart = " . $this->vStart . "\n";
+      }
     }
 
     if ($this->isAuthorFilter()) {
-      $sql .= $this->whereClause("author IN ('" . implode("','", $this->authors) . "')");
+      $sql .= $this->whereClause("t.author IN ('" . implode("','", $this->authors) . "')");
     }
 
     $sql .=

@@ -3,24 +3,25 @@
  * Ministry Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
- * Results panes
- *
  * $Id$
  *
  * Who  When         Why
  * CAM  19-Aug-2007  File created.
  * CAM  15-Oct-2007  10187 : Pass Book reference to SqlFactory.
+ * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
 
 $keywords = $_SESSION['search_keywords'];
 $author   = $_SESSION['search_author'];
-$author   = $_SESSION['search_author'];
 $bookid   = $_SESSION['search_bookid'];
 $chapter  = $_SESSION['search_chapter'];
+$vstart   = $_SESSION['search_vstart'];
 
-$sqlFactory = new SqlFactory("mse_text", "author, vol, page, para, inits, text", "author, vol, page");
+$sqlFactory = new SqlFactory("mse_text", "t.author, t.vol, t.page, t.para, t.inits, t.text", "t.author, t.vol, t.page");
+
+$showBibleRef = false;
 
 if (!empty($keywords)) {
   $sqlFactory->setSearchText($keywords);
@@ -31,7 +32,9 @@ if ((count($author)>0) && (empty($author['ALL']))) {
 }
 
 if (!empty($bookid) && !empty($chapter)) {
-  $sqlFactory->setBookRef($bookid, $chapter);
+  $sqlFactory->setBookRef($bookid, $chapter, $vstart);
+
+  if (empty($keywords)) $showBibleRef = true;
 }
 
 $sql = $sqlFactory->getSql();
@@ -63,7 +66,7 @@ if ($sqlFactory->isSearch()) {
   <td class="rd"><? echo "<b>$author</b> $vol"; ?></td>
   <td class="rd"><? echo "$preview"; ?></td>
   <td class="rd"><? echo "<b>$inits</b>"; ?></td>
-  <td class="rd"><? echo highlight_text($text, $inits, $keywords); ?></td>
+  <td class="rd"><? echo highlight_text($text, $inits, $keywords, $ref, $bookname); ?></td>
 </tr></form><?
   }
 }

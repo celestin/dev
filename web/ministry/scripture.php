@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Reworked to use BibleBook.
+ * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Scripture Search";
@@ -16,18 +17,22 @@ $tabs = true;
 include 'tpl/top.php';
 include_once('functions.php');
 
-$bookid = $_SESSION['search_bookid'];  if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
+$bookid = $_SESSION['search_bookid'];    if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
 $chapter = $_SESSION['search_chapter'];  if (!empty($_POST['chapter'])) $chapter = $_POST['chapter'];
+$vstart = $_SESSION['search_vstart'];    if ($_POST['vstart']!="") $vstart = $_POST['vstart'];
 
 if ($bookid == "NULL") {
   $bookid = "";
   $chapter = "";
+  $vstart = 0;
 } else if ($chapter == "NULL") {
   $chapter = "";
+  $vstart = 0;
 }
 
 $_SESSION['search_bookid'] = $bookid;
 $_SESSION['search_chapter'] = $chapter;
+$_SESSION['search_vstart'] = $vstart;
 
 $entity = "";
 $bibleBook = "";

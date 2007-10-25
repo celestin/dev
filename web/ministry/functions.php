@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Feb-2006  File created.
  * CAM  15-Oct-2007  10187 : Modified functions to work in new interface.
+ * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -50,15 +51,14 @@ function remove_inits($text, $inits) {
   return $text;
 }
 
-function highlight_text($text, $inits, $stext, $ref='') {
+function highlight_text($text, $inits, $stext, $ref='', $bookname='') {
   $bold = true;
 
   $text = remove_inits($text, $inits);
-  $text = remove_inits($text, 'Ques.');
-  $text = remove_inits($text, 'Rem.');
-  $text = str_replace('@', '', $text);
 
   if (!empty($stext)) {
+    $text = str_replace('@', '', $text);
+
     if (($atpos = strpos(strtolower($text), strtolower($stext))) === FALSE) {
       $atpos = 0;
       $bold = false;
@@ -214,9 +214,7 @@ if (!$bibleBook->isSingleChap()) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?>
-<a href=""><? echo ($vstart==0) ? "All" : $vstart; ?></a>&nbsp;
-<?
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>, <? echo $vstart; ?>)"><? echo ($vstart==0) ? "All": $vstart; ?></a>&nbsp;<?
   }
 }
 

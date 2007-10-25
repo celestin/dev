@@ -30,6 +30,7 @@
  * CAM  18-Mar-06   211 : Changed CPP_COM to EOL_COM.
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
  * CAM  19-Sep-06   117 : Added SLOC* metrics.
+ * CAM  25-Oct-07   319 : Remove duplicate filenames during project creation.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -276,6 +277,30 @@ bool createDatabase(string serverName, string userName, string password,
       } while (getNextFiles(buffer,QUERY_MAX,i));
 
       free(qry);
+
+      // Remove any duplicates
+      std::vector<int> dups;
+      int f;
+
+      strcpy(sql, "SELECT sf2.sfid ");
+      strcat(sql, "FROM sourcefile sf1 ");
+      strcat(sql, "LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname ");
+      strcat(sql, "AND sf1.projid = sf2.projid ");
+      strcat(sql, "AND sf2.sfid > sf1.sfid ");
+      strcat(sql, "WHERE sf2.sfid IS NOT NULL ");
+
+      if (projDb.executeQuery(sql)) {
+        for (f=0; f<projDb.rows(); f++) {
+          dups.push_back(projDb.longCell(f,0));
+        }
+        projDb.clearResults();
+      }
+
+      for (f=0; f<dups.size(); f++) {
+        sprintf(sql, "DELETE FROM sourcefile WHERE sfid=%d", dups[f]);
+        projDb.executeResultlessQuery(sql);
+      }
+
 
     } else if (!strcmp(external_type, "DSP")) {
       // An external DSP filelist has been specified - parse *it*

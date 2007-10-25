@@ -14,6 +14,7 @@
  * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
  * CAM  11-Oct-07   318 : Corrected getLineSC button - theMultiLine.
+ * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -67,6 +68,7 @@ void DiffCpp::getLineCR(FILE *input, char *&currline)
           }
           else        // otherwise return NULL
           {
+            try { free(retval); } catch (...) {}
             currline = NULL;
             return;
           }
@@ -103,6 +105,7 @@ void DiffCpp::getLineCR(FILE *input, char *&currline)
               }
               else        // otherwise return NULL
               {
+                try { free(retval); } catch (...) {}
                 currline = NULL;
                 return;
               }
@@ -372,6 +375,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
   }
 
   if (b == 0) {
+    try { free(retval); } catch (...) {}
     currline = NULL;
     return;
   }

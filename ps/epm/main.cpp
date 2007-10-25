@@ -56,6 +56,7 @@
  * CAM  26-Jul-07   316 : Added VHDL.
  * CAM  26-Jul-07   316 : Version 1.15.000.
  * CAM  26-Jul-07   317 : Version 1.15.001.
+ * CAM  26-Oct-07   319 : Version 1.15.002.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"

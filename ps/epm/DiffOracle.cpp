@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  18-Mar-06   212 : File created.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffOracle.h"
@@ -63,6 +64,7 @@ void DiffOracle::getLineCR(FILE *input, char *&currline)
           }
           else        // otherwise return NULL
           {
+            try { free(retval); } catch (...) {}
             currline = NULL;
             return;
           }
@@ -99,6 +101,7 @@ void DiffOracle::getLineCR(FILE *input, char *&currline)
               }
               else        // otherwise return NULL
               {
+                try { free(retval); } catch (...) {}
                 currline = NULL;
                 return;
               }

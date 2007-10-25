@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  19-Sep-06   117 : File created.
+ * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffASP.h"
@@ -62,6 +63,7 @@ void DiffASP::getLineCR(FILE *input, char *&currline)
           }
           else        // otherwise return NULL
           {
+            try { free(retval); } catch (...) {}
             currline = NULL;
             return;
           }
@@ -97,6 +99,7 @@ void DiffASP::getLineCR(FILE *input, char *&currline)
               }
               else        // otherwise return NULL
               {
+                try { free(retval); } catch (...) {}
                 currline = NULL;
                 return;
               }
@@ -366,6 +369,7 @@ void DiffASP::getLineSC(FILE *input, char *&currline)
   }
 
   if (b == 0) {
+    try { free(retval); } catch (...) {}
     currline = NULL;
     return;
   }

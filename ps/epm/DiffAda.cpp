@@ -12,6 +12,7 @@
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
+ * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -71,6 +72,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           }
           else // otherwise return NULL
           {
+            try { free(retval); } catch (...) {}
             currline = NULL;
 //cout << "ret2::NULL " << flush;
             return;
@@ -110,6 +112,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
               }
               else        // otherwise return NULL
               {
+                try { free(retval); } catch (...) {}
                 currline = NULL;
 //cout << "ret4::NULL " << flush;
                 return;
@@ -340,6 +343,7 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
   }
 
   if (b == 0) {
+    try { free(retval); } catch (...) {}
     currline = NULL;
     return;
   }

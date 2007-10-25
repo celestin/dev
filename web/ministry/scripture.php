@@ -19,7 +19,7 @@ include_once('functions.php');
 
 $bookid = $_SESSION['search_bookid'];    if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
 $chapter = $_SESSION['search_chapter'];  if (!empty($_POST['chapter'])) $chapter = $_POST['chapter'];
-$vstart = $_SESSION['search_vstart'];    if ($_POST['vstart']!="") $vstart = $_POST['vstart'];
+$vstart = $_SESSION['search_vstart'];    if (!empty($_POST['chapter']) && ($_POST['vstart']!="")) $vstart = $_POST['vstart'];
 
 if ($bookid == "NULL") {
   $bookid = "";

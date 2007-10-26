@@ -8,6 +8,7 @@
  *
  * Who  When         Why
  * CAM  22-Oct-2007  10182 : File created.
+ * CAM  26-Oct-2007  10195 : Added Email and View Queue buttons.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "ASRC Events - Social Noticeboard";
@@ -20,7 +21,7 @@ showFlash();
 ?><table border=0 cellpadding=0 cellspacing=0 width="100%">
 <?
 
-$ssql = "SELECT id event_id, event_title, event_text, ".
+$ssql = "SELECT id event_id, event_title, event_text, email_count, ".
         "DATE_FORMAT(event_date,'%d %b %Y') event_date_fmt ".
         "FROM event ".
         "ORDER BY event_date ASC ";
@@ -36,6 +37,19 @@ while ($row = mysql_fetch_array($sql)) {
   if ($counter++ > 0) {
     $style = "style=\"padding-top:20px\"";
   }
+
+  $emailed_desc = "";
+  if ($email_count == 0) {
+    $emailed_desc = "Never emailed";
+  } else if ($email_count == 1) {
+    $emailed_desc = "Emailed Once";
+  } else if ($email_count == 2) {
+    $emailed_desc = "Emailed Twice";
+  } else {
+    $emailed_desc = "Emailed $email_count times";
+  }
+
+
 ?>
 <tr>
 <td <? echo $style; ?>><table border=0 cellpadding=0 cellspacing=0>
@@ -46,6 +60,9 @@ if ($loggedin && $member->isAdmin()) {
 ?>
     <td style="padding-left:5px"><a href="event.edit.php?event_id=<? echo $event_id; ?>"><img border=0 class="sep" src="img/edit/edit.png"></a></td>
     <td><a href="event.delete.php?event_id=<? echo $event_id; ?>"><img border=0 class="sep" src="img/edit/delete.png"></a></td>
+    <td>&nbsp;<? echo $emailed_desc; ?>&nbsp;</td>
+    <td><a href="event.email.php?event_id=<? echo $event_id; ?>"><img border=0 class="sep" src="img/edit/mail.png"></a></td>
+    <td><a href="queue.php"><img border=0 class="sep" src="img/edit/view.png"></a></td>
 <?
 }
 ?>

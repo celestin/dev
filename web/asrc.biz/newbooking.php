@@ -1,7 +1,6 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
  * Copyright (c) 2004-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -18,6 +17,7 @@
  * CAM  23-Jul-2007  10152 : Ensure Block bookings appear correctly for Courts not yet online.
  * CAM  05-Oct-2007  10155 : Ensure next Wednesday's courts cannot be booked until after 1pm this Wednesday .
  * CAM  15-Oct-2007  10155 : Moved code from here into Calendar.php - it only applies to Courts 1 & 2.
+ * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -256,7 +256,7 @@ if (empty($memberOrig)) {
       $success = mysql_query($sql);
       $success = (mysql_affected_rows() < 1);
 
-      $msg = new EmailMsg("N", $book_date, $slotTup->getStartTime(), $court, $memid);
+      $msg = new ReminderEmail("N", $book_date, $slotTup->getStartTime(), $court, $memid);
       $msg->send();
     }
   }

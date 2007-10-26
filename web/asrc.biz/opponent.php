@@ -1,8 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Opponent Search Logic
@@ -11,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  08-Jun-2004  File created.
+ * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Aberdeen Squash Racquets Club - Opponent Search";
@@ -63,7 +63,7 @@ if (!empty($opponent_id)) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-    $msg = new EmailMsg("N", $book_date, $start_time_fmt, $court, $email_mem, $email_opp, true);
+    $msg = new ReminderEmail("N", $book_date, $start_time_fmt, $court, $email_mem, $email_opp, true);
     $msg->send();
   }
 

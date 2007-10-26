@@ -8,9 +8,10 @@
  *
  * Who  When         Why
  * CAM  23-Oct-2007  10182 : File created.
+ * CAM  26-Oct-2007  10195 : Ensure only logged in Admin users can access this page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Delete a Event";
+$title = "Delete Event";
 include_once 'Main.php';
 
 $event_id = NULL;         if (!empty($_GET['event_id'])) $event_id = $_GET['event_id'];
@@ -25,7 +26,7 @@ if ($row = mysql_fetch_array($sql)) {
     $$key = stripslashes($val);
   }
 
-  $newsdesc = "$event_date_fmt - $event_title";
+  $eventdesc = "$event_date_fmt - $event_title";
 
 } else {
   redirect("events.php");
@@ -38,12 +39,16 @@ if(!empty($areyousure)){
 
 include 'tpl/top.php';
 
-if(empty($areyousure)) {
-  Msg::question("Are you sure you want to delete <b>$newsdesc</b>");
+if (!($loggedin && $member->isAdmin())) {
+  redirect("login.php");
+}
 
-  echo "<center><a href=event.delete.php?event_id=$event_id&areyousure=yes>Yes</a> | <a href=news.php>No</a>";
+if(empty($areyousure)) {
+  Msg::question("Are you sure you want to delete <b>$eventdesc</b>");
+
+  echo "<center><a href=event.delete.php?event_id=$event_id&areyousure=yes>Yes</a> | <a href=events.php>No</a>";
 } else {
-  storeFlash("Event <b>$newsdesc</b> deleted.");
+  storeFlash("Event <b>$eventdesc</b> deleted.");
   redirect("events.php");
 }
 include 'tpl/bot.php';

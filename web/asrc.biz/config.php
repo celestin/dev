@@ -14,6 +14,7 @@
  * CAM  25-Jun-2007  10133 : Added 'Test' boolean.
  * CAM  12-Aug-2007  10157 : Changed Test URL to reflect king machine.
  * CAM  14-Aug-2007  10164 : Reconfigured Database parameters for goblin.xssl.net.
+ * CAM  26-Oct-2007  10195 : Added settings for localhost.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Aberdeen Squash Racquets Club";
@@ -28,6 +29,14 @@ $cfg['Site']['Db']['Password'] = "fred71";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
   $cfg['Site']['URL']   = "http://king/asrc";
+
+  $cfg['Site']['Db']['Database'] = "asrc";
+
+  $cfg['Site']['Test'] = TRUE;
+  $cfg['Site']['Email'] = "craig@frontburner.co.uk";
+
+} else if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
+  $cfg['Site']['URL']   = "http://localhost/asrc";
 
   $cfg['Site']['Db']['Database'] = "asrc";
 

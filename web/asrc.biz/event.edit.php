@@ -8,11 +8,16 @@
  *
  * Who  When         Why
  * CAM  06-Oct-2006  10040 : File created.
+ * CAM  26-Oct-2007  10195 : Ensure only logged in Admin users can access this page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Edit Event";
 include_once 'Main.php';
 include 'tpl/top.php';
+
+if (!($loggedin && $member->isAdmin())) {
+  redirect("login.php");
+}
 
 function retry_create($error="") {
   global $event_id, $event_date, $event_title, $event_text, $retry, $form_action, $form_button;
@@ -40,7 +45,7 @@ if (!empty($event_id)) {
       $$key = stripslashes($val);
     }
   } else {
-    redirect("news.php");
+    redirect("events.php");
   }
 } else {
   // Must be after an Edit - used edited details
@@ -63,7 +68,6 @@ if (!$retry) {
 } else if (!$event_text) {
   retry_create("You must enter the text of the Event.");
 } else {
-echo "<h3>!!!!</h3>";
   storeFlash("Event <b>$event_date - $event_title</b> saved.");
 
   $event_date = Util::displayToSqlDate($event_date);

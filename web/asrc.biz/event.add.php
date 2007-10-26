@@ -8,11 +8,16 @@
  *
  * Who  When         Why
  * CAM  23-Oct-2007  10182 : File created.
+ * CAM  26-Oct-2007  10195 : Ensure only logged in Admin users can access this page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Add Event";
 include_once 'Main.php';
 include 'tpl/top.php';
+
+if (!($loggedin && $member->isAdmin())) {
+  redirect("login.php");
+}
 
 function retry_create($error="") {
   global $event_id, $event_date, $event_title, $event_text, $retry, $form_action, $form_button;

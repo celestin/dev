@@ -23,7 +23,6 @@ $ssql = "SELECT q.id, ".
         "LEFT OUTER JOIN event e ON e.id = q.item_id ".
         "ORDER BY q.id ".
         "LIMIT 10";
-
 $sql = mysql_query($ssql) or die (mysql_error());
 
 $items = array();
@@ -42,10 +41,10 @@ while ($row = mysql_fetch_array($sql)) {
   }
 }
 
-$ssql = "DELETE FROM queue WHERE id IN (" . implode(",", $items) . ")";
-$sql = mysql_query($ssql) or die (mysql_error());
-
-echo "<pre>$ssql</pre>";
+if (count($items) > 0) {
+  $ssql = "DELETE FROM queue WHERE id IN (" . implode(",", $items) . ")";
+  $sql = mysql_query($ssql) or die (mysql_error());
+}
 
 ?>
 

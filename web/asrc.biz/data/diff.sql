@@ -38,7 +38,7 @@ CREATE TABLE event (
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Events';
 
-DROP TABLE event;
+DROP TABLE queue;
 
 CREATE TABLE queue (
   id int(11) NOT NULL auto_increment,

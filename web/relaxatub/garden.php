@@ -6,7 +6,7 @@
  *
  * Garden Design Page
  *
- * $Id: activate.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Mar-2007  10109 : File added to source control.

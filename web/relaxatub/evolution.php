@@ -6,7 +6,7 @@
  *
  * Evolution page
  *
- * $Id: activate.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.

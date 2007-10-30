@@ -6,7 +6,7 @@
  *
  * Home Page
  *
- * $Id: activate.php 84 2006-05-11 18:55:49Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
@@ -15,15 +15,16 @@
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
  * CAM  16-Dec-2006  10055 : Removed Interest-free credit offer.
  * CAM  29-Mar-2007  10109 : Exposed original design until "Beach Scene" is created.
+ * CAM  30-Oct-2007  10197 : Added Christmas 2007 image.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
 include "tpl/top.php";
 ?>
-<!--
       <table border=0 cellpadding=5 valign=middle>
-      <tr><td align=center><img src="img/xmas01.jpg" width=269 height=415></td></tr>
+      <tr><td align=center><img src="img/xmas07.jpg" width=600 height=460></td></tr>
       </table>
+<!--
 
       <table border=0 cellspacing=0 cellpadding=0 valign=middle>
       <tr><td><img src="img/pro/2006oct1.jpg" width=620 height=355></td></tr>
@@ -45,6 +46,7 @@ Beachcomber Stock Hot Tub on</p>
 <p class="legal">Typical 0% APR</p></div>
 -->
 
+<!--
       <table border=0 cellpadding=5 valign=middle>
 
       <tr><td align=center><table border=0 cellpadding=0 cellspacing=0>
@@ -73,6 +75,7 @@ Beachcomber Stock Hot Tub on</p>
       </table></td></tr>
 
       </table>
+-->
 
 <?
   include "tpl/bot.php";

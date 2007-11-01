@@ -13,6 +13,7 @@
  * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
+ * CAM  01-Nov-07   320 : Correct issue with theMultiLine in getLineSC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -27,22 +28,17 @@ DiffAda::DiffAda(const char *filename1, const char *filename2) : Diff(filename1,
 void DiffAda::getLineCR(FILE *input, char *&currline)
 {
 
-//cout << "new " << flush;
-
   try
   {
     char buffer[1000];
     if (!fgets(buffer,1000,input)) {
-//cout << "1 " << flush;
       currline = NULL;     // EOF or error
       return;
     }
 
-//cout << "1 " << flush;
     char *c = buffer;
 
     char *retval = (char*) malloc(1000*sizeof(char));
-//cout << "2 " << flush;
 
     int currAvailLength = 1000;    // The current allocated size of retval
     int buffLength = strlen(buffer); // The length of the string in the buffer
@@ -55,11 +51,10 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
     if (theMultiLine)
       finishedML = false;
 
-//cout << "3 " << flush;
     while (true)
     {
-      if (*c=='\0')   // We have reached the end of the buffer but not found
-      {         // a newline
+      if (*c=='\0')   // We have reached the end of the buffer but not found a newline
+      {
         // Get the next 1000 chars from the file
         if (!fgets(buffer,1000,input))  // EOF or error
         {
@@ -67,14 +62,12 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           {
             retval[retLength] = '\0';
             currline = retval;
-//cout << "ret1::" << currline << ' ' << flush;
             return;
           }
           else // otherwise return NULL
           {
             try { free(retval); } catch (...) {}
             currline = NULL;
-//cout << "ret2::NULL " << flush;
             return;
           }
         }
@@ -82,7 +75,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
         c = buffer;
 
         buffLength = strlen(buffer); // Set the length of the buffer string
-        i = 0;             // Reset i
+        i = 0;
       }
 
       if (retLength>=currAvailLength-1)
@@ -93,7 +86,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
         retval = (char*) realloc(retval, currAvailLength*sizeof(char*));
       }
 
-//cout << "4 " << flush;
       while (!finishedML)
       {
 
@@ -107,14 +99,12 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
               {
                 retval[retLength] = '\0';
                 currline = retval;
-//cout << "ret3::" << currline << ' ' << flush;
                 return;
               }
-              else        // otherwise return NULL
+              else // return NULL
               {
                 try { free(retval); } catch (...) {}
                 currline = NULL;
-//cout << "ret4::NULL " << flush;
                 return;
               }
             }
@@ -128,7 +118,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
             {
               retval[retLength] = '\0';
               currline = retval;
-//cout << "ret5::" << currline << ' ' << flush;
               return;
             }
 
@@ -172,7 +161,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           {
             retval[retLength] = '\0';
             currline = retval;
-//cout << "sloc [" << currline << ']' << endl;
             return;
           }
           c++;
@@ -191,7 +179,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
               {
                 // At this point a comment to end of line
                 // has been found so make set *c to '\n' and break
-
                 *oldc = '\n';
                 *c = '\0';
 
@@ -214,7 +201,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           else
           {
             // Skip was true, ie we are in a string so just output the '/'
-
             retval[retLength] = *c;
             retLength++;
 
@@ -230,7 +216,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
           {
             // We are in a string so this is the start of an escape sequence
             // so output the '\' then move onto the next char
-
             retval[retLength] = *c;
             retLength++;
 
@@ -251,7 +236,6 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
         }
       }
     }
-//cout << "5 " << flush;
   }
   catch (...)
   {
@@ -268,7 +252,6 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
 
   try
   {
-
     int nc,nc2 = 0;
     bool skip = false;
     bool comskip = false;
@@ -292,7 +275,6 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
             retval[b++] = ';';
             retval[b++] = '\0';
             currline = retval;
-            //cout << '[' << currline << ']' << endl;
             return;
           }
         }
@@ -351,4 +333,3 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
   retval[b++] = '\0';
   currline = retval;
 }
-

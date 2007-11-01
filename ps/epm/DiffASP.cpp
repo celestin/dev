@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  19-Sep-06   117 : File created.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
+ * CAM  01-Nov-07   321 : Correct issue with theMultiLine in getLineSC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffASP.h"
@@ -270,10 +271,10 @@ void DiffASP::getLineSC(FILE *input, char *&currline)
 
   try
   {
-
     int nc,nc2,nc3,nc4 = 0;
     bool skip = false;
     bool comskip = false;
+    theMultiLine = false;
 
     while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
       switch (nc)

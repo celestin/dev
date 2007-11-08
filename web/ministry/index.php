@@ -11,6 +11,7 @@
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Reset the Scripture vars.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
+ * CAM  08-Nov-2007  10200 : Added results_pageno.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -27,6 +28,8 @@ $_SESSION['search_vstart'] = "";
 $_SESSION['preview_author'] = "";
 $_SESSION['preview_vol'] = "";
 $_SESSION['preview_page'] = "";
+
+$_SESSION['results_pageno'] = "";
 
 include 'tpl/newsearch.php';
 include 'tpl/bot.php';

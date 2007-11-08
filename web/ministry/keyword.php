@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Attempt to send empty using NULL.
+ * CAM  08-Nov-2007  10200 : Added results_pageno.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
@@ -42,7 +43,10 @@ $_SESSION['search_keywords'] = $keywords;
 
 ?></td></tr>
 <tr>
-  <td><input name="keywords" id="keywords" size=50 value="<? echo $keywords; ?>"></td>
+  <td>
+    <input name="keywords" id="keywords" size=50 value="<? echo $keywords; ?>">
+    <input type=hidden name="results_pageno" id="results_pageno" value="0">
+  </td>
   <td width="100%"><? echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>
 </tr>
 </table>

@@ -11,6 +11,7 @@
  * CAM  15-Oct-2007  File created.
  * CAM  15-Oct-2007  10187 : Added Book Reference search, improved tests for valid search and included all functions.
  * CAM  25-Oct-2007  10187 : Correctly return references when Scripture searching.
+ * CAM  08-Nov-2007  10200 : Added ability to Count and Limit results.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class SqlFactory {
@@ -32,12 +33,17 @@ class SqlFactory {
 
   var $whereConjunct;
 
+  var $maxRows;
+  var $pageNo;
+
   // ----- Constructors --------------------------------------------------- //
 
   function SqlFactory($tableName, $fieldList, $orderBy) {
     $this->tableName = $tableName;
     $this->fieldList = $fieldList;
     $this->orderBy = $orderBy;
+
+    $this->maxRows = 0;
 
     $this->deriveFulltextKey();
   }
@@ -57,6 +63,11 @@ class SqlFactory {
     $this->bookId = $bookid;
     $this->chapter = $chapter;
     $this->vStart = $vStart;
+  }
+
+  function setLimit($maxRows, $pageNo) {
+    $this->maxRows = $maxRows;
+    $this->pageNo = $pageNo;
   }
 
   function isSearchText() {
@@ -79,11 +90,9 @@ class SqlFactory {
     return ($this->isSearchText() || $this->isBookRef());
   }
 
-  function getSql() {
-    $this->whereConjunct = "WHERE";
-
+  function getSelect() {
     // SELECTION
-    $sql = "SELECT " . $this->fieldList . ",\n";
+    $sql = $this->fieldList . ",\n";
 
     if (!$this->isSearchText()) {
       // No Search Text - add dummy relevance
@@ -99,6 +108,20 @@ class SqlFactory {
       $sql .= "b.bookname, b.singlechap, r.ref, r.vstart, r.vend \n" ;
     } else {
       $sql .= "'' as bookname, 0 as singlechap, 0 as ref, 0 as vstart, 0 as vend \n" ;
+    }
+
+    return $sql;
+  }
+
+  function getSql($countOnly=false) {
+    $this->whereConjunct = "WHERE";
+
+    $sql = "SELECT ";
+
+    if ($countOnly) {
+      $sql .= "COUNT(*) row_count ";
+    } else {
+      $sql .= $this->getSelect();
     }
 
     // TABLES
@@ -133,9 +156,15 @@ class SqlFactory {
       $sql .= $this->whereClause("t.author IN ('" . implode("','", $this->authors) . "')");
     }
 
-    $sql .=
-      "HAVING relevance>0 \n".
-      "ORDER BY relevance DESC, " . $this->orderBy . "\n";
+    if (!$countOnly) {
+      $sql .=
+        //"HAVING relevance>0 \n".  // this is not needed as the where clause ensures a non-zero relevance //
+        "ORDER BY relevance DESC, " . $this->orderBy . "\n";
+
+      if ($this->maxRows > 0) {
+        $sql .= "LIMIT ". (($this->pageNo-1)*$this->maxRows) . "," . $this->maxRows . "\n";
+      }
+    }
 
     return $sql;
   }
@@ -306,6 +335,7 @@ class SqlFactory {
       "/foo\[\(\'([^\)]{4,})\'\)\]bar/",
       " match ($match) against ('$1')>0 ",
       $result);
+
     $result=preg_replace(
       "/foo\[\(\'([^\)]{1,3})\'\)\]bar/e",
       " '('.\$this->boolean_sql_where_short(\"$1\",\"$match\").')' ",

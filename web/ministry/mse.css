@@ -8,6 +8,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  08-Nov-2007  10200 : Added Results Pagination (page*).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -281,6 +282,43 @@ input.previewbuttonhover {
   PADDING-RIGHT:  1px;
   PADDING-TOP:    1px;
   cursor: pointer;
+}
+
+input.pagebutton {
+  BACKGROUND-COLOR: white;
+  BORDER:           #F6B33A 1px solid;
+  COLOR:            #666666;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+}
+
+input.pagebuttonhover {
+  BACKGROUND-COLOR: #F6B33A;
+  BORDER:           #F6B33A 1px solid;
+  COLOR:            white;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT:   1px;
+  PADDING-RIGHT:  1px;
+  PADDING-TOP:    1px;
+  cursor: pointer;
+}
+
+.pagesel {
+  COLOR:            #DB0954;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: bold;
+}
+
+.pageannot {
+  COLOR:            #999999;
+  FONT-SIZE: 8pt;
+  FONT-WEIGHT: normal;
 }
 
 input.button {

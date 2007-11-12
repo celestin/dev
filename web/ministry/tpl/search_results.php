@@ -10,6 +10,7 @@
  * CAM  15-Oct-2007  10187 : Pass Book reference to SqlFactory.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  08-Nov-2007  10200 : Added Results Pagination.
+ * CAM  12-Nov-2007  10201 : Fixed bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
@@ -22,7 +23,7 @@ $vstart   = $_SESSION['search_vstart'];
 
 $pageNo = $_SESSION['results_pageno'];  if (isset($_POST['results_pageno'])) $pageNo = $_POST['results_pageno'];
 
-if ($pageNo == "0") $pageNo = 1; $_SESSION['results_pageno'] = $pageNo;
+if (($pageNo == "") || ($pageNo == "0")) $pageNo = 1; $_SESSION['results_pageno'] = $pageNo;
 
 $sqlFactory = new SqlFactory("mse_text", "t.author, t.vol, t.page, t.para, t.inits, t.text", "t.author, t.vol, t.page");
 

@@ -11,11 +11,12 @@
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Always include books form.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  12-Nov-2007  10204 : Version V0.05A.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V0.04A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><b>V0.05A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

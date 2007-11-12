@@ -1,14 +1,15 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine
+ * Good Teaching Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
- * New Search Wizard
+ * Author Filter
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  12-Nov-2007  10204 : Added calls to Servant checkbox functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Servant Filter";
@@ -38,7 +39,7 @@ $_SESSION['search_author'] = $author_filter;
 
 ?></td></tr>
 <tr>
-  <td width="100%"><input type="checkbox" <? echo $checked; ?> name="author_filter[ALL]" value="ALL">All&nbsp;<?
+  <td width="100%"><input type="checkbox" <? echo $checked; ?> name="author_filter[ALL]" id="author_filter[ALL]" value="ALL" onclick="toggleServants(this);return true;">All&nbsp;<?
 
 $sql = "SELECT author, name FROM mse_author ORDER BY author";
 
@@ -54,7 +55,7 @@ while ($row = mysql_fetch_array($ssql)) {
   }
 
 ?>
-<input type="checkbox" <? echo $checked; ?> name="author_filter[<? echo $author; ?>]" value="<? echo $author; ?>"><? echo $name; ?>&nbsp;
+<input type="checkbox" <? echo $checked; ?> name="author_filter[<? echo $author; ?>]" id="author_filter[<? echo $author; ?>]" value="<? echo $author; ?>" onclick="uncheckAll();return true;"><? echo $name; ?>&nbsp;
 <?
 }
 

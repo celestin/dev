@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine
+ * Good Teaching Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Javascript - Forms functions
@@ -9,6 +9,7 @@
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
  * CAM  15-Oct-2007  10187 : Added functions.
+ * CAM  12-Nov-2007  10204 : Added Servant checkbox functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function getObjRef(ref) {
@@ -38,4 +39,20 @@ function submitBookRef(bookid, chapter, vstart, vend) {
   if (typeof(vend) != "undefined") txtVEnd.value = vend;
   
   form.submit();
+}
+
+function uncheckAll() {
+  var chkAuthorAll = getObjRef("author_filter[ALL]");
+  if (chkAuthorAll != null) {
+    chkAuthorAll.checked = false;
+  }
+}
+
+function toggleServants(chkAll) {
+  var inpAll = document.getElementsByTagName("input");
+  for (var i=0; i<inpAll.length; i++) {
+    if((inpAll[i].id.substring(0, 13) == "author_filter") && (inpAll[i] != chkAll)) {
+      inpAll[i].checked = !chkAll.checked;
+    }
+  }
 }

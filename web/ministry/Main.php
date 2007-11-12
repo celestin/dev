@@ -19,7 +19,7 @@ $cfg['Site']['Email'] = "craig@southesk.com";
 $cfg['Site']['Db']['Hostname'] = "localhost";
 $cfg['Site']['Db']['Username'] = "goodteaching";
 $cfg['Site']['Db']['Password'] = "psalm45";
-$cfg['Site']['Db']['Database'] = "goodteaching_org_-_min";
+$cfg['Site']['Db']['Database'] = "goodteaching_org_min";
 
 include_once './WEB-INF/inc.php';
 include_once 'db.php';

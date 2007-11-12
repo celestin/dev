@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine
+ * Good Teaching Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Top of the page
@@ -10,11 +10,12 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Include form.js.
+ * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('Ministry Search Engine'));
+$loggedin = (session_is_registered('memberid') && session_is_registered('Good Teaching Search Engine'));
 global $tab,$tabs;
 
 if (empty($title)) {

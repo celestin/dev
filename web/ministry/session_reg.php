@@ -1,6 +1,6 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine
+ * Good Teaching Search Engine
  * Copyright (c) 2007 frontburner.co.uk
  *
  * Session Registration
@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -17,7 +18,7 @@ $_SESSION['memberid'] = $memberid;
 $_SESSION['first_name'] = $first_name;
 $_SESSION['last_name'] = $last_name;
 $_SESSION['email_address'] = $email_address;
-$_SESSION['Ministry Search Engine'] = "Ministry Search Engine";
+$_SESSION['Good Teaching Search Engine'] = "Good Teaching Search Engine";
 
 $p = Person::getPerson($memberid);
 $_SESSION['member_person'] = $p;

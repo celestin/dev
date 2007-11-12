@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine Data Builder
+ * Good Teaching Search Engine Data Builder
  * Copyright (c) 2007 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added methods for exporting.
+ * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -66,8 +67,8 @@ namespace FrontBurner.Ministry.MseBuilder
     public bool Open()
     {
       string DataSource = "localhost";
-      string Database = " southesk_com_-_min";
-      string UserID     = "southesk";
+      string Database = "goodteaching_org_-_min";
+      string UserID     = "goodteaching";
       string Password   = "psalm45";
 
       string MyConString  = "Data Source=" + DataSource +

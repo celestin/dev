@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine Data Builder
+ * Good Teaching Search Engine Data Builder
  * Copyright (c) 2007 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added Zip method.
+ * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -115,7 +116,7 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       byte[] dataBuffer = new byte[4096];
       String sql = "";
-      DirectoryInfo root = new DirectoryInfo(@"C:\tmp\mse");
+      DirectoryInfo root = new DirectoryInfo(@"C:\tmp\mse1");
       FileInfo sqlFile;
       FileInfo zipFile;
 
@@ -127,7 +128,7 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
         {
-          sqlFile = new FileInfo(root.FullName + '\\' + vol.Author.ToLower() + '_' + vol.Vol.ToString() + ".sql");
+          sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("00")));
 
           using (StreamWriter sw = new StreamWriter(sqlFile.FullName))
           {
@@ -212,7 +213,7 @@ namespace FrontBurner.Ministry.MseBuilder
           sqlFile.Delete();
 
           script.WriteLine(String.Format("gunzip {0}", zipFile.Name));
-          script.WriteLine(String.Format("mysql -u southesk -ppsalm45 -D southesk_com_-_min < {0}", sqlFile.Name));
+          script.WriteLine(String.Format("mysql -u goodteaching -ppsalm45 -D goodteaching_org_min < {0}", sqlFile.Name));
           script.WriteLine(String.Format("rm {0}", sqlFile.Name));
           script.Flush();
 

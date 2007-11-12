@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  12-Nov-2007  10203 : Removed getObjRef as its in form.js.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Good Teaching Search Engine";
@@ -39,9 +40,3 @@ error_reporting(E_ALL);
 include_once 'task.php';
 
 ?>
-
-<script language="Javascript">
-  function getObjRef(p_ref) {
-    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
-  }
-</script>

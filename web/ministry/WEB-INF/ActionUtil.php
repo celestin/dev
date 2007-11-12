@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : More useful Submit button (note - not called on pressing Enter).
+ * CAM  12-Nov-2007  10203 : Fixed onclick bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -62,7 +63,7 @@ class ActionUtil {
       $hover = " onmouseover=\"this.className='$hoverClass';\" onmouseout=\"this.className='$className'\" ";
     }
 
-    $rval = "<input class=\"$className\" type=\"submit\" $hover onclick=\"top.location.href='$action';\" value=\"". $buttonText . "\">";
+    $rval = "<input class=\"$className\" type=\"submit\" $hover onclick=\"top.location.href='$action';return false;\" value=\"". $buttonText . "\">";
 
     return $rval;
   }

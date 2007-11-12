@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Functions
- * Copyright (c) 2006 Southesk.com
+ * Good Teaching Search Engine
+ * Copyright (c) 2006-2007 Southesk.com
  *
  * $Id$
  *
@@ -9,6 +9,7 @@
  * CAM  15-Feb-2006  File created.
  * CAM  15-Oct-2007  10187 : Modified functions to work in new interface.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
+ * CAM  12-Nov-2007  10203 : Fixed onclick bug.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -140,7 +141,7 @@ function f_show_books() {
 <?
       $prevtest = $testament;
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bookid; ?>)"><?
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bookid; ?>);return false;"><?
 echo str_replace(" ", "&nbsp;", $bookname); ?></a>
 <?
   }
@@ -164,7 +165,7 @@ function f_show_chapters() {
 */
   $sql .= "ORDER BY chapter \n";
 ?>
-<a href="javascript:void" onclick="submitBookRef('NULL');">Books</a>&nbsp;|&nbsp;<? echo $bibleBook->getBookName(); ?></td></tr><tr><td>Chapters
+<a href="javascript:void" onclick="submitBookRef('NULL');return false;">Books</a>&nbsp;|&nbsp;<? echo $bibleBook->getBookName(); ?></td></tr><tr><td>Chapters
 <?
 
   $ssql = mysql_query($sql);
@@ -172,7 +173,7 @@ function f_show_chapters() {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>)"><?
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>);return false;"><?
 echo $chapter; ?></a>
 <?
   }
@@ -201,8 +202,8 @@ function f_show_verses() {
 
   //echo "<pre>$sql</pre>";
 ?>
-<a href="javascript:void" onclick="submitBookRef('NULL');">Books</a>&nbsp;|
-<a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, 'NULL')"><? echo $bibleBook->getBookName(); ?></a>
+<a href="javascript:void" onclick="submitBookRef('NULL');return false;">Books</a>&nbsp;|
+<a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, 'NULL'); return false;"><? echo $bibleBook->getBookName(); ?></a>
 <?
 if (!$bibleBook->isSingleChap()) {
   echo "&nbsp;|&nbsp;Chapter $chapter";
@@ -214,7 +215,7 @@ if (!$bibleBook->isSingleChap()) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>, <? echo $vstart; ?>)"><? echo ($vstart==0) ? "All": $vstart; ?></a>&nbsp;<?
+?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>, <? echo $vstart; ?>); return false;"><? echo ($vstart==0) ? "All": $vstart; ?></a>&nbsp;<?
   }
 }
 

@@ -11,6 +11,7 @@
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Include form.js.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  12-Nov-2007  10203 : Removed whitespace.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -24,9 +25,7 @@ if (empty($title)) {
   $title = $cfg['Site']['Name'] . " - $title";
 }
 
-
-?>
-<head>
+?><head>
   <title><? echo $title;?></title>
   <link href="mse.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>

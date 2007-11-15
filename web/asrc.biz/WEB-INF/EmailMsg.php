@@ -72,12 +72,35 @@ class EmailMsg {
     global $cfg;
     $cr = "\r\n";
 
-    return "</table></td>".
+    $bottom = "</table></td>".
           "</tr></table>".
-        "</td></tr>$cr".
-        "<tr><td align=center>" . $cfg['Site']['Name'] . " - <a href=\"" . $cfg['Site']['URL'] . "\">" . $cfg['Site']['URL'] . "</a></td></tr>".
+        "</td></tr>$cr$cr";
+        
+    $bottom .= "<tr><td style=\"padding-top:10px;padding-bottom:10px;\"><table border=0 cellpadding=4 cellspacing=0 width=\"100%\" height=\"100%\" class=\"outerBox\">".
+    	"<tr><td class=\"eventsummary\">Upcoming Events</td>$cr";
+
+    $ssql = "SELECT id event_id, event_title, ".
+            "DATE_FORMAT(event_date,'%d %b %Y') event_date_fmt ".
+            "FROM event ".
+            "ORDER BY event_date ASC ".
+            "LIMIT 0,3 ";
+    //echo "<pre>$ssql</pre>\n";
+
+    $sql = mysql_query($ssql) or die (mysql_error());
+    while ($row = mysql_fetch_array($sql)) {
+      foreach($row AS $key => $val) {
+        $$key = stripslashes($val);
+      }
+       $bottom .= "<td><b>$event_date_fmt</b> <a href=\"" . $cfg['Site']['URL'] . "/events.php#event$event_id\">$event_title</a></td>$cr";
+    }
+    
+    $bottom .= "</tr></table></td></tr>$cr";
+
+    $bottom .= "<tr><td align=center>" . $cfg['Site']['Name'] . " - <a href=\"" . $cfg['Site']['URL'] . "\">" . $cfg['Site']['URL'] . "</a></td></tr>".
       "</table>".
     "</body></html>";
+    
+    return $bottom;
   }
 }
 ?>

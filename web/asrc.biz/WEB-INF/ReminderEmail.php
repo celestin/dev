@@ -135,7 +135,7 @@ class ReminderEmail extends EmailMsg {
                 $message .= "<tr><td class=fld>With </td><td>" . $oppPerson->toHtmlString(true) . "</td></tr>$cr";
               }
             }
-
+            
     $message .= $this->getBottom();
 
     mail($to,$subject,$message,$this->getHeaders($cc));

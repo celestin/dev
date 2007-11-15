@@ -9,6 +9,7 @@
  * Who  When         Why
  * CAM  22-Oct-2007  10182 : File created.
  * CAM  26-Oct-2007  10195 : Added Email and View Queue buttons.
+ * CAM  15-Nov-2007  10183 : Added Event anchor for linking from footer/emails.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "ASRC Events - Social Noticeboard";
@@ -52,7 +53,7 @@ while ($row = mysql_fetch_array($sql)) {
 
 ?>
 <tr>
-<td <? echo $style; ?>><table border=0 cellpadding=0 cellspacing=0>
+<td <? echo $style; ?>><a name="event<? echo $event_id; ?>"><table border=0 cellpadding=0 cellspacing=0>
   <tr>
     <td class="item_date"><? echo $event_date_fmt; ?></td><td class="item_title"><? echo $event_title; ?></td>
 <?

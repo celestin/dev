@@ -21,6 +21,7 @@
  * CAM  12-Aug-2007  10157 : Version 1.08 - Added Unconfirmed Bookings (if booked outwith Reception hours).
  * CAM  23-Oct-2007  10182 : Version 1.09 - Added Events.
  * CAM  26-Oct-2007  10195 : Version 1.10 - Added Events Emailing.
+ * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.10 - Events to footer/emails and User Privs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->
@@ -34,13 +35,34 @@
 <tr>
   <td colspan=3><table width="100%" border=0 cellpadding=0 cellspacing=0>
     <tr>
-      <td align=left valign=bottom><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 5"><img border=0 src="img/size2e.jpg"></a></td>
-      <td align=right valign=bottom><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 6"><img border=0 src="img/size2e.jpg"></a></td>
+      <td colspan=2 align=left valign=bottom><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="outerBox">
+        <tr>
+          <td class="eventsummary">Upcoming Events</td>
+<?
+    $ssql = "SELECT id event_id, event_title, ".
+            "DATE_FORMAT(event_date,'%d %b %Y') event_date_fmt ".
+            "FROM event ".
+            "ORDER BY event_date ASC ".
+            "LIMIT 0,3 ";
+    //echo "<pre>$ssql</pre>\n";
+
+    $sql = mysql_query($ssql) or die (mysql_error());
+    while ($row = mysql_fetch_array($sql)) {
+      foreach($row AS $key => $val) {
+        $$key = stripslashes($val);
+      }
+?>
+          <td><b><? echo $event_date_fmt; ?></b> <a href="events.php#event<? echo $event_id; ?>"><? echo $event_title; ?></a></td>
+<?
+    }
+?>
+        </tr>
+      </table></td>
     </tr>
   </table></td>
 </tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V1.10</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
+<tr><td class="cpyrght"><b>V1.11</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </td></tr>
 </table>
 </body>

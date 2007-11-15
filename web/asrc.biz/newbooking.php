@@ -18,6 +18,7 @@
  * CAM  05-Oct-2007  10155 : Ensure next Wednesday's courts cannot be booked until after 1pm this Wednesday .
  * CAM  15-Oct-2007  10155 : Moved code from here into Calendar.php - it only applies to Courts 1 & 2.
  * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
+ * CAM  15-Nov-2007  10156 : Check for Coach privs - extend bookable days.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -131,6 +132,8 @@ if (empty($memberOrig)) {
     $daysAhead = 8;
     if ($member->isAdmin()) {
       $daysAhead = 15;
+    } else if ($member->isCoach()) {
+      $daysAhead = 9;
     }
 
     for ($i=0; $i<$daysAhead; $i++) {

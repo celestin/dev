@@ -12,6 +12,7 @@
  * CAM  22-Jun-2007  10132 : Added 'Unknown User' if problem with SQL query.
  * CAM  22-Jun-2007  10130 : Added getClass.
  * CAM  23-Oct-2007  10182 : Added getBookingsDescription.
+ * CAM  15-Nov-2007  10156 : Added User Privs - C01:Coach and E01:EventEditor.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -73,6 +74,20 @@ class Person extends Tuple {
   * @type boolean
   */
   var $blockbooker = FALSE;
+
+  /**
+  * Coach flag
+  * @private
+  * @type boolean
+  */
+  var $coach = FALSE;
+
+  /**
+  * Event Editor flag
+  * @private
+  * @type boolean
+  */
+  var $eventeditor = FALSE;
 
   // ----- Properties ----------------------------------------------------- //
 
@@ -180,6 +195,7 @@ class Person extends Tuple {
     return $this->membertype;
   }
 
+  // ----- Permissions --------------------------------------------------- //
 
   /**
   * Return the Block Booker flag.
@@ -189,6 +205,26 @@ class Person extends Tuple {
   */
   function isBlockBooker() {
     return $this->blockbooker;
+  }
+
+  /**
+  * Return the Coach flag.
+  *
+  * @public
+  * @returns boolean
+  */
+  function isCoach() {
+    return $this->coach;
+  }
+
+  /**
+  * Return the Event Editor flag.
+  *
+  * @public
+  * @returns boolean
+  */
+  function isEventEditor() {
+    return $this->eventeditor;
   }
 
 
@@ -203,7 +239,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function Person($id='', $firstname='', $lastname='', $email='', $dob='', $admin=false, $membertype='', $blockbooker=FALSE) {
+  function Person($id='', $firstname='', $lastname='', $email='', $dob='', $admin=false, $membertype='', $blockbooker=FALSE, $privs='') {
     $this->id = $id;
     $this->desc = $firstname . " " . $lastname;
     $this->firstname = $firstname;
@@ -213,6 +249,9 @@ class Person extends Tuple {
     $this->admin = $admin;
     $this->membertype = $membertype;
     $this->blockbooker = $blockbooker;
+
+    $this->coach = (strpos(strtoupper($privs), "C01") !== FALSE);
+    $this->eventeditor = (strpos(strtoupper($privs), "E01") !== FALSE);
   }
 
   function getPerson($memberid) {
@@ -230,7 +269,7 @@ class Person extends Tuple {
       $bb = FALSE;
       if ($block_booker == 1) $bb = TRUE;
 
-      return new Person($memberid,$first_name,$last_name,$email_address,$dob,$admin,$mt,$bb);
+      return new Person($memberid,$first_name,$last_name,$email_address,$dob,$admin,$mt,$bb,$privs);
     }
 
     return new Person($memberid, "Unknown", "User", "", "", 0, "Z", 0);

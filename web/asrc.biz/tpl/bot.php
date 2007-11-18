@@ -21,7 +21,7 @@
  * CAM  12-Aug-2007  10157 : Version 1.08 - Added Unconfirmed Bookings (if booked outwith Reception hours).
  * CAM  23-Oct-2007  10182 : Version 1.09 - Added Events.
  * CAM  26-Oct-2007  10195 : Version 1.10 - Added Events Emailing.
- * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.10 - Events to footer/emails and User Privs.
+ * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.11 - Events to footer/emails and User Privs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->

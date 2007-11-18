@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  18-Nov-2007  10205 : Added sendNewQuery - will need attention for 10207.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -43,15 +44,17 @@ class EmailMsg {
   */
   var $memPerson;
 
-  function EmailMsg($emailType, $memberId) {
-    $this->emailType = $emailType;
-    $this->memPerson = Person::getPerson($memberId);
+  function EmailMsg() {
+    //$this->emailType = $emailType;
+    //$this->memPerson = Person::getPerson($memberId);
 
+    /*
     if ($emailType == 'N') {
       $this->typeDesc = "Notification";
     } else {
       $this->typeDesc = "Reminder";
     }
+  */
   }
 
   function getHeaders($cc='') {
@@ -61,7 +64,7 @@ class EmailMsg {
     $headers = "From: " . $cfg['Site']['Name'] . "<" . $cfg['Site']['Email'] . ">$cr";
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
     $headers .= "MIME-Version: 1.0$cr";
-    $headers .= "X-Priority: 1$cr";
+    //$headers .= "X-Priority: 1$cr";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1$cr";
     return $headers;
   }
@@ -71,7 +74,7 @@ class EmailMsg {
 
     $cr = "\r\n";
     return "<html><head>".
-          "<link href=" . $cfg['Site']['Name'] . "/cc.css rel=stylesheet type=text/css>".
+          "<link href=" . $cfg['Site']['URL'] . "/mse.css rel=stylesheet type=text/css>".
           "</head><body>".
           "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
             "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".
@@ -112,7 +115,6 @@ class EmailMsg {
     mail($to,$subject,$message,$this->getHeaders($cc));
   }
 
-
   function sendForgot($new_pwd) {
     global $cfg;
 
@@ -131,6 +133,31 @@ class EmailMsg {
             $cfg['Site']['Name'] . "<br>$cr".
             "</td></tr>$cr";
     $message .= $this->getHTMLEnd();
+
+    mail($to,$subject,$message,$this->getHeaders());
+  }
+
+  function AddServerVar($var){
+    return "<tr><td><b>$var</b></td><td>". $_SERVER[$var] . "</td></tr>";
+  }
+
+  function sendNewQuery($query) {
+    global $cfg;
+
+    $to = $cfg['Site']['Email'];
+    $subject = $cfg['Site']['Name'] . " Query";
+    $cr = "\r\n";
+
+    $message =
+      $this->getHTMLStart($subject) .
+      "<tr><td><b>Query</b></td><td>". str_replace("|", "<br>$cr", $query) . "</td></tr>".
+      $this->AddServerVar('REMOTE_ADDR').
+      //$this->AddServerVar('REMOTE_HOST').
+      $this->AddServerVar('REMOTE_PORT').
+      $this->AddServerVar('HTTP_USER_AGENT').
+      $this->AddServerVar('REQUEST_METHOD').
+      $this->AddServerVar('HTTP_REFERER').
+      $this->getHTMLEnd();
 
     mail($to,$subject,$message,$this->getHeaders());
   }

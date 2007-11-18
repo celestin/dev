@@ -12,6 +12,7 @@
  * CAM  15-Oct-2007  10187 : Reset the Scripture vars.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  08-Nov-2007  10200 : Added results_pageno.
+ * CAM  18-Nov-2007  10205 : Added search_previous.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -24,6 +25,8 @@ $_SESSION['search_author'] = array('ALL'=>'ALL');
 $_SESSION['search_bookid'] = "";
 $_SESSION['search_chapter'] = "";
 $_SESSION['search_vstart'] = "";
+
+$_SESSION['search_previous'] = "";
 
 $_SESSION['preview_author'] = "";
 $_SESSION['preview_vol'] = "";

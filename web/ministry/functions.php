@@ -10,6 +10,7 @@
  * CAM  15-Oct-2007  10187 : Modified functions to work in new interface.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  12-Nov-2007  10203 : Fixed onclick bug.
+ * CAM  18-Nov-2007  10205 : Added f_search_parameter_string - will be used for favourites eventually but initially to determine new search.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -374,7 +375,6 @@ function f_show_table() {
 <?
 }
 
-
 function f_show_single_section() {
   global $stext, $sql_text, $uauthor, $uvol, $ubookid, $uchapter, $uvstart, $bookname, $singlechap,
          $raut, $rvol, $rpag, $rpar;
@@ -434,4 +434,29 @@ echo "<pre>$sql</pre>";
 ?>
 </table>
 <?
+}
+
+function f_search_parameter_string(){
+  $list = array();
+  $i = 0;
+  $rval = "";
+
+  if (!empty($_SESSION['search_keywords'])) $list[$i++] = new Tuple("keywords", $_SESSION['search_keywords']);
+  if (!empty($_SESSION['search_author'])) $list[$i++] = new Tuple("author", $_SESSION['search_author']);
+  if (!empty($_SESSION['search_bookid'])) $list[$i++] = new Tuple("bookid", $_SESSION['search_bookid']);
+  if (!empty($_SESSION['search_chapter'])) $list[$i++] = new Tuple("chapter", $_SESSION['search_chapter']);
+  if (!empty($_SESSION['search_vstart'])) $list[$i++] = new Tuple("vstart", $_SESSION['search_vstart']);
+
+  for ($i=0; $i<count($list); $i++) {
+    if ($i > 0) $rval .= "|";
+    $rval .= $list[$i]->getID() . "=";
+
+    if ($list[$i]->getID() == "author") {
+      $rval .= implode(",", $list[$i]->getDesc());
+    } else {
+      $rval .= $list[$i]->getDesc();
+    }
+  }
+
+  return $rval;
 }

@@ -11,6 +11,7 @@
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  08-Nov-2007  10200 : Added Results Pagination.
  * CAM  12-Nov-2007  10201 : Fixed bug.
+ * CAM  18-Nov-2007  10205 : Reset PageNo to 1 if new query (and send email).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
@@ -21,9 +22,19 @@ $bookid   = $_SESSION['search_bookid'];
 $chapter  = $_SESSION['search_chapter'];
 $vstart   = $_SESSION['search_vstart'];
 
+$prevQuery = $_SESSION['search_previous'];
+$thisQuery = f_search_parameter_string();
+$newQuery = ($prevQuery != $thisQuery);
+$_SESSION['search_previous'] = $thisQuery;
+
+if ($newQuery) {
+ $em = new EmailMsg();
+ $em->sendNewQuery($thisQuery);
+}
+
 $pageNo = $_SESSION['results_pageno'];  if (isset($_POST['results_pageno'])) $pageNo = $_POST['results_pageno'];
 
-if (($pageNo == "") || ($pageNo == "0")) $pageNo = 1; $_SESSION['results_pageno'] = $pageNo;
+if (($pageNo == "") || ($pageNo == "0") || $newQuery) $pageNo = 1; $_SESSION['results_pageno'] = $pageNo;
 
 $sqlFactory = new SqlFactory("mse_text", "t.author, t.vol, t.page, t.para, t.inits, t.text", "t.author, t.vol, t.page");
 

@@ -6,13 +6,7 @@
 -- $Id$
 --
 -- Who  When         Why
--- CAM  18-Nov-2007  10205 : Migrated to goodteaching.org.
+-- CAM  24-Nov-2007  10208 : Added newpages field.
 -- --------------------------------------------------------
 
-DELETE FROM mse_author;
-INSERT INTO mse_author (author, name) VALUES
-('CAC', 'C. A. Coates'),
-('FER', 'F. E. Raven'),
-('JBS', 'J. B. Stoney'),
-('JND', 'J. N. Darby'),
-('JT', 'J. Taylor, Snr');
+ALTER TABLE mse_text ADD newpages VARCHAR(100) NULL;

@@ -9,6 +9,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  08-Nov-2007  10200 : Added Results Pagination (page*).
+ * CAM  24-Nov-2007  10210 : Added contNewPage.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -153,6 +154,12 @@ td.cat {
   COLOR: #333333;
   FONT-SIZE: 12pt;
   FONT-WEIGHT: bold
+}
+
+.contNewPage {
+  padding:2px;
+  background-color:#CCCCCC;
+  color:#999999;
 }
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {

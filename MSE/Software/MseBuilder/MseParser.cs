@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10189 : Catch all initials, and tidy them up appropriately.
+ * CAM  24-Nov-2007  10188 : Remember the current Article and assign to each new paragraph within.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -129,7 +130,7 @@ namespace FrontBurner.Ministry.MseBuilder
       bool scriptures = false;
       Paragraph paraPrevious = null;
       Paragraph paraCurrent = null;
-      Article art;
+      Article art = null;
 
       while ((buffer = sr.ReadLine()) != null)
       {
@@ -186,6 +187,9 @@ namespace FrontBurner.Ministry.MseBuilder
           }
           else
           {
+            // Set the Article
+            if (art != null) paraCurrent.Article = art;
+
             if (paraPrevious != null)
             {
               // If the previous paragraph was not written out, add to it
@@ -208,54 +212,5 @@ namespace FrontBurner.Ministry.MseBuilder
       }
       sr.Close();
     }
-
-    /* ParseArticles -- surplus to requirement
-    public void ParseArticles()
-    {
-      StreamReader sr = new StreamReader(_vol.GetFile().FullName);
-      string buffer;
-      int rows = 0;
-      string trbuff;
-      bool prevTitle = false;
-      int pageNo = 0;
-      Paragraph paragraph;
-      Article art;
-
-      while ((buffer = sr.ReadLine()) != null)
-      {
-        rows++;
-
-        // Parse Article Names
-        trbuff = buffer.Trim();
-
-        if (trbuff.Length > 0)
-        {
-          if ((trbuff.Substring(0, 1) == "@") && prevTitle)
-          {
-            art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows - 1))];
-            art.Scriptures = trbuff;
-            DatabaseLayer.Instance.UpdateArticle(art);
-          }
-
-          if ((trbuff.Substring(0, 1) == "{") && (trbuff.Substring(0, 2) != "{#"))
-          {
-            pageNo = Int32.Parse(trbuff.Substring(1, trbuff.IndexOf('}') - 1));
-          }
-
-          paragraph = new Paragraph(_vol, pageNo, 0, rows, null, trbuff);
-
-          prevTitle = false;
-          if (paragraph.IsTitle())
-          {
-            art = paragraph.Article;
-            BusinessLayer.Instance.Articles.Add(art);
-            DatabaseLayer.Instance.UpdateArticle(art);
-
-            prevTitle = true;
-          }
-        }
-      }
-    }
-    */
   }
 }

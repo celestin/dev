@@ -3,10 +3,11 @@
  * Copyright (c) 2007 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id $
+ * $Id$
  *
  * Who  When         Why
  * CAM  01-Oct-2007  File created.
+ * CAM  24-Nov-2007  10188 : Added instance variable for Article.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -20,6 +21,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
   public class Paragraph :  Collection<BibleRef>
   {
     protected Volume _vol;
+    protected Article _art;
     protected int _pageNo;
     protected int _para;
     protected int _localRow;
@@ -100,7 +102,15 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        return new Article(_vol, _pageNo, _para, _localRow, _text);
+        if (_art == null)
+        {
+          _art = new Article(_vol, _pageNo, _para, _localRow, _text);
+        }
+        return _art;
+      }
+      set
+      {
+        _art = value;
       }
     }
 

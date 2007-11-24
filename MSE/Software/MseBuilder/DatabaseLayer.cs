@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added methods for exporting.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  24-Nov-2007  10188 : Save Mse_Text.Article_Page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -286,9 +287,9 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         string sql =
           "INSERT INTO mse_text (" +
-            "author, vol, page, para, localrow, inits, text" +
+            "author, vol, page, para, article_page, localrow, inits, text" +
           ") VALUES (" +
-            "?author, ?vol, ?pageNo, ?para, ?localRow, ?inits, ?text" +
+            "?author, ?vol, ?pageNo, ?para, ?articlePage, ?localRow, ?inits, ?text" +
           ")";
 
         _cmdInsertText = new MySqlCommand(sql, _conn);
@@ -298,6 +299,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertText.Parameters.Add("?vol", MySqlDbType.Int32);
         _cmdInsertText.Parameters.Add("?pageNo", MySqlDbType.Int32);
         _cmdInsertText.Parameters.Add("?para", MySqlDbType.Int32);
+        _cmdInsertText.Parameters.Add("?articlePage", MySqlDbType.Int32);
         _cmdInsertText.Parameters.Add("?localRow", MySqlDbType.Int32);
         _cmdInsertText.Parameters.Add("?inits", MySqlDbType.String);
         _cmdInsertText.Parameters.Add("?text", MySqlDbType.String);
@@ -307,6 +309,7 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertText.Parameters["?vol"].Value = para.Volume.Vol;
       _cmdInsertText.Parameters["?pageNo"].Value = para.PageNo;
       _cmdInsertText.Parameters["?para"].Value = para.Para;
+      _cmdInsertText.Parameters["?articlePage"].Value = para.Article.PageNo;
       _cmdInsertText.Parameters["?localRow"].Value = para.LocalRow;
       _cmdInsertText.Parameters["?inits"].Value = para.Inits;
       _cmdInsertText.Parameters["?text"].Value = para.Text;

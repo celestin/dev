@@ -9,6 +9,7 @@
  * CAM  01-Oct-2007  File created.
  * CAM  24-Nov-2007  10188 : Added instance variable for Article.
  * CAM  24-Nov-2007  10208 : Added NewPages.
+ * CAM  24-Nov-2007  10214 : Consider '>' to be an acceptable end paragraph character (html markup).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -193,6 +194,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         case '.':
         case '!':
         case '?':
+        case '>':
           return false;
       }
       return true;

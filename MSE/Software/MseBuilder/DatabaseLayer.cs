@@ -10,6 +10,7 @@
  * CAM  22-Oct-2007  10186 : Added methods for exporting.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  24-Nov-2007  10188 : Save Mse_Text.Article_Page.
+ * CAM  24-Nov-2007  10208 : Write NewPages to mse_text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -287,9 +288,9 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         string sql =
           "INSERT INTO mse_text (" +
-            "author, vol, page, para, article_page, localrow, inits, text" +
+            "author, vol, page, para, article_page, localrow, inits, text, newpages" +
           ") VALUES (" +
-            "?author, ?vol, ?pageNo, ?para, ?articlePage, ?localRow, ?inits, ?text" +
+            "?author, ?vol, ?pageNo, ?para, ?articlePage, ?localRow, ?inits, ?text, ?newPages" +
           ")";
 
         _cmdInsertText = new MySqlCommand(sql, _conn);
@@ -303,6 +304,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertText.Parameters.Add("?localRow", MySqlDbType.Int32);
         _cmdInsertText.Parameters.Add("?inits", MySqlDbType.String);
         _cmdInsertText.Parameters.Add("?text", MySqlDbType.String);
+        _cmdInsertText.Parameters.Add("?newPages", MySqlDbType.String);
       }
 
       _cmdInsertText.Parameters["?author"].Value = para.Volume.Author;
@@ -313,6 +315,15 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertText.Parameters["?localRow"].Value = para.LocalRow;
       _cmdInsertText.Parameters["?inits"].Value = para.Inits;
       _cmdInsertText.Parameters["?text"].Value = para.Text;
+
+      if (para.NewPages.Length == 0)
+      {
+        _cmdInsertText.Parameters["?newPages"].Value = DBNull.Value;
+      }
+      else
+      {
+        _cmdInsertText.Parameters["?newPages"].Value = para.NewPages;
+      }
 
       _cmdInsertText.ExecuteNonQuery();
     }

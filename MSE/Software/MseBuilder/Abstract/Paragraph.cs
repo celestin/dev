@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  01-Oct-2007  File created.
  * CAM  24-Nov-2007  10188 : Added instance variable for Article.
+ * CAM  24-Nov-2007  10208 : Added NewPages.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,6 +28,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     protected int _localRow;
     protected string _inits;
     protected string _text;
+    protected List<int> _newPages;
 
     public string Id
     {
@@ -97,6 +99,19 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _text = value.Trim();
       }
     }
+    public string NewPages
+    {
+      get
+      {
+        string newPages = "";
+        foreach (int cp in _newPages)
+        {
+          if (newPages.Length > 0) newPages += ",";
+          newPages += cp.ToString().Trim();
+        }
+        return newPages;
+      }
+    }
 
     public Article Article
     {
@@ -123,6 +138,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       _localRow = localRow;
       _inits = inits;
       _text = text.Trim();
+
+      _newPages = new List<int>();
 
       ParseBibleRefs();
     }
@@ -156,6 +173,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       _para = previous._para;
       _localRow = previous._localRow;
       _inits = previous._inits;
+
+      _newPages.Add(previous.Text.Length);
       _text = string.Format("{0} {1}", previous.Text, this.Text);
 
       foreach (BibleRef bref in previous)

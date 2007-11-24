@@ -10,6 +10,7 @@
  * CAM  29-Jul-2007  File created.
  * CAM  08-Nov-2007  10200 : Added Results Pagination (page*).
  * CAM  24-Nov-2007  10210 : Added contNewPage.
+ * CAM  24-Nov-2007  10213 : Improve Link colours.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -176,12 +177,12 @@ A.nav:hover {
 }
 
 A,A:visited,A:active,A:link,A:visited {
-  COLOR: #88142F;
+  COLOR: #0A6CDA;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: none;
 }
 A:hover {
-  COLOR: #DE8499;
+  COLOR: #DB0954;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }

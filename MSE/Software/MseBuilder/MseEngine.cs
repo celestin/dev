@@ -162,7 +162,7 @@ namespace FrontBurner.Ministry.MseBuilder
                   sql += "," + DatabaseLayer.SqlText(newPages, true);
                 }
 
-                sql = colSql + ") VALUES (" + sql + ")";
+                sql = colSql + ") VALUES (" + sql + ");";
                 sw.WriteLine(sql);
               }
             }

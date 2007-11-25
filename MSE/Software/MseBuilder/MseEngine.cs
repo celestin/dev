@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added Zip method.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  25-Nov-2007  10208 : Added newpages to SQL that is written to the loader file.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -64,37 +65,9 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public void Build(Volume vol)
     {
-      //MessageBox.Show(String.Format("Author {0} Vol {1}", vol.Author, vol.Vol));
-
       DatabaseLayer.Instance.DeleteVolume(vol);
       MseParser parser = new MseParser(vol);
-
-      //parser.ParseArticles();
       parser.ParseText();
-
-      /****
-       * // TODO [#10188] - add this
-       *   // Update Article pages and output Inserts for Articles
-        while ($row2 = mysql_fetch_array($sql2)) {
-          foreach($row2 AS $key2 => $val2) {
-            $$key2 = stripslashes($val2);
-          }
-          $ssql = "UPDATE mse_text ".
-                  "SET article_page = $page ".
-                  "WHERE author = '$author' ".
-                  "AND vol = $vol ".
-                  "AND localrow >= $localrow ".
-                  "AND article_page = 0";
-          $sql3 = mysql_query($ssql);
-
-          $insertsql = "INSERT INTO mse_article (author,vol,page,article,scriptures) VALUES ".
-          "('$author',$vol,$page,'".f_sqlstring($article)."','".f_sqlstring($scriptures)."');\n";
-
-          fwrite($uf, $insertsql);
-       *
-       *
-       */
-
     }
 
     public void Build()
@@ -115,7 +88,8 @@ namespace FrontBurner.Ministry.MseBuilder
     public void Zip()
     {
       byte[] dataBuffer = new byte[4096];
-      String sql = "";
+      string sql = "";
+      string colSql="";
       DirectoryInfo root = new DirectoryInfo(@"C:\tmp\mse1");
       FileInfo sqlFile;
       FileInfo zipFile;
@@ -124,14 +98,16 @@ namespace FrontBurner.Ministry.MseBuilder
       root.Create();
       _current = 0;
 
-      using (StreamWriter script = new StreamWriter(root.FullName + "\\aaa"))
+      using (StreamWriter script = new StreamWriter(root.FullName + @"\aaa"))
       {
         foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
         {
-          sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("00")));
+          sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("000")));
 
           using (StreamWriter sw = new StreamWriter(sqlFile.FullName))
           {
+            sw.NewLine = "\n";
+
             sw.WriteLine(String.Format("-- {0} {1}\n", vol.Author, vol.Vol));
 
             sw.WriteLine("\n-- REMOVE EXISTING VOLUME\n");
@@ -161,26 +137,32 @@ namespace FrontBurner.Ministry.MseBuilder
 
             foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
             {
-              string inits = dr["inits"].ToString();
               string text = dr["text"].ToString();
-
-              if (inits.Length == 0)
-              {
-                inits = "NULL";
-              }
-              else
-              {
-                inits = DatabaseLayer.SqlText(inits, true);
-              }
+              string inits = dr["inits"].ToString();
+              string newPages = dr["newpages"].ToString();
 
               if (text.Length > 0)
               {
+                // Non-null columns
+                colSql = "INSERT INTO mse_text (author,vol,page,para,article_page,text";
                 sql = String.Format(
-                  "INSERT INTO mse_text (author,vol,page,para,article_page,inits,text) VALUES " +
-                  "('{0}',{1},{2},{3},{4},{5},'{6}');",
+                  "'{0}',{1},{2},{3},{4},'{5}'",
                   vol.Author, vol.Vol,
-                  dr["page"], dr["para"], dr["article_page"], inits, DatabaseLayer.SqlText(text));
+                  dr["page"], dr["para"], dr["article_page"], DatabaseLayer.SqlText(text));
 
+                // Add each nullable column
+                if (inits.Length > 0)
+                {
+                  colSql += ",inits";
+                  sql += "," + DatabaseLayer.SqlText(inits, true);
+                }
+                if (newPages.Length > 0)
+                {
+                  colSql += ",newpages";
+                  sql += "," + DatabaseLayer.SqlText(newPages, true);
+                }
+
+                sql = colSql + ") VALUES (" + sql + ")";
                 sw.WriteLine(sql);
               }
             }

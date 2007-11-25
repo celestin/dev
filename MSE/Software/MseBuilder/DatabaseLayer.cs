@@ -11,6 +11,7 @@
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  24-Nov-2007  10188 : Save Mse_Text.Article_Page.
  * CAM  24-Nov-2007  10208 : Write NewPages to mse_text.
+ * CAM  25-Nov-2007  10208 : Added newpages to sql extraction in GetText.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -233,7 +234,7 @@ namespace FrontBurner.Ministry.MseBuilder
       if (_cmdText == null)
       {
         string sql =
-          "SELECT page,para,article_page,text,inits " +
+          "SELECT page,para,article_page,text,inits,newpages " +
           "FROM mse_text " +
           "WHERE author = ?author " +
           "AND vol = ?vol " +

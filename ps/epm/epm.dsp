@@ -285,6 +285,10 @@ SOURCE=.\lexer.j.l
 # End Source File
 # Begin Source File
 
+SOURCE=.\lexer.php.l
+# End Source File
+# Begin Source File
+
 SOURCE=.\lexer.pl.l
 # End Source File
 # Begin Source File

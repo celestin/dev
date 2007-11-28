@@ -3,12 +3,13 @@
  * Copyright (c) 2006-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * ASP Parser
+ * PHP Parser
  *
  * $Id$
  *
  * Who  When       Why
  * CAM  04-Nov-06   301 : File created.
+ * CAM  28-Nov-07   323 : Rewrote parser with many improvements.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -22,7 +23,7 @@ IS                      (u|U|l|L)*
 
 #include <stdio.h>
 #include <string.h>
-#include "y.asp.h"
+#include "y.php.h"
 
 #ifdef WIN32
 
@@ -55,239 +56,250 @@ int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
 #define NOTE_SLOC() sloc.insert(php_lineno)
+#define NOTE_SLOC_NAT() NOTE_SLOC(); slnat.insert(php_lineno)
 
 void lexclear();
 void store_operand(char* txt);
 void store_operator(int op, int typ);
-void string_literal();
-void eat_eol();
 
 %}
 
 %p 4096
 %x HTML_COM
-%x SLOC_TAG
 %x SLOC_NAT
+%x SLOC_NAT_ECOM
+%x SLOC_NAT_MCOM
+%x SLOC_NAT_STRS
+%x SLOC_NAT_STRD
 %x SLOC_SCR
-%x ASP_TAG
-%x ASP_END
+%x SLOC_SCR_ECOM
 %x STR_LIT
 
 %%
 
-^[ \t\v\f]*             {;}
+^[ \t\v\f]*                       {;}
 
-"<!--"                  {com_loc++; c_comments++; BEGIN HTML_COM;}
-<HTML_COM>"-->"         {BEGIN 0;}
-<HTML_COM>"\n"          {com_loc++; php_lineno++;}
-<HTML_COM>.             {;}
+"<!--"                            {com_loc++; c_comments++; BEGIN HTML_COM;}
+<HTML_COM>"-->"                   {BEGIN 0;}
+<HTML_COM>"\n"                    {com_loc++; php_lineno++;}
+<HTML_COM>.                       {;}
 
-"<?"                    {NOTE_SLOC(); slnat.insert(php_lineno); BEGIN SLOC_TAG; }
-<SLOC_TAG>"?>"          {NOTE_SLOC(); slnat.insert(php_lineno); BEGIN 0;}
-<SLOC_TAG>"\n"          {NOTE_SLOC(); slnat.insert(php_lineno); php_lineno++;}
-<SLOC_TAG>.             {NOTE_SLOC(); slnat.insert(php_lineno); }
+"<?"                              |
+"<?php"                           {NOTE_SLOC_NAT(); BEGIN SLOC_NAT; }
+<SLOC_NAT>"?>"                    {NOTE_SLOC_NAT(); BEGIN 0;}
+<SLOC_NAT>"\n"                    {NOTE_SLOC_NAT(); php_lineno++;}
+<SLOC_NAT>\"                      {BEGIN SLOC_NAT_STRD;}
+<SLOC_NAT>"'"                     {BEGIN SLOC_NAT_STRS;}
+<SLOC_NAT>"/*"                    {BEGIN SLOC_NAT_MCOM;}
+<SLOC_NAT>"//"                    {BEGIN SLOC_NAT_ECOM;}
+<SLOC_NAT>";"                     {nsemi++;}
 
-"<script"               {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN SLOC_SCR; }
-<SLOC_SCR>"/>"          |
-<SLOC_SCR>"</script>"   {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN 0;}
-<SLOC_SCR>^[ \t\v\f]*"//"          {com_loc++; cpp_comments++; php_lineno++; eat_eol();}
-<SLOC_SCR>"\n"          {NOTE_SLOC(); slscr.insert(php_lineno); php_lineno++;}
-<SLOC_SCR>.             {NOTE_SLOC(); slscr.insert(php_lineno); }
+<SLOC_NAT>"__CLASS__"             {store_operator(PHP__CLASS,1);}
+<SLOC_NAT>"__FILE__"              {store_operator(PHP__FILE,1);}
+<SLOC_NAT>"__FUNCTION__"          {store_operator(PHP__FUNCTION,1);}
+<SLOC_NAT>"__LINE__"              {store_operator(PHP__LINE,1);}
+<SLOC_NAT>"__METHOD__"            {store_operator(PHP__METHOD,1);}
+<SLOC_NAT>"abstract"              {store_operator(PHP_ABSTRACT,1);}
+<SLOC_NAT>"and"                   {store_operator(PHP_AND,1);}
+<SLOC_NAT>"array"                 {store_operator(PHP_ARRAY,1);}
+<SLOC_NAT>"as"                    {store_operator(PHP_AS,1);}
+<SLOC_NAT>"break"                 {store_operator(PHP_BREAK,1);}
+<SLOC_NAT>"case"                  {store_operator(PHP_CASE,1);}
+<SLOC_NAT>"catch"                 {store_operator(PHP_CATCH,1);}
+<SLOC_NAT>"cfunction"             {store_operator(PHP_CFUNCTION,1);}
+<SLOC_NAT>"class"                 {store_operator(PHP_CLASS,1);}
+<SLOC_NAT>"clone"                 {store_operator(PHP_CLONE,1);}
+<SLOC_NAT>"const"                 {store_operator(PHP_CONST,1);}
+<SLOC_NAT>"continue"              {store_operator(PHP_CONTINUE,1);}
+<SLOC_NAT>"declare"               {store_operator(PHP_DECLARE,1);}
+<SLOC_NAT>"default"               {store_operator(PHP_DEFAULT,1);}
+<SLOC_NAT>"die"                   {store_operator(PHP_DIE,1);}
+<SLOC_NAT>"do"                    {store_operator(PHP_DO,1);}
+<SLOC_NAT>"echo"                  {store_operator(PHP_ECHO,1);}
+<SLOC_NAT>"else"                  {store_operator(PHP_ELSE,1);}
+<SLOC_NAT>"elseif"                {store_operator(PHP_ELSEIF,1);}
+<SLOC_NAT>"empty"                 {store_operator(PHP_EMPTY,1);}
+<SLOC_NAT>"enddeclare"            {store_operator(PHP_ENDDECLARE,1);}
+<SLOC_NAT>"endfor"                {store_operator(PHP_ENDFOR,1);}
+<SLOC_NAT>"endforeach"            {store_operator(PHP_ENDFOREACH,1);}
+<SLOC_NAT>"endif"                 {store_operator(PHP_ENDIF,1);}
+<SLOC_NAT>"endswitch"             {store_operator(PHP_ENDSWITCH,1);}
+<SLOC_NAT>"endwhile"              {store_operator(PHP_ENDWHILE,1);}
+<SLOC_NAT>"eval"                  {store_operator(PHP_EVAL,1);}
+<SLOC_NAT>"exception"             {store_operator(PHP_EXCEPTION,1);}
+<SLOC_NAT>"exit"                  {store_operator(PHP_EXIT,1);}
+<SLOC_NAT>"extends"               {store_operator(PHP_EXTENDS,1);}
+<SLOC_NAT>"final"                 {store_operator(PHP_FINAL,1);}
+<SLOC_NAT>"for"                   {store_operator(PHP_FOR,1);}
+<SLOC_NAT>"foreach"               {store_operator(PHP_FOREACH,1);}
+<SLOC_NAT>"function"              {store_operator(PHP_FUNCTION,1);}
+<SLOC_NAT>"global"                {store_operator(PHP_GLOBAL,1);}
+<SLOC_NAT>"if"                    {store_operator(PHP_IF,1);}
+<SLOC_NAT>"implements"            {store_operator(PHP_IMPLEMENTS,1);}
+<SLOC_NAT>"include"               {store_operator(PHP_INCLUDE,1);}
+<SLOC_NAT>"include_once"          {store_operator(PHP_INCLUDE_ONCE,1);}
+<SLOC_NAT>"interface"             {store_operator(PHP_INTERFACE,1);}
+<SLOC_NAT>"isset"                 {store_operator(PHP_ISSET,1);}
+<SLOC_NAT>"list"                  {store_operator(PHP_LIST,1);}
+<SLOC_NAT>"new"                   {store_operator(PHP_NEW,1);}
+<SLOC_NAT>"old_function"          {store_operator(PHP_OLD_FUNCTION,1);}
+<SLOC_NAT>"or"                    {store_operator(PHP_OR,1);}
+<SLOC_NAT>"php_user_filter"       {store_operator(PHP_PHP_USER_FILTER,1);}
+<SLOC_NAT>"print"                 {store_operator(PHP_PRINT,1);}
+<SLOC_NAT>"private"               {store_operator(PHP_PRIVATE,1);}
+<SLOC_NAT>"protected"             {store_operator(PHP_PROTECTED,1);}
+<SLOC_NAT>"public"                {store_operator(PHP_PUBLIC,1);}
+<SLOC_NAT>"require"               {store_operator(PHP_REQUIRE,1);}
+<SLOC_NAT>"require_once"          {store_operator(PHP_REQUIRE_ONCE,1);}
+<SLOC_NAT>"return"                {store_operator(PHP_RETURN,1);}
+<SLOC_NAT>"static"                {store_operator(PHP_STATIC,1);}
+<SLOC_NAT>"switch"                {store_operator(PHP_SWITCH,1);}
+<SLOC_NAT>"throw"                 {store_operator(PHP_THROW,1);}
+<SLOC_NAT>"try"                   {store_operator(PHP_TRY,1);}
+<SLOC_NAT>"unset"                 {store_operator(PHP_UNSET,1);}
+<SLOC_NAT>"use"                   {store_operator(PHP_USE,1);}
+<SLOC_NAT>"var"                   {store_operator(PHP_VAR,1);}
+<SLOC_NAT>"while"                 {store_operator(PHP_WHILE,1);}
+<SLOC_NAT>"xor"                   {store_operator(PHP_XOR,1);}
+<SLOC_NAT>{L}({L}|{D})*           |
+<SLOC_NAT>0[xX]{H}+{IS}?          |
+<SLOC_NAT>0{D}+{IS}?              |
+<SLOC_NAT>{D}+{IS}?               |
+<SLOC_NAT>'(\\.|[^\\'])+'         |
+<SLOC_NAT>{D}+{E}{FS}?            |
+<SLOC_NAT>{D}*"."{D}+({E})?{FS}?  |
+<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); store_operand(strdup(yytext));}
+<SLOC_NAT>.                       {NOTE_SLOC_NAT();}
 
-\"                      {NOTE_SLOC(); string_literal();}
+<SLOC_NAT_STRD>"\n"               {php_lineno++; /* Double-quoted string literals */}
+<SLOC_NAT_STRD>\"                 {BEGIN SLOC_NAT;}
+<SLOC_NAT_STRD>.                  {NOTE_SLOC_NAT();}
 
-"ACTION"                {store_operator(ACTION,3);}
-"ADDRESS"               {store_operator(ADDRESS,3);}
-"ALIGN"                 {store_operator(ALIGN,3);}
-"ALINK"                 {store_operator(ALINK,3);}
-"ALT"                   {store_operator(ALT,3);}
-"APPLET"                {store_operator(APPLET,3);}
-"AREA"                  {store_operator(AREA,3);}
-"A"                     {store_operator(HTMA,3);}
-"BACKGROUND"            {store_operator(BACKGROUND,3);}
-"BASE"                  {store_operator(BASE,3);}
-"BGCOLOR"               {store_operator(BGCOLOR,3);}
-"BIG"                   {store_operator(BIG,3);}
-"BLINK"                 {store_operator(BLINK,3);}
-"BLOCKQUOTE"            {store_operator(BLOCKQUOTE,3);}
-"BODY"                  {store_operator(BODY,3);}
-"BORDERCOLOR"           {store_operator(BORDERCOLOR,3);}
-"BORDER"                {store_operator(BORDER,3);}
-"BOTTOMMARGIN"          {store_operator(BOTTOMMARGIN,3);}
-"BR"                    {store_operator(BR,3);}
-"BUTTON"                {store_operator(BUTTON,3);}
-"B"                     {store_operator(HTMB,3);}
-"CAPTION"               {store_operator(CAPTION,3);}
-"CELLPADDING"           {store_operator(CELLPADDING,3);}
-"CELLSPACING"           {store_operator(CELLSPACING,3);}
-"CENTER"                {store_operator(CENTER,3);}
-"CHECKED"               {store_operator(CHECKED,3);}
-"CLASS"                 {store_operator(CLASS,3);}
-"CLASSID"               {store_operator(CLASSID,3);}
-"CLEAR"                 {store_operator(CLEAR,3);}
-"CODEBASE"              {store_operator(CODEBASE,3);}
-"CODETYPE"              {store_operator(CODETYPE,3);}
-"CODE"                  {store_operator(CODE,3);}
-"COLGROUP"              {store_operator(COLGROUP,3);}
-"COLOR"                 {store_operator(COLOR,3);}
-"COLS"                  {store_operator(COLS,3);}
-"COLSPAN"               {store_operator(COLSPAN,3);}
-"COL"                   {store_operator(COL,3);}
-"COMPACT"               {store_operator(COMPACT,3);}
-"CONTENT"               {store_operator(CONTENT,3);}
-"COORDS"                {store_operator(COORDS,3);}
-"DATA"                  {store_operator(DATA,3);}
-"DD"                    {store_operator(DD,3);}
-"DEL"                   {store_operator(DEL,3);}
-"DISABLED"              {store_operator(DISABLED,3);}
-"DIV"                   {store_operator(DIV,3);}
-"DL"                    {store_operator(DL,3);}
-"DT"                    {store_operator(DT,3);}
-"EMBED"                 {store_operator(EMBED,3);}
-"EM"                    {store_operator(EM,3);}
-"EVENT"                 {store_operator(EVENT,3);}
-"FACE"                  {store_operator(FACE,3);}
-"FONT"                  {store_operator(FONT,3);}
-"FORM"                  {store_operator(FORM,3);}
-"FRAMEBORDER"           {store_operator(FRAMEBORDER,3);}
-"FRAMESET"              {store_operator(FRAMESET,3);}
-"FRAMESPACING"          {store_operator(FRAMESPACING,3);}
-"FRAME"                 {store_operator(FRAME,3);}
-"H1"                    {store_operator(H1,3);}
-"H2"                    {store_operator(H2,3);}
-"H3"                    {store_operator(H3,3);}
-"H4"                    {store_operator(H4,3);}
-"H5"                    {store_operator(H5,3);}
-"H6"                    {store_operator(H6,3);}
-"HEAD"                  {store_operator(HEAD,3);}
-"HEIGHT"                {store_operator(HEIGHT,3);}
-"HIDDEN"                {store_operator(HIDDEN,3);}
-"HR"                    {store_operator(HR,3);}
-"HREF"                  {store_operator(HREF,3);}
-"HSPACE"                {store_operator(HSPACE,3);}
-"HTML"                  {store_operator(HTML,3);}
-"HTTP-EQUIV"            {store_operator(HTTPEQUIV,3);}
-"ID"                    {store_operator(ID,3);}
-"IFRAME"                {store_operator(IFRAME,3);}
-"ILAYER"                {store_operator(ILAYER,3);}
-"IMG"                   {store_operator(IMG,3);}
-"INPUT"                 {store_operator(INPUT,3);}
-"LABEL"                 {store_operator(LABEL,3);}
-"LANGUAGE"              {store_operator(LANGUAGE,3);}
-"LANG"                  {store_operator(LANG,3);}
-"LAYER"                 {store_operator(LAYER,3);}
-"LEFTMARGIN"            {store_operator(LEFTMARGIN,3);}
-"LEGEND"                {store_operator(LEGEND,3);}
-"LI"                    {store_operator(LI,3);}
-"LINK"                  {store_operator(LINK,3);}
-"LOOP"                  {store_operator(LOOP,3);}
-"MAP"                   {store_operator(MAP,3);}
-"MENU"                  {store_operator(MENU,3);}
-"META"                  {store_operator(META,3);}
-"MULTICOL"              {store_operator(MULTICOL,3);}
-"MULTIPLE"              {store_operator(MULTIPLE,3);}
-"NAME"                  {store_operator(NAME,3);}
-"NOBR"                  {store_operator(NOBR,3);}
-"NOEMBED"               {store_operator(NOEMBED,3);}
-"NOFRAMES"              {store_operator(NOFRAMES,3);}
-"NOHREF"                {store_operator(NOHREF,3);}
-"NOLAYER"               {store_operator(NOLAYER,3);}
-"NORESIZE"              {store_operator(NORESIZE,3);}
-"NOSCRIPT"              {store_operator(NOSCRIPT,3);}
-"NOSHADE"               {store_operator(NOSHADE,3);}
-"NOWRAP"                {store_operator(NOWRAP,3);}
-"OBJECT"                {store_operator(OBJECT,3);}
-"OL"                    {store_operator(OL,3);}
-"OPTGROUP"              {store_operator(OPTGROUP,3);}
-"OPTION"                {store_operator(OPTION,3);}
-"PALETTE"               {store_operator(PALETTE,3);}
-"PARAM"                 {store_operator(PARAM,3);}
-"PLAINTEXT"             {store_operator(PLAINTEXT,3);}
-"PRE"                   {store_operator(PRE,3);}
-"PUBLIC"                {store_operator(PUBLIC,3);}
-"P"                     {store_operator(HTMP,3);}
-"READONLY"              {store_operator(READONLY,3);}
-"REL"                   {store_operator(REL,3);}
-"REV"                   {store_operator(REV,3);}
-"RIGHTMARGIN"           {store_operator(RIGHTMARGIN,3);}
-"ROWSPAN"               {store_operator(ROWSPAN,3);}
-"ROWS"                  {store_operator(ROWS,3);}
-"SELECTED"              {store_operator(SELECTED,3);}
-"SELECT"                {store_operator(SELECT,3);}
-"SERVER"                {store_operator(SERVER,3);}
-"SHAPE"                 {store_operator(SHAPE,3);}
-"SIZE"                  {store_operator(SIZE,3);}
-"SMALL"                 {store_operator(SMALL,3);}
-"SOUND"                 {store_operator(SOUND,3);}
-"SPACER"                {store_operator(SPACER,3);}
-"SPAN"                  {store_operator(SPAN,3);}
-"SRC"                   {store_operator(SRC,3);}
-"START"                 {store_operator(START,3);}
-"STRIKE"                {store_operator(STRIKE,3);}
-"STRONG"                {store_operator(STRONG,3);}
-"STYLE"                 {store_operator(STYLE,3);}
-"SUB"                   {store_operator(SUB,3);}
-"SUP"                   {store_operator(SUP,3);}
-"TABINDEX"              {store_operator(TABINDEX,3);}
-"TABLE"                 {store_operator(TABLE,3);}
-"TARGET"                {store_operator(TARGET,3);}
-"TBODY"                 {store_operator(TBODY,3);}
-"TD"                    {store_operator(TD,3);}
-"TEXTAREA"              {store_operator(TEXTAREA,3);}
-"TEXT"                  {store_operator(TEXT,3);}
-"TFOOT"                 {store_operator(TFOOT,3);}
-"THEAD"                 {store_operator(THEAD,3);}
-"TH"                    {store_operator(TH,3);}
-"TITLE"                 {store_operator(TITLE,3);}
-"TOPMARGIN"             {store_operator(TOPMARGIN,3);}
-"TRUESPEED"             {store_operator(TRUESPEED,3);}
-"TR"                    {store_operator(TR,3);}
-"TT"                    {store_operator(TT,3);}
-"TYPE"                  {store_operator(TYPE,3);}
-"UL"                    {store_operator(UL,3);}
-"URL"                   {store_operator(URL,3);}
-"URN"                   {store_operator(URN,3);}
-"USEMAP"                {store_operator(USEMAP,3);}
-"VALIGN"                {store_operator(VALIGN,3);}
-"VALUE"                 {store_operator(VALUE,3);}
-"VAR"                   {store_operator(VAR,3);}
-"VLINK"                 {store_operator(VLINK,3);}
-"VOLUME"                {store_operator(VOLUME,3);}
-"VRML"                  {store_operator(VRML,3);}
-"VSPACE"                {store_operator(VSPACE,3);}
-"WIDTH"                 {store_operator(WIDTH,3);}
-"WRAP"                  {store_operator(WRAP,3);}
+<SLOC_NAT_STRS>"\n"               {php_lineno++; /* Single-quoted string literals */}
+<SLOC_NAT_STRS>"'"                {BEGIN SLOC_NAT;}
+<SLOC_NAT_STRS>.                  {NOTE_SLOC_NAT();}
 
-{L}({L}|{D})*           |
-0[xX]{H}+{IS}?          |
-0{D}+{IS}?              |
-{D}+{IS}?               |
-'(\\.|[^\\'])+'         |
-{D}+{E}{FS}?            |
-{D}*"."{D}+({E})?{FS}?  |
-{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC(); store_operand(strdup(yytext));}
+<SLOC_NAT_MCOM>"\n"               {php_lineno++; com_loc++; /* Multi Line Comments within Native PHP */}
+<SLOC_NAT_MCOM>.                  {;}
+<SLOC_NAT_MCOM>"*/"               {c_comments++; com_loc++; BEGIN SLOC_NAT;}
 
-[ \t\v\f]               {;}
-"\n"                    {php_lineno++;}
-.                       { /* ignore bad characters */ }
+<SLOC_NAT_ECOM>.                  {/* To-end-of-line Comments within Native PHP */}
+<SLOC_NAT_ECOM>"\n"               {php_lineno++; com_loc++; cpp_comments++; BEGIN SLOC_NAT;}
+
+"<script"                         {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN SLOC_SCR; /* Script tags */}
+<SLOC_SCR>"/>"                    |
+<SLOC_SCR>"</script>"             {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN 0;}
+<SLOC_SCR>"//"                    {BEGIN SLOC_SCR_ECOM;}
+<SLOC_SCR>"\n"                    {NOTE_SLOC(); slscr.insert(php_lineno); php_lineno++;}
+<SLOC_SCR>.                       {NOTE_SLOC(); slscr.insert(php_lineno); }
+
+<SLOC_SCR_ECOM>.                  {/* To-end-of-line Comments within Script */}
+<SLOC_SCR_ECOM>"\n"               {php_lineno++; com_loc++; cpp_comments++; BEGIN SLOC_SCR;}
+
+"ALIGN"                           {store_operator(HTM_ALIGN,3);}
+"ALT"                             {store_operator(HTM_ALT,3);}
+"APPLET"                          {store_operator(HTM_APPLET,3);}
+"AREA"                            {store_operator(HTM_AREA,3);}
+"A"                               {store_operator(HTM_A,3);}
+"BACKGROUND"                      {store_operator(HTM_BACKGROUND,3);}
+"BGCOLOR"                         {store_operator(HTM_BGCOLOR,3);}
+"BLOCKQUOTE"                      {store_operator(HTM_BLOCKQUOTE,3);}
+"BODY"                            {store_operator(HTM_BODY,3);}
+"BORDERCOLOR"                     {store_operator(HTM_BORDERCOLOR,3);}
+"BORDER"                          {store_operator(HTM_BORDER,3);}
+"BR"                              {store_operator(HTM_BR,3);}
+"BUTTON"                          {store_operator(HTM_BUTTON,3);}
+"B"                               {store_operator(HTM_B,3);}
+"CENTER"                          {store_operator(HTM_CENTER,3);}
+"CHECKED"                         {store_operator(HTM_CHECKED,3);}
+"CLASS"                           {store_operator(HTM_CLASS,3);}
+"CODE"                            {store_operator(HTM_CODE,3);}
+"COLOR"                           {store_operator(HTM_COLOR,3);}
+"COLS"                            {store_operator(HTM_COLS,3);}
+"COLSPAN"                         {store_operator(HTM_COLSPAN,3);}
+"DIV"                             {store_operator(HTM_DIV,3);}
+"EMBED"                           {store_operator(HTM_EMBED,3);}
+"FACE"                            {store_operator(HTM_FACE,3);}
+"FONT"                            {store_operator(HTM_FONT,3);}
+"FORM"                            {store_operator(HTM_FORM,3);}
+"FRAMEBORDER"                     {store_operator(HTM_FRAMEBORDER,3);}
+"FRAMESET"                        {store_operator(HTM_FRAMESET,3);}
+"FRAMESPACING"                    {store_operator(HTM_FRAMESPACING,3);}
+"FRAME"                           {store_operator(HTM_FRAME,3);}
+"H1"                              {store_operator(HTM_H1,3);}
+"H2"                              {store_operator(HTM_H2,3);}
+"H3"                              {store_operator(HTM_H3,3);}
+"H4"                              {store_operator(HTM_H4,3);}
+"H5"                              {store_operator(HTM_H5,3);}
+"H6"                              {store_operator(HTM_H6,3);}
+"HEAD"                            {store_operator(HTM_HEAD,3);}
+"HEIGHT"                          {store_operator(HTM_HEIGHT,3);}
+"HIDDEN"                          {store_operator(HTM_HIDDEN,3);}
+"HR"                              {store_operator(HTM_HR,3);}
+"HREF"                            {store_operator(HTM_HREF,3);}
+"HTML"                            {store_operator(HTM_HTML,3);}
+"HTTP-EQUIV"                      {store_operator(HTM_HTTPEQUIV,3);}
+"ID"                              {store_operator(HTM_ID,3);}
+"IFRAME"                          {store_operator(HTM_IFRAME,3);}
+"ILAYER"                          {store_operator(HTM_ILAYER,3);}
+"IMG"                             {store_operator(HTM_IMG,3);}
+"INPUT"                           {store_operator(HTM_INPUT,3);}
+"LABEL"                           {store_operator(HTM_LABEL,3);}
+"LANGUAGE"                        {store_operator(HTM_LANGUAGE,3);}
+"LANG"                            {store_operator(HTM_LANG,3);}
+"LAYER"                           {store_operator(HTM_LAYER,3);}
+"LEFTMARGIN"                      {store_operator(HTM_LEFTMARGIN,3);}
+"LI"                              {store_operator(HTM_LI,3);}
+"LINK"                            {store_operator(HTM_LINK,3);}
+"MAP"                             {store_operator(HTM_MAP,3);}
+"MARGINHEIGHT"                    {store_operator(HTM_MARGINHEIGHT,3);}
+"MARGINWIDTH"                     {store_operator(HTM_MARGINWIDTH,3);}
+"META"                            {store_operator(HTM_META,3);}
+"METHOD"                          {store_operator(HTM_METHOD,3);}
+"MULTIPLE"                        {store_operator(HTM_MULTIPLE,3);}
+"NAME"                            {store_operator(HTM_NAME,3);}
+"OBJECT"                          {store_operator(HTM_OBJECT,3);}
+"OL"                              {store_operator(HTM_OL,3);}
+"OPTGROUP"                        {store_operator(HTM_OPTGROUP,3);}
+"OPTION"                          {store_operator(HTM_OPTION,3);}
+"PARAM"                           {store_operator(HTM_PARAM,3);}
+"PRE"                             {store_operator(HTM_PRE,3);}
+"PUBLIC"                          {store_operator(HTM_PUBLIC,3);}
+"P"                               {store_operator(HTM_P,3);}
+"READONLY"                        {store_operator(HTM_READONLY,3);}
+"ROWSPAN"                         {store_operator(HTM_ROWSPAN,3);}
+"SCROLLING"                       {store_operator(HTM_SCROLLING,3);}
+"SCROLL"                          {store_operator(HTM_SCROLL,3);}
+"SELECTED"                        {store_operator(HTM_SELECTED,3);}
+"SELECT"                          {store_operator(HTM_SELECT,3);}
+"SIZE"                            {store_operator(HTM_SIZE,3);}
+"SMALL"                           {store_operator(HTM_SMALL,3);}
+"SPAN"                            {store_operator(HTM_SPAN,3);}
+"SRC"                             {store_operator(HTM_SRC,3);}
+"STYLE"                           {store_operator(HTM_STYLE,3);}
+"SUB"                             {store_operator(HTM_SUB,3);}
+"SUP"                             {store_operator(HTM_SUP,3);}
+"TABLE"                           {store_operator(HTM_TABLE,3);}
+"TD"                              {store_operator(HTM_TD,3);}
+"TEXTAREA"                        {store_operator(HTM_TEXTAREA,3);}
+"TEXT"                            {store_operator(HTM_TEXT,3);}
+"TH"                              {store_operator(HTM_TH,3);}
+"TITLE"                           {store_operator(HTM_TITLE,3);}
+"TR"                              {store_operator(HTM_TR,3);}
+"UL"                              {store_operator(HTM_UL,3);}
+"URL"                             {store_operator(HTM_URL,3);}
+"URN"                             {store_operator(HTM_URN,3);}
+"USEMAP"                          {store_operator(HTM_USEMAP,3);}
+"VALIGN"                          {store_operator(HTM_VALIGN,3);}
+"VALUE"                           {store_operator(HTM_VALUE,3);}
+"WIDTH"                           {store_operator(HTM_WIDTH,3);}
+
+[ \t\v\f]                         {;}
+"\n"                              {php_lineno++;}
+.                                 { /* ignore bad characters */ }
 %%
 int yywrap() {
   return(1);
-}
-
-void string_literal() {
-  char c=0;
-
-  while ((c!='\"') && (c!=EOF))
-     if ((c=yyinput())=='\\')
-        if ((c=yyinput())=='\"')
-           c=yyinput();
-}
-
-
-void eat_eol() {
-  register int c;
-  while ((c = yyinput()) != '\n' && c != EOF);
 }
 
 void lexclear() {

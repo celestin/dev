@@ -5,7 +5,6 @@ s/com_loc/com_loc_php/g
 s/prev_com_line/prev_com_line_php/g
 s/comment_skip/comment_skip_php/g
 s/lexclear/lexclear_php/g
-s/eat_eol/eat_eol_php/g
 s/nsemi/nsemi_php/g
 s/operands/operands_php/g
 s/operators/operators_php/g
@@ -25,5 +24,4 @@ s/yyout/yyout_php/g
 s/yyrestart/yyrestart_php/g
 s/yytext/yytext_php/g
 s/yywrap/yywrap_php/g
-s/string_literal/string_literal_php/g
 /#include <unistd.h>/d

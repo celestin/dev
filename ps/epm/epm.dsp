@@ -161,6 +161,10 @@ SOURCE=.\lex.j.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\lex.jsp.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\lex.php.cpp
 # End Source File
 # Begin Source File
@@ -285,6 +289,10 @@ SOURCE=.\lexer.j.l
 # End Source File
 # Begin Source File
 
+SOURCE=.\lexer.jsp.l
+# End Source File
+# Begin Source File
+
 SOURCE=.\lexer.php.l
 # End Source File
 # Begin Source File
@@ -378,6 +386,10 @@ SOURCE=.\y.idl.h
 # Begin Source File
 
 SOURCE=.\y.j.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\y.jsp.h
 # End Source File
 # Begin Source File
 

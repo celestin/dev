@@ -20,6 +20,7 @@
  * CAM  04-Nov-06   301 : Added PHP.
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * CAM  26-Jul-07   316 : Added VHDL.
+ * CAM  04-Dec-07   324 : Added JSP/XML (#325).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -37,6 +38,8 @@ bool bLangAS = false;
 bool bLangPH = false;
 bool bLangID = false;
 bool bLangVH = false;
+bool bLangJS = false;
+bool bLangXM = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -78,6 +81,8 @@ bool validLicense() {
   bLangPH = (lpExitCode & EPM_PH);
   bLangID = (lpExitCode & EPM_ID);
   bLangVH = (lpExitCode & EPM_VH);
+  bLangJS = (lpExitCode & EPM_JS);
+  bLangXM = (lpExitCode & EPM_XM);
 
   /**
   if (bLangCS) cout << "bLangCS" << endl;
@@ -91,9 +96,11 @@ bool validLicense() {
   if (bLangPH) cout << "bLangPH" << endl;
   if (bLangID) cout << "bLangID" << endl;
   if (bLangVH) cout << "bLangVH" << endl;
+  if (bLangJS) cout << "bLangJS" << endl;
+  if (bLangXM) cout << "bLangXM" << endl;
   **/
 
-  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||bLangID);
+  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||bLangID||bLangVH||bLangJS||bLangXM);
 }
 
 bool validLanguage(Langs l) {
@@ -109,6 +116,8 @@ bool validLanguage(Langs l) {
     case LANG_PHP:  return bLangPH;
     case LANG_IDL:  return bLangID;
     case LANG_VHDL: return bLangVH;
+    case LANG_JSP:  return bLangJS;
+    case LANG_XML:  return bLangXM;
   }
 
   return false;

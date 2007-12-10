@@ -94,10 +94,11 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl, *yyin_vhdl;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl, *yyin_vhdl;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
+extern void lexclear_jsp();
 extern void lexclear_vb();
 extern void lexclear_s1();
 extern void lexclear_ada();
@@ -109,6 +110,7 @@ extern void lexclear_vhdl();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
+extern int yylex_jsp();
 extern int yylex_vb();
 extern int yylex_s1();
 extern int yylex_ada();
@@ -129,6 +131,11 @@ extern vector<char*> operands_c[255];
 extern int j_comments_j,c_comments_j,cpp_comments_j,com_loc_j,nsemi_j,noperands_j,noperators_j;
 extern set<int> sloc_j,operators_j;
 extern vector<char*> operands_j[255];
+
+extern int c_comments_jsp,cpp_comments_jsp,com_loc_jsp,nsemi_jsp,noperands_jsp,noperators_jsp;
+extern set<int> sloc_jsp,operators_jsp;
+extern set<int> slnat_jsp,sltag_jsp,slhtm_jsp,slscr_jsp;
+extern vector<char*> operands_jsp[255];
 
 extern int cpp_comments_vb,com_loc_vb,noperands_vb,noperators_vb;
 extern set<int> sloc_vb,operators_vb;
@@ -267,6 +274,26 @@ void setMetrics(int sfid, string filename) {
     c_com = c_comments_j;
     cpp_com = cpp_comments_j;
     com_loc = com_loc_j;
+    break;
+
+    case LANG_JSP:
+    sloc = sloc_jsp.size();                     // Source Lines of Code
+    met.set(MET(SLOC_TAG), sltag_jsp.size());   // Source Lines containing JSP Tags
+    met.set(MET(SLOC_HTM), slhtm_jsp.size());   // Source Lines containing HTML
+    met.set(MET(SLOC_NAT), slnat_jsp.size());   // Source Lines containing native, server-side code
+    met.set(MET(SLOC_SCR), slscr_jsp.size());   // Source Lines containing client-side script
+
+    met.set(MET(NSC), nsemi_jsp);               // Halstead
+    met.set(MET(N1), noperators_jsp);
+    met.set(MET(N1S), operators_jsp.size());
+    met.set(MET(N2), noperands_jsp);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_jsp[i].size());
+    }
+
+    c_com = c_comments_jsp;                   // Comments
+    cpp_com = cpp_comments_jsp;
+    com_loc = com_loc_jsp;
     break;
 
     case LANG_VB:
@@ -438,6 +465,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     break;
 
     case LANG_ASP:
+    case LANG_JSP:
     case LANG_PHP:
     d = new DiffASP(filename2.c_str(), filename.c_str());
     break;
@@ -806,6 +834,11 @@ bool analyse(string &filename) {
       yyin_j = src;
       lexclear_j();
       yylex_j();
+      break;
+    case LANG_JSP:
+      yyin_jsp = src;
+      lexclear_jsp();
+      yylex_jsp();
       break;
     case LANG_VB:
       yyin_vb = src;

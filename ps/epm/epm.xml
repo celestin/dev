@@ -76,4 +76,20 @@
       <ext name="General Source" value="vhd" />
     </filetype>
   </lang>
+  <lang name="JSP" parser="JS">
+    <filetype name="Source">
+      <ext name="General Source" value="jsp" />
+    </filetype>
+  </lang>
+  <lang name="XML" parser="XM">
+    <filetype name="Source">
+      <ext name="General Source" value="xml" />
+      <ext name="Schema Definition" value="xsd" />
+      <ext name="Web Services" value="wsml" />
+    </filetype>
+    <filetype name="Style Sheet">
+      <ext name="Style Sheet" value="xsl" />
+      <ext name="Style Sheet Translation" value="xslt" />
+    </filetype>
+  </lang>
 </epm>

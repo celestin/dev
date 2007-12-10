@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  19-Sep-06   117 : File created.
+ * CAM  04-Dec-07   324 : Corrected issues prior to creating JSP parser.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -55,7 +56,8 @@ int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC() sloc.insert(asp_lineno)
+#define NOTE_SLOC()       sloc.insert(asp_lineno)
+#define NOTE_SLOC_TAG()   NOTE_SLOC(); sltag.insert(asp_lineno)
 
 void lexclear();
 void store_operand(char* txt);
@@ -83,10 +85,10 @@ void eat_eol();
 <HTML_COM>"\n"          {com_loc++; asp_lineno++;}
 <HTML_COM>.             {;}
 
-"<%"                    {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN SLOC_TAG; }
-<SLOC_TAG>"%>"          {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN 0;}
-<SLOC_TAG>"\n"          {NOTE_SLOC(); sltag.insert(asp_lineno); asp_lineno++;}
-<SLOC_TAG>.             {NOTE_SLOC(); sltag.insert(asp_lineno); }
+"<%"                    {NOTE_SLOC_TAG(); BEGIN SLOC_TAG; }
+<SLOC_TAG>"%>"          {NOTE_SLOC_TAG(); BEGIN 0;}
+<SLOC_TAG>"\n"          {NOTE_SLOC_TAG(); asp_lineno++;}
+<SLOC_TAG>.             {NOTE_SLOC_TAG(); }
 
 "<script".*"runat"[ ]*"="     {NOTE_SLOC(); slnat.insert(asp_lineno); BEGIN SLOC_NAT; }
 <SLOC_NAT>"/>"                |
@@ -105,14 +107,14 @@ void eat_eol();
 
 \"                      {NOTE_SLOC(); string_literal();}
 
-"<asp"                  {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN ASP_TAG; }
-<ASP_TAG>">"            {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN 0;}
-<ASP_TAG>"\n"           {NOTE_SLOC(); sltag.insert(asp_lineno); asp_lineno++;}
-<ASP_TAG>.              {NOTE_SLOC(); sltag.insert(asp_lineno);}
+"<asp"                  {NOTE_SLOC_TAG(); BEGIN ASP_TAG; }
+<ASP_TAG>">"            {NOTE_SLOC_TAG(); BEGIN 0;}
+<ASP_TAG>"\n"           {NOTE_SLOC_TAG(); asp_lineno++;}
+<ASP_TAG>.              {NOTE_SLOC_TAG(); }
 
-"</asp"                 {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN ASP_END; }
-<ASP_END>">"            {NOTE_SLOC(); sltag.insert(asp_lineno); BEGIN 0;}
-<ASP_END>.              {NOTE_SLOC(); sltag.insert(asp_lineno);}
+"</asp"                 {NOTE_SLOC_TAG(); BEGIN ASP_END; }
+<ASP_END>">"            {NOTE_SLOC_TAG(); BEGIN 0;}
+<ASP_END>.              {NOTE_SLOC_TAG();}
 
 "ACTION"                {store_operator(ACTION,3);}
 "ADDRESS"               {store_operator(ADDRESS,3);}

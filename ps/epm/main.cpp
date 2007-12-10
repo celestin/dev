@@ -59,6 +59,8 @@
  * CAM  26-Oct-07   319 : Version 1.15.002.
  * CAM  01-Nov-07   321 : Version 1.15.003.
  * CAM  28-Nov-07   323 : Call PHP Parser. Version 1.15.004.
+ * CAM  10-Dec-07   324 : Added JSP.
+ * CAM  10-Dec-07   325 : Added XML.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -94,7 +96,8 @@ using namespace metrics;
 
 using namespace std;
 
-extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl, *yyin_vhdl;
+extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
+            *yyin_vhdl, *yyin_xml;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -107,6 +110,7 @@ extern void lexclear_asp();
 extern void lexclear_php();
 extern void lexclear_idl();
 extern void lexclear_vhdl();
+extern void lexclear_xml();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -119,6 +123,7 @@ extern int yylex_asp();
 extern int yylex_php();
 extern int yylex_idl();
 extern int yylex_vhdl();
+extern int yylex_xml();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -170,6 +175,11 @@ extern vector<char*> operands_idl[255];
 extern int j_comments_vhdl,c_comments_vhdl,cpp_comments_vhdl,com_loc_vhdl,nsemi_vhdl,noperands_vhdl,noperators_vhdl;
 extern set<int> sloc_vhdl,operators_vhdl;
 extern vector<char*> operands_vhdl[255];
+
+extern int c_comments_xml,cpp_comments_xml,com_loc_xml,nsemi_xml,noperands_xml,noperators_xml;
+extern set<int> sloc_xml,operators_xml;
+extern set<int> sltag_xml;
+extern vector<char*> operands_xml[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -422,6 +432,24 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_vhdl;
     com_loc = com_loc_vhdl;
     break;
+
+    case LANG_XML:
+    sloc = sloc_xml.size();                     // Source Lines of Code
+    met.set(MET(SLOC_TAG), sltag_xml.size());   // Source Lines containing xml Tags
+
+    met.set(MET(NSC), nsemi_xml);               // Halstead
+    met.set(MET(N1), noperators_xml);
+    met.set(MET(N1S), operators_xml.size());
+    met.set(MET(N2), noperands_xml);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_xml[i].size());
+    }
+
+    c_com = c_comments_xml;                   // Comments
+    cpp_com = cpp_comments_xml;
+    com_loc = com_loc_xml;
+    break;
+
   }
 
   met.set(MET(SLOC), sloc);
@@ -467,6 +495,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_ASP:
     case LANG_JSP:
     case LANG_PHP:
+    case LANG_XML:
     d = new DiffASP(filename2.c_str(), filename.c_str());
     break;
   }
@@ -879,6 +908,11 @@ bool analyse(string &filename) {
       yyin_vhdl = src;
       lexclear_vhdl();
       yylex_vhdl();
+      break;
+    case LANG_XML:
+      yyin_xml = src;
+      lexclear_xml();
+      yylex_xml();
       break;
   }
 

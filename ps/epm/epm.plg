@@ -6,13 +6,13 @@
 --------------------Configuration: csp - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP2D.tmp" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP195.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /I "c:\appserv\mysql\include" /I "C:\Dev\PS\epm\lic" /I "C:\Dev\PS\epm\xerces\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Release/" /Fo"Release/" /Fd"Release/" /FD /Zm512 /c 
 "C:\Dev\PS\epm\epm\main.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP2D.tmp" 
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP2E.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP195.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP196.tmp" with contents
 [
 xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/epm.pdb" /machine:I386 /out:"Release/epm.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" /libpath:"c:\appserv\mysql\lib\opt" /libpath:"C:\Dev\PS\epm\xerces\lib" 
 .\Release\CSVReport.obj
@@ -43,25 +43,26 @@ xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell
 .\Release\PParseHandlers.obj
 .\Release\Report.obj
 .\Release\XMLReport.obj
+.\Release\lex.xml.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP2E.tmp"
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP196.tmp"
 <h3>Output Window</h3>
 Compiling...
 main.cpp
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(201) : warning C4786: '?rbegin@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QAE?AV?$reverse_bidirectional_iterator@Viterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HAAHPAHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(124) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(127) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(203) : warning C4786: '?rbegin@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QBE?AV?$reverse_bidirectional_iterator@Vconst_iterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HABHPBHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(124) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(127) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(205) : warning C4786: '?rend@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QAE?AV?$reverse_bidirectional_iterator@Viterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HAAHPAHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(124) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(127) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(207) : warning C4786: '?rend@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QBE?AV?$reverse_bidirectional_iterator@Vconst_iterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HABHPBHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(124) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(127) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 Linking...
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP30.tmp" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP198.tmp" with contents
 [
 /nologo /o"Release/epm.bsc" 
 .\Release\CSVReport.sbr
@@ -91,16 +92,17 @@ Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP30.tmp" with c
 .\Release\PParse.sbr
 .\Release\PParseHandlers.sbr
 .\Release\Report.sbr
-.\Release\XMLReport.sbr]
-Creating command line "bscmake.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP30.tmp"
+.\Release\XMLReport.sbr
+.\Release\lex.xml.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP198.tmp"
 Creating browse info file...
 <h3>Output Window</h3>
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP31.bat" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP199.bat" with contents
 [
 @echo off
 C:\Dev\PS\epm\epm\Release\epm.copy.cmd
 ]
-Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP31.bat"
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP199.bat"
 
         1 file(s) copied.
 

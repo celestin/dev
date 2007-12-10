@@ -185,6 +185,10 @@ SOURCE=.\lex.vhdl.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\lex.xml.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\main.cpp
 # End Source File
 # Begin Source File
@@ -313,6 +317,10 @@ SOURCE=.\lexer.vhdl.l
 # End Source File
 # Begin Source File
 
+SOURCE=.\lexer.xml.l
+# End Source File
+# Begin Source File
+
 SOURCE=..\lic\LicConfig.h
 # End Source File
 # Begin Source File
@@ -410,6 +418,10 @@ SOURCE=.\y.vb.h
 # Begin Source File
 
 SOURCE=.\y.vhdl.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\y.xml.h
 # End Source File
 # End Group
 # End Target

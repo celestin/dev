@@ -63,10 +63,15 @@ rem echo Generating parser... VHDL
 rem flex -i -olex.vhdl.tmp -8 -f lexer.vhdl.l
 rem sed -f sed/vhdl.sed <lex.vhdl.tmp >lex.vhdl.cpp
 rem del lex.vhdl.tmp
+rem 
+rem echo Generating parser... JSP
+rem flex -i -olex.jsp.tmp -8 -f lexer.jsp.l
+rem sed -f sed/jsp.sed <lex.jsp.tmp >lex.jsp.cpp
+rem del lex.jsp.tmp
 
-echo Generating parser... JSP
-flex -i -olex.jsp.tmp -8 -f lexer.jsp.l
-sed -f sed/jsp.sed <lex.jsp.tmp >lex.jsp.cpp
-del lex.jsp.tmp
+echo Generating parser... XML
+flex -i -olex.xml.tmp -8 -f lexer.xml.l
+sed -f sed/xml.sed <lex.xml.tmp >lex.xml.cpp
+del lex.xml.tmp
 
 echo.

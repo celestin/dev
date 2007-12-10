@@ -5,7 +5,7 @@
  *
  * XML Parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When       Why
  * CAM  10-Dec-07   325 : File created.

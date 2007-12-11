@@ -3,10 +3,8 @@
  * Copyright (c) 2004-2006 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Model of a KEPM Project
- *
  * $Id$
- * 
+ *
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  24-Jan-06   179 : Ensure spaces in Project Titles are converted to underscores.
@@ -14,6 +12,7 @@
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
  * CAM  08-Jun-06   243 : Remember selected file types.
  * CAM  14-Jun-06   268 : Better error handling on files.
+ * CAM  11-Dec-07   327 : Added MaxProjectDbName and parse DbName more selectively in Databasename property.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -24,11 +23,13 @@ using System.Diagnostics;
 
 namespace KrakatauEPM
 {
-	/// <summary>
-	/// Representation of an EPM Project.
-	/// </summary>
-	public class Project
-	{
+  /// <summary>
+  /// Representation of an EPM Project.
+  /// </summary>
+  public class Project
+  {
+    public static readonly int MaxProjectDbName = 30;
+
     private FileInfo _ProjectFile = null;
     private FileInfo _fBuildFile = null;
     private FileInfo _fAnalysisFile = null;
@@ -38,21 +39,21 @@ namespace KrakatauEPM
     private bool _bIsNew = false;
     private bool _bIsOld = false;
 
-		public Project()
-		{
+    public Project()
+    {
       _sProjectTitle = "";
       _dSnapshot = System.DateTime.Today;
       _sBasedir = "";
       _bIsNew = false;
       _bIsOld = false;
-		}
-  
-    public Project(String sProjectFile)
-    {
-      _ProjectFile = new FileInfo(sProjectFile);      
     }
 
-    public bool BuildFile(CheckedListBox.CheckedItemCollection checkedItems) 
+    public Project(String sProjectFile)
+    {
+      _ProjectFile = new FileInfo(sProjectFile);
+    }
+
+    public bool BuildFile(CheckedListBox.CheckedItemCollection checkedItems)
     {
       string extList = "";
       Ext e;
@@ -66,8 +67,8 @@ namespace KrakatauEPM
         }
       }
 
-      if ((_ProjectFile == null) || "".Equals(_sProjectTitle) || 
-          "".Equals(_sBasedir) || nChecked==0) 
+      if ((_ProjectFile == null) || "".Equals(_sProjectTitle) ||
+          "".Equals(_sBasedir) || nChecked==0)
       {
         return false;
       }
@@ -99,43 +100,43 @@ namespace KrakatauEPM
       return true;
     }
 
-    private string GetExtensions() 
+    private string GetExtensions()
     {
       TextReader tr = null;
-      if (_ProjectFile == null || !this.ProjectBuildFile.Exists) 
+      if (_ProjectFile == null || !this.ProjectBuildFile.Exists)
       {
         return null;
       }
-      try 
+      try
       {
         tr = new StreamReader(this.ProjectBuildFile.FullName, false);
-      } 
-      catch 
+      }
+      catch
       {
         return null;
       }
 
       string line = null;
       int p;
-      while ((line = tr.ReadLine()) != null) 
+      while ((line = tr.ReadLine()) != null)
       {
-        line = line.Trim();        
-        if (line.StartsWith("dir")) 
+        line = line.Trim();
+        if (line.StartsWith("dir"))
         {
           tr.Close();
           line = line.Substring(3, line.Length-3);
-          if ((p = line.IndexOf("/s"))>=0) 
+          if ((p = line.IndexOf("/s"))>=0)
           {
             line = line.Substring(0, p);
-          }          
+          }
           return line;
-        }        
+        }
       }
       tr.Close();
       return null;
     }
 
-    public void ReadExtensions(CheckedListBox clbFileTypes) 
+    public void ReadExtensions(CheckedListBox clbFileTypes)
     {
       string extList = this.GetExtensions();
       if (extList == null) return;
@@ -148,94 +149,94 @@ namespace KrakatauEPM
       {
         clbFileTypes.SetItemChecked(i, false);
       }
-      
+
       for(int n=0; n<exts.Length; n++)
       {
-        string e = exts[n].Substring(2, exts[n].Length-2);                
+        string e = exts[n].Substring(2, exts[n].Length-2);
         for (i=0; i<clbFileTypes.Items.Count; i++)
         {
           if (clbFileTypes.Items[i] is Ext)
           {
             ex = (Ext) clbFileTypes.Items[i];
-            if (ex.Extension == e) 
+            if (ex.Extension == e)
             {
               clbFileTypes.SetItemChecked(i, true);
             }
-          }          
+          }
         }
       }
     }
 
-    public Arguments GetAnalysisOptions() 
+    public Arguments GetAnalysisOptions()
     {
       this.ProjectAnalysisFile.Refresh();
-      if (_ProjectFile == null || !this.ProjectAnalysisFile.Exists) 
+      if (_ProjectFile == null || !this.ProjectAnalysisFile.Exists)
       {
         return null;
       }
       TextReader tr = null;
-      try 
+      try
       {
-        tr = new StreamReader(this.ProjectAnalysisFile.FullName);      
-      } 
-      catch 
+        tr = new StreamReader(this.ProjectAnalysisFile.FullName);
+      }
+      catch
       {
         return null;
       }
 
       string line = null;
-      while ((line = tr.ReadLine()) != null) 
+      while ((line = tr.ReadLine()) != null)
       {
-        line = line.Trim();        
-        if (line.StartsWith("epm")) 
+        line = line.Trim();
+        if (line.StartsWith("epm"))
         {
           tr.Close();
           return new Arguments(line);
-        }        
+        }
       }
 
       tr.Close();
       return null;
     }
 
-    public bool ReadFile() 
+    public bool ReadFile()
     {
-      if (_ProjectFile != null) 
-      {        
+      if (_ProjectFile != null)
+      {
         TextReader re = null;
-        try 
+        try
         {
           re = new StreamReader(_ProjectFile.FullName);
-        } 
-        catch 
+        }
+        catch
         {
           return false;
         }
 
         string input = null;
-        if ((input = re.ReadLine()) != null) 
+        if ((input = re.ReadLine()) != null)
         {
-          this.Title = input;      
-        } 
-        else 
+          this.Title = input;
+        }
+        else
         {
           re.Close();
           return false;
         }
-        if ((input = re.ReadLine()) != null) 
+        if ((input = re.ReadLine()) != null)
         {
           this.ParseSnapshot(input);
         }
-        else 
+        else
         {
           re.Close();
           return false;
         }
-        if ((input = re.ReadLine()) != null) 
+        if ((input = re.ReadLine()) != null)
         {
-          this.Basedir = input;        
-        } 
-        else 
+          this.Basedir = input;
+        }
+        else
         {
           re.Close();
           return false;
@@ -246,9 +247,9 @@ namespace KrakatauEPM
       return false;
     }
 
-    public override String ToString() 
+    public override String ToString()
     {
-      return "Project {" + _sProjectTitle + 
+      return "Project {" + _sProjectTitle +
         "} SnapshotDate {" + _dSnapshot.ToShortDateString() +
         "} Basedir {" + _sBasedir + "}";
     }
@@ -265,11 +266,11 @@ namespace KrakatauEPM
       }
     }
 
-    public FileInfo ProjectBuildFile 
+    public FileInfo ProjectBuildFile
     {
-      get 
+      get
       {
-        if (_ProjectFile == null) 
+        if (_ProjectFile == null)
         {
           return null;
         }
@@ -281,9 +282,9 @@ namespace KrakatauEPM
       }
     }
 
-    public FileInfo ProjectAnalysisFile 
+    public FileInfo ProjectAnalysisFile
     {
-      get 
+      get
       {
         if (_fAnalysisFile == null)
         {
@@ -310,8 +311,8 @@ namespace KrakatauEPM
       try
       {
         _dSnapshot = DateTime.Parse(value).Date;
-      } 
-      catch (System.FormatException) 
+      }
+      catch (System.FormatException)
       {
         _dSnapshot = DateTime.Today.Date;
       }
@@ -338,33 +339,52 @@ namespace KrakatauEPM
       set
       {
         _sBasedir = value.Trim();
-        if (!_sBasedir.Substring(_sBasedir.Length-1,1).Equals("\\")) 
+        if (!_sBasedir.Substring(_sBasedir.Length-1,1).Equals("\\"))
         {
           _sBasedir += "\\";
         }
       }
     }
 
-    public string Databasename 
+    public string Databasename
     {
-      get 
+      get
       {
-        string projectDbName = this.Title.Replace(" ", "_").ToLower();
-        projectDbName = projectDbName.Replace("'", "");
-        projectDbName = projectDbName.Replace(".", "_");
-        projectDbName = projectDbName.Replace("_", "");
+        char[] name = this.Title.Trim().ToLower().ToCharArray();
+        string rval = "epm_";
 
-        return projectDbName;
+        for(int i=0; i<name.Length && i<MaxProjectDbName; i++)
+        {
+          if ((name[i] >= 'a') && (name[i]<= 'z'))
+          {
+            rval += name[i];
+          }
+          else if ((name[i] >= '0') && (name[i]<= '9'))
+          {
+            rval += name[i];
+          }
+          else if (name[i] == ' ')
+          {
+            rval += "_";
+          }
+        }
+
+        while(rval.IndexOf("__")>=0)
+        {
+          rval = rval.Replace("__", "_");
+        }
+
+        return rval;
       }
     }
 
     public bool NewProject
     {
-      get 
+      get
       {
         return this._bIsNew;
       }
-      set 
+      set
       {
         this._bIsNew = value;
         this._bIsOld = false;
@@ -372,11 +392,11 @@ namespace KrakatauEPM
     }
     public bool OldProject
     {
-      get 
+      get
       {
         return this._bIsOld;
       }
-      set 
+      set
       {
         this._bIsOld = value;
         this._bIsNew = false;

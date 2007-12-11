@@ -37,6 +37,7 @@
  * CAM  26-Oct-07   319 : Version 1.07.002; EPM Version 1.15.002.
  * CAM  01-Nov-07   321 : Version 1.07.003; EPM Version 1.15.003.
  * CAM  28-Nov-07   323 : Version 1.07.004; EPM Version 1.15.004.
+ * CAM  11-Dec-07   325 : Version 1.08.000; EPM Version 1.16.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -63,9 +64,9 @@ namespace KrakatauEPM
     private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
 
-    private String sVersion = "1.07.004";
+    private String sVersion = "1.08.000";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.15.004";
+    private String sEpmVersion = "1.16.000";
 
     public HelpAbout()
     {

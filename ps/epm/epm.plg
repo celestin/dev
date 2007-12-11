@@ -6,7 +6,7 @@
 --------------------Configuration: csp - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A0.tmp" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9A.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /I "c:\appserv\mysql\include" /I "C:\Dev\PS\epm\lic" /I "C:\Dev\PS\epm\xerces\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Release/" /Fo"Release/" /Fd"Release/" /FD /Zm512 /c 
 "C:\Dev\PS\epm\epm\CSVReport.cpp"
@@ -39,8 +39,8 @@ Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A0.tmp" with 
 "C:\Dev\PS\epm\epm\Report.cpp"
 "C:\Dev\PS\epm\epm\XMLReport.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A0.tmp" 
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A1.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9A.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9B.tmp" with contents
 [
 xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/epm.pdb" /machine:I386 /out:"Release/epm.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" /libpath:"c:\appserv\mysql\lib\opt" /libpath:"C:\Dev\PS\epm\xerces\lib" 
 .\Release\CSVReport.obj
@@ -73,7 +73,7 @@ xerces-c_2.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell
 .\Release\Report.obj
 .\Release\XMLReport.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A1.tmp"
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9B.tmp"
 <h3>Output Window</h3>
 Compiling...
 CSVReport.cpp
@@ -272,16 +272,16 @@ C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(207) : warning C4786
 main.cpp
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(201) : warning C4786: '?rbegin@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QAE?AV?$reverse_bidirectional_iterator@Viterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HAAHPAHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(129) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(130) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(203) : warning C4786: '?rbegin@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QBE?AV?$reverse_bidirectional_iterator@Vconst_iterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HABHPBHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(129) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(130) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(205) : warning C4786: '?rend@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QAE?AV?$reverse_bidirectional_iterator@Viterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HAAHPAHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(129) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(130) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\xtree(207) : warning C4786: '?rend@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@QBE?AV?$reverse_bidirectional_iterator@Vconst_iterator@?$_Tree@HHU_Kfn@?$set@HU?$less@H@std@@V?$allocator@H@2@@std@@U?$less@H@3@V?$allocator@H@3@@std@@HABHPBHH@2@XZ' : identifier was truncated to '255' characters in the browser information
         C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\set(33) : see reference to class template instantiation 'std::_Tree<int,int,struct std::set<int,struct std::less<int>,class std::allocator<int> >::_Kfn,struct std::less<int>,class std::allocator<int> >' being compiled
-        C:\Dev\PS\epm\epm\main.cpp(129) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
+        C:\Dev\PS\epm\epm\main.cpp(130) : see reference to class template instantiation 'std::set<int,struct std::less<int>,class std::allocator<int> >' being compiled
 OurSQL.cpp
 PParse.cpp
 PParseHandlers.cpp
@@ -289,7 +289,7 @@ Report.cpp
 XMLReport.cpp
 Generating Code...
 Linking...
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A3.tmp" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9D.tmp" with contents
 [
 /nologo /o"Release/epm.bsc" 
 .\Release\CSVReport.sbr
@@ -321,15 +321,15 @@ Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A3.tmp" with 
 .\Release\PParseHandlers.sbr
 .\Release\Report.sbr
 .\Release\XMLReport.sbr]
-Creating command line "bscmake.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A3.tmp"
+Creating command line "bscmake.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9D.tmp"
 Creating browse info file...
 <h3>Output Window</h3>
-Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A4.bat" with contents
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9E.bat" with contents
 [
 @echo off
 C:\Dev\PS\epm\epm\Release\epm.copy.cmd
 ]
-Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A4.bat"
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9E.bat"
 
         1 file(s) copied.
 
@@ -337,6 +337,163 @@ Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1A4.bat"
 
 <h3>Results</h3>
 epm.exe - 0 error(s), 68 warning(s)
+<h3>
+--------------------Configuration: csp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9F.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "C:\Dev\PS\epm\lic" /I "c:\Program Files\flexlm\v7.2\machind" /I "C:\AppServ\mysql\include" /I "C:\Dev\PS\epm\xerces\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/epm.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /Zm512 /c 
+"C:\Dev\PS\epm\epm\CSVReport.cpp"
+"C:\Dev\PS\epm\epm\Diff.cpp"
+"C:\Dev\PS\epm\epm\DiffAda.cpp"
+"C:\Dev\PS\epm\epm\DiffASP.cpp"
+"C:\Dev\PS\epm\epm\DiffCpp.cpp"
+"C:\Dev\PS\epm\epm\DiffOracle.cpp"
+"C:\Dev\PS\epm\epm\DiffPerl.cpp"
+"C:\Dev\PS\epm\epm\DiffVB.cpp"
+"C:\Dev\PS\epm\epm\Flex.cpp"
+"C:\Dev\PS\epm\epm\HTMLReport.cpp"
+"C:\Dev\PS\epm\epm\lex.ada.cpp"
+"C:\Dev\PS\epm\epm\lex.asp.cpp"
+"C:\Dev\PS\epm\epm\lex.c.cpp"
+"C:\Dev\PS\epm\epm\lex.cs.cpp"
+"C:\Dev\PS\epm\epm\lex.idl.cpp"
+"C:\Dev\PS\epm\epm\lex.j.cpp"
+"C:\Dev\PS\epm\epm\lex.jsp.cpp"
+"C:\Dev\PS\epm\epm\lex.php.cpp"
+"C:\Dev\PS\epm\epm\lex.pl.cpp"
+"C:\Dev\PS\epm\epm\lex.s1.cpp"
+"C:\Dev\PS\epm\epm\lex.vb.cpp"
+"C:\Dev\PS\epm\epm\lex.vhdl.cpp"
+"C:\Dev\PS\epm\epm\lex.xml.cpp"
+"C:\Dev\PS\epm\epm\main.cpp"
+"C:\Dev\PS\epm\epm\OurSQL.cpp"
+"C:\Dev\PS\epm\epm\PParse.cpp"
+"C:\Dev\PS\epm\epm\PParseHandlers.cpp"
+"C:\Dev\PS\epm\epm\Report.cpp"
+"C:\Dev\PS\epm\epm\XMLReport.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP9F.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA0.tmp" with contents
+[
+xerces-c_2d.lib mysqlclient.lib libmySQL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/epm.pdb" /debug /machine:I386 /nodefaultlib:"libcd" /nodefaultlib:"libcpd" /out:"Debug/epm.exe" /pdbtype:sept /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" /libpath:"C:\AppServ\mysql\lib\debug" /libpath:"C:\Dev\PS\epm\xerces\lib" 
+.\Debug\CSVReport.obj
+.\Debug\Diff.obj
+.\Debug\DiffAda.obj
+.\Debug\DiffASP.obj
+.\Debug\DiffCpp.obj
+.\Debug\DiffOracle.obj
+.\Debug\DiffPerl.obj
+.\Debug\DiffVB.obj
+.\Debug\Flex.obj
+.\Debug\HTMLReport.obj
+.\Debug\lex.ada.obj
+.\Debug\lex.asp.obj
+.\Debug\lex.c.obj
+.\Debug\lex.cs.obj
+.\Debug\lex.idl.obj
+.\Debug\lex.j.obj
+.\Debug\lex.jsp.obj
+.\Debug\lex.php.obj
+.\Debug\lex.pl.obj
+.\Debug\lex.s1.obj
+.\Debug\lex.vb.obj
+.\Debug\lex.vhdl.obj
+.\Debug\lex.xml.obj
+.\Debug\main.obj
+.\Debug\OurSQL.obj
+.\Debug\PParse.obj
+.\Debug\PParseHandlers.obj
+.\Debug\Report.obj
+.\Debug\XMLReport.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA0.tmp"
+<h3>Output Window</h3>
+Compiling...
+CSVReport.cpp
+Diff.cpp
+DiffAda.cpp
+DiffASP.cpp
+DiffCpp.cpp
+DiffOracle.cpp
+DiffPerl.cpp
+DiffVB.cpp
+Flex.cpp
+c:\dev\ps\epm\epm\flex.cpp(74) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(75) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(76) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(77) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(78) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(79) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(80) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(81) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(82) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(83) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(84) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+c:\dev\ps\epm\epm\flex.cpp(85) : warning C4800: 'unsigned long' : forcing value to bool 'true' or 'false' (performance warning)
+HTMLReport.cpp
+lex.ada.cpp
+lexer.ada.l(49) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.asp.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.asp.l(46) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.c.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.c.l(57) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.cs.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.cs.l(50) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.idl.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.idl.l(55) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.j.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.j.l(62) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.jsp.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.jsp.l(46) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.php.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.php.l(46) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.pl.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.pl.l(50) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.s1.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.s1.l(51) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.vb.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.vb.l(47) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.vhdl.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.vhdl.l(47) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+lex.xml.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+lexer.xml.l(46) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+main.cpp
+c:\program files\microsoft visual studio\vc98\include\utility(21) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::iterator,bool>' : identifier was truncated to '255' characters in the debug information
+c:\program files\microsoft visual studio\vc98\include\set(72) : warning C4786: 'std::pair<std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator,std::_Tree<int,int,std::set<int,std::less<int>,std::allocator<int> >::_Kfn,std::less<int>,std::allocator<int> >::const_iterator>' : identifier was truncated to '255' characters in the debug information
+        c:\program files\microsoft visual studio\vc98\include\set(72) : while compiling class-template member function 'unsigned int __thiscall std::set<int,std::less<int>,std::allocator<int> >::size(void) const'
+OurSQL.cpp
+PParse.cpp
+PParseHandlers.cpp
+Report.cpp
+XMLReport.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA4.bat" with contents
+[
+@echo off
+copy "C:\Dev\PS\epm\epm\Debug\epm.exe" "C:\Program Files\Power Software\Krakatau EPM"
+]
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSPA4.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+epm.exe - 0 error(s), 39 warning(s)
 </pre>
 </body>
 </html>

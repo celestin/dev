@@ -61,6 +61,7 @@
  * CAM  28-Nov-07   323 : Call PHP Parser. Version 1.15.004.
  * CAM  10-Dec-07   324 : Added JSP.
  * CAM  10-Dec-07   325 : Added XML.
+ * CAM  01-Nov-07   325 : Version 1.16.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -925,7 +926,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.15.004\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.000\n"
        << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 

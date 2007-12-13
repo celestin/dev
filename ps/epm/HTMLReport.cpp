@@ -32,6 +32,7 @@
  * CAM  19-Jul-06   285 : Change script tag in EPM HTML H2 report to </script>.
  * CAM  20-Jul-06   285 : Changed MetricsHelp to call javascript in the href rather than onclick.
  * CAM  13-Dec-07   328 : Added MetricsDefinitions.pdf.
+ * CAM  14-Dec-07   328 : Added (EPM) UserGuide.pdf.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -236,8 +237,10 @@ void HTMLReport::createFrameset() {
   frame << "<table border=0 cellspacing=0 cellpadding=2 width=\"100%\"><tr>" << endl;
   frame << "<td width=\"30%\" align=left><table border=0 cellspacing=0 cellpadding=0><tr>"
         << "<td><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
-        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a>"
-        << "</td></tr></table></td>" << endl;
+        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a></td>"
+        << "<td style=\"padding-left:30px;\"><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
+        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/UserGuide.pdf\" target=\"_blank\">EPM User Guide</a>"
+        << "</tr></table></td>" << endl;
   frame << "<td width=\"40%\" align=center class=\"pstext\">Copyright &copy; 2004-2007 Powersoftware.com</td>" << endl;
   frame << "<td width=\"30%\" align=right><table border=0 cellspacing=0 cellpadding=0><tr>"
         << "<td><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"

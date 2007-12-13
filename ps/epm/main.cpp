@@ -62,6 +62,7 @@
  * CAM  10-Dec-07   324 : Added JSP.
  * CAM  10-Dec-07   325 : Added XML.
  * CAM  01-Nov-07   325 : Version 1.16.000.
+ * CAM  13-Dec-07   328 : Version 1.16.001.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -926,7 +927,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.000\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.001\n"
        << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 

@@ -14,11 +14,12 @@
  * CAM  12-Nov-2007  10204 : Version V0.05A.
  * CAM  18-Nov-2007  10205 : Version V0.06A.
  * CAM  24-Nov-2007  10213 : Version V0.06A.
+ * CAM  29-Dec-2007  10211 : Version V0.07A.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V0.06A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><b>V0.07A</b> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

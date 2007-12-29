@@ -12,6 +12,7 @@
  * CAM  08-Nov-2007  10200 : Added Results Pagination.
  * CAM  12-Nov-2007  10201 : Fixed bug.
  * CAM  18-Nov-2007  10205 : Reset PageNo to 1 if new query (and send email).
+ * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
@@ -138,7 +139,7 @@ if ($sqlFactory->isSearch()) {
   <td class="rd"><? echo "<b>$author</b> $vol"; ?></td>
   <td class="rd"><? echo "$preview"; ?></td>
   <td class="rd"><? echo "<b>$inits</b>"; ?></td>
-  <td class="rd"><? echo highlight_text($text, $inits, $keywords, $ref, $bookname); ?></td>
+  <td class="rd"><? echo f_highlight_text($text, $sqlFactory, true); ?></td>
 </tr></form><?
   }
 }

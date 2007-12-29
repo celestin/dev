@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  19-Aug-2007  File created.
  * CAM  24-Nov-2007  10210 : Indicate in the Preview Pane where a new page occurs in the physical volume.
+ * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
@@ -32,6 +33,24 @@ function store_session_var($varname) {
 $preview_author = store_session_var('preview_author');
 $preview_vol    = store_session_var('preview_vol');
 $preview_page   = store_session_var('preview_page');
+
+$keywords = $_SESSION['search_keywords'];
+$author   = $_SESSION['search_author'];
+$bookid   = $_SESSION['search_bookid'];
+$chapter  = $_SESSION['search_chapter'];
+$vstart   = $_SESSION['search_vstart'];
+
+$sqlFactory = new SqlFactory();
+if (!empty($keywords)) {
+  $sqlFactory->setSearchText($keywords);
+}
+if ((count($author)>0) && (empty($author['ALL']))) {
+  $sqlFactory->setAuthors($author);
+}
+if (!empty($bookid) && !empty($chapter)) {
+  $sqlFactory->setBookRef($bookid, $chapter, $vstart);
+}
+
 
 if (!empty($preview_author)) {
   echo "<p align=center><b>$preview_author</b> Volume <b>$preview_vol</b> Page <b>$preview_page</b></p>";
@@ -57,14 +76,14 @@ if (!empty($preview_author)) {
 
       for($i = 0; $i < count($charpos); $i++) {
         $pageNo = ($row[2] + $i + 1);
-        $newtext .= trim(substr($row[1], $prevchar, $charpos[$i])) . "&nbsp;<span title=\"This paragraph continues on physical Page $pageNo in the printed volume.\" class=\"contNewPage\">$pageNo</span>&nbsp;";
+        $newtext .= trim(substr($row[1], $prevchar, ($charpos[$i] - $prevchar))) . "&nbsp;<span title=\"This paragraph continues on physical Page $pageNo in the printed volume.\" class=\"contNewPage\">$pageNo</span>&nbsp;";
         $prevchar = $charpos[$i];
       }
 
       $newtext .= trim(substr($row[1], $prevchar));
     }
 
-    $newtext = str_replace("@", "", $newtext);  // TODO include scripture links and highlight search words
+    $newtext = f_highlight_text($newtext, $sqlFactory);
 
     if (empty($row[0])) $row[0] = "<img src=\"img/f.gif\" border=0 width=0 height=0>";
 

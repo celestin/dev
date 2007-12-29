@@ -11,6 +11,7 @@
  * CAM  08-Nov-2007  10200 : Added Results Pagination (page*).
  * CAM  24-Nov-2007  10210 : Added contNewPage.
  * CAM  24-Nov-2007  10213 : Improve Link colours.
+ * CAM  29-Dec-2007  10211 : Added highlight colours.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -451,4 +452,11 @@ input.authorbuttonhover {
   PADDING: 5px;
 }
 
+/** Highlight Search Colours */
 
+.hilight0 { background-color: #FFFF99; }
+.hilight1 { background-color: #FF99FF; }
+.hilight2 { background-color: #99FFFF; }
+.hilight3 { background-color: #99FF99; }
+.hilight4 { background-color: #FF9999; }
+.hilight5 { background-color: #9999FF; }

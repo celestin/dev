@@ -12,6 +12,7 @@
  * CAM  15-Oct-2007  10187 : Added Book Reference search, improved tests for valid search and included all functions.
  * CAM  25-Oct-2007  10187 : Correctly return references when Scripture searching.
  * CAM  08-Nov-2007  10200 : Added ability to Count and Limit results.
+ * CAM  29-Dec-2007  10211 : Added getAtoms.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class SqlFactory {
@@ -23,6 +24,7 @@ class SqlFactory {
 
   var $searchText = "";
   var $fulltextKey = "";
+  var $atoms;
 
   var $authors;
 
@@ -38,14 +40,14 @@ class SqlFactory {
 
   // ----- Constructors --------------------------------------------------- //
 
-  function SqlFactory($tableName, $fieldList, $orderBy) {
+  function SqlFactory($tableName='', $fieldList='', $orderBy='') {
     $this->tableName = $tableName;
     $this->fieldList = $fieldList;
     $this->orderBy = $orderBy;
 
     $this->maxRows = 0;
 
-    $this->deriveFulltextKey();
+    if (!empty($tableName)) $this->deriveFulltextKey();
   }
 
 
@@ -317,6 +319,41 @@ class SqlFactory {
     $result=str_replace(' -',' NOT ',$result);
 
     return $result;
+  }
+
+  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+   *  :: getAtoms($string) ::
+   * Return an array of atoms involved in the current search.
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+  function getAtoms() {
+    if (!isset($this->atoms)) {
+      $result=trim($this->searchText);
+      $result=preg_replace("/([[:space:]]{2,})/",' ',$result);
+
+      /* convert normal boolean operators to shortened syntax */
+      $result=eregi_replace(' not ',' -',$result);
+      $result=eregi_replace(' and ',' ',$result);
+      $result=eregi_replace(' or ',' ',$result);
+
+      /* strip paranethesis and extra whitespace */
+      $result=str_replace('(','',$result);
+      $result=str_replace(')','',$result);
+      $result=str_replace(',',' ',$result);
+      $result=str_replace('- ','-',$result);
+      $result=trim(preg_replace("/([[:space:]]{2,})/",' ',$result));
+
+      $this->atoms = explode(' ', $result);
+
+      // Remove any NOT atoms
+      for($i=count($this->atoms)-1; $i>=0; $i--) {
+        if (substr($this->atoms[$i],0,1) == '-') {
+          unset($this->atoms[$i]);
+        }
+      }
+      $this->atoms = array_merge($this->atoms);
+    }
+
+    return $this->atoms;
   }
 
 

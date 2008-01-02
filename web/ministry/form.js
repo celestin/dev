@@ -10,6 +10,7 @@
  * CAM  27-Dec-2005  File created.
  * CAM  15-Oct-2007  10187 : Added functions.
  * CAM  12-Nov-2007  10204 : Added Servant checkbox functions.
+ * CAM  02-Jan-2008  10206 : Added Page (preview) functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function getObjRef(ref) {
@@ -55,4 +56,26 @@ function toggleServants(chkAll) {
       inpAll[i].checked = !chkAll.checked;
     }
   }
+}
+
+function ValidationPageNo(txtInput, iLastPage) {
+  val = txtInput.value.replace(/[^0-9]/g, '');  
+  
+  if (typeof(iLastPage) != "undefined") {
+    // Only perform min/max checks if LastPage is defined (i.e. on tab out)
+    val *= 1; // ensure a number - cheap'n'cheerful
+    
+    if (val < 1) {
+      val = 1;
+    } else if (val > iLastPage) {
+      val = iLastPage;
+    }
+  }
+
+  txtInput.value = val;
+}
+
+function ChangePageNo(frmPage, txtInput, iPageNo) {
+  txtInput.value = iPageNo;
+  frmPage.submit();
 }

@@ -12,22 +12,23 @@
  * CAM  24-Nov-2007  10210 : Added contNewPage.
  * CAM  24-Nov-2007  10213 : Improve Link colours.
  * CAM  29-Dec-2007  10211 : Added highlight colours.
+ * CAM  02-Jan-2008  10206 : Added Page (preview) classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  BACKGROUND-COLOR: #66B7E2;
+  background-color: #66B7E2;
 }
 
 p, table, td, input, select, textarea {
-  COLOR: #000000;
+  color: #000000;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 10pt;
+  font-size: 10pt;
   TEXT-DECORATION: none;
 }
 
 .topnav {
-  BACKGROUND-COLOR: #66B7E2;
-  COLOR: #0093D8;
+  background-color: #66B7E2;
+  color: #0093D8;
 }
 
 .red {
@@ -47,31 +48,31 @@ p, table, td, input, select, textarea {
 }
 
 .resultsheader {
-  PADDING-TOP:      5px;
+  padding-top:      5px;
   PADDING-BOTTOM:   5px;
-  BACKGROUND-COLOR: #66B7E2;
-  COLOR:            #333333;
-  FONT-WEIGHT:      bold;
+  background-color: #66B7E2;
+  color:            #333333;
+  font-weight:      bold;
 }
 
 .searchresults {
-  BORDER:  #0A6CDA 4px solid;
-  BACKGROUND-COLOR: white;
-  COLOR: #333333;
-  FONT-WEIGHT: normal;
+  border:  #0A6CDA 4px solid;
+  background-color: white;
+  color: #333333;
+  font-weight: normal;
 }
 
 .pageresults {
-  BORDER:           #0A6CDA 4px solid;
-  BACKGROUND-COLOR: white;
-  COLOR:            #333333;
-  FONT-WEIGHT:      normal;
+  border:           #0A6CDA 4px solid;
+  background-color: white;
+  color:            #333333;
+  font-weight:      normal;
   PADDING:          5px;
 }
 
 .rh {
   BORDER-BOTTOM:  #0A6CDA 2px solid;
-  FONT-WEIGHT: bold;
+  font-weight: bold;
 }
 
 .rd {
@@ -79,28 +80,28 @@ p, table, td, input, select, textarea {
 }
 
 .fld {
-  COLOR: #D00040;
-  FONT-WEIGHT: bold;
+  color: #D00040;
+  font-weight: bold;
 }
 
 td.fldmand {
-  COLOR: #BE0221;
-  FONT-WEIGHT: bold;
+  color: #BE0221;
+  font-weight: bold;
 }
 
 
 td.current {
-  COLOR: #FF7900;
+  color: #FF7900;
 }
 
 td.loggedin {
-  COLOR: #333333;
-  FONT-SIZE: 8pt;
+  color: #333333;
+  font-size: 8pt;
 }
 
 td.fldopt {
-  COLOR: #189999;
-  FONT-WEIGHT: bold;
+  color: #189999;
+  font-weight: bold;
   FONT-STYLE: italic;
 }
 
@@ -113,49 +114,49 @@ td.br {
 }
 
 td.navText {
-  COLOR: #FFFFFF;
+  color: #FFFFFF;
 }
 
 td.toolTip {
-  COLOR: #666666;
+  color: #666666;
 }
 
 td.sel {
-  COLOR: #FFFFFF;
-  BACKGROUND-COLOR: #3C6C9E;
+  color: #FFFFFF;
+  background-color: #3C6C9E;
   FONT-FAMILY: Tahoma, Helvetica;
-  FONT-WEIGHT: bold
+  font-weight: bold
 }
 
 td.sub {
-  COLOR: #FFFFFF;
-  BACKGROUND-COLOR: #3C6C9E;
+  color: #FFFFFF;
+  background-color: #3C6C9E;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-WEIGHT: bold
+  font-weight: bold
 }
 
 .outerBox {
-  BACKGROUND-COLOR: #FFFFFF;
+  background-color: #FFFFFF;
 }
 
 .sep {
-  COLOR: #DB0954;
-  FONT-WEIGHT: bold;
-  PADDING-LEFT:   4px;
+  color: #DB0954;
+  font-weight: bold;
+  padding-left:   4px;
   PADDING-RIGHT:  4px;
 }
 
 .cpyrght {
-  COLOR: #333333;
-  FONT-SIZE: 7pt;
+  color: #333333;
+  font-size: 7pt;
   TEXT-ALIGN: center;
-  PADDING-TOP:    5px;
+  padding-top:    5px;
 }
 
 td.cat {
-  COLOR: #333333;
-  FONT-SIZE: 12pt;
-  FONT-WEIGHT: bold
+  color: #333333;
+  font-size: 12pt;
+  font-weight: bold
 }
 
 .contNewPage {
@@ -166,25 +167,25 @@ td.cat {
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  COLOR: #FFFFFF;
-  FONT-SIZE: 8pt;
+  color: #FFFFFF;
+  font-size: 8pt;
   TEXT-DECORATION: none;
-  FONT-WEIGHT: bold;
+  font-weight: bold;
 }
 A.nav:hover {
-  COLOR: #F6B33A;
-  FONT-WEIGHT: bold;
+  color: #F6B33A;
+  font-weight: bold;
   TEXT-DECORATION: underline;
 }
 
 A,A:visited,A:active,A:link,A:visited {
-  COLOR: #0A6CDA;
-  FONT-WEIGHT: bold;
+  color: #0A6CDA;
+  font-weight: bold;
   TEXT-DECORATION: none;
 }
 A:hover {
-  COLOR: #DB0954;
-  FONT-WEIGHT: bold;
+  color: #DB0954;
+  font-weight: bold;
   TEXT-DECORATION: underline;
 }
 
@@ -193,23 +194,23 @@ A:hover {
 
 p.err {
   FONT-FAMILY: Verdana, Arial, Helvetica;
-  FONT-SIZE: 14pt;
-  COLOR: #BE0221;
-  FONT-WEIGHT: normal;
+  font-size: 14pt;
+  color: #BE0221;
+  font-weight: normal;
 }
 
 p.quest {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 14pt;
-  COLOR: #120966;
-  FONT-WEIGHT: normal;
+  font-size: 14pt;
+  color: #120966;
+  font-weight: normal;
 }
 
 p.statement {
   FONT-FAMILY: Verdana, Arial, Helvetica;
-  FONT-SIZE: 14pt;
-  COLOR: #120966;
-  FONT-WEIGHT: normal;
+  font-size: 14pt;
+  color: #120966;
+  font-weight: normal;
 }
 
 /** Tab colours */
@@ -223,7 +224,7 @@ p.statement {
 }
 
 .scripturetab {
-  background-color: #F6B33A;
+  background-color: #f6b33a;
   color: white;
   font-weight: bold;
   width:150px;
@@ -249,7 +250,7 @@ p.statement {
 }
 
 .scripturetabhover {
-  background-color: #FAD28B;
+  background-color: #fad28b;
   color: #333333;
   font-weight: bold;
   width:150px;
@@ -269,164 +270,194 @@ p.statement {
 /** Buttons */
 
 input.previewbutton {
-  BACKGROUND-COLOR: white;
-  BORDER:           #66B7E2 1px solid;
-  COLOR:            blue;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
-  PADDING-BOTTOM: 2px;
-  PADDING-LEFT:   1px;
-  PADDING-RIGHT:  1px;
-  PADDING-TOP:    1px;
+  background-color: white;
+  border:           #66b7e2 1px solid;
+  color:            blue;
+  font-size:        8pt;
+  font-weight:      bold;
+  PADDING-BOTTOM:   2px;
+  padding-left:     1px;
+  PADDING-RIGHT:    1px;
+  padding-top:      1px;
 }
 
 input.previewbuttonhover {
-  BACKGROUND-COLOR: #66B7E2;
-  BORDER:           #0093D8 1px solid;
-  COLOR:            #333333;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #66B7E2;
+  border:           #0093D8 1px solid;
+  color:            #333333;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 2px;
-  PADDING-LEFT:   1px;
+  padding-left:   1px;
   PADDING-RIGHT:  1px;
-  PADDING-TOP:    1px;
+  padding-top:    1px;
   cursor: pointer;
 }
 
 input.pagebutton {
-  BACKGROUND-COLOR: white;
-  BORDER:           #F6B33A 1px solid;
-  COLOR:            #666666;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: white;
+  border:           #F6B33A 1px solid;
+  color:            #666666;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 2px;
-  PADDING-LEFT:   1px;
+  padding-left:   1px;
   PADDING-RIGHT:  1px;
-  PADDING-TOP:    1px;
+  padding-top:    1px;
 }
 
 input.pagebuttonhover {
-  BACKGROUND-COLOR: #F6B33A;
-  BORDER:           #F6B33A 1px solid;
-  COLOR:            white;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #F6B33A;
+  border:           #F6B33A 1px solid;
+  color:            white;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 2px;
-  PADDING-LEFT:   1px;
+  padding-left:   1px;
   PADDING-RIGHT:  1px;
-  PADDING-TOP:    1px;
+  padding-top:    1px;
   cursor: pointer;
 }
 
 .pagesel {
-  COLOR:            #DB0954;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  color:            #DB0954;
+  font-size: 8pt;
+  font-weight: bold;
 }
 
 .pageannot {
-  COLOR:            #999999;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: normal;
+  color:            #999999;
+  font-size: 8pt;
+  font-weight: normal;
 }
 
 input.button {
-  BACKGROUND-COLOR: #0093D8;
-  BORDER:           #66B7E2 1px solid;
-  COLOR:            #FFFFFF;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #0093D8;
+  border:           #66B7E2 1px solid;
+  color:            #FFFFFF;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
 }
 
 input.buttonhover {
-  BACKGROUND-COLOR: #66B7E2;
-  BORDER:           #0093D8 1px solid;
-  COLOR:            #333333;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #66B7E2;
+  border:           #0093D8 1px solid;
+  color:            #333333;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
   cursor: pointer;
 }
 
 input.keywordbutton {
-  BACKGROUND-COLOR: #DB0954;
-  BORDER:           #DC909B 1px solid;
-  COLOR:            white;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #DB0954;
+  border:           #DC909B 1px solid;
+  color:            white;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
 }
 
 input.scripturebutton {
-  BACKGROUND-COLOR: #F6B33A;
-  BORDER:           #FAD28B 1px solid;
-  COLOR:            #FFFFFF;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #F6B33A;
+  border:           #FAD28B 1px solid;
+  color:            #FFFFFF;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
 }
 
 input.authorbutton {
-  BACKGROUND-COLOR: #F6B33A;
-  BORDER:           #FAD28B 1px solid;
-  COLOR:            #FFFFFF;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #F6B33A;
+  border:           #FAD28B 1px solid;
+  color:            #FFFFFF;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
 }
 
 input.keywordbuttonhover {
-  BACKGROUND-COLOR: #DC909B;
-  BORDER:           #DB0954 1px solid;
-  COLOR:            #333333;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #DC909B;
+  border:           #DB0954 1px solid;
+  color:            #333333;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
   cursor: pointer;
 }
 
 input.scripturebuttonhover {
-  BACKGROUND-COLOR: #FAD28B;
-  BORDER:           #F6B33A 1px solid;
-  COLOR:            #333333;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #FAD28B;
+  border:           #F6B33A 1px solid;
+  color:            #333333;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
   cursor: pointer;
 }
 
 input.authorbuttonhover {
-  BACKGROUND-COLOR: #C9DC92;
-  BORDER:           #0093D8 1px solid;
-  COLOR:            #333333;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  background-color: #C9DC92;
+  border:           #0093D8 1px solid;
+  color:            #333333;
+  font-size: 8pt;
+  font-weight: bold;
   PADDING-BOTTOM: 3px;
-  PADDING-LEFT:   2px;
+  padding-left:   2px;
   PADDING-RIGHT:  2px;
-  PADDING-TOP:    2px;
+  padding-top:    2px;
+  cursor: pointer;
+}
+
+.volpage {
+  text-align:       center;
+  background-color: white;
+  border:           #007ae0 2px solid;
+  color:            black;
+  font-size:        10pt;
+  font-weight:      normal;
+  padding-bottom:   4px;
+  padding-left:     3px;
+  padding-right:    3px;
+  padding-top:      3px;
+}
+
+.volpageedit {
+  text-align:       center;
+  background-color: #c1dcf5;
+  border:           #007ae0 2px solid;
+  color:            black;
+  font-size:        10pt;
+  font-weight:      normal;
+  padding-bottom:   4px;
+  padding-left:     3px;
+  padding-right:    3px;
+  padding-top:      3px;
+}
+
+.imagebutton {
   cursor: pointer;
 }
 
@@ -438,17 +469,17 @@ input.authorbuttonhover {
 }
 
 .keywordborder {
-  BORDER:  #DB0954 4px solid;
+  border:  #DB0954 4px solid;
   PADDING: 5px;
 }
 
 .scriptureborder {
-  BORDER:  #F6B33A 4px solid;
+  border:  #F6B33A 4px solid;
   PADDING: 5px;
 }
 
 .authorborder {
-  BORDER:  #91CC1A 4px solid;
+  border:  #91CC1A 4px solid;
   PADDING: 5px;
 }
 

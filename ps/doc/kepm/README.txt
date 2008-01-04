@@ -9,12 +9,14 @@ KEPM supports multiple parser language types.  By default these are:
  * ASP (files ending .asp, .aspx)
  * C# as before (files ending .cs)
  * IDL (files ending .idl)
+ * JSP (files ending .jsp)
  * Java (files ending .java)
  * PHP (files ending .php)
  * PL/SQL (files ending .sql, .ora)
  * Perl (files ending .pl)
  * VB6/VB.NET (files ending .vb, .frm, .cls, .bas)
  * VHDL (files ending .vhdl)
+ * XML (files ending .xml .xsd .wsml .xsl .xslt
  * C/C++ (all other file extensions)
 
 Please consult UserGuide.pdf for detailed information regarding
@@ -25,4 +27,4 @@ Simply include the files together in any order and EPM will
 automatically differentiate for you!
 
 
-Powersoftware.com
+SourceCodeMetrics.com

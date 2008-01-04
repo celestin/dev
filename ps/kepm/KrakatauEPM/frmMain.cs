@@ -15,6 +15,7 @@
  * CAM  09-Feb-06   185 : Save/Restore open Projects to Windows Registry.
  * CAM  08-Apr-06   230 : Added Status Bar.
  * CAM  08-Apr-06   284 : Make the application window slightly larger.
+ * CAM  04-Jan-08   336 : Added Metrics Definitions to Help menu.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -63,6 +64,7 @@ namespace KrakatauEPM
     private System.Windows.Forms.MenuItem mnuSets;
     private System.Windows.Forms.ToolBarButton tlbMetSet;
     private System.Windows.Forms.ToolBarButton tlbSep2;
+    private System.Windows.Forms.MenuItem mnuMetDefn;
     ProjectsView lsvProjects;
 
     public EpmApp()
@@ -132,6 +134,7 @@ namespace KrakatauEPM
       this.stbMain = new System.Windows.Forms.StatusBar();
       this.sbpMessage = new System.Windows.Forms.StatusBarPanel();
       this.sbpAnalysisType = new System.Windows.Forms.StatusBarPanel();
+      this.mnuMetDefn = new System.Windows.Forms.MenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.sbpMessage)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sbpAnalysisType)).BeginInit();
       this.SuspendLayout();
@@ -214,12 +217,13 @@ namespace KrakatauEPM
       // 
       this.mnuHelp.Index = 3;
       this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                                            this.mnuMetDefn,
                                                                             this.mnuAbout});
       this.mnuHelp.Text = "&Help";
       // 
       // mnuAbout
       // 
-      this.mnuAbout.Index = 0;
+      this.mnuAbout.Index = 1;
       this.mnuAbout.Text = "&About";
       this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
       // 
@@ -321,7 +325,7 @@ namespace KrakatauEPM
       // 
       // stbMain
       // 
-      this.stbMain.Location = new System.Drawing.Point(0, 339);
+      this.stbMain.Location = new System.Drawing.Point(0, 352);
       this.stbMain.Name = "stbMain";
       this.stbMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
                                                                                this.sbpMessage,
@@ -341,10 +345,16 @@ namespace KrakatauEPM
       // 
       this.sbpAnalysisType.Width = 150;
       // 
+      // mnuMetDefn
+      // 
+      this.mnuMetDefn.Index = 0;
+      this.mnuMetDefn.Text = "&Metrics Defintions";
+      this.mnuMetDefn.Click += new System.EventHandler(this.mnuMetDefn_Click);
+      // 
       // EpmApp
       // 
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-      this.ClientSize = new System.Drawing.Size(592, 361);
+      this.ClientSize = new System.Drawing.Size(592, 374);
       this.Controls.Add(this.stbMain);
       this.Controls.Add(this.tbrMenu);
       this.Controls.Add(this.lsvProjects);
@@ -488,6 +498,21 @@ namespace KrakatauEPM
     {
       HelpAbout about = new HelpAbout();
       about.ShowDialog(this);
+    }
+
+    private void mnuMetDefn_Click(object sender, System.EventArgs e)
+    {
+      string fname = "MetricsDefinitions.pdf";
+      FileInfo pdf = new FileInfo(fname);
+      if (!pdf.Exists) 
+      {
+        MessageBox.Show(String.Format("Could not find the file {0} that is supplied with "+
+          "Krakatau EPM - please reinstall the application.", fname),
+          String.Format("{0} missing!", fname), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+
+      System.Diagnostics.Process.Start(fname);
     }
 
     private void mnuExit_Click(object sender, System.EventArgs e)

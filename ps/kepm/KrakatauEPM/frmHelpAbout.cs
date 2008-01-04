@@ -3,8 +3,6 @@
  * Copyright (c) 2004-2007 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Help - About Dialog
- *
  * $Id$
  *
  * Who  When       Why
@@ -38,6 +36,8 @@
  * CAM  01-Nov-07   321 : Version 1.07.003; EPM Version 1.15.003.
  * CAM  28-Nov-07   323 : Version 1.07.004; EPM Version 1.15.004.
  * CAM  11-Dec-07   325 : Version 1.08.000; EPM Version 1.16.000.
+ * CAM  13-Dec-07   328 : Version 1.08.001; EPM Version 1.16.001.
+ * CAM  04-Jan-08   336 : Version 1.08.002; EPM Version 1.16.002.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -49,7 +49,7 @@ using System.Windows.Forms;
 namespace KrakatauEPM
 {
   /// <summary>
-  /// Summary description for HelpAbout.
+  /// Help - About Dialog
   /// </summary>
   public class HelpAbout : System.Windows.Forms.Form
   {
@@ -64,9 +64,9 @@ namespace KrakatauEPM
     private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
 
-    private String sVersion = "1.08.000";
+    private String sVersion = "1.08.002";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.16.000";
+    private String sEpmVersion = "1.16.002";
 
     public HelpAbout()
     {

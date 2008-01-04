@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2007 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * MySQL Database Control through Registry and Services

@@ -15393,7 +15393,7 @@ char *yytext_vhdl;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2007 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * VHDL Parser

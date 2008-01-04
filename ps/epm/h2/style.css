@@ -1,121 +1,179 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2007 Power Software
+ * Copyright (c) 2004-2008 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Stylesheet for HTML Reporting
  *
  * $Id$
  *
- * Who  When         Why
- * CAM  18-Jul-2006  MetricHelp ids added.
+ * Who  When        Why
+ * CAM  18-Jul-06   MetricHelp ids added.
+ * CAM  04-Jan-08   330 : Added classes to support improved footer.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body, p, table, td {
-  COLOR: #000000;
-  FONT-FAMILY: Verdana, Arial, Helvetica;
-  FONT-SIZE: 9pt;
-  TEXT-DECORATION: none;
+  color: #000000;
+  font-family: Verdana, Arial, Helvetica;
+  font-size: 9pt;
+  text-decoration: none;
 }
 
 .val {
-  TEXT-ALIGN: right;
+  text-align: right;
 }
 
 .pageTitle {
-  COLOR: #F5C135;
-  FONT-SIZE: 11pt;
-  FONT-WEIGHT: bold;
+  color: #F5C135;
+  font-size: 11pt;
+  font-weight: bold;
 }
 
 .itemTitle {
-  COLOR: #666666;
-  FONT-WEIGHT: bold;
+  color: #666666;
+  font-weight: bold;
 }
 
 .itemType {
-  COLOR: #0066cc;
-  FONT-WEIGHT: bold;
+  color: #0066cc;
+  font-weight: bold;
 }
 
 .metHead {
-  COLOR: #666666;
-  FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #DDEEFF;
+  color: #666666;
+  font-weight: bold;
+  background-color: #DDEEFF;
 }
 
 .metCode {
-  COLOR: #666666;
-  FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #FFFFDD;
+  color: #666666;
+  font-weight: bold;
+  background-color: #FFFFDD;
 }
 
 .diffAdd {
-  COLOR: white;
-  FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #33CC33;
+  color: white;
+  font-weight: bold;
+  background-color: #33CC33;
 }
 
 .diffChg {
-  COLOR: white;
-  FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #FF6666;
+  color: white;
+  font-weight: bold;
+  background-color: #FF6666;
 }
 
 .diffDel {
-  COLOR: white;
-  FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #3333DD;
+  color: white;
+  font-weight: bold;
+  background-color: #3333DD;
 }
 
 .mhBox {
-  BACKGROUND-COLOR: #FFFFCC;
-  BORDER:           #FFCC00 2px solid;
-  COLOR:            #993333;
-  FONT-SIZE: 10pt;
+  background-color: #FFFFCC;
+  border:           #FFCC00 2px solid;
+  color:            #993333;
+  font-size: 10pt;
 }
 
 .mhMetCode {
-  BACKGROUND-COLOR: #FFCC00;
-  FONT-WEIGHT: bold;
-  FONT-SIZE: 10pt;
+  background-color: #FFCC00;
+  font-weight: bold;
+  font-size: 10pt;
 }
 
 .mhMetName {
-  BACKGROUND-COLOR: #FFCC00;
-  FONT-SIZE: 10pt;
+  background-color: #FFCC00;
+  font-size: 10pt;
 }
 
 A, A:visited, A:active, A:link {
-  COLOR: #0066CC;
-  TEXT-DECORATION: none;
-  FONT-WEIGHT: bold
+  color: #0066CC;
+  text-decoration: none;
+  font-weight: bold
 }
 A:hover {
-  COLOR: black;
+  color: black;
 }
 
 A.top, A.top:visited, A.top:active, A.top:link {
-  COLOR: white;
-  TEXT-DECORATION: none;
-  FONT-WEIGHT: bold
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 A.top:hover {
-  COLOR: #F5C135;
+  color: #F5C135;
 }
 
 .r1 {
-  BACKGROUND-COLOR: #DDEEFF;
+  background-color: #DDEEFF;
 }
 
 .r2 {
-  BACKGROUND-COLOR: #FFFFDD;
+  background-color: #FFFFDD;
 }
 
 .pstext {
-  COLOR: white;
-  BACKGROUND-COLOR: #0066CC;
-  FONT-FAMILY: Verdana, Arial, Helvetica;
-  FONT-SIZE: 8pt;
-  TEXT-ALIGN: center;
+  color: white;
+  font-size: 8pt;
+  text-align: center;
+}
+
+.nomargin {
+  margin:0;
+  padding:0;
+}
+
+/* lists */
+
+ul {
+  margin: 0 0 0 30px;
+  padding:0;
+  list-style-image: url(http://www.powersoftware.com/img/tinypdf.png);
+}
+
+/* column container */
+.colmask {
+  clear:both;
+  float:left;
+  width:100%;       /* width of page */
+  overflow:hidden;
+}
+/* common column settings */
+.colright,
+.colmid,
+.colleft {
+  float:left;
+  width:100%;       /* width of page */
+  position:relative;
+}
+.col1,
+.col2,
+.col3 {
+  float:left;
+  position:relative;
+  padding:.5em 0 1em 0;
+  overflow:hidden;
+}
+/* 3 Column settings */
+.threecol {
+  background-color: #0066cc;
+}
+.threecol .colmid {
+  right:25%;
+}
+.threecol .colleft {
+  right:50%;
+}
+.threecol .col1 {
+  width:46%;
+  left:102%;
+}
+.threecol .col2 {
+  width:21%;
+  left:31%;
+}
+.threecol .col3 {
+  width:21%;
+  left:85%;
 }

@@ -23667,7 +23667,7 @@ char *yytext_asp;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2006 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * ASP Parser
@@ -23676,8 +23676,9 @@ char *yytext_asp;
  *
  * Who  When       Why
  * CAM  19-Sep-06   117 : File created.
+ * CAM  04-Dec-07   324 : Corrected issues prior to creating JSP parser.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#line 22 "lexer.asp.l"
+#line 23 "lexer.asp.l"
 
 #include <stdio.h>
 #include <string.h>
@@ -23713,7 +23714,8 @@ int nsemi_asp=0 ;           // Number of semi-colons
 int noperators_asp=0 ;      // Total number of operators_asp
 int noperands_asp=0;        // Total number of operands_asp
 
-#define NOTE_SLOC() sloc_asp.insert(asp_lineno)
+#define NOTE_SLOC()       sloc_asp.insert(asp_lineno)
+#define NOTE_SLOC_TAG()   NOTE_SLOC(); sltag_asp.insert(asp_lineno)
 
 void lexclear_asp();
 void store_operand_asp(char* txt);
@@ -23735,7 +23737,7 @@ void eat_eol_asp();
 
 #define STR_LIT 7
 
-#line 23741 "lex.asp.tmp"
+#line 23743 "lex.asp.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -23876,10 +23878,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 77 "lexer.asp.l"
+#line 79 "lexer.asp.l"
 
 
-#line 23885 "lex.asp.tmp"
+#line 23887 "lex.asp.tmp"
 
 	if ( yy_init )
 		{
@@ -23953,993 +23955,993 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 79 "lexer.asp.l"
+#line 81 "lexer.asp.l"
 {;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 81 "lexer.asp.l"
+#line 83 "lexer.asp.l"
 {com_loc_asp++; c_comments_asp++; BEGIN HTML_COM;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 82 "lexer.asp.l"
+#line 84 "lexer.asp.l"
 {BEGIN 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 83 "lexer.asp.l"
+#line 85 "lexer.asp.l"
 {com_loc_asp++; asp_lineno++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 84 "lexer.asp.l"
+#line 86 "lexer.asp.l"
 {;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 86 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN SLOC_TAG; }
+#line 88 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN SLOC_TAG; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 87 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN 0;}
+#line 89 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN 0;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 88 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); asp_lineno++;}
+#line 90 "lexer.asp.l"
+{NOTE_SLOC_TAG(); asp_lineno++;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 89 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); }
+#line 91 "lexer.asp.l"
+{NOTE_SLOC_TAG(); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 91 "lexer.asp.l"
+#line 93 "lexer.asp.l"
 {NOTE_SLOC(); slnat_asp.insert(asp_lineno); BEGIN SLOC_NAT; }
 	YY_BREAK
 case 11:
-#line 93 "lexer.asp.l"
+#line 95 "lexer.asp.l"
 case 12:
 YY_RULE_SETUP
-#line 93 "lexer.asp.l"
+#line 95 "lexer.asp.l"
 {NOTE_SLOC(); slnat_asp.insert(asp_lineno); BEGIN 0;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 94 "lexer.asp.l"
+#line 96 "lexer.asp.l"
 {nsemi_asp++; slnat_asp.insert(asp_lineno);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 95 "lexer.asp.l"
+#line 97 "lexer.asp.l"
 {com_loc_asp++; cpp_comments_asp++; asp_lineno++; eat_eol_asp();}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 96 "lexer.asp.l"
+#line 98 "lexer.asp.l"
 {NOTE_SLOC(); slnat_asp.insert(asp_lineno); asp_lineno++;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 97 "lexer.asp.l"
+#line 99 "lexer.asp.l"
 {NOTE_SLOC(); slnat_asp.insert(asp_lineno); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 99 "lexer.asp.l"
+#line 101 "lexer.asp.l"
 {NOTE_SLOC(); slscr_asp.insert(asp_lineno); BEGIN SLOC_SCR; }
 	YY_BREAK
 case 18:
-#line 101 "lexer.asp.l"
+#line 103 "lexer.asp.l"
 case 19:
 YY_RULE_SETUP
-#line 101 "lexer.asp.l"
+#line 103 "lexer.asp.l"
 {NOTE_SLOC(); slscr_asp.insert(asp_lineno); BEGIN 0;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 102 "lexer.asp.l"
+#line 104 "lexer.asp.l"
 {com_loc_asp++; cpp_comments_asp++; asp_lineno++; eat_eol_asp();}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 103 "lexer.asp.l"
+#line 105 "lexer.asp.l"
 {NOTE_SLOC(); slscr_asp.insert(asp_lineno); asp_lineno++;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 104 "lexer.asp.l"
+#line 106 "lexer.asp.l"
 {NOTE_SLOC(); slscr_asp.insert(asp_lineno); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 106 "lexer.asp.l"
+#line 108 "lexer.asp.l"
 {NOTE_SLOC(); string_literal_asp();}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 108 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN ASP_TAG; }
+#line 110 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN ASP_TAG; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 109 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN 0;}
+#line 111 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN 0;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 110 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); asp_lineno++;}
+#line 112 "lexer.asp.l"
+{NOTE_SLOC_TAG(); asp_lineno++;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 111 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno);}
+#line 113 "lexer.asp.l"
+{NOTE_SLOC_TAG(); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 113 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN ASP_END; }
+#line 115 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN ASP_END; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 114 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno); BEGIN 0;}
+#line 116 "lexer.asp.l"
+{NOTE_SLOC_TAG(); BEGIN 0;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 115 "lexer.asp.l"
-{NOTE_SLOC(); sltag_asp.insert(asp_lineno);}
+#line 117 "lexer.asp.l"
+{NOTE_SLOC_TAG();}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 117 "lexer.asp.l"
+#line 119 "lexer.asp.l"
 {store_operator_asp(ACTION,3);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 118 "lexer.asp.l"
+#line 120 "lexer.asp.l"
 {store_operator_asp(ADDRESS,3);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 119 "lexer.asp.l"
+#line 121 "lexer.asp.l"
 {store_operator_asp(ALIGN,3);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 120 "lexer.asp.l"
+#line 122 "lexer.asp.l"
 {store_operator_asp(ALINK,3);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 121 "lexer.asp.l"
+#line 123 "lexer.asp.l"
 {store_operator_asp(ALT,3);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 122 "lexer.asp.l"
+#line 124 "lexer.asp.l"
 {store_operator_asp(APPLET,3);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 123 "lexer.asp.l"
+#line 125 "lexer.asp.l"
 {store_operator_asp(AREA,3);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 124 "lexer.asp.l"
+#line 126 "lexer.asp.l"
 {store_operator_asp(HTMA,3);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 125 "lexer.asp.l"
+#line 127 "lexer.asp.l"
 {store_operator_asp(BACKGROUND,3);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 126 "lexer.asp.l"
+#line 128 "lexer.asp.l"
 {store_operator_asp(BASE,3);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 127 "lexer.asp.l"
+#line 129 "lexer.asp.l"
 {store_operator_asp(BGCOLOR,3);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 128 "lexer.asp.l"
+#line 130 "lexer.asp.l"
 {store_operator_asp(BIG,3);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 129 "lexer.asp.l"
+#line 131 "lexer.asp.l"
 {store_operator_asp(BLINK,3);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 130 "lexer.asp.l"
+#line 132 "lexer.asp.l"
 {store_operator_asp(BLOCKQUOTE,3);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 131 "lexer.asp.l"
+#line 133 "lexer.asp.l"
 {store_operator_asp(BODY,3);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 132 "lexer.asp.l"
+#line 134 "lexer.asp.l"
 {store_operator_asp(BORDERCOLOR,3);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 133 "lexer.asp.l"
+#line 135 "lexer.asp.l"
 {store_operator_asp(BORDER,3);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 134 "lexer.asp.l"
+#line 136 "lexer.asp.l"
 {store_operator_asp(BOTTOMMARGIN,3);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 135 "lexer.asp.l"
+#line 137 "lexer.asp.l"
 {store_operator_asp(BR,3);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 136 "lexer.asp.l"
+#line 138 "lexer.asp.l"
 {store_operator_asp(BUTTON,3);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 137 "lexer.asp.l"
+#line 139 "lexer.asp.l"
 {store_operator_asp(HTMB,3);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 138 "lexer.asp.l"
+#line 140 "lexer.asp.l"
 {store_operator_asp(CAPTION,3);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 139 "lexer.asp.l"
+#line 141 "lexer.asp.l"
 {store_operator_asp(CELLPADDING,3);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 140 "lexer.asp.l"
+#line 142 "lexer.asp.l"
 {store_operator_asp(CELLSPACING,3);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 141 "lexer.asp.l"
+#line 143 "lexer.asp.l"
 {store_operator_asp(CENTER,3);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 142 "lexer.asp.l"
+#line 144 "lexer.asp.l"
 {store_operator_asp(CHECKED,3);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 143 "lexer.asp.l"
+#line 145 "lexer.asp.l"
 {store_operator_asp(CLASS,3);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 144 "lexer.asp.l"
+#line 146 "lexer.asp.l"
 {store_operator_asp(CLASSID,3);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 145 "lexer.asp.l"
+#line 147 "lexer.asp.l"
 {store_operator_asp(CLEAR,3);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 146 "lexer.asp.l"
+#line 148 "lexer.asp.l"
 {store_operator_asp(CODEBASE,3);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 147 "lexer.asp.l"
+#line 149 "lexer.asp.l"
 {store_operator_asp(CODETYPE,3);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 148 "lexer.asp.l"
+#line 150 "lexer.asp.l"
 {store_operator_asp(CODE,3);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 149 "lexer.asp.l"
+#line 151 "lexer.asp.l"
 {store_operator_asp(COLGROUP,3);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 150 "lexer.asp.l"
+#line 152 "lexer.asp.l"
 {store_operator_asp(COLOR,3);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 151 "lexer.asp.l"
+#line 153 "lexer.asp.l"
 {store_operator_asp(COLS,3);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 152 "lexer.asp.l"
+#line 154 "lexer.asp.l"
 {store_operator_asp(COLSPAN,3);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 153 "lexer.asp.l"
+#line 155 "lexer.asp.l"
 {store_operator_asp(COL,3);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 154 "lexer.asp.l"
+#line 156 "lexer.asp.l"
 {store_operator_asp(COMPACT,3);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 155 "lexer.asp.l"
+#line 157 "lexer.asp.l"
 {store_operator_asp(CONTENT,3);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 156 "lexer.asp.l"
+#line 158 "lexer.asp.l"
 {store_operator_asp(COORDS,3);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 157 "lexer.asp.l"
+#line 159 "lexer.asp.l"
 {store_operator_asp(DATA,3);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 158 "lexer.asp.l"
+#line 160 "lexer.asp.l"
 {store_operator_asp(DD,3);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 159 "lexer.asp.l"
+#line 161 "lexer.asp.l"
 {store_operator_asp(DEL,3);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 160 "lexer.asp.l"
+#line 162 "lexer.asp.l"
 {store_operator_asp(DISABLED,3);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 161 "lexer.asp.l"
+#line 163 "lexer.asp.l"
 {store_operator_asp(DIV,3);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 162 "lexer.asp.l"
+#line 164 "lexer.asp.l"
 {store_operator_asp(DL,3);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 163 "lexer.asp.l"
+#line 165 "lexer.asp.l"
 {store_operator_asp(DT,3);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 164 "lexer.asp.l"
+#line 166 "lexer.asp.l"
 {store_operator_asp(EMBED,3);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 165 "lexer.asp.l"
+#line 167 "lexer.asp.l"
 {store_operator_asp(EM,3);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 166 "lexer.asp.l"
+#line 168 "lexer.asp.l"
 {store_operator_asp(EVENT,3);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 167 "lexer.asp.l"
+#line 169 "lexer.asp.l"
 {store_operator_asp(FACE,3);}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 168 "lexer.asp.l"
+#line 170 "lexer.asp.l"
 {store_operator_asp(FONT,3);}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 169 "lexer.asp.l"
+#line 171 "lexer.asp.l"
 {store_operator_asp(FORM,3);}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 170 "lexer.asp.l"
+#line 172 "lexer.asp.l"
 {store_operator_asp(FRAMEBORDER,3);}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 171 "lexer.asp.l"
+#line 173 "lexer.asp.l"
 {store_operator_asp(FRAMESET,3);}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 172 "lexer.asp.l"
+#line 174 "lexer.asp.l"
 {store_operator_asp(FRAMESPACING,3);}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 173 "lexer.asp.l"
+#line 175 "lexer.asp.l"
 {store_operator_asp(FRAME,3);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 174 "lexer.asp.l"
+#line 176 "lexer.asp.l"
 {store_operator_asp(H1,3);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 175 "lexer.asp.l"
+#line 177 "lexer.asp.l"
 {store_operator_asp(H2,3);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 176 "lexer.asp.l"
+#line 178 "lexer.asp.l"
 {store_operator_asp(H3,3);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 177 "lexer.asp.l"
+#line 179 "lexer.asp.l"
 {store_operator_asp(H4,3);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 178 "lexer.asp.l"
+#line 180 "lexer.asp.l"
 {store_operator_asp(H5,3);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 179 "lexer.asp.l"
+#line 181 "lexer.asp.l"
 {store_operator_asp(H6,3);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 180 "lexer.asp.l"
+#line 182 "lexer.asp.l"
 {store_operator_asp(HEAD,3);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 181 "lexer.asp.l"
+#line 183 "lexer.asp.l"
 {store_operator_asp(HEIGHT,3);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 182 "lexer.asp.l"
+#line 184 "lexer.asp.l"
 {store_operator_asp(HIDDEN,3);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 183 "lexer.asp.l"
+#line 185 "lexer.asp.l"
 {store_operator_asp(HR,3);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 184 "lexer.asp.l"
+#line 186 "lexer.asp.l"
 {store_operator_asp(HREF,3);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 185 "lexer.asp.l"
+#line 187 "lexer.asp.l"
 {store_operator_asp(HSPACE,3);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 186 "lexer.asp.l"
+#line 188 "lexer.asp.l"
 {store_operator_asp(HTML,3);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 187 "lexer.asp.l"
+#line 189 "lexer.asp.l"
 {store_operator_asp(HTTPEQUIV,3);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 188 "lexer.asp.l"
+#line 190 "lexer.asp.l"
 {store_operator_asp(ID,3);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 189 "lexer.asp.l"
+#line 191 "lexer.asp.l"
 {store_operator_asp(IFRAME,3);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 190 "lexer.asp.l"
+#line 192 "lexer.asp.l"
 {store_operator_asp(ILAYER,3);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 191 "lexer.asp.l"
+#line 193 "lexer.asp.l"
 {store_operator_asp(IMG,3);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 192 "lexer.asp.l"
+#line 194 "lexer.asp.l"
 {store_operator_asp(INPUT,3);}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 193 "lexer.asp.l"
+#line 195 "lexer.asp.l"
 {store_operator_asp(LABEL,3);}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 194 "lexer.asp.l"
+#line 196 "lexer.asp.l"
 {store_operator_asp(LANGUAGE,3);}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 195 "lexer.asp.l"
+#line 197 "lexer.asp.l"
 {store_operator_asp(LANG,3);}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 196 "lexer.asp.l"
+#line 198 "lexer.asp.l"
 {store_operator_asp(LAYER,3);}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 197 "lexer.asp.l"
+#line 199 "lexer.asp.l"
 {store_operator_asp(LEFTMARGIN,3);}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 198 "lexer.asp.l"
+#line 200 "lexer.asp.l"
 {store_operator_asp(LEGEND,3);}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 199 "lexer.asp.l"
+#line 201 "lexer.asp.l"
 {store_operator_asp(LI,3);}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 200 "lexer.asp.l"
+#line 202 "lexer.asp.l"
 {store_operator_asp(LINK,3);}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 201 "lexer.asp.l"
+#line 203 "lexer.asp.l"
 {store_operator_asp(LOOP,3);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 202 "lexer.asp.l"
+#line 204 "lexer.asp.l"
 {store_operator_asp(MAP,3);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 203 "lexer.asp.l"
+#line 205 "lexer.asp.l"
 {store_operator_asp(MENU,3);}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 204 "lexer.asp.l"
+#line 206 "lexer.asp.l"
 {store_operator_asp(META,3);}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 205 "lexer.asp.l"
+#line 207 "lexer.asp.l"
 {store_operator_asp(MULTICOL,3);}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 206 "lexer.asp.l"
+#line 208 "lexer.asp.l"
 {store_operator_asp(MULTIPLE,3);}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 207 "lexer.asp.l"
+#line 209 "lexer.asp.l"
 {store_operator_asp(NAME,3);}
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 208 "lexer.asp.l"
+#line 210 "lexer.asp.l"
 {store_operator_asp(NOBR,3);}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 209 "lexer.asp.l"
+#line 211 "lexer.asp.l"
 {store_operator_asp(NOEMBED,3);}
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 210 "lexer.asp.l"
+#line 212 "lexer.asp.l"
 {store_operator_asp(NOFRAMES,3);}
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 211 "lexer.asp.l"
+#line 213 "lexer.asp.l"
 {store_operator_asp(NOHREF,3);}
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 212 "lexer.asp.l"
+#line 214 "lexer.asp.l"
 {store_operator_asp(NOLAYER,3);}
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 213 "lexer.asp.l"
+#line 215 "lexer.asp.l"
 {store_operator_asp(NORESIZE,3);}
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 214 "lexer.asp.l"
+#line 216 "lexer.asp.l"
 {store_operator_asp(NOSCRIPT,3);}
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 215 "lexer.asp.l"
+#line 217 "lexer.asp.l"
 {store_operator_asp(NOSHADE,3);}
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 216 "lexer.asp.l"
+#line 218 "lexer.asp.l"
 {store_operator_asp(NOWRAP,3);}
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 217 "lexer.asp.l"
+#line 219 "lexer.asp.l"
 {store_operator_asp(OBJECT,3);}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 218 "lexer.asp.l"
+#line 220 "lexer.asp.l"
 {store_operator_asp(OL,3);}
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 219 "lexer.asp.l"
+#line 221 "lexer.asp.l"
 {store_operator_asp(OPTGROUP,3);}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 220 "lexer.asp.l"
+#line 222 "lexer.asp.l"
 {store_operator_asp(OPTION,3);}
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 221 "lexer.asp.l"
+#line 223 "lexer.asp.l"
 {store_operator_asp(PALETTE,3);}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 222 "lexer.asp.l"
+#line 224 "lexer.asp.l"
 {store_operator_asp(PARAM,3);}
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 223 "lexer.asp.l"
+#line 225 "lexer.asp.l"
 {store_operator_asp(PLAINTEXT,3);}
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 224 "lexer.asp.l"
+#line 226 "lexer.asp.l"
 {store_operator_asp(PRE,3);}
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 225 "lexer.asp.l"
+#line 227 "lexer.asp.l"
 {store_operator_asp(PUBLIC,3);}
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 226 "lexer.asp.l"
+#line 228 "lexer.asp.l"
 {store_operator_asp(HTMP,3);}
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 227 "lexer.asp.l"
+#line 229 "lexer.asp.l"
 {store_operator_asp(READONLY,3);}
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 228 "lexer.asp.l"
+#line 230 "lexer.asp.l"
 {store_operator_asp(REL,3);}
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 229 "lexer.asp.l"
+#line 231 "lexer.asp.l"
 {store_operator_asp(REV,3);}
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 230 "lexer.asp.l"
+#line 232 "lexer.asp.l"
 {store_operator_asp(RIGHTMARGIN,3);}
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 231 "lexer.asp.l"
+#line 233 "lexer.asp.l"
 {store_operator_asp(ROWSPAN,3);}
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 232 "lexer.asp.l"
+#line 234 "lexer.asp.l"
 {store_operator_asp(ROWS,3);}
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 233 "lexer.asp.l"
+#line 235 "lexer.asp.l"
 {store_operator_asp(SELECTED,3);}
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 234 "lexer.asp.l"
+#line 236 "lexer.asp.l"
 {store_operator_asp(SELECT,3);}
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 235 "lexer.asp.l"
+#line 237 "lexer.asp.l"
 {store_operator_asp(SERVER,3);}
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 236 "lexer.asp.l"
+#line 238 "lexer.asp.l"
 {store_operator_asp(SHAPE,3);}
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 237 "lexer.asp.l"
+#line 239 "lexer.asp.l"
 {store_operator_asp(SIZE,3);}
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 238 "lexer.asp.l"
+#line 240 "lexer.asp.l"
 {store_operator_asp(SMALL,3);}
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 239 "lexer.asp.l"
+#line 241 "lexer.asp.l"
 {store_operator_asp(SOUND,3);}
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 240 "lexer.asp.l"
+#line 242 "lexer.asp.l"
 {store_operator_asp(SPACER,3);}
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 241 "lexer.asp.l"
+#line 243 "lexer.asp.l"
 {store_operator_asp(SPAN,3);}
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 242 "lexer.asp.l"
+#line 244 "lexer.asp.l"
 {store_operator_asp(SRC,3);}
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 243 "lexer.asp.l"
+#line 245 "lexer.asp.l"
 {store_operator_asp(START,3);}
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 244 "lexer.asp.l"
+#line 246 "lexer.asp.l"
 {store_operator_asp(STRIKE,3);}
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 245 "lexer.asp.l"
+#line 247 "lexer.asp.l"
 {store_operator_asp(STRONG,3);}
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 246 "lexer.asp.l"
+#line 248 "lexer.asp.l"
 {store_operator_asp(STYLE,3);}
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 247 "lexer.asp.l"
+#line 249 "lexer.asp.l"
 {store_operator_asp(SUB,3);}
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 248 "lexer.asp.l"
+#line 250 "lexer.asp.l"
 {store_operator_asp(SUP,3);}
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 249 "lexer.asp.l"
+#line 251 "lexer.asp.l"
 {store_operator_asp(TABINDEX,3);}
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 250 "lexer.asp.l"
+#line 252 "lexer.asp.l"
 {store_operator_asp(TABLE,3);}
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 251 "lexer.asp.l"
+#line 253 "lexer.asp.l"
 {store_operator_asp(TARGET,3);}
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 252 "lexer.asp.l"
+#line 254 "lexer.asp.l"
 {store_operator_asp(TBODY,3);}
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 253 "lexer.asp.l"
+#line 255 "lexer.asp.l"
 {store_operator_asp(TD,3);}
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 254 "lexer.asp.l"
+#line 256 "lexer.asp.l"
 {store_operator_asp(TEXTAREA,3);}
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 255 "lexer.asp.l"
+#line 257 "lexer.asp.l"
 {store_operator_asp(TEXT,3);}
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 256 "lexer.asp.l"
+#line 258 "lexer.asp.l"
 {store_operator_asp(TFOOT,3);}
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 257 "lexer.asp.l"
+#line 259 "lexer.asp.l"
 {store_operator_asp(THEAD,3);}
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 258 "lexer.asp.l"
+#line 260 "lexer.asp.l"
 {store_operator_asp(TH,3);}
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 259 "lexer.asp.l"
+#line 261 "lexer.asp.l"
 {store_operator_asp(TITLE,3);}
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 260 "lexer.asp.l"
+#line 262 "lexer.asp.l"
 {store_operator_asp(TOPMARGIN,3);}
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 261 "lexer.asp.l"
+#line 263 "lexer.asp.l"
 {store_operator_asp(TRUESPEED,3);}
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 262 "lexer.asp.l"
+#line 264 "lexer.asp.l"
 {store_operator_asp(TR,3);}
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 263 "lexer.asp.l"
+#line 265 "lexer.asp.l"
 {store_operator_asp(TT,3);}
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 264 "lexer.asp.l"
+#line 266 "lexer.asp.l"
 {store_operator_asp(TYPE,3);}
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 265 "lexer.asp.l"
+#line 267 "lexer.asp.l"
 {store_operator_asp(UL,3);}
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 266 "lexer.asp.l"
+#line 268 "lexer.asp.l"
 {store_operator_asp(URL,3);}
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 267 "lexer.asp.l"
+#line 269 "lexer.asp.l"
 {store_operator_asp(URN,3);}
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 268 "lexer.asp.l"
+#line 270 "lexer.asp.l"
 {store_operator_asp(USEMAP,3);}
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 269 "lexer.asp.l"
+#line 271 "lexer.asp.l"
 {store_operator_asp(VALIGN,3);}
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 270 "lexer.asp.l"
+#line 272 "lexer.asp.l"
 {store_operator_asp(VALUE,3);}
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 271 "lexer.asp.l"
+#line 273 "lexer.asp.l"
 {store_operator_asp(VAR,3);}
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 272 "lexer.asp.l"
+#line 274 "lexer.asp.l"
 {store_operator_asp(VLINK,3);}
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 273 "lexer.asp.l"
+#line 275 "lexer.asp.l"
 {store_operator_asp(VOLUME,3);}
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 274 "lexer.asp.l"
+#line 276 "lexer.asp.l"
 {store_operator_asp(VRML,3);}
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 275 "lexer.asp.l"
+#line 277 "lexer.asp.l"
 {store_operator_asp(VSPACE,3);}
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 276 "lexer.asp.l"
+#line 278 "lexer.asp.l"
 {store_operator_asp(WIDTH,3);}
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 277 "lexer.asp.l"
+#line 279 "lexer.asp.l"
 {store_operator_asp(WRAP,3);}
 	YY_BREAK
 case 192:
-#line 280 "lexer.asp.l"
-case 193:
-#line 281 "lexer.asp.l"
-case 194:
 #line 282 "lexer.asp.l"
-case 195:
+case 193:
 #line 283 "lexer.asp.l"
-case 196:
+case 194:
 #line 284 "lexer.asp.l"
-case 197:
+case 195:
 #line 285 "lexer.asp.l"
-case 198:
+case 196:
 #line 286 "lexer.asp.l"
+case 197:
+#line 287 "lexer.asp.l"
+case 198:
+#line 288 "lexer.asp.l"
 case 199:
 YY_RULE_SETUP
-#line 286 "lexer.asp.l"
+#line 288 "lexer.asp.l"
 {NOTE_SLOC(); store_operand_asp(strdup(yytext_asp));}
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 288 "lexer.asp.l"
+#line 290 "lexer.asp.l"
 {;}
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 289 "lexer.asp.l"
+#line 291 "lexer.asp.l"
 {asp_lineno++;}
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 290 "lexer.asp.l"
+#line 292 "lexer.asp.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 203:
 YY_RULE_SETUP
-#line 291 "lexer.asp.l"
+#line 293 "lexer.asp.l"
 ECHO;
 	YY_BREAK
-#line 24945 "lex.asp.tmp"
+#line 24947 "lex.asp.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(HTML_COM):
 case YY_STATE_EOF(SLOC_TAG):
@@ -25829,7 +25831,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 291 "lexer.asp.l"
+#line 293 "lexer.asp.l"
 
 int yywrap_asp() {
   return(1);

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2007 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM entry point
@@ -63,6 +63,7 @@
  * CAM  10-Dec-07   325 : Added XML.
  * CAM  01-Nov-07   325 : Version 1.16.000.
  * CAM  13-Dec-07   328 : Version 1.16.001.
+ * CAM  04-Jan-08   330 : Version 1.16.002.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -927,8 +928,8 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.001\n"
-       << "Copyright (c) 2004-2007 Powersoftware.com.  All rights reserved.\n\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.002\n"
+       << "Copyright (c) 2004-2008 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
 
   char szAppPath[MAX_PATH];

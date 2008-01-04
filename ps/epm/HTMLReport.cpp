@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2007 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * HTML Reporting
@@ -33,6 +33,7 @@
  * CAM  20-Jul-06   285 : Changed MetricsHelp to call javascript in the href rather than onclick.
  * CAM  13-Dec-07   328 : Added MetricsDefinitions.pdf.
  * CAM  14-Dec-07   328 : Added (EPM) UserGuide.pdf.
+ * CAM  04-Jan-08   330 : Improved layout of links in footer.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -206,7 +207,7 @@ void HTMLReport::createFrameset() {
   frame << "<html><head>" << endl
         << "<title>Essential Project Manager - C# Metrics</title>" << endl
         << "</head>" << endl
-        << "<frameset rows=34,*,22>" << endl
+        << "<frameset rows=34,*,50>" << endl
         << "  <frame name=top src=\"top.html\">" << endl
         << "  <frameset cols=400,*>" << endl
         << "    <frame name=nav src=\"project.html\">" << endl
@@ -216,7 +217,7 @@ void HTMLReport::createFrameset() {
         << "</frameset>" << endl;
 
   frame.close();
-  string className = "pstext";
+  string className = "nomargin";
 
   // Top bar with Projects, File links
   filename = thePath + "top.html";
@@ -234,21 +235,26 @@ void HTMLReport::createFrameset() {
   frame.open(filename.c_str());
   title = "Bottom";
   htmlStart(frame, title, className);
-  frame << "<table border=0 cellspacing=0 cellpadding=2 width=\"100%\"><tr>" << endl;
-  frame << "<td width=\"30%\" align=left><table border=0 cellspacing=0 cellpadding=0><tr>"
-        << "<td><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
-        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a></td>"
-        << "<td style=\"padding-left:30px;\"><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
-        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/UserGuide.pdf\" target=\"_blank\">EPM User Guide</a>"
-        << "</tr></table></td>" << endl;
-  frame << "<td width=\"40%\" align=center class=\"pstext\">Copyright &copy; 2004-2007 Powersoftware.com</td>" << endl;
-  frame << "<td width=\"30%\" align=right><table border=0 cellspacing=0 cellpadding=0><tr>"
-        << "<td><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
-        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/MetricsDefinitions.pdf\" target=\"_blank\">Metrics Definitions</a></td>"
-        << "<td style=\"padding-left:30px;\"><img src=\"http://www.powersoftware.com/img/tinypdf.png\"></td>"
-        << "<td style=\"padding-left:8px;\"><a class=top href=\"http://www.powersoftware.com/epm/epm_chg_ex.pdf\" target=\"_blank\">EPM Changed Metrics</a>"
-        << "</td></tr></table></td>" << endl;
-  frame << "</tr></table>" << endl;
+
+  frame << "<div class=\"colmask threecol\">" << endl
+        << "  <div class=\"colmid\">" << endl
+        << "    <div class=\"colleft\">" << endl;
+
+  frame << "      <div class=\"col1\"><p class=\"pstext\">Copyright &copy; 2004-2007 <b>SourceCodeMetrics.com</b></p></div>" << endl
+        << "      <div class=\"col2\"><ul>" << endl
+        << "        <li><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a></li>" << endl
+        << "        <li><a class=top href=\"http://www.powersoftware.com/epm/UserGuide.pdf\" target=\"_blank\">EPM User Guide</a></li>" << endl
+        << "      </ul></div>" << endl
+        << "      <div class=\"col3\"><ul>" << endl
+        << "        <li><a class=top href=\"http://www.powersoftware.com/epm/MetricsDefinitions.pdf\" target=\"_blank\">Metrics Definitions</a></li>" << endl
+        << "        <li><a class=top href=\"http://www.powersoftware.com/epm/epm_chg_ex.pdf\" target=\"_blank\">EPM Changed Metrics</a></li>" << endl
+        << "      </ul></div>" << endl;
+
+  frame << "    </div>" << endl
+        << "  </div>" << endl
+        << "</div>" << endl;
+
+
   htmlEnd(frame);
   frame.close();
 

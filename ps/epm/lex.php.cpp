@@ -25703,7 +25703,7 @@ char *yytext_php;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2006-2007 Power Software
+ * Copyright (c) 2004,2008 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * PHP Parser
@@ -25712,8 +25712,9 @@ char *yytext_php;
  *
  * Who  When       Why
  * CAM  04-Nov-06   301 : File created.
+ * CAM  28-Nov-07   323 : Rewrote parser with many improvements.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#line 22 "lexer.php.l"
+#line 23 "lexer.php.l"
 
 #include <stdio.h>
 #include <string.h>
@@ -25773,7 +25774,7 @@ void store_operator_php(int op, int typ);
 
 #define STR_LIT 9
 
-#line 25779 "lex.php.tmp"
+#line 25780 "lex.php.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -25914,10 +25915,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 77 "lexer.php.l"
+#line 78 "lexer.php.l"
 
 
-#line 25923 "lex.php.tmp"
+#line 25924 "lex.php.tmp"
 
 	if ( yy_init )
 		{
@@ -25991,1028 +25992,1028 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 79 "lexer.php.l"
+#line 80 "lexer.php.l"
 {;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 81 "lexer.php.l"
+#line 82 "lexer.php.l"
 {com_loc_php++; c_comments_php++; BEGIN HTML_COM;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 82 "lexer.php.l"
+#line 83 "lexer.php.l"
 {BEGIN 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 83 "lexer.php.l"
+#line 84 "lexer.php.l"
 {com_loc_php++; php_lineno++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 84 "lexer.php.l"
+#line 85 "lexer.php.l"
 {;}
 	YY_BREAK
 case 6:
-#line 87 "lexer.php.l"
+#line 88 "lexer.php.l"
 case 7:
 YY_RULE_SETUP
-#line 87 "lexer.php.l"
+#line 88 "lexer.php.l"
 {NOTE_SLOC_NAT(); BEGIN SLOC_NAT; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 88 "lexer.php.l"
+#line 89 "lexer.php.l"
 {NOTE_SLOC_NAT(); BEGIN 0;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 89 "lexer.php.l"
+#line 90 "lexer.php.l"
 {NOTE_SLOC_NAT(); php_lineno++;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 90 "lexer.php.l"
+#line 91 "lexer.php.l"
 {BEGIN SLOC_NAT_STRD;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 91 "lexer.php.l"
+#line 92 "lexer.php.l"
 {BEGIN SLOC_NAT_STRS;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 92 "lexer.php.l"
+#line 93 "lexer.php.l"
 {BEGIN SLOC_NAT_MCOM;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 93 "lexer.php.l"
+#line 94 "lexer.php.l"
 {BEGIN SLOC_NAT_ECOM;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 94 "lexer.php.l"
+#line 95 "lexer.php.l"
 {nsemi_php++;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 96 "lexer.php.l"
+#line 97 "lexer.php.l"
 {store_operator_php(PHP__CLASS,1);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 97 "lexer.php.l"
+#line 98 "lexer.php.l"
 {store_operator_php(PHP__FILE,1);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 98 "lexer.php.l"
+#line 99 "lexer.php.l"
 {store_operator_php(PHP__FUNCTION,1);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 99 "lexer.php.l"
+#line 100 "lexer.php.l"
 {store_operator_php(PHP__LINE,1);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 100 "lexer.php.l"
+#line 101 "lexer.php.l"
 {store_operator_php(PHP__METHOD,1);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 101 "lexer.php.l"
+#line 102 "lexer.php.l"
 {store_operator_php(PHP_ABSTRACT,1);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 102 "lexer.php.l"
+#line 103 "lexer.php.l"
 {store_operator_php(PHP_AND,1);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 103 "lexer.php.l"
+#line 104 "lexer.php.l"
 {store_operator_php(PHP_ARRAY,1);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 104 "lexer.php.l"
+#line 105 "lexer.php.l"
 {store_operator_php(PHP_AS,1);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 105 "lexer.php.l"
+#line 106 "lexer.php.l"
 {store_operator_php(PHP_BREAK,1);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 106 "lexer.php.l"
+#line 107 "lexer.php.l"
 {store_operator_php(PHP_CASE,1);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 107 "lexer.php.l"
+#line 108 "lexer.php.l"
 {store_operator_php(PHP_CATCH,1);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 108 "lexer.php.l"
+#line 109 "lexer.php.l"
 {store_operator_php(PHP_CFUNCTION,1);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 109 "lexer.php.l"
+#line 110 "lexer.php.l"
 {store_operator_php(PHP_CLASS,1);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 110 "lexer.php.l"
+#line 111 "lexer.php.l"
 {store_operator_php(PHP_CLONE,1);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 111 "lexer.php.l"
+#line 112 "lexer.php.l"
 {store_operator_php(PHP_CONST,1);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 112 "lexer.php.l"
+#line 113 "lexer.php.l"
 {store_operator_php(PHP_CONTINUE,1);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 113 "lexer.php.l"
+#line 114 "lexer.php.l"
 {store_operator_php(PHP_DECLARE,1);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 114 "lexer.php.l"
+#line 115 "lexer.php.l"
 {store_operator_php(PHP_DEFAULT,1);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 115 "lexer.php.l"
+#line 116 "lexer.php.l"
 {store_operator_php(PHP_DIE,1);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 116 "lexer.php.l"
+#line 117 "lexer.php.l"
 {store_operator_php(PHP_DO,1);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 117 "lexer.php.l"
+#line 118 "lexer.php.l"
 {store_operator_php(PHP_ECHO,1);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 118 "lexer.php.l"
+#line 119 "lexer.php.l"
 {store_operator_php(PHP_ELSE,1);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 119 "lexer.php.l"
+#line 120 "lexer.php.l"
 {store_operator_php(PHP_ELSEIF,1);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 120 "lexer.php.l"
+#line 121 "lexer.php.l"
 {store_operator_php(PHP_EMPTY,1);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 121 "lexer.php.l"
+#line 122 "lexer.php.l"
 {store_operator_php(PHP_ENDDECLARE,1);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 122 "lexer.php.l"
+#line 123 "lexer.php.l"
 {store_operator_php(PHP_ENDFOR,1);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 123 "lexer.php.l"
+#line 124 "lexer.php.l"
 {store_operator_php(PHP_ENDFOREACH,1);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 124 "lexer.php.l"
+#line 125 "lexer.php.l"
 {store_operator_php(PHP_ENDIF,1);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 125 "lexer.php.l"
+#line 126 "lexer.php.l"
 {store_operator_php(PHP_ENDSWITCH,1);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 126 "lexer.php.l"
+#line 127 "lexer.php.l"
 {store_operator_php(PHP_ENDWHILE,1);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 127 "lexer.php.l"
+#line 128 "lexer.php.l"
 {store_operator_php(PHP_EVAL,1);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 128 "lexer.php.l"
+#line 129 "lexer.php.l"
 {store_operator_php(PHP_EXCEPTION,1);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 129 "lexer.php.l"
+#line 130 "lexer.php.l"
 {store_operator_php(PHP_EXIT,1);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 130 "lexer.php.l"
+#line 131 "lexer.php.l"
 {store_operator_php(PHP_EXTENDS,1);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 131 "lexer.php.l"
+#line 132 "lexer.php.l"
 {store_operator_php(PHP_FINAL,1);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 132 "lexer.php.l"
+#line 133 "lexer.php.l"
 {store_operator_php(PHP_FOR,1);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 133 "lexer.php.l"
+#line 134 "lexer.php.l"
 {store_operator_php(PHP_FOREACH,1);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 134 "lexer.php.l"
+#line 135 "lexer.php.l"
 {store_operator_php(PHP_FUNCTION,1);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 135 "lexer.php.l"
+#line 136 "lexer.php.l"
 {store_operator_php(PHP_GLOBAL,1);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 136 "lexer.php.l"
+#line 137 "lexer.php.l"
 {store_operator_php(PHP_IF,1);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 137 "lexer.php.l"
+#line 138 "lexer.php.l"
 {store_operator_php(PHP_IMPLEMENTS,1);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 138 "lexer.php.l"
+#line 139 "lexer.php.l"
 {store_operator_php(PHP_INCLUDE,1);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 139 "lexer.php.l"
+#line 140 "lexer.php.l"
 {store_operator_php(PHP_INCLUDE_ONCE,1);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 140 "lexer.php.l"
+#line 141 "lexer.php.l"
 {store_operator_php(PHP_INTERFACE,1);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 141 "lexer.php.l"
+#line 142 "lexer.php.l"
 {store_operator_php(PHP_ISSET,1);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 142 "lexer.php.l"
+#line 143 "lexer.php.l"
 {store_operator_php(PHP_LIST,1);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 143 "lexer.php.l"
+#line 144 "lexer.php.l"
 {store_operator_php(PHP_NEW,1);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 144 "lexer.php.l"
+#line 145 "lexer.php.l"
 {store_operator_php(PHP_OLD_FUNCTION,1);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 145 "lexer.php.l"
+#line 146 "lexer.php.l"
 {store_operator_php(PHP_OR,1);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 146 "lexer.php.l"
+#line 147 "lexer.php.l"
 {store_operator_php(PHP_PHP_USER_FILTER,1);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 147 "lexer.php.l"
+#line 148 "lexer.php.l"
 {store_operator_php(PHP_PRINT,1);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 148 "lexer.php.l"
+#line 149 "lexer.php.l"
 {store_operator_php(PHP_PRIVATE,1);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 149 "lexer.php.l"
+#line 150 "lexer.php.l"
 {store_operator_php(PHP_PROTECTED,1);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 150 "lexer.php.l"
+#line 151 "lexer.php.l"
 {store_operator_php(PHP_PUBLIC,1);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 151 "lexer.php.l"
+#line 152 "lexer.php.l"
 {store_operator_php(PHP_REQUIRE,1);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 152 "lexer.php.l"
+#line 153 "lexer.php.l"
 {store_operator_php(PHP_REQUIRE_ONCE,1);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 153 "lexer.php.l"
+#line 154 "lexer.php.l"
 {store_operator_php(PHP_RETURN,1);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 154 "lexer.php.l"
+#line 155 "lexer.php.l"
 {store_operator_php(PHP_STATIC,1);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 155 "lexer.php.l"
+#line 156 "lexer.php.l"
 {store_operator_php(PHP_SWITCH,1);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 156 "lexer.php.l"
+#line 157 "lexer.php.l"
 {store_operator_php(PHP_THROW,1);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 157 "lexer.php.l"
+#line 158 "lexer.php.l"
 {store_operator_php(PHP_TRY,1);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 158 "lexer.php.l"
+#line 159 "lexer.php.l"
 {store_operator_php(PHP_UNSET,1);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 159 "lexer.php.l"
+#line 160 "lexer.php.l"
 {store_operator_php(PHP_USE,1);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 160 "lexer.php.l"
+#line 161 "lexer.php.l"
 {store_operator_php(PHP_VAR,1);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 161 "lexer.php.l"
+#line 162 "lexer.php.l"
 {store_operator_php(PHP_WHILE,1);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 162 "lexer.php.l"
+#line 163 "lexer.php.l"
 {store_operator_php(PHP_XOR,1);}
 	YY_BREAK
 case 82:
-#line 164 "lexer.php.l"
-case 83:
 #line 165 "lexer.php.l"
-case 84:
+case 83:
 #line 166 "lexer.php.l"
-case 85:
+case 84:
 #line 167 "lexer.php.l"
-case 86:
+case 85:
 #line 168 "lexer.php.l"
-case 87:
+case 86:
 #line 169 "lexer.php.l"
-case 88:
+case 87:
 #line 170 "lexer.php.l"
+case 88:
+#line 171 "lexer.php.l"
 case 89:
 YY_RULE_SETUP
-#line 170 "lexer.php.l"
+#line 171 "lexer.php.l"
 {NOTE_SLOC_NAT(); store_operand_php(strdup(yytext_php));}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 171 "lexer.php.l"
+#line 172 "lexer.php.l"
 {NOTE_SLOC_NAT();}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 173 "lexer.php.l"
+#line 174 "lexer.php.l"
 {php_lineno++; /* Double-quoted string literals */}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 174 "lexer.php.l"
+#line 175 "lexer.php.l"
 {BEGIN SLOC_NAT;}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 175 "lexer.php.l"
+#line 176 "lexer.php.l"
 {NOTE_SLOC_NAT();}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 177 "lexer.php.l"
+#line 178 "lexer.php.l"
 {php_lineno++; /* Single-quoted string literals */}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 178 "lexer.php.l"
+#line 179 "lexer.php.l"
 {BEGIN SLOC_NAT;}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 179 "lexer.php.l"
+#line 180 "lexer.php.l"
 {NOTE_SLOC_NAT();}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 181 "lexer.php.l"
+#line 182 "lexer.php.l"
 {php_lineno++; com_loc_php++; /* Multi Line Comments within Native PHP */}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 182 "lexer.php.l"
+#line 183 "lexer.php.l"
 {;}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 183 "lexer.php.l"
+#line 184 "lexer.php.l"
 {c_comments_php++; com_loc_php++; BEGIN SLOC_NAT;}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 185 "lexer.php.l"
+#line 186 "lexer.php.l"
 {/* To-end-of-line Comments within Native PHP */}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 186 "lexer.php.l"
+#line 187 "lexer.php.l"
 {php_lineno++; com_loc_php++; cpp_comments_php++; BEGIN SLOC_NAT;}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 188 "lexer.php.l"
+#line 189 "lexer.php.l"
 {NOTE_SLOC(); slscr_php.insert(php_lineno); BEGIN SLOC_SCR; /* Script tags */}
 	YY_BREAK
 case 103:
-#line 190 "lexer.php.l"
+#line 191 "lexer.php.l"
 case 104:
 YY_RULE_SETUP
-#line 190 "lexer.php.l"
+#line 191 "lexer.php.l"
 {NOTE_SLOC(); slscr_php.insert(php_lineno); BEGIN 0;}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 191 "lexer.php.l"
+#line 192 "lexer.php.l"
 {BEGIN SLOC_SCR_ECOM;}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 192 "lexer.php.l"
+#line 193 "lexer.php.l"
 {NOTE_SLOC(); slscr_php.insert(php_lineno); php_lineno++;}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 193 "lexer.php.l"
+#line 194 "lexer.php.l"
 {NOTE_SLOC(); slscr_php.insert(php_lineno); }
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 195 "lexer.php.l"
+#line 196 "lexer.php.l"
 {/* To-end-of-line Comments within Script */}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 196 "lexer.php.l"
+#line 197 "lexer.php.l"
 {php_lineno++; com_loc_php++; cpp_comments_php++; BEGIN SLOC_SCR;}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 198 "lexer.php.l"
+#line 199 "lexer.php.l"
 {store_operator_php(HTM_ALIGN,3);}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 199 "lexer.php.l"
+#line 200 "lexer.php.l"
 {store_operator_php(HTM_ALT,3);}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 200 "lexer.php.l"
+#line 201 "lexer.php.l"
 {store_operator_php(HTM_APPLET,3);}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 201 "lexer.php.l"
+#line 202 "lexer.php.l"
 {store_operator_php(HTM_AREA,3);}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 202 "lexer.php.l"
+#line 203 "lexer.php.l"
 {store_operator_php(HTM_A,3);}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 203 "lexer.php.l"
+#line 204 "lexer.php.l"
 {store_operator_php(HTM_BACKGROUND,3);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 204 "lexer.php.l"
+#line 205 "lexer.php.l"
 {store_operator_php(HTM_BGCOLOR,3);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 205 "lexer.php.l"
+#line 206 "lexer.php.l"
 {store_operator_php(HTM_BLOCKQUOTE,3);}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 206 "lexer.php.l"
+#line 207 "lexer.php.l"
 {store_operator_php(HTM_BODY,3);}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 207 "lexer.php.l"
+#line 208 "lexer.php.l"
 {store_operator_php(HTM_BORDERCOLOR,3);}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 208 "lexer.php.l"
+#line 209 "lexer.php.l"
 {store_operator_php(HTM_BORDER,3);}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 209 "lexer.php.l"
+#line 210 "lexer.php.l"
 {store_operator_php(HTM_BR,3);}
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 210 "lexer.php.l"
+#line 211 "lexer.php.l"
 {store_operator_php(HTM_BUTTON,3);}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 211 "lexer.php.l"
+#line 212 "lexer.php.l"
 {store_operator_php(HTM_B,3);}
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 212 "lexer.php.l"
+#line 213 "lexer.php.l"
 {store_operator_php(HTM_CENTER,3);}
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 213 "lexer.php.l"
+#line 214 "lexer.php.l"
 {store_operator_php(HTM_CHECKED,3);}
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 214 "lexer.php.l"
+#line 215 "lexer.php.l"
 {store_operator_php(HTM_CLASS,3);}
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 215 "lexer.php.l"
+#line 216 "lexer.php.l"
 {store_operator_php(HTM_CODE,3);}
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 216 "lexer.php.l"
+#line 217 "lexer.php.l"
 {store_operator_php(HTM_COLOR,3);}
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 217 "lexer.php.l"
+#line 218 "lexer.php.l"
 {store_operator_php(HTM_COLS,3);}
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 218 "lexer.php.l"
+#line 219 "lexer.php.l"
 {store_operator_php(HTM_COLSPAN,3);}
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 219 "lexer.php.l"
+#line 220 "lexer.php.l"
 {store_operator_php(HTM_DIV,3);}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 220 "lexer.php.l"
+#line 221 "lexer.php.l"
 {store_operator_php(HTM_EMBED,3);}
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 221 "lexer.php.l"
+#line 222 "lexer.php.l"
 {store_operator_php(HTM_FACE,3);}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 222 "lexer.php.l"
+#line 223 "lexer.php.l"
 {store_operator_php(HTM_FONT,3);}
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 223 "lexer.php.l"
+#line 224 "lexer.php.l"
 {store_operator_php(HTM_FORM,3);}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 224 "lexer.php.l"
+#line 225 "lexer.php.l"
 {store_operator_php(HTM_FRAMEBORDER,3);}
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 225 "lexer.php.l"
+#line 226 "lexer.php.l"
 {store_operator_php(HTM_FRAMESET,3);}
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 226 "lexer.php.l"
+#line 227 "lexer.php.l"
 {store_operator_php(HTM_FRAMESPACING,3);}
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 227 "lexer.php.l"
+#line 228 "lexer.php.l"
 {store_operator_php(HTM_FRAME,3);}
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 228 "lexer.php.l"
+#line 229 "lexer.php.l"
 {store_operator_php(HTM_H1,3);}
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 229 "lexer.php.l"
+#line 230 "lexer.php.l"
 {store_operator_php(HTM_H2,3);}
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 230 "lexer.php.l"
+#line 231 "lexer.php.l"
 {store_operator_php(HTM_H3,3);}
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 231 "lexer.php.l"
+#line 232 "lexer.php.l"
 {store_operator_php(HTM_H4,3);}
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 232 "lexer.php.l"
+#line 233 "lexer.php.l"
 {store_operator_php(HTM_H5,3);}
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 233 "lexer.php.l"
+#line 234 "lexer.php.l"
 {store_operator_php(HTM_H6,3);}
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 234 "lexer.php.l"
+#line 235 "lexer.php.l"
 {store_operator_php(HTM_HEAD,3);}
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 235 "lexer.php.l"
+#line 236 "lexer.php.l"
 {store_operator_php(HTM_HEIGHT,3);}
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 236 "lexer.php.l"
+#line 237 "lexer.php.l"
 {store_operator_php(HTM_HIDDEN,3);}
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 237 "lexer.php.l"
+#line 238 "lexer.php.l"
 {store_operator_php(HTM_HR,3);}
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 238 "lexer.php.l"
+#line 239 "lexer.php.l"
 {store_operator_php(HTM_HREF,3);}
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 239 "lexer.php.l"
+#line 240 "lexer.php.l"
 {store_operator_php(HTM_HTML,3);}
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 240 "lexer.php.l"
+#line 241 "lexer.php.l"
 {store_operator_php(HTM_HTTPEQUIV,3);}
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 241 "lexer.php.l"
+#line 242 "lexer.php.l"
 {store_operator_php(HTM_ID,3);}
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 242 "lexer.php.l"
+#line 243 "lexer.php.l"
 {store_operator_php(HTM_IFRAME,3);}
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 243 "lexer.php.l"
+#line 244 "lexer.php.l"
 {store_operator_php(HTM_ILAYER,3);}
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 244 "lexer.php.l"
+#line 245 "lexer.php.l"
 {store_operator_php(HTM_IMG,3);}
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 245 "lexer.php.l"
+#line 246 "lexer.php.l"
 {store_operator_php(HTM_INPUT,3);}
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 246 "lexer.php.l"
+#line 247 "lexer.php.l"
 {store_operator_php(HTM_LABEL,3);}
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 247 "lexer.php.l"
+#line 248 "lexer.php.l"
 {store_operator_php(HTM_LANGUAGE,3);}
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 248 "lexer.php.l"
+#line 249 "lexer.php.l"
 {store_operator_php(HTM_LANG,3);}
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 249 "lexer.php.l"
+#line 250 "lexer.php.l"
 {store_operator_php(HTM_LAYER,3);}
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 250 "lexer.php.l"
+#line 251 "lexer.php.l"
 {store_operator_php(HTM_LEFTMARGIN,3);}
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 251 "lexer.php.l"
+#line 252 "lexer.php.l"
 {store_operator_php(HTM_LI,3);}
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 252 "lexer.php.l"
+#line 253 "lexer.php.l"
 {store_operator_php(HTM_LINK,3);}
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 253 "lexer.php.l"
+#line 254 "lexer.php.l"
 {store_operator_php(HTM_MAP,3);}
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 254 "lexer.php.l"
+#line 255 "lexer.php.l"
 {store_operator_php(HTM_MARGINHEIGHT,3);}
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 255 "lexer.php.l"
+#line 256 "lexer.php.l"
 {store_operator_php(HTM_MARGINWIDTH,3);}
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 256 "lexer.php.l"
+#line 257 "lexer.php.l"
 {store_operator_php(HTM_META,3);}
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 257 "lexer.php.l"
+#line 258 "lexer.php.l"
 {store_operator_php(HTM_METHOD,3);}
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 258 "lexer.php.l"
+#line 259 "lexer.php.l"
 {store_operator_php(HTM_MULTIPLE,3);}
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 259 "lexer.php.l"
+#line 260 "lexer.php.l"
 {store_operator_php(HTM_NAME,3);}
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 260 "lexer.php.l"
+#line 261 "lexer.php.l"
 {store_operator_php(HTM_OBJECT,3);}
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 261 "lexer.php.l"
+#line 262 "lexer.php.l"
 {store_operator_php(HTM_OL,3);}
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 262 "lexer.php.l"
+#line 263 "lexer.php.l"
 {store_operator_php(HTM_OPTGROUP,3);}
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 263 "lexer.php.l"
+#line 264 "lexer.php.l"
 {store_operator_php(HTM_OPTION,3);}
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 264 "lexer.php.l"
+#line 265 "lexer.php.l"
 {store_operator_php(HTM_PARAM,3);}
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 265 "lexer.php.l"
+#line 266 "lexer.php.l"
 {store_operator_php(HTM_PRE,3);}
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 266 "lexer.php.l"
+#line 267 "lexer.php.l"
 {store_operator_php(HTM_PUBLIC,3);}
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 267 "lexer.php.l"
+#line 268 "lexer.php.l"
 {store_operator_php(HTM_P,3);}
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 268 "lexer.php.l"
+#line 269 "lexer.php.l"
 {store_operator_php(HTM_READONLY,3);}
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 269 "lexer.php.l"
+#line 270 "lexer.php.l"
 {store_operator_php(HTM_ROWSPAN,3);}
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 270 "lexer.php.l"
+#line 271 "lexer.php.l"
 {store_operator_php(HTM_SCROLLING,3);}
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 271 "lexer.php.l"
+#line 272 "lexer.php.l"
 {store_operator_php(HTM_SCROLL,3);}
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 272 "lexer.php.l"
+#line 273 "lexer.php.l"
 {store_operator_php(HTM_SELECTED,3);}
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 273 "lexer.php.l"
+#line 274 "lexer.php.l"
 {store_operator_php(HTM_SELECT,3);}
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 274 "lexer.php.l"
+#line 275 "lexer.php.l"
 {store_operator_php(HTM_SIZE,3);}
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 275 "lexer.php.l"
+#line 276 "lexer.php.l"
 {store_operator_php(HTM_SMALL,3);}
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 276 "lexer.php.l"
+#line 277 "lexer.php.l"
 {store_operator_php(HTM_SPAN,3);}
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 277 "lexer.php.l"
+#line 278 "lexer.php.l"
 {store_operator_php(HTM_SRC,3);}
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 278 "lexer.php.l"
+#line 279 "lexer.php.l"
 {store_operator_php(HTM_STYLE,3);}
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 279 "lexer.php.l"
+#line 280 "lexer.php.l"
 {store_operator_php(HTM_SUB,3);}
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 280 "lexer.php.l"
+#line 281 "lexer.php.l"
 {store_operator_php(HTM_SUP,3);}
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 281 "lexer.php.l"
+#line 282 "lexer.php.l"
 {store_operator_php(HTM_TABLE,3);}
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 282 "lexer.php.l"
+#line 283 "lexer.php.l"
 {store_operator_php(HTM_TD,3);}
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 283 "lexer.php.l"
+#line 284 "lexer.php.l"
 {store_operator_php(HTM_TEXTAREA,3);}
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 284 "lexer.php.l"
+#line 285 "lexer.php.l"
 {store_operator_php(HTM_TEXT,3);}
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 285 "lexer.php.l"
+#line 286 "lexer.php.l"
 {store_operator_php(HTM_TH,3);}
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 286 "lexer.php.l"
+#line 287 "lexer.php.l"
 {store_operator_php(HTM_TITLE,3);}
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 287 "lexer.php.l"
+#line 288 "lexer.php.l"
 {store_operator_php(HTM_TR,3);}
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 288 "lexer.php.l"
+#line 289 "lexer.php.l"
 {store_operator_php(HTM_UL,3);}
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 289 "lexer.php.l"
+#line 290 "lexer.php.l"
 {store_operator_php(HTM_URL,3);}
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 290 "lexer.php.l"
+#line 291 "lexer.php.l"
 {store_operator_php(HTM_URN,3);}
 	YY_BREAK
 case 203:
 YY_RULE_SETUP
-#line 291 "lexer.php.l"
+#line 292 "lexer.php.l"
 {store_operator_php(HTM_USEMAP,3);}
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 292 "lexer.php.l"
+#line 293 "lexer.php.l"
 {store_operator_php(HTM_VALIGN,3);}
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 293 "lexer.php.l"
+#line 294 "lexer.php.l"
 {store_operator_php(HTM_VALUE,3);}
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 294 "lexer.php.l"
+#line 295 "lexer.php.l"
 {store_operator_php(HTM_WIDTH,3);}
 	YY_BREAK
 case 207:
 YY_RULE_SETUP
-#line 296 "lexer.php.l"
+#line 297 "lexer.php.l"
 {;}
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 297 "lexer.php.l"
+#line 298 "lexer.php.l"
 {php_lineno++;}
 	YY_BREAK
 case 209:
 YY_RULE_SETUP
-#line 298 "lexer.php.l"
+#line 299 "lexer.php.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 210:
 YY_RULE_SETUP
-#line 299 "lexer.php.l"
+#line 300 "lexer.php.l"
 ECHO;
 	YY_BREAK
-#line 27018 "lex.php.tmp"
+#line 27019 "lex.php.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(HTML_COM):
 case YY_STATE_EOF(SLOC_NAT):
@@ -27904,7 +27905,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 299 "lexer.php.l"
+#line 300 "lexer.php.l"
 
 int yywrap_php() {
   return(1);

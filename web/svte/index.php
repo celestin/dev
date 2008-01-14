@@ -1,9 +1,21 @@
-<!-- $Id$ -->
+<?php
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Stour Valley Timber Engineering
+ * Copyright (c) 2007 SVTE
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  14-Jan-2008  10222 : Converted to PHP, added auto date facility.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+?>
 <html>
 <head>
 <meta http-equiv="Content-Language" content="en-gb">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>Stour Valley Timber Engineering</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <style>
 #mainText {
   margin: 20px 0 0 0;
@@ -74,7 +86,7 @@ and the software has been updated to reflect this amendment.
 Please call us on the above number for a brief résumé of the
 sections of the code which are affected.</p>
 
-<p class="main">The <b>EURODODES</b> (BS EN 1990 - BS EN 1999) are now available for use for the
+<p class="main">The <b>EUROCODES</b> (BS EN 1990 - BS EN 1999) are now available for use for the
 design of structures in all materials, and <b>BS EN 1995 for timber structures</b> is the one
 that is of interest to all those designing in timber. Eurocode 0 series
 (Basis of structural design) and Eurocode 1 series (Actions on structures)
@@ -95,13 +107,13 @@ or send your order form for a copy of the software. Despatch is usually within 7
 days, but please allow 28 days for delivery.</p>
 
 <p  class="main"><i>This web site is regularly
-updated additional information added as necessary. Last updated: <b>December 2007</b></i></p>
+updated additional information added as necessary. Last updated: <b><? echo strftime("%B %Y");; ?></b></i>.</p>
 </div>
 
 <tr>
   <td valign=center align=center colspan=4><font size=1>
   <p><b>Jonathan Bedford</b> trading as <b>Stour Valley Timber Engineering</b>,<br>Address 20 Hiplands Road, Halesowen, West Midlands, B62 0AE, Email sales@stourvalleytimberengineering.co.uk.</p>
-  <br>Copyright &copy; 2008 Stour Valley Timber Engineering. All rights reserved.
+  <br>Copyright &copy; <? echo strftime("%Y");; ?> Stour Valley Timber Engineering. All rights reserved.
   <br>Site maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:craig@frontburner.co.uk">Webmaster</a></font></td>
 </tr>
 

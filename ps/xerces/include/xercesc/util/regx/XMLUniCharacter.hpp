@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLUniCharacter.hpp,v 1.3 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(XMLUNICHARACTER_HPP)

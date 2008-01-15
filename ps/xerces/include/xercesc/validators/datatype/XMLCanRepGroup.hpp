@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLCanRepGroup.hpp,v 1.2 2004/09/08 13:56:54 peiyongz Exp $
+ * $Id$
  * $Log: XMLCanRepGroup.hpp,v $
  * Revision 1.2  2004/09/08 13:56:54  peiyongz
  * Apache License Version 2.0

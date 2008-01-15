@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMEntityReference.hpp,v 1.8 2004/09/26 15:38:02 gareth Exp $
+ * $Id$
  */
 
 

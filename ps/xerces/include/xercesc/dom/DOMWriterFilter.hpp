@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMWriterFilter.hpp,v 1.10 2004/09/08 13:55:39 peiyongz Exp $
+ * $Id$
  * $Log: DOMWriterFilter.hpp,v $
  * Revision 1.10  2004/09/08 13:55:39  peiyongz
  * Apache License Version 2.0

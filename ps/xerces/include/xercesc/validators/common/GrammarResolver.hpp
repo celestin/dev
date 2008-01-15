@@ -15,7 +15,7 @@
  */
 
 /**
- * $Id: GrammarResolver.hpp,v 1.19 2004/09/08 13:56:51 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(GRAMMARRESOLVER_HPP)

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IdentityConstraint.hpp,v 1.8 2004/09/08 13:56:59 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(IDENTITYCONSTRAINT_HPP)

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XercesGroupInfo.hpp,v 1.9 2004/09/08 13:56:58 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(XERCESGROUPINFO_HPP)

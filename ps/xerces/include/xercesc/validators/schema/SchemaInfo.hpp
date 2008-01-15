@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: SchemaInfo.hpp,v 1.18 2004/09/29 20:58:10 knoaman Exp $
+ * $Id$
  */
 
 #if !defined(SCHEMAINFO_HPP)

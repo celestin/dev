@@ -15,7 +15,7 @@
  */
 
 /*
- *  $Id: XMLRecognizer.hpp,v 1.7 2004/09/08 13:55:59 peiyongz Exp $
+ *  $Id$
  */
 
 #if !defined(XMLRECOGNIZER_HPP)

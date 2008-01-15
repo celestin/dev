@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XSDLocator.hpp,v 1.6 2004/09/08 13:56:57 peiyongz Exp $
+ * $Id$
  */
 
 

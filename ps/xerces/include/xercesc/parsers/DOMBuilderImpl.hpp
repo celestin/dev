@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOMBuilderImpl.hpp,v 1.17 2004/09/08 13:56:17 peiyongz Exp $
+ * $Id$
  *
  */
 

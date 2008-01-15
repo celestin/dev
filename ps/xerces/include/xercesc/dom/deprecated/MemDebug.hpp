@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: MemDebug.hpp,v 1.4 2004/09/08 13:55:43 peiyongz Exp $
+ * $Id$
  */
 
 #include <xercesc/util/XercesDefs.hpp>

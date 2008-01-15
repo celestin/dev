@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLUri.hpp,v 1.18 2004/09/08 13:56:25 peiyongz Exp $
+ * $Id$
  * $Log: XMLUri.hpp,v $
  * Revision 1.18  2004/09/08 13:56:25  peiyongz
  * Apache License Version 2.0

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: OpFactory.hpp,v 1.7 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(OPFACTORY_HPP)

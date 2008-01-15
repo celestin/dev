@@ -28,7 +28,7 @@
  * Revision 1.1  2003/10/17 21:07:49  peiyongz
  * To support Template object serialization/deserialization
  *
- * $Id: XTemplateSerializer.hpp,v 1.4 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  *
  */
 

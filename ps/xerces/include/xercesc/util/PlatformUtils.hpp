@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: PlatformUtils.hpp,v 1.27 2004/09/08 13:56:22 peiyongz Exp $
+ * $Id$
  */
 
 

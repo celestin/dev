@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: TimeDatatypeValidator.hpp,v 1.11 2004/09/08 13:56:53 peiyongz Exp $
+ * $Id$
  * $Log: TimeDatatypeValidator.hpp,v $
  * Revision 1.11  2004/09/08 13:56:53  peiyongz
  * Apache License Version 2.0

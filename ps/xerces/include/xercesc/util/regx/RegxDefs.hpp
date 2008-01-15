@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: RegxDefs.hpp,v 1.4 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(REGXDEFS_HPP)

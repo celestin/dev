@@ -17,7 +17,7 @@
  */
 
 /*
- * $Id: NodeVector.hpp,v 1.5 2004/09/08 13:55:44 peiyongz Exp $
+ * $Id$
  */
 
 //

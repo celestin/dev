@@ -5,7 +5,7 @@
  *
  * Dialog to edit a Metric Set.
  *
- * $Id: frmHelpAbout.cs 151 2006-06-08 22:17:10Z craig $
+ * $Id$
  *
  * Who  When       Why
  * CAM  14-Jun-06   258 : File created.

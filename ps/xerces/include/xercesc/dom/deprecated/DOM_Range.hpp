@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_Range.hpp,v 1.5 2004/09/08 13:55:43 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef DOM_Range_HEADER_GUARD_

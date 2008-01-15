@@ -22,7 +22,7 @@
  * Revision 1.1  2003/09/18 18:31:24  peiyongz
  * OSU: Object Serialization Utilities
  *
- * $Id: XSerializationException.hpp,v 1.2 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  *
  */
 

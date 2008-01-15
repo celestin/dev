@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: MemoryManagerImpl.hpp,v 1.2 2004/09/08 13:56:13 peiyongz Exp $
+ * $Id$
  */
 
 

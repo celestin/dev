@@ -28,7 +28,7 @@
  * Revision 1.1  2003/03/09 17:06:16  peiyongz
  * PanicHandler
  *
- * $Id: DefaultPanicHandler.hpp,v 1.4 2004/09/08 13:56:21 peiyongz Exp $
+ * $Id$
  *
  */
 

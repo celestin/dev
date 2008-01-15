@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: NullPointerException.hpp,v 1.3 2004/09/08 13:56:22 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(NULLPOINTEREXCEPTION_HPP)

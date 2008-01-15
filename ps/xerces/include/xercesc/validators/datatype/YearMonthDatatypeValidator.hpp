@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: YearMonthDatatypeValidator.hpp,v 1.9 2004/09/08 13:56:54 peiyongz Exp $
+ * $Id$
  * $Log: YearMonthDatatypeValidator.hpp,v $
  * Revision 1.9  2004/09/08 13:56:54  peiyongz
  * Apache License Version 2.0

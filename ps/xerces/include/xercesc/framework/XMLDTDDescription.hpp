@@ -31,7 +31,7 @@
  * Revision 1.1  2003/06/20 18:37:39  peiyongz
  * Stateless Grammar Pool :: Part I
  *
- * $Id: XMLDTDDescription.hpp,v 1.5 2004/09/29 21:23:02 peiyongz Exp $
+ * $Id$
  *
  */
 

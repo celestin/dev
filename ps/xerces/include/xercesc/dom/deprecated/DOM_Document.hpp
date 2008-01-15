@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_Document.hpp,v 1.6 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
 */
 
 #ifndef DOM_Document_HEADER_GUARD_

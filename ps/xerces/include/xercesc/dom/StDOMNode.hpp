@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: StDOMNode.hpp,v 1.3 2004/09/08 13:55:39 peiyongz Exp $
+ * $Id$
  */
 
 #include <xercesc/dom/DOMNode.hpp>

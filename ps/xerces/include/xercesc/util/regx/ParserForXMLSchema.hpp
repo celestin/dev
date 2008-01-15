@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: ParserForXMLSchema.hpp,v 1.6 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(PARSERFORXMLSCHEMA_HPP)

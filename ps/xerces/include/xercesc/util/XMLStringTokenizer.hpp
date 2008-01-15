@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLStringTokenizer.hpp,v 1.7 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(XMLSTRINGTOKENIZER_HPP)

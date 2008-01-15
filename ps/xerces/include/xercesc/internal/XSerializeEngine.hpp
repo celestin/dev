@@ -72,7 +72,7 @@
  * Revision 1.1  2003/09/18 18:31:24  peiyongz
  * OSU: Object Serialization Utilities
  *
- * $Id: XSerializeEngine.hpp,v 1.18 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  *
  */
 

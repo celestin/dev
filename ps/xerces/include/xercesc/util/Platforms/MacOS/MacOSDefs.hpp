@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: MacOSDefs.hpp,v 1.4 2004/09/08 13:56:40 peiyongz Exp $
+ * $Id$
  */
 
 

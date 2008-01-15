@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLDateTime.hpp,v 1.20 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  * $Log: XMLDateTime.hpp,v $
  * Revision 1.20  2004/09/08 13:56:24  peiyongz
  * Apache License Version 2.0

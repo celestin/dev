@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: ListDatatypeValidator.hpp,v 1.13 2004/09/08 13:56:53 peiyongz Exp $
+ * $Id$
  * $Log: ListDatatypeValidator.hpp,v $
  * Revision 1.13  2004/09/08 13:56:53  peiyongz
  * Apache License Version 2.0

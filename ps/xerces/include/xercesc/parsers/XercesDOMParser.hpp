@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XercesDOMParser.hpp,v 1.20 2004/09/08 13:56:18 peiyongz Exp $
+ * $Id$
  *
  */
 

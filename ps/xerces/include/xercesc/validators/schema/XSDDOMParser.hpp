@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XSDDOMParser.hpp,v 1.12 2004/09/08 13:56:57 peiyongz Exp $
+ * $Id$
  *
  */
 

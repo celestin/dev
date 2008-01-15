@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: BooleanDatatypeValidator.hpp,v 1.13 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(BOOLEAN_DATATYPEVALIDATOR_HPP)

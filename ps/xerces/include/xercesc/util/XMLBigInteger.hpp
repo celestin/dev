@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLBigInteger.hpp,v 1.15 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef XML_BIGINTEGER_HPP

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: CodeWarriorDefs.hpp,v 1.13 2004/09/08 13:56:32 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(CODEWARRIORDEFS_HPP)

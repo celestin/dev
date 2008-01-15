@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IC_KeyRef.hpp,v 1.6 2004/09/08 13:56:59 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(IC_KEYREF_HPP)

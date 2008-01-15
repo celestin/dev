@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: NOTATIONDatatypeValidator.hpp,v 1.8 2004/09/08 13:56:53 peiyongz Exp $
+ * $Id$
  * $Log: NOTATIONDatatypeValidator.hpp,v $
  * Revision 1.8  2004/09/08 13:56:53  peiyongz
  * Apache License Version 2.0

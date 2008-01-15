@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: SchemaDateTimeException.hpp,v 1.3 2004/09/08 13:56:23 peiyongz Exp $
+ * $Id$
  * $Log: SchemaDateTimeException.hpp,v $
  * Revision 1.3  2004/09/08 13:56:23  peiyongz
  * Apache License Version 2.0

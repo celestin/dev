@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: BinMemOutputStream.hpp,v 1.3 2004/09/08 13:56:13 peiyongz Exp $
+ * $Id$
  * $Log: BinMemOutputStream.hpp,v $
  * Revision 1.3  2004/09/08 13:56:13  peiyongz
  * Apache License Version 2.0

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: ComplexTypeInfo.hpp,v 1.23 2004/09/23 00:37:24 cargilld Exp $
+ * $Id$
  */
 
 #if !defined(COMPLEXTYPEINFO_HPP)

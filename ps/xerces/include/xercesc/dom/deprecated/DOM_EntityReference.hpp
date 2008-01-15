@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_EntityReference.hpp,v 1.5 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef DOM_EntityReference_HEADER_GUARD_

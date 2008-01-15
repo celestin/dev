@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMCharacterData.hpp,v 1.9 2004/09/08 13:55:38 peiyongz Exp $
+ * $Id$
  */
 
 #include <xercesc/util/XercesDefs.hpp>

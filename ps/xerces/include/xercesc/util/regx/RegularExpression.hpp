@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: RegularExpression.hpp,v 1.19 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(REGULAREXPRESSION_HPP)

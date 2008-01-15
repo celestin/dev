@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: Path390.hpp,v 1.2 2004/09/08 13:56:41 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef PATH390_HPP

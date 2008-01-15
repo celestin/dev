@@ -28,7 +28,7 @@
  * Revision 1.1  2003/06/20 18:40:29  peiyongz
  * Stateless Grammar Pool :: Part I
  *
- * $Id: XMLSchemaDescriptionImpl.hpp,v 1.4 2004/09/08 13:56:57 peiyongz Exp $
+ * $Id$
  *
  */
 

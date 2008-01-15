@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DecimalDatatypeValidator.hpp,v 1.15 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: DecimalDatatypeValidator.hpp,v $
  * Revision 1.15  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

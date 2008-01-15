@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOMString.hpp,v 1.7 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef DOMString_HEADER_GUARD_

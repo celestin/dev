@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: MemBufFormatTarget.hpp,v 1.8 2004/09/08 13:55:57 peiyongz Exp $
+ * $Id$
  * $Log: MemBufFormatTarget.hpp,v $
  * Revision 1.8  2004/09/08 13:55:57  peiyongz
  * Apache License Version 2.0

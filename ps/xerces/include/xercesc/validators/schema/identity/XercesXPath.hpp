@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XercesXPath.hpp,v 1.9 2004/09/08 13:57:00 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(XERCESXPATH_HPP)

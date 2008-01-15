@@ -32,7 +32,7 @@
  * Revision 1.1  2003/09/18 18:39:12  peiyongz
  * Binary File Output Stream:
  *
- * $Id: BinFileOutputStream.hpp,v 1.5 2004/09/08 13:56:13 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(BINFILEOUTPUTSTREAM_HPP)

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: EncodingValidator.hpp,v 1.4 2004/09/08 13:56:21 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(ENCODINGVALIDATOR_HPP)

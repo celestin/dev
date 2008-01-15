@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DatatypeValidator.hpp,v 1.26 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(DATATYPEVALIDATOR_HPP)

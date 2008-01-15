@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLAbstractDoubleFloat.hpp,v 1.24 2004/09/09 20:09:30 peiyongz Exp $
+ * $Id$
  * $Log: XMLAbstractDoubleFloat.hpp,v $
  * Revision 1.24  2004/09/09 20:09:30  peiyongz
  * getDataOverflowed()

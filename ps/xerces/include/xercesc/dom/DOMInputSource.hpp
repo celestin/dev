@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMInputSource.hpp,v 1.11 2004/09/08 13:55:39 peiyongz Exp $
+ * $Id$
  */
 
 

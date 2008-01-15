@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: Wrapper4InputSource.hpp,v 1.10 2004/09/08 13:55:58 peiyongz Exp $
+ * $Id$
  */
 
 

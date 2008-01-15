@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: NamespaceScope.hpp,v 1.6 2004/09/08 13:56:56 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(NAMESPACESCOPE_HPP)

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLBigDecimal.hpp,v 1.19 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef XML_BIGDECIMAL_HPP

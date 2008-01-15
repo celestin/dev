@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IC_Selector.hpp,v 1.9 2004/09/08 13:56:59 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(IC_SELECTOR_HPP)

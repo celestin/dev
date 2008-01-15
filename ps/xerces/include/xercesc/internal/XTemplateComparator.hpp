@@ -22,7 +22,7 @@
  * Revision 1.1  2003/10/29 16:14:15  peiyongz
  * XObjectComparator/XTemplateComparator
  *
- * $Id: XTemplateComparator.hpp,v 1.2 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  *
  */
 

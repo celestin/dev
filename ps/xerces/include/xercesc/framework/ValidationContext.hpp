@@ -25,7 +25,7 @@
  * Revision 1.1  2003/11/12 20:28:16  peiyongz
  * Stateless Grammar: ValidationContext
  *
- * $Id: ValidationContext.hpp,v 1.3 2004/09/08 13:55:58 peiyongz Exp $
+ * $Id$
  *
  */
 

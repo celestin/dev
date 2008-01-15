@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMemory.hpp,v 1.7 2004/09/08 13:56:25 peiyongz Exp $
+ * $Id$
  */
 
 

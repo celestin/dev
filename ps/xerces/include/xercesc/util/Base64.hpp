@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: Base64.hpp,v 1.13 2004/09/08 13:56:21 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef BASE64_HPP

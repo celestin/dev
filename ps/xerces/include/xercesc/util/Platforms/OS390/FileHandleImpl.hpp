@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: FileHandleImpl.hpp,v 1.5 2004/09/08 13:56:41 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef FILEHANDLEIMPL_HPP

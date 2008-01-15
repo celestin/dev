@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_Comment.hpp,v 1.5 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef DOM_Comment_HEADER_GUARD_

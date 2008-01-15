@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: AnyURIDatatypeValidator.hpp,v 1.8 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: AnyURIDatatypeValidator.hpp,v $
  * Revision 1.8  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

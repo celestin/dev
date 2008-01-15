@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: StdOutFormatTarget.hpp,v 1.5 2004/09/08 13:55:58 peiyongz Exp $
+ * $Id$
  * $Log: StdOutFormatTarget.hpp,v $
  * Revision 1.5  2004/09/08 13:55:58  peiyongz
  * Apache License Version 2.0

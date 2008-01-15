@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMRange.hpp,v 1.9 2004/09/08 13:55:39 peiyongz Exp $
+ * $Id$
  */
 
 #include <xercesc/util/XercesDefs.hpp>

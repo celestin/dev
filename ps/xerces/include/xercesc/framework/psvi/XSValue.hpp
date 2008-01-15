@@ -53,7 +53,7 @@
  * Revision 1.2  2004/08/11 17:06:44  peiyongz
  * Do not panic if can't create RegEx
  *
- * $Id: XSValue.hpp,v 1.12 2004/09/23 21:22:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(XSVALUE_HPP)

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_DOMImplementation.hpp,v 1.6 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  */
 
 #ifndef DOM_DOMImplementation_HEADER_GUARD_

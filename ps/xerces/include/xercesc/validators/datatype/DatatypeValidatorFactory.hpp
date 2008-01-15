@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DatatypeValidatorFactory.hpp,v 1.17 2004/09/13 21:38:34 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(DATATYPEVALIDATORFACTORY_HPP)

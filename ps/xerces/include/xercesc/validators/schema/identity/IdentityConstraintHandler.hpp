@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IdentityConstraintHandler.hpp,v 1.2 2004/09/08 13:56:59 peiyongz Exp $
+ * $Id$
  * $Log: IdentityConstraintHandler.hpp,v $
  * Revision 1.2  2004/09/08 13:56:59  peiyongz
  * Apache License Version 2.0

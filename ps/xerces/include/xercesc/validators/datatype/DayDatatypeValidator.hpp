@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DayDatatypeValidator.hpp,v 1.9 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: DayDatatypeValidator.hpp,v $
  * Revision 1.9  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

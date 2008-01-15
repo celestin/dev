@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMDocument.hpp,v 1.19 2004/09/26 15:38:02 gareth Exp $
+ * $Id$
 */
 
 #include <xercesc/util/XercesDefs.hpp>

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_NodeFilter.hpp,v 1.5 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  */
 
 // DOM_NodeFilter.h: interface for the DOM_NodeFilter class.

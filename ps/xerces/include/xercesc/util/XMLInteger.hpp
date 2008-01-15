@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLInteger.hpp,v 1.5 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  * $Log: XMLInteger.hpp,v $
  * Revision 1.5  2004/09/08 13:56:24  peiyongz
  * Apache License Version 2.0

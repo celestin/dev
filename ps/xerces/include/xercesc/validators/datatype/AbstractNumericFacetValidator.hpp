@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: AbstractNumericFacetValidator.hpp,v 1.13 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: AbstractNumericFacetValidator.hpp,v $
  * Revision 1.13  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

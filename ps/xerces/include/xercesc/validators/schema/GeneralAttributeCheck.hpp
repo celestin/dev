@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: GeneralAttributeCheck.hpp,v 1.13 2004/09/08 13:56:56 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(GENERALATTRIBUTECHECK_HPP)

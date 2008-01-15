@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: ValueHashTableOf.hpp,v 1.12 2004/09/08 13:56:23 peiyongz Exp $
+ * $Id$
  */
 
 

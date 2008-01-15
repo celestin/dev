@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLFloat.hpp,v 1.9 2004/09/08 13:56:24 peiyongz Exp $
+ * $Id$
  * $Log: XMLFloat.hpp,v $
  * Revision 1.9  2004/09/08 13:56:24  peiyongz
  * Apache License Version 2.0

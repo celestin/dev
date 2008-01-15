@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: TokenFactory.hpp,v 1.9 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(TOKENFACTORY_HPP)

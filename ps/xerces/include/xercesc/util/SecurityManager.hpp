@@ -49,7 +49,7 @@
  *
  * Initial checkin of SecurityManager
  *
- * $Id: SecurityManager.hpp,v 1.4 2004/09/08 13:56:23 peiyongz Exp $
+ * $Id$
  *
  */
 

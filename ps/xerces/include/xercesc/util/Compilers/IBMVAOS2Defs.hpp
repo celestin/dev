@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IBMVAOS2Defs.hpp,v 1.6 2004/09/08 13:56:32 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(IBMVAOS2DEFS_HPP)

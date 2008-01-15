@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: TraverseSchema.hpp,v 1.37 2004/09/28 02:14:14 cargilld Exp $
+ * $Id$
  */
 
 #if !defined(TRAVERSESCHEMA_HPP)

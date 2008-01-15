@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: ConcatToken.hpp,v 1.5 2004/09/08 13:56:47 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(CONCATTOKEN_HPP)

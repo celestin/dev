@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: Base64BinaryDatatypeValidator.hpp,v 1.10 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: Base64BinaryDatatypeValidator.hpp,v $
  * Revision 1.10  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

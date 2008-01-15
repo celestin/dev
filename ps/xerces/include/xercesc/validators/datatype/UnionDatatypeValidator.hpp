@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: UnionDatatypeValidator.hpp,v 1.19 2004/09/20 14:47:13 amassari Exp $
+ * $Id$
  * $Log: UnionDatatypeValidator.hpp,v $
  * Revision 1.19  2004/09/20 14:47:13  amassari
  * Mark some methods as deprecated

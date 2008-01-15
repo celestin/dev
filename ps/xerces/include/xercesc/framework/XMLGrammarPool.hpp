@@ -60,7 +60,7 @@
  * Revision 1.1  2003/06/20 18:37:39  peiyongz
  * Stateless Grammar Pool :: Part I
  *
- * $Id: XMLGrammarPool.hpp,v 1.14 2004/09/29 19:27:07 cargilld Exp $
+ * $Id$
  *
  */
 

@@ -18,7 +18,7 @@
  */
 
 /*
- * $Id: DOMWriter.hpp,v 1.11 2004/09/08 13:55:39 peiyongz Exp $
+ * $Id$
  * $Log: DOMWriter.hpp,v $
  * Revision 1.11  2004/09/08 13:55:39  peiyongz
  * Apache License Version 2.0

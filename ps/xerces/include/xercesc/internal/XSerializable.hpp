@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XSerializable.hpp,v 1.4 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  * $Log: XSerializable.hpp,v $
  * Revision 1.4  2004/09/08 13:56:14  peiyongz
  * Apache License Version 2.0

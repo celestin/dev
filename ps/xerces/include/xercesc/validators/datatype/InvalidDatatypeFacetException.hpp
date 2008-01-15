@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: InvalidDatatypeFacetException.hpp,v 1.3 2004/09/08 13:56:53 peiyongz Exp $
+ * $Id$
  */
 
 

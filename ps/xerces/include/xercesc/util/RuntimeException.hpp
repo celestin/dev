@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: RuntimeException.hpp,v 1.3 2004/09/08 13:56:23 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(RUNTIMEEXCEPTION_HPP)

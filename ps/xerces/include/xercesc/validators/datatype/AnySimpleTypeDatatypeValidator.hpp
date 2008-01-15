@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: AnySimpleTypeDatatypeValidator.hpp,v 1.12 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(ANYSIMPLETYPEDATATYPEVALIDATOR_HPP)

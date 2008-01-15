@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: MacOSPlatformUtils.hpp,v 1.13 2004/09/08 13:56:40 peiyongz Exp $
+ * $Id$
  */
 
 #pragma once

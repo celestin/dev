@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: LocalFileFormatTarget.hpp,v 1.7 2004/09/08 13:55:57 peiyongz Exp $
+ * $Id$
  * $Log: LocalFileFormatTarget.hpp,v $
  * Revision 1.7  2004/09/08 13:55:57  peiyongz
  * Apache License Version 2.0

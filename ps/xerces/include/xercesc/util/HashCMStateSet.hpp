@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: HashCMStateSet.hpp,v 1.5 2004/09/08 13:56:21 peiyongz Exp $
+ * $Id$
  * $Log: HashCMStateSet.hpp,v $
  * Revision 1.5  2004/09/08 13:56:21  peiyongz
  * Apache License Version 2.0

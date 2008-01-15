@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: IC_Field.hpp,v 1.7 2004/09/08 13:56:59 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(IC_FIELD_HPP)

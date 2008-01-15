@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOMParser.hpp,v 1.25 2004/09/08 13:55:42 peiyongz Exp $
+ * $Id$
  *
  */
 

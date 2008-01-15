@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: AbstractNumericValidator.hpp,v 1.11 2004/09/08 13:56:52 peiyongz Exp $
+ * $Id$
  * $Log: AbstractNumericValidator.hpp,v $
  * Revision 1.11  2004/09/08 13:56:52  peiyongz
  * Apache License Version 2.0

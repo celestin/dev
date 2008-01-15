@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: KeyRefPair.hpp,v 1.5 2004/09/08 13:56:22 peiyongz Exp $
+ * $Id$
  */
 
 #if !defined(KEYREFPAIR_HPP)

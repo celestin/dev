@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM_XMLDecl.hpp,v 1.5 2004/09/08 13:55:43 peiyongz Exp $
+ * $Id$
  *
 */
 

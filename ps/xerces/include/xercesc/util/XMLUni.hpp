@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XMLUni.hpp,v 1.40 2004/09/28 02:14:14 cargilld Exp $
+ * $Id$
  */
 
 

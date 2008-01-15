@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: XProtoType.hpp,v 1.5 2004/09/08 13:56:14 peiyongz Exp $
+ * $Id$
  * $Log: XProtoType.hpp,v $
  * Revision 1.5  2004/09/08 13:56:14  peiyongz
  * Apache License Version 2.0

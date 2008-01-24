@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: prep_lib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP1DA.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/prep_lib.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"J:\metrics\prep_lib\conf.tab.cpp"
+"J:\metrics\prep_lib\conf.yy.cpp"
+"J:\metrics\prep_lib\prep.yy.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP1DA.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\prep_lib.lib"  .\Release\conf.tab.obj .\Release\conf.yy.obj .\Release\prep.yy.obj "
+<h3>Output Window</h3>
+Compiling...
+conf.tab.cpp
+conf.yy.cpp
+prep.yy.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+prep_lib.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

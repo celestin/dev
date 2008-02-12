@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006-2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -22,14 +22,15 @@
  * CAM  23-Oct-2007  10182 : Version 1.09 - Added Events.
  * CAM  26-Oct-2007  10195 : Version 1.10 - Added Events Emailing.
  * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.11 - Events to footer/emails and User Privs.
+ * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <!--</tr></td></table>-->
 </td></tr>
 </table></td>
-  <td align=center valign=top><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 3"><img border=0 src="img/size1e.jpg"></a></td>
-<tr>
   <td align=center valign=top><a target="_blank" href="http://www.active-aircon.co.uk/"><img border=0 width=180 height=220 src="img/ad/active4.png"></a></td>
+<tr>
+  <td align=center valign=top><a target="_blank" href="http://www.aberdeen-drilling.com/"><img border=0 width=180 height=220 src="img/ad/ads1.gif"></a></td>
   <td align=center valign=top><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 4"><img border=0 src="img/size1e.jpg"></a></td>
 </tr>
 <tr>

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006-2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -14,6 +14,7 @@
  * CAM  25-Jun-2007  10134 : Add News to members toolbar.
  * CAM  12-Aug-2007  10157 : Add TBC to Admin toolbar.
  * CAM  22-Oct-2007  10182 : Split Admin toolbar onto second line.  Adding blinking Events.
+ * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -56,7 +57,7 @@ function ToolbarOption($action, $label, $last=false, $class="") {
 
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td><table border=0 cellpadding=0 cellspacing=8>
-<tr><td align=center valign=top><a target="_blank" href="http://www.aberdeen-drilling.com/"><img border=0 width=180 height=220 src="img/ad/ads1.gif"></a></td>
+<tr><td align=center valign=top><a target="_blank" href="http://www.twma.co.uk/"><img border=0 width=180 height=220 src="img/ad/twma.png"></a></td>
 <td rowspan=2 valign=top>
 <table border=0 cellpadding=0 cellspacing=10 width="600" height="450" class=outerBox>
   <tr>

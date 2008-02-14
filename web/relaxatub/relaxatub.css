@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Style Sheet
@@ -11,6 +11,7 @@
  * CAM  07-Oct-2006  10055 : Added promotion for DIV and P.
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
  * CAM  29-Mar-2007  10109 : Added h2.
+ * CAM  14-Feb-2008  10243 : Revamped the look and feel.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -25,7 +26,7 @@ p, table, td {
 }
 
 h2 {
-  COLOR: #0052AF;
+  COLOR: #233f91;
   FONT-FAMILY: Times New Roman, Serif;
   FONT-SIZE: 20pt;
   FONT-STYLE: italic;
@@ -35,16 +36,16 @@ h2 {
 .popup {
   FONT-FAMILY: Arial, Helvetica;
   FONT-SIZE: 9pt;
-  BORDER-BOTTOM:    #0052AF 2px solid;
-  BORDER-LEFT:      #0052AF 2px solid;
-  BORDER-RIGHT:     #0052AF 2px solid;
-  BORDER-TOP:       #0052AF 2px solid;
+  BORDER-BOTTOM:    #233f91 2px solid;
+  BORDER-LEFT:      #233f91 2px solid;
+  BORDER-RIGHT:     #233f91 2px solid;
+  BORDER-TOP:       #233f91 2px solid;
   PADDING:          8px;
   BACKGROUND-COLOR: #F7FCFD;
 }
 
 div.promotion {
-  BACKGROUND-COLOR: #0052AF;
+  BACKGROUND-COLOR: #233f91;
   PADDING-LEFT: 10px;
   PADDING-RIGHT: 10px;
   PADDING-TOP: 1px;
@@ -64,10 +65,10 @@ p.legal {
 }
 
 .rxbox {
-  BORDER-BOTTOM: #0052AF 2px solid;
-  BORDER-LEFT:   #0052AF 2px solid;
-  BORDER-RIGHT:  #0052AF 2px solid;
-  BORDER-TOP:    #0052AF 2px solid;
+  BORDER-BOTTOM: #233f91 2px solid;
+  BORDER-LEFT:   #233f91 2px solid;
+  BORDER-RIGHT:  #233f91 2px solid;
+  BORDER-TOP:    #233f91 2px solid;
   BACKGROUND-COLOR: #E2EEF2;
 }
 
@@ -80,10 +81,10 @@ p.legal {
 }
 
 .thumb {
-  BORDER-BOTTOM: #0052AF 2px solid;
-  BORDER-LEFT:   #0052AF 2px solid;
-  BORDER-RIGHT:  #0052AF 2px solid;
-  BORDER-TOP:    #0052AF 2px solid;
+  BORDER-BOTTOM: #233f91 2px solid;
+  BORDER-LEFT:   #233f91 2px solid;
+  BORDER-RIGHT:  #233f91 2px solid;
+  BORDER-TOP:    #233f91 2px solid;
 }
 
 .tubnav {
@@ -132,7 +133,7 @@ p.legal {
 }
 
 .fldlbl {
-  COLOR: #0052AF;
+  COLOR: #233f91;
   FONT-WEIGHT: bold;
 }
 
@@ -145,15 +146,44 @@ p.legal {
   BACKGROUND-COLOR: #E2EEF2;
 }
 
-.rxtop {
-  BACKGROUND-COLOR: #0052AF;
-  COLOR: white;
-}
-
 .rxtxt {
   COLOR: white;
   PADDING-LEFT: 8px;
   PADDING-RIGHT: 8px;
+}
+
+.rxtop {
+  BACKGROUND-COLOR: #233f91;
+  COLOR: white;
+  vertical-align:middle;
+  HEIGHT: 35px;
+}
+
+#rxfeature ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+#rxfeature ul li { 
+  display: inline; 
+}
+
+#rxfeature ul li a
+{
+  FONT-SIZE: 12pt;
+  text-decoration: none;
+  padding: .2em 1em;
+  color: #fff;
+  background-color: #233f91;
+}
+
+#rxfeature ul li a:hover
+{
+  color: #fff;
+  background-color: #7d8dc6;
 }
 
 .annot {
@@ -161,22 +191,6 @@ p.legal {
   TEXT-ALIGN: center;
   FONT-SIZE: 8pt;
   FONT-WEIGHT: bold;
-}
-
-a.rxnav {
-  COLOR: white;
-  PADDING-LEFT: 8px;
-  PADDING-RIGHT: 8px;
-}
-a.rxnav:hover {
-  COLOR: white;
-  TEXT-DECORATION: underline;
-}
-
-
-.cpyrght {
-  COLOR: #333333;
-  FONT-SIZE: 8pt;
 }
 
 .pgbak {
@@ -207,7 +221,7 @@ p.bht {
 }
 
 .faqsum {
-  COLOR: #0052AF;
+  COLOR: #233f91;
   FONT-WEIGHT: bold;
   FONT-SIZE: 12pt;
 }
@@ -224,7 +238,7 @@ p.bht {
 }
 
 .hte2 {
-  COLOR: #0052AF;
+  COLOR: #233f91;
   FONT-SIZE: 7pt;
   FONT-WEIGHT: bold;
   TEXT-ALIGN: center;
@@ -258,12 +272,42 @@ h5 {
 
 A {
   COLOR: #00037f;
-  TEXT-DECORATION: none
-  bgcolor: black ;
+  TEXT-DECORATION: none;
 }
 A:hover {
   COLOR: #5aa6e1;
   TEXT-DECORATION: underline;
+}
+
+A.nav {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 11pt;
+  COLOR: #00037f;
+  TEXT-DECORATION: none;
+  padding: .3em 1.5em;
+}
+A.nav:hover {
+  COLOR: white;
+  TEXT-DECORATION: none;
+  background-color: #7d8dc6;
+}
+
+.cpyrght {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 7pt;
+  COLOR: #333333;
+}
+
+A.cpyrght {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  FONT-SIZE: 7pt;
+  COLOR: #00037f;
+  TEXT-DECORATION: none;
+}
+A.cpyrght:hover {
+  COLOR: #5aa6e1;
+  TEXT-DECORATION: underline;
+  background-color: transparent;
 }
 
 INPUT {

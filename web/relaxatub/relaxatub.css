@@ -12,6 +12,7 @@
  * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
  * CAM  29-Mar-2007  10109 : Added h2.
  * CAM  14-Feb-2008  10243 : Revamped the look and feel.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -178,6 +179,25 @@ p.legal {
   padding: .2em 1em;
   color: #fff;
   background-color: #233f91;
+}
+
+body#pagewater a#linkwater,
+body#pagehealth a#linkhealth,
+body#pagerelaxation a#linkrelaxation,
+body#pagequality a#linkquality,
+body#pagecomfort a#linkcomfort,
+body#pagefaq a#linkfaq,
+body#pagecontact a#linkcontact, 
+body#pagetub300 a#linktub300, 
+body#pagetub500 a#linktub500, 
+body#pagetub700 a#linktub700, 
+body#pagegarden a#linkgarden, 
+body#pageaccessories a#linkaccessories, 
+body#pagephoto a#linkphoto, 
+body#pageprotec a#linkprotec, 
+body#pageevolution a#linkevolution {
+color: #fff;
+background: #6b7b71;
 }
 
 #rxfeature ul li a:hover

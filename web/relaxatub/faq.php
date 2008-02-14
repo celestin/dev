@@ -1,7 +1,7 @@
-<?
+<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * FAQ
@@ -10,8 +10,10 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
+$pageId = "pagefaq";
 $pageTitle = "Frequently Asked Questions";
 include_once 'main.php';
 include "tpl/top.php";

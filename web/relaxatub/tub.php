@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Tub Page
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -32,6 +33,7 @@
   $_t = new Tub($_tub);
   $_seriesObj = getSeries($_tub);
 
+  $pageId = "pagetub" . $_seriesObj->getID();
   $pageTitle = $_seriesObj->getDesc();
   include "tpl/top.php";
 ?>

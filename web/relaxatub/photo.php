@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Photo Gallery
@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  06-Oct-2006  10053 : Changed sort order of photos.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -23,6 +24,7 @@
     $_photo = (!empty($HTTP_POST_VARS[$param])) ? $HTTP_POST_VARS[$param] : $HTTP_GET_VARS[$param];
   }
 
+  $pageId = "pagephoto";
   $pageTitle = "Photo Album";
   include "tpl/top.php";
 

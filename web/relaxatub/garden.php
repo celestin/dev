@@ -10,10 +10,10 @@
  *
  * Who  When         Why
  * CAM  29-Mar-2007  10109 : File added to source control.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'main.php';
-
+$pageId = "pagegarden";
 $pageTitle = "Garden &amp; Decking Ideas";
 include "tpl/top.php";
 ?>

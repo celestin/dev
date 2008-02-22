@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  341 : Corrected SQL to return child types, and ensure we don't return types like the parent class.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <string>
@@ -570,43 +571,35 @@ int SymbolNode::countLinks(long lktID)
 }
 
 
-list<long> &SymbolNode::getUniqueTypesOfChildren(long catID, list<long> &types)
+list<long> &SymbolNode::getUniqueTypesOfChildren(long catID, long classID, list<long> &types)
 {
 	// Query the database for all Children of this node, with a specified
 	// category (catID) and return a unique list of their types
-	int uniqueLinks = 0 ;
+	int uniqueLinks = 0;
 
-	char sql[512] ;
-	char charNumber[30] ;
+	char sql[512];
 
-	strcpy(sql,"select distinct symbol.sytID from symbol where symbol.symParentID=") ;
-	//itoa(theID, charNumber, 10) ;
-	//strcat(sql, charNumber) ;
-	strcat(sql, ltostr(theID, charNumber, 30)) ;
+  sprintf_s(sql, sizeof(char)*512,
+    "select distinct symbol.sytID from symbol, symboltype where symbol.symParentID=%d and symbol.catID=%d and symbol.sytID = symboltype.sytID and symboltype.symID<>%d",
+    theID, catID, classID);
 
-	strcat(sql, " and Symbol.catID=") ;
-	//itoa(catID, charNumber, 10) ;
-	//strcat(sql, charNumber) ;
-	strcat(sql, ltostr(catID, charNumber, 30)) ;
-
-	try
+  try
 	{
 		if (theTreeHelper->executeQuery(string(sql)))
 		{
 			// Read the results into the unique list
-			int r ;
-			for(r = 0 ; r < theTreeHelper->rows(); r++)
+			for(int r = 0; r < theTreeHelper->rows(); r++)
 			{
-				types.push_back(theTreeHelper->longCell(r,0)) ;
+				types.push_back(theTreeHelper->longCell(r,0));
 			}
 		}
 	}
 	catch (...)
 	{
-		MasterData::theLog << "SymbolNode::getUniqueTypesOfChildren() - Error executing query!" << endl ;
+		MasterData::theLog << "SymbolNode::getUniqueTypesOfChildren() - Error executing query!" << endl;
 	}
 
-	return types ;
+	return types;
 }
 
 
@@ -628,21 +621,6 @@ vector<int> &SymbolNode::getAttributeUsage(vector<int> &varUsage)
 	strcat(sql," and ( lk.lktID=") ;
 	strcat(sql, ltostr(MasterData::XREF_LINK, charNumber, 30)) ;
 	strcat(sql," or lk.lktID is null ) group by s1.symID") ;
-
-	//MasterData::theLog << "LOCM_SQL:" << sql << endl ;
-
-	//	sql << "select count(s2.symID) as varUsage "
-	//		<< "  from Symbol s1 "
-	//		<< "  left outer join Link lk "
-	//		<< "	on s1.symID = lk.symid "
-	//		<< "  left outer join Symbol s2 "
-	//		<< "	on s2.symID = lk.sym2ID "
-	//		<< "   and s2.symParentID = s1.symParentID "
-	//		<< " where s1.symParentID = " << theID
-	//		<< "   and s1.catID = " << MasterData::FIELD_CAT
-	//		<< "   and (    lk.lktID = " << MasterData::XREF_LINK
-	//		<< "         or lk.lktID is null ) "
-	//		<< " group by s1.symID " << flush ;
 
 	try
 	{

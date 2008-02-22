@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  341 : Added classID to getUniqueTypesOfChildren to ensure we don't return the parent class.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_SYMBOLNODE
@@ -343,7 +344,7 @@ namespace metrics
 		bool findSymbolNode(long ID, SymbolNode &ret) ;
 		bool findSymbolNodeFromTypeID(long ID, SymbolNode &ret) ;
 		bool find(long catID, std::string objName, SymbolNode &ret) ;
-		std::list<long> &getUniqueTypesOfChildren(long catID, std::list<long>&) ;
+		std::list<long> &getUniqueTypesOfChildren(long catID, long classID, std::list<long>&) ;
 		std::vector<int> &getAttributeUsage(std::vector<int>&) ;
 		int getFieldUsage() ;
 		int getAttributeUsage() ;

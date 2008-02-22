@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_NAMEHELPER
@@ -17,88 +18,45 @@
 
 namespace metrics
 {
-	typedef std::vector<std::string> StringVect ;
-	typedef std::vector<std::string>::iterator StringVectIter ;
+  typedef std::vector<std::string> StringVect ;
+  typedef std::vector<std::string>::iterator StringVectIter ;
 
-	class NameHelper
-	{
+  class NameHelper
+  {
 
-	public:
+  public:
 
-		NameHelper() { }
-		virtual ~NameHelper() { }
+    NameHelper() { }
+    virtual ~NameHelper() { }
 
+    static std::string NameHelper::findAndReplace(std::string inputText,
+      std::string findText, std::string replaceText)
+    {
+      std::string outputText(""),
+        lhs(""),
+        rhs("") ;
 
-		/*static StringVect NameHelper::explode(std::string inputText, std::string separator)
-		{
-			StringVect retval ;
-			char *inp = strdup(inputText.c_str()) ;
-			const char *sep = separator.c_str() ;
-			const char *token ;
+      std::string remaining(inputText) ;
 
-			token = strtok(inp, sep) ;
-			while (token != NULL)
-			{
-				retval.push_back(std::string(token)) ;
-				token = strtok(NULL, sep) ;
-			}
+      while (remaining.length() > 0)
+      {
+        int pos = remaining.find(findText) ;
 
-			free(inp) ;
-			return retval ;
-		}
+        if (pos != -1)
+        {
+          outputText += remaining.substr(0, pos) + replaceText ;
+          remaining = remaining.substr(pos+findText.length(),remaining.length()) ;
+        }
+        else
+        {
+          outputText += remaining ;
+          remaining = "" ;
+        }
+      }
 
-
-		static std::string NameHelper::removeTemplates(std::string inputText)
-		{
-			char retval[8192] ;
-			const char *inp = inputText.c_str() ;
-			int i, count=0, retlen=0, inplen=strlen(inp) ;
-
-			for (i=0;i<inplen;i++)
-			{
-				if (inp[i]=='<') count++ ;
-
-				if (count==0)
-				{
-					retval[retlen++] = inp[i] ;
-				}
-
-				if (inp[i]=='>') count-- ;
-			}
-
-			retval[retlen] = '\0' ;
-			return std::string(retval) ;
-		}*/
-
-
-		static std::string NameHelper::findAndReplace(std::string inputText,
-			std::string findText, std::string replaceText)
-		{
-			std::string outputText(""),
-				lhs(""),
-				rhs("") ;
-
-			std::string remaining(inputText) ;
-
-			while (remaining.length() > 0)
-			{
-				int pos = remaining.find(findText) ;
-
-				if (pos != -1)
-				{
-					outputText += remaining.substr(0, pos) + replaceText ;
-					remaining = remaining.substr(pos+findText.length(),remaining.length()) ;
-				}
-				else
-				{
-					outputText += remaining ;
-					remaining = "" ;
-				}
-			}
-
-			return outputText ;
-		}
-	} ;
+      return outputText ;
+    }
+  } ;
 } ;
 
 #endif

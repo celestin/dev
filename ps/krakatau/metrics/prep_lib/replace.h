@@ -23,10 +23,10 @@ public:
 
 		type = SIMPLE ;
 
-		replace_start = strdup(rs) ;
+		replace_start = _strdup(rs) ;
 		replace_end = NULL ;
 
-		with_start = strdup(ws) ;
+		with_start = _strdup(ws) ;
 		with_end = NULL ;
 
 	}
@@ -38,13 +38,13 @@ public:
 			type = DELIM_IGNORE ;
 		} else {
 			type = DELIM_APPEND ;
-			with_end = strdup(we) ;
+			with_end = _strdup(we) ;
 		}
 
-		replace_start = strdup(rs) ;
+		replace_start = _strdup(rs) ;
 		replace_end = strdup(re) ;
 
-		with_start = strdup(ws) ;
+		with_start = _strdup(ws) ;
 
 	}
 
@@ -54,12 +54,12 @@ public:
 			type = PAREN_IGNORE ;
 		} else {
 			type = PAREN_APPEND ;
-			with_end = strdup(we) ;
+			with_end = _strdup(we) ;
 		}
 
-		replace_start = strdup(rs) ;
+		replace_start = _strdup(rs) ;
 
-		with_start = strdup(ws) ;
+		with_start = _strdup(ws) ;
 
 	}
 

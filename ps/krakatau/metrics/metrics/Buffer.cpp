@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -17,10 +18,10 @@ using namespace metrics ;
 
 Buffer::Buffer(const Buffer& rhs)
 {
-	for (int i=0 ; i<rhs.theBuffer.size() ; i++)
-		theBuffer.push_back(rhs.theBuffer[i]) ;
+  for (unsigned int i=0 ; i<rhs.theBuffer.size() ; i++)
+    theBuffer.push_back(rhs.theBuffer[i]) ;
 
-	theLimit = rhs.theLimit ;
+  theLimit = rhs.theLimit ;
 }
 
 
@@ -31,71 +32,62 @@ Buffer::~Buffer()
 
 const Buffer& Buffer::operator=(const Buffer& rhs)
 {
-	for (int i=0 ; i<rhs.theBuffer.size() ; i++)
-		theBuffer.push_back(rhs.theBuffer[i]) ;
+  for (unsigned int i=0 ; i<rhs.theBuffer.size() ; i++)
+    theBuffer.push_back(rhs.theBuffer[i]) ;
 
-	theLimit = rhs.theLimit ;
+  theLimit = rhs.theLimit ;
 
-	return (*this);
+  return (*this);
 }
-
-
-/*void Buffer::add(Link newLink)
-{
-	if (theBuffer.size() >= theLimit)
-		this->commit() ;
-
-	theBuffer.push_back(newLink) ;
-}*/
 
 void Buffer::add(DataRow *newDataRow)
 {
-	if (theBuffer.size() >= theLimit)
-		this->commit() ;
+  if (theBuffer.size() >= theLimit)
+    this->commit() ;
 
-	theBuffer.push_back(newDataRow) ;
+  theBuffer.push_back(newDataRow) ;
 }
 
 void Buffer::commit()
 {
-	vector<DataRow*>::iterator current ;
+  vector<DataRow*>::iterator current ;
 
-	if (theSingleCommit)
-	{
-		if (theBuffer.size()>0)
-		{
-			char sqlc[100000] ;
+  if (theSingleCommit)
+  {
+    if (theBuffer.size()>0)
+    {
+      char sqlc[QUERY_MAX] ;
 
-			theBuffer[0]->getStatement(sqlc) ;
-			//string sql = theBuffer[0]->getStatement() ;
+      theBuffer[0]->getStatement(sqlc) ;
+      //string sql = theBuffer[0]->getStatement() ;
 
-			for(int i=0 ; i<theBuffer.size()-1 ; i++)
-			{
-				//sql += theBuffer[i]->getValues() + "," ;
-				theBuffer[i]->getValues(sqlc) ;
-				strcat(sqlc, ",") ;
+      for(unsigned int i=0 ; i<theBuffer.size()-1 ; i++)
+      {
+        //sql += theBuffer[i]->getValues() + "," ;
+        theBuffer[i]->getValues(sqlc) ;
+        strcat_s(sqlc, QUERY_MAX, ",") ;
 
-				//MasterData::theLog << sqlc << endl ;
-				delete theBuffer[i] ;
-			}
+        //MasterData::theLog << sqlc << endl ;
+        delete theBuffer[i] ;
+      }
 
-			//sql += theBuffer[theBuffer.size()-1]->getValues() ;
-			theBuffer[theBuffer.size()-1]->getValues(sqlc) ;
-			delete theBuffer[theBuffer.size()-1] ;
-			theBuffer.clear() ;
+      //sql += theBuffer[theBuffer.size()-1]->getValues() ;
+      theBuffer[theBuffer.size()-1]->getValues(sqlc) ;
+      delete theBuffer[theBuffer.size()-1] ;
+      theBuffer.clear() ;
 
-			//MasterData::theLog << sqlc << endl ;
-			theConnection->executeResultlessQuery(sqlc) ;
-		}
-	}
-	else
-	{
-		for(current=theBuffer.begin();current<theBuffer.end();current++)
-		{
-			(*current)->write() ;
-			delete (*current) ;
-		}
-	}
-	theBuffer.clear() ;
+      //MasterData::theLog << sqlc << endl ;
+      theConnection->executeResultlessQuery(sqlc) ;
+    }
+  }
+  else
+  {
+    for(current=theBuffer.begin();current<theBuffer.end();current++)
+    {
+      (*current)->write() ;
+      delete (*current) ;
+    }
+  }
+  theBuffer.clear() ;
 }
 

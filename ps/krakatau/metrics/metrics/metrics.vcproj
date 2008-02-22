@@ -48,7 +48,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="c:\mysql\include,\\Laphroaig\D Drive\Dev\metrics\prep_lib"
+				AdditionalIncludeDirectories="..\prep_lib;..\..\mysql\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;LANGUAGE_CPP;PM"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -79,7 +79,7 @@
 				OutputFile=".\Debug_CPP_PM/metrics.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="c:\mysql\lib\debug,\\Laphroaig\D Drive\Dev\metrics\prep_lib\debug"
+				AdditionalLibraryDirectories="..\..\mysql\lib\debug,..\prep_lib\Debug"
 				IgnoreDefaultLibraryNames="msvcrtd"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Debug_CPP_PM/metrics.pdb"

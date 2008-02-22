@@ -178,11 +178,11 @@ void verifyToken() {
 		switch (type) {
 		case DELIM_APPEND:
 		case DELIM_IGNORE:
-			end = strdup(replace[indices.top()]->replace_end) ;
+			end = _strdup(replace[indices.top()]->replace_end) ;
 			break ;
 		case PAREN_APPEND:
 		case PAREN_IGNORE: 
-			end = strdup(")") ;
+			end = _strdup(")") ;
 			break ;
 		}
 
@@ -219,13 +219,13 @@ void verifyToken() {
 			BEGIN PAREN ;
 			states.push(APPEND_SEEK) ;
 			indices.push(index) ;
-			saved = strdup(yytext) ;
+			saved = _strdup(yytext) ;
 			return ;
 		case PAREN_IGNORE:
 			BEGIN PAREN ;
 			states.push(IGNORE_SEEK) ;
 			indices.push(index) ;
-			saved = strdup(yytext) ;
+			saved = _strdup(yytext) ;
 			return ;
 		}
 

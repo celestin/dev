@@ -14,6 +14,7 @@
  * --------------------------------------------------------------------------------
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -78,53 +79,53 @@ pthread_mutex_t parser_lock ;
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseProtection_opt(SymbolNode &item)
 {
-	item.setProtectionID(MasterData::PACKAGE_PROT);
+  item.setProtectionID(MasterData::PACKAGE_PROT);
 
-	if (!look_JIL_PACKAGE()) {
-		item.setProtectionID(MasterData::PACKAGE_PROT);
-		lex_index++;
-	}
+  if (!look_JIL_PACKAGE()) {
+    item.setProtectionID(MasterData::PACKAGE_PROT);
+    lex_index++;
+  }
 
-	if (!look_JIL_PUBLIC()) {
-		item.setProtectionID(MasterData::PUBLIC_PROT);
-		lex_index++;
-	}
-	if (!look_JIL_PROTECTED()) {
-		item.setProtectionID(MasterData::PROTECTED_PROT);
-		lex_index++;
-	}
-	if (!look_JIL_PRIVATE()) {
-		item.setProtectionID(MasterData::PRIVATE_PROT);
-		lex_index++;
-	}
+  if (!look_JIL_PUBLIC()) {
+    item.setProtectionID(MasterData::PUBLIC_PROT);
+    lex_index++;
+  }
+  if (!look_JIL_PROTECTED()) {
+    item.setProtectionID(MasterData::PROTECTED_PROT);
+    lex_index++;
+  }
+  if (!look_JIL_PRIVATE()) {
+    item.setProtectionID(MasterData::PRIVATE_PROT);
+    lex_index++;
+  }
 
-	// TODO:
-	if (!look_JIL_PRIVATE_PROTECTED()) {
-	//	item->setProtection(PRIVATE_PROTECTED);
-		lex_index++;
-	}
+  // TODO:
+  if (!look_JIL_PRIVATE_PROTECTED()) {
+  //  item->setProtection(PRIVATE_PROTECTED);
+    lex_index++;
+  }
 }
 
 
 void PopulatePhase::parseProtection_opt()
 {
-	if (!look_JIL_PACKAGE()) {
-		lex_index++;
-	}
+  if (!look_JIL_PACKAGE()) {
+    lex_index++;
+  }
 
-	if (!look_JIL_PUBLIC()) {
-		lex_index++;
-	}
-	if (!look_JIL_PROTECTED()) {
-		lex_index++;
-	}
-	if (!look_JIL_PRIVATE()) {
-		lex_index++;
-	}
+  if (!look_JIL_PUBLIC()) {
+    lex_index++;
+  }
+  if (!look_JIL_PROTECTED()) {
+    lex_index++;
+  }
+  if (!look_JIL_PRIVATE()) {
+    lex_index++;
+  }
 
-	if (!look_JIL_PRIVATE_PROTECTED()) {
-		lex_index++;
-	}
+  if (!look_JIL_PRIVATE_PROTECTED()) {
+    lex_index++;
+  }
 }
 #endif
 
@@ -132,18 +133,18 @@ void PopulatePhase::parseProtection_opt()
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseGregariousModifiers_opt(SymbolNode &item)
 {
-	// TODO:
-	if (!look_MODS()) {
-		lex_index++ ;
-		//item->setModifierFlags((int)((*lexemes)[lex_index++].text));
-	}
+  // TODO:
+  if (!look_MODS()) {
+    lex_index++ ;
+    //item->setModifierFlags((int)((*lexemes)[lex_index++].text));
+  }
 }
 
 void PopulatePhase::parseGregariousModifiers_opt()
 {
-	if (!look_MODS()) {
-		lex_index++ ;
-	}
+  if (!look_MODS()) {
+    lex_index++ ;
+  }
 }
 
 #endif
@@ -152,15 +153,15 @@ void PopulatePhase::parseGregariousModifiers_opt()
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseFieldExpression()
 {
-	lex_index++;
-	while (look_END_EXPRESSION())
-	{
-	  if (!look_BEGIN_EXPRESSION())
-		parseFieldExpression();
-	  else
-		lex_index++;
-	}
-	lex_index++;
+  lex_index++;
+  while (look_END_EXPRESSION())
+  {
+    if (!look_BEGIN_EXPRESSION())
+    parseFieldExpression();
+    else
+    lex_index++;
+  }
+  lex_index++;
 }
 #endif
 
@@ -168,65 +169,60 @@ void PopulatePhase::parseFieldExpression()
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseExpression(SymbolNode &parent)
 {
-	string thisRef = "" ;
-	lex_index++; // BEGIN_EXPRESSION
+  string thisRef = "" ;
+  lex_index++; // BEGIN_EXPRESSION
 
-	while (look_END_EXPRESSION()) {
-	  if (!look_LOWCOMPLEX()) {
-		lex_index++;
-		parent.incMetric(MasterData::OC_MET,0.5) ;
-	  }
-	  if  (!look_MIDCOMPLEX()) {
-		lex_index++;
-		parent.incMetric(MasterData::OC_MET,1.0) ;
-	  }
-	  if (!look_HIGHCOMPLEX()) {
-		lex_index++;
-		parent.incMetric(MasterData::OC_MET,1.5) ;
-	  }
+  while (look_END_EXPRESSION()) {
+    if (!look_LOWCOMPLEX()) {
+    lex_index++;
+    parent.incMetric(MasterData::OC_MET,0.5) ;
+    }
+    if  (!look_MIDCOMPLEX()) {
+    lex_index++;
+    parent.incMetric(MasterData::OC_MET,1.0) ;
+    }
+    if (!look_HIGHCOMPLEX()) {
+    lex_index++;
+    parent.incMetric(MasterData::OC_MET,1.5) ;
+    }
 
-  	  if (!look_SEP()) {
-		lex_index++;
-		//if (strlen(this_ref)>0) {
-		//  this_ref[strlen(this_ref)-1]='\0';
-		//  parent->addReference(strdup(this_ref));
-		//}
-		//this_ref[0]='\0';
-		if (thisRef.size()>0)
-		{
-			thisRef = thisRef.substr(0,thisRef.size()-1);
-			//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
+    if (!look_SEP()) {
+    lex_index++;
+    if (thisRef.size()>0)
+    {
+      thisRef = thisRef.substr(0,thisRef.size()-1);
+      //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
 #ifdef PROFESSIONAL
-			theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
+      theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
 #endif
-		}
-		thisRef = "" ;
-	}
-	if (!look_XREF()) {
-		//strcat(this_ref,(*lexemes)[lex_index++].text);
-		//strcat(this_ref,".");
-		thisRef = thisRef + lexemes[lex_index++]->str + "." ;
-	}
-	  if (!look_BEGIN_EXPRESSION())
-		parseExpression(parent);
-	  if (!look_JIL_CLASS())
-		parseClassDecl(parent);
-	}
-	lex_index++; // END_EXPRESSION
+    }
+    thisRef = "" ;
+  }
+  if (!look_XREF()) {
+    //strcat(this_ref,(*lexemes)[lex_index++].text);
+    //strcat(this_ref,".");
+    thisRef = thisRef + lexemes[lex_index++]->str + "." ;
+  }
+    if (!look_BEGIN_EXPRESSION())
+    parseExpression(parent);
+    if (!look_JIL_CLASS())
+    parseClassDecl(parent);
+  }
+  lex_index++; // END_EXPRESSION
 
-	//if (strlen(this_ref)>0) {
-	//	this_ref[strlen(this_ref)-1]='\0';
-	//	parent->addReference(strdup(this_ref));
-	//}
+  //if (strlen(this_ref)>0) {
+  //  this_ref[strlen(this_ref)-1]='\0';
+  //  parent->addReference(_strdup(this_ref));
+  //}
 
-	if (thisRef.size()>0)
-	{
-		thisRef = thisRef.substr(0,thisRef.size()-1);
-		//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
+  if (thisRef.size()>0)
+  {
+    thisRef = thisRef.substr(0,thisRef.size()-1);
+    //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
 #ifdef PROFESSIONAL
-		theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
+    theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::XREF_LINK, thisRef)) ;
 #endif
-	}
+  }
 }
 #endif
 
@@ -234,98 +230,98 @@ void PopulatePhase::parseExpression(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseField(SymbolNode &parent)
 {
-	//reference* type;
-	string type = "" ;
+  //reference* type;
+  string type = "" ;
 
 #ifdef PROFESSIONAL
-	SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
-	//parent.addNode(fieldNode) ;
+  SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+  //parent.addNode(fieldNode) ;
 #endif
 
-	//type=new reference();
-	//field=new fieldNode();
-	//field->setParent(parent);
+  //type=new reference();
+  //field=new fieldNode();
+  //field->setParent(parent);
 
-	lex_index++;	// FIELD
+  lex_index++;  // FIELD
 
 #ifdef PROFESSIONAL
-	parseProtection_opt(fieldNode) ;
-	parseGregariousModifiers_opt(fieldNode) ;
+  parseProtection_opt(fieldNode) ;
+  parseGregariousModifiers_opt(fieldNode) ;
 #else
-	parseProtection_opt() ;
-	parseGregariousModifiers_opt() ;
+  parseProtection_opt() ;
+  parseGregariousModifiers_opt() ;
 #endif
 
-	if (!look_TYPE()) {
-		lex_index++;  // TYPE
-		type = lexemes[lex_index++]->str ;
-		//field->setType(type);
+  if (!look_TYPE()) {
+    lex_index++;  // TYPE
+    type = lexemes[lex_index++]->str ;
+    //field->setType(type);
 
-		// TODO: check this
-		long typeID = theRoot->getSymbolTypeID(type) ;
-		if (typeID==-1)
-		{
+    // TODO: check this
+    long typeID = theRoot->getSymbolTypeID(type) ;
+    if (typeID==-1)
+    {
 #ifdef PROFESSIONAL
-			//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-			theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type)) ;
+      //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type)) ;
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-	}
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+  }
 
-	while (!look_ID()) {
-		//field=new fieldNode(field);
-		//field->setParent(parent);
-		//field->setName((*lexemes)[lex_index++].text);
+  while (!look_ID()) {
+    //field=new fieldNode(field);
+    //field->setParent(parent);
+    //field->setName((*lexemes)[lex_index++].text);
 #ifdef PROFESSIONAL
-		fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
-		//fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
+    fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+    //fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
 
-		fieldNode.setName(lexemes[lex_index]->str);
-		parent.addNode(fieldNode) ;
+    fieldNode.setName(lexemes[lex_index]->str);
+    parent.addNode(fieldNode) ;
 #endif
-		lex_index++ ;
+    lex_index++ ;
 
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
 #ifdef PROFESSIONAL
-			//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-			theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+      //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
 
-		//((containerNode*)parent)->addNode(field);
-		if (!look_ETYPE()) {
-			  lex_index++; // ETYPE
+    //((containerNode*)parent)->addNode(field);
+    if (!look_ETYPE()) {
+        lex_index++; // ETYPE
 
-			  // TODO
-			  //field->extratype=strdup(((*lexemes)[lex_index++].text));
-			  //hack
-			  lex_index++ ;
-			}
-		while (!look_BEGIN_EXPRESSION())
-			  parseFieldExpression() ;
-	}
-	if (!look_ETYPE()) {
-		lex_index++; // ETYPE
-		// TODO
-		//field->extratype=strdup(((*lexemes)[lex_index++].text));
-		//hack
-		lex_index++;
-	}
+        // TODO
+        //field->extratype=_strdup(((*lexemes)[lex_index++].text));
+        //hack
+        lex_index++ ;
+      }
+    while (!look_BEGIN_EXPRESSION())
+        parseFieldExpression() ;
+  }
+  if (!look_ETYPE()) {
+    lex_index++; // ETYPE
+    // TODO
+    //field->extratype=_strdup(((*lexemes)[lex_index++].text));
+    //hack
+    lex_index++;
+  }
 
-	while (!look_BEGIN_EXPRESSION())
-		parseFieldExpression();
+  while (!look_BEGIN_EXPRESSION())
+    parseFieldExpression();
 }
 #endif
 
@@ -333,17 +329,17 @@ void PopulatePhase::parseField(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseInherits(SymbolNode &parent)
 {
-	//reference* superclass;
+  //reference* superclass;
 
-	//superclass=new reference();
-	lex_index++; // INHERITS
-	//superclass->setName((*lexemes)[lex_index++].text);
-	//parent->setSuperclass(superclass);
-	//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
+  //superclass=new reference();
+  lex_index++; // INHERITS
+  //superclass->setName((*lexemes)[lex_index++].text);
+  //parent->setSuperclass(superclass);
+  //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
 #ifdef PROFESSIONAL
-	theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
+  theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
 #endif
-	lex_index++ ;
+  lex_index++ ;
 }
 #endif
 
@@ -351,20 +347,20 @@ void PopulatePhase::parseInherits(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseClassImplements(SymbolNode &parent)
 {
-	//reference* interface;
+  //reference* interface;
 
-	lex_index++; // JIL_IMPLEMENTS
-	while (look_END_IMPLEMENTS()) {
-		//interface=new reference();
-		//interface->setName((*lexemes)[lex_index++].text);
-		//parent->addImplements(interface);
-		//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::IMPLEMENTS_LINK, lexemes[lex_index++]->str)) ;
+  lex_index++; // JIL_IMPLEMENTS
+  while (look_END_IMPLEMENTS()) {
+    //interface=new reference();
+    //interface->setName((*lexemes)[lex_index++].text);
+    //parent->addImplements(interface);
+    //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::IMPLEMENTS_LINK, lexemes[lex_index++]->str)) ;
 #ifdef PROFESSIONAL
-		theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::IMPLEMENTS_LINK, lexemes[lex_index]->str)) ;
+    theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::IMPLEMENTS_LINK, lexemes[lex_index]->str)) ;
 #endif
-		lex_index++ ;
-	}
-	lex_index++; // END_IMPLEMENTS
+    lex_index++ ;
+  }
+  lex_index++; // END_IMPLEMENTS
 }
 #endif
 
@@ -372,20 +368,20 @@ void PopulatePhase::parseClassImplements(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseClassBody(SymbolNode &parent)
 {
-	while (look_END_BODY()) {
-		if (!look_LOCAL())
-			parseField(parent);
-		else if (!look_FIELD())
-			parseField(parent);
-		else if (!look_METHOD())
-			parseMethod(parent);
-		else if (!look_JIL_CLASS())
-			parseClassDecl(parent);
-		else if (!look_JIL_INTERFACE())
-			parseInterfaceDecl(parent);
-		else
-			lex_index++;
-	}
+  while (look_END_BODY()) {
+    if (!look_LOCAL())
+      parseField(parent);
+    else if (!look_FIELD())
+      parseField(parent);
+    else if (!look_METHOD())
+      parseMethod(parent);
+    else if (!look_JIL_CLASS())
+      parseClassDecl(parent);
+    else if (!look_JIL_INTERFACE())
+      parseInterfaceDecl(parent);
+    else
+      lex_index++;
+  }
 }
 #endif
 
@@ -393,12 +389,12 @@ void PopulatePhase::parseClassBody(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseInterfaceBody(SymbolNode &parent)
 {
-	while (look_END_BODY()) {
-		if (!look_FIELD())
-			parseField(parent);
-		else
-			parseMethodHeader(parent);
-	}
+  while (look_END_BODY()) {
+    if (!look_FIELD())
+      parseField(parent);
+    else
+      parseMethodHeader(parent);
+  }
 }
 #endif
 
@@ -406,21 +402,21 @@ void PopulatePhase::parseInterfaceBody(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseInterfaceExtends(SymbolNode &parent)
 {
-	// TODO: look at this
-	//reference* interface;
-	lex_index++; // JIL_IMPLEMENTS
-	while (look_END_EXTENDS())
-	{
-		//interface=new reference();
-		//interface->setName((*lexemes)[lex_index++].text);
-		//parent->addExtends(interface);
+  // TODO: look at this
+  //reference* interface;
+  lex_index++; // JIL_IMPLEMENTS
+  while (look_END_EXTENDS())
+  {
+    //interface=new reference();
+    //interface->setName((*lexemes)[lex_index++].text);
+    //parent->addExtends(interface);
 
-		//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
+    //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
 #ifdef PROFESSIONAL
-		theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
+    theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
 #endif
-		lex_index++ ;
-	}
+    lex_index++ ;
+  }
 }
 #endif
 
@@ -428,47 +424,35 @@ void PopulatePhase::parseInterfaceExtends(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseInterfaceDecl(SymbolNode &parent)
 {
-	int SLOC = 0;
-	int startline,endline ;
+  int SLOC = 0;
+  int startline,endline ;
 
-	SymbolNode interfaceNode = theRoot->createSymbolNode(MasterData::INTERFACE_CAT) ;
-	//thisInterface->setParent(parent);
-	//thisInterface->linenr=(int)((*lexemes)[lex_index].text)+1;
-	startline = lexemes[lex_index]->param ;
+  SymbolNode interfaceNode = theRoot->createSymbolNode(MasterData::INTERFACE_CAT) ;
+  startline = lexemes[lex_index]->param ;
 
-	lex_index++;			// Goto start of Interface
+  lex_index++;      // Goto start of Interface
 
-	parseProtection_opt(interfaceNode);
-	parseGregariousModifiers_opt(interfaceNode);
+  parseProtection_opt(interfaceNode);
+  parseGregariousModifiers_opt(interfaceNode);
 
-	interfaceNode.setName(lexemes[lex_index++]->str);
+  interfaceNode.setName(lexemes[lex_index++]->str);
 
-	if (!look_JIL_EXTENDS())
-		parseInterfaceExtends(interfaceNode);
+  if (!look_JIL_EXTENDS())
+    parseInterfaceExtends(interfaceNode);
 
-	lex_index++;	// END IMPLEMENTS
+  lex_index++;  // END IMPLEMENTS
 
-	if (look_END_BODY())
-		parseInterfaceBody(interfaceNode);
+  if (look_END_BODY())
+    parseInterfaceBody(interfaceNode);
 
-	lex_index++;	// END_BODY
+  lex_index++;  // END_BODY
 
-	//thisInterface->setLOC((int)((*lexemes)[lex_index++].text));
-	//int endline = startline + thisInterface->getLOC() - 1;
-	int interfaceLOC = lexemes[lex_index++]->param ;
-	endline = startline + interfaceLOC ;
+  int interfaceLOC = lexemes[lex_index++]->param ;
+  endline = startline + interfaceLOC ;
 
-	interfaceNode.setMetric(MasterData::LOC_MET, interfaceLOC) ;
+  interfaceNode.setMetric(MasterData::LOC_MET, interfaceLOC) ;
 
-	//for ( int sloc_iter = 0 ; sloc_iter < sloc.size() ; sloc_iter++ ) {
-	//	if ( ( sloc[sloc_iter] + 1 ) >= startline && ( sloc[sloc_iter] + 1 ) <= endline ) {
-	//		SLOC++;
-	//	}
-	//}
-
-	//thisInterface->SLOC = SLOC;
-
-	parent.addNode(interfaceNode);
+  parent.addNode(interfaceNode);
 }
 #endif
 
@@ -476,76 +460,65 @@ void PopulatePhase::parseInterfaceDecl(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseBlockStatement(SymbolNode &parent)
 {
-	//fieldNode* field;
-	//reference* type;
+  string type ;
+  long typeID ;
 
-	string type ;
-	long typeID ;
+  if (!look_LOCAL()) {
+    lex_index++;
 
-	if (!look_LOCAL()) {
-		lex_index++;
-		//type=new reference();
-		//field=new fieldNode();
-		//field->setParent(parent);
-
-		if (!look_TYPE()) {
-			lex_index++; // TYPE
-			//type->setName((*lexemes)[lex_index++].text);
-			//field->setType(type);
-			type = lexemes[lex_index++]->str ;
-			typeID = theRoot->getSymbolTypeID(type);
-//			theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type)) ;
-		}
-		while (!look_ID()) {
-        	//field->setName((*lexemes)[lex_index++].text);
-			//parent->addNode(field);
+    if (!look_TYPE()) {
+      lex_index++; // TYPE
+      type = lexemes[lex_index++]->str ;
+      typeID = theRoot->getSymbolTypeID(type);
+    }
+    while (!look_ID()) {
 #ifdef PROFESSIONAL
-			SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
-			fieldNode.setName(lexemes[lex_index]->str) ;
-			//fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
-			parent.addNode(fieldNode) ;
-			if (typeID==-1)
-			{
-				theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
-				fieldNode.setTypeID(0) ;
-			}
-			else
-			{
-				fieldNode.setTypeID(typeID) ;
-			}
+      SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+      fieldNode.setName(lexemes[lex_index]->str) ;
+      //fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
+      parent.addNode(fieldNode) ;
+      if (typeID==-1)
+      {
+        theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+        fieldNode.setTypeID(0) ;
+      }
+      else
+      {
+        fieldNode.setTypeID(typeID) ;
+      }
 #endif
-			lex_index++ ;
-		}
-		if (!look_ETYPE()) {
-			// TODO:
-			lex_index++; // ETYPE
-			//field->extratype=((*lexemes)[lex_index++].text);
-			//hack
-			lex_index++ ;
-		}
-		return;
-	}
-	if (!look_CYCLO()) {
-		parent.incMetric(MasterData::CYCLO_MET) ;
-		lex_index++;
-		return;
-	}
+      lex_index++ ;
+    }
+    if (!look_ETYPE()) {
+      // TODO:
+      lex_index++; // ETYPE
+      //field->extratype=((*lexemes)[lex_index++].text);
+      //hack
+      lex_index++ ;
+    }
+    return;
+  }
+  if (!look_CYCLO()) {
+    parent.incMetric(MasterData::CYCLO_MET) ;
+    lex_index++;
+    return;
+  }
 
-	if (!look_BEGIN_EXPRESSION())
-	  parseExpression(parent);
+  if (!look_BEGIN_EXPRESSION())
+    parseExpression(parent);
 
-	if (!look_ETYPE())
-	   lex_index++;
+  if (!look_ETYPE())
+     lex_index++;
 
-	if (!look_TYPE())
-		lex_index++;
+  if (!look_TYPE())
+    lex_index++;
 
-	if (!look_ID())
-		lex_index++;
+  if (!look_ID())
+    lex_index++;
 
 
-	if (!look_JIL_CLASS())
-		parseClassDecl(parent);
+  if (!look_JIL_CLASS())
+    parseClassDecl(parent);
 }
 #endif
 
@@ -553,68 +526,60 @@ void PopulatePhase::parseBlockStatement(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseMethodHeader(SymbolNode &parent)
 {
-	//methodNode* thisMethod;
-	//reference* type;
+  SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
+  string type ;
 
-	//type=new reference();
-	//thisMethod=new methodNode();
-	//thisMethod->setParent(parent);
+  lex_index++;  // METHOD
 
-	SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
-//	methodNode.setCategoryID(MasterData::METHOD_CAT) ;
-	string type ;
+  parseProtection_opt(methodNode) ;
+  parseGregariousModifiers_opt(methodNode) ;
 
-	lex_index++;	// METHOD
-
-	parseProtection_opt(methodNode) ;
-	parseGregariousModifiers_opt(methodNode) ;
-
-	if (!look_TYPE())
-	{
-		lex_index++; // TYPE
-		//type->setName((*lexemes)[lex_index++].text);
-		type = lexemes[lex_index++]->str ;
-		//thisMethod->setType(type);
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
-			//theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+  if (!look_TYPE())
+  {
+    lex_index++; // TYPE
+    //type->setName((*lexemes)[lex_index++].text);
+    type = lexemes[lex_index++]->str ;
+    //thisMethod->setType(type);
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
+      //theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
 #ifdef PROFESSIONAL
-			theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-//		theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type)) ;
-	} else {
-		//type->setName("");
-		type = "" ;
-		//thisMethod->setType(type);
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
-			//theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+//    theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type)) ;
+  } else {
+    //type->setName("");
+    type = "" ;
+    //thisMethod->setType(type);
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
+      //theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
 #ifdef PROFESSIONAL
-			theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-//		theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type)) ;
-	}
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+//    theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type)) ;
+  }
 
-	parseMethodDeclarator(methodNode);
+  parseMethodDeclarator(methodNode);
 
-	parent.addNode(methodNode);
+  parent.addNode(methodNode);
 
-	lex_index++;				// END_BODY
-	lex_index+=4;				// don't need the halstead info
+  lex_index++;        // END_BODY
+  lex_index+=4;       // don't need the halstead info
 }
 #endif
 
@@ -622,68 +587,68 @@ void PopulatePhase::parseMethodHeader(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseMethodBody(SymbolNode &parent)
 {
-	int depth=0;
-	int nest=1 ;
-	int mark=0 ;
-	int last_ret_depth=-1;
-	int n=0;
+  int depth=0;
+  int nest=1 ;
+  int mark=0 ;
+  int last_ret_depth=-1;
+  int n=0;
 
-	parent.setMetric(MasterData::ANION_MET,1) ;
-	parent.setMetric(MasterData::NION_MET,1) ;
-	parent.setMetric(MasterData::NEST_MET,0) ;
+  parent.setMetric(MasterData::ANION_MET,1) ;
+  parent.setMetric(MasterData::NION_MET,1) ;
+  parent.setMetric(MasterData::NEST_MET,0) ;
 
-	while (look_END_BODY()) {
-		n=1;
-		parseBlockStatement(parent);
-		if (!look_MARK_IF()) {
-		  lex_index++;
-		}
-		if (!look_MARK_ENDIF()) {
-			lex_index++;
-		}
-		if (!look_RET()) {
-			parent.incMetric(MasterData::NION_MET) ;
-			if (depth!=last_ret_depth) {
-				last_ret_depth=depth;
-				parent.incMetric(MasterData::ANION_MET) ;
-			}
-			lex_index++ ;
-		}
-		if (!look_MORE_DEPTH()) {
-			depth++ ;
+  while (look_END_BODY()) {
+    n=1;
+    parseBlockStatement(parent);
+    if (!look_MARK_IF()) {
+      lex_index++;
+    }
+    if (!look_MARK_ENDIF()) {
+      lex_index++;
+    }
+    if (!look_RET()) {
+      parent.incMetric(MasterData::NION_MET) ;
+      if (depth!=last_ret_depth) {
+        last_ret_depth=depth;
+        parent.incMetric(MasterData::ANION_MET) ;
+      }
+      lex_index++ ;
+    }
+    if (!look_MORE_DEPTH()) {
+      depth++ ;
 
-			if (nest<depth)
-			{
-				nest++ ;
-				parent.incMetric(MasterData::NEST_MET) ;
-			}
+      if (nest<depth)
+      {
+        nest++ ;
+        parent.incMetric(MasterData::NEST_MET) ;
+      }
 
-			last_ret_depth=-1 ;
-			lex_index++ ;
-		}
-		if (!look_LESS_DEPTH()) {
-			depth-- ;
-			last_ret_depth=-1 ;
-			if ((depth==0)&&(mark>0)) {
-				parent.incMetric(MasterData::EVG_MET,mark) ;
-				mark=0 ;
-			}
-			lex_index++;
-		}
-		if (!look_MARK_UNSTRUCT()) {
-			parent.incMetric(MasterData::BRANCH_MET) ;
-			if (depth>0) {
-				mark=depth ;
-			}
-			lex_index++;
-		}
-	}
+      last_ret_depth=-1 ;
+      lex_index++ ;
+    }
+    if (!look_LESS_DEPTH()) {
+      depth-- ;
+      last_ret_depth=-1 ;
+      if ((depth==0)&&(mark>0)) {
+        parent.incMetric(MasterData::EVG_MET,mark) ;
+        mark=0 ;
+      }
+      lex_index++;
+    }
+    if (!look_MARK_UNSTRUCT()) {
+      parent.incMetric(MasterData::BRANCH_MET) ;
+      if (depth>0) {
+        mark=depth ;
+      }
+      lex_index++;
+    }
+  }
 
-	if ((n==0)||(depth!=last_ret_depth))
-	{
-		parent.incMetric(MasterData::ANION_MET) ;
-		parent.incMetric(MasterData::NION_MET) ;
-	}
+  if ((n==0)||(depth!=last_ret_depth))
+  {
+    parent.incMetric(MasterData::ANION_MET) ;
+    parent.incMetric(MasterData::NION_MET) ;
+  }
 }
 #endif
 
@@ -691,61 +656,61 @@ void PopulatePhase::parseMethodBody(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseParameter(SymbolNode &parent)
 {
-	//reference* type;
-	//fieldNode* field;
+  //reference* type;
+  //fieldNode* field;
 
-	//field=new fieldNode();
-	string type ;
+  //field=new fieldNode();
+  string type ;
 #ifdef PROFESSIONAL
-	SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
-	parseGregariousModifiers_opt(fieldNode) ;
+  SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+  parseGregariousModifiers_opt(fieldNode) ;
 #else
-	parseGregariousModifiers_opt() ;
+  parseGregariousModifiers_opt() ;
 #endif
 
-	if (!look_TYPE()) {
-		lex_index++; // TYPE
-		//type=new reference();
-		//type->setName((*lexemes)[lex_index++].text);
-		type = lexemes[lex_index++]->str;
-		//field->setType(type);
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
+  if (!look_TYPE()) {
+    lex_index++; // TYPE
+    //type=new reference();
+    //type->setName((*lexemes)[lex_index++].text);
+    type = lexemes[lex_index++]->str;
+    //field->setType(type);
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
 #ifdef PROFESSIONAL
-			//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-			theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+      //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-//		theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-	}
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+//    theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+  }
 
-	while (!look_ID()) {
+  while (!look_ID()) {
 #ifdef PROFESSIONAL
-		fieldNode.setName(lexemes[lex_index]->str);
-		parent.addNode(fieldNode) ;
+    fieldNode.setName(lexemes[lex_index]->str);
+    parent.addNode(fieldNode) ;
 
-		// C01 Begin ----------------------------------
-		parent.incMetric(MasterData::NP_MET) ;
-		// parent->incNparams();
-		// C01 End ------------------------------------
+    // C01 Begin ----------------------------------
+    parent.incMetric(MasterData::NP_MET) ;
+    // parent->incNparams();
+    // C01 End ------------------------------------
 #endif
-		lex_index++ ;
-	}
+    lex_index++ ;
+  }
 
-	if (!look_ETYPE()) {
-		lex_index++; // ETYPE
-		// TODO:
-		//field->extratype=strdup(((*lexemes)[lex_index++].text));  // ID
-		//hack
-		lex_index++ ;
-	}
-	//field->setParent(parent);
+  if (!look_ETYPE()) {
+    lex_index++; // ETYPE
+    // TODO:
+    //field->extratype=_strdup(((*lexemes)[lex_index++].text));  // ID
+    //hack
+    lex_index++ ;
+  }
+  //field->setParent(parent);
 }
 #endif
 
@@ -753,11 +718,11 @@ void PopulatePhase::parseParameter(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseMethodDeclarator(SymbolNode &methodNode)
 {
-	methodNode.setName(lexemes[lex_index++]->str);
-	while (look_END_PARAMS())
-		parseParameter(methodNode);
+  methodNode.setName(lexemes[lex_index++]->str);
+  while (look_END_PARAMS())
+    parseParameter(methodNode);
 
-	lex_index++;  // END_PARAMS
+  lex_index++;  // END_PARAMS
 }
 #endif
 
@@ -765,99 +730,99 @@ void PopulatePhase::parseMethodDeclarator(SymbolNode &methodNode)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseMethod(SymbolNode &parent)
 {
-	//methodNode* thisMethod;
-	//reference* type;
+  //methodNode* thisMethod;
+  //reference* type;
 
-	string type ;
-	int startline,endline ;
+  string type ;
+  int startline,endline ;
 
-	int SLOC = 0;
+  int SLOC = 0;
 
-	//type=new reference();
-	//thisMethod=new methodNode();
-	//thisMethod->setParent(parent);
+  //type=new reference();
+  //thisMethod=new methodNode();
+  //thisMethod->setParent(parent);
 
-	SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
-//	methodNode.setCategoryID(MasterData::METHOD_CAT) ;
+  SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
+//  methodNode.setCategoryID(MasterData::METHOD_CAT) ;
 
-	startline = lexemes[lex_index]->param ;
-	lex_index++;    // METHOD
+  startline = lexemes[lex_index]->param ;
+  lex_index++;    // METHOD
 
-	parseProtection_opt(methodNode);
-	parseGregariousModifiers_opt(methodNode);
+  parseProtection_opt(methodNode);
+  parseGregariousModifiers_opt(methodNode);
 
-	if (!look_TYPE()) {
-		lex_index++; // TYPE
-		//type->setName((*lexemes)[lex_index++].text);
-		type = lexemes[lex_index++]->str;
-		//thisMethod->setType(type);
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
-			//theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+  if (!look_TYPE()) {
+    lex_index++; // TYPE
+    //type->setName((*lexemes)[lex_index++].text);
+    type = lexemes[lex_index++]->str;
+    //thisMethod->setType(type);
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
+      //theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
 #ifdef PROFESSIONAL
-			theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-//		theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+//    theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
 
-	//DEBUG      printf("found type: %s\n",(*lexemes)[lex_index-1].text);
-	} else {
-		//type->setName("");
-		type = "" ;
-		//thisMethod->setType(type);
-		long typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
-			//theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+  //DEBUG      printf("found type: %s\n",(*lexemes)[lex_index-1].text);
+  } else {
+    //type->setName("");
+    type = "" ;
+    //thisMethod->setType(type);
+    long typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
+      //theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
 #ifdef PROFESSIONAL
-			theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
 #endif
-			parent.setTypeID(0) ;
-		}
-		else
-		{
-			parent.setTypeID(typeID) ;
-		}
-//		theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
-	}
+      parent.setTypeID(0) ;
+    }
+    else
+    {
+      parent.setTypeID(typeID) ;
+    }
+//    theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+  }
 
-	parseMethodDeclarator(methodNode);
+  parseMethodDeclarator(methodNode);
 
-	// 17.11.1998 if (look_END_BODY())
-		parseMethodBody(methodNode);
+  // 17.11.1998 if (look_END_BODY())
+    parseMethodBody(methodNode);
 
-	lex_index++; // END_BODY
+  lex_index++; // END_BODY
 
-	// TODO: check the state of LOC
-	//methodNode->setLOC((int)((*lexemes)[lex_index++].text));
+  // TODO: check the state of LOC
+  //methodNode->setLOC((int)((*lexemes)[lex_index++].text));
 
-	int methodLOC = lexemes[lex_index++]->param ;
-	endline = startline + methodLOC ;
+  int methodLOC = lexemes[lex_index++]->param ;
+  endline = startline + methodLOC ;
 
-	methodNode.setMetric(MasterData::LOC_MET,methodLOC) ;
+  methodNode.setMetric(MasterData::LOC_MET,methodLOC) ;
 
-	for ( int sloc_iter = 0 ; sloc_iter < sloc_v.size() ; sloc_iter++ ) {
-		if ( ( sloc_v[sloc_iter] + 1 ) >= startline && ( sloc_v[sloc_iter] + 1 ) <= endline ) {
-			SLOC++ ;
-		}
-	}
-	methodNode.setMetric(MasterData::SLOC_MET,SLOC) ;
+  for ( int sloc_iter = 0 ; sloc_iter < sloc_v.size() ; sloc_iter++ ) {
+    if ( ( sloc_v[sloc_iter] + 1 ) >= startline && ( sloc_v[sloc_iter] + 1 ) <= endline ) {
+      SLOC++ ;
+    }
+  }
+  methodNode.setMetric(MasterData::SLOC_MET,SLOC) ;
 
-	methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index++]->param) ;
-	methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index++]->param) ;
 
-	parent.addNode(methodNode);
+  parent.addNode(methodNode);
 }
 #endif
 
@@ -865,26 +830,26 @@ void PopulatePhase::parseMethod(SymbolNode &parent)
 #ifdef LANGUAGE_JAVA
 SymbolNode PopulatePhase::getPackage(string packageName)
 {
-	vector<long> children = theRoot->getChildren() ;
-	int i;
-	SymbolNode tmp = (*theRoot) ;
+  vector<long> children = theRoot->getChildren() ;
+  int i;
+  SymbolNode tmp = (*theRoot) ;
 
-	for (i=0 ; i<children.size() ; i++)
-	{
-		if (theRoot->findSymbolNode(children[i], tmp))
-		{
-			if (!packageName.compare(tmp.getName()))
-			{
-				return tmp ;
-			}
-		}
-	}
+  for (i=0 ; i<children.size() ; i++)
+  {
+    if (theRoot->findSymbolNode(children[i], tmp))
+    {
+      if (!packageName.compare(tmp.getName()))
+      {
+        return tmp ;
+      }
+    }
+  }
 
-	SymbolNode packNode = theRoot->createSymbolNode(MasterData::PACKAGE_CAT) ;
-	packNode.setName(packageName) ;
-	theProjNode.addNode(packNode) ;
+  SymbolNode packNode = theRoot->createSymbolNode(MasterData::PACKAGE_CAT) ;
+  packNode.setName(packageName) ;
+  theProjNode.addNode(packNode) ;
 
-	return packNode ;
+  return packNode ;
 }
 #endif
 
@@ -892,21 +857,21 @@ SymbolNode PopulatePhase::getPackage(string packageName)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseImportList(SymbolNode &file)
 {
-//	reference *import;
+//  reference *import;
 
-	while (look_END_UNIT_HEADER())
-	{
-		lex_index++ ;							// Got an import
-		//import=new reference();
-		//import->setName((*lexemes)[lex_index++].text);
+  while (look_END_UNIT_HEADER())
+  {
+    lex_index++ ;             // Got an import
+    //import=new reference();
+    //import->setName((*lexemes)[lex_index++].text);
 
-		//theRoot->theTempBuffer.add(new TempLink(file.getID(), MasterData::IMPORT_LINK, lexemes[lex_index++]->str)) ;
+    //theRoot->theTempBuffer.add(new TempLink(file.getID(), MasterData::IMPORT_LINK, lexemes[lex_index++]->str)) ;
 #ifdef PROFESSIONAL
-		theRoot->theTempBuffer.add(new Link(file.getID(), MasterData::IMPORT_LINK, lexemes[lex_index]->str)) ;
+    theRoot->theTempBuffer.add(new Link(file.getID(), MasterData::IMPORT_LINK, lexemes[lex_index]->str)) ;
 #endif
-		lex_index++ ;
-		//file->addImport(import);
-	}
+    lex_index++ ;
+    //file->addImport(import);
+  }
 }
 #endif
 
@@ -914,10 +879,10 @@ void PopulatePhase::parseImportList(SymbolNode &file)
 #ifdef LANGUAGE_JAVA
 void PopulatePhase::parseTypeDecl(SymbolNode &parent)
 {
-	if (!look_JIL_CLASS())
-		parseClassDecl(parent);
-	else
-		parseInterfaceDecl(parent);
+  if (!look_JIL_CLASS())
+    parseClassDecl(parent);
+  else
+    parseInterfaceDecl(parent);
 }
 #endif
 
@@ -932,58 +897,58 @@ void PopulatePhase::parseTypeDecl(SymbolNode &parent)
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseClassMember(SymbolNode &parent,int *pro)
 {
-	int save;
+  int save;
 
-	save=lex_index;
-	if (!look_PROTECTION_LEVEL()) {
-	  switch(lexemes[lex_index]->param) {
-		case 0:  *pro=MasterData::PUBLIC_PROT ;
-     			 break;
-		case 1:  *pro=MasterData::PROTECTED_PROT ;
-    			 break;
-		case 2:  *pro=MasterData::PRIVATE_PROT ;
-				 break;
-	  };
-	  lex_index++;
-	};
+  save=lex_index;
+  if (!look_PROTECTION_LEVEL()) {
+    switch(lexemes[lex_index]->param) {
+    case 0:  *pro=MasterData::PUBLIC_PROT ;
+           break;
+    case 1:  *pro=MasterData::PROTECTED_PROT ;
+           break;
+    case 2:  *pro=MasterData::PRIVATE_PROT ;
+         break;
+    };
+    lex_index++;
+  };
 
-	if (!look_ACCESS_PRIVATE()) {
-	  *pro=MasterData::PRIVATE_PROT ;
-	  lex_index++;
-	};
+  if (!look_ACCESS_PRIVATE()) {
+    *pro=MasterData::PRIVATE_PROT ;
+    lex_index++;
+  };
 
-	if (!look_ACCESS_PROTECTED()) {
-	  *pro=MasterData::PROTECTED_PROT ;
-	  lex_index++;
-	}
+  if (!look_ACCESS_PROTECTED()) {
+    *pro=MasterData::PROTECTED_PROT ;
+    lex_index++;
+  }
 
-	// A01 Begin ---------------------------------------
-	// This detects and ignores struct definitions
-	// within a class body
-	if (!look_BEGIN_STRUCT())
-	{
-		lex_index++ ;
-		while(look_END_CD())
-		{
-			lex_index++ ;
-		}
+  // A01 Begin ---------------------------------------
+  // This detects and ignores struct definitions
+  // within a class body
+  if (!look_BEGIN_STRUCT())
+  {
+    lex_index++ ;
+    while(look_END_CD())
+    {
+      lex_index++ ;
+    }
 
-		lex_index++ ;
-		return FOUND  ;
-	}
-	// A01 End -----------------------------------------
+    lex_index++ ;
+    return FOUND  ;
+  }
+  // A01 End -----------------------------------------
 
-	if (!look_BEGIN_SIMPLE_DECL())
-	  parseSimpleDecl(parent,*pro);
+  if (!look_BEGIN_SIMPLE_DECL())
+    parseSimpleDecl(parent,*pro);
 
-	if (!look_BEGIN_FDEF())
-	  parseFunction(parent,*pro);
+  if (!look_BEGIN_FDEF())
+    parseFunction(parent,*pro);
 
-	if (!look_BEGIN_CD())
-		parseClassDecl(parent,*pro);
+  if (!look_BEGIN_CD())
+    parseClassDecl(parent,*pro);
 
-	if (save==lex_index) return NOT_FOUND;
-	return FOUND;
+  if (save==lex_index) return NOT_FOUND;
+  return FOUND;
 
 }
 #endif
@@ -991,93 +956,93 @@ int PopulatePhase::parseClassMember(SymbolNode &parent,int *pro)
 #ifdef LANGUAGE_CPP
 void PopulatePhase::parse_func_decl_spec(SymbolNode &parent)
 {
-	string type ;
-	string realtype ;
-	bool foundtype = false ;
+  string type ;
+  string realtype ;
+  bool foundtype = false ;
 
-	string str ;
+  string str ;
 
-	int save;
+  int save;
 
-	while (look_BEGIN_DECLARATOR()) {
+  while (look_BEGIN_DECLARATOR()) {
 
-		save=lex_index;
+    save=lex_index;
 
-		// deal with typedefs in function decl_specs which
-		// should never really be here
+    // deal with typedefs in function decl_specs which
+    // should never really be here
 
-		if (!look_TYPE_SYNONYM())
-		{
-			lex_index++;
-		}
+    if (!look_TYPE_SYNONYM())
+    {
+      lex_index++;
+    }
 
-		// assign return type to function
-		if (!look_SYM_TYPE_ID())
-		{
-			foundtype = true ;
-			if (type.size()!=0)
-			{
+    // assign return type to function
+    if (!look_SYM_TYPE_ID())
+    {
+      foundtype = true ;
+      if (type.size()!=0)
+      {
 #ifdef PROFESSIONAL
-				// concatenate type reference
+        // concatenate type reference
 
-				//debugging,
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+        //debugging,
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 
-				realtype = type + " " + lexemes[lex_index]->str ;
+        realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-				lex_index++;
-	      	} else {
-        		// not got a type yet, set it up
-      			type = lexemes[lex_index]->str;
-				realtype = lexemes[lex_index]->str;
+        lex_index++;
+          } else {
+            // not got a type yet, set it up
+            type = lexemes[lex_index]->str;
+        realtype = lexemes[lex_index]->str;
 
-				lex_index++;
-     		}
+        lex_index++;
+        }
 
-			//theRoot->theBuffer.add(new TempLink(parent.getID(),MasterData::TYPE_LINK,realtype));
-		}
+      //theRoot->theBuffer.add(new TempLink(parent.getID(),MasterData::TYPE_LINK,realtype));
+    }
 
-		// deal with sickos who define classes and use them
-		// as function return types
-		if (!look_BEGIN_CD())
-		{
-			// this class is not `in' the method, so parse it
-			// in the parent scope.
-			SymbolNode par = parent.getParent() ;
-			parseClassDecl(par,MasterData::PRIVATE_PROT);
-		}
+    // deal with sickos who define classes and use them
+    // as function return types
+    if (!look_BEGIN_CD())
+    {
+      // this class is not `in' the method, so parse it
+      // in the parent scope.
+      SymbolNode par = parent.getParent() ;
+      parseClassDecl(par,MasterData::PRIVATE_PROT);
+    }
 
 #ifdef PROFESSIONAL
-		if (foundtype)
-		{
-			long typeID = theRoot->getSymbolTypeID(type);
-			if (typeID==-1)
-			{
-				//theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::TYPE_LINK,type));
-				theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::TYPE_LINK,type));
-				parent.setTypeID(0) ;
-			}
-			else
-			{
-				parent.setTypeID(typeID) ;
-			}
-		}
-		else
-		{
-			parent.setTypeID(-1) ;
-		}
+    if (foundtype)
+    {
+      long typeID = theRoot->getSymbolTypeID(type);
+      if (typeID==-1)
+      {
+        //theRoot->theTempBuffer.add(new TempLink(parent.getID(),MasterData::TYPE_LINK,type));
+        theRoot->theTempBuffer.add(new Link(parent.getID(),MasterData::TYPE_LINK,type));
+        parent.setTypeID(0) ;
+      }
+      else
+      {
+        parent.setTypeID(typeID) ;
+      }
+    }
+    else
+    {
+      parent.setTypeID(-1) ;
+    }
 #endif
 
-		if (lex_index==save)
-			return;
-	}
+    if (lex_index==save)
+      return;
+  }
 
-	return;
+  return;
 
 }
 #endif
@@ -1087,247 +1052,247 @@ void PopulatePhase::parse_func_decl_spec(SymbolNode &parent)
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseFunctionParameter(SymbolNode &func)
 {
-	int save=lex_index;
-	string realtype ;
-	string type ;
-	bool foundtype = false ;
-	int ok=0;
+  int save=lex_index;
+  string realtype ;
+  string type ;
+  bool foundtype = false ;
+  int ok=0;
 
-	if (look_BEGIN_DECLARATOR())
-		return NOT_FOUND;
+  if (look_BEGIN_DECLARATOR())
+    return NOT_FOUND;
 
-	//SymbolNode fieldNode(MasterData::FIELD_CAT) ;
+  //SymbolNode fieldNode(MasterData::FIELD_CAT) ;
 #ifdef PROFESSIONAL
-	SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+  SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
 #endif
 
-	lex_index++; // BEGIN_DECLARATOR
+  lex_index++; // BEGIN_DECLARATOR
 
-	if (!look_SYM_TYPE_ID())
-	{
-		//TODO: find difference between realtype & type
-		foundtype = true ;
+  if (!look_SYM_TYPE_ID())
+  {
+    //TODO: find difference between realtype & type
+    foundtype = true ;
 #ifdef PROFESSIONAL
-		realtype = lexemes[lex_index]->str ;
+    realtype = lexemes[lex_index]->str ;
 #endif
-		type = lexemes[lex_index++]->str ;
-		//theRoot->theBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,realtype));
-		ok=1;
-	}
+    type = lexemes[lex_index++]->str ;
+    //theRoot->theBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,realtype));
+    ok=1;
+  }
 
-	while (!look_SYM_TYPE_ID())
-	{
-		ok=1;
-		foundtype = true ;
+  while (!look_SYM_TYPE_ID())
+  {
+    ok=1;
+    foundtype = true ;
 
-		if (type.size()!=0)
-		{
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging,
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging,
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    } else {
-        	// not got a type yet, set it up
+      lex_index++;
+      } else {
+          // not got a type yet, set it up
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-      		type = lexemes[lex_index]->str;
-       		lex_index++;
-     	}
-	}
+          type = lexemes[lex_index]->str;
+          lex_index++;
+      }
+  }
 
-	if (!look_BEGIN_DECLARATOR())
-	{
-		lex_index++; // BEGIN_DECLARATOR
-	}
+  if (!look_BEGIN_DECLARATOR())
+  {
+    lex_index++; // BEGIN_DECLARATOR
+  }
 
-	while (!look_SYM_TYPE_ID())
-	{
-		ok=1;
-		foundtype = true ;
-		if (type.size()!=0)
-		{
+  while (!look_SYM_TYPE_ID())
+  {
+    ok=1;
+    foundtype = true ;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-				//debugging
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+      // concatenate type reference
+        //debugging
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++ ;
-     	}
-	}
+          lex_index++ ;
+      }
+  }
 
-	if (!look_ID())
-	{
-		ok=1;
+  if (!look_ID())
+  {
+    ok=1;
 #ifdef PROFESSIONAL
-		//debugging
-		//if (!lexemes[lex_index]->str.compare("it")) {
-			//MasterData::theLog << "ID: " << fieldNode.getID() << endl ;
-			//MasterData::theLog << "found the node, mark1" << endl ;
-		//}
+    //debugging
+    //if (!lexemes[lex_index]->str.compare("it")) {
+      //MasterData::theLog << "ID: " << fieldNode.getID() << endl ;
+      //MasterData::theLog << "found the node, mark1" << endl ;
+    //}
 
-		fieldNode.setName(lexemes[lex_index]->str);
+    fieldNode.setName(lexemes[lex_index]->str);
 #endif
-		lex_index++ ;
-	}
+    lex_index++ ;
+  }
 
-	while (!look_SYM_TYPE_ID())
-	{
-		ok=1;
-		foundtype = true ;
-		if (type.size()!=0)
-		{
+  while (!look_SYM_TYPE_ID())
+  {
+    ok=1;
+    foundtype = true ;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging,
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging,
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++ ;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++ ;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++;
-     	}
-	}
+          lex_index++;
+      }
+  }
 
-	if (!look_ID())
-	{
+  if (!look_ID())
+  {
 
-		ok=1;
+    ok=1;
 #ifdef PROFESSIONAL
-		//debugging
-		//if (!lexemes[lex_index]->str.compare("it"))
-		//	MasterData::theLog << "found the node, mark2" << endl ;
+    //debugging
+    //if (!lexemes[lex_index]->str.compare("it"))
+    //  MasterData::theLog << "found the node, mark2" << endl ;
 
-		fieldNode.setName(lexemes[lex_index]->str); //ID
+    fieldNode.setName(lexemes[lex_index]->str); //ID
 #endif
-		lex_index++ ;
-	}
+    lex_index++ ;
+  }
 
-	while (!look_SYM_TYPE_ID())
-	{
-		ok=1;
-		foundtype = true ;
-		if (type.size()!=0)
-		{
+  while (!look_SYM_TYPE_ID())
+  {
+    ok=1;
+    foundtype = true ;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++;
-     	}
-	}
+          lex_index++;
+      }
+  }
 
 
-	if (!look_END_DECLARATOR())
-	  lex_index++; // END_DECLARATOR
+  if (!look_END_DECLARATOR())
+    lex_index++; // END_DECLARATOR
 
-//	if (!look_END_DECLARATOR())
-//		lex_index++; // END_DECLARATOR
+//  if (!look_END_DECLARATOR())
+//    lex_index++; // END_DECLARATOR
 
-	if (ok==1)
-	{
+  if (ok==1)
+  {
 #ifdef PROFESSIONAL
-		func.addNode(fieldNode);
+    func.addNode(fieldNode);
 
-		//MasterData::theLog << fieldNode.getName() << " is a parameter of " << func.getName() << endl ;
+    //MasterData::theLog << fieldNode.getName() << " is a parameter of " << func.getName() << endl ;
 
 // This will be added again once the parameter info has been verified
 
-//		if (realtype.size()>0)
-//			func.setName(func.getName()+realtype+",") ;
-//		if ( (type.size()>0) && (realtype.compare("void")) )
-//			func.addLink(fieldNode.getID(),MasterData::PARAMETER_LINK) ;
+//    if (realtype.size()>0)
+//      func.setName(func.getName()+realtype+",") ;
+//    if ( (type.size()>0) && (realtype.compare("void")) )
+//      func.addLink(fieldNode.getID(),MasterData::PARAMETER_LINK) ;
 
 
 #endif
 
-		// A02 Start -----------------------------
-		if ( (type.size()>0) && (realtype.compare("void")) )
-			func.incMetric(MasterData::NP_MET) ;
-		// A02 End -------------------------------
+    // A02 Start -----------------------------
+    if ( (type.size()>0) && (realtype.compare("void")) )
+      func.incMetric(MasterData::NP_MET) ;
+    // A02 End -------------------------------
 
 #ifdef PROFESSIONAL
-		if (foundtype)
-		{
-			long typeID = theRoot->getSymbolTypeID(type);
-			if (typeID==-1)
-			{
-				//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-				theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
-				fieldNode.setTypeID(0) ;
-			}
-			else
-			{
-				fieldNode.setTypeID(typeID) ;
-			}
-		}
-		else
-		{
-			fieldNode.setTypeID(-1) ;
-		}
+    if (foundtype)
+    {
+      long typeID = theRoot->getSymbolTypeID(type);
+      if (typeID==-1)
+      {
+        //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+        theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+        fieldNode.setTypeID(0) ;
+      }
+      else
+      {
+        fieldNode.setTypeID(typeID) ;
+      }
+    }
+    else
+    {
+      fieldNode.setTypeID(-1) ;
+    }
 #endif
-		return FOUND;
-	}
-	else
-	{
-		lex_index=save;
-		return NOT_FOUND ;
-	}
+    return FOUND;
+  }
+  else
+  {
+    lex_index=save;
+    return NOT_FOUND ;
+  }
 }
 #endif
 
@@ -1335,262 +1300,254 @@ int PopulatePhase::parseFunctionParameter(SymbolNode &func)
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseAbstractFunctionParameter(SymbolNode &func)
 {
-	int ok=0;
-	string type ;
+  int ok=0;
+  string type ;
 #ifdef PROFESSIONAL
-	string realtype ;
+  string realtype ;
 #endif
-	bool foundtype = false ;
+  bool foundtype = false ;
 
-	int save=lex_index;
-	int ntypes=0,nids=0;
+  int save=lex_index;
+  int ntypes=0,nids=0;
 
-	if (look_BEGIN_DECLARATOR()){
-		return NOT_FOUND ;
-	}
+  if (look_BEGIN_DECLARATOR()){
+    return NOT_FOUND ;
+  }
 
-	//SymbolNode fieldNode(MasterData::FIELD_CAT) ;
+  //SymbolNode fieldNode(MasterData::FIELD_CAT) ;
 #ifdef PROFESSIONAL
-	SymbolNode fieldNode= theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+  SymbolNode fieldNode= theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
 #endif
 
-	lex_index++; // BEGIN_DECLARATOR
+  lex_index++; // BEGIN_DECLARATOR
 
-	if (!look_SYM_TYPE_ID()) {
-		foundtype = true ;
+  if (!look_SYM_TYPE_ID()) {
+    foundtype = true ;
 #ifdef PROFESSIONAL
-		realtype = lexemes[lex_index]->str ;
+    realtype = lexemes[lex_index]->str ;
 #endif
-		type = lexemes[lex_index++]->str ;
+    type = lexemes[lex_index++]->str ;
 
-		ok=1;
-		ntypes++;
-	}
-
-
-	 if (!look_BEGIN_DECLARATOR())
-		lex_index++;
+    ok=1;
+    ntypes++;
+  }
 
 
-	while (!look_SYM_TYPE_ID())
-	{
-		ntypes++;
-		ok=1;
-		foundtype = true ;
-		if (type.size()!=0)
-		{
+   if (!look_BEGIN_DECLARATOR())
+    lex_index++;
+
+
+  while (!look_SYM_TYPE_ID())
+  {
+    ntypes++;
+    ok=1;
+    foundtype = true ;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++;
-     	}
-	}
+          lex_index++;
+      }
+  }
 
-	if (!look_BEGIN_DECLARATOR())
-		lex_index++;
+  if (!look_BEGIN_DECLARATOR())
+    lex_index++;
 
-	if (!look_ID())
-	{
+  if (!look_ID())
+  {
 #ifdef PROFESSIONAL
-		//debugging
-		//if (!lexemes[lex_index]->str.compare("it"))
-		//	MasterData::theLog << "found the node, mark3" << endl ;
+    //debugging
+    //if (!lexemes[lex_index]->str.compare("it"))
+    //  MasterData::theLog << "found the node, mark3" << endl ;
 
-		fieldNode.setName(lexemes[lex_index]->str);
+    fieldNode.setName(lexemes[lex_index]->str);
 #endif
-		lex_index++;
-		nids++;
-		ok=1;
-	}
+    lex_index++;
+    nids++;
+    ok=1;
+  }
 
-	if (!look_BEGIN_DECLARATOR())
-		lex_index++;
+  if (!look_BEGIN_DECLARATOR())
+    lex_index++;
 
-	while (!look_SYM_TYPE_ID())
-	{
-		foundtype = true ;
-		ntypes++;
-		ok=1;
-		if (type.size()!=0)
-		{
+  while (!look_SYM_TYPE_ID())
+  {
+    foundtype = true ;
+    ntypes++;
+    ok=1;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++;
-     	}
-	}
+          lex_index++;
+      }
+  }
 
-	if (!look_ID())
-	{
-		nids++;
+  if (!look_ID())
+  {
+    nids++;
 #ifdef PROFESIONAL
-		//debugging
-		if (!lexemes[lex_index]->str.compare("it"))
-			MasterData::theLog << "found the node, mark4" << endl ;
+    //debugging
+    if (!lexemes[lex_index]->str.compare("it"))
+      MasterData::theLog << "found the node, mark4" << endl ;
 
-		fieldNode.setName(lexemes[lex_index]->str); //ID
+    fieldNode.setName(lexemes[lex_index]->str); //ID
 #endif
-		lex_index++ ;
-		ok=1;
-	}
+    lex_index++ ;
+    ok=1;
+  }
 #ifdef PROFESSIONAL
-	else
-	{
-		if (nids==0)
-		  fieldNode.setName(strdup("ABSTRACT"));
-	}
+  else
+  {
+    if (nids==0)
+      fieldNode.setName(_strdup("ABSTRACT"));
+  }
 #endif
 
-	while (!look_SYM_TYPE_ID())
-	{
-		foundtype = true ;
-		ok=1;
-		ntypes++;
-		if (type.size()!=0)
-		{
+  while (!look_SYM_TYPE_ID())
+  {
+    foundtype = true ;
+    ok=1;
+    ntypes++;
+    if (type.size()!=0)
+    {
 #ifdef PROFESSIONAL
-			// concatenate type reference
-			//debugging
-			//next two lines changed to switch
-			//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-			//	type = lexemes[lex_index]->str ;
-			switch (lexemes[lex_index]->str[0]) {
-				case '*': case '[': case '&': break;
-			}
+      // concatenate type reference
+      //debugging
+      //next two lines changed to switch
+      //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+      //  type = lexemes[lex_index]->str ;
+      switch (lexemes[lex_index]->str[0]) {
+        case '*': case '[': case '&': break;
+      }
 
-			realtype = type + " " + lexemes[lex_index]->str ;
+      realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-			lex_index++;
-	    }
-		else
-		{
-       		// not got a type yet, set it up
-      		type = lexemes[lex_index]->str;
+      lex_index++;
+      }
+    else
+    {
+          // not got a type yet, set it up
+          type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-			realtype = lexemes[lex_index]->str;
+      realtype = lexemes[lex_index]->str;
 #endif
-       		lex_index++;
-     	}
-	}
+          lex_index++;
+      }
+  }
 
-	if (!look_END_DECLARATOR())
-	{
-		lex_index++;
-	}
+  if (!look_END_DECLARATOR())
+  {
+    lex_index++;
+  }
 
-	if (!look_END_DECLARATOR())
-	{
-		lex_index++; // END_DECLARATOR
-	}
+  if (!look_END_DECLARATOR())
+  {
+    lex_index++; // END_DECLARATOR
+  }
 
-	if (ok==1)
-	{
-		//Note: do I need to do this?
-//	  if ((realtype!=NULL)&&(!strcmp("void",realtype)))
-//		;
-//	  else
-//		//Metric: ((methodNode*)func)->incNparams();
-	}
+  if (ok==1)
+  {
+    //Note: do I need to do this?
+//    if ((realtype!=NULL)&&(!strcmp("void",realtype)))
+//    ;
+//    else
+//    //Metric: ((methodNode*)func)->incNparams();
+  }
 
-//	  if (realtype==NULL)
-//		obj->fulltype=strdup("");
-//	  else
-//		obj->fulltype=realtype;
+//    if (realtype==NULL)
+//    obj->fulltype=_strdup("");
+//    else
+//    obj->fulltype=realtype;
 
 
-//	if (ok==1) {
-//	  // if we have a name but no type, type=name
-//	  if (       ((strlen(obj->fulltype)==0)) &&  (   (strlen(obj->name)>0)  ||  (!strcmp("ABSTRACT",obj->name) ))) {
-//		obj->fulltype=obj->name;
-//	  }
-//	}
+//  if (ok==1) {
+//    // if we have a name but no type, type=name
+//    if (       ((strlen(obj->fulltype)==0)) &&  (   (strlen(obj->name)>0)  ||  (!strcmp("ABSTRACT",obj->name) ))) {
+//    obj->fulltype=obj->name;
+//    }
+//  }
 
-	if (ok==1) {
+  if (ok==1) {
 #ifdef PROFESSIONAL
-		if (foundtype)
-		{
-			long typeID = theRoot->getSymbolTypeID(type);
-			if (typeID==-1)
-			{
-				//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-				theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
-				fieldNode.setTypeID(0) ;
-			}
-			else
-			{
-				fieldNode.setTypeID(typeID) ;
-			}
-		}
-		else
-		{
-			fieldNode.setTypeID(-1) ;
-		}
+    if (foundtype)
+    {
+      long typeID = theRoot->getSymbolTypeID(type);
+      if (typeID==-1)
+      {
+        //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+        theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+        fieldNode.setTypeID(0) ;
+      }
+      else
+      {
+        fieldNode.setTypeID(typeID) ;
+      }
+    }
+    else
+    {
+      fieldNode.setTypeID(-1) ;
+    }
 
 
-		func.addNode(fieldNode);
+    func.addNode(fieldNode);
 
-//		MasterData::theLog << func.getName() << " has a parameter of type '" << realtype << "'" << endl ;
-// This will be added again once the parameter info has been verified
-
-//		if (realtype.size()>0)
-//			func.setName(func.getName()+realtype+",") ;
-//		if ( (type.size()>0) && (realtype.compare("void")) )
-//			func.addLink(fieldNode.getID(),MasterData::PARAMETER_LINK) ;
-
-		// A03 Begin -----------------------------
-		func.incMetric(MasterData::NP_MET) ;
-		// A03 End -------------------------------
+    // A03 Begin -----------------------------
+    func.incMetric(MasterData::NP_MET) ;
+    // A03 End -------------------------------
 
 #endif
 
-	  // lex_index++; // END_DECLARATOR
-		return FOUND;
-	}
-	else
-	{
-		//debugging
-		//changed the following line from FOUND to NOT_FOUND
-	  return NOT_FOUND; // kludge...
-	}
+    // lex_index++; // END_DECLARATOR
+    return FOUND;
+  }
+  else
+  {
+    //debugging
+    //changed the following line from FOUND to NOT_FOUND
+    return NOT_FOUND; // kludge...
+  }
 
-	return NOT_FOUND;
+  return NOT_FOUND;
 }
 #endif
 
@@ -1598,91 +1555,91 @@ int PopulatePhase::parseAbstractFunctionParameter(SymbolNode &func)
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseMethodExpression(SymbolNode &func,int mode)
 {
-	int currmode=0;
-	string reftext;
-	int sz=2;
-	int max=100;
+  int currmode=0;
+  string reftext;
+  int sz=2;
+  int max=100;
 
-	if (look_BEGIN_EXPRESSION()&&look_BEGIN_WRITE()) {
-		return NOT_FOUND;
-	}
+  if (look_BEGIN_EXPRESSION()&&look_BEGIN_WRITE()) {
+    return NOT_FOUND;
+  }
 
-	lex_index++; // BEGIN_EXPRESSION/BEGIN_WRITE
-	while (look_END_EXPRESSION()&&look_END_WRITE()) {
-		if (!look_LOWCOMPLEX()) {
-		  lex_index++;
-		  func.incMetric(MasterData::OC_MET,0.5) ;
-		} else if (!look_MIDCOMPLEX()) {
-		  lex_index++;
-		  func.incMetric(MasterData::OC_MET,1.0) ;
-		} else if (!look_HIGHCOMPLEX()) {
-		  lex_index++;
-		  func.incMetric(MasterData::OC_MET,1.5) ;
-		} else if (!look_BEGIN_WRITE()) {
-		  parseMethodExpression(func,1);
-		} else if (!look_BEGIN_EXPRESSION()) {
-		  parseMethodExpression(func,currmode);
-		} else if (!look_REF()) {
+  lex_index++; // BEGIN_EXPRESSION/BEGIN_WRITE
+  while (look_END_EXPRESSION()&&look_END_WRITE()) {
+    if (!look_LOWCOMPLEX()) {
+      lex_index++;
+      func.incMetric(MasterData::OC_MET,0.5) ;
+    } else if (!look_MIDCOMPLEX()) {
+      lex_index++;
+      func.incMetric(MasterData::OC_MET,1.0) ;
+    } else if (!look_HIGHCOMPLEX()) {
+      lex_index++;
+      func.incMetric(MasterData::OC_MET,1.5) ;
+    } else if (!look_BEGIN_WRITE()) {
+      parseMethodExpression(func,1);
+    } else if (!look_BEGIN_EXPRESSION()) {
+      parseMethodExpression(func,currmode);
+    } else if (!look_REF()) {
 #ifdef PROFESSIONAL
-			if (reftext.size()>0)
-			{
-				reftext += '.' ;
-			}
-			reftext += lexemes[lex_index++]->str ;
+      if (reftext.size()>0)
+      {
+        reftext += '.' ;
+      }
+      reftext += lexemes[lex_index++]->str ;
 #else
-			lex_index++ ;
+      lex_index++ ;
 #endif
-		}
-		else if (!look_FREF())
-		{
+    }
+    else if (!look_FREF())
+    {
 #ifdef PROFESSIONAL
-			if (reftext.size()>0)
-			{
-				reftext += '.' ;
-			}
-			reftext += lexemes[lex_index++]->str ;
+      if (reftext.size()>0)
+      {
+        reftext += '.' ;
+      }
+      reftext += lexemes[lex_index++]->str ;
 #else
-			lex_index++ ;
+      lex_index++ ;
 #endif
-		}
-		else if (!look_SEP())
-		{
+    }
+    else if (!look_SEP())
+    {
 #ifdef PROFESSIONAL
-			if (reftext.size()>0)
-			{
-				//theRoot->theTempBuffer.add(new TempLink(func.getID(),MasterData::XREF_LINK, reftext)) ;
-				theRoot->theTempBuffer.add(new Link(func.getID(),MasterData::XREF_LINK, reftext)) ;
-			}
-			reftext = "" ;
+      if (reftext.size()>0)
+      {
+        //theRoot->theTempBuffer.add(new TempLink(func.getID(),MasterData::XREF_LINK, reftext)) ;
+        theRoot->theTempBuffer.add(new Link(func.getID(),MasterData::XREF_LINK, reftext)) ;
+      }
+      reftext = "" ;
 #endif
-			lex_index++; // SEP
-		}
-		else if (!look_SYM_TYPE_ID())
-		{
-		   // BETTER LOG A TYPE REF HERE!
-		   lex_index++; //not for the moment though
-		} else
-		{
-			return NOT_FOUND;
-		}
-	}
+      lex_index++; // SEP
+    }
+    else if (!look_SYM_TYPE_ID())
+    {
+       // BETTER LOG A TYPE REF HERE!
+       lex_index++; //not for the moment though
+    } else
+    {
+      return NOT_FOUND;
+    }
+  }
 
-	if (look_END_EXPRESSION()&&look_END_WRITE()) {
-		return NOT_FOUND;
-	}
+  if (look_END_EXPRESSION()&&look_END_WRITE()) {
+    return NOT_FOUND;
+  }
 
-	lex_index++; // END_EXPRESSION
+  lex_index++; // END_EXPRESSION
 
 
 #ifdef PROFESSIONAL
-	if (reftext.size()>0)
-	{
-		//theRoot->theTempBuffer.add(new TempLink(func.getID(), MasterData::XREF_LINK, reftext));
-		theRoot->theTempBuffer.add(new Link(func.getID(), MasterData::XREF_LINK, reftext));
-	}
+  if (reftext.size()>0)
+  {
+    //theRoot->theTempBuffer.add(new TempLink(func.getID(), MasterData::XREF_LINK, reftext));
+    theRoot->theTempBuffer.add(new Link(func.getID(), MasterData::XREF_LINK, reftext));
+  }
 #endif
 
-	return FOUND;
+  return FOUND;
 }
 #endif
 
@@ -1690,486 +1647,486 @@ int PopulatePhase::parseMethodExpression(SymbolNode &func,int mode)
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseFunction(SymbolNode &parent,int pro)
 {
-	int startline,endline,save,ttl,savec ;
-	int slocIter ;
-	bool removeTrailingComma = false ;
+  int startline,endline,save,ttl,savec ;
+  unsigned int slocIter ;
+  bool removeTrailingComma = false ;
 
-	int nest=1 ;
-	int mark=0 ;
-	int depth=0 ;
+  int nest=1 ;
+  int mark=0 ;
+  int depth=0 ;
 
-	long typeID = -1;
-	bool foundtype = false ;
+  long typeID = -1;
+  bool foundtype = false ;
 
-	int SLOC = 0;
+  int SLOC = 0;
 
-	string type ;
+  string type ;
 #ifdef PROFESSIONAL
-	string realtype ;
+  string realtype ;
 #endif
 
-	int last_ret_depth;
+  int last_ret_depth;
 
-	if (look_BEGIN_FDEF())
-		return NOT_FOUND;
+  if (look_BEGIN_FDEF())
+    return NOT_FOUND;
 
-	SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT);
+  SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT);
 
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "starting..." << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "starting..." << endl ;
+  }
 
-	startline=lexemes[lex_index]->line;
+  startline=lexemes[lex_index]->line;
 
-	//METRIC: obj->linenr=startline+1;
+  //METRIC: obj->linenr=startline+1;
 
-	lex_index++;  // BEGIN_FDEF
-	parse_func_decl_spec(methodNode);
+  lex_index++;  // BEGIN_FDEF
+  parse_func_decl_spec(methodNode);
 
-	//TODO: handle typeref.
-	// typeref=obj->getType();
+  //TODO: handle typeref.
+  // typeref=obj->getType();
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark1" << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark1" << endl ;
+  }
 
-	//if (obj->fulltype==NULL)
-	//	realtype=strdup("");
-	//else
-	//	realtype=obj->fulltype;
+  //if (obj->fulltype==NULL)
+  //  realtype=_strdup("");
+  //else
+  //  realtype=obj->fulltype;
 
-	if (look_BEGIN_DECLARATOR())
-		goto fn_bailout;
+  if (look_BEGIN_DECLARATOR())
+    goto fn_bailout;
 
-	while (!look_BEGIN_DECLARATOR())
-	{
-		lex_index++;  // BEGIN_DECLARATOR
-		while (!look_SYM_TYPE_ID())
-		{
-			foundtype = true ;
-			if (type.size()!=0)
-			{
+  while (!look_BEGIN_DECLARATOR())
+  {
+    lex_index++;  // BEGIN_DECLARATOR
+    while (!look_SYM_TYPE_ID())
+    {
+      foundtype = true ;
+      if (type.size()!=0)
+      {
 #ifdef PROFESSIONAL
-				// concatenate type reference
-				//debugging
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+        // concatenate type reference
+        //debugging
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 
-				realtype = type + " " + lexemes[lex_index]->str ;
+        realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-				lex_index++;
-			}
-			else
-			{
-        		// not got a type yet, set it up
-      			type = lexemes[lex_index]->str;
+        lex_index++;
+      }
+      else
+      {
+            // not got a type yet, set it up
+            type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-				realtype = lexemes[lex_index]->str;
+        realtype = lexemes[lex_index]->str;
 #endif
-       			lex_index++;
-     		}
-		}
+            lex_index++;
+        }
+    }
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark2" << endl ;
-	}
-		if (look_ID())
-		{
-			return NOT_FOUND;
-		}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark2" << endl ;
+  }
+    if (look_ID())
+    {
+      return NOT_FOUND;
+    }
 
 // This will be added again once the parameter info has been verified
-//		methodNode.setName(lexemes[lex_index++]->str + "(");  // ID
-		methodNode.setName(lexemes[lex_index++]->str);  // ID
-		methodNode.setProtectionID(pro);
+//    methodNode.setName(lexemes[lex_index++]->str + "(");  // ID
+    methodNode.setName(lexemes[lex_index++]->str);  // ID
+    methodNode.setProtectionID(pro);
 
-		//TODO: handle typeref.
-		// obj->fulltype=realtype;
-		//Changed: methodNode.setTypeID(theRoot->getSymbolTypeID(realtype)) ;
-		//theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
+    //TODO: handle typeref.
+    // obj->fulltype=realtype;
+    //Changed: methodNode.setTypeID(theRoot->getSymbolTypeID(realtype)) ;
+    //theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
 
-		// deal with function parameters
-		//printf("in the beggining, contents for %s(%d)\n",obj->name,obj);
-
-
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark3" << endl ;
-	}
-	    if (look_DECL_PARAM_PART_BEGIN())
-		{
-			// printf("BAIL0\n");
-			goto fn_windup;
-		}
-
-		lex_index++;  // DECL_PARAM_PART_BEGIN
-
-		ttl=0;
-		save=lex_index;
+    // deal with function parameters
+    //printf("in the beggining, contents for %s(%d)\n",obj->name,obj);
 
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark4" << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark3" << endl ;
+  }
+      if (look_DECL_PARAM_PART_BEGIN())
+    {
+      // printf("BAIL0\n");
+      goto fn_windup;
+    }
 
-		while ((look_DECL_PARAM_PART_END())&&(ttl<50))
-		{
-			if (parseFunctionParameter(methodNode))
-			{
-				//printf("--------MOVE ON!\n");
-		        ttl++;
-				lex_index++;
-			} else {
-				removeTrailingComma = true ;
-			}
-		}
-    	if (ttl==50)
-		{
-			goto fn_windup;
-		}
+    lex_index++;  // DECL_PARAM_PART_BEGIN
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark5" << endl ;
-	}
-		lex_index++;  // DECL_PARAM_PART_END
+    ttl=0;
+    save=lex_index;
 
-		while (!look_DECL_PARAM_PART_BEGIN())
-		{
-      		lex_index++;
-      		while (look_DECL_PARAM_PART_END())
-			{
-				if (parseFunctionParameter(methodNode))
-				{
-					goto fn_windup;
-				} else {
-					removeTrailingComma = true ;
-				}
-			}
 
-			lex_index++;
-		}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark4" << endl ;
+  }
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark6" << endl ;
-	}
-		if (look_END_DECLARATOR())
-		{
-			// printf("BAIL 3\n");
-			goto fn_bailout;
-		}
+    while ((look_DECL_PARAM_PART_END())&&(ttl<50))
+    {
+      if (parseFunctionParameter(methodNode))
+      {
+        //printf("--------MOVE ON!\n");
+            ttl++;
+        lex_index++;
+      } else {
+        removeTrailingComma = true ;
+      }
+    }
+      if (ttl==50)
+    {
+      goto fn_windup;
+    }
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark7" << endl ;
-	}
-		lex_index++;  // END_DECLARATOR
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark5" << endl ;
+  }
+    lex_index++;  // DECL_PARAM_PART_END
+
+    while (!look_DECL_PARAM_PART_BEGIN())
+    {
+          lex_index++;
+          while (look_DECL_PARAM_PART_END())
+      {
+        if (parseFunctionParameter(methodNode))
+        {
+          goto fn_windup;
+        } else {
+          removeTrailingComma = true ;
+        }
+      }
+
+      lex_index++;
+    }
+
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark6" << endl ;
+  }
+    if (look_END_DECLARATOR())
+    {
+      // printf("BAIL 3\n");
+      goto fn_bailout;
+    }
+
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark7" << endl ;
+  }
+    lex_index++;  // END_DECLARATOR
 
 // This will be added again once the parameter info has been verified
 
-//		if (removeTrailingComma) {
-//			string name = methodNode.getName() ;
-//			name = name.substr(0,name.length()-1) ;
-//			methodNode.setName( name + ")");  // ID
-//		} else
-//			methodNode.setName(methodNode.getName() + ")");  // ID
+//    if (removeTrailingComma) {
+//      string name = methodNode.getName() ;
+//      name = name.substr(0,name.length()-1) ;
+//      methodNode.setName( name + ")");  // ID
+//    } else
+//      methodNode.setName(methodNode.getName() + ")");  // ID
 
-  	}
+    }
 
-	ttl=0;
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark8" << endl ;
-	}
+  ttl=0;
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark8" << endl ;
+  }
 
-	while ((look_BEGIN_FBODY())&&(ttl<1000))
-	{
-		ttl++;
-		lex_index++; // skip any constructory colon stuff
-	}
+  while ((look_BEGIN_FBODY())&&(ttl<1000))
+  {
+    ttl++;
+    lex_index++; // skip any constructory colon stuff
+  }
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark9" << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark9" << endl ;
+  }
 
-	// don't forget the function body!
-  	if (look_BEGIN_FBODY())
-	  goto fn_bailout;
+  // don't forget the function body!
+    if (look_BEGIN_FBODY())
+    goto fn_bailout;
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark10" << endl ;
-	}
-	lex_index++; // BEGIN_FBODY
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark10" << endl ;
+  }
+  lex_index++; // BEGIN_FBODY
 
-	ttl=0;
-	save=lex_index;
+  ttl=0;
+  save=lex_index;
 
-	methodNode.setMetric(MasterData::CYCLO_MET,1) ;
-	methodNode.setMetric(MasterData::ANION_MET,1) ;
-	methodNode.setMetric(MasterData::NION_MET,1) ;
-	methodNode.setMetric(MasterData::NEST_MET,0) ;
+  methodNode.setMetric(MasterData::CYCLO_MET,1) ;
+  methodNode.setMetric(MasterData::ANION_MET,1) ;
+  methodNode.setMetric(MasterData::NION_MET,1) ;
+  methodNode.setMetric(MasterData::NEST_MET,0) ;
 
-	last_ret_depth=-1; // depth of last return statement
+  last_ret_depth=-1; // depth of last return statement
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark11" << endl ;
-	}
-	while ((look_END_FBODY())&&(ttl<10000))
-	{
-		savec=lex_index;
-		if (!look_CYCLO())
-		{
-			methodNode.incMetric(MasterData::CYCLO_MET) ;
-			lex_index++;
-		}
-		else if (!look_RET())
-		{
-			methodNode.incMetric(MasterData::NION_MET) ;
-			if (depth!=last_ret_depth)
-			{
-				last_ret_depth=depth;
-				methodNode.incMetric(MasterData::ANION_MET) ;
-			}
-			lex_index++;
-		} else if (!look_MORE_DEPTH())
-		{
-			depth++;
-			if (nest<depth)
-			{
-				nest++ ;
-				methodNode.incMetric(MasterData::NEST_MET) ;
-			}
-			last_ret_depth=-1;
-			lex_index++;
-		}
-		else if (!look_LESS_DEPTH())
-		{
-			depth--;
-			last_ret_depth=-1;
-			if ((depth==0) && (mark>0))
-			{
-				methodNode.incMetric(MasterData::EVG_MET,mark) ;
-				mark=0;
-			}
-			lex_index++;
-		} else if (!look_MARK_UNSTRUCT())
-		{
-			methodNode.incMetric(MasterData::BRANCH_MET) ;
-			if (depth>1)
-				mark=depth;
-			lex_index++;
-		}
-		else if (!look_MARK_IF())
-		{
-			lex_index++;
-		}
-		else if (!look_MARK_ENDIF())
-		{
-			//METRIC: if (NEST>(obj->NEST))
-			//METRIC: 	obj->NEST=NEST;
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark11" << endl ;
+  }
+  while ((look_END_FBODY())&&(ttl<10000))
+  {
+    savec=lex_index;
+    if (!look_CYCLO())
+    {
+      methodNode.incMetric(MasterData::CYCLO_MET) ;
+      lex_index++;
+    }
+    else if (!look_RET())
+    {
+      methodNode.incMetric(MasterData::NION_MET) ;
+      if (depth!=last_ret_depth)
+      {
+        last_ret_depth=depth;
+        methodNode.incMetric(MasterData::ANION_MET) ;
+      }
+      lex_index++;
+    } else if (!look_MORE_DEPTH())
+    {
+      depth++;
+      if (nest<depth)
+      {
+        nest++ ;
+        methodNode.incMetric(MasterData::NEST_MET) ;
+      }
+      last_ret_depth=-1;
+      lex_index++;
+    }
+    else if (!look_LESS_DEPTH())
+    {
+      depth--;
+      last_ret_depth=-1;
+      if ((depth==0) && (mark>0))
+      {
+        methodNode.incMetric(MasterData::EVG_MET,mark) ;
+        mark=0;
+      }
+      lex_index++;
+    } else if (!look_MARK_UNSTRUCT())
+    {
+      methodNode.incMetric(MasterData::BRANCH_MET) ;
+      if (depth>1)
+        mark=depth;
+      lex_index++;
+    }
+    else if (!look_MARK_IF())
+    {
+      lex_index++;
+    }
+    else if (!look_MARK_ENDIF())
+    {
+      //METRIC: if (NEST>(obj->NEST))
+      //METRIC:   obj->NEST=NEST;
 
-			// Removed CAM 13/04/01
-			//NEST--;
-			lex_index++;
-		}
-		else if (!look_BEGIN_FDEF())
-		{
-			if (parseFunction(methodNode,pro))
-				lex_index++;
-		}
-		else if (!look_BEGIN_SIMPLE_DECL())
-		{
-			if (parseSimpleDecl(methodNode,pro))
-				lex_index++;
-		}
-		else if (!look_BEGIN_CD())
-		{
-			if (parseClassDecl(methodNode,pro))
-				lex_index++;
-		} else if (!look_BEGIN_EXPRESSION())
-		{
-			if (parseMethodExpression(methodNode,0))
-				lex_index++;
-		}
-		else if (!look_LABEL())
-		{
-			//TODO: METRIC: obj->nlabels++;
-			lex_index++;
-		}
-		if (savec==lex_index)
-		{
-			//printf("SKIP FORWARD (%d)\n",lexemes[lex_index]->com);
-			ttl++;
-			lex_index++;
-		}
-	}
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark12" << endl ;
-	}
+      // Removed CAM 13/04/01
+      //NEST--;
+      lex_index++;
+    }
+    else if (!look_BEGIN_FDEF())
+    {
+      if (parseFunction(methodNode,pro))
+        lex_index++;
+    }
+    else if (!look_BEGIN_SIMPLE_DECL())
+    {
+      if (parseSimpleDecl(methodNode,pro))
+        lex_index++;
+    }
+    else if (!look_BEGIN_CD())
+    {
+      if (parseClassDecl(methodNode,pro))
+        lex_index++;
+    } else if (!look_BEGIN_EXPRESSION())
+    {
+      if (parseMethodExpression(methodNode,0))
+        lex_index++;
+    }
+    else if (!look_LABEL())
+    {
+      //TODO: METRIC: obj->nlabels++;
+      lex_index++;
+    }
+    if (savec==lex_index)
+    {
+      //printf("SKIP FORWARD (%d)\n",lexemes[lex_index]->com);
+      ttl++;
+      lex_index++;
+    }
+  }
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark12" << endl ;
+  }
 
-	if (depth!=last_ret_depth)
-	{
-		methodNode.incMetric(MasterData::ANION_MET) ;
-		methodNode.incMetric(MasterData::NION_MET) ;
-	}
+  if (depth!=last_ret_depth)
+  {
+    methodNode.incMetric(MasterData::ANION_MET) ;
+    methodNode.incMetric(MasterData::NION_MET) ;
+  }
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark13" << endl ;
-	}
-	if (ttl==1000)
-	{
-		lex_index=save;
-		goto fn_windup;
-	}
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark129" << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark13" << endl ;
+  }
+  if (ttl==1000)
+  {
+    lex_index=save;
+    goto fn_windup;
+  }
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark129" << endl ;
+  }
 
-	if (look_END_FBODY())
-		goto fn_windup;
+  if (look_END_FBODY())
+    goto fn_windup;
 
-	lex_index++; // END_FBODY
+  lex_index++; // END_FBODY
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark15" << endl ;
-	}
-	if (look_END_FDEF())
-		goto fn_windup;
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark15" << endl ;
+  }
+  if (look_END_FDEF())
+    goto fn_windup;
 
-	lex_index++;  // END_FDEF
+  lex_index++;  // END_FDEF
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "mark16" << endl ;
-	}
-	//TODO: make nicer
-	endline=atoi(lexemes[lex_index-1]->str.c_str());
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "mark16" << endl ;
+  }
+  //TODO: make nicer
+  endline=atoi(lexemes[lex_index-1]->str.c_str());
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "about to set N1_MET" << endl ;
-		MasterData::theLog << "methodode: " << methodNode.getName() << endl ;
-	}
-	methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index-1]->param) ;
-	methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index-1]->line) ;
-	methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index-1]->startcol) ;
-	methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index-1]->endcol) ;
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "about to set N1_MET" << endl ;
+    MasterData::theLog << "methodode: " << methodNode.getName() << endl ;
+  }
+  methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index-1]->param) ;
+  methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index-1]->line) ;
+  methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index-1]->startcol) ;
+  methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index-1]->endcol) ;
 
-	// got one END_FDEF (with the Halstead info), now get the other one;
+  // got one END_FDEF (with the Halstead info), now get the other one;
 
-	methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index]->line) ;
-	methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index]->param) ;
-	methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index]->startcol) ;
+  methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index]->line) ;
+  methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index]->param) ;
+  methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index]->startcol) ;
 
-	lex_index++;// second END_FDEF
+  lex_index++;// second END_FDEF
 
-	methodNode.setMetric(MasterData::LOC_MET,endline-startline+1);
+  methodNode.setMetric(MasterData::LOC_MET,endline-startline+1);
 
-	//Check: Took this out due to extra types.
-	//theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
+  //Check: Took this out due to extra types.
+  //theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
 
-	parent.addNode(methodNode);
+  parent.addNode(methodNode);
 
-	for ( slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++ )
-	{
-		if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) )
-		{
-			SLOC++ ;
-		}
-	}
+  for ( slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++ )
+  {
+    if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) )
+    {
+      SLOC++ ;
+    }
+  }
 
-	methodNode.setMetric(MasterData::SLOC_MET ,		SLOC ) ;
+  methodNode.setMetric(MasterData::SLOC_MET ,   SLOC ) ;
 
-	return FOUND;
+  return FOUND;
 
 fn_windup:
 
-	if (methodNode.getID()==129) {
-		MasterData::theLog << "fn_windup" << endl ;
-	}
+  if (methodNode.getID()==129) {
+    MasterData::theLog << "fn_windup" << endl ;
+  }
 
-	ttl=0;
-	save=lex_index;
-	while ((look_END_FDEF())&&(ttl<1000))
-	{
-		lex_index++;ttl++;
-	}
+  ttl=0;
+  save=lex_index;
+  while ((look_END_FDEF())&&(ttl<1000))
+  {
+    lex_index++;ttl++;
+  }
 
-	if (ttl==1000)
-	{
-		lex_index=save;
-		if (methodNode.getID()==563) {
-			MasterData::theLog << "return " << endl ;
-		}
-		return NOT_FOUND ;
-	}
+  if (ttl==1000)
+  {
+    lex_index=save;
+    if (methodNode.getID()==563) {
+      MasterData::theLog << "return " << endl ;
+    }
+    return NOT_FOUND ;
+  }
 
-	lex_index++;
+  lex_index++;
 
-	if (methodNode.getID()==563) {
-		MasterData::theLog << "about to set N1_MET" << endl ;
-		MasterData::theLog << "methodode: " << methodNode.getName() << endl ;
-	}
-	methodNode.setMetric(MasterData::N1_MET , lexemes[lex_index-1]->param ) ;
-	methodNode.setMetric(MasterData::N2_MET , lexemes[lex_index-1]->line ) ;
-	methodNode.setMetric(MasterData::n1_MET , lexemes[lex_index-1]->startcol ) ;
-	methodNode.setMetric(MasterData::n2_MET , lexemes[lex_index-1]->endcol ) ;
+  if (methodNode.getID()==563) {
+    MasterData::theLog << "about to set N1_MET" << endl ;
+    MasterData::theLog << "methodode: " << methodNode.getName() << endl ;
+  }
+  methodNode.setMetric(MasterData::N1_MET , lexemes[lex_index-1]->param ) ;
+  methodNode.setMetric(MasterData::N2_MET , lexemes[lex_index-1]->line ) ;
+  methodNode.setMetric(MasterData::n1_MET , lexemes[lex_index-1]->startcol ) ;
+  methodNode.setMetric(MasterData::n2_MET , lexemes[lex_index-1]->endcol ) ;
 
-	// got one END_FDEF (with the Halstead info), now get the other one;
+  // got one END_FDEF (with the Halstead info), now get the other one;
 
-	methodNode.setMetric(MasterData::EXECUTABLE_MET , lexemes[lex_index]->line ) ;
-	methodNode.setMetric(MasterData::CONTROL_MET ,	lexemes[lex_index]->param ) ;
+  methodNode.setMetric(MasterData::EXECUTABLE_MET , lexemes[lex_index]->line ) ;
+  methodNode.setMetric(MasterData::CONTROL_MET ,  lexemes[lex_index]->param ) ;
 
-	lex_index++;// second END_FDEF
+  lex_index++;// second END_FDEF
 
-	methodNode.setMetric(MasterData::SLOC_MET , -1 ) ;
+  methodNode.setMetric(MasterData::SLOC_MET , -1 ) ;
 
 #ifdef PROFESSIONAL
-	if (foundtype)
-	{
-		typeID = theRoot->getSymbolTypeID(type);
-		if (typeID==-1)
-		{
-			//theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
-			theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
-			methodNode.setTypeID(0) ;
-		}
-		else
-		{
-			methodNode.setTypeID(typeID) ;
-		}
-	}
-	else
-	{
-		methodNode.setTypeID(-1) ;
-	}
+  if (foundtype)
+  {
+    typeID = theRoot->getSymbolTypeID(type);
+    if (typeID==-1)
+    {
+      //theRoot->theTempBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,type));
+      theRoot->theTempBuffer.add(new Link(methodNode.getID(),MasterData::TYPE_LINK,type));
+      methodNode.setTypeID(0) ;
+    }
+    else
+    {
+      methodNode.setTypeID(typeID) ;
+    }
+  }
+  else
+  {
+    methodNode.setTypeID(-1) ;
+  }
 #endif
 
-	parent.addNode(methodNode);
+  parent.addNode(methodNode);
 
 
-	/*for ( slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++ ){
-		if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) ) {
-			obj->SLOC++ ;
-		}
-	}*/
+  /*for ( slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++ ){
+    if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) ) {
+      obj->SLOC++ ;
+    }
+  }*/
 
-	//METRIC: obj->SLOC = -1;
-	return FOUND;
+  //METRIC: obj->SLOC = -1;
+  return FOUND;
 
 fn_bailout:
 
-	ttl=0;
-	save=lex_index;
+  ttl=0;
+  save=lex_index;
 
-	while ((look_END_FDEF())&&(ttl<1000))
-	{
-		lex_index++;ttl++;
-	}
+  while ((look_END_FDEF())&&(ttl<1000))
+  {
+    lex_index++;ttl++;
+  }
 
-	if (ttl==1000)
-		lex_index=save;
+  if (ttl==1000)
+    lex_index=save;
 
-	return NOT_FOUND ;
+  return NOT_FOUND ;
 }
 #endif
 
@@ -2178,419 +2135,419 @@ fn_bailout:
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseSimpleDecl(SymbolNode &parent,int pro)
 {
-	string type ;
+  string type ;
 #ifdef PROFESSIONAL
-	string realtype ;
+  string realtype ;
 #endif
-	bool foundtype = false ;
-	bool removeTrailingComma = false ;
+  bool foundtype = false ;
+  bool removeTrailingComma = false ;
 
-	int startline,endline;
-	int expr_count,save,ttl;
-	int declarators;
-	int depth;
+  int startline,endline;
+  int expr_count,save,ttl;
+  int declarators;
+  int depth;
 
   // if it goes crazy, can usually skip to the enclosing end_simple_decl...Then NOT_FOUND
 
-	if (look_BEGIN_SIMPLE_DECL())
-		return NOT_FOUND;
+  if (look_BEGIN_SIMPLE_DECL())
+    return NOT_FOUND;
 
-	startline=lexemes[lex_index]->line;
-	lex_index++;  // BEGIN_SIMPLE_DECL
+  startline=lexemes[lex_index]->line;
+  lex_index++;  // BEGIN_SIMPLE_DECL
 
-	if (!look_END_SIMPLE_DECL())
-	{
-		lex_index++; // END_SIMPLE_DECL
-		return FOUND;
-	}
+  if (!look_END_SIMPLE_DECL())
+  {
+    lex_index++; // END_SIMPLE_DECL
+    return FOUND;
+  }
 
-	if (!look_BEGIN_CD())
-	{
-		parseClassDecl(parent,pro);
-	}
-	if (!look_END_SIMPLE_DECL())
-	{
-		lex_index++;
-		return FOUND;
-	}
+  if (!look_BEGIN_CD())
+  {
+    parseClassDecl(parent,pro);
+  }
+  if (!look_END_SIMPLE_DECL())
+  {
+    lex_index++;
+    return FOUND;
+  }
 
-	// first, parse the decl_specifiers
-	while (look_BEGIN_INIT_D())
-	{
-		save=lex_index;
-		// deal with typedefs (head in the sand approach)
-		if (!look_TYPE_SYNONYM())
-			lex_index++;
-		// assign type to declaration
-		if (!look_SYM_TYPE_ID())
-		{
-			foundtype = true ;
-			if (type.size()!=0)
-			{
+  // first, parse the decl_specifiers
+  while (look_BEGIN_INIT_D())
+  {
+    save=lex_index;
+    // deal with typedefs (head in the sand approach)
+    if (!look_TYPE_SYNONYM())
+      lex_index++;
+    // assign type to declaration
+    if (!look_SYM_TYPE_ID())
+    {
+      foundtype = true ;
+      if (type.size()!=0)
+      {
 #ifdef PROFESSIONAL
-				realtype += " " ;
-        		// concatenate type reference
-				//debugging
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+        realtype += " " ;
+            // concatenate type reference
+        //debugging
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 #endif
-//Note:			realtype = type + " " + lexemes[lex_index]->str ;
-				lex_index++;
-	      	} else {
-        		// not got a type yet, set it up
-      			type = lexemes[lex_index]->str;
+//Note:     realtype = type + " " + lexemes[lex_index]->str ;
+        lex_index++;
+          } else {
+            // not got a type yet, set it up
+            type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-				realtype = lexemes[lex_index]->str;
+        realtype = lexemes[lex_index]->str;
 #endif
-       			lex_index++;
-     		}
-		}
+            lex_index++;
+        }
+    }
 
-		// deal with class declaration
-		if (!look_BEGIN_CD())
-		{
-			parseClassDecl(parent,pro);
-	      goto class_decl_out;
-		}
+    // deal with class declaration
+    if (!look_BEGIN_CD())
+    {
+      parseClassDecl(parent,pro);
+        goto class_decl_out;
+    }
 
-		if ((save==lex_index)&&(look_BEGIN_INIT_D()))
-		{
-			goto wind_to_end_simple_decl;
-		}
-	}
+    if ((save==lex_index)&&(look_BEGIN_INIT_D()))
+    {
+      goto wind_to_end_simple_decl;
+    }
+  }
 
 class_decl_out:
 
-	// now, parse those init_declarators
-	while (look_END_SIMPLE_DECL())
-	{
-		SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
-		//fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
+  // now, parse those init_declarators
+  while (look_END_SIMPLE_DECL())
+  {
+    SymbolNode fieldNode = theRoot->createSymbolNode(MasterData::FIELD_CAT) ;
+    //fieldNode.setCategoryID(MasterData::FIELD_CAT) ;
 
-		SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
-//		methodNode.setCategoryID(MasterData::METHOD_CAT) ;
+    SymbolNode methodNode = theRoot->createSymbolNode(MasterData::METHOD_CAT) ;
+//    methodNode.setCategoryID(MasterData::METHOD_CAT) ;
 
 
-		if (look_BEGIN_INIT_D())
-			return NOT_FOUND;
+    if (look_BEGIN_INIT_D())
+      return NOT_FOUND;
 
-		lex_index++;  // BEGIN_INIT_D
+    lex_index++;  // BEGIN_INIT_D
 
-		declarators=0;
-		while (!look_BEGIN_DECLARATOR())
-		{
-			lex_index++;
-			declarators++;
-		}
+    declarators=0;
+    while (!look_BEGIN_DECLARATOR())
+    {
+      lex_index++;
+      declarators++;
+    }
 
-		if (declarators==0)
-			goto wind_to_end_simple_decl;
+    if (declarators==0)
+      goto wind_to_end_simple_decl;
 
-		if ((look_ID())&&(look_SYM_TYPE_ID()))
-			goto wind_to_end_simple_decl;
+    if ((look_ID())&&(look_SYM_TYPE_ID()))
+      goto wind_to_end_simple_decl;
 
-		while (!look_SYM_TYPE_ID())
-		{
-			foundtype = true ;
-			if (type.size()!=0)
-			{
+    while (!look_SYM_TYPE_ID())
+    {
+      foundtype = true ;
+      if (type.size()!=0)
+      {
 #ifdef PROFESSIONAL
-				// concatenate type reference
-				//debugging
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+        // concatenate type reference
+        //debugging
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 
-				realtype = type + " " + lexemes[lex_index]->str ;
+        realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-				lex_index++;
-			}
-			else
-			{
-        		// not got a type yet, set it up
-      			type = lexemes[lex_index]->str;
+        lex_index++;
+      }
+      else
+      {
+            // not got a type yet, set it up
+            type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-				realtype = lexemes[lex_index]->str;
+        realtype = lexemes[lex_index]->str;
 #endif
-       			lex_index++;
-     		}
-		}
+            lex_index++;
+        }
+    }
 
-		startline=lexemes[lex_index]->line;
+    startline=lexemes[lex_index]->line;
 
 #ifdef PROFESSIONAL
-		fieldNode.setName(lexemes[lex_index++]->str); // ID
+    fieldNode.setName(lexemes[lex_index++]->str); // ID
 #else
-		string name = lexemes[lex_index++]->str ;
+    string name = lexemes[lex_index++]->str ;
 #endif
 
-		while ((!look_SYM_TYPE_ID())||(!look_MIDCOMPLEX())||(!look_LOWCOMPLEX())||(!look_HIGHCOMPLEX()))
-		{
-			if (look_SYM_TYPE_ID())
-				lex_index++;
-			else if (type.size()!=0)
-			{
+    while ((!look_SYM_TYPE_ID())||(!look_MIDCOMPLEX())||(!look_LOWCOMPLEX())||(!look_HIGHCOMPLEX()))
+    {
+      if (look_SYM_TYPE_ID())
+        lex_index++;
+      else if (type.size()!=0)
+      {
 #ifdef PROFESSIONAL
-				foundtype = true ;
-       			// concatenate type reference
-				//debugging
-				//next two lines changed to switch
-				//if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
-				//	type = lexemes[lex_index]->str ;
-				switch (lexemes[lex_index]->str[0]) {
-					case '*': case '[': case '&': break;
-				}
+        foundtype = true ;
+            // concatenate type reference
+        //debugging
+        //next two lines changed to switch
+        //if ( (lexemes[lex_index]->str[0]!='*')&&(lexemes[lex_index]->str[0]!='['))
+        //  type = lexemes[lex_index]->str ;
+        switch (lexemes[lex_index]->str[0]) {
+          case '*': case '[': case '&': break;
+        }
 
-				realtype = type + " " + lexemes[lex_index]->str ;
+        realtype = type + " " + lexemes[lex_index]->str ;
 #endif
-				lex_index++;
-			}
-			else
-			{
-				foundtype = true ;
-       			// not got a type yet, set it up
-      			type = lexemes[lex_index]->str;
+        lex_index++;
+      }
+      else
+      {
+        foundtype = true ;
+            // not got a type yet, set it up
+            type = lexemes[lex_index]->str;
 #ifdef PROFESSIONAL
-				realtype = lexemes[lex_index]->str;
+        realtype = lexemes[lex_index]->str;
 #endif
-       			lex_index++;
-     		}
-		}
+            lex_index++;
+        }
+    }
 
-		// printf("SIMPLEDECL OBJ TYPES: %s   REAL: %s\n",type->getName(),realtype);
+    // printf("SIMPLEDECL OBJ TYPES: %s   REAL: %s\n",type->getName(),realtype);
 
-		//TODO: handle typeref.
-		// obj->setType(typeref);
+    //TODO: handle typeref.
+    // obj->setType(typeref);
 
-		//if (realtype!=NULL)
-		//	obj->fulltype=strdup(realtype);
-		//else
-		//	obj->fulltype=strdup("");
+    //if (realtype!=NULL)
+    //  obj->fulltype=_strdup(realtype);
+    //else
+    //  obj->fulltype=_strdup("");
 
-		//Changed: fieldNode.setTypeID(theRoot->getSymbolTypeID(realtype)) ;
+    //Changed: fieldNode.setTypeID(theRoot->getSymbolTypeID(realtype)) ;
 
-		fieldNode.setProtectionID(pro);
+    fieldNode.setProtectionID(pro);
 
 #ifdef PROFESSIONAL
 // This will be added again once the parameter info has been verified
-//		methodNode.setName(fieldNode.getName()+"(");
-		methodNode.setName(fieldNode.getName());
+//    methodNode.setName(fieldNode.getName()+"(");
+    methodNode.setName(fieldNode.getName());
 #else
 // This will be added again once the parameter info has been verified
-//		methodNode.setName(name+"(");
-		methodNode.setName(name);
+//    methodNode.setName(name+"(");
+    methodNode.setName(name);
 #endif
 
-		//Note: no longer. methodNode.setParent(parent);
+    //Note: no longer. methodNode.setParent(parent);
 
-		//Metric: methodNode.linenr=startline+1;
+    //Metric: methodNode.linenr=startline+1;
 
-		// printf("SIMPLEDECL FNOBJ TYPES: %s   REAL: %s\n",typeref->getName(),realtype);
+    // printf("SIMPLEDECL FNOBJ TYPES: %s   REAL: %s\n",typeref->getName(),realtype);
 
-		//theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
+    //theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));
 
-	    methodNode.setProtectionID(pro);
+      methodNode.setProtectionID(pro);
 
- 		if (!look_DECL_PARAM_PART_BEGIN())
-		{
-			lex_index++;
-			ttl=0;
-			save=lex_index;
+    if (!look_DECL_PARAM_PART_BEGIN())
+    {
+      lex_index++;
+      ttl=0;
+      save=lex_index;
 
-			while ((look_DECL_PARAM_PART_END())&&(ttl<50))
-			{
-				if (parseAbstractFunctionParameter(methodNode))
-				{
-					ttl++;
-					//debugging
-					//next line removed
-					//lex_index++;
-				} else {
-					removeTrailingComma = true ;
-				}
-			}
+      while ((look_DECL_PARAM_PART_END())&&(ttl<50))
+      {
+        if (parseAbstractFunctionParameter(methodNode))
+        {
+          ttl++;
+          //debugging
+          //next line removed
+          //lex_index++;
+        } else {
+          removeTrailingComma = true ;
+        }
+      }
 
-			if (ttl==50)
-			{
-				goto tmp_fn_windup;
-			}
+      if (ttl==50)
+      {
+        goto tmp_fn_windup;
+      }
 
-			lex_index++;  // DECL_PARAM_PART_END
+      lex_index++;  // DECL_PARAM_PART_END
 
-			while (!look_DECL_PARAM_PART_BEGIN())
-			{
-				lex_index++;
-				while (look_DECL_PARAM_PART_END())
-				{
-					if (parseAbstractFunctionParameter(methodNode))
-					{
-						goto tmp_fn_windup;
-					} else {
-						removeTrailingComma = true ;
-					}
-				}
-				lex_index++;
-			}
+      while (!look_DECL_PARAM_PART_BEGIN())
+      {
+        lex_index++;
+        while (look_DECL_PARAM_PART_END())
+        {
+          if (parseAbstractFunctionParameter(methodNode))
+          {
+            goto tmp_fn_windup;
+          } else {
+            removeTrailingComma = true ;
+          }
+        }
+        lex_index++;
+      }
 
-		//      // function prototype
-		//      ttl=0;save=lex_index;
-		//      while ((look_DECL_PARAM_PART_END())&&(ttl<100)) {
-		//	lex_index++;ttl++;
-		//      }
-		//      if (ttl==100) {
-		//        lex_index=save;
-		//	goto wind_to_end_simple_decl;
-		//      }
-		//      if (look_DECL_PARAM_PART_END())
-		//        goto wind_to_end_simple_decl;
-		//      lex_index++; // DECL_PARAM_PART_END
+    //      // function prototype
+    //      ttl=0;save=lex_index;
+    //      while ((look_DECL_PARAM_PART_END())&&(ttl<100)) {
+    //  lex_index++;ttl++;
+    //      }
+    //      if (ttl==100) {
+    //        lex_index=save;
+    //  goto wind_to_end_simple_decl;
+    //      }
+    //      if (look_DECL_PARAM_PART_END())
+    //        goto wind_to_end_simple_decl;
+    //      lex_index++; // DECL_PARAM_PART_END
 
 
 tmp_fn_windup:
 
 // This will be added again once the parameter info has been verified
 
-//		if (removeTrailingComma) {
-//			string name = methodNode.getName() ;
-//			name = name.substr(0,name.length()-1) ;
-//			methodNode.setName( name + ")");  // ID
-//		} else
-//			methodNode.setName(methodNode.getName() + ")");  // ID
+//    if (removeTrailingComma) {
+//      string name = methodNode.getName() ;
+//      name = name.substr(0,name.length()-1) ;
+//      methodNode.setName( name + ")");  // ID
+//    } else
+//      methodNode.setName(methodNode.getName() + ")");  // ID
 
 
 // GNS added this back in 12/2/99
 
-			// Changed 12/06/2001
-			// Previously this if statement added the methodNode
-			// to the parent if the parent was not a file.
-			// This resulted in methods being added to methods
-			// which should not happen. I have output an error to
-			// the log any time the situation arises where the parent
-			// is a file (previously this would have done nothing).
-			// Also now if the parent is a method it adds the fieldNode
-			// to the parent.
+      // Changed 12/06/2001
+      // Previously this if statement added the methodNode
+      // to the parent if the parent was not a file.
+      // This resulted in methods being added to methods
+      // which should not happen. I have output an error to
+      // the log any time the situation arises where the parent
+      // is a file (previously this would have done nothing).
+      // Also now if the parent is a method it adds the fieldNode
+      // to the parent.
 
-			// The reason for this is that a method declaration
-			// within a class can look the same as a constructor call
-			// within a method. So we check to see what the parent
-			// is and add the symbol accordingly.
+      // The reason for this is that a method declaration
+      // within a class can look the same as a constructor call
+      // within a method. So we check to see what the parent
+      // is and add the symbol accordingly.
 
 
-			if (parent.getCategoryID()==MasterData::FILE_CAT) {
-				//MasterData::theLog << "Error: PopulatePhase[2253]" << endl ;
-			} else if (parent.getCategoryID()==MasterData::METHOD_CAT) {
-				// debugging
-				// To check where this situation appears I am logging it
-				//MasterData::theLog << "Debugging: adding field " << fieldNode.getID() << ", " << fieldNode.getName() << endl ;
-				parent.addNode(fieldNode) ;
-			} else {
-				// debugging
-				// To check where this situation appears I am logging it
-				//MasterData::theLog << "Debugging: adding method " << methodNode.getID() << ", " << methodNode.getName() << endl ;
-				parent.addNode(methodNode);
-			}
+      if (parent.getCategoryID()==MasterData::FILE_CAT) {
+        //MasterData::theLog << "Error: PopulatePhase[2253]" << endl ;
+      } else if (parent.getCategoryID()==MasterData::METHOD_CAT) {
+        // debugging
+        // To check where this situation appears I am logging it
+        //MasterData::theLog << "Debugging: adding field " << fieldNode.getID() << ", " << fieldNode.getName() << endl ;
+        parent.addNode(fieldNode) ;
+      } else {
+        // debugging
+        // To check where this situation appears I am logging it
+        //MasterData::theLog << "Debugging: adding method " << methodNode.getID() << ", " << methodNode.getName() << endl ;
+        parent.addNode(methodNode);
+      }
 
-		}
+    }
 #ifdef PROFESSIONAL
-		else
-		{
-			parent.addNode(fieldNode);
-			if (foundtype)
-			{
-				long typeID = theRoot->getSymbolTypeID(type);
-				if (typeID==-1)
-				{
-					//theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
-					theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
-					fieldNode.setTypeID(0) ;
-				}
-				else
-				{
-					fieldNode.setTypeID(typeID) ;
-				}
-			}
-			else
-			{
-				fieldNode.setTypeID(-1) ;
-			}
-		}
+    else
+    {
+      parent.addNode(fieldNode);
+      if (foundtype)
+      {
+        long typeID = theRoot->getSymbolTypeID(type);
+        if (typeID==-1)
+        {
+          //theRoot->theTempBuffer.add(new TempLink(fieldNode.getID(),MasterData::TYPE_LINK,type));
+          theRoot->theTempBuffer.add(new Link(fieldNode.getID(),MasterData::TYPE_LINK,type));
+          fieldNode.setTypeID(0) ;
+        }
+        else
+        {
+          fieldNode.setTypeID(typeID) ;
+        }
+      }
+      else
+      {
+        fieldNode.setTypeID(-1) ;
+      }
+    }
 #endif
 
-		while (declarators>0)
-		{
-			if (look_END_DECLARATOR())
-				goto wind_to_end_simple_decl;
-			lex_index++;
-			declarators--;
-		}
-		expr_count=0;
+    while (declarators>0)
+    {
+      if (look_END_DECLARATOR())
+        goto wind_to_end_simple_decl;
+      lex_index++;
+      declarators--;
+    }
+    expr_count=0;
 
-		if (!look_BEGIN_EXPRESSION())
-		{
-			expr_count++;
-			lex_index++;
-			ttl=0;
-			save=lex_index;
-			while ((expr_count>0) && (ttl<1000))
-			{
-				if (!look_END_EXPRESSION())
-				{
-					expr_count--;
-				}
+    if (!look_BEGIN_EXPRESSION())
+    {
+      expr_count++;
+      lex_index++;
+      ttl=0;
+      save=lex_index;
+      while ((expr_count>0) && (ttl<1000))
+      {
+        if (!look_END_EXPRESSION())
+        {
+          expr_count--;
+        }
 
-				if (!look_BEGIN_EXPRESSION())
-				{
-					expr_count++;
-				}
+        if (!look_BEGIN_EXPRESSION())
+        {
+          expr_count++;
+        }
 
-				lex_index++;
-				ttl++;
-			}
+        lex_index++;
+        ttl++;
+      }
 
 
-			if (ttl==1000) {
-		        lex_index=save; goto wind_to_end_simple_decl;
-			}
-		}
+      if (ttl==1000) {
+            lex_index=save; goto wind_to_end_simple_decl;
+      }
+    }
 
-		if (look_END_INIT_D())
-			goto wind_to_end_simple_decl;
+    if (look_END_INIT_D())
+      goto wind_to_end_simple_decl;
 
-		lex_index++;  // END_INIT_D
+    lex_index++;  // END_INIT_D
   }
 
 
-	endline=lexemes[lex_index]->line;
+  endline=lexemes[lex_index]->line;
 
-	if (look_END_SIMPLE_DECL())
-		return NOT_FOUND;
+  if (look_END_SIMPLE_DECL())
+    return NOT_FOUND;
 
-	lex_index++; // END_SIMPLE_DECL
+  lex_index++; // END_SIMPLE_DECL
 
-	//  ((containerNode*)parent)->addNode(obj); // new GNS 12/2/99
+  //  ((containerNode*)parent)->addNode(obj); // new GNS 12/2/99
 
-	return FOUND;
+  return FOUND;
 
 wind_to_end_simple_decl:
 
-	depth=1;
-	while ((depth>0)  &&(lex_index<lexemes.size()))
-	{
-	    if (!look_BEGIN_SIMPLE_DECL())
-			depth++;
-		if (!look_END_SIMPLE_DECL())
-			depth--;
-		lex_index++;
-	}
+  depth=1;
+  while ((depth>0)  &&(lex_index<lexemes.size()))
+  {
+      if (!look_BEGIN_SIMPLE_DECL())
+      depth++;
+    if (!look_END_SIMPLE_DECL())
+      depth--;
+    lex_index++;
+  }
 
-	return FOUND;
+  return FOUND;
 }
 #endif
 
@@ -2604,174 +2561,174 @@ wind_to_end_simple_decl:
 
 void PopulatePhase::clearLexemes()
 {
-	vector<Lexeme*>::iterator current = lexemes.begin();
+  vector<Lexeme*>::iterator current = lexemes.begin();
 
-	for ( ; current<lexemes.end() ; current++)
-	{
-		delete (*current) ;		// destroy the Symbol
-	}
+  for ( ; current<lexemes.end() ; current++)
+  {
+    delete (*current) ;   // destroy the Symbol
+  }
 
-	lexemes.clear() ;
+  lexemes.clear() ;
 }
 
 
 #ifdef LANGUAGE_CPP
 int PopulatePhase::parseClassDecl(SymbolNode &parent,int in_pro)
 {
-	int pro,save,ptr ;
+  int pro,save,ptr ;
 #elif LANGUAGE_JAVA
 int PopulatePhase::parseClassDecl(SymbolNode &parent)
 {
-	int ptr ;
+  int ptr ;
 #endif
 
-	int startline=0,endline=0 ;
-	int slocIter;
+  int startline=0,endline=0 ;
+  unsigned int slocIter;
 
-	int SLOC = 0;
+  int SLOC = 0;
 
-	ptr=lex_index;
+  ptr=lex_index;
 
 #ifdef LANGUAGE_CPP
-	if (look_BEGIN_CD()) {
-		lex_index=ptr ;
-		return NOT_FOUND ;
-	}
+  if (look_BEGIN_CD()) {
+    lex_index=ptr ;
+    return NOT_FOUND ;
+  }
 #endif
 
 #ifdef LANGUAGE_CPP
-	startline = lexemes[lex_index]->line ;
+  startline = lexemes[lex_index]->line ;
 #elif LANGUAGE_JAVA
-	startline = lexemes[lex_index]->param ;
+  startline = lexemes[lex_index]->param ;
 #endif
 
-	lex_index++ ; 		// Move to start of class
+  lex_index++ ;     // Move to start of class
 
-	SymbolNode classNode = theRoot->createSymbolNode(MasterData::CLASS_CAT) ;
-	classNode.setTypeID(-1) ;
+  SymbolNode classNode = theRoot->createSymbolNode(MasterData::CLASS_CAT) ;
+  classNode.setTypeID(-1) ;
 
 #ifdef LANGUAGE_JAVA
-	parseProtection_opt(classNode) ;
-	parseGregariousModifiers_opt(classNode) ;
+  parseProtection_opt(classNode) ;
+  parseGregariousModifiers_opt(classNode) ;
 #endif
 
-	classNode.setName(lexemes[lex_index++]->str) ;
-	//MasterData::theLog << "Found a class: " << classNode.getName() << endl ;
+  classNode.setName(lexemes[lex_index++]->str) ;
+  //MasterData::theLog << "Found a class: " << classNode.getName() << endl ;
 
 #ifdef LANGUAGE_CPP
-	classNode.setProtectionID(in_pro) ;
+  classNode.setProtectionID(in_pro) ;
 #endif
 
 #ifdef LANGUAGE_JAVA
-	if (!look_INHERITS())
-		parseInherits(classNode) ;
-	if (!look_JIL_IMPLEMENTS())
-		parseClassImplements(classNode) ;
-	if (look_END_BODY())
-		parseClassBody(classNode) ;
+  if (!look_INHERITS())
+    parseInherits(classNode) ;
+  if (!look_JIL_IMPLEMENTS())
+    parseClassImplements(classNode) ;
+  if (look_END_BODY())
+    parseClassBody(classNode) ;
 
-	lex_index++ ;	// END_BODY
+  lex_index++ ; // END_BODY
 #endif
 
 #ifdef LANGUAGE_CPP
-	//SymbolNode classNode(MasterData::CLASS_CAT) ;
-	//Metric: obj->linenr=startline+1;
+  //SymbolNode classNode(MasterData::CLASS_CAT) ;
+  //Metric: obj->linenr=startline+1;
 
-	if (!look_BEGIN_BASES())
-	{
-	  lex_index++ ; // BEGIN_BASES
+  if (!look_BEGIN_BASES())
+  {
+    lex_index++ ; // BEGIN_BASES
 
-	  while (look_END_BASES())
-	  {
-		save=lex_index ;
+    while (look_END_BASES())
+    {
+    save=lex_index ;
 
-		if (!look_PROTECTION_LEVEL())
-		{
-			lex_index++ ; // ignore this for now - not needed for metrics
-		}
-		else if (!look_ID())
-		{
+    if (!look_PROTECTION_LEVEL())
+    {
+      lex_index++ ; // ignore this for now - not needed for metrics
+    }
+    else if (!look_ID())
+    {
 #ifdef PROFESSIONAL
-			//theRoot->theTempBuffer.add(new TempLink(classNode.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
-			theRoot->theTempBuffer.add(new Link(classNode.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
+      //theRoot->theTempBuffer.add(new TempLink(classNode.getID(),MasterData::SUPER_LINK, lexemes[lex_index++]->str)) ;
+      theRoot->theTempBuffer.add(new Link(classNode.getID(),MasterData::SUPER_LINK, lexemes[lex_index]->str)) ;
 #endif
-			lex_index++ ;
-		}
-		else
-		{
-			lex_index++ ;
-		}
+      lex_index++ ;
+    }
+    else
+    {
+      lex_index++ ;
+    }
 
-		if (lex_index==save)
-		{
-			return NOT_FOUND ;
-		}
-	  }
+    if (lex_index==save)
+    {
+      return NOT_FOUND ;
+    }
+    }
 
-	  lex_index++ ;
-	}
+    lex_index++ ;
+  }
 
-	if (look_MID_CD()) {
-		return NOT_FOUND ;
-	}
+  if (look_MID_CD()) {
+    return NOT_FOUND ;
+  }
 
-	lex_index++ ; // MID_CD
+  lex_index++ ; // MID_CD
 
-	if (look_PROTECTION_LEVEL())
-	{
-		return NOT_FOUND ;
-	}
+  if (look_PROTECTION_LEVEL())
+  {
+    return NOT_FOUND ;
+  }
 
-	lex_index++ ; // PROTECTION_LEVEL yeah, yeah
-	pro=MasterData::PRIVATE_PROT ;
+  lex_index++ ; // PROTECTION_LEVEL yeah, yeah
+  pro=MasterData::PRIVATE_PROT ;
 
-	while (look_END_CD())
-	{
-		if (parseClassMember(classNode,&pro))
-		{
-			return NOT_FOUND ;
-		}
-	}
+  while (look_END_CD())
+  {
+    if (parseClassMember(classNode,&pro))
+    {
+      return NOT_FOUND ;
+    }
+  }
 
-	if (look_END_CD())
-	{
-		return NOT_FOUND ;
-	}
+  if (look_END_CD())
+  {
+    return NOT_FOUND ;
+  }
 #endif
 
 #ifdef PROFESSIONAL
-	theRoot->addSymbolType(classNode.getID(), classNode.getName()) ;
+  theRoot->addSymbolType(classNode.getID(), classNode.getName()) ;
 #endif
 
 #ifdef LANGUAGE_CPP
-	endline=lexemes[lex_index]->line ;
+  endline=lexemes[lex_index]->line ;
 
-	classNode.setMetric(MasterData::LOC_MET, endline-startline+1) ;
+  classNode.setMetric(MasterData::LOC_MET, endline-startline+1) ;
 #elif LANGUAGE_JAVA
-	//thisClass->setLOC((int)((*lexemes)[lex_index++].text));  //LOC
-	int testLOC = lexemes[lex_index++]->param ;
-//	MasterData::theLog << classNode.getName() << " LOC: " << testLOC << endl ;
-//	MasterData::theLog << classNode.getName() << " endline-startline: " << (endline-startline) << endl ;
-	classNode.setMetric(MasterData::LOC_MET, testLOC) ;
+  //thisClass->setLOC((int)((*lexemes)[lex_index++].text));  //LOC
+  int testLOC = lexemes[lex_index++]->param ;
+//  MasterData::theLog << classNode.getName() << " LOC: " << testLOC << endl ;
+//  MasterData::theLog << classNode.getName() << " endline-startline: " << (endline-startline) << endl ;
+  classNode.setMetric(MasterData::LOC_MET, testLOC) ;
 
-	endline=startline+testLOC ;
+  endline=startline+testLOC ;
 #endif
 
 #ifdef LANGUAGE_CPP
-	lex_index++; // END_CD
+  lex_index++; // END_CD
 #endif
 
-	parent.addNode(classNode) ;
+  parent.addNode(classNode) ;
 
-	for ( slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++ ){
-	  if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) ) {
-		  SLOC++ ;
-	  }
-	}
+  for (slocIter = 0 ; slocIter < sloc_v.size() ; slocIter++) {
+    if ( ( sloc_v[slocIter] <= endline ) && ( sloc_v[slocIter] >= startline ) ) {
+      SLOC++ ;
+    }
+  }
 
-	classNode.setMetric(MasterData::SLOC_MET,SLOC) ;
+  classNode.setMetric(MasterData::SLOC_MET,SLOC) ;
 
-	return FOUND ;
+  return FOUND ;
 }
 
 
@@ -2781,58 +2738,58 @@ int PopulatePhase::parseDeclaration(SymbolNode &parent)
 
 #ifdef LANGUAGE_CPP
 
-	while (look_END_FILE())
-	{
-		if (!look_BEGIN_FDEF())
-		{
-			if (parseFunction(parent,MasterData::PUBLIC_PROT))
-			{
-				lex_index++;
-			}
-		}
-		else if (!look_BEGIN_SIMPLE_DECL())
-		{
-			if (parseSimpleDecl(parent,MasterData::PUBLIC_PROT)) {
-				lex_index++;
-			}
-	    }
-		else if (lex_index>=lexemes.size())
-		{
-		    return FOUND;
-		}
-		else
-		{
-	       lex_index++;
-		}
-	}
+  while (look_END_FILE())
+  {
+    if (!look_BEGIN_FDEF())
+    {
+      if (parseFunction(parent,MasterData::PUBLIC_PROT))
+      {
+        lex_index++;
+      }
+    }
+    else if (!look_BEGIN_SIMPLE_DECL())
+    {
+      if (parseSimpleDecl(parent,MasterData::PUBLIC_PROT)) {
+        lex_index++;
+      }
+      }
+    else if (lex_index>=lexemes.size())
+    {
+        return FOUND;
+    }
+    else
+    {
+         lex_index++;
+    }
+  }
 
-	parent.setMetric(MasterData::LOC_MET , lexemes[lex_index++]->line ) ;
-	parent.setMetric(MasterData::SLOC_MET , lexemes[lex_index++]->param ) ;
+  parent.setMetric(MasterData::LOC_MET , lexemes[lex_index++]->line ) ;
+  parent.setMetric(MasterData::SLOC_MET , lexemes[lex_index++]->param ) ;
 
-	//NOT YET PER FUNCTION
-	//  while (look_END_FILE()) {
-	//    // gather specific LOC info, use to set function SLOC
-	//    for (i=0;i<parent->contents.size();i++) {
-	//      if (((parent->contents[i])->myTypeID))==METHODNODE) {
-	//
-	//      };
-	//    };
-	//  };
-	//
+  //NOT YET PER FUNCTION
+  //  while (look_END_FILE()) {
+  //    // gather specific LOC info, use to set function SLOC
+  //    for (i=0;i<parent->contents.size();i++) {
+  //      if (((parent->contents[i])->myTypeID))==METHODNODE) {
+  //
+  //      };
+  //    };
+  //  };
+  //
 #elif LANGUAGE_JAVA
 
-	if (!look_JIL_IMPORT())
-		parseImportList(parent);
+  if (!look_JIL_IMPORT())
+    parseImportList(parent);
 
-	lex_index++;					// END_UNIT_HEADER
+  lex_index++;          // END_UNIT_HEADER
 
-	while (look_END_UNIT())
-		parseTypeDecl(parent);
+  while (look_END_UNIT())
+    parseTypeDecl(parent);
 
-	lex_index++; 					// END_UNIT
+  lex_index++;          // END_UNIT
 
-	parent.setMetric(MasterData::LOC_MET , lexemes[lex_index++]->param ) ;
-	parent.setMetric(MasterData::SLOC_MET , lexemes[lex_index++]->param ) ;
+  parent.setMetric(MasterData::LOC_MET , lexemes[lex_index++]->param ) ;
+  parent.setMetric(MasterData::SLOC_MET , lexemes[lex_index++]->param ) ;
 
 #endif
 
@@ -2842,605 +2799,603 @@ int PopulatePhase::parseDeclaration(SymbolNode &parent)
 
 bool PopulatePhase::loadFile(string filename)
 {
-	if (debugging) MasterData::theLog << "loadFile(" << filename << ")" << endl ;
-	lexsize = 0 ;
+  if (debugging) MasterData::theLog << "loadFile(" << filename << ")" << endl ;
+  lexsize = 0 ;
 
-	// Fixed:	23/02/2001
-	// Now Checks existance of files before trying to open them
-	//MasterData::theLog << "loading: " << filename.c_str() << endl ;
-	struct stat buf;
-	if (stat(filename.c_str(),&buf)!=0) return false ;
+  // Fixed: 23/02/2001
+  // Now Checks existance of files before trying to open them
+  //MasterData::theLog << "loading: " << filename.c_str() << endl ;
+  struct stat buf;
+  if (stat(filename.c_str(),&buf)!=0) return false ;
 
-	#ifdef WIN32
-	if (_pipe(pipeA,102400,_O_BINARY|_O_NOINHERIT)==-1) {
-		MasterData::theLog << "Unable to create pipe." << endl ;
-		return false ;
-	}
-	#else
-	pipe(pipeA) ;
-	#endif
+  #ifdef WIN32
+  if (_pipe(pipeA,102400,_O_BINARY|_O_NOINHERIT)==-1) {
+    MasterData::theLog << "Unable to create pipe." << endl ;
+    return false ;
+  }
+  #else
+  pipe(pipeA) ;
+  #endif
 
-	if (debugging) MasterData::theLog << "1," << flush ;
+  if (debugging) MasterData::theLog << "1," << flush ;
 
-	int pid ;
-	int childWriteFD ;
+  int pid ;
+  int childWriteFD ;
 
-	#ifdef WIN32
-	childWriteFD = _dup(pipeA[WRITE]);
-	_close(pipeA[WRITE]) ;
-	#else
-	childWriteFD=dup(pipeA[WRITE]);
-	close(pipeA[WRITE]) ;
-	#endif
+  #ifdef WIN32
+  childWriteFD = _dup(pipeA[WRITE]);
+  _close(pipeA[WRITE]) ;
+  #else
+  childWriteFD=dup(pipeA[WRITE]);
+  close(pipeA[WRITE]) ;
+  #endif
 
-	/*char *fname = strdup(filename.c_str()) ;
-	for(char *f = fname ; *f!='\0'; f++)
-	{
-		if (*f==' ') (*f) = 1 ;
-	}*/
+  /*char *fname = _strdup(filename.c_str()) ;
+  for(char *f = fname ; *f!='\0'; f++)
+  {
+    if (*f==' ') (*f) = 1 ;
+  }*/
 
-	if (debugging) MasterData::theLog << "3," << flush ;
+  if (debugging) MasterData::theLog << "3," << flush ;
 
 #ifdef LANGUAGE_CPP
 
 #ifdef WIN32
-	// Changed from fname to  FD
-	// 15-11-01 SJW
-	// Changed to allow both fname and FD
-	// 19/11/2001 CAM
+  // Changed from fname to  FD
+  // 15-11-01 SJW
+  // Changed to allow both fname and FD
+  // 19/11/2001 CAM
 
-	char child[20] ;
-	ltostr(childWriteFD, child, 20) ;
+  char child[20] ;
+  ltostr(childWriteFD, child, 20) ;
 
-	if (useTranslationFile)
-	{
-		int prepFD = thePreprocessor.prepFile(filename.c_str()) ;
-		int readFromPrep = _dup(prepFD) ;
+  if (useTranslationFile)
+  {
+    int prepFD = thePreprocessor.prepFile(filename.c_str()) ;
+    int readFromPrep = _dup(prepFD) ;
 
-		char prep[20] ;
-		ltostr(readFromPrep, prep, 20) ;
+    char prep[20] ;
+    ltostr(readFromPrep, prep, 20) ;
 
-		if ((pid=_spawnl(_P_NOWAIT,"bin/cparser.exe","bin/cparser.exe","-single",prep,child,NULL))==-1) {
-			MasterData::theLog << "Spawn failed. " << endl ;
-			return false ;
-		}
-	}
-	else
-	{
-		char *fname = strdup(filename.c_str()) ;
-		for(char *f = fname ; *f!='\0'; f++)
-		{
-			if (*f==' ') (*f) = 1 ;
-		}
+    if ((pid=_spawnl(_P_NOWAIT,"bin/cparser.exe","bin/cparser.exe","-single",prep,child,NULL))==-1) {
+      MasterData::theLog << "Spawn failed. " << endl ;
+      return false ;
+    }
+  }
+  else
+  {
+    char *fname = _strdup(filename.c_str()) ;
+    for(char *f = fname ; *f!='\0'; f++)
+    {
+      if (*f==' ') (*f) = 1 ;
+    }
 
-		//MasterData::theLog << "Calling cparser traditionally with " << fname << endl ;
+    //MasterData::theLog << "Calling cparser traditionally with " << fname << endl ;
 
-		if ((pid=_spawnl(_P_NOWAIT,"bin/cparser.exe","bin/cparser.exe",fname,child,NULL))==-1) {
-			MasterData::theLog << "Spawn failed. " << endl ;
-			return false ;
-		}
+    if ((pid=_spawnl(_P_NOWAIT,"bin/cparser.exe","bin/cparser.exe",fname,child,NULL))==-1) {
+      MasterData::theLog << "Spawn failed. " << endl ;
+      return false ;
+    }
 
-		free(fname) ;
-	}
+    free(fname) ;
+  }
 
 #else
-	if (debugging) MasterData::theLog << "4," << flush ;
+  if (debugging) MasterData::theLog << "4," << flush ;
 
-	if ((pid=fork())==0) {
-		char *childWriteChar = ltostr(childWriteFD, childWriteSTR, 20) ;
-		MasterData::theLog << "childWrite: " << childWriteFD << flush ;
-		MasterData::theLog << " [" << childWriteChar << "]" << endl ;
-		int rval=execl("bin/cparser.exe","bin/cparser.exe","-single",fname, childWriteChar, NULL) ;
+  if ((pid=fork())==0) {
+    char *childWriteChar = ltostr(childWriteFD, childWriteSTR, 20) ;
+    MasterData::theLog << "childWrite: " << childWriteFD << flush ;
+    MasterData::theLog << " [" << childWriteChar << "]" << endl ;
+    int rval=execl("bin/cparser.exe","bin/cparser.exe","-single",fname, childWriteChar, NULL) ;
 
-		MasterData::theLog << "rval=" << rval << endl ;
-		MasterData::theLog << "errno=" << errno << endl ;
+    MasterData::theLog << "rval=" << rval << endl ;
+    MasterData::theLog << "errno=" << errno << endl ;
 
-		if (rval == -1) {
+    if (rval == -1) {
 
-			switch (errno)
-			{
-				case E2BIG:		MasterData::theLog << "E2BIG" << endl ;		break ;
-     			case EACCES:	MasterData::theLog << "EACCES" << endl ;	break ;
-				case EAGAIN:	MasterData::theLog << "EAGAIN" << endl ;	break ;
-				case EFAULT:	MasterData::theLog << "EFAULT" << endl ;	break ;
-				case EINTR:		MasterData::theLog << "EINTR" << endl ;		break ;
-     			case ELOOP:		MasterData::theLog << "ELOOP" << endl ;		break ;
-     			case ENAMETOOLONG:	MasterData::theLog << "ENAMETOOLONG" << endl ;	break ;
-     			case ENOENT:	MasterData::theLog << "ENOENT" << endl ;	break ;
-     			case ENOEXEC:	MasterData::theLog << "ENOEXEC" << endl ;	break ;
-     			case ENOLINK:	MasterData::theLog << "ENOLINK" << endl ;	break ;
-     			case ENOMEM:	MasterData::theLog << "ENOMEM" << endl ;	break ;
-				case ENOTDIR:	MasterData::theLog << "ENOTDIR" << endl ;	break ;
-				default:		MasterData::theLog << "Some other error." << endl ;	break;
-			}
-		}
+      switch (errno)
+      {
+        case E2BIG:   MasterData::theLog << "E2BIG" << endl ;   break ;
+          case EACCES:  MasterData::theLog << "EACCES" << endl ;  break ;
+        case EAGAIN:  MasterData::theLog << "EAGAIN" << endl ;  break ;
+        case EFAULT:  MasterData::theLog << "EFAULT" << endl ;  break ;
+        case EINTR:   MasterData::theLog << "EINTR" << endl ;   break ;
+          case ELOOP:   MasterData::theLog << "ELOOP" << endl ;   break ;
+          case ENAMETOOLONG:  MasterData::theLog << "ENAMETOOLONG" << endl ;  break ;
+          case ENOENT:  MasterData::theLog << "ENOENT" << endl ;  break ;
+          case ENOEXEC: MasterData::theLog << "ENOEXEC" << endl ; break ;
+          case ENOLINK: MasterData::theLog << "ENOLINK" << endl ; break ;
+          case ENOMEM:  MasterData::theLog << "ENOMEM" << endl ;  break ;
+        case ENOTDIR: MasterData::theLog << "ENOTDIR" << endl ; break ;
+        default:    MasterData::theLog << "Some other error." << endl ; break;
+      }
+    }
 
-		_exit(0) ;
+    _exit(0) ;
 
-	} else if (pid < 0) {
-	  MasterData::theLog << "Forking ERROR " << errno << endl ;
-	  switch (errno) {
-		case EAGAIN:
-		  	MasterData::theLog << "EAGAIN" << endl ;
-			break ;
+  } else if (pid < 0) {
+    MasterData::theLog << "Forking ERROR " << errno << endl ;
+    switch (errno) {
+    case EAGAIN:
+        MasterData::theLog << "EAGAIN" << endl ;
+      break ;
 
-     	case ENOMEM:
-     	  	MasterData::theLog << "ENOMEM" << endl ;
-			break ;
+      case ENOMEM:
+          MasterData::theLog << "ENOMEM" << endl ;
+      break ;
 
         default:
             MasterData::theLog << "Some other error." << endl ;
-			break ;
+      break ;
      }
 
      return false ;
-	}
-	if (debugging) MasterData::theLog << "5," << flush ;
+  }
+  if (debugging) MasterData::theLog << "5," << flush ;
 
 #endif
 
 
 #elif LANGUAGE_JAVA
-	ltostr(childWriteFD, childWriteSTR, 20) ;
+  ltostr(childWriteFD, childWriteSTR, 20) ;
 
-	char *fname = strdup(filename.c_str()) ;
-	for(char *f = fname ; *f!='\0'; f++)
-	{
-		if (*f==' ') (*f) = 1 ;
-	}
+  char *fname = _strdup(filename.c_str()) ;
+  for(char *f = fname ; *f!='\0'; f++)
+  {
+    if (*f==' ') (*f) = 1 ;
+  }
 
 #ifdef WIN32
-	if ((pid=spawnl(_P_NOWAIT,"bin/jparser.exe","bin/jparser.exe","-single",fname,childWriteSTR,NULL))==-1) {
-		MasterData::theLog << "Spawn failed. " << endl ;
-		return false ;
-	}
+  if ((pid=spawnl(_P_NOWAIT,"bin/jparser.exe","bin/jparser.exe","-single",fname,childWriteSTR,NULL))==-1) {
+    MasterData::theLog << "Spawn failed. " << endl ;
+    return false ;
+  }
 #else
-	if ((pid=fork())==0) {
-		execl("bin/jparser.exe","bin/jparser.exe","-single",fname,ltostr(childWriteFD, childWriteSTR, 20),NULL);
-		_exit(0) ;
-	}
+  if ((pid=fork())==0) {
+    execl("bin/jparser.exe","bin/jparser.exe","-single",fname,ltostr(childWriteFD, childWriteSTR, 20),NULL);
+    _exit(0) ;
+  }
 #endif
 
 #endif
 
-	FILE *infile=fdopen(pipeA[READ],"r");
+  FILE *infile=fdopen(pipeA[READ],"r");
 
-	str[0]='\0';
+  str[0]='\0';
 
-	Lexeme *currentLexeme;
-	clearLexemes() ;
+  Lexeme *currentLexeme;
+  clearLexemes() ;
 
-	int retval ;
+  int retval ;
 
-	if (infile==NULL) {
-		MasterData::theLog << "\nError: " << flush ;
-		if (errno==EBADF) {
-			MasterData::theLog << "The fildes argument is not a valid  file  descriptor." << endl ;
-		} else if (errno==EINVAL) {
-			MasterData::theLog << "The mode argument is not a valid mode" << endl ;
-		} else if (errno==EMFILE) {
-			MasterData::theLog << "The number of streams currently open in  the  calling process is either FOPEN_MAX or STREAM_MAX." << endl ;
-		} else if (errno==ENOMEM) {
-			MasterData::theLog << "Insufficient space to allocate a buffer." << endl ;
-		}
-	}
+  if (infile==NULL) {
+    MasterData::theLog << "\nError: " << flush ;
+    if (errno==EBADF) {
+      MasterData::theLog << "The fildes argument is not a valid  file  descriptor." << endl ;
+    } else if (errno==EINVAL) {
+      MasterData::theLog << "The mode argument is not a valid mode" << endl ;
+    } else if (errno==EMFILE) {
+      MasterData::theLog << "The number of streams currently open in  the  calling process is either FOPEN_MAX or STREAM_MAX." << endl ;
+    } else if (errno==ENOMEM) {
+      MasterData::theLog << "Insufficient space to allocate a buffer." << endl ;
+    }
+  }
 
-	if (debugging) MasterData::theLog << "6" << endl ;
+  if (debugging) MasterData::theLog << "6" << endl ;
 
-	do
-	{
-		currentLexeme = new Lexeme() ;
+  do
+  {
+    currentLexeme = new Lexeme() ;
 
-#ifdef LANGUAGE_CPP			// A cpp lexeme has 6 components
-		//MasterData::theLog << "a " << flush ;
-		retval = fscanf(infile,"%d%d%s%d%d%d",&(currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
+#ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
+    //MasterData::theLog << "a " << flush ;
+    retval = fscanf(infile,"%d%d%s%d%d%d",&(currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
 
-#elif LANGUAGE_JAVA			// A java lexeme has 3 components
-		retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+#elif LANGUAGE_JAVA     // A java lexeme has 3 components
+    retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
 #endif
-		if( currentLexeme->com < -10 ) {
-			MasterData::theLog << "about to goto (1)" << endl ;
-			goto end_load ;
-		}
+    if( currentLexeme->com < -10 ) {
+      MasterData::theLog << "about to goto (1)" << endl ;
+      goto end_load ;
+    }
 
-		currentLexeme->str = str ;
-		//MasterData::theLog << "c" << endl ;
+    currentLexeme->str = str ;
+    //MasterData::theLog << "c" << endl ;
 
-		outputLexeme(currentLexeme) ;
+    outputLexeme(currentLexeme) ;
 
-		str[0]='\0';
-		lexemes.push_back(currentLexeme);
+    str[0]='\0';
+    lexemes.push_back(currentLexeme);
 
-#ifdef LANGUAGE_CPP			// CPP sloc info occurs after the END_FILE identifier
-		if( currentLexeme->com == END_FILE ){
-#elif LANGUAGE_JAVA			// Java sloc info occurs after the first JIL_SLOC identifier
-		if( currentLexeme->com == JIL_SLOC ){
+#ifdef LANGUAGE_CPP     // CPP sloc info occurs after the END_FILE identifier
+    if( currentLexeme->com == END_FILE ){
+#elif LANGUAGE_JAVA     // Java sloc info occurs after the first JIL_SLOC identifier
+    if( currentLexeme->com == JIL_SLOC ){
 #endif
-			break;//exit this loop and start counting SLOC info
-		}
-	}
-#ifdef LANGUAGE_CPP			// A cpp lexeme has 6 components
-	while (retval==6) ;
-#elif LANGUAGE_JAVA			// A java lexeme has 3 components
-	while (retval==3) ;
-#endif
-
-	if (debugging) MasterData::theLog << "7," << flush ;
-
-	// TODO: check if the extra scanf outwith the do-while is necessary
-
-	currentLexeme = new Lexeme() ;
-
-#ifdef LANGUAGE_CPP			// A cpp lexeme has 6 components
-	retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
-#elif LANGUAGE_JAVA			// A java lexeme has 3 components
-	retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+      break;//exit this loop and start counting SLOC info
+    }
+  }
+#ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
+  while (retval==6) ;
+#elif LANGUAGE_JAVA     // A java lexeme has 3 components
+  while (retval==3) ;
 #endif
 
-	if (debugging) MasterData::theLog << "8," << flush ;
+  if (debugging) MasterData::theLog << "7," << flush ;
 
-	sloc_v.clear();
-	lexemes.push_back(currentLexeme);
-	outputLexeme(currentLexeme) ;
+  // TODO: check if the extra scanf outwith the do-while is necessary
 
-	if (debugging) MasterData::theLog << "9," << flush ;
+  currentLexeme = new Lexeme() ;
 
-	do {
-		currentLexeme = new Lexeme() ;
-
-#ifdef LANGUAGE_CPP			// A cpp lexeme has 6 components
-		retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
-#elif LANGUAGE_JAVA			// A java lexeme has 3 components
-		retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+#ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
+  retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
+#elif LANGUAGE_JAVA     // A java lexeme has 3 components
+  retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
 #endif
 
-		outputLexeme(currentLexeme) ;
-		if( currentLexeme->com < -10 ){
-			break ;
-		}
+  if (debugging) MasterData::theLog << "8," << flush ;
 
-		lexemes.push_back( currentLexeme );
+  sloc_v.clear();
+  lexemes.push_back(currentLexeme);
+  outputLexeme(currentLexeme) ;
+
+  if (debugging) MasterData::theLog << "9," << flush ;
+
+  do {
+    currentLexeme = new Lexeme() ;
+
+#ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
+    retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
+#elif LANGUAGE_JAVA     // A java lexeme has 3 components
+    retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+#endif
+
+    outputLexeme(currentLexeme) ;
+    if( currentLexeme->com < -10 ){
+      break ;
+    }
+
+    lexemes.push_back( currentLexeme );
 
 #ifdef LANGUAGE_CPP
-		if( currentLexeme->com == marker ){
+    if( currentLexeme->com == marker ){
 #elif LANGUAGE_JAVA
-		if( currentLexeme->com == JIL_SLOC ){
+    if( currentLexeme->com == JIL_SLOC ){
 #endif
-			sloc_v.push_back( currentLexeme->param );
-		}
-	}
-#ifdef LANGUAGE_CPP			// A cpp lexeme has 6 components
-	while (retval==6) ;
-#elif LANGUAGE_JAVA			// A java lexeme has 3 components
-	while (retval==3) ;
+      sloc_v.push_back( currentLexeme->param );
+    }
+  }
+#ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
+  while (retval==6) ;
+#elif LANGUAGE_JAVA     // A java lexeme has 3 components
+  while (retval==3) ;
 #endif
 
-	if (debugging) MasterData::theLog << "10," << flush ;
+  if (debugging) MasterData::theLog << "10," << flush ;
 
-	lexsize=lexemes.size() ;
+  lexsize=lexemes.size() ;
 
 #ifdef LANGUAGE_CPP
-	if (debugging) MasterData::theLog << "11," << flush ;
+  if (debugging) MasterData::theLog << "11," << flush ;
 
-	c_com = lexemes[lexsize-1]->com ;
-	cpp_com = lexemes[lexsize-1]->param ;
-	com = lexemes[lexsize-1]->line ;
-	nsemi = lexemes[lexsize-1]->startcol ;
+  c_com = lexemes[lexsize-1]->com ;
+  cpp_com = lexemes[lexsize-1]->param ;
+  com = lexemes[lexsize-1]->line ;
+  nsemi = lexemes[lexsize-1]->startcol ;
 
-	if (debugging) MasterData::theLog << "12," << flush ;
+  if (debugging) MasterData::theLog << "12," << flush ;
 
-	N1 = lexemes[lexsize-2]->param ;
-	N2 = lexemes[lexsize-2]->com ;
-	n1 = lexemes[lexsize-2]->startcol ;
-	n2 = lexemes[lexsize-2]->line ;
+  N1 = lexemes[lexsize-2]->param ;
+  N2 = lexemes[lexsize-2]->com ;
+  n1 = lexemes[lexsize-2]->startcol ;
+  n2 = lexemes[lexsize-2]->line ;
 #elif LANGUAGE_JAVA
-	nsemi = lexemes[lexsize-9]->param ;
-	N1 = lexemes[lexsize-8]->param ;
-	N2 = lexemes[lexsize-7]->param ;
-	n1 = lexemes[lexsize-6]->param ;
-	n2 = lexemes[lexsize-5]->param ;
+  nsemi = lexemes[lexsize-9]->param ;
+  N1 = lexemes[lexsize-8]->param ;
+  N2 = lexemes[lexsize-7]->param ;
+  n1 = lexemes[lexsize-6]->param ;
+  n2 = lexemes[lexsize-5]->param ;
 
-	j_com = lexemes[lexsize-4]->param ;
-	c_com = lexemes[lexsize-3]->param ;
-	cpp_com = lexemes[lexsize-2]->param ;
-	com = lexemes[lexsize-1]->param ;
+  j_com = lexemes[lexsize-4]->param ;
+  c_com = lexemes[lexsize-3]->param ;
+  cpp_com = lexemes[lexsize-2]->param ;
+  com = lexemes[lexsize-1]->param ;
 #endif
 
-	if (debugging) MasterData::theLog << "13," << flush ;
+  if (debugging) MasterData::theLog << "13," << flush ;
 
 #ifdef WIN32
-//	_cwait(NULL,pid,NULL) ;
+//  _cwait(NULL,pid,NULL) ;
 #elif sun
-	waitpid(pid,NULL,NULL) ;
+  waitpid(pid,NULL,NULL) ;
 #endif
 
 
 end_load:
 
-	if (debugging) MasterData::theLog << "14" << endl ;
+  if (debugging) MasterData::theLog << "14" << endl ;
 
-	close(childWriteFD) ;
-	fclose(infile) ;
+  close(childWriteFD) ;
+  fclose(infile) ;
 
-	return lexsize!=0 ;
+  return lexsize!=0 ;
 }
 
 
 void PopulatePhase::parseFile(string filename)
 {
-	lex_index=1 ; // lex_index=0 holds filename - we know this so start at 1
-	if (debugging) MasterData::theLog << "15," << flush ;
+  lex_index=1 ; // lex_index=0 holds filename - we know this so start at 1
+  if (debugging) MasterData::theLog << "15," << flush ;
 
-	//SymbolNode fileNode(filename, MasterData::FILE_CAT) ;
-	//TODO look into this
-	//SymbolNode fileNode = theRoot->createSymbolNode(filename, MasterData::FILE_CAT) ;
-	SymbolNode fileNode = theRoot->createSymbolNode(MasterData::FILE_CAT) ;
-	fileNode.setName(filename) ;
-	fileNode.setTypeID(-1) ;
+  //SymbolNode fileNode(filename, MasterData::FILE_CAT) ;
+  //TODO look into this
+  //SymbolNode fileNode = theRoot->createSymbolNode(filename, MasterData::FILE_CAT) ;
+  SymbolNode fileNode = theRoot->createSymbolNode(MasterData::FILE_CAT) ;
+  fileNode.setName(filename) ;
+  fileNode.setTypeID(-1) ;
 
-	if (debugging) MasterData::theLog << "16," << flush ;
-//	fileNode.setMetric(MasterData::LMODT_MET,Utilities::getLastModTime(filename)) ;
+  if (debugging) MasterData::theLog << "16," << flush ;
+//  fileNode.setMetric(MasterData::LMODT_MET,Utilities::getLastModTime(filename)) ;
 
 #ifdef LANGUAGE_JAVA
-	fileNode.setMetric(MasterData::JCOM_MET,j_com) ;
+  fileNode.setMetric(MasterData::JCOM_MET,j_com) ;
 #endif
 
-	fileNode.setMetric(MasterData::CCOM_MET,c_com) ;
-	fileNode.setMetric(MasterData::CPPCOM_MET,cpp_com) ;
-	fileNode.setMetric(MasterData::COM_MET,com) ;
+  fileNode.setMetric(MasterData::CCOM_MET,c_com) ;
+  fileNode.setMetric(MasterData::CPPCOM_MET,cpp_com) ;
+  fileNode.setMetric(MasterData::COM_MET,com) ;
 //#ifdef LANGUAGE_CPP
-	fileNode.setMetric(MasterData::NSC_MET,nsemi) ;
+  fileNode.setMetric(MasterData::NSC_MET,nsemi) ;
 //#endif
 
-	fileNode.setMetric(MasterData::N1_MET,N1) ;
-	fileNode.setMetric(MasterData::N2_MET,N2) ;
-	fileNode.setMetric(MasterData::n1_MET,n1) ;
-	fileNode.setMetric(MasterData::n2_MET,n2) ;
+  fileNode.setMetric(MasterData::N1_MET,N1) ;
+  fileNode.setMetric(MasterData::N2_MET,N2) ;
+  fileNode.setMetric(MasterData::n1_MET,n1) ;
+  fileNode.setMetric(MasterData::n2_MET,n2) ;
 
 #ifdef LANGUAGE_CPP
 
-	if (debugging) MasterData::theLog << "17," << flush ;
-	theProjNode.addNode(fileNode) ;
+  if (debugging) MasterData::theLog << "17," << flush ;
+  theProjNode.addNode(fileNode) ;
 
 #elif LANGUAGE_JAVA
 
-	SymbolNode package = fileNode ;		// Assign for speed
+  SymbolNode package = fileNode ;   // Assign for speed
 
-	if (!look_ID())
-		package = getPackage(parseID()) ;
-	else
-		package = getPackage("default") ;
+  if (!look_ID())
+    package = getPackage(parseID()) ;
+  else
+    package = getPackage("default") ;
 
-	package.addNode(fileNode) ;
-	//theProjNode.addNode(package) ;
+  package.addNode(fileNode) ;
+  //theProjNode.addNode(package) ;
 
 #endif
 
-	if (debugging) MasterData::theLog << "18," << flush ;
-	parseDeclaration(fileNode) ;
+  if (debugging) MasterData::theLog << "18," << flush ;
+  parseDeclaration(fileNode) ;
 }
 
 
 void PopulatePhase::extractTypes(SymbolNode &sn)
 {
-	try
-	{
-		// Check if there are any types that refer to this symbol
-		char sql[512], charNumber[30] ;
+  try
+  {
+    // Check if there are any types that refer to this symbol
+    char sql[512], charNumber[30] ;
 
-		strcpy(sql,"select sytid from symboltype where symid=") ;
-		strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    strcpy(sql,"select sytid from symboltype where symid=") ;
+    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
 
-		if (theRoot->executeQuery(sql))
-		{
-			long sytid = atol(theRoot->cell(0,0).c_str()) ;
+    if (theRoot->executeQuery(sql))
+    {
+      long sytid = atol(theRoot->cell(0,0).c_str()) ;
 
-			// There are so update all symbols that have this symbol as their type to
-			// have 0
-			strcpy(sql,"update symbol set sytid=0 where sytid=") ;
-			strcat(sql, ltostr(sytid, charNumber, 30)) ;
-			theRoot->executeResultlessQuery(sql) ;
+      // There are so update all symbols that have this symbol as their type to
+      // have 0
+      strcpy(sql,"update symbol set sytid=0 where sytid=") ;
+      strcat(sql, ltostr(sytid, charNumber, 30)) ;
+      theRoot->executeResultlessQuery(sql) ;
 
-			// Delete the symboltype
-			strcpy(sql,"delete from symboltype where sytid=") ;
-			strcat(sql, ltostr(sytid, charNumber, 30)) ;
-			theRoot->executeResultlessQuery(sql) ;
-		}
-	}
-	catch (...)
-	{
-		MasterData::theLog << "Error in: PopulatePhase::extractTypes()" << endl ;
-	}
+      // Delete the symboltype
+      strcpy(sql,"delete from symboltype where sytid=") ;
+      strcat(sql, ltostr(sytid, charNumber, 30)) ;
+      theRoot->executeResultlessQuery(sql) ;
+    }
+  }
+  catch (...)
+  {
+    MasterData::theLog << "Error in: PopulatePhase::extractTypes()" << endl ;
+  }
 }
 
 void PopulatePhase::extractLinks(SymbolNode &sn)
 {
-	int i;
-	SymbolNode tmp=sn;
-	string ref = sn.getName() ;
+  int i;
+  SymbolNode tmp=sn;
+  string ref = sn.getName() ;
 
-	try
-	{
-		char sql[512], charNumber[30] ;
+  try
+  {
+    char sql[512], charNumber[30] ;
 
-		// Delete links from this symbol
-		strcpy(sql,"delete from link where symid=") ;
-		strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
-		theRoot->executeResultlessQuery(sql) ;
+    // Delete links from this symbol
+    strcpy(sql,"delete from link where symid=") ;
+    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    theRoot->executeResultlessQuery(sql) ;
 
-		// Get links to this symbol
-		strcpy(sql,"select symID,lktID from link where sym2id=") ;
-		strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
-		theRoot->executeResultlessQuery(sql) ;
+    // Get links to this symbol
+    strcpy(sql,"select symID,lktID from link where sym2id=") ;
+    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    theRoot->executeResultlessQuery(sql) ;
 
 
-		// Create templinks for these
-		if (theRoot->executeQuery(sql))
-		{
-			for (i=0 ; i<theRoot->rows() ; i++)
-			{
-				long fromID = atol(theRoot->cell(i,0).c_str()) ;
-				long lktID = atol(theRoot->cell(i,1).c_str()) ;
+    // Create templinks for these
+    if (theRoot->executeQuery(sql))
+    {
+      for (i=0 ; i<theRoot->rows() ; i++)
+      {
+        long fromID = atol(theRoot->cell(i,0).c_str()) ;
+        long lktID = atol(theRoot->cell(i,1).c_str()) ;
 
-				//theRoot->theTempBuffer.add( new TempLink(fromID,lktID,ref) ) ;
-				theRoot->theTempBuffer.add( new Link(fromID,lktID,ref) ) ;
-			}
-		}
+        //theRoot->theTempBuffer.add( new TempLink(fromID,lktID,ref) ) ;
+        theRoot->theTempBuffer.add( new Link(fromID,lktID,ref) ) ;
+      }
+    }
 
-		// Now delete links to this symbol
-		strcpy(sql,"delete from link where sym2id=") ;
-		strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
-		theRoot->executeResultlessQuery(sql) ;
-	}
-	catch(...)
-	{
-		MasterData::theLog << "Error in: PopulatePhase::extractLinks()" << endl ;
-	}
+    // Now delete links to this symbol
+    strcpy(sql,"delete from link where sym2id=") ;
+    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    theRoot->executeResultlessQuery(sql) ;
+  }
+  catch(...)
+  {
+    MasterData::theLog << "Error in: PopulatePhase::extractLinks()" << endl ;
+  }
 
-	for ( i=0 ; i<sn.childCount() ; i++)
-	{
-		SymbolNode nextChild = sn.getChild(i) ;
-		extractLinks(nextChild) ;
-	}
+  for ( i=0 ; i<sn.childCount() ; i++)
+  {
+    SymbolNode nextChild = sn.getChild(i) ;
+    extractLinks(nextChild) ;
+  }
 }
 
 
 /*void PopulatePhase::delFiles(SourceFiles &delFiles)
 {
-	SourceFiles::iterator iter = delFiles.begin() ;
+  SourceFiles::iterator iter = delFiles.begin() ;
 
-	//SymbolNode sn ;
-	SymbolNode sn = theRoot->createSymbolNode() ;
+  //SymbolNode sn ;
+  SymbolNode sn = theRoot->createSymbolNode() ;
 
-	for ( ; iter < delFiles.end() ; iter++)
-	{
-		MasterData::theLog << "mark a" << endl ;
-		if (theRoot->find(MasterData::FILE_CAT,(*iter).getFilename(),sn))
-			MasterData::theLog << "success" << endl ;
-		else
-			MasterData::theLog << "fail" << endl ;
-		MasterData::theLog << "mark b" << endl ;
-		extractLinks(sn) ;
-		MasterData::theLog << "mark c" << endl ;
-		theRoot->removeChild(sn) ;
-		MasterData::theLog << "mark d" << endl ;
-	}
+  for ( ; iter < delFiles.end() ; iter++)
+  {
+    MasterData::theLog << "mark a" << endl ;
+    if (theRoot->find(MasterData::FILE_CAT,(*iter).getFilename(),sn))
+      MasterData::theLog << "success" << endl ;
+    else
+      MasterData::theLog << "fail" << endl ;
+    MasterData::theLog << "mark b" << endl ;
+    extractLinks(sn) ;
+    MasterData::theLog << "mark c" << endl ;
+    theRoot->removeChild(sn) ;
+    MasterData::theLog << "mark d" << endl ;
+  }
 }*/
 
 
 int PopulatePhase::getProgress()
 {
-	LOCKMUTEX(progress_lock) ;
-	int retval = (int) 100*currentFile/theNoOfFiles ;
-	UNLOCKMUTEX(progress_lock) ;
-	MasterData::theLog << "PopulatePhase, progress: " << retval << endl;
-	return retval ;
+  LOCKMUTEX(progress_lock) ;
+  int retval = (int) 100*currentFile/theNoOfFiles ;
+  UNLOCKMUTEX(progress_lock) ;
+  MasterData::theLog << "PopulatePhase, progress: " << retval << endl;
+  return retval ;
 }
 
 
 void PopulatePhase::populateSub(SymbolNode parent, long subID, string depth)
 {
-	Subproject subproj(theRoot, subID) ;
-	string filename ;
-	long nextSubID ;
-	// Create Subproject node, and add to the parent
-	theProjNode = theRoot->createSymbolNode() ;
-	theProjNode.setCategoryID(MasterData::PROJECT_CAT) ;
-	theProjNode.setName(subproj.getSubName()) ;
-	subproj.updateSymbolID(theProjNode.getID()) ;
+  Subproject subproj(theRoot, subID) ;
+  string filename ;
+  long nextSubID ;
+  // Create Subproject node, and add to the parent
+  theProjNode = theRoot->createSymbolNode() ;
+  theProjNode.setCategoryID(MasterData::PROJECT_CAT) ;
+  theProjNode.setName(subproj.getSubName()) ;
+  subproj.updateSymbolID(theProjNode.getID()) ;
 
-	parent.addNode(theProjNode) ;
-//	MasterData::theLog << depth << "Sub " << subproj.getSubName() << " [" << subID
-//		<< "] adding to " << parent.getName() << " [" << parent.getID() << "]" << endl ;
+  parent.addNode(theProjNode) ;
+//  MasterData::theLog << depth << "Sub " << subproj.getSubName() << " [" << subID
+//    << "] adding to " << parent.getName() << " [" << parent.getID() << "]" << endl ;
 
-	while (subproj.getNextFile(filename))
-	{
-//		MasterData::theLog << depth << " [" << filename << "]" << endl ;
-		if (loadFile(filename)) {
-		  parseFile(filename) ;
-		}
+  while (subproj.getNextFile(filename))
+  {
+//    MasterData::theLog << depth << " [" << filename << "]" << endl ;
+    if (loadFile(filename)) {
+      parseFile(filename) ;
+    }
 
-		LOCKMUTEX(progress_lock) ;
-		currentFile++ ;
-		UNLOCKMUTEX(progress_lock) ;
-	}
+    LOCKMUTEX(progress_lock) ;
+    currentFile++ ;
+    UNLOCKMUTEX(progress_lock) ;
+  }
 
-	depth += " " ;
-	SymbolNode tmpNode = theProjNode ;
+  depth += " " ;
+  SymbolNode tmpNode = theProjNode ;
 
-	while (subproj.getNextSub(nextSubID))
-	{
-		populateSub(theProjNode, nextSubID, depth) ;
-		theProjNode = tmpNode ;
-	}
+  while (subproj.getNextSub(nextSubID))
+  {
+    populateSub(theProjNode, nextSubID, depth) ;
+    theProjNode = tmpNode ;
+  }
 }
 
 
 int PopulatePhase::countFiles()
 {
-	if (theRoot->executeQuery("select count(*) as RecordCount from sourcefile"))
-	{
-		return theRoot->longCell(0,0) ;
-	}
+  if (theRoot->executeQuery("select count(*) as RecordCount from sourcefile"))
+  {
+    return theRoot->longCell(0,0) ;
+  }
 
-	return 0 ;
+  return 0 ;
 }
 
 
 void PopulatePhase::execute(RootNode *root)
 {
-	LOCKMUTEX(progress_lock) ;
-	theRoot = root ;
-	//theRoot->setFreshBuild(true) ;
-	theRoot->createTempLink() ;
-	debugging = true ;
-	//debugging = false ;
+  LOCKMUTEX(progress_lock) ;
+  theRoot = root ;
+  //theRoot->setFreshBuild(true) ;
+  theRoot->createTempLink() ;
+  debugging = true ;
+  //debugging = false ;
 
 #ifdef LANGUAGE_CPP
-	if (useTranslationFile) {
-		MasterData::theLog << "Translation file [" << theTranslationFile << "]" << endl ;
-		thePreprocessor.loadCfg(theTranslationFile.c_str()) ;
-	} else {
-		MasterData::theLog << "Not using a Translation file." << endl ;
-	}
+  if (useTranslationFile) {
+    MasterData::theLog << "Translation file [" << theTranslationFile << "]" << endl ;
+    thePreprocessor.loadCfg(theTranslationFile.c_str()) ;
+  } else {
+    MasterData::theLog << "Not using a Translation file." << endl ;
+  }
 #endif
 
-	currentFile=0 ;
+  currentFile=0 ;
 
-	theNoOfFiles = countFiles() ;
-	MasterData::theLog << "Populating, no of files: " << theNoOfFiles << endl ;
-	UNLOCKMUTEX(progress_lock) ;
+  theNoOfFiles = countFiles() ;
+  MasterData::theLog << "Populating, no of files: " << theNoOfFiles << endl ;
+  UNLOCKMUTEX(progress_lock) ;
 
-	Subproject subproj(theRoot, 1) ;
-	string filename ;
-	long nextSubID ;
-	subproj.updateSymbolID(1) ;
-	theProjNode = (*theRoot) ;
-	string depth="" ;
+  Subproject subproj(theRoot, 1) ;
+  string filename ;
+  long nextSubID ;
+  subproj.updateSymbolID(1) ;
+  theProjNode = (*theRoot) ;
+  string depth="" ;
 
-	while (subproj.getNextFile(filename))
-	{
-		MasterData::theLog << depth << " [" << filename << "]" << endl ;
-		if (loadFile(filename)) {
-		  parseFile(filename) ;
-		}
+  while (subproj.getNextFile(filename))
+  {
+    MasterData::theLog << depth << " [" << filename << "]" << endl ;
+    if (loadFile(filename)) {
+      parseFile(filename) ;
+    }
 
-		LOCKMUTEX(progress_lock) ;
-		currentFile++ ;
-		UNLOCKMUTEX(progress_lock) ;
-	}
+    LOCKMUTEX(progress_lock) ;
+    currentFile++ ;
+    UNLOCKMUTEX(progress_lock) ;
+  }
 
-	while (subproj.getNextSub(nextSubID))
-	{
-		populateSub((*theRoot), nextSubID, depth) ;
-	}
+  while (subproj.getNextSub(nextSubID))
+  {
+    populateSub((*theRoot), nextSubID, depth) ;
+  }
 
-	LOCKMUTEX(progress_lock) ;
-	committing = true ;
-	UNLOCKMUTEX(progress_lock) ;
+  LOCKMUTEX(progress_lock) ;
+  committing = true ;
+  UNLOCKMUTEX(progress_lock) ;
 
-	theRoot->flushBuffers() ;
-
-	//theRoot->commit() ;
+  theRoot->flushBuffers() ;
 }
 

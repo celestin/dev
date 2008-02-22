@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_OURSQL
@@ -24,86 +25,70 @@
 #define OUR_TYPE_DOUBLE 2
 #define OUR_TYPE_STRING 3
 
+#define QUERY_MAX 131072
+
 namespace metrics
 {
-	class OurSQL
-	{
-	private:
-		MYSQL	*theConnection ;	// MySQL Connection data
-		bool	theConnected ;		// Has a connection been established?
-		std::string theHost ;		// Hostname (def. "localhost")
-		std::string theDB ;			// Database
+  class OurSQL
+  {
+  private:
+    MYSQL *theConnection ;  // MySQL Connection data
+    bool  theConnected ;    // Has a connection been established?
+    std::string theHost ;   // Hostname (def. "localhost")
+    std::string theDB ;     // Database
 
-		bool	theResultsAvailable ;	// Result set is available?
-		int		*theColTypes ;			// Column Types array
-		std::vector<char**> theResults ;		// Results matrix
-		int		theRows ;				// Number of Rows in Result set
-		int		theCols ;				// Number of Cols in Result set
+    bool  theResultsAvailable ; // Result set is available?
+    int   *theColTypes ;      // Column Types array
+    std::vector<char**> theResults ;    // Results matrix
+    int   theRows ;       // Number of Rows in Result set
+    int   theCols ;       // Number of Cols in Result set
 
-	protected:
+  protected:
 
-		void initResults() ;
-
-
-	public:
-
-		OurSQL() ;
-		OurSQL(std::string host, std::string dbName) ;
-		OurSQL(std::string dbName) ;
-		OurSQL(const OurSQL &rhs) ;
-
-		const OurSQL& operator=(const OurSQL &rhs) ;
-
-		virtual ~OurSQL() ;
-
-		int no_of_queries ;
-
-		// Connecting
-		void connect() ;
-		inline bool connected() const { return (theConnected) ; }
-		void disconnect() ;
-		bool executeQuery(std::string query) ;
-		bool executeQuery(char *query) ;
-		bool executeResultlessQuery(char *query) ;
-		bool executeResultlessQuery(std::string query) ;
-
-		// Managing Result Set
-		void setupResultGrid(MYSQL_RES *result) ;
-		inline bool resultsAvailable() const { return (theResultsAvailable) ; }
-		inline int rows() const { return (theRows) ; }
-		int cols() const { return (theCols) ; }
-		int getColType(int c)  const ;
-
-		// Get contents of Cell in Matrix
-		std::string cell(int row, int col) const ;	// String return type
-		long longCell(int row, int col) const ;		// Long value (0 if no conversion)
-		double doubleCell(int row, int col) const ;	// Double value (0 if no conversion)
-		void clearResults() ;
-
-		std::string getHost()	{ return theHost ; }
-		std::string getDB()		{ return theDB ; }
-
-	} ;
+    void initResults();
 
 
-	/*class DBCreate
-	{
-	private:
-		OurSQL theConnection ;
-		std::string theDBName ;
+  public:
 
-	public:
-		DBCreate() ;
-		DBCreate(std::string newDBName) ;
-		virtual ~DBCreate() ;
+    OurSQL();
+    OurSQL(std::string host, std::string dbName);
+    OurSQL(std::string dbName);
+    OurSQL(const OurSQL &rhs);
 
-		void drop() ;
-		void create() ;
+    const OurSQL& operator=(const OurSQL &rhs);
 
-		void disconnect() ;
+    virtual ~OurSQL();
 
-	} ;*/
-} ;
+    int no_of_queries;
+
+    // Connecting
+    void connect();
+    inline bool connected() const { return (theConnected) ; }
+    void disconnect();
+    bool executeQuery(std::string query);
+    bool executeQuery(char *query);
+    bool executeResultlessQuery(char *query);
+    bool executeResultlessQuery(std::string query);
+
+    // Managing Result Set
+    void setupResultGrid(MYSQL_RES *result);
+    inline bool resultsAvailable() const { return (theResultsAvailable) ; }
+    inline int rows() const { return (theRows) ; }
+    int cols() const { return (theCols) ; }
+    int getColType(int c)  const;
+
+    // Get contents of Cell in Matrix
+    std::string cell(int row, int col) const ;  // String return type
+    long longCell(int row, int col) const ;   // Long value (0 if no conversion)
+    double doubleCell(int row, int col) const ; // Double value (0 if no conversion)
+    void clearResults();
+
+    std::string getHost() { return theHost ; }
+    std::string getDB()   { return theDB ; }
+
+  };
+
+};
 
 #endif
 

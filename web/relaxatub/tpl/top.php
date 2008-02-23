@@ -13,6 +13,7 @@
  * CAM  29-Mar-2007  10109 : Added link to Garden page (Decking).
  * CAM  14-Feb-2008  10243 : Updated look and feel.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  23-Feb-2008  10235 : Added Favourite Icon.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -22,6 +23,7 @@
   <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh">
 
   <link href="relaxatub.css" rel=stylesheet type=text/css>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 
 <body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 id="<? echo $pageId; ?>">

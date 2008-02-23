@@ -17,11 +17,32 @@
  * CAM  29-Mar-2007  10109 : Exposed original design until "Beach Scene" is created.
  * CAM  30-Oct-2007  10197 : Added Christmas 2007 image.
  * CAM  14-Feb-2008  10243 : Reverted back to standard page.
+ * CAM  23-Feb-2008  10235 : Added Random Image and Tub Series below.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
+include_once 'main.php';
 include "tpl/top.php";
+
+$randomImage = new RandomImage("img/re");
 ?>
+
+<div id=#RandomImage>
+<img src="<? echo $randomImage->GetRandomImage(); ?>" width="538" height="301">
+<table border=0 width="538">
+  <tr>
+    <td align=center><a href="tub.php?tub=350"><img border=0 src="img/tub/series/300.png" width="120"></a></td>
+    <td align=center><a href="tub.php?tub=550x"><img border=0 src="img/tub/series/500.png" width="120"></a></td>
+    <td align=center><a href="tub.php?tub=750"><img border=0 src="img/tub/series/700.png" width="120"></a></td>
+  </tr>
+  <tr>
+    <td align=center><a class="nav" href="tub.php?tub=350">300 series</a></td>
+    <td align=center><a class="nav" href="tub.php?tub=550x">500 series</a></td>
+    <td align=center><a class="nav" href="tub.php?tub=750">700 series</a></td>
+  </tr>
+</table>
+</div>
+
 <!--
       <table border=0 cellpadding=5 valign=middle>
       <tr><td align=center><img src="img/xmas07.jpg" width=600 height=460></td></tr>
@@ -49,6 +70,7 @@ Beachcomber Stock Hot Tub on</p>
 <p class="legal">Typical 0% APR</p></div>
 -->
 
+<!--
       <table border=0 cellpadding=5 valign=middle>
 
       <tr><td align=center><table border=0 cellpadding=0 cellspacing=0>
@@ -77,7 +99,7 @@ Beachcomber Stock Hot Tub on</p>
       </table></td></tr>
 
       </table>
-
+ -->
 <?
   include "tpl/bot.php";
 ?>

@@ -12,6 +12,7 @@
  * CAM  18-Jul-2006  File added to source control.
  * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  22-Mar-2008  10258 : Added no_people and corrected dimen.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -69,7 +70,7 @@
   <td align=center width="100%"><table border=0 cellpadding=3 cellspacing=0>
     <tr><td width=120>&nbsp;</td><td width=110>&nbsp;</td><td width=270 class="tubname"><? print $_t->id; ?></td></tr>
     <tr>
-      <td class="fldlbl">Dimensions</td><td class="fldtxt"><? print $dimen ?></td>
+      <td class="fldlbl">Dimensions</td><td class="fldtxt"><? print $_t->dimen ?></td>
       <td rowspan=8 align=right>
       <table border=0 width=270 cellspacing=0 cellpadding=0>
       <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_t->id; ?>"></td></tr>
@@ -80,6 +81,7 @@
       </table>
       </td>
     </tr>
+    <tr><td class="fldlbl">No. of People</td><td class="fldtxt"><? print $_t->no_people ?></td></tr>
     <tr><td class="fldlbl">Water Capacity</td><td class="fldtxt"><? print $_t->capacity ?></td></tr>
     <tr><td class="fldlbl">Dry Weight</td><td class="fldtxt"><? print $_t->dry_weight ?></td></tr>
     <tr><td class="fldlbl">Filled Weight</td><td class="fldtxt"><? print $_t->fill_weight ?></td></tr>

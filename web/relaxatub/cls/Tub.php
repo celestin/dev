@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Hot Tub wrapper class
@@ -12,12 +12,25 @@
  * CAM  18-Jul-2006  File added to source control.
  * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
  * CAM  24-Sep-2006  10030 : Ensure Tub IDs are uppercase.
+ * CAM  22-Mar-2008  10258 : Added no_people and dimen attributes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Tub extends Tuple {
 
   // ----- Instance Variables --------------------------------------------- //
 
+  /**
+  * Seats no. of people.
+  * @private
+  * @type String
+  */
+  var $no_people = NULL;
+  /**
+  * External Dimensions.
+  * @private
+  * @type String
+  */
+  var $dimen = NULL;
   /**
   * Inside Colour.
   * @private
@@ -160,6 +173,8 @@ class Tub extends Tuple {
         $this->id = strtoupper($tub);
         $this->series = $series;
 
+        $this->no_people = $no_people;
+        $this->dimen = $dimen;
         $this->colour = $colour;
         $this->wood = $wood;
         $this->capacity = $capacity;

@@ -50,15 +50,10 @@ licenses when they are not being used.
 To install a floating license you must download and install a license server for
 FLEXlm for the platform that you will be running the server.
 
-Instructions can be found at http://www.globetrotter.com/.
-
 
 Contact Details
 ===============
 
-Any comments, queries or for licensing please contact Power Software using one of the
-following methods:
+Any comments, queries or for licensing please contact Power Software by email:
 
-Email: objects@powersoftware.com
-Phone: +44 (0) 1224 622201
-Fax  : +44 (0) 1224 622202
+objects@powersoftware.com

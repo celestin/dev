@@ -15,6 +15,7 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  26-Mar-08  338 : Tidied LCOM name.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -566,7 +567,7 @@ void TreeHelper::createMetricType()
   insertMetricTypeRow(50508, MasterData::codeMtt(MasterData::CBO_MET, MasterData::CLASS_CAT),
     "CBO",    "Coupling Between Object classes") ;
   insertMetricTypeRow(50509, MasterData::codeMtt(MasterData::LCOM_MET, MasterData::CLASS_CAT),
-    "LCOM",   "Lack Of Cohesion Methods") ;
+    "LCOM",   "Lack of Cohesion Methods") ;
   insertMetricTypeRow(50510, MasterData::codeMtt(MasterData::NOOC_MET, MasterData::CLASS_CAT),
     "NOOC",   "Number of Operations Overridden") ;
   insertMetricTypeRow(50511, MasterData::codeMtt(MasterData::NOAC_MET, MasterData::CLASS_CAT),

@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="metrics"
 	ProjectGUID="{0F4811DC-51B1-4D5C-9AD4-843108EC1E31}"
+	RootNamespace="metrics"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -634,7 +635,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="c:\mysql\include,j:\metrics\prep_lib"
+				AdditionalIncludeDirectories="..\prep_lib;..\..\mysql\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;LANGUAGE_CPP;PROFESSIONAL"
 				StringPooling="true"
 				RuntimeLibrary="0"
@@ -664,7 +665,7 @@
 				OutputFile=".\Release_CPP_Pro/metrics.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="c:\mysql\lib\opt,j:\metrics\prep_lib\release"
+				AdditionalLibraryDirectories="..\..\mysql\lib\opt,..\prep_lib\Release"
 				IgnoreDefaultLibraryNames="MSVCRT"
 				ProgramDatabaseFile=".\Release_CPP_Pro/metrics.pdb"
 				SubSystem="2"

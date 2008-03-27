@@ -59,13 +59,8 @@ extern FILE *yyin ;
 void parse()
 {
   initialise();
-
-  // parse the code and build the generic code
   declaration_seq();
-
-  // append SLOC info to end of generic code
   append_sloc_information();
-
   fclose(yyin) ;
 }
 
@@ -138,12 +133,12 @@ int main(int argc, char *argv[])
     }
 
     // Point lexer input to this source file
-    if (fopen_s(&yyin, input_filename, "r") == NULL) {
+    if ((yyin = fopen(input_filename, "r")) == NULL) {
       exit(1) ;
     }
 
     // Set write descriptor back to the analyser
-    if( (output = _fdopen(writeToParentFD, "w")) == NULL )
+    if( (output = fdopen(writeToParentFD, "w")) == NULL )
       exit(1) ;
 
   } else if (argc==4) {
@@ -158,19 +153,19 @@ int main(int argc, char *argv[])
     writeToParentFD=atoi(argv[3]) ;
 
     // Point the lexer to the output from the Preprocessor
-    if ((yyin = _fdopen(infile, "r")) == NULL) {
+    if ((yyin = fdopen(infile, "r")) == NULL) {
       exit(1) ;
     }
 
     // Set write descriptor back to the analyser
-    if( (output = _fdopen(writeToParentFD, "w")) == NULL ) {
+    if( (output = fdopen(writeToParentFD, "w")) == NULL ) {
       exit(1) ;
     }
 
   } else {
     // Command line - no longer used
-    gets_s(input_filename, MAX_PATH) ;
-    gets_s(original_filename, MAX_PATH) ;
+    gets(input_filename) ;
+    gets(original_filename) ;
   }
 
   original_filename = _strdup(input_filename) ;

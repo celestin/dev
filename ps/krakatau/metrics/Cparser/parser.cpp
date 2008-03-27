@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  27-Mar-08  345 : File added to source control.
+ * CAM  27-Mar-08  345 : Corrected carriage-returns, POSIX naming and removed old commented-out code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "y.tab.h"
@@ -493,8 +494,8 @@ char* sym_text(int a,int b) {
   int i;
   s_t_g[0]='\0';
   for (i=(a+1);i<=b;i++)
-    strcat((char*)s_t_g,tokens[i].str);
-  return strdup((char*)s_t_g);
+    strcat_s((char*)s_t_g, 1000000, tokens[i].str);
+  return _strdup((char*)s_t_g);
 
 };
 
@@ -578,14 +579,14 @@ void initialise() {
 
     if ((tok!=IDENTIFIER)&&(tok!=CONSTANT)&&(tok!=STRING_LITERAL))
     {
-      tokens[ntokens++].str=strdup((char*)yytext);
+      tokens[ntokens++].str=_strdup((char*)yytext);
     }
     else
     {
       if (yytext_back)
-        tokens[ntokens++].str=strdup(yytext_back);
+        tokens[ntokens++].str=_strdup(yytext_back);
       else
-        tokens[ntokens++].str=strdup("");
+        tokens[ntokens++].str=_strdup("");
     }
   }
 
@@ -597,7 +598,7 @@ void initialise() {
   //codefn(origfilename) ;
   //set_command(ID,0,origfilename,0,0,0) ;
 
-  set_command(ID,0,strdup("aaa"),0,0,0) ;
+  set_command(ID,0,_strdup("aaa"),0,0,0) ;
 }
 
 void tidyup()
@@ -606,35 +607,27 @@ void tidyup()
   for (i=0;i<=np;i++) {
     if (code.tree[i].com!=END_FDEF)
     {
-//      if ( ((code.tree[i]).str!=NULL) && (strlen(code.tree[i].str)>0) )
-//      {
-        free (code.tree[i].str) ;
-//      }
+      free (code.tree[i].str) ;
     }
   }
 
   for (i=0;i<ntokens;i++)
   {
-    //if ( (tokens[i].str!=NULL) && (strlen(tokens[i].str)>0) )
-//    {
-      free (tokens[i].str);
-//    }
+    free (tokens[i].str);
   }
 
   for (i=0 ; i<255 ; i++)
   {
-    for (int j=0 ; j<operands[i].size() ;i++)
+    for (unsigned int j=0; j<operands[i].size(); i++)
     {
-      free(operands[i][j]) ;
-      operands[i].clear() ;
+      free(operands[i][j]);
+      operands[i].clear();
     }
   }
   operators.clear();
 
   free (code.tree);
-
-  free (tokens) ;
-
+  free (tokens);
 }
 
 /* **************************************** */
@@ -828,11 +821,11 @@ void panic() {
 void append_sloc_information() {
   unsigned int i;
 
-  set_command(marker,sloc.size(),strdup(""),0,0,0);
+  set_command(marker,sloc.size(),_strdup(""),0,0,0);
   for (i=0;i<sloc.size();i++)
-    set_command(marker,sloc[i],strdup(""),0,0,0);
+    set_command(marker,sloc[i],_strdup(""),0,0,0);
 
-  set_command(END_FILE,0,strdup(""),0,0,0);
+  set_command(END_FILE,0,_strdup(""),0,0,0);
 }
 
 /* **************************************** */

@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  27-Mar-08  345 : File added to source control.
+ * CAM  27-Mar-08  345 : Corrected carriage-returns, POSIX naming and removed old commented-out code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define BEGIN_MEMBER_DECLARATION 1
@@ -139,8 +140,6 @@ typedef struct token {
   int tok;
   char* str;
   int line;
-/*  int startcol;
-  int endcol;*/
 } token;
 
 

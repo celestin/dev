@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  27-Mar-08  345 : File added to source control.
+ * CAM  27-Mar-08  345 : Corrected carriage-returns, POSIX naming and removed old commented-out code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 char* decodefn(char* filename)

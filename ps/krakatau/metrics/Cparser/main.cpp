@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  27-Mar-08  345 : File added to source control.
+ * CAM  27-Mar-08  345 : Corrected carriage-returns, POSIX naming and removed old commented-out code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fcntl.h>
@@ -57,30 +58,13 @@ extern FILE *yyin ;
 
 void parse()
 {
-//  log << "Mark1" << endl ;
-
-  // check for existence of input file
-//  if (stat(input_filename,&buf)!=0)
-//    return ;
-
-//  log << "Mark2" << endl ;
-
-  // extract symbols to array for speed and lookahead capability
-//  initialise(input_filename,original_filename);
   initialise();
-
-//  log << "Mark3" << endl ;
 
   // parse the code and build the generic code
   declaration_seq();
 
-//  log << "Mark4" << endl ;
-
   // append SLOC info to end of generic code
   append_sloc_information();
-
-  // show the generic code
-  //show_tree();
 
   fclose(yyin) ;
 }
@@ -114,7 +98,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
       (*i) = '\0';
       argv[argc] = (char*) malloc (1024 * sizeof(char*));
-      sprintf(argv[argc],"%s",argStart);
+      sprintf_s(argv[argc], MAX_PATH, "%s",argStart);
 
       argc++;
 
@@ -142,7 +126,7 @@ int main(int argc, char *argv[])
     // 19/11/2001 CAM
     singleFile = true ;
 
-    input_filename = strdup(argv[1]) ;
+    input_filename = _strdup(argv[1]) ;
     writeToParentFD=atoi(argv[2]) ;
     struct stat buf ;
 
@@ -154,12 +138,12 @@ int main(int argc, char *argv[])
     }
 
     // Point lexer input to this source file
-    if ((yyin = fopen(input_filename, "r")) == NULL) {
+    if (fopen_s(&yyin, input_filename, "r") == NULL) {
       exit(1) ;
     }
 
     // Set write descriptor back to the analyser
-    if( (output = fdopen(writeToParentFD, "w")) == NULL )
+    if( (output = _fdopen(writeToParentFD, "w")) == NULL )
       exit(1) ;
 
   } else if (argc==4) {
@@ -174,48 +158,31 @@ int main(int argc, char *argv[])
     writeToParentFD=atoi(argv[3]) ;
 
     // Point the lexer to the output from the Preprocessor
-    if ((yyin = fdopen(infile, "r")) == NULL) {
+    if ((yyin = _fdopen(infile, "r")) == NULL) {
       exit(1) ;
     }
 
     // Set write descriptor back to the analyser
-    if( (output = fdopen(writeToParentFD, "w")) == NULL ) {
+    if( (output = _fdopen(writeToParentFD, "w")) == NULL ) {
       exit(1) ;
     }
 
   } else {
     // Command line - no longer used
-    gets(input_filename) ;
-    gets(original_filename) ;
+    gets_s(input_filename, MAX_PATH) ;
+    gets_s(original_filename, MAX_PATH) ;
   }
 
-  //fprintf(output,"hello\n");
-  // terminate gracefully on segmentation violations.
-  //signal(SIGSEGV,parserdone);
-//    log << "getting started" << endl ;
-  original_filename = strdup(input_filename) ;
+  original_filename = _strdup(input_filename) ;
 
 #ifdef WIN32
   // on WIN32, the harness runs as a thread
 
-    //logFile << "v" << endl ;
-  // Code for doing one file
-  // note no memory management is needed since whole process
-  // finishes
-//  log << "2" << endl ;
   if (singleFile)
   {
-//  log << "3" << endl ;
-    //logFile << "Parsing " << input_filename << endl ;
-
-//    decodefn(input_filename); decodefn(original_filename);
-
-//  log << "4" << endl ;
     DWORD id ;
     HANDLE harnessHandle = CreateThread(NULL,0,winThread,NULL,0,&id) ;
-    //SetThreadPriority(winThread,THREAD_PRIORITY_ABOVE_NORMAL) ;
 
-//  log << "5" << endl ;
     if ( WaitForSingleObject(harnessHandle, 60000) != WAIT_TIMEOUT )
     {
       statistics(output) ;
@@ -225,13 +192,9 @@ int main(int argc, char *argv[])
       errorFile(output) ;
     }
 
-    //fprintf(log,"Parser pipe close worked? %d\n",fclose(output)) ;
-    //fflush(log) ;
-    //logFile << "Closing." << endl ;
     fclose(output) ;
     _exit(0) ;
   } else {
-    //logFile << "not single file" << input_filename << endl ;
   }
 #elif sun
   // on UNIX platforms, harness works by fork()ing
@@ -268,52 +231,6 @@ int main(int argc, char *argv[])
   errorFile(output) ;
 
 #endif
-
-/* No longer needed
-
-  // Code for doing multiple files
-  // memory management and pipe reading included
-  while (strcmp("END",input_filename))
-  {
-    // swap ASCII 1's for spaces
-    decodefn(input_filename); decodefn(original_filename); //decodefn(output_filename);
-
-    //fprintf(output,"about to create thread\n");
-    harnessHandle = CreateThread(NULL,0,winThread,NULL,0,NULL) ;
-    SetThreadPriority(winThread,THREAD_PRIORITY_ABOVE_NORMAL) ;
-
-    if ( WaitForSingleObject(harnessHandle, 60000) != WAIT_TIMEOUT )
-      statistics(output);
-    else
-      errorFile(output);
-
-    fscanf(myInput,"%s",input_filename) ;
-
-    original_filename = strdup(input_filename) ;
-    tidyup() ;
-  }
-
-#else
-    //TODO
-    // on UNIX platforms, harness works by fork()ing
-
-    // quit gracefully when complete
-    signal(SIGCHLD,parserdone);
-    if (pid=fork()==0) {
-
-      parse() ;
-    }
-    for (int i=0;i<45;i++) sleep(1);
-
-    kill(pid,9);
-    exit(0);
-#endif
-*/
-    // analyse the generic code
-  //  statistics(output_filename);
-
-
-  // end of parser harness
 
   return 0 ;
 }

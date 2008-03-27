@@ -1,15 +1,15 @@
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- *  C/C++ Parser
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- *  File  grammar_nonterminals.cpp
- *  Desc  
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Krakatau C/C++ Parser (CPARSER.EXE)
+ * Copyright (c) 2000,2008 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- * Mod            By   Description
- *                GNS  Creation. 
- * D01 02/10/2001 CAM  'default' should not affect McCabe cyclo.
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ * $Id$
+ *
+ * Who  When       Why
+ * D01  02/10/2001 CAM  'default' should not affect McCabe cyclo.
+ * CAM  27-Mar-08  345 : File added to source control.
+ * CAM  27-Mar-08  345 : Corrected carriage-returns, POSIX naming and removed old commented-out code.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
 #include <string.h>
@@ -28,7 +28,7 @@ extern int np;
 extern int suppress;
 extern int yylineno;
 extern const int debug=0 ;
-extern token *tokens;   
+extern token *tokens;
 
 extern code_type code;
 
@@ -41,181 +41,156 @@ int declarator_with_params();
 // ***************************************************
 
 int asm_definition() {
+  token tok;
+  int old=ptr;
+  int oldnp=np;
 
-token tok;
-int old=ptr;
-int oldnp=np;
-
-tok=nexttok();
-if (tok.tok!=ASM) {ptr=old;np=oldnp;return(-1);}
-advance();tok=nexttok();
-if (tok.tok!='(') {ptr=old;np=oldnp;return(-1);}
-advance();tok=nexttok();
-if (tok.tok!=STRING_LITERAL) {ptr=old;np=oldnp;return(-1);}
-advance();tok=nexttok();
-if (tok.tok!=')') {ptr=old;np=oldnp;return(-1);}
-advance();tok=nexttok();
-if (tok.tok!=';') {ptr=old;np=oldnp;return(-1);}
-advance();
-return(0);
+  tok=nexttok();
+  if (tok.tok!=ASM) {ptr=old;np=oldnp;return(-1);}
+  advance();tok=nexttok();
+  if (tok.tok!='(') {ptr=old;np=oldnp;return(-1);}
+  advance();tok=nexttok();
+  if (tok.tok!=STRING_LITERAL) {ptr=old;np=oldnp;return(-1);}
+  advance();tok=nexttok();
+  if (tok.tok!=')') {ptr=old;np=oldnp;return(-1);}
+  advance();tok=nexttok();
+  if (tok.tok!=';') {ptr=old;np=oldnp;return(-1);}
+  advance();
+  return(0);
 }
 
 /* **************************************** */
 
 int storage_class_specifier() {
+  token tok=nexttok();
 
-token tok=nexttok();
+  advance();
 
-advance();
-
-switch (tok.tok) {
-	case AUTO:	return (0);
-	case REGISTER: return (0);
-	case STATIC: return (0);
-	case EXTERN: return (0);
-	case MUTABLE: return (0);
-	default: unadvance();return (-1);
-};
+  switch (tok.tok) {
+    case AUTO:  return (0);
+    case REGISTER: return (0);
+    case STATIC: return (0);
+    case EXTERN: return (0);
+    case MUTABLE: return (0);
+    default: unadvance();return (-1);
+  };
 
 }
 
 /* **************************************** */
 
 int lookahead_end_template_argument() {
+  token tok=nexttok();
 
-token tok=nexttok();
-
-//if (debug) printf("LOOKAHEAD_END_TEMPLATE: %d\n",tok.tok);
-if ((tok.tok==',')||(tok.tok==GT)) return (0);
-return (-1);
+  if ((tok.tok==',')||(tok.tok==GT)) return (0);
+  return (-1);
 }
 
-/* **************************************** */  
+/* **************************************** */
 
 int parse_enumerator () {
-
-if (!parse_IDENTIFIER()) return (0);
-return (-1);
-
+  if (!parse_IDENTIFIER()) return (0);
+  return (-1);
 }
 
 /* **************************************** */
 
 int enumerator_definition() {
+  int old=ptr;
+  int oldnp=np;
 
-/* 
- enumerator_definition:
-	enumerator
-	enumerator = constant_expression
-*/
-
-int old=ptr;
-int oldnp=np;
-
-if (!parse_enumerator()) {
-	if (parse_ASSIGN()) return(0);
-	if (!constant_expression()) return(0);
-	ptr=old;
-	np=oldnp;
-	return(-1);	
-} else {
-	ptr=old;
-	np=oldnp;
-	return (-1);
-}
-
+  if (!parse_enumerator()) {
+    if (parse_ASSIGN()) return(0);
+    if (!constant_expression()) return(0);
+    ptr=old;
+    np=oldnp;
+    return(-1);
+  } else {
+    ptr=old;
+    np=oldnp;
+    return (-1);
+  }
 }
 
 /* **************************************** */
 
 void enumerator_list_opt (){
+  int res;
 
-int res;
-
-while (!the_end()) {
-	res=enumerator_definition();
-	if (res && parse_COMMA()) break;
-};
+  while (!the_end()) {
+    res=enumerator_definition();
+    if (res && parse_COMMA()) break;
+  };
 };
 
 /* **************************************** */
 
 int enum_specifier () {
+  token tok;
+  int old=ptr;
+  int oldnp=np;
 
-token tok;
-int old=ptr;
-int oldnp=np;
+  tok=nexttok();
+  if (tok.tok!=ENUM) {return (-1);};
+  advance();
+  parse_IDENTIFIER_opt();
+  tok=nexttok();
+  if (tok.tok!='{') {np=oldnp;ptr=old;return (-1);}
+  advance();
+  enumerator_list_opt();
+  tok=nexttok();
+  if (tok.tok!='}') {np=oldnp;ptr=old;return (-1);}
 
-tok=nexttok();
-if (tok.tok!=ENUM) {return (-1);};
-advance();
-parse_IDENTIFIER_opt();
-tok=nexttok();
-if (tok.tok!='{') {np=oldnp;ptr=old;return (-1);}
-advance();
-enumerator_list_opt();
-tok=nexttok();
-if (tok.tok!='}') {np=oldnp;ptr=old;return (-1);}
-
-advance();
-return (0);
-
+  advance();
+  return (0);
 }
 
 /* **************************************** */
 
 int type_id() {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  if (!type_specifier_seq()) {
+    abstract_declarator_opt();
+    return (0);
+  };
 
-if (!type_specifier_seq()) {
-	abstract_declarator_opt();
-	return (0);
-};
-
-ptr=old;np=oldnp;
-return (-1);
-
+  ptr=old;np=oldnp;
+  return (-1);
 };
 
 /* **************************************** */
 
 int smart_type_id () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
-
-if (inclusive_type_specifier_seq()) {ptr=old;np=oldnp;return(-1);};
-abstract_declarator_opt();
-return (0);
-
+  if (inclusive_type_specifier_seq()) {ptr=old;np=oldnp;return(-1);};
+  abstract_declarator_opt();
+  return (0);
 };
 
 /* **************************************** */
 
 int literal () {
-
-int oldnp=np;
-if (!parse_CONSTANT()) return (0);
-if (!parse_STRING_LITERAL()) return (0);
-np=oldnp;
-return (-1);
-
+  int oldnp=np;
+  if (!parse_CONSTANT()) return (0);
+  if (!parse_STRING_LITERAL()) return (0);
+  np=oldnp;
+  return (-1);
 };
 
 /* **************************************** */
 
 int class_or_namespace_name () {
+  int oldnp=np;
 
-int oldnp=np;
+  if (!class_name()) return (0);
+  if (!namespace_name()) return (0);
 
-	if (!class_name()) return (0);
-	if (!namespace_name()) return (0);
-
-	np=oldnp;
-	return (-1);
-	
+  np=oldnp;
+  return (-1);
 };
 
 /* **************************************** */
@@ -225,19 +200,19 @@ int nested_name_specifier () {
 int old=ptr;
 int oldnp=np;
 
-if (!class_or_namespace_name()) 
-	if (!parse_SCOPE()) {
-		old=ptr;oldnp=np;
-		while (!class_or_namespace_name()) {
-			if (parse_SCOPE()) {
-				ptr=old;np=oldnp;return(0);
-			} else {
-				old=ptr;oldnp=np;
-			}
-		}
-		ptr=old;np=oldnp;return(0);
-	}
-		
+if (!class_or_namespace_name())
+  if (!parse_SCOPE()) {
+    old=ptr;oldnp=np;
+    while (!class_or_namespace_name()) {
+      if (parse_SCOPE()) {
+        ptr=old;np=oldnp;return(0);
+      } else {
+        old=ptr;oldnp=np;
+      }
+    }
+    ptr=old;np=oldnp;return(0);
+  }
+
 ptr=old;np=oldnp;
 return(-1);
 
@@ -246,175 +221,155 @@ return(-1);
 /* **************************************** */
 
 void nested_name_specifier_opt() {
-
-(void)nested_name_specifier();
-
+  (void)nested_name_specifier();
 };
 
 /* **************************************** */
 
 int type_name () {
-
-if (!class_name()) return (0);
-if (!parse_IDENTIFIER()) return (0);
-return(-1);
-
+  if (!class_name()) return (0);
+  if (!parse_IDENTIFIER()) return (0);
+  return(-1);
 };
 
 /* **************************************** */
 
 int inclusive_simple_type_specifier () {
+  int old=ptr;
+  int oldnp=np;
+  int save;
 
-int old=ptr;
-int oldnp=np;
-int save;
+  token tok=nexttok();
+  advance();
 
-token tok=nexttok();
-advance();
+  if (tok.tok==CHAR) {set_command(SYM_TYPE_ID,0,_strdup("char"),0,0,0);return (0);};
+  if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,_strdup("wchar_t"),0,0,0);return (0);};
+  if (tok.tok==BOOL) {set_command(SYM_TYPE_ID,0,_strdup("bool"),0,0,0);return (0);};
+  if (tok.tok==SHORT) {set_command(SYM_TYPE_ID,0,_strdup("short"),0,0,0);return (0);};
+  if (tok.tok==INT) {set_command(SYM_TYPE_ID,0,_strdup("int"),0,0,0);return (0);};
+  if (tok.tok==LONG) {set_command(SYM_TYPE_ID,0,_strdup("long"),0,0,0);return (0);};
+  if (tok.tok==SIGNED) {set_command(SYM_TYPE_ID,0,_strdup("signed"),0,0,0);return (0);};
+  if (tok.tok==UNSIGNED) {set_command(SYM_TYPE_ID,0,_strdup("unsigned"),0,0,0);return (0);};
+  if (tok.tok==FLOAT) {set_command(SYM_TYPE_ID,0,_strdup("float"),0,0,0);return (0);};
+  if (tok.tok==DOUBLE) {set_command(SYM_TYPE_ID,0,_strdup("double"),0,0,0);return (0);};
+  if (tok.tok==VOID) {set_command(SYM_TYPE_ID,0,_strdup("void"),0,0,0);return (0);};
+  ptr=old;
 
-if (tok.tok==CHAR) {set_command(SYM_TYPE_ID,0,strdup("char"),0,0,0);return (0);};
-if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,strdup("wchar_t"),0,0,0);return (0);};
-if (tok.tok==BOOL) {set_command(SYM_TYPE_ID,0,strdup("bool"),0,0,0);return (0);};
-if (tok.tok==SHORT) {set_command(SYM_TYPE_ID,0,strdup("short"),0,0,0);return (0);};
-if (tok.tok==INT) {set_command(SYM_TYPE_ID,0,strdup("int"),0,0,0);return (0);};
-if (tok.tok==LONG) {set_command(SYM_TYPE_ID,0,strdup("long"),0,0,0);return (0);};
-if (tok.tok==SIGNED) {set_command(SYM_TYPE_ID,0,strdup("signed"),0,0,0);return (0);};
-if (tok.tok==UNSIGNED) {set_command(SYM_TYPE_ID,0,strdup("unsigned"),0,0,0);return (0);};
-if (tok.tok==FLOAT) {set_command(SYM_TYPE_ID,0,strdup("float"),0,0,0);return (0);};
-if (tok.tok==DOUBLE) {set_command(SYM_TYPE_ID,0,strdup("double"),0,0,0);return (0);};
-if (tok.tok==VOID) {set_command(SYM_TYPE_ID,0,strdup("void"),0,0,0);return (0);};
-// added struct to parse some attributes properly...may cause side-fx
-//if (tok.tok==STRUCT) {set_command(SYM_TYPE_ID,0,"struct",0,0,0);return (0);};
-// took it out again - didn't do much
-ptr=old;
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  save=ptr;
+  if (!type_name()) {
+    set_command(SYM_TYPE_ID,0,sym_text(save,ptr),0,0,0);
+    set_command(SYM_TYPE_NAME,0,sym_text(save,ptr),0,0,0);
+    return (0);
+  }
 
-parse_SCOPE_opt();
-nested_name_specifier_opt();
-save=ptr;
-if (!type_name()) {
-	set_command(SYM_TYPE_ID,0,sym_text(save,ptr),0,0,0);
-	set_command(SYM_TYPE_NAME,0,sym_text(save,ptr),0,0,0);
-	return (0);
-}
-
-ptr=old;np=oldnp;return(-1);
-
+  ptr=old;np=oldnp;return(-1);
 };
 
 
 /* **************************************** */
 
 int simple_type_specifier () {
+  int old=ptr;
+  token tok=nexttok();
 
-int old=ptr;
-token tok=nexttok();
+  advance();
+  if (tok.tok==CHAR)    {set_command(SYM_TYPE_ID,0,_strdup("char"),0,0,0);return (0);};
+  if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,_strdup("wchar_t"),0,0,0);return (0);};
+  if (tok.tok==BOOL)    {set_command(SYM_TYPE_ID,0,_strdup("bool"),0,0,0);return (0);};
+  if (tok.tok==SHORT)   {set_command(SYM_TYPE_ID,0,_strdup("short"),0,0,0);return (0);};
+  if (tok.tok==INT)     {set_command(SYM_TYPE_ID,0,_strdup("int"),0,0,0);return (0);};
+  if (tok.tok==LONG)    {set_command(SYM_TYPE_ID,0,_strdup("long"),0,0,0);return (0);};
+  if (tok.tok==SIGNED)  {set_command(SYM_TYPE_ID,0,_strdup("signed"),0,0,0);return (0);};
+  if (tok.tok==UNSIGNED){set_command(SYM_TYPE_ID,0,_strdup("unsigned"),0,0,0);return (0);};
+  if (tok.tok==FLOAT)   {set_command(SYM_TYPE_ID,0,_strdup("float"),0,0,0);return (0);};
+  if (tok.tok==DOUBLE)  {set_command(SYM_TYPE_ID,0,_strdup("double"),0,0,0);return (0);};
+  if (tok.tok==VOID)    {set_command(SYM_TYPE_ID,0,_strdup("void"),0,0,0);return (0);};
 
-advance();
-if (tok.tok==CHAR)    {set_command(SYM_TYPE_ID,0,strdup("char"),0,0,0);return (0);};
-if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,strdup("wchar_t"),0,0,0);return (0);};
-if (tok.tok==BOOL)    {set_command(SYM_TYPE_ID,0,strdup("bool"),0,0,0);return (0);};
-if (tok.tok==SHORT)   {set_command(SYM_TYPE_ID,0,strdup("short"),0,0,0);return (0);};
-if (tok.tok==INT)     {set_command(SYM_TYPE_ID,0,strdup("int"),0,0,0);return (0);};
-if (tok.tok==LONG)    {set_command(SYM_TYPE_ID,0,strdup("long"),0,0,0);return (0);};
-if (tok.tok==SIGNED)  {set_command(SYM_TYPE_ID,0,strdup("signed"),0,0,0);return (0);};
-if (tok.tok==UNSIGNED){set_command(SYM_TYPE_ID,0,strdup("unsigned"),0,0,0);return (0);};
-if (tok.tok==FLOAT)   {set_command(SYM_TYPE_ID,0,strdup("float"),0,0,0);return (0);};
-if (tok.tok==DOUBLE)  {set_command(SYM_TYPE_ID,0,strdup("double"),0,0,0);return (0);};
-if (tok.tok==VOID)    {set_command(SYM_TYPE_ID,0,strdup("void"),0,0,0);return (0);};
-
-ptr=old;
-return(-1);
-
+  ptr=old;
+  return(-1);
 };
 
 /* **************************************** */
 
 int class_key () {
-
-	if (!parse_CLASS()) {
-		set_command(BEGIN_CD,ptr,strdup(""),thisline(),0,0);
-		return (0);
-	}
-	if (!parse_STRUCT()) {
-		set_command(BEGIN_SD,ptr,strdup(""),thisline(),0,0);
-		return (0);
-	}
-	if (!parse_UNION()) {
-		set_command(BEGIN_UD,ptr,strdup(""),thisline(),0,0);
-		return (0);
-	}
-return (-1);
-
+  if (!parse_CLASS()) {
+    set_command(BEGIN_CD,ptr,_strdup(""),thisline(),0,0);
+    return (0);
+  }
+  if (!parse_STRUCT()) {
+    set_command(BEGIN_SD,ptr,_strdup(""),thisline(),0,0);
+    return (0);
+  }
+  if (!parse_UNION()) {
+    set_command(BEGIN_UD,ptr,_strdup(""),thisline(),0,0);
+    return (0);
+  }
+  return (-1);
 };
 
 /* **************************************** */
 
 int zero () {
+  token tok=nexttok();
 
-token tok=nexttok();
+  if (!strcmp(tok.str,"0")) {advance();return(0);};
 
-if (!strcmp(tok.str,"0")) {advance();return(0);};
-
-return (-1);
-
+  return (-1);
 };
 
 /* **************************************** */
 
 int using_declaration () {
+  int old=ptr;
+  int oldnp=np;
+  int save;
 
-int old=ptr;
-int oldnp=np;
-int save;
-
-if (parse_USING()) {ptr=old;np=oldnp;return(-1);};
-save=ptr;
-if (!parse_SCOPE()) {
-	if (unqualified_id()) {ptr=save;goto u_d_l;};
-	if (parse_SEMICOLON()) {ptr=save;goto u_d_l;};
-	return(0);	
-};
-u_d_l:
-parse_TYPENAME_opt();
-parse_SCOPE_opt();
-if (nested_name_specifier()) {ptr=old;np=oldnp;return(-1);};
-if (unqualified_id()) {ptr=old;np=oldnp;return(-1);};
-if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-return(0);
+  if (parse_USING()) {ptr=old;np=oldnp;return(-1);};
+  save=ptr;
+  if (!parse_SCOPE()) {
+    if (unqualified_id()) {ptr=save;goto u_d_l;};
+    if (parse_SEMICOLON()) {ptr=save;goto u_d_l;};
+    return(0);
+  };
+  u_d_l:
+  parse_TYPENAME_opt();
+  parse_SCOPE_opt();
+  if (nested_name_specifier()) {ptr=old;np=oldnp;return(-1);};
+  if (unqualified_id()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 
 /* **************************************** */
 
 int using_directive () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
-
-if (parse_USING()) {ptr=old;return(-1);};
-if (parse_NAMESPACE()) {ptr=old;return(-1);};
-parse_SCOPE_opt();
-nested_name_specifier_opt();
-if (namespace_name()) {ptr=old;np=oldnp;return(-1);};
-if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-return(0);
-
+  if (parse_USING()) {ptr=old;return(-1);};
+  if (parse_NAMESPACE()) {ptr=old;return(-1);};
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (namespace_name()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 }
 
 /* **************************************** */
 
 int namespace_alias_definition () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  if (parse_NAMESPACE()) {ptr=old;return(-1);};
+  if (parse_IDENTIFIER()) {ptr=old;return(-1);};
+  if (parse_ASSIGN()) {ptr=old;np=oldnp;return(-1);};
+  if (qualified_namespace_specifier()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
 
-if (parse_NAMESPACE()) {ptr=old;return(-1);};
-if (parse_IDENTIFIER()) {ptr=old;return(-1);};
-if (parse_ASSIGN()) {ptr=old;np=oldnp;return(-1);};
-if (qualified_namespace_specifier()) {ptr=old;np=oldnp;return(-1);};
-if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-
-return(0);
-
+  return(0);
 };
 
 /* **************************************** */
@@ -543,23 +498,23 @@ if (!parse_IDENTIFIER()) return (0);
 return(-1);
 
 }
- 
+
 /* **************************************** */
 
 int access_specifier() {
 
 if (!parse_PRIVATE()) {
-	set_command(PROTECTION_LEVEL,PRO_PRIVATE,strdup(""),0,0,0);
-	return(0);
-	};
+  set_command(PROTECTION_LEVEL,PRO_PRIVATE,_strdup(""),0,0,0);
+  return(0);
+  };
 if (!parse_PROTECTED()) {
-	set_command(PROTECTION_LEVEL,PRO_PROTECTED,strdup(""),0,0,0);
-	return(0);
-	};
+  set_command(PROTECTION_LEVEL,PRO_PROTECTED,_strdup(""),0,0,0);
+  return(0);
+  };
 if (!parse_PUBLIC()) {
-	set_command(PROTECTION_LEVEL,PRO_PUBLIC,strdup(""),0,0,0);
-	return (0);
-	};
+  set_command(PROTECTION_LEVEL,PRO_PUBLIC,_strdup(""),0,0,0);
+  return (0);
+  };
 return(-1);
 };
 
@@ -583,9 +538,9 @@ int oldnp=np;
 
 //printf("LOOK CLASS_NAME %d\n",ptr);
 if (!template_id()) {
-//	printf("GOT CLASS_NAME %d\n",ptr);
-	return (0);
-}; 
+//  printf("GOT CLASS_NAME %d\n",ptr);
+  return (0);
+};
 if (!parse_IDENTIFIER()) {/*printf("GOT CLASS_NAME %d\n",ptr);*/return (0);};
 //printf("NOT GOT CLASS_NAME %d\n",ptr);
 np=oldnp;
@@ -602,23 +557,23 @@ int oldnp=np;
 int mark;
 
 if (!parse_VIRTUAL()) {
-	access_specifier_opt();
-	mark=ptr;
-	parse_SCOPE_opt();
-	nested_name_specifier_opt();
-	if (class_name()) {ptr=old;np=oldnp;return(-1);};
-	set_command(ID,0,sym_text(mark,ptr),0,0,0);
-	return (0);
+  access_specifier_opt();
+  mark=ptr;
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (class_name()) {ptr=old;np=oldnp;return(-1);};
+  set_command(ID,0,sym_text(mark,ptr),0,0,0);
+  return (0);
 };
 
 if (!access_specifier()) {
-	parse_VIRTUAL_opt();
-	mark=ptr;
-	parse_SCOPE_opt();
-	nested_name_specifier_opt();
-	if (class_name()) {ptr=old;np=oldnp;return(-1);};
-	set_command(ID,0,sym_text(mark,ptr),0,0,0);
-	return(0);
+  parse_VIRTUAL_opt();
+  mark=ptr;
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (class_name()) {ptr=old;np=oldnp;return(-1);};
+  set_command(ID,0,sym_text(mark,ptr),0,0,0);
+  return(0);
 };
 mark=ptr;
 parse_SCOPE_opt();
@@ -637,20 +592,20 @@ int old=ptr;
 int save;
 int savenp;
 
-set_command(BEGIN_BASES,0,strdup(""),0,0,0);
+set_command(BEGIN_BASES,0,_strdup(""),0,0,0);
 
 if (base_specifier()) {
-	ptr=old;
-	set_command(END_BASES,0,strdup(""),0,0,0);
-	return(-1);
+  ptr=old;
+  set_command(END_BASES,0,_strdup(""),0,0,0);
+  return(-1);
 };
 
 save=ptr;savenp=np;
 while (!parse_COMMA()) {
-	if (base_specifier()) {ptr=save;np=savenp;return(0);};
-	old=ptr;
+  if (base_specifier()) {ptr=save;np=savenp;return(0);};
+  old=ptr;
 };
-set_command(END_BASES,0,strdup(""),0,0,0);
+set_command(END_BASES,0,_strdup(""),0,0,0);
 return (0);
 
 };
@@ -688,14 +643,14 @@ int startcol=thiscol();
 int line=thisline();
 
 if (!nested_name_specifier()) {
-	if (parse_IDENTIFIER()) {ptr=old;np=oldnp;return(-1);};
-	set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
-	base_clause_opt();
-	return(0);
+  if (parse_IDENTIFIER()) {ptr=old;np=oldnp;return(-1);};
+  set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
+  base_clause_opt();
+  return(0);
 };
 
 if (!parse_IDENTIFIER())
-	set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
+  set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
 
 base_clause_opt();
 
@@ -710,9 +665,9 @@ int pure_specifier() {
 
 int old=ptr;
 
-	if (parse_ASSIGN()) {ptr=old;return(-1);};
-	if (zero()) {ptr=old;return(-1);};
-	return(0);	
+  if (parse_ASSIGN()) {ptr=old;return(-1);};
+  if (zero()) {ptr=old;return(-1);};
+  return(0);
 
 };
 
@@ -735,9 +690,9 @@ int constant_initializer() {
 int old=ptr;
 int oldnp=np;
 
-	if (parse_ASSIGN()) {ptr=old;return(-1);};
-	if (constant_expression()) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  if (parse_ASSIGN()) {ptr=old;return(-1);};
+  if (constant_expression()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 
 };
 
@@ -760,17 +715,17 @@ int member_declarator () {
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_MEMB_DECLARATOR,0,strdup(""),0,0,0);
+set_command(BEGIN_MEMB_DECLARATOR,0,_strdup(""),0,0,0);
 if (!declarator()) {
-	pure_specifier_opt();
-	constant_initializer_opt();
-	set_command(END_MEMB_DECLARATOR,0,strdup(""),0,0,0);
-	return (0);
+  pure_specifier_opt();
+  constant_initializer_opt();
+  set_command(END_MEMB_DECLARATOR,0,_strdup(""),0,0,0);
+  return (0);
 };
 parse_IDENTIFIER_opt();
 if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
 if (constant_expression()) {ptr=old;np=oldnp;return(-1);};
-set_command(END_MEMB_DECLARATOR,0,strdup(""),0,0,0);  
+set_command(END_MEMB_DECLARATOR,0,_strdup(""),0,0,0);
 return(0);
 
 }
@@ -785,9 +740,9 @@ int old=ptr;
 int oldnp=np;
 
 while (!member_declarator()) {
-	count++;
-	save=ptr;
-	if (parse_COMMA()) {ptr=save;return(0);};
+  count++;
+  save=ptr;
+  if (parse_COMMA()) {ptr=save;return(0);};
 };
 if (count) return (0);
 ptr=old;np=oldnp;
@@ -815,44 +770,44 @@ int member_declaration() {
 int old=ptr;
 int oldnp=np;
 
-if (!parse_SEMICOLON()) 
+if (!parse_SEMICOLON())
   return (0);
 
 // modified by GNS 31/5/99 for Chris Griffin to avoid output with this
 if (!qualified_id())
   if (!look_SEMICOLON())  {
-	np=oldnp;
+  np=oldnp;
     return (0);
   }
 ptr=old;np=oldnp;
 
-if (!function_definition()) 
-	if (!parse_SEMICOLON()) {
-		return (0);
-	}
-	else {
-		return (0);
-	}
+if (!function_definition())
+  if (!parse_SEMICOLON()) {
+    return (0);
+  }
+  else {
+    return (0);
+  }
 ptr=old;np=oldnp;
 
-if (!simple_declaration()) 
+if (!simple_declaration())
   return 0;
 ptr=old;np=oldnp;
 
 if (!class_specifier())
   return 0;
-  
-if (!using_declaration()) 
+
+if (!using_declaration())
   return (0);
 
-if (!template_declaration()) 
+if (!template_declaration())
   return (0);
 
-if (!function_definition()) 
-	if (!parse_SEMICOLON())
-		return (0);
-	else
-		return (0);		
+if (!function_definition())
+  if (!parse_SEMICOLON())
+    return (0);
+  else
+    return (0);
 ptr=old;np=oldnp;
 return(-1);
 
@@ -865,16 +820,16 @@ int member_specification () {
 int old=ptr;
 int oldnp=np;
 
-if (!access_specifier()) 
+if (!access_specifier())
         if (!parse_COLON()) {
-//			if (debug) printf("GOT MS %d\n",ptr);
-			return (0);
-		}
+//      if (debug) printf("GOT MS %d\n",ptr);
+      return (0);
+    }
 
 ptr=old;np=oldnp;
 
-if (!member_declaration()) 
-	return(0);
+if (!member_declaration())
+  return(0);
 
 ptr=old;np=oldnp;
 return(-1);
@@ -912,30 +867,30 @@ int oldnp=np;
 
 if (class_key()) {ptr=old;return(-1);};
 
-//set_command(BEGIN_CD,ptr,strdup(""),thisline(),0,0);
+//set_command(BEGIN_CD,ptr,_strdup(""),thisline(),0,0);
 
 if (class_head()) {
-	ptr=old;np=oldnp;
-	return(-1);
-	};
-	
-set_command(MID_CD,0,strdup(""),0,0,0);	
-set_command(PROTECTION_LEVEL,PRO_PRIVATE,strdup(""),0,0,0);
+  ptr=old;np=oldnp;
+  return(-1);
+  };
+
+set_command(MID_CD,0,_strdup(""),0,0,0);
+set_command(PROTECTION_LEVEL,PRO_PRIVATE,_strdup(""),0,0,0);
 
 if (parse_LEFTBRACE()) {
-	ptr=old;np=oldnp;
-	return(-1); 
-	}
+  ptr=old;np=oldnp;
+  return(-1);
+  }
 member_specification_opt();
 
 if (parse_RIGHTBRACE()) {
-	ptr=old;np=oldnp;
-	return(-1);
-	}
+  ptr=old;np=oldnp;
+  return(-1);
+  }
 
 /* joy to the world */
 //if (debug) printf("------------------------ thisline() = %d\n",thisline());
-set_command(END_CD,ptr,strdup(""),tokens[ptr].line/*thisline()*/,0,0);
+set_command(END_CD,ptr,_strdup(""),tokens[ptr].line/*thisline()*/,0,0);
 return (0);
 
 }
@@ -992,40 +947,40 @@ int save;
 int oldnp=np;
 
 if (!class_key()) {
-	// added this to try to parse some declarations properly
-	np=oldnp; // don't need the BEGIN_CD/BEGIN_UD/BEGIN_SD
-	set_command(SYM_TYPE_ID,0,strdup(tokens[ptr].str),0,0,0);
+  // added this to try to parse some declarations properly
+  np=oldnp; // don't need the BEGIN_CD/BEGIN_UD/BEGIN_SD
+  set_command(SYM_TYPE_ID,0,_strdup(tokens[ptr].str),0,0,0);
 
-	parse_SCOPE_opt();
-	nested_name_specifier_opt();
-	if (!parse_IDENTIFIER()) {
-		old=ptr;oldnp=np;
-		if (!parse_LESSTHAN())
-			if (!template_argument_list())
-				if (!parse_GREATERTHAN())
-					return (0);
-		ptr=old;np=oldnp;return(0);
-	}
-	ptr=old;np=oldnp;
-	return(-1);	
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (!parse_IDENTIFIER()) {
+    old=ptr;oldnp=np;
+    if (!parse_LESSTHAN())
+      if (!template_argument_list())
+        if (!parse_GREATERTHAN())
+          return (0);
+    ptr=old;np=oldnp;return(0);
+  }
+  ptr=old;np=oldnp;
+  return(-1);
 }
 
 if (!parse_ENUM()) {
-	parse_SCOPE_opt();
-	nested_name_specifier_opt();
-	if (!parse_IDENTIFIER()) 	return(0);
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (!parse_IDENTIFIER())  return(0);
 }
 
 ptr=old;np=oldnp;return(-1);
 if (!parse_TYPENAME()) {
-	parse_SCOPE_opt();
-	if (nested_name_specifier()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_IDENTIFIER()) {ptr=old;np=oldnp;return(-1);};
-	save=ptr;
-	if (parse_LESSTHAN()) {ptr=save;return(0);};
-	if (template_argument_list()) {ptr=save;return(0);};
-	if (parse_GREATERTHAN()) {ptr=save;return(0);};
-	return(0);
+  parse_SCOPE_opt();
+  if (nested_name_specifier()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_IDENTIFIER()) {ptr=old;np=oldnp;return(-1);};
+  save=ptr;
+  if (parse_LESSTHAN()) {ptr=save;return(0);};
+  if (template_argument_list()) {ptr=save;return(0);};
+  if (parse_GREATERTHAN()) {ptr=save;return(0);};
+  return(0);
 };
 
 ptr=old;np=oldnp;
@@ -1043,8 +998,8 @@ int oldnp=np;
 
 while (!type_specifier()) count++;
 if (count) {
-	return (0);};
-	
+  return (0);};
+
 ptr=old;np=oldnp;
 return (-1);
 
@@ -1060,7 +1015,7 @@ int oldnp=np;
 
 while (!inclusive_type_specifier()) count++;
 if (count) {
-	return (0);};
+  return (0);};
 ptr=old;np=oldnp;
 return (-1);
 
@@ -1075,7 +1030,7 @@ token tok;
 tok=nexttok();
 
 if (tok.tok!=TYPEDEF) {return(-1);};
-set_command(TYPE_SYNONYM,0,strdup(""),0,0,0);
+set_command(TYPE_SYNONYM,0,_strdup(""),0,0,0);
 advance();
 return (0);
 
@@ -1141,7 +1096,7 @@ int count =0 ;
 while (!decl_ptr_operator()) count++;       /* soak up the ptr_operators */
 
 if (!direct_abstract_declarator()) return (0);
-if (count)	return (0);
+if (count)  return (0);
 
 ptr=old;np=oldnp;
 return(-1);
@@ -1170,8 +1125,8 @@ int oldnp=np;
 if (!decl_param_part()) return (0);
 if (!decl_const_part()) return (0);
 if (!parenthesised_abstract_declarator()) {
-	while ( (!decl_param_part()) || (!decl_const_part())) ;
-	return (0); 
+  while ( (!decl_param_part()) || (!decl_const_part())) ;
+  return (0);
 };
 
 ptr=old;np=oldnp;
@@ -1192,7 +1147,7 @@ parse_SCOPE_opt();
 nested_name_specifier_opt();
 if (type_name()) {np=oldnp; ptr=old;};
 if (ptr!=old) {
-	set_command(SYM_TYPE_ID,0,sym_text(old,ptr),line,startcol,lastcol());
+  set_command(SYM_TYPE_ID,0,sym_text(old,ptr),line,startcol,lastcol());
 }
 
 }
@@ -1250,9 +1205,9 @@ void decl_specifier_seq_opt() {
 
 int nowhere;
 
-//set_command(decl_specifier_seq_opt_begin,0,strdup(""),0,0,0);
+//set_command(decl_specifier_seq_opt_begin,0,_strdup(""),0,0,0);
 nowhere=decl_specifier_seq();
-//set_command(decl_specifier_seq_opt_end,0,strdup(""),0,0,0);
+//set_command(decl_specifier_seq_opt_end,0,_strdup(""),0,0,0);
 return;
 
 }
@@ -1291,12 +1246,12 @@ int line=thisline();
 int startcol=thiscol();
 int i;
 
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 npsave=np;
 
 if (!enum_specifier()) {
   if (!look_SEMICOLON()) {
-    set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+    set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
     return 0;
   }
 }
@@ -1304,20 +1259,20 @@ if (!enum_specifier()) {
 ptr=old;np=npsave;
 
 if (!look_SEMICOLON()) {
-	set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
-//	fprintf(stderr,"SIMP D %d\n",ptr);
-	if (!parse_SEMICOLON()) return 0;
-	return (0);
+  set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
+//  fprintf(stderr,"SIMP D %d\n",ptr);
+  if (!parse_SEMICOLON()) return 0;
+  return (0);
 }
 
 for (i=0;i<=2;i++) {
   if (i==0) param_dss_opt(0);
   else param_dss_opt(1);
   npsaveb=np;saveb=ptr;
-  if (!init_declarator_list()) 
+  if (!init_declarator_list())
     if ((!look_SEMICOLON())||(!look_COMMA())) {
-    	set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
-	return 0;
+      set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
+  return 0;
     };
   np=npsaveb;ptr=saveb;
 };
@@ -1327,7 +1282,7 @@ for (i=0;i<=2;i++) {
   if (i==0) param_dss_opt(0);
   else param_dss_opt(1);
   if (ptr>old) {
-    set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+    set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
   };
 };
 
@@ -1346,26 +1301,26 @@ int npsaveb,saveb;
 int line=thisline();
 int startcol=thiscol();
 int i;
- 
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 npsave=np;
- 
+
 if (!enum_specifier()) {
   if (!look_SEMICOLON()) {
-    set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+    set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
     return 0;
   }
 }
- 
+
 ptr=old;np=npsave;
- 
+
 if (!look_SEMICOLON()) {
-        set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+        set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 //      fprintf(stderr,"SIMP D %d\n",ptr);
         if (!parse_SEMICOLON()) return 0;
         return (0);
 }
- 
+
 for (i=0;i<=2;i++) {
   if (i==0) param_dss_opt(1);
   else param_dss_opt(1);
@@ -1374,23 +1329,23 @@ for (i=0;i<=2;i++) {
   if (!init_declarator_list()) {
     no_parenthesised_declarators=0;
     if ((!look_SEMICOLON())||(!look_COMMA())) {
-        set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+        set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
         return 0;
     };
   }
   no_parenthesised_declarators=0;
   np=npsaveb;ptr=saveb;
 };
- 
+
 ptr=old;np=npsave;
 for (i=0;i<=2;i++) {
   if (i==0) param_dss_opt(1);
   else param_dss_opt(1);
   if (ptr>old) {
-    set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+    set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
   };
 };
- 
+
 ptr=old;np=oldnp;return (-1);
 
 }
@@ -1405,33 +1360,33 @@ int npsave=np;
 int line=thisline();
 int startcol=thiscol();
 
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 
 // d_s_s i_d_l
 ptr=old;np=npsave;
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 if (!decl_specifier_seq()) {
-	//if (debug) printf("SING 1A %s\n",sym_text(old,ptr));
-	if (ptr>old) 
-		if (!sing_init_declarator_list()) {
-			set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
-			//if (debug) printf("SING A %s\n",sym_text(old,ptr));
-			return (0);
-		}
+  //if (debug) printf("SING 1A %s\n",sym_text(old,ptr));
+  if (ptr>old)
+    if (!sing_init_declarator_list()) {
+      set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
+      //if (debug) printf("SING A %s\n",sym_text(old,ptr));
+      return (0);
+    }
 }
 // d_s_s BS i_d_l
 ptr=old;np=npsave;
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
 if (!decl_specifier_seq()) {
-	if ((ptr>old)&&(np>npsave)) {ptr--;np--;}
-		if (ptr>old) {
-			sing_init_declarator_list_opt();
-			set_command(END_SIMPLE_DECL,0,strdup(""),line,startcol,lastcol());
-			if ((!look_SEMICOLON())||(!look_COMMA())) {
-				//if (debug) printf("SING B %s\n",sym_text(old,ptr));
-				return 0;
-			}
-		}
+  if ((ptr>old)&&(np>npsave)) {ptr--;np--;}
+    if (ptr>old) {
+      sing_init_declarator_list_opt();
+      set_command(END_SIMPLE_DECL,0,_strdup(""),line,startcol,lastcol());
+      if ((!look_SEMICOLON())||(!look_COMMA())) {
+        //if (debug) printf("SING B %s\n",sym_text(old,ptr));
+        return 0;
+      }
+    }
 }
 ptr=old;np=npsave;return (-1);
 
@@ -1532,7 +1487,7 @@ if (parse_RIGHTBRACE()) {
       ptr++,depth++;
     else if (!look_RIGHTBRACE())
       depth--;
-    else 
+    else
       ptr++;
   };
 };
@@ -1550,32 +1505,32 @@ int old=ptr;
 int oldnp=np;
 
 if (!parse_IDENTIFIER()) {
-	set_command(LABEL,0,sym_text(old,ptr),0,0,0);
-	if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
-	if (statement()) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  set_command(LABEL,0,sym_text(old,ptr),0,0,0);
+  if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
+  if (statement()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 if (!parse_CASE()) {
-	set_command(MORE_DEPTH,0,strdup(""),0,0,0);
-	set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
-	if (constant_expression()) {ptr=old;np=oldnp;return(-1);};
-	set_command(END_EXPRESSION,0,strdup(""),0,0,0);
-	if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
-	if (statement()) {ptr=old;np=oldnp;return(-1);};
-	set_command(CYCLO,0,strdup(""),0,0,0);
-	set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-	return(0);
+  set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+  set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
+  if (constant_expression()) {ptr=old;np=oldnp;return(-1);};
+  set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
+  if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
+  if (statement()) {ptr=old;np=oldnp;return(-1);};
+  set_command(CYCLO,0,_strdup(""),0,0,0);
+  set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_DEFAULT()) {
-	set_command(MORE_DEPTH,0,strdup(""),0,0,0);
-	if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
-	if (statement()) {ptr=old;np=oldnp;return(-1);};
-	// D01 Begin -------------------------------------------
-	// default case should not affect cyclomatic complexity
-	//set_command(CYCLO,0,strdup(""),0,0,0);
-	// D01 End ---------------------------------------------
-	set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-	return(0);
+  set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+  if (parse_COLON()) {ptr=old;np=oldnp;return(-1);};
+  if (statement()) {ptr=old;np=oldnp;return(-1);};
+  // D01 Begin -------------------------------------------
+  // default case should not affect cyclomatic complexity
+  //set_command(CYCLO,0,_strdup(""),0,0,0);
+  // D01 End ---------------------------------------------
+  set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+  return(0);
 };
 ptr=old;np=oldnp;
 return(-1);
@@ -1585,19 +1540,19 @@ return(-1);
 
 int expression_statement() {
 
-	//debugging
-	//step1
+  //debugging
+  //step1
 
-	int old=ptr;
-	int oldnp=np;
+  int old=ptr;
+  int oldnp=np;
 
-	expression_opt();
-	if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  expression_opt();
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
 
-	if (ptr-old==1)
-		density.top()->executable--;
-	
-	return(0);
+  if (ptr-old==1)
+    density.top()->executable--;
+
+  return(0);
 }
 
 /* ***************************************** */
@@ -1608,27 +1563,27 @@ int old=ptr;
 int oldnp=np;
 
 if (!parse_BREAK()) {
-	if (parse_SEMICOLON()) {ptr=old;return(-1);};
-	set_command(MARK_UNSTRUCT,0,strdup(""),0,0,0);
-	return(0);
+  if (parse_SEMICOLON()) {ptr=old;return(-1);};
+  set_command(MARK_UNSTRUCT,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_CONTINUE()) {
-	if (parse_SEMICOLON()) {ptr=old;return(-1);};
-	set_command(MARK_UNSTRUCT,0,strdup(""),0,0,0);
-	return(0);
+  if (parse_SEMICOLON()) {ptr=old;return(-1);};
+  set_command(MARK_UNSTRUCT,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_RETURN()) {
-	expression_opt();
-	if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-	set_command(RET,0,strdup(""),0,0,0);
-	return(0);
+  expression_opt();
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  set_command(RET,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_GOTO()) {
-	if (parse_IDENTIFIER()) {ptr=old;return(-1);};
-	if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-	set_command(MARK_UNSTRUCT,0,strdup(""),0,0,0);
-	return(0);
-};	
+  if (parse_IDENTIFIER()) {ptr=old;return(-1);};
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  set_command(MARK_UNSTRUCT,0,_strdup(""),0,0,0);
+  return(0);
+};
 ptr=old;np=oldnp;
 return(-1);
 };
@@ -1651,38 +1606,38 @@ return (-1);
 
 int condition() {
 
-	int old=ptr;
-	int oldnp=np;
+  int old=ptr;
+  int oldnp=np;
 
-	if (!expression())
-		return 0;
-		
-	ptr=old;
-	np=oldnp;
+  if (!expression())
+    return 0;
 
-	if (!type_specifier_seq()) 
-		if (!declarator())
-			if (!parse_ASSIGN())
-				if (!assignment_expression())
-					return 0;
-	
-	ptr=old;
-	np=oldnp;
+  ptr=old;
+  np=oldnp;
 
-	if (!type_specifier_seq()) {
-		if ((ptr>old)&&(np>oldnp)) {
-			ptr-- ;
-			np-- ;
-		}
-		if (!declarator())
-			if (!parse_ASSIGN())
-				if (!assignment_expression())
-					return 0;
-	}
+  if (!type_specifier_seq())
+    if (!declarator())
+      if (!parse_ASSIGN())
+        if (!assignment_expression())
+          return 0;
 
-	ptr=old ;
-	np=oldnp ;
-	return -1 ;
+  ptr=old;
+  np=oldnp;
+
+  if (!type_specifier_seq()) {
+    if ((ptr>old)&&(np>oldnp)) {
+      ptr-- ;
+      np-- ;
+    }
+    if (!declarator())
+      if (!parse_ASSIGN())
+        if (!assignment_expression())
+          return 0;
+  }
+
+  ptr=old ;
+  np=oldnp ;
+  return -1 ;
 
 /*
 
@@ -1693,25 +1648,25 @@ int tempnp;
 int save;
 
 if (type_specifier_seq()) {
-	temp=ptr;tempnp=np;
-	parse_extra_decl_spec();
-	if (ptr==temp) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	if (declarator()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	if (parse_EQUALS()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	if (assignment_expression()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	return (0);
+  temp=ptr;tempnp=np;
+  parse_extra_decl_spec();
+  if (ptr==temp) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  if (declarator()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  if (parse_EQUALS()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  if (assignment_expression()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  return (0);
 };
 save=ptr;tempnp=np;
 if (declarator()) goto cond_extra;
@@ -1720,19 +1675,19 @@ if (assignment_expression()) {ptr=save;np=tempnp;goto cond_extra;}
 return (0);
 cond_extra:
 parse_extra_decl_spec();
-	if (declarator()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	if (parse_EQUALS()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	if (assignment_expression()) {
-		ptr=old;np=oldnp;
-		goto cond_next;
-	}
-	return (0);
+  if (declarator()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  if (parse_EQUALS()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  if (assignment_expression()) {
+    ptr=old;np=oldnp;
+    goto cond_next;
+  }
+  return (0);
 cond_next:
 if (expression()) {ptr=old;np=oldnp;return(-1);}
 return (0);
@@ -1759,43 +1714,43 @@ int old=ptr;
 int oldnp=np;
 
 if (!parse_WHILE()) {
-	set_command(MORE_DEPTH,0,strdup(""),0,0,0);
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (condition()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (statement()) {ptr=old;np=oldnp;return(-1);};
-	set_command(CYCLO,0,strdup(""),0,0,0);
-	set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-	return (0);
+  set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (condition()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (statement()) {ptr=old;np=oldnp;return(-1);};
+  set_command(CYCLO,0,_strdup(""),0,0,0);
+  set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+  return (0);
 };
 
 if (!parse_DO()) {
-	set_command(MORE_DEPTH,0,strdup(""),0,0,0);
-	if (statement()) {ptr=old;np=oldnp;return (-1);};
-	if (parse_WHILE()) {ptr=old;np=oldnp;return (-1);};
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return (-1);};
-	if (expression()) {ptr=old;np=oldnp;return (-1);};
-	if (parse_RIGHTPARENTH ()) {ptr=old;np=oldnp;return (-1);};
-	if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
-	set_command(CYCLO,0,strdup(""),0,0,0);
- 	set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-	return (0);
+  set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+  if (statement()) {ptr=old;np=oldnp;return (-1);};
+  if (parse_WHILE()) {ptr=old;np=oldnp;return (-1);};
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return (-1);};
+  if (expression()) {ptr=old;np=oldnp;return (-1);};
+  if (parse_RIGHTPARENTH ()) {ptr=old;np=oldnp;return (-1);};
+  if (parse_SEMICOLON()) {ptr=old;np=oldnp;return(-1);};
+  set_command(CYCLO,0,_strdup(""),0,0,0);
+  set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+  return (0);
 };
 
 if (!parse_FOR()) {
-	if (parse_LEFTPARENTH()) {ptr=old;return (-1);};
-	set_command(MORE_DEPTH,0,strdup(""),0,0,0);	
-	(void)for_init_statement();
-	parse_SEMICOLON_opt();
-	condition_opt();
-	parse_SEMICOLON_opt();
-	//if (semicolon()) {ptr=old;np=oldnp;return (-1);};
-	expression_opt();
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (statement()) {ptr=old;np=oldnp;return (-1);};
-	set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-	set_command(CYCLO,0,strdup(""),0,0,0);
-	return (0);
+  if (parse_LEFTPARENTH()) {ptr=old;return (-1);};
+  set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+  (void)for_init_statement();
+  parse_SEMICOLON_opt();
+  condition_opt();
+  parse_SEMICOLON_opt();
+  //if (semicolon()) {ptr=old;np=oldnp;return (-1);};
+  expression_opt();
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (statement()) {ptr=old;np=oldnp;return (-1);};
+  set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+  set_command(CYCLO,0,_strdup(""),0,0,0);
+  return (0);
 };
 
 ptr=old;np=oldnp;
@@ -1836,8 +1791,8 @@ int old=ptr;
 int oldnp=np;
 
 if (!parse_ELSE()) {
-	if (statement()) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  if (statement()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 
 ptr=old;np=oldnp;
@@ -1861,64 +1816,64 @@ return ;
 
 int selection_statement() {
 
-	int old=ptr;
-	int oldnp=np;
+  int old=ptr;
+  int oldnp=np;
 
-	if (!parse_SWITCH()) {
-		if (parse_LEFTPARENTH()) {ptr=old;return(-1);};
-		set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
-		if (condition()) {ptr=old;return(-1);};
-		set_command(END_EXPRESSION,0,strdup(""),0,0,0);
-		if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-		if (statement()) {ptr=old;np=oldnp;return(-1);};
-		return(0);
-	}
+  if (!parse_SWITCH()) {
+    if (parse_LEFTPARENTH()) {ptr=old;return(-1);};
+    set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
+    if (condition()) {ptr=old;return(-1);};
+    set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
+    if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+    if (statement()) {ptr=old;np=oldnp;return(-1);};
+    return(0);
+  }
 
-	if (!parse_IF()) {
- 		set_command(MORE_DEPTH,0,strdup(""),0,0,0);
-		set_command(MARK_IF,0,strdup(""),0,0,0);
-		if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-		if (condition()) {ptr=old;np=oldnp;return(-1);};
-		if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-		if (statement()) {ptr=old;np=oldnp;return(-1);};
-		else_part_opt();
-		set_command(MARK_ENDIF,0,strdup(""),0,0,0);
-		set_command(LESS_DEPTH,0,strdup(""),0,0,0);
-		set_command(CYCLO,0,strdup(""),0,0,0);
-		return(0);
-	}
+  if (!parse_IF()) {
+    set_command(MORE_DEPTH,0,_strdup(""),0,0,0);
+    set_command(MARK_IF,0,_strdup(""),0,0,0);
+    if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+    if (condition()) {ptr=old;np=oldnp;return(-1);};
+    if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+    if (statement()) {ptr=old;np=oldnp;return(-1);};
+    else_part_opt();
+    set_command(MARK_ENDIF,0,_strdup(""),0,0,0);
+    set_command(LESS_DEPTH,0,_strdup(""),0,0,0);
+    set_command(CYCLO,0,_strdup(""),0,0,0);
+    return(0);
+  }
 
-	ptr=old;np=oldnp;
-	return (-1);
+  ptr=old;np=oldnp;
+  return (-1);
 
 }
 
 /* ***************************************** */
 
 int statement () {
-// 26/6/98	
-	//if (!single_pointer_declaration_statement()) return 0;
+// 26/6/98
+  //if (!single_pointer_declaration_statement()) return 0;
 
 // 15/2/99
-//	if (!local_variable_declaration_statement()) return 0;
+//  if (!local_variable_declaration_statement()) return 0;
 
-	// debugging
-	// Almost certainly called from here
-	// possible fix would be to switch the top two lines.
+  // debugging
+  // Almost certainly called from here
+  // possible fix would be to switch the top two lines.
 
-	// Testing: The following two lines have been switch	
+  // Testing: The following two lines have been switch
 
-	if (!local_variable_declaration_statement()) return 0;
- 	if (!expression_statement())  {density.top()->executable++;return (0);};
+  if (!local_variable_declaration_statement()) return 0;
+  if (!expression_statement())  {density.top()->executable++;return (0);};
 
-	if (!labeled_statement())     {density.top()->executable++;return (0);};
-	if (!compound_statement())    {density.top()->executable++;return (0);};
-	if (!selection_statement())   {density.top()->control++;   return (0);};
-	if (!iteration_statement())   {density.top()->control++;   return (0);};
-	if (!jump_statement())        {density.top()->control++;   return (0);};
-	if (!declaration_statement()) {                            return (0);};
-	if (!try_block())             {density.top()->control++;   return (0);};
-	return (-1);
+  if (!labeled_statement())     {density.top()->executable++;return (0);};
+  if (!compound_statement())    {density.top()->executable++;return (0);};
+  if (!selection_statement())   {density.top()->control++;   return (0);};
+  if (!iteration_statement())   {density.top()->control++;   return (0);};
+  if (!jump_statement())        {density.top()->control++;   return (0);};
+  if (!declaration_statement()) {                            return (0);};
+  if (!try_block())             {density.top()->control++;   return (0);};
+  return (-1);
 
 }
 
@@ -1955,8 +1910,8 @@ int oldnp=np;
 int count=0;
 int save,ttl;
 
-while ((!statement())||(!class_specifier())) 
-	count++;
+while ((!statement())||(!class_specifier()))
+  count++;
 
 if (look_RIGHTBRACE()) {
   ttl=0;save=ptr;
@@ -2012,10 +1967,10 @@ int nsc=0 ; // No. Semicolon count - added CAM 09/05/2001
 
 // for these, must compute Halstead
 
-set_command(BEGIN_FDEF,0,strdup(""),thisline(),thiscol(),0);
+set_command(BEGIN_FDEF,0,_strdup(""),thisline(),thiscol(),0);
 
 for (i=0;i<=2;i++) {
-  if (i==0) param_dss_opt(0); 
+  if (i==0) param_dss_opt(0);
   else param_dss_opt(1);
   save=ptr;npsave=np;
 
@@ -2030,23 +1985,23 @@ for (i=0;i<=2;i++) {
     ctor_initializer_opt() ;
     before=ptr ;
     k_and_r_params_opt() ;
-    if (ptr>before) 
+    if (ptr>before)
       parse_SEMICOLON_opt() ;
 
-    // must set up a current function scope for number of 
-	// control statements, executable statements
+    // must set up a current function scope for number of
+  // control statements, executable statements
     current_density=new control_exec;
     current_density->control=0;
     current_density->executable=0;
     density.push(current_density);
-    
+
     // HOW DO WE HANDLE BACKTRACKING AND CONTROL DENSITY!!????
-	
+
     tmp=ptr;
     if (!function_body()) {
       h=compute_halstead(tmp,ptr) ;
       set_command(END_FDEF,h.N1,(char*)(tokens[ptr].line)/*thisline()*/,h.N2,h.n1,h.n2) ;
-      set_command(END_FDEF,density.top()->control,strdup(""),density.top()->executable,h.nsc,0) ;
+      set_command(END_FDEF,density.top()->control,_strdup(""),density.top()->executable,h.nsc,0) ;
       density.pop() ;
       return 0 ;
     };
@@ -2057,7 +2012,7 @@ for (i=0;i<=2;i++) {
     if (!function_try_block()) {
       h=compute_halstead(tmp,ptr);
       set_command(END_FDEF,h.N1,(char*)(tokens[ptr].line)/*thisline()*/,h.N2,h.n1,h.n2);
-      set_command(END_FDEF,density.top()->control,strdup(""),density.top()->executable,h.nsc,0);
+      set_command(END_FDEF,density.top()->control,_strdup(""),density.top()->executable,h.nsc,0);
       density.pop();
       return 0;
     };
@@ -2078,8 +2033,8 @@ int ttl;
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_FBODY,0,strdup(""),0,0,0);
-if (!fb_compound_statement()) {set_command(END_FBODY,0,strdup(""),0,0,0);return 0;};
+set_command(BEGIN_FBODY,0,_strdup(""),0,0,0);
+if (!fb_compound_statement()) {set_command(END_FBODY,0,_strdup(""),0,0,0);return 0;};
 
 ttl=0;
 ptr=old;np=oldnp;
@@ -2171,11 +2126,11 @@ int old=ptr,oldnp=np;
 
 if (!parse_SEMICOLON()) return 0;
 
-set_command(BEGIN_SIMPLE_DECL,0,strdup(""),0,0,0);
+set_command(BEGIN_SIMPLE_DECL,0,_strdup(""),0,0,0);
 if (!class_specifier()) {
   //if (!init_declarator_list()) ;
-  set_command(END_SIMPLE_DECL,0,strdup(""),0,0,0);
-  return 0; 
+  set_command(END_SIMPLE_DECL,0,_strdup(""),0,0,0);
+  return 0;
 }
 ptr=old;np=oldnp;
 
@@ -2239,9 +2194,9 @@ if (parse_EXTERN()) {ptr=old;return(-1);};
 if (parse_STRING_LITERAL()) {ptr=old;return(-1);};
 save=ptr;
 if (!parse_LEFTBRACE()) {
-	declaration_seq_opt();
-	if (parse_RIGHTBRACE()) {ptr=old;np=oldnp;return(-1);};
-	return (0);
+  declaration_seq_opt();
+  if (parse_RIGHTBRACE()) {ptr=old;np=oldnp;return(-1);};
+  return (0);
 };
 if (declaration()) {ptr=old;np=oldnp;return(-1);};
 
@@ -2279,8 +2234,8 @@ int oldnp=np;
 
 tok=nexttok();
 
-if (tok.tok=='*') {advance();cv_qualifier_seq_opt();set_command(SYM_TYPE_ID,0,strdup("*"),0,0,0);return(0);}
-if (tok.tok=='&') {advance();set_command(SYM_TYPE_ID,0,strdup("&"),0,0,0);return(0);}
+if (tok.tok=='*') {advance();cv_qualifier_seq_opt();set_command(SYM_TYPE_ID,0,_strdup("*"),0,0,0);return(0);}
+if (tok.tok=='&') {advance();set_command(SYM_TYPE_ID,0,_strdup("&"),0,0,0);return(0);}
 parse_SCOPE_opt();
 if (nested_name_specifier()) {ptr=old;return(-1);}
 if (parse_TIMES()) {ptr=old;np=oldnp;return(-1);};
@@ -2316,7 +2271,7 @@ while (!ptr_operator()) ;
 return (0);
 
 }
- 
+
 /* ***************************************** */
 
 int primary_expression () {
@@ -2331,22 +2286,22 @@ if (debug) printf("1");
 if (!parse_THIS()) return(0);
 if (debug) printf("2\n");
 if (!id_expression(1)) {
-	//set_command(REF,0,sym_text(old,ptr),0,0,0);
-	return(0);
+  //set_command(REF,0,sym_text(old,ptr),0,0,0);
+  return(0);
 }
 if (debug) printf("PRIMARY 2\n");
 if (!parse_LEFTPARENTH()) {
-	if (expression()) {ptr=old;return(-1);};
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  if (expression()) {ptr=old;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 if (debug) printf("PRIMARY 3\n");
 if (!parse_SCOPE()) {
-	if (!parse_IDENTIFIER()) {set_command(REF,0,sym_text(old,ptr),0,0,0);set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
-	if (!operator_function_id()) {set_command(REF,0,sym_text(old,ptr),0,0,0);set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
-	if (!qualified_id()) {/*set_command(REF,0,sym_text(old,ptr),0,0,0);*/set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
-	ptr=old;np=oldnp;
-	return(-1);
+  if (!parse_IDENTIFIER()) {set_command(REF,0,sym_text(old,ptr),0,0,0);set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
+  if (!operator_function_id()) {set_command(REF,0,sym_text(old,ptr),0,0,0);set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
+  if (!qualified_id()) {/*set_command(REF,0,sym_text(old,ptr),0,0,0);*/set_command(LOWCOMPLEX,0,"",0,0,0);return (0);};
+  ptr=old;np=oldnp;
+  return(-1);
 };
 if (debug) printf("PRIMARY 4\n");
 ptr=old;np=oldnp;
@@ -2364,7 +2319,7 @@ return -1;
 }
 
 int id_expression(int talkback) {
- 
+
 int old=ptr;
 int oldnp=np;
 
@@ -2388,13 +2343,13 @@ int old=ptr;
 int oldnp=np;
 
 if (!operator_function_id()) return (0);
-	
-if (!template_id()) return (0); 
+
+if (!template_id()) return (0);
 
 if (!conversion_function_id()) return(0);
 
 if (!parse_IDENTIFIER()) {
-		if (debug) printf("ident");
+    if (debug) printf("ident");
 // xref here?
         set_command(REF,0,sym_text(old,ptr),0,0,0);
 
@@ -2402,10 +2357,10 @@ if (!parse_IDENTIFIER()) {
 }
 
 if (!parse_TILDE()) {
-	if (!class_name()) return (0);
-	ptr=old;
-	np=oldnp;
-	return(-1);
+  if (!class_name()) return (0);
+  ptr=old;
+  np=oldnp;
+  return(-1);
 };
 
 ptr=old;
@@ -2421,15 +2376,15 @@ int qualified_id () {
 int old=ptr;
 int oldnp=np;
 
-	if (!nested_name_specifier()) {
-		template_opt();
-		if (!unqualified_id()) 
-			return (0);
-	}
-	
-	ptr=old;np=oldnp;
-	
-	return(-1);
+  if (!nested_name_specifier()) {
+    template_opt();
+    if (!unqualified_id())
+      return (0);
+  }
+
+  ptr=old;np=oldnp;
+
+  return(-1);
 
 }
 
@@ -2443,44 +2398,44 @@ int mark;
 int oldcom;
 
 if (!parse_LEFTBRACKET()) {
-	if (expression()) {
-		ptr=old;return(-1);};
-	if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  if (expression()) {
+    ptr=old;return(-1);};
+  if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 
 oldcom=code.tree[np].com;
 
 if (!parse_LEFTPARENTH()) {
-	if (oldcom==REF)
-		code.tree[np].com=FREF;
-	expression_list_opt();
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;code.tree[np].com=oldcom;return(-1);};
-		return(0);
+  if (oldcom==REF)
+    code.tree[np].com=FREF;
+  expression_list_opt();
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;code.tree[np].com=oldcom;return(-1);};
+    return(0);
 };
 
 if (!parse_PTR_OP()) {
-	if (!pseudo_destructor_name()) return(0);
-	template_opt(); 
-	parse_SCOPE_opt();
-	if (id_expression(1)) {ptr=old;np=oldnp;return(-1);};
-	return(0);
+  if (!pseudo_destructor_name()) return(0);
+  template_opt();
+  parse_SCOPE_opt();
+  if (id_expression(1)) {ptr=old;np=oldnp;return(-1);};
+  return(0);
 };
 if (!parse_DOT()) {
-	if (!pseudo_destructor_name()) return(0);
-        template_opt();  
-        parse_SCOPE_opt(); 
-	mark=ptr;
+  if (!pseudo_destructor_name()) return(0);
+        template_opt();
+        parse_SCOPE_opt();
+  mark=ptr;
         if (id_expression(1)) {ptr=old;np=oldnp;return(-1);};
-	return(0); 
+  return(0);
 };
 if (!parse_INC_OP()) {
- 	set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return (0);
+  set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return (0);
 };
 if (!parse_DEC_OP()) {
-	set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return (0);
+  set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return (0);
 };
 ptr=old;
 return (-1);
@@ -2544,31 +2499,31 @@ int save;
 int oldnp=np;
 
 if (!parse_CLASS()) {
-	parse_IDENTIFIER_opt();
-	save=ptr;
-	if (parse_ASSIGN()) {ptr=save;return(0);};
-	if (type_id()) {ptr=save;return(0);};
-	return(0);
+  parse_IDENTIFIER_opt();
+  save=ptr;
+  if (parse_ASSIGN()) {ptr=save;return(0);};
+  if (type_id()) {ptr=save;return(0);};
+  return(0);
 };
 
 if (!parse_TYPENAME()) {
-	parse_IDENTIFIER_opt();
+  parse_IDENTIFIER_opt();
         save=ptr;
-        if (parse_ASSIGN()) {ptr=save;return(0);}; 
+        if (parse_ASSIGN()) {ptr=save;return(0);};
         if (type_id()) {ptr=save;return(0);};
-        return(0); 
+        return(0);
 };
 
 if (!parse_TEMPLATE()) {
-	if (parse_LESSTHAN()) {ptr=old;return(-1);};
-	if (template_parameter_list()) {ptr=old;return(-1);};
-	if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_CLASS()) {ptr=old;np=oldnp;return(-1);};
-	parse_IDENTIFIER_opt();
-	save=ptr;
-	if (parse_ASSIGN()) {ptr=save;return(0);}; 
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+  if (template_parameter_list()) {ptr=old;return(-1);};
+  if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_CLASS()) {ptr=old;np=oldnp;return(-1);};
+  parse_IDENTIFIER_opt();
+  save=ptr;
+  if (parse_ASSIGN()) {ptr=save;return(0);};
     if (template_name()) {ptr=save;return(0);};
-    return(0); 
+    return(0);
 };
 
 ptr=old;
@@ -2584,7 +2539,7 @@ int count=0;
 int old=ptr;
 
 while (!template_parameter()) {
-count++; 
+count++;
 if (parse_COMMA()) break;
 };
 if (count>0) return (0);
@@ -2618,25 +2573,23 @@ int template_argument() {
 int old=ptr;
 
 if (!type_id()) {
-	if (!lookahead_end_template_argument()){
-		return (0);
-	}
+  if (!lookahead_end_template_argument()){
+    return (0);
+  }
 }
 
 if (!assignment_expression()) {
-	if (!lookahead_end_template_argument()){
-		return (0);
-	}
+  if (!lookahead_end_template_argument()){
+    return (0);
+  }
 }
- 
- 
+
+
 if (!template_name()) {
-	if (!lookahead_end_template_argument()) {
-		return (0);
-	}
+  if (!lookahead_end_template_argument()) {
+    return (0);
+  }
 }
-	
-//printf("TEMPLATE_ARGUMENT DONE\n");
 
 ptr=old;
 return (-1);
@@ -2650,19 +2603,19 @@ int template_argument_list () {
 int saveptr,savenp;
 
 if (!template_argument()) {
-	saveptr=ptr;savenp=np;
-	if (!parse_COMMA()) {
-		while (!template_argument()) {
-			saveptr=ptr;savenp=np;
-			if (parse_COMMA()) {
-				ptr=saveptr;np=savenp;
-				return (0);
-			}
-		}
-		ptr=saveptr;np=savenp;
-		return (0);
-	}
-	return (0);
+  saveptr=ptr;savenp=np;
+  if (!parse_COMMA()) {
+    while (!template_argument()) {
+      saveptr=ptr;savenp=np;
+      if (parse_COMMA()) {
+        ptr=saveptr;np=savenp;
+        return (0);
+      }
+    }
+    ptr=saveptr;np=savenp;
+    return (0);
+  }
+  return (0);
 }
 
 return (-1);
@@ -2684,27 +2637,23 @@ return(-1);
 /* ***************************************** */
 
 int template_id () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
-
-if (template_name()) {ptr=old;return(-1);};
-if (parse_LESSTHAN()) {ptr=old;return(-1);};
-if (template_argument_list()) {ptr=old;return(-1);};
-if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
-np=oldnp; // needed to avoid mentioning types in <> more than in the whole thing
-return(0);
-
+  if (template_name()) {ptr=old;return(-1);};
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+  if (template_argument_list()) {ptr=old;return(-1);};
+  if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
+  np=oldnp; // needed to avoid mentioning types in <> more than in the whole thing
+  return(0);
 }
 
 /* ***************************************** */
 
 void template_opt () {
- 
-int nowhere;
+  int nowhere;
 
-nowhere=parse_TEMPLATE();
-
+  nowhere=parse_TEMPLATE();
 }
 
 /* ***************************************** */
@@ -2782,15 +2731,15 @@ return (0);
 };
 
 /* ***************************************** */
- 
+
 int parentheses () {
- 
+
 int old=ptr;
- 
+
 if (parse_LEFTPARENTH()) {ptr=old;return (-1);};
 if (parse_RIGHTPARENTH()) {ptr=old;return (-1);};
 return (0);
- 
+
 };
 
 /* ***************************************** */
@@ -2884,80 +2833,80 @@ return ;
 /* ***************************************** */
 
 int postfix_expression () {
-  
+
 int old=ptr;
 int oldnp=np;
 
 if (!primary_expression()) {
-	pf_tails_opt();
-	return (0);};
-	
+  pf_tails_opt();
+  return (0);};
+
 if (!simple_type_specifier()) {
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	expression_list_opt();
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	pf_tails_opt();
-	set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return(0);
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  expression_list_opt();
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  pf_tails_opt();
+  set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_DYNAMIC_CAST()) {
-	if (parse_LESSTHAN()) {ptr=old;return(-1);};
-	if (type_id()) {ptr=old;return(-1);};
-	if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (expression()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	pf_tails_opt();
-	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-	return(0);	
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+  if (type_id()) {ptr=old;return(-1);};
+  if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (expression()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  pf_tails_opt();
+  set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (!parse_STATIC_CAST()) {
-	if (parse_LESSTHAN()) {ptr=old;return(-1);};
-	if (type_id()) {ptr=old;return(-1);};
-	if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-    	if (expression()) {ptr=old;np=oldnp;return(-1);}; 
-    	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-    	pf_tails_opt();  
-    	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-    	return(0);       
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+  if (type_id()) {ptr=old;return(-1);};
+  if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+      if (expression()) {ptr=old;np=oldnp;return(-1);};
+      if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+      pf_tails_opt();
+      set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+      return(0);
 };
 if (!parse_REINTERPRET_CAST()) {
-	if (parse_LESSTHAN()) {ptr=old;return(-1);};
-        if (type_id()) {ptr=old;return(-1);}; 
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+        if (type_id()) {ptr=old;return(-1);};
         if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
-        if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};                    
-        if (expression()) {ptr=old;np=oldnp;return(-1);};       
-        if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};    
-        pf_tails_opt();      
-	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);  
-        return(0);        
+        if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+        if (expression()) {ptr=old;np=oldnp;return(-1);};
+        if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+        pf_tails_opt();
+  set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
 };
 if (!parse_CONST_CAST()) {
-	if (parse_LESSTHAN()) {ptr=old;return(-1);};
-        if (type_id()) {ptr=old;return(-1);}; 
-        if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);}; 
-        if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};                     
-        if (expression()) {ptr=old;np=oldnp;return(-1);};        
-        if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};     
-        pf_tails_opt();   
-	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);      
-        return(0);         
+  if (parse_LESSTHAN()) {ptr=old;return(-1);};
+        if (type_id()) {ptr=old;return(-1);};
+        if (parse_GREATERTHAN()) {ptr=old;np=oldnp;return(-1);};
+        if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+        if (expression()) {ptr=old;np=oldnp;return(-1);};
+        if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+        pf_tails_opt();
+  set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
 };
 if (!parse_TYPEID()) {
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (!expression()) {
-		if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-		pf_tails_opt();
-		set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-		return(0);
-	};
-	if (!type_id()) {
-		if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-		pf_tails_opt();
-		set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-		return(0);
-	};
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (!expression()) {
+    if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+    pf_tails_opt();
+    set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+    return(0);
+  };
+  if (!type_id()) {
+    if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+    pf_tails_opt();
+    set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+    return(0);
+  };
 };
 ptr=old;
 return(-1);
@@ -2970,18 +2919,18 @@ int expression_list () {
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
+set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
 if (!assignment_expression()) {
-set_command(END_EXPRESSION,0,strdup(""),0,0,0);
+set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
 while (!parse_COMMA()) {
-	old=ptr;oldnp=np;
-	set_command(SEP,0,strdup(""),0,0,0);
-	set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
-	if (assignment_expression()) {
-		ptr=old;np=oldnp;
-		return 0;
-	}
-	set_command(END_EXPRESSION,0,strdup(""),0,0,0);
+  old=ptr;oldnp=np;
+  set_command(SEP,0,_strdup(""),0,0,0);
+  set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
+  if (assignment_expression()) {
+    ptr=old;np=oldnp;
+    return 0;
+  }
+  set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
 }
 return 0;
 }
@@ -3024,9 +2973,9 @@ int oldnp=np;
 parse_SCOPE_opt();
 nested_name_specifier_opt();
 if (!parse_TILDE()) {
-	if (type_name()) {ptr=old;np=oldnp;return(-1);};
-	set_command(REF,0,sym_text(old,ptr),0,0,0);
-	return(0);
+  if (type_name()) {ptr=old;np=oldnp;return(-1);};
+  set_command(REF,0,sym_text(old,ptr),0,0,0);
+  return(0);
 };
 if (type_name()) {ptr=old;np=oldnp;return(-1);};
 if (parse_SCOPE()) {ptr=old;np=oldnp;return(-1);};
@@ -3043,31 +2992,31 @@ int old=ptr;
 int oldnp=np;
 
 if (!postfix_expression()) {
-	return (0);
+  return (0);
 }
 if (!parse_INC_OP()) {
-	if (cast_expression()) {ptr=old;return(-1);};
-	return(0);
+  if (cast_expression()) {ptr=old;return(-1);};
+  return(0);
 }
 if (!parse_DEC_OP()) {
-	if (cast_expression()) {ptr=old;return(-1);};
-	return(0);
+  if (cast_expression()) {ptr=old;return(-1);};
+  return(0);
 }
 if (!unary_operator()) {
-	if (cast_expression()) {ptr=old;return(-1);};
-	set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return(0);
+  if (cast_expression()) {ptr=old;return(-1);};
+  set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 }
 if (!parse_SIZEOF()) {
-	if (!unary_expression()) {
-		set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-		return (0);
-	}
-	if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	if (type_id()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return(0);	
+  if (!unary_expression()) {
+    set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+    return (0);
+  }
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  if (type_id()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 }
 if (!new_expression()) return (0);
 if (!delete_expression()) return (0);
@@ -3113,17 +3062,17 @@ save=ptr;
 new_placement_opt();
 
 if (!new_type_id()) {
-	new_initializer_opt();
-	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-	return(0);
+  new_initializer_opt();
+  set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 };
 
 if (!parse_LEFTPARENTH()) {
-	if (type_id()) {ptr=old;np=oldnp;return(-1);};
-	if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
-	new_initializer_opt();
-	set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-	return(0);
+  if (type_id()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return(-1);};
+  new_initializer_opt();
+  set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+  return(0);
 };
 if (ptr>save)
   return 0;
@@ -3170,7 +3119,7 @@ int oldnp=np;
 if (parse_LEFTBRACKET()) {ptr=old;return(-1);};
 if (constant_expression()) {ptr=old;return(-1);};
 if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);};
-set_command(SYM_TYPE_ID,0,strdup("[]"),0,0,0);
+set_command(SYM_TYPE_ID,0,_strdup("[]"),0,0,0);
 return(0);
 
 };
@@ -3231,11 +3180,11 @@ int old=ptr;
 int oldnp=np;
 
 if (parse_DELETE()) {ptr=old;return(-1); };
-if (!cast_expression()) {set_command(LOWCOMPLEX,0,strdup(""),0,0,0);return (0);};
+if (!cast_expression()) {set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);return (0);};
 if (parse_LEFTBRACKET()) {ptr=old;np=oldnp;return(-1);};
 if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);};
 if (cast_expression()) {ptr=old;np=oldnp;return(-1);};
-set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
+set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
 return (0);
 
 };
@@ -3251,7 +3200,7 @@ if (parse_LEFTPARENTH()) {ptr=old;goto no_cast;};
 if (smart_type_id()) {ptr=old;goto no_cast;};
 if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;goto no_cast;};
 if (cast_expression()) {ptr=old;np=oldnp;goto no_cast;};
-set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
+set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
 return(0);
 no_cast:
 if (!unary_expression()) return (0);
@@ -3272,16 +3221,16 @@ int saveb;
 if (cast_expression()) {ptr=old;return(-1);};
 saveb=ptr;
 while (another) {
-	save=ptr;
-	if (!parse_DOT_STAR()) {
-		if (cast_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};
-	}
-	else if (!parse_PTR_OP_STAR()) {
-		if (cast_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};
-	}
-	else another=0;
+  save=ptr;
+  if (!parse_DOT_STAR()) {
+    if (cast_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+  }
+  else if (!parse_PTR_OP_STAR()) {
+    if (cast_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+  }
+  else another=0;
 };
-if (ptr>saveb) set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
+if (ptr>saveb) set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
 return (0);
 };
 
@@ -3289,31 +3238,31 @@ return (0);
 
 int multiplicative_expression () {
 
-int old=ptr; 
-int save; 
-int another=1; 
+int old=ptr;
+int save;
+int another=1;
 int saveb;
 
 if (pm_expression()) {ptr=old;return(-1);};
 saveb=ptr;
 while (another) {
         save=ptr;
-        if (!parse_TIMES()) {   
-				set_command(SEP,0,strdup(""),0,0,0);
-				if (pm_expression()) {ptr=save;set_command(LOWCOMPLEX,0,strdup(""),0,0,0);return(0);}; 
-        }               
-        else if (!parse_DIVIDE()) {    
-				set_command(SEP,0,strdup(""),0,0,0);
-                if (pm_expression()) {ptr=save;set_command(LOWCOMPLEX,0,strdup(""),0,0,0);return(0);};
+        if (!parse_TIMES()) {
+        set_command(SEP,0,_strdup(""),0,0,0);
+        if (pm_expression()) {ptr=save;set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);return(0);};
         }
-		else if (!parse_PERCENT()) {
-				set_command(SEP,0,strdup(""),0,0,0);
-			if (pm_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};
-		}
-        else another=0;        
+        else if (!parse_DIVIDE()) {
+        set_command(SEP,0,_strdup(""),0,0,0);
+                if (pm_expression()) {ptr=save;set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+        }
+    else if (!parse_PERCENT()) {
+        set_command(SEP,0,_strdup(""),0,0,0);
+      if (pm_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+    }
+        else another=0;
 };
-if (ptr>saveb) set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-return (0); 
+if (ptr>saveb) set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+return (0);
 
 };
 
@@ -3321,26 +3270,26 @@ return (0);
 
 int additive_expression () {
 
-	int old=ptr; 
-	int save; 
-	int another=1; 
-	int saveb;
-	if (multiplicative_expression()) {ptr=old;return(-1);};
-	saveb=ptr;
-	while (another) {
-			save=ptr;
-			if (!parse_PLUS()) {   
-					set_command(SEP,0,strdup(""),0,0,0);
-					if (multiplicative_expression()) {ptr=save;set_command(LOWCOMPLEX,0,strdup(""),0,0,0);return(0);}; 
-			}               
-			else if (!parse_MINUS()) {     
-					set_command(SEP,0,strdup(""),0,0,0);
-					if (multiplicative_expression()) {ptr=save;set_command(LOWCOMPLEX,0,strdup(""),0,0,0);return(0);};
-			}
-			else another=0;        
-	};
-	if (ptr>saveb) set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-	return (0); 
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
+  if (multiplicative_expression()) {ptr=old;return(-1);};
+  saveb=ptr;
+  while (another) {
+      save=ptr;
+      if (!parse_PLUS()) {
+          set_command(SEP,0,_strdup(""),0,0,0);
+          if (multiplicative_expression()) {ptr=save;set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+      }
+      else if (!parse_MINUS()) {
+          set_command(SEP,0,_strdup(""),0,0,0);
+          if (multiplicative_expression()) {ptr=save;set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+      }
+      else another=0;
+  };
+  if (ptr>saveb) set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+  return (0);
 
 };
 
@@ -3349,274 +3298,274 @@ int additive_expression () {
 
 int shift_expression () {
 
-	int old=ptr;  
-	int save; 
-	int another=1;  
-	int saveb;
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
 
-	if (additive_expression()) {ptr=old;return(-1);};
-	saveb=ptr;
+  if (additive_expression()) {ptr=old;return(-1);};
+  saveb=ptr;
 
-	while (another) { 
-			save=ptr; 
-			if (!parse_LESSLESS()) {    
-					if (additive_expression()) {ptr=save;set_command(HIGHCOMPLEX,0,strdup(""),0,0,0);return(0);};  
-			}                
-			else if (!parse_GREATERGREATER()) {      
-					if (additive_expression()) {ptr=save;set_command(HIGHCOMPLEX,0,strdup(""),0,0,0);return(0);}; 
-			} 
-			else another=0;          
-	}
+  while (another) {
+      save=ptr;
+      if (!parse_LESSLESS()) {
+          if (additive_expression()) {ptr=save;set_command(HIGHCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+      }
+      else if (!parse_GREATERGREATER()) {
+          if (additive_expression()) {ptr=save;set_command(HIGHCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+      }
+      else another=0;
+  }
 
-	if (ptr>saveb) set_command(HIGHCOMPLEX,0,strdup(""),0,0,0);
+  if (ptr>saveb) set_command(HIGHCOMPLEX,0,_strdup(""),0,0,0);
 
-	return 0;  
+  return 0;
 }
 
 /* ***************************************** */
 
 int relational_expression () {
 
-	int old=ptr;   
-	int save; 
-	int another=1;   
-	int saveb;
-	
-	if (shift_expression()) {
-		ptr=old;
-		return(-1);
-	}
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
 
-	saveb=ptr;
-	while (another) {  
-		save=ptr;  
-		if (!parse_LESSTHAN()) {     
-			if (shift_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return 0;
-			}
-			set_command(SEP,0,strdup(""),0,0,0);
-		} else if (!parse_GREATERTHAN()) {
-			if (shift_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return 0;
-			}
-			set_command(SEP,0,strdup(""),0,0,0);
-		} else if (!parse_LESSEQUALS()) {
-			if (shift_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return 0;
-			}
-			set_command(SEP,0,strdup(""),0,0,0);
-		} else if (!parse_GREATEREQUALS()) {
-			if (shift_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return 0;
-			}
-			set_command(SEP,0,strdup(""),0,0,0);
-		} else 
-			another=0;           
-	}
+  if (shift_expression()) {
+    ptr=old;
+    return(-1);
+  }
 
-	if (ptr>saveb) 
-		set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
+  saveb=ptr;
+  while (another) {
+    save=ptr;
+    if (!parse_LESSTHAN()) {
+      if (shift_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return 0;
+      }
+      set_command(SEP,0,_strdup(""),0,0,0);
+    } else if (!parse_GREATERTHAN()) {
+      if (shift_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return 0;
+      }
+      set_command(SEP,0,_strdup(""),0,0,0);
+    } else if (!parse_LESSEQUALS()) {
+      if (shift_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return 0;
+      }
+      set_command(SEP,0,_strdup(""),0,0,0);
+    } else if (!parse_GREATEREQUALS()) {
+      if (shift_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return 0;
+      }
+      set_command(SEP,0,_strdup(""),0,0,0);
+    } else
+      another=0;
+  }
 
-	return 0;   
+  if (ptr>saveb)
+    set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+
+  return 0;
 }
 
 /* ***************************************** */
 
 int equality_expression () {
 
-	int old=ptr;    
-	int save; 
-	int another=1;    
-	int saveb;
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
 
-	if (relational_expression()) {
-		ptr=old;
-		return -1;
-	}
+  if (relational_expression()) {
+    ptr=old;
+    return -1;
+  }
 
-	saveb=ptr;
-	while (another) {   
-		save=ptr;   
-		if (!parse_EQUALS()) {      
-			//debugging next line added
-			set_command(SEP,0,strdup(""),0,0,0);
-			if (relational_expression()) {
-				ptr=save;
-				set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-				return(0);
-			}
-		}                  
-		else if (!parse_NOTEQUALS()) {        
-			//debugging next line added
-			set_command(SEP,0,strdup(""),0,0,0);
-			if (relational_expression()) {
-				ptr=save;
-				set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
-				return(0);
-			}
-		} else 
-			another=0;
-	}
+  saveb=ptr;
+  while (another) {
+    save=ptr;
+    if (!parse_EQUALS()) {
+      //debugging next line added
+      set_command(SEP,0,_strdup(""),0,0,0);
+      if (relational_expression()) {
+        ptr=save;
+        set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
+      }
+    }
+    else if (!parse_NOTEQUALS()) {
+      //debugging next line added
+      set_command(SEP,0,_strdup(""),0,0,0);
+      if (relational_expression()) {
+        ptr=save;
+        set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
+      }
+    } else
+      another=0;
+  }
 
-	if (ptr>saveb) 
-		set_command(LOWCOMPLEX,0,strdup(""),0,0,0);
+  if (ptr>saveb)
+    set_command(LOWCOMPLEX,0,_strdup(""),0,0,0);
 
-	return (0);
+  return (0);
 }
 
 /* ***************************************** */
 
 int and_expression () {
- 
-int old=ptr;     
-int save; 
-int another=1;     
 
-if (equality_expression()) {ptr=old;return(-1);};    
-while (another) {    
-        save=ptr;    
-        if (!parse_AMPERSAND()) {       
-                if (equality_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};     
-        }                    
-        else another=0; 
-};  
-if (ptr>old) set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-return (0); 
- 
+int old=ptr;
+int save;
+int another=1;
+
+if (equality_expression()) {ptr=old;return(-1);};
+while (another) {
+        save=ptr;
+        if (!parse_AMPERSAND()) {
+                if (equality_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+        }
+        else another=0;
+};
+if (ptr>old) set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+return (0);
+
 };
 
 /* ***************************************** */
 
 int exclusive_or_expression () {
-  
-int old=ptr;     
-int save;  
-int another=1;      
+
+int old=ptr;
+int save;
+int another=1;
 int saveb;
 
-if (and_expression()) {ptr=old;return(-1);};     
+if (and_expression()) {ptr=old;return(-1);};
 saveb=ptr;
-while (another) {     
-        save=ptr;     
-        if (!parse_CARET()) {        
-                if (and_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};      
-        }                     
-        else another=0;   
-};   
-if (ptr>saveb) set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-return (0);  
+while (another) {
+        save=ptr;
+        if (!parse_CARET()) {
+                if (and_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+        }
+        else another=0;
+};
+if (ptr>saveb) set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+return (0);
 
 };
 
 /* ***************************************** */
 
-int inclusive_or_expression () { 
-   
-	int old=ptr;      
-	int save;  
-	int another=1;       
-	int saveb;
+int inclusive_or_expression () {
 
-	if (exclusive_or_expression()) {
-		ptr=old;
-		return -1;
-	}
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
 
-	saveb=ptr;
-	while (another) {     
-		save=ptr;     
-        if (!parse_BAR()) {        
-			if (exclusive_or_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return(0);
-			}
-        }                      
-        else another=0;    
-	}
+  if (exclusive_or_expression()) {
+    ptr=old;
+    return -1;
+  }
 
-	if (ptr>saveb) 
-		set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-	
-	return 0;
+  saveb=ptr;
+  while (another) {
+    save=ptr;
+        if (!parse_BAR()) {
+      if (exclusive_or_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
+      }
+        }
+        else another=0;
+  }
+
+  if (ptr>saveb)
+    set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+
+  return 0;
 }
 
 /* ***************************************** */
 
 int logical_and_expression () {
 
-	int old=ptr;      
-	int save;   
-	int another=1;        
-	int saveb;
+  int old=ptr;
+  int save;
+  int another=1;
+  int saveb;
 
-	if (inclusive_or_expression()) {
-		ptr=old;
-		return(-1);
-	}
-	
-	saveb=ptr;
-	while (another) {      
-		save=ptr;      
-		if (!parse_AND_OP()) {          
-			//debugging next line added
-			set_command(SEP,0,strdup(""),0,0,0);
+  if (inclusive_or_expression()) {
+    ptr=old;
+    return(-1);
+  }
 
-			if (inclusive_or_expression()) {
-				ptr=save;
-				set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-				return(0);
-			}
-		} else 
-			another=0;       
-	}
+  saveb=ptr;
+  while (another) {
+    save=ptr;
+    if (!parse_AND_OP()) {
+      //debugging next line added
+      set_command(SEP,0,_strdup(""),0,0,0);
 
-	if (ptr>saveb) 
-		set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
+      if (inclusive_or_expression()) {
+        ptr=save;
+        set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+        return(0);
+      }
+    } else
+      another=0;
+  }
 
-	return 0;      
+  if (ptr>saveb)
+    set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+
+  return 0;
 }
 
 /* ***************************************** */
 
 int logical_or_expression () {
 
-int old=ptr;       
-int save;   
-int another=1;         
+int old=ptr;
+int save;
+int another=1;
  int saveb;
- 
-if (logical_and_expression()) {ptr=old;return(-1);};        
+
+if (logical_and_expression()) {ptr=old;return(-1);};
 saveb=ptr;
-while (another) {       
-        save=ptr;       
-        if (!parse_OR_OP()) {           
-                if (logical_and_expression()) {ptr=save;set_command(MIDCOMPLEX,0,strdup(""),0,0,0);return(0);};         
-        }                        
-        else another=0;        
-};        
-if (ptr>saveb) set_command(MIDCOMPLEX,0,strdup(""),0,0,0);
-return (0);    
+while (another) {
+        save=ptr;
+        if (!parse_OR_OP()) {
+                if (logical_and_expression()) {ptr=save;set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);return(0);};
+        }
+        else another=0;
+};
+if (ptr>saveb) set_command(MIDCOMPLEX,0,_strdup(""),0,0,0);
+return (0);
 
 };
 
 /* ***************************************** */
 
-int conditional_expression () { 
- 
-int old=ptr;        
-int save;    
+int conditional_expression () {
+
+int old=ptr;
+int save;
 int savenp;
 
-if (logical_or_expression()) {ptr=old;return(-1);};         
+if (logical_or_expression()) {ptr=old;return(-1);};
 save=ptr;
 savenp=np;
 if (parse_QUERY()) {ptr=save;return(0);};
@@ -3624,43 +3573,39 @@ if (expression()) {ptr=save;return(0);};
 if (parse_COLON()) {ptr=save;np=savenp;return(0);};
 if (assignment_expression()) {ptr=save;np=savenp;return(0);};
 return (0);
- 
+
 };
 
 /* ***************************************** */
 
 int assignment_expression () {
+  int old=ptr;
+  int oldnp=np;
 
-	//debugging
-	//step3
-
-	int old=ptr;
-	int oldnp=np;
-
-	set_command(BEGIN_WRITE,0,strdup(""),0,0,0);
-	if (!logical_or_expression()) {
-		set_command(END_WRITE,0,strdup(""),0,0,0);
-		if (assignment_operator()) {
-			ptr=old;
-			np=oldnp;
-			goto ass_hack;
-		}
-		if (assignment_expression()) {
-			ptr=old;
-			np=oldnp;
-			goto ass_hack;
-		}
-		return(0);
-	}
+  set_command(BEGIN_WRITE,0,_strdup(""),0,0,0);
+  if (!logical_or_expression()) {
+    set_command(END_WRITE,0,_strdup(""),0,0,0);
+    if (assignment_operator()) {
+      ptr=old;
+      np=oldnp;
+      goto ass_hack;
+    }
+    if (assignment_expression()) {
+      ptr=old;
+      np=oldnp;
+      goto ass_hack;
+    }
+    return(0);
+  }
 
 ass_hack:
-	ptr=old;np=oldnp;
-	if (!conditional_expression()) {return(0);};
-	if (!throw_expression()) {return(0);};
+  ptr=old;np=oldnp;
+  if (!conditional_expression()) {return(0);};
+  if (!throw_expression()) {return(0);};
 
-	ptr=old;
+  ptr=old;
 
-	return(-1);
+  return(-1);
 }
 
 /* ***************************************** */
@@ -3671,31 +3616,31 @@ token tok=nexttok();
 
 advance();
 switch (tok.tok) {
-	case '=' : 	
-		return (0);
-	case TIMESEQUALS:
-		return (0);
-	case DIVEQUALS:
-		return (0);
-	case MODEQUALS: 
-		return (0);
-	case PLUSEQUALS: 
-		return (0);
-	case MINUSEQUALS:
-		return (0);
-	case GREATGREATEQUALS:
-		return (0);
-	case LESSLESSEQUALS:
-		return (0);
-	case ANDEQUALS: 
-		return (0);
-	case CARETEQUALS:
-		return (0);
-	case BAREQUALS: 
-		return(0);
-	default:
-		unadvance();
-		return (-1);
+  case '=' :
+    return (0);
+  case TIMESEQUALS:
+    return (0);
+  case DIVEQUALS:
+    return (0);
+  case MODEQUALS:
+    return (0);
+  case PLUSEQUALS:
+    return (0);
+  case MINUSEQUALS:
+    return (0);
+  case GREATGREATEQUALS:
+    return (0);
+  case LESSLESSEQUALS:
+    return (0);
+  case ANDEQUALS:
+    return (0);
+  case CARETEQUALS:
+    return (0);
+  case BAREQUALS:
+    return(0);
+  default:
+    unadvance();
+    return (-1);
 };
 
 }
@@ -3725,74 +3670,64 @@ nowhere=assignment_expression();
 /* ***************************************** */
 
 int expression () {
+  int old=ptr,oldnp=np;
+  int another=1;
+  int save,savenp;
 
-	//debugging 
-	//step2
+  set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
+  if (assignment_expression()) {ptr=old;np=oldnp;return(-1);};
+  set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
 
-	int old=ptr,oldnp=np;
-	int another=1;
-	int save,savenp;
+  while(another==1) {
+    save=ptr;savenp=np;
+    if (!parse_COMMA()) {
+        set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
+      if (assignment_expression()) {
+        ptr=save;np=savenp;
+        return 0;
+      }
+      else
+        set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
+    }
+    else {
+     return 0;
+    }
+  };
 
-	set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
-	if (assignment_expression()) {ptr=old;np=oldnp;return(-1);};
-	set_command(END_EXPRESSION,0,strdup(""),0,0,0);
-
-	while(another==1) {
-		save=ptr;savenp=np;
-		if (!parse_COMMA()) {
-				set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
-			if (assignment_expression()) {
-				ptr=save;np=savenp;
-				return 0;	
-			}
-			else 
-			  set_command(END_EXPRESSION,0,strdup(""),0,0,0);
-		}
-		else {
-		 return 0;
-		}
-	};
-
-	return (0);
+  return (0);
 
 }
 
 /* ***************************************** */
 
 int constant_expression () {
-
-if (!conditional_expression()) {
-//	sym_name(old,ptr);
-	return (0);
-}
-else return (-1);
-
+  if (!conditional_expression()) {
+    return (0);
+  }
+  else return (-1);
 }
 
 /* ****************************************** */
 
 int decl_id() {
+  int old=ptr;
+  int oldnp=np;
+  int line=thisline();
+  int startcol=thiscol();
 
-int old=ptr;
-int oldnp=np;
-int line=thisline();
-int startcol=thiscol();
-
-if (!id_expression(0)) {
-	set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
-	return(0);
-}
-parse_SCOPE_opt();
-nested_name_specifier_opt();
-if (!type_name()) {
-//	sym_name(old,ptr);
-	set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
-	return(0);
-}	
-// fail
-ptr=old;np=oldnp;
-return(-1);
-
+  if (!id_expression(0)) {
+    set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
+    return(0);
+  }
+  parse_SCOPE_opt();
+  nested_name_specifier_opt();
+  if (!type_name()) {
+    set_command(ID,0,sym_text(old,ptr),line,startcol,lastcol());
+    return(0);
+  }
+  // fail
+  ptr=old;np=oldnp;
+  return(-1);
 }
 
 /* ***************************************** */
@@ -3823,235 +3758,186 @@ return (-1);
 /* ***************************************** */
 
 int param_decl_specifier() {
+  int old=ptr;
+  token tok;
 
-int old=ptr;
-token tok;
-
-if (!get_typedef()) return 0;
-if (!parse_FRIEND()) return 0;
-if (!storage_class_specifier()) return 0;
-if (!enum_specifier()) return 0;
-if (!class_specifier()) return 0;
-if (!cv_qualifier()) return 0;
-if (!elaborated_type_specifier()) return 0;
-tok=nexttok();
-advance();
-if (tok.tok==CHAR)    {set_command(SYM_TYPE_ID,0,strdup("char"),0,0,0);return (0);};
-if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,strdup("wchar_t"),0,0,0);return (0);};
-if (tok.tok==BOOL)    {set_command(SYM_TYPE_ID,0,strdup("bool"),0,0,0);return (0);};
-if (tok.tok==SHORT)   {set_command(SYM_TYPE_ID,0,strdup("short"),0,0,0);return (0);};
-if (tok.tok==INT)     {set_command(SYM_TYPE_ID,0,strdup("int"),0,0,0);return (0);};
-if (tok.tok==LONG)    {set_command(SYM_TYPE_ID,0,strdup("long"),0,0,0);return (0);};
-if (tok.tok==SIGNED)  {set_command(SYM_TYPE_ID,0,strdup("signed"),0,0,0);return (0);};
-if (tok.tok==UNSIGNED){set_command(SYM_TYPE_ID,0,strdup("unsigned"),0,0,0);return (0);};
-if (tok.tok==FLOAT)   {set_command(SYM_TYPE_ID,0,strdup("float"),0,0,0);return (0);};
-if (tok.tok==DOUBLE)  {set_command(SYM_TYPE_ID,0,strdup("double"),0,0,0);return (0);};
-if (tok.tok==VOID)    {set_command(SYM_TYPE_ID,0,strdup("void"),0,0,0);return (0);};
-// put struct in here to attempt to parse attributes with "struct" properly...may cause side-fx
-//if (tok.tok==STRUCT)  {set_command(SYM_TYPE_ID,0,"struct",0,0,0);return 0;};
-// ^^ took it out again - didn't do much
-ptr=old;
-if (!function_specifier()) return 0;
-ptr=old;
-return -1;
-
+  if (!get_typedef()) return 0;
+  if (!parse_FRIEND()) return 0;
+  if (!storage_class_specifier()) return 0;
+  if (!enum_specifier()) return 0;
+  if (!class_specifier()) return 0;
+  if (!cv_qualifier()) return 0;
+  if (!elaborated_type_specifier()) return 0;
+  tok=nexttok();
+  advance();
+  if (tok.tok==CHAR)    {set_command(SYM_TYPE_ID,0,_strdup("char"),0,0,0);return (0);};
+  if (tok.tok==WCHAR_T) {set_command(SYM_TYPE_ID,0,_strdup("wchar_t"),0,0,0);return (0);};
+  if (tok.tok==BOOL)    {set_command(SYM_TYPE_ID,0,_strdup("bool"),0,0,0);return (0);};
+  if (tok.tok==SHORT)   {set_command(SYM_TYPE_ID,0,_strdup("short"),0,0,0);return (0);};
+  if (tok.tok==INT)     {set_command(SYM_TYPE_ID,0,_strdup("int"),0,0,0);return (0);};
+  if (tok.tok==LONG)    {set_command(SYM_TYPE_ID,0,_strdup("long"),0,0,0);return (0);};
+  if (tok.tok==SIGNED)  {set_command(SYM_TYPE_ID,0,_strdup("signed"),0,0,0);return (0);};
+  if (tok.tok==UNSIGNED){set_command(SYM_TYPE_ID,0,_strdup("unsigned"),0,0,0);return (0);};
+  if (tok.tok==FLOAT)   {set_command(SYM_TYPE_ID,0,_strdup("float"),0,0,0);return (0);};
+  if (tok.tok==DOUBLE)  {set_command(SYM_TYPE_ID,0,_strdup("double"),0,0,0);return (0);};
+  if (tok.tok==VOID)    {set_command(SYM_TYPE_ID,0,_strdup("void"),0,0,0);return (0);};
+  ptr=old;
+  if (!function_specifier()) return 0;
+  ptr=old;
+  return -1;
 }
 
 /* ***************************************** */
 
 void param_dss_opt(int n) {
+  int line=thisline();
+  int startcol=thiscol();
+  int save;
 
-// allow typenames anywhere in sequence???
+  while (!param_decl_specifier());
+  while (n>0) {
+      save=ptr;
+      parse_SCOPE_opt();
+      nested_name_specifier_opt();
+      if (!type_name()) {
+        set_command(SYM_TYPE_ID,0,sym_text(save,ptr),line,startcol,lastcol());
+        // no return here?
+        n--;
+      }
+      while (!param_decl_specifier()) ;
+      if (ptr==save) return;
+  }
 
-int line=thisline();
-int startcol=thiscol();
-int save;
-
-while (!param_decl_specifier());
-while (n>0) {
-    save=ptr;
-    parse_SCOPE_opt();
-    nested_name_specifier_opt();
-    if (!type_name()) {
-      set_command(SYM_TYPE_ID,0,sym_text(save,ptr),line,startcol,lastcol());
-      // no return here?
-      n--;
-    }
-    while (!param_decl_specifier()) ;
-    if (ptr==save) return;
-}
-
-return;
- 
+  return;
 }
 
 /* ***************************************** */
 
 int k_and_r_parameter_declaration() {
+  int old=ptr;
+  int oldnp=np;
+  int save,saveb,npsave,npsaveb;
+  int i;
 
-int old=ptr;
-int oldnp=np;
-int save,saveb,npsave,npsaveb;
-int i;
+  if (!k_and_r_declaration_statement()) if (ptr>(old+1)) return 0;
+  ptr=old;np=oldnp;
+  if (!ellipsis()) return 0;
 
-//printf("--------------------LOOK PARAM DECL %d, %d\n",ptr,np);
+  for (i=0;i<=2;i++) {
+    if (i==0) param_dss_opt(0);
+    else param_dss_opt(1);
+    save=ptr;npsave=np;
+    if (!declarator())
+      if (!parse_ASSIGN()) {
+        if (!assignment_expression())
+          if ((!look_COMMA())||(!look_RIGHTPARENTH()))
+            {return 0;};
+      } else if ((!look_COMMA())||(!look_RIGHTPARENTH())||(!look_LEFTBRACE())||(!look_SEMICOLON())) {
+        return 0;
+      };
+    ptr=save;np=npsave;
+  };
+  ptr=old;np=oldnp;
+  for (i=0;i<=1;i++) {
+    if (i==1) param_dss_opt(1);
+    save=ptr;npsave=np;
+    abstract_declarator_opt();
+    saveb=ptr;npsaveb=np;
+    if (!parse_ASSIGN())
+      if (!assignment_expression())
+        if ((!look_COMMA())||(!look_RIGHTPARENTH()))
+          {return 0;};
+    ptr=saveb;np=npsaveb;
+    if (((!look_COMMA())||(!look_RIGHTPARENTH()))&&(ptr>old))
+      {return 0;};
+    ptr=save;np=npsave;
+  };
 
-//if (!single_pointer_declaration_statement()) return 0;
-
-//Do we really need dis?
-if (!k_and_r_declaration_statement()) if (ptr>(old+1)) return 0;
-ptr=old;np=oldnp;
-if (!ellipsis()) return 0;
-
-for (i=0;i<=2;i++) {
-  if (i==0) param_dss_opt(0);
-  else param_dss_opt(1);
-  save=ptr;npsave=np;
-  if (!declarator())
-	  if (!parse_ASSIGN()) {
-		  if (!assignment_expression())
-			  if ((!look_COMMA())||(!look_RIGHTPARENTH()))
-				  {return 0;};
-	  } else if ((!look_COMMA())||(!look_RIGHTPARENTH())||(!look_LEFTBRACE())||(!look_SEMICOLON())) {
-	   	  //if (debug) printf("------------------GOTONEPARAM\n");
-		  return 0;
-	  };
-  ptr=save;np=npsave;
-};
-ptr=old;np=oldnp;
-for (i=0;i<=1;i++) {
-  if (i==1) param_dss_opt(1);
-  save=ptr;npsave=np;
-  abstract_declarator_opt();
-  saveb=ptr;npsaveb=np;  
-  if (!parse_ASSIGN())
-    if (!assignment_expression())
-      if ((!look_COMMA())||(!look_RIGHTPARENTH()))
-        {return 0;};
-  ptr=saveb;np=npsaveb;
-  if (((!look_COMMA())||(!look_RIGHTPARENTH()))&&(ptr>old))
-    {return 0;};
-  ptr=save;np=npsave;	
-};
-
-ptr=old;np=oldnp;
-return (-1);
-
+  ptr=old;np=oldnp;
+  return (-1);
 }
 
 /* ***************************************** */
 
 int parameter_declaration() {
+  int old=ptr;
+  int oldnp=np;
+  int npsave,npsaveb,save,saveb;
+  int i;
 
-int old=ptr;
-int oldnp=np;
-int npsave,npsaveb,save,saveb;
-int i;
+  if (!ellipsis())
+    return 0;
 
-//printf("--------------------LOOK PARAM DECL %d, %d\n",ptr,np);
+  for (i=0;i<=2;i++) {
+    if (i==0) param_dss_opt(0);
+    else param_dss_opt(1);
+    save=ptr;npsave=np;
+    if (!declarator()) {
+      saveb=ptr;npsaveb=np;
+      if (!parse_ASSIGN())
+        if (!assignment_expression())
+          if ((!look_COMMA())||(!look_RIGHTPARENTH()))
+      return 0;
+      ptr=saveb;np=npsaveb;
+      if ((!look_COMMA())||(!look_RIGHTPARENTH()))
+        return 0;
+    };
+    ptr=save;np=npsave;
+  };
 
-if (!ellipsis())
-  return 0;
-  
-for (i=0;i<=2;i++) {
-  if (i==0) param_dss_opt(0);
-  else param_dss_opt(1);
-  save=ptr;npsave=np;
-  if (!declarator()) {
+  ptr=old;np=oldnp;
+  for (i=0;i<=2;i++) {
+    if (i==0) param_dss_opt(0);
+    else param_dss_opt(1);
+    save=ptr;npsave=np;
+    abstract_declarator_opt();
     saveb=ptr;npsaveb=np;
     if (!parse_ASSIGN())
       if (!assignment_expression())
         if ((!look_COMMA())||(!look_RIGHTPARENTH()))
-	  return 0;
+          return 0;
     ptr=saveb;np=npsaveb;
-    if ((!look_COMMA())||(!look_RIGHTPARENTH()))
+    if ((!look_COMMA())||(!look_RIGHTPARENTH())) {
       return 0;
+    };
+    ptr=save;np=npsave;
   };
-  ptr=save;np=npsave;
-};
-/*
-for (i=0;i<=1;i++) {
   ptr=old;np=oldnp;
-  param_dss_opt(i);
-  if (!declarator())
-	  if (!parse_EQUALS())
-		  if (!assignment_expression())
-			  if ((!look_COMMA())||(!look_RIGHTPARENTH()))
-				  return (0);
-  ptr=old;np=oldnp;
-  param_dss_opt(i);
-  if (!declarator()) { 
-   	  if ((!look_COMMA())||(!look_RIGHTPARENTH())) {
-	   	  if (debug) printf("------------------GOTONEPARAM\n");
-		  return 0;
-	  }
-  }
-}
-*/ 
-ptr=old;np=oldnp;
-for (i=0;i<=2;i++) {
-  if (i==0) param_dss_opt(0);
-  else param_dss_opt(1);
-  save=ptr;npsave=np;
-  abstract_declarator_opt();
-  saveb=ptr;npsaveb=np;
-  if (!parse_ASSIGN())
-    if (!assignment_expression())
-      if ((!look_COMMA())||(!look_RIGHTPARENTH()))
-        return 0;	
-  ptr=saveb;np=npsaveb;
-  if ((!look_COMMA())||(!look_RIGHTPARENTH())) {
-  	return 0;
-  };
-  ptr=save;np=npsave; 
-};
-ptr=old;np=oldnp;
-return (-1);
-
+  return (-1);
 }
 
 /* ***************************************** */
 
 void declarator_opt() {
+  int nowhere;
 
-int nowhere;
-
-nowhere=declarator();
-
+  nowhere=declarator();
 }
 
 /* ***************************************** */
 
 int k_and_r_parameter_declaration_clause() {
-
-//if (debug) printf("LOOKING: PARAMETER_DECL_CLAUSE (%d)\n",ptr);
-while (!k_and_r_parameter_declaration()) ;
-//if (debug) printf("GOT_PARAM_DECL_CLAUSE:");sym_name(old,ptr);
-return (0);
-
+  while (!k_and_r_parameter_declaration()) ;
+  return (0);
 }
 
 /* ***************************************** */
 
 int parameter_declaration_clause() {
+  int savenp;
 
-// if (debug) printf("LOOKING: PARAMETER_DECL_CLAUSE (%d)\n",ptr);
-int savenp;
-
-savenp=np;
-set_command(BEGIN_DECLARATOR,0,strdup(""),0,0,0);
-while (!parameter_declaration()) {
-  set_command(END_DECLARATOR,0,strdup(""),0,0,0);
-	if (parse_COMMA()) 
-          goto pdc_getout;
   savenp=np;
-  set_command(BEGIN_DECLARATOR,0,strdup(""),0,0,0);
-};
-np=savenp;
-pdc_getout:
-// if (debug) printf("GOT_PARAM_DECL_CLAUSE:");sym_name(old,ptr);
-return (0);
-
+  set_command(BEGIN_DECLARATOR,0,_strdup(""),0,0,0);
+  while (!parameter_declaration()) {
+    set_command(END_DECLARATOR,0,_strdup(""),0,0,0);
+    if (parse_COMMA())
+            goto pdc_getout;
+    savenp=np;
+    set_command(BEGIN_DECLARATOR,0,_strdup(""),0,0,0);
+  };
+  np=savenp;
+  pdc_getout:
+  return (0);
 }
 
 /* ***************************************** */
@@ -4066,37 +3952,37 @@ int oldnp_b;
 if (!ellipsis()) return (0);
 
 if (!type_specifier_seq()) {
-	save=ptr;
-	oldnp_b=np;
-	if (!declarator()) {
-		save_b=ptr;
-		if (parse_RIGHTPARENTH()) {
-			ptr=save;
-			parse_extra_decl_spec();
-			np=oldnp_b;
-			if (!declarator()) return (0);
-			if (!abstract_declarator()) return (0);
-			return (0);
-		};
-		ptr=save_b;
-		return (0);
-	};
-	if (!abstract_declarator()) {
-		save_b=ptr;
-		oldnp_b=np;
-		if (parse_RIGHTPARENTH()) {
-			ptr=save;
-			parse_extra_decl_spec();
-			np=oldnp_b;
-			if (!declarator()) return (0);
-			if (!abstract_declarator()) return (0);
-			return (0);
-		};
-		ptr=save_b;
-		return (0);
-	};
-	ptr=save;
-	return (0);
+  save=ptr;
+  oldnp_b=np;
+  if (!declarator()) {
+    save_b=ptr;
+    if (parse_RIGHTPARENTH()) {
+      ptr=save;
+      parse_extra_decl_spec();
+      np=oldnp_b;
+      if (!declarator()) return (0);
+      if (!abstract_declarator()) return (0);
+      return (0);
+    };
+    ptr=save_b;
+    return (0);
+  };
+  if (!abstract_declarator()) {
+    save_b=ptr;
+    oldnp_b=np;
+    if (parse_RIGHTPARENTH()) {
+      ptr=save;
+      parse_extra_decl_spec();
+      np=oldnp_b;
+      if (!declarator()) return (0);
+      if (!abstract_declarator()) return (0);
+      return (0);
+    };
+    ptr=save_b;
+    return (0);
+  };
+  ptr=save;
+  return (0);
 };
 
 temp=ptr;
@@ -4116,8 +4002,8 @@ int old=ptr;
 int save;
 
 while (!type_id()) {
-	save=ptr;
-	if (parse_COMMA()) {ptr=save;return (0);};
+  save=ptr;
+  if (parse_COMMA()) {ptr=save;return (0);};
 };
 ptr=old;
 return (-1);
@@ -4160,26 +4046,22 @@ void exception_specification_opt() {
 /* ***************************************** */
 
 int decl_param_part () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return (-1);}
 
-//if (debug) printf("LOOKING FUNC_DECL_PARAM_PART(%d)\n",ptr);
- 
-if (parse_LEFTPARENTH()) {ptr=old;np=oldnp;return (-1);}
+  set_command(DECL_PARAM_PART_BEGIN,0,_strdup(""),0,0,1);
 
-set_command(DECL_PARAM_PART_BEGIN,0,strdup(""),0,0,1);
+  if (parameter_declaration_clause()) {ptr=old;np=oldnp;return(-1);};
 
-if (parameter_declaration_clause()) {ptr=old;np=oldnp;return(-1);};
+  if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return (-1);}
+  cv_qualifier_seq_opt();
+  exception_specification_opt();
 
-if (parse_RIGHTPARENTH()) {ptr=old;np=oldnp;return (-1);}
-cv_qualifier_seq_opt();
-exception_specification_opt();
-//if (debug) printf("DECL_PARAM_PART: ");sym_name(old,ptr);
-set_command(DECL_PARAM_PART_END,0,strdup(""),0,0,0);
+  set_command(DECL_PARAM_PART_END,0,_strdup(""),0,0,0);
 
-return(0);
-
+  return(0);
 }
 
 /* ***************************************** */
@@ -4220,7 +4102,7 @@ int count=0;
 while (!handler())
   count++;
 
-if (count>0) { 
+if (count>0) {
   density.top()->control+=count; // one control statement for each handler
   return (0);
 }
@@ -4260,65 +4142,56 @@ return;
 /* ***************************************** */
 
 int decl_const_part () {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  if (parse_LEFTBRACKET()) {ptr=old;return (-1);}
+  // changed by gns to cope with: int xyz[][ABC]; declarations...
+  int savenp=np;
+  expression_opt();
+  np=savenp;// ignore any expression references in the declaration
+  if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);}
 
-//if (debug) printf("DECL_CONST_PART(%d)\n",ptr);
-if (parse_LEFTBRACKET()) {ptr=old;return (-1);}
-//constant_expression_opt();
-// changed by gns to cope with: int xyz[][ABC]; declarations...
-int savenp=np;
-expression_opt();
-np=savenp;// ignore any expression references in the declaration
-if (parse_RIGHTBRACKET()) {ptr=old;np=oldnp;return(-1);}
-//if (debug) printf("DECL_CONST_END\n");
+  set_command(SYM_TYPE_ID,0,_strdup("[]"),0,0,0);
 
-set_command(SYM_TYPE_ID,0,strdup("[]"),0,0,0);
-
-return(0);
-
+  return(0);
 }
 
 /* ***************************************** */
 
 int declarator_with_params() {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  set_command(BEGIN_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
 
-set_command(BEGIN_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
+  while (!decl_ptr_operator()) ; /* absorb pointer operators */
+  if (!direct_declarator_with_params()) {
+    set_command(END_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
+    return (0);
+  };
 
-while (!decl_ptr_operator()) ; /* absorb pointer operators */
-if (!direct_declarator_with_params()) {
-	set_command(END_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
-	return (0);
-};
-
-np=oldnp;ptr=old;
-return (-1);
-
+  np=oldnp;ptr=old;
+  return (-1);
 }
 
 /* ****************************************** */
 
 int declarator() {
+  int old=ptr;
+  int oldnp=np;
 
-int old=ptr;
-int oldnp=np;
+  set_command(BEGIN_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
 
-set_command(BEGIN_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
+  while (!decl_ptr_operator()) ; /* absorb pointer operators */
 
-while (!decl_ptr_operator()) ; /* absorb pointer operators */
+  if (!direct_declarator()) {
+    set_command(END_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
+    return (0);
+  };
 
-if (!direct_declarator()) {
-	set_command(END_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
-	return (0);
-};
-
-np=oldnp;ptr=old;
-return (-1);
-
+  np=oldnp;ptr=old;
+  return (-1);
 }
 
 /* ****************************************** */
@@ -4330,13 +4203,13 @@ int sing_declarator() {
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
+set_command(BEGIN_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
 
 while (!decl_ptr_operator()) ; /* absorb pointer operators */
 
 if (!sing_direct_declarator()) {
-	set_command(END_DECLARATOR,0,strdup(""),thisline(),thiscol(),0);
-	return (0);
+  set_command(END_DECLARATOR,0,_strdup(""),thisline(),thiscol(),0);
+  return (0);
 };
 
 np=oldnp;ptr=old;
@@ -4355,16 +4228,16 @@ int n;
 n=0;
 
 if (!decl_id()) {
-	if (!decl_param_part()) n=1;
-	while ((!decl_param_part())||(!decl_const_part())) 
-	  ;
-	if (n==1) return (0);
+  if (!decl_param_part()) n=1;
+  while ((!decl_param_part())||(!decl_const_part()))
+    ;
+  if (n==1) return (0);
 };
 if (!parenthesised_declarator()) {
-	if (!decl_param_part()) n=1;
-	while ((!decl_param_part())||(!decl_const_part())) 
-	  ;
-	if (n==1) return (0);
+  if (!decl_param_part()) n=1;
+  while ((!decl_param_part())||(!decl_const_part()))
+    ;
+  if (n==1) return (0);
 };
 
 ptr=old;np=oldnp;
@@ -4380,13 +4253,13 @@ int old=ptr;
 int oldnp=np;
 
 if (!decl_id()) {
-	while ((!decl_param_part())||(!decl_const_part())) ;
-	return (0);
+  while ((!decl_param_part())||(!decl_const_part())) ;
+  return (0);
 };
-if (no_parenthesised_declarators==0) 
+if (no_parenthesised_declarators==0)
   if (!parenthesised_declarator()) {
-  	while ((!decl_param_part())||(!decl_const_part())) ;
-	return (0);
+    while ((!decl_param_part())||(!decl_const_part())) ;
+  return (0);
   };
 
 ptr=old;np=oldnp;
@@ -4402,12 +4275,12 @@ int old=ptr;
 int oldnp=np;
 
 if (!decl_id()) {
-	while ((!decl_param_part())||(!decl_const_part())) ;
-	return (0);
+  while ((!decl_param_part())||(!decl_const_part())) ;
+  return (0);
 };
 /* if (!parenthesised_declarator()) {
-	while ((!decl_param_part())||(!decl_const_part())) ;
-	return (0);
+  while ((!decl_param_part())||(!decl_const_part())) ;
+  return (0);
 }; */
 
 ptr=old;np=oldnp;
@@ -4418,84 +4291,61 @@ return (-1);
 /* ***************************************** */
 
 int initializer_list () {
+  int count=0;
+  int old=ptr;
 
-int count=0;
-int old=ptr;
-
-//printf("looking for an initializer_list\n");
-while (!initializer_clause()) {
-	count++;
-	if (parse_COMMA()) break;
-};
-if (count>0) {/*printf("yup!\n");*/return (0);};
-ptr=old;
-//printf("nope\n");
-return (-1);
-
+  while (!initializer_clause()) {
+    count++;
+    if (parse_COMMA()) break;
+  };
+  if (count>0) {return (0);};
+  ptr=old;
+  return (-1);
 };
 
 /* ***************************************** */
 
 void initializer_list_opt () {
-
-int nowhere;
-nowhere=initializer_list();
-return;
-
+  int nowhere;
+  nowhere=initializer_list();
+  return;
 };
 
 /* ***************************************** */
 
 int initializer_clause() {
+  int old=ptr;
+  int oldnp=np;
+  int count;
 
-int old=ptr;
-int oldnp=np;
-int count;
-
-if (!parse_LEFTBRACE()) {
-// oh dear, we were too thorough for poor Ruben's code 
-// this will skip forward
-
-  /* 
-      initializer_list_opt();
-      parse_COMMA_opt();
-      if (!parse_RIGHTBRACE())
-        return 0;
-  */
-  count=1;
-  while ((count>0)&&(!the_end())) {
-    if (!look_LEFTBRACE()) 
-      count++;
-    else if (!look_RIGHTBRACE())
-      count--;
-    ptr++;
+  if (!parse_LEFTBRACE()) {
+    count=1;
+    while ((count>0)&&(!the_end())) {
+      if (!look_LEFTBRACE())
+        count++;
+      else if (!look_RIGHTBRACE())
+        count--;
+      ptr++;
+    }
+    if (the_end()) {
+      ptr=old;
+      np=oldnp;
+      return -1;
+    }
+    return 0;
   }
-  if (the_end()) {
-    ptr=old;
-    np=oldnp;
-    return -1;
-  } 
-//  printf("DONE IT\n");
-  return 0;
 
-}
-
-ptr=old;np=oldnp;
-//printf("look_assign\n");
-suppress=1;
-set_command(BEGIN_EXPRESSION,0,strdup(""),0,0,0);
+  ptr=old;np=oldnp;
+  suppress=1;
+  set_command(BEGIN_EXPRESSION,0,_strdup(""),0,0,0);
   if (!assignment_expression()) {
-    set_command(END_EXPRESSION,0,strdup(""),0,0,0);
-//      printf("accumulating\n");
- //   printf("got_assign: %s\n",sym_text(old,ptr));
-	suppress=0;
+    set_command(END_EXPRESSION,0,_strdup(""),0,0,0);
+    suppress=0;
     return (0);
   }
-//printf("not got_assign\n");
-suppress=0;
-ptr=old;np=oldnp;
-return -1;
-
+  suppress=0;
+  ptr=old;np=oldnp;
+  return -1;
 };
 
 /* ***************************************** */
@@ -4506,11 +4356,11 @@ int old=ptr;
 int oldnp=np;
 
 if (!parse_ASSIGN()) {
-	if (!initializer_clause()) 
-          return(0); 
-	else {
+  if (!initializer_clause())
+          return(0);
+  else {
           ptr=old;
- 	  np=oldnp;
+    np=oldnp;
           return(-1);
         }
 };
@@ -4538,16 +4388,16 @@ int init_declarator () {
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_INIT_D,0,strdup(""),0,0,0);
+set_command(BEGIN_INIT_D,0,_strdup(""),0,0,0);
 
 if (declarator()) {
-	ptr=old;np=oldnp;
-	return(-1);
-	};
-	
+  ptr=old;np=oldnp;
+  return(-1);
+  };
+
 initializer_opt();
 
-set_command(END_INIT_D,0,strdup(""),0,0,0);
+set_command(END_INIT_D,0,_strdup(""),0,0,0);
 return (0);
 
 };
@@ -4559,16 +4409,16 @@ int sing_init_declarator () {
 int old=ptr;
 int oldnp=np;
 
-set_command(BEGIN_INIT_D,0,strdup(""),0,0,0);
+set_command(BEGIN_INIT_D,0,_strdup(""),0,0,0);
 
 if (sing_declarator()) {
-	ptr=old;np=oldnp;
-	return(-1);
-	};
-	
+  ptr=old;np=oldnp;
+  return(-1);
+  };
+
 initializer_opt();
 
-set_command(END_INIT_D,0,strdup(""),0,0,0);
+set_command(END_INIT_D,0,_strdup(""),0,0,0);
 return (0);
 
 };
@@ -4577,26 +4427,20 @@ return (0);
 /* ***************************************** */
 
 int init_declarator_list() {
+  int old=ptr;
+  token tok;
 
-int old=ptr;
+  if (init_declarator()) {ptr=old;return (-1);};
 
-token tok;
-
-//printf("look init_declarator_list...\n");fflush(0);
-if (init_declarator()) {ptr=old;return (-1);};
-
-while (!the_end()){
-	tok=nexttok();
-	if (tok.tok!=',')  {
-//	  printf("init_declarator_list: %s\n",sym_text(old,ptr));
-          return 0;
- 	}
-	advance();
-	if (init_declarator()) {unadvance();return -1;};
-};
-//printf("init_declarator_list: %s\n",sym_text(old,ptr));
-return(0);
-
+  while (!the_end()){
+    tok=nexttok();
+    if (tok.tok!=',')  {
+            return 0;
+    }
+    advance();
+    if (init_declarator()) {unadvance();return -1;};
+  };
+  return(0);
 };
 
 /* ***************************************** */
@@ -4610,10 +4454,10 @@ token tok;
 if (sing_init_declarator()) {ptr=old;return (-1);};
 
 while (!the_end()){
-	tok=nexttok();
-	if (tok.tok!=',') return (0);
-	advance();
-	if (sing_init_declarator()) {unadvance();return (-1);};
+  tok=nexttok();
+  if (tok.tok!=',') return (0);
+  advance();
+  if (sing_init_declarator()) {unadvance();return (-1);};
 };
 
 return(0);
@@ -4623,24 +4467,18 @@ return(0);
 /* ***************************************** */
 
 void declaration_seq() {
+  while (!the_end()) {
+    if (declaration()) {
+      panic();
+    }
+  }
 
-while (!the_end()) {
-	if (declaration()) {
-		// printf("PANICKING\n");
-		panic();
-	}
-}
-
-set_command(END_FILE,0,strdup(""),yylineno-1,0,0);
-	code.size=np;
-
+  set_command(END_FILE,0,_strdup(""),yylineno-1,0,0);
+  code.size=np;
 }
 
 /* ***************************************** */
 
 void declaration_seq_opt () {
-
-(void)declaration_seq() ;
-
+  (void)declaration_seq() ;
 };
-

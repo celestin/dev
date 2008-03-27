@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prep_lib", "..\prep_lib\pre
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Run", "..\Run\Run.vcproj", "{F8063924-08C7-4D99-AD83-9CBFEDCF76E1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cparser", "..\Cparser\Cparser.vcproj", "{95753703-4155-417F-A2C2-0C2015C21578}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Console Release|Win32 = Console Release|Win32
@@ -116,6 +118,36 @@ Global
 		{F8063924-08C7-4D99-AD83-9CBFEDCF76E1}.Java Pro Release|Win32.Build.0 = Release|Win32
 		{F8063924-08C7-4D99-AD83-9CBFEDCF76E1}.Release|Win32.ActiveCfg = Release|Win32
 		{F8063924-08C7-4D99-AD83-9CBFEDCF76E1}.Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Console Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Console Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Lite Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Lite Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Lite Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Lite Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP PM Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP PM Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP PM Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP PM Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Pro Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Pro Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Pro Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.CPP Pro Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Lite Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Lite Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Lite Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Lite Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java PM Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java PM Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java PM Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java PM Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Pro Debug|Win32.ActiveCfg = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Pro Debug|Win32.Build.0 = Debug|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Pro Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Java Pro Release|Win32.Build.0 = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Release|Win32.ActiveCfg = Release|Win32
+		{95753703-4155-417F-A2C2-0C2015C21578}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

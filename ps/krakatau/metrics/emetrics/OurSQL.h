@@ -1,9 +1,13 @@
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * OurSQL - MySQL C API Wrapper Class
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Krakatau Essential Metrics (EMETRICS.EXE)
+ * Copyright (c) 2000,2008 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * date 20/10/2000
- * author Craig McKay & Stephen Webster
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ * $Id$
+ *
+ * Who  When       Why
+ * CAM  28-Mar-08  348 : File added to source control.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_OURSQL
 #define CLASS_OURSQL

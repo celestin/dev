@@ -1,3 +1,14 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Krakatau Essential Metrics (EMETRICS.EXE)
+ * Copyright (c) 2000,2008 Power Software
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When       Why
+ * CAM  28-Mar-08  348 : File added to source control.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 #ifndef REPORT_HEADER
 #define REPORT_HEADER
 

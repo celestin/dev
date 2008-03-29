@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cparser", "..\Cparser\Cpars
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "emetrics", "..\emetrics\batch.vcproj", "{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jparser", "..\Jparser\Jparser.vcproj", "{B08055D3-18F4-450A-9FA3-24CA6DD349D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Console Release|Win32 = Console Release|Win32
@@ -213,6 +215,42 @@ Global
 		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.Java Release|Win32.Build.0 = Java Release|Win32
 		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.Release|Win32.ActiveCfg = CPP Release|Win32
 		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.Release|Win32.Build.0 = CPP Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Console Release|Win32.ActiveCfg = Console Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Console Release|Win32.Build.0 = Console Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Lite Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Lite Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Lite Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Lite Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP PM Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP PM Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP PM Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP PM Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Pro Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Pro Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Pro Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Pro Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.CPP Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Lite Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Lite Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Lite Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Lite Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java PM Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java PM Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java PM Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java PM Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Pro Debug|Win32.ActiveCfg = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Pro Debug|Win32.Build.0 = Debug|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Pro Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Pro Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Java Release|Win32.Build.0 = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Release|Win32.ActiveCfg = Release|Win32
+		{B08055D3-18F4-450A-9FA3-24CA6DD349D5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

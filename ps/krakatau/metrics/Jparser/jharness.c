@@ -19,12 +19,12 @@
 
 #include <stdio.h>
 #ifdef WIN32
-	#include <io.h>
-	#include <process.h>
-	#include <string.h>
-	#include <fcntl.h>
+  #include <io.h>
+  #include <process.h>
+  #include <string.h>
+  #include <fcntl.h>
 #else
-	#include <unistd.h>
+  #include <unistd.h>
 #endif
 #include <malloc.h>
 #include <signal.h>
@@ -44,7 +44,7 @@ void main(int argc, char** argv) {
 
 //hThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)Validate,NULL,0,&iID);
 //long WINAPI Validate(long lParam)
-//{ 
+//{
 
 //}
 int i,pid;
@@ -62,8 +62,8 @@ if (argc>1) {
 } else {
   _pipe(this_to_parser,512,_O_BINARY);
   if (pid=fork()==0) {
-	_close(this_to_parser[1]);
-	_dup2(this_to_parser[0],0);
+  _close(this_to_parser[1]);
+  _dup2(this_to_parser[0],0);
     _execlp("jparser_internal","jparser_internal",NULL);
     perror("ERROR: \n");
   };
@@ -102,4 +102,3 @@ return;
 };
 
 // ****************************************
-

@@ -12,19 +12,21 @@
 #include "codefn.h"
 
 extern char* decodefn(char* filename)
-{ char *i;
+{
+  char *i;
   i=filename;
   while (*i!='\0')
   { if (*i==1) {*i=' ';}
     i++; }
-	return (filename);
-  }
-	
+  return (filename);
+}
+
 extern char* codefn(char* filename)
-{ char *i;
+{
+  char *i;
   i=filename;
   while (*i!='\0')
   { if (*i==' ') {*i=1;}
     i++; }
-	return (filename);
- }
+  return (filename);
+}

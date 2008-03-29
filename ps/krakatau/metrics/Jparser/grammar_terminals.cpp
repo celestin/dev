@@ -13,11 +13,11 @@
 #include "lexical_analysis.h"
 
 typedef struct lexeme {
-	int symbol;
-	char* text;
-	int line;
+  int symbol;
+  char* text;
+  int line;
 } lexeme;
- 
+
 extern lexeme* lexemes;
 extern int lex_index;
 extern int n_lexemes;
@@ -127,5 +127,3 @@ int parse_DOT() PARSE_TERMINAL(DOT)
 int parse_NULL_LITERAL() PARSE_TERMINAL(NULL_LITERAL)
 void parse_COMMA_opt() PARSE_OPT_TERMINAL(COMMA)
 void parse_IDENTIFIER_opt() PARSE_OPT_TERMINAL(IDENTIFIER)
-
-

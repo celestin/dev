@@ -10,7 +10,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 struct lexeme_t {
-	String str;
-	int token;
+  String str;
+  int token;
 };
-

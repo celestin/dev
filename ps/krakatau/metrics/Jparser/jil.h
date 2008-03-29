@@ -15,10 +15,10 @@ extern int jil_index;
 extern int n_jil_lexemes;
 
 typedef struct {
-	int symbol;
-	char* text;
-	int line;
-} lexeme; 
+  int symbol;
+  char* text;
+  int line;
+} lexeme;
 
 #define INITIAL_MAX_LEXEMES 1000
 
@@ -88,5 +88,3 @@ void output_jil_to_file(FILE*);
 #define JIL_EXEC 57
 #define JIL_NSC 59
 #define ETYPE 58
-
-

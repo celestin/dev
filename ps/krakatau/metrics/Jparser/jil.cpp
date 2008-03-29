@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 #ifdef WIN32
-	#include <malloc.h>
+  #include <malloc.h>
 #endif
 
 #include <stdio.h>
@@ -37,8 +37,8 @@ char* java_filename_to_jil_filename(char* filename) {
 char* jil_filename;
 
 jil_filename=(char*)malloc(strlen(filename)+5);
-strcpy(jil_filename,filename);
-strcat(jil_filename,".jil\0");
+strcpy_s(jil_filename,260,filename);
+strcat_s(jil_filename,260,".jil\0");
 return (jil_filename);
 }
 
@@ -46,23 +46,14 @@ return (jil_filename);
 
 void expand_jil_lexeme_storage_array() {
 
-//        int i;
-//        lexeme* new_lexeme_array;
-
-//        DEBUGOUT("EXPAND %d\n",lex_index);
-//      new_lexeme_array=(lexeme*)malloc(sizeof(lexeme[jil_ceiling+2000]));
         jil_ceiling+=2000;
 
-//      for (i=0;i<=(jil_index-1);i++) new_lexeme_array[i]=jil_lexemes[i];
-
-//      free(jil_lexemes);
-//      jil_lexemes=new_lexeme_array;
 #ifdef WIN32
         jil_lexemes=(lexeme *)realloc(jil_lexemes,sizeof(lexeme)*(jil_ceiling));
 #else
         jil_lexemes=(lexeme *)realloc(jil_lexemes,sizeof(lexeme[jil_ceiling]));
 #endif
-		//        DEBUGOUT(stderr,"expanded to %d\n",jil_ceiling);
+    //        DEBUGOUT(stderr,"expanded to %d\n",jil_ceiling);
 
 }
 
@@ -92,16 +83,16 @@ jil_index=0;
 // *******************************************
 
 void errorFile(FILE* outfile) {
-	// Output END
-	fprintf(outfile,"%d\n",-101);
-	fprintf(outfile,"%d\n",-1);
-	fprintf(outfile,"-----\n");
-	fprintf(outfile,"%d\n",-1);
-	fprintf(outfile,"-1\n");
-	fprintf(outfile,"-1\n");
+  // Output END
+  fprintf(outfile,"%d\n",-101);
+  fprintf(outfile,"%d\n",-1);
+  fprintf(outfile,"-----\n");
+  fprintf(outfile,"%d\n",-1);
+  fprintf(outfile,"-1\n");
+  fprintf(outfile,"-1\n");
 
-	fflush(outfile) ;
-	//fprintf(outfile,"0\n");
+  fflush(outfile) ;
+  //fprintf(outfile,"0\n");
 }
 
 
@@ -112,25 +103,25 @@ int i;
 
 //outfile=fopen(filename,"w");
 for (i=0;i<=n_jil_lexemes;i++) {
-	fprintf(outfile,"%d\n",jil_lexemes[i].symbol);
+  fprintf(outfile,"%d\n",jil_lexemes[i].symbol);
 
-	if (jil_lexemes[i].symbol==ID)
-	{
-		fprintf(outfile,"%d\n%s\n",-1,codefn(jil_lexemes[i].text));
-	}
-	else if (jil_lexemes[i].symbol==XREF)
-	{
-		fprintf(outfile,"%d\n%s\n",-1,jil_lexemes[i].text);
-	}
-	else if ((jil_lexemes[i].symbol==LOC)||(jil_lexemes[i].symbol==MODS)||(jil_lexemes[i].symbol==JIL_SLOC)||(jil_lexemes[i].symbol==JIL_N1)||(jil_lexemes[i].symbol==JIL_N2)||(jil_lexemes[i].symbol==JIL_n1)||(jil_lexemes[i].symbol==JIL_n2)||(jil_lexemes[i].symbol==JIL_J_COM)||(jil_lexemes[i].symbol==JIL_C_COM)||(jil_lexemes[i].symbol==JIL_CPP_COM)||(jil_lexemes[i].symbol==JIL_COM_LOC)||(jil_lexemes[i].symbol==JIL_CTRL)||(jil_lexemes[i].symbol==JIL_EXEC)||(jil_lexemes[i].symbol==JIL_CLASS)||(jil_lexemes[i].symbol==JIL_INTERFACE)||(jil_lexemes[i].symbol==METHOD)||(jil_lexemes[i].symbol==JIL_NSC))
-	{
-		fprintf(outfile,"%d\n%s\n",((int)jil_lexemes[i].text),"-");
-	}
-	else
-	{
-		fprintf(outfile,"%d\n%s\n",-1,"-");
-	}
-}	
+  if (jil_lexemes[i].symbol==ID)
+  {
+    fprintf(outfile,"%d\n%s\n",-1,codefn(jil_lexemes[i].text));
+  }
+  else if (jil_lexemes[i].symbol==XREF)
+  {
+    fprintf(outfile,"%d\n%s\n",-1,jil_lexemes[i].text);
+  }
+  else if ((jil_lexemes[i].symbol==LOC)||(jil_lexemes[i].symbol==MODS)||(jil_lexemes[i].symbol==JIL_SLOC)||(jil_lexemes[i].symbol==JIL_N1)||(jil_lexemes[i].symbol==JIL_N2)||(jil_lexemes[i].symbol==JIL_n1)||(jil_lexemes[i].symbol==JIL_n2)||(jil_lexemes[i].symbol==JIL_J_COM)||(jil_lexemes[i].symbol==JIL_C_COM)||(jil_lexemes[i].symbol==JIL_CPP_COM)||(jil_lexemes[i].symbol==JIL_COM_LOC)||(jil_lexemes[i].symbol==JIL_CTRL)||(jil_lexemes[i].symbol==JIL_EXEC)||(jil_lexemes[i].symbol==JIL_CLASS)||(jil_lexemes[i].symbol==JIL_INTERFACE)||(jil_lexemes[i].symbol==METHOD)||(jil_lexemes[i].symbol==JIL_NSC))
+  {
+    fprintf(outfile,"%d\n%s\n",((int)jil_lexemes[i].text),"-");
+  }
+  else
+  {
+    fprintf(outfile,"%d\n%s\n",-1,"-");
+  }
+}
 
 fprintf(outfile,"%d\n",-100);
 fprintf(outfile,"%d\n",-1);
@@ -210,46 +201,44 @@ default: return ("UNKNOWN SYMBOL");
 }
 
 // *******************************************
- 
+
 void show_jil () {
 int i;
 printf("JIL LEXEMES:\n");
 for (i=0;i<=n_jil_lexemes;i++) {
-//	fprintf(stderr,"I: %d\n",i);
+//  fprintf(stderr,"I: %d\n",i);
 
 
     if ((jil_lexemes[i].text!=NULL)&&(jil_lexemes[i].symbol!=LOC)&&(jil_lexemes[i].symbol!=MODS)&&(jil_lexemes[i].symbol!=JIL_SLOC)&&(jil_lexemes[i].symbol!=JIL_N1)&&(jil_lexemes[i].symbol!=JIL_N2)&&(jil_lexemes[i].symbol!=JIL_n1)&&(jil_lexemes[i].symbol!=JIL_n2)&&(jil_lexemes[i].symbol!=JIL_J_COM)&&(jil_lexemes[i].symbol!=JIL_C_COM)&&(jil_lexemes[i].symbol!=JIL_CPP_COM)&&(jil_lexemes[i].symbol!=JIL_COM_LOC)&&(jil_lexemes[i].symbol!=JIL_CTRL)&&(jil_lexemes[i].symbol!=JIL_EXEC)&&(jil_lexemes[i].symbol!=JIL_CLASS)&&(jil_lexemes[i].symbol!=JIL_INTERFACE)&&(jil_lexemes[i].symbol!=METHOD))
 
 
-	//if ((jil_lexemes[i].text!=NULL)&&(jil_lexemes[i].symbol!=LOC)&&(jil_lexemes[i].symbol!=MODS)&&(jil_lexemes[i].symbol!=JIL_SLOC)&&(jil_lexemes[i].symbol!=JIL_N1)&&(jil_lexemes[i].symbol!=JIL_N2)&&(jil_lexemes[i].symbol!=JIL_n1)&&(jil_lexemes[i].symbol!=JIL_n2)&&(jil_lexemes[i].symbol!=JIL_C_COM)&&(jil_lexemes[i].symbol!=JIL_CPP_COM)&&(jil_lexemes[i].symbol!=JIL_J_COM)&&(jil_lexemes[i].symbol!=JIL_COM_LOC)&&(jil_lexemes[i].symbol!=JIL_CTRL)&&(jil_lexemes[i].symbol!=JIL_EXEC)) 
-{	fprintf(stderr,"%s %s\n",sym_to_text(jil_lexemes[i].symbol),jil_lexemes[i].text);}
-	else if (jil_lexemes[i].symbol==LOC)
-	  fprintf(stderr,"LOC %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==MODS)
-	  fprintf(stderr,"MODS %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_SLOC)
-	  fprintf(stderr,"JIL_SLOC %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_N1)
-	  fprintf(stderr,"JIL_N1 %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_N2)
-	  fprintf(stderr,"JIL_N2 %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_n1)
-	  fprintf(stderr,"JIL_n1 %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_n2)
-	  fprintf(stderr,"JIL_n2 %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_CTRL)
-	  fprintf(stderr,"JIL_CTRL %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_EXEC)
-	  fprintf(stderr,"JIL_EXEC %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_CLASS)
-	  fprintf(stderr,"JIL_CLASS %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==JIL_INTERFACE)
-	  fprintf(stderr,"JIL_INTERFACE %d\n",(int)(jil_lexemes[i].text));
-	else if (jil_lexemes[i].symbol==METHOD)
-	  fprintf(stderr,"METHOD %d\n",(int)(jil_lexemes[i].text));
-	else fprintf(stderr,"%s\n",sym_to_text(jil_lexemes[i].symbol));
+  //if ((jil_lexemes[i].text!=NULL)&&(jil_lexemes[i].symbol!=LOC)&&(jil_lexemes[i].symbol!=MODS)&&(jil_lexemes[i].symbol!=JIL_SLOC)&&(jil_lexemes[i].symbol!=JIL_N1)&&(jil_lexemes[i].symbol!=JIL_N2)&&(jil_lexemes[i].symbol!=JIL_n1)&&(jil_lexemes[i].symbol!=JIL_n2)&&(jil_lexemes[i].symbol!=JIL_C_COM)&&(jil_lexemes[i].symbol!=JIL_CPP_COM)&&(jil_lexemes[i].symbol!=JIL_J_COM)&&(jil_lexemes[i].symbol!=JIL_COM_LOC)&&(jil_lexemes[i].symbol!=JIL_CTRL)&&(jil_lexemes[i].symbol!=JIL_EXEC))
+{ fprintf(stderr,"%s %s\n",sym_to_text(jil_lexemes[i].symbol),jil_lexemes[i].text);}
+  else if (jil_lexemes[i].symbol==LOC)
+    fprintf(stderr,"LOC %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==MODS)
+    fprintf(stderr,"MODS %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_SLOC)
+    fprintf(stderr,"JIL_SLOC %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_N1)
+    fprintf(stderr,"JIL_N1 %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_N2)
+    fprintf(stderr,"JIL_N2 %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_n1)
+    fprintf(stderr,"JIL_n1 %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_n2)
+    fprintf(stderr,"JIL_n2 %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_CTRL)
+    fprintf(stderr,"JIL_CTRL %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_EXEC)
+    fprintf(stderr,"JIL_EXEC %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_CLASS)
+    fprintf(stderr,"JIL_CLASS %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==JIL_INTERFACE)
+    fprintf(stderr,"JIL_INTERFACE %d\n",(int)(jil_lexemes[i].text));
+  else if (jil_lexemes[i].symbol==METHOD)
+    fprintf(stderr,"METHOD %d\n",(int)(jil_lexemes[i].text));
+  else fprintf(stderr,"%s\n",sym_to_text(jil_lexemes[i].symbol));
 }
 printf("END JIL LEXEMES\n");
 }
-
-

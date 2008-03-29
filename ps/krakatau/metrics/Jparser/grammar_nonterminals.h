@@ -182,4 +182,3 @@ int parse_ConstantExpression();
 int parse_DeclReferenceType();
 int parse_DeclArrayType();
 int parse_DeclClassOrInterfaceType();
-

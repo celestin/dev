@@ -114,4 +114,3 @@ extern int parse_NULL_LITERAL();
 
 void parse_COMMA_opt();
 void parse_IDENTIFIER_opt();
-

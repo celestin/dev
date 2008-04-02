@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -739,51 +740,31 @@ void Diff::compare()
 
   MasterData::theLog << "D,1,\"" << theFilename1 << "\"," <<
     Utilities::getFileSize(theFilename1) << endl ;
-  file1 = fopen(theFilename1,"r") ;
+  fopen_s(&file1, theFilename1,"r") ;
   MasterData::theLog << "D,2,\"" << theFilename2 << "\"," <<
     Utilities::getFileSize(theFilename2) << endl ;
-  file2 = fopen(theFilename2,"r") ;
+  fopen_s(&file2, theFilename2,"r") ;
 
-  /*if (strcmp(theFilename1 + strlen(theFilename1)-8, "gfqlit.h") == 0) {
-    debugging = true ;
-  } else {
-    debugging = false ;
-  }*/
-
-  // Do not try to compare file if there has been a problem when opening
-
-//  try {
-    //MasterData::theLog << "D,3" ;
     if ( file1!=NULL && file2!=NULL)
     {
-
-      //char buffer[1000] ;
       char *currString ;
       int length = 0 ;
 
       int avail_size = 1000 ;
       int increment = 500 ;
       int *first= (int*) malloc(avail_size*sizeof(int)) ;
-      //REMOVED: firstactual= (char**) malloc(avail_size*sizeof(char**)) ;
       int fsize = 0 ;
 
-
-      //while ( fgets(buffer,1000,file1))
-      //MasterData::theLog << ",4" ;
       currString = getLine(file1) ;
       while (currString)
       {
         first[fsize] = hash(currString) ;
-        //REMOVED: firstactual[fsize] = currString ;
-        //MasterData::theLog << currString << endl ;
-        //cout << currString << endl ;
 
         try {
           free(currString) ;
         } catch (...)
         {
           MasterData::theLog << "Exception(1) in Diff::compare()" << endl ;
-          //cout << "Exception(1) in Diff::compare()" << endl ;
         }
 
         fsize++ ;
@@ -792,25 +773,18 @@ void Diff::compare()
           avail_size+=increment ;
 
           first = (int*) realloc(first, avail_size*sizeof(int)) ;
-          //REMOVED: firstactual = (char**) realloc(firstactual, avail_size*sizeof(char**)) ;
         }
         currString = getLine(file1) ;
       }
 
       avail_size = 1000 ;
       int *second= (int*) malloc(avail_size*sizeof(int)) ;
-      //REMOVED: secondactual= (char**) malloc(avail_size*sizeof(char**)) ;
       int ssize = 0 ;
 
-      //while ( fgets(buffer,1000,file2))
-      //MasterData::theLog << ",5" ;
       currString = getLine(file2) ;
       while (currString)
       {
         second[ssize] = hash(currString) ;
-        //REMOVED: secondactual[ssize] = currString ;
-        //MasterData::theLog << currString << endl ;
-        //cout << currString << endl ;
 
         try {
           free(currString) ;
@@ -818,7 +792,6 @@ void Diff::compare()
         } catch (...)
         {
           MasterData::theLog << "Exception(2) in Diff::compare()" << endl ;
-          //cout << "Exception(2) in Diff::compare()" << endl ;
         }
 
         ssize++ ;
@@ -827,43 +800,24 @@ void Diff::compare()
           avail_size+=increment ;
 
           second = (int*) realloc(second, avail_size*sizeof(int)) ;
-          //REMOVED: secondactual = (char**) realloc(secondactual, avail_size*sizeof(char**)) ;
         }
         currString = getLine(file2) ;
       }
 
-      //MasterData::theLog << ",6" ;
       SES(first,fsize,second,ssize) ;
 
-      //printTrace() ;
-
-      //MasterData::theLog << ",7" ;
       changes() ;
 
-//      throw 0 ;
-//      MasterData::theLog << "is this printed?" << endl ;
-
-      //MasterData::theLog << ",8" ;
       free (first) ;
-      //MasterData::theLog << ",9" ;
       free (second) ;
-
     }
 
     if (file1)
     {
-      //MasterData::theLog << ",10" ;
       fclose (file1) ;
     }
     if (file2)
     {
-      //MasterData::theLog << ",11" << endl ;
       fclose (file2) ;
     }
-
-/*  } catch (...)
-  {
-    MasterData::theLog << "Exception(3) in Diff::compare()" << endl ;
-    //cout << "Exception(3) in Diff::compare()" << endl ;
-  }*/
 }

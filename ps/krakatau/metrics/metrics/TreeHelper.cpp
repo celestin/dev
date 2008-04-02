@@ -16,6 +16,7 @@
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * CAM  26-Mar-08  338 : Tidied LCOM name.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -37,7 +38,6 @@ TreeHelper::TreeHelper(std::string dbName) : AutoNumber(), OurSQL(dbName),
   Cache(200001,10000)
 #else
   Cache(50001,5000)
-//  Cache(100,10)
 #endif
 {
   theNodeCount = 0 ;
@@ -52,7 +52,7 @@ TreeHelper::TreeHelper(std::string dbName) : AutoNumber(), OurSQL(dbName),
     theCurrentTypeID.reset(MasterData::USERTYPES) ;
   }
 
-  strcpy(theSymWrite, "replace into symbol values ") ;
+  strcpy_s(theSymWrite,QUERY_MAX, "replace into symbol values ") ;
   theNSymWrite = strlen(theSymWrite) ;
   theSymToWrite = false ;
 }
@@ -99,15 +99,15 @@ void TreeHelper::createTable(string tableName, string fieldList, string keyField
 
   char sql[1024] ;
 
-  strcpy(sql, "Create Table ") ;
-  strcat(sql, tableName.c_str()) ;
-  strcat(sql, " (") ;
-  strcat(sql, fieldList.c_str()) ;
-  strcat(sql, " , Primary Key (") ;
-  strcat(sql, keyField.c_str()) ;
-  strcat(sql, ") , Unique Index (") ;
-  strcat(sql, keyField.c_str()) ;
-  strcat(sql, "))") ;
+  strcpy_s(sql,1024, "Create Table ") ;
+  strcat_s(sql,1024, tableName.c_str()) ;
+  strcat_s(sql,1024, " (") ;
+  strcat_s(sql,1024, fieldList.c_str()) ;
+  strcat_s(sql,1024, " , Primary Key (") ;
+  strcat_s(sql,1024, keyField.c_str()) ;
+  strcat_s(sql,1024, ") , Unique Index (") ;
+  strcat_s(sql,1024, keyField.c_str()) ;
+  strcat_s(sql,1024, "))") ;
 
   try
   {
@@ -123,15 +123,15 @@ void TreeHelper::createTable(string tableName, string fieldList, string keyField
 // Add an index to an existing table
 void TreeHelper::addIndex(string tableName, string indexName, string fieldList)
 {
-  char sql[512] ;
+  char sql[1024] ;
 
-  strcpy(sql,"Alter Table ") ;
-  strcat(sql,tableName.c_str()) ;
-  strcat(sql," Add Index ") ;
-  strcat(sql,indexName.c_str()) ;
-  strcat(sql," ( ") ;
-  strcat(sql,fieldList.c_str()) ;
-  strcat(sql," )") ;
+  strcpy_s(sql,1024,"Alter Table ") ;
+  strcat_s(sql,1024,tableName.c_str()) ;
+  strcat_s(sql,1024," Add Index ") ;
+  strcat_s(sql,1024,indexName.c_str()) ;
+  strcat_s(sql,1024," ( ") ;
+  strcat_s(sql,1024,fieldList.c_str()) ;
+  strcat_s(sql,1024," )") ;
 
   try
   {
@@ -168,15 +168,15 @@ long TreeHelper::getNextID(string tableName, string idField)
 
 void TreeHelper::insertRow(DatumItr d, std::string tableName)
 {
-  char sql[512], charNumber[30] ;
+  char sql[1024], charNumber[30] ;
 
-  strcpy(sql,"Insert DELAYED Into ") ;
-  strcat(sql,tableName.c_str()) ;
-  strcat(sql," Values ( ") ;
-  strcat(sql, ltostr(d->second, charNumber, 30)) ;
-  strcat(sql,",'") ;
-  strcat(sql,d->first.c_str()) ;
-  strcat(sql,"')") ;
+  strcpy_s(sql,1024,"Insert DELAYED Into ") ;
+  strcat_s(sql,1024,tableName.c_str()) ;
+  strcat_s(sql,1024," Values ( ") ;
+  strcat_s(sql,1024, ltostr(d->second, charNumber, 30)) ;
+  strcat_s(sql,1024,",'") ;
+  strcat_s(sql,1024,d->first.c_str()) ;
+  strcat_s(sql,1024,"')") ;
 
 
   try
@@ -192,15 +192,15 @@ void TreeHelper::insertRow(DatumItr d, std::string tableName)
 
 void TreeHelper::insertSymbolTypeRow(long sytID, string name, long symID)
 {
-  char sql[512], charNumber[30] ;
+  char sql[1024], charNumber[30] ;
 
-  strcpy(sql,"Insert Into symboltype Values ( ") ;
-  strcat(sql, ltostr(sytID, charNumber, 30)) ;  // Unique SymbolTypeID
-  strcat(sql,",") ;
-  strcat(sql, ltostr(symID, charNumber, 30)) ;    // Ref to this type's Symbol
-  strcat(sql,",'") ;
-  strcat(sql,name.c_str()) ;            // Type Name
-  strcat(sql,"')") ;
+  strcpy_s(sql,1024,"Insert Into symboltype Values ( ") ;
+  strcat_s(sql,1024, ltostr(sytID, charNumber, 30)) ;  // Unique SymbolTypeID
+  strcat_s(sql,1024,",") ;
+  strcat_s(sql,1024, ltostr(symID, charNumber, 30)) ;    // Ref to this type's Symbol
+  strcat_s(sql,1024,",'") ;
+  strcat_s(sql,1024,name.c_str()) ;            // Type Name
+  strcat_s(sql,1024,"')") ;
 
 
   try
@@ -222,19 +222,19 @@ void TreeHelper::insertMetricTypeRow(long hlpID, long mttID, string mttCode, str
 
 void TreeHelper::insertMetricTypeRow(long hlpID, long mttID, int mtcID, string mttCode, string mttName)
 {
-  char sql[512], charNumber[30] ;
+  char sql[1024], charNumber[30] ;
 
-  strcpy(sql,"Insert DELAYED Into metrictype Values ( ") ;
-  strcat(sql, ltostr(mttID, charNumber, 30)) ;  // Unique MetricTypeID (mttID)
-  strcat(sql,",") ;
-  strcat(sql, ltostr(mtcID, charNumber, 30)) ;  // Metric Type Category (0=Absolute, 1=Delta)
-  strcat(sql,",'") ;
-  strcat(sql, mttCode.c_str()) ;          // Metric Code
-  strcat(sql,"','") ;
-  strcat(sql, mttName.c_str()) ;          // Metric Name
-  strcat(sql,"',1,0,0,0,0,") ;          // Chosen, Lower & Upper bounds
-  strcat(sql,ltostr(hlpID, charNumber, 30)) ;   // Metric Help ID
-  strcat(sql,")") ;
+  strcpy_s(sql,1024,"Insert DELAYED Into metrictype Values ( ") ;
+  strcat_s(sql,1024, ltostr(mttID, charNumber, 30)) ;  // Unique MetricTypeID (mttID)
+  strcat_s(sql,1024,",") ;
+  strcat_s(sql,1024, ltostr(mtcID, charNumber, 30)) ;  // Metric Type Category (0=Absolute, 1=Delta)
+  strcat_s(sql,1024,",'") ;
+  strcat_s(sql,1024, mttCode.c_str()) ;          // Metric Code
+  strcat_s(sql,1024,"','") ;
+  strcat_s(sql,1024, mttName.c_str()) ;          // Metric Name
+  strcat_s(sql,1024,"',1,0,0,0,0,") ;          // Chosen, Lower & Upper bounds
+  strcat_s(sql,1024,ltostr(hlpID, charNumber, 30)) ;   // Metric Help ID
+  strcat_s(sql,1024,")") ;
 
   try
   {
@@ -331,7 +331,7 @@ void TreeHelper::createSourceFile()
   dropTable("sourcefile") ;
 
   char sql[1024] ;
-  strcpy(sql, "Create Table sourcefile (srfID int AUTO_INCREMENT not null, srfName varchar(255) binary not null, primary key (srfID), unique index (srfID))") ;
+  strcpy_s(sql,1024, "Create Table sourcefile (srfID int AUTO_INCREMENT not null, srfName varchar(255) binary not null, primary key (srfID), unique index (srfID))") ;
 
   try
   {
@@ -484,12 +484,6 @@ void TreeHelper::createMetricType()
     MasterData::DELTA_METCAT, "DEL_FILE", "Number of Files (Deleted)") ;
   insertMetricTypeRow(10524, MasterData::codeMtt(MasterData::INS_FILE_MET, MasterData::PROJECT_CAT),
     MasterData::DELTA_METCAT, "ADD_FILE", "Number of Files (Added)") ;
-//  insertMetricTypeRow(10525, MasterData::codeMtt(MasterData::CHG_CLASS_MET, MasterData::PROJECT_CAT),
-//    MasterData::DELTA_METCAT, "CHG_CLASS",  "Number of Classes (Changed)") ;
-//  insertMetricTypeRow(10526, MasterData::codeMtt(MasterData::DEL_CLASS_MET, MasterData::PROJECT_CAT),
-//    MasterData::DELTA_METCAT, "DEL_CLASS",  "Number of Classes (Deleted)") ;
-//  insertMetricTypeRow(10527, MasterData::codeMtt(MasterData::INS_CLASS_MET, MasterData::PROJECT_CAT),
-//    MasterData::DELTA_METCAT, "ADD_CLASS",  "Number of Classes (Added)") ;
   insertMetricTypeRow(10528, MasterData::codeMtt(MasterData::CHG_METH_MET, MasterData::PROJECT_CAT),
     MasterData::DELTA_METCAT, "CHG_METH", "Number of Methods (Changed)") ;
   insertMetricTypeRow(10529, MasterData::codeMtt(MasterData::DEL_METH_MET, MasterData::PROJECT_CAT),
@@ -662,7 +656,7 @@ void TreeHelper::deleteTempLinks()
 {
   char sql[100] ;
 
-  strcpy(sql, "Delete from link where sym2ID=-1") ;
+  strcpy_s(sql,100, "Delete from link where sym2ID=-1") ;
 
   try
   {
@@ -797,10 +791,10 @@ long TreeHelper::getSymbolID(long sytID)
   // and returns the symID (i.e. the Symbol Definition) for
   // the Type
 
-  char sql[512], charNumber[30] ;
+  char sql[1024], charNumber[30] ;
 
-  strcpy(sql,"Select symID From symboltype Where sytID=") ;
-  strcat(sql, ltostr(sytID, charNumber, 30)) ;
+  strcpy_s(sql,1024,"Select symID From symboltype Where sytID=") ;
+  strcat_s(sql,1024, ltostr(sytID, charNumber, 30)) ;
 
   try
   {
@@ -847,46 +841,34 @@ void TreeHelper::flushDeleteSymbol()
   {
     flushWriteSymbol() ;
 
-    char sql[8192] ;
+    char sql[QUERY_MAX] ;
     char idString[4096], charNumber[30] ;
 
-    strcpy(idString, "(") ;
+    strcpy_s(idString,4096, "(") ;
 
-    for(int i=0; i<theDelIDs.size(); i++)
+    for(unsigned int i=0; i<theDelIDs.size(); i++)
     {
-      strcat(idString, ltostr(theDelIDs[i], charNumber, 30)) ;
-      strcat(idString, ",") ;
+      strcat_s(idString,4096, ltostr(theDelIDs[i], charNumber, 30)) ;
+      strcat_s(idString,4096, ",") ;
       releaseID(theDelIDs[i]) ;
     }
 
     idString[strlen(idString)-1] = ')' ;
 
 #ifdef PROFESSIONAL
-/*    strcpy(sql, "select count(*) as RecCount from link where symID IN ") ;
-    strcat(sql, idString) ;
-    strcat(sql, " or sym2ID IN ") ;
-    strcat(sql, idString) ;
-
-    if (executeQuery(sql))
-    {
-      if (longCell(0,0)!=0)
-      {
-        //MasterData::theLog << "LINK_COUNT," << cell(0,0) << endl ;*/
-        strcpy(sql, "delete from link where symID IN ") ;
-        strcat(sql, idString) ;
-        strcat(sql, " or sym2ID IN ") ;
-        strcat(sql, idString) ;
-        executeResultlessQuery(sql) ;
-/*      }
-    }*/
+    strcpy_s(sql,QUERY_MAX, "delete from link where symID IN ") ;
+    strcat_s(sql,QUERY_MAX, idString) ;
+    strcat_s(sql,QUERY_MAX, " or sym2ID IN ") ;
+    strcat_s(sql,QUERY_MAX, idString) ;
+    executeResultlessQuery(sql) ;
 #endif
 
-    strcpy(sql, "delete from symbol where symID IN ") ;
-    strcat(sql, idString) ;
+    strcpy_s(sql,QUERY_MAX, "delete from symbol where symID IN ") ;
+    strcat_s(sql,QUERY_MAX, idString) ;
     executeResultlessQuery(sql) ;
 
-    strcpy(sql, "delete from metric where symID IN ") ;
-    strcat(sql, idString) ;
+    strcpy_s(sql,QUERY_MAX, "delete from metric where symID IN ") ;
+    strcat_s(sql,QUERY_MAX, idString) ;
     executeResultlessQuery(sql) ;
 
     theDelIDs.clear() ;
@@ -896,19 +878,19 @@ void TreeHelper::flushDeleteSymbol()
 
 void TreeHelper::writeSymbol(long symID, long parID, const char *symName, long sytID, long catID, long prtID)
 {
-  strcpy(theTmpSymWrite,"(") ;
-  strcat(theTmpSymWrite, ltostr(symID, theCharNumber, 30)) ;
-  strcat(theTmpSymWrite,",") ;
-  strcat(theTmpSymWrite, ltostr(parID, theCharNumber, 30)) ;
-  strcat(theTmpSymWrite,",'") ;
-  strcat(theTmpSymWrite, symName) ;
-  strcat(theTmpSymWrite, "',") ;
-  strcat(theTmpSymWrite, ltostr(sytID, theCharNumber, 30)) ;
-  strcat(theTmpSymWrite,",") ;
-  strcat(theTmpSymWrite, ltostr(catID, theCharNumber, 30)) ;
-  strcat(theTmpSymWrite,",") ;
-  strcat(theTmpSymWrite, ltostr(prtID, theCharNumber, 30)) ;
-  strcat(theTmpSymWrite,"),") ;
+  strcpy_s(theTmpSymWrite,512,"(") ;
+  strcat_s(theTmpSymWrite,512, ltostr(symID, theCharNumber, 30)) ;
+  strcat_s(theTmpSymWrite,512,",") ;
+  strcat_s(theTmpSymWrite,512, ltostr(parID, theCharNumber, 30)) ;
+  strcat_s(theTmpSymWrite,512,",'") ;
+  strcat_s(theTmpSymWrite,512, symName) ;
+  strcat_s(theTmpSymWrite,512, "',") ;
+  strcat_s(theTmpSymWrite,512, ltostr(sytID, theCharNumber, 30)) ;
+  strcat_s(theTmpSymWrite,512,",") ;
+  strcat_s(theTmpSymWrite,512, ltostr(catID, theCharNumber, 30)) ;
+  strcat_s(theTmpSymWrite,512,",") ;
+  strcat_s(theTmpSymWrite,512, ltostr(prtID, theCharNumber, 30)) ;
+  strcat_s(theTmpSymWrite,512,"),") ;
 
   theNSymWrite += strlen(theTmpSymWrite) ;
 
@@ -923,7 +905,7 @@ void TreeHelper::writeSymbol(long symID, long parID, const char *symName, long s
   else
   {
     theSymToWrite = true ;
-    strcat(theSymWrite,theTmpSymWrite) ;
+    strcat_s(theSymWrite,QUERY_MAX,theTmpSymWrite) ;
   }
 }
 
@@ -934,7 +916,7 @@ void TreeHelper::flushWriteSymbol()
     theSymWrite[strlen(theSymWrite)-1] = '\0' ;
     executeResultlessQuery(theSymWrite) ;
 
-    strcpy(theSymWrite, "REPLACE INTO symbol VALUES ") ;
+    strcpy_s(theSymWrite, QUERY_MAX, "REPLACE INTO symbol VALUES ") ;
 
     theNSymWrite = strlen(theSymWrite) ;
     theSymToWrite = false ;
@@ -948,15 +930,15 @@ char* TreeHelper::buildTableName(const int table, int index)
 {
   if (table == ANCESTRY)
   {
-    strcpy(theTableName, "ancestry") ;
+    strcpy_s(theTableName, 64, "ancestry") ;
   } else {
     // SUBPRO
-    strcpy(theTableName, "ancestry_subp") ;
+    strcpy_s(theTableName, 64, "ancestry_subp") ;
   }
 
   if (index == 0) return theTableName ;
 
-  strcat(theTableName, ltostr(index, theCharNumber, 30)) ;
+  strcat_s(theTableName, 64, ltostr(index, theCharNumber, 30)) ;
   return theTableName ;
 }
 
@@ -973,51 +955,51 @@ void TreeHelper::buildAncestry()
   insertTable4 = _strdup(" select s1.symID as symID, s1.catID as catID, s1.symName as symName, s2.symID as psymID, s2.catID as pcatID, s2.symName as psymName, s2.filID as filID, s2.filName as filName from symbol s1 inner join ") ;
   insertTable5 = _strdup(" s2 on s1.symparentid=s2.symid where s1.catid<>8") ;
 
-  char sql[4096] ;
+  char sql[QUERY_MAX] ;
 
   // Drop initial Ancestry table
-  strcpy(sql, DROP_TABLE) ;
-  strcat(sql, buildTableName(ANCESTRY, 0)) ;
+  strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, 0)) ;
   executeResultlessQuery(sql) ;
 
   // Create initial Ancestry table
-  strcpy(sql, CREATE_TABLE) ;
-  strcat(sql, buildTableName(ANCESTRY, 0)) ;
-  strcat(sql, createTable2) ;
+  strcpy_s(sql,QUERY_MAX, CREATE_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, 0)) ;
+  strcat_s(sql,QUERY_MAX, createTable2) ;
   executeResultlessQuery(sql) ;
 
   // Get initial data from symbol
-  strcpy(sql, INSERT_TABLE) ;
-  strcat(sql, buildTableName(ANCESTRY, 0)) ;
-  strcat(sql, insertTable2) ;
-  strcat(sql, "symbol") ;
-  strcat(sql, insertTable3) ;
+  strcpy_s(sql,QUERY_MAX, INSERT_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, 0)) ;
+  strcat_s(sql,QUERY_MAX, insertTable2) ;
+  strcat_s(sql,QUERY_MAX, "symbol") ;
+  strcat_s(sql,QUERY_MAX, insertTable3) ;
   executeResultlessQuery(sql) ;
 
   int i,j,c=1 ;
   for(i=1; c>0; i++)
   {
     // Drop i-level Ancestry table
-    strcpy(sql, DROP_TABLE) ;
-    strcat(sql, buildTableName(ANCESTRY, i)) ;
+    strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i)) ;
     executeResultlessQuery(sql) ;
 
     // Create i-level Ancestry table
-    strcpy(sql, CREATE_TABLE) ;
-    strcat(sql, buildTableName(ANCESTRY, i)) ;
-    strcat(sql, createTable2) ;
+    strcpy_s(sql,QUERY_MAX, CREATE_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i)) ;
+    strcat_s(sql,QUERY_MAX, createTable2) ;
     executeResultlessQuery(sql) ;
 
     // Get i-level data from previous Ancestry
-    strcpy(sql, INSERT_TABLE) ;
-    strcat(sql, buildTableName(ANCESTRY, i)) ;
-    strcat(sql, insertTable4) ;
-    strcat(sql, buildTableName(ANCESTRY, i-1)) ;
-    strcat(sql, insertTable5) ;
+    strcpy_s(sql,QUERY_MAX, INSERT_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i)) ;
+    strcat_s(sql,QUERY_MAX, insertTable4) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i-1)) ;
+    strcat_s(sql,QUERY_MAX, insertTable5) ;
     executeResultlessQuery(sql) ;
 
-    strcpy(sql, "select count(*) from ") ;
-    strcat(sql, buildTableName(ANCESTRY, i)) ;
+    strcpy_s(sql,QUERY_MAX, "select count(*) from ") ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i)) ;
     if (executeQuery(sql))
     {
       c = longCell(0, 0) ;
@@ -1028,21 +1010,21 @@ void TreeHelper::buildAncestry()
   for(j=1; j<i; j++)
   {
     // Copy details from temporary table into master
-    strcpy(sql, "insert ") ;
-    strcat(sql, buildTableName(ANCESTRY, 0)) ;
-    strcat(sql, " select * from ") ;
-    strcat(sql, buildTableName(ANCESTRY, j)) ;
+    strcpy_s(sql,QUERY_MAX, "insert ") ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, 0)) ;
+    strcat_s(sql,QUERY_MAX, " select * from ") ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, j)) ;
     executeResultlessQuery(sql) ;
 
     // Drop temporary table
-    strcpy(sql, DROP_TABLE) ;
-    strcat(sql, theTableName) ;
+    strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+    strcat_s(sql,QUERY_MAX, theTableName) ;
     executeResultlessQuery(sql) ;
   }
 
   // Drop last temporary table that was never populated
-  strcpy(sql, DROP_TABLE) ;
-  strcat(sql, buildTableName(ANCESTRY, i)) ;
+  strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, i)) ;
   executeResultlessQuery(sql) ;
 
   free(createTable2) ;
@@ -1058,47 +1040,47 @@ void TreeHelper::buildAncestry()
   insertTable6 = _strdup(" sp on s1.symparentid=sp.symid where catid=1") ;
 
   // Drop initial Subpro table
-  strcpy(sql, DROP_TABLE) ;
-  strcat(sql, buildTableName(SUBPRO, 0)) ;
+  strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, 0)) ;
   executeResultlessQuery(sql) ;
 
   // Create initial Subpro table
-  strcpy(sql, CREATE_TABLE) ;
-  strcat(sql, buildTableName(SUBPRO, 0)) ;
-  strcat(sql, createTable2) ;
+  strcpy_s(sql,QUERY_MAX, CREATE_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, 0)) ;
+  strcat_s(sql,QUERY_MAX, createTable2) ;
   executeResultlessQuery(sql) ;
 
   // Get initial data from symbol
-  strcpy(sql, INSERT_TABLE) ;
-  strcat(sql, buildTableName(SUBPRO, 0)) ;
-  strcat(sql, insertTable2) ;
+  strcpy_s(sql,QUERY_MAX, INSERT_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, 0)) ;
+  strcat_s(sql,QUERY_MAX, insertTable2) ;
   executeResultlessQuery(sql) ;
 
   for(i=1, c=1; c>0; i++)
   {
     // Drop i-level Subpro table
-    strcpy(sql, DROP_TABLE) ;
-    strcat(sql, buildTableName(SUBPRO, i)) ;
+    strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i)) ;
     executeResultlessQuery(sql) ;
 
     // Create i-level Subpro table
-    strcpy(sql, CREATE_TABLE) ;
-    strcat(sql, buildTableName(SUBPRO, i)) ;
-    strcat(sql, createTable2) ;
+    strcpy_s(sql,QUERY_MAX, CREATE_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i)) ;
+    strcat_s(sql,QUERY_MAX, createTable2) ;
     executeResultlessQuery(sql) ;
 
     // Get i-level data from previous Subpro
-    strcpy(sql, INSERT_TABLE) ;
-    strcat(sql, buildTableName(SUBPRO, i)) ;
-    strcat(sql, insertTable4) ;
-    strcat(sql, ltostr(i+1, theCharNumber, 30)) ; // Include depth information
-    strcat(sql, insertTable5) ;
-    strcat(sql, buildTableName(SUBPRO, i-1)) ;
-    strcat(sql, insertTable6) ;
+    strcpy_s(sql,QUERY_MAX, INSERT_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i)) ;
+    strcat_s(sql,QUERY_MAX, insertTable4) ;
+    strcat_s(sql,QUERY_MAX, ltostr(i+1, theCharNumber, 30)) ; // Include depth information
+    strcat_s(sql,QUERY_MAX, insertTable5) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i-1)) ;
+    strcat_s(sql,QUERY_MAX, insertTable6) ;
     executeResultlessQuery(sql) ;
 
-    strcpy(sql, "select count(*) from ") ;
-    strcat(sql, buildTableName(SUBPRO, i)) ;
+    strcpy_s(sql,QUERY_MAX, "select count(*) from ") ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i)) ;
     if (executeQuery(sql))
     {
       c = longCell(0, 0) ;
@@ -1109,25 +1091,25 @@ void TreeHelper::buildAncestry()
   for(j=0; j<i; j++)
   {
     // Copy details from temporary table into master
-    strcpy(sql, INSERT_TABLE) ;
-    strcat(sql, buildTableName(ANCESTRY, 0)) ;
-    strcat(sql, " select symid, 1, symname, psymid, 1, psymname, subdepth as filid, '' as filname from ") ;
-    strcat(sql, buildTableName(SUBPRO, j)) ;
+    strcpy_s(sql,QUERY_MAX, INSERT_TABLE) ;
+    strcat_s(sql,QUERY_MAX, buildTableName(ANCESTRY, 0)) ;
+    strcat_s(sql,QUERY_MAX, " select symid, 1, symname, psymid, 1, psymname, subdepth as filid, '' as filname from ") ;
+    strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, j)) ;
     executeResultlessQuery(sql) ;
 
     // Drop temporary table
-    strcpy(sql, DROP_TABLE) ;
-    strcat(sql, theTableName) ;
+    strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+    strcat_s(sql,QUERY_MAX, theTableName) ;
     executeResultlessQuery(sql) ;
   }
 
   // Drop last temporary table that was never populated
-  strcpy(sql, DROP_TABLE) ;
-  strcat(sql, buildTableName(SUBPRO, i)) ;
+  strcpy_s(sql,QUERY_MAX, DROP_TABLE) ;
+  strcat_s(sql,QUERY_MAX, buildTableName(SUBPRO, i)) ;
   executeResultlessQuery(sql) ;
 
   // Lastly, insert the root project
-  strcpy(sql, "insert ancestry values (1, 1, '/', 0, 0, '/', 0, '')") ;
+  strcpy_s(sql,QUERY_MAX, "insert ancestry values (1, 1, '/', 0, 0, '/', 0, '')") ;
   executeResultlessQuery(sql) ;
 
   free(createTable2) ;
@@ -1137,7 +1119,7 @@ void TreeHelper::buildAncestry()
   free(insertTable6) ;
 
   // Finally, copy across Packages and Files so that all data is available from the Ancestry table
-  strcpy(sql, "insert ancestry select symid, catid, symname, 0, 0, '', 0, '' from symbol where catid in (2,4) order by catid") ;
+  strcpy_s(sql,QUERY_MAX, "insert ancestry select symid, catid, symname, 0, 0, '', 0, '' from symbol where catid in (2,4) order by catid") ;
   executeResultlessQuery(sql) ;
 }
 

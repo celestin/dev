@@ -53,7 +53,7 @@ MetricPhase::~MetricPhase()
 
 int MetricPhase::getProgress()
 {
-  float ratio;
+  double ratio;
 
   LOCKMUTEX(progress_lock);
   ratio = theStage / theNoStages;
@@ -294,7 +294,7 @@ void MetricPhase::calculateMetrics(SymbolNode &node)
 #ifdef LANGUAGE_JAVA
   else if (node.getCategoryID() == MasterData::PACKAGE_CAT)
   {
-    node.setMetric(MasterData::PACK_NFILE_MET, node.childCount());
+    node.setMetric(MasterData::PACK_NFILE_MET, (float)node.childCount());
   }
 #endif
   else if (node.getCategoryID() == MasterData::CLASS_CAT)
@@ -502,14 +502,14 @@ void MetricPhase::calc_NnVDE(SymbolNode& sn, bool isMethod)
   float n = n1 + n2;
 
   float V = 0;
-  if (n > 0) V = N * (log(n) / LOG2 );
+  if (n > 0) V = N * (float)(log(n) / LOG2);
 
   float D = 0;
-  if (n2 > 0) D = ( (double) n1 / 2 ) * ( (double) N2 / (double) n2 );
+  if (n2 > 0) D = (float)((float) n1 / 2 ) * ((float) N2 / (float) n2);
 
   float E = D * V;
 
-  float B = ((float)pow((double)E, ((double)2/(double)3))) / (double)3000;
+  float B = (float)(pow(E, ((2.0f/3.0f))) / 3000.0f);
 
   if (isMethod) {
     float cyclo = theMetrics[MasterData::CYCLO_MET];
@@ -528,7 +528,7 @@ void MetricPhase::calc_NnVDE(SymbolNode& sn, bool isMethod)
 
 float MetricPhase::calc_CALLS(SymbolNode& sn)
 {
-  float CALLS = sn.getOperationUsage();
+  float CALLS = (float)sn.getOperationUsage();
 
   sn.setMetric(MasterData::CALLS_MET, CALLS);
   return CALLS;
@@ -646,7 +646,7 @@ void MetricPhase::calc_DEPTH(SymbolNode& methodNode)
     theProjNode.setMetric(MasterData::DEPTH_MET, DEPTH);
 
   vector<long> visited;
-  theProjNode.incMetric(MasterData::AVPATHS_MET, pathsFrom(methodNode, visited));
+  theProjNode.incMetric(MasterData::AVPATHS_MET, (float)pathsFrom(methodNode, visited));
 }
 
 
@@ -692,11 +692,12 @@ void MetricPhase::calc_NP(SymbolNode& sn)
 
 void MetricPhase::calc_Members(SymbolNode &node)
 {
-  float CSA, CSO, CSAO, PPP, i;
+  float CSA, CSO, CSAO, PPP;
+  int i;
 
-  CSA = CSO = CSAO = PPP = i = 0;
+  CSA = CSO = CSAO = PPP = 0;
 
-  for( i = 0; i < node.childCount(); i++)
+  for(i = 0; i < node.childCount(); i++)
   {
     SymbolNode child = node.getChild(i);
 
@@ -728,11 +729,12 @@ void MetricPhase::calc_Members(SymbolNode &node)
 #ifdef LANGUAGE_JAVA
 void MetricPhase::calc_InterfaceMembers(SymbolNode &node)
 {
-  float ISA, ISO, ISAO, PPP, i;
+  float ISA, ISO, ISAO, PPP;
+  int i;
 
-  ISA = ISO = ISAO = PPP = i = 0;
+  ISA = ISO = ISAO = PPP = 0;
 
-  for( i = 0; i < node.childCount(); i++)
+  for(i = 0; i < node.childCount(); i++)
   {
     SymbolNode child = node.getChild(i);
 
@@ -762,7 +764,7 @@ void MetricPhase::calc_InterfaceMembers(SymbolNode &node)
 
 void MetricPhase::calc_NOCI(SymbolNode &node)
 {
-  float NOCI = node.countLinks(MasterData::SUB_LINK);
+  float NOCI = (float)node.countLinks(MasterData::SUB_LINK);
   node.setMetric(MasterData::NOCI_MET, NOCI);
 }
 #endif
@@ -770,7 +772,7 @@ void MetricPhase::calc_NOCI(SymbolNode &node)
 
 void MetricPhase::calc_NOCC(SymbolNode &node)
 {
-  float NOCC = node.countLinks(MasterData::SUB_LINK);
+  float NOCC = (float)node.countLinks(MasterData::SUB_LINK);
   node.setMetric(MasterData::NOCC_MET, NOCC);
 }
 
@@ -806,8 +808,7 @@ void MetricPhase::calc_DIT(SymbolNode &node)
   // Depth of Inheritence Tree
   // From the current class, traces up entire inheritence HIERarchy counting
   // which route is the longest
-
-  double DIT = 0;
+  int DIT = 0;
   int thisDepth = 0;
   SymbolNode super = node;
 
@@ -831,10 +832,12 @@ void MetricPhase::calc_DIT(SymbolNode &node)
 
   if (CSO != 0) CSI = (NOOC * DIT) / CSO;
 
-  if (DIT > theProjNode.getMetric(MasterData::PDIT_MET))
-    theProjNode.setMetric(MasterData::PDIT_MET, DIT);
+  if (DIT > theProjNode.getMetric(MasterData::PDIT_MET)) 
+  {
+    theProjNode.setMetric(MasterData::PDIT_MET, (float)DIT);
+  }
 
-  node.setMetric(MasterData::DIT_MET, DIT);
+  node.setMetric(MasterData::DIT_MET, (float)DIT);
   node.setMetric(MasterData::CSI_MET, CSI);
 }
 
@@ -907,32 +910,30 @@ void MetricPhase::calc_LCOM(SymbolNode &node)
   // This metric quantifies how much intercourse the methods of a class
   // have with the member variables of that class
 
-  MasterData::theLog << "Calling calc_LCOM(" << node.getName() << ")" << endl;
-  char sql[512], charNumber[30];
+  char sql[1024], charNumber[30];
 
   // If any of the queries fail return
 
   // Create the temporary table
-  strcpy(sql,"drop table if exists lcom");
+  strcpy_s(sql,1024,"drop table if exists lcom");
   if (!theRoot->executeResultlessQuery(sql)) return;
-  //strcpy(sql,"create table if not exists lcom (symid int not null)");
-  strcpy(sql,"create table if not exists lcom (methid int not null, fldid int not null)");
+  strcpy_s(sql,1024,"create table if not exists lcom (methid int not null, fldid int not null)");
   if (!theRoot->executeResultlessQuery(sql)) return;
 
   // Build LCOM table
-  strcpy(sql,"insert lcom select s1.symid as methid, s2.symid as fldid from symbol s1 inner join link lk on s1.symID = lk.symID inner join symbol s2 on s2.symID = lk.sym2ID where s1.symParentID=");
-  strcat(sql, ltostr(node.getID(), charNumber, 30));
-  strcat(sql," and s2.symParentID=");
-  strcat(sql, ltostr(node.getID(), charNumber, 30));
-  strcat(sql," and s2.catID=");
-  strcat(sql, ltostr(MasterData::FIELD_CAT, charNumber, 30));
-  strcat(sql," group by s1.symid,s2.symid");
+  strcpy_s(sql,1024,"insert lcom select s1.symid as methid, s2.symid as fldid from symbol s1 inner join link lk on s1.symID = lk.symID inner join symbol s2 on s2.symID = lk.sym2ID where s1.symParentID=");
+  strcat_s(sql,1024, ltostr(node.getID(), charNumber, 30));
+  strcat_s(sql,1024," and s2.symParentID=");
+  strcat_s(sql,1024, ltostr(node.getID(), charNumber, 30));
+  strcat_s(sql,1024," and s2.catID=");
+  strcat_s(sql,1024, ltostr(MasterData::FIELD_CAT, charNumber, 30));
+  strcat_s(sql,1024," group by s1.symid,s2.symid");
   if (!theRoot->executeResultlessQuery(sql)) return;
 
   // Determine dimensions for 2D array representing method/field usage
   // Firstly, get the maximum number of references to a field from a method
   long thisflds=0, maxflds=0, methods=0;
-  strcpy(sql,"select count(methid) as max from lcom group by methid");
+  strcpy_s(sql,1024,"select count(methid) as max from lcom group by methid");
   if (theRoot->executeQuery(sql))
   {
     methods = theRoot->rows();
@@ -959,7 +960,7 @@ void MetricPhase::calc_LCOM(SymbolNode &node)
   // Now build the usage array
   long **usage = new long*[methods];
 
-  strcpy(sql,"select methid, fldid from lcom order by methid,fldid");
+  strcpy_s(sql,1024,"select methid, fldid from lcom order by methid,fldid");
   if (theRoot->executeQuery(sql))
   {
     long thismethod=-1, thisrow=-1, thiscol=1;
@@ -1003,7 +1004,7 @@ void MetricPhase::calc_LCOM(SymbolNode &node)
   }
 
   if (p>q) {
-    node.setMetric(MasterData::LCOM_MET, p - q);
+    node.setMetric(MasterData::LCOM_MET, (float)(p - q));
   } else {
     node.setMetric(MasterData::LCOM_MET, 0);
   }
@@ -1173,11 +1174,11 @@ void MetricPhase::calc_Inheritence(SymbolNode &node)
   float CSO = node.getMetric(MasterData::CSO_MET);
   float CSA = node.getMetric(MasterData::CSA_MET);
 
-  float NOAC = countAddedEntities(node, MasterData::METHOD_CAT);  // Added Operations
-  float NAAC = countAddedEntities(node, MasterData::FIELD_CAT); // Added Attributes
+  float NOAC = (float)countAddedEntities(node, MasterData::METHOD_CAT);  // Added Operations
+  float NAAC = (float)countAddedEntities(node, MasterData::FIELD_CAT); // Added Attributes
   float NOOC = CSO - NOAC;  // Overridden Operations
-  float NOIC = countInherited(node, MasterData::METHOD_CAT);  // Inherited Operations
-  float NAIC = countInherited(node, MasterData::FIELD_CAT); // Inherited Attributes
+  float NOIC = (float)countInherited(node, MasterData::METHOD_CAT);  // Inherited Operations
+  float NAIC = (float)countInherited(node, MasterData::FIELD_CAT); // Inherited Attributes
 
   node.setMetric(MasterData::NOAC_MET, NOAC);
   node.setMetric(MasterData::NAAC_MET, NAAC);
@@ -1349,7 +1350,7 @@ void MetricPhase::calc_InheritenceTreeSize(SymbolNode &classNode)
 
   if (numSubs == 0) return;
 
-  theProjNode.incMetric(MasterData::INH_MET,numSubs);
+  theProjNode.incMetric(MasterData::INH_MET, (float)numSubs);
 
   vector<Link>::iterator iter;
   for(iter = subs.begin(); iter < subs.end(); iter++)
@@ -1542,7 +1543,7 @@ int MetricPhase::pathsFrom(SymbolNode &method, vector<long> &visited)
   // If no calls from this method, just count this method call itself
   if (calls.size() == 0) return 1;
 
-  int i;
+  unsigned int i;
   for(i = 0; i < visited.size(); i++)
   {
     if (method.getID() == visited[i])
@@ -1577,10 +1578,10 @@ int MetricPhase::countUniqueWithLinks(long lktID)
 {
   // Count the distinct number of Symbols that have
   // at least one Link of the specified type
-  char sql[512], charNumber[30];
+  char sql[1024], charNumber[30];
 
-  strcpy(sql,"select count(distinct symID) from link where lktID=");
-  strcat(sql, ltostr(lktID, charNumber, 30));
+  strcpy_s(sql,1024,"select count(distinct symID) from link where lktID=");
+  strcat_s(sql,1024, ltostr(lktID, charNumber, 30));
 
 
   try
@@ -1627,7 +1628,7 @@ void MetricPhase::calc_NORC()
 
     if (theRoot->executeQuery("select count(distinct r.symID) from symbol r left join tmpsymbol t on r.symID = t.symID where r.catID = 5 and t.symID is null"))
     {
-      float rootClasses = theRoot->longCell(0,0);
+      float rootClasses = (float)theRoot->longCell(0,0);
       theProjNode.setMetric(MasterData::NORC_MET, rootClasses);
     }
 
@@ -1649,15 +1650,15 @@ void MetricPhase::calc_PACK_NORC(SymbolNode &node)
     theRoot->executeResultlessQuery("create table if not exists tmpsymbol (symID int not null)");
     theRoot->executeResultlessQuery("insert tmpsymbol select s.symID from symbol s left outer join link l on s.symID = l.symID where l.lktID = 2 and s.catID = 5");
 
-    char sql[512];
+    char sql[1024];
     char charNumber[30];
 
-    strcpy(sql,"select count(distinct r.symID) from symbol r left join tmpsymbol t on r.symID = t.symID where r.catID = 5 and t.symID is null and r.symParentID=");
-    strcat(sql, ltostr(node.getID(), charNumber, 30));
+    strcpy_s(sql,1024,"select count(distinct r.symID) from symbol r left join tmpsymbol t on r.symID = t.symID where r.catID = 5 and t.symID is null and r.symParentID=");
+    strcat_s(sql,1024, ltostr(node.getID(), charNumber, 30));
 
     if (theRoot->executeQuery(sql))
     {
-      float rootClasses = theRoot->longCell(0,0);
+      float rootClasses = (float)theRoot->longCell(0,0);
       node.setMetric(MasterData::PACK_NTC_MET, rootClasses);
     }
 
@@ -1665,12 +1666,12 @@ void MetricPhase::calc_PACK_NORC(SymbolNode &node)
     theRoot->executeResultlessQuery("create table if not exists tmpsymbol (symID int not null)");
     theRoot->executeResultlessQuery("insert tmpsymbol select s.symID from symbol s left outer join link l on s.symID = l.symID where l.lktID = 2 and s.catID = 6");
 
-    strcpy(sql,"select count(distinct r.symID) from symbol r left join tmpsymbol t on r.symID = t.symID where r.catID = 5 and t.symID is null and r.symParentID=");
-    strcat(sql, ltostr(node.getID(), charNumber, 30));
+    strcpy_s(sql,1024,"select count(distinct r.symID) from symbol r left join tmpsymbol t on r.symID = t.symID where r.catID = 5 and t.symID is null and r.symParentID=");
+    strcat_s(sql,1024, ltostr(node.getID(), charNumber, 30));
 
     if (theRoot->executeQuery(sql))
     {
-      float rootClasses = theRoot->longCell(0,0);
+      float rootClasses = (float)theRoot->longCell(0,0);
       node.setMetric(MasterData::PACK_NTI_MET, rootClasses);
     }
 

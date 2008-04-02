@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_SYMBOLCOMP
@@ -21,224 +22,176 @@
 
 namespace metrics
 {
-	class SymbolComp : public DataRow
-	{
-	private:
+  class SymbolComp : public DataRow
+  {
+  private:
 
-		long theSymID ;
-		//long theSym2ID ;
-		long theStatus ;
+    long theSymID ;
+    //long theSym2ID ;
+    long theStatus ;
 
-	protected:
+  protected:
 
-	public:
+  public:
 
-		SymbolComp()
-		{
-			theSymID = 0 ;
-			//theSym2ID = 0 ;
-			theStatus = 0 ;
-		}
+    SymbolComp()
+    {
+      theSymID = 0 ;
+      //theSym2ID = 0 ;
+      theStatus = 0 ;
+    }
 
-		SymbolComp(long newSymID, /*long newSym2ID,*/ long newStatus)
-		{
-			theSymID = newSymID ;
-			//theSym2ID = newSym2ID ;
-			theStatus = newStatus ;
-		}
+    SymbolComp(long newSymID, /*long newSym2ID,*/ long newStatus)
+    {
+      theSymID = newSymID ;
+      //theSym2ID = newSym2ID ;
+      theStatus = newStatus ;
+    }
 
-		virtual ~SymbolComp() {;}
+    virtual ~SymbolComp() {;}
 
-		void write() {;}
-		void read() {;}
+    void write() {;}
+    void read() {;}
 
-		void getStatement(char *sql)
-		{
-			strcpy(sql, "REPLACE INTO symbolcomp VALUES ") ;
-		}
+    void getStatement(char *sql)
+    {
+      strcpy_s(sql, QUERY_MAX, "REPLACE INTO symbolcomp VALUES ") ;
+    }
 
-		void getValues(char *sql)
-		{
-			char charNumber[30] ;
+    void getValues(char *sql)
+    {
+      char charNumber[30] ;
 
-			strcat(sql,"(") ;
-
-			//itoa(theSymID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theSymID, charNumber, 30)) ;
-			strcat(sql,",") ;
-
-			//itoa(theStatus, charNumber, 10) ;
-			//strcat(charNumber,")") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theStatus, charNumber, 30)) ;
-			strcat(sql,")") ;
-		}
-
-	} ;
+      strcat_s(sql, QUERY_MAX,"(") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theSymID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theStatus, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,")") ;
+    }
+  } ;
 
 
-	class SymbolDel : public DataRow
-	{
-	private:
+  class SymbolDel : public DataRow
+  {
+  private:
 
-		long theSymID ;
-		long theParentID ;
-		long theNewParentID ;
-		std::string theName ;
-		long theTypeID ;
-		long theCatID ;
-		long theProtectionID ;
-
-
-	protected:
-
-	public:
-
-		SymbolDel() : theName("")
-		{
-			theSymID = 0 ;
-			theParentID = 0 ;
-			theNewParentID = 0 ;
-			theTypeID = 0 ;
-			theCatID = 0 ;
-			theProtectionID = 0 ;
-		}
-
-		SymbolDel(long newSymID, long newParentID, long newNewParentID, std::string newName,
-			long newTypeID, long newCatID, long newProtID) : theName(newName)
-		{
-			theSymID = newSymID ;
-			theParentID = newParentID ;
-			theNewParentID = newNewParentID ;
-			theTypeID = newTypeID ;
-			theCatID = newCatID ;
-			theProtectionID = newProtID ;
-		}
-
-		virtual ~SymbolDel() {;}
-
-		void write() {;}
-		void read() {;}
-
-		void getStatement(char *sql)
-		{
-			strcpy(sql, "REPLACE INTO symboldel VALUES ") ;
-		}
-
-		void getValues(char *sql)
-		{
-			char charNumber[30] ;
-
-			strcat(sql,"(") ;
-
-			//itoa(theSymID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theSymID, charNumber, 30)) ;
-			strcat(sql,",") ;
-
-			//itoa(theParentID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theParentID, charNumber, 30)) ;
-			strcat(sql,",") ;
-
-			//itoa(theNewParentID, charNumber, 10) ;
-			//strcat(charNumber,",'") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theNewParentID, charNumber, 30)) ;
-			strcat(sql,",'") ;
-
-			strcat(sql, theName.c_str()) ;
-			strcat(sql, "',") ;
-
-			//itoa(theTypeID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theTypeID, charNumber, 30)) ;
-			strcat(sql,",") ;
-
-			//itoa(theCatID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theCatID, charNumber, 30)) ;
-			strcat(sql,",") ;
-
-			//itoa(theProtectionID, charNumber, 10) ;
-			//strcat(charNumber,")") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theProtectionID, charNumber, 30)) ;
-			strcat(sql,")") ;
-		}
-
-	} ;
+    long theSymID ;
+    long theParentID ;
+    long theNewParentID ;
+    std::string theName ;
+    long theTypeID ;
+    long theCatID ;
+    long theProtectionID ;
 
 
-	class MetricComp : public DataRow
-	{
-	private:
+  protected:
 
-		long theSymID ;
-		long theMttID ;
-		float theMetvalue ;
+  public:
 
-	protected:
+    SymbolDel() : theName("")
+    {
+      theSymID = 0 ;
+      theParentID = 0 ;
+      theNewParentID = 0 ;
+      theTypeID = 0 ;
+      theCatID = 0 ;
+      theProtectionID = 0 ;
+    }
 
-	public:
+    SymbolDel(long newSymID, long newParentID, long newNewParentID, std::string newName,
+      long newTypeID, long newCatID, long newProtID) : theName(newName)
+    {
+      theSymID = newSymID ;
+      theParentID = newParentID ;
+      theNewParentID = newNewParentID ;
+      theTypeID = newTypeID ;
+      theCatID = newCatID ;
+      theProtectionID = newProtID ;
+    }
 
-		MetricComp()
-		{
-			theSymID = 0 ;
-			theMttID = 0 ;
-			theMetvalue = 0 ;
-		}
+    virtual ~SymbolDel() {;}
 
-		MetricComp(long newSymID, long newMttID, float newMetvalue)
-		{
-			theSymID = newSymID ;
-			theMttID = newMttID ;
-			theMetvalue = newMetvalue ;
-		}
+    void write() {;}
+    void read() {;}
 
-		virtual ~MetricComp() {;}
+    void getStatement(char *sql)
+    {
+      strcpy_s(sql, QUERY_MAX, "REPLACE INTO symboldel VALUES ") ;
+    }
 
-		void write() {;}
-		void read() {;}
+    void getValues(char *sql)
+    {
+      char charNumber[30] ;
 
-		void getStatement(char *sql)
-		{
-			strcpy(sql, "REPLACE INTO metriccomp VALUES ") ;
-		}
+      strcat_s(sql, QUERY_MAX,"(") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theSymID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theParentID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theNewParentID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",'") ;
+      strcat_s(sql, QUERY_MAX, theName.c_str()) ;
+      strcat_s(sql, QUERY_MAX, "',") ;
+      strcat_s(sql, QUERY_MAX, charNumber) ;
+      strcat_s(sql, QUERY_MAX, ltostr(theTypeID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theCatID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theProtectionID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,")") ;
+    }
+  } ;
 
-		void getValues(char *sql)
-		{
-			char charNumber[30] ;
 
-			strcat(sql,"(") ;
+  class MetricComp : public DataRow
+  {
+  private:
 
-			//itoa(theSymID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theSymID, charNumber, 30)) ;
-			strcat(sql,",") ;
+    long theSymID ;
+    long theMttID ;
+    float theMetvalue ;
 
-			//itoa(theMttID, charNumber, 10) ;
-			//strcat(charNumber,",") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql, ltostr(theMttID, charNumber, 30)) ;
-			strcat(sql,",") ;
+  protected:
 
-			//_gcvt(theMetvalue, 7, charNumber) ;
-			//strcat(charNumber,")") ;
-			//strcat(sql, charNumber) ;
-			strcat(sql,dtoa(theMetvalue, charNumber, 30)) ;
-			strcat(sql,")") ;
-		}
+  public:
 
-	} ;
+    MetricComp()
+    {
+      theSymID = 0 ;
+      theMttID = 0 ;
+      theMetvalue = 0 ;
+    }
 
-} ;
+    MetricComp(long newSymID, long newMttID, float newMetvalue)
+    {
+      theSymID = newSymID ;
+      theMttID = newMttID ;
+      theMetvalue = newMetvalue ;
+    }
+
+    virtual ~MetricComp() {;}
+
+    void write() {;}
+    void read() {;}
+
+    void getStatement(char *sql)
+    {
+      strcpy_s(sql, QUERY_MAX, "REPLACE INTO metriccomp VALUES ") ;
+    }
+
+    void getValues(char *sql)
+    {
+      char charNumber[30] ;
+
+      strcat_s(sql, QUERY_MAX,"(") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theSymID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX, ltostr(theMttID, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,",") ;
+      strcat_s(sql, QUERY_MAX,dtoa(theMetvalue, charNumber, 30)) ;
+      strcat_s(sql, QUERY_MAX,")") ;
+    }
+  };
+};
 
 #endif

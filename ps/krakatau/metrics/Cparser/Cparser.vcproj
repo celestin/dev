@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Cparser"
+	Name="cparser"
 	ProjectGUID="{95753703-4155-417F-A2C2-0C2015C21578}"
 	RootNamespace="Cparser"
 	TargetFrameworkVersion="0"

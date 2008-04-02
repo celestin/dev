@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Jparser"
+	Name="jparser"
 	ProjectGUID="{B08055D3-18F4-450A-9FA3-24CA6DD349D5}"
 	RootNamespace="Jparser"
 	TargetFrameworkVersion="0"

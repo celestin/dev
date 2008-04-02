@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_ROOTNODE
@@ -21,78 +22,73 @@
 namespace metrics
 {
 
-	class RootNode : public SymbolNode, public TreeHelper
-	{
-	private:
-		bool actualRoot ;
-		bool committing ;
-		bool theFreshBuild ;		// True=Fresh Build, False=Adding to an existing tree
+  class RootNode : public SymbolNode, public TreeHelper
+  {
+  private:
+    bool actualRoot ;
+    bool committing ;
+    bool theFreshBuild ;    // True=Fresh Build, False=Adding to an existing tree
 
-	protected:
+  protected:
 
-	public:
+  public:
 
-		// Housekeeping
+    // Housekeeping
+    Buffer theTempBuffer ;
 
-		Buffer theTempBuffer ;
+    RootNode() ;
+    RootNode(std::string newName, long newCatID) ;
+    virtual ~RootNode() ;
 
-		RootNode() ;
-		RootNode(std::string newName, long newCatID) ;
-		virtual ~RootNode() ;
+    RootNode(const RootNode& rhs) ;
+    RootNode& operator=(const RootNode& rhs) ;
 
-		RootNode(const RootNode& rhs) ;
-		RootNode& operator=(const RootNode& rhs) ;
+    virtual bool isRoot()   {
+      return true ;
+    }
 
-		virtual bool isRoot()		{
-			//MasterData::theLog << "in RootNode::isRoot()" << std::endl ;
-			return true ;
-		}
+    void commit ()
+    {
+      committing = true ;
+      Cache::commit() ;
+      flushWriteSymbol() ;
+      flushDeleteSymbol() ;
+      committing = false ;
+    }
 
-		void commit ()
-		{
-			committing = true ;
-			/*theCache.*/Cache::commit() ;
-			flushWriteSymbol() ;
-			flushDeleteSymbol() ;
-			committing = false ;
-		}
+    int getProgress() {
+      if (committing)
+        return Cache::getProgress() ;
+      else
+        return 100 ;
+    }
 
-		int getProgress() {
-			if (committing)
-				return Cache::getProgress() ;
-			else
-				return 100 ;
-		}
+    SymbolNode createSymbolNode()
+    {
+      SymbolNode retval(this) ;
+      return retval ;
+    }
 
-		SymbolNode createSymbolNode()
-		{
-			//return SymbolNode(this);
-			SymbolNode retval(this) ;
-			return retval ;
-		}
+    SymbolNode createSymbolNode(long newCatID)
+    {
+      SymbolNode retval(this,newCatID) ;
+      return retval ;
+    }
 
-		SymbolNode createSymbolNode(long newCatID)
-		{
-			//return SymbolNode(this, newCatID);
-			SymbolNode retval(this,newCatID) ;
-			return retval ;
-		}
+    SymbolNode createSymbolNode(std::string newName, long newCatID)
+    {
+      SymbolNode retval(this,newName,newCatID) ;
+      return retval ;
+    }
 
-		SymbolNode createSymbolNode(std::string newName, long newCatID)
-		{
-			//return SymbolNode(this, newName, newCatID);
-			SymbolNode retval(this,newName,newCatID) ;
-			return retval ;
-		}
+    void setFreshBuild(bool newFreshBuild) ;
+    bool isFreshBuild() { return theFreshBuild ; }
 
-		void setFreshBuild(bool newFreshBuild) ;
-		bool isFreshBuild() { return theFreshBuild ; }
-
-		void flushBuffers()
-		{
-			theTempBuffer.commit() ;
-		}
-	} ;
+    void flushBuffers()
+    {
+      theTempBuffer.commit() ;
+    }
+  } ;
 } ;
 
 #endif

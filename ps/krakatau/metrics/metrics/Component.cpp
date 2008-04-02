@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Component.h"
@@ -70,13 +71,14 @@ void Component::componentise(string newName, int operation)
     strcpy_s(sep, 3, ".") ;
   }
 
-  const char *token ;
+  const char *token;
+  char *next_token;
 
-  token = strtok(noTemplates, sep) ;
+  token = strtok_s(noTemplates, sep, &next_token);
   while (token != NULL)
   {
     theComponents[theComponentsCount++] = _strdup(token) ;
-    token = strtok(NULL, sep) ;
+    token = strtok_s(NULL, sep, &next_token);
   }
 }
 

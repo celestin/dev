@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_XREFPHASE
@@ -25,54 +26,52 @@
 
 namespace metrics
 {
-	class XrefPhase : public Phase, Component
-	{
-	private:
+  class XrefPhase : public Phase, Component
+  {
+  private:
 
-		float theStage ;
-		float theNoStages ;
+    double theStage ;
+    double theNoStages ;
 
-	protected:
+  protected:
 
 #ifdef WIN32
-		HANDLE progress_lock;
+    HANDLE progress_lock;
 #elif sun
-		mutex_t progress_lock;
+    mutex_t progress_lock;
 #elif hpux
-		pthread_mutex_t progress_lock;
+    pthread_mutex_t progress_lock;
 #elif linux
-		pthread_mutex_t progress_lock;
+    pthread_mutex_t progress_lock;
 #endif
 
-		bool findProgramElement(SymbolNode&, const char *, int, SymbolNode&) ;
-		SymbolNode findMethodWithSameName(SymbolNode&) ;
+    bool findProgramElement(SymbolNode&, const char *, int, SymbolNode&) ;
+    SymbolNode findMethodWithSameName(SymbolNode&) ;
 
-		void resolveCrossRef(SymbolNode&, std::string, long) ;
-		void resolve(SymbolNode&) ;
+    void resolveCrossRef(SymbolNode&, std::string, long) ;
+    void resolve(SymbolNode&) ;
 
-	public:
+  public:
 
-		XrefPhase()
-		{
+    XrefPhase()
+    {
 #ifdef WIN32
-			progress_lock=CreateMutex(NULL,FALSE,NULL);
+      progress_lock=CreateMutex(NULL,FALSE,NULL);
 #elif sun
-			mutex_init(&progress_lock,0,NULL);
+      mutex_init(&progress_lock,0,NULL);
 #elif hpux
-			pthread_mutex_init(&progress_lock,pthread_mutexattr_default);
+      pthread_mutex_init(&progress_lock,pthread_mutexattr_default);
 #elif linux
-			pthread_mutex_init(&progress_lock,NULL);
+      pthread_mutex_init(&progress_lock,NULL);
 #endif
 
-			//MasterData::theLog << "XrefPhase() about to lock progress_lock." << endl;
+      theStage = 0 ;
+      theNoStages = 1 ;
+    }
 
-			theStage = 0 ;
-			theNoStages = 1 ;
-		}
-
-		int getProgress() ;
-		void execute(RootNode*) ;
-	} ;
+    int getProgress() ;
+    void execute(RootNode*) ;
+  } ;
 
 
 } ;

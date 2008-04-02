@@ -2,8 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Run"
+	Name="run"
 	ProjectGUID="{F8063924-08C7-4D99-AD83-9CBFEDCF76E1}"
+	RootNamespace="Run"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="0"
 	>

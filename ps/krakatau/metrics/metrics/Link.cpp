@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Link.h"
@@ -25,27 +26,27 @@ Link::~Link()
 
 string Link::formSqlInsert()
 {
-  char sql[512] ;
+  char sql[1024] ;
   char charNumber[30] ;
 
-  strcpy(sql,"(") ;
+  strcpy_s(sql,"(") ;
 
   if (theID == AUTONUMBER) theID = theAutoNumber.newID() ;
 
-  strcat(sql, ltostr(theAutoNumber.newID(), charNumber, 30)) ;
-  strcat(sql,",") ;
+  strcat_s(sql,1024, ltostr(theAutoNumber.newID(), charNumber, 30)) ;
+  strcat_s(sql,1024,",") ;
 
-  strcat(sql, ltostr(theSourceID, charNumber, 30)) ;
-  strcat(sql,",") ;
+  strcat_s(sql,1024, ltostr(theSourceID, charNumber, 30)) ;
+  strcat_s(sql,1024,",") ;
 
-  strcat(sql, ltostr(theDestID, charNumber, 30)) ;
-  strcat(sql,",") ;
+  strcat_s(sql,1024, ltostr(theDestID, charNumber, 30)) ;
+  strcat_s(sql,1024,",") ;
 
-  strcat(sql, ltostr(theTypeID, charNumber, 30)) ;
-  strcat(sql,",'") ;
+  strcat_s(sql,1024, ltostr(theTypeID, charNumber, 30)) ;
+  strcat_s(sql,1024,",'") ;
 
-  strcat(sql, theRef.c_str()) ;
-  strcat(sql,"')") ;
+  strcat_s(sql,1024, theRef.c_str()) ;
+  strcat_s(sql,1024,"')") ;
 
   return string(sql) ;
 }
@@ -53,12 +54,12 @@ string Link::formSqlInsert()
 
 void Link::updateLink(OurSQL &connection)
 {
-  char sql[512], charNumber[30] ;
+  char sql[1024], charNumber[30] ;
 
-  strcpy(sql,"update link set sym2ID=") ;
-  strcat(sql, ltostr(theDestID, charNumber, 30)) ;
-  strcat(sql," where lnkID=") ;
-  strcat(sql, ltostr(theID, charNumber, 30)) ;
+  strcpy_s(sql,1024,"update link set sym2ID=") ;
+  strcat_s(sql,1024, ltostr(theDestID, charNumber, 30)) ;
+  strcat_s(sql,1024," where lnkID=") ;
+  strcat_s(sql,1024, ltostr(theID, charNumber, 30)) ;
 
   connection.executeResultlessQuery(sql) ;
 }
@@ -66,34 +67,11 @@ void Link::updateLink(OurSQL &connection)
 
 void Link::write()
 {
-  /*ostringstream sql ;
-
-  if (!theWritten)
-  {
-    sql << "Insert Into link Values ( "
-      << theAutoNumber.newID() << " , "
-      << theSourceID << " , "
-      << theDestID << " , "
-      << theTypeID << " ) " << flush ;
-
-    try
-    {
-      md->theDBConnection.executeResultlessQuery(sql.str()) ;
-    }
-    catch (...)
-    {
-      MasterData::theLog << "Link::write() - Error executing query!" << endl ;
-    }
-
-    theWritten = true ;
-  }*/
 }
 
 
 void Link::read()
 {
-  //TODO: Fill this in
-
 }
 
 
@@ -209,7 +187,7 @@ vector<Link> Links::getLinks()
 {
   vector<Link> retval ;
 
-  int i,j ;
+  unsigned int i,j;
   for (i=0 ; i<NLINKTYPES ; i++)
   {
     if (theLinks[i] != NULL)
@@ -226,29 +204,28 @@ vector<Link> Links::getLinks()
 
 void Links::readLinks(OurSQL& connection)
 {
-  char sql[100] ;
-  char charNumber[30] ;
-  vector<long> linkTypes ;
-  int current,i,j ;
+  char sql[1024];
+  char charNumber[30];
+  vector<long> linkTypes;
+  unsigned int i;
+  int current,j;
 
   deleteLinks() ;
-
 
   try
   {
     // First determine get an overview of the number of
     // types of Link for this Symbol
 
-    strcpy(sql,"Select lktID From link Where SymID = ") ;
-    strcat(sql, ltostr(theID, charNumber, 30)) ;
-    strcat(sql, " Group By lktID") ;
+    strcpy_s(sql,1024,"Select lktID From link Where SymID = ") ;
+    strcat_s(sql,1024, ltostr(theID, charNumber, 30)) ;
+    strcat_s(sql,1024, " Group By lktID") ;
 
     if (connection.executeQuery(sql))
     {
       for(j=0; j<connection.rows(); j++ )
         linkTypes.push_back(atol(connection.cell(j,0).c_str())) ;
     }
-
 
     // Process each type of link, retreiving the detail rows
     // and adding them to the vectors of Links within *this
@@ -261,10 +238,10 @@ void Links::readLinks(OurSQL& connection)
       // Create a new vector for this type
       theLinks[current] = new vector<Link> ;
 
-      strcpy(sql,"Select sym2ID From link Where SymID=") ;
-      strcat(sql, ltostr(theID, charNumber, 30)) ;
-      strcat(sql, " And lktID=") ;
-      strcat(sql, ltostr(current, charNumber, 30)) ;
+      strcpy_s(sql,1024,"Select sym2ID From link Where SymID=") ;
+      strcat_s(sql,1024, ltostr(theID, charNumber, 30)) ;
+      strcat_s(sql,1024, " And lktID=") ;
+      strcat_s(sql,1024, ltostr(current, charNumber, 30)) ;
 
       if (connection.executeQuery(sql))
       {
@@ -284,13 +261,11 @@ void Links::readLinks(OurSQL& connection)
 
 void Links::write(OurSQL &connection)
 {
-  int i,j ;
-
-  for (i=0 ; i<NLINKTYPES ; i++)
+  for (int i=0 ; i<NLINKTYPES ; i++)
   {
     if (theLinks[i] != NULL)
     {
-      for (unsigned j=0 ; j<theLinks[i]->size() ; j++)
+      for (unsigned int j=0 ; j<theLinks[i]->size() ; j++)
       {
         if (!(*theLinks[i])[j].theWritten)
         {
@@ -373,10 +348,10 @@ void Killer::setConnection(OurSQL *newConnection)
 
 void Killer::clear()
 {
-  strcpy(theLinkFromSql,  "delete from link where symID in (") ;
-  strcpy(theLinkToSql,  "update link set sym2ID=-1 where sym2ID in (") ;
-  strcpy(theTypeSql,    "delete from symboltype where symID in (") ;
-  strcpy(theSymbolSql,  "delete from symbol where symID in (") ;
+  strcpy_s(theLinkFromSql,KILLER_BUFFER_SIZE,  "delete from link where symID in (") ;
+  strcpy_s(theLinkToSql,KILLER_BUFFER_SIZE,    "update link set sym2ID=-1 where sym2ID in (") ;
+  strcpy_s(theTypeSql,KILLER_BUFFER_SIZE,      "delete from symboltype where symID in (") ;
+  strcpy_s(theSymbolSql,KILLER_BUFFER_SIZE,    "delete from symbol where symID in (") ;
 
   anyData = false ;
 }
@@ -415,19 +390,17 @@ void Killer::add(long lnkID)
     flush() ;
   }
 
-  strcat(theLinkFromSql, charNumber) ;
-  strcat(theLinkFromSql, ",") ;
+  strcat_s(theLinkFromSql,KILLER_BUFFER_SIZE, charNumber) ;
+  strcat_s(theLinkFromSql,KILLER_BUFFER_SIZE, ",") ;
 
-  strcat(theLinkToSql, charNumber) ;
-  strcat(theLinkToSql, ",") ;
+  strcat_s(theLinkToSql,KILLER_BUFFER_SIZE, charNumber) ;
+  strcat_s(theLinkToSql,KILLER_BUFFER_SIZE, ",") ;
 
-  strcat(theTypeSql, charNumber) ;
-  strcat(theTypeSql, ",") ;
+  strcat_s(theTypeSql,KILLER_BUFFER_SIZE, charNumber) ;
+  strcat_s(theTypeSql,KILLER_BUFFER_SIZE, ",") ;
 
-  strcat(theSymbolSql, charNumber) ;
-  strcat(theSymbolSql, ",") ;
+  strcat_s(theSymbolSql,KILLER_BUFFER_SIZE, charNumber) ;
+  strcat_s(theSymbolSql,KILLER_BUFFER_SIZE, ",") ;
 
   anyData = true ;
 }
-
-

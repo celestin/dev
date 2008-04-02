@@ -15,8 +15,8 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 
 /*
  * PopulatePhase.cpp
@@ -29,11 +29,9 @@
  *
  */
 
-
 #include <string>
 #include <fstream>
 using namespace std;
-//#include <iostream>
 
 #include <stdio.h>
 #include <errno.h>
@@ -450,7 +448,7 @@ void PopulatePhase::parseInterfaceDecl(SymbolNode &parent)
   int interfaceLOC = lexemes[lex_index++]->param ;
   endline = startline + interfaceLOC ;
 
-  interfaceNode.setMetric(MasterData::LOC_MET, interfaceLOC) ;
+  interfaceNode.setMetric(MasterData::LOC_MET, (float)interfaceLOC) ;
 
   parent.addNode(interfaceNode);
 }
@@ -630,7 +628,7 @@ void PopulatePhase::parseMethodBody(SymbolNode &parent)
       depth-- ;
       last_ret_depth=-1 ;
       if ((depth==0)&&(mark>0)) {
-        parent.incMetric(MasterData::EVG_MET,mark) ;
+        parent.incMetric(MasterData::EVG_MET, (float)mark) ;
         mark=0 ;
       }
       lex_index++;
@@ -805,22 +803,22 @@ void PopulatePhase::parseMethod(SymbolNode &parent)
   int methodLOC = lexemes[lex_index++]->param ;
   endline = startline + methodLOC ;
 
-  methodNode.setMetric(MasterData::LOC_MET,methodLOC) ;
+  methodNode.setMetric(MasterData::LOC_MET, (float)methodLOC) ;
 
-  for ( int sloc_iter = 0 ; sloc_iter < sloc_v.size() ; sloc_iter++ ) {
+  for (unsigned int sloc_iter = 0 ; sloc_iter < sloc_v.size() ; sloc_iter++ ) {
     if ( ( sloc_v[sloc_iter] + 1 ) >= startline && ( sloc_v[sloc_iter] + 1 ) <= endline ) {
       SLOC++ ;
     }
   }
-  methodNode.setMetric(MasterData::SLOC_MET,SLOC) ;
+  methodNode.setMetric(MasterData::SLOC_MET, (float)SLOC) ;
 
-  methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index++]->param) ;
-  methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::NSC_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::N1_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::N2_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::n1_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::n2_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::CONTROL_MET,(float)lexemes[lex_index++]->param) ;
+  methodNode.setMetric(MasterData::EXECUTABLE_MET,(float)lexemes[lex_index++]->param) ;
 
   parent.addNode(methodNode);
 }
@@ -831,7 +829,7 @@ void PopulatePhase::parseMethod(SymbolNode &parent)
 SymbolNode PopulatePhase::getPackage(string packageName)
 {
   vector<long> children = theRoot->getChildren() ;
-  int i;
+  unsigned int i;
   SymbolNode tmp = (*theRoot) ;
 
   for (i=0 ; i<children.size() ; i++)
@@ -2705,11 +2703,8 @@ int PopulatePhase::parseClassDecl(SymbolNode &parent)
 
   classNode.setMetric(MasterData::LOC_MET, endline-startline+1) ;
 #elif LANGUAGE_JAVA
-  //thisClass->setLOC((int)((*lexemes)[lex_index++].text));  //LOC
   int testLOC = lexemes[lex_index++]->param ;
-//  MasterData::theLog << classNode.getName() << " LOC: " << testLOC << endl ;
-//  MasterData::theLog << classNode.getName() << " endline-startline: " << (endline-startline) << endl ;
-  classNode.setMetric(MasterData::LOC_MET, testLOC) ;
+  classNode.setMetric(MasterData::LOC_MET, (float)testLOC) ;
 
   endline=startline+testLOC ;
 #endif
@@ -2726,7 +2721,7 @@ int PopulatePhase::parseClassDecl(SymbolNode &parent)
     }
   }
 
-  classNode.setMetric(MasterData::SLOC_MET,SLOC) ;
+  classNode.setMetric(MasterData::SLOC_MET,(float)SLOC) ;
 
   return FOUND ;
 }
@@ -2788,8 +2783,8 @@ int PopulatePhase::parseDeclaration(SymbolNode &parent)
 
   lex_index++;          // END_UNIT
 
-  parent.setMetric(MasterData::LOC_MET , lexemes[lex_index++]->param ) ;
-  parent.setMetric(MasterData::SLOC_MET , lexemes[lex_index++]->param ) ;
+  parent.setMetric(MasterData::LOC_MET, (float)lexemes[lex_index++]->param) ;
+  parent.setMetric(MasterData::SLOC_MET, (float)lexemes[lex_index++]->param) ;
 
 #endif
 
@@ -2947,7 +2942,7 @@ bool PopulatePhase::loadFile(string filename)
   }
 
 #ifdef WIN32
-  if ((pid=spawnl(_P_NOWAIT,"bin/jparser.exe","bin/jparser.exe","-single",fname,childWriteSTR,NULL))==-1) {
+  if ((pid=_spawnl(_P_NOWAIT,"bin/jparser.exe","bin/jparser.exe","-single",fname,childWriteSTR,NULL))==-1) {
     MasterData::theLog << "Spawn failed. " << endl ;
     return false ;
   }
@@ -2960,7 +2955,7 @@ bool PopulatePhase::loadFile(string filename)
 
 #endif
 
-  FILE *infile=fdopen(pipeA[READ],"r");
+  FILE *infile=_fdopen(pipeA[READ],"r");
 
   str[0]='\0';
 
@@ -2989,11 +2984,10 @@ bool PopulatePhase::loadFile(string filename)
     currentLexeme = new Lexeme() ;
 
 #ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
-    //MasterData::theLog << "a " << flush ;
     retval = fscanf(infile,"%d%d%s%d%d%d",&(currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
 
 #elif LANGUAGE_JAVA     // A java lexeme has 3 components
-    retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+    retval = fscanf_s(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
 #endif
     if( currentLexeme->com < -10 ) {
       MasterData::theLog << "about to goto (1)" << endl ;
@@ -3001,7 +2995,6 @@ bool PopulatePhase::loadFile(string filename)
     }
 
     currentLexeme->str = str ;
-    //MasterData::theLog << "c" << endl ;
 
     outputLexeme(currentLexeme) ;
 
@@ -3031,7 +3024,7 @@ bool PopulatePhase::loadFile(string filename)
 #ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
   retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
 #elif LANGUAGE_JAVA     // A java lexeme has 3 components
-  retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+  retval = fscanf_s(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
 #endif
 
   if (debugging) MasterData::theLog << "8," << flush ;
@@ -3048,7 +3041,7 @@ bool PopulatePhase::loadFile(string filename)
 #ifdef LANGUAGE_CPP     // A cpp lexeme has 6 components
     retval = fscanf(infile,"%d%d%s%d%d%d",& (currentLexeme->com),&(currentLexeme->param),str,&(currentLexeme->line),&(currentLexeme->startcol),&(currentLexeme->endcol)) ;
 #elif LANGUAGE_JAVA     // A java lexeme has 3 components
-    retval = fscanf(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
+    retval = fscanf_s(infile,"%d%d%s",& (currentLexeme->com),&(currentLexeme->param),str) ;
 #endif
 
     outputLexeme(currentLexeme) ;
@@ -3116,7 +3109,7 @@ end_load:
 
   if (debugging) MasterData::theLog << "14" << endl ;
 
-  close(childWriteFD) ;
+  _close(childWriteFD) ;
   fclose(infile) ;
 
   return lexsize!=0 ;
@@ -3128,31 +3121,25 @@ void PopulatePhase::parseFile(string filename)
   lex_index=1 ; // lex_index=0 holds filename - we know this so start at 1
   if (debugging) MasterData::theLog << "15," << flush ;
 
-  //SymbolNode fileNode(filename, MasterData::FILE_CAT) ;
-  //TODO look into this
-  //SymbolNode fileNode = theRoot->createSymbolNode(filename, MasterData::FILE_CAT) ;
   SymbolNode fileNode = theRoot->createSymbolNode(MasterData::FILE_CAT) ;
   fileNode.setName(filename) ;
   fileNode.setTypeID(-1) ;
 
   if (debugging) MasterData::theLog << "16," << flush ;
-//  fileNode.setMetric(MasterData::LMODT_MET,Utilities::getLastModTime(filename)) ;
 
 #ifdef LANGUAGE_JAVA
-  fileNode.setMetric(MasterData::JCOM_MET,j_com) ;
+  fileNode.setMetric(MasterData::JCOM_MET,(float)j_com) ;
 #endif
 
-  fileNode.setMetric(MasterData::CCOM_MET,c_com) ;
-  fileNode.setMetric(MasterData::CPPCOM_MET,cpp_com) ;
-  fileNode.setMetric(MasterData::COM_MET,com) ;
-//#ifdef LANGUAGE_CPP
-  fileNode.setMetric(MasterData::NSC_MET,nsemi) ;
-//#endif
+  fileNode.setMetric(MasterData::CCOM_MET,(float)c_com) ;
+  fileNode.setMetric(MasterData::CPPCOM_MET,(float)cpp_com) ;
+  fileNode.setMetric(MasterData::COM_MET,(float)com) ;
+  fileNode.setMetric(MasterData::NSC_MET,(float)nsemi) ;
 
-  fileNode.setMetric(MasterData::N1_MET,N1) ;
-  fileNode.setMetric(MasterData::N2_MET,N2) ;
-  fileNode.setMetric(MasterData::n1_MET,n1) ;
-  fileNode.setMetric(MasterData::n2_MET,n2) ;
+  fileNode.setMetric(MasterData::N1_MET,(float)N1) ;
+  fileNode.setMetric(MasterData::N2_MET,(float)N2) ;
+  fileNode.setMetric(MasterData::n1_MET,(float)n1) ;
+  fileNode.setMetric(MasterData::n2_MET,(float)n2) ;
 
 #ifdef LANGUAGE_CPP
 
@@ -3183,24 +3170,23 @@ void PopulatePhase::extractTypes(SymbolNode &sn)
   try
   {
     // Check if there are any types that refer to this symbol
-    char sql[512], charNumber[30] ;
+    char sql[1024], charNumber[30] ;
 
-    strcpy(sql,"select sytid from symboltype where symid=") ;
-    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    strcpy_s(sql,1024,"select sytid from symboltype where symid=") ;
+    strcat_s(sql,1024, ltostr(sn.getID(), charNumber, 30)) ;
 
     if (theRoot->executeQuery(sql))
     {
       long sytid = atol(theRoot->cell(0,0).c_str()) ;
 
-      // There are so update all symbols that have this symbol as their type to
-      // have 0
-      strcpy(sql,"update symbol set sytid=0 where sytid=") ;
-      strcat(sql, ltostr(sytid, charNumber, 30)) ;
+      // There are so update all symbols that have this symbol as their type to have 0
+      strcpy_s(sql,1024,"update symbol set sytid=0 where sytid=") ;
+      strcat_s(sql,1024, ltostr(sytid, charNumber, 30)) ;
       theRoot->executeResultlessQuery(sql) ;
 
       // Delete the symboltype
-      strcpy(sql,"delete from symboltype where sytid=") ;
-      strcat(sql, ltostr(sytid, charNumber, 30)) ;
+      strcpy_s(sql,1024,"delete from symboltype where sytid=") ;
+      strcat_s(sql,1024, ltostr(sytid, charNumber, 30)) ;
       theRoot->executeResultlessQuery(sql) ;
     }
   }
@@ -3218,16 +3204,16 @@ void PopulatePhase::extractLinks(SymbolNode &sn)
 
   try
   {
-    char sql[512], charNumber[30] ;
+    char sql[1024], charNumber[30] ;
 
     // Delete links from this symbol
-    strcpy(sql,"delete from link where symid=") ;
-    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    strcpy_s(sql,1024,"delete from link where symid=") ;
+    strcat_s(sql,1024, ltostr(sn.getID(), charNumber, 30)) ;
     theRoot->executeResultlessQuery(sql) ;
 
     // Get links to this symbol
-    strcpy(sql,"select symID,lktID from link where sym2id=") ;
-    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    strcpy_s(sql,1024,"select symID,lktID from link where sym2id=") ;
+    strcat_s(sql,1024, ltostr(sn.getID(), charNumber, 30)) ;
     theRoot->executeResultlessQuery(sql) ;
 
 
@@ -3245,8 +3231,8 @@ void PopulatePhase::extractLinks(SymbolNode &sn)
     }
 
     // Now delete links to this symbol
-    strcpy(sql,"delete from link where sym2id=") ;
-    strcat(sql, ltostr(sn.getID(), charNumber, 30)) ;
+    strcpy_s(sql,1024,"delete from link where sym2id=") ;
+    strcat_s(sql,1024, ltostr(sn.getID(), charNumber, 30)) ;
     theRoot->executeResultlessQuery(sql) ;
   }
   catch(...)
@@ -3260,29 +3246,6 @@ void PopulatePhase::extractLinks(SymbolNode &sn)
     extractLinks(nextChild) ;
   }
 }
-
-
-/*void PopulatePhase::delFiles(SourceFiles &delFiles)
-{
-  SourceFiles::iterator iter = delFiles.begin() ;
-
-  //SymbolNode sn ;
-  SymbolNode sn = theRoot->createSymbolNode() ;
-
-  for ( ; iter < delFiles.end() ; iter++)
-  {
-    MasterData::theLog << "mark a" << endl ;
-    if (theRoot->find(MasterData::FILE_CAT,(*iter).getFilename(),sn))
-      MasterData::theLog << "success" << endl ;
-    else
-      MasterData::theLog << "fail" << endl ;
-    MasterData::theLog << "mark b" << endl ;
-    extractLinks(sn) ;
-    MasterData::theLog << "mark c" << endl ;
-    theRoot->removeChild(sn) ;
-    MasterData::theLog << "mark d" << endl ;
-  }
-}*/
 
 
 int PopulatePhase::getProgress()
@@ -3307,12 +3270,9 @@ void PopulatePhase::populateSub(SymbolNode parent, long subID, string depth)
   subproj.updateSymbolID(theProjNode.getID()) ;
 
   parent.addNode(theProjNode) ;
-//  MasterData::theLog << depth << "Sub " << subproj.getSubName() << " [" << subID
-//    << "] adding to " << parent.getName() << " [" << parent.getID() << "]" << endl ;
 
   while (subproj.getNextFile(filename))
   {
-//    MasterData::theLog << depth << " [" << filename << "]" << endl ;
     if (loadFile(filename)) {
       parseFile(filename) ;
     }
@@ -3348,10 +3308,8 @@ void PopulatePhase::execute(RootNode *root)
 {
   LOCKMUTEX(progress_lock) ;
   theRoot = root ;
-  //theRoot->setFreshBuild(true) ;
   theRoot->createTempLink() ;
   debugging = true ;
-  //debugging = false ;
 
 #ifdef LANGUAGE_CPP
   if (useTranslationFile) {
@@ -3398,4 +3356,3 @@ void PopulatePhase::execute(RootNode *root)
 
   theRoot->flushBuffers() ;
 }
-

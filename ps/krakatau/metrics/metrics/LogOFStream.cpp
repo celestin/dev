@@ -7,255 +7,256 @@
  *
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LogOFStream.h"
-using namespace std ;
-using namespace metrics ;
+using namespace std;
+using namespace metrics;
 
-const int LogOFStream::XOR_VALUE = 52 ;
+const int LogOFStream::XOR_VALUE = 52;
 
 ofstream& LogOFStream::operator<<(std::ostream& (*pf)(std::ostream&))
 {
-	ofstream::operator<< (*pf) ;
-	return (*this) ;
+  ofstream::operator<< (*pf);
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(std::ios& (*pf)(std::ios&))
 {
-	ofstream::operator<< (*pf) ;
-	return (*this) ;
+  ofstream::operator<< (*pf);
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(std::ios_base& (*pf)(std::ios_base&))
 {
-	ofstream::operator<< (*pf) ;
-	return (*this) ;
+  ofstream::operator<< (*pf);
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(std::streambuf *sb)
 {
-	ofstream::operator<< (sb) ;
-	return (*this) ;
+  ofstream::operator<< (sb);
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(const char *s)
 {
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		switch (*c)
-		{
-		case '\n':
-			{
-				ofstream::put('\n') ;
-			}
-		default:
-			{
-				ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-			}
-		}
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    switch (*c)
+    {
+    case '\n':
+      {
+        ofstream::put('\n');
+      }
+    default:
+      {
+        ofstream::put((char) ((*c) ^ XOR_VALUE));
+      }
+    }
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(char c)
 {
-	switch (c)
-	{
-	case '\n':
-		{
-			ofstream::put('\n') ;
-		}
-	default:
-		{
-			ofstream::put((char) (c ^ XOR_VALUE)) ;
-		}
-	}
-	return (*this) ;
+  switch (c)
+  {
+  case '\n':
+    {
+      ofstream::put('\n');
+    }
+  default:
+    {
+      ofstream::put((char) (c ^ XOR_VALUE));
+    }
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(bool n)
 {
-	return (*this) ;
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(short n)
 {
-	char s[100] ;
-	itoa(n, s, 10) ;
+  char s[100];
+  _itoa_s(n, s, 100, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(unsigned short n)
 {
-	char s[100] ;
-	itoa(n, s, 10) ;
+  char s[100];
+  _itoa_s(n, s, 100, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(int n)
 {
-	char s[100] ;
-	itoa(n, s, 10) ;
+  char s[100];
+  _itoa_s(n, s, 100, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(unsigned int n)
 {
-	char s[100] ;
-	itoa(n, s, 10) ;
+  char s[100];
+  _itoa_s(n, s, 100, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(long n)
 {
-	char s[100] ;
-	ltoa(n, s, 10) ;
+  char s[100];
+  _ltoa_s(n, s, 100, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(unsigned long n)
 {
-	char s[100] ;
-	ultoa(n, s, 10) ;
+  char s[100];
+  _ultoa_s(n, s, 10);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(float n)
 {
-	char s[100] ;
-	_gcvt(n, 2, s) ;
+  char s[100];
+  _gcvt_s(s, 100, n, 2);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(double n)
 {
-	char s[100] ;
-	_gcvt(n, 2, s) ;
+  char s[100];
+  _gcvt_s(s, 100, n, 2);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    ofstream::put((char) ((*c) ^ XOR_VALUE));
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(long double n)
 {
-	char s[100] ;
-	_gcvt(n, 2, s) ;
+  char s[100];
+  _gcvt_s(s, 100, n, 2);
 
-	const char*c ;
+  const char*c;
 
-	for (c=s ; (*c)!='\0' ; c++)
-	{
-		switch (*c)
-		{
-		case '\n':
-			{
-				ofstream::put('\n') ;
-			}
-		default:
-			{
-				ofstream::put((char) ((*c) ^ XOR_VALUE)) ;
-			}
-		}
-	}
-	return (*this) ;
+  for (c=s; (*c)!='\0'; c++)
+  {
+    switch (*c)
+    {
+    case '\n':
+      {
+        ofstream::put('\n');
+      }
+    default:
+      {
+        ofstream::put((char) ((*c) ^ XOR_VALUE));
+      }
+    }
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::operator<<(void * n)
 {
-	return (*this) ;
+  return (*this);
 }
 
 ofstream& LogOFStream::put(char c)
 {
-	switch (c)
-	{
-	case '\n':
-		{
-			ofstream::put('\n') ;
-		}
-	default:
-		{
-			ofstream::put((char) (c ^ XOR_VALUE)) ;
-		}
-	}
-	return (*this) ;
+  switch (c)
+  {
+  case '\n':
+    {
+      ofstream::put('\n');
+    }
+  default:
+    {
+      ofstream::put((char) (c ^ XOR_VALUE));
+    }
+  }
+  return (*this);
 }
 
 ofstream& LogOFStream::write(char *s, streamsize n)
 {
-	int i;
-	for (i=0 ; i<n ; i++)
-	{
-		switch (s[i])
-		{
-		case '\n':
-			{
-				ofstream::put('\n') ;
-			}
-		default:
-			{
-				ofstream::put((char) ((s[i]) ^ XOR_VALUE)) ;
-			}
-		}
-	}
+  int i;
+  for (i=0; i<n; i++)
+  {
+    switch (s[i])
+    {
+    case '\n':
+      {
+        ofstream::put('\n');
+      }
+    default:
+      {
+        ofstream::put((char) ((s[i]) ^ XOR_VALUE));
+      }
+    }
+  }
 
-	return (*this) ;
+  return (*this);
 }
 

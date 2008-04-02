@@ -14,6 +14,7 @@
  * Who  When       Why
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
+ * CAM  02-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_TREEHELPER
@@ -40,7 +41,7 @@ namespace metrics
 
     AutoNumber theCurrentTypeID ;
     std::vector<long> theDelIDs ;
-    char theTmpSymWrite[400] ;
+    char theTmpSymWrite[512] ;
     char theSymWrite[QUERY_MAX] ;
     char theCharNumber[30] ;
     char theTableName[64] ;

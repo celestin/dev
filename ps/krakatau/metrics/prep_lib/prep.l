@@ -138,9 +138,8 @@ void bubbleSort() {
 
 int indexOfToken() {
 	char *c = yytext ;
-	//char **i = replace ;
 
-	int i=0 ;
+	unsigned int i=0 ;
 	while (i<replace.size() && *c>*(replace[i]->replace_start)) {
 		i++ ;
 	}
@@ -178,11 +177,11 @@ void verifyToken() {
 		switch (type) {
 		case DELIM_APPEND:
 		case DELIM_IGNORE:
-			end = _strdup(replace[indices.top()]->replace_end) ;
+			end = strdup(replace[indices.top()]->replace_end) ;
 			break ;
 		case PAREN_APPEND:
 		case PAREN_IGNORE: 
-			end = _strdup(")") ;
+			end = strdup(")") ;
 			break ;
 		}
 
@@ -219,13 +218,13 @@ void verifyToken() {
 			BEGIN PAREN ;
 			states.push(APPEND_SEEK) ;
 			indices.push(index) ;
-			saved = _strdup(yytext) ;
+			saved = strdup(yytext) ;
 			return ;
 		case PAREN_IGNORE:
 			BEGIN PAREN ;
 			states.push(IGNORE_SEEK) ;
 			indices.push(index) ;
-			saved = _strdup(yytext) ;
+			saved = strdup(yytext) ;
 			return ;
 		}
 

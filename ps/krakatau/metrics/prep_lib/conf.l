@@ -66,7 +66,7 @@ void getLiteral() {
 			case '\'':
 				if (state!=ESCAPED_STATE) {
 					literal[i++] = '\0' ;
-					cfg_lval.sval = _strdup(literal) ;
+					cfg_lval.sval = strdup(literal) ;
 					return ;
 				}
 

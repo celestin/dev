@@ -16,6 +16,7 @@
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Jan-08  339 : Corrected deprecation warnings.
  * CAM  02-Apr-08  339 : Corrected deprecation warnings.
+ * CAM  10-Apr-08  339 : Corrected deprecation warnings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /*
@@ -1904,7 +1905,7 @@ int PopulatePhase::parseFunction(SymbolNode &parent,int pro)
       last_ret_depth=-1;
       if ((depth==0) && (mark>0))
       {
-        methodNode.incMetric(MasterData::EVG_MET,mark) ;
+        methodNode.incMetric(MasterData::EVG_MET,(float)mark) ;
         mark=0;
       }
       lex_index++;
@@ -2004,20 +2005,20 @@ int PopulatePhase::parseFunction(SymbolNode &parent,int pro)
     MasterData::theLog << "about to set N1_MET" << endl ;
     MasterData::theLog << "methodode: " << methodNode.getName() << endl ;
   }
-  methodNode.setMetric(MasterData::N1_MET,lexemes[lex_index-1]->param) ;
-  methodNode.setMetric(MasterData::N2_MET,lexemes[lex_index-1]->line) ;
-  methodNode.setMetric(MasterData::n1_MET,lexemes[lex_index-1]->startcol) ;
-  methodNode.setMetric(MasterData::n2_MET,lexemes[lex_index-1]->endcol) ;
+  methodNode.setMetric(MasterData::N1_MET,(float)lexemes[lex_index-1]->param) ;
+  methodNode.setMetric(MasterData::N2_MET,(float)lexemes[lex_index-1]->line) ;
+  methodNode.setMetric(MasterData::n1_MET,(float)lexemes[lex_index-1]->startcol) ;
+  methodNode.setMetric(MasterData::n2_MET,(float)lexemes[lex_index-1]->endcol) ;
 
   // got one END_FDEF (with the Halstead info), now get the other one;
 
-  methodNode.setMetric(MasterData::EXECUTABLE_MET,lexemes[lex_index]->line) ;
-  methodNode.setMetric(MasterData::CONTROL_MET,lexemes[lex_index]->param) ;
-  methodNode.setMetric(MasterData::NSC_MET,lexemes[lex_index]->startcol) ;
+  methodNode.setMetric(MasterData::EXECUTABLE_MET,(float)lexemes[lex_index]->line) ;
+  methodNode.setMetric(MasterData::CONTROL_MET,(float)lexemes[lex_index]->param) ;
+  methodNode.setMetric(MasterData::NSC_MET,(float)lexemes[lex_index]->startcol) ;
 
   lex_index++;// second END_FDEF
 
-  methodNode.setMetric(MasterData::LOC_MET,endline-startline+1);
+  methodNode.setMetric(MasterData::LOC_MET,(float)endline-startline+1);
 
   //Check: Took this out due to extra types.
   //theRoot->theBuffer.add(new TempLink(methodNode.getID(),MasterData::TYPE_LINK,realtype));

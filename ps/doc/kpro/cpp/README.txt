@@ -1,5 +1,5 @@
 
-KRAKATAU PROFESSIONAL (C/C++) V2.11.002
+KRAKATAU PROFESSIONAL (C/C++) V2.11.003
 =======================================
 
 Thank you for installing Krakatau Professional for C/C++.
@@ -7,7 +7,10 @@ Thank you for installing Krakatau Professional for C/C++.
 Once setup has completed a new Program Group "Krakatau Professional (C++)" will 
 have been created.
 
-To run Krakatau Professional run "Start"/"Programs"/"Krakatau Professional (C++)"/"Krakatau".
+To start Krakatau Professional run:
+
+Start - All Programs - Krakatau Professional (C++) - Krakatau Professional (C++)
+
 
 WHAT'S NEW
 ==========

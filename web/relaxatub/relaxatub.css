@@ -13,6 +13,7 @@
  * CAM  29-Mar-2007  10109 : Added h2.
  * CAM  14-Feb-2008  10243 : Revamped the look and feel.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  12-Apr-2008  10241 : Added classes for short details.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -134,7 +135,19 @@ p.legal {
 }
 
 .fldlbl {
+  COLOR: #066EE2;
+  FONT-WEIGHT: bold;
+}
+
+.tubvalue {
   COLOR: #233f91;
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold;
+}
+
+.tubunits {
+  PADDING-LEFT: 4px;
+  COLOR: #999999;
   FONT-WEIGHT: bold;
 }
 

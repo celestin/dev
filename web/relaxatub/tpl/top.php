@@ -14,6 +14,7 @@
  * CAM  14-Feb-2008  10243 : Updated look and feel.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * CAM  23-Feb-2008  10235 : Added Favourite Icon.
+ * CAM  12-Apr-2008  10241 : Corrected HTML .
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -30,7 +31,7 @@
 
 <table cellspacing=0 cellpadding=0 border=0 width="100%" height="100%">
 
-  <tr height="100%"><td valign=center align=center><table cellspacing=10 cellpadding=0 border=0>
+  <tr height="100%"><td valign="middle" align="center"><table cellspacing=10 cellpadding=0 border=0>
 
   <tr>
     <td valign=top><table cellspacing=0 cellpadding=5 border=0 width=250>
@@ -55,7 +56,7 @@
       <tr>
         <td align=center class="rxtop">
         <div id="rxfeature">
-		<ul>
+    <ul>
             <li><a id="linkwater" href="water.php">water</a></li>
             <li><a id="linkhealth" href="health.php">health &amp; well-being</a></li>
             <li><a id="linkrelaxation" href="relaxation.php">relaxation</a></li>

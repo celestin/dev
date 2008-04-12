@@ -13,6 +13,7 @@
  * CAM  24-Sep-2006  10020 : Display colours and wood finishes of tubs.
  * CAM  24-Sep-2006  10030 : Ensure Tub IDs are uppercase.
  * CAM  22-Mar-2008  10258 : Added no_people and dimen attributes.
+ * CAM  12-Apr-2008  10241 : Use new short fields.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Tub extends Tuple {
@@ -180,11 +181,11 @@ class Tub extends Tuple {
         $this->capacity = $capacity;
         $this->dry_weight = $dry_weight;
         $this->fill_weight = $fill_weight;
-        $this->pumps = $pumps;
+        $this->pumps = $short_pumps;
         $this->shield = $shield;
         $this->safety = $safety;
-        $this->ports = $ports;
-        $this->custom = $custom;
+        $this->ports = $short_ports;
+        $this->custom = $short_custom;
         $this->filter = $filter;
         $this->auto = $auto;
         $this->light = $light;

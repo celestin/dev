@@ -1,13 +1,14 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Stour Valley Timber Engineering
- * Copyright (c) 2007 SVTE
+ * Copyright (c) 2007,2008 SVTE
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  14-Jan-2008  10222 : Converted to PHP, added auto date facility.
+ * CAM  14-Apr-2008  10260 : Updated brochures.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -56,8 +57,8 @@ td.main {
 <table border=1 cellspacing=0 cellpadding=4>
 <tr><td align=center bgcolor="#6D2BAF" style="color:#FFFFFF">DOWNLOADS</td></tr>
 <tr><td><a href="sample_calc.pdf">Sample Calculations</a></td></tr>
-<tr><td><a href="flyer_rev5_apr07.pdf">Leaflet &amp; Price List</a></td></tr>
-<tr><td><a href="order_form_rev5_sept06.pdf">Order Form</a></td></tr>
+<tr><td><a href="flyer_rev7_apr08.pdf">Leaflet &amp; Price List</a></td></tr>
+<tr><td><a href="order_form_rev6_apr08.pdf">Order Form</a></td></tr>
 <tr><td><a href="maint_renewal_rev1_2008.pdf">Annual Maintenance Renewal</a></td></tr>
 </table>
 </td></tr>

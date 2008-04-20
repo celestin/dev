@@ -8,6 +8,7 @@
 * Who  When       Why
 * CAM  28-Mar-08  348 : File added to source control.
 * CAM  14-Apr-08  353 : Added program information block, including version 1.00.002.
+* CAM  20-Apr-08  354 : Ensure all parameters are passed to the metrics.exe thread.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "batch.h"
@@ -1431,9 +1432,9 @@ void analyze() {
       } else {
         fprintf(childWrite,"c:/source1/\n");
       }
-#ifdef LANGUAGE_CPP
+//#ifdef LANGUAGE_CPP
       fprintf(childWrite,"NULL\n");
-#endif
+//#endif
       fprintf(childWrite,"1\n");
     }
     fprintf(childWrite,"END\n");

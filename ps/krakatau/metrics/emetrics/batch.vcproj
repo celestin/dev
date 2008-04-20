@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\mysql\include,C:\Program Files\flexlm\v7.2\machind"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;LANGUAGE_JAVA;PM"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;LANGUAGE_JAVA"
 				RuntimeLibrary="0"
 				PrecompiledHeaderFile=".\Java_Release/batch.pch"
 				AssemblerListingLocation=".\Java_Release/"

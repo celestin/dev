@@ -15,6 +15,7 @@
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
  * CAM  11-Oct-07   318 : Corrected getLineSC button - theMultiLine.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
+ * CAM  22-Apr-08   355 : Corrected C++-style comments within C-style comments issue.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -272,7 +273,7 @@ void DiffCpp::getLineCR(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 }
@@ -328,7 +329,20 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
                 comskip = true;
               } else if (nc2 == '*') {
                 // Skip C-style comments
-                while (((nc2=fgetc(input))!=EOF) && (nc2 != '/'));
+                bool stop = false;
+                bool prevStar = true;
+                while (!stop)
+                {
+                  if ((nc2=fgetc(input))!=EOF)
+                  {
+                    if ((nc2 == '/') && (prevStar)) stop = true;
+                    prevStar = (nc2 == '*');
+                  }
+                  else
+                  {
+                    stop = true;
+                  }
+                }
               } else if (!comskip) {
                 retval[b++] = nc;
                 retval[b++] = nc2;
@@ -339,13 +353,9 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
         }
       case '*':
         {
-          if (skip) {
-            // Ignore
-          } else {
-            if (!comskip) {
-              retval[b++] = nc;
-              retval[b++] = nc2;
-            }
+          if (!skip && !comskip) {
+            retval[b++] = nc;
+            retval[b++] = nc2;
           }
           break;
         }
@@ -370,7 +380,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "csp", "epm.vcproj", "{26139EEC-9DED-4314-84D9-5F9966D43B9C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lic", "..\lic\lic.vcproj", "{BA08B636-7913-4F97-B23C-6D973AA97560}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26139EEC-9DED-4314-84D9-5F9966D43B9C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{26139EEC-9DED-4314-84D9-5F9966D43B9C}.Debug|Win32.Build.0 = Debug|Win32
+		{26139EEC-9DED-4314-84D9-5F9966D43B9C}.Release|Win32.ActiveCfg = Release|Win32
+		{26139EEC-9DED-4314-84D9-5F9966D43B9C}.Release|Win32.Build.0 = Release|Win32
+		{BA08B636-7913-4F97-B23C-6D973AA97560}.Debug|Win32.ActiveCfg = Release|Win32
+		{BA08B636-7913-4F97-B23C-6D973AA97560}.Debug|Win32.Build.0 = Release|Win32
+		{BA08B636-7913-4F97-B23C-6D973AA97560}.Release|Win32.ActiveCfg = Release|Win32
+		{BA08B636-7913-4F97-B23C-6D973AA97560}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

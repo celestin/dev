@@ -12,6 +12,7 @@
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
  * CAM  22-Jul-06   291 : Added constant MAX_LLOC_LEN.
+ * CAM  24-Apr-08   359 : Added WSTrim to correct LLOC Diff errors.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_STANDARD_DIFF
@@ -88,7 +89,9 @@ class Diff
 
     int level;
 
+    void WSTrim(char*&);
     void getLine(FILE*, char*&);
+
     virtual void getLineCR(FILE*, char*&) {}
     virtual void getLineSC(FILE*, char*&) {}
 

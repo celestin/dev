@@ -11,6 +11,8 @@
  * CAM  29-Dec-04  File added.
  * CAM  11-Mar-06   199 : Separate Diff by Language.
  * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08   359 : Added WSTrim to correct LLOC Diff errors.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -258,7 +260,7 @@ void Diff::changes()
 
   theChangedLines = theDeletedLines = theInsertedLines = 0;
 
-  for ( int i=0; i<theTrace.size()-1; i++)
+  for (unsigned int i=0; i<theTrace.size()-1; i++)
   {
     inserts=deletes=false;
 
@@ -319,7 +321,7 @@ void Diff::changes()
 
 
 void Diff::printTrace() {
-  for (int i=0; i<theTrace.size(); i++) {
+  for (unsigned int i=0; i<theTrace.size(); i++) {
     cout << theTrace[i].theX << "," << theTrace[i].theY << endl;
   }
 }
@@ -356,8 +358,8 @@ void Diff::compare()
 
   FILE *file1, *file2;
 
-  file1 = fopen(theFilename1,"r");
-  file2 = fopen(theFilename2,"r");
+  fopen_s(&file1, theFilename1, "r");
+  fopen_s(&file2, theFilename2,"r");
 
   // Do not try to compare file if there has been a problem when opening
   if (file1!=NULL && file2!=NULL)
@@ -424,11 +426,50 @@ void Diff::compare()
   }
 }
 
+void Diff::WSTrim(char *&currline)
+{
+  string str = currline;
+  string double_space = "  ";
+  string single_space = " ";
+  string tab_char = "\t";
+  string::size_type pos=0;
+
+  // Remove double spaces
+  while((pos=str.find(double_space, pos))!=string::npos)
+  {
+    str.erase(pos, double_space.length());
+    str.insert(pos, single_space);
+  }
+
+  // Remove tabs
+  while((pos=str.find(tab_char, pos))!=string::npos)
+  {
+    str.erase(pos, tab_char.length());
+  }
+
+  // Trim
+  if((pos=str.find_last_not_of(single_space))!=string::npos)
+  {
+    str.erase(pos + 1);
+    pos = str.find_first_not_of(single_space);
+    if (pos != string::npos) str.erase(0, pos);
+  }
+  else
+  {
+    str.erase(str.begin(), str.end());
+  }
+
+  free(currline);
+  currline = _strdup(str.c_str());
+}
+
 void Diff::getLine(FILE *input, char *&currline) {
   if (theNSC) {
     getLineSC(input, currline);
+    if (currline) WSTrim(currline);
+    //if (currline) cout << currline << endl;
   } else {
     getLineCR(input, currline);
+    if (currline) WSTrim(currline);
   }
 }
-

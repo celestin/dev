@@ -7,13 +7,14 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  20-Dec-04  File added.
- * CAM  24-Nov-05  160 : Use Windows Services rather standalone mode.
- * CAM  11-May-06  241 : Allow EPM to be run from any location.
- * CAM  30-May-06  244 : Ensure trailing slash is present on InstallDir.
- *                       Remove old service of the same name before installing.
- *                       Wait for Service Remove/Install to complete before starting.
+ * Who  When        Why
+ * CAM  20-Dec-04   File added.
+ * CAM  24-Nov-05   160 : Use Windows Services rather standalone mode.
+ * CAM  11-May-06   241 : Allow EPM to be run from any location.
+ * CAM  30-May-06   244 : Ensure trailing slash is present on InstallDir.
+ *                        Remove old service of the same name before installing.
+ *                        Wait for Service Remove/Install to complete before starting.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef DB_HEADER
@@ -29,7 +30,7 @@ using namespace std;
 string getInstallDir() {
   HKEY hkey;
   char szKey[1024];
-  strcpy(szKey, "Software\\Power Software\\EPM");
+  strcpy_s(szKey, 1024, "Software\\Power Software\\EPM");
   string rval;
 
   if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, szKey, 0, KEY_QUERY_VALUE, &hkey) == ERROR_SUCCESS) {
@@ -54,20 +55,21 @@ string getInstallDir() {
 
 void startDatabase() {
   HANDLE pid;
-  char cmdLine[4096];
+  const int MAX_CMD = 4096;
+  char cmdLine[MAX_CMD];
   string dir = getInstallDir();
 
   // Remove any old database service of the same name
-  strcpy(cmdLine, dir.c_str());
-  strcat(cmdLine, "db\\bin\\mysqld-nt --remove EPMdb");
+  strcpy_s(cmdLine, MAX_CMD, dir.c_str());
+  strcat_s(cmdLine, MAX_CMD, "db\\bin\\mysqld-nt --remove EPMdb");
   pid = createProcess(cmdLine, true);
   WaitForSingleObject(pid, TIME_TO_WAIT);
 
   // Install the database service
-  strcpy(cmdLine, dir.c_str());
-  strcat(cmdLine, "db\\bin\\mysqld-nt --install EPMdb --basedir=\"");
-  strcat(cmdLine, dir.c_str());
-  strcat(cmdLine, "db\"");
+  strcpy_s(cmdLine, MAX_CMD, dir.c_str());
+  strcat_s(cmdLine, MAX_CMD, "db\\bin\\mysqld-nt --install EPMdb --basedir=\"");
+  strcat_s(cmdLine, MAX_CMD, dir.c_str());
+  strcat_s(cmdLine, MAX_CMD, "db\"");
   pid = createProcess(cmdLine, true);
   WaitForSingleObject(pid, TIME_TO_WAIT);
 

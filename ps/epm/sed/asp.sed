@@ -28,3 +28,6 @@ s/yytext/yytext_asp/g
 s/yywrap/yywrap_asp/g
 s/string_literal/string_literal_asp/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

@@ -18,6 +18,7 @@
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * CAM  26-Jul-07   316 : Added VHDL.
  * CAM  04-Dec-07   324 : Added JSP/XML (#325).
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -46,31 +47,31 @@ namespace metrics
     Langs setLanguage(string lang) {
       theLang = LANG_OTHER;
 
-      if (!stricmp(lang.c_str(), "CP")) {
+      if (!_stricmp(lang.c_str(), "CP")) {
         theLang = LANG_CPP;
-      } else if (!stricmp(lang.c_str(), "CS")) {
+      } else if (!_stricmp(lang.c_str(), "CS")) {
         theLang = LANG_CS;
-      } else if (!stricmp(lang.c_str(), "JV")) {
+      } else if (!_stricmp(lang.c_str(), "JV")) {
         theLang = LANG_JAVA;
-      } else if (!stricmp(lang.c_str(), "JS")) {
+      } else if (!_stricmp(lang.c_str(), "JS")) {
         theLang = LANG_JSP;
-      } else if (!stricmp(lang.c_str(), "S1")) {
+      } else if (!_stricmp(lang.c_str(), "S1")) {
         theLang = LANG_S1;
-      } else if (!stricmp(lang.c_str(), "AD")) {
+      } else if (!_stricmp(lang.c_str(), "AD")) {
         theLang = LANG_ADA;
-      } else if (!stricmp(lang.c_str(), "PL")) {
+      } else if (!_stricmp(lang.c_str(), "PL")) {
         theLang = LANG_PERL;
-      } else if (!stricmp(lang.c_str(), "AS")) {
+      } else if (!_stricmp(lang.c_str(), "AS")) {
         theLang = LANG_ASP;
-      } else if (!stricmp(lang.c_str(), "PH")) {
+      } else if (!_stricmp(lang.c_str(), "PH")) {
         theLang = LANG_PHP;
-      } else if (!stricmp(lang.c_str(), "ID")) {
+      } else if (!_stricmp(lang.c_str(), "ID")) {
         theLang = LANG_IDL;
-      } else if (!stricmp(lang.c_str(), "VB")) {
+      } else if (!_stricmp(lang.c_str(), "VB")) {
         theLang = LANG_VB;
-      } else if (!stricmp(lang.c_str(), "VH")) {
+      } else if (!_stricmp(lang.c_str(), "VH")) {
         theLang = LANG_VHDL;
-      } else if (!stricmp(lang.c_str(), "XM")) {
+      } else if (!_stricmp(lang.c_str(), "XM")) {
         theLang = LANG_XML;
       }
 

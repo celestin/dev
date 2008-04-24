@@ -166,7 +166,7 @@ struct yy_buffer_state_cs
 
 	/* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
+	 * instead of f_read(), to make sure we stop fetching input after
 	 * each newline.
 	 */
 	int yy_is_interactive;
@@ -14185,7 +14185,8 @@ void lexclear_cs() {
 }
 
 void store_operand_cs(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
 
   noperands_cs++;
   c=txt[0];
@@ -14198,7 +14199,7 @@ void store_operand_cs(char* txt) {
 void comment_skip_cs();
 void eol_comment_skip_cs();
 
-#line 14203 "lex.cs.tmp"
+#line 14204 "lex.cs.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -14286,7 +14287,7 @@ YY_MALLOC_DECL
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	if ( (result = read( fileno(yyin_cs), (char *) buf, max_size )) < 0 ) \
+	if ( (result = _read( _fileno(yyin_cs), (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -14336,9 +14337,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 98 "lexer.cs.l"
+#line 99 "lexer.cs.l"
 
-#line 14343 "lex.cs.tmp"
+#line 14344 "lex.cs.tmp"
 
 	if ( yy_init )
 		{
@@ -14411,710 +14412,710 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 99 "lexer.cs.l"
+#line 100 "lexer.cs.l"
 {comment_skip_cs();j_comments_cs++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 100 "lexer.cs.l"
+#line 101 "lexer.cs.l"
 {comment_skip_cs();c_comments_cs++;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 101 "lexer.cs.l"
+#line 102 "lexer.cs.l"
 {eol_comment_skip_cs(); cpp_comments_cs++;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 103 "lexer.cs.l"
+#line 104 "lexer.cs.l"
 {STORE_OPERATOR(ABSTRACT);COUNT();}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 104 "lexer.cs.l"
+#line 105 "lexer.cs.l"
 {STORE_OPERATOR(AS);COUNT();}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 105 "lexer.cs.l"
+#line 106 "lexer.cs.l"
 {STORE_OPERATOR(BASE);COUNT();}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 106 "lexer.cs.l"
+#line 107 "lexer.cs.l"
 {STORE_OPERATOR(BOOL);COUNT();}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 107 "lexer.cs.l"
+#line 108 "lexer.cs.l"
 {STORE_OPERATOR(BREAK);COUNT();}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 108 "lexer.cs.l"
+#line 109 "lexer.cs.l"
 {STORE_OPERATOR(BYTE);COUNT();}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 109 "lexer.cs.l"
+#line 110 "lexer.cs.l"
 {STORE_OPERATOR(CASE);COUNT();}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 110 "lexer.cs.l"
+#line 111 "lexer.cs.l"
 {STORE_OPERATOR(CATCH);COUNT();}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 111 "lexer.cs.l"
+#line 112 "lexer.cs.l"
 {STORE_OPERATOR(CHAR);COUNT();}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 112 "lexer.cs.l"
+#line 113 "lexer.cs.l"
 {STORE_OPERATOR(CHECKED);COUNT();}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 113 "lexer.cs.l"
+#line 114 "lexer.cs.l"
 {STORE_OPERATOR(CLASS);COUNT();}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 114 "lexer.cs.l"
+#line 115 "lexer.cs.l"
 {STORE_OPERATOR(CONST);COUNT();}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 115 "lexer.cs.l"
+#line 116 "lexer.cs.l"
 {STORE_OPERATOR(CONTINUE);COUNT();}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 116 "lexer.cs.l"
+#line 117 "lexer.cs.l"
 {STORE_OPERATOR(DECIMAL);COUNT();}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 117 "lexer.cs.l"
+#line 118 "lexer.cs.l"
 {STORE_OPERATOR(DEFAULT);COUNT();}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 118 "lexer.cs.l"
+#line 119 "lexer.cs.l"
 {STORE_OPERATOR(DELEGATE);COUNT();}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 119 "lexer.cs.l"
+#line 120 "lexer.cs.l"
 {STORE_OPERATOR(DO);COUNT();}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 120 "lexer.cs.l"
+#line 121 "lexer.cs.l"
 {STORE_OPERATOR(DOUBLE);COUNT();}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 121 "lexer.cs.l"
+#line 122 "lexer.cs.l"
 {STORE_OPERATOR(ELSE);COUNT();}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 122 "lexer.cs.l"
+#line 123 "lexer.cs.l"
 {STORE_OPERATOR(ENUM);COUNT();}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 123 "lexer.cs.l"
+#line 124 "lexer.cs.l"
 {STORE_OPERATOR(EVENT);COUNT();}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 124 "lexer.cs.l"
+#line 125 "lexer.cs.l"
 {STORE_OPERATOR(EXPLICIT);COUNT();}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 125 "lexer.cs.l"
+#line 126 "lexer.cs.l"
 {STORE_OPERATOR(EXTERN);COUNT();}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 126 "lexer.cs.l"
+#line 127 "lexer.cs.l"
 {STORE_OPERATOR(FINALLY);COUNT();}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 127 "lexer.cs.l"
+#line 128 "lexer.cs.l"
 {STORE_OPERATOR(FIXED);COUNT();}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 128 "lexer.cs.l"
+#line 129 "lexer.cs.l"
 {STORE_OPERATOR(FLOAT);COUNT();}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 129 "lexer.cs.l"
+#line 130 "lexer.cs.l"
 {STORE_OPERATOR(FOR);COUNT();}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 130 "lexer.cs.l"
+#line 131 "lexer.cs.l"
 {STORE_OPERATOR(FOREACH);COUNT();}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 131 "lexer.cs.l"
+#line 132 "lexer.cs.l"
 {STORE_OPERATOR(GOTO);COUNT();}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 132 "lexer.cs.l"
+#line 133 "lexer.cs.l"
 {STORE_OPERATOR(IF);COUNT();}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 133 "lexer.cs.l"
+#line 134 "lexer.cs.l"
 {STORE_OPERATOR(IMPLICIT);COUNT();}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 134 "lexer.cs.l"
+#line 135 "lexer.cs.l"
 {STORE_OPERATOR(IN);COUNT();}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 135 "lexer.cs.l"
+#line 136 "lexer.cs.l"
 {STORE_OPERATOR(INT);COUNT();}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 136 "lexer.cs.l"
+#line 137 "lexer.cs.l"
 {STORE_OPERATOR(INTERFACE);COUNT();}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 137 "lexer.cs.l"
+#line 138 "lexer.cs.l"
 {STORE_OPERATOR(INTERNAL);COUNT();}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 138 "lexer.cs.l"
+#line 139 "lexer.cs.l"
 {STORE_OPERATOR(IS);COUNT();}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 139 "lexer.cs.l"
+#line 140 "lexer.cs.l"
 {STORE_OPERATOR(LOCK);COUNT();}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 140 "lexer.cs.l"
+#line 141 "lexer.cs.l"
 {STORE_OPERATOR(LONG);COUNT();}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 141 "lexer.cs.l"
+#line 142 "lexer.cs.l"
 {STORE_OPERATOR(NAMESPACE);COUNT();}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 142 "lexer.cs.l"
+#line 143 "lexer.cs.l"
 {STORE_OPERATOR(NEW);COUNT();}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 143 "lexer.cs.l"
+#line 144 "lexer.cs.l"
 {STORE_OPERATOR(OBJECT);COUNT();}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 144 "lexer.cs.l"
+#line 145 "lexer.cs.l"
 {STORE_OPERATOR(OPERATOR);COUNT();}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 145 "lexer.cs.l"
+#line 146 "lexer.cs.l"
 {STORE_OPERATOR(OUT);COUNT();}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 146 "lexer.cs.l"
+#line 147 "lexer.cs.l"
 {STORE_OPERATOR(OVERRIDE);COUNT();}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 147 "lexer.cs.l"
+#line 148 "lexer.cs.l"
 {STORE_OPERATOR(PARAMS);COUNT();}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 148 "lexer.cs.l"
+#line 149 "lexer.cs.l"
 {STORE_OPERATOR(PRIVATE);COUNT();}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 149 "lexer.cs.l"
+#line 150 "lexer.cs.l"
 {STORE_OPERATOR(PROTECTED);COUNT();}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 150 "lexer.cs.l"
+#line 151 "lexer.cs.l"
 {STORE_OPERATOR(PUBLIC);COUNT();}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 151 "lexer.cs.l"
+#line 152 "lexer.cs.l"
 {STORE_OPERATOR(READONLY);COUNT();}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 152 "lexer.cs.l"
+#line 153 "lexer.cs.l"
 {STORE_OPERATOR(REF);COUNT();}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 153 "lexer.cs.l"
+#line 154 "lexer.cs.l"
 {STORE_OPERATOR(RETURN);COUNT();}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 154 "lexer.cs.l"
+#line 155 "lexer.cs.l"
 {STORE_OPERATOR(SBYTE);COUNT();}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 155 "lexer.cs.l"
+#line 156 "lexer.cs.l"
 {STORE_OPERATOR(SEALED);COUNT();}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 156 "lexer.cs.l"
+#line 157 "lexer.cs.l"
 {STORE_OPERATOR(SHORT);COUNT();}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 157 "lexer.cs.l"
+#line 158 "lexer.cs.l"
 {STORE_OPERATOR(SIZEOF);COUNT();}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 158 "lexer.cs.l"
+#line 159 "lexer.cs.l"
 {STORE_OPERATOR(STACKALLOC);COUNT();}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 159 "lexer.cs.l"
+#line 160 "lexer.cs.l"
 {STORE_OPERATOR(STATIC);COUNT();}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 160 "lexer.cs.l"
+#line 161 "lexer.cs.l"
 {STORE_OPERATOR(STRING);COUNT();}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 161 "lexer.cs.l"
+#line 162 "lexer.cs.l"
 {STORE_OPERATOR(STRUCT);COUNT();}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 162 "lexer.cs.l"
+#line 163 "lexer.cs.l"
 {STORE_OPERATOR(SWITCH);COUNT();}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 163 "lexer.cs.l"
+#line 164 "lexer.cs.l"
 {STORE_OPERATOR(THIS);COUNT();}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 164 "lexer.cs.l"
+#line 165 "lexer.cs.l"
 {STORE_OPERATOR(THROW);COUNT();}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 165 "lexer.cs.l"
+#line 166 "lexer.cs.l"
 {STORE_OPERATOR(TRY);COUNT();}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 166 "lexer.cs.l"
+#line 167 "lexer.cs.l"
 {STORE_OPERATOR(TYPEOF);COUNT();}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 167 "lexer.cs.l"
+#line 168 "lexer.cs.l"
 {STORE_OPERATOR(UINT);COUNT();}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 168 "lexer.cs.l"
+#line 169 "lexer.cs.l"
 {STORE_OPERATOR(ULONG);COUNT();}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 169 "lexer.cs.l"
+#line 170 "lexer.cs.l"
 {STORE_OPERATOR(UNCHECKED);COUNT();}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 170 "lexer.cs.l"
+#line 171 "lexer.cs.l"
 {STORE_OPERATOR(UNSAFE);COUNT();}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 171 "lexer.cs.l"
+#line 172 "lexer.cs.l"
 {STORE_OPERATOR(USHORT);COUNT();}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 172 "lexer.cs.l"
+#line 173 "lexer.cs.l"
 {STORE_OPERATOR(USING);COUNT();}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 173 "lexer.cs.l"
+#line 174 "lexer.cs.l"
 {STORE_OPERATOR(VIRTUAL);COUNT();}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 174 "lexer.cs.l"
+#line 175 "lexer.cs.l"
 {STORE_OPERATOR(VOID);COUNT();}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 175 "lexer.cs.l"
+#line 176 "lexer.cs.l"
 {STORE_OPERATOR(VOLATILE);COUNT();}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 176 "lexer.cs.l"
+#line 177 "lexer.cs.l"
 {STORE_OPERATOR(WHILE);COUNT();}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 178 "lexer.cs.l"
-{parse_string_literal_cs();store_operand_cs(strdup(yytext_cs));}
+#line 179 "lexer.cs.l"
+{parse_string_literal_cs();store_operand_cs(_strdup(yytext_cs));}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 179 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 180 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 180 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs)); COUNT();}
+#line 181 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs)); COUNT();}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 181 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 182 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 182 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 183 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 183 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 184 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 185 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 186 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 186 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 187 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 187 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 188 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 189 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 190 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 190 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 191 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 191 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 192 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 192 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 193 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 193 "lexer.cs.l"
-{store_operand_cs(strdup(yytext_cs));COUNT();}
+#line 194 "lexer.cs.l"
+{store_operand_cs(_strdup(yytext_cs));COUNT();}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 195 "lexer.cs.l"
+#line 196 "lexer.cs.l"
 {STORE_OPERATOR(ASSIGN);COUNT();}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 196 "lexer.cs.l"
+#line 197 "lexer.cs.l"
 {STORE_OPERATOR(GT);COUNT();}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 197 "lexer.cs.l"
+#line 198 "lexer.cs.l"
 {STORE_OPERATOR(LT);COUNT();}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 198 "lexer.cs.l"
+#line 199 "lexer.cs.l"
 {STORE_OPERATOR(NOT);COUNT();}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 199 "lexer.cs.l"
+#line 200 "lexer.cs.l"
 {STORE_OPERATOR(BIT_NOT);COUNT();}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 200 "lexer.cs.l"
+#line 201 "lexer.cs.l"
 {STORE_OPERATOR(QUERY);COUNT();}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 201 "lexer.cs.l"
+#line 202 "lexer.cs.l"
 {STORE_OPERATOR(COLON);COUNT();}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 202 "lexer.cs.l"
+#line 203 "lexer.cs.l"
 {STORE_OPERATOR(EQUALITY);COUNT();}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 203 "lexer.cs.l"
+#line 204 "lexer.cs.l"
 {STORE_OPERATOR(LE);COUNT();}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 204 "lexer.cs.l"
+#line 205 "lexer.cs.l"
 {STORE_OPERATOR(GE);COUNT();}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 205 "lexer.cs.l"
+#line 206 "lexer.cs.l"
 {STORE_OPERATOR(NE);COUNT();}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 206 "lexer.cs.l"
+#line 207 "lexer.cs.l"
 {STORE_OPERATOR(AND);COUNT();}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 207 "lexer.cs.l"
+#line 208 "lexer.cs.l"
 {STORE_OPERATOR(OR);COUNT();}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 208 "lexer.cs.l"
+#line 209 "lexer.cs.l"
 {STORE_OPERATOR(PLUSPLUS);COUNT();}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 209 "lexer.cs.l"
+#line 210 "lexer.cs.l"
 {STORE_OPERATOR(MINUSMINUS);COUNT();}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 210 "lexer.cs.l"
+#line 211 "lexer.cs.l"
 {STORE_OPERATOR(PLUS);COUNT();}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 211 "lexer.cs.l"
+#line 212 "lexer.cs.l"
 {STORE_OPERATOR(MINUS);COUNT();}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 212 "lexer.cs.l"
+#line 213 "lexer.cs.l"
 {STORE_OPERATOR(TIMES);COUNT();}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 213 "lexer.cs.l"
+#line 214 "lexer.cs.l"
 {STORE_OPERATOR(DIVIDE);COUNT();}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 214 "lexer.cs.l"
+#line 215 "lexer.cs.l"
 {STORE_OPERATOR(BIT_AND);COUNT();}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 215 "lexer.cs.l"
+#line 216 "lexer.cs.l"
 {STORE_OPERATOR(BIT_OR);COUNT();}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 216 "lexer.cs.l"
+#line 217 "lexer.cs.l"
 {STORE_OPERATOR(CARET);COUNT();}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 217 "lexer.cs.l"
+#line 218 "lexer.cs.l"
 {STORE_OPERATOR(MOD);COUNT();}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 218 "lexer.cs.l"
+#line 219 "lexer.cs.l"
 {STORE_OPERATOR(LEFT_SHIFT);COUNT();}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 219 "lexer.cs.l"
+#line 220 "lexer.cs.l"
 {STORE_OPERATOR(RIGHT_SHIFT);COUNT();}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 220 "lexer.cs.l"
+#line 221 "lexer.cs.l"
 {STORE_OPERATOR(GTGTGT);COUNT();}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 221 "lexer.cs.l"
+#line 222 "lexer.cs.l"
 {STORE_OPERATOR(PLUSEQUALS);COUNT();}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 222 "lexer.cs.l"
+#line 223 "lexer.cs.l"
 {STORE_OPERATOR(MINUSEQUALS);COUNT();}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 223 "lexer.cs.l"
+#line 224 "lexer.cs.l"
 {STORE_OPERATOR(TIMESEQUALS);COUNT();}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 224 "lexer.cs.l"
+#line 225 "lexer.cs.l"
 {STORE_OPERATOR(DIVEQUALS);COUNT();}
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 225 "lexer.cs.l"
+#line 226 "lexer.cs.l"
 {STORE_OPERATOR(BIT_ANDEQUALS);COUNT();}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 226 "lexer.cs.l"
+#line 227 "lexer.cs.l"
 {STORE_OPERATOR(BIT_OREQUALS);COUNT();}
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 227 "lexer.cs.l"
+#line 228 "lexer.cs.l"
 {STORE_OPERATOR(CARETEQUALS);COUNT();}
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 228 "lexer.cs.l"
+#line 229 "lexer.cs.l"
 {STORE_OPERATOR(MODEQUALS);COUNT();}
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 229 "lexer.cs.l"
+#line 230 "lexer.cs.l"
 {STORE_OPERATOR(LEFT_SHIFTEQUALS);COUNT();}
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 230 "lexer.cs.l"
+#line 231 "lexer.cs.l"
 {STORE_OPERATOR(RIGHT_SHIFTEQUALS);COUNT();}
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 231 "lexer.cs.l"
+#line 232 "lexer.cs.l"
 {STORE_OPERATOR(GTGTGTEQUALS);COUNT();}
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 232 "lexer.cs.l"
+#line 233 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 233 "lexer.cs.l"
+#line 234 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 234 "lexer.cs.l"
+#line 235 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 235 "lexer.cs.l"
+#line 236 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 236 "lexer.cs.l"
+#line 237 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 237 "lexer.cs.l"
+#line 238 "lexer.cs.l"
 {COUNT();}
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 238 "lexer.cs.l"
+#line 239 "lexer.cs.l"
 {COUNT(); SEMI();}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 239 "lexer.cs.l"
+#line 240 "lexer.cs.l"
 {STORE_OPERATOR(COMMA);COUNT();}
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 240 "lexer.cs.l"
+#line 241 "lexer.cs.l"
 {STORE_OPERATOR(DOT);COUNT();}
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 242 "lexer.cs.l"
+#line 243 "lexer.cs.l"
 { /* ignore whitespace     */ }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 243 "lexer.cs.l"
+#line 244 "lexer.cs.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 244 "lexer.cs.l"
+#line 245 "lexer.cs.l"
 {cs_lineno++;}
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 246 "lexer.cs.l"
+#line 247 "lexer.cs.l"
 ECHO;
 	YY_BREAK
-#line 15119 "lex.cs.tmp"
+#line 15120 "lex.cs.tmp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -15700,7 +15701,7 @@ FILE *file;
 #if YY_NEVER_INTERACTIVE
 	b->yy_is_interactive = 0;
 #else
-	b->yy_is_interactive = file ? (isatty( fileno(file) ) > 0) : 0;
+	b->yy_is_interactive = file ? (_isatty( _fileno(file) ) > 0) : 0;
 #endif
 #endif
 	}
@@ -15995,7 +15996,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 246 "lexer.cs.l"
+#line 247 "lexer.cs.l"
 
 
 int yywrap_cs() {

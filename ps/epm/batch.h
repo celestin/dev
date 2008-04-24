@@ -13,6 +13,7 @@
  * CAM  24-Nov-05  160 : Added ignoreHandles to createProcess.
  * CAM  28-Jan-06   168 : Added METRICS_SET_MASK.
  * CAM  07-Feb-06   187 : Added MYSQL_PARAM_SIZE.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -44,7 +45,6 @@
   #endif
 #endif
 
-#define QUERY_MAX 4096
 #define MYSQL_PARAM_SIZE 256
 #define PROJECT_MAX 10
 #define TIME_TO_WAIT 25000
@@ -71,7 +71,7 @@ HANDLE createProcess(std::string cmdLine, bool ignoreHandles)
   }
 
   char mpath[256];
-  strcpy(mpath, cmdLine.c_str());
+  strcpy_s(mpath, 256, cmdLine.c_str());
 
   if (!CreateProcess(0,mpath, 0, 0, true, 0, 0, 0, &si,&pi))
   {
@@ -86,7 +86,7 @@ HANDLE createProcess(std::string cmdLine)
   return createProcess(cmdLine, false);
 }
 
-#define MkDir(X) mkdir(X)
+#define MkDir(X) _mkdir(X)
 
 #include <sys/types.h>
 #include <sys/stat.h>

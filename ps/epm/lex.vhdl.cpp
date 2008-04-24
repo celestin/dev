@@ -166,7 +166,7 @@ struct yy_buffer_state_vhdl
 
 	/* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
+	 * instead of f_read(), to make sure we stop fetching input after
 	 * each newline.
 	 */
 	int yy_is_interactive;
@@ -15454,7 +15454,8 @@ void lexclear_vhdl() {
 }
 
 void store_operand_vhdl(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands_vhdl++;
 
   c=txt[0];
@@ -15477,7 +15478,7 @@ void eol_comment_skip_vhdl();
 
 #define DEFINE 1
 
-#line 15483 "lex.vhdl.tmp"
+#line 15484 "lex.vhdl.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -15565,7 +15566,7 @@ YY_MALLOC_DECL
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	if ( (result = read( fileno(yyin_vhdl), (char *) buf, max_size )) < 0 ) \
+	if ( (result = _read( _fileno(yyin_vhdl), (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -15618,10 +15619,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 99 "lexer.vhdl.l"
+#line 100 "lexer.vhdl.l"
 
 
-#line 15627 "lex.vhdl.tmp"
+#line 15628 "lex.vhdl.tmp"
 
 	if ( yy_init )
 		{
@@ -15695,700 +15696,700 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 101 "lexer.vhdl.l"
+#line 102 "lexer.vhdl.l"
 {eol_comment_skip_vhdl(); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 103 "lexer.vhdl.l"
+#line 104 "lexer.vhdl.l"
 {NOTE_SLOC(); BEGIN DEFINE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 104 "lexer.vhdl.l"
+#line 105 "lexer.vhdl.l"
 {NOTE_SLOC(); vhdl_lineno++; BEGIN 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 105 "lexer.vhdl.l"
+#line 106 "lexer.vhdl.l"
 {NOTE_SLOC(); vhdl_lineno++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 106 "lexer.vhdl.l"
+#line 107 "lexer.vhdl.l"
 {;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 108 "lexer.vhdl.l"
+#line 109 "lexer.vhdl.l"
 {store_operator_vhdl(ABS_KEYWRD);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 109 "lexer.vhdl.l"
+#line 110 "lexer.vhdl.l"
 {store_operator_vhdl(ACCESS_KEYWRD);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 110 "lexer.vhdl.l"
+#line 111 "lexer.vhdl.l"
 {store_operator_vhdl(AFTER_KEYWRD);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 111 "lexer.vhdl.l"
+#line 112 "lexer.vhdl.l"
 {store_operator_vhdl(ALIAS_KEYWRD);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 112 "lexer.vhdl.l"
+#line 113 "lexer.vhdl.l"
 {store_operator_vhdl(ALL_KEYWRD);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 113 "lexer.vhdl.l"
+#line 114 "lexer.vhdl.l"
 {store_operator_vhdl(AND_KEYWRD);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 114 "lexer.vhdl.l"
+#line 115 "lexer.vhdl.l"
 {store_operator_vhdl(ARCHITECTURE_KEYWRD);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 115 "lexer.vhdl.l"
+#line 116 "lexer.vhdl.l"
 {store_operator_vhdl(ARRAY_KEYWRD);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 116 "lexer.vhdl.l"
+#line 117 "lexer.vhdl.l"
 {store_operator_vhdl(ASSERT_KEYWRD);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 117 "lexer.vhdl.l"
+#line 118 "lexer.vhdl.l"
 {store_operator_vhdl(ATTRIBUTE_KEYWRD);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 118 "lexer.vhdl.l"
+#line 119 "lexer.vhdl.l"
 {store_operator_vhdl(BEGIN_KEYWRD);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 119 "lexer.vhdl.l"
+#line 120 "lexer.vhdl.l"
 {store_operator_vhdl(BLOCK_KEYWRD);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 120 "lexer.vhdl.l"
+#line 121 "lexer.vhdl.l"
 {store_operator_vhdl(BODY_KEYWRD);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 121 "lexer.vhdl.l"
+#line 122 "lexer.vhdl.l"
 {store_operator_vhdl(BUFFER_KEYWRD);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 122 "lexer.vhdl.l"
+#line 123 "lexer.vhdl.l"
 {store_operator_vhdl(BUS_KEYWRD);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 123 "lexer.vhdl.l"
+#line 124 "lexer.vhdl.l"
 {store_operator_vhdl(CASE_KEYWRD);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 124 "lexer.vhdl.l"
+#line 125 "lexer.vhdl.l"
 {store_operator_vhdl(COMPONENT_KEYWRD);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 125 "lexer.vhdl.l"
+#line 126 "lexer.vhdl.l"
 {store_operator_vhdl(CONFIGURATION_KEYWRD);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 126 "lexer.vhdl.l"
+#line 127 "lexer.vhdl.l"
 {store_operator_vhdl(CONSTANT_KEYWRD);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 127 "lexer.vhdl.l"
+#line 128 "lexer.vhdl.l"
 {store_operator_vhdl(DISCONNECT_KEYWRD);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 128 "lexer.vhdl.l"
+#line 129 "lexer.vhdl.l"
 {store_operator_vhdl(DOWNTO_KEYWRD);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 129 "lexer.vhdl.l"
+#line 130 "lexer.vhdl.l"
 {store_operator_vhdl(ELSE_KEYWRD);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 130 "lexer.vhdl.l"
+#line 131 "lexer.vhdl.l"
 {store_operator_vhdl(ELSIF_KEYWRD);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 131 "lexer.vhdl.l"
+#line 132 "lexer.vhdl.l"
 {store_operator_vhdl(END_KEYWRD);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 132 "lexer.vhdl.l"
+#line 133 "lexer.vhdl.l"
 {store_operator_vhdl(ENTITY_KEYWRD);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 133 "lexer.vhdl.l"
+#line 134 "lexer.vhdl.l"
 {store_operator_vhdl(EXIT_KEYWRD);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 134 "lexer.vhdl.l"
+#line 135 "lexer.vhdl.l"
 {store_operator_vhdl(FILE_KEYWRD);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 135 "lexer.vhdl.l"
+#line 136 "lexer.vhdl.l"
 {store_operator_vhdl(FOR_KEYWRD);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 136 "lexer.vhdl.l"
+#line 137 "lexer.vhdl.l"
 {store_operator_vhdl(FUNCTION_KEYWRD);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 137 "lexer.vhdl.l"
+#line 138 "lexer.vhdl.l"
 {store_operator_vhdl(GENERATE_KEYWRD);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 138 "lexer.vhdl.l"
+#line 139 "lexer.vhdl.l"
 {store_operator_vhdl(GENERIC_KEYWRD);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 139 "lexer.vhdl.l"
+#line 140 "lexer.vhdl.l"
 {store_operator_vhdl(GROUP_KEYWRD);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 140 "lexer.vhdl.l"
+#line 141 "lexer.vhdl.l"
 {store_operator_vhdl(GUARDED_KEYWRD);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 141 "lexer.vhdl.l"
+#line 142 "lexer.vhdl.l"
 {store_operator_vhdl(IF_KEYWRD);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 142 "lexer.vhdl.l"
+#line 143 "lexer.vhdl.l"
 {store_operator_vhdl(IMPURE_KEYWRD);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 143 "lexer.vhdl.l"
+#line 144 "lexer.vhdl.l"
 {store_operator_vhdl(IN_KEYWRD);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 144 "lexer.vhdl.l"
+#line 145 "lexer.vhdl.l"
 {store_operator_vhdl(INERTIAL_KEYWRD);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 145 "lexer.vhdl.l"
+#line 146 "lexer.vhdl.l"
 {store_operator_vhdl(INOUT_KEYWRD);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 146 "lexer.vhdl.l"
+#line 147 "lexer.vhdl.l"
 {store_operator_vhdl(IS_KEYWRD);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 147 "lexer.vhdl.l"
+#line 148 "lexer.vhdl.l"
 {store_operator_vhdl(LABEL_KEYWRD);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 148 "lexer.vhdl.l"
+#line 149 "lexer.vhdl.l"
 {store_operator_vhdl(LIBRARY_KEYWRD);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 149 "lexer.vhdl.l"
+#line 150 "lexer.vhdl.l"
 {store_operator_vhdl(LINKAGE_KEYWRD);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 150 "lexer.vhdl.l"
+#line 151 "lexer.vhdl.l"
 {store_operator_vhdl(LITERAL_KEYWRD);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 151 "lexer.vhdl.l"
+#line 152 "lexer.vhdl.l"
 {store_operator_vhdl(LOOP_KEYWRD);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 152 "lexer.vhdl.l"
+#line 153 "lexer.vhdl.l"
 {store_operator_vhdl(MAP_KEYWRD);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 153 "lexer.vhdl.l"
+#line 154 "lexer.vhdl.l"
 {store_operator_vhdl(MOD_KEYWRD);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 154 "lexer.vhdl.l"
+#line 155 "lexer.vhdl.l"
 {store_operator_vhdl(NAND_KEYWRD);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 155 "lexer.vhdl.l"
+#line 156 "lexer.vhdl.l"
 {store_operator_vhdl(NEW_KEYWRD);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 156 "lexer.vhdl.l"
+#line 157 "lexer.vhdl.l"
 {store_operator_vhdl(NEXT_KEYWRD);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 157 "lexer.vhdl.l"
+#line 158 "lexer.vhdl.l"
 {store_operator_vhdl(NOR_KEYWRD);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 158 "lexer.vhdl.l"
+#line 159 "lexer.vhdl.l"
 {store_operator_vhdl(NOT_KEYWRD);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 159 "lexer.vhdl.l"
+#line 160 "lexer.vhdl.l"
 {store_operator_vhdl(NULL_KEYWRD);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 160 "lexer.vhdl.l"
+#line 161 "lexer.vhdl.l"
 {store_operator_vhdl(OF_KEYWRD);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 161 "lexer.vhdl.l"
+#line 162 "lexer.vhdl.l"
 {store_operator_vhdl(ON_KEYWRD);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 162 "lexer.vhdl.l"
+#line 163 "lexer.vhdl.l"
 {store_operator_vhdl(OPEN_KEYWRD);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 163 "lexer.vhdl.l"
+#line 164 "lexer.vhdl.l"
 {store_operator_vhdl(OR_KEYWRD);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 164 "lexer.vhdl.l"
+#line 165 "lexer.vhdl.l"
 {store_operator_vhdl(OTHERS_KEYWRD);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 165 "lexer.vhdl.l"
+#line 166 "lexer.vhdl.l"
 {store_operator_vhdl(OUT_KEYWRD);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 166 "lexer.vhdl.l"
+#line 167 "lexer.vhdl.l"
 {store_operator_vhdl(PACKAGE_KEYWRD);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 167 "lexer.vhdl.l"
+#line 168 "lexer.vhdl.l"
 {store_operator_vhdl(PORT_KEYWRD);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 168 "lexer.vhdl.l"
+#line 169 "lexer.vhdl.l"
 {store_operator_vhdl(POSTPONED_KEYWRD);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 169 "lexer.vhdl.l"
+#line 170 "lexer.vhdl.l"
 {store_operator_vhdl(PROCEDURAL_KEYWRD);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 170 "lexer.vhdl.l"
+#line 171 "lexer.vhdl.l"
 {store_operator_vhdl(PROCEDURE_KEYWRD);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 171 "lexer.vhdl.l"
+#line 172 "lexer.vhdl.l"
 {store_operator_vhdl(PROCESS_KEYWRD);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 172 "lexer.vhdl.l"
+#line 173 "lexer.vhdl.l"
 {store_operator_vhdl(PROTECTED_KEYWRD);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 173 "lexer.vhdl.l"
+#line 174 "lexer.vhdl.l"
 {store_operator_vhdl(PURE_KEYWRD);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 174 "lexer.vhdl.l"
+#line 175 "lexer.vhdl.l"
 {store_operator_vhdl(RANGE_KEYWRD);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 175 "lexer.vhdl.l"
+#line 176 "lexer.vhdl.l"
 {store_operator_vhdl(RECORD_KEYWRD);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 176 "lexer.vhdl.l"
+#line 177 "lexer.vhdl.l"
 {store_operator_vhdl(REFERENCE_KEYWRD);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 177 "lexer.vhdl.l"
+#line 178 "lexer.vhdl.l"
 {store_operator_vhdl(REGISTER_KEYWRD);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 178 "lexer.vhdl.l"
+#line 179 "lexer.vhdl.l"
 {store_operator_vhdl(REJECT_KEYWRD);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 179 "lexer.vhdl.l"
+#line 180 "lexer.vhdl.l"
 {store_operator_vhdl(REM_KEYWRD);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 180 "lexer.vhdl.l"
+#line 181 "lexer.vhdl.l"
 {store_operator_vhdl(REPORT_KEYWRD);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 181 "lexer.vhdl.l"
+#line 182 "lexer.vhdl.l"
 {store_operator_vhdl(RETURN_KEYWRD);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 182 "lexer.vhdl.l"
+#line 183 "lexer.vhdl.l"
 {store_operator_vhdl(ROL_KEYWRD);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 183 "lexer.vhdl.l"
+#line 184 "lexer.vhdl.l"
 {store_operator_vhdl(ROR_KEYWRD);}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 184 "lexer.vhdl.l"
+#line 185 "lexer.vhdl.l"
 {store_operator_vhdl(SELECT_KEYWRD);}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 185 "lexer.vhdl.l"
+#line 186 "lexer.vhdl.l"
 {store_operator_vhdl(SEVERITY_KEYWRD);}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 186 "lexer.vhdl.l"
+#line 187 "lexer.vhdl.l"
 {store_operator_vhdl(SHARED_KEYWRD);}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 187 "lexer.vhdl.l"
+#line 188 "lexer.vhdl.l"
 {store_operator_vhdl(SIGNAL_KEYWRD);}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 188 "lexer.vhdl.l"
+#line 189 "lexer.vhdl.l"
 {store_operator_vhdl(SLA_KEYWRD);}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 189 "lexer.vhdl.l"
+#line 190 "lexer.vhdl.l"
 {store_operator_vhdl(SLL_KEYWRD);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 190 "lexer.vhdl.l"
+#line 191 "lexer.vhdl.l"
 {store_operator_vhdl(SRA_KEYWRD);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 191 "lexer.vhdl.l"
+#line 192 "lexer.vhdl.l"
 {store_operator_vhdl(SRL_KEYWRD);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 192 "lexer.vhdl.l"
+#line 193 "lexer.vhdl.l"
 {store_operator_vhdl(SUBTYPE_KEYWRD);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 193 "lexer.vhdl.l"
+#line 194 "lexer.vhdl.l"
 {store_operator_vhdl(THEN_KEYWRD);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 194 "lexer.vhdl.l"
+#line 195 "lexer.vhdl.l"
 {store_operator_vhdl(TO_KEYWRD);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 195 "lexer.vhdl.l"
+#line 196 "lexer.vhdl.l"
 {store_operator_vhdl(TRANSPORT_KEYWRD);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 196 "lexer.vhdl.l"
+#line 197 "lexer.vhdl.l"
 {store_operator_vhdl(TYPE_KEYWRD);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 197 "lexer.vhdl.l"
+#line 198 "lexer.vhdl.l"
 {store_operator_vhdl(UNAFFECTED_KEYWRD);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 198 "lexer.vhdl.l"
+#line 199 "lexer.vhdl.l"
 {store_operator_vhdl(UNITS_KEYWRD);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 199 "lexer.vhdl.l"
+#line 200 "lexer.vhdl.l"
 {store_operator_vhdl(UNTIL_KEYWRD);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 200 "lexer.vhdl.l"
+#line 201 "lexer.vhdl.l"
 {store_operator_vhdl(USE_KEYWRD);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 201 "lexer.vhdl.l"
+#line 202 "lexer.vhdl.l"
 {store_operator_vhdl(VARIABLE_KEYWRD);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 202 "lexer.vhdl.l"
+#line 203 "lexer.vhdl.l"
 {store_operator_vhdl(WAIT_KEYWRD);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 203 "lexer.vhdl.l"
+#line 204 "lexer.vhdl.l"
 {store_operator_vhdl(WHEN_KEYWRD);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 204 "lexer.vhdl.l"
+#line 205 "lexer.vhdl.l"
 {store_operator_vhdl(WHILE_KEYWRD);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 205 "lexer.vhdl.l"
+#line 206 "lexer.vhdl.l"
 {store_operator_vhdl(WITH_KEYWRD);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 206 "lexer.vhdl.l"
+#line 207 "lexer.vhdl.l"
 {store_operator_vhdl(XNOR_KEYWRD);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 207 "lexer.vhdl.l"
+#line 208 "lexer.vhdl.l"
 {store_operator_vhdl(XOR_KEYWRD);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 209 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 210 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 210 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 211 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 211 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 212 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 212 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 213 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 213 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 214 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 214 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 215 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 215 "lexer.vhdl.l"
-{store_operand_vhdl(strdup(yytext_vhdl));}
+#line 216 "lexer.vhdl.l"
+{store_operand_vhdl(_strdup(yytext_vhdl));}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 216 "lexer.vhdl.l"
+#line 217 "lexer.vhdl.l"
 {sloc_vhdl.insert(vhdl_lineno); string_literal_vhdl();}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 218 "lexer.vhdl.l"
+#line 219 "lexer.vhdl.l"
 {NOTE_SLOC(); nsemi_vhdl++;}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 220 "lexer.vhdl.l"
+#line 221 "lexer.vhdl.l"
 {store_operator_vhdl(OP_BITAND);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 221 "lexer.vhdl.l"
+#line 222 "lexer.vhdl.l"
 {store_operator_vhdl(OP_MULTIPLY);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 222 "lexer.vhdl.l"
+#line 223 "lexer.vhdl.l"
 {store_operator_vhdl(OP_EXPONENT);}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 223 "lexer.vhdl.l"
+#line 224 "lexer.vhdl.l"
 {store_operator_vhdl(OP_ADD);}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 224 "lexer.vhdl.l"
+#line 225 "lexer.vhdl.l"
 {store_operator_vhdl(OP_SUBTRACT);}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 225 "lexer.vhdl.l"
+#line 226 "lexer.vhdl.l"
 {store_operator_vhdl(OP_DIVIDE);}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 227 "lexer.vhdl.l"
+#line 228 "lexer.vhdl.l"
 {store_operator_vhdl(OP_EQUAL);}
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 228 "lexer.vhdl.l"
+#line 229 "lexer.vhdl.l"
 {store_operator_vhdl(OP_NOTEQUAL);}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 230 "lexer.vhdl.l"
+#line 231 "lexer.vhdl.l"
 {store_operator_vhdl(OP_LESSTHAN);}
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 231 "lexer.vhdl.l"
+#line 232 "lexer.vhdl.l"
 {store_operator_vhdl(OP_LESSEQUAL);}
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 232 "lexer.vhdl.l"
+#line 233 "lexer.vhdl.l"
 {store_operator_vhdl(OP_GREATERTHAN);}
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 233 "lexer.vhdl.l"
+#line 234 "lexer.vhdl.l"
 {store_operator_vhdl(OP_GREATEREQUAL);}
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 235 "lexer.vhdl.l"
+#line 236 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 236 "lexer.vhdl.l"
+#line 237 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 237 "lexer.vhdl.l"
+#line 238 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 238 "lexer.vhdl.l"
+#line 239 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 239 "lexer.vhdl.l"
+#line 240 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 240 "lexer.vhdl.l"
+#line 241 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 241 "lexer.vhdl.l"
+#line 242 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 242 "lexer.vhdl.l"
+#line 243 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 243 "lexer.vhdl.l"
+#line 244 "lexer.vhdl.l"
 {NOTE_SLOC();}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 245 "lexer.vhdl.l"
+#line 246 "lexer.vhdl.l"
 {;}
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 246 "lexer.vhdl.l"
+#line 247 "lexer.vhdl.l"
 {vhdl_lineno++;}
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 247 "lexer.vhdl.l"
+#line 248 "lexer.vhdl.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 248 "lexer.vhdl.l"
+#line 249 "lexer.vhdl.l"
 ECHO;
 	YY_BREAK
-#line 16394 "lex.vhdl.tmp"
+#line 16395 "lex.vhdl.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(DEFINE):
 	yyterminate();
@@ -16977,7 +16978,7 @@ FILE *file;
 #if YY_NEVER_INTERACTIVE
 	b->yy_is_interactive = 0;
 #else
-	b->yy_is_interactive = file ? (isatty( fileno(file) ) > 0) : 0;
+	b->yy_is_interactive = file ? (_isatty( _fileno(file) ) > 0) : 0;
 #endif
 #endif
 	}
@@ -17272,7 +17273,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 248 "lexer.vhdl.l"
+#line 249 "lexer.vhdl.l"
 
 int yywrap_vhdl() {
   return(1);

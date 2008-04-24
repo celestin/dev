@@ -166,7 +166,7 @@ struct yy_buffer_state_vb
 
 	/* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
+	 * instead of f_read(), to make sure we stop fetching input after
 	 * each newline.
 	 */
 	int yy_is_interactive;
@@ -20925,7 +20925,8 @@ void lexclear_vb() {
 }
 
 void store_operand_vb(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands_vb++;
 
   c=txt[0];
@@ -20948,7 +20949,7 @@ void eol_comment_skip_vb();
 
 #define DEFINE 1
 
-#line 20954 "lex.vb.tmp"
+#line 20955 "lex.vb.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -21036,7 +21037,7 @@ YY_MALLOC_DECL
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	if ( (result = read( fileno(yyin_vb), (char *) buf, max_size )) < 0 ) \
+	if ( (result = _read( _fileno(yyin_vb), (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -21089,10 +21090,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 97 "lexer.vb.l"
+#line 98 "lexer.vb.l"
 
 
-#line 21098 "lex.vb.tmp"
+#line 21099 "lex.vb.tmp"
 
 	if ( yy_init )
 		{
@@ -21166,865 +21167,865 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 99 "lexer.vb.l"
+#line 100 "lexer.vb.l"
 {eol_comment_skip_vb(); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 100 "lexer.vb.l"
+#line 101 "lexer.vb.l"
 {eol_comment_skip_vb(); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 102 "lexer.vb.l"
+#line 103 "lexer.vb.l"
 {sloc_vb.insert(vb_lineno); BEGIN DEFINE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 103 "lexer.vb.l"
+#line 104 "lexer.vb.l"
 {sloc_vb.insert(vb_lineno); vb_lineno++; BEGIN 0;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 104 "lexer.vb.l"
+#line 105 "lexer.vb.l"
 {sloc_vb.insert(vb_lineno); vb_lineno++;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 105 "lexer.vb.l"
+#line 106 "lexer.vb.l"
 {;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 107 "lexer.vb.l"
+#line 108 "lexer.vb.l"
 {store_operator_vb(ADD_HANDLER);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 108 "lexer.vb.l"
+#line 109 "lexer.vb.l"
 {store_operator_vb(ADDRESS_OF);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 109 "lexer.vb.l"
+#line 110 "lexer.vb.l"
 {store_operator_vb(ALIAS);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 110 "lexer.vb.l"
+#line 111 "lexer.vb.l"
 {store_operator_vb(AND);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 111 "lexer.vb.l"
+#line 112 "lexer.vb.l"
 {store_operator_vb(AND_ALSO);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 112 "lexer.vb.l"
+#line 113 "lexer.vb.l"
 {store_operator_vb(ANSI);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 113 "lexer.vb.l"
+#line 114 "lexer.vb.l"
 {store_operator_vb(AS);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 114 "lexer.vb.l"
+#line 115 "lexer.vb.l"
 {store_operator_vb(ASSEMBLY);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 115 "lexer.vb.l"
+#line 116 "lexer.vb.l"
 {store_operator_vb(AUTO);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 116 "lexer.vb.l"
+#line 117 "lexer.vb.l"
 {store_operator_vb(BOOLEAN);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 117 "lexer.vb.l"
+#line 118 "lexer.vb.l"
 {store_operator_vb(BY_REF);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 118 "lexer.vb.l"
+#line 119 "lexer.vb.l"
 {store_operator_vb(BY_VAL);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 119 "lexer.vb.l"
+#line 120 "lexer.vb.l"
 {store_operator_vb(BYTE);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 120 "lexer.vb.l"
+#line 121 "lexer.vb.l"
 {store_operator_vb(CBOOL);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 121 "lexer.vb.l"
+#line 122 "lexer.vb.l"
 {store_operator_vb(CBYTE);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 122 "lexer.vb.l"
+#line 123 "lexer.vb.l"
 {store_operator_vb(CCHAR);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 123 "lexer.vb.l"
+#line 124 "lexer.vb.l"
 {store_operator_vb(CDATE);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 124 "lexer.vb.l"
+#line 125 "lexer.vb.l"
 {store_operator_vb(CDBL);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 125 "lexer.vb.l"
+#line 126 "lexer.vb.l"
 {store_operator_vb(CDEC);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 126 "lexer.vb.l"
+#line 127 "lexer.vb.l"
 {store_operator_vb(CINT);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 127 "lexer.vb.l"
+#line 128 "lexer.vb.l"
 {store_operator_vb(CLNG);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 128 "lexer.vb.l"
+#line 129 "lexer.vb.l"
 {store_operator_vb(COBJ);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 129 "lexer.vb.l"
+#line 130 "lexer.vb.l"
 {store_operator_vb(CSHORT);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 130 "lexer.vb.l"
+#line 131 "lexer.vb.l"
 {store_operator_vb(CSNG);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 131 "lexer.vb.l"
+#line 132 "lexer.vb.l"
 {store_operator_vb(CSTR);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 132 "lexer.vb.l"
+#line 133 "lexer.vb.l"
 {store_operator_vb(CTYPE);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 133 "lexer.vb.l"
+#line 134 "lexer.vb.l"
 {store_operator_vb(CALL);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 134 "lexer.vb.l"
+#line 135 "lexer.vb.l"
 {store_operator_vb(CASE);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 135 "lexer.vb.l"
+#line 136 "lexer.vb.l"
 {store_operator_vb(CATCH);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 136 "lexer.vb.l"
+#line 137 "lexer.vb.l"
 {store_operator_vb(CHAR);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 137 "lexer.vb.l"
+#line 138 "lexer.vb.l"
 {store_operator_vb(CLASS);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 138 "lexer.vb.l"
+#line 139 "lexer.vb.l"
 {store_operator_vb(CONST);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 139 "lexer.vb.l"
+#line 140 "lexer.vb.l"
 {store_operator_vb(DATE);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 140 "lexer.vb.l"
+#line 141 "lexer.vb.l"
 {store_operator_vb(DECIMAL);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 141 "lexer.vb.l"
+#line 142 "lexer.vb.l"
 {store_operator_vb(DECLARE);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 142 "lexer.vb.l"
+#line 143 "lexer.vb.l"
 {store_operator_vb(DEFAULT);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 143 "lexer.vb.l"
+#line 144 "lexer.vb.l"
 {store_operator_vb(DELEGATE);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 144 "lexer.vb.l"
+#line 145 "lexer.vb.l"
 {store_operator_vb(DIM);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 145 "lexer.vb.l"
+#line 146 "lexer.vb.l"
 {store_operator_vb(DIRECT_CAST);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 146 "lexer.vb.l"
+#line 147 "lexer.vb.l"
 {store_operator_vb(DO);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 147 "lexer.vb.l"
+#line 148 "lexer.vb.l"
 {store_operator_vb(DOUBLE);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 148 "lexer.vb.l"
+#line 149 "lexer.vb.l"
 {store_operator_vb(EACH);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 149 "lexer.vb.l"
+#line 150 "lexer.vb.l"
 {store_operator_vb(ELSE);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 150 "lexer.vb.l"
+#line 151 "lexer.vb.l"
 {store_operator_vb(ELSE_IF);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 151 "lexer.vb.l"
+#line 152 "lexer.vb.l"
 {store_operator_vb(END);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 152 "lexer.vb.l"
+#line 153 "lexer.vb.l"
 {store_operator_vb(END_IF);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 153 "lexer.vb.l"
+#line 154 "lexer.vb.l"
 {store_operator_vb(ENUM);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 154 "lexer.vb.l"
+#line 155 "lexer.vb.l"
 {store_operator_vb(ERASE);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 155 "lexer.vb.l"
+#line 156 "lexer.vb.l"
 {store_operator_vb(ERROR);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 156 "lexer.vb.l"
+#line 157 "lexer.vb.l"
 {store_operator_vb(EVENT);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 157 "lexer.vb.l"
+#line 158 "lexer.vb.l"
 {store_operator_vb(EXIT);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 158 "lexer.vb.l"
+#line 159 "lexer.vb.l"
 {store_operator_vb(FALSE);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 159 "lexer.vb.l"
+#line 160 "lexer.vb.l"
 {store_operator_vb(FINALLY);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 160 "lexer.vb.l"
+#line 161 "lexer.vb.l"
 {store_operator_vb(FOR);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 161 "lexer.vb.l"
+#line 162 "lexer.vb.l"
 {store_operator_vb(FRIEND);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 162 "lexer.vb.l"
+#line 163 "lexer.vb.l"
 {store_operator_vb(FUNCTION);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 163 "lexer.vb.l"
+#line 164 "lexer.vb.l"
 {store_operator_vb(GET);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 164 "lexer.vb.l"
+#line 165 "lexer.vb.l"
 {store_operator_vb(GET_TYPE);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 165 "lexer.vb.l"
+#line 166 "lexer.vb.l"
 {store_operator_vb(GOSUB);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 166 "lexer.vb.l"
+#line 167 "lexer.vb.l"
 {store_operator_vb(GOTO);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 167 "lexer.vb.l"
+#line 168 "lexer.vb.l"
 {store_operator_vb(HANDLES);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 168 "lexer.vb.l"
+#line 169 "lexer.vb.l"
 {store_operator_vb(IF);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 169 "lexer.vb.l"
+#line 170 "lexer.vb.l"
 {store_operator_vb(IMPLEMENTS);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 170 "lexer.vb.l"
+#line 171 "lexer.vb.l"
 {store_operator_vb(IMPORTS);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 171 "lexer.vb.l"
+#line 172 "lexer.vb.l"
 {store_operator_vb(IN);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 172 "lexer.vb.l"
+#line 173 "lexer.vb.l"
 {store_operator_vb(INHERITS);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 173 "lexer.vb.l"
+#line 174 "lexer.vb.l"
 {store_operator_vb(INTEGER);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 174 "lexer.vb.l"
+#line 175 "lexer.vb.l"
 {store_operator_vb(INTERFACE);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 175 "lexer.vb.l"
+#line 176 "lexer.vb.l"
 {store_operator_vb(IS);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 176 "lexer.vb.l"
+#line 177 "lexer.vb.l"
 {store_operator_vb(LET);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 177 "lexer.vb.l"
+#line 178 "lexer.vb.l"
 {store_operator_vb(LIB);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 178 "lexer.vb.l"
+#line 179 "lexer.vb.l"
 {store_operator_vb(LIKE);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 179 "lexer.vb.l"
+#line 180 "lexer.vb.l"
 {store_operator_vb(LONG);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 180 "lexer.vb.l"
+#line 181 "lexer.vb.l"
 {store_operator_vb(LOOP);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 181 "lexer.vb.l"
+#line 182 "lexer.vb.l"
 {store_operator_vb(ME);}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 182 "lexer.vb.l"
+#line 183 "lexer.vb.l"
 {store_operator_vb(MODULUS);}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 183 "lexer.vb.l"
+#line 184 "lexer.vb.l"
 {store_operator_vb(MODULE);}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 184 "lexer.vb.l"
+#line 185 "lexer.vb.l"
 {store_operator_vb(MUST_INHERIT);}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 185 "lexer.vb.l"
+#line 186 "lexer.vb.l"
 {store_operator_vb(MUST_OVERRIDE);}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 186 "lexer.vb.l"
+#line 187 "lexer.vb.l"
 {store_operator_vb(MY_BASE);}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 187 "lexer.vb.l"
+#line 188 "lexer.vb.l"
 {store_operator_vb(MY_CLASS);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 188 "lexer.vb.l"
+#line 189 "lexer.vb.l"
 {store_operator_vb(NAMESPACE);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 189 "lexer.vb.l"
+#line 190 "lexer.vb.l"
 {store_operator_vb(NEW);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 190 "lexer.vb.l"
+#line 191 "lexer.vb.l"
 {store_operator_vb(NEXT);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 191 "lexer.vb.l"
+#line 192 "lexer.vb.l"
 {store_operator_vb(NOT);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 192 "lexer.vb.l"
+#line 193 "lexer.vb.l"
 {store_operator_vb(NOT_INHERITABLE);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 193 "lexer.vb.l"
+#line 194 "lexer.vb.l"
 {store_operator_vb(NOT_OVERRIDABLE);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 194 "lexer.vb.l"
+#line 195 "lexer.vb.l"
 {store_operator_vb(NOTHING);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 195 "lexer.vb.l"
+#line 196 "lexer.vb.l"
 {store_operator_vb(OBJECT);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 196 "lexer.vb.l"
+#line 197 "lexer.vb.l"
 {store_operator_vb(ON);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 197 "lexer.vb.l"
+#line 198 "lexer.vb.l"
 {store_operator_vb(OPTION);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 198 "lexer.vb.l"
+#line 199 "lexer.vb.l"
 {store_operator_vb(OPTIONAL);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 199 "lexer.vb.l"
+#line 200 "lexer.vb.l"
 {store_operator_vb(OR);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 200 "lexer.vb.l"
+#line 201 "lexer.vb.l"
 {store_operator_vb(OR_ELSE);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 201 "lexer.vb.l"
+#line 202 "lexer.vb.l"
 {store_operator_vb(OVERLOADS);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 202 "lexer.vb.l"
+#line 203 "lexer.vb.l"
 {store_operator_vb(OVERRIDABLE);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 203 "lexer.vb.l"
+#line 204 "lexer.vb.l"
 {store_operator_vb(OVERRIDES);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 204 "lexer.vb.l"
+#line 205 "lexer.vb.l"
 {store_operator_vb(PARAM_ARRAY);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 205 "lexer.vb.l"
+#line 206 "lexer.vb.l"
 {store_operator_vb(PRESERVE);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 206 "lexer.vb.l"
+#line 207 "lexer.vb.l"
 {store_operator_vb(PRIVATE);}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 207 "lexer.vb.l"
+#line 208 "lexer.vb.l"
 {store_operator_vb(PROPERTY);}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 208 "lexer.vb.l"
+#line 209 "lexer.vb.l"
 {store_operator_vb(PROTECTED);}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 209 "lexer.vb.l"
+#line 210 "lexer.vb.l"
 {store_operator_vb(PUBLIC);}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 210 "lexer.vb.l"
+#line 211 "lexer.vb.l"
 {store_operator_vb(RAISE_EVENT);}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 211 "lexer.vb.l"
+#line 212 "lexer.vb.l"
 {store_operator_vb(RE_DIM);}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 212 "lexer.vb.l"
+#line 213 "lexer.vb.l"
 {store_operator_vb(READ_ONLY);}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 213 "lexer.vb.l"
+#line 214 "lexer.vb.l"
 {store_operator_vb(REMOVE_HANDLER);}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 214 "lexer.vb.l"
+#line 215 "lexer.vb.l"
 {store_operator_vb(RESUME);}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 215 "lexer.vb.l"
+#line 216 "lexer.vb.l"
 {store_operator_vb(RETURN);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 216 "lexer.vb.l"
+#line 217 "lexer.vb.l"
 {store_operator_vb(SELECT);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 217 "lexer.vb.l"
+#line 218 "lexer.vb.l"
 {store_operator_vb(SET);}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 218 "lexer.vb.l"
+#line 219 "lexer.vb.l"
 {store_operator_vb(SHADOWS);}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 219 "lexer.vb.l"
+#line 220 "lexer.vb.l"
 {store_operator_vb(SHARED);}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 220 "lexer.vb.l"
+#line 221 "lexer.vb.l"
 {store_operator_vb(SHORT);}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 221 "lexer.vb.l"
+#line 222 "lexer.vb.l"
 {store_operator_vb(SINGLE);}
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 222 "lexer.vb.l"
+#line 223 "lexer.vb.l"
 {store_operator_vb(STATIC);}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 223 "lexer.vb.l"
+#line 224 "lexer.vb.l"
 {store_operator_vb(STEP);}
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 224 "lexer.vb.l"
+#line 225 "lexer.vb.l"
 {store_operator_vb(STOP);}
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 225 "lexer.vb.l"
+#line 226 "lexer.vb.l"
 {store_operator_vb(STRING);}
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 226 "lexer.vb.l"
+#line 227 "lexer.vb.l"
 {store_operator_vb(STRUCTURE);}
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 227 "lexer.vb.l"
+#line 228 "lexer.vb.l"
 {store_operator_vb(SUB);}
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 228 "lexer.vb.l"
+#line 229 "lexer.vb.l"
 {store_operator_vb(SYNC_LOCK);}
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 229 "lexer.vb.l"
+#line 230 "lexer.vb.l"
 {store_operator_vb(THEN);}
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 230 "lexer.vb.l"
+#line 231 "lexer.vb.l"
 {store_operator_vb(THROW);}
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 231 "lexer.vb.l"
+#line 232 "lexer.vb.l"
 {store_operator_vb(TO);}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 232 "lexer.vb.l"
+#line 233 "lexer.vb.l"
 {store_operator_vb(TRUE);}
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 233 "lexer.vb.l"
+#line 234 "lexer.vb.l"
 {store_operator_vb(TRY);}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 234 "lexer.vb.l"
+#line 235 "lexer.vb.l"
 {store_operator_vb(TYPEOF);}
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 235 "lexer.vb.l"
+#line 236 "lexer.vb.l"
 {store_operator_vb(UNICODE);}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 236 "lexer.vb.l"
+#line 237 "lexer.vb.l"
 {store_operator_vb(UNTIL);}
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 237 "lexer.vb.l"
+#line 238 "lexer.vb.l"
 {store_operator_vb(VARIANT);}
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 238 "lexer.vb.l"
+#line 239 "lexer.vb.l"
 {store_operator_vb(WEND);}
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 239 "lexer.vb.l"
+#line 240 "lexer.vb.l"
 {store_operator_vb(WHEN);}
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 240 "lexer.vb.l"
+#line 241 "lexer.vb.l"
 {store_operator_vb(WHILE);}
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 241 "lexer.vb.l"
+#line 242 "lexer.vb.l"
 {store_operator_vb(WITH);}
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 242 "lexer.vb.l"
+#line 243 "lexer.vb.l"
 {store_operator_vb(WITH_EVENTS);}
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 243 "lexer.vb.l"
+#line 244 "lexer.vb.l"
 {store_operator_vb(WRITE_ONLY);}
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 244 "lexer.vb.l"
+#line 245 "lexer.vb.l"
 {store_operator_vb(XOR);}
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 246 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 247 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 247 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 248 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 248 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 249 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 249 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 250 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 250 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 251 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 251 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 252 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 252 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 253 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 253 "lexer.vb.l"
-{store_operand_vb(strdup(yytext_vb));}
+#line 254 "lexer.vb.l"
+{store_operand_vb(_strdup(yytext_vb));}
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 254 "lexer.vb.l"
+#line 255 "lexer.vb.l"
 {sloc_vb.insert(vb_lineno); string_literal_vb();}
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 256 "lexer.vb.l"
+#line 257 "lexer.vb.l"
 {store_operator_vb(CONCAT);}
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 257 "lexer.vb.l"
+#line 258 "lexer.vb.l"
 {store_operator_vb(ASTERISK);}
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 258 "lexer.vb.l"
+#line 259 "lexer.vb.l"
 {store_operator_vb(PLUS);}
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 259 "lexer.vb.l"
+#line 260 "lexer.vb.l"
 {store_operator_vb(MINUS);}
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 260 "lexer.vb.l"
+#line 261 "lexer.vb.l"
 {store_operator_vb(SLASH);}
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 261 "lexer.vb.l"
+#line 262 "lexer.vb.l"
 {store_operator_vb(LESS_THAN);}
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 262 "lexer.vb.l"
+#line 263 "lexer.vb.l"
 {store_operator_vb(SHIFT_LEFT);}
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 263 "lexer.vb.l"
+#line 264 "lexer.vb.l"
 {store_operator_vb(LESS_EQUAL);}
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 264 "lexer.vb.l"
+#line 265 "lexer.vb.l"
 {store_operator_vb(NOT_EQUAL);}
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 265 "lexer.vb.l"
+#line 266 "lexer.vb.l"
 {store_operator_vb(EQUAL);}
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 266 "lexer.vb.l"
+#line 267 "lexer.vb.l"
 {store_operator_vb(GREATER_THAN);}
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 267 "lexer.vb.l"
+#line 268 "lexer.vb.l"
 {store_operator_vb(GREATER_EQUAL);}
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 268 "lexer.vb.l"
+#line 269 "lexer.vb.l"
 {store_operator_vb(SHIFT_RIGHT);}
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 269 "lexer.vb.l"
+#line 270 "lexer.vb.l"
 {store_operator_vb(INT_DIVIDE);}
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 270 "lexer.vb.l"
+#line 271 "lexer.vb.l"
 {store_operator_vb(EXPONENT);}
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 272 "lexer.vb.l"
+#line 273 "lexer.vb.l"
 {;}
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 273 "lexer.vb.l"
+#line 274 "lexer.vb.l"
 {vb_lineno++;}
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 274 "lexer.vb.l"
+#line 275 "lexer.vb.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 275 "lexer.vb.l"
+#line 276 "lexer.vb.l"
 ECHO;
 	YY_BREAK
-#line 22030 "lex.vb.tmp"
+#line 22031 "lex.vb.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(DEFINE):
 	yyterminate();
@@ -22613,7 +22614,7 @@ FILE *file;
 #if YY_NEVER_INTERACTIVE
 	b->yy_is_interactive = 0;
 #else
-	b->yy_is_interactive = file ? (isatty( fileno(file) ) > 0) : 0;
+	b->yy_is_interactive = file ? (_isatty( _fileno(file) ) > 0) : 0;
 #endif
 #endif
 	}
@@ -22908,7 +22909,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 275 "lexer.vb.l"
+#line 276 "lexer.vb.l"
 
 int yywrap_vb() {
   return(1);

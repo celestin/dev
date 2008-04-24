@@ -14,6 +14,7 @@
  * CAM  29-Mar-05    85 : Added lastMetric.
  * CAM  28-Jan-06   168 : Added setMetricsSet and related functions for MetricSets.
  * CAM  07-Feb-06   187 : Added return number of items to getItems().
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_REPORT
@@ -40,7 +41,7 @@ namespace metrics
     std::string metDesc[METS];          // Metric Descriptions (e.g. Lines Of Code)
     std::vector<ReportItem> fileList;   // Vector of files info
     ReportItem project[2];              // Info for up to two Projects
-    int lastMetric;                     // Last Metric ID to output for the current item
+    unsigned int lastMetric;            // Last Metric ID to output for the current item
 
     void setPath();
     void getMetDesc();

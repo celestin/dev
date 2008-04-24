@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  28-Jun-07   314 : File created.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -81,7 +82,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];
@@ -155,14 +157,14 @@ void store_operand(char* txt) {
 "void"                       {STORE_OPERATOR(VOID);}
 
 
-{L}({L}|{D})*           {COUNT(); store_operand(strdup(yytext));}
-0[xX]{H}+{IS}?          {COUNT(); store_operand(strdup(yytext));}
-0{D}+{IS}?              {COUNT(); store_operand(strdup(yytext));}
-{D}+{IS}?               {COUNT(); store_operand(strdup(yytext));}
-'(\\.|[^\\'])+'         {COUNT(); store_operand(strdup(yytext));}
-{D}+{E}{FS}?            {COUNT(); store_operand(strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {COUNT(); store_operand(strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {COUNT(); store_operand(strdup(yytext));}
+{L}({L}|{D})*           {COUNT(); store_operand(_strdup(yytext));}
+0[xX]{H}+{IS}?          {COUNT(); store_operand(_strdup(yytext));}
+0{D}+{IS}?              {COUNT(); store_operand(_strdup(yytext));}
+{D}+{IS}?               {COUNT(); store_operand(_strdup(yytext));}
+'(\\.|[^\\'])+'         {COUNT(); store_operand(_strdup(yytext));}
+{D}+{E}{FS}?            {COUNT(); store_operand(_strdup(yytext));}
+{D}*"."{D}+({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
+{D}+"."{D}*({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
 \"                      {COUNT(); string_literal();}
 "::"                    {COUNT(); STORE_OPERATOR(COLONCOLON);}
 "..."                   {COUNT(); }

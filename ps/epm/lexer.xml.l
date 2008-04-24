@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  10-Dec-07   325 : File created.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -222,7 +223,7 @@ void store_operator(int op);
 '(\\.|[^\\'])+'                   |
 {D}+{E}{FS}?                      |
 {D}*"."{D}+({E})?{FS}?            |
-{D}+"."{D}*({E})?{FS}?            {NOTE_SLOC(); store_operand(strdup(yytext));}
+{D}+"."{D}*({E})?{FS}?            {NOTE_SLOC(); store_operand(_strdup(yytext));}
 
 [ \t\v\f]                         {;}
 "\n"                              {xml_lineno++;}
@@ -249,7 +250,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];

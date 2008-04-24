@@ -166,7 +166,7 @@ struct yy_buffer_state_xml
 
 	/* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
+	 * instead of f_read(), to make sure we stop fetching input after
 	 * each newline.
 	 */
 	int yy_is_interactive;
@@ -34150,7 +34150,7 @@ YY_MALLOC_DECL
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	if ( (result = read( fileno(yyin_xml), (char *) buf, max_size )) < 0 ) \
+	if ( (result = _read( _fileno(yyin_xml), (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -35005,7 +35005,7 @@ case 149:
 case 150:
 YY_RULE_SETUP
 #line 225 "lexer.xml.l"
-{NOTE_SLOC(); store_operand_xml(strdup(yytext_xml));}
+{NOTE_SLOC(); store_operand_xml(_strdup(yytext_xml));}
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
@@ -35618,7 +35618,7 @@ FILE *file;
 #if YY_NEVER_INTERACTIVE
 	b->yy_is_interactive = 0;
 #else
-	b->yy_is_interactive = file ? (isatty( fileno(file) ) > 0) : 0;
+	b->yy_is_interactive = file ? (_isatty( _fileno(file) ) > 0) : 0;
 #endif
 #endif
 	}
@@ -35936,7 +35936,8 @@ void lexclear_xml() {
 }
 
 void store_operand_xml(char* txt) {
-  unsigned char c;int i;
+  char c; 
+  unsigned int i;
   noperands_xml++;
 
   c=txt[0];

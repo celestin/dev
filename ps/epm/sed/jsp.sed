@@ -27,3 +27,6 @@ s/yyrestart/yyrestart_jsp/g
 s/yytext/yytext_jsp/g
 s/yywrap/yywrap_jsp/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

@@ -25,3 +25,6 @@ s/yyrestart/yyrestart_php/g
 s/yytext/yytext_php/g
 s/yywrap/yywrap_php/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

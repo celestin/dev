@@ -31,12 +31,13 @@
  * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
  * CAM  19-Sep-06   117 : Added SLOC* metrics.
  * CAM  25-Oct-07   319 : Remove duplicate filenames during project creation.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
 using namespace metrics;
 
-#define CAM_STRNCPY(X,Y,Z) strcpy(X, Y); X[Z]='\0'
+#define CAM_STRNCPY(X,S,Y,Z) strcpy_s(X, S, Y); X[Z]='\0'
 
 OurSQL &projDb = OurSQL();
 OurSQL &metDb = OurSQL();
@@ -87,7 +88,7 @@ void fileCopy(const char *source, const char *target) {
 }
 
 char* getFileType(char *srcf, char *rval) {
-  strcpy(rval, "CP");
+  strcpy_s(rval, MAX_PATH, "CP");
   char *lastperiod = strrchr(srcf, '.');
 
   if (lastperiod != NULL) {
@@ -96,7 +97,9 @@ char* getFileType(char *srcf, char *rval) {
     for (int i=0; i<ext->nLang; i++) {
       for (int j=0; j<ext->nType[i]; j++) {
         for (int k=0; k<ext->nExt[i][j]; k++) {
-          if (!stricmp(lastperiod, ext->sExt[i][j][k].fDesc)) { strcpy(rval, ext->sLang[i].fDesc); }
+          if (!_stricmp(lastperiod, ext->sExt[i][j][k].fDesc)) {
+            strcpy_s(rval, MAX_PATH, ext->sLang[i].fDesc);
+          }
         }
       }
     }
@@ -105,31 +108,29 @@ char* getFileType(char *srcf, char *rval) {
   return rval;
 }
 
-bool getNextFiles(char *buff, int bsize, int index=0) {
+bool getNextFiles(char *buff, char *currentFile, int bsize, int index=0) {
 
   int size = 0;
   int count = 0;
-  strcpy(buff,"");
-  char current[4096];
-  char ftype[100];
-  int chop = strlen(relpath[index]);
 
+  int chop = strlen(relpath[index]);
+  buff[0] = '\0';
   if (OPTION_MASK & FILE_LIST_MASK) {
 
-    if (tmp_file) {
+    if (strlen(tmp_file)) {
       size = (strlen(tmp_file)*2)-chop;
-      sprintf(current, "('%s','%s','%s',%d),", tmp_file, tmp_file+chop, getFileType(tmp_file+chop, ftype), (index+1));
-      strcat(buff, current);
-      current[0] = '\0';
+
+      getFileType(fn_res+chop, ftype);
+      _itoa_s((index+1), sindex, 100, 10);
+
+      sprintf_s(currentFile, bsize, "('%s','%s','%s',%s),", fn_res, fn_res+chop, ftype, sindex);
+      strcat_s(buff, bsize, currentFile);
+      currentFile[0] = '\0';
       size += 15;
       count++;
 
-      free (tmp_file);
-      tmp_file = NULL;
+      tmp_file[0] = '\0';
     }
-
-    char fn_buff[PATH_MAX];
-    char fn_res[PATH_MAX];
 
     void *ret = filelist[index].getline(fn_buff,PATH_MAX);
 
@@ -140,10 +141,15 @@ bool getNextFiles(char *buff, int bsize, int index=0) {
         size += 15;
 
         if (size<bsize) {
-          sprintf(current, "('%s','%s','%s',%d),", fn_res, fn_res+chop, getFileType(fn_res+chop, ftype), (index+1));
-          strcat(buff, current);
-          current[0] = '\0';
+          getFileType(fn_res+chop, ftype);
+          _itoa_s((index+1), sindex, 100, 10);
+
+          sprintf_s(currentFile, bsize, "('%s','%s','%s',%s),", fn_res, fn_res+chop, ftype, sindex);
+          strcat_s(buff, bsize, currentFile);
+
+          currentFile[0] = '\0';
           fn_buff[0] = '\0';
+          fn_res[0] = '\0';
 
           ret = filelist[index].getline(fn_buff,PATH_MAX);
         } else {
@@ -152,9 +158,8 @@ bool getNextFiles(char *buff, int bsize, int index=0) {
       }
     }
 
-    if (strlen(fn_buff)) {
-      realpath(fn_buff,fn_res);
-      tmp_file = strdup(fn_res);
+    if (strlen(fn_res)) {
+      strcpy_s(tmp_file, PATH_MAX, fn_res);
     }
 
     if (buff) buff[strlen(buff)-1] = '\0';
@@ -166,7 +171,7 @@ bool getNextFiles(char *buff, int bsize, int index=0) {
 
 bool createDatabase(string serverName, string userName, string password,
                     string databaseName, int projects) {
-  char sql[PATH_MAX*4];
+  char sql[QUERY_MAX];
   bool recreate = (projects > 0);
 
   // Create the Database
@@ -174,13 +179,13 @@ bool createDatabase(string serverName, string userName, string password,
   if (!projDb.connected()) return false;
 
   if (recreate) {
-    strcpy(sql, "drop database if exists `");
-    strcat(sql, databaseName.c_str());
-    strcat(sql, "`");
+    strcpy_s(sql, QUERY_MAX, "drop database if exists `");
+    strcat_s(sql, QUERY_MAX, databaseName.c_str());
+    strcat_s(sql, QUERY_MAX, "`");
     projDb.executeResultlessQuery(sql);
-    strcpy(sql, "create database `");
-    strcat(sql, databaseName.c_str());
-    strcat(sql, "`");
+    strcpy_s(sql, QUERY_MAX, "create database `");
+    strcat_s(sql, QUERY_MAX, databaseName.c_str());
+    strcat_s(sql, QUERY_MAX, "`");
     projDb.executeResultlessQuery(sql);
     projDb.disconnect();
   }
@@ -232,13 +237,13 @@ bool createDatabase(string serverName, string userName, string password,
         fileListRead = false;
         filelist[i].close();
 
-        CAM_STRNCPY(external_type, fn_res+1, 3);
+        CAM_STRNCPY(external_type, 260, fn_res+1, 3);
         realpath(fn_res+5,source_list);
         validateSQL(source_list);
 
         cout << "Project " << i << " external " << external_type << " " << source_list << endl;
 
-        strcpy(relpath[i], source_list);
+        strcpy_s(relpath[i], PATH_MAX, source_list);
         for (int s=strlen(relpath[i])-2; s>=0; s--) {
           if (relpath[i][s] == '/') {
             relpath[i][s+1] = '\0';
@@ -246,58 +251,50 @@ bool createDatabase(string serverName, string userName, string password,
           }
         }
 
-        sprintf(sql, "INSERT INTO project (projid, pr_name, snap_date, base_dir, external_type, external_source) values ('%d','%s','%s','%s','%s','%s')", (i+1), proj_name, snapshot_date, relpath[i], external_type, source_list);
+        sprintf_s(sql, QUERY_MAX, "INSERT INTO project (projid, pr_name, snap_date, base_dir, external_type, external_source) values ('%d','%s','%s','%s','%s','%s')", (i+1), proj_name, snapshot_date, relpath[i], external_type, source_list);
         projDb.executeResultlessQuery(sql);
 
       } else {
         realpath(fn_res,relpath[i]);
         validateSQL(relpath[i]);
 
-        sprintf(sql, "INSERT INTO project (projid, pr_name, snap_date, base_dir) values ('%d','%s','%s','%s')", (i+1), proj_name, snapshot_date, relpath[i]);
+        sprintf_s(sql, QUERY_MAX, "INSERT INTO project (projid, pr_name, snap_date, base_dir) values ('%d','%s','%s','%s')", (i+1), proj_name, snapshot_date, relpath[i]);
         projDb.executeResultlessQuery(sql);
 
         cout << "Project " << i << " path " << relpath[i] << endl;
       }
     }
 
-    int val_index = 68; // the index of the start of the values
-    char *qry = (char*) malloc((val_index+QUERY_MAX)*sizeof(char)) ;
-    char buffer[QUERY_MAX] ;
-    strcpy(qry,"insert into sourcefile (sf_name,sf_shortname,sf_type,projid) values ");
+    strcpy_s(qry, QUERY_MAX_EXTRA, "insert into sourcefile (sf_name,sf_shortname,sf_type,projid) values ");
+    int val_index = strlen(qry);
+    tmp_file[0] = '\0';
 
     if (fileListRead) {
       // Read the rest of the lines in the Project file as sourcefiles for the EPM project.
-      getNextFiles(buffer,QUERY_MAX,i);
+      getNextFiles(buffer,currentFile,QUERY_MAX,i);
       do {
         validateSQL(buffer);
         qry[val_index] = '\0';
-        strcat(qry,buffer);
+        strcat_s(qry, QUERY_MAX_EXTRA, buffer);
 
         projDb.executeResultlessQuery(qry);
-      } while (getNextFiles(buffer,QUERY_MAX,i));
-
-      free(qry);
+      } while (getNextFiles(buffer,currentFile,QUERY_MAX,i));
 
       // Remove any duplicates
       std::vector<int> dups;
-      int f;
+      unsigned int f;
 
-      strcpy(sql, "SELECT sf2.sfid ");
-      strcat(sql, "FROM sourcefile sf1 ");
-      strcat(sql, "LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname ");
-      strcat(sql, "AND sf1.projid = sf2.projid ");
-      strcat(sql, "AND sf2.sfid > sf1.sfid ");
-      strcat(sql, "WHERE sf2.sfid IS NOT NULL ");
+      strcpy_s(sql, QUERY_MAX, "SELECT sf2.sfid FROM sourcefile sf1 LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid = sf2.projid AND sf2.sfid > sf1.sfid WHERE sf2.sfid IS NOT NULL ");
 
       if (projDb.executeQuery(sql)) {
-        for (f=0; f<projDb.rows(); f++) {
+        for (f=0; f<(unsigned int)projDb.rows(); f++) {
           dups.push_back(projDb.longCell(f,0));
         }
         projDb.clearResults();
       }
 
       for (f=0; f<dups.size(); f++) {
-        sprintf(sql, "DELETE FROM sourcefile WHERE sfid=%d", dups[f]);
+        sprintf_s(sql, QUERY_MAX, "DELETE FROM sourcefile WHERE sfid=%d", dups[f]);
         projDb.executeResultlessQuery(sql);
       }
 
@@ -321,23 +318,23 @@ bool createDatabase(string serverName, string userName, string password,
       ext_project.open(source_list);
       void *ret = ext_project.getline(buffer,QUERY_MAX);
 
-      strcpy(projpath, relpath[i]);
+      strcpy_s(projpath, PATH_MAX, relpath[i]);
       win32Realpath(projpath);
 
       while (ret) {
         if (strlen(buffer)) {
-          strcpy(ltype, buffer);
+          strcpy_s(ltype, 100, buffer);
           ltype[7]='\0';
 
           if (!strcmp(ltype, "SOURCE=")) {
-            strcpy(tmp, relpath[i]);
-            strcat(tmp, buffer+7);
+            strcpy_s(tmp, PATH_MAX, relpath[i]);
+            strcat_s(tmp, PATH_MAX, buffer+7);
             realpath(tmp, fn_res);
 
-            sprintf(current, "('%s','%s','%s',%d)", fn_res, fn_res, getFileType(fn_res, ftype), (i+1));
+            sprintf_s(current, PATH_MAX, "('%s','%s','%s',%d)", fn_res, fn_res, getFileType(fn_res, ftype), (i+1));
             validateSQL(current);
-            strcpy(sql, qry);
-            strcat(sql, current);
+            strcpy_s(sql, QUERY_MAX, qry);
+            strcat_s(sql, QUERY_MAX, current);
             projDb.executeResultlessQuery(sql);
           }
         }
@@ -351,14 +348,14 @@ bool createDatabase(string serverName, string userName, string password,
       int minlen=0;
 
       // Determine the smallest filename (the maximum number of characters to check)
-      sprintf(sql, "SELECT MIN(LENGTH(sf_shortname)) FROM sourcefile WHERE projid=%d", (i+1));
+      sprintf_s(sql, QUERY_MAX, "SELECT MIN(LENGTH(sf_shortname)) FROM sourcefile WHERE projid=%d", (i+1));
       if (projDb.executeQuery(sql)) {
         minlen = projDb.longCell(0,0);
       }
 
       // Group by successively longer parts of the short filename until more than one occurence shows up
       while ((t<minlen) && (rows<2)) {
-        sprintf(sql, "SELECT COUNT(DISTINCT(SUBSTR(sf_shortname,1,%d))) FROM sourcefile WHERE projid=%d", t, (i+1));
+        sprintf_s(sql, QUERY_MAX, "SELECT COUNT(DISTINCT(SUBSTR(sf_shortname,1,%d))) FROM sourcefile WHERE projid=%d", t, (i+1));
         if (projDb.executeQuery(sql)) {
           rows = projDb.longCell(0,0);
         }
@@ -367,45 +364,32 @@ bool createDatabase(string serverName, string userName, string password,
 
       if (rows>1) {
         // If more than one row, chop off the number of chars prior to the count that made more than one
-        sprintf(sql, "UPDATE sourcefile SET sf_shortname = SUBSTR(sf_shortname, %d) WHERE projid=%d", (t-1), (i+1));
+        sprintf_s(sql, QUERY_MAX, "UPDATE sourcefile SET sf_shortname = SUBSTR(sf_shortname, %d) WHERE projid=%d", (t-1), (i+1));
         projDb.executeQuery(sql);
       }
     }
   }
 
-  strcpy(sql, "INSERT INTO comparefile(sfid, sfid2, status) ");
-  strcat(sql, "SELECT sf1.sfid,sf2.sfid sfid2, 'C' status ");
-  strcat(sql, "FROM sourcefile sf1 ");
-  strcat(sql, "LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid ");
-  strcat(sql, "WHERE sf1.projid = 1 AND sf2.projid IS NOT NULL ");
-  strcat(sql, "UNION SELECT sf1.sfid,NULL,'A' status ");
-  strcat(sql, "FROM sourcefile sf1 ");
-  strcat(sql, "LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid ");
-  strcat(sql, "WHERE sf1.projid = 1 AND sf2.projid IS NULL ");
-  strcat(sql, "UNION SELECT sf2.sfid,NULL,'D' status ");
-  strcat(sql, "FROM sourcefile sf1 ");
-  strcat(sql, "RIGHT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid ");
-  strcat(sql, "WHERE sf1.projid IS NULL AND sf2.projid = 2 ");
+  strcpy_s(sql, QUERY_MAX, "INSERT INTO comparefile(sfid, sfid2, status) SELECT sf1.sfid,sf2.sfid sfid2, 'C' status FROM sourcefile sf1 LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid WHERE sf1.projid = 1 AND sf2.projid IS NOT NULL UNION SELECT sf1.sfid,NULL,'A' status FROM sourcefile sf1 LEFT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid WHERE sf1.projid = 1 AND sf2.projid IS NULL UNION SELECT sf2.sfid,NULL,'D' status FROM sourcefile sf1 RIGHT OUTER JOIN sourcefile sf2 ON sf1.sf_shortname = sf2.sf_shortname AND sf1.projid <> sf2.projid WHERE sf1.projid IS NULL AND sf2.projid = 2 ");
   projDb.executeResultlessQuery(sql);
   return true;
 }
 
 void saveDb(int sfid, Metrics& met, int start, int end) {
-  char sql[1024];
+  char sql[QUERY_MAX];
   char tmp[256];
   int id;
   int i;
 
-  strcpy(sql, "INSERT INTO sourcemetric (sfid,mid,mvalue) VALUES ");
+  strcpy_s(sql, QUERY_MAX, "INSERT INTO sourcemetric (sfid,mid,mvalue) VALUES ");
 
-  for (i=start; i<end; i++) {
+  for (i=start; i<=end; i++)
+  {
     id = i + 100;
-    sprintf(tmp, "('%d','%d','%f'),", sfid, id, met.get(i,0));
-    strcat(sql, tmp);
+    sprintf_s(tmp, 256, "('%d','%d','%f'),", sfid, id, met.get(i,0));
+    strcat_s(sql, QUERY_MAX, tmp);
   }
-  id = i + 100;
-  sprintf(tmp, "('%d','%d','%f')", sfid, id, met.get(i,0));
-  strcat(sql, tmp);
+  sql[strlen(sql)-1] = '\0';  // remove last comma
 
   metDb.executeResultlessQuery(sql);
 }

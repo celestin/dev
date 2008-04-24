@@ -19,6 +19,7 @@
  * CAM  14-Mar-06   202 : Calculate old and new projects when performing calculateHalstead.
  * CAM  23-Mar-06   218 : Hide Halstead metrics for Project level summary.
  * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_METRICS
@@ -40,7 +41,9 @@ namespace metrics
 
   public:
     Metrics() {
-      for (int i=0; i<METS; i++) {
+      int i=0;
+
+      for (i=0; i<METS; i++) {
         metshow[i][ITEM_PROJECT] = true;
         metshow[i][ITEM_FILE] = true;
       }
@@ -54,8 +57,14 @@ namespace metrics
       }
     }
 
-    void  set(int m, float value) { set(m,0,value); }
-    void  add(int m, float value) { add(m,0,value); }
+    void set(int m, unsigned int value) { set(m,0,(float)value); }
+    void set(int m, long value) { set(m,0,(float)value); }
+    void set(int m, int value) { set(m,0,(float)value); }
+    void set(int m, float value) { set(m,0,value); }
+
+    void add(int m, unsigned int value) { add(m,0,(float)value); }
+    void add(int m, int value) { add(m,0,(float)value); }
+    void add(int m, float value) { add(m,0,value); }
 
     void set(int m, int p, float value) { met[m][p] = value; }
     void add(int m, int p, float value) { met[m][p] += value; }
@@ -99,7 +108,7 @@ namespace metrics
     }
 
     void calculateHalstead() {
-      long n,ns,n1,n2,n1s,n2s,v,d,e;
+      float n,ns,n1,n2,n1s,n2s,v,d,e;
 
       for (int i=0; i<2; i++) {
         n=ns=n1=n2=n1s=n2s=n2=v=d=e=0;
@@ -111,22 +120,22 @@ namespace metrics
 
         n = n1 + n2;                              // Halstead Program Length
         ns = n1s + n2s;                           // Halstead Program Vocabulary
-        if (ns > 0) v = (n * (log(ns) / LOG2));   // Halstead Volume
+        if (ns > 0) v = (float)(n * (log(ns) / LOG2));   // Halstead Volume
 
-        if (n2s > 0) d = (((double)n1s / 2) *     // Halstead Difficulty
-                     ((double)n2 / (double)n2s));
+        if (n2s > 0) d = ((n1s / 2) *     // Halstead Difficulty
+                        (n2 / n2s));
 
         e = v * d;                                // Halstead Effort
 
         // Set these values
-        this->set(MET(N), i, n);
-        this->set(MET(NS), i, ns);
-        this->set(MET(V), i, v);
-        this->set(MET(D), i, d);
-        this->set(MET(E), i, e);
+        this->set(MET(N), i, (float)n);
+        this->set(MET(NS), i, (float)ns);
+        this->set(MET(V), i, (float)v);
+        this->set(MET(D), i, (float)d);
+        this->set(MET(E), i, (float)e);
 
         // Halstead Bugs
-        this->set(MET(B), i, ((float)pow(e, ((double)2/(double)3))) / (double)3000);
+        this->set(MET(B), i, ((float)pow(e, (0.666f / 3000.0f))));
       }
     }
 
@@ -161,4 +170,3 @@ namespace metrics
 };
 
 #endif
-

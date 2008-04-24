@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  20-Dec-04  File added.
  * CAM  13-Jan-05  Added theUser and thePass.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -237,7 +238,7 @@ bool OurSQL::executeQuery(string query)
 
           for(int i = 0; i < theCols; i++)
           {
-            thisRow[i] = strdup(row[i]) ;
+            thisRow[i] = _strdup(row[i]) ;
           }
 
           theResults.push_back(thisRow) ;
@@ -288,7 +289,7 @@ bool OurSQL::executeQuery(char *query)
 
           for(int i = 0; i < theCols; i++)
           {
-            thisRow[i] = strdup(row[i]) ;
+            thisRow[i] = _strdup(row[i]) ;
           }
 
           theResults.push_back(thisRow) ;

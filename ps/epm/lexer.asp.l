@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  19-Sep-06   117 : File created.
  * CAM  04-Dec-07   324 : Corrected issues prior to creating JSP parser.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -285,7 +286,7 @@ void eat_eol();
 '(\\.|[^\\'])+'         |
 {D}+{E}{FS}?            |
 {D}*"."{D}+({E})?{FS}?  |
-{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC(); store_operand(strdup(yytext));}
+{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC(); store_operand(_strdup(yytext));}
 
 [ \t\v\f]               {;}
 "\n"                    {asp_lineno++;}
@@ -331,7 +332,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];

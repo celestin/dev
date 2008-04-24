@@ -166,7 +166,7 @@ struct yy_buffer_state_asp
 
 	/* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
+	 * instead of f_read(), to make sure we stop fetching input after
 	 * each newline.
 	 */
 	int yy_is_interactive;
@@ -23825,7 +23825,7 @@ YY_MALLOC_DECL
  */
 #ifndef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
-	if ( (result = read( fileno(yyin_asp), (char *) buf, max_size )) < 0 ) \
+	if ( (result = _read( _fileno(yyin_asp), (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -24919,7 +24919,7 @@ case 198:
 case 199:
 YY_RULE_SETUP
 #line 288 "lexer.asp.l"
-{NOTE_SLOC(); store_operand_asp(strdup(yytext_asp));}
+{NOTE_SLOC(); store_operand_asp(_strdup(yytext_asp));}
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
@@ -25536,7 +25536,7 @@ FILE *file;
 #if YY_NEVER_INTERACTIVE
 	b->yy_is_interactive = 0;
 #else
-	b->yy_is_interactive = file ? (isatty( fileno(file) ) > 0) : 0;
+	b->yy_is_interactive = file ? (_isatty( _fileno(file) ) > 0) : 0;
 #endif
 #endif
 	}
@@ -25873,7 +25873,8 @@ void lexclear_asp() {
 }
 
 void store_operand_asp(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands_asp++;
 
   c=txt[0];

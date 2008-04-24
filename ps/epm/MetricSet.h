@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  06-Jan-06  168 : Added Metrics Sets.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICSET_H
@@ -31,14 +32,6 @@
       }
       void lower(long value) { lLower = value; bLower = true; }
       void upper(long value) { lUpper = value; bUpper = true; }
-/*
-      friend ostream& operator << (ostream& os, const MetricConfig& mc) {
-        os << mc.fId;
-        if (mc.bLower) os << " lower(" << mc.lLower << ")";
-        if (mc.bUpper) os << " upper(" << mc.lUpper << ")";
-        return os;
-      }
-*/
   };
 
   class MetricSet {
@@ -60,7 +53,8 @@
 
       void addSet(const char* setName) {
         char id[256];
-        sSet[nSet].set(itoa(nSet, id, 10), setName);
+        _itoa_s(nSet, id, 256, 10);
+        sSet[nSet].set(id, setName);
         nSet++;
       }
 

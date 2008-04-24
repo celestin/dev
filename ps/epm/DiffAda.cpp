@@ -14,6 +14,7 @@
  * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * CAM  01-Nov-07   320 : Correct issue with theMultiLine in getLineSC.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -239,7 +240,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 }
@@ -259,13 +260,15 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
     while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
       switch (nc)
       {
+      //case 9:
+      //case ' ':
+      //  {
+          // ignore whitespace
+      //    break;
+      //  }
       case '"':
         {
-          if (skip) {
-            skip = false;
-          } else {
-            skip = true;
-          }
+          skip = !skip;
           retval[b++] = nc;
           break;
         }
@@ -285,7 +288,7 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
         }
       case '-':
         {
-          if (skip) {
+          if (comskip || skip) {
             // Ignore
           } else {
             if ((nc2=fgetc(input))!=EOF) {
@@ -320,7 +323,7 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 

@@ -23,3 +23,6 @@ s/yytext/yytext_ada/g
 s/yywrap/yywrap_ada/g
 s/string_literal/string_literal_ada/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

@@ -11,6 +11,7 @@
  * CAM  19-Sep-06   117 : File created.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * CAM  01-Nov-07   321 : Correct issue with theMultiLine in getLineSC.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffASP.h"
@@ -257,7 +258,7 @@ void DiffASP::getLineCR(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 }
@@ -365,7 +366,7 @@ void DiffASP::getLineSC(FILE *input, char *&currline)
   }
   catch (...)
   {
-    currline = strdup("");
+    currline = _strdup("");
     return;
   }
 

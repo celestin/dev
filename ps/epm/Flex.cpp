@@ -21,6 +21,7 @@
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * CAM  26-Jul-07   316 : Added VHDL.
  * CAM  04-Dec-07   324 : Added JSP/XML (#325).
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -58,7 +59,7 @@ bool validLicense() {
   si.wShowWindow |= SW_SHOWMINIMIZED;
 
   char mpath[256] ;
-  strcpy(mpath, "lic.exe") ;
+  strcpy_s(mpath, 256, "lic.exe") ;
 
   if (!CreateProcess(0,mpath, 0, 0, 0, 0, 0, 0, &si,&pi)) return false;   // Execute lic.exe
   WaitForSingleObject(pi.hProcess, 25000);                                // Wait until completion
@@ -70,19 +71,19 @@ bool validLicense() {
     cout << "License [Code:" << lpExitCode << "]" << endl;
   }
 
-  bLangCS = (lpExitCode & EPM_CS);
-  bLangCP = (lpExitCode & EPM_CP);
-  bLangJV = (lpExitCode & EPM_JV);
-  bLangVB = (lpExitCode & EPM_VB);
-  bLangS1 = (lpExitCode & EPM_S1);
-  bLangAD = (lpExitCode & EPM_AD);
-  bLangPL = (lpExitCode & EPM_PL);
-  bLangAS = (lpExitCode & EPM_AS);
-  bLangPH = (lpExitCode & EPM_PH);
-  bLangID = (lpExitCode & EPM_ID);
-  bLangVH = (lpExitCode & EPM_VH);
-  bLangJS = (lpExitCode & EPM_JS);
-  bLangXM = (lpExitCode & EPM_XM);
+  bLangCS = !((lpExitCode & EPM_CS) == 0);
+  bLangCP = !((lpExitCode & EPM_CP) == 0);
+  bLangJV = !((lpExitCode & EPM_JV) == 0);
+  bLangVB = !((lpExitCode & EPM_VB) == 0);
+  bLangS1 = !((lpExitCode & EPM_S1) == 0);
+  bLangAD = !((lpExitCode & EPM_AD) == 0);
+  bLangPL = !((lpExitCode & EPM_PL) == 0);
+  bLangAS = !((lpExitCode & EPM_AS) == 0);
+  bLangPH = !((lpExitCode & EPM_PH) == 0);
+  bLangID = !((lpExitCode & EPM_ID) == 0);
+  bLangVH = !((lpExitCode & EPM_VH) == 0);
+  bLangJS = !((lpExitCode & EPM_JS) == 0);
+  bLangXM = !((lpExitCode & EPM_XM) == 0);
 
   /**
   if (bLangCS) cout << "bLangCS" << endl;

@@ -13,6 +13,7 @@
  * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
  * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
  * CAM  06-Jun-06   255 : Ensure DEL_SLOC and DEL_FILE appear on the Old Line for CSV.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -28,16 +29,18 @@ CSVReport::CSVReport(OurSQL &db, std::string path) : Report(db, path) {
 }
 
 void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
-  int i,nline,oline;
-  char startLine[2048];
-  char newLine[4096];
-  char oldLine[4096];
-  char diffLine[4096];
+  const int MAX_CSVLINE = 4096;
+  unsigned int i;
+  int nline,oline;
+  char startLine[MAX_CSVLINE];
+  char newLine[MAX_CSVLINE];
+  char oldLine[MAX_CSVLINE];
+  char diffLine[MAX_CSVLINE];
   char metValue[256];
   string status;
   Metrics m;
 
-  sprintf(startLine, "%d,%d,%s,%s,", currItem.getID().c_str(), currItem.getType(), currItem.getShortName().c_str(), currItem.getText1().c_str());
+  sprintf_s(startLine, MAX_CSVLINE, "%d,%d,%s,%s,", currItem.getID().c_str(), currItem.getType(), currItem.getShortName().c_str(), currItem.getText1().c_str());
 
   if (currItem.getType() == ITEM_PROJECT) {
     m = projMet;
@@ -59,18 +62,18 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
     }
   }
 
-  strcpy(newLine, startLine);
-  strcat(newLine, status.c_str());
+  strcpy_s(newLine, MAX_CSVLINE, startLine);
+  strcat_s(newLine, MAX_CSVLINE, status.c_str());
 
-  strcpy(diffLine, startLine);
-  strcat(diffLine, "X");
+  strcpy_s(diffLine, MAX_CSVLINE, startLine);
+  strcat_s(diffLine, MAX_CSVLINE, "X");
 
   if (currItem.getType() == ITEM_PROJECT && isPM()) {
-    sprintf(startLine, "%d,%d,%s,%s,", project[1].getID().c_str(), project[1].getType(), project[1].getShortName().c_str(), project[1].getText1().c_str());
+    sprintf_s(startLine, MAX_CSVLINE, "%d,%d,%s,%s,", project[1].getID().c_str(), project[1].getType(), project[1].getShortName().c_str(), project[1].getText1().c_str());
   }
 
-  strcpy(oldLine, startLine);
-  strcat(oldLine, "O");
+  strcpy_s(oldLine, MAX_CSVLINE, startLine);
+  strcat_s(oldLine, MAX_CSVLINE, "O");
 
   for (i=0; i<lastMetric; i++) {
     if (isSetMember(METID(i))) {
@@ -84,19 +87,19 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
           oline = 0;
         }
 
-        sprintf(metValue, ",%d", (long) m.get(i,nline));
-        strcat(newLine, metValue);
+        sprintf_s(metValue, 256, ",%d", (long) m.get(i,nline));
+        strcat_s(newLine, MAX_CSVLINE, metValue);
 
-        sprintf(metValue, ",%d", (long) m.get(i,oline));
-        strcat(oldLine, metValue);
+        sprintf_s(metValue, 256, ",%d", (long) m.get(i,oline));
+        strcat_s(oldLine, MAX_CSVLINE, metValue);
 
-        sprintf(metValue, ",%d", (long) diff);
-        strcat(diffLine, metValue);
+        sprintf_s(metValue, 256, ",%d", (long) diff);
+        strcat_s(diffLine, MAX_CSVLINE, metValue);
       } else {
-        strcpy(metValue, ",");
-        strcat(newLine, metValue);
-        strcat(oldLine, metValue);
-        strcat(diffLine, metValue);
+        strcpy_s(metValue, 256, ",");
+        strcat_s(newLine, MAX_CSVLINE, metValue);
+        strcat_s(oldLine, MAX_CSVLINE, metValue);
+        strcat_s(diffLine, MAX_CSVLINE, metValue);
       }
     }
   }
@@ -126,7 +129,7 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
 void CSVReport::executeCSV() {
   ofstream current;
   string fname;
-  int f;
+  unsigned int f;
 
   if (isPM()) {
     lastMetric = METS;

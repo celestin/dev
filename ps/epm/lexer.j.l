@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  29-Apr-05  File added.
  * CAM  11-May-05    96 : Rationalised variables.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 JL            [a-zA-Z_$]
@@ -88,7 +89,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];
@@ -151,21 +153,21 @@ void store_operand(char* txt) {
 "package"                               {STORE_OPERATOR(PACKAGE);COUNT();}
 "this"                                  {STORE_OPERATOR(THIS);COUNT();}
 
-"\""                                    {string_literal();store_operand(strdup(yytext));}
+"\""                                    {string_literal();store_operand(_strdup(yytext));}
 
-({DIGS})"."({DIGS})?({EXP})?({FTS})?    {store_operand(strdup(yytext));COUNT();}
-"."({DIGS})({EXP})?({FTS})?             {store_operand(strdup(yytext));COUNT();}
-({DIGS})({EXP})({FTS})?                 {store_operand(strdup(yytext));COUNT();}
-({DIGS})({EXP})?({FTS})                 {store_operand(strdup(yytext));COUNT();}
-{DIL}|{HIL}|{OIL}                       {store_operand(strdup(yytext));COUNT();}
-"true"                                  {store_operand(strdup(yytext));COUNT();}
-"false"                                 {store_operand(strdup(yytext));COUNT();}
-"null"                                  {store_operand(strdup(yytext));COUNT();}
-{JL}({JLD})*                            {store_operand(strdup(yytext));COUNT();}
-("'")({CH})("'")                        {store_operand(strdup(yytext));COUNT();}
-("'")({ESC_SEQ})("'")                   {store_operand(strdup(yytext));COUNT();}
-("'")({OCTAL_ESC})("'")                 {store_operand(strdup(yytext));COUNT();}
-("'")({UNICODE_ESC})("'")               {store_operand(strdup(yytext));COUNT();}
+({DIGS})"."({DIGS})?({EXP})?({FTS})?    {store_operand(_strdup(yytext));COUNT();}
+"."({DIGS})({EXP})?({FTS})?             {store_operand(_strdup(yytext));COUNT();}
+({DIGS})({EXP})({FTS})?                 {store_operand(_strdup(yytext));COUNT();}
+({DIGS})({EXP})?({FTS})                 {store_operand(_strdup(yytext));COUNT();}
+{DIL}|{HIL}|{OIL}                       {store_operand(_strdup(yytext));COUNT();}
+"true"                                  {store_operand(_strdup(yytext));COUNT();}
+"false"                                 {store_operand(_strdup(yytext));COUNT();}
+"null"                                  {store_operand(_strdup(yytext));COUNT();}
+{JL}({JLD})*                            {store_operand(_strdup(yytext));COUNT();}
+("'")({CH})("'")                        {store_operand(_strdup(yytext));COUNT();}
+("'")({ESC_SEQ})("'")                   {store_operand(_strdup(yytext));COUNT();}
+("'")({OCTAL_ESC})("'")                 {store_operand(_strdup(yytext));COUNT();}
+("'")({UNICODE_ESC})("'")               {store_operand(_strdup(yytext));COUNT();}
 
 "="                                     {STORE_OPERATOR(ASSIGN);COUNT();}
 ">"                                     {STORE_OPERATOR(GT);COUNT();}

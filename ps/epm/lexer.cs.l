@@ -6,7 +6,7 @@
  * C# Lexer
  *
  * $Id$
- * 
+ *
  * Who  When       Why
  * CAM  19-Dec-04  File added.
  * CAM  29-Dec-04  Added lexclear.
@@ -15,6 +15,7 @@
  * CAM  04-May-05    50 : Modified for compatibility with other parsers.
  * CAM  11-May-05    96 : Rationalised variables.
  * CAM  28-Jan-06   168 : Fixed bug where number of operators was not being reset.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 JL      [a-zA-Z_$]
@@ -81,7 +82,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
 
   noperands++;
   c=txt[0];
@@ -175,22 +177,22 @@ void eol_comment_skip();
 "volatile"      {STORE_OPERATOR(VOLATILE);COUNT();}
 "while"         {STORE_OPERATOR(WHILE);COUNT();}
 
-"\""                                    {parse_string_literal();store_operand(strdup(yytext));}
-({DIGS})"."({DIGS})?({EXP})?({FTS})?    {store_operand(strdup(yytext));COUNT();}
-"."({DIGS})({EXP})?({FTS})?             {store_operand(strdup(yytext)); COUNT();}
-({DIGS})({EXP})({FTS})?                 {store_operand(strdup(yytext));COUNT();}
-({DIGS})({EXP})?({FTS})                 {store_operand(strdup(yytext));COUNT();}
-{DIL}|{HIL}|{OIL}                       {store_operand(strdup(yytext));COUNT();}
+"\""                                    {parse_string_literal();store_operand(_strdup(yytext));}
+({DIGS})"."({DIGS})?({EXP})?({FTS})?    {store_operand(_strdup(yytext));COUNT();}
+"."({DIGS})({EXP})?({FTS})?             {store_operand(_strdup(yytext)); COUNT();}
+({DIGS})({EXP})({FTS})?                 {store_operand(_strdup(yytext));COUNT();}
+({DIGS})({EXP})?({FTS})                 {store_operand(_strdup(yytext));COUNT();}
+{DIL}|{HIL}|{OIL}                       {store_operand(_strdup(yytext));COUNT();}
 
-"true"      {store_operand(strdup(yytext));COUNT();}
-"false"     {store_operand(strdup(yytext));COUNT();}
-"null"      {store_operand(strdup(yytext));COUNT();}
+"true"      {store_operand(_strdup(yytext));COUNT();}
+"false"     {store_operand(_strdup(yytext));COUNT();}
+"null"      {store_operand(_strdup(yytext));COUNT();}
 
-{JL}({JLD})*              {store_operand(strdup(yytext));COUNT();}
-("'")({CH})("'")          {store_operand(strdup(yytext));COUNT();}
-("'")({ESC_SEQ})("'")     {store_operand(strdup(yytext));COUNT();}
-("'")({OCTAL_ESC})("'")   {store_operand(strdup(yytext));COUNT();}
-("'")({UNICODE_ESC})("'") {store_operand(strdup(yytext));COUNT();}
+{JL}({JLD})*              {store_operand(_strdup(yytext));COUNT();}
+("'")({CH})("'")          {store_operand(_strdup(yytext));COUNT();}
+("'")({ESC_SEQ})("'")     {store_operand(_strdup(yytext));COUNT();}
+("'")({OCTAL_ESC})("'")   {store_operand(_strdup(yytext));COUNT();}
+("'")({UNICODE_ESC})("'") {store_operand(_strdup(yytext));COUNT();}
 
 "="     {STORE_OPERATOR(ASSIGN);COUNT();}
 ">"     {STORE_OPERATOR(GT);COUNT();}

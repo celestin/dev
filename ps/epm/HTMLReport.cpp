@@ -34,6 +34,7 @@
  * CAM  13-Dec-07   328 : Added MetricsDefinitions.pdf.
  * CAM  14-Dec-07   328 : Added (EPM) UserGuide.pdf.
  * CAM  04-Jan-08   330 : Improved layout of links in footer.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -158,7 +159,7 @@ void HTMLReport::navTable(ofstream &current, vector<ReportItem> &list, ItemStatu
   string className;
   int alternate=0;
 
-  for (long j=0; j<list.size(); j++) {
+  for (unsigned long j=0; j<list.size(); j++) {
     nav = list[j];
     show = true;
 
@@ -418,9 +419,9 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
         float diff = (m.get(i,0) - m.get(i,1));
 
         if (diff != 0) {
-          sprintf(diffValue, "%+d", (long)diff);
+          sprintf_s(diffValue, 512, "%+d", (long)diff);
         } else {
-          strcpy(diffValue, "&nbsp;");
+          strcpy_s(diffValue, 512, "&nbsp;");
         }
 
         if (currItem.getItemStatus() == STATUS_CHANGED || currItem.getType() == ITEM_PROJECT) {
@@ -511,7 +512,7 @@ void HTMLReport::executeHTML() {
     return;
   }
 
-  for (int f=0; f<fileList.size(); f++) {
+  for (unsigned int f=0; f<fileList.size(); f++) {
     current.clear();
     current.open(fileList[f].getReportFile(thePath).c_str()) ;
     htmlStart(current, fileList[f].getShortName(), 10);

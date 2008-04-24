@@ -64,6 +64,7 @@
  * CAM  01-Nov-07   325 : Version 1.16.000.
  * CAM  13-Dec-07   328 : Version 1.16.001.
  * CAM  04-Jan-08   330 : Version 1.16.002.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -226,7 +227,16 @@ char *grid_file = NULL;
 
 bool autocreate = false;
 
-char *tmp_file = NULL;
+#define QUERY_MAX_EXTRA 8192
+
+char tmp_file[PATH_MAX];
+char fn_buff[PATH_MAX];
+char fn_res[PATH_MAX];
+char ftype[100];
+char sindex[100];
+char qry[QUERY_MAX_EXTRA];
+char buffer[QUERY_MAX];
+char currentFile[QUERY_MAX];
 
 #include "Project.h"
 
@@ -238,7 +248,7 @@ void setMetrics(int sfid, string filename) {
   sloc=j_com=c_com=cpp_com=com_loc=0;
 
   met.clearMetrics();
-  met.set(MET(LOC), nLOC);    // Lines of Code
+  met.set(MET(LOC), (float)nLOC);    // Lines of Code
 
   switch (lang.getLanguage()) {
     case LANG_CPP:
@@ -599,7 +609,7 @@ void parseCmdLineOptions(int argc, char *argv[]) {
         case 'm':   // Metrics Set
           if (++i<argc && argv[i]) {
             metricsset = (char*) malloc(PATH_MAX*sizeof(char));
-            metricsset = strdup(argv[i]);
+            metricsset = _strdup(argv[i]);
             OPTION_MASK |= METRICS_SET_MASK;
           } else {
             showHelp();
@@ -607,7 +617,7 @@ void parseCmdLineOptions(int argc, char *argv[]) {
           break;
         case 's':
           if (++i<argc && argv[i]) {
-            servername = strdup(argv[i]);
+            servername = _strdup(argv[i]);
           } else {
             showHelp();
           }
@@ -615,7 +625,7 @@ void parseCmdLineOptions(int argc, char *argv[]) {
         case 'u':
           if (++i<argc && argv[i]) {
             musername = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-            strcpy(musername, argv[i]);
+            strcpy_s(musername, MYSQL_PARAM_SIZE, argv[i]);
           } else {
             showHelp();
           }
@@ -623,7 +633,7 @@ void parseCmdLineOptions(int argc, char *argv[]) {
         case 'p':
           if (++i<argc && argv[i]) {
             mpassword = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-            strcpy(mpassword, argv[i]);
+            strcpy_s(mpassword, MYSQL_PARAM_SIZE, argv[i]);
           } else {
             showHelp();
           }
@@ -687,8 +697,8 @@ void parseCmdLineOptions(int argc, char *argv[]) {
         case 'o':
           if (!strcmp(c,"oem")) {
             oem = true;
-            ins_dir = strdup(".");
-            img_dir = strdup(".\\img");
+            ins_dir = _strdup(".");
+            img_dir = _strdup(".\\img");
 
             OPTION_MASK |= OEM_MASK;
           } else {
@@ -721,7 +731,7 @@ void parseCmdLineOptions(int argc, char *argv[]) {
       } else if (argv[i]) {
         // Name must come at the end
         projname = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-        strcpy(projname, argv[i]);
+        strcpy_s(projname, MYSQL_PARAM_SIZE, argv[i]);
       }
     }
   }
@@ -741,18 +751,18 @@ void parseCmdLineOptions(int argc, char *argv[]) {
 
   if (!servername) {
     servername = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-    strcpy(servername, "localhost");
+    strcpy_s(servername, MYSQL_PARAM_SIZE, "localhost");
     bLocalDb = true;
   }
 
   if (!musername) {
     musername = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-    strcpy(musername, "root");
+    strcpy_s(musername, MYSQL_PARAM_SIZE, "root");
   }
 
   if (!mpassword) {
     mpassword = (char*) malloc(MYSQL_PARAM_SIZE*sizeof(char));
-    strcpy(mpassword, "");
+    strcpy_s(mpassword, MYSQL_PARAM_SIZE, "");
   }
 }
 
@@ -789,8 +799,8 @@ bool setupDir(const char *dir) {
     }
   }
 
-  char *dir1 = strdup(dir);
-  char *dir2 = strdup(dir);
+  char *dir1 = _strdup(dir);
+  char *dir2 = _strdup(dir);
 
   char *c1 = dir1;
 
@@ -813,7 +823,7 @@ bool setupDir(const char *dir) {
 }
 
 bool setupFile(const char *file) {
-  char *file1 = strdup(file);
+  char *file1 = _strdup(file);
   char *c1 = file1;
 
   while (*c1!='\0') c1++;
@@ -834,7 +844,8 @@ bool analyse(string &filename) {
   nLOC = 0;
 
   // Open to count lines
-  FILE *src = fopen(filename.c_str(),"r");
+  FILE *src;
+  fopen_s(&src, filename.c_str(),"r");
   if (src == NULL)   {
     fprintf(stderr,"Error - cannot open %s\n", filename.c_str());
     return false;
@@ -844,7 +855,7 @@ bool analyse(string &filename) {
   fclose(src);
 
   // Reopen to parse
-  src = fopen(filename.c_str(),"r");
+  fopen_s(&src, filename.c_str(), "r");
   if (src == NULL)   {
     fprintf(stderr,"Error - cannot open %s\n", filename.c_str());
     return false;
@@ -928,13 +939,13 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.002\n"
-       << "Copyright (c) 2004-2008 Powersoftware.com.  All rights reserved.\n\n"
-       << "Includes our unique Changed Logical Lines of Code (LLOC) metrics!\n" << endl;
+  cout << "\nEssential Project Manager (EPM) Version 1.16.002.04\n"
+       << "Copyright (c) 2004,2008 Powersoftware.com.  All rights reserved.\n\n"
+       << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
   char szAppPath[MAX_PATH];
   GetModuleFileName(NULL, szAppPath, MAX_PATH);
-  strncpy(szAppDirectory, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
+  strncpy_s(szAppDirectory, MAX_PATH, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
   szAppDirectory[strlen(szAppDirectory)] = '\0';
 
   if (!validLicense()) {
@@ -993,8 +1004,8 @@ int main(int argc, char* argv[]) {
   }
 
   if (nProjects > 0) {
-    char sql[512];
-    char mid[512];
+    char sql[QUERY_MAX];
+    char mid[QUERY_MAX];
     string filename,filename2;
     string shortname;
     char status;
@@ -1007,7 +1018,7 @@ int main(int argc, char* argv[]) {
 
     // Metrics Analysis
     for (i=0; i<nProjects; i++) {
-      sprintf(sql, "select sfid,sf_name,sf_shortname,sf_type from sourcefile where projid=%d", (i+1));
+      sprintf_s(sql, "select sfid,sf_name,sf_shortname,sf_type from sourcefile where projid=%d", (i+1));
       chop = strlen(relpath[i]);
 
       if (projDb.executeQuery(string(sql))) {
@@ -1036,11 +1047,7 @@ int main(int argc, char* argv[]) {
 
     // Perform Unix Diff
     if (nProjects == 2) {
-      strcpy(sql, "SELECT cf.sfid, cf.sfid2, sf1.sf_name, sf1.sf_shortname, sf1.sf_type, sf2.sf_name sf_name2 ");
-      strcat(sql, "FROM comparefile cf, sourcefile sf1, sourcefile sf2 ");
-      strcat(sql, "WHERE cf.sfid = sf1.sfid AND cf.sfid2 = sf2.sfid ");
-      strcat(sql, "AND cf.status = 'C'");
-
+      strcpy_s(sql, QUERY_MAX, "SELECT cf.sfid, cf.sfid2, sf1.sf_name, sf1.sf_shortname, sf1.sf_type, sf2.sf_name sf_name2 FROM comparefile cf, sourcefile sf1, sourcefile sf2 WHERE cf.sfid = sf1.sfid AND cf.sfid2 = sf2.sfid AND cf.status = 'C'");
       lastpct = -1;
       if (projDb.executeQuery(string(sql))) {
         for (int r=0; r<projDb.rows(); r++) {
@@ -1061,13 +1068,13 @@ int main(int argc, char* argv[]) {
         projDb.clearResults();
       }
 
-      strcpy(sql, "SELECT cf.sfid, cf.status, sm.mvalue, sf1.sf_type, sm.mid ");
-      strcat(sql, "FROM sourcefile sf1, comparefile cf, sourcemetric sm ");
-      strcat(sql, "WHERE sf1.sfid = cf.sfid ");
-      strcat(sql, "AND cf.sfid = sm.sfid ");
-      sprintf(mid, "AND sm.mid IN (%d,%d) ", SLOC, NSC);
-      strcat(sql, mid);
-      strcat(sql, "AND cf.status in ('A','D') ");
+      strcpy_s(sql, QUERY_MAX, "SELECT cf.sfid, cf.status, sm.mvalue, sf1.sf_type, sm.mid ");
+      strcat_s(sql, QUERY_MAX, "FROM sourcefile sf1, comparefile cf, sourcemetric sm ");
+      strcat_s(sql, QUERY_MAX, "WHERE sf1.sfid = cf.sfid ");
+      strcat_s(sql, QUERY_MAX, "AND cf.sfid = sm.sfid ");
+      sprintf_s(mid, QUERY_MAX, "AND sm.mid IN (%d,%d) ", SLOC, NSC);
+      strcat_s(sql, QUERY_MAX, mid);
+      strcat_s(sql, QUERY_MAX, "AND cf.status in ('A','D') ");
 
       lastpct = -1;
       if (projDb.executeQuery(string(sql))) {
@@ -1082,7 +1089,7 @@ int main(int argc, char* argv[]) {
 
           if (validLanguage(lang.getLanguage())) {
             if (pct > lastpct) cout << "add/del " << sfid << " (" << pct << "%)" << endl;
-            calcAddDel(sfid, status, metid, mvalue);
+            calcAddDel(sfid, status, metid, (float)mvalue);
           }
           lastpct = pct;
         }

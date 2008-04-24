@@ -22,3 +22,6 @@ s/yytext/yytext_c/g
 s/yywrap/yywrap_c/g
 s/string_literal/string_literal_cs/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

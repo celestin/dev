@@ -27,3 +27,6 @@ s/yyrestart/yyrestart_xml/g
 s/yytext/yytext_xml/g
 s/yywrap/yywrap_xml/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

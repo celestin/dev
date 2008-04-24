@@ -11,6 +11,7 @@
  * CAM  02-Aug-05    76 : File created.
  * CAM  18-Mar-06   208 : Correctly handle APOSTROPHEs.
  * CAM  08-Apr-06   230 : Added several missing delimiters, and removed redundant entries.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -72,7 +73,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];
@@ -180,13 +182,13 @@ void eol_comment_skip();
 "WITH"                  {store_operator(WITH);}
 "XOR"                   {store_operator(XOR);}
 
-{L}({L}|{D})*           {store_operand(strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(strdup(yytext));}
-0{D}+{IS}?              {store_operand(strdup(yytext));}
-{D}+{IS}?               {store_operand(strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(strdup(yytext));}
+{L}({L}|{D})*           {store_operand(_strdup(yytext));}
+0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
+0{D}+{IS}?              {store_operand(_strdup(yytext));}
+{D}+{IS}?               {store_operand(_strdup(yytext));}
+{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
+{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
+{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
 \"                      {sloc.insert(ada_lineno); string_literal();}
 
 ";"                     {NOTE_SLOC(); nsemi++;}

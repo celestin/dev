@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  11-May-05    96 : File created.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -68,7 +69,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];
@@ -243,14 +245,14 @@ void eol_comment_skip();
 "WriteOnly"             {store_operator(WRITE_ONLY);}
 "Xor"                   {store_operator(XOR);}
 
-{L}({L}|{D})*           {store_operand(strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(strdup(yytext));}
-0{D}+{IS}?              {store_operand(strdup(yytext));}
-{D}+{IS}?               {store_operand(strdup(yytext));}
-'(\\.|[^\\'])+'         {store_operand(strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(strdup(yytext));}
+{L}({L}|{D})*           {store_operand(_strdup(yytext));}
+0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
+0{D}+{IS}?              {store_operand(_strdup(yytext));}
+{D}+{IS}?               {store_operand(_strdup(yytext));}
+'(\\.|[^\\'])+'         {store_operand(_strdup(yytext));}
+{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
+{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
+{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
 \"                      {sloc.insert(vb_lineno); string_literal();}
 
 "&"                     {store_operator(CONCAT);}

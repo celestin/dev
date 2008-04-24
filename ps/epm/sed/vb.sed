@@ -23,3 +23,6 @@ s/yytext/yytext_vb/g
 s/yywrap/yywrap_vb/g
 s/string_literal/string_literal_vb/g
 /#include <unistd.h>/d
+s/isatty(/_isatty(/g
+s/fileno(/_fileno(/g
+s/read(/_read(/g

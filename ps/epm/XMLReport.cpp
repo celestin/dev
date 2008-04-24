@@ -12,6 +12,7 @@
  * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
  * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
  * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -27,7 +28,7 @@ XMLReport::XMLReport(OurSQL &db, std::string path) : Report(db, path) {
 }
 
 void XMLReport::xmlMetrics(ofstream &current, ReportItem &currItem, std::string &tab) {
-  int i;
+  unsigned int i;
   char newVal[256];
   char oldVal[256];
   char diffVal[256];
@@ -59,9 +60,9 @@ void XMLReport::xmlMetrics(ofstream &current, ReportItem &currItem, std::string 
     if (m.isShow(currItem, i) && isSetMember(METID(i))) {
       float diff = (m.get(i,0) - m.get(i,1));
 
-      sprintf(newVal, "val=\"%d\" ", (long) m.get(i,0));
-      sprintf(oldVal, "oldVal=\"%d\" ", (long) m.get(i,1));
-      sprintf(diffVal, "diffVal=\"%d\" ", (long) diff);
+      sprintf_s(newVal, 256, "val=\"%d\" ", (long) m.get(i,0));
+      sprintf_s(oldVal, 256, "oldVal=\"%d\" ", (long) m.get(i,1));
+      sprintf_s(diffVal, 256, "diffVal=\"%d\" ", (long) diff);
 
       current << tab << "  <Met id=\"" << (i+100) << "\" " << flush;
 
@@ -103,7 +104,7 @@ void XMLReport::executeXML() {
   string fname;
   string tab = "      ";
   char stat;
-  int f;
+  unsigned int f;
 
   getMetDesc();
 

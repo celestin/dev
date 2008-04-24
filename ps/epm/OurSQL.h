@@ -11,6 +11,7 @@
  * CAM  20-Dec-04  File added.
  * CAM  13-Jan-05  Added theUser and thePass.
  * CAM  23-Aug-05   115 : Altered includes for compilation.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_OURSQL
@@ -27,6 +28,8 @@
 #define OUR_TYPE_LONG 1
 #define OUR_TYPE_DOUBLE 2
 #define OUR_TYPE_STRING 3
+
+#define QUERY_MAX 4096
 
 namespace metrics
 {

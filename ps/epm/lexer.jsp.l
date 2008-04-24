@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  04-Dec-07   324 : File created.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -201,7 +202,7 @@ void store_operator(int op, int typ);
 <SLOC_NAT>'(\\.|[^\\'])+'         |
 <SLOC_NAT>{D}+{E}{FS}?            |
 <SLOC_NAT>{D}*"."{D}+({E})?{FS}?  |
-<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); store_operand(strdup(yytext));}
+<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); store_operand(_strdup(yytext));}
 <SLOC_NAT>.                       {NOTE_SLOC_NAT();}
 
 <SLOC_NAT_STRD>"\n"               {jsp_lineno++; /* Double-quoted string literals */}
@@ -356,7 +357,8 @@ void lexclear() {
 }
 
 void store_operand(char* txt) {
-  unsigned char c;int i;
+  char c;
+  unsigned int i;
   noperands++;
 
   c=txt[0];

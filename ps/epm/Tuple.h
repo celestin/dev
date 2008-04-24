@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  06-Jan-06  168 : File created.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef TUPLE_H
@@ -22,15 +23,9 @@ class Tuple {
     Tuple() {}
 
     void set(const char *id, const char *desc) {
-      fId = strdup(id);
-      fDesc = strdup(desc);
+      fId = _strdup(id);
+      fDesc = _strdup(desc);
     }
-
-    friend ostream& operator << (ostream& os, const Tuple& t) {
-      os << t.fId << " (" << t.fDesc << ")";
-      return os;
-    }
-
 };
 
 #endif

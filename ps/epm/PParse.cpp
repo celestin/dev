@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  16-Aug-05  File added.
  * CAM  28-Jan-06   168 : Set global MetricSet (metSet).
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <xercesc/util/PlatformUtils.hpp>
@@ -17,6 +18,8 @@
 #include <xercesc/parsers/SAXParser.hpp>
 #include "PParse.hpp"
 #include <xercesc/util/OutOfMemoryException.hpp>
+
+#define STRING_MAX 4096
 
 static char* xmlFile = 0;
 static SAXParser::ValSchemes valScheme = SAXParser::Val_Auto;
@@ -34,9 +37,9 @@ void xmlConfigParse() {
     return;
   }
 
-  char xmlFullpath[4096];
-  strcpy(xmlFullpath, szAppDirectory);
-  strcat(xmlFullpath, "epm.xml");
+  char xmlFullpath[STRING_MAX];
+  strcpy_s(xmlFullpath, STRING_MAX, szAppDirectory);
+  strcat_s(xmlFullpath, STRING_MAX, "epm.xml");
   xmlFile = xmlFullpath;
 
   SAXParser* parser = new SAXParser;
@@ -76,17 +79,17 @@ void xmlConfigParse() {
 
   if (!ext->nErrors) {
     for (int i=0; i<ext->nLang; i++) {
-      XERCES_STD_QUALIFIER cout << ext->sLang[i].fId << " using parser " << ext->sLang[i].fDesc << endl;
+      XERCES_STD_QUALIFIER cout << ext->sLang[i].fId << " using parser " << ext->sLang[i].fDesc << XERCES_STD_QUALIFIER endl;
 
       for (int j=0; j<ext->nType[i]; j++) {
-        XERCES_STD_QUALIFIER cout << " " << ext->sType[i][j].fId << endl;
+        XERCES_STD_QUALIFIER cout << " " << ext->sType[i][j].fId << XERCES_STD_QUALIFIER endl;
 
         for (int k=0; k<ext->nExt[i][j]; k++) {
-          XERCES_STD_QUALIFIER cout << "   [." << ext->sExt[i][j][k].fDesc << "] " << ext->sExt[i][j][k].fId << endl;
+          XERCES_STD_QUALIFIER cout << "   [." << ext->sExt[i][j][k].fDesc << "] " << ext->sExt[i][j][k].fId << XERCES_STD_QUALIFIER endl;
         }
       }
 
-      XERCES_STD_QUALIFIER cout << endl;
+      XERCES_STD_QUALIFIER cout << XERCES_STD_QUALIFIER endl;
     }
   }
 
@@ -97,16 +100,16 @@ void xmlConfigParse() {
 int xmlConfig() {
   xmlConfigParse();
 
-  if (ext->nErrors & ERR_NEW_LANG)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New Language" << endl;
-  if (ext->nErrors & ERR_NEW_FTYPE)    XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New File Type" << endl;
-  if (ext->nErrors & ERR_NEW_EXTN)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New Extension" << endl;
-  if (ext->nErrors & ERR_TYPE_ERROR)   XERCES_STD_QUALIFIER cout << "XMLConfig: General Error" << endl;
-  if (ext->nErrors & ERR_TYPE_FATAL)   XERCES_STD_QUALIFIER cout << "XMLConfig: General Fatal Error" << endl;
-  if (ext->nErrors & ERR_TYPE_WARN)    XERCES_STD_QUALIFIER cout << "XMLConfig: General Warning" << endl;
-  if (ext->nErrors & ERR_GEN_FAIL)     XERCES_STD_QUALIFIER cout << "XMLConfig: General Failure" << endl;
-  if (ext->nErrors & ERR_GEN_MEM)      XERCES_STD_QUALIFIER cout << "XMLConfig: Out of Memory" << endl;
-  if (ext->nErrors & ERR_GEN_XML)      XERCES_STD_QUALIFIER cout << "XMLConfig: XML Parsing Error" << endl;
-  if (ext->nErrors & ERR_GEN_INIT)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Initialising XML Parser" << endl;
+  if (ext->nErrors & ERR_NEW_LANG)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New Language" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_NEW_FTYPE)    XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New File Type" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_NEW_EXTN)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Adding New Extension" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_TYPE_ERROR)   XERCES_STD_QUALIFIER cout << "XMLConfig: General Error" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_TYPE_FATAL)   XERCES_STD_QUALIFIER cout << "XMLConfig: General Fatal Error" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_TYPE_WARN)    XERCES_STD_QUALIFIER cout << "XMLConfig: General Warning" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_GEN_FAIL)     XERCES_STD_QUALIFIER cout << "XMLConfig: General Failure" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_GEN_MEM)      XERCES_STD_QUALIFIER cout << "XMLConfig: Out of Memory" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_GEN_XML)      XERCES_STD_QUALIFIER cout << "XMLConfig: XML Parsing Error" << XERCES_STD_QUALIFIER endl;
+  if (ext->nErrors & ERR_GEN_INIT)     XERCES_STD_QUALIFIER cout << "XMLConfig: Error Initialising XML Parser" << XERCES_STD_QUALIFIER endl;
 
   return ext->nErrors;
 }

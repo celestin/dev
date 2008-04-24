@@ -22,6 +22,7 @@
  * CAM  25-Mar-06   220 : Above (220) comment is nonsense - new values should be in position 0.  Adjusted HTMLReport accordingly.
  * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
+ * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -51,10 +52,10 @@ int Report::getProjectCount() {
     return theProjCount;
   }
 
-  char sql[2048];
+  char sql[QUERY_MAX];
   bool rval = false;
 
-  strcpy(sql, "SELECT count(*) proj_count FROM project ");
+  strcpy_s(sql, QUERY_MAX, "SELECT count(*) proj_count FROM project ");
   if (theDb.executeQuery(sql)) {
     theProjCount = theDb.longCell(0,0);
     theDb.clearResults();
@@ -105,8 +106,8 @@ void Report::setMetricsSet(string msName) {
 
 
 void Report::getMetDesc() {
-  char sql[2048];
-  strcpy(sql, "SELECT mid-100, m_name, m_desc FROM metric ORDER BY mid");
+  char sql[QUERY_MAX];
+  strcpy_s(sql, QUERY_MAX, "SELECT mid-100, m_name, m_desc FROM metric ORDER BY mid");
 
   if (theDb.executeQuery(sql)) {
     for (int r=0; r<theDb.rows(); r++) {
@@ -118,19 +119,14 @@ void Report::getMetDesc() {
 }
 
 long Report::getItems() {
-  char sql[2048];
+  char sql[QUERY_MAX];
   long f;
 
   getMetDesc();
   projMet.clearMetrics();
 
   if (isPM()) {
-    strcpy(sql, "SELECT IfNull(cf.status, ' ') status, cf.sfid, cf.sfid2, sf1.sf_shortname, sf1.sf_name, IfNull(sf2.sf_name, 'empty'), IfNull(sf1.sf_type, 0) ");
-    strcat(sql, "FROM sourcefile sf1, comparefile cf ");
-    strcat(sql, "LEFT OUTER JOIN sourcefile sf2 ");
-    strcat(sql, "ON cf.sfid2 = sf2.sfid ");
-    strcat(sql, "WHERE cf.sfid = sf1.sfid ");
-    strcat(sql, "ORDER BY sf1.sf_shortname ");
+    strcpy_s(sql, QUERY_MAX, "SELECT IfNull(cf.status, ' ') status, cf.sfid, cf.sfid2, sf1.sf_shortname, sf1.sf_name, IfNull(sf2.sf_name, 'empty'), IfNull(sf1.sf_type, 0) FROM sourcefile sf1, comparefile cf LEFT OUTER JOIN sourcefile sf2 ON cf.sfid2 = sf2.sfid WHERE cf.sfid = sf1.sfid ORDER BY sf1.sf_shortname ");
 
     if (theDb.executeQuery(sql)) {
       for (f=0; f<theDb.rows(); f++) {
@@ -142,9 +138,7 @@ long Report::getItems() {
       theDb.clearResults();
     }
   } else {
-    strcpy(sql, "SELECT sfid, sf_shortname, sf_name, IfNull(sf_type, 0) ");
-    strcat(sql, "FROM sourcefile ");
-    strcat(sql, "ORDER BY sf_shortname ");
+    strcpy_s(sql, QUERY_MAX, "SELECT sfid, sf_shortname, sf_name, IfNull(sf_type, 0) FROM sourcefile ORDER BY sf_shortname ");
 
     string dummy = "empty";
     if (theDb.executeQuery(sql)) {
@@ -161,9 +155,7 @@ long Report::getItems() {
   if (fileList.size() == 0) return 0;
 
   // Get Project details
-  strcpy(sql, "SELECT projid, pr_name, snap_date, base_dir ");
-  strcat(sql, "FROM project ");
-  strcat(sql, "ORDER BY projid ");
+  strcpy_s(sql, QUERY_MAX, "SELECT projid, pr_name, snap_date, base_dir FROM project ORDER BY projid ");
 
   if (theDb.executeQuery(sql)) {
     for (f=0; f<theDb.rows(); f++) {
@@ -178,21 +170,21 @@ long Report::getItems() {
 }
 
 void Report::getMetrics(ReportItem &currItem) {
-  char sql[2048];
+  char sql[QUERY_MAX];
   int r,j,k;
   long id,mid,value;
 
   met.clearMetrics();
 
-  strcpy(sql, "SELECT sfid,mid,mvalue FROM sourcemetric WHERE sfid IN (");
-  strcat(sql, currItem.getID().c_str());
+  strcpy_s(sql, QUERY_MAX, "SELECT sfid,mid,mvalue FROM sourcemetric WHERE sfid IN (");
+  strcat_s(sql, QUERY_MAX, currItem.getID().c_str());
 
   if (isPM()) {
-    strcat(sql, ",");
-    strcat(sql, currItem.getID2().c_str());
+    strcat_s(sql, QUERY_MAX, ",");
+    strcat_s(sql, QUERY_MAX, currItem.getID2().c_str());
   }
 
-  strcat(sql, ") ORDER BY sfid,mid");
+  strcat_s(sql, QUERY_MAX, ") ORDER BY sfid,mid");
 
   j=k=0;
 
@@ -210,8 +202,7 @@ void Report::getMetrics(ReportItem &currItem) {
 
       // Ensure Changed metrics are always in position 0
       k = ((mid >= CLOC) && (mid <= ALLOC)) ? 0 : j;
-
-      met.set(MET(mid), k, value);
+      met.set(MET(mid), k, (float)value);
     }
     theDb.clearResults();
   }
@@ -224,33 +215,27 @@ void Report::getMetrics(ReportItem &currItem) {
 void Report::calculateProjectMetrics() {
   //projMet.calculateHalstead();
 
-  char sql[2048];
+  char sql[QUERY_MAX];
   //char mid[256];
   long f;
 
   // Retrieve Min/Max/Avg
-  strcpy(sql, "SELECT sf.projid,sm.mid,MIN(mvalue) valmin, MAX(mvalue) valmax, AVG(mvalue) valavg ");
-  strcat(sql, "FROM sourcemetric sm, sourcefile sf ");
-  strcat(sql, "WHERE sm.sfid = sf.sfid ");
-  strcat(sql, "AND sf.projid = 1 AND mvalue>0 ");
-  strcat(sql, "GROUP BY sf.projid, sm.mid");
+  strcpy_s(sql, QUERY_MAX, "SELECT sf.projid,sm.mid,MIN(mvalue) valmin, MAX(mvalue) valmax, AVG(mvalue) valavg FROM sourcemetric sm, sourcefile sf WHERE sm.sfid = sf.sfid AND sf.projid = 1 AND mvalue>0 GROUP BY sf.projid, sm.mid");
 
   if (theDb.executeQuery(sql)) {
     for (f=0; f<theDb.rows(); f++) {
       //Have to set in strings rather than numerics
-      projMet.set(MET(theDb.longCell(f, 1)), theDb.longCell(f, 2), theDb.longCell(f, 3), theDb.longCell(f, 4));
+      projMet.set(MET(theDb.longCell(f, 1)), (float)theDb.longCell(f, 2), (float)theDb.longCell(f, 3), (float)theDb.longCell(f, 4));
     }
     theDb.clearResults();
   }
 
   // Retrieve NFILE
-  strcpy(sql, "SELECT projid, COUNT(*) nfile ");
-  strcat(sql, "FROM sourcefile ");
-  strcat(sql, "GROUP BY projid");
+  strcpy_s(sql, QUERY_MAX, "SELECT projid, COUNT(*) nfile FROM sourcefile GROUP BY projid");
 
   if (theDb.executeQuery(sql)) {
     for (f=0; f<theDb.rows(); f++) {
-      projMet.set(MET(NFILE), theDb.longCell(f, 0)-1, theDb.longCell(f, 1));
+      projMet.set(MET(NFILE), theDb.longCell(f, 0)-1, (float)theDb.longCell(f, 1));
     }
     theDb.clearResults();
   }

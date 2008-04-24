@@ -14,6 +14,7 @@
  * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
  * CAM  06-Jun-06   255 : Ensure DEL_SLOC and DEL_FILE appear on the Old Line for CSV.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08   356 : Added DLLOC special condition along with DLOC and DFILE.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -82,7 +83,7 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
 
         nline = 0;
         oline = 1;
-        if ((i == MET(DLOC)) || (i == MET(DFILE))) {
+        if ((i == MET(DLOC)) || (i == MET(DLLOC)) || (i == MET(DFILE))) {
           nline = 1;
           oline = 0;
         }

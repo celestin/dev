@@ -65,6 +65,7 @@
  * CAM  13-Dec-07   328 : Version 1.16.001.
  * CAM  04-Jan-08   330 : Version 1.16.002.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08   359 : Version 1.16.003.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -939,7 +940,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.002.04\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.003\n"
        << "Copyright (c) 2004,2008 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

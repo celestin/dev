@@ -1,21 +1,19 @@
-Microsoft Visual Studio Solution File, Format Version 8.00
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrakatauEPM", "KrakatauEPM\KrakatauEPM.csproj", "{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
-		Release = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Debug.ActiveCfg = Debug|.NET
-		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Debug.Build.0 = Debug|.NET
-		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Release.ActiveCfg = Release|.NET
-		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Release.Build.0 = Release|.NET
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

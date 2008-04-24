@@ -54,6 +54,10 @@ namespace KrakatauEPM
     public NewProject(Project p)
     {
       InitializeComponent();
+
+      this.txtTitle.MaxLength = Project.MaxProjectDbName;
+      this.label6.Text = String.Format("({0} characters)", Project.MaxProjectDbName);
+
       this.AcceptButton = this.cmdOK;
       this._project = p;
 
@@ -124,7 +128,6 @@ namespace KrakatauEPM
       // txtTitle
       //
       this.txtTitle.Location = new System.Drawing.Point(112, 8);
-      this.txtTitle.MaxLength = Project.MaxProjectDbName;
       this.txtTitle.Name = "txtTitle";
       this.txtTitle.Size = new System.Drawing.Size(136, 20);
       this.txtTitle.TabIndex = 1;
@@ -262,7 +265,6 @@ namespace KrakatauEPM
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(100, 24);
       this.label6.TabIndex = 15;
-      this.label6.Text = String.Format("({0} characters)", Project.MaxProjectDbName);
       //
       // NewProject
       //

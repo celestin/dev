@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  26-Apr-2008  10261 : Added opening hours.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagecontact";
@@ -26,19 +27,39 @@ include "tpl/top.php";
 </tr><tr>
 
   <td align=center>
+
     <table border=0 cellspacing=4 cellpadding=2>
     <tr>
-      <td class="fldlbl">Telephone</td>
-      <td class="fldtxt">01224 580792</td>
-      <td rowspan=3><img src="img/f.gif" width="50"></td>
-      <td class="fldlbl" rowspan=3 valign=top>Visit our Showroom</td><td class="fldtxt">126-128 Crown Street</td></tr>
-    <tr>
-      <td valign=top rowspan=2 class="fldlbl">Email</td>
-      <td valign=top rowspan=2 class="fldtxt"><a href="mailto:hazel@relaxatub.com?subject=Website%20Response">hazel@relaxatub.com</a></td>
-      <td class="fldtxt">Aberdeen, UK</td>
+      <td valign=top>
+        <table border=0 cellspacing=0 cellpadding=4>
+        <tr>
+          <td class="fldlbl">Telephone</td><td class="fldtxt">01224 580792</td>
+        </tr>
+        <tr>
+          <td class="fldlbl" valign=top>Visit our Showroom</td><td class="fldtxt">126-128 Crown Street<br />
+          Aberdeen, UK<br />
+          AB11 6HQ<br /></td></tr>
+        </tr>
+        </table>
+      </td>
+      <td valign=top>
+        <table border=0 cellspacing=0 cellpadding=4>
+        <tr>
+          <td valign=top class="fldlbl">Email</td><td valign=top class="fldtxt"><a href="mailto:hazel@relaxatub.com?subject=Website%20Response">hazel@relaxatub.com</a></td>
+        </tr>
+        <tr>
+          <td class="fldlbl" valign=top>Opening Hours</td><td class="fldtxt">
+            <table border=0 cellspacing=0 cellpadding=0>
+              <tr><td><b>Mon Tue Wed Fri</b></td><td>&nbsp;10pm-5pm</td></tr>
+              <tr><td><b>Thu</b></td><td>&nbsp;2pm-5pm</td></tr>
+              <tr><td><b>Sat</b></td><td>&nbsp;10am-2pm</td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td colspan=2>Outwith these hours please call 07803 281 752</td></tr>
+        </table>
+      </td>
     </tr>
-
-    <tr><td class="fldtxt">AB11 6HQ</td></tr>
     </table>
 
   </td>

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added Zip! (export).
+ * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -41,7 +42,7 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       _btnZip.Enabled = _btnBuild.Enabled = false;
 
-      grdArticle.Rows = 1;
+      grdArticle.Rows.Clear();
 
       ClearArticles();
 
@@ -119,48 +120,43 @@ namespace FrontBurner.Ministry.MseBuilder
       cmbAuthor.ValueMember = "Author.author";
 
       // Article Grid
-      grdArticle.Cols = 5;
-      grdArticle.ExtendLastCol = true;
-      grdArticle.Column(0).Visible = false;
-      grdArticle.Rows = 1;
+      grdArticle.Columns.Add("PageNo", "Page No");
+      grdArticle.Columns[0].Width = 65;
 
-      grdArticle.Cell(0, 1).Text = "Page No";
-      grdArticle.Cell(0, 2).Text = "Row";
-      grdArticle.Cell(0, 3).Text = "Article";
-      grdArticle.Cell(0, 4).Text = "Scriptures";
+      grdArticle.Columns.Add("Row", "Row");
+      grdArticle.Columns[1].Width = 40;
 
-      grdArticle.Column(1).Width = 65;
-      grdArticle.Column(2).Width = 40;
-      grdArticle.Column(3).Width = 320;
+      grdArticle.Columns.Add("Article", "Article");
+      grdArticle.Columns[2].Width = 320;
+
+      grdArticle.Columns.Add("Scriptures", "Scriptures");
+      grdArticle.Columns[3].Width = 300;
     }
 
     protected void ClearArticles()
     {
       BusinessLayer.Instance.Articles.Clear();
-      grdArticle.Rows = 1;
+      grdArticle.Rows.Clear();
     }
 
     protected void ShowArticles()
     {
-      grdArticle.AutoRedraw = false;
-
       foreach (Article art in BusinessLayer.Instance.Articles)
       {
         AddArticle(art);
       }
 
-      grdArticle.AutoRedraw = true;
       grdArticle.Refresh();
     }
 
     protected void AddArticle(Article art)
     {
-      grdArticle.Rows++;
+      DataGridViewRow row = grdArticle.Rows[grdArticle.Rows.Add()];
 
-      grdArticle.Cell(grdArticle.Rows - 1, 1).Text = art.PageNo.ToString();
-      grdArticle.Cell(grdArticle.Rows - 1, 2).Text = art.LocalRow.ToString();
-      grdArticle.Cell(grdArticle.Rows - 1, 3).Text = art.Title;
-      grdArticle.Cell(grdArticle.Rows - 1, 4).Text = art.Scriptures;
+      row.Cells[0].Value = art.PageNo.ToString();
+      row.Cells[1].Value = art.LocalRow.ToString();
+      row.Cells[2].Value = art.Title;
+      row.Cells[3].Value = art.Scriptures;
     }
 
     public class BuilderThread

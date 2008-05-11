@@ -1,12 +1,13 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace FrontBurner.Ministry.MseBuilder
@@ -40,20 +41,20 @@ namespace FrontBurner.Ministry.MseBuilder
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MseBuilder));
       this._btnBuild = new System.Windows.Forms.Button();
       this.cmbAuthor = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.txtVol = new System.Windows.Forms.TextBox();
       this.pgbVol = new System.Windows.Forms.ProgressBar();
-      this.grdArticle = new FlexCell.Grid();
+      this.grdArticle = new System.Windows.Forms.DataGridView();
       this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
       this._btnZip = new System.Windows.Forms.Button();
+      ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).BeginInit();
       this.SuspendLayout();
-      // 
+      //
       // _btnBuild
-      // 
+      //
       this._btnBuild.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this._btnBuild.Location = new System.Drawing.Point(556, 21);
       this._btnBuild.Name = "_btnBuild";
@@ -62,18 +63,18 @@ namespace FrontBurner.Ministry.MseBuilder
       this._btnBuild.Text = "Build!";
       this._btnBuild.UseVisualStyleBackColor = true;
       this._btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
-      // 
+      //
       // cmbAuthor
-      // 
+      //
       this.cmbAuthor.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmbAuthor.FormattingEnabled = true;
       this.cmbAuthor.Location = new System.Drawing.Point(94, 21);
       this.cmbAuthor.Name = "cmbAuthor";
       this.cmbAuthor.Size = new System.Drawing.Size(193, 24);
       this.cmbAuthor.TabIndex = 1;
-      // 
+      //
       // label1
-      // 
+      //
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.Location = new System.Drawing.Point(16, 24);
@@ -81,9 +82,9 @@ namespace FrontBurner.Ministry.MseBuilder
       this.label1.Size = new System.Drawing.Size(54, 16);
       this.label1.TabIndex = 2;
       this.label1.Text = "Author";
-      // 
+      //
       // label2
-      // 
+      //
       this.label2.AutoSize = true;
       this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.Location = new System.Drawing.Point(16, 54);
@@ -91,37 +92,37 @@ namespace FrontBurner.Ministry.MseBuilder
       this.label2.Size = new System.Drawing.Size(55, 16);
       this.label2.TabIndex = 3;
       this.label2.Text = "Volume";
-      // 
+      //
       // txtVol
-      // 
+      //
       this.txtVol.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtVol.Location = new System.Drawing.Point(94, 51);
       this.txtVol.Name = "txtVol";
       this.txtVol.Size = new System.Drawing.Size(64, 23);
       this.txtVol.TabIndex = 4;
-      // 
+      //
       // pgbVol
-      // 
+      //
       this.pgbVol.Location = new System.Drawing.Point(12, 96);
       this.pgbVol.Name = "pgbVol";
       this.pgbVol.Size = new System.Drawing.Size(834, 23);
       this.pgbVol.TabIndex = 5;
-      // 
+      //
       // grdArticle
-      // 
-      this.grdArticle.CheckedImage = ((System.Drawing.Bitmap)(resources.GetObject("grdArticle.CheckedImage")));
+      //
       this.grdArticle.Location = new System.Drawing.Point(12, 136);
       this.grdArticle.Name = "grdArticle";
+      this.grdArticle.ReadOnly = true;
+      this.grdArticle.ShowEditingIcon = false;
       this.grdArticle.Size = new System.Drawing.Size(834, 467);
       this.grdArticle.TabIndex = 6;
-      this.grdArticle.UncheckedImage = ((System.Drawing.Bitmap)(resources.GetObject("grdArticle.UncheckedImage")));
-      // 
+      //
       // tmrRefresh
-      // 
+      //
       this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
-      // 
+      //
       // _btnZip
-      // 
+      //
       this._btnZip.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this._btnZip.Location = new System.Drawing.Point(704, 21);
       this._btnZip.Name = "_btnZip";
@@ -130,9 +131,9 @@ namespace FrontBurner.Ministry.MseBuilder
       this._btnZip.Text = "Zip!";
       this._btnZip.UseVisualStyleBackColor = true;
       this._btnZip.Click += new System.EventHandler(this._btnZip_Click);
-      // 
+      //
       // MseBuilder
-      // 
+      //
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(858, 621);
@@ -147,6 +148,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this.Name = "MseBuilder";
       this.Text = "Ministry Search Engine Data Builder";
       this.Load += new System.EventHandler(this.MseBuilder_Load);
+      ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -160,7 +162,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TextBox txtVol;
     private System.Windows.Forms.ProgressBar pgbVol;
-    private FlexCell.Grid grdArticle;
+    private System.Windows.Forms.DataGridView grdArticle;
     private System.Windows.Forms.Timer tmrRefresh;
     private System.Windows.Forms.Button _btnZip;
   }

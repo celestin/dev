@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -12,6 +12,7 @@
  * CAM  24-Nov-2007  10188 : Save Mse_Text.Article_Page.
  * CAM  24-Nov-2007  10208 : Write NewPages to mse_text.
  * CAM  25-Nov-2007  10208 : Added newpages to sql extraction in GetText.
+ * CAM  11-May-2008  10264 : Added handling of error refs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -402,7 +403,21 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertBadBibleRef.Parameters["?errCode"].Value = errCode;
       _cmdInsertBadBibleRef.Parameters["?text"].Value = text;
 
-      _cmdInsertBadBibleRef.ExecuteNonQuery();
+      try
+      {
+        _cmdInsertBadBibleRef.ExecuteNonQuery();
+      }
+      catch (MySqlException mse)
+      {
+        if (mse.Number == 1062)
+        {
+          // ignore duplicates
+        }
+        else
+        {
+          MessageBox.Show(mse.ToString());
+        }
+      }
     }
 
     public void UpdateArticle(Article art)
@@ -444,6 +459,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref_error WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
     }
 
     public void ExecuteSql(string sql)

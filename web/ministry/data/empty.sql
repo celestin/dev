@@ -3,7 +3,7 @@
 -- Copyright (c) 2007 Frontburner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
--- $Id: idx.sql 579 2007-11-12 17:14:55Z craig $
+-- $Id$
 --
 -- Who  When         Why
 -- CAM  12-Nov-2007  10214 : Created for ease of emptying the database of generated content.

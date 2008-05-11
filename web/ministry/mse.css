@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2008 frontburner.co.uk
  *
  * Style Sheet
  *
@@ -13,6 +13,7 @@
  * CAM  24-Nov-2007  10213 : Improve Link colours.
  * CAM  29-Dec-2007  10211 : Added highlight colours.
  * CAM  02-Jan-2008  10206 : Added Page (preview) classes.
+ * CAM  11-May-2008  10263 : Improved Heading classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -24,6 +25,15 @@ p, table, td, input, select, textarea {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   font-size: 10pt;
   TEXT-DECORATION: none;
+}
+
+h1, h2, h3, h4 {
+  margin: .2em 0 .2em 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-size: medium;
 }
 
 .topnav {

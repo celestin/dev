@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10186 : Added Zip! (export).
  * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
+ * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -46,11 +47,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
       ClearArticles();
 
-      if (_specificVolume = ((txtVol.Text.Length > 0) && (int.Parse(txtVol.Text) > 0)))
-      {
-        _author = cmbAuthor.SelectedValue.ToString();
-        _vol = int.Parse(txtVol.Text);
-      }
+      SpecificVolume();
 
       pgbVol.Minimum = 0;
       pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
@@ -61,6 +58,17 @@ namespace FrontBurner.Ministry.MseBuilder
       tmrRefresh.Enabled = true;
     }
 
+    private bool SpecificVolume()
+    {
+      if (_specificVolume = ((txtVol.Text.Length > 0) && (int.Parse(txtVol.Text) > 0)))
+      {
+        _author = cmbAuthor.SelectedValue.ToString();
+        _vol = int.Parse(txtVol.Text);
+      }
+
+      return _specificVolume;
+    }
+
     private void _btnZip_Click(object sender, EventArgs e)
     {
       _btnZip.Enabled = _btnBuild.Enabled = false;
@@ -68,7 +76,9 @@ namespace FrontBurner.Ministry.MseBuilder
       pgbVol.Minimum = 0;
       pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
 
-      _zipper = new ZipperThread();
+      SpecificVolume();
+
+      _zipper = new ZipperThread(_author, _vol, _specificVolume);
       Thread.Sleep(1000);
 
       tmrRefresh.Enabled = true;
@@ -153,93 +163,10 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       DataGridViewRow row = grdArticle.Rows[grdArticle.Rows.Add()];
 
-      row.Cells[0].Value = art.PageNo.ToString();
-      row.Cells[1].Value = art.LocalRow.ToString();
+      row.Cells[0].Value = art.PageNo;
+      row.Cells[1].Value = art.LocalRow;
       row.Cells[2].Value = art.Title;
       row.Cells[3].Value = art.Scriptures;
-    }
-
-    public class BuilderThread
-    {
-      protected Thread _process;
-      protected string _author;
-      protected int _vol;
-      protected bool _specificVolume;
-      protected MseEngine _engine;
-
-      public Thread Process
-      {
-        get
-        {
-          return _process;
-        }
-      }
-      public MseEngine Engine
-      {
-        get
-        {
-          return _engine;
-        }
-      }
-
-      public BuilderThread(string author, int vol, bool specificVolume)
-      {
-        _author = author;
-        _vol = vol;
-        _specificVolume = specificVolume;
-
-        _process = new Thread(new ThreadStart(Build));
-        _process.IsBackground = true;
-        _process.Start();
-      }
-
-      private void Build()
-      {
-        _engine = new MseEngine();
-
-        if (_specificVolume)
-        {
-          _engine.Build(_author, _vol);
-        }
-        else
-        {
-          _engine.Build();
-        }
-      }
-    }
-
-    public class ZipperThread
-    {
-      protected Thread _process;
-      protected MseEngine _engine;
-
-      public Thread Process
-      {
-        get
-        {
-          return _process;
-        }
-      }
-      public MseEngine Engine
-      {
-        get
-        {
-          return _engine;
-        }
-      }
-
-      public ZipperThread()
-      {
-        _process = new Thread(new ThreadStart(Zip));
-        _process.IsBackground = true;
-        _process.Start();
-      }
-
-      private void Zip()
-      {
-        _engine = new MseEngine();
-        _engine.Zip();
-      }
     }
   }
 }

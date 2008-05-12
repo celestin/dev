@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  12-May-2008  10265 : Added IsFullMarkup.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -40,7 +41,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
       set
       {
-        _author = value; 
+        _author = value;
       }
     }
     public int Vol
@@ -85,6 +86,14 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       set
       {
         _localFile = value.Replace("\\\\", "\\");
+      }
+    }
+
+    public bool IsFullMarkup
+    {
+      get
+      {
+        return _author.Equals("JND");
       }
     }
 

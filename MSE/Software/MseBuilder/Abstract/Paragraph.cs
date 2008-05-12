@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -10,6 +10,7 @@
  * CAM  24-Nov-2007  10188 : Added instance variable for Article.
  * CAM  24-Nov-2007  10208 : Added NewPages.
  * CAM  24-Nov-2007  10214 : Consider '>' to be an acceptable end paragraph character (html markup).
+ * CAM  12-May-2008  10265 : Save page continuations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -175,7 +176,12 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       _localRow = previous._localRow;
       _inits = previous._inits;
 
+      foreach (int i in previous._newPages)
+      {
+        _newPages.Add(i);
+      }
       _newPages.Add(previous.Text.Length);
+
       _text = string.Format("{0} {1}", previous.Text, this.Text);
 
       foreach (BibleRef bref in previous)
@@ -196,6 +202,16 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         case '?':
         case '>':
           return false;
+
+        // The following are not strictly the end of a sentence,
+        // but a sufficent break - found many paragraphs continuing over several pages!
+        // found
+        case ',':
+        case ';':
+        case ':':
+        case ')':
+          return false;
+
       }
       return true;
     }
@@ -241,7 +257,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
       if (((upper + lower) > 0) && (html == 0) && (!_text.Equals("PREFATORY NOTE")) && (!_text.Equals("*NOTE*")))
       {
-        if ((upper / (upper + lower + other)) > 0.7)
+        if (((float)upper / (float)(upper + lower + other)) > 0.7f)
         {
           return true;
         }
@@ -251,6 +267,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
     public void SaveToDatabase()
     {
+      // Convert asterisks to italics html
+
       DatabaseLayer.Instance.InsertParagraph(this);
 
       int i = 1;

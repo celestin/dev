@@ -23,7 +23,6 @@
 
   d = document.all.popup;
   d.style.width = 200;
-  d.style.height = 50;
   d.style.left = img.offsetLeft + 25;
   d.style.top = img.offsetTop - 54;
   d.innerHTML = "<b>" + cont[item][0] + "</b>" + "... " + cont[item][1];

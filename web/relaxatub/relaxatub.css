@@ -14,6 +14,7 @@
  * CAM  14-Feb-2008  10243 : Revamped the look and feel.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * CAM  12-Apr-2008  10241 : Added classes for short details.
+ * CAM  17-May-2008  10232 : Added classes for new Quality page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -27,6 +28,11 @@ p, table, td {
   TEXT-DECORATION: none;
 }
 
+.quality p {
+  COLOR: #004936;
+  FONT-SIZE: 9pt;
+}
+
 h2 {
   COLOR: #233f91;
   FONT-FAMILY: Times New Roman, Serif;
@@ -35,7 +41,7 @@ h2 {
   TEXT-DECORATION: none;
 }
 
-.popup {
+#popup {
   FONT-FAMILY: Arial, Helvetica;
   FONT-SIZE: 9pt;
   BORDER-BOTTOM:    #233f91 2px solid;
@@ -44,6 +50,11 @@ h2 {
   BORDER-TOP:       #233f91 2px solid;
   PADDING:          8px;
   BACKGROUND-COLOR: #F7FCFD;
+}
+
+.infoPoint {
+  cursor: help;
+  position: relative;
 }
 
 div.promotion {

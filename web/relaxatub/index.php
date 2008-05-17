@@ -18,6 +18,7 @@
  * CAM  30-Oct-2007  10197 : Added Christmas 2007 image.
  * CAM  14-Feb-2008  10243 : Reverted back to standard page.
  * CAM  23-Feb-2008  10235 : Added Random Image and Tub Series below.
+ * CAM  17-May-2008  10232 : Corrected links for 350H.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -31,12 +32,12 @@ $randomImage = new RandomImage("img/re");
 <img src="<? echo $randomImage->GetRandomImage(); ?>" width="538" height="301">
 <table border=0 width="538">
   <tr>
-    <td align=center><a href="tub.php?tub=350"><img border=0 src="img/tub/series/300.png" width="120"></a></td>
+    <td align=center><a href="tub.php?tub=350h"><img border=0 src="img/tub/series/300.png" width="120"></a></td>
     <td align=center><a href="tub.php?tub=550x"><img border=0 src="img/tub/series/500.png" width="120"></a></td>
     <td align=center><a href="tub.php?tub=750"><img border=0 src="img/tub/series/700.png" width="120"></a></td>
   </tr>
   <tr>
-    <td align=center><a class="nav" href="tub.php?tub=350">300 series</a></td>
+    <td align=center><a class="nav" href="tub.php?tub=350h">300 series</a></td>
     <td align=center><a class="nav" href="tub.php?tub=550x">500 series</a></td>
     <td align=center><a class="nav" href="tub.php?tub=750">700 series</a></td>
   </tr>

@@ -27,22 +27,17 @@
   d.style.top = img.offsetTop - 54;
   d.innerHTML = "<b>" + cont[item][0] + "</b>" + "... " + cont[item][1];
 
+  d.style.display = "inline";
   opacIn = opacOut = 0;
   fadeIn();
-
-  d.style.display = "inline";
-  d.style.cursor = "hand";
 
   currentItem = item;
 }
 
 function hideDiv() {
   currentItem = null;
-
   opacIn = opacOut = 100;
   fadeOut();
-  
-  d.style.cursor = "pointer";
 }
 
 function fadeIn() {
@@ -58,6 +53,10 @@ function fadeOut() {
     opacOut-=5;
     setOpacity(d, opacOut);
     setTimeout('fadeOut()', 0);
+    
+    if(opacOut <= 0){
+      d.style.display = "none";
+    }    
   }
 }
 

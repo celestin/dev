@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  17-May-2008  10231 : Use new image.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagerelaxation";
@@ -21,7 +22,7 @@ include "tpl/top.php";
 
 <tr>
 
-  <td><img src="img/relax1.jpg" width="324" height="500" alt="Relax in a Beachcomber Hot Tub"></td>
+  <td><img src="img/relax2.jpg" width="324" height="500" alt="Relax in a Beachcomber Hot Tub"></td>
 
   <td>&nbsp;</td>
 

@@ -415,3 +415,25 @@ INSERT INTO mse_volume VALUES ('JT', 102, 'Letters - Volume 1\r\n', '2007-10-22 
 INSERT INTO mse_volume VALUES ('JT', 103, 'Letters - Volume 2\r\n', '2007-10-22 17:19:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt103.doc');
 INSERT INTO mse_volume VALUES ('JND', 1, 'Ecclesiastical No. 1 - Vol 1', NULL, 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jnd\\\\jnd_001.doc');
 INSERT INTO mse_volume VALUES ('JND', 2, 'Prophetic No. 1 - Vol 2', NULL, 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jnd\\\\jnd_002.doc');
+
+--
+-- Dumping data for table mse_release_history
+--
+
+INSERT INTO mse_release_history VALUES ('V0.04A', '10202', 'Migrate to goodteaching.org', '2007-11-24 08:06:55');
+INSERT INTO mse_release_history VALUES ('V0.05A', '10203', 'Correct ''onclick'' bug in IE6 - remember to "return false;"', '2007-11-24 08:07:35');
+INSERT INTO mse_release_history VALUES ('V0.05A', '10204', 'Add intelligence to Servant checkboxes', '2007-11-24 08:08:09');
+INSERT INTO mse_release_history VALUES ('V0.05A', '10205', 'Bug - Limiting a search on a different tab should reset the Current Page to 1', '2007-11-24 08:08:39');
+INSERT INTO mse_release_history VALUES ('V0.06A', '10214', 'Consider Greater-Than char to be an acceptable end paragraph character', '2007-11-24 12:54:23');
+INSERT INTO mse_release_history VALUES ('V0.06A', '10213', 'Change colour of Scripture links', '2007-11-24 12:54:23');
+INSERT INTO mse_release_history VALUES ('V0.06A', '10210', 'Show New Page indicator in text Results', '2007-11-24 12:54:23');
+INSERT INTO mse_release_history VALUES ('V0.06A', '10208', 'Add New Page Indicators to Mse_Text', '2007-11-24 12:54:23');
+INSERT INTO mse_release_history VALUES ('V0.06A', '10188', 'Calculate the Article Page for MseText', '2007-11-24 12:54:23');
+INSERT INTO mse_release_history VALUES ('V0.07A', '10206', 'Add Pagination to Volume Preview pane', '2008-05-18 17:26:18');
+INSERT INTO mse_release_history VALUES ('V0.08A', '10211', 'Highlight Search Terms in Results and Preview', '2008-05-18 17:26:18');
+INSERT INTO mse_release_history VALUES ('V0.09A', '10267', 'Add Release History', '2008-05-18 19:39:50');
+INSERT INTO mse_release_history VALUES ('V0.04A', '10201', 'Bug - Pagination does not work if you start immediately with Scriptures', '2007-11-24 08:06:20');
+INSERT INTO mse_release_history VALUES ('V0.03A', '10200', 'Add Search Results Pagination', '2007-11-24 08:05:41');
+INSERT INTO mse_release_history VALUES ('V0.03A', '10187', 'Add Scripture Search', '2007-11-24 08:05:07');
+INSERT INTO mse_release_history VALUES ('V0.02A', '10189', 'Catch all Initials like *Ques* and S.McC.', '2007-11-24 08:03:56');
+INSERT INTO mse_release_history VALUES ('V0.01A', '10186', 'Create Export Scripts', '2007-11-24 08:03:14');

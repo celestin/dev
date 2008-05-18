@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  22-Oct-2007  10189 : Catch all initials, and tidy them up appropriately.
  * CAM  24-Nov-2007  10188 : Remember the current Article and assign to each new paragraph within.
+ * CAM  17-May-2008  10266 : Check for Errors during Parse.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -115,7 +116,7 @@ namespace FrontBurner.Ministry.MseBuilder
       return rval;
     }
 
-    public void ParseText()
+    public bool ParseText()
     {
       StreamReader sr = new StreamReader(_vol.GetFile().FullName);
       string buffer;
@@ -128,6 +129,7 @@ namespace FrontBurner.Ministry.MseBuilder
       string inits;
       bool prevTitle = false;
       bool scriptures = false;
+      bool anyErrors = false;
       Paragraph paraPrevious = null;
       Paragraph paraCurrent = null;
       Article art = null;
@@ -149,12 +151,20 @@ namespace FrontBurner.Ministry.MseBuilder
 
         if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#")))
         {
-          if ((cb = buffer.IndexOf("}")) >= 0)
+          if (buffer.Substring(0, 2).Equals("{*"))
           {
-            pageNo = int.Parse(buffer.Substring(1, cb-1));
+            MessageBox.Show(String.Format("You have not corrected a footnote: {0} Vol {1} page {2}\n\n{3}",
+              _vol.Author, _vol.Vol, pageNo, buffer), "Bad Footnote");
           }
+          else
+          {
+            if ((cb = buffer.IndexOf("}")) >= 0)
+            {
+              pageNo = int.Parse(buffer.Substring(1, cb - 1));
+            }
 
-          para = 0;
+            para = 0;
+          }
         }
         else if ((buffer.Length > 1) && buffer.Substring(0, 2).Equals("{#"))
         {
@@ -173,6 +183,7 @@ namespace FrontBurner.Ministry.MseBuilder
           }
 
           paraCurrent = new Paragraph(_vol, pageNo, para, rows, inits, buffer);
+          if (paraCurrent.AnyErrors) anyErrors = true;
 
           prevTitle = false;
           if (paraCurrent.IsTitle())
@@ -211,6 +222,7 @@ namespace FrontBurner.Ministry.MseBuilder
         }
       }
       sr.Close();
+      return anyErrors;
     }
   }
 }

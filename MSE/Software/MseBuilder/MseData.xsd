@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MseData" targetNamespace="http://tempuri.org/MseData.xsd" xmlns:mstns="http://tempuri.org/MseData.xsd" xmlns="http://tempuri.org/MseData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="GoodteachingOrgConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GoodteachingOrgConnectionString (Settings)" PropertyReference="ApplicationSettings.FrontBurner.Ministry.MseBuilder.Properties.Settings.GlobalReference.Default.GoodteachingOrgConnectionString" Provider="System.Data.Odbc" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BadBibleRefTableAdapter" GeneratorDataComponentClassName="BadBibleRefTableAdapter" Name="BadBibleRef" UserDataComponentName="BadBibleRefTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GoodteachingOrgConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     mse_bible_ref_error.*
+FROM         mse_bible_ref_error</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="author" DataSetColumn="author" />
+              <Mapping SourceColumn="vol" DataSetColumn="vol" />
+              <Mapping SourceColumn="page" DataSetColumn="page" />
+              <Mapping SourceColumn="para" DataSetColumn="para" />
+              <Mapping SourceColumn="ref" DataSetColumn="ref" />
+              <Mapping SourceColumn="error_code" DataSetColumn="error_code" />
+              <Mapping SourceColumn="text" DataSetColumn="text" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MseData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="MseData" msprop:Generator_UserDSName="MseData" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BadBibleRef" msprop:Generator_UserTableName="BadBibleRef" msprop:Generator_RowDeletedName="BadBibleRefRowDeleted" msprop:Generator_TableClassName="BadBibleRefDataTable" msprop:Generator_RowChangedName="BadBibleRefRowChanged" msprop:Generator_RowClassName="BadBibleRefRow" msprop:Generator_RowChangingName="BadBibleRefRowChanging" msprop:Generator_RowEvArgName="BadBibleRefRowChangeEvent" msprop:Generator_RowEvHandlerName="BadBibleRefRowChangeEventHandler" msprop:Generator_TablePropName="BadBibleRef" msprop:Generator_TableVarName="tableBadBibleRef" msprop:Generator_RowDeletingName="BadBibleRefRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="author" msprop:Generator_UserColumnName="author" msprop:Generator_ColumnPropNameInRow="author" msprop:Generator_ColumnVarNameInTable="columnauthor" msprop:Generator_ColumnPropNameInTable="authorColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vol" msprop:Generator_UserColumnName="vol" msprop:Generator_ColumnPropNameInRow="vol" msprop:Generator_ColumnVarNameInTable="columnvol" msprop:Generator_ColumnPropNameInTable="volColumn" type="xs:int" />
+              <xs:element name="page" msprop:Generator_UserColumnName="page" msprop:Generator_ColumnPropNameInRow="page" msprop:Generator_ColumnVarNameInTable="columnpage" msprop:Generator_ColumnPropNameInTable="pageColumn" type="xs:int" />
+              <xs:element name="para" msprop:Generator_UserColumnName="para" msprop:Generator_ColumnPropNameInRow="para" msprop:Generator_ColumnVarNameInTable="columnpara" msprop:Generator_ColumnPropNameInTable="paraColumn" type="xs:int" />
+              <xs:element name="ref" msprop:Generator_UserColumnName="ref" msprop:Generator_ColumnPropNameInRow="_ref" msprop:Generator_ColumnVarNameInTable="columnref" msprop:Generator_ColumnPropNameInTable="refColumn" type="xs:int" />
+              <xs:element name="error_code" msprop:Generator_UserColumnName="error_code" msprop:Generator_ColumnPropNameInRow="error_code" msprop:Generator_ColumnVarNameInTable="columnerror_code" msprop:Generator_ColumnPropNameInTable="error_codeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="201" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" msprop:Generator_ColumnPropNameInTable="textColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2001" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BadBibleRef" />
+      <xs:field xpath="mstns:author" />
+      <xs:field xpath="mstns:vol" />
+      <xs:field xpath="mstns:page" />
+      <xs:field xpath="mstns:para" />
+      <xs:field xpath="mstns:ref" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

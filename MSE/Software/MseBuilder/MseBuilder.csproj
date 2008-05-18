@@ -54,8 +54,23 @@
     <Compile Include="Abstract\BibleRef.cs" />
     <Compile Include="Abstract\Paragraph.cs" />
     <Compile Include="Abstract\Volume.cs" />
+    <Compile Include="BuildErrors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildErrors.Designer.cs">
+      <DependentUpon>BuildErrors.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="DatabaseLayer.cs" />
+    <Compile Include="MseData.cs">
+      <DependentUpon>MseData.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MseData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MseData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MseEngine.cs" />
     <Compile Include="MseParser.cs" />
     <Compile Include="MseBuilder.cs">
@@ -66,6 +81,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BuildErrors.resx">
+      <DependentUpon>BuildErrors.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MseBuilder.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MseBuilder.cs</DependentUpon>
@@ -80,6 +99,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <None Include="MseData.xsc">
+      <DependentUpon>MseData.xsd</DependentUpon>
+    </None>
+    <None Include="MseData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MseData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MseData.xss">
+      <DependentUpon>MseData.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

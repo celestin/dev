@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  11-May-2008  10265 : File created (for clarity).
+ * CAM  17-May-2008  10266 : Return Errors found during Build.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,6 +37,14 @@ namespace FrontBurner.Ministry.MseBuilder
       get
       {
         return _engine;
+      }
+    }
+    public bool AnyErrors
+    {
+      get
+      {
+        if (_engine != null) return _engine.AnyErrors;
+        return false;
       }
     }
 

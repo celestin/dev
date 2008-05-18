@@ -11,6 +11,7 @@
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  25-Nov-2007  10208 : Added newpages to SQL that is written to the loader file.
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
+ * CAM  17-May-2008  10266 : Check for Errors during Build.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -30,12 +31,20 @@ namespace FrontBurner.Ministry.MseBuilder
   public class MseEngine
   {
     protected int _current;
+    protected bool _anyErrors;
 
     public int Current
     {
       get
       {
         return _current;
+      }
+    }
+    public bool AnyErrors
+    {
+      get
+      {
+        return _anyErrors;
       }
     }
 
@@ -48,6 +57,7 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       VolumeCollection vols = BusinessLayer.Instance.GetVolumes();
       Volume vol1 = null;
+      _anyErrors = false;
 
       try
       {
@@ -68,13 +78,14 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       DatabaseLayer.Instance.DeleteVolume(vol);
       MseParser parser = new MseParser(vol);
-      parser.ParseText();
+      if (parser.ParseText()) _anyErrors = true;
     }
 
     public void Build()
     {
       VolumeCollection vols = DatabaseLayer.Instance.GetVolumes();
       _current = 0;
+      _anyErrors = false;
 
       DatabaseLayer.Instance.TruncateTables();
 

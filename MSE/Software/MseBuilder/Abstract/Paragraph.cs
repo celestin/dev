@@ -11,6 +11,7 @@
  * CAM  24-Nov-2007  10208 : Added NewPages.
  * CAM  24-Nov-2007  10214 : Consider '>' to be an acceptable end paragraph character (html markup).
  * CAM  12-May-2008  10265 : Save page continuations.
+ * CAM  17-May-2008  10266 : Added AnyErrors.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,7 +22,7 @@ using System.Windows.Forms;
 
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
-  public class Paragraph :  Collection<BibleRef>
+  public class Paragraph : Collection<BibleRef>
   {
     protected Volume _vol;
     protected Article _art;
@@ -31,6 +32,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     protected string _inits;
     protected string _text;
     protected List<int> _newPages;
+    protected bool _anyErrors;
 
     public string Id
     {
@@ -114,6 +116,13 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         return newPages;
       }
     }
+    public bool AnyErrors
+    {
+      get
+      {
+        return _anyErrors;
+      }
+    }
 
     public Article Article
     {
@@ -164,6 +173,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           else
           {
             DatabaseLayer.Instance.InsertBadBibleRef(_vol, _pageNo, _para, i, bref.ErrCode, refs[i]);
+            _anyErrors = true;
           }
         }
       }

@@ -10,6 +10,7 @@
  * CAM  22-Oct-2007  10186 : Added Zip! (export).
  * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
+ * CAM  17-May-2008  10266 : Show Errors on completion of Build.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -99,6 +100,13 @@ namespace FrontBurner.Ministry.MseBuilder
           tmrRefresh.Enabled = false;
 
           if (_specificVolume) ShowArticles();
+
+          if (_builder.AnyErrors)
+          {
+            BuildErrors formErrors = new BuildErrors();
+            formErrors.ShowDialog();
+          }
+
           _builder = null;
 
           _btnZip.Enabled = _btnBuild.Enabled = true;

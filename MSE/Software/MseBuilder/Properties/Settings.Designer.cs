@@ -22,5 +22,16 @@ namespace FrontBurner.Ministry.MseBuilder.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dsn=MySQL;database=goodteaching_org_min;description=MySQL;option=0;port=0;server=" +
+            "localhost;uid=root;pwd=Coyote99")]
+        public string GoodteachingOrgConnectionString {
+            get {
+                return ((string)(this["GoodteachingOrgConnectionString"]));
+            }
+        }
     }
 }

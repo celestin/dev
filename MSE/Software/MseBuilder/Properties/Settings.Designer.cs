@@ -33,5 +33,16 @@ namespace FrontBurner.Ministry.MseBuilder.Properties {
                 return ((string)(this["GoodteachingOrgConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=herald;Persist Security Info=True;User ID=mpower4;Password=monitor;Un" +
+            "icode=True")]
+        public string mpowerConnectionString {
+            get {
+                return ((string)(this["mpowerConnectionString"]));
+            }
+        }
     }
 }

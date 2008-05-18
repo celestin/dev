@@ -11,6 +11,7 @@
  * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
  * CAM  17-May-2008  10266 : Show Errors on completion of Build.
+ * CAM  18-May-2008  10267 : Moved buttons to new toolbar, created CopyToMySQL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -40,25 +41,6 @@ namespace FrontBurner.Ministry.MseBuilder
       DatabaseLayer.Instance.Open();
     }
 
-    private void btnBuild_Click(object sender, EventArgs e)
-    {
-      _btnZip.Enabled = _btnBuild.Enabled = false;
-
-      grdArticle.Rows.Clear();
-
-      ClearArticles();
-
-      SpecificVolume();
-
-      pgbVol.Minimum = 0;
-      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
-
-      _builder = new BuilderThread(_author, _vol, _specificVolume);
-      Thread.Sleep(1000);
-
-      tmrRefresh.Enabled = true;
-    }
-
     private bool SpecificVolume()
     {
       if (_specificVolume = ((txtVol.Text.Length > 0) && (int.Parse(txtVol.Text) > 0)))
@@ -68,21 +50,6 @@ namespace FrontBurner.Ministry.MseBuilder
       }
 
       return _specificVolume;
-    }
-
-    private void _btnZip_Click(object sender, EventArgs e)
-    {
-      _btnZip.Enabled = _btnBuild.Enabled = false;
-
-      pgbVol.Minimum = 0;
-      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
-
-      SpecificVolume();
-
-      _zipper = new ZipperThread(_author, _vol, _specificVolume);
-      Thread.Sleep(1000);
-
-      tmrRefresh.Enabled = true;
     }
 
     private void tmrRefresh_Tick(object sender, EventArgs e)
@@ -109,7 +76,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
           _builder = null;
 
-          _btnZip.Enabled = _btnBuild.Enabled = true;
+          _tspMain.Enabled = true;
         }
       }
       else if (_zipper != null)
@@ -125,7 +92,7 @@ namespace FrontBurner.Ministry.MseBuilder
           tmrRefresh.Enabled = false;
           _zipper = null;
 
-          _btnZip.Enabled = _btnBuild.Enabled = true;
+          _tspMain.Enabled = true;
         }
       }
     }
@@ -175,6 +142,45 @@ namespace FrontBurner.Ministry.MseBuilder
       row.Cells[1].Value = art.LocalRow;
       row.Cells[2].Value = art.Title;
       row.Cells[3].Value = art.Scriptures;
+    }
+
+    private void _tsbBuild_Click(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      grdArticle.Rows.Clear();
+
+      ClearArticles();
+
+      SpecificVolume();
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+
+      _builder = new BuilderThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
+    private void _tsbZip_Click(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+
+      SpecificVolume();
+
+      _zipper = new ZipperThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
+    private void _tsbVersionHistory_Click(object sender, EventArgs e)
+    {
+      mpowerCompletedJobsTableAdapter.CopyToMySQL();
     }
   }
 }

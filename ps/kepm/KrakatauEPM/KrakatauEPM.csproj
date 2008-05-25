@@ -1,125 +1,65 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ECB1E964-2D51-4BFB-9509-5CB8C04E5411}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>VolcanoEPM.ico</ApplicationIcon>
-    <AssemblyKeyContainerName>
-    </AssemblyKeyContainerName>
-    <AssemblyName>KrakatauEPM</AssemblyName>
-    <AssemblyOriginatorKeyFile>KrakatauEPM.snk</AssemblyOriginatorKeyFile>
-    <DefaultClientScript>JScript</DefaultClientScript>
-    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
-    <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E20EF1B-4B0E-4DE1-9237-79F37CD05C7A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KrakatauEPM</RootNamespace>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>
-    </StartupObject>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>0.0</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SignAssembly>true</SignAssembly>
+    <AssemblyName>KrakatauEPM</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>VolcanoEPM.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile>
-    </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
-    <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
-    <Optimize>false</Optimize>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <BaseAddress>285212672</BaseAddress>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile>
-    </ConfigurationOverrideFile>
-    <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
-    <DebugSymbols>false</DebugSymbols>
-    <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>none</DebugType>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System">
-      <Name>System</Name>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Arguments.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Arguments.cs" />
+    <Compile Include="AsyncOperation.cs" />
+    <Compile Include="Ext.cs" />
+    <Compile Include="FormKrakatauEPM.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AsyncOperation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Ext.cs">
-      <SubType>Code</SubType>
+    <Compile Include="FormKrakatauEPM.Designer.cs">
+      <DependentUpon>FormKrakatauEPM.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMetricSet.cs">
       <SubType>Form</SubType>
@@ -130,41 +70,27 @@
     <Compile Include="frmHelpAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmNewProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MetricDef.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MetricSet.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MetricSetItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Prefs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ProcessCaller.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Project.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ProjectItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="MetricDef.cs" />
+    <Compile Include="MetricSet.cs" />
+    <Compile Include="MetricSetItem.cs" />
+    <Compile Include="Prefs.cs" />
+    <Compile Include="ProcessCaller.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectItem.cs" />
     <Compile Include="ProjectsView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XMLConfig.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Analyse.resx">
       <DependentUpon>Analyse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKrakatauEPM.resx">
+      <DependentUpon>FormKrakatauEPM.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMetricSet.resx">
@@ -179,10 +105,6 @@
       <DependentUpon>frmHelpAbout.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmNewProject.resx">
       <DependentUpon>frmNewProject.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -191,32 +113,82 @@
       <DependentUpon>ProjectsView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="KrakatauEPM.snk" />
-    <Content Include="VolcanoEPM.ico" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="XMLConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <None Include="img\app\setold.bmp" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="img\app\analyse.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\close.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\metset.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\new.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\open.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\project.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\project_new.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\project_old.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\setnew.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\app\new.png" />
+    <None Include="img\app\analyse.png" />
+    <None Include="img\app\close.png" />
+    <None Include="img\app\open.png" />
+    <None Include="img\app\metset.png" />
+    <None Include="img\app\setold.png" />
+    <None Include="img\app\setnew.png" />
+    <None Include="img\menu\analyse.png" />
+    <None Include="img\menu\close.png" />
+    <None Include="img\menu\metset.png" />
+    <None Include="img\menu\new.png" />
+    <None Include="img\menu\open.png" />
+    <None Include="img\menu\setnew.png" />
+    <None Include="img\menu\setold.png" />
+    <None Include="img\menu\exit.png" />
+    <None Include="img\menu\help.png" />
+    <Content Include="VolcanoEPM.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

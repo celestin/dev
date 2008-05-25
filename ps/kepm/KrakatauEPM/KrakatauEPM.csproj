@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KrakatauEPM</RootNamespace>
     <AssemblyName>KrakatauEPM</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>VolcanoEPM.ico</ApplicationIcon>
   </PropertyGroup>
@@ -33,15 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -135,24 +126,6 @@
     <Compile Include="XMLConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\app\setold.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\analyse.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\close.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\metset.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\new.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\open.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="img\app\project.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\app\project_old.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\setnew.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="img\app\new.png" />
@@ -181,6 +151,10 @@
     <None Include="img\menu\setold.png" />
     <None Include="img\menu\exit.png" />
     <None Include="img\menu\help.png" />
+    <Content Include="img\ms\delete.bmp" />
+    <Content Include="img\ms\edit.bmp" />
+    <Content Include="img\ms\jar.bmp" />
+    <Content Include="img\ms\new.bmp" />
     <Content Include="VolcanoEPM.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

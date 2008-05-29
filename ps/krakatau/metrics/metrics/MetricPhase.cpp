@@ -15,6 +15,7 @@
  * CAM  24-Jan-08  337 : Add to source control.
  * CAM  22-Feb-08  341 : Calculate CBO correctly.
  * CAM  26-Mar-08  338 : Calculate SEIMI correctly.
+ * CAM  29-May-08  363 : Ahem, calculate SEIMI correctly - plus the fourth component rather than subtract.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "MetricPhase.h"
@@ -398,7 +399,9 @@ void MetricPhase::calculateProjectAverages()
   // the maintainability of the code, based on Halstead &
   // Cyclomatic complexity.
   double SEIMI = 0;
-  double aveLOC = 0;  // avg lines of code
+  double aveV = 0;  // avg Halstead Volume
+  double aveVg = 0;  // avg Cyclomatic Complexity
+  double aveLOC = 0;  // avg Lines of Code
   double perCM = 0; // avg percentage of lines of comments per module
   double NMETH = theProjNode.getMetric(MasterData::NMETH_MET);
   double sumV = theProjNode.getMetric(MasterData::SUMV_MET);
@@ -406,13 +409,13 @@ void MetricPhase::calculateProjectAverages()
 
   if ((NMETH > 0) && (sumV > 0) && (sumVg > 0))
   {
-    sumV /= NMETH;
-    sumVg /= NMETH;
+    aveV = sumV / NMETH;
+    aveVg = sumVg / NMETH;
     aveLOC = LOC / NMETH;
     perCM = COM_RAT / NMETH;
 
-    SEIMI = 171 - 5.2 * log(sumV) - 0.23 * sumVg -
-      16.2 * log(aveLOC) - 50 * sin(sqrt(2.4 * perCM));
+    SEIMI = 171 - 5.2 * log(aveV) - 0.23 * aveVg -
+      16.2 * log(aveLOC) + 50 * sin(sqrt(2.4 * perCM));
   }
 
   theProjNode.setMetric(MasterData::SEIMI_MET, (float)SEIMI);
@@ -832,7 +835,7 @@ void MetricPhase::calc_DIT(SymbolNode &node)
 
   if (CSO != 0) CSI = (NOOC * DIT) / CSO;
 
-  if (DIT > theProjNode.getMetric(MasterData::PDIT_MET)) 
+  if (DIT > theProjNode.getMetric(MasterData::PDIT_MET))
   {
     theProjNode.setMetric(MasterData::PDIT_MET, (float)DIT);
   }

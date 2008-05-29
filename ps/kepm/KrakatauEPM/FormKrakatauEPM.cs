@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-May-08   362 : File created (replicating frmMain).
+ * CAM  29-May-08   363 : Completed toolbar buttons.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -111,7 +112,7 @@ namespace KrakatauEPM
 
     private void _tsbCloseProject_Click(object sender, EventArgs e)
     {
-
+      _lsvProjects.CloseProject();
     }
 
     private void _tsbMetricSets_Click(object sender, EventArgs e)
@@ -121,12 +122,12 @@ namespace KrakatauEPM
 
     private void _tsbSetAsOldProject_Click(object sender, EventArgs e)
     {
-
+      _lsvProjects.SetAsOld();
     }
 
     private void _tsbSetAsNewProject_Click(object sender, EventArgs e)
     {
-
+      _lsvProjects.SetAsNew();
     }
 
     private void _tsbAnalyseProject_Click(object sender, EventArgs e)
@@ -154,7 +155,7 @@ namespace KrakatauEPM
 
     private void mniCloseProject_Click(object sender, EventArgs e)
     {
-      _lsvProjects.closeProject();
+      _lsvProjects.CloseProject();
     }
 
     private void _mnuExit_Click(object sender, EventArgs e)

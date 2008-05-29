@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2008 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * A ListView for displaying ProjectItems
@@ -13,6 +13,7 @@
  * CAM  09-Feb-06   185 : Added addProject.
  * CAM  18-Mar-06   210 : Added Deselect to the right-click menu.
  * CAM  24-May-08   362 : Updated for VS2008.
+ * CAM  29-May-08   363 : Completed toolbar buttons.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -48,13 +49,13 @@ namespace KrakatauEPM
       this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.projectView_MouseMove);
     }
 
-    public void addProject(Project p)
+    public void AddProject(Project p)
     {
       ProjectItem pi = new ProjectItem(p);
       this.Items.Add(pi);
     }
 
-    public void setAsOld()
+    public void SetAsOld()
     {
       ProjectItem pi = (ProjectItem)this.FocusedItem;
       if (pi != null)
@@ -69,7 +70,7 @@ namespace KrakatauEPM
       }
     }
 
-    public void setAsNew()
+    public void SetAsNew()
     {
       ProjectItem pi = (ProjectItem)this.FocusedItem;
       if (pi != null)
@@ -84,7 +85,7 @@ namespace KrakatauEPM
       }
     }
 
-    public void setAsDeselected()
+    public void SetAsDeselected()
     {
       ProjectItem pi = (ProjectItem)this.FocusedItem;
       if (pi != null)
@@ -93,7 +94,7 @@ namespace KrakatauEPM
       }
     }
 
-    public void closeProject()
+    public void CloseProject()
     {
       ProjectItem pi = (ProjectItem)this.FocusedItem;
       if (pi != null) this.Items.Remove(pi);
@@ -101,19 +102,19 @@ namespace KrakatauEPM
 
     private void popUpMenu_Old_clicked(object sender, EventArgs e)
     {
-      setAsOld();
+      SetAsOld();
     }
     private void popUpMenu_New_clicked(object sender, EventArgs e)
     {
-      setAsNew();
+      SetAsNew();
     }
     private void popUpMenu_Deselect_clicked(object sender, EventArgs e)
     {
-      setAsDeselected();
+      SetAsDeselected();
     }
     private void popUpMenu_Remove_clicked(object sender, EventArgs e)
     {
-      closeProject();
+      CloseProject();
     }
 
     private void projectView_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)

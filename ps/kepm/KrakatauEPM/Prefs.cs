@@ -13,12 +13,12 @@
  * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
  * CAM  22-Jul-06   291 : Increase remembered projects from 20 to 50.
  * CAM  29-May-08   363 : Completed toolbar buttons.
+ * CAM  29-May-08   364 : Added MySql default options.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.IO;
 using System.Collections;
-using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace KrakatauEPM
@@ -32,9 +32,85 @@ namespace KrakatauEPM
     private const string PROJECT_LIST = "project";
     private const string PROJECT_NEW = "project_new";
     private const string PROJECT_OLD = "project_old";
+    private const string KeyMySqlServer = "Server";
+    private const string KeyMySqlUsername = "Username";
+    private const string KeyMySqlPassword = "Password";
+    private const string KeyMySqlUse = "Use as default";
     private const int MAX_PROJECTS = 50;
     private ArrayList _projects = null;
     private DirectoryInfo _installDir;
+    private string _mySqlServer;
+    private string _mySqlUsername;
+    private string _mySqlPassword;
+    private bool _mySqlUse;
+
+    public DirectoryInfo InstallDir
+    {
+      get
+      {
+        return this._installDir;
+      }
+    }
+    protected void SetInstallDir(string path)
+    {
+      string p = path;
+      if (!p.EndsWith("\\"))
+      {
+        p += "\\";
+      }
+      this._installDir = new DirectoryInfo(p);
+    }
+    public string InstallDrive
+    {
+      get
+      {
+        return InstallDir.FullName.Substring(0, 2);
+      }
+    }
+    public string MySqlServer
+    {
+      set
+      {
+        _mySqlServer = value;
+      }
+      get
+      {
+        return _mySqlServer;
+      }
+    }
+    public string MySqlUsername
+    {
+      set
+      {
+        _mySqlUsername = value;
+      }
+      get
+      {
+        return _mySqlUsername;
+      }
+    }
+    public string MySqlPassword
+    {
+      set
+      {
+        _mySqlPassword = value;
+      }
+      get
+      {
+        return _mySqlPassword;
+      }
+    }
+    public bool MySqlUse
+    {
+      set
+      {
+        _mySqlUse = value;
+      }
+      get
+      {
+        return _mySqlUse;
+      }
+    }
 
     private Prefs()
     {
@@ -99,6 +175,13 @@ namespace KrakatauEPM
         if (key.GetValue(PROJECT_NEW) != null && noNew) key.DeleteValue(PROJECT_NEW);
         if (key.GetValue(PROJECT_OLD) != null && noOld) key.DeleteValue(PROJECT_OLD);
       }
+
+      // MySQL Settings
+      key = getKey(key, "MySQL");
+      key.SetValue(KeyMySqlServer, _mySqlServer);
+      key.SetValue(KeyMySqlUsername, _mySqlUsername);
+      key.SetValue(KeyMySqlPassword, _mySqlPassword);
+      key.SetValue(KeyMySqlUse, (_mySqlUse) ? 1 : 0);
     }
 
     private bool getBoolValue(RegistryKey key, string name)
@@ -113,11 +196,17 @@ namespace KrakatauEPM
 
     private string getStringValue(RegistryKey key, string name)
     {
-      string rval = "";
+      return getStringValue(key, name, String.Empty);
+    }
+
+    private string getStringValue(RegistryKey key, string name, string defaultValue)
+    {
+      string rval = defaultValue;
       if (key.GetValue(name) != null)
       {
         rval = key.GetValue(name).ToString();
       }
+      if (rval.Equals(String.Empty)) return defaultValue;
       return rval;
     }
 
@@ -177,9 +266,15 @@ namespace KrakatauEPM
 
             if (proj.ReadFile()) _projects.Add(proj);
           }
-
         }
       }
+
+      // MySQL Settings
+      key = getKey(key, "MySQL");
+      _mySqlServer = getStringValue(key, KeyMySqlServer, "localhost");
+      _mySqlUsername = getStringValue(key, KeyMySqlUsername, "root");
+      _mySqlPassword = getStringValue(key, KeyMySqlPassword, "");
+      _mySqlUse = getStringValue(key, KeyMySqlUse, "0").ToString().Equals("1");
 
       // Now retrieve general Software settings
       rk = Registry.LocalMachine;
@@ -206,32 +301,6 @@ namespace KrakatauEPM
         key = rk.CreateSubKey(name);
       }
       return key;
-    }
-
-    public DirectoryInfo InstallDir
-    {
-      get
-      {
-        return this._installDir;
-      }
-    }
-
-    protected void SetInstallDir(string path)
-    {
-      string p = path;
-      if (!p.EndsWith("\\"))
-      {
-        p += "\\";
-      }
-      this._installDir = new DirectoryInfo(p);
-    }
-
-    public string InstallDrive
-    {
-      get
-      {
-        return InstallDir.FullName.Substring(0,2);
-      }
     }
   }
 }

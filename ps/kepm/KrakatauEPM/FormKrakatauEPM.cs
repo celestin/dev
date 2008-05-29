@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  24-May-08   362 : File created (replicating frmMain).
  * CAM  29-May-08   363 : Completed toolbar buttons.
+ * CAM  29-May-08   364 : Added Preferences event.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -192,6 +193,12 @@ namespace KrakatauEPM
     private void mniHelpAbout_Click(object sender, EventArgs e)
     {
       (new HelpAbout()).ShowDialog(this);
+    }
+
+    private void mniProjectPrefs_Click(object sender, EventArgs e)
+    {
+      (new FormPreferences()).ShowDialog(this);
+      Prefs.Preferences.SaveSettings(_lsvProjects);
     }
 
   }

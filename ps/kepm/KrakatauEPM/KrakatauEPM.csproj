@@ -58,6 +58,12 @@
     <Compile Include="FormMetricSets.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPreferences.Designer.cs">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHelpAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,10 @@
       <DependentUpon>FormMetricSets.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPreferences.resx">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHelpAbout.resx">
       <DependentUpon>frmHelpAbout.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -114,6 +124,25 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="img\app\analyse.png" />
+    <None Include="img\app\close.png" />
+    <None Include="img\app\metset.png" />
+    <None Include="img\app\new.png" />
+    <None Include="img\app\open.png" />
+    <None Include="img\app\project.bmp" />
+    <None Include="img\app\project_new.bmp" />
+    <None Include="img\app\project_old.bmp" />
+    <None Include="img\app\setnew.png" />
+    <None Include="img\app\setold.png" />
+    <None Include="img\menu\analyse.png" />
+    <None Include="img\menu\close.png" />
+    <None Include="img\menu\exit.png" />
+    <None Include="img\menu\help.png" />
+    <None Include="img\menu\metset.png" />
+    <None Include="img\menu\new.png" />
+    <None Include="img\menu\open.png" />
+    <None Include="img\menu\setnew.png" />
+    <None Include="img\menu\setold.png" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,31 +155,9 @@
     <Compile Include="XMLConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\app\project.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\project_new.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\project_old.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\app\new.png" />
-    <None Include="img\app\analyse.png" />
-    <None Include="img\app\close.png" />
-    <None Include="img\app\open.png" />
-    <None Include="img\app\metset.png" />
-    <None Include="img\app\setold.png" />
-    <None Include="img\app\setnew.png" />
-    <None Include="img\menu\analyse.png" />
-    <None Include="img\menu\close.png" />
-    <None Include="img\menu\metset.png" />
-    <None Include="img\menu\new.png" />
-    <None Include="img\menu\open.png" />
-    <None Include="img\menu\setnew.png" />
-    <None Include="img\menu\setold.png" />
-    <None Include="img\menu\exit.png" />
-    <None Include="img\menu\help.png" />
+    <Content Include="img\ico\About.ico" />
+    <Content Include="img\ico\Prefs.ico" />
+    <None Include="img\menu\prefs.png" />
     <Content Include="img\ms\delete.bmp" />
     <Content Include="img\ms\edit.bmp" />
     <Content Include="img\ms\jar.bmp" />

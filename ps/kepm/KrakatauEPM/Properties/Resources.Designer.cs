@@ -165,6 +165,13 @@ namespace KrakatauEPM.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ProjectPrefs {
+            get {
+                object obj = ResourceManager.GetObject("ProjectPrefs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap SetNewProjectMenu {
             get {
                 object obj = ResourceManager.GetObject("SetNewProjectMenu", resourceCulture);

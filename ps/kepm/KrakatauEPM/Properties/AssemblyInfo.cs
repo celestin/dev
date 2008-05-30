@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  26-Apr-08   360 : Improved Assembly Information.
  * CAM  24-May-08   362 : File created (replicating AssemblyInfo in root of project dir).
+ * CAM  29-May-08   366 : Version 1.09.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Reflection;
@@ -35,5 +36,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("470af938-2923-4514-9092-ca07a46b5215")]
 
 // Version information for an assembly consists of the following four values:
-[assembly: AssemblyVersion("1.8.4.0")]
-[assembly: AssemblyFileVersion("1.8.4.0")]
+[assembly: AssemblyVersion("1.9.0.0")]
+[assembly: AssemblyFileVersion("1.9.0.0")]

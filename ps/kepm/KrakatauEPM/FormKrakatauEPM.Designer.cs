@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  24-May-08   362 : File created (replicating frmMain).
  * CAM  29-May-08   364 : Added Preferences.
+ * CAM  30-May-08   366 : Set font Tahoma on _lsvProjects.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace KrakatauEPM
@@ -118,6 +119,7 @@ namespace KrakatauEPM
       // _lsvProjects
       //
       this._lsvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._lsvProjects.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this._lsvProjects.LargeImageList = this._imlProjects;
       this._lsvProjects.Location = new System.Drawing.Point(0, 0);
       this._lsvProjects.Name = "_lsvProjects";

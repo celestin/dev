@@ -13,6 +13,7 @@
  * CAM  19-Jul-06   284 : Add Defensive checks for style.css and metrics.js.
  * CAM  22-Jul-06   291 : Add some tooltips and help around the reporting options.
  * CAM  29-May-08   364 : Added defaulting of MySQL options.
+ * CAM  30-May-08   366 : Set UseSystemPasswordChar to true.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -203,7 +204,7 @@ namespace KrakatauEPM
     /// </summary>
     private void InitializeComponent()
     {
-      System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Analyse));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Analyse));
       this.chkH2 = new System.Windows.Forms.CheckBox();
       this.txtH2 = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
@@ -239,34 +240,35 @@ namespace KrakatauEPM
       //
       // chkH2
       //
-      this.chkH2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkH2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkH2.Location = new System.Drawing.Point(16, 128);
       this.chkH2.Name = "chkH2";
+      this.chkH2.Size = new System.Drawing.Size(104, 24);
       this.chkH2.TabIndex = 0;
       this.chkH2.Text = "HTML Report";
       this.chkH2.CheckedChanged += new System.EventHandler(this.chkH2_CheckedChanged);
       //
       // txtH2
       //
-      this.txtH2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtH2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtH2.Location = new System.Drawing.Point(128, 128);
       this.txtH2.Name = "txtH2";
       this.txtH2.Size = new System.Drawing.Size(288, 21);
       this.txtH2.TabIndex = 1;
-      this.txtH2.Text = "";
       this.txtH2.Visible = false;
       //
       // label1
       //
-      this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.Location = new System.Drawing.Point(8, 96);
       this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(100, 23);
       this.label1.TabIndex = 2;
       this.label1.Text = "Options";
       //
       // cmdH2Browse
       //
-      this.cmdH2Browse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdH2Browse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdH2Browse.Location = new System.Drawing.Point(424, 128);
       this.cmdH2Browse.Name = "cmdH2Browse";
       this.cmdH2Browse.Size = new System.Drawing.Size(64, 21);
@@ -277,7 +279,7 @@ namespace KrakatauEPM
       //
       // cmdCSVBrowse
       //
-      this.cmdCSVBrowse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdCSVBrowse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdCSVBrowse.Location = new System.Drawing.Point(424, 160);
       this.cmdCSVBrowse.Name = "cmdCSVBrowse";
       this.cmdCSVBrowse.Size = new System.Drawing.Size(64, 21);
@@ -288,26 +290,26 @@ namespace KrakatauEPM
       //
       // txtCSV
       //
-      this.txtCSV.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtCSV.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtCSV.Location = new System.Drawing.Point(128, 160);
       this.txtCSV.Name = "txtCSV";
       this.txtCSV.Size = new System.Drawing.Size(288, 21);
       this.txtCSV.TabIndex = 5;
-      this.txtCSV.Text = "";
       this.txtCSV.Visible = false;
       //
       // chkCSV
       //
-      this.chkCSV.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkCSV.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkCSV.Location = new System.Drawing.Point(16, 160);
       this.chkCSV.Name = "chkCSV";
+      this.chkCSV.Size = new System.Drawing.Size(104, 24);
       this.chkCSV.TabIndex = 4;
       this.chkCSV.Text = "CSV Report";
       this.chkCSV.CheckedChanged += new System.EventHandler(this.chkCSV_CheckedChanged);
       //
       // cmdXMLBrowse
       //
-      this.cmdXMLBrowse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdXMLBrowse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdXMLBrowse.Location = new System.Drawing.Point(424, 192);
       this.cmdXMLBrowse.Name = "cmdXMLBrowse";
       this.cmdXMLBrowse.Size = new System.Drawing.Size(64, 21);
@@ -318,45 +320,45 @@ namespace KrakatauEPM
       //
       // txtXML
       //
-      this.txtXML.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtXML.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtXML.Location = new System.Drawing.Point(128, 192);
       this.txtXML.Name = "txtXML";
       this.txtXML.Size = new System.Drawing.Size(288, 21);
       this.txtXML.TabIndex = 8;
-      this.txtXML.Text = "";
       this.txtXML.Visible = false;
       //
       // chkXML
       //
-      this.chkXML.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkXML.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkXML.Location = new System.Drawing.Point(16, 192);
       this.chkXML.Name = "chkXML";
+      this.chkXML.Size = new System.Drawing.Size(104, 24);
       this.chkXML.TabIndex = 7;
       this.chkXML.Text = "XML Report";
       this.chkXML.CheckedChanged += new System.EventHandler(this.chkXML_CheckedChanged);
       //
       // txtMyServer
       //
-      this.txtMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtMyServer.Location = new System.Drawing.Point(128, 280);
       this.txtMyServer.Name = "txtMyServer";
       this.txtMyServer.Size = new System.Drawing.Size(144, 21);
       this.txtMyServer.TabIndex = 11;
-      this.txtMyServer.Text = "";
       this.txtMyServer.Visible = false;
       //
       // chkMyServer
       //
-      this.chkMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkMyServer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMyServer.Location = new System.Drawing.Point(16, 280);
       this.chkMyServer.Name = "chkMyServer";
+      this.chkMyServer.Size = new System.Drawing.Size(104, 24);
       this.chkMyServer.TabIndex = 10;
       this.chkMyServer.Text = "Server";
       this.chkMyServer.CheckedChanged += new System.EventHandler(this.chkMyServer_CheckedChanged);
       //
       // label2
       //
-      this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.Location = new System.Drawing.Point(8, 256);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(304, 23);
@@ -365,54 +367,56 @@ namespace KrakatauEPM
       //
       // txtMyUser
       //
-      this.txtMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtMyUser.Location = new System.Drawing.Point(128, 312);
       this.txtMyUser.Name = "txtMyUser";
       this.txtMyUser.Size = new System.Drawing.Size(96, 21);
       this.txtMyUser.TabIndex = 14;
-      this.txtMyUser.Text = "";
       this.txtMyUser.Visible = false;
       //
       // chkMyUser
       //
-      this.chkMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkMyUser.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMyUser.Location = new System.Drawing.Point(16, 312);
       this.chkMyUser.Name = "chkMyUser";
+      this.chkMyUser.Size = new System.Drawing.Size(104, 24);
       this.chkMyUser.TabIndex = 13;
       this.chkMyUser.Text = "Username";
       this.chkMyUser.CheckedChanged += new System.EventHandler(this.chkMyUser_CheckedChanged);
       //
       // txtMyPwd
       //
-      this.txtMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtMyPwd.Location = new System.Drawing.Point(128, 344);
       this.txtMyPwd.Name = "txtMyPwd";
       this.txtMyPwd.PasswordChar = '*';
       this.txtMyPwd.Size = new System.Drawing.Size(96, 21);
       this.txtMyPwd.TabIndex = 16;
-      this.txtMyPwd.Text = "";
+      this.txtMyPwd.UseSystemPasswordChar = true;
       this.txtMyPwd.Visible = false;
       //
       // chkMyPwd
       //
-      this.chkMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkMyPwd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMyPwd.Location = new System.Drawing.Point(16, 344);
       this.chkMyPwd.Name = "chkMyPwd";
+      this.chkMyPwd.Size = new System.Drawing.Size(104, 24);
       this.chkMyPwd.TabIndex = 15;
       this.chkMyPwd.Text = "Password";
       this.chkMyPwd.CheckedChanged += new System.EventHandler(this.chkMyPwd_CheckedChanged);
       //
       // label3
       //
-      this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.Location = new System.Drawing.Point(8, 8);
       this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(100, 23);
       this.label3.TabIndex = 17;
       this.label3.Text = "Projects";
       //
       // label4
       //
-      this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.Location = new System.Drawing.Point(16, 34);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(80, 16);
@@ -421,7 +425,7 @@ namespace KrakatauEPM
       //
       // label5
       //
-      this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label5.Location = new System.Drawing.Point(16, 66);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(80, 16);
@@ -436,7 +440,6 @@ namespace KrakatauEPM
       this.txtNewProj.Name = "txtNewProj";
       this.txtNewProj.Size = new System.Drawing.Size(264, 20);
       this.txtNewProj.TabIndex = 20;
-      this.txtNewProj.Text = "";
       //
       // txtOldProj
       //
@@ -446,23 +449,24 @@ namespace KrakatauEPM
       this.txtOldProj.Name = "txtOldProj";
       this.txtOldProj.Size = new System.Drawing.Size(264, 20);
       this.txtOldProj.TabIndex = 21;
-      this.txtOldProj.Text = "";
       //
       // cmdCancel
       //
       this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.cmdCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdCancel.Location = new System.Drawing.Point(440, 544);
       this.cmdCancel.Name = "cmdCancel";
+      this.cmdCancel.Size = new System.Drawing.Size(75, 23);
       this.cmdCancel.TabIndex = 22;
       this.cmdCancel.Text = "&Cancel";
       //
       // cmdOK
       //
       this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.cmdOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdOK.Location = new System.Drawing.Point(352, 544);
       this.cmdOK.Name = "cmdOK";
+      this.cmdOK.Size = new System.Drawing.Size(75, 23);
       this.cmdOK.TabIndex = 23;
       this.cmdOK.Text = "&OK";
       this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
@@ -477,25 +481,27 @@ namespace KrakatauEPM
       //
       // cmdParse
       //
-      this.cmdParse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmdParse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdParse.Location = new System.Drawing.Point(440, 344);
       this.cmdParse.Name = "cmdParse";
+      this.cmdParse.Size = new System.Drawing.Size(75, 23);
       this.cmdParse.TabIndex = 24;
       this.cmdParse.Text = "&Parse";
       this.cmdParse.Click += new System.EventHandler(this.cmdParse_Click);
       //
       // chkMetSet
       //
-      this.chkMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.chkMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMetSet.Location = new System.Drawing.Point(16, 224);
       this.chkMetSet.Name = "chkMetSet";
+      this.chkMetSet.Size = new System.Drawing.Size(104, 24);
       this.chkMetSet.TabIndex = 26;
       this.chkMetSet.Text = "Metric Set";
       this.chkMetSet.CheckedChanged += new System.EventHandler(this.chkMetSet_CheckedChanged);
       //
       // cmbMetSet
       //
-      this.cmbMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.cmbMetSet.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmbMetSet.Location = new System.Drawing.Point(128, 224);
       this.cmbMetSet.Name = "cmbMetSet";
       this.cmbMetSet.Size = new System.Drawing.Size(224, 21);
@@ -503,8 +509,8 @@ namespace KrakatauEPM
       //
       // lblHelp
       //
-      this.lblHelp.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(255)), ((System.Byte)(255)), ((System.Byte)(204)));
-      this.lblHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.lblHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(204)))));
+      this.lblHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblHelp.Location = new System.Drawing.Point(128, 120);
       this.lblHelp.Name = "lblHelp";
       this.lblHelp.Size = new System.Drawing.Size(360, 96);
@@ -516,6 +522,7 @@ namespace KrakatauEPM
       //
       this.AcceptButton = this.cmdParse;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+      this.CancelButton = this.cmdCancel;
       this.ClientSize = new System.Drawing.Size(528, 591);
       this.Controls.Add(this.cmbMetSet);
       this.Controls.Add(this.chkMetSet);
@@ -554,6 +561,7 @@ namespace KrakatauEPM
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Analyse";
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
     #endregion

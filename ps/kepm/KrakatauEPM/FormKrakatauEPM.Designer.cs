@@ -49,7 +49,6 @@ namespace KrakatauEPM
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKrakatauEPM));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this._stsMain = new System.Windows.Forms.StatusStrip();
-      this._lsvProjects = new KrakatauEPM.ProjectsView();
       this._imlProjects = new System.Windows.Forms.ImageList(this.components);
       this._mnsMain = new System.Windows.Forms.MenuStrip();
       this.mniFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +76,7 @@ namespace KrakatauEPM
       this._tsbSetAsNewProject = new System.Windows.Forms.ToolStripButton();
       this._tsbAnalyseProject = new System.Windows.Forms.ToolStripButton();
       this._ofdProj = new System.Windows.Forms.OpenFileDialog();
+      this._lsvProjects = new KrakatauEPM.ProjectsView();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -95,11 +95,11 @@ namespace KrakatauEPM
       // toolStripContainer1.ContentPanel
       //
       this.toolStripContainer1.ContentPanel.Controls.Add(this._lsvProjects);
-      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(558, 303);
+      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(558, 310);
       this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
       this.toolStripContainer1.Name = "toolStripContainer1";
-      this.toolStripContainer1.Size = new System.Drawing.Size(558, 388);
+      this.toolStripContainer1.Size = new System.Drawing.Size(558, 395);
       this.toolStripContainer1.TabIndex = 0;
       this.toolStripContainer1.Text = "toolStripContainer1";
       //
@@ -115,18 +115,6 @@ namespace KrakatauEPM
       this._stsMain.Name = "_stsMain";
       this._stsMain.Size = new System.Drawing.Size(558, 22);
       this._stsMain.TabIndex = 0;
-      //
-      // _lsvProjects
-      //
-      this._lsvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-      this._lsvProjects.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._lsvProjects.LargeImageList = this._imlProjects;
-      this._lsvProjects.Location = new System.Drawing.Point(0, 0);
-      this._lsvProjects.Name = "_lsvProjects";
-      this._lsvProjects.Size = new System.Drawing.Size(558, 303);
-      this._lsvProjects.TabIndex = 0;
-      this._lsvProjects.UseCompatibleStateImageBehavior = false;
-      this._lsvProjects.ItemActivate += new System.EventHandler(this._lsvProjects_ItemActivate);
       //
       // _imlProjects
       //
@@ -374,11 +362,23 @@ namespace KrakatauEPM
       //
       this._ofdProj.FileName = "openFileDialog1";
       //
+      // _lsvProjects
+      //
+      this._lsvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._lsvProjects.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._lsvProjects.LargeImageList = this._imlProjects;
+      this._lsvProjects.Location = new System.Drawing.Point(0, 0);
+      this._lsvProjects.Name = "_lsvProjects";
+      this._lsvProjects.Size = new System.Drawing.Size(558, 310);
+      this._lsvProjects.TabIndex = 0;
+      this._lsvProjects.UseCompatibleStateImageBehavior = false;
+      this._lsvProjects.ItemActivate += new System.EventHandler(this._lsvProjects_ItemActivate);
+      //
       // FormKrakatauEPM
       //
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(558, 388);
+      this.ClientSize = new System.Drawing.Size(558, 395);
       this.Controls.Add(this.toolStripContainer1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this._mnsMain;

@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  29-May-08   364 : Added Preferences.
+ * CAM  30-May-08   366 : Resized window.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace KrakatauEPM
@@ -82,7 +83,7 @@ namespace KrakatauEPM
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-      this._tlpPrefs.Size = new System.Drawing.Size(444, 232);
+      this._tlpPrefs.Size = new System.Drawing.Size(444, 239);
       this._tlpPrefs.TabIndex = 0;
       //
       // _lblHeadingMySQL
@@ -135,7 +136,7 @@ namespace KrakatauEPM
       this._flpButtons.Controls.Add(this._btnOK);
       this._flpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
       this._flpButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-      this._flpButtons.Location = new System.Drawing.Point(83, 202);
+      this._flpButtons.Location = new System.Drawing.Point(83, 209);
       this._flpButtons.Name = "_flpButtons";
       this._flpButtons.Size = new System.Drawing.Size(358, 27);
       this._flpButtons.TabIndex = 4;
@@ -211,7 +212,7 @@ namespace KrakatauEPM
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this._btnCancel;
-      this.ClientSize = new System.Drawing.Size(444, 232);
+      this.ClientSize = new System.Drawing.Size(444, 239);
       this.Controls.Add(this._tlpPrefs);
       this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

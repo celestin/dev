@@ -15,6 +15,7 @@
  *                        Remove old service of the same name before installing.
  *                        Wait for Service Remove/Install to complete before starting.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-May-08   365 : Only start the MySQL process if required.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef DB_HEADER
@@ -52,8 +53,7 @@ string getInstallDir() {
   return rval;
 }
 
-
-void startDatabase() {
+void startDatabase(bool start) {
   HANDLE pid;
   const int MAX_CMD = 4096;
   char cmdLine[MAX_CMD];
@@ -73,9 +73,12 @@ void startDatabase() {
   pid = createProcess(cmdLine, true);
   WaitForSingleObject(pid, TIME_TO_WAIT);
 
-  // Start the Service
-  pid = createProcess("net start EPMdb");
-  WaitForSingleObject(pid, TIME_TO_WAIT);
+  if (start)
+  {
+    // Start the Service
+    pid = createProcess("net start EPMdb");
+    WaitForSingleObject(pid, TIME_TO_WAIT);
+  }
 }
 
 void stopDatabase() {

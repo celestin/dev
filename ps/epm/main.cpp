@@ -67,6 +67,7 @@
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  24-Apr-08   359 : Version 1.16.003.
  * CAM  26-Apr-08   360 : Version 1.16.004.
+ * CAM  30-May-08   365 : Only start the MySQL process if required.  Version 1.16.005.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -941,7 +942,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.004\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.005\n"
        << "Copyright (c) 2004,2008 Powersoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
@@ -967,11 +968,13 @@ int main(int argc, char* argv[]) {
     initFileSource(i);
   }
 
-  if (bLocalDb) startDatabase();
+  if (bLocalDb) startDatabase(true);
 
   // Now connect to the current DB
   if (!createDatabase(servername, musername, mpassword, projname, nProjects)) {
     cerr << "There was a problem connecting to the database on server '" << servername << "'." << endl;
+    cerr << " * Username [" << musername << "]" << endl;
+    cerr << " * Password [" << mpassword << "]" << endl;
     return 1;
   }
 

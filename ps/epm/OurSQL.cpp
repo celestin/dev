@@ -11,6 +11,7 @@
  * CAM  20-Dec-04  File added.
  * CAM  13-Jan-05  Added theUser and thePass.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-May-08   365 : Improve error reporting.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -150,8 +151,8 @@ void OurSQL::connect()
 
   if (!mysql_real_connect(theConnection, theHost.c_str(), theUser.c_str(), thePass.c_str(), theDB.c_str(), 0, NULL, 0))
   {
-    //MasterData::theLog << "Failed to connect to database: Error: " <<
-    //    mysql_error(theConnection) << endl ;
+    cerr << "Failed to connect to database: Error: " <<
+        mysql_error(theConnection) << endl ;
   }
   else
     theConnected = true ;
@@ -312,8 +313,10 @@ bool OurSQL::executeResultlessQuery(char *query)
   if (!theConnected) return false ;
   theResultsAvailable = false ;
 
-  if (mysql_query(theConnection,query))
+  int error = mysql_query(theConnection,query);
+  if (error)
   {
+    cerr << "MySQL Error #[" << error << "]" << endl;
     return false ;  // Query failed
   }
 

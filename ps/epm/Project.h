@@ -32,6 +32,7 @@
  * CAM  19-Sep-06   117 : Added SLOC* metrics.
  * CAM  25-Oct-07   319 : Remove duplicate filenames during project creation.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-May-08   365 : Incorrect not null field in sourcefile.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -204,7 +205,7 @@ bool createDatabase(string serverName, string userName, string password,
 
   projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS project (projid int not null, pr_name varchar(255) binary not null, snap_date varchar(255) binary, base_dir varchar(255) NOT NULL, external_type char(3) NULL, external_source varchar(255) NULL, PRIMARY KEY (projid))");
 
-  projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS sourcefile (sfid int AUTO_INCREMENT not null, projid int not null, sf_name varchar(255) binary not null, sf_shortname varchar(255) NOT NULL, sf_type varchar(20) NOT NULL, sf_last_mod int unsigned not null, PRIMARY KEY (sfid), KEY PROJECT (projid), KEY SHORTNAME (sf_shortname))");
+  projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS sourcefile (sfid int AUTO_INCREMENT not null, projid int not null, sf_name varchar(255) binary not null, sf_shortname varchar(255) NOT NULL, sf_type varchar(20) NOT NULL, sf_last_mod int unsigned, PRIMARY KEY (sfid), KEY PROJECT (projid), KEY SHORTNAME (sf_shortname))");
   projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS sourcemetric (sfid int not null, mid int not null, mvalue double not null, PRIMARY KEY (sfid,mid))");
 
   projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS comparefile (sfid int not null, sfid2 int not null, status varchar(1) not null, PRIMARY KEY (sfid))");

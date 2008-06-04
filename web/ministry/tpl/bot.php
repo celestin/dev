@@ -17,11 +17,12 @@
  * CAM  29-Dec-2007  10211 : Version V0.07A.
  * CAM  02-Jan-2008  10206 : Version V0.08A.
  * CAM  18-May-2008  10267 : Version V0.09A.
+ * CAM  04-Jun-2008  10268 : Version V0.10A.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><a href="releases.php">V0.09A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><a href="releases.php">V0.10A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

@@ -13,6 +13,7 @@
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  08-Nov-2007  10200 : Added results_pageno.
  * CAM  18-Nov-2007  10205 : Added search_previous.
+ * CAM  04-Jun-2008  10268 : Added Latest Volumes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -35,5 +36,6 @@ $_SESSION['preview_page'] = "";
 $_SESSION['results_pageno'] = "";
 
 include 'tpl/newsearch.php';
+include 'tpl/latestvols.php';
 include 'tpl/bot.php';
 ?>

@@ -14,6 +14,7 @@
  * CAM  29-Dec-2007  10211 : Added highlight colours.
  * CAM  02-Jan-2008  10206 : Added Page (preview) classes.
  * CAM  11-May-2008  10263 : Improved Heading classes.
+ * CAM  04-Jun-2008  10268 : Added latestvols.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -36,6 +37,10 @@ h1, h2, h3, h4 {
   font-size: medium;
 }
 
+th {
+  background-color: #9cf;
+}
+  
 .topnav {
   background-color: #66B7E2;
   color: #0093D8;
@@ -55,6 +60,17 @@ h1, h2, h3, h4 {
 
 .blue {
   color: #0093D8;
+}
+
+#latestvols {
+  padding: 40px 0px 10px 10px;
+}
+
+#latestvols h3 {
+  FONT-FAMILY: Tahoma, Arial, Helvetica;
+  font-size: 11pt;
+  color: #120966;
+  font-weight: bold;
 }
 
 .resultsheader {

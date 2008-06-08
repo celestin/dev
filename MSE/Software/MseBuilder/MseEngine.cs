@@ -12,6 +12,7 @@
  * CAM  25-Nov-2007  10208 : Added newpages to SQL that is written to the loader file.
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
  * CAM  17-May-2008  10266 : Check for Errors during Build.
+ * CAM  08-Jun-2008  10269 : Don't just do an update on the export script: the volume may not exist - do a REPLACE including Title.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -132,7 +133,7 @@ namespace FrontBurner.Ministry.MseBuilder
               sw.WriteLine("\n-- REMOVE EXISTING VOLUME\n");
 
               // Empty existing data
-              sw.WriteLine(String.Format("UPDATE mse_volume SET added=now() WHERE author='{0}' AND vol={1};\n", vol.Author, vol.Vol));
+              sw.WriteLine(String.Format("REPLACE INTO mse_volume (author,vol,title,added) VALUES ('{0}', '{1}', '{2}', NOW());\n", vol.Author, vol.Vol, vol.Title));
               sw.WriteLine(String.Format("DELETE FROM mse_article WHERE author='{0}' AND vol={1};", vol.Author, vol.Vol));
               sw.WriteLine(String.Format("DELETE FROM mse_text WHERE author='{0}' AND vol={1};", vol.Author, vol.Vol));
               sw.WriteLine(String.Format("DELETE FROM mse_bible_ref WHERE author='{0}' AND vol={1};\n", vol.Author, vol.Vol));

@@ -13,6 +13,7 @@
  * CAM  24-Nov-2007  10208 : Write NewPages to mse_text.
  * CAM  25-Nov-2007  10208 : Added newpages to sql extraction in GetText.
  * CAM  11-May-2008  10264 : Added handling of error refs.
+ * CAM  08-Jun-2008  10269 : Update the local volume when deleting to see meaningful info on the home page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -456,6 +457,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public void DeleteVolume(Volume vol)
     {
+      this.ExecuteSql(String.Format("UPDATE mse_volume SET added=NOW() WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);

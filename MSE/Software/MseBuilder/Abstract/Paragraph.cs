@@ -12,6 +12,7 @@
  * CAM  24-Nov-2007  10214 : Consider '>' to be an acceptable end paragraph character (html markup).
  * CAM  12-May-2008  10265 : Save page continuations.
  * CAM  17-May-2008  10266 : Added AnyErrors.
+ * CAM  08-Jun-2008  10269 : Only include a new page marker if the abruptly ending paragraph was on a different physical page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -181,16 +182,21 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
     public void Augment(Paragraph previous)
     {
-      _pageNo = previous._pageNo;
-      _para = previous._para;
-      _localRow = previous._localRow;
-      _inits = previous._inits;
-
       foreach (int i in previous._newPages)
       {
         _newPages.Add(i);
       }
-      _newPages.Add(previous.Text.Length);
+
+      if (_pageNo != previous._pageNo)
+      {
+        // Only add a new page marker if the page has changed
+        _newPages.Add(previous.Text.Length);
+      }
+
+      _pageNo = previous._pageNo;
+      _para = previous._para;
+      _localRow = previous._localRow;
+      _inits = previous._inits;
 
       _text = string.Format("{0} {1}", previous.Text, this.Text);
 
@@ -203,6 +209,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     public bool EndsAbruptly(bool specialLine)
     {
       if (specialLine || (_text.Length == 0)) return false;
+
+      if (_text.EndsWith(".\"")) return false;  // A sentence can end with a period in a quotation
 
       char[] lastChar = _text.Substring(_text.Length - 1).ToCharArray();
       switch (lastChar[0])

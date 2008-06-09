@@ -1,0 +1,90 @@
+BODY {
+	FONT-SIZE: 11px; BACKGROUND: #171c20; MARGIN: 20px 0px 0px; COLOR: #bed7e6; LINE-HEIGHT: 16px; FONT-FAMILY: Tahoma, Arial
+}
+A {
+	COLOR: #018bc1
+}
+A:hover {
+	TEXT-DECORATION: none
+}
+#header {
+	
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; COLOR: #fff; PADDING-TOP: 10px; TEXT-ALIGN: center
+}
+#logo A {
+	FONT-WEIGHT: bold; FONT-SIZE: 24px; TEXT-TRANSFORM: uppercase; COLOR: #fff; TEXT-DECORATION: none
+}
+#menu {
+	MARGIN-BOTTOM: 62px; COLOR: #fff; TEXT-ALIGN: center
+}
+#menu UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; TEXT-ALIGN: center
+}
+#menu UL LI {
+	DISPLAY: inline
+}
+#menu UL A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; COLOR: #fff; PADDING-TOP: 0px; BACKGROUND-COLOR: #445d6c; TEXT-DECORATION: none
+}
+#menu UL A:hover {
+	BACKGROUND-COLOR: #f26513
+}
+#main {
+	
+}
+#content {
+	MARGIN: 0px auto; WIDTH: 780px
+}
+#text {
+	WIDTH: 520px
+}
+#text P {
+	MARGIN: 7px 0px
+}
+#text LI {
+	
+}
+#sidebar {
+	FLOAT: right; MARGIN: 10px 10px 0px 0px; WIDTH: 227px; BACKGROUND-COLOR: #0b0e10
+}
+#sidebar_top {
+	WIDTH: 227px; HEIGHT: 40px
+}
+#sidebar_text {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 30px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#sidebar_text P {
+	MARGIN: 5px 0px
+}
+#sidebar_bottom {
+	WIDTH: 227px; HEIGHT: 57px
+}
+#sidebar H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 13px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; MARGIN: 20px 0px 0px; TEXT-TRANSFORM: uppercase; COLOR: #fff; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-LEFT: 45px; FONT-SIZE: 24px; MARGIN: 30px 0px 0px; TEXT-TRANSFORM: uppercase; COLOR: #fff; LINE-HEIGHT: normal
+}
+#footer {
+	CLEAR: both; MARGIN: 0px auto; WIDTH: 780px; HEIGHT: 102px
+}
+#left_footer {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 30px; FONT-SIZE: 12px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #fff; PADDING-TOP: 60px
+}
+#left_footer A {
+	COLOR: #fff
+}
+#left_footer A:hover {
+	TEXT-DECORATION: none
+}
+#right_footer {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 0px; FONT-SIZE: 12px; FLOAT: right; PADDING-BOTTOM: 0px; COLOR: #fff; PADDING-TOP: 60px; TEXT-ALIGN: right
+}
+#right_footer A {
+	COLOR: #fff
+}
+#right_footer A:hover {
+	TEXT-DECORATION: none
+}

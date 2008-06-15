@@ -10,6 +10,7 @@
  * CAM  22-Oct-2007  10189 : Catch all initials, and tidy them up appropriately.
  * CAM  24-Nov-2007  10188 : Remember the current Article and assign to each new paragraph within.
  * CAM  17-May-2008  10266 : Check for Errors during Parse.
+ * CAM  15-Jun-2008  10271 : Handle Footnotes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -123,6 +124,7 @@ namespace FrontBurner.Ministry.MseBuilder
       int rows = 0;
       int cb = 0;
       int pageNo = 0;
+      int calcPageNo = 0;
       int para = 0;
       int initStart = 0;
       int initFinish = 0;
@@ -132,6 +134,7 @@ namespace FrontBurner.Ministry.MseBuilder
       bool anyErrors = false;
       Paragraph paraPrevious = null;
       Paragraph paraCurrent = null;
+      Paragraph paraFootnotes = null;
       Article art = null;
 
       while ((buffer = sr.ReadLine()) != null)
@@ -149,7 +152,11 @@ namespace FrontBurner.Ministry.MseBuilder
           scriptures = true;
         }
 
-        if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#")))
+        if (buffer.Length == 0)
+        {
+          // Ignore empty rows
+        }
+        else if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#")))
         {
           if (buffer.Substring(0, 2).Equals("{*"))
           {
@@ -173,6 +180,29 @@ namespace FrontBurner.Ministry.MseBuilder
         else
         {
           para++;
+          calcPageNo = pageNo;
+
+          if ((buffer.Length >= 5) && buffer.Substring(0, 5).Equals("<span"))
+          {
+            // Footnote, add to the previous paragraph
+            // (which is paraCurrent because its not reset until below)
+            if ((paraFootnotes == null) && (paraCurrent != null))
+            {
+              paraFootnotes = paraCurrent;
+            }
+            paraFootnotes.Footnotes.Add(buffer);
+            calcPageNo = paraFootnotes.PageNo;
+            para = paraFootnotes.NextParaNo;
+          }
+          else
+          {
+            // Not a footnote - close off the previous paragraph and reset paragraph counter
+            if (paraFootnotes != null)
+            {
+              if (pageNo != paraFootnotes.PageNo) para = 1; // reset paragraph counter if we have changed page
+              paraFootnotes = null;
+            }
+          }
 
           inits = null;
 
@@ -182,7 +212,7 @@ namespace FrontBurner.Ministry.MseBuilder
             buffer = buffer.Substring(initFinish, buffer.Length - initFinish).Trim();
           }
 
-          paraCurrent = new Paragraph(_vol, pageNo, para, rows, inits, buffer);
+          paraCurrent = new Paragraph(_vol, calcPageNo, para, rows, inits, buffer);
           if (paraCurrent.AnyErrors) anyErrors = true;
 
           prevTitle = false;

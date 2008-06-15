@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2008 frontburner.co.uk
  *
  * Bottom of the page
  *
@@ -18,11 +18,12 @@
  * CAM  02-Jan-2008  10206 : Version V0.08A.
  * CAM  18-May-2008  10267 : Version V0.09A.
  * CAM  04-Jun-2008  10268 : Version V0.10A.
+ * CAM  15-Jun-2008  10272 : Version V0.11A.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><a href="releases.php">V0.10A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><a href="releases.php">V0.11A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

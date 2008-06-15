@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2008 frontburner.co.uk
  *
  * Page Preview Pane
  *
@@ -12,6 +12,7 @@
  * CAM  24-Nov-2007  10210 : Indicate in the Preview Pane where a new page occurs in the physical volume.
  * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
  * CAM  02-Jan-2008  10206 : Added Page Controls.
+ * CAM  15-Jun-2008  10272 : Added footnote class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once('functions.php');
@@ -79,7 +80,6 @@ if (!empty($bookid) && !empty($chapter)) {
   $sqlFactory->setBookRef($bookid, $chapter, $vstart);
 }
 
-
 if (!empty($preview_author)) {
   count_vol_pages($preview_author, $preview_vol);
 
@@ -116,8 +116,14 @@ if (!empty($preview_author)) {
     $newtext = f_highlight_text($newtext, $sqlFactory);
 
     if (empty($row[0])) $row[0] = "<img src=\"img/f.gif\" border=0 width=0 height=0>";
-
-    echo "<tr><td valign=top><b>" . $row[0] . "</b></td><td>" . $newtext . "</td></tr>";
+    
+    $className = "";
+    if (substr($row[1],0,5) === "<span") {
+      $className = "fn";
+    }
+?><tr><td valign=top><b><? echo $row[0];  ?></b></td><td<? 
+  if (!empty($className)) echo " class=\"$className\"";
+?>><? echo $newtext; ?></td></tr><?
   }
 
 ?></table><div align="center" style="padding-top:10px;">

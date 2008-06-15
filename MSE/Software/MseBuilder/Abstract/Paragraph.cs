@@ -14,6 +14,7 @@
  * CAM  17-May-2008  10266 : Added AnyErrors.
  * CAM  08-Jun-2008  10269 : Only include a new page marker if the abruptly ending paragraph was on a different physical page.
  * CAM  15-Jun-2008  10271 : Added Footnotes.
+ * CAM  15-Jun-2008  10271 : Consider '"' to be an acceptable end paragraph character (end quote).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -239,6 +240,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         case '!':
         case '?':
         case '>':
+        case '"':
+        case '*': // footnote marker
           return false;
 
         // The following are not strictly the end of a sentence,
@@ -248,9 +251,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         case ';':
         case ':':
         case ')':
-          return false;
-
-        case '*': // footnote marker
           return false;
       }
       return true;

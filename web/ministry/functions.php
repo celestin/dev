@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2006-2007 Southesk.com
+ * Copyright (c) 2006,2008 Southesk.com
  *
  * $Id$
  *
@@ -12,6 +12,7 @@
  * CAM  12-Nov-2007  10203 : Fixed onclick bug.
  * CAM  18-Nov-2007  10205 : Added f_search_parameter_string - will be used for favourites eventually but initially to determine new search.
  * CAM  29-Dec-2007  10211 : Improved the highlight function and removed redundant code.
+ * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -122,7 +123,7 @@ function f_highlight_text($text, &$sqlFactory, $abbrev=false) {
       while ($p !== FALSE && ($cntr < 10)) {
         $len = strlen($atoms[$i]);
         $rlen = strlen($rval); // remember the current length
-        $rval = substr($rval, 0, $p) . "<span class=\"hilight$i\">" . substr($rval, $p, $len) . "</span>" . substr($rval, $p+$len);
+        $rval = substr($rval, 0, $p) . "<span class=\"hlght$i\">" . substr($rval, $p, $len) . "</span>" . substr($rval, $p+$len);
         $p = stripos($rval, $atoms[$i], $p+$len+(strlen($rval)-$rlen+1));
       }
     }

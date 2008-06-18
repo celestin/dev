@@ -16,6 +16,7 @@
  * CAM  11-May-2008  10263 : Improved Heading classes.
  * CAM  04-Jun-2008  10268 : Added latestvols.
  * CAM  15-Jun-2008  10272 : Added fn for footnotes (and white background on rh).
+ * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -518,9 +519,9 @@ input.authorbuttonhover {
 
 /** Highlight Search Colours */
 
-.hilight0 { background-color: #FFFF99; }
-.hilight1 { background-color: #FF99FF; }
-.hilight2 { background-color: #99FFFF; }
-.hilight3 { background-color: #99FF99; }
-.hilight4 { background-color: #FF9999; }
-.hilight5 { background-color: #9999FF; }
+.hlght0 { background-color: #FFFF99; }
+.hlght1 { background-color: #FF99FF; }
+.hlght2 { background-color: #99FFFF; }
+.hlght3 { background-color: #99FF99; }
+.hlght4 { background-color: #FF9999; }
+.hlght5 { background-color: #9999FF; }

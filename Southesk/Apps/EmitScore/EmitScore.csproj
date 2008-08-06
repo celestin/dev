@@ -167,17 +167,18 @@
     <Content Include="Data\EmitScore.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="img\ico\compass.ico" />
+    <Content Include="img\ico\component.ico" />
+    <Content Include="img\ico\flag_blue.ico" />
+    <Content Include="img\ico\users4.ico" />
+    <Content Include="img\ico\wrench.ico" />
     <None Include="img\menu\wrench.png" />
     <None Include="img\menu\flag_blue.png" />
     <None Include="img\tb\flag_blue.png" />
-    <None Include="img\toolbar\exit.png" />
     <None Include="img\tb\exit.png" />
     <None Include="img\tb\compass.png" />
     <None Include="img\tb\component.png" />
     <None Include="img\tb\users4.png" />
-    <None Include="img\toolbar\users4.png" />
-    <None Include="img\toolbar\component.png" />
-    <None Include="img\toolbar\compass.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

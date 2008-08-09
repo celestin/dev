@@ -14,9 +14,18 @@ namespace Southesk.Apps.EmitScore
     [STAThread]
     static void Main()
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new FrmMain());
+      try
+      {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new FrmMain());
+      }
+      catch (Exception e)
+      {
+        MessageBox.Show(String.Format("{0}\n\n{1}",
+          e.Message, e.StackTrace), "Error during EmitScore",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
   }
 }

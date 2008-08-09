@@ -56,11 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\EmitScoreDataSet.cs">
+      <DependentUpon>EmitScoreDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Data\EmitScoreDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmitScoreDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\LocationItem.cs" />
+    <Compile Include="Emit\BadgeData.cs" />
+    <Compile Include="Emit\Swipe.cs" />
     <Compile Include="Forms\FrmCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +99,12 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="EmitScore.cs" />
+    <Compile Include="Forms\FrmNewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNewGroup.Designer.cs">
+      <DependentUpon>FrmNewGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmCategories.resx">
       <DependentUpon>FrmCategories.cs</DependentUpon>
@@ -111,6 +124,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNewGroup.resx">
+      <DependentUpon>FrmNewGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

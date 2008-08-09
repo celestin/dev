@@ -17,8 +17,10 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmGroups_Load(object sender, EventArgs e)
     {
-      this.categoryTableAdapter.Fill(this.emitScoreDataSet.Category);
-      this.groupTableAdapter.Fill(this.emitScoreDataSet.Group);
+      // TODO: This line of code loads data into the 'emitScoreDataSet.Team' table. You can move, or remove it, as needed.
+      this.teamTableAdapter.Fill(this._dataSet.Team);
+      this.categoryTableAdapter.Fill(this._dataSet.Category);
+      this.groupTableAdapter.Fill(this._dataSet.Group);
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmGroups_FormClosing(object sender, FormClosingEventArgs e)
     {
-      groupTableAdapter.Update(emitScoreDataSet.Group);
+      groupTableAdapter.Update(_dataSet.Group);
     }
   }
 }

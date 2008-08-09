@@ -32,24 +32,28 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGroups));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this._dgvGroups = new System.Windows.Forms.DataGridView();
-      this.bdsCategory = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
-      this.bdsGroup = new System.Windows.Forms.BindingSource(this.components);
+      this._bdsCategory = new System.Windows.Forms.BindingSource(this.components);
+      this._dataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this._bdsGroup = new System.Windows.Forms.BindingSource(this.components);
       this._tspMain = new System.Windows.Forms.ToolStrip();
+      this._tsbExit = new System.Windows.Forms.ToolStripButton();
       this.groupTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter();
       this.categoryTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
-      this._tsbExit = new System.Windows.Forms.ToolStripButton();
+      this._bdsTeam = new System.Windows.Forms.BindingSource(this.components);
+      this.teamTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter();
       this.groupIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.TeamId = new System.Windows.Forms.DataGridViewComboBoxColumn();
       this.groupNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this._dgvGroups)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsCategory)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsGroup)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsCategory)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dataSet)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).BeginInit();
       this._tspMain.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsTeam)).BeginInit();
       this.SuspendLayout();
       // 
       // toolStripContainer1
@@ -77,29 +81,30 @@
       this._dgvGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this._dgvGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupIdDataGridViewTextBoxColumn,
+            this.TeamId,
             this.groupNameDataGridViewTextBoxColumn,
             this.categoryIdDataGridViewTextBoxColumn});
-      this._dgvGroups.DataSource = this.bdsGroup;
+      this._dgvGroups.DataSource = this._bdsGroup;
       this._dgvGroups.Dock = System.Windows.Forms.DockStyle.Fill;
       this._dgvGroups.Location = new System.Drawing.Point(0, 0);
       this._dgvGroups.Name = "_dgvGroups";
       this._dgvGroups.Size = new System.Drawing.Size(598, 251);
       this._dgvGroups.TabIndex = 0;
       // 
-      // bdsCategory
+      // _bdsCategory
       // 
-      this.bdsCategory.DataMember = "Category";
-      this.bdsCategory.DataSource = this.emitScoreDataSet;
+      this._bdsCategory.DataMember = "Category";
+      this._bdsCategory.DataSource = this._dataSet;
       // 
-      // emitScoreDataSet
+      // _dataSet
       // 
-      this.emitScoreDataSet.DataSetName = "EmitScoreDataSet";
-      this.emitScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+      this._dataSet.DataSetName = "EmitScoreDataSet";
+      this._dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
       // 
-      // bdsGroup
+      // _bdsGroup
       // 
-      this.bdsGroup.DataMember = "Group";
-      this.bdsGroup.DataSource = this.emitScoreDataSet;
+      this._bdsGroup.DataMember = "Group";
+      this._bdsGroup.DataSource = this._dataSet;
       // 
       // _tspMain
       // 
@@ -112,14 +117,6 @@
       this._tspMain.Size = new System.Drawing.Size(64, 55);
       this._tspMain.TabIndex = 0;
       // 
-      // groupTableAdapter
-      // 
-      this.groupTableAdapter.ClearBeforeFill = true;
-      // 
-      // categoryTableAdapter
-      // 
-      this.categoryTableAdapter.ClearBeforeFill = true;
-      // 
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -130,11 +127,38 @@
       this._tsbExit.Text = "toolStripButton1";
       this._tsbExit.Click += new System.EventHandler(this._tsbExit_Click);
       // 
+      // groupTableAdapter
+      // 
+      this.groupTableAdapter.ClearBeforeFill = true;
+      // 
+      // categoryTableAdapter
+      // 
+      this.categoryTableAdapter.ClearBeforeFill = true;
+      // 
+      // _bdsTeam
+      // 
+      this._bdsTeam.DataMember = "Team";
+      this._bdsTeam.DataSource = this._dataSet;
+      // 
+      // teamTableAdapter
+      // 
+      this.teamTableAdapter.ClearBeforeFill = true;
+      // 
       // groupIdDataGridViewTextBoxColumn
       // 
       this.groupIdDataGridViewTextBoxColumn.DataPropertyName = "GroupId";
       this.groupIdDataGridViewTextBoxColumn.HeaderText = "Group";
       this.groupIdDataGridViewTextBoxColumn.Name = "groupIdDataGridViewTextBoxColumn";
+      // 
+      // TeamId
+      // 
+      this.TeamId.DataPropertyName = "TeamId";
+      this.TeamId.DataSource = this._bdsTeam;
+      this.TeamId.DisplayMember = "TeamName";
+      this.TeamId.HeaderText = "Team";
+      this.TeamId.Name = "TeamId";
+      this.TeamId.ValueMember = "TeamId";
+      this.TeamId.Width = 150;
       // 
       // groupNameDataGridViewTextBoxColumn
       // 
@@ -146,7 +170,7 @@
       // categoryIdDataGridViewTextBoxColumn
       // 
       this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
-      this.categoryIdDataGridViewTextBoxColumn.DataSource = this.bdsCategory;
+      this.categoryIdDataGridViewTextBoxColumn.DataSource = this._bdsCategory;
       this.categoryIdDataGridViewTextBoxColumn.DisplayMember = "CategoryName";
       this.categoryIdDataGridViewTextBoxColumn.HeaderText = "Category";
       this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
@@ -171,11 +195,12 @@
       this.toolStripContainer1.ResumeLayout(false);
       this.toolStripContainer1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this._dgvGroups)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsCategory)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsGroup)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsCategory)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dataSet)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).EndInit();
       this._tspMain.ResumeLayout(false);
       this._tspMain.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsTeam)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -184,14 +209,17 @@
 
     private System.Windows.Forms.ToolStripContainer toolStripContainer1;
     private System.Windows.Forms.ToolStrip _tspMain;
-    private System.Windows.Forms.BindingSource bdsGroup;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
+    private System.Windows.Forms.BindingSource _bdsGroup;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet _dataSet;
     private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
     private System.Windows.Forms.DataGridView _dgvGroups;
-    private System.Windows.Forms.BindingSource bdsCategory;
+    private System.Windows.Forms.BindingSource _bdsCategory;
     private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
     private System.Windows.Forms.ToolStripButton _tsbExit;
+    private System.Windows.Forms.BindingSource _bdsTeam;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter teamTableAdapter;
     private System.Windows.Forms.DataGridViewTextBoxColumn groupIdDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewComboBoxColumn TeamId;
     private System.Windows.Forms.DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewComboBoxColumn categoryIdDataGridViewTextBoxColumn;
   }

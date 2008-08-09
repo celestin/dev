@@ -32,48 +32,54 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
       this._emitReader = new AxEmitEpt.AxEptReading();
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this._stsMain = new System.Windows.Forms.StatusStrip();
       this._sslRegister = new System.Windows.Forms.ToolStripStatusLabel();
       this._sslRace = new System.Windows.Forms.ToolStripStatusLabel();
       this._btnRace = new System.Windows.Forms.Button();
       this._btnRegister = new System.Windows.Forms.Button();
-      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+      this._mnsMain = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mniFileNew = new System.Windows.Forms.ToolStripMenuItem();
       this.mniFileSave = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+      this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
       this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniComPort = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.mniLocations = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-      this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+      this.mniCategories = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniGroups = new System.Windows.Forms.ToolStripMenuItem();
+      this._tspMain = new System.Windows.Forms.ToolStrip();
+      this.tsbExit = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+      this._tsbLocations = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+      this._tsbCategories = new System.Windows.Forms.ToolStripButton();
+      this._tsbGroups = new System.Windows.Forms.ToolStripButton();
       this._tmrStatus = new System.Windows.Forms.Timer(this.components);
-      this.bdsGroup = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this._bdsGroup = new System.Windows.Forms.BindingSource(this.components);
+      this._dataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
       this.groupTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter();
       this._bdsConfig = new System.Windows.Forms.BindingSource(this.components);
       this.configTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter();
-      this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniComPort = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniLocations = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniCategories = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniGroups = new System.Windows.Forms.ToolStripMenuItem();
-      this.tsbExit = new System.Windows.Forms.ToolStripButton();
-      this._tsbLocations = new System.Windows.Forms.ToolStripButton();
-      this._tsbCategories = new System.Windows.Forms.ToolStripButton();
-      this._tsbGroups = new System.Windows.Forms.ToolStripButton();
+      this._bdsDefaultCategory = new System.Windows.Forms.BindingSource(this.components);
+      this.categoryTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
+      this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
+      this.groupResultTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter();
+      this.teamResultsTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamResultsTableAdapter();
       ((System.ComponentModel.ISupportInitialize)(this._emitReader)).BeginInit();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
-      this.statusStrip1.SuspendLayout();
-      this.menuStrip1.SuspendLayout();
-      this.toolStrip1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsGroup)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).BeginInit();
+      this._stsMain.SuspendLayout();
+      this._mnsMain.SuspendLayout();
+      this._tspMain.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dataSet)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsConfig)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsDefaultCategory)).BeginInit();
       this.SuspendLayout();
       // 
       // _emitReader
@@ -91,7 +97,7 @@
       // 
       // toolStripContainer1.BottomToolStripPanel
       // 
-      this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
+      this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this._stsMain);
       // 
       // toolStripContainer1.ContentPanel
       // 
@@ -108,31 +114,31 @@
       // 
       // toolStripContainer1.TopToolStripPanel
       // 
-      this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
-      this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+      this.toolStripContainer1.TopToolStripPanel.Controls.Add(this._mnsMain);
+      this.toolStripContainer1.TopToolStripPanel.Controls.Add(this._tspMain);
       // 
-      // statusStrip1
+      // _stsMain
       // 
-      this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-      this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this._stsMain.Dock = System.Windows.Forms.DockStyle.None;
+      this._stsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._sslRegister,
             this._sslRace});
-      this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-      this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Size = new System.Drawing.Size(393, 22);
-      this.statusStrip1.TabIndex = 0;
+      this._stsMain.Location = new System.Drawing.Point(0, 0);
+      this._stsMain.Name = "_stsMain";
+      this._stsMain.Size = new System.Drawing.Size(393, 22);
+      this._stsMain.TabIndex = 0;
       // 
       // _sslRegister
       // 
       this._sslRegister.Name = "_sslRegister";
-      this._sslRegister.Size = new System.Drawing.Size(189, 17);
+      this._sslRegister.Size = new System.Drawing.Size(173, 17);
       this._sslRegister.Spring = true;
       this._sslRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // _sslRace
       // 
       this._sslRace.Name = "_sslRace";
-      this._sslRace.Size = new System.Drawing.Size(189, 17);
+      this._sslRace.Size = new System.Drawing.Size(173, 17);
       this._sslRace.Spring = true;
       this._sslRace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
@@ -158,17 +164,17 @@
       this._btnRegister.UseVisualStyleBackColor = true;
       this._btnRegister.Click += new System.EventHandler(this._btnRegister_Click);
       // 
-      // menuStrip1
+      // _mnsMain
       // 
-      this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this._mnsMain.Dock = System.Windows.Forms.DockStyle.None;
+      this._mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.configureToolStripMenuItem});
-      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(393, 24);
-      this.menuStrip1.TabIndex = 0;
-      this.menuStrip1.Text = "menuStrip1";
+      this._mnsMain.Location = new System.Drawing.Point(0, 0);
+      this._mnsMain.Name = "_mnsMain";
+      this._mnsMain.Size = new System.Drawing.Size(393, 24);
+      this._mnsMain.TabIndex = 0;
+      this._mnsMain.Text = "menuStrip1";
       // 
       // fileToolStripMenuItem
       // 
@@ -199,6 +205,14 @@
       this.toolStripSeparator3.Name = "toolStripSeparator3";
       this.toolStripSeparator3.Size = new System.Drawing.Size(106, 6);
       // 
+      // mniExit
+      // 
+      this.mniExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitSmall;
+      this.mniExit.Name = "mniExit";
+      this.mniExit.Size = new System.Drawing.Size(109, 22);
+      this.mniExit.Text = "E&xit";
+      this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
+      // 
       // configureToolStripMenuItem
       // 
       this.configureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -212,100 +226,37 @@
       this.configureToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
       this.configureToolStripMenuItem.Text = "&Configure";
       // 
-      // toolStripSeparator2
-      // 
-      this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-      // 
-      // toolStripSeparator1
-      // 
-      this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-      // 
-      // toolStrip1
-      // 
-      this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-      this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-      this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbExit,
-            this.toolStripSeparator4,
-            this._tsbLocations,
-            this.toolStripSeparator5,
-            this._tsbCategories,
-            this._tsbGroups});
-      this.toolStrip1.Location = new System.Drawing.Point(3, 24);
-      this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new System.Drawing.Size(263, 55);
-      this.toolStrip1.TabIndex = 1;
-      // 
-      // toolStripSeparator4
-      // 
-      this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(6, 55);
-      // 
-      // toolStripSeparator5
-      // 
-      this.toolStripSeparator5.Name = "toolStripSeparator5";
-      this.toolStripSeparator5.Size = new System.Drawing.Size(6, 55);
-      // 
-      // _tmrStatus
-      // 
-      this._tmrStatus.Enabled = true;
-      this._tmrStatus.Interval = 5000;
-      this._tmrStatus.Tick += new System.EventHandler(this._tmrStatus_Tick);
-      // 
-      // bdsGroup
-      // 
-      this.bdsGroup.DataMember = "Group";
-      this.bdsGroup.DataSource = this.emitScoreDataSet;
-      // 
-      // emitScoreDataSet
-      // 
-      this.emitScoreDataSet.DataSetName = "EmitScoreDataSet";
-      this.emitScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-      // 
-      // groupTableAdapter
-      // 
-      this.groupTableAdapter.ClearBeforeFill = true;
-      // 
-      // _bdsConfig
-      // 
-      this._bdsConfig.DataMember = "Config";
-      this._bdsConfig.DataSource = this.emitScoreDataSet;
-      // 
-      // configTableAdapter
-      // 
-      this.configTableAdapter.ClearBeforeFill = true;
-      // 
-      // mniExit
-      // 
-      this.mniExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitSmall;
-      this.mniExit.Name = "mniExit";
-      this.mniExit.Size = new System.Drawing.Size(109, 22);
-      this.mniExit.Text = "E&xit";
-      this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
-      // 
       // mniComPort
       // 
       this.mniComPort.Image = global::Southesk.Apps.EmitScore.Properties.Resources.wrench;
       this.mniComPort.Name = "mniComPort";
-      this.mniComPort.Size = new System.Drawing.Size(152, 22);
+      this.mniComPort.Size = new System.Drawing.Size(149, 22);
       this.mniComPort.Text = "COM &Port...";
       this.mniComPort.Click += new System.EventHandler(this.mniComPort_Click);
+      // 
+      // toolStripSeparator2
+      // 
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
       // 
       // mniLocations
       // 
       this.mniLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationSmall;
       this.mniLocations.Name = "mniLocations";
-      this.mniLocations.Size = new System.Drawing.Size(152, 22);
+      this.mniLocations.Size = new System.Drawing.Size(149, 22);
       this.mniLocations.Text = "&Locations...";
       this.mniLocations.Click += new System.EventHandler(this.mniLocations_Click);
+      // 
+      // toolStripSeparator1
+      // 
+      this.toolStripSeparator1.Name = "toolStripSeparator1";
+      this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
       // 
       // mniCategories
       // 
       this.mniCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategorySmall;
       this.mniCategories.Name = "mniCategories";
-      this.mniCategories.Size = new System.Drawing.Size(152, 22);
+      this.mniCategories.Size = new System.Drawing.Size(149, 22);
       this.mniCategories.Text = "&Categories...";
       this.mniCategories.Click += new System.EventHandler(this.mniCategories_Click);
       // 
@@ -313,9 +264,25 @@
       // 
       this.mniGroups.Image = global::Southesk.Apps.EmitScore.Properties.Resources.GroupSmall;
       this.mniGroups.Name = "mniGroups";
-      this.mniGroups.Size = new System.Drawing.Size(152, 22);
+      this.mniGroups.Size = new System.Drawing.Size(149, 22);
       this.mniGroups.Text = "&Groups...";
       this.mniGroups.Click += new System.EventHandler(this.mniGroups_Click);
+      // 
+      // _tspMain
+      // 
+      this._tspMain.Dock = System.Windows.Forms.DockStyle.None;
+      this._tspMain.ImageScalingSize = new System.Drawing.Size(48, 48);
+      this._tspMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbExit,
+            this.toolStripSeparator4,
+            this._tsbLocations,
+            this.toolStripSeparator5,
+            this._tsbCategories,
+            this._tsbGroups});
+      this._tspMain.Location = new System.Drawing.Point(3, 24);
+      this._tspMain.Name = "_tspMain";
+      this._tspMain.Size = new System.Drawing.Size(232, 55);
+      this._tspMain.TabIndex = 1;
       // 
       // tsbExit
       // 
@@ -327,6 +294,11 @@
       this.tsbExit.Text = "Exit";
       this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
       // 
+      // toolStripSeparator4
+      // 
+      this.toolStripSeparator4.Name = "toolStripSeparator4";
+      this.toolStripSeparator4.Size = new System.Drawing.Size(6, 55);
+      // 
       // _tsbLocations
       // 
       this._tsbLocations.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -336,6 +308,11 @@
       this._tsbLocations.Size = new System.Drawing.Size(52, 52);
       this._tsbLocations.Text = "Edit Locations";
       this._tsbLocations.Click += new System.EventHandler(this._tsbLocations_Click);
+      // 
+      // toolStripSeparator5
+      // 
+      this.toolStripSeparator5.Name = "toolStripSeparator5";
+      this.toolStripSeparator5.Size = new System.Drawing.Size(6, 55);
       // 
       // _tsbCategories
       // 
@@ -357,6 +334,56 @@
       this._tsbGroups.Text = "Edit Groups";
       this._tsbGroups.Click += new System.EventHandler(this.tsbGroups_Click);
       // 
+      // _tmrStatus
+      // 
+      this._tmrStatus.Enabled = true;
+      this._tmrStatus.Interval = 5000;
+      this._tmrStatus.Tick += new System.EventHandler(this._tmrStatus_Tick);
+      // 
+      // _bdsGroup
+      // 
+      this._bdsGroup.DataMember = "Group";
+      this._bdsGroup.DataSource = this._dataSet;
+      // 
+      // _dataSet
+      // 
+      this._dataSet.DataSetName = "EmitScoreDataSet";
+      this._dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+      // 
+      // groupTableAdapter
+      // 
+      this.groupTableAdapter.ClearBeforeFill = true;
+      // 
+      // _bdsConfig
+      // 
+      this._bdsConfig.DataMember = "Config";
+      this._bdsConfig.DataSource = this._dataSet;
+      // 
+      // configTableAdapter
+      // 
+      this.configTableAdapter.ClearBeforeFill = true;
+      // 
+      // _bdsDefaultCategory
+      // 
+      this._bdsDefaultCategory.DataMember = "Category";
+      this._bdsDefaultCategory.DataSource = this._dataSet;
+      // 
+      // categoryTableAdapter
+      // 
+      this.categoryTableAdapter.ClearBeforeFill = true;
+      // 
+      // locationTableAdapter
+      // 
+      this.locationTableAdapter.ClearBeforeFill = true;
+      // 
+      // groupResultTableAdapter
+      // 
+      this.groupResultTableAdapter.ClearBeforeFill = true;
+      // 
+      // teamResultsTableAdapter
+      // 
+      this.teamResultsTableAdapter.ClearBeforeFill = true;
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +391,7 @@
       this.ClientSize = new System.Drawing.Size(393, 243);
       this.Controls.Add(this.toolStripContainer1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.MainMenuStrip = this.menuStrip1;
+      this.MainMenuStrip = this._mnsMain;
       this.Name = "FrmMain";
       this.Text = "Emit Scoring";
       this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -376,15 +403,16 @@
       this.toolStripContainer1.TopToolStripPanel.PerformLayout();
       this.toolStripContainer1.ResumeLayout(false);
       this.toolStripContainer1.PerformLayout();
-      this.statusStrip1.ResumeLayout(false);
-      this.statusStrip1.PerformLayout();
-      this.menuStrip1.ResumeLayout(false);
-      this.menuStrip1.PerformLayout();
-      this.toolStrip1.ResumeLayout(false);
-      this.toolStrip1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.bdsGroup)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).EndInit();
+      this._stsMain.ResumeLayout(false);
+      this._stsMain.PerformLayout();
+      this._mnsMain.ResumeLayout(false);
+      this._mnsMain.PerformLayout();
+      this._tspMain.ResumeLayout(false);
+      this._tspMain.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dataSet)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsConfig)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsDefaultCategory)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -393,7 +421,7 @@
 
     private AxEmitEpt.AxEptReading _emitReader;
     private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-    private System.Windows.Forms.MenuStrip menuStrip1;
+    private System.Windows.Forms.MenuStrip _mnsMain;
     private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem mniExit;
     private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
@@ -401,10 +429,10 @@
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripMenuItem mniCategories;
     private System.Windows.Forms.ToolStripMenuItem mniGroups;
-    private System.Windows.Forms.ToolStrip toolStrip1;
+    private System.Windows.Forms.ToolStrip _tspMain;
     private System.Windows.Forms.ToolStripMenuItem mniComPort;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-    private System.Windows.Forms.StatusStrip statusStrip1;
+    private System.Windows.Forms.StatusStrip _stsMain;
     private System.Windows.Forms.ToolStripStatusLabel _sslRegister;
     private System.Windows.Forms.ToolStripMenuItem mniFileNew;
     private System.Windows.Forms.ToolStripMenuItem mniFileSave;
@@ -412,8 +440,8 @@
     private System.Windows.Forms.ToolStripButton tsbExit;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     private System.Windows.Forms.ToolStripButton _tsbGroups;
-    private System.Windows.Forms.BindingSource bdsGroup;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
+    private System.Windows.Forms.BindingSource _bdsGroup;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet _dataSet;
     private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
     private System.Windows.Forms.Button _btnRace;
     private System.Windows.Forms.Button _btnRegister;
@@ -424,6 +452,11 @@
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     private System.Windows.Forms.BindingSource _bdsConfig;
     private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter configTableAdapter;
+    private System.Windows.Forms.BindingSource _bdsDefaultCategory;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter groupResultTableAdapter;
+    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamResultsTableAdapter teamResultsTableAdapter;
   }
 }
 

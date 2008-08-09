@@ -38,8 +38,8 @@
       this._bdsLocations = new System.Windows.Forms.BindingSource(this.components);
       this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
       this._tspMain = new System.Windows.Forms.ToolStrip();
-      this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
+      this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
@@ -122,10 +122,6 @@
       this._tspMain.Size = new System.Drawing.Size(95, 55);
       this._tspMain.TabIndex = 0;
       // 
-      // locationTableAdapter
-      // 
-      this.locationTableAdapter.ClearBeforeFill = true;
-      // 
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -133,8 +129,13 @@
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
-      this._tsbExit.Text = "toolStripButton1";
+      this._tsbExit.Text = "Save & Exit";
+      this._tsbExit.ToolTipText = "Save & Exit";
       this._tsbExit.Click += new System.EventHandler(this._tsbExit_Click);
+      // 
+      // locationTableAdapter
+      // 
+      this.locationTableAdapter.ClearBeforeFill = true;
       // 
       // FrmLocations
       // 

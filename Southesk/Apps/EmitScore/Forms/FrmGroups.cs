@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2008 Southesk.com
+ * Author Craig McKay <craig@southesk.com>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+
+using Southesk.Apps.EmitScore.Data;
 
 namespace Southesk.Apps.EmitScore.Forms
 {
@@ -17,7 +25,6 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmGroups_Load(object sender, EventArgs e)
     {
-      // TODO: This line of code loads data into the 'emitScoreDataSet.Team' table. You can move, or remove it, as needed.
       this.teamTableAdapter.Fill(this._dataSet.Team);
       this.categoryTableAdapter.Fill(this._dataSet.Category);
       this.groupTableAdapter.Fill(this._dataSet.Group);
@@ -30,6 +37,18 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmGroups_FormClosing(object sender, FormClosingEventArgs e)
     {
+      foreach (DataRow row in _dataSet.Group)
+      {
+        EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
+        if (!group.IsTeamIdNull())
+        {
+          group.BeginEdit();
+          EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);
+          group.CategoryId = team.CategoryId;
+          group.EndEdit();
+        }
+      }
+
       groupTableAdapter.Update(_dataSet.Group);
     }
   }

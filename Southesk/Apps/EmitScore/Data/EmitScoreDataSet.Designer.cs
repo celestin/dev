@@ -772,6 +772,8 @@ namespace Southesk.Apps.EmitScore.Data {
             
             private global::System.Data.DataColumn columnNettPoints;
             
+            private global::System.Data.DataColumn columnTimeDisqualified;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public GroupDataTable() {
                 this.TableName = "Group";
@@ -852,6 +854,13 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TimeDisqualifiedColumn {
+                get {
+                    return this.columnTimeDisqualified;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -880,7 +889,7 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public GroupRow AddGroupRow(GroupResultRow parentGroupResultRowByGroupResult_Group, string GroupName, CategoryRow parentCategoryRowByFK_Group_Category, int TotalPoints, System.DateTime TotalTime, int TeamId, int NettPoints) {
+            public GroupRow AddGroupRow(GroupResultRow parentGroupResultRowByGroupResult_Group, string GroupName, CategoryRow parentCategoryRowByFK_Group_Category, int TotalPoints, System.DateTime TotalTime, int TeamId, int NettPoints, int TimeDisqualified) {
                 GroupRow rowGroupRow = ((GroupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -889,7 +898,8 @@ namespace Southesk.Apps.EmitScore.Data {
                         TotalPoints,
                         TotalTime,
                         TeamId,
-                        NettPoints};
+                        NettPoints,
+                        TimeDisqualified};
                 if ((parentGroupResultRowByGroupResult_Group != null)) {
                     columnValuesArray[0] = parentGroupResultRowByGroupResult_Group[0];
                 }
@@ -933,6 +943,7 @@ namespace Southesk.Apps.EmitScore.Data {
                 this.columnTotalTime = base.Columns["TotalTime"];
                 this.columnTeamId = base.Columns["TeamId"];
                 this.columnNettPoints = base.Columns["NettPoints"];
+                this.columnTimeDisqualified = base.Columns["TimeDisqualified"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -951,6 +962,8 @@ namespace Southesk.Apps.EmitScore.Data {
                 base.Columns.Add(this.columnTeamId);
                 this.columnNettPoints = new global::System.Data.DataColumn("NettPoints", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNettPoints);
+                this.columnTimeDisqualified = new global::System.Data.DataColumn("TimeDisqualified", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimeDisqualified);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnGroupId}, true));
                 this.columnGroupId.AllowDBNull = false;
@@ -2641,6 +2654,21 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int TimeDisqualified {
+                get {
+                    try {
+                        return ((int)(this[this.tableGroup.TimeDisqualifiedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TimeDisqualified\' in table \'Group\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGroup.TimeDisqualifiedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public CategoryRow CategoryRow {
                 get {
                     return ((CategoryRow)(this.GetParentRow(this.Table.ParentRelations["FK_Group_Category"])));
@@ -2718,6 +2746,16 @@ namespace Southesk.Apps.EmitScore.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetNettPointsNull() {
                 this[this.tableGroup.NettPointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTimeDisqualifiedNull() {
+                return this.IsNull(this.tableGroup.TimeDisqualifiedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTimeDisqualifiedNull() {
+                this[this.tableGroup.TimeDisqualifiedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3915,6 +3953,7 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("TotalTime", "TotalTime");
             tableMapping.ColumnMappings.Add("TeamId", "TeamId");
             tableMapping.ColumnMappings.Add("NettPoints", "NettPoints");
+            tableMapping.ColumnMappings.Add("TimeDisqualified", "TimeDisqualified");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3924,7 +3963,8 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [Group] ([GroupId], [GroupName], [CategoryId], [TotalPoints], [TotalT" +
-                "ime], [TeamId], [NettPoints]) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7)";
+                "ime], [TeamId], [NettPoints], [TimeDisqualified]) VALUES (@p1, @p2, @p3, @p4, @p" +
+                "5, @p6, @p7, @p8)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupId", global::System.Data.DataRowVersion.Current, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupName", global::System.Data.DataRowVersion.Current, null));
@@ -3933,11 +3973,12 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p5", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TotalTime", global::System.Data.DataRowVersion.Current, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TeamId", global::System.Data.DataRowVersion.Current, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p7", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "NettPoints", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p8", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TimeDisqualified", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [Group] SET [GroupId] = @p1, [GroupName] = @p2, [CategoryId] = @p3, [Total" +
-                "Points] = @p4, [TotalTime] = @p5, [TeamId] = @p6, [NettPoints] = @p7 WHERE (([Gr" +
-                "oupId] = @p8))";
+                "Points] = @p4, [TotalTime] = @p5, [TeamId] = @p6, [NettPoints] = @p7, [TimeDisqu" +
+                "alified] = @p8 WHERE (([GroupId] = @p9))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupId", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupName", global::System.Data.DataRowVersion.Current, null));
@@ -3946,7 +3987,8 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p5", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TotalTime", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TeamId", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p7", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "NettPoints", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p8", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p8", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TimeDisqualified", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p9", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "GroupId", global::System.Data.DataRowVersion.Original, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3961,7 +4003,7 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT     GroupId, GroupName, CategoryId, TotalPoints, TotalTime, TeamId, NettPo" +
-                "ints\r\nFROM         [Group]";
+                "ints, TimeDisqualified\r\nFROM         [Group]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4036,7 +4078,7 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7) {
+        public virtual int Insert(int p1, string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7, global::System.Nullable<int> p8) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -4074,6 +4116,12 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((p8.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(p8.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4093,7 +4141,7 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p1, string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7, int p8) {
+        public virtual int Update(int p1, string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7, global::System.Nullable<int> p8, int p9) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -4131,7 +4179,13 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p8));
+            if ((p8.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p8.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4151,8 +4205,8 @@ namespace Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7, int p8) {
-            return this.Update(p8, p2, p3, p4, p5, p6, p7, p8);
+        public virtual int Update(string p2, global::System.Nullable<int> p3, global::System.Nullable<int> p4, global::System.Nullable<global::System.DateTime> p5, global::System.Nullable<int> p6, global::System.Nullable<int> p7, global::System.Nullable<int> p8, int p9) {
+            return this.Update(p9, p2, p3, p4, p5, p6, p7, p8, p9);
         }
     }
     

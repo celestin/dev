@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Southesk.Library.Xls, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Sandbox\Emit\Xls\Xls\bin\Debug\Southesk.Library.Xls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -105,6 +109,12 @@
     <Compile Include="Forms\FrmNewGroup.Designer.cs">
       <DependentUpon>FrmNewGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmTeams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTeams.Designer.cs">
+      <DependentUpon>FrmTeams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmCategories.resx">
       <DependentUpon>FrmCategories.cs</DependentUpon>
@@ -128,6 +138,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNewGroup.resx">
       <DependentUpon>FrmNewGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTeams.resx">
+      <DependentUpon>FrmTeams.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -161,6 +175,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Report\EmitReport.cs" />
+    <Compile Include="Report\XlsReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxEmitEpt">
@@ -189,6 +205,8 @@
     <Content Include="img\ico\flag_blue.ico" />
     <Content Include="img\ico\users4.ico" />
     <Content Include="img\ico\wrench.ico" />
+    <None Include="img\menu\houses.png" />
+    <None Include="img\tb\houses.png" />
     <None Include="img\menu\wrench.png" />
     <None Include="img\menu\flag_blue.png" />
     <None Include="img\tb\flag_blue.png" />

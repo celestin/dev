@@ -116,6 +116,13 @@ namespace Southesk.Apps.EmitScore.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap houses {
+            get {
+                object obj = ResourceManager.GetObject("houses", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap LocationLarge {
             get {
                 object obj = ResourceManager.GetObject("LocationLarge", resourceCulture);
@@ -126,6 +133,13 @@ namespace Southesk.Apps.EmitScore.Properties {
         internal static System.Drawing.Bitmap LocationSmall {
             get {
                 object obj = ResourceManager.GetObject("LocationSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap TeamLarge {
+            get {
+                object obj = ResourceManager.GetObject("TeamLarge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

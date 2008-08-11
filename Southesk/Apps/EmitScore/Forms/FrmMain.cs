@@ -1,9 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2008 Southesk.com
+ * Author Craig McKay <craig@southesk.com>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 using Southesk.Apps.EmitScore.Data;
@@ -141,13 +147,43 @@ namespace Southesk.Apps.EmitScore.Forms
           groupRow.TotalPoints = badge.SwipeList.TotalPoints;
           groupRow.NettPoints = badge.SwipeList.NettPoints;
           groupRow.TotalTime = badge.SwipeList.TotalTime;
+          groupRow.TimeDisqualified = badge.SwipeList.TimeDisqualified;
           groupRow.EndEdit();
           groupTableAdapter.Update(groupRow);
           groupRow.AcceptChanges();
 
-          if (badge.SwipeList.NettPoints == 0)
+          if (!groupRow.IsTeamIdNull())
           {
-            // update all groups in the team to zero
+            // Check to see if this group, or any others in the team
+            // have been time disqualified, and disqualify them all
+            groupTable = new EmitScoreDataSet.GroupDataTable();
+            groupTableAdapter.Fill(groupTable);
+            bool anyDisqualified = false;
+            foreach (EmitScoreDataSet.GroupRow gr1 in groupTable)
+            {
+              if (!gr1.IsTeamIdNull() && (gr1.TeamId == groupRow.TeamId))
+              {
+                if (!gr1.IsTimeDisqualifiedNull() && (gr1.TimeDisqualified == 1))
+                {
+                  anyDisqualified = true;
+                }
+              }
+            }
+            if (anyDisqualified)
+            {
+              foreach (EmitScoreDataSet.GroupRow gr1 in groupTable)
+              {
+                if (!gr1.IsTeamIdNull() && (gr1.TeamId == groupRow.TeamId))
+                {
+                  gr1.BeginEdit();
+                  gr1.NettPoints = 0;
+                  gr1.TimeDisqualified = 1;
+                  gr1.EndEdit();
+                  groupTableAdapter.Update(gr1);
+                  gr1.AcceptChanges();
+                }
+              }
+            }
           }
         }
       }
@@ -155,7 +191,6 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
-      // TODO: This line of code loads data into the 'emitScoreDataSet.TeamResults' table. You can move, or remove it, as needed.
       this.teamResultsTableAdapter.Fill(this._dataSet.TeamResults);
       this.groupResultTableAdapter.Fill(this._dataSet.GroupResult);
       this.locationTableAdapter.Fill(this._dataSet.Location);
@@ -203,6 +238,12 @@ namespace Southesk.Apps.EmitScore.Forms
     {
       FrmCategories cats = new FrmCategories();
       cats.ShowDialog();
+    }
+
+    protected void ShowTeams()
+    {
+      FrmTeams teams = new FrmTeams();
+      teams.ShowDialog();
     }
 
     protected void ShowGroups()
@@ -274,6 +315,16 @@ namespace Southesk.Apps.EmitScore.Forms
     private void mniComPort_Click(object sender, EventArgs e)
     {
       ShowConfig();
+    }
+
+    private void mniTeams_Click(object sender, EventArgs e)
+    {
+      ShowTeams();
+    }
+
+    private void _tsbTeams_Click(object sender, EventArgs e)
+    {
+      ShowTeams();
     }
 
     private void mniFileNew_Click(object sender, EventArgs e)

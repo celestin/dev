@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2008 Southesk.com
+ * Author Craig McKay <craig@southesk.com>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 

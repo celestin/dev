@@ -1,7 +1,16 @@
-﻿using System;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2008 Southesk.com
+ * Author Craig McKay <craig@southesk.com>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Forms;
 
 using Southesk.Apps.EmitScore.Data;
 
@@ -90,6 +99,7 @@ namespace Southesk.Apps.EmitScore.Emit
     private int _totalPoints;
     private int _nettPoints;
     private DateTime _totalTime;
+    private bool _timeDisqualified;
 
     public int TotalPoints
     {
@@ -104,6 +114,10 @@ namespace Southesk.Apps.EmitScore.Emit
     public DateTime TotalTime
     {
       get { return _totalTime; }
+    }
+    public int TimeDisqualified
+    {
+      get { return _timeDisqualified ? 1 : 0; }
     }
 
     public SwipeList()
@@ -137,29 +151,31 @@ namespace Southesk.Apps.EmitScore.Emit
     public void AdjustPoints()
     {
       DateTime timeLimit = Swipe.CreateBaseDate().AddHours(5);
-      TimeSpan diff = _totalTime.Subtract(timeLimit);
+      int diff = (int)_totalTime.Subtract(timeLimit).TotalMinutes;
 
       _nettPoints = _totalPoints;
+      _timeDisqualified = false;
 
-      if (diff.Minutes <= 0)
+      if (diff <= 0)
       {
         // on time
       }
-      else if (diff.Minutes <= 10)
+      else if (diff <= 10)
       {
-        _nettPoints -= (5 * diff.Minutes);
+        _nettPoints -= (5 * diff);
       }
-      else if (diff.Minutes <= 20)
+      else if (diff <= 20)
       {
-        _nettPoints -= (10 * diff.Minutes);
+        _nettPoints -= (10 * diff);
       }
-      else if (diff.Minutes <= 30)
+      else if (diff <= 30)
       {
-        _nettPoints -= (20 * diff.Minutes);
+        _nettPoints -= (20 * diff);
       }
       else // more than 30 minutes late
       {
         _nettPoints =  0; // harsh!
+        _timeDisqualified = true;
       }
     }
   }

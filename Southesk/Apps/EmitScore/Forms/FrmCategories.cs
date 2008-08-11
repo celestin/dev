@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2008 Southesk.com
+ * Author Craig McKay <craig@southesk.com>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Windows.Forms;
 
 namespace Southesk.Apps.EmitScore.Forms

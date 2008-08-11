@@ -13,16 +13,17 @@ using System.Windows.Forms;
 
 namespace Southesk.Apps.EmitScore.Forms
 {
-  public partial class FrmConfig : Form
+  public partial class FrmTeams : Form
   {
-    public FrmConfig()
+    public FrmTeams()
     {
       InitializeComponent();
     }
 
-    private void FrmConfig_Load(object sender, EventArgs e)
+    private void FrmTeams_Load(object sender, EventArgs e)
     {
-      configTableAdapter.Fill(emitScoreDataSet.Config);
+      categoryTableAdapter.Fill(emitScoreDataSet.Category);
+      teamTableAdapter.Fill(emitScoreDataSet.Team);
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)
@@ -30,9 +31,9 @@ namespace Southesk.Apps.EmitScore.Forms
       this.Dispose();
     }
 
-    private void FrmConfig_FormClosing(object sender, FormClosingEventArgs e)
+    private void FrmTeams_FormClosing(object sender, FormClosingEventArgs e)
     {
-      configTableAdapter.Update(emitScoreDataSet.Config);
+      teamTableAdapter.Update(emitScoreDataSet.Team);
     }
   }
 }

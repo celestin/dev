@@ -13,7 +13,9 @@ using System.Data;
 using System.Windows.Forms;
 
 using Southesk.Apps.EmitScore.Data;
+using Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters;
 using Southesk.Apps.EmitScore.Emit;
+using Southesk.Apps.EmitScore.Report;
 
 namespace Southesk.Apps.EmitScore.Forms
 {
@@ -191,19 +193,18 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
-      this.teamResultsTableAdapter.Fill(this._dataSet.TeamResults);
-      this.groupResultTableAdapter.Fill(this._dataSet.GroupResult);
-      this.locationTableAdapter.Fill(this._dataSet.Location);
-      this.categoryTableAdapter.Fill(this._dataSet.Category);
-      this.configTableAdapter.Fill(this._dataSet.Config);
-      this.groupTableAdapter.Fill(this._dataSet.Group);
+      teamResultsTableAdapter.Fill(_dataSet.TeamResults);
+      groupResultTableAdapter.Fill(_dataSet.GroupResult);
+      locationTableAdapter.Fill(_dataSet.Location);
+      categoryTableAdapter.Fill(_dataSet.Category);
+      configTableAdapter.Fill(_dataSet.Config);
+      groupTableAdapter.Fill(_dataSet.Group);
       ToggleButtons(false);
 
       EmitScoreDataSet.LocationDataTable location = _dataSet.Location;
       _locationMap = location.BuildLocationMap();
 
       EmitScoreDataSet.ConfigDataTable config = _dataSet.Config;
-
       _emitReader.ComPrt = short.Parse(config.Rows[0][config.ComPortColumn].ToString());
       _emitReader.Unit = short.Parse(config.Rows[0][config.EmitUnitColumn].ToString());
       _emitReader.StartComm();
@@ -250,6 +251,51 @@ namespace Southesk.Apps.EmitScore.Forms
     {
       FrmGroups groups = new FrmGroups();
       groups.ShowDialog();
+    }
+
+    protected void ClearResultData()
+    {
+      if (MessageBox.Show("This will remove all Groups and Race results.\n" +
+        "COM Port, Locations and Categories will be left alone.\n\n" +
+        "Are you sure you want to delete Groups and Race results?", "New Race",
+        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+      {
+        GroupTableAdapter groupTableAdapter = new GroupTableAdapter();
+        groupTableAdapter.Fill(_dataSet.Group);
+        groupResultTableAdapter.Fill(_dataSet.GroupResult);
+
+        foreach (DataRow row in _dataSet.Group)
+        {
+          row.Delete();
+        }
+        foreach (DataRow row in _dataSet.GroupResult)
+        {
+          row.Delete();
+        }
+
+        groupTableAdapter.Update(_dataSet.Group);
+        groupResultTableAdapter.Update(_dataSet.GroupResult);
+      }
+    }
+    protected void ExportReport()
+    {
+      ReportTeamResultTableAdapter reportTeamResultTableAdapter = new ReportTeamResultTableAdapter();
+      ReportGroupResultTableAdapter reportGroupResultTableAdapter = new ReportGroupResultTableAdapter();      
+
+      reportGroupResultTableAdapter.Fill(_dataSet.ReportGroupResult);
+      reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
+      categoryTableAdapter.Fill(_dataSet.Category);
+
+      try
+      {
+        EmitReport report = new EmitReport(_dataSet);
+        report.Save(true);
+        report.Launch();
+      }
+      catch (Exception e)
+      {
+        MessageBox.Show(e.StackTrace.ToString(), e.Message, MessageBoxButtons.OK);
+      }
     }
 
     private void mniExit_Click(object sender, EventArgs e)
@@ -329,10 +375,17 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void mniFileNew_Click(object sender, EventArgs e)
     {
-      MessageBox.Show("This will remove all Groups and Race results.\n" +
-        "COM Port, Locations and Categories will be left alone.\n\n" +
-        "Are you sure you want to delete Groups and Race results?", "New Race",
-        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+      ClearResultData();
+    }
+
+    private void mniFileSave_Click(object sender, EventArgs e)
+    {
+      ExportReport();
+    }
+
+    private void _tsbSave_Click(object sender, EventArgs e)
+    {
+      ExportReport();
     }
   }
 }

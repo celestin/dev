@@ -137,6 +137,27 @@ namespace Southesk.Apps.EmitScore.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap NewSmall {
+            get {
+                object obj = ResourceManager.GetObject("NewSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SaveLarge {
+            get {
+                object obj = ResourceManager.GetObject("SaveLarge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SaveSmall {
+            get {
+                object obj = ResourceManager.GetObject("SaveSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap TeamLarge {
             get {
                 object obj = ResourceManager.GetObject("TeamLarge", resourceCulture);

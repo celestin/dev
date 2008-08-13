@@ -12,17 +12,22 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
+using Southesk.Apps.EmitScore.Data;
 using Southesk.Library.Xls;
 
 namespace Southesk.Apps.EmitScore.Report
 {
   class EmitReport : XlsReport
   {
-    public EmitReport()
+    private EmitScoreDataSet _dataSet;
+
+    public EmitReport(EmitScoreDataSet dataSet)
     {
+      _dataSet = dataSet;
+
       SetDocumentProperties();
 
-      FileName = String.Format("{0:yyyy-MM-dd_HH-mm-ss}_SystemExport.xls", ReportCreated);
+      FileName = String.Format("{0:yyyy-MM-dd_HH-mm-ss}_EmitScore.xls", ReportCreated);
 
       Create();
     }
@@ -40,63 +45,96 @@ namespace Southesk.Apps.EmitScore.Report
       XF fmtHeaderCell = NewXF();
       fmtHeaderCell.Font.Bold = true;
 
+      XF fmtText = NewXF();
+
       XF fmtTimestamp = NewXF();
-      fmtTimestamp.Format = "dd-mmm-yyyy hh:mm:ss";
+      fmtTimestamp.Format = "hh:mm:ss";
 
       XF fmtData = NewXF();
-      fmtData.Format = "#,##0.000";
+      fmtData.Format = "#,##0";
 
-      DataSet set = new DataSet();
-      foreach (DataTable table in set.Tables)
+      foreach (EmitScoreDataSet.CategoryRow category in _dataSet.Category)
       {
-        Worksheet sht = Workbook.Worksheets.AddNamed(table.TableName.Substring(4));
+        Worksheet sht = Workbook.Worksheets.AddNamed(category.CategoryName);
 
-        for (int i = 0; i < table.Columns.Count; i++)
-        {
-          sht.Cells.AddValueCell(1, i + 1, table.Columns[i].ColumnName, fmtHeaderCell);
-        }
+        sht.Cells.AddValueCell(1, 1, "Team Type", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 2, "Team", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 3, "Total Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 4, "Total Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 5, "Nett Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 6, "Time Disqualified", fmtHeaderCell);
 
-        for (int r = 0; r < Math.Min(table.Rows.Count, MaxRowsPerSheet); r++)
+        EmitScoreDataSet.ReportTeamResultRow[] tr = 
+          (EmitScoreDataSet.ReportTeamResultRow[])
+          _dataSet.ReportTeamResult.Select(String.Format("CategoryId='{0}'", category.CategoryId));
+
+        for (int r = 0; r < tr.Length; r++)
         {
-          for (int c = 0; c < table.Columns.Count; c++)
+          sht.Cells.AddValueCell(r + 2, 1, tr[r].TeamType, fmtText);
+          sht.Cells.AddValueCell(r + 2, 2, tr[r].TeamName, fmtText);
+
+          if (!tr[r].IsTotalPointsNull())
           {
-            DataColumn col = table.Columns[c];
-
-            Type type = col.DataType;
-
-            if (table.Rows[r][c] == DBNull.Value)
+            sht.Cells.AddValueCell(r + 2, 3, tr[r].TotalPoints, fmtData);
+          }
+          if (!tr[r].IsTotalTimeNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 4, tr[r].TotalTime.ToString("HH:mm:ss"), fmtTimestamp);
+          }
+          if (!tr[r].IsNettPointsNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 5, tr[r].NettPoints, fmtData);
+          }
+          if (!tr[r].IsTimeDisqualifiedNull())
+          {
+            if (tr[r].TimeDisqualified == 1)
             {
-              // Don't add null values
-            }
-            else if (type.Equals(Single.MaxValue.GetType()) ||
-              type.Equals(Double.MaxValue.GetType()))
-            {
-              double dValue = Convert.ToDouble(table.Rows[r][c].ToString());
-              sht.Cells.AddValueCell(r + 2, c + 1, dValue, fmtData);
-            }
-            else if (type.Equals(Int16.MaxValue.GetType()) ||
-              type.Equals(Int32.MaxValue.GetType()) ||
-              type.Equals(Byte.MaxValue.GetType()))
-            {
-              int iValue = Convert.ToInt32(table.Rows[r][c].ToString());
-              sht.Cells.AddValueCell(r + 2, c + 1, iValue);
-            }
-            else if (type.Equals(DateTime.MaxValue.GetType()))
-            {
-              sht.Cells.AddValueCell(r + 2, c + 1, table.Rows[r][c], fmtTimestamp);
-            }
-            else
-            {
-              // Strings & Guids
-              sht.Cells.AddValueCell(r + 2, c + 1, table.Rows[r][c].ToString());
-            }
+              sht.Cells.AddValueCell(r + 2, 6, "Yes", fmtText);
+            }            
           }
         }
+      }
 
-        if (table.Rows.Count > MaxRowsPerSheet)
+      foreach (EmitScoreDataSet.CategoryRow category in _dataSet.Category)
+      {
+        Worksheet sht = Workbook.Worksheets.AddNamed(String.Format("{0} Detail", category.CategoryName));
+
+        sht.Cells.AddValueCell(1, 1, "Team", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 2, "Group Id", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 3, "Location Id", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 4, "Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 5, "Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 6, "Cum.Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 7, "Result Id", fmtHeaderCell);
+
+        EmitScoreDataSet.ReportGroupResultRow[] tr =
+          (EmitScoreDataSet.ReportGroupResultRow[])
+          _dataSet.ReportGroupResult.Select(String.Format("CategoryId='{0}'", category.CategoryId));
+
+        for (int r = 0; r < tr.Length; r++)
         {
-          ReportComments += String.Format("{0} {1}\n",
-            table.TableName, table.Rows.Count);
+          if (!tr[r].IsTeamNameNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 1, tr[r].TeamName, fmtText);
+          }
+
+          sht.Cells.AddValueCell(r + 2, 2, tr[r].GroupId, fmtText);
+          sht.Cells.AddValueCell(r + 2, 3, tr[r].LocationId, fmtText);
+
+          if (!tr[r].IsPointsNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 4, tr[r].Points, fmtData);
+          }
+          if (!tr[r].IsTimeNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 5, tr[r].Time.ToString("HH:mm:ss"), fmtTimestamp);
+          }
+          if (!tr[r].IsCumTimeNull())
+          {
+            sht.Cells.AddValueCell(r + 2, 6, tr[r].CumTime.ToString("HH:mm:ss"), fmtTimestamp);
+          }
+
+          sht.Cells.AddValueCell(r + 2, 7, tr[r].ResultId, fmtData);
         }
       }
     }

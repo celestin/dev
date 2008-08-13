@@ -121,11 +121,14 @@
   <data name="CompassLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\tb\compass.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LocationLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\tb\flag_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="houses" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\houses.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TeamLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\tb\houses.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LocationSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\flag_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CategorySmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\component.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +142,20 @@
   <data name="GroupSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\users4.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NewSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\bomb.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ExitLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\tb\exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CompassSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\compass.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LocationLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\tb\flag_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SaveSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\disk_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LocationSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\flag_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExitSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,7 +163,7 @@
   <data name="wrench" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\wrench.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="houses" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\houses.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SaveLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\tb\disk_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -42,12 +42,24 @@
       this.mniFileNew = new System.Windows.Forms.ToolStripMenuItem();
       this.mniFileSave = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+      this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
       this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniComPort = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.mniLocations = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.mniCategories = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniTeams = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniGroups = new System.Windows.Forms.ToolStripMenuItem();
       this._tspMain = new System.Windows.Forms.ToolStrip();
+      this._tsbSave = new System.Windows.Forms.ToolStripButton();
+      this.tsbExit = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+      this._tsbLocations = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+      this._tsbCategories = new System.Windows.Forms.ToolStripButton();
+      this._tsbTeams = new System.Windows.Forms.ToolStripButton();
+      this._tsbGroups = new System.Windows.Forms.ToolStripButton();
       this._tmrStatus = new System.Windows.Forms.Timer(this.components);
       this._bdsGroup = new System.Windows.Forms.BindingSource(this.components);
       this._dataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
@@ -59,17 +71,6 @@
       this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
       this.groupResultTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter();
       this.teamResultsTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamResultsTableAdapter();
-      this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniComPort = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniLocations = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniCategories = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniTeams = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniGroups = new System.Windows.Forms.ToolStripMenuItem();
-      this.tsbExit = new System.Windows.Forms.ToolStripButton();
-      this._tsbLocations = new System.Windows.Forms.ToolStripButton();
-      this._tsbCategories = new System.Windows.Forms.ToolStripButton();
-      this._tsbGroups = new System.Windows.Forms.ToolStripButton();
-      this._tsbTeams = new System.Windows.Forms.ToolStripButton();
       ((System.ComponentModel.ISupportInitialize)(this._emitReader)).BeginInit();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -191,21 +192,32 @@
       // 
       // mniFileNew
       // 
+      this.mniFileNew.Image = global::Southesk.Apps.EmitScore.Properties.Resources.NewSmall;
       this.mniFileNew.Name = "mniFileNew";
-      this.mniFileNew.Size = new System.Drawing.Size(109, 22);
+      this.mniFileNew.Size = new System.Drawing.Size(152, 22);
       this.mniFileNew.Text = "&New";
       this.mniFileNew.Click += new System.EventHandler(this.mniFileNew_Click);
       // 
       // mniFileSave
       // 
+      this.mniFileSave.Image = global::Southesk.Apps.EmitScore.Properties.Resources.SaveSmall;
       this.mniFileSave.Name = "mniFileSave";
-      this.mniFileSave.Size = new System.Drawing.Size(109, 22);
+      this.mniFileSave.Size = new System.Drawing.Size(152, 22);
       this.mniFileSave.Text = "&Save";
+      this.mniFileSave.Click += new System.EventHandler(this.mniFileSave_Click);
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(106, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+      // 
+      // mniExit
+      // 
+      this.mniExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitSmall;
+      this.mniExit.Name = "mniExit";
+      this.mniExit.Size = new System.Drawing.Size(152, 22);
+      this.mniExit.Text = "E&xit";
+      this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
       // 
       // configureToolStripMenuItem
       // 
@@ -221,21 +233,62 @@
       this.configureToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
       this.configureToolStripMenuItem.Text = "&Configure";
       // 
+      // mniComPort
+      // 
+      this.mniComPort.Image = global::Southesk.Apps.EmitScore.Properties.Resources.wrench;
+      this.mniComPort.Name = "mniComPort";
+      this.mniComPort.Size = new System.Drawing.Size(149, 22);
+      this.mniComPort.Text = "COM &Port...";
+      this.mniComPort.Click += new System.EventHandler(this.mniComPort_Click);
+      // 
       // toolStripSeparator2
       // 
       this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+      this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
+      // 
+      // mniLocations
+      // 
+      this.mniLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationSmall;
+      this.mniLocations.Name = "mniLocations";
+      this.mniLocations.Size = new System.Drawing.Size(149, 22);
+      this.mniLocations.Text = "&Locations...";
+      this.mniLocations.Click += new System.EventHandler(this.mniLocations_Click);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+      // 
+      // mniCategories
+      // 
+      this.mniCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategorySmall;
+      this.mniCategories.Name = "mniCategories";
+      this.mniCategories.Size = new System.Drawing.Size(149, 22);
+      this.mniCategories.Text = "&Categories...";
+      this.mniCategories.Click += new System.EventHandler(this.mniCategories_Click);
+      // 
+      // mniTeams
+      // 
+      this.mniTeams.Image = ((System.Drawing.Image)(resources.GetObject("mniTeams.Image")));
+      this.mniTeams.Name = "mniTeams";
+      this.mniTeams.Size = new System.Drawing.Size(149, 22);
+      this.mniTeams.Text = "&Teams...";
+      this.mniTeams.Click += new System.EventHandler(this.mniTeams_Click);
+      // 
+      // mniGroups
+      // 
+      this.mniGroups.Image = global::Southesk.Apps.EmitScore.Properties.Resources.GroupSmall;
+      this.mniGroups.Name = "mniGroups";
+      this.mniGroups.Size = new System.Drawing.Size(149, 22);
+      this.mniGroups.Text = "&Groups...";
+      this.mniGroups.Click += new System.EventHandler(this.mniGroups_Click);
       // 
       // _tspMain
       // 
       this._tspMain.Dock = System.Windows.Forms.DockStyle.None;
       this._tspMain.ImageScalingSize = new System.Drawing.Size(48, 48);
       this._tspMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._tsbSave,
             this.tsbExit,
             this.toolStripSeparator4,
             this._tsbLocations,
@@ -245,18 +298,78 @@
             this._tsbGroups});
       this._tspMain.Location = new System.Drawing.Point(3, 24);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(315, 55);
+      this._tspMain.Size = new System.Drawing.Size(336, 55);
       this._tspMain.TabIndex = 1;
+      // 
+      // _tsbSave
+      // 
+      this._tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbSave.Image = global::Southesk.Apps.EmitScore.Properties.Resources.SaveLarge;
+      this._tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbSave.Name = "_tsbSave";
+      this._tsbSave.Size = new System.Drawing.Size(52, 52);
+      this._tsbSave.Text = "Save Report";
+      this._tsbSave.Click += new System.EventHandler(this._tsbSave_Click);
+      // 
+      // tsbExit
+      // 
+      this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbExit.Name = "tsbExit";
+      this.tsbExit.Size = new System.Drawing.Size(52, 52);
+      this.tsbExit.Text = "Exit";
+      this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
       // 
       // toolStripSeparator4
       // 
       this.toolStripSeparator4.Name = "toolStripSeparator4";
       this.toolStripSeparator4.Size = new System.Drawing.Size(6, 55);
       // 
+      // _tsbLocations
+      // 
+      this._tsbLocations.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationLarge;
+      this._tsbLocations.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbLocations.Name = "_tsbLocations";
+      this._tsbLocations.Size = new System.Drawing.Size(52, 52);
+      this._tsbLocations.Text = "Edit Locations";
+      this._tsbLocations.Click += new System.EventHandler(this._tsbLocations_Click);
+      // 
       // toolStripSeparator5
       // 
       this.toolStripSeparator5.Name = "toolStripSeparator5";
       this.toolStripSeparator5.Size = new System.Drawing.Size(6, 55);
+      // 
+      // _tsbCategories
+      // 
+      this._tsbCategories.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategoryLarge;
+      this._tsbCategories.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbCategories.Name = "_tsbCategories";
+      this._tsbCategories.Size = new System.Drawing.Size(52, 52);
+      this._tsbCategories.Text = "Edit Categories";
+      this._tsbCategories.Click += new System.EventHandler(this.tsbCategories_Click);
+      // 
+      // _tsbTeams
+      // 
+      this._tsbTeams.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbTeams.Image = global::Southesk.Apps.EmitScore.Properties.Resources.TeamLarge;
+      this._tsbTeams.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbTeams.Name = "_tsbTeams";
+      this._tsbTeams.Size = new System.Drawing.Size(52, 52);
+      this._tsbTeams.Text = "Edit Teams";
+      this._tsbTeams.Click += new System.EventHandler(this._tsbTeams_Click);
+      // 
+      // _tsbGroups
+      // 
+      this._tsbGroups.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbGroups.Image = ((System.Drawing.Image)(resources.GetObject("_tsbGroups.Image")));
+      this._tsbGroups.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbGroups.Name = "_tsbGroups";
+      this._tsbGroups.Size = new System.Drawing.Size(52, 52);
+      this._tsbGroups.Text = "Edit Groups";
+      this._tsbGroups.Click += new System.EventHandler(this.tsbGroups_Click);
       // 
       // _tmrStatus
       // 
@@ -307,104 +420,6 @@
       // teamResultsTableAdapter
       // 
       this.teamResultsTableAdapter.ClearBeforeFill = true;
-      // 
-      // mniExit
-      // 
-      this.mniExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitSmall;
-      this.mniExit.Name = "mniExit";
-      this.mniExit.Size = new System.Drawing.Size(109, 22);
-      this.mniExit.Text = "E&xit";
-      this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
-      // 
-      // mniComPort
-      // 
-      this.mniComPort.Image = global::Southesk.Apps.EmitScore.Properties.Resources.wrench;
-      this.mniComPort.Name = "mniComPort";
-      this.mniComPort.Size = new System.Drawing.Size(152, 22);
-      this.mniComPort.Text = "COM &Port...";
-      this.mniComPort.Click += new System.EventHandler(this.mniComPort_Click);
-      // 
-      // mniLocations
-      // 
-      this.mniLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationSmall;
-      this.mniLocations.Name = "mniLocations";
-      this.mniLocations.Size = new System.Drawing.Size(152, 22);
-      this.mniLocations.Text = "&Locations...";
-      this.mniLocations.Click += new System.EventHandler(this.mniLocations_Click);
-      // 
-      // mniCategories
-      // 
-      this.mniCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategorySmall;
-      this.mniCategories.Name = "mniCategories";
-      this.mniCategories.Size = new System.Drawing.Size(152, 22);
-      this.mniCategories.Text = "&Categories...";
-      this.mniCategories.Click += new System.EventHandler(this.mniCategories_Click);
-      // 
-      // mniTeams
-      // 
-      this.mniTeams.Image = ((System.Drawing.Image)(resources.GetObject("mniTeams.Image")));
-      this.mniTeams.Name = "mniTeams";
-      this.mniTeams.Size = new System.Drawing.Size(152, 22);
-      this.mniTeams.Text = "&Teams...";
-      this.mniTeams.Click += new System.EventHandler(this.mniTeams_Click);
-      // 
-      // mniGroups
-      // 
-      this.mniGroups.Image = global::Southesk.Apps.EmitScore.Properties.Resources.GroupSmall;
-      this.mniGroups.Name = "mniGroups";
-      this.mniGroups.Size = new System.Drawing.Size(152, 22);
-      this.mniGroups.Text = "&Groups...";
-      this.mniGroups.Click += new System.EventHandler(this.mniGroups_Click);
-      // 
-      // tsbExit
-      // 
-      this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
-      this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbExit.Name = "tsbExit";
-      this.tsbExit.Size = new System.Drawing.Size(52, 52);
-      this.tsbExit.Text = "Exit";
-      this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
-      // 
-      // _tsbLocations
-      // 
-      this._tsbLocations.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationLarge;
-      this._tsbLocations.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbLocations.Name = "_tsbLocations";
-      this._tsbLocations.Size = new System.Drawing.Size(52, 52);
-      this._tsbLocations.Text = "Edit Locations";
-      this._tsbLocations.Click += new System.EventHandler(this._tsbLocations_Click);
-      // 
-      // _tsbCategories
-      // 
-      this._tsbCategories.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategoryLarge;
-      this._tsbCategories.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbCategories.Name = "_tsbCategories";
-      this._tsbCategories.Size = new System.Drawing.Size(52, 52);
-      this._tsbCategories.Text = "Edit Categories";
-      this._tsbCategories.Click += new System.EventHandler(this.tsbCategories_Click);
-      // 
-      // _tsbGroups
-      // 
-      this._tsbGroups.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbGroups.Image = ((System.Drawing.Image)(resources.GetObject("_tsbGroups.Image")));
-      this._tsbGroups.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbGroups.Name = "_tsbGroups";
-      this._tsbGroups.Size = new System.Drawing.Size(52, 52);
-      this._tsbGroups.Text = "Edit Groups";
-      this._tsbGroups.Click += new System.EventHandler(this.tsbGroups_Click);
-      // 
-      // _tsbTeams
-      // 
-      this._tsbTeams.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbTeams.Image = global::Southesk.Apps.EmitScore.Properties.Resources.TeamLarge;
-      this._tsbTeams.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbTeams.Name = "_tsbTeams";
-      this._tsbTeams.Size = new System.Drawing.Size(52, 52);
-      this._tsbTeams.Text = "Edit Teams";
-      this._tsbTeams.Click += new System.EventHandler(this._tsbTeams_Click);
       // 
       // FrmMain
       // 
@@ -481,6 +496,7 @@
     private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamResultsTableAdapter teamResultsTableAdapter;
     private System.Windows.Forms.ToolStripMenuItem mniTeams;
     private System.Windows.Forms.ToolStripButton _tsbTeams;
+    private System.Windows.Forms.ToolStripButton _tsbSave;
   }
 }
 

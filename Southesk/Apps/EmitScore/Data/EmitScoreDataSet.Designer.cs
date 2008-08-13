@@ -39,6 +39,10 @@ namespace Southesk.Apps.EmitScore.Data {
         
         private TeamResultsDataTable tableTeamResults;
         
+        private ReportTeamResultDataTable tableReportTeamResult;
+        
+        private ReportGroupResultDataTable tableReportGroupResult;
+        
         private global::System.Data.DataRelation relationFK_Group_Category;
         
         private global::System.Data.DataRelation relationGroupResult_Group;
@@ -95,6 +99,12 @@ namespace Southesk.Apps.EmitScore.Data {
                 }
                 if ((ds.Tables["TeamResults"] != null)) {
                     base.Tables.Add(new TeamResultsDataTable(ds.Tables["TeamResults"]));
+                }
+                if ((ds.Tables["ReportTeamResult"] != null)) {
+                    base.Tables.Add(new ReportTeamResultDataTable(ds.Tables["ReportTeamResult"]));
+                }
+                if ((ds.Tables["ReportGroupResult"] != null)) {
+                    base.Tables.Add(new ReportGroupResultDataTable(ds.Tables["ReportGroupResult"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -178,6 +188,24 @@ namespace Southesk.Apps.EmitScore.Data {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportTeamResultDataTable ReportTeamResult {
+            get {
+                return this.tableReportTeamResult;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportGroupResultDataTable ReportGroupResult {
+            get {
+                return this.tableReportGroupResult;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -257,6 +285,12 @@ namespace Southesk.Apps.EmitScore.Data {
                 if ((ds.Tables["TeamResults"] != null)) {
                     base.Tables.Add(new TeamResultsDataTable(ds.Tables["TeamResults"]));
                 }
+                if ((ds.Tables["ReportTeamResult"] != null)) {
+                    base.Tables.Add(new ReportTeamResultDataTable(ds.Tables["ReportTeamResult"]));
+                }
+                if ((ds.Tables["ReportGroupResult"] != null)) {
+                    base.Tables.Add(new ReportGroupResultDataTable(ds.Tables["ReportGroupResult"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -329,6 +363,18 @@ namespace Southesk.Apps.EmitScore.Data {
                     this.tableTeamResults.InitVars();
                 }
             }
+            this.tableReportTeamResult = ((ReportTeamResultDataTable)(base.Tables["ReportTeamResult"]));
+            if ((initTable == true)) {
+                if ((this.tableReportTeamResult != null)) {
+                    this.tableReportTeamResult.InitVars();
+                }
+            }
+            this.tableReportGroupResult = ((ReportGroupResultDataTable)(base.Tables["ReportGroupResult"]));
+            if ((initTable == true)) {
+                if ((this.tableReportGroupResult != null)) {
+                    this.tableReportGroupResult.InitVars();
+                }
+            }
             this.relationFK_Group_Category = this.Relations["FK_Group_Category"];
             this.relationGroupResult_Group = this.Relations["GroupResult_Group"];
             this.relationGroupResult_Location = this.Relations["GroupResult_Location"];
@@ -357,6 +403,10 @@ namespace Southesk.Apps.EmitScore.Data {
             base.Tables.Add(this.tableTeam);
             this.tableTeamResults = new TeamResultsDataTable();
             base.Tables.Add(this.tableTeamResults);
+            this.tableReportTeamResult = new ReportTeamResultDataTable();
+            base.Tables.Add(this.tableReportTeamResult);
+            this.tableReportGroupResult = new ReportGroupResultDataTable();
+            base.Tables.Add(this.tableReportGroupResult);
             this.relationFK_Group_Category = new global::System.Data.DataRelation("FK_Group_Category", new global::System.Data.DataColumn[] {
                         this.tableCategory.CategoryIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableGroup.CategoryIdColumn}, false);
@@ -411,6 +461,16 @@ namespace Southesk.Apps.EmitScore.Data {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeTeamResults() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeReportTeamResult() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeReportGroupResult() {
             return false;
         }
         
@@ -480,6 +540,10 @@ namespace Southesk.Apps.EmitScore.Data {
         public delegate void TeamRowChangeEventHandler(object sender, TeamRowChangeEvent e);
         
         public delegate void TeamResultsRowChangeEventHandler(object sender, TeamResultsRowChangeEvent e);
+        
+        public delegate void ReportTeamResultRowChangeEventHandler(object sender, ReportTeamResultRowChangeEvent e);
+        
+        public delegate void ReportGroupResultRowChangeEventHandler(object sender, ReportGroupResultRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2470,6 +2534,658 @@ namespace Southesk.Apps.EmitScore.Data {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportTeamResultDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnCategoryId;
+            
+            private global::System.Data.DataColumn columnTotalPoints;
+            
+            private global::System.Data.DataColumn columnTotalTime;
+            
+            private global::System.Data.DataColumn columnNettPoints;
+            
+            private global::System.Data.DataColumn columnTimeDisqualified;
+            
+            private global::System.Data.DataColumn columnTeamType;
+            
+            private global::System.Data.DataColumn columnTeamName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultDataTable() {
+                this.TableName = "ReportTeamResult";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ReportTeamResultDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected ReportTeamResultDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CategoryIdColumn {
+                get {
+                    return this.columnCategoryId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TotalPointsColumn {
+                get {
+                    return this.columnTotalPoints;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TotalTimeColumn {
+                get {
+                    return this.columnTotalTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NettPointsColumn {
+                get {
+                    return this.columnNettPoints;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TimeDisqualifiedColumn {
+                get {
+                    return this.columnTimeDisqualified;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TeamTypeColumn {
+                get {
+                    return this.columnTeamType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TeamNameColumn {
+                get {
+                    return this.columnTeamName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultRow this[int index] {
+                get {
+                    return ((ReportTeamResultRow)(this.Rows[index]));
+                }
+            }
+            
+            public event ReportTeamResultRowChangeEventHandler ReportTeamResultRowChanging;
+            
+            public event ReportTeamResultRowChangeEventHandler ReportTeamResultRowChanged;
+            
+            public event ReportTeamResultRowChangeEventHandler ReportTeamResultRowDeleting;
+            
+            public event ReportTeamResultRowChangeEventHandler ReportTeamResultRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddReportTeamResultRow(ReportTeamResultRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultRow AddReportTeamResultRow(int CategoryId, int TotalPoints, System.DateTime TotalTime, int NettPoints, int TimeDisqualified, string TeamType, string TeamName) {
+                ReportTeamResultRow rowReportTeamResultRow = ((ReportTeamResultRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CategoryId,
+                        TotalPoints,
+                        TotalTime,
+                        NettPoints,
+                        TimeDisqualified,
+                        TeamType,
+                        TeamName};
+                rowReportTeamResultRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportTeamResultRow);
+                return rowReportTeamResultRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                ReportTeamResultDataTable cln = ((ReportTeamResultDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportTeamResultDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnCategoryId = base.Columns["CategoryId"];
+                this.columnTotalPoints = base.Columns["TotalPoints"];
+                this.columnTotalTime = base.Columns["TotalTime"];
+                this.columnNettPoints = base.Columns["NettPoints"];
+                this.columnTimeDisqualified = base.Columns["TimeDisqualified"];
+                this.columnTeamType = base.Columns["TeamType"];
+                this.columnTeamName = base.Columns["TeamName"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnCategoryId = new global::System.Data.DataColumn("CategoryId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCategoryId);
+                this.columnTotalPoints = new global::System.Data.DataColumn("TotalPoints", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalPoints);
+                this.columnTotalTime = new global::System.Data.DataColumn("TotalTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalTime);
+                this.columnNettPoints = new global::System.Data.DataColumn("NettPoints", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNettPoints);
+                this.columnTimeDisqualified = new global::System.Data.DataColumn("TimeDisqualified", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimeDisqualified);
+                this.columnTeamType = new global::System.Data.DataColumn("TeamType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTeamType);
+                this.columnTeamName = new global::System.Data.DataColumn("TeamName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTeamName);
+                this.columnTeamType.ReadOnly = true;
+                this.columnTeamType.MaxLength = 5;
+                this.columnTeamName.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultRow NewReportTeamResultRow() {
+                return ((ReportTeamResultRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportTeamResultRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportTeamResultRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportTeamResultRowChanged != null)) {
+                    this.ReportTeamResultRowChanged(this, new ReportTeamResultRowChangeEvent(((ReportTeamResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportTeamResultRowChanging != null)) {
+                    this.ReportTeamResultRowChanging(this, new ReportTeamResultRowChangeEvent(((ReportTeamResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportTeamResultRowDeleted != null)) {
+                    this.ReportTeamResultRowDeleted(this, new ReportTeamResultRowChangeEvent(((ReportTeamResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportTeamResultRowDeleting != null)) {
+                    this.ReportTeamResultRowDeleting(this, new ReportTeamResultRowChangeEvent(((ReportTeamResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveReportTeamResultRow(ReportTeamResultRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                EmitScoreDataSet ds = new EmitScoreDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportTeamResultDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportGroupResultDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnCategoryId;
+            
+            private global::System.Data.DataColumn columnTeamName;
+            
+            private global::System.Data.DataColumn columnGroupName;
+            
+            private global::System.Data.DataColumn columnGroupId;
+            
+            private global::System.Data.DataColumn columnLocationId;
+            
+            private global::System.Data.DataColumn columnPoints;
+            
+            private global::System.Data.DataColumn columnTime;
+            
+            private global::System.Data.DataColumn columnCumTime;
+            
+            private global::System.Data.DataColumn columnResultId;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultDataTable() {
+                this.TableName = "ReportGroupResult";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ReportGroupResultDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected ReportGroupResultDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CategoryIdColumn {
+                get {
+                    return this.columnCategoryId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TeamNameColumn {
+                get {
+                    return this.columnTeamName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GroupNameColumn {
+                get {
+                    return this.columnGroupName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GroupIdColumn {
+                get {
+                    return this.columnGroupId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn LocationIdColumn {
+                get {
+                    return this.columnLocationId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PointsColumn {
+                get {
+                    return this.columnPoints;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TimeColumn {
+                get {
+                    return this.columnTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CumTimeColumn {
+                get {
+                    return this.columnCumTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ResultIdColumn {
+                get {
+                    return this.columnResultId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultRow this[int index] {
+                get {
+                    return ((ReportGroupResultRow)(this.Rows[index]));
+                }
+            }
+            
+            public event ReportGroupResultRowChangeEventHandler ReportGroupResultRowChanging;
+            
+            public event ReportGroupResultRowChangeEventHandler ReportGroupResultRowChanged;
+            
+            public event ReportGroupResultRowChangeEventHandler ReportGroupResultRowDeleting;
+            
+            public event ReportGroupResultRowChangeEventHandler ReportGroupResultRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddReportGroupResultRow(ReportGroupResultRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultRow AddReportGroupResultRow(int CategoryId, string TeamName, string GroupName, int GroupId, int LocationId, int Points, System.DateTime Time, System.DateTime CumTime, int ResultId) {
+                ReportGroupResultRow rowReportGroupResultRow = ((ReportGroupResultRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CategoryId,
+                        TeamName,
+                        GroupName,
+                        GroupId,
+                        LocationId,
+                        Points,
+                        Time,
+                        CumTime,
+                        ResultId};
+                rowReportGroupResultRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportGroupResultRow);
+                return rowReportGroupResultRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                ReportGroupResultDataTable cln = ((ReportGroupResultDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportGroupResultDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnCategoryId = base.Columns["CategoryId"];
+                this.columnTeamName = base.Columns["TeamName"];
+                this.columnGroupName = base.Columns["GroupName"];
+                this.columnGroupId = base.Columns["GroupId"];
+                this.columnLocationId = base.Columns["LocationId"];
+                this.columnPoints = base.Columns["Points"];
+                this.columnTime = base.Columns["Time"];
+                this.columnCumTime = base.Columns["CumTime"];
+                this.columnResultId = base.Columns["ResultId"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnCategoryId = new global::System.Data.DataColumn("CategoryId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCategoryId);
+                this.columnTeamName = new global::System.Data.DataColumn("TeamName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTeamName);
+                this.columnGroupName = new global::System.Data.DataColumn("GroupName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupName);
+                this.columnGroupId = new global::System.Data.DataColumn("GroupId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupId);
+                this.columnLocationId = new global::System.Data.DataColumn("LocationId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocationId);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoints);
+                this.columnTime = new global::System.Data.DataColumn("Time", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTime);
+                this.columnCumTime = new global::System.Data.DataColumn("CumTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCumTime);
+                this.columnResultId = new global::System.Data.DataColumn("ResultId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResultId);
+                this.columnCategoryId.ReadOnly = true;
+                this.columnTeamName.ReadOnly = true;
+                this.columnTeamName.MaxLength = 100;
+                this.columnGroupName.ReadOnly = true;
+                this.columnGroupName.MaxLength = 100;
+                this.columnGroupId.ReadOnly = true;
+                this.columnLocationId.ReadOnly = true;
+                this.columnPoints.ReadOnly = true;
+                this.columnTime.ReadOnly = true;
+                this.columnCumTime.ReadOnly = true;
+                this.columnResultId.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultRow NewReportGroupResultRow() {
+                return ((ReportGroupResultRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportGroupResultRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportGroupResultRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportGroupResultRowChanged != null)) {
+                    this.ReportGroupResultRowChanged(this, new ReportGroupResultRowChangeEvent(((ReportGroupResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportGroupResultRowChanging != null)) {
+                    this.ReportGroupResultRowChanging(this, new ReportGroupResultRowChangeEvent(((ReportGroupResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportGroupResultRowDeleted != null)) {
+                    this.ReportGroupResultRowDeleted(this, new ReportGroupResultRowChangeEvent(((ReportGroupResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportGroupResultRowDeleting != null)) {
+                    this.ReportGroupResultRowDeleting(this, new ReportGroupResultRowChangeEvent(((ReportGroupResultRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveReportGroupResultRow(ReportGroupResultRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                EmitScoreDataSet ds = new EmitScoreDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportGroupResultDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -3320,6 +4036,436 @@ namespace Southesk.Apps.EmitScore.Data {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class ReportTeamResultRow : global::System.Data.DataRow {
+            
+            private ReportTeamResultDataTable tableReportTeamResult;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ReportTeamResultRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportTeamResult = ((ReportTeamResultDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CategoryId {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportTeamResult.CategoryIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryId\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.CategoryIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int TotalPoints {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportTeamResult.TotalPointsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPoints\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TotalPointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime TotalTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportTeamResult.TotalTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTime\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TotalTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int NettPoints {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportTeamResult.NettPointsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NettPoints\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.NettPointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int TimeDisqualified {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportTeamResult.TimeDisqualifiedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TimeDisqualified\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TimeDisqualifiedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TeamType {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportTeamResult.TeamTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TeamType\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TeamTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TeamName {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportTeamResult.TeamNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TeamName\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TeamNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCategoryIdNull() {
+                return this.IsNull(this.tableReportTeamResult.CategoryIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCategoryIdNull() {
+                this[this.tableReportTeamResult.CategoryIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTotalPointsNull() {
+                return this.IsNull(this.tableReportTeamResult.TotalPointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTotalPointsNull() {
+                this[this.tableReportTeamResult.TotalPointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTotalTimeNull() {
+                return this.IsNull(this.tableReportTeamResult.TotalTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTotalTimeNull() {
+                this[this.tableReportTeamResult.TotalTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsNettPointsNull() {
+                return this.IsNull(this.tableReportTeamResult.NettPointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetNettPointsNull() {
+                this[this.tableReportTeamResult.NettPointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTimeDisqualifiedNull() {
+                return this.IsNull(this.tableReportTeamResult.TimeDisqualifiedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTimeDisqualifiedNull() {
+                this[this.tableReportTeamResult.TimeDisqualifiedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTeamTypeNull() {
+                return this.IsNull(this.tableReportTeamResult.TeamTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTeamTypeNull() {
+                this[this.tableReportTeamResult.TeamTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTeamNameNull() {
+                return this.IsNull(this.tableReportTeamResult.TeamNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTeamNameNull() {
+                this[this.tableReportTeamResult.TeamNameColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class ReportGroupResultRow : global::System.Data.DataRow {
+            
+            private ReportGroupResultDataTable tableReportGroupResult;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ReportGroupResultRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportGroupResult = ((ReportGroupResultDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CategoryId {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGroupResult.CategoryIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryId\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.CategoryIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TeamName {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportGroupResult.TeamNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TeamName\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.TeamNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string GroupName {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportGroupResult.GroupNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupName\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.GroupNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int GroupId {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGroupResult.GroupIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupId\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.GroupIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int LocationId {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGroupResult.LocationIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LocationId\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.LocationIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int Points {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGroupResult.PointsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Points\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.PointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime Time {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportGroupResult.TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Time\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime CumTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportGroupResult.CumTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CumTime\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.CumTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ResultId {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGroupResult.ResultIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ResultId\' in table \'ReportGroupResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGroupResult.ResultIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCategoryIdNull() {
+                return this.IsNull(this.tableReportGroupResult.CategoryIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCategoryIdNull() {
+                this[this.tableReportGroupResult.CategoryIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTeamNameNull() {
+                return this.IsNull(this.tableReportGroupResult.TeamNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTeamNameNull() {
+                this[this.tableReportGroupResult.TeamNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGroupNameNull() {
+                return this.IsNull(this.tableReportGroupResult.GroupNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGroupNameNull() {
+                this[this.tableReportGroupResult.GroupNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGroupIdNull() {
+                return this.IsNull(this.tableReportGroupResult.GroupIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGroupIdNull() {
+                this[this.tableReportGroupResult.GroupIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsLocationIdNull() {
+                return this.IsNull(this.tableReportGroupResult.LocationIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetLocationIdNull() {
+                this[this.tableReportGroupResult.LocationIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPointsNull() {
+                return this.IsNull(this.tableReportGroupResult.PointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPointsNull() {
+                this[this.tableReportGroupResult.PointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTimeNull() {
+                return this.IsNull(this.tableReportGroupResult.TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTimeNull() {
+                this[this.tableReportGroupResult.TimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCumTimeNull() {
+                return this.IsNull(this.tableReportGroupResult.CumTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCumTimeNull() {
+                this[this.tableReportGroupResult.CumTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsResultIdNull() {
+                return this.IsNull(this.tableReportGroupResult.ResultIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetResultIdNull() {
+                this[this.tableReportGroupResult.ResultIdColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -3523,6 +4669,68 @@ namespace Southesk.Apps.EmitScore.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public TeamResultsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class ReportTeamResultRowChangeEvent : global::System.EventArgs {
+            
+            private ReportTeamResultRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultRowChangeEvent(ReportTeamResultRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportTeamResultRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class ReportGroupResultRowChangeEvent : global::System.EventArgs {
+            
+            private ReportGroupResultRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultRowChangeEvent(ReportGroupResultRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ReportGroupResultRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5584,6 +6792,404 @@ FROM         Team INNER JOIN
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ReportTeamResultTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
+        
+        private global::System.Data.SqlServerCe.SqlCeConnection _connection;
+        
+        private global::System.Data.SqlServerCe.SqlCeTransaction _transaction;
+        
+        private global::System.Data.SqlServerCe.SqlCeCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public ReportTeamResultTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::System.Data.SqlServerCe.SqlCeDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlServerCe.SqlCeConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlServerCe.SqlCeCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlServerCe.SqlCeTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::System.Data.SqlServerCe.SqlCeCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ReportTeamResult";
+            tableMapping.ColumnMappings.Add("CategoryId", "CategoryId");
+            tableMapping.ColumnMappings.Add("TotalPoints", "TotalPoints");
+            tableMapping.ColumnMappings.Add("TotalTime", "TotalTime");
+            tableMapping.ColumnMappings.Add("NettPoints", "NettPoints");
+            tableMapping.ColumnMappings.Add("TimeDisqualified", "TimeDisqualified");
+            tableMapping.ColumnMappings.Add("TeamType", "TeamType");
+            tableMapping.ColumnMappings.Add("TeamName", "TeamName");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Team] ([TeamName]) VALUES (@p1)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "TeamName", global::System.Data.DataRowVersion.Current, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
+            this._connection.ConnectionString = global::Southesk.Apps.EmitScore.Properties.Settings.Default.EmitScoreConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT     'Team' AS TeamType, Team.TeamName, MAX(g1.CategoryId) AS CategoryId, SUM(g1.TotalPoints) AS TotalPoints, MAX(g1.TotalTime) AS TotalTime, 
+                      SUM(g1.NettPoints) AS NettPoints, MAX(g1.TimeDisqualified) AS TimeDisqualified
+FROM         [Group] AS g1 INNER JOIN
+                      Team ON g1.TeamId = Team.TeamId
+GROUP BY Team.TeamId, Team.TeamName
+UNION ALL
+SELECT     'Group' AS TeamType, GroupName, CategoryId, TotalPoints, TotalTime, NettPoints, TimeDisqualified
+FROM         [Group] AS g2
+WHERE     (TeamId IS NULL)
+ORDER BY NettPoints DESC, TotalTime";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(EmitScoreDataSet.ReportTeamResultDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual EmitScoreDataSet.ReportTeamResultDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            EmitScoreDataSet.ReportTeamResultDataTable dataTable = new EmitScoreDataSet.ReportTeamResultDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(EmitScoreDataSet.ReportTeamResultDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(EmitScoreDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ReportTeamResult");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string p1) {
+            if ((p1 == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p1));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ReportGroupResultTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
+        
+        private global::System.Data.SqlServerCe.SqlCeConnection _connection;
+        
+        private global::System.Data.SqlServerCe.SqlCeTransaction _transaction;
+        
+        private global::System.Data.SqlServerCe.SqlCeCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public ReportGroupResultTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::System.Data.SqlServerCe.SqlCeDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlServerCe.SqlCeConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlServerCe.SqlCeCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlServerCe.SqlCeTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::System.Data.SqlServerCe.SqlCeCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ReportGroupResult";
+            tableMapping.ColumnMappings.Add("CategoryId", "CategoryId");
+            tableMapping.ColumnMappings.Add("TeamName", "TeamName");
+            tableMapping.ColumnMappings.Add("GroupName", "GroupName");
+            tableMapping.ColumnMappings.Add("GroupId", "GroupId");
+            tableMapping.ColumnMappings.Add("LocationId", "LocationId");
+            tableMapping.ColumnMappings.Add("Points", "Points");
+            tableMapping.ColumnMappings.Add("Time", "Time");
+            tableMapping.ColumnMappings.Add("CumTime", "CumTime");
+            tableMapping.ColumnMappings.Add("ResultId", "ResultId");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
+            this._connection.ConnectionString = global::Southesk.Apps.EmitScore.Properties.Settings.Default.EmitScoreConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT     [Group].CategoryId, Team.TeamName, [Group].GroupName, GroupResult.GroupId, GroupResult.LocationId, GroupResult.Points, GroupResult.Time, 
+                      GroupResult.CumTime, GroupResult.ResultId
+FROM         GroupResult INNER JOIN
+                      [Group] ON GroupResult.GroupId = [Group].GroupId LEFT OUTER JOIN
+                      Team ON [Group].TeamId = Team.TeamId
+ORDER BY GroupResult.ResultId";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(EmitScoreDataSet.ReportGroupResultDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual EmitScoreDataSet.ReportGroupResultDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            EmitScoreDataSet.ReportGroupResultDataTable dataTable = new EmitScoreDataSet.ReportGroupResultDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -5607,6 +7213,8 @@ FROM         Team INNER JOIN
         private GroupResultTableAdapter _groupResultTableAdapter;
         
         private TeamTableAdapter _teamTableAdapter;
+        
+        private ReportTeamResultTableAdapter _reportTeamResultTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5761,6 +7369,29 @@ FROM         Team INNER JOIN
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
+            "", "System.Drawing.Design.UITypeEditor")]
+        public ReportTeamResultTableAdapter ReportTeamResultTableAdapter {
+            get {
+                return this._reportTeamResultTableAdapter;
+            }
+            set {
+                if (((this._reportTeamResultTableAdapter != null) 
+                            && (this.TableAdapterInstanceCount == 1))) {
+                    this._reportTeamResultTableAdapter = value;
+                    return;
+                }
+                if (((value != null) 
+                            && (this.MatchTableAdapterConnection(value.Connection) == false))) {
+                    throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                            "tring.");
+                }
+                this._reportTeamResultTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5801,6 +7432,10 @@ FROM         Team INNER JOIN
                             && (this._teamTableAdapter.Connection != null))) {
                     return this._teamTableAdapter.Connection;
                 }
+                if (((this._reportTeamResultTableAdapter != null) 
+                            && (this._reportTeamResultTableAdapter.Connection != null))) {
+                    return this._reportTeamResultTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -5831,6 +7466,9 @@ FROM         Team INNER JOIN
                 if ((this._teamTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._reportTeamResultTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -5841,21 +7479,21 @@ FROM         Team INNER JOIN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private int UpdateUpdatedRows(EmitScoreDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._groupResultTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.GroupResult.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._groupResultTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._categoryTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._categoryTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._groupResultTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.GroupResult.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._groupResultTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5877,12 +7515,12 @@ FROM         Team INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._reportTeamResultTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReportTeamResult.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(updatedRows));
+                    result = (result + this._reportTeamResultTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5895,6 +7533,15 @@ FROM         Team INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -5904,19 +7551,19 @@ FROM         Team INNER JOIN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private int UpdateInsertedRows(EmitScoreDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._groupResultTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.GroupResult.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._groupResultTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._categoryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._categoryTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._groupResultTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.GroupResult.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._groupResultTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5936,11 +7583,11 @@ FROM         Team INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._reportTeamResultTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReportTeamResult.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(addedRows));
+                    result = (result + this._reportTeamResultTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5949,6 +7596,14 @@ FROM         Team INNER JOIN
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._configTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5961,6 +7616,14 @@ FROM         Team INNER JOIN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private int UpdateDeletedRows(EmitScoreDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._configTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Config.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -5969,11 +7632,11 @@ FROM         Team INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._reportTeamResultTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ReportTeamResult.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(deletedRows));
+                    result = (result + this._reportTeamResultTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5993,19 +7656,19 @@ FROM         Team INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._categoryTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._groupResultTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.GroupResult.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._groupResultTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._categoryTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6129,6 +7792,15 @@ FROM         Team INNER JOIN
                         adaptersWithAcceptChangesDuringUpdate.Add(this._teamTableAdapter.Adapter);
                     }
                 }
+                if ((this._reportTeamResultTableAdapter != null)) {
+                    revertConnections.Add(this._reportTeamResultTableAdapter, this._reportTeamResultTableAdapter.Connection);
+                    this._reportTeamResultTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
+                    this._reportTeamResultTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
+                    if (this._reportTeamResultTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._reportTeamResultTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._reportTeamResultTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -6210,6 +7882,10 @@ FROM         Team INNER JOIN
                 if ((this._teamTableAdapter != null)) {
                     this._teamTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._teamTableAdapter]));
                     this._teamTableAdapter.Transaction = null;
+                }
+                if ((this._reportTeamResultTableAdapter != null)) {
+                    this._reportTeamResultTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._reportTeamResultTableAdapter]));
+                    this._reportTeamResultTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

@@ -205,6 +205,9 @@
     <Content Include="img\ico\flag_blue.ico" />
     <Content Include="img\ico\users4.ico" />
     <Content Include="img\ico\wrench.ico" />
+    <None Include="img\tb\disk_blue.png" />
+    <None Include="img\menu\disk_blue.png" />
+    <None Include="img\menu\bomb.png" />
     <None Include="img\menu\houses.png" />
     <None Include="img\tb\houses.png" />
     <None Include="img\menu\wrench.png" />

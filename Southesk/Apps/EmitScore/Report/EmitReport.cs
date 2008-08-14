@@ -13,6 +13,7 @@ using System.Data;
 using System.Windows.Forms;
 
 using Southesk.Apps.EmitScore.Data;
+using Southesk.Apps.EmitScore.Emit;
 using Southesk.Library.Xls;
 
 namespace Southesk.Apps.EmitScore.Report
@@ -57,12 +58,11 @@ namespace Southesk.Apps.EmitScore.Report
       {
         Worksheet sht = Workbook.Worksheets.AddNamed(category.CategoryName);
 
-        sht.Cells.AddValueCell(1, 1, "Team Type", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 2, "Team", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 3, "Total Points", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 4, "Total Time", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 5, "Nett Points", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 6, "Time Disqualified", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 1, "Team", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 2, "Total Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 3, "Total Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 4, "Nett Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 5, "Time Disqualified", fmtHeaderCell);
 
         EmitScoreDataSet.ReportTeamResultRow[] tr = 
           (EmitScoreDataSet.ReportTeamResultRow[])
@@ -70,26 +70,27 @@ namespace Southesk.Apps.EmitScore.Report
 
         for (int r = 0; r < tr.Length; r++)
         {
-          sht.Cells.AddValueCell(r + 2, 1, tr[r].TeamType, fmtText);
-          sht.Cells.AddValueCell(r + 2, 2, tr[r].TeamName, fmtText);
+          sht.Cells.AddValueCell(r + 2, 1, tr[r].TeamName, fmtText);
 
           if (!tr[r].IsTotalPointsNull())
           {
-            sht.Cells.AddValueCell(r + 2, 3, tr[r].TotalPoints, fmtData);
+            sht.Cells.AddValueCell(r + 2, 2, tr[r].TotalPoints, fmtData);
           }
-          if (!tr[r].IsTotalTimeNull())
+          if (!tr[r].IsTotalTimeSecondsNull())
           {
-            sht.Cells.AddValueCell(r + 2, 4, tr[r].TotalTime.ToString("HH:mm:ss"), fmtTimestamp);
+            DateTime totalTime = Swipe.CreateBaseDate();
+            totalTime = totalTime.AddSeconds(tr[r].TotalTimeSeconds);
+            sht.Cells.AddValueCell(r + 2, 3, totalTime.ToString("HH:mm:ss"), fmtTimestamp);
           }
           if (!tr[r].IsNettPointsNull())
           {
-            sht.Cells.AddValueCell(r + 2, 5, tr[r].NettPoints, fmtData);
+            sht.Cells.AddValueCell(r + 2, 4, tr[r].NettPoints, fmtData);
           }
           if (!tr[r].IsTimeDisqualifiedNull())
           {
             if (tr[r].TimeDisqualified == 1)
             {
-              sht.Cells.AddValueCell(r + 2, 6, "Yes", fmtText);
+              sht.Cells.AddValueCell(r + 2, 5, "Yes", fmtText);
             }            
           }
         }
@@ -100,12 +101,13 @@ namespace Southesk.Apps.EmitScore.Report
         Worksheet sht = Workbook.Worksheets.AddNamed(String.Format("{0} Detail", category.CategoryName));
 
         sht.Cells.AddValueCell(1, 1, "Team", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 2, "Group Id", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 3, "Location Id", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 4, "Points", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 5, "Time", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 6, "Cum.Time", fmtHeaderCell);
-        sht.Cells.AddValueCell(1, 7, "Result Id", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 2, "Group", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 3, "Group Id", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 4, "Location Id", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 5, "Points", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 6, "Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 7, "Cum.Time", fmtHeaderCell);
+        sht.Cells.AddValueCell(1, 8, "Sequence", fmtHeaderCell);
 
         EmitScoreDataSet.ReportGroupResultRow[] tr =
           (EmitScoreDataSet.ReportGroupResultRow[])
@@ -118,23 +120,24 @@ namespace Southesk.Apps.EmitScore.Report
             sht.Cells.AddValueCell(r + 2, 1, tr[r].TeamName, fmtText);
           }
 
-          sht.Cells.AddValueCell(r + 2, 2, tr[r].GroupId, fmtText);
-          sht.Cells.AddValueCell(r + 2, 3, tr[r].LocationId, fmtText);
+          sht.Cells.AddValueCell(r + 2, 2, tr[r].GroupName, fmtText);
+          sht.Cells.AddValueCell(r + 2, 3, tr[r].GroupId, fmtText);
+          sht.Cells.AddValueCell(r + 2, 4, tr[r].LocationId, fmtText);
 
           if (!tr[r].IsPointsNull())
           {
-            sht.Cells.AddValueCell(r + 2, 4, tr[r].Points, fmtData);
+            sht.Cells.AddValueCell(r + 2, 5, tr[r].Points, fmtData);
           }
           if (!tr[r].IsTimeNull())
           {
-            sht.Cells.AddValueCell(r + 2, 5, tr[r].Time.ToString("HH:mm:ss"), fmtTimestamp);
+            sht.Cells.AddValueCell(r + 2, 6, tr[r].Time.ToString("HH:mm:ss"), fmtTimestamp);
           }
           if (!tr[r].IsCumTimeNull())
           {
-            sht.Cells.AddValueCell(r + 2, 6, tr[r].CumTime.ToString("HH:mm:ss"), fmtTimestamp);
+            sht.Cells.AddValueCell(r + 2, 7, tr[r].CumTime.ToString("HH:mm:ss"), fmtTimestamp);
           }
 
-          sht.Cells.AddValueCell(r + 2, 7, tr[r].ResultId, fmtData);
+          sht.Cells.AddValueCell(r + 2, 8, tr[r].ResultId, fmtData);
         }
       }
     }

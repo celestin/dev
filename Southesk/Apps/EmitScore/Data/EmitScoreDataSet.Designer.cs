@@ -2545,8 +2545,6 @@ namespace Southesk.Apps.EmitScore.Data {
             
             private global::System.Data.DataColumn columnTotalPoints;
             
-            private global::System.Data.DataColumn columnTotalTime;
-            
             private global::System.Data.DataColumn columnNettPoints;
             
             private global::System.Data.DataColumn columnTimeDisqualified;
@@ -2554,6 +2552,8 @@ namespace Southesk.Apps.EmitScore.Data {
             private global::System.Data.DataColumn columnTeamType;
             
             private global::System.Data.DataColumn columnTeamName;
+            
+            private global::System.Data.DataColumn columnTotalTimeSeconds;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ReportTeamResultDataTable() {
@@ -2600,13 +2600,6 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn TotalTimeColumn {
-                get {
-                    return this.columnTotalTime;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn NettPointsColumn {
                 get {
                     return this.columnNettPoints;
@@ -2631,6 +2624,13 @@ namespace Southesk.Apps.EmitScore.Data {
             public global::System.Data.DataColumn TeamNameColumn {
                 get {
                     return this.columnTeamName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TotalTimeSecondsColumn {
+                get {
+                    return this.columnTotalTimeSeconds;
                 }
             }
             
@@ -2663,16 +2663,16 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ReportTeamResultRow AddReportTeamResultRow(int CategoryId, int TotalPoints, System.DateTime TotalTime, int NettPoints, int TimeDisqualified, string TeamType, string TeamName) {
+            public ReportTeamResultRow AddReportTeamResultRow(int CategoryId, int TotalPoints, int NettPoints, int TimeDisqualified, string TeamType, string TeamName, int TotalTimeSeconds) {
                 ReportTeamResultRow rowReportTeamResultRow = ((ReportTeamResultRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CategoryId,
                         TotalPoints,
-                        TotalTime,
                         NettPoints,
                         TimeDisqualified,
                         TeamType,
-                        TeamName};
+                        TeamName,
+                        TotalTimeSeconds};
                 rowReportTeamResultRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportTeamResultRow);
                 return rowReportTeamResultRow;
@@ -2699,11 +2699,11 @@ namespace Southesk.Apps.EmitScore.Data {
             internal void InitVars() {
                 this.columnCategoryId = base.Columns["CategoryId"];
                 this.columnTotalPoints = base.Columns["TotalPoints"];
-                this.columnTotalTime = base.Columns["TotalTime"];
                 this.columnNettPoints = base.Columns["NettPoints"];
                 this.columnTimeDisqualified = base.Columns["TimeDisqualified"];
                 this.columnTeamType = base.Columns["TeamType"];
                 this.columnTeamName = base.Columns["TeamName"];
+                this.columnTotalTimeSeconds = base.Columns["TotalTimeSeconds"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2712,8 +2712,6 @@ namespace Southesk.Apps.EmitScore.Data {
                 base.Columns.Add(this.columnCategoryId);
                 this.columnTotalPoints = new global::System.Data.DataColumn("TotalPoints", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalPoints);
-                this.columnTotalTime = new global::System.Data.DataColumn("TotalTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalTime);
                 this.columnNettPoints = new global::System.Data.DataColumn("NettPoints", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNettPoints);
                 this.columnTimeDisqualified = new global::System.Data.DataColumn("TimeDisqualified", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2722,9 +2720,12 @@ namespace Southesk.Apps.EmitScore.Data {
                 base.Columns.Add(this.columnTeamType);
                 this.columnTeamName = new global::System.Data.DataColumn("TeamName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTeamName);
+                this.columnTotalTimeSeconds = new global::System.Data.DataColumn("TotalTimeSeconds", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalTimeSeconds);
                 this.columnTeamType.ReadOnly = true;
                 this.columnTeamType.MaxLength = 5;
                 this.columnTeamName.MaxLength = 100;
+                this.columnTotalTimeSeconds.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4080,21 +4081,6 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime TotalTime {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableReportTeamResult.TotalTimeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTime\' in table \'ReportTeamResult\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableReportTeamResult.TotalTimeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public int NettPoints {
                 get {
                     try {
@@ -4155,6 +4141,21 @@ namespace Southesk.Apps.EmitScore.Data {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int TotalTimeSeconds {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportTeamResult.TotalTimeSecondsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTimeSeconds\' in table \'ReportTeamResult\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportTeamResult.TotalTimeSecondsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsCategoryIdNull() {
                 return this.IsNull(this.tableReportTeamResult.CategoryIdColumn);
             }
@@ -4172,16 +4173,6 @@ namespace Southesk.Apps.EmitScore.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetTotalPointsNull() {
                 this[this.tableReportTeamResult.TotalPointsColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsTotalTimeNull() {
-                return this.IsNull(this.tableReportTeamResult.TotalTimeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetTotalTimeNull() {
-                this[this.tableReportTeamResult.TotalTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4222,6 +4213,16 @@ namespace Southesk.Apps.EmitScore.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetTeamNameNull() {
                 this[this.tableReportTeamResult.TeamNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTotalTimeSecondsNull() {
+                return this.IsNull(this.tableReportTeamResult.TotalTimeSecondsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTotalTimeSecondsNull() {
+                this[this.tableReportTeamResult.TotalTimeSecondsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6908,11 +6909,11 @@ FROM         Team INNER JOIN
             tableMapping.DataSetTable = "ReportTeamResult";
             tableMapping.ColumnMappings.Add("CategoryId", "CategoryId");
             tableMapping.ColumnMappings.Add("TotalPoints", "TotalPoints");
-            tableMapping.ColumnMappings.Add("TotalTime", "TotalTime");
             tableMapping.ColumnMappings.Add("NettPoints", "NettPoints");
             tableMapping.ColumnMappings.Add("TimeDisqualified", "TimeDisqualified");
             tableMapping.ColumnMappings.Add("TeamType", "TeamType");
             tableMapping.ColumnMappings.Add("TeamName", "TeamName");
+            tableMapping.ColumnMappings.Add("TotalTimeSeconds", "TotalTimeSeconds");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -6932,16 +6933,18 @@ FROM         Team INNER JOIN
             this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT     'Team' AS TeamType, Team.TeamName, MAX(g1.CategoryId) AS CategoryId, SUM(g1.TotalPoints) AS TotalPoints, MAX(g1.TotalTime) AS TotalTime, 
-                      SUM(g1.NettPoints) AS NettPoints, MAX(g1.TimeDisqualified) AS TimeDisqualified
+            this._commandCollection[0].CommandText = @"SELECT     'Team' AS TeamType, Team.TeamName, MAX(g1.CategoryId) AS CategoryId, SUM(g1.TotalPoints) AS TotalPoints, SUM(DATEPART(hour, g1.TotalTime) 
+                      * 3600 + DATEPART(minute, g1.TotalTime) * 60 + DATEPART(second, g1.TotalTime)) AS TotalTimeSeconds, SUM(g1.NettPoints) AS NettPoints, 
+                      MAX(g1.TimeDisqualified) AS TimeDisqualified
 FROM         [Group] AS g1 INNER JOIN
                       Team ON g1.TeamId = Team.TeamId
 GROUP BY Team.TeamId, Team.TeamName
 UNION ALL
-SELECT     'Group' AS TeamType, GroupName, CategoryId, TotalPoints, TotalTime, NettPoints, TimeDisqualified
+SELECT     'Group' AS TeamType, GroupName, CategoryId, TotalPoints, DATEPART(hour, TotalTime) * 3600 + DATEPART(minute, TotalTime) 
+                      * 60 + DATEPART(second, TotalTime) AS TotalTimeSeconds, NettPoints, TimeDisqualified
 FROM         [Group] AS g2
 WHERE     (TeamId IS NULL)
-ORDER BY NettPoints DESC, TotalTime";
+ORDER BY NettPoints DESC, TotalTimeSeconds";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -35,6 +35,7 @@
       this._stsMain = new System.Windows.Forms.StatusStrip();
       this._sslRegister = new System.Windows.Forms.ToolStripStatusLabel();
       this._sslRace = new System.Windows.Forms.ToolStripStatusLabel();
+      this.button1 = new System.Windows.Forms.Button();
       this._btnRace = new System.Windows.Forms.Button();
       this._btnRegister = new System.Windows.Forms.Button();
       this._mnsMain = new System.Windows.Forms.MenuStrip();
@@ -51,6 +52,8 @@
       this.mniCategories = new System.Windows.Forms.ToolStripMenuItem();
       this.mniTeams = new System.Windows.Forms.ToolStripMenuItem();
       this.mniGroups = new System.Windows.Forms.ToolStripMenuItem();
+      this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbSave = new System.Windows.Forms.ToolStripButton();
       this.tsbExit = new System.Windows.Forms.ToolStripButton();
@@ -104,6 +107,7 @@
       // 
       // toolStripContainer1.ContentPanel
       // 
+      this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
       this.toolStripContainer1.ContentPanel.Controls.Add(this._btnRace);
       this.toolStripContainer1.ContentPanel.Controls.Add(this._btnRegister);
       this.toolStripContainer1.ContentPanel.Controls.Add(this._emitReader);
@@ -145,6 +149,17 @@
       this._sslRace.Spring = true;
       this._sslRace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
+      // button1
+      // 
+      this.button1.Location = new System.Drawing.Point(49, 109);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(75, 23);
+      this.button1.TabIndex = 3;
+      this.button1.Text = "button1";
+      this.button1.UseVisualStyleBackColor = true;
+      this.button1.Visible = false;
+      this.button1.Click += new System.EventHandler(this.button1_Click);
+      // 
       // _btnRace
       // 
       this._btnRace.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -172,7 +187,8 @@
       this._mnsMain.Dock = System.Windows.Forms.DockStyle.None;
       this._mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.configureToolStripMenuItem});
+            this.configureToolStripMenuItem,
+            this.helpToolStripMenuItem});
       this._mnsMain.Location = new System.Drawing.Point(0, 0);
       this._mnsMain.Name = "_mnsMain";
       this._mnsMain.Size = new System.Drawing.Size(393, 24);
@@ -194,7 +210,7 @@
       // 
       this.mniFileNew.Image = global::Southesk.Apps.EmitScore.Properties.Resources.NewSmall;
       this.mniFileNew.Name = "mniFileNew";
-      this.mniFileNew.Size = new System.Drawing.Size(152, 22);
+      this.mniFileNew.Size = new System.Drawing.Size(109, 22);
       this.mniFileNew.Text = "&New";
       this.mniFileNew.Click += new System.EventHandler(this.mniFileNew_Click);
       // 
@@ -202,20 +218,20 @@
       // 
       this.mniFileSave.Image = global::Southesk.Apps.EmitScore.Properties.Resources.SaveSmall;
       this.mniFileSave.Name = "mniFileSave";
-      this.mniFileSave.Size = new System.Drawing.Size(152, 22);
+      this.mniFileSave.Size = new System.Drawing.Size(109, 22);
       this.mniFileSave.Text = "&Save";
       this.mniFileSave.Click += new System.EventHandler(this.mniFileSave_Click);
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(106, 6);
       // 
       // mniExit
       // 
       this.mniExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitSmall;
       this.mniExit.Name = "mniExit";
-      this.mniExit.Size = new System.Drawing.Size(152, 22);
+      this.mniExit.Size = new System.Drawing.Size(109, 22);
       this.mniExit.Text = "E&xit";
       this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
       // 
@@ -237,33 +253,33 @@
       // 
       this.mniComPort.Image = global::Southesk.Apps.EmitScore.Properties.Resources.wrench;
       this.mniComPort.Name = "mniComPort";
-      this.mniComPort.Size = new System.Drawing.Size(149, 22);
+      this.mniComPort.Size = new System.Drawing.Size(152, 22);
       this.mniComPort.Text = "COM &Port...";
       this.mniComPort.Click += new System.EventHandler(this.mniComPort_Click);
       // 
       // toolStripSeparator2
       // 
       this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
+      this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
       // 
       // mniLocations
       // 
       this.mniLocations.Image = global::Southesk.Apps.EmitScore.Properties.Resources.LocationSmall;
       this.mniLocations.Name = "mniLocations";
-      this.mniLocations.Size = new System.Drawing.Size(149, 22);
+      this.mniLocations.Size = new System.Drawing.Size(152, 22);
       this.mniLocations.Text = "&Locations...";
       this.mniLocations.Click += new System.EventHandler(this.mniLocations_Click);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
       // 
       // mniCategories
       // 
       this.mniCategories.Image = global::Southesk.Apps.EmitScore.Properties.Resources.CategorySmall;
       this.mniCategories.Name = "mniCategories";
-      this.mniCategories.Size = new System.Drawing.Size(149, 22);
+      this.mniCategories.Size = new System.Drawing.Size(152, 22);
       this.mniCategories.Text = "&Categories...";
       this.mniCategories.Click += new System.EventHandler(this.mniCategories_Click);
       // 
@@ -271,7 +287,7 @@
       // 
       this.mniTeams.Image = ((System.Drawing.Image)(resources.GetObject("mniTeams.Image")));
       this.mniTeams.Name = "mniTeams";
-      this.mniTeams.Size = new System.Drawing.Size(149, 22);
+      this.mniTeams.Size = new System.Drawing.Size(152, 22);
       this.mniTeams.Text = "&Teams...";
       this.mniTeams.Click += new System.EventHandler(this.mniTeams_Click);
       // 
@@ -279,9 +295,25 @@
       // 
       this.mniGroups.Image = global::Southesk.Apps.EmitScore.Properties.Resources.GroupSmall;
       this.mniGroups.Name = "mniGroups";
-      this.mniGroups.Size = new System.Drawing.Size(149, 22);
+      this.mniGroups.Size = new System.Drawing.Size(152, 22);
       this.mniGroups.Text = "&Groups...";
       this.mniGroups.Click += new System.EventHandler(this.mniGroups_Click);
+      // 
+      // helpToolStripMenuItem
+      // 
+      this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniHelpAbout});
+      this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+      this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+      this.helpToolStripMenuItem.Text = "&Help";
+      // 
+      // mniHelpAbout
+      // 
+      this.mniHelpAbout.Image = global::Southesk.Apps.EmitScore.Properties.Resources.HelpAboutSmall;
+      this.mniHelpAbout.Name = "mniHelpAbout";
+      this.mniHelpAbout.Size = new System.Drawing.Size(152, 22);
+      this.mniHelpAbout.Text = "&About...";
+      this.mniHelpAbout.Click += new System.EventHandler(this.mniHelpAbout_Click);
       // 
       // _tspMain
       // 
@@ -497,6 +529,9 @@
     private System.Windows.Forms.ToolStripMenuItem mniTeams;
     private System.Windows.Forms.ToolStripButton _tsbTeams;
     private System.Windows.Forms.ToolStripButton _tsbSave;
+    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem mniHelpAbout;
   }
 }
 

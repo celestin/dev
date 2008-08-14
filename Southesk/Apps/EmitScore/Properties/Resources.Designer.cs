@@ -116,6 +116,13 @@ namespace Southesk.Apps.EmitScore.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap HelpAboutSmall {
+            get {
+                object obj = ResourceManager.GetObject("HelpAboutSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap houses {
             get {
                 object obj = ResourceManager.GetObject("houses", resourceCulture);

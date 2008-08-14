@@ -387,5 +387,23 @@ namespace Southesk.Apps.EmitScore.Forms
     {
       ExportReport();
     }
+
+    private void mniHelpAbout_Click(object sender, EventArgs e)
+    {
+      FrmHelpAbout helpAbout = new FrmHelpAbout();
+      helpAbout.ShowDialog();
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      SwipeList list = new SwipeList();
+      DateTime time = Swipe.CreateBaseDate();
+      time = time.AddHours(5);
+      time = time.AddMinutes(31);
+      list.TotalPoints = 1000;
+      list.TotalTime = time;
+      list.AdjustPoints();
+      MessageBox.Show(String.Format("{0:HH:mm} {1}", time, list.NettPoints));
+    }
   }
 }

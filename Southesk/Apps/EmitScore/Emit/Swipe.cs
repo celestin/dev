@@ -114,6 +114,7 @@ namespace Southesk.Apps.EmitScore.Emit
     public DateTime TotalTime
     {
       get { return _totalTime; }
+      set { _totalTime = value; } // to be removed
     }
     public int TimeDisqualified
     {
@@ -160,22 +161,30 @@ namespace Southesk.Apps.EmitScore.Emit
       {
         // on time
       }
-      else if (diff <= 10)
+      else if (diff > 30)
       {
-        _nettPoints -= (5 * diff);
-      }
-      else if (diff <= 20)
-      {
-        _nettPoints -= (10 * diff);
-      }
-      else if (diff <= 30)
-      {
-        _nettPoints -= (20 * diff);
-      }
-      else // more than 30 minutes late
-      {
-        _nettPoints =  0; // harsh!
+        // more than 30 minutes late
+        _nettPoints = 0; // harsh!
         _timeDisqualified = true;
+      }
+      else
+      {
+        // Reduce points by band
+        for (int band = 1; band <= diff; band++)
+        {
+          if (band <= 10)
+          {
+            _nettPoints -= 5;
+          }
+          else if (band <= 20)
+          {
+            _nettPoints -= 10;
+          }
+          else if (band <= 30)
+          {
+            _nettPoints -= 20;
+          }          
+        }
       }
     }
   }

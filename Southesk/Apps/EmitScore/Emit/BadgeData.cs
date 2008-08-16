@@ -96,14 +96,19 @@ namespace Southesk.Apps.EmitScore.Emit
           }
           else if (isLocation)
           {
-            if (!_map.Contains(locationId))
-            {
-              throw new Exception(String.Format("Could not find Location {0}!", locationId));
-            }
+            // This is ignored because part of the process is to ensure all locations
+            // are loaded prior to an event.
+            //if (!_map.Contains(locationId))
+            //{
+            //  throw new Exception(String.Format("Could not find Location {0}!", locationId));
+            //}
 
-            swipe = new Swipe(_map[locationId], previousSwipe);
-            previousSwipe = swipe;
-            _swipeList.Add(swipe);
+            if (_map.Contains(locationId))
+            {
+              swipe = new Swipe(_map[locationId], previousSwipe);
+              previousSwipe = swipe;
+              _swipeList.Add(swipe);
+            }
           }
           else
           {

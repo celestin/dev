@@ -22,8 +22,11 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmTeams_Load(object sender, EventArgs e)
     {
-      categoryTableAdapter.Fill(emitScoreDataSet.Category);
-      teamTableAdapter.Fill(emitScoreDataSet.Team);
+      categoryTableAdapter.Fill(_dataSet.Category);
+      teamTableAdapter.Fill(_dataSet.Team);
+
+      _dataSet.Team.DefaultView.Sort = "CategoryId, TeamName";
+      _bdsTeam.DataSource = _dataSet.Team;
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmTeams_FormClosing(object sender, FormClosingEventArgs e)
     {
-      teamTableAdapter.Update(emitScoreDataSet.Team);
+      teamTableAdapter.Update(_dataSet.Team);
     }
   }
 }

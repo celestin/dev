@@ -28,6 +28,9 @@ namespace Southesk.Apps.EmitScore.Forms
       this.teamTableAdapter.Fill(this._dataSet.Team);
       this.categoryTableAdapter.Fill(this._dataSet.Category);
       this.groupTableAdapter.Fill(this._dataSet.Group);
+
+      _dataSet.Team.DefaultView.Sort = "TeamName ASC";
+      _bdsTeam.DataSource = _dataSet.Team;           
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)

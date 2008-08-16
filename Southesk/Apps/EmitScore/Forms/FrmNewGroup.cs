@@ -29,36 +29,50 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmNewGroup_Load(object sender, EventArgs e)
     {
-      _bdsGroup.Filter = String.Format("groupID='{0}'", _groupId);
-
       teamTableAdapter.Fill(_dataSet.Team);
       categoryTableAdapter.Fill(_dataSet.Category);
       groupTableAdapter.Fill(_dataSet.Group);
+
+      _bdsGroup.Filter = String.Format("groupID='{0}'", _groupId);
+
+      _dataSet.Team.DefaultView.Sort = "TeamName";
+      _bdsTeam.DataSource = _dataSet.Team;
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)
-    {    
-      this.Dispose();
+    {
+      this.Close();
     }
 
-    private void FrmNewGroup_FormClosing(object sender, FormClosingEventArgs e)
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
-      foreach (DataRow row in _dataSet.Group) 
+      base.OnFormClosing(e);
+
+      if (MessageBox.Show("Have you clicked the Header row to ensure the data saves?",
+        "Clicked the Header Row?", MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question) == DialogResult.Yes)
       {
-        EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
-        if (group.GroupId == _groupId)
+        foreach (DataRow row in _dataSet.Group)
         {
-          if (!group.IsTeamIdNull())
+          EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
+          if (group.GroupId == _groupId)
           {
-            group.BeginEdit();
-            EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);
-            group.CategoryId = team.CategoryId;
-            group.EndEdit();
+            if (!group.IsTeamIdNull())
+            {
+              group.BeginEdit();
+              EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);
+              group.CategoryId = team.CategoryId;
+              group.EndEdit();
+            }
           }
         }
+
+        groupTableAdapter.Update(_dataSet.Group);
       }
-      
-      groupTableAdapter.Update(_dataSet.Group);      
-    }    
+      else
+      {
+        e.Cancel = true;
+      }
+    }
   }
 }

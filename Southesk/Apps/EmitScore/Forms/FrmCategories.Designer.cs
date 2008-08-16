@@ -29,23 +29,25 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCategories));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-      this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-      this._tsbExit = new System.Windows.Forms.ToolStripButton();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this._bdsCategory = new System.Windows.Forms.BindingSource(this.components);
       this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+      this._tsbExit = new System.Windows.Forms.ToolStripButton();
       this.categoryTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
-      this.toolStrip1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsCategory)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      this.toolStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // toolStripContainer1
@@ -65,6 +67,47 @@
       // toolStripContainer1.TopToolStripPanel
       // 
       this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+      // 
+      // dataGridView1
+      // 
+      this.dataGridView1.AutoGenerateColumns = false;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.categoryIdDataGridViewTextBoxColumn,
+            this.categoryNameDataGridViewTextBoxColumn});
+      this.dataGridView1.DataSource = this._bdsCategory;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+      this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.RowTemplate.Height = 26;
+      this.dataGridView1.Size = new System.Drawing.Size(443, 294);
+      this.dataGridView1.TabIndex = 0;
+      // 
+      // _bdsCategory
+      // 
+      this._bdsCategory.DataMember = "Category";
+      this._bdsCategory.DataSource = this.emitScoreDataSet;
+      // 
+      // emitScoreDataSet
+      // 
+      this.emitScoreDataSet.DataSetName = "EmitScoreDataSet";
+      this.emitScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
       // 
       // toolStrip1
       // 
@@ -87,39 +130,17 @@
       this._tsbExit.Text = "toolStripButton1";
       this._tsbExit.Click += new System.EventHandler(this._tsbExit_Click);
       // 
-      // _bdsCategory
-      // 
-      this._bdsCategory.DataMember = "Category";
-      this._bdsCategory.DataSource = this.emitScoreDataSet;
-      // 
-      // emitScoreDataSet
-      // 
-      this.emitScoreDataSet.DataSetName = "EmitScoreDataSet";
-      this.emitScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-      // 
       // categoryTableAdapter
       // 
       this.categoryTableAdapter.ClearBeforeFill = true;
       // 
-      // dataGridView1
-      // 
-      this.dataGridView1.AutoGenerateColumns = false;
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.categoryIdDataGridViewTextBoxColumn,
-            this.categoryNameDataGridViewTextBoxColumn});
-      this.dataGridView1.DataSource = this._bdsCategory;
-      this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.Size = new System.Drawing.Size(443, 294);
-      this.dataGridView1.TabIndex = 0;
-      // 
       // categoryIdDataGridViewTextBoxColumn
       // 
+      this.categoryIdDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
       this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
       this.categoryIdDataGridViewTextBoxColumn.HeaderText = "Category Id";
       this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
+      this.categoryIdDataGridViewTextBoxColumn.Width = 103;
       // 
       // categoryNameDataGridViewTextBoxColumn
       // 
@@ -144,11 +165,11 @@
       this.toolStripContainer1.TopToolStripPanel.PerformLayout();
       this.toolStripContainer1.ResumeLayout(false);
       this.toolStripContainer1.PerformLayout();
-      this.toolStrip1.ResumeLayout(false);
-      this.toolStrip1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsCategory)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      this.toolStrip1.ResumeLayout(false);
+      this.toolStrip1.PerformLayout();
       this.ResumeLayout(false);
 
     }

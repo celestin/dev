@@ -23,18 +23,21 @@ namespace Southesk.Apps.EmitScore.Forms
   {
     private LocationMap _locationMap;
     private object _semaphore = new object();
+    private bool _processing;
 
     public FrmMain()
     {
       InitializeComponent();
+      _processing = false;
     }
 
     private void EmitReader_GetNextBadge(object sender, AxEmitEpt.__EptReading_GetNextBadgeEvent e)
     {
-      _sslRegister.Text = String.Format("Data received at {0}", DateTime.Now);
+      if (_processing) return;      
 
       lock (_semaphore)
       {
+        _processing = true;
         try
         {
           ProcessBadgeData(e.badgeData);
@@ -45,6 +48,7 @@ namespace Southesk.Apps.EmitScore.Forms
             ex.Message, ex.StackTrace), "Error processing Badge",
             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        _processing = false;
       }
     }
 
@@ -65,6 +69,8 @@ namespace Southesk.Apps.EmitScore.Forms
 
       if (badge.IsValidBadge)
       {
+        _sslRegister.Text = String.Format("Data received at {0}", DateTime.Now);
+
         if (RegisterMode)
         {
           try
@@ -187,12 +193,17 @@ namespace Southesk.Apps.EmitScore.Forms
               }
             }
           }
+
+          MessageBox.Show(String.Format("Group {0} - {1} results received.",
+            groupRow.GroupId, groupRow.GroupName), "Results Received",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
       }
     }
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
+      reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
       teamResultsTableAdapter.Fill(_dataSet.TeamResults);
       groupResultTableAdapter.Fill(_dataSet.GroupResult);
       locationTableAdapter.Fill(_dataSet.Location);
@@ -335,6 +346,9 @@ namespace Southesk.Apps.EmitScore.Forms
         groupTableAdapter.Fill(_dataSet.Group);
         _sslRegister.Text = String.Format("{0} groups registered.",
           _dataSet.Group.Rows.Count);
+
+        reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
+        _dgvResults.Refresh();
       }
     }
 
@@ -394,16 +408,25 @@ namespace Southesk.Apps.EmitScore.Forms
       helpAbout.ShowDialog();
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void btnTest_Click(object sender, EventArgs e)
     {
-      SwipeList list = new SwipeList();
-      DateTime time = Swipe.CreateBaseDate();
-      time = time.AddHours(5);
-      time = time.AddMinutes(31);
-      list.TotalPoints = 1000;
-      list.TotalTime = time;
-      list.AdjustPoints();
-      MessageBox.Show(String.Format("{0:HH:mm} {1}", time, list.NettPoints));
+      //SwipeList list = new SwipeList();
+      //DateTime time = Swipe.CreateBaseDate();
+      //time = time.AddHours(5);
+      //time = time.AddMinutes(31);
+      //list.TotalPoints = 1000;
+      //list.TotalTime = time;
+      //list.AdjustPoints();
+      //MessageBox.Show(String.Format("{0:HH:mm} {1}", time, list.NettPoints));
+
+      FrmNewGroup newGroup = new FrmNewGroup(484356);
+      newGroup.ShowDialog();
+
+    }
+
+    private void _dgvResults_DataError(object sender, DataGridViewDataErrorEventArgs e)
+    {
+
     }
   }
 }

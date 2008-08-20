@@ -15,6 +15,7 @@
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * CAM  12-Apr-2008  10241 : Added classes for short details.
  * CAM  17-May-2008  10232 : Added classes for new Quality page.
+ * CAM  20-Aug-2008  10113 : Added classes for H3 and AquaFinesse logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -37,6 +38,14 @@ h2 {
   COLOR: #233f91;
   FONT-FAMILY: Times New Roman, Serif;
   FONT-SIZE: 20pt;
+  FONT-STYLE: italic;
+  TEXT-DECORATION: none;
+}
+
+h3 {
+  COLOR: #233f91;
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 12pt;
   FONT-STYLE: italic;
   TEXT-DECORATION: none;
 }
@@ -182,6 +191,18 @@ p.legal {
   COLOR: white;
   vertical-align:middle;
   HEIGHT: 35px;
+}
+
+#AquaFinesseLogo
+{
+  padding-top: 15px;
+}
+
+img.centerheader 
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
 }
 
 #rxfeature ul

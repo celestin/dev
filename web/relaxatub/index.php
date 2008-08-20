@@ -19,6 +19,7 @@
  * CAM  14-Feb-2008  10243 : Reverted back to standard page.
  * CAM  23-Feb-2008  10235 : Added Random Image and Tub Series below.
  * CAM  17-May-2008  10232 : Corrected links for 350H.
+ * CAM  20-Aug-2008  10113 : Added AquaFinesse logo under tubs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -28,7 +29,7 @@ include "tpl/top.php";
 $randomImage = new RandomImage("img/re");
 ?>
 
-<div id=#RandomImage>
+<div id="RandomImage">
 <img src="<? echo $randomImage->GetRandomImage(); ?>" width="538" height="301">
 <table border=0 width="538">
   <tr>
@@ -40,6 +41,9 @@ $randomImage = new RandomImage("img/re");
     <td align=center><a class="nav" href="tub.php?tub=350h">300 series</a></td>
     <td align=center><a class="nav" href="tub.php?tub=550x">500 series</a></td>
     <td align=center><a class="nav" href="tub.php?tub=750">700 series</a></td>
+  </tr>
+  <tr>
+    <td align=center colspan="3"><div id="AquaFinesseLogo"><a href="watercare.php"><img border=0 src="img/af/logosmall.png" width="300" height="53"></a></div></td>
   </tr>
 </table>
 </div>

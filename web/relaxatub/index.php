@@ -20,6 +20,7 @@
  * CAM  23-Feb-2008  10235 : Added Random Image and Tub Series below.
  * CAM  17-May-2008  10232 : Corrected links for 350H.
  * CAM  20-Aug-2008  10113 : Added AquaFinesse logo under tubs.
+ * CAM  20-Aug-2008  10284 : Added "30 years" logo under tubs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -43,7 +44,8 @@ $randomImage = new RandomImage("img/re");
     <td align=center><a class="nav" href="tub.php?tub=750">700 series</a></td>
   </tr>
   <tr>
-    <td align=center colspan="3"><div id="AquaFinesseLogo"><a href="watercare.php"><img border=0 src="img/af/logosmall.png" width="300" height="53"></a></div></td>
+    <td align=center colspan="2"><div id="AquaFinesseLogo"><a href="watercare.php"><img border=0 src="img/af/logosmall.png" width="300" height="53"></a></div></td>
+    <td align=center><div id="AquaFinesseLogo"><img border=0 src="img/30.png" width="79" height="99"></div></td>
   </tr>
 </table>
 </div>

@@ -1,0 +1,290 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Airylea Motors Website
+ * Copyright (c) 2008 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  28-Aug-2008  10280 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  background-color: #DAE0DE;
+}
+
+p, table, td, input, select, textarea, h1, h2 {
+  color: #000000;
+  font-family: Verdana, Arial, Helvetica;
+  font-size: 10pt;
+  text-decoration: none;
+}
+
+p.txt {
+}
+
+
+h1 {
+  color: #330066;
+  text-align: left;
+  font-size: 14pt;
+}
+
+h2 {
+  color: #3300FF;
+  text-align: left;
+  font-size: 12pt;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  margin: 0px;
+}
+
+td.slogan {
+  font-size: 16pt;
+  background-color: #BB0F18;
+  color: white;
+}
+
+.hi {
+  font-weight: bold;
+  color: #BB0F18;
+}
+
+td.sidered {
+  font-size: 12pt;
+  font-weight: bold;
+  background-color: #BB0F18;
+  color: white;
+  padding: 6px;
+}
+
+.news {
+  font-size: 10pt;
+  font-weight: normal;
+  color: white;
+}
+
+.wcelink {
+  font-size: 10pt;
+  font-weight: bold;
+  color: white;
+}
+
+.whitebox {
+  background-color: white;
+}
+
+#toplogo {
+  background-color: white;
+}
+
+#navbar {
+  font-size: 12pt;
+  font-weight: bold;
+  background-color: #CCFF99;
+  color: white;
+  padding: 6px;
+}
+
+.bodybox {
+  background-color: white;
+  padding: 8px;
+  text-align:left;
+}
+
+#topbanner {
+  font-size: 8pt;
+  color: white;
+}
+
+#toolbar {
+  background-color: #330066;
+}
+
+.redbanner {
+  background-color: #CCFF33;
+  font-size: 8pt;
+  color: white;
+  padding: 4px;
+}
+
+.pagebox {
+  BORDER:#999999 1px solid;
+  text-align:center;
+  WIDTH:15px;
+  color: #006891;
+  font-weight: bold;
+}
+
+.pageboxhover {
+  BORDER:#006891 1px solid;
+  text-align:center;
+  WIDTH:15px;
+  background-color: #006891;
+  color: white;
+  font-weight: bold;
+  CURSOR: pointer;
+}
+
+.quote {
+  background-color: #E0E0E0;
+  color: #333333;
+}
+
+.pageboxsel {
+  BORDER:#BB0F18 1px solid;
+  text-align:center;
+  WIDTH:15px;
+  background-color: #BB0F18;
+  color: white;
+  font-weight: bold;
+}
+
+.bluebox {
+  border-bottom:  #006891 2px solid;
+  BORDER-LEFT:    #006891 2px solid;
+  BORDER-RIGHT:   #006891 2px solid;
+  BORDER-TOP:     #006891 2px solid;
+}
+
+.sep {
+  padding-LEFT: 5px;
+  padding-RIGHT: 5px;
+  color: #F1F16B;
+  font-weight: bold;
+}
+
+.ti {
+  padding-LEFT: 20px;
+  padding-BOTTOM: 20px;
+}
+
+
+td.cpyrght {
+  font-size: 8pt;
+  color: #333333;
+  text-align: center;
+}
+
+.fld {
+  color: #006891;
+  font-weight: bold;
+}
+
+.fldmand {
+  color: #BB0F18;
+  font-weight: bold;
+}
+
+/** Colours **/
+
+span.am {
+  color:#330066;
+  font-weight:bold;
+}
+
+span.lorange {
+  color:#E47B00;
+}
+span.delphi {
+  color:#DE0029;
+}
+span.bosch {
+  color:#EE2413;
+}
+span.stanadyne {
+  color:#0152FE;
+}
+span.ww {
+  color:#880129;
+}
+
+
+/** Image Navigation */
+
+.imgnav img {
+  BORDER: 2px solid #CCCCCC;
+}
+
+.imgnav:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnav:hover {
+  color: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  font-weight: bold;
+}
+
+.imgnavsel img {
+  BORDER: 2px solid #BB0F18;
+}
+
+.imgnavsel:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnavsel:hover {
+  color: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  font-weight: bold;
+}
+
+
+/** Navigation */
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  color: #330099;
+  border-bottom: #330099 1px dashed;
+  font-weight: bold;
+}
+A.nav:hover {
+  color: #3300FF;
+  font-weight: bold;
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+A.tbr,A.tbr:visited,A.tbr:active,A.tbr:link,A.tbr:visited {
+  font-size: 7pt;
+  color: white;
+  border-bottom: #F1F16B 1px dashed;
+  font-weight: normal;
+}
+A.tbr:hover {
+  color: #F1F16B;
+  font-weight: normal;
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  color: #002054;
+  font-weight: bold;
+  text-decoration: none;
+}
+A:hover {
+  color: #497FB1;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/** Message formats */
+
+p.err {
+  color: #BB0F18;
+  font-weight: normal;
+}
+
+p.quest {
+  color: #120966;
+  font-weight: normal;
+}
+
+p.statement {
+  color: #120966;
+  font-weight: normal;
+}
+

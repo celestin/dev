@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Airylea Motors Website
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Top of the page
@@ -44,7 +44,7 @@ $boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
 <tr>
   <td colspan=2><table border=0 cellpadding=0 cellspacing=0 id="topbanner">
     <tr>
-      <td align=right id="toolbar" colspan=6 height=10 id="tb"><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
+      <td align=right id="toolbar" colspan=6 height=10><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
         <tr height=24>
 <?
 if (!$loggedin) {

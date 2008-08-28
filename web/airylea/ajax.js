@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Airylea Motors Website
+ * Copyright (c) 2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Javascript - AJAXesque stuff!
@@ -8,7 +8,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  31-May-2006  File created.
+ * CAM  28-Aug-2008  10280 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function getObjRef(ref) {
@@ -59,7 +59,7 @@ function shrinkToolbar() {
 
 function toogleToolbar() {
   tbtab = getObjRef("tbtab");
-  tb = getObjRef("tb");
+  tb = getObjRef("toolbar");
 
   if (tbtab.style.display == "none") {
     tbGrow = setTimeout("growToolbar();", tbDel);

@@ -12,7 +12,7 @@
  * CAM  28-Aug-2008  10280 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Boat Transport";
+$title = "Welcome";
 include 'tpl/top.php';
 
 global $flash;

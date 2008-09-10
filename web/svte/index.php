@@ -9,6 +9,7 @@
  * Who  When         Why
  * CAM  14-Jan-2008  10222 : Converted to PHP, added auto date facility.
  * CAM  14-Apr-2008  10260 : Updated brochures.
+ * CAM  10-Sep-2008  10298 : Removed software references.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -49,21 +50,13 @@ td.main {
 
 <tr>
 
-<td colspan=2 style="margin-top: 0; line-height:150%"><i>authors&nbsp;of&nbsp;<b>Timber&nbsp;Frame&nbsp;Engineering</b><sup><font size="2">TM</font></sup>&nbsp;software</i></td>
+<td colspan=2 class="main">postal address:</td>
 
-<td rowspan=6><img border=0 src="svte.png" width=242 height=300></td>
+<td rowspan=5 width=242><img border=0 src="svte.png" width=242 height=300></td>
 
-<td rowspan=6>
-<table border=1 cellspacing=0 cellpadding=4>
-<tr><td align=center bgcolor="#6D2BAF" style="color:#FFFFFF">DOWNLOADS</td></tr>
-<tr><td><a href="sample_calc.pdf">Sample Calculations</a></td></tr>
-<tr><td><a href="flyer_rev7_apr08.pdf">Leaflet &amp; Price List</a></td></tr>
-<tr><td><a href="order_form_rev6_apr08.pdf">Order Form</a></td></tr>
-<tr><td><a href="maint_renewal_rev1_2008.pdf">Annual Maintenance Renewal</a></td></tr>
-</table>
-</td></tr>
+</tr>
 
-<td colspan=2 class="main">postal address:</td></tr>
+
 <td colspan=2 class="main">20 Hiplands Road,<br>Halesowen<br>West Midlands, B62 0AE.</td></tr>
 <td colspan=2 class="main">email address:<br>
 <a href="mailto:enquiry@stourvalleytimberengineering.co.uk"><font color="#FF0000">enquiry@stourvalleytimberengineering.co.uk</font></a></td></tr>
@@ -72,40 +65,25 @@ td.main {
 <td colspan=2 class="main">contact:<br>Jonathan Bedford</td></tr>
 
 <tr>
-<td colspan=4 width=800>
+<td colspan=3 width=800>
 
 <div id="mainText">
-<p class="main"><b>
-We provide specialist design software</b> for purchase by other engineers in the timber
-frame industry. The software, <b><i>Timber Frame Engineering</i></b><sup><font size="2">TM</font></sup>,
-is easy to use and produces a consistent quality format output - every time,
-which is easy to read. It uses BS 5268 Parts 2 &amp; 6.1 as its foundation and
-other relevant British Standards are utilised as required.
+<p class="main">We have pleasure in announcing that Pavlovskis Lister have taken over the ownership of the
+<b><i>Timber Frame Engineering</b></i><sup><font size="2">TM</font></sup> software with immediate effect, in
+order to take it to the next stage; EUROCODE 5. This is intended to be carried out in a timely
+manner to coincide with the withdrawal of BS 5268, although BS 5268 and the current version is
+likely to linger on a good while after the introduction of EC5.</p>
 
-A revision to BS 5268 Part 6.1 came into effect on the 30th November 2007
-and the software has been updated to reflect this amendment.
-Please call us on the above number for a brief résumé of the
-sections of the code which are affected.</p>
+<p class="main">All existing license agreements will transfer across and continue to be maintained
+through Pavlovskis Lister who can be contacted via email at
+<a href="mailto:southmidlands@pavlister.co.uk">southmidlands@pavlister.co.uk</a>.</p>
 
-<p class="main">The <b>EUROCODES</b> (BS EN 1990 - BS EN 1999) are now available for use for the
-design of structures in all materials, and <b>BS EN 1995 for timber structures</b> is the one
-that is of interest to all those designing in timber. Eurocode 0 series
-(Basis of structural design) and Eurocode 1 series (Actions on structures)
-will also be required. In addition to the BS EN codes themselves there are
-also the National Application Documents, which provide additional guidance
-applicable to each country; or ‘Member State’ in the language of the Eurocode.
-We are now in the 2 year period of coexistence and the current date published
-for withdrawal of the current National codes is March 2010. We are in the process of
-creating a new version of the software to comply with the Eurocodes, and the current
-release date is expected to be January 2009, subject to all documentation being
-available from BSI.</p>
+<p class="main">We would make available a postal address and telephone number, but in view of an imminent office
+relocation, this information will be short lived, so please use the email address until further
+details can be provided.</p>
 
-<p class="main"><b>Interested...</b></p>
-
-<p class="main">Download the above information and
-contact us by any of the above means if you have any queries about the software
-or send your order form for a copy of the software. Despatch is usually within 7
-days, but please allow 28 days for delivery.</p>
+<p class="main">Stour Valley Timber Engineering will continue to run in the short term as a trading name which has
+become synonymous for the <b><i>Timber Frame Engineering</b></i><sup><font size="2">TM</font></sup> software.</p>
 
 <p  class="main"><i>This web site is regularly
 updated additional information added as necessary. Last updated: <b><? echo strftime("%B %Y");; ?></b></i>.</p>

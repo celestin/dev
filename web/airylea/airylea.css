@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
+ * CAM  18-Sep-2008  10280 : Added more classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -23,6 +24,12 @@ p, table, td, input, select, textarea, h1, h2 {
 }
 
 p.txt {
+}
+
+td.annot {
+  color: #666666;
+  text-align: center;
+  font-size: 8pt;
 }
 
 
@@ -83,7 +90,7 @@ td.sidered {
 #navbar {
   font-size: 12pt;
   font-weight: bold;
-  background-color: #CCFF99;
+  background-color: #99cbff;
   color: white;
   padding: 6px;
 }
@@ -104,7 +111,7 @@ td.sidered {
 }
 
 .redbanner {
-  background-color: #CCFF33;
+  background-color: #4a96e6;
   font-size: 8pt;
   color: white;
   padding: 4px;
@@ -131,6 +138,13 @@ td.sidered {
 .quote {
   background-color: #E0E0E0;
   color: #333333;
+}
+
+.thinBox {
+  BORDER-TOP:    #666666 1px solid;
+  BORDER-LEFT:   #666666 1px solid;
+  BORDER-RIGHT:  #666666 1px solid;
+  BORDER-BOTTOM: #666666 1px solid;
 }
 
 .pageboxsel {

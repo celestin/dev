@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
+ * CAM  18-Sep-2008  10280 : Added Suppliers.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -68,13 +69,13 @@ if ($loggedin) {
           <td width=232 class="whitebox" align=left><img onclick="toogleToolbar();" src="img/am3.png"></td>
           <td align=right><table border=0 cellpadding=4 cellspacing=8>
             <tr>
-              <td><img src="img/logo/m/supp_bosch.gif"></td>
-              <td><img src="img/logo/m/supp_delphi.gif"></td>
-              <td align=right><img src="img/logo/m/supp_lorange2.png"></td>
+              <td><a href="bosch.php"><img border=0 src="img/logo/m/supp_bosch.gif"></a></td>
+              <td><a href="delphi.php"><img border=0 src="img/logo/m/supp_delphi.gif"></a></td>
+              <td align=right><a href="lorange.php"><img border=0 src="img/logo/m/supp_lorange.png"></a></td>
             </tr><tr>
               <td>&nbsp;</td>
-              <td align=center><img src="img/logo/m/supp_woodward.gif"></td>
-              <td><img src="img/logo/m/supp_stanadyne.gif"></td>
+              <td align=center><a href="woodward.php"><img border=0 src="img/logo/m/supp_woodward.gif"></a></td>
+              <td><a href="stanadyne.php"><img border=0 src="img/logo/m/supp_stanadyne.gif"></a></td>
             </tr>
           </table></td>
         </tr>
@@ -83,7 +84,7 @@ if ($loggedin) {
     <tr height=26>
       <td class="redbanner" width=200 align=center><a class="nav" href="index.php">HOME</a></td>
       <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">SERVICES</a></td>
-      <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">SUPPLIERS</a></td>
+      <td class="redbanner" width=200 align=center><a class="nav" href="suppliers.php">SUPPLIERS</a></td>
       <td class="redbanner" width=200 align=center><a class="nav" href="history.php">HISTORY</a></td>
       <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">CONTACT</a></td>
     </tr>

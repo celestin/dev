@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  05-Nov-06   301 : File created.
+ * CAM  27-Sep-08  1000 : Upgraded to include Classic licensing options.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,12 +18,12 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace EPM_License_Generator
+namespace Scm.Tools.LicGen
 {
   /// <summary>
   /// Summary description for Options.
   /// </summary>
-  public class EPMOptions : System.Windows.Forms.Form
+  public class FormOptions : System.Windows.Forms.Form
   {
     private System.Windows.Forms.Button btnBrowseDat;
     private System.Windows.Forms.TextBox txtPathDat;
@@ -37,7 +38,7 @@ namespace EPM_License_Generator
     /// </summary>
     private System.ComponentModel.Container components = null;
 
-    public EPMOptions()
+    public FormOptions()
     {
       //
       // Required for Windows Form Designer support

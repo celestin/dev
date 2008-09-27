@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.21022</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{574F877D-5A0B-4ED6-955A-7C8276F38EB4}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <ApplicationIcon>LicenseKey.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>EPM License Generator</AssemblyName>
+    <AssemblyName>SCM License Generator</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -17,7 +17,7 @@
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>EPM_License_Generator</RootNamespace>
+    <RootNamespace>Scm.Tools.LicGen</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -94,17 +94,23 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EPMLicGen.cs">
+    <Compile Include="LicGen.cs" />
+    <Compile Include="FormLicGen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EPMOptions.cs">
+    <Compile Include="FormLicGen.Designer.cs">
+      <DependentUpon>FormLicGen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="EPMLicGen.resx">
-      <DependentUpon>EPMLicGen.cs</DependentUpon>
+    <EmbeddedResource Include="FormLicGen.resx">
+      <DependentUpon>FormLicGen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="EPMOptions.resx">
-      <DependentUpon>EPMOptions.cs</DependentUpon>
+    <EmbeddedResource Include="FormOptions.resx">
+      <DependentUpon>FormOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="LicenseKey.ico" />
   </ItemGroup>

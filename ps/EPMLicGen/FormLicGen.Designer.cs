@@ -70,13 +70,16 @@ namespace Scm.Tools.LicGen
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this._tsbGenerate = new System.Windows.Forms.ToolStripButton();
       this._tsbOptions = new System.Windows.Forms.ToolStripButton();
-      this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this._tsbExit = new System.Windows.Forms.ToolStripButton();
       this.fmeProds.SuspendLayout();
       this.frmLicType.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -425,47 +428,45 @@ namespace Scm.Tools.LicGen
       // 
       // exitToolStripMenuItem
       // 
+      this.exitToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Exit;
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+      this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
       this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.exitToolStripMenuItem.Text = "E&xit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
       // 
-      // toolStrip1
-      // 
-      this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-      this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._tsbGenerate,
-            this._tsbOptions});
-      this.toolStrip1.Location = new System.Drawing.Point(3, 24);
-      this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new System.Drawing.Size(179, 25);
-      this.toolStrip1.TabIndex = 1;
-      // 
-      // _tsbGenerate
-      // 
-      this._tsbGenerate.Image = ((System.Drawing.Image)(resources.GetObject("_tsbGenerate.Image")));
-      this._tsbGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbGenerate.Name = "_tsbGenerate";
-      this._tsbGenerate.Size = new System.Drawing.Size(72, 22);
-      this._tsbGenerate.Text = "Generate";
-      this._tsbGenerate.Click += new System.EventHandler(this._tsbGenerate_Click);
-      // 
-      // _tsbOptions
-      // 
-      this._tsbOptions.Image = ((System.Drawing.Image)(resources.GetObject("_tsbOptions.Image")));
-      this._tsbOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbOptions.Name = "_tsbOptions";
-      this._tsbOptions.Size = new System.Drawing.Size(64, 22);
-      this._tsbOptions.Text = "Options";
-      this._tsbOptions.Click += new System.EventHandler(this._tsbOptions_Click);
-      // 
       // toolsToolStripMenuItem
       // 
       this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generateToolStripMenuItem,
+            this.toolStripSeparator1,
             this.optionsToolStripMenuItem});
       this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
       this.toolsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
       this.toolsToolStripMenuItem.Text = "&Tools";
+      // 
+      // generateToolStripMenuItem
+      // 
+      this.generateToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Generate;
+      this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
+      this.generateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+      this.generateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+      this.generateToolStripMenuItem.Text = "&Generate";
+      this.generateToolStripMenuItem.Click += new System.EventHandler(this.generateToolStripMenuItem_Click);
+      // 
+      // toolStripSeparator1
+      // 
+      this.toolStripSeparator1.Name = "toolStripSeparator1";
+      this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+      // 
+      // optionsToolStripMenuItem
+      // 
+      this.optionsToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Options;
+      this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+      this.optionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+      this.optionsToolStripMenuItem.Text = "&Options";
+      this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
       // 
       // helpToolStripMenuItem
       // 
@@ -475,19 +476,52 @@ namespace Scm.Tools.LicGen
       this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
       this.helpToolStripMenuItem.Text = "&Help";
       // 
-      // optionsToolStripMenuItem
-      // 
-      this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.optionsToolStripMenuItem.Text = "&Options";
-      this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-      // 
       // aboutToolStripMenuItem
       // 
+      this.aboutToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.HelpAbout;
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
       this.aboutToolStripMenuItem.Text = "&About";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+      // 
+      // toolStrip1
+      // 
+      this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+      this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._tsbGenerate,
+            this._tsbOptions,
+            this._tsbExit});
+      this.toolStrip1.Location = new System.Drawing.Point(3, 24);
+      this.toolStrip1.Name = "toolStrip1";
+      this.toolStrip1.Size = new System.Drawing.Size(193, 25);
+      this.toolStrip1.TabIndex = 1;
+      // 
+      // _tsbGenerate
+      // 
+      this._tsbGenerate.Image = global::Scm.Tools.LicGen.Properties.Resources.Generate;
+      this._tsbGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbGenerate.Name = "_tsbGenerate";
+      this._tsbGenerate.Size = new System.Drawing.Size(72, 22);
+      this._tsbGenerate.Text = "Generate";
+      this._tsbGenerate.Click += new System.EventHandler(this._tsbGenerate_Click);
+      // 
+      // _tsbOptions
+      // 
+      this._tsbOptions.Image = global::Scm.Tools.LicGen.Properties.Resources.Options;
+      this._tsbOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbOptions.Name = "_tsbOptions";
+      this._tsbOptions.Size = new System.Drawing.Size(64, 22);
+      this._tsbOptions.Text = "Options";
+      this._tsbOptions.Click += new System.EventHandler(this._tsbOptions_Click);
+      // 
+      // _tsbExit
+      // 
+      this._tsbExit.Image = global::Scm.Tools.LicGen.Properties.Resources.Exit;
+      this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbExit.Name = "_tsbExit";
+      this._tsbExit.Size = new System.Drawing.Size(45, 22);
+      this._tsbExit.Text = "Exit";
+      this._tsbExit.Click += new System.EventHandler(this._tsbExit_Click);
       // 
       // FormLicGen
       // 
@@ -552,5 +586,8 @@ namespace Scm.Tools.LicGen
     private ToolStripMenuItem optionsToolStripMenuItem;
     private ToolStripMenuItem helpToolStripMenuItem;
     private ToolStripMenuItem aboutToolStripMenuItem;
+    private ToolStripMenuItem generateToolStripMenuItem;
+    private ToolStripSeparator toolStripSeparator1;
+    private ToolStripButton _tsbExit;
   }
 }

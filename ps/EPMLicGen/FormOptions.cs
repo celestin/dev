@@ -23,7 +23,7 @@ namespace Scm.Tools.LicGen
   /// <summary>
   /// Summary description for Options.
   /// </summary>
-  public class FormOptions : System.Windows.Forms.Form
+  public class FormOptions : Form
   {
     private System.Windows.Forms.Button btnBrowseDat;
     private System.Windows.Forms.TextBox txtPathDat;
@@ -93,6 +93,7 @@ namespace Scm.Tools.LicGen
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
       this.fbdDat = new System.Windows.Forms.FolderBrowserDialog();
       this.btnBrowseDat = new System.Windows.Forms.Button();
       this.txtPathDat = new System.Windows.Forms.TextBox();
@@ -100,74 +101,78 @@ namespace Scm.Tools.LicGen
       this.btnCancel = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.SuspendLayout();
-      //
+      // 
       // fbdDat
-      //
+      // 
       this.fbdDat.Description = "Select location for license.dat to be saved";
-      //
+      // 
       // btnBrowseDat
-      //
-      this.btnBrowseDat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      // 
+      this.btnBrowseDat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnBrowseDat.Location = new System.Drawing.Point(392, 24);
       this.btnBrowseDat.Name = "btnBrowseDat";
       this.btnBrowseDat.Size = new System.Drawing.Size(64, 21);
       this.btnBrowseDat.TabIndex = 0;
       this.btnBrowseDat.Text = "&Browse";
       this.btnBrowseDat.Click += new System.EventHandler(this.btnBrowseDat_Click);
-      //
+      // 
       // txtPathDat
-      //
+      // 
       this.txtPathDat.Enabled = false;
-      this.txtPathDat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.txtPathDat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtPathDat.Location = new System.Drawing.Point(8, 24);
       this.txtPathDat.Name = "txtPathDat";
       this.txtPathDat.Size = new System.Drawing.Size(376, 21);
       this.txtPathDat.TabIndex = 0;
-      this.txtPathDat.Text = "";
-      //
+      // 
       // btnOK
-      //
-      this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      // 
+      this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnOK.Location = new System.Drawing.Point(296, 120);
       this.btnOK.Name = "btnOK";
+      this.btnOK.Size = new System.Drawing.Size(75, 23);
       this.btnOK.TabIndex = 2;
       this.btnOK.Text = "&OK";
       this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-      //
+      // 
       // btnCancel
-      //
+      // 
       this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.Location = new System.Drawing.Point(376, 120);
       this.btnCancel.Name = "btnCancel";
+      this.btnCancel.Size = new System.Drawing.Size(75, 23);
       this.btnCancel.TabIndex = 3;
       this.btnCancel.Text = "&Cancel";
-      //
+      // 
       // label1
-      //
-      this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+      // 
+      this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.Location = new System.Drawing.Point(8, 8);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(264, 23);
       this.label1.TabIndex = 4;
       this.label1.Text = "Folder to save license.dat";
-      //
+      // 
       // EPMOptions
-      //
+      // 
       this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(464, 157);
-      this.ControlBox = false;
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.btnOK);
       this.Controls.Add(this.txtPathDat);
       this.Controls.Add(this.btnBrowseDat);
       this.Controls.Add(this.label1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "EPMOptions";
       this.Text = "Options";
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
     #endregion

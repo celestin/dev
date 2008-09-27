@@ -355,12 +355,27 @@ namespace Scm.Tools.LicGen
       Application.Exit();
     }
 
+    private void _tsbExit_Click(object sender, EventArgs e)
+    {
+      Application.Exit();
+    }
+
+    private void generateToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Generate();
+    }
+
     private void _tsbGenerate_Click(object sender, EventArgs e)
     {
       Generate();
     }
 
     private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      _opt.ShowDialog(this);
+    }
+
+    private void _tsbOptions_Click(object sender, EventArgs e)
     {
       _opt.ShowDialog(this);
     }
@@ -373,11 +388,6 @@ namespace Scm.Tools.LicGen
         "by Craig A McKay 27-Sep-2008\n\n" +
         "Copyright (c) 2006,2008 SourceCodeMetrics.com", Application.ProductVersion), "About EPM License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-
-    private void _tsbOptions_Click(object sender, EventArgs e)
-    {
-      _opt.ShowDialog(this);
     }
   }
 }

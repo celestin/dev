@@ -9,15 +9,16 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 function retry_login($error='') {
   if (!empty($error)) Msg::error($error);
-  include 'frm/login_form.php';
-  include 'tpl/bot.php';
+  include $root.'frm/login_form.php';
+  include $root.'tpl/bot.php';
   exit();
 }
 
@@ -69,6 +70,6 @@ if(!$memberid){
   }
 }
 
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>
 

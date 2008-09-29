@@ -1,0 +1,62 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Good Teaching Search Engine
+ * Copyright (c) 2008 Southesk.com
+ *
+ * 1962 Hymn Book Search CSS
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  29-Sep-2008  10302 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+.error {
+  font-size:13px;
+  color:#1269A0;
+}
+.dropdown {
+  font-size:13px;
+  background:#F0F0F0;
+  color:#1269A0;
+}
+.lines {
+  font-family: Georgia, Arial, Helvetica;
+  font-size:14px;
+}
+.verse {
+  font-family: Georgia, Arial, Helvetica;
+  font-size:24px;
+  font-weight:normal;
+  vertical-align: top;
+  background-color: #f6b33a;
+  color: #29166F;  
+}
+.chorus {
+  font-family: Georgia, Arial, Helvetica;
+  font-style:italic;
+  color:29166F;
+}
+.hymn {
+  font-size:13px;
+  font-weight:bold;
+  color: #29166F;
+}
+.meter {
+  font-size:12px;
+  font-weight:bold;
+  text-align: right;
+  color:DB0954;
+}
+.author {
+  font-size:12px;
+  font-weight:bold;
+  text-align: right;
+}
+.searchType {
+  font-size:10px;
+  font-weight:bold;
+  color:#FFFFFF;
+  background:#DB0954;
+  padding:4px;
+  text-align: left;
+}

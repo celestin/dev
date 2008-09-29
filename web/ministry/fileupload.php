@@ -9,11 +9,12 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Register";
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 $documentdate = NULL;     if (!empty($_POST['documentdate'])) $documentdate = $_POST['documentdate'];
 $documenttype = NULL;     if (!empty($_POST['documenttype'])) $documenttype = $_POST['documenttype'];
@@ -21,13 +22,13 @@ $uplfilename = NULL;      if (!empty($_FILES['uplfile']['name'])) $uplfilename =
 $retry = NULL;            if (!empty($_POST['retry'])) $retry = $_POST['retry'];
 
 if (empty($retry)) {
-  include 'frm/pdf.upload.php';
+  include $root.'frm/pdf.upload.php';
 } else if (empty($documentdate)) {
   Msg::error("Please enter the Document date.");
-  include 'frm/pdf.upload.php';
+  include $root.'frm/pdf.upload.php';
 } else if (empty($uplfilename)) {
   Msg::error("Please enter filename.");
-  include 'frm/pdf.upload.php';
+  include $root.'frm/pdf.upload.php';
 } else {
 
   $uploaddir = $cfg['Site']['Dir'] . 'pdf/';
@@ -52,6 +53,6 @@ if (empty($retry)) {
   }
 }
 
-include "tpl/bot.php";
+include $root."tpl/bot.php";
 ?>
 

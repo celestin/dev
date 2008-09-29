@@ -12,9 +12,18 @@
  * CAM  15-Oct-2007  10187 : Include form.js.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  12-Nov-2007  10203 : Removed whitespace.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
+if (empty($root)) {
+  $root = "./";
+}
+
+if (empty($pageName)) {
+  $pageName = "pageGt";
+}
+
+include_once $root.'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = (session_is_registered('memberid') && session_is_registered('Good Teaching Search Engine'));
 global $tab,$tabs;
@@ -27,25 +36,30 @@ if (empty($title)) {
 
 ?><head>
   <title><? echo $title;?></title>
-  <link href="mse.css" rel=stylesheet type="text/css" />
-  <script language="Javascript" src="date.js"></script>
-  <script language="Javascript" src="form.js"></script>
+  <link href="<? echo $root;?>mse.css" rel="stylesheet" type="text/css" />
+  <? if (!empty($pageCss)) { ?><link href="<? echo $pageCss;?>" rel="stylesheet" type="text/css" /><? } ?>
+  <script language="Javascript" src="<? echo $root;?>date.js"></script>
+  <script language="Javascript" src="<? echo $root;?>form.js"></script>
 </head>
 
-<body topmargin=2 leftmargin=0>
+<body topmargin=2 leftmargin=0 id="<? echo $pageName;?>">
 
 <table border=0 cellpadding=0 cellspacing=0 align=center cols=3>
 <tr><td><table border=0 cellpadding=0 cellspacing=0 class=outerBox width="900">
   <tr>
-    <td class="topnav"><img src="img/f.gif" border=0 width=500 height=0></td>
-    <td class="topnav"><img src="img/f.gif" border=0 width=20 height=0></td>
-    <td class="topnav"><img src="img/f.gif" border=0 width=460 height=0></td>
+    <td class="topnav"><img src="<? echo $root;?>img/f.gif" border=0 width=500 height=0></td>
+    <td class="topnav"><img src="<? echo $root;?>img/f.gif" border=0 width=20 height=0></td>
+    <td class="topnav"><img src="<? echo $root;?>img/f.gif" border=0 width=460 height=0></td>
   </tr>
   <tr>
   <td valign=top colspan=3><table border=0 cellpadding=0 cellspacing=0 width="100%" height="100%" class="topnav">
-    <tr><td rowspan=2><b><? echo str_replace(" ", "&nbsp;", $cfg['Site']['Name']); ?></b></td>
+    <tr><td rowspan=2><a id="linkGt" href="<? echo $cfg['Site']['URL']; ?>"><? echo
+    str_replace(" ", "&nbsp;", $cfg['Site']['Name']); ?></a><span class="topsep">|</span><a id="linkHymn" href="<? echo
+    $cfg['Site']['URL']; ?>/hymn/">Hymns</a><span class="topsep">|</span><a id="linkEaston" href="<? echo
+    $cfg['Site']['URL']; ?>/easton/">Easton's</a><span class="topsep">|</span><a id="linkHitchcock" href="<? echo
+    $cfg['Site']['URL']; ?>/hitchcock/">Hitchcock's</a></td>
 
-    <td width="100%" class="loggedin" align=right><?php
+    <td class="loggedin" align=right><?php
       if ($loggedin) {
         echo "Logged in as <b>" . $member->getFullname() . "</b>";
       } else {
@@ -63,7 +77,7 @@ if (empty($title)) {
 ?>
 <?
             if ($member->isAdmin()) {
-            // Nothing currently
+              // Nothing currently
 ?>
 <?
             }
@@ -85,12 +99,12 @@ if (empty($title)) {
     if ($tabs) {
       $className = $tab . "border";
 ?>
-    <tr><td colspan=3><? include 'tpl/tabs.php'; ?></td></tr>
+    <tr><td colspan=3><? include $root.'tpl/tabs.php'; ?></td></tr>
 <?
     } else {
       $className = "mainborder";
 ?>
-    <tr><td colspan=3><img src="img/f.gif" height=10></td></tr>
+    <tr><td colspan=3><img src="<? echo $root; ?>img/f.gif" height=10></td></tr>
 <?
     }
 ?>

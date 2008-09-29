@@ -9,10 +9,11 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Help";
-include 'tpl/top.php';
+include $root.'tpl/top.php';
 ?>
 
 <table height="100%" width="100%" border=0>
@@ -20,5 +21,5 @@ include 'tpl/top.php';
 </table>
 
 <?
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>

@@ -9,13 +9,14 @@
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Reworked to use BibleBook.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Scripture Search";
 $tab = "scripture";
 $tabs = true;
-include 'tpl/top.php';
-include_once('functions.php');
+include $root.'tpl/top.php';
+include_once $root.'functions.php';
 
 $bookid = $_SESSION['search_bookid'];    if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
 $chapter = $_SESSION['search_chapter'];  if (!empty($_POST['chapter'])) $chapter = $_POST['chapter'];
@@ -75,6 +76,6 @@ if (empty($bookid)) {
 </td></tr>
 </table>
 <?
-include 'tpl/results.php';
-include 'tpl/bot.php';
+include $root.'tpl/results.php';
+include $root.'tpl/bot.php';
 ?>

@@ -9,11 +9,12 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Change Password";
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 function retry_chgpass($msg) {
   if (!empty($_POST['retry'])) {
@@ -22,8 +23,8 @@ function retry_chgpass($msg) {
     Msg::error($msg);
   }
 
-  include 'frm/user.chgpass.php';
-  include 'tpl/bot.php';
+  include $root.'frm/user.chgpass.php';
+  include $root.'tpl/bot.php';
   exit();
 }
 
@@ -54,6 +55,6 @@ if(!$old_pwd || !$new_pwd1 || !$new_pwd2){
   }
 }
 
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>
 

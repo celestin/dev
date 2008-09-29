@@ -10,9 +10,10 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
+include_once $root.'Main.php';
 
 $_SESSION['memberid'] = $memberid;
 $_SESSION['first_name'] = $first_name;

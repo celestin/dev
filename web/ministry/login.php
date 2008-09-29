@@ -9,17 +9,18 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Login";
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 function retry_login($error='') {
   global $memberid;
   if (!empty($error)) Msg::error($error);
-  include 'frm/user.login.php';
-  include 'tpl/bot.php';
+  include $root.'frm/user.login.php';
+  include $root.'tpl/bot.php';
   exit();
 }
 
@@ -46,7 +47,7 @@ if ($login_check > 0) {
     if($pwd == $password) {
       if($active != 1) {
         Msg::error("You must verify your account to continue.<br>");
-        include 'frm/user.verify.php';
+        include $root.'frm/user.verify.php';
         exit();
       } else if ($member_type == "N") {
         Msg::error("Your details are being reviewed and you will be contacted shortly.<br>");
@@ -63,6 +64,6 @@ if ($login_check > 0) {
   retry_login("The Username " . $memberid . " could not be found.&nbsp;&nbsp;Please check and try again!");
 }
 
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>
 

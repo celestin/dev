@@ -14,11 +14,12 @@
  * CAM  08-Nov-2007  10200 : Added results_pageno.
  * CAM  18-Nov-2007  10205 : Added search_previous.
  * CAM  04-Jun-2008  10268 : Added Latest Volumes.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
 
-include 'tpl/top.php';
+include $root.'tpl/top.php';
 
 $_SESSION['search_keywords'] = "";
 $_SESSION['search_author'] = array('ALL'=>'ALL');
@@ -35,7 +36,7 @@ $_SESSION['preview_page'] = "";
 
 $_SESSION['results_pageno'] = "";
 
-include 'tpl/newsearch.php';
-include 'tpl/latestvols.php';
-include 'tpl/bot.php';
+include $root.'tpl/newsearch.php';
+include $root.'tpl/latestvols.php';
+include $root.'tpl/bot.php';
 ?>

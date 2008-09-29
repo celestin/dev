@@ -9,9 +9,10 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
+include_once $root.'Main.php';
 
 $retry = NULL;        if (!empty($_POST['retry'])) $retry = $_POST['retry'];
 //$memberid = NULL;     if (!empty($_POST['memberid'])) $retry = $_POST['memberid'];

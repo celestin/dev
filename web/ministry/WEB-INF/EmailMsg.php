@@ -10,9 +10,10 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  18-Nov-2007  10205 : Added sendNewQuery - will need attention for 10207.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
+include_once $root.'Main.php';
 
 /**
 * EmailMsg information.

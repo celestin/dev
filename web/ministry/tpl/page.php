@@ -13,9 +13,10 @@
  * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
  * CAM  02-Jan-2008  10206 : Added Page Controls.
  * CAM  15-Jun-2008  10272 : Added footnote class.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once('functions.php');
+include_once($root.'functions.php');
 
 $volPages = 0;
 
@@ -116,12 +117,12 @@ if (!empty($preview_author)) {
     $newtext = f_highlight_text($newtext, $sqlFactory);
 
     if (empty($row[0])) $row[0] = "<img src=\"img/f.gif\" border=0 width=0 height=0>";
-    
+
     $className = "";
     if (substr($row[1],0,5) === "<span") {
       $className = "fn";
     }
-?><tr><td valign=top><b><? echo $row[0];  ?></b></td><td<? 
+?><tr><td valign=top><b><? echo $row[0];  ?></b></td><td<?
   if (!empty($className)) echo " class=\"$className\"";
 ?>><? echo $newtext; ?></td></tr><?
   }

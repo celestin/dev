@@ -9,11 +9,12 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Email Verification";
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 $username = NULL;         if (!empty($_GET['username'])) $username = $_GET['username'];
 $code = NULL;             if (!empty($_GET['code'])) $code = $_GET['code'];
@@ -30,5 +31,5 @@ if(mysql_affected_rows() == 1){
   Msg::error("Your email address could not be verified - please try again.");
 }
 
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>

@@ -17,6 +17,7 @@
  * CAM  04-Jun-2008  10268 : Added latestvols.
  * CAM  15-Jun-2008  10272 : Added fn for footnotes (and white background on rh).
  * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
+ * CAM  29-Sep-2008  10302 : Added Hymn classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -28,6 +29,46 @@ p, table, td, input, select, textarea {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   font-size: 10pt;
   TEXT-DECORATION: none;
+}
+
+a#linkGt,
+a#linkHymn,
+a#linkEaston,
+a#linkHitchcock 
+{
+  font-family: Tahoma, Arial, Helvetica;
+  font-size: 11pt;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  padding: 2px;
+}
+
+body#pageGt a#linkGt,
+body#pageHymn a#linkHymn,
+body#pageEaston a#linkEaston,
+body#pageHitchcock a#linkHitchcock 
+{
+  color: #66B7E2;
+  background: #fff;
+}
+
+a#linkGt:hover,
+a#linkHymn:hover,
+a#linkEaston:hover,
+a#linkHitchcock:hover 
+{
+  background: #f6b33a;
+}
+
+
+body#pageGt a#linkGt:hover,
+body#pageHymn a#linkHymn:hover,
+body#pageEaston a#linkEaston:hover,
+body#pageHitchcock a#linkHitchcock:hover 
+{
+  background: #f6b33a;
+  color: #fff;
 }
 
 .fn {
@@ -177,7 +218,15 @@ td.sub {
   color: #DB0954;
   font-weight: bold;
   padding-left:   4px;
-  PADDING-RIGHT:  4px;
+  padding-right:  4px;
+}
+
+.topsep {
+  color: #F6B33A;
+  font-weight: bold;
+  font-size: 11pt;
+  padding-left:   4px;
+  padding-right:  4px;
 }
 
 .cpyrght {
@@ -197,6 +246,10 @@ td.cat {
   padding:2px;
   background-color:#CCCCCC;
   color:#999999;
+}
+
+.fieldFocus {
+  background-colour: #f6b33a;
 }
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
@@ -311,7 +364,7 @@ input.previewbutton {
   font-weight:      bold;
   PADDING-BOTTOM:   2px;
   padding-left:     1px;
-  PADDING-RIGHT:    1px;
+  padding-right:    1px;
   padding-top:      1px;
 }
 
@@ -323,7 +376,7 @@ input.previewbuttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 2px;
   padding-left:   1px;
-  PADDING-RIGHT:  1px;
+  padding-right:  1px;
   padding-top:    1px;
   cursor: pointer;
 }
@@ -336,7 +389,7 @@ input.pagebutton {
   font-weight: bold;
   PADDING-BOTTOM: 2px;
   padding-left:   1px;
-  PADDING-RIGHT:  1px;
+  padding-right:  1px;
   padding-top:    1px;
 }
 
@@ -348,7 +401,7 @@ input.pagebuttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 2px;
   padding-left:   1px;
-  PADDING-RIGHT:  1px;
+  padding-right:  1px;
   padding-top:    1px;
   cursor: pointer;
 }
@@ -373,7 +426,7 @@ input.button {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
 }
 
@@ -385,7 +438,7 @@ input.buttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
   cursor: pointer;
 }
@@ -398,7 +451,7 @@ input.keywordbutton {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
 }
 
@@ -410,7 +463,7 @@ input.scripturebutton {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
 }
 
@@ -422,7 +475,7 @@ input.authorbutton {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
 }
 
@@ -434,7 +487,7 @@ input.keywordbuttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
   cursor: pointer;
 }
@@ -447,7 +500,7 @@ input.scripturebuttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
   cursor: pointer;
 }
@@ -460,7 +513,7 @@ input.authorbuttonhover {
   font-weight: bold;
   PADDING-BOTTOM: 3px;
   padding-left:   2px;
-  PADDING-RIGHT:  2px;
+  padding-right:  2px;
   padding-top:    2px;
   cursor: pointer;
 }

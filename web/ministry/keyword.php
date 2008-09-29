@@ -11,12 +11,13 @@
  * CAM  29-Jul-2007  File created.
  * CAM  15-Oct-2007  10187 : Attempt to send empty using NULL.
  * CAM  08-Nov-2007  10200 : Added results_pageno.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
 $tab = "KEYWORD";
 $tabs = true;
-include 'tpl/top.php';
+include $root.'tpl/top.php';
 
 $keywords = $_SESSION['search_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
 
@@ -53,6 +54,6 @@ $_SESSION['search_keywords'] = $keywords;
 </form>
 
 <?
-include 'tpl/results.php';
-include 'tpl/bot.php';
+include $root.'tpl/results.php';
+include $root.'tpl/bot.php';
 ?>

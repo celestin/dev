@@ -9,11 +9,12 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Resend Email Verification";
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 $username = NULL;         if (!empty($_POST['username'])) $username = strtoupper($_POST['username']);
 $email_address = NULL;    if (!empty($_POST['first_name'])) $first_name = $_POST['first_name'];

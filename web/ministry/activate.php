@@ -9,16 +9,17 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'Main.php';
-include 'tpl/top.php';
+include_once $root.'Main.php';
+include $root.'tpl/top.php';
 
 function retry_activate($error, $confirm_set) {
   Msg::error($error);
   $locked_id = true;
-  include 'frm/activate_form.php';
-  include 'tpl/bot.php';
+  include $root.'frm/activate_form.php';
+  include $root.'tpl/bot.php';
   exit();
 }
 
@@ -37,8 +38,8 @@ if ($password1 != $password2) {
 } else {
   $password1 = md5($password1);
   $sql = mysql_query("UPDATE member SET active='1', password='$password1', email_address='$email' WHERE memberid='$memberid'");
-  include 'session_reg.php';
-  include 'tpl/bot.php';
+  include $root.'session_reg.php';
+  include $root.'tpl/bot.php';
 }
 
 ?>

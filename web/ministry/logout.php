@@ -9,16 +9,17 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Log out";
-include_once 'Main.php';
+include_once $root.'Main.php';
 
 if(isset($_REQUEST['logmeout'])){
   session_destroy();
 }
 
-include 'tpl/top.php';
+include $root.'tpl/top.php';
 
 if(!isset($_REQUEST['logmeout'])){
   echo "<center>Are you sure you want to logout?</center><br />";
@@ -26,8 +27,8 @@ if(!isset($_REQUEST['logmeout'])){
 } else {
   if(!session_is_registered('memberid')){
     Msg::error("You are now logged out!");
-    include 'tpl/home.php';
+    include $root.'tpl/home.php';
   }
 }
-include 'tpl/bot.php';
+include $root.'tpl/bot.php';
 ?>

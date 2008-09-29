@@ -9,10 +9,11 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Verify";
-include 'tpl/top.php';
-include 'tpl/home.php';
-include 'tpl/bot.php';
+include $root.'tpl/top.php';
+include $root.'tpl/home.php';
+include $root.'tpl/bot.php';
 ?>

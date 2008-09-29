@@ -10,12 +10,13 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  12-Nov-2007  10204 : Added calls to Servant checkbox functions.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Servant Filter";
 $tab = "author";
 $tabs = true;
-include 'tpl/top.php';
+include $root.'tpl/top.php';
 
 $author_filter = $_SESSION['search_author'];  if (!empty($_POST['author_filter'])) $author_filter = $_POST['author_filter'];
 $_SESSION['search_author'] = $author_filter;
@@ -65,6 +66,6 @@ while ($row = mysql_fetch_array($ssql)) {
 </table>
 </form>
 <?
-include 'tpl/results.php';
-include 'tpl/bot.php';
+include $root.'tpl/results.php';
+include $root.'tpl/bot.php';
 ?>

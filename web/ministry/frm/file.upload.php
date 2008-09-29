@@ -9,9 +9,10 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-  include_once "db.php";
+  include_once $root."db.php";
 ?>
 
 <form enctype="multipart/form-data" action="fileupload.php" method="POST">

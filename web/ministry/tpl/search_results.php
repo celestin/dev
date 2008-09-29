@@ -13,9 +13,10 @@
  * CAM  12-Nov-2007  10201 : Fixed bug.
  * CAM  18-Nov-2007  10205 : Reset PageNo to 1 if new query (and send email).
  * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
+ * CAM  29-Sep-2008  10302 : Added root.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once('functions.php');
+include_once($root.'functions.php');
 
 $keywords = $_SESSION['search_keywords'];
 $author   = $_SESSION['search_author'];

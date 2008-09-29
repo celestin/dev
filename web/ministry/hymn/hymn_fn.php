@@ -209,16 +209,9 @@ function show_hymn($hymn, $language) {
     echo "<h1 class=error>Please enter a Hymn from 1 to 456.</h1>";
     return;
   }
-
-  echo "<table border=0 cellspacing=0 cellpadding=2><tr>\n";
-  
-  $res = mysql_query("SHOW VARIABLES LIKE 'c%';");
-  while ($row = mysql_fetch_row($res)) {
-    ?><tr><td><? echo $row[0]; ?></td><td><? echo $row[1]; ?></td></tr><?
-  }
-  
-
-  echo "<td class=hymn>$hymn</td>\n";
+?>
+  <table border=0 cellspacing=0 cellpadding=2><tr><td class=hymn><? echo $hymn; ?></td>
+<?
   $hymnSql = "SELECT m.meter, m.rhythm, m.chorus ".
              "FROM hymn$language h, hymn_meter m ".
              "WHERE h.meter_id=m.id ".

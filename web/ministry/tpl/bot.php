@@ -24,7 +24,7 @@
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><a href="releases.php">V0.12A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><a href="<? echo $root; ?>releases.php">V0.12A</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input

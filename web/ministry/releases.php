@@ -26,7 +26,7 @@ include $root.'tpl/top.php';
 </tr>
 <?
 $sql = "SELECT release_no, task_id, description, completion_date ".
-     "FROM mse_release_history ".
+       "FROM mse_release_history ".
        "ORDER BY 1 DESC, 4 DESC, 2";
 
 $prev_release_no = "";

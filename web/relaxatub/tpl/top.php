@@ -16,6 +16,7 @@
  * CAM  23-Feb-2008  10235 : Added Favourite Icon.
  * CAM  12-Apr-2008  10241 : Corrected HTML .
  * CAM  20-Aug-2008  10113 : Added AquaFinesse bottle beside Beachcomber logo.
+ * CAM  08-Nov-2008  10236 : Added QuickShip and BarrelSauna.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -42,18 +43,21 @@
       <tr><td align=center><a id="linktub300" class="nav" href="tub.php?series=300">300 series</a></td></tr>
       <tr><td align=center><a id="linktub500" class="nav" href="tub.php?series=500">500 series</a></td></tr>
       <tr><td align=center><a id="linktub700" class="nav" href="tub.php?series=700">700 series</a></td></tr>
+      <tr><td align=center><a id="linkquickship" class="nav" href="quickship.php">quick ship!</a></td></tr>
+      <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkgarden" class="nav" href="garden.php">decking ideas</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
+      <tr><td align=center><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkphoto" class="nav" href="photo.php">photo album</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkprotec" class="nav" href="protec.php">protec</a></td></tr>
       <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
       <tr><td align=center><table border="0"><tr>
-      	<td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>
-      	<td><a href="http://www.beachcomberhottubs.com/"><img width=123 height=118 src="img/bc4.gif" border=0 alt="Beachcomber Hot Tubs"></a></td>
+        <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>
+        <td><a href="http://www.beachcomberhottubs.com/"><img width=123 height=118 src="img/bc4.gif" border=0 alt="Beachcomber Hot Tubs"></a></td>
       </td></tr></table></td></tr>
     </table></td>
     <td class=rxbox valign=top><table cellspacing=0 cellpadding=0 border=0 width="650" height="600">

@@ -17,6 +17,7 @@
  * CAM  17-May-2008  10232 : Added classes for new Quality page.
  * CAM  20-Aug-2008  10113 : Added classes for H3 and AquaFinesse logo.
  * CAM  08-Nov-2008  10237 : Added classes for QuickShip.
+ * CAM  08-Nov-2008  10239 : Added classes for BarrelSauna.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -82,6 +83,21 @@ h3 {
   font-weight: bold;
   text-align: center;
 }
+
+#barrelsauna p {
+  color: #004936;
+  font-size: 12pt;
+}
+
+#barrelsauna ul {
+}
+
+#barrelsauna li {
+  color: #004936;
+  font-size: 11pt;
+  text-align: left;
+}
+
 
 .infoPoint {
   cursor: help;

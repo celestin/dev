@@ -20,7 +20,7 @@ include "tpl/top.php";
 
 <p>These products can all be shipped quickly - call us for more information 01224 580792!</p>
 
-<table border=0 cellpadding=0 cellspacing=8 align=left width="100%">
+<table border=0 cellpadding=0 cellspacing=8 align=center width="100%">
 
 <tr>
   <th>Model</th>

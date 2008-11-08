@@ -16,49 +16,71 @@
  * CAM  12-Apr-2008  10241 : Added classes for short details.
  * CAM  17-May-2008  10232 : Added classes for new Quality page.
  * CAM  20-Aug-2008  10113 : Added classes for H3 and AquaFinesse logo.
+ * CAM  08-Nov-2008  10237 : Added classes for QuickShip.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  BACKGROUND-COLOR: #D3EAF1;
+  background-color: #D3EAF1;
 }
 
 p, table, td {
-  COLOR: #333333;
-  FONT-FAMILY: Arial, Helvetica;
-  FONT-SIZE: 9pt;
-  TEXT-DECORATION: none;
+  color: #333333;
+  font-family: Arial, Helvetica;
+  font-size: 9pt;
+  text-decoration: none;
 }
 
 .quality p {
-  COLOR: #004936;
-  FONT-SIZE: 9pt;
+  color: #004936;
+  font-size: 9pt;
 }
 
 h2 {
-  COLOR: #233f91;
-  FONT-FAMILY: Times New Roman, Serif;
-  FONT-SIZE: 20pt;
-  FONT-STYLE: italic;
-  TEXT-DECORATION: none;
+  color: #233f91;
+  font-family: Times New Roman, Serif;
+  font-size: 20pt;
+  font-style: italic;
+  text-decoration: none;
 }
 
 h3 {
-  COLOR: #233f91;
-  FONT-FAMILY: Arial, Helvetica;
-  FONT-SIZE: 12pt;
-  FONT-STYLE: italic;
-  TEXT-DECORATION: none;
+  color: #233f91;
+  font-family: Arial, Helvetica;
+  font-size: 12pt;
+  font-style: italic;
+  text-decoration: none;
 }
 
 #popup {
-  FONT-FAMILY: Arial, Helvetica;
-  FONT-SIZE: 9pt;
-  BORDER-BOTTOM:    #233f91 2px solid;
-  BORDER-LEFT:      #233f91 2px solid;
-  BORDER-RIGHT:     #233f91 2px solid;
-  BORDER-TOP:       #233f91 2px solid;
-  PADDING:          8px;
-  BACKGROUND-COLOR: #F7FCFD;
+  font-family: Arial, Helvetica;
+  font-size: 9pt;
+  border-bottom:    #233f91 2px solid;
+  border-left:      #233f91 2px solid;
+  border-right:     #233f91 2px solid;
+  border-top:       #233f91 2px solid;
+  padding:          8px;
+  background-color: #F7FCFD;
+}
+
+#quickship th {
+  color: #233f91;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+#quickship td {
+  color: #233f91;
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+#quickship p {
+  color: #066EE2;
+  font-size: 9pt;
+  font-weight: bold;
+  text-align: center;
 }
 
 .infoPoint {
@@ -67,128 +89,128 @@ h3 {
 }
 
 div.promotion {
-  BACKGROUND-COLOR: #233f91;
-  PADDING-LEFT: 10px;
-  PADDING-RIGHT: 10px;
-  PADDING-TOP: 1px;
-  PADDING-BOTTOM: 1px;
+  background-color: #233f91;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 p.promotion {
-  COLOR: white;
-  FONT-WEIGHT: normal;
-  FONT-SIZE: 11pt;
+  color: white;
+  font-weight: normal;
+  font-size: 11pt;
 }
 
 p.legal {
-  COLOR: white;
-  FONT-WEIGHT: normal;
-  FONT-SIZE: 16pt;
+  color: white;
+  font-weight: normal;
+  font-size: 16pt;
 }
 
 .rxbox {
-  BORDER-BOTTOM: #233f91 2px solid;
-  BORDER-LEFT:   #233f91 2px solid;
-  BORDER-RIGHT:  #233f91 2px solid;
-  BORDER-TOP:    #233f91 2px solid;
-  BACKGROUND-COLOR: #E2EEF2;
+  border-bottom: #233f91 2px solid;
+  border-left:   #233f91 2px solid;
+  border-right:  #233f91 2px solid;
+  border-top:    #233f91 2px solid;
+  background-color: #E2EEF2;
 }
 
 .bcbox {
-  BORDER-BOTTOM: #7C9B93 2px solid;
-  BORDER-LEFT:   #7C9B93 2px solid;
-  BORDER-RIGHT:  #7C9B93 2px solid;
-  BORDER-TOP:    #7C9B93 2px solid;
-  BACKGROUND-COLOR: #F7FCFD;
+  border-bottom: #7C9B93 2px solid;
+  border-left:   #7C9B93 2px solid;
+  border-right:  #7C9B93 2px solid;
+  border-top:    #7C9B93 2px solid;
+  background-color: #F7FCFD;
 }
 
 .thumb {
-  BORDER-BOTTOM: #233f91 2px solid;
-  BORDER-LEFT:   #233f91 2px solid;
-  BORDER-RIGHT:  #233f91 2px solid;
-  BORDER-TOP:    #233f91 2px solid;
+  border-bottom: #233f91 2px solid;
+  border-left:   #233f91 2px solid;
+  border-right:  #233f91 2px solid;
+  border-top:    #233f91 2px solid;
 }
 
 .tubnav {
-  BORDER-RIGHT:  #066EE2 2px solid;
+  border-right:  #066EE2 2px solid;
 }
 
 .phnav {
-  BORDER-TOP:    #066EE2 2px solid;
+  border-top:    #066EE2 2px solid;
 }
 
 .phbox {
-  BORDER-BOTTOM: #7C9B93 2px solid;
-  BORDER-LEFT:   #7C9B93 2px solid;
-  BORDER-RIGHT:  #7C9B93 2px solid;
-  BORDER-TOP:    #7C9B93 2px solid;
+  border-bottom: #7C9B93 2px solid;
+  border-left:   #7C9B93 2px solid;
+  border-right:  #7C9B93 2px solid;
+  border-top:    #7C9B93 2px solid;
 }
 
 .phsel {
-  BORDER-BOTTOM: #066EE2 2px dashed;
-  BORDER-LEFT:   #066EE2 2px dashed;
-  BORDER-RIGHT:  #066EE2 2px dashed;
-  BORDER-TOP:    #066EE2 2px dashed;
+  border-bottom: #066EE2 2px dashed;
+  border-left:   #066EE2 2px dashed;
+  border-right:  #066EE2 2px dashed;
+  border-top:    #066EE2 2px dashed;
 }
 
 .series {
-  BORDER-BOTTOM:  #066EE2 2px solid;
-  BACKGROUND-COLOR: #D3EAF1;
-  FONT-WEIGHT: bold;
+  border-bottom:  #066EE2 2px solid;
+  background-color: #D3EAF1;
+  font-weight: bold;
 }
 
 .tubname {
-  COLOR: #333399;
-  FONT-SIZE: 14pt;
-  FONT-WEIGHT: bold;
+  color: #333399;
+  font-size: 14pt;
+  font-weight: bold;
   TEXT-ALIGN: right;
 }
 
 .bigquot {
-  FONT-FAMILY: Times New Roman, Serif;
-  FONT-WEIGHT: bold;
+  font-family: Times New Roman, Serif;
+  font-weight: bold;
 }
 
 .custquot {
-  FONT-STYLE: italic;
+  font-style: italic;
   TEXT-ALIGN: right;
 }
 
 .fldlbl {
-  COLOR: #066EE2;
-  FONT-WEIGHT: bold;
+  color: #066EE2;
+  font-weight: bold;
 }
 
 .tubvalue {
-  COLOR: #233f91;
-  FONT-SIZE: 12pt;
-  FONT-WEIGHT: bold;
+  color: #233f91;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 .tubunits {
-  PADDING-LEFT: 4px;
-  COLOR: #999999;
-  FONT-WEIGHT: bold;
+  padding-left: 4px;
+  color: #999999;
+  font-weight: bold;
 }
 
 .tubsel {
-  BACKGROUND-COLOR: #F7FCFD;
+  background-color: #F7FCFD;
 }
 
 .tuboth {
-  BORDER-RIGHT:  #066EE2 2px solid;
-  BACKGROUND-COLOR: #E2EEF2;
+  border-right:  #066EE2 2px solid;
+  background-color: #E2EEF2;
 }
 
 .rxtxt {
-  COLOR: white;
-  PADDING-LEFT: 8px;
-  PADDING-RIGHT: 8px;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .rxtop {
-  BACKGROUND-COLOR: #233f91;
-  COLOR: white;
+  background-color: #233f91;
+  color: white;
   vertical-align:middle;
   HEIGHT: 35px;
 }
@@ -219,7 +241,7 @@ img.centerheader
 
 #rxfeature ul li a
 {
-  FONT-SIZE: 12pt;
+  font-size: 12pt;
   text-decoration: none;
   padding: .2em 1em;
   color: #fff;
@@ -240,6 +262,8 @@ body#pagegarden a#linkgarden,
 body#pageaccessories a#linkaccessories, 
 body#pagephoto a#linkphoto, 
 body#pageprotec a#linkprotec, 
+body#pagequickship a#linkquickship, 
+body#pagebarrelsauna a#linkbarrelsauna, 
 body#pageevolution a#linkevolution {
 color: #fff;
 background: #6b7b71;
@@ -252,136 +276,136 @@ background: #6b7b71;
 }
 
 .annot {
-  COLOR: 004936;
+  color: 004936;
   TEXT-ALIGN: center;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  font-size: 8pt;
+  font-weight: bold;
 }
 
 .pgbak {
-  BACKGROUND-COLOR: white;
+  background-color: white;
 }
 
 p.bht {
-  COLOR: #333333;
-  FONT-FAMILY: serif;
-  FONT-SIZE: 12pt;
-  FONT-WEIGHT: bold;
+  color: #333333;
+  font-family: serif;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 .desc {
-  COLOR: #004936;
-  FONT-SIZE: 13pt;
+  color: #004936;
+  font-size: 13pt;
 }
 
 .desc2, li {
-  COLOR: #004936;
-  FONT-SIZE: 10pt;
+  color: #004936;
+  font-size: 10pt;
   TEXT-ALIGN: justify;
 }
 
 .faqno {
-  COLOR: #333333;
-  FONT-SIZE: 16pt;
+  color: #333333;
+  font-size: 16pt;
 }
 
 .faqsum {
-  COLOR: #233f91;
-  FONT-WEIGHT: bold;
-  FONT-SIZE: 12pt;
+  color: #233f91;
+  font-weight: bold;
+  font-size: 12pt;
 }
 
 .faqq {
-  COLOR: #004936;
-  FONT-SIZE: 10pt;
-  FONT-WEIGHT: bold;
+  color: #004936;
+  font-size: 10pt;
+  font-weight: bold;
 }
 
 .faqa {
-  COLOR: #333333;
-  FONT-SIZE: 10pt;
+  color: #333333;
+  font-size: 10pt;
 }
 
 .hte2 {
-  COLOR: #233f91;
-  FONT-SIZE: 7pt;
-  FONT-WEIGHT: bold;
+  color: #233f91;
+  font-size: 7pt;
+  font-weight: bold;
   TEXT-ALIGN: center;
 }
 
 .hte3 {
-  COLOR: #000000;
-  FONT-SIZE: 9pt;
+  color: #000000;
+  font-size: 9pt;
   TEXT-ALIGN: left;
 }
 
 .hte3a {
-  COLOR: #004936;
-  FONT-SIZE: 9pt;
+  color: #004936;
+  font-size: 9pt;
   TEXT-ALIGN: left;
 }
 
 .pro {
-  COLOR: #004936;
-  FONT-SIZE: 11pt;
+  color: #004936;
+  font-size: 11pt;
   TEXT-ALIGN: left;
 }
 
 h5 {
-  COLOR: #56563B;
-  FONT-FAMILY: Arial, Helvetica;
-  FONT-SIZE: 10pt;
-  TEXT-DECORATION: none
+  color: #56563B;
+  font-family: Arial, Helvetica;
+  font-size: 10pt;
+  text-decoration: none
 }
 
 
 A {
-  COLOR: #00037f;
-  TEXT-DECORATION: none;
+  color: #00037f;
+  text-decoration: none;
 }
 A:hover {
-  COLOR: #5aa6e1;
-  TEXT-DECORATION: underline;
+  color: #5aa6e1;
+  text-decoration: underline;
 }
 
 A.nav {
-  FONT-FAMILY: Arial, Helvetica;
-  FONT-SIZE: 11pt;
-  COLOR: #00037f;
-  TEXT-DECORATION: none;
+  font-family: Arial, Helvetica;
+  font-size: 11pt;
+  color: #00037f;
+  text-decoration: none;
   padding: .3em 1.5em;
 }
 A.nav:hover {
-  COLOR: white;
-  TEXT-DECORATION: none;
+  color: white;
+  text-decoration: none;
   background-color: #7d8dc6;
 }
 
 .cpyrght {
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 7pt;
-  COLOR: #333333;
+  font-family: Tahoma, Arial, Helvetica;
+  font-size: 7pt;
+  color: #333333;
 }
 
 A.cpyrght {
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 7pt;
-  COLOR: #00037f;
-  TEXT-DECORATION: none;
+  font-family: Tahoma, Arial, Helvetica;
+  font-size: 7pt;
+  color: #00037f;
+  text-decoration: none;
 }
 A.cpyrght:hover {
-  COLOR: #5aa6e1;
-  TEXT-DECORATION: underline;
+  color: #5aa6e1;
+  text-decoration: underline;
   background-color: transparent;
 }
 
 INPUT {
-  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana, Arial, Helvetica; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
 }
 TEXTAREA {
-  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
 }
 SELECT {
-  BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #000000; FONT-FAMILY: Verdana; FONT-SIZE: 10pt; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px
+  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
 }
 

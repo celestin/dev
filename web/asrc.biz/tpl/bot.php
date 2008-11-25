@@ -24,6 +24,7 @@
  * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.11 - Events to footer/emails and User Privs.
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
+ * CAM  25-Nov-2008  10314 : Version 1.12 - New colours/layout (Event edit to follow).
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
@@ -93,7 +94,7 @@
 <tr><td colspan=3><table class="cpyrght" border=0 cellpadding=10 cellspacing=0 width="100%">
   <tr>
     <td width="25%" align="left"><img src="img/logo/asrc_small.gif"></td>
-    <td class="cpyrght" width="50%"><b>V1.11</b> System designed and maintained by <a class="cpyrght" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+    <td class="cpyrght" width="50%"><b>V1.12</b> System designed and maintained by <a class="cpyrght" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
     <td class="cpyrght" width="25%"></td>
   </tr>
 </table></td></tr>

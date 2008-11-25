@@ -16,6 +16,7 @@
  * CAM  22-Oct-2007  10182 : Split Admin toolbar onto second line.  Adding blinking Events.
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
+ * CAM  25-Nov-2008  10314 : CSS file renamed to ensure proper reload.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -49,7 +50,7 @@ function ToolbarOption($action, $label, $last=false, $class="") {
 ?>
 <head>
   <title><?php print $title;?></title>
-  <link href="asrc.css" rel=stylesheet type="text/css" />
+  <link href="asrc2.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="dhtml.js"></script>
   <script language="Javascript" src="date.js"></script>
 </head>

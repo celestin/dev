@@ -15,6 +15,7 @@
  * CAM  23-Oct-2007  10182 : Added blink anchor for events.
  * CAM  15-Nov-2007  10183 : Added Event Summary.
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
+ * CAM  25-Nov-2008  10314 : CSS file renamed to ensure proper reload.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {

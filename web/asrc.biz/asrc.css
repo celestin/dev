@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Stylesheet
@@ -14,10 +14,11 @@
  * CAM  25-Jun-2007  10129 : Added 'alt' for alternate rows.
  * CAM  23-Oct-2007  10182 : Added blink anchor for events.
  * CAM  15-Nov-2007  10183 : Added Event Summary.
+ * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
-  background-color: #AACCFF;
+  background-color: #a49a5c;
 
   scrollbar-3dlight-color:    #4A65C2;
   scrollbar-arrow-color:      #ffffff;
@@ -30,42 +31,41 @@ body {
 }
 
 p, table, td {
-  COLOR: #000000;
+  color: #000000;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 8pt;
+  font-size: 8pt;
   TEXT-DECORATION: none;
 }
 
-th {
-  BACKGROUND-COLOR: #CCDDFF;
-  COLOR: #000000;
-  FONT-WEIGHT: bold;
+h3 {
+  color: #4d492f;
 }
 
-td.cpyright {
-  TEXT-ALIGN: center;
-  FONT-SIZE: 8pt;
+th {
+  background-color: #a49a5c;
+  color: white;
+  font-weight: bold;
 }
 
 td.fld {
-  COLOR: #1880B5;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  color: #4d492f;
+  font-size: 8pt;
+  font-weight: bold;
 }
 
 td.courtview {
-  BACKGROUND-COLOR: #DBDDFF;
+  background-color: #e9e5c8;
   TEXT-ALIGN: center;
 }
 
 td.current {
-  COLOR: #FF7900;
+  color: #285292;
 }
 
 td.fldopt {
-  COLOR: #189999;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
+  color: #189999;
+  font-size: 8pt;
+  font-weight: bold;
   FONT-STYLE: italic;
 }
 
@@ -74,7 +74,7 @@ td.bc {
 }
 
 td.alt {
-  BACKGROUND-COLOR: #FFDDAA;
+  background-color: #e9e5c8;
   TEXT-ALIGN: center;
 }
 
@@ -83,73 +83,72 @@ td.br {
 }
 
 td.navText {
-  COLOR: #FFFFFF;
+  color: #FFFFFF;
 }
 
 td.freeDel {
-  COLOR: #E2003B ;
+  color: #E2003B ;
   TEXT-ALIGN: CENTER ;
 }
 
 td.sel {
-  COLOR: #FFFFFF;
-  BACKGROUND-COLOR: #3C6C9E;
+  color: #FFFFFF;
+  background-color: #3C6C9E;
   FONT-FAMILY: Tahoma, Helvetica;
-  FONT-SIZE: 9pt;
-  FONT-WEIGHT: bold
+  font-size: 9pt;
+  font-weight: bold
 }
 
 td.sub {
-  COLOR: #FFFFFF;
-  BACKGROUND-COLOR: #3C6C9E;
+  color: #FFFFFF;
+  background-color: #3C6C9E;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold
+  font-size: 8pt;
+  font-weight: bold
 }
 
 td.topnav {
-  COLOR: #333333;
-  BACKGROUND-COLOR: #CCDDFF;
-}
-
-
-.titleBand {
-  BACKGROUND-COLOR: #FFF8E4;
-}
-
-.navBg {
-  BACKGROUND-COLOR: #DDEEFF;
-  BORDER-BOTTOM: #38218E 2px solid;
-  BORDER-LEFT: #38218E 2px solid;
-  BORDER-RIGHT: #38218E 2px solid;
-  BORDER-TOP: #38218E 2px solid;
+  color: #333333;
+  background-color: #e9e5c8;
 }
 
 .outerBox {
-  BACKGROUND-COLOR: #FFFFFF;
-  BORDER-TOP:    #315B7F 3px solid;
-  BORDER-LEFT:   #315B7F 3px solid;
-  BORDER-RIGHT:  #497FB1 3px solid;
-  BORDER-BOTTOM: #497FB1 3px solid;
+  background-color: #FFFFFF;
 }
 
 .thinBox {
-  BORDER-TOP:    #497FB1 2px solid;
-  BORDER-LEFT:   #497FB1 2px solid;
-  BORDER-RIGHT:  #497FB1 2px solid;
-  BORDER-BOTTOM: #497FB1 2px solid;
+  background-color: #e9e5c8;
+}
+
+.detailBox {
+  padding: 10px;
+}
+
+.eventSummary {
+  background-color: #a49a5c;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.eventItem {
+  background-color: #e9e5c8;
+}
+
+table.cpyrght {
+  background-color: #333333;
 }
 
 td.cpyrght {
-  COLOR: #333333;
-  FONT-SIZE: 7pt;
-  TEXT-ALIGN: center;
+  color: white;
+  font-size: 7pt;
+  text-align: center;
 }
 
 td.cat {
-  COLOR: #333333;
-  FONT-SIZE: 12pt;
-  FONT-WEIGHT: bold
+  color: #333333;
+  font-size: 12pt;
+  font-weight: bold
 }
 
 /** LINKS */
@@ -158,148 +157,141 @@ td.cat {
 
 A,A:visited,A:active,A:link,A:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  COLOR: #0820F0;
+  color: #69643f;
   TEXT-DECORATION: none;
   bgcolor: black;
-  FONT-WEIGHT: bold
+  font-weight: bold
 }
 A:hover {
-  COLOR: #FF6600;
-  FONT-WEIGHT: bold;
+  color: #c2b245;
+  font-weight: bold;
   TEXT-DECORATION: underline;
 }
 
-/** Events */
+/** Copyright */
 
-A.blink,A.blink:visited,A.blink:active,A.blink:link,A.blink:visited {
+A.cpyrght,A.cpyrght:visited,A.cpyrght:active,A.cpyrght:link,A.cpyrght:visited {
+  color: #9999FF;
+  font-size: 7pt;
+  font-weight: normal;
+}
+A.cpyrght:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+
+input,select {
+  background-color: #e9e5c8;
+  BORDER-TOP:    #a49a5c 1px solid;
+  BORDER-LEFT:   #a49a5c 1px solid;
+  BORDER-BOTTOM: #4d492f 1px solid;
+  BORDER-RIGHT:  #4d492f 1px solid;
+  color: black;
+  PADDING-BOTTOM: 4px;
+  PADDING-LEFT:   5px;
+  PADDING-RIGHT:  5px;
+  PADDING-TOP:    5px;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  COLOR: #FF3366;
-  TEXT-DECORATION: none;
-  bgcolor: black;
-  FONT-WEIGHT: bold;
-  display: inline;
-}
-A.blink:hover {
-  COLOR: #FF6600;
-  FONT-WEIGHT: bold;
-  TEXT-DECORATION: underline;
-  display: inline;
+  font-size: 8pt;
 }
 
-INPUT,SELECT {
-  BACKGROUND-COLOR: #EEEEFF;
-  BORDER-TOP:    #497FB1 2px solid;
-  BORDER-LEFT:   #497FB1 2px solid;
-  BORDER-BOTTOM: #315B7F 2px solid;
-  BORDER-RIGHT:  #315B7F 2px solid;
-  COLOR: #000000;
-  PADDING-BOTTOM: 0px;
-  PADDING-LEFT:   1px;
-  PADDING-RIGHT:  1px;
-  PADDING-TOP:    1px;
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 8pt;
+input.button {
+  background-color: #a49a5c;
+  font-weight: bold;
+  color: white;
 }
 
-INPUT.button {
-  BACKGROUND-COLOR: #AACCFF;
-  FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 8pt;
-}
-
-.eventsummary {
-  COLOR: #FF3366;
-  FONT-WEIGHT: bold;
-}
 
 /** MEMBERSHIP TYPES */
 
 .keyitem {
-  FONT-WEIGHT: bold;
+  font-weight: bold;
 }
 
 /** Off Peak */
 .member_type_op {
-  BACKGROUND-COLOR: #FF9900;
-  COLOR: black;
+  background-color: #FF9900;
+  color: black;
 }
 
 /** Business Group */
 .member_type_bg {
-  BACKGROUND-COLOR: #CC3333;
-  COLOR: white;
+  background-color: #CC3333;
+  color: white;
 }
 
 /** Family */
 .member_type_f {
-  BACKGROUND-COLOR: #993366;
-  COLOR: white;
+  background-color: #993366;
+  color: white;
 }
 
 /** Gym */
 .member_type_g {
-  BACKGROUND-COLOR: #330000;
-  COLOR: white;
+  background-color: #330000;
+  color: white;
 }
 
 /** Intermediate */
 .member_type_i {
-  BACKGROUND-COLOR: #CC99FF;
-  COLOR: black;
+  background-color: #CC99FF;
+  color: black;
 }
 
 /** Junior */
 .member_type_j {
-  BACKGROUND-COLOR: #33AA33;
-  COLOR: black;
+  background-color: #33AA33;
+  color: black;
 }
 
 /** Ordinary */
 .member_type_o {
-  BACKGROUND-COLOR: #3333CC;
-  COLOR: white;
+  background-color: #3333CC;
+  color: white;
 }
 
 /** Social */
 .member_type_s {
-  BACKGROUND-COLOR: #330000;
-  COLOR: white;
+  background-color: #330000;
+  color: white;
 }
 
 /** Social Restricted */
 .member_type_sr {
-  BACKGROUND-COLOR: #330000;
-  COLOR: white;
+  background-color: #330000;
+  color: white;
 }
 
 /** Student */
 .member_type_st {
-  BACKGROUND-COLOR: #003366;
-  COLOR: white;
+  background-color: #003366;
+  color: white;
 }
 
 /** Admin */
 .member_type_a {
-  BACKGROUND-COLOR: #FF0066;
-  COLOR: white;
+  background-color: #FF0066;
+  color: white;
 }
 
 /** Guest */
 .member_type_u {
-  BACKGROUND-COLOR: #EEEE33;
-  COLOR: black;
+  background-color: #EEEE33;
+  color: black;
 }
 
 /** Unspecified */
 .member_type_y {
-  BACKGROUND-COLOR: #CCCCCC;
-  COLOR: black;
+  background-color: #CCCCCC;
+  color: black;
 }
 
 /** Unknown */
 .member_type_z {
-  BACKGROUND-COLOR: #999999;
-  COLOR: white;
+  background-color: #999999;
+  color: white;
 }
 
 
@@ -307,18 +299,19 @@ INPUT.button {
 /** Message formats. */
 
 p.err {
-  COLOR: #FF7900;
-  FONT-WEIGHT: bold;
+  color: #285292;
+  font-weight: bold;
+  font-size: 8pt;
 }
 
 p.quest {
-  COLOR: #120966;
-  FONT-SIZE: 12pt;
+  color: #4d492f;
+  font-size: 12pt;
 }
 
 p.statement {
-  COLOR: #120966;
-  FONT-SIZE: 12pt;
+  color: #285292;
+  font-size: 12pt;
 }
 
 /** APPLICATIONS */
@@ -326,22 +319,22 @@ p.statement {
 /** Events */
 
 .item_date {
-  COLOR: #0066FF;
+  color: #285292;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 11pt;
-  FONT-WEIGHT: bold;
+  font-size: 11pt;
+  font-weight: bold;
 }
 .item_title {
-  COLOR: #333333;
+  color: #333333;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 11pt;
-  FONT-WEIGHT: bold;
+  font-size: 11pt;
+  font-weight: bold;
   PADDING-LEFT: 5px;
 }
 .item_text {
-  COLOR: #000000;
+  color: #000000;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  FONT-SIZE: 10pt;
+  font-size: 10pt;
   padding-top: 4px;
   padding-bottom: 8px;
 }

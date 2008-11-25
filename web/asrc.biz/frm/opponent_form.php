@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  08-Jun-2004  File created.
+ * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 include_once 'Main.php';
 
@@ -36,7 +37,7 @@ if ($retry == NULL) {
       <td><input type="hidden" name="book_date" id="book_date" value="<? print $book_date ?>">
           <input type="hidden" name="court" id="court" value="<? print $court ?>">
           <input type="hidden" name="slot" id="slot" value="<? print $slot ?>"></td>
-      <td><input class="text" type="submit" value="Search"><input type="hidden" name="retry" value="1"></td>
+      <td><input class="button" type="submit" value="Search"><input type="hidden" name="retry" value="1"></td>
     </tr>
   </table>
 </form>

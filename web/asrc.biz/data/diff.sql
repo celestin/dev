@@ -6,10 +6,6 @@
 -- $Id$
 --
 -- Who  When         Why
--- CAM  02-Nov-2007  Recreated for bug Friday OP should finish at 23:00.
+-- CAM  17-Nov-2007  Cleared for V1.12.
 -- --------------------------------------------------------
-
-UPDATE member_limit SET time_end = '23:00:00' WHERE member_type='OP' AND day=4 AND time_start = '14:00:00';
-
-ALTER TABLE member ADD privs VARCHAR(100) NULL AFTER member_type;
 

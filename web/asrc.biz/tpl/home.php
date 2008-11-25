@@ -11,10 +11,11 @@
  * Who  When         Why
  * CAM  19-Mar-2004  File created.
  * CAM  17-Nov-2007  10156 : Updated Monitor logo.
+ * CAM  25-Nov-2008  10314 : Left blank - cleaner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 
 <table height="100%" width="100%" border=0>
-<tr><td align=center><img height="186" width="500" src="img/home2.gif"></td></tr>
+<tr><td align=center>&nbsp;</td></tr>
 </table>
 

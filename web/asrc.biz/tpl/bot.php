@@ -23,18 +23,46 @@
  * CAM  26-Oct-2007  10195 : Version 1.10 - Added Events Emailing.
  * CAM  15-Nov-2007  10183 : Added Event Summary.  Version 1.11 - Events to footer/emails and User Privs.
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
+ * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
-<!--</tr></td></table>-->
 </td></tr>
 </table></td>
-  <td align=center valign=top><a target="_blank" href="http://www.active-aircon.co.uk/"><img border=0 width=180 height=220 src="img/ad/active4.png"></a></td>
+<td valign=top>
+<table id="Table_01" width="155" height="465" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="3"><img src="img/ad/Sponsors.gif" width="155" height="47" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="8"><img src="img/ad/Untitled-3_02.gif" width="38" height="418" alt=""></td>
+    <td><img src="img/ad/twma.gif" width="112" height="67" alt=""></td>
+    <td rowspan="8"><img src="img/ad/Untitled-3_04.gif" width="5" height="418" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/Untitled-3_05.gif" width="112" height="64" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/monitor.gif" width="112" height="24" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/Untitled-3_07.gif" width="112" height="60" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/MrChips.gif" width="112" height="77" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/Untitled-3_09.gif" width="112" height="31" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/solutions.gif" width="112" height="80" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/ad/Untitled-3_11.gif" width="112" height="15" alt=""></td>
+  </tr>
+</table>
+</td>
 <tr>
-  <td align=center valign=top><a target="_blank" href="http://www.aberdeen-drilling.com/"><img border=0 width=180 height=220 src="img/ad/ads1.gif"></a></td>
-  <td align=center valign=top><a href="mailto:info@asrc.co.uk?Subject=ASRC Online Advert Space 4"><img border=0 src="img/size1e.jpg"></a></td>
-</tr>
-<tr>
-  <td colspan=3><table width="100%" border=0 cellpadding=0 cellspacing=0>
+  <td colspan=2><table width="100%" border=0 cellpadding=0 cellspacing=0>
     <tr>
       <td colspan=2 align=left valign=bottom><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="outerBox">
         <tr>
@@ -53,18 +81,23 @@
         $$key = stripslashes($val);
       }
 ?>
-          <td><b><? echo $event_date_fmt; ?></b> <a href="events.php#event<? echo $event_id; ?>"><? echo $event_title; ?></a></td>
+          <td class="eventItem"><b><? echo $event_date_fmt; ?></b> <a href="events.php#event<? echo $event_id; ?>"><? echo $event_title; ?></a></td>
 <?
     }
 ?>
         </tr>
       </table></td>
     </tr>
-  </table></td>
-</tr>
 </table></td></tr>
-<tr><td class="cpyrght"><b>V1.11</b> System designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
-</td></tr>
+</table></td></tr>
+<tr><td colspan=3><table class="cpyrght" border=0 cellpadding=10 cellspacing=0 width="100%">
+  <tr>
+    <td width="25%" align="left"><img src="img/logo/asrc_small.gif"></td>
+    <td class="cpyrght" width="50%"><b>V1.11</b> System designed and maintained by <a class="cpyrght" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+    <td class="cpyrght" width="25%"></td>
+  </tr>
+</table></td></tr>
+</table></td></tr>
 </table>
 </body>
 </html>

@@ -19,6 +19,7 @@
  * CAM  15-Oct-2007  10155 : Moved code from here into Calendar.php - it only applies to Courts 1 & 2.
  * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
  * CAM  15-Nov-2007  10156 : Check for Coach privs - extend bookable days.
+ * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -170,9 +171,9 @@ if (empty($memberOrig)) {
 ?>
   </tr><tr>
     <td colspan="<? echo $cc; ?>" align=center>
-      <input type=submit value="Book">
-      <input type=hidden id="book_date" name="book_date" value="<? echo $book_date; ?>">
-      <input type=hidden id="member_orig" name="member_orig" value="<? echo $memberOrig->getID(); ?>">
+      <input class="button" type="submit" value="Book">
+      <input type="hidden" id="book_date" name="book_date" value="<? echo $book_date; ?>">
+      <input type="hidden" id="member_orig" name="member_orig" value="<? echo $memberOrig->getID(); ?>">
     </td>
   </tr>
   </table></form>

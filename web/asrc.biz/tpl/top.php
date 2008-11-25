@@ -15,6 +15,7 @@
  * CAM  12-Aug-2007  10157 : Add TBC to Admin toolbar.
  * CAM  22-Oct-2007  10182 : Split Admin toolbar onto second line.  Adding blinking Events.
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
+ * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -53,16 +54,55 @@ function ToolbarOption($action, $label, $last=false, $class="") {
   <script language="Javascript" src="date.js"></script>
 </head>
 
-<body topmargin=2 leftmargin=0 onload="<? if (!session_is_registered('events_read')) echo "blink();"; ?>">
+<body topmargin=0 leftmargin=0>
 
-<table border=0 cellpadding=0 cellspacing=0>
-<tr><td><table border=0 cellpadding=0 cellspacing=8>
-<tr><td align=center valign=top><a target="_blank" href="http://www.twma.co.uk/"><img border=0 width=180 height=220 src="img/ad/twma.png"></a></td>
-<td rowspan=2 valign=top>
-<table border=0 cellpadding=0 cellspacing=10 width="600" height="450" class=outerBox>
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr><td align="center"><table border=0 cellpadding=0 cellspacing=0>
+<tr><td><table border=0 cellpadding=2 cellspacing=10 bgcolor="white">
+
+<tr><td colspan=3>
+<table id="Table_01" bgcolor="black" width="984" height="159" border="0" cellpadding="0" cellspacing="0">
   <tr>
-  <td valign=top><table border=0 cellpadding=4 cellspacing=0 width="100%" height="100%" class="thinBox">
-    <tr><td class="topnav"><b>Aberdeen Squash Racquets Club</b>&nbsp;-&nbsp;<? echo strftime("%a %d %b %H:%M"); ?></td>
+    <td colspan="5"><img src="img/logo/spacer.gif" width="717" height="57" alt=""></td>
+    <td rowspan="5"><img src="img/logo/Racquet.gif" width="24" height="158" alt=""></td>
+    <td rowspan="3"><img src="img/logo/Ball.gif" width="95" height="108" alt=""></td>
+    <td rowspan="5"><img src="img/logo/Racquet-05.gif" width="148" height="158" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="4"><img src="img/logo/spacer.gif" width="22" height="101" alt=""></td>
+    <td rowspan="3"><img src="img/logo/Logo.gif" width="66" height="78" alt=""></td>
+    <td colspan="3"><img src="img/logo/spacer.gif" width="629" height="14" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/logo/Aberdeen.gif" width="148" height="37" alt=""></td>
+    <td colspan="2"><img src="img/logo/spacer.gif" width="481" height="37" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="img/logo/SRC.gif" width="242" height="27" alt=""></td>
+    <td rowspan="2"><img src="img/logo/spacer.gif" width="387" height="50" alt=""></td>
+    <td rowspan="2"><img src="img/logo/Racquet-13.gif" width="95" height="50" alt=""></td>
+  </tr>
+  <tr>
+    <td colspan="3"><img src="img/logo/spacer.gif" width="308" height="23" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="img/logo/spacer.gif" width="22" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="66" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="148" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="94" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="387" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="24" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="95" height="1" alt=""></td>
+    <td><img src="img/logo/spacer.gif" width="148" height="1" alt=""></td>
+  </tr>
+</table>
+</td></tr>
+
+<tr>
+<td valign=top><table border=0 cellpadding=0 cellspacing=0 width="800" height="480" class="outerBox">
+  <tr>
+  <td valign=top><table border=0 cellpadding=4 cellspacing=8 width="100%" height="100%" class="thinBox">
+    <tr><td class="topnav"><b>Online Court Booking System</b>&nbsp;-&nbsp;<? echo strftime("%a %d %b %H:%M"); ?></td>
 
     <td class="topnav" align=right><?php
       if ($loggedin) {
@@ -79,7 +119,7 @@ function ToolbarOption($action, $label, $last=false, $class="") {
           if ($loggedin && !$hide_toolbar) {
             ToolbarOption("mybookings.php", $member->getBookingsDescription());
             ToolbarOption("newbooking.php", "make booking");
-            ToolbarOption("events.php", "events", false, "blink");
+            ToolbarOption("events.php", "events");
             ToolbarOption("news.php", "news");
             ToolbarOption("changepass.php", "change password");
             ToolbarOption("logout.php", "logout");
@@ -109,7 +149,7 @@ function ToolbarOption($action, $label, $last=false, $class="") {
     ?>
     </table></td></tr>
 
-    <tr><td colspan=2 width="100%" height="100%" valign=top>
+    <tr><td colspan=2 width="100%" height="100%" valign=top class="detailBox">
 <?
   showFlash();
 ?>

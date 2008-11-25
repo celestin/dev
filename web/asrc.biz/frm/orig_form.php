@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Admin Original Member Search Form
@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  24-Aug-2004  File created.
+ * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
  * * * * * * * * * * * * * * * * * * * * * * * */
 include_once 'Main.php';
 
@@ -35,7 +36,7 @@ if ($retry == NULL) {
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td><input class="text" type="submit" value="Search"><input type="hidden" name="retry" value="1"></td>
+      <td><input class="button" type="submit" value="Search"><input type="hidden" name="retry" value="1"></td>
     </tr>
   </table>
 </form>

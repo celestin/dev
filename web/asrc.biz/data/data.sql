@@ -10,18 +10,18 @@
 -- phpMyAdmin SQL Dump
 -- version 2.6.4-pl4
 -- http://www.phpmyadmin.net
--- 
+--
 -- Host: 217.174.253.162
 -- Generation Time: Aug 14, 2007 at 10:16 PM
 -- Server version: 4.1.15
 -- PHP Version: 4.3.11
--- 
+--
 -- Database: asrc
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table booking
--- 
+--
 
 CREATE TABLE booking (
   book_date date NOT NULL default '0000-00-00',
@@ -41,9 +41,9 @@ CREATE TABLE booking (
   KEY book_opponent (opponentid)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Court Bookings';
 
--- 
+--
 -- Dumping data for table booking
--- 
+--
 
 INSERT INTO booking VALUES ('2007-08-18', 7, 10, '749', '749', '750', NULL, NULL, 'O', NULL, 0, 0);
 INSERT INTO booking VALUES ('2007-08-21', 2, 20, 'SFL', 'FRED', NULL, NULL, NULL, 'O', NULL, 0, 0);
@@ -403,9 +403,9 @@ INSERT INTO booking VALUES ('2007-08-21', 4, 16, '66', 'HEATHER', NULL, NULL, NU
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table booking_arc
--- 
+--
 
 CREATE TABLE booking_arc (
   book_date date NOT NULL default '0000-00-00',
@@ -424,9 +424,9 @@ CREATE TABLE booking_arc (
   KEY book_opponent (opponentid)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Archived Bookings';
 
--- 
+--
 -- Dumping data for table booking_arc
--- 
+--
 
 INSERT INTO booking_arc VALUES ('2005-05-24', 5, 7, '185', 'FRED', NULL, '2005-05-24 12:49:03', 'TRACEY', 'C', 0, 1);
 INSERT INTO booking_arc VALUES ('2005-05-25', 7, 2, '112', 'FRED', '918', '2005-05-25 09:54:50', 'HEATHER', 'C', 0, 1);
@@ -22278,9 +22278,9 @@ INSERT INTO booking_arc VALUES ('2007-08-14', 7, 15, '112', 'HEATHER', NULL, '20
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table court
--- 
+--
 
 CREATE TABLE court (
   court int(11) NOT NULL default '0',
@@ -22290,9 +22290,9 @@ CREATE TABLE court (
   PRIMARY KEY  (court)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Court';
 
--- 
+--
 -- Dumping data for table court
--- 
+--
 
 INSERT INTO court VALUES (1, 13, 'One', '2007-08-08');
 INSERT INTO court VALUES (2, 13, 'Two', '2007-08-08');
@@ -22304,9 +22304,9 @@ INSERT INTO court VALUES (7, 0, 'Seven', '2005-01-01');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table member
--- 
+--
 
 CREATE TABLE member (
   memberid varchar(20) NOT NULL default '',
@@ -22328,9 +22328,9 @@ CREATE TABLE member (
   KEY i_email_address (email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='User Information';
 
--- 
+--
 -- Dumping data for table member
--- 
+--
 
 INSERT INTO member VALUES ('606', NULL, '117', '11923817', 'Ian', 'Conacher', 'iconacher@talisman.co.uk', '1d50b77d4aa76c5115d441a4994b9845', 0, 'O', 0, 1, '1964-03-07', '0000-00-00 00:00:00', '2007-07-30 19:10:28');
 INSERT INTO member VALUES ('3', NULL, '776', '11924471', 'Vic', 'Sinclair', '', '31c251b89925535406ecb10855fd042a', 0, 'O', 0, 0, '1944-12-23', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
@@ -23008,9 +23008,9 @@ INSERT INTO member VALUES ('332', '', '', '', 'Leslie', 'Banks', 'leslie.banks@s
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table member_limit
--- 
+--
 
 CREATE TABLE member_limit (
   member_type char(2) NOT NULL default '',
@@ -23020,9 +23020,9 @@ CREATE TABLE member_limit (
   PRIMARY KEY  (member_type,day,time_start)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Membership Type Limitations';
 
--- 
+--
 -- Dumping data for table member_limit
--- 
+--
 
 INSERT INTO member_limit VALUES ('OP', 4, '09:00:00', '12:00:00');
 INSERT INTO member_limit VALUES ('OP', 0, '09:00:00', '12:00:00');
@@ -23060,9 +23060,9 @@ INSERT INTO member_limit VALUES ('J', 6, '09:00:00', '23:00:00');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table member_type
--- 
+--
 
 CREATE TABLE member_type (
   member_type char(2) NOT NULL default '',
@@ -23075,9 +23075,9 @@ CREATE TABLE member_type (
   PRIMARY KEY  (member_type)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- 
+--
 -- Dumping data for table member_type
--- 
+--
 
 INSERT INTO member_type VALUES ('OP', 'Off Peak', 'Full use of Club ex. Gym', 'Only Mon-Fri 0900-1200 & 1400-1630 + Fri 1400 - Sun 2300hrs', 1, 1, 7);
 INSERT INTO member_type VALUES ('BG', 'Business Group', 'Full use of Club ex. Gym', '5 employees per membership', 1, 0, 2);
@@ -23096,9 +23096,9 @@ INSERT INTO member_type VALUES ('Z', 'Unknown', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table news
--- 
+--
 
 CREATE TABLE news (
   post_date datetime NOT NULL default '0000-00-00 00:00:00',
@@ -23107,9 +23107,9 @@ CREATE TABLE news (
   PRIMARY KEY  (post_date)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='News Items';
 
--- 
+--
 -- Dumping data for table news
--- 
+--
 
 INSERT INTO news VALUES ('2006-02-06 00:00:00', 'You can now choose opponent ''GUEST''', '<p>To distinguish between an unspecified opponent (i.e. when you don''t specify your opponent after booking your court) and a Guest, we have created a GUEST user that you should use when you know you are playing a guest.</p>\r\n\r\n<p>Just type <b>GUEST</b> into either the <u>Member ID</u> or <u>Member Name</u> boxes when asked to search for your opponent, and then click on <u>Guest to the club (GUEST)</u>.\r\n\r\n<p>Coming soon - ability to set/change your opponent <i>after</i> you have made the booking...</p>');
 INSERT INTO news VALUES ('2006-04-26 00:00:00', 'At-a-glance Courts View', '<p>A new view has been added to the system so that you can see <i>at a glance</i> all courts that have been booked up to two hours previously, and for the next five hours.</p>\r\n\r\n<p>This view is activated every time you log out, and also as an option to the Administrators.</p>\r\n\r\n<p>Once on the screen, the view will refresh every minute.</p>');
@@ -23119,9 +23119,9 @@ INSERT INTO news VALUES ('2007-08-12 00:00:00', 'Out of Hours games', '<p>When y
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table shift
--- 
+--
 
 CREATE TABLE shift (
   member_type char(2) NOT NULL default '',
@@ -23131,9 +23131,9 @@ CREATE TABLE shift (
   PRIMARY KEY  (member_type,day)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Shift Hours';
 
--- 
+--
 -- Dumping data for table shift
--- 
+--
 
 INSERT INTO shift VALUES ('A', 0, '09:00:00', '19:00:00');
 INSERT INTO shift VALUES ('A', 1, '09:00:00', '19:00:00');
@@ -23143,9 +23143,9 @@ INSERT INTO shift VALUES ('A', 4, '09:00:00', '19:00:00');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table slot
--- 
+--
 
 CREATE TABLE slot (
   court int(11) NOT NULL default '0',
@@ -23155,9 +23155,9 @@ CREATE TABLE slot (
   PRIMARY KEY  (slot,court)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Slot';
 
--- 
+--
 -- Dumping data for table slot
--- 
+--
 
 INSERT INTO slot VALUES (2, 23, '22:20:00', 40);
 INSERT INTO slot VALUES (2, 22, '21:40:00', 40);

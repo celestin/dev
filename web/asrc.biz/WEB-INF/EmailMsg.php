@@ -50,7 +50,7 @@ class EmailMsg {
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
     $headers .= "MIME-Version: 1.0$cr";
     $headers .= "X-Priority: 1$cr";
-    $headers .= "X-Mailer: ASRC.biz";
+    $headers .= "X-Mailer: ASRC.biz$cr";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1$cr";
 
     return $headers;
@@ -61,7 +61,7 @@ class EmailMsg {
     $cr = "\r\n";
 
     return "<html><head>$cr".
-    "<link href=" . $cfg['Site']['URL'] . "/asrc2.css rel=stylesheet type=text/css>".
+    "<link href=\"" . $cfg['Site']['URL'] . "/asrc2.css\" rel=stylesheet type=text/css>".
     "</head><body>$cr".
     "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
       "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".

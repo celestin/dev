@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Forgotten Password Workflow
@@ -13,6 +13,7 @@
  * CAM  31-Aug-2004  File created.
  * CAM  27-Sep-2006  10034 : Fixed bug.
  * CAM  08-Feb-2007  10097 : Ensure the correct URL is used when sending emails.
+ * CAM  04-Dec-2008  10318 : Use EmailMsg->getHeaders to ensure correct Return address.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -74,7 +75,8 @@ if(!$memberid){
                  "Aberdeen Squash Racquets Club$cr".
                  "(This is an automated response, please do not reply)$cr";
 
-      mail($email_address, $subject, $message, "From: ASRC <craig@southesk.com>\nX-Mailer: PHP/" . phpversion());
+      $em = new EmailMsg($memberid);
+      mail($email_address, $subject, $message, $em->getHeaders());
       Msg::statement("Your password has been sent.  Please check your email!");
     }
   }

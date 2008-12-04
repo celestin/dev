@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006,2008 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Sends Emails for the system
@@ -16,6 +16,7 @@
  * CAM  25-Jun-2007  10133 : Ensure Test emails are sent to the Development email.
  * CAM  12-Aug-2007  10157 : Improve HTML emails.
  * CAM  26-Oct-2007  10195 : Functionality split into subclasses.
+ * CAM  04-Dec-2008  10318 : Added Reply-To to getHeaders.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -44,10 +45,12 @@ class EmailMsg {
     global $cfg;
     $cr = "\r\n";
 
-    $headers = "From: " . $cfg['Site']['Email'] . "$cr";
+    $headers = "From: <" . $cfg['Site']['Email'] . ">$cr";
+    $headers = "Reply-To: <" . $cfg['Site']['Email'] . ">$cr";
     if (!empty($cc)) $headers .= "Cc: $cc$cr";
     $headers .= "MIME-Version: 1.0$cr";
     $headers .= "X-Priority: 1$cr";
+    $headers .= "X-Mailer: ASRC.biz";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1$cr";
 
     return $headers;
@@ -58,7 +61,7 @@ class EmailMsg {
     $cr = "\r\n";
 
     return "<html><head>$cr".
-    "<link href=" . $cfg['Site']['URL'] . "/asrc.css rel=stylesheet type=text/css>".
+    "<link href=" . $cfg['Site']['URL'] . "/asrc2.css rel=stylesheet type=text/css>".
     "</head><body>$cr".
     "<table cellspacing=0 cellpadding=0 border=0 width=\"100%\">".
       "<tr><td valign=center align=center><table cellspacing=5 cellpadding=0 border=0>".
@@ -75,9 +78,9 @@ class EmailMsg {
     $bottom = "</table></td>".
           "</tr></table>".
         "</td></tr>$cr$cr";
-        
+
     $bottom .= "<tr><td style=\"padding-top:10px;padding-bottom:10px;\"><table border=0 cellpadding=4 cellspacing=0 width=\"100%\" height=\"100%\" class=\"outerBox\">".
-    	"<tr><td class=\"eventsummary\">Upcoming Events</td>$cr";
+      "<tr><td class=\"eventsummary\">Upcoming Events</td>$cr";
 
     $ssql = "SELECT id event_id, event_title, ".
             "DATE_FORMAT(event_date,'%d %b %Y') event_date_fmt ".
@@ -93,13 +96,13 @@ class EmailMsg {
       }
        $bottom .= "<td><b>$event_date_fmt</b> <a href=\"" . $cfg['Site']['URL'] . "/events.php#event$event_id\">$event_title</a></td>$cr";
     }
-    
+
     $bottom .= "</tr></table></td></tr>$cr";
 
     $bottom .= "<tr><td align=center>" . $cfg['Site']['Name'] . " - <a href=\"" . $cfg['Site']['URL'] . "\">" . $cfg['Site']['URL'] . "</a></td></tr>".
       "</table>".
     "</body></html>";
-    
+
     return $bottom;
   }
 }

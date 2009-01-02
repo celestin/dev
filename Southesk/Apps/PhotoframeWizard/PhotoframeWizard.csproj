@@ -9,11 +9,13 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fb.Apps.PhotoframeWizard</RootNamespace>
-    <AssemblyName>PhotoframeWizard</AssemblyName>
+    <AssemblyName>PfWizard</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
+    <ApplicationIcon>photo_scenery.ico</ApplicationIcon>
+    <StartupObject>Fb.Apps.PhotoframeWizard.PhotoframeWizard</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Exif\decoy.jpg" />
+    <Content Include="photo_scenery.ico" />
     <None Include="img\menu\about.png" />
     <None Include="img\menu\folder_into.png" />
     <None Include="img\menu\exit.png" />

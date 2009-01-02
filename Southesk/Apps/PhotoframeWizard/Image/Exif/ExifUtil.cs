@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2009  File created.
+ * CAM  02-Jan-2009  Improved properties handling.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -384,10 +385,11 @@ namespace Fb.Apps.PhotoframeWizard.Image.Exif
       foreach (System.Drawing.Imaging.PropertyItem p in parr)
       {
         string v = "";
-        string name = (string)myHash[p.Id];
-        // tag not found. skip it
-        if (name == null) continue;
-        //
+        if (!myHash.Contains(p.Id))
+        {
+          continue; // tag not found. skip it
+        }
+        string name = myHash[p.Id].Value;
         data += name + ": ";
         //
         //1 = BYTE An 8-bit unsigned integer.,
@@ -732,7 +734,7 @@ namespace Fb.Apps.PhotoframeWizard.Image.Exif
     {
       get
       {
-        return new ExifProperty(index.Key, index.Value);
+        return new ExifProperty((int)index.Key, (string)index.Value);
       }
     }
 

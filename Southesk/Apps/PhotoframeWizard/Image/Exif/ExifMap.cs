@@ -7,256 +7,277 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2009  File created.
+ * CAM  02-Jan-2009  Improved properties handling.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace Fb.Apps.PhotoframeWizard.Image.Exif
 {
   /// <summary>
   /// Summary description for ExifMap.
   /// </summary>
-  public class ExifMap : Hashtable
+  public class ExifMap : KeyedCollection<int, ExifProperty>
   {
-    private Hashtable _values;
+    private ExifPropertyCollection _values;
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public ExifMap()
     {
-      this.Add(0x8769, "Exif IFD");
-      this.Add(0x8825, "Gps IFD");
-      this.Add(0xFE, "New Subfile Type");
-      this.Add(0xFF, "Subfile Type");
-      this.Add(0x100, "Image Width");
-      this.Add(0x101, "Image Height");
-      this.Add(0x102, "Bits Per Sample");
-      this.Add(0x103, "Compression");
-      this.Add(0x106, "Photometric Interp");
-      this.Add(0x107, "Thresh Holding");
-      this.Add(0x108, "Cell Width");
-      this.Add(0x109, "Cell Height");
-      this.Add(0x10A, "Fill Order");
-      this.Add(0x10D, "Document Name");
-      this.Add(0x10E, "Image Description");
-      this.Add(0x10F, "Equip Make");
-      this.Add(0x110, "Equip Model");
-      this.Add(0x111, "Strip Offsets");
-      this.Add(0x112, "Orientation");
-      this.Add(0x115, "Samples PerPixel");
-      this.Add(0x116, "Rows Per Strip");
-      this.Add(0x117, "Strip Bytes Count");
-      this.Add(0x118, "Min Sample Value");
-      this.Add(0x119, "Max Sample Value");
-      this.Add(0x11A, "X Resolution");
-      this.Add(0x11B, "Y Resolution");
-      this.Add(0x11C, "Planar Config");
-      this.Add(0x11D, "Page Name");
-      this.Add(0x11E, "X Position");
-      this.Add(0x11F, "Y Position");
-      this.Add(0x120, "Free Offset");
-      this.Add(0x121, "Free Byte Counts");
-      this.Add(0x122, "Gray Response Unit");
-      this.Add(0x123, "Gray Response Curve");
-      this.Add(0x124, "T4 Option");
-      this.Add(0x125, "T6 Option");
-      this.Add(0x128, "Resolution Unit");
-      this.Add(0x129, "Page Number");
-      this.Add(0x12D, "Transfer Funcition");
-      this.Add(0x131, "Software Used");
-      this.Add(0x132, "Date Time");
-      this.Add(0x13B, "Artist");
-      this.Add(0x13C, "Host Computer");
-      this.Add(0x13D, "Predictor");
-      this.Add(0x13E, "White Point");
-      this.Add(0x13F, "Primary Chromaticities");
-      this.Add(0x140, "ColorMap");
-      this.Add(0x141, "Halftone Hints");
-      this.Add(0x142, "Tile Width");
-      this.Add(0x143, "Tile Length");
-      this.Add(0x144, "Tile Offset");
-      this.Add(0x145, "Tile ByteCounts");
-      this.Add(0x14C, "InkSet");
-      this.Add(0x14D, "Ink Names");
-      this.Add(0x14E, "Number Of Inks");
-      this.Add(0x150, "Dot Range");
-      this.Add(0x151, "Target Printer");
-      this.Add(0x152, "Extra Samples");
-      this.Add(0x153, "Sample Format");
-      this.Add(0x154, "S Min Sample Value");
-      this.Add(0x155, "S Max Sample Value");
-      this.Add(0x156, "Transfer Range");
-      this.Add(0x200, "JPEG Proc");
-      this.Add(0x201, "JPEG InterFormat");
-      this.Add(0x202, "JPEG InterLength");
-      this.Add(0x203, "JPEG RestartInterval");
-      this.Add(0x205, "JPEG LosslessPredictors");
-      this.Add(0x206, "JPEG PointTransforms");
-      this.Add(0x207, "JPEG QTables");
-      this.Add(0x208, "JPEG DCTables");
-      this.Add(0x209, "JPEG ACTables");
-      this.Add(0x211, "YCbCr Coefficients");
-      this.Add(0x212, "YCbCr Subsampling");
-      this.Add(0x213, "YCbCr Positioning");
-      this.Add(0x214, "REF Black White");
-      this.Add(0x8773, "ICC Profile");
-      this.Add(0x301, "Gamma");
-      this.Add(0x302, "ICC Profile Descriptor");
-      this.Add(0x303, "SRGB RenderingIntent");
-      this.Add(0x320, "Image Title");
-      this.Add(0x8298, "Copyright");
-      this.Add(0x5001, "Resolution X Unit");
-      this.Add(0x5002, "Resolution Y Unit");
-      this.Add(0x5003, "Resolution X LengthUnit");
-      this.Add(0x5004, "Resolution Y LengthUnit");
-      this.Add(0x5005, "Print Flags");
-      this.Add(0x5006, "Print Flags Version");
-      this.Add(0x5007, "Print Flags Crop");
-      this.Add(0x5008, "Print Flags Bleed Width");
-      this.Add(0x5009, "Print Flags Bleed Width Scale");
-      this.Add(0x500A, "Halftone LPI");
-      this.Add(0x500B, "Halftone LPIUnit");
-      this.Add(0x500C, "Halftone Degree");
-      this.Add(0x500D, "Halftone Shape");
-      this.Add(0x500E, "Halftone Misc");
-      this.Add(0x500F, "Halftone Screen");
-      this.Add(0x5010, "JPEG Quality");
-      this.Add(0x5011, "Grid Size");
-      this.Add(0x5012, "Thumbnail Format");
-      this.Add(0x5013, "Thumbnail Width");
-      this.Add(0x5014, "Thumbnail Height");
-      this.Add(0x5015, "Thumbnail ColorDepth");
-      this.Add(0x5016, "Thumbnail Planes");
-      this.Add(0x5017, "Thumbnail RawBytes");
-      this.Add(0x5018, "Thumbnail Size");
-      this.Add(0x5019, "Thumbnail CompressedSize");
-      this.Add(0x501A, "Color Transfer Function");
-      this.Add(0x501B, "Thumbnail Data");
-      this.Add(0x5020, "Thumbnail ImageWidth");
-      this.Add(0x502, "Thumbnail ImageHeight");
-      this.Add(0x5022, "Thumbnail BitsPerSample");
-      this.Add(0x5023, "Thumbnail Compression");
-      this.Add(0x5024, "Thumbnail PhotometricInterp");
-      this.Add(0x5025, "Thumbnail ImageDescription");
-      this.Add(0x5026, "Thumbnail EquipMake");
-      this.Add(0x5027, "Thumbnail EquipModel");
-      this.Add(0x5028, "Thumbnail StripOffsets");
-      this.Add(0x5029, "Thumbnail Orientation");
-      this.Add(0x502A, "Thumbnail SamplesPerPixel");
-      this.Add(0x502B, "Thumbnail RowsPerStrip");
-      this.Add(0x502C, "Thumbnail StripBytesCount");
-      this.Add(0x502D, "Thumbnail ResolutionX");
-      this.Add(0x502E, "Thumbnail ResolutionY");
-      this.Add(0x502F, "Thumbnail PlanarConfig");
-      this.Add(0x5030, "Thumbnail ResolutionUnit");
-      this.Add(0x5031, "Thumbnail TransferFunction");
-      this.Add(0x5032, "Thumbnail SoftwareUsed");
-      this.Add(0x5033, "Thumbnail DateTime");
-      this.Add(0x5034, "Thumbnail Artist");
-      this.Add(0x5035, "Thumbnail WhitePoint");
-      this.Add(0x5036, "Thumbnail PrimaryChromaticities");
-      this.Add(0x5037, "Thumbnail YCbCrCoefficients");
-      this.Add(0x5038, "Thumbnail YCbCrSubsampling");
-      this.Add(0x5039, "Thumbnail YCbCrPositioning");
-      this.Add(0x503A, "Thumbnail RefBlackWhite");
-      this.Add(0x503B, "Thumbnail CopyRight");
-      this.Add(0x5090, "Luminance Table");
-      this.Add(0x5091, "Chrominance Table");
-      this.Add(0x5100, "Frame Delay");
-      this.Add(0x5101, "Loop Count");
-      this.Add(0x5110, "Pixel Unit");
-      this.Add(0x5111, "Pixel PerUnit X");
-      this.Add(0x5112, "Pixel PerUnit Y");
-      this.Add(0x5113, "Palette Histogram");
-      this.Add(0x829A, "Exposure Time");
-      this.Add(0x829D, "F-Number");
-      this.Add(0x8822, "Exposure Prog");
-      this.Add(0x8824, "Spectral Sense");
-      this.Add(0x8827, "ISO Speed");
-      this.Add(0x8828, "OECF");
-      this.Add(0x9000, "Ver");
-      this.Add(0x9003, "DTOrig");
-      this.Add(0x9004, "DTDigitized");
-      this.Add(0x9101, "CompConfig");
-      this.Add(0x9102, "CompBPP");
-      this.Add(0x9201, "Shutter Speed");
-      this.Add(0x9202, "Aperture");
-      this.Add(0x9203, "Brightness");
-      this.Add(0x9204, "Exposure Bias");
-      this.Add(0x9205, "MaxAperture");
-      this.Add(0x9206, "SubjectDist");
-      this.Add(0x9207, "Metering Mode");
-      this.Add(0x9208, "LightSource");
-      this.Add(0x9209, "Flash");
-      this.Add(0x920A, "FocalLength");
-      this.Add(0x927C, "Maker Note");
-      this.Add(0x9286, "User Comment");
-      this.Add(0x9290, "DTSubsec");
-      this.Add(0x9291, "DTOrigSS");
-      this.Add(0x9292, "DTDigSS");
-      this.Add(0xA000, "FPXVer");
-      this.Add(0xA001, "ColorSpace");
-      this.Add(0xA002, "PixXDim");
-      this.Add(0xA003, "PixYDim");
-      this.Add(0xA004, "RelatedWav");
-      this.Add(0xA005, "Interop");
-      this.Add(0xA20B, "FlashEnergy");
-      this.Add(0xA20C, "SpatialFR");
-      this.Add(0xA20E, "FocalXRes");
-      this.Add(0xA20F, "FocalYRes");
-      this.Add(0xA210, "FocalResUnit");
-      this.Add(0xA214, "Subject Loc");
-      this.Add(0xA215, "Exposure Index");
-      this.Add(0xA217, "Sensing Method");
-      this.Add(0xA300, "FileSource");
-      this.Add(0xA301, "SceneType");
-      this.Add(0xA302, "CfaPattern");
-      this.Add(0x0, "Gps Ver");
-      this.Add(0x1, "Gps LatitudeRef");
-      this.Add(0x2, "Gps Latitude");
-      this.Add(0x3, "Gps LongitudeRef");
-      this.Add(0x4, "Gps Longitude");
-      this.Add(0x5, "Gps AltitudeRef");
-      this.Add(0x6, "Gps Altitude");
-      this.Add(0x7, "Gps GpsTime");
-      this.Add(0x8, "Gps GpsSatellites");
-      this.Add(0x9, "Gps GpsStatus");
-      this.Add(0xA, "Gps GpsMeasureMode");
-      this.Add(0xB, "Gps GpsDop");
-      this.Add(0xC, "Gps SpeedRef");
-      this.Add(0xD, "Gps Speed");
-      this.Add(0xE, "Gps TrackRef");
-      this.Add(0xF, "Gps Track");
-      this.Add(0x10, "Gps ImgDirRef");
-      this.Add(0x11, "Gps ImgDir");
-      this.Add(0x12, "Gps MapDatum");
-      this.Add(0x13, "Gps DestLatRef");
-      this.Add(0x14, "Gps DestLat");
-      this.Add(0x15, "Gps DestLongRef");
-      this.Add(0x16, "Gps DestLong");
-      this.Add(0x17, "Gps DestBearRef");
-      this.Add(0x18, "Gps DestBear");
-      this.Add(0x19, "Gps DestDistRef");
-      this.Add(0x1A, "Gps DestDist");
+      _values = new ExifPropertyCollection();
 
-      _values = new Hashtable();
-      foreach (int key in this.Keys)
-      {
-        string value = (string)this[key];
-        _values.Add(value, key);
-      }
+      Add(new ExifProperty(0x8769, "Exif IFD"));
+      Add(new ExifProperty(0x8825, "Gps IFD"));
+      Add(new ExifProperty(0xFE, "New Subfile Type"));
+      Add(new ExifProperty(0xFF, "Subfile Type"));
+      Add(new ExifProperty(0x100, "Image Width"));
+      Add(new ExifProperty(0x101, "Image Height"));
+      Add(new ExifProperty(0x102, "Bits Per Sample"));
+      Add(new ExifProperty(0x103, "Compression"));
+      Add(new ExifProperty(0x106, "Photometric Interp"));
+      Add(new ExifProperty(0x107, "Thresh Holding"));
+      Add(new ExifProperty(0x108, "Cell Width"));
+      Add(new ExifProperty(0x109, "Cell Height"));
+      Add(new ExifProperty(0x10A, "Fill Order"));
+      Add(new ExifProperty(0x10D, "Document Name"));
+      Add(new ExifProperty(0x10E, "Image Description"));
+      Add(new ExifProperty(0x10F, "Equip Make"));
+      Add(new ExifProperty(0x110, "Equip Model"));
+      Add(new ExifProperty(0x111, "Strip Offsets"));
+      Add(new ExifProperty(0x112, "Orientation"));
+      Add(new ExifProperty(0x115, "Samples PerPixel"));
+      Add(new ExifProperty(0x116, "Rows Per Strip"));
+      Add(new ExifProperty(0x117, "Strip Bytes Count"));
+      Add(new ExifProperty(0x118, "Min Sample Value"));
+      Add(new ExifProperty(0x119, "Max Sample Value"));
+      Add(new ExifProperty(0x11A, "X Resolution"));
+      Add(new ExifProperty(0x11B, "Y Resolution"));
+      Add(new ExifProperty(0x11C, "Planar Config"));
+      Add(new ExifProperty(0x11D, "Page Name"));
+      Add(new ExifProperty(0x11E, "X Position"));
+      Add(new ExifProperty(0x11F, "Y Position"));
+      Add(new ExifProperty(0x120, "Free Offset"));
+      Add(new ExifProperty(0x121, "Free Byte Counts"));
+      Add(new ExifProperty(0x122, "Gray Response Unit"));
+      Add(new ExifProperty(0x123, "Gray Response Curve"));
+      Add(new ExifProperty(0x124, "T4 Option"));
+      Add(new ExifProperty(0x125, "T6 Option"));
+      Add(new ExifProperty(0x128, "Resolution Unit"));
+      Add(new ExifProperty(0x129, "Page Number"));
+      Add(new ExifProperty(0x12D, "Transfer Funcition"));
+      Add(new ExifProperty(0x131, "Software Used"));
+      Add(new ExifProperty(0x132, "Date Time"));
+      Add(new ExifProperty(0x13B, "Artist"));
+      Add(new ExifProperty(0x13C, "Host Computer"));
+      Add(new ExifProperty(0x13D, "Predictor"));
+      Add(new ExifProperty(0x13E, "White Point"));
+      Add(new ExifProperty(0x13F, "Primary Chromaticities"));
+      Add(new ExifProperty(0x140, "ColorMap"));
+      Add(new ExifProperty(0x141, "Halftone Hints"));
+      Add(new ExifProperty(0x142, "Tile Width"));
+      Add(new ExifProperty(0x143, "Tile Length"));
+      Add(new ExifProperty(0x144, "Tile Offset"));
+      Add(new ExifProperty(0x145, "Tile ByteCounts"));
+      Add(new ExifProperty(0x14C, "InkSet"));
+      Add(new ExifProperty(0x14D, "Ink Names"));
+      Add(new ExifProperty(0x14E, "Number Of Inks"));
+      Add(new ExifProperty(0x150, "Dot Range"));
+      Add(new ExifProperty(0x151, "Target Printer"));
+      Add(new ExifProperty(0x152, "Extra Samples"));
+      Add(new ExifProperty(0x153, "Sample Format"));
+      Add(new ExifProperty(0x154, "S Min Sample Value"));
+      Add(new ExifProperty(0x155, "S Max Sample Value"));
+      Add(new ExifProperty(0x156, "Transfer Range"));
+      Add(new ExifProperty(0x200, "JPEG Proc"));
+      Add(new ExifProperty(0x201, "JPEG InterFormat"));
+      Add(new ExifProperty(0x202, "JPEG InterLength"));
+      Add(new ExifProperty(0x203, "JPEG RestartInterval"));
+      Add(new ExifProperty(0x205, "JPEG LosslessPredictors"));
+      Add(new ExifProperty(0x206, "JPEG PointTransforms"));
+      Add(new ExifProperty(0x207, "JPEG QTables"));
+      Add(new ExifProperty(0x208, "JPEG DCTables"));
+      Add(new ExifProperty(0x209, "JPEG ACTables"));
+      Add(new ExifProperty(0x211, "YCbCr Coefficients"));
+      Add(new ExifProperty(0x212, "YCbCr Subsampling"));
+      Add(new ExifProperty(0x213, "YCbCr Positioning"));
+      Add(new ExifProperty(0x214, "REF Black White"));
+      Add(new ExifProperty(0x8773, "ICC Profile"));
+      Add(new ExifProperty(0x301, "Gamma"));
+      Add(new ExifProperty(0x302, "ICC Profile Descriptor"));
+      Add(new ExifProperty(0x303, "SRGB RenderingIntent"));
+      Add(new ExifProperty(0x320, "Image Title"));
+      Add(new ExifProperty(0x8298, "Copyright"));
+      Add(new ExifProperty(0x5001, "Resolution X Unit"));
+      Add(new ExifProperty(0x5002, "Resolution Y Unit"));
+      Add(new ExifProperty(0x5003, "Resolution X LengthUnit"));
+      Add(new ExifProperty(0x5004, "Resolution Y LengthUnit"));
+      Add(new ExifProperty(0x5005, "Print Flags"));
+      Add(new ExifProperty(0x5006, "Print Flags Version"));
+      Add(new ExifProperty(0x5007, "Print Flags Crop"));
+      Add(new ExifProperty(0x5008, "Print Flags Bleed Width"));
+      Add(new ExifProperty(0x5009, "Print Flags Bleed Width Scale"));
+      Add(new ExifProperty(0x500A, "Halftone LPI"));
+      Add(new ExifProperty(0x500B, "Halftone LPIUnit"));
+      Add(new ExifProperty(0x500C, "Halftone Degree"));
+      Add(new ExifProperty(0x500D, "Halftone Shape"));
+      Add(new ExifProperty(0x500E, "Halftone Misc"));
+      Add(new ExifProperty(0x500F, "Halftone Screen"));
+      Add(new ExifProperty(0x5010, "JPEG Quality"));
+      Add(new ExifProperty(0x5011, "Grid Size"));
+      Add(new ExifProperty(0x5012, "Thumbnail Format"));
+      Add(new ExifProperty(0x5013, "Thumbnail Width"));
+      Add(new ExifProperty(0x5014, "Thumbnail Height"));
+      Add(new ExifProperty(0x5015, "Thumbnail ColorDepth"));
+      Add(new ExifProperty(0x5016, "Thumbnail Planes"));
+      Add(new ExifProperty(0x5017, "Thumbnail RawBytes"));
+      Add(new ExifProperty(0x5018, "Thumbnail Size"));
+      Add(new ExifProperty(0x5019, "Thumbnail CompressedSize"));
+      Add(new ExifProperty(0x501A, "Color Transfer Function"));
+      Add(new ExifProperty(0x501B, "Thumbnail Data"));
+      Add(new ExifProperty(0x5020, "Thumbnail ImageWidth"));
+      Add(new ExifProperty(0x502, "Thumbnail ImageHeight"));
+      Add(new ExifProperty(0x5022, "Thumbnail BitsPerSample"));
+      Add(new ExifProperty(0x5023, "Thumbnail Compression"));
+      Add(new ExifProperty(0x5024, "Thumbnail PhotometricInterp"));
+      Add(new ExifProperty(0x5025, "Thumbnail ImageDescription"));
+      Add(new ExifProperty(0x5026, "Thumbnail EquipMake"));
+      Add(new ExifProperty(0x5027, "Thumbnail EquipModel"));
+      Add(new ExifProperty(0x5028, "Thumbnail StripOffsets"));
+      Add(new ExifProperty(0x5029, "Thumbnail Orientation"));
+      Add(new ExifProperty(0x502A, "Thumbnail SamplesPerPixel"));
+      Add(new ExifProperty(0x502B, "Thumbnail RowsPerStrip"));
+      Add(new ExifProperty(0x502C, "Thumbnail StripBytesCount"));
+      Add(new ExifProperty(0x502D, "Thumbnail ResolutionX"));
+      Add(new ExifProperty(0x502E, "Thumbnail ResolutionY"));
+      Add(new ExifProperty(0x502F, "Thumbnail PlanarConfig"));
+      Add(new ExifProperty(0x5030, "Thumbnail ResolutionUnit"));
+      Add(new ExifProperty(0x5031, "Thumbnail TransferFunction"));
+      Add(new ExifProperty(0x5032, "Thumbnail SoftwareUsed"));
+      Add(new ExifProperty(0x5033, "Thumbnail DateTime"));
+      Add(new ExifProperty(0x5034, "Thumbnail Artist"));
+      Add(new ExifProperty(0x5035, "Thumbnail WhitePoint"));
+      Add(new ExifProperty(0x5036, "Thumbnail PrimaryChromaticities"));
+      Add(new ExifProperty(0x5037, "Thumbnail YCbCrCoefficients"));
+      Add(new ExifProperty(0x5038, "Thumbnail YCbCrSubsampling"));
+      Add(new ExifProperty(0x5039, "Thumbnail YCbCrPositioning"));
+      Add(new ExifProperty(0x503A, "Thumbnail RefBlackWhite"));
+      Add(new ExifProperty(0x503B, "Thumbnail CopyRight"));
+      Add(new ExifProperty(0x5090, "Luminance Table"));
+      Add(new ExifProperty(0x5091, "Chrominance Table"));
+      Add(new ExifProperty(0x5100, "Frame Delay"));
+      Add(new ExifProperty(0x5101, "Loop Count"));
+      Add(new ExifProperty(0x5110, "Pixel Unit"));
+      Add(new ExifProperty(0x5111, "Pixel PerUnit X"));
+      Add(new ExifProperty(0x5112, "Pixel PerUnit Y"));
+      Add(new ExifProperty(0x5113, "Palette Histogram"));
+      Add(new ExifProperty(0x829A, "Exposure Time"));
+      Add(new ExifProperty(0x829D, "F-Number"));
+      Add(new ExifProperty(0x8822, "Exposure Prog"));
+      Add(new ExifProperty(0x8824, "Spectral Sense"));
+      Add(new ExifProperty(0x8827, "ISO Speed"));
+      Add(new ExifProperty(0x8828, "OECF"));
+      Add(new ExifProperty(0x9000, "Ver"));
+      Add(new ExifProperty(0x9003, "DTOrig"));
+      Add(new ExifProperty(0x9004, "DTDigitized"));
+      Add(new ExifProperty(0x9101, "CompConfig"));
+      Add(new ExifProperty(0x9102, "CompBPP"));
+      Add(new ExifProperty(0x9201, "Shutter Speed"));
+      Add(new ExifProperty(0x9202, "Aperture"));
+      Add(new ExifProperty(0x9203, "Brightness"));
+      Add(new ExifProperty(0x9204, "Exposure Bias"));
+      Add(new ExifProperty(0x9205, "MaxAperture"));
+      Add(new ExifProperty(0x9206, "SubjectDist"));
+      Add(new ExifProperty(0x9207, "Metering Mode"));
+      Add(new ExifProperty(0x9208, "LightSource"));
+      Add(new ExifProperty(0x9209, "Flash"));
+      Add(new ExifProperty(0x920A, "FocalLength"));
+      Add(new ExifProperty(0x927C, "Maker Note"));
+      Add(new ExifProperty(0x9286, "User Comment"));
+      Add(new ExifProperty(0x9290, "DTSubsec"));
+      Add(new ExifProperty(0x9291, "DTOrigSS"));
+      Add(new ExifProperty(0x9292, "DTDigSS"));
+      Add(new ExifProperty(0xA000, "FPXVer"));
+      Add(new ExifProperty(0xA001, "ColorSpace"));
+      Add(new ExifProperty(0xA002, "PixXDim"));
+      Add(new ExifProperty(0xA003, "PixYDim"));
+      Add(new ExifProperty(0xA004, "RelatedWav"));
+      Add(new ExifProperty(0xA005, "Interop"));
+      Add(new ExifProperty(0xA20B, "FlashEnergy"));
+      Add(new ExifProperty(0xA20C, "SpatialFR"));
+      Add(new ExifProperty(0xA20E, "FocalXRes"));
+      Add(new ExifProperty(0xA20F, "FocalYRes"));
+      Add(new ExifProperty(0xA210, "FocalResUnit"));
+      Add(new ExifProperty(0xA214, "Subject Loc"));
+      Add(new ExifProperty(0xA215, "Exposure Index"));
+      Add(new ExifProperty(0xA217, "Sensing Method"));
+      Add(new ExifProperty(0xA300, "FileSource"));
+      Add(new ExifProperty(0xA301, "SceneType"));
+      Add(new ExifProperty(0xA302, "CfaPattern"));
+      Add(new ExifProperty(0x0, "Gps Ver"));
+      Add(new ExifProperty(0x1, "Gps LatitudeRef"));
+      Add(new ExifProperty(0x2, "Gps Latitude"));
+      Add(new ExifProperty(0x3, "Gps LongitudeRef"));
+      Add(new ExifProperty(0x4, "Gps Longitude"));
+      Add(new ExifProperty(0x5, "Gps AltitudeRef"));
+      Add(new ExifProperty(0x6, "Gps Altitude"));
+      Add(new ExifProperty(0x7, "Gps GpsTime"));
+      Add(new ExifProperty(0x8, "Gps GpsSatellites"));
+      Add(new ExifProperty(0x9, "Gps GpsStatus"));
+      Add(new ExifProperty(0xA, "Gps GpsMeasureMode"));
+      Add(new ExifProperty(0xB, "Gps GpsDop"));
+      Add(new ExifProperty(0xC, "Gps SpeedRef"));
+      Add(new ExifProperty(0xD, "Gps Speed"));
+      Add(new ExifProperty(0xE, "Gps TrackRef"));
+      Add(new ExifProperty(0xF, "Gps Track"));
+      Add(new ExifProperty(0x10, "Gps ImgDirRef"));
+      Add(new ExifProperty(0x11, "Gps ImgDir"));
+      Add(new ExifProperty(0x12, "Gps MapDatum"));
+      Add(new ExifProperty(0x13, "Gps DestLatRef"));
+      Add(new ExifProperty(0x14, "Gps DestLat"));
+      Add(new ExifProperty(0x15, "Gps DestLongRef"));
+      Add(new ExifProperty(0x16, "Gps DestLong"));
+      Add(new ExifProperty(0x17, "Gps DestBearRef"));
+      Add(new ExifProperty(0x18, "Gps DestBear"));
+      Add(new ExifProperty(0x19, "Gps DestDistRef"));
+      Add(new ExifProperty(0x1A, "Gps DestDist"));
     }
 
     public int GetKeyFromValue(string value)
     {
-      if (_values.ContainsKey(value))
+      if (_values.Contains(value))
       {
-        return (int)_values[value];
+        return _values[value].Id;
       }
       return 0;
     }
+
+    protected override void InsertItem(int index, ExifProperty item)
+    {
+      base.InsertItem(index, item);
+      _values.Add(item);
+    }
+
+    protected override int GetKeyForItem(ExifProperty item)
+    {
+      return item.Id;
+    }
   }
+
+  internal class ExifPropertyCollection : KeyedCollection<string, ExifProperty>
+  {
+    public ExifPropertyCollection()
+    {
+    }
+
+    protected override string GetKeyForItem(ExifProperty item)
+    {
+      return item.Value;
+    }
+  }
+
   /// <summary>
   /// private class
   /// </summary>

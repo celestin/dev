@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2009  File created.
+ * CAM  02-Jan-2009  Improved properties handling.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -15,12 +16,12 @@ using System.Text;
 
 namespace Fb.Apps.PhotoframeWizard.Image.Exif
 {
-  class ExifProperty
+  public class ExifProperty
   {
-    private object _id;
-    private object _value;
+    private int _id;
+    private string _value;
 
-    public object Id
+    public int Id
     {
       get
       {
@@ -28,7 +29,7 @@ namespace Fb.Apps.PhotoframeWizard.Image.Exif
       }
     }
 
-    public object Value
+    public string Value
     {
       get
       {
@@ -36,7 +37,7 @@ namespace Fb.Apps.PhotoframeWizard.Image.Exif
       }
     }
 
-    public ExifProperty(object id, object value)
+    public ExifProperty(int id, string value)
     {
       _id = id;
       _value = value;

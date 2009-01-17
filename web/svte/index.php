@@ -17,7 +17,7 @@
 <head>
 <meta http-equiv="Content-Language" content="en-gb">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Stour Valley Timber Engineering</title>
+<title>Stour Valley Technical Services (SVTS)</title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <style>
 #mainText {

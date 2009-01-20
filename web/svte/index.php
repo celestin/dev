@@ -11,6 +11,7 @@
  * CAM  14-Apr-2008  10260 : Updated brochures.
  * CAM  10-Sep-2008  10298 : Removed software references.
  * CAM  17-Jan-2009  10320 : Added back downloads, new logo and new text for SVTS.
+ * CAM  20-Jan-2009  10320 : Changed logo back to original colours.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -69,7 +70,7 @@ a:hover {
 
 <tr>
   <td colspan=2><p><font size="6" color="#00A63B">Stour Valley Technical Services</font></p></td>
-  <td rowspan=5 valign=top align=right><img border=0 src="svts_logo.png" width=175 height=230></td>
+  <td rowspan=5 valign=top align=right><img border=0 src="svts_logo2.png" width=164 height=212></td>
 </tr>
 
 <tr><td colspan=2 style="margin-top: 0;"><b><i>Providing technical services to the construction industry</i></b></td></tr>

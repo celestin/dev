@@ -40,12 +40,12 @@ $boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
 </head>
 <body topmargin=0 leftmargin=0>
 <table border=0 cellspacing=0 cellpadding=0 align=center width=1000><tr>
-<td valign=top><table border=0 cellspacing=0 cellpadding=0 align=center>
+<td valign=top><table border=0 cellspacing=0 cellpadding=0 align=center width="100%">
 
 <tr>
-  <td colspan=2><table border=0 cellpadding=0 cellspacing=0 id="topbanner">
+  <td colspan=2><table border=0 cellpadding=0 cellspacing=0 id="topbanner" width="100%">
     <tr>
-      <td align=right id="toolbar" colspan=6 height=10><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
+      <td align=right id="toolbar" colspan=5 height=10><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
         <tr height=24>
 <?
 if (!$loggedin) {
@@ -83,8 +83,8 @@ if ($loggedin) {
     </tr>
     <tr height=26>
       <td class="redbanner" width=200 align=center><a class="nav" href="index.php">HOME</a></td>
-      <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">SERVICES</a></td>
-      <td class="redbanner" width=200 align=center><a class="nav" href="suppliers.php">SUPPLIERS</a></td>
+      <td class="redbanner" width=200 align=center><a class="nav" href="services.php">SERVICES</a></td>
+      <!--<td class="redbanner" width=200 align=center><a class="nav" href="suppliers.php">SUPPLIERS</a></td>-->
       <td class="redbanner" width=200 align=center><a class="nav" href="history.php">HISTORY</a></td>
       <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">CONTACT</a></td>
     </tr>

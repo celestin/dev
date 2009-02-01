@@ -34,11 +34,11 @@ showFlash();
     <p>Although we are based in Aberdeen, UK, we do business all over Scotland.</p>
 
     <p>We stock and can order spare parts for
-      <a href="suppliers/lorange.html">L'Orange</a>,
-      <a href="suppliers/delphi.html">Delphi</a>,
-      <a href="suppliers/bosch.html">Bosch</a>,
-      <a href="suppliers/stanadyne.html">Stanadyne</a> and
-      <a href="suppliers/woodward.html">Woodward</a>.
+      <a href="lorange.php">L'Orange</a>,
+      <a href="delphi.php">Delphi</a>,
+      <a href="bosch.php">Bosch</a>,
+      <a href="stanadyne.php">Stanadyne</a> and
+      <a href="woodward.php">Woodward</a>.
     </p>
 
     <p><span class=am>Airylea Motors</span> are the number one choice for all your diesel

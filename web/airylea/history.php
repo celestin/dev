@@ -40,12 +40,7 @@ in 1978 Airylea Motors moved to their present location in Menzies Road in Aberde
 
 <p>After James retired in 1994 two of his sons took over the running of the business.
 Robert Gardiner (below left) joined the business in 1981 and was joined the following
-year by his brother Findlay (below right).</p>
-
-<table cellspacing=0 cellpadding=0 align=center>
-  <tr><td class=thinBox><img src="img/history/robfin1.jpg" alt="Robert and Findlay in the current premises"></td><tr>
-  <tr><td align=center class=annot>Robert and Findlay</td></tr>
-</table>
+year by his brother Findlay.</p>
 
 <p>After 12 years gaining a wealth of experience in all manner of fuel injection systems
 they had the knowledge and ability to take over from their father and to advance the

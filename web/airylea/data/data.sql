@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Airylea Motors Website
--- Copyright (c) 2008 Frontburner
+-- Copyright (c) 2008,2009 Frontburner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$
@@ -30,18 +30,6 @@ CREATE TABLE feedback (
   feedback mediumtext,
   PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Customer Feedback' AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table feedback
---
-
-INSERT INTO feedback (id, feedback_date, customer_name, feedback) VALUES
-(1, '2007-07-21', 'Douglas Benton', 'Thank you very much for delivering our boat safely in extreme weather conditions. I thought you would not make it for the arranged lift off. (it was a birthday present for the wife I am glad you made it on time)\r\nThanks again\r\n\r\nDougie'),
-(2, '2007-08-11', 'Eddie Clark', 'I really appreciated the way you went about and overcame the obsticles that were put in front of me to hinder me getting the Golden Sceptre to Buckie. I don''t think anyone else would have done what you did.\r\nThanks\r\n\r\nEddie '),
-(3, '2007-06-23', 'Jim Purss', 'You did a great job. No fuss, took everything in your stride, I can now look forward to cruising the MED.\r\nCheers\r\nJim\r\n\r\nps take your wife out to Spain for a holiday on the boat'),
-(4, '2008-02-15', 'Ron McCreath', 'Thanks for doing a good job and being so obliging and helpful\r\n\r\nRon'),
-(5, '2008-07-21', 'Val. North', 'Thank you both very much for all your help. Gary now catching up with sleep and I am at work. Will certainly recommend you amongst our friends and neighbours who may need transport in the future.'),
-(6, '2008-08-21', 'Graeme Naylor', 'Hi Bob, \r\nMany thanks indeed for your care & patience in bringing my new baby the length of the country & the way you handled unforseen circumstances. You are a delight to deal with.\r\n \r\nYours most sincerely,\r\nGraeme Naylor.');
 
 -- --------------------------------------------------------
 

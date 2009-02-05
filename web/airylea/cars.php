@@ -10,12 +10,14 @@
  *
  * Who  When         Why
  * CAM  01-Feb-2009  10280 : File created.
+ * CAM  05-Feb-2009  10280 : Added Page Id.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Services - Cars";
+$pageId = "cars";
 include 'tpl/top.php';
 ?>
-<table border=0 cellspacing=0 cellpadding=4>
+<table border=0 cellspacing=0 cellpadding=4 width="100%">
   <tr>
     <td><h1>Diesel Cars</h1>
 

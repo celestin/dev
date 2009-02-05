@@ -10,9 +10,11 @@
  *
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
+ * CAM  05-Feb-2009  10280 : Added Page Id.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Contact Airylea Motors";
+$pageId = "contact";
 include 'tpl/top.php';
 ?>
 <h1>Contact Us</h1>

@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
  * CAM  18-Sep-2008  10280 : Added Suppliers.
+ * CAM  05-Feb-2009  10280 : Converted Topbar to Div and added Navbar.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -27,9 +28,6 @@ $toolbar = "none";
 if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
   $toolbar = "inline";
 }
-
-$boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
-
 ?>
 <html>
 <head>
@@ -38,14 +36,18 @@ $boattrans_idx = ((rand()%2)+2);  // a number between 2 and 3
   <script language="Javascript" src="date.js"></script>
   <script language="Javascript" src="ajax.js"></script>
 </head>
-<body topmargin=0 leftmargin=0>
+<body topmargin=0 leftmargin=0<?
+if (!empty($pageId)) {
+  echo " id=\"page_$pageId\"";
+}
+?>>
 <table border=0 cellspacing=0 cellpadding=0 align=center width=1000><tr>
 <td valign=top><table border=0 cellspacing=0 cellpadding=0 align=center width="100%">
 
 <tr>
   <td colspan=2><table border=0 cellpadding=0 cellspacing=0 id="topbanner" width="100%">
     <tr>
-      <td align=right id="toolbar" colspan=5 height=10><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
+      <td align=right id="toolbar" height=10><table id="tbtab" style="display:<? echo $toolbar; ?>" border=0 cellpadding=5 cellspacing=0>
         <tr height=24>
 <?
 if (!$loggedin) {
@@ -64,7 +66,7 @@ if ($loggedin) {
       </table></td>
     </tr>
     <tr>
-      <td colspan=5><table cellpadding=0 cellspacing=8 id="toplogo" width="100%">
+      <td><table cellpadding=0 cellspacing=8 id="toplogo" width="100%">
         <tr>
           <td width=232 class="whitebox" align=left><img onclick="toogleToolbar();" src="img/am3.png"></td>
           <td align=right><table border=0 cellpadding=4 cellspacing=8>
@@ -81,16 +83,31 @@ if ($loggedin) {
         </tr>
       </table></td>
     </tr>
-    <tr height=26>
-      <td class="redbanner" width=200 align=center><a class="nav" href="index.php">HOME</a></td>
-      <td class="redbanner" width=200 align=center><a class="nav" href="services.php">SERVICES</a></td>
-      <!--<td class="redbanner" width=200 align=center><a class="nav" href="suppliers.php">SUPPLIERS</a></td>-->
-      <td class="redbanner" width=200 align=center><a class="nav" href="history.php">HISTORY</a></td>
-      <td class="redbanner" width=200 align=center><a class="nav" href="contact.php">CONTACT</a></td>
+    <tr>
+      <td class="topbar">
+        <div id="topbar">
+          <ul>
+            <li><a id="link_home" href="index.php">Home</a></li>
+            <li><a id="link_services" href="services.php">Services</a></li>
+            <li><a id="link_history" href="history.php">History</a></li>
+            <li><a id="link_contact" href="contact.php">Contact</a></li>
+          </ul>
+        </div>
+      </td>
     </tr>
   </table></td>
 </tr>
 
 <tr>
-  <td width="200" id="navbar">&nbsp;</td>
+  <td width="160" class="navbar" valign="top">
+    <div id="navbar">
+      <ul>
+        <li><a id="link_cars" href="cars.php">Cars</a></li>
+        <li><a id="link_agricultural" href="agricultural.php">Agricultural</a></li>
+        <li><a id="link_marine" href="marine.php">Marine</a></li>
+        <li><a id="link_commercial" href="commercial.php">Commercial</a></li>
+        <li><a id="link_plant" href="plant.php">Plant</a></li>
+      </ul>
+    </div>
+  </td>
   <td align=center class="bodybox">

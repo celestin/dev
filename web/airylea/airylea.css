@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
  * CAM  18-Sep-2008  10280 : Added more classes.
+ * CAM  05-Feb-2009  10280 : Improved Navbar and Topbar links.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -87,14 +88,6 @@ td.sidered {
   background-color: white;
 }
 
-#navbar {
-  font-size: 12pt;
-  font-weight: bold;
-  background-color: #99cbff;
-  color: white;
-  padding: 6px;
-}
-
 .bodybox {
   background-color: white;
   padding: 8px;
@@ -108,13 +101,6 @@ td.sidered {
 
 #toolbar {
   background-color: #330066;
-}
-
-.redbanner {
-  background-color: #4a96e6;
-  font-size: 8pt;
-  color: white;
-  padding: 4px;
 }
 
 .pagebox {
@@ -191,6 +177,90 @@ td.cpyrght {
   color: #BB0F18;
   font-weight: bold;
 }
+
+/** Top bar Navigation **/
+
+td.topbar {
+  background-color: #4a96e6;
+  text-align: center;
+}
+
+#topbar ul
+{
+  margin: 0;
+  padding: .5em 1em;
+  list-style-type: none;
+}
+
+#topbar ul li {
+  margin: 0 0 0 50;
+  padding: .2em 1em;
+  display: inline;
+}
+
+#topbar ul li a
+{
+  padding: .3em 1em;
+  font-size: small;
+  text-decoration: none;
+  color: #330066;
+  background-color: #4a96e6;
+}
+
+#topbar ul li a:hover
+{
+  color: black;
+  background-color: #999999;
+}
+
+/** Service Side Bar Navigation **/
+
+td.navbar {
+  background-color: #99cbff;
+}
+
+#navbar ul
+{
+  margin: 25 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#navbar ul li {
+  margin: 0 0 30 15;
+}
+
+#navbar ul li a
+{
+  font-size: small;
+  text-decoration: none;
+  padding: 10 10 10 10;
+  color: #330066;
+  background-color: #4a96e6;
+}
+
+#navbar ul li a:hover
+{
+  color: black;
+  background-color: #999999;
+}
+
+body#page_cars a#link_cars,
+body#page_agricultural a#link_agricultural,
+body#page_commercial a#link_commercial,
+body#page_contact a#link_contact,
+body#page_history a#link_history,
+body#page_home a#link_home,
+body#page_marine a#link_marine,
+body#page_plant a#link_plant,
+body#page_services a#link_services,
+body#page_suppliers a#link_suppliers {
+color: #fff;
+background: #330066;
+}
+
+
+
 
 /** Colours **/
 

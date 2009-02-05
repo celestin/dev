@@ -10,9 +10,11 @@
  *
  * Who  When         Why
  * CAM  18-Sep-2008  10280 : File created.
+ * CAM  05-Feb-2009  10280 : Added Page Id.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Welcome";
+$title = "Suppliers";
+$pageId = "suppliers";
 include 'tpl/top.php';
 
 global $flash;

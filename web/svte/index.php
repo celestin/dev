@@ -12,6 +12,7 @@
  * CAM  10-Sep-2008  10298 : Removed software references.
  * CAM  17-Jan-2009  10320 : Added back downloads, new logo and new text for SVTS.
  * CAM  20-Jan-2009  10320 : Changed logo back to original colours.
+ * CAM  05-Feb-2009  10320 : Corrected typos.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -142,7 +143,7 @@ Ownership of the <span class="tfe">Timber Frame Engineering</span><font size="2"
 
 <p><b><span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font> software</b>
 <ul>
-<li>We provide specialist design software for purchase by other engineers in the timber frame industry. The software, <span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font>, is easy to use and produces a consistent quality format output - every time, which is easy to read. It uses BS 5268 Parts 2 & 6.1 as its foundation and other relevant British Standards are utilised as required. A new version based on EC5 is currently in the process of being written. This release will be driven by demand for the software; so if you are interested please drop send an email to us so that we can see who is queuing up to be first off the mark with EC5.</li>
+<li>We provide specialist design software for purchase by other engineers in the timber frame industry. The software, <span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font>, is easy to use and produces a consistent quality format output - every time, which is easy to read. It uses BS 5268 Parts 2 & 6.1 as its foundation and other relevant British Standards are utilised as required. A new version based on EC5 is currently in the process of being written. This release will be driven by demand for the software; so if you are interested please send an email to us so that we can see who is queuing up to be first off the mark with EC5.</li>
 </ul>
 </p>
 
@@ -161,7 +162,7 @@ available from BSI.</p>
 
 <h1>Coming soon...</h1>
 
-<h2>Energy assessment services: Non-Domestic (Commercial) Energy Assessor Level 4 (DipNDEA)</h2>
+<h2>Energy assessment services: Non-Domestic (Commercial) Energy Assessor Level 3 (DipNDEA)</h2>
 
 <p>From 1st October 2008 Government started legally requiring all commercial properties being sold,
 let or built and all homes being rented to have Energy Assessments.
@@ -172,9 +173,9 @@ Buildings being modified and resulting in the addition or removal of parts of th
 having Heating, Ventilation and Air Conditioning (HVAC) systems installed or modified may also require an EPC.</p>
 
 <p>In order to provide this service we are undergoing formal training to secure a qualification known as
-<b>Non-Domestic (Commercial) Energy Assessor Level 4 (DipNDEA)</b> - for carrying out Energy Assessments
-for large commercial properties. We expect to start offering this service from March 2009.
-Updates will be posted, but please call me if  you would like to discuss this particular service and
+<b>Non-Domestic (Commercial) Energy Assessor Level 3 (DipNDEA)</b> - for carrying out Energy Assessments
+for commercial properties. We expect to start offering this service from April 2009.
+Updates will be posted, but please call me if you would like to discuss this particular service and
 maybe make an appointment to carry out pre-report assessment of you property.</p>
 
 <p><i>Please note that this web site is regularly updated and further additional information will

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
- * Copyright (c) 2006-2007 Frontburner
+ * Airylea Motors
+ * Copyright (c) 2006-2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Javascript - Date validation
@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  11-Aug-2006  10154 : Fixed tod bug.
+ * CAM  14-Mar-2009  10334 : Moved to JS folder along with Lightbox.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // extract front part of string prior to searchString

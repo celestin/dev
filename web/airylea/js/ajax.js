@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
+ * CAM  14-Mar-2009  10334 : Moved to JS folder along with Lightbox.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function getObjRef(ref) {

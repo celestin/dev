@@ -12,6 +12,7 @@
  * CAM  28-Aug-2008  10280 : File created.
  * CAM  18-Sep-2008  10280 : Added Suppliers.
  * CAM  05-Feb-2009  10280 : Converted Topbar to Div and added Navbar.
+ * CAM  14-Mar-2009  10334 : Use new Bosch logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -32,9 +33,15 @@ if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
 <html>
 <head>
   <title><? echo $title;?></title>
-  <link href="airylea.css" rel=stylesheet type="text/css" />
-  <script language="Javascript" src="date.js"></script>
-  <script language="Javascript" src="ajax.js"></script>
+  <link rel="stylesheet" href="css/airylea.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+
+  <script type="text/javascript" src="js/date.js"></script>
+  <script type="text/javascript" src="js/ajax.js"></script>
+  <script type="text/javascript" src="js/prototype.js"></script>
+  <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+  <script type="text/javascript" src="js/lightbox.js"></script>
+
 </head>
 <body topmargin=0 leftmargin=0<?
 if (!empty($pageId)) {
@@ -71,7 +78,7 @@ if ($loggedin) {
           <td width=232 class="whitebox" align=left><img onclick="toogleToolbar();" src="img/am3.png"></td>
           <td align=right><table border=0 cellpadding=4 cellspacing=8>
             <tr>
-              <td><a href="bosch.php"><img border=0 src="img/logo/m/supp_bosch.gif"></a></td>
+              <td><a href="bosch.php"><img border=0 src="img/logo/m/supp_bdc.png"></a></td>
               <td><a href="delphi.php"><img border=0 src="img/logo/m/supp_delphi.gif"></a></td>
               <td align=right><a href="lorange.php"><img border=0 src="img/logo/m/supp_lorange.png"></a></td>
             </tr><tr>

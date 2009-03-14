@@ -11,6 +11,7 @@
  * CAM  28-Aug-2008  10280 : File created.
  * CAM  18-Sep-2008  10280 : Added more classes.
  * CAM  05-Feb-2009  10280 : Improved Navbar and Topbar links.
+ * CAM  14-Mar-2009  10334 : Moved to CSS folder along with Lightbox.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -102,6 +103,14 @@ td.sidered {
 #toolbar {
   background-color: #330066;
 }
+
+#suppgallery {
+}
+
+#suppgallery td {
+  text-align: center;
+}
+
 
 .pagebox {
   BORDER:#999999 1px solid;

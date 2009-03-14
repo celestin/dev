@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  18-Sep-2008  10280 : File created.
+ * CAM  14-Mar-2009  10334 : Changed image gallery to use Lightbox.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Welcome";
@@ -24,9 +25,9 @@ showFlash();
 
 <table cellspacing=4 cellpadding=0 align=center>
   <tr>
-    <td class=thinBox><a href="img/supp/lorange/f/connection_pieces.jpg"><img src="img/supp/lorange/t/connection_pieces.jpg" alt="L'Orange Connection Pieces"></a></td>
-    <td class=thinBox><a href="img/supp/lorange/f/common_rail_injectors.jpg"><img src="img/supp/lorange/t/common_rail_injectors.jpg" alt="L'Orange Common Rail Injectors"></td>
-    <td class=thinBox><a href="img/supp/lorange/f/high_pressure_pump.jpg"><img src="img/supp/lorange/t/high_pressure_pump.jpg" alt="L'Orange High Pressure Pump"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/connection_pieces.jpg" rel="lightbox[lorange]" title="L'Orange Connection Pieces"><img src="img/supp/lorange/t/connection_pieces.jpg"></a></td>
+    <td class=thinBox><a href="img/supp/lorange/f/common_rail_injectors.jpg" rel="lightbox[lorange]" title="L'Orange Common Rail Injectors"><img src="img/supp/lorange/t/common_rail_injectors.jpg"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/high_pressure_pump.jpg" rel="lightbox[lorange]" title="L'Orange High Pressure Pump"><img src="img/supp/lorange/t/high_pressure_pump.jpg"></td>
   <tr>
   <tr>
     <td align=center class=annot><span class=lorange>L'Orange</span> Connection Pieces</td>
@@ -39,9 +40,9 @@ showFlash();
 
 <table cellspacing=4 cellpadding=0 align=center>
   <tr>
-    <td class=thinBox><a href="img/supp/lorange/f/injection_pump.jpg"><img src="img/supp/lorange/t/injection_pump.jpg" alt="L'Orange Injection Pump"></a></td>
-    <td class=thinBox><a href="img/supp/lorange/f/injection_valves.jpg"><img src="img/supp/lorange/t/injection_valves.jpg" alt="L'Orange Injection Valves"></td>
-    <td class=thinBox><a href="img/supp/lorange/f/nozzles.jpg"><img src="img/supp/lorange/t/nozzles.jpg" alt="L'Orange Nozzles"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/injection_pump.jpg" rel="lightbox[lorange]" title="L'Orange Injection Pump"><img src="img/supp/lorange/t/injection_pump.jpg"></a></td>
+    <td class=thinBox><a href="img/supp/lorange/f/injection_valves.jpg" rel="lightbox[lorange]" title="L'Orange Injection Valves"><img src="img/supp/lorange/t/injection_valves.jpg"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/nozzles.jpg" rel="lightbox[lorange]" title="L'Orange Nozzles"><img src="img/supp/lorange/t/nozzles.jpg"></td>
   <tr>
   <tr>
     <td align=center class=annot><span class=lorange>L'Orange</span> Injection Pump</td>
@@ -54,9 +55,9 @@ showFlash();
 
 <table cellspacing=4 cellpadding=0 align=center>
   <tr>
-    <td class=thinBox><a href="img/supp/lorange/f/pump_elements.jpg"><img src="img/supp/lorange/t/pump_elements.jpg" alt="L'Orange Pump Elements"></a></td>
-    <td class=thinBox><a href="img/supp/lorange/f/pump_line_nozzle.jpg"><img src="img/supp/lorange/t/pump_line_nozzle.jpg" alt="L'Orange Pump-Line-Nozzle System"></td>
-    <td class=thinBox><a href="img/supp/lorange/f/test_rig.jpg"><img src="img/supp/lorange/t/test_rig.jpg" alt="L'Orange Test Rig"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/pump_elements.jpg" rel="lightbox[lorange]" title="L'Orange Pump Elements"><img src="img/supp/lorange/t/pump_elements.jpg"></a></td>
+    <td class=thinBox><a href="img/supp/lorange/f/pump_line_nozzle.jpg" rel="lightbox[lorange]" title="L'Orange Pump-Line-Nozzle System"><img src="img/supp/lorange/t/pump_line_nozzle.jpg"></td>
+    <td class=thinBox><a href="img/supp/lorange/f/test_rig.jpg" rel="lightbox[lorange]" title="L'Orange Test Rig"><img src="img/supp/lorange/t/test_rig.jpg"></td>
   <tr>
   <tr>
     <td align=center class=annot><span class=lorange>L'Orange</span> Pump Elements</td>

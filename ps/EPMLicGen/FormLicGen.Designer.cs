@@ -1,12 +1,13 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * SCM License Generator
- * Copyright (c) 2006,2008 SourceCodeMetrics.com
+ * Copyright (c) 2006,2008,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig.mckay@powersoftware.com>
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  27-Sep-08  1000 : Upgraded to include Classic licensing options.
+ * Who  When         Why
+ * CAM  27-Sep-08   1000 : Upgraded to include Classic licensing options.
+ * CAM  26-Mar-09  10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -316,6 +317,7 @@ namespace Scm.Tools.LicGen
       this.frmLicType.TabIndex = 22;
       this.frmLicType.TabStop = false;
       this.frmLicType.Text = "&License Type";
+      this.frmLicType.Enter += new System.EventHandler(this.frmLicType_Enter);
       // 
       // txtOutput
       // 
@@ -431,7 +433,7 @@ namespace Scm.Tools.LicGen
       this.exitToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Exit;
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
       this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
       this.exitToolStripMenuItem.Text = "E&xit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
       // 

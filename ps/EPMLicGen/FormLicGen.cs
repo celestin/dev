@@ -1,17 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * EPM License Generator (.net)
- * Copyright (c) 2004-2007 SourceCodeMetrics.com
+ * SCM License Generator (.net)
+ * Copyright (c) 2004,2008,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   301 : File created.
- * CAM  05-Nov-06   301 : Added ASP (omission).
- * CAM  28-Jun-07   314 : Added Ericsson IDL.
- * CAM  17-Juj-07   316 : Added VHDL.
- * CAM  30-Nov-07   324 : Added JSP, XML and 'Select All'.
- * CAM  27-Sep-08  1000 : Upgraded to include Classic licensing options.
+ * Who  When         Why
+ * CAM  11-Oct-05    301 : File created.
+ * CAM  05-Nov-06    301 : Added ASP (omission).
+ * CAM  28-Jun-07    314 : Added Ericsson IDL.
+ * CAM  17-Juj-07    316 : Added VHDL.
+ * CAM  30-Nov-07    324 : Added JSP, XML and 'Select All'.
+ * CAM  27-Sep-08   1000 : Upgraded to include Classic licensing options.
+ * CAM  26-Mar-09  10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -107,12 +108,16 @@ namespace Scm.Tools.LicGen
       AddProduct("epmkr", "Krakatau EPM");
       AddProduct("epmad", "ADA");
       AddProduct("epmas", "ASP");
+      AddProduct("epmay", "Assembler");
       AddProduct("epmcp", "C/C++");
       AddProduct("epmcs", "C# (C Sharp)");
+      AddProduct("epmht", "HTML");
       AddProduct("epmjv", "Java");
+      AddProduct("epmjt", "JavaScript");
       AddProduct("epms1", "Oracle PL/SQL");
       AddProduct("epmpl", "Perl");
       AddProduct("epmph", "PHP");
+      AddProduct("epmpy", "Python");
       AddProduct("epmvb", "Visual Basic");
       AddProduct("epmid", "IDL");
       AddProduct("epmvh", "VHDL");
@@ -385,9 +390,14 @@ namespace Scm.Tools.LicGen
       MessageBox.Show(this, 
         String.Format("SCM License Generator\n" +
         "Version {0}\n\n" +
-        "by Craig A McKay 27-Sep-2008\n\n" +
-        "Copyright (c) 2006,2008 SourceCodeMetrics.com", Application.ProductVersion), "About EPM License Generator",
+        "by Craig A McKay 26-Mar-2009\n\n" +
+        "Copyright (c) 2006,2008,2009 SourceCodeMetrics.com", Application.ProductVersion), "About SCM License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void frmLicType_Enter(object sender, EventArgs e)
+    {
+
     }
   }
 }

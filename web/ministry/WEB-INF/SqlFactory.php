@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * SqlFactory Class
  *
@@ -13,6 +13,7 @@
  * CAM  25-Oct-2007  10187 : Correctly return references when Scripture searching.
  * CAM  08-Nov-2007  10200 : Added ability to Count and Limit results.
  * CAM  29-Dec-2007  10211 : Added getAtoms.
+ * CAM  28-Mar-2009  10407 : Added Search Type.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class SqlFactory {
@@ -23,6 +24,7 @@ class SqlFactory {
   var $connection;
 
   var $searchText = "";
+  var $searchType = "WORDS";
   var $fulltextKey = "";
   var $atoms;
 
@@ -54,7 +56,11 @@ class SqlFactory {
   // ----- Public Methods ------------------------------------------------- //
 
   function setSearchText($text="") {
-    $this->searchText = trim($text);
+    $this->searchText = trim(str_replace("  ", " ", $text));
+  }
+
+  function setSearchType($searchType="") {
+    $this->searchType = trim($searchType);
   }
 
   function setAuthors($authors) {
@@ -96,7 +102,7 @@ class SqlFactory {
     // SELECTION
     $sql = $this->fieldList . ",\n";
 
-    if (!$this->isSearchText()) {
+    if (!$this->isSearchText() || $this->searchType == "PHRASE") {
       // No Search Text - add dummy relevance
       $sql .= "1";
     } else {
@@ -136,7 +142,11 @@ class SqlFactory {
 
     // WHERE
     if ($this->isSearchText()) {
-      $sql .= $this->whereClause($this->boolean_sql_where($this->searchText, $this->fulltextKey));
+      if ($this->searchType == "PHRASE") {
+        $sql .= $this->whereClause("t.text LIKE '%" . $this->searchText . "%'");
+      } else {
+        $sql .= $this->whereClause($this->boolean_sql_where($this->searchText, $this->fulltextKey));
+      }
     }
 
     if ($this->isBookRef()) {
@@ -159,9 +169,7 @@ class SqlFactory {
     }
 
     if (!$countOnly) {
-      $sql .=
-        //"HAVING relevance>0 \n".  // this is not needed as the where clause ensures a non-zero relevance //
-        "ORDER BY relevance DESC, " . $this->orderBy . "\n";
+      $sql .= "ORDER BY relevance DESC, " . $this->orderBy . "\n";
 
       if ($this->maxRows > 0) {
         $sql .= "LIMIT ". (($this->pageNo-1)*$this->maxRows) . "," . $this->maxRows . "\n";
@@ -327,30 +335,37 @@ class SqlFactory {
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
   function getAtoms() {
     if (!isset($this->atoms)) {
-      $result=trim($this->searchText);
-      $result=preg_replace("/([[:space:]]{2,})/",' ',$result);
 
-      /* convert normal boolean operators to shortened syntax */
-      $result=eregi_replace(' not ',' -',$result);
-      $result=eregi_replace(' and ',' ',$result);
-      $result=eregi_replace(' or ',' ',$result);
+      if ($this->searchType == "PHRASE") {
+        // For Phrase, the "atom" is the whole phrase, spaces and all
+        $this->atoms = array($this->searchText);
 
-      /* strip paranethesis and extra whitespace */
-      $result=str_replace('(','',$result);
-      $result=str_replace(')','',$result);
-      $result=str_replace(',',' ',$result);
-      $result=str_replace('- ','-',$result);
-      $result=trim(preg_replace("/([[:space:]]{2,})/",' ',$result));
+      } else {
+        $result=trim($this->searchText);
+        $result=preg_replace("/([[:space:]]{2,})/",' ',$result);
 
-      $this->atoms = explode(' ', $result);
+        /* convert normal boolean operators to shortened syntax */
+        $result=eregi_replace(' not ',' -',$result);
+        $result=eregi_replace(' and ',' ',$result);
+        $result=eregi_replace(' or ',' ',$result);
 
-      // Remove any NOT atoms
-      for($i=count($this->atoms)-1; $i>=0; $i--) {
-        if (substr($this->atoms[$i],0,1) == '-') {
-          unset($this->atoms[$i]);
+        /* strip paranethesis and extra whitespace */
+        $result=str_replace('(','',$result);
+        $result=str_replace(')','',$result);
+        $result=str_replace(',',' ',$result);
+        $result=str_replace('- ','-',$result);
+        $result=trim(preg_replace("/([[:space:]]{2,})/",' ',$result));
+
+        $this->atoms = explode(' ', $result);
+
+        // Remove any NOT atoms
+        for($i=count($this->atoms)-1; $i>=0; $i--) {
+          if (substr($this->atoms[$i],0,1) == '-') {
+            unset($this->atoms[$i]);
+          }
         }
+        $this->atoms = array_merge($this->atoms);
       }
-      $this->atoms = array_merge($this->atoms);
     }
 
     return $this->atoms;

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * $Id$
  *
@@ -13,23 +13,24 @@
  * CAM  12-Nov-2007  10201 : Fixed bug.
  * CAM  18-Nov-2007  10205 : Reset PageNo to 1 if new query (and send email).
  * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
- * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added Search Type.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once($root.'functions.php');
 
-$keywords = $_SESSION['search_keywords'];
-$author   = $_SESSION['search_author'];
-$bookid   = $_SESSION['search_bookid'];
-$chapter  = $_SESSION['search_chapter'];
-$vstart   = $_SESSION['search_vstart'];
+$keywords   = $_SESSION['search_keywords'];
+$searchType = $_SESSION['search_type'];
+$author     = $_SESSION['search_author'];
+$bookid     = $_SESSION['search_bookid'];
+$chapter    = $_SESSION['search_chapter'];
+$vstart     = $_SESSION['search_vstart'];
 
-$prevQuery = $_SESSION['search_previous'];
-$thisQuery = f_search_parameter_string();
-$newQuery = ($prevQuery != $thisQuery);
+$prevQuery  = $_SESSION['search_previous'];
+$thisQuery  = f_search_parameter_string();
+$newQuery   = ($prevQuery != $thisQuery);
 $_SESSION['search_previous'] = $thisQuery;
 
-if ($newQuery) {
+if ($newQuery && $cfg['Site']['Status'] == "Production") {
  $em = new EmailMsg();
  $em->sendNewQuery($thisQuery);
 }
@@ -44,6 +45,10 @@ $showBibleRef = false;
 
 if (!empty($keywords)) {
   $sqlFactory->setSearchText($keywords);
+}
+
+if (!empty($searchType)) {
+  $sqlFactory->setSearchType($searchType);
 }
 
 if ((count($author)>0) && (empty($author['ALL']))) {
@@ -69,7 +74,7 @@ if ($sqlFactory->isSearch()) {
     $sqlFactory->setLimit($maxRows, $pageNo);
   ?>
   <table align=center border=0 cellpadding=4 cellspacing=0><tr><td class="pageannot">Pages</td>
-  <?
+  <?php
     $j = 0;
     $maxPages = 7;
     $eitherSide = 2;
@@ -99,17 +104,17 @@ if ($sqlFactory->isSearch()) {
              ActionUtil::submitButton($j, "pagebutton", "pagebuttonhover")."</td>";
         }
 
-        ?><form method="post"><? echo "$resultsPage"; ?></form><?
+        ?><form method="post"><?php echo "$resultsPage"; ?></form><?php
 
       } else if (($j == ($middleStart-1)) || ($j == ($middleEnd+1))) {
         // In between just show an ellipsis
-        ?><td>...</td><?
+        ?><td>...</td><?php
 
       }
     }
 ?>
-<td class="pageannot"><? echo "(" . number_format($rowCount) . " results)"; ?></td></tr></table>
-<?
+<td class="pageannot"><?php echo "(" . number_format($rowCount) . " results)"; ?></td></tr></table>
+<?php
   }
 }
 ?>
@@ -121,7 +126,7 @@ if ($sqlFactory->isSearch()) {
     <th class="rh" width="50">Inits</th>
     <th class="rh">Text</th>
   </tr>
-<?
+<?php
 if ($sqlFactory->isSearch()) {
   $ssql = mysql_query($sqlFactory->getSql()) or die(mysql_error());
   while ($row = mysql_fetch_array($ssql)) {
@@ -137,11 +142,11 @@ if ($sqlFactory->isSearch()) {
                ActionUtil::submitButton($page, "previewbutton", "previewbuttonhover");
 
 ?><form method="post"><tr>
-  <td class="rd"><? echo "<b>$author</b> $vol"; ?></td>
-  <td class="rd"><? echo "$preview"; ?></td>
-  <td class="rd"><? echo "<b>$inits</b>"; ?></td>
-  <td class="rd"><? echo f_highlight_text($text, $sqlFactory, true); ?></td>
-</tr></form><?
+  <td class="rd"><?php echo "<b>$author</b> $vol"; ?></td>
+  <td class="rd"><?php echo "$preview"; ?></td>
+  <td class="rd"><?php echo "<b>$inits</b>"; ?></td>
+  <td class="rd"><?php echo f_highlight_text($text, $sqlFactory, true); ?></td>
+</tr></form><?php
   }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * Main page setup
  *
@@ -12,11 +12,13 @@
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  12-Nov-2007  10203 : Removed getObjRef as its in form.js.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added $cfg['Site']['Status'].
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Good Teaching Search Engine";
 $cfg['Site']['URL']   = "http://goodteaching.org"; // no trailing slash
 $cfg['Site']['Email'] = "craig@southesk.com";
+$cfg['Site']['Status'] = "Production";
 
 $cfg['Site']['Db']['Hostname'] = "localhost";
 $cfg['Site']['Db']['Username'] = "goodteaching";
@@ -29,6 +31,7 @@ if (!empty($db)) {
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
   $cfg['Site']['URL'] = "http://localhost/ministry";
+  $cfg['Site']['Status'] = "Development";
 }
 
 include_once $root.'WEB-INF/inc.php';

@@ -1,7 +1,7 @@
-<?
+<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * New User Creation
  *
@@ -10,14 +10,16 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added root correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Register";
+$root = "./";
 include_once $root.'Main.php';
 include $root.'tpl/top.php';
 
 function retry_create($error) {
-  global $username, $first_name, $last_name, $email_address, $dob, $password1, $password2, $retry;
+  global $username, $first_name, $last_name, $email_address, $dob, $password1, $password2, $retry, $root;
   Msg::error($error);
   include $root.'frm/user.register.php';
   include $root.'tpl/bot.php';

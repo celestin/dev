@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * New Search Wizard
  *
@@ -12,6 +12,7 @@
  * CAM  15-Oct-2007  10187 : Attempt to send empty using NULL.
  * CAM  08-Nov-2007  10200 : Added results_pageno.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added Search Type.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
@@ -20,19 +21,24 @@ $tabs = true;
 include $root.'tpl/top.php';
 
 $keywords = $_SESSION['search_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+$searchType = $_SESSION['search_type'];  if (!empty($_POST['search_type'])) $searchType = $_POST['search_type'];
 
-if ($keywords == "NULL") {
-  $keywords = "";
-}
+if ($keywords == "NULL") $keywords = "";
+if (empty($searchType)) $searchType = "WORDS";
+
+$keywords = str_replace("\\\"", "", $keywords);
+$keywords = str_replace("\\'", "", $keywords);
+$keywords = str_replace("\\", "", $keywords);
+$keywords = str_replace("  ", " ", $keywords);
 
 $_SESSION['search_keywords'] = $keywords;
-
+$_SESSION['search_type'] = $searchType;
 
 ?>
 <form action="keyword.php" method="post" name=searchText id=searchText>
 <table border=0 cellpadding=10>
-<tr><td align=left colspan=2>
-<?
+<tr><td align=left colspan=3>
+<?php
   $q = "Type one or more keywords";
 
   if ($loggedin) {
@@ -45,15 +51,19 @@ $_SESSION['search_keywords'] = $keywords;
 ?></td></tr>
 <tr>
   <td>
-    <input name="keywords" id="keywords" size=50 value="<? echo $keywords; ?>">
+    <input name="keywords" id="keywords" size=50 value="<?php echo $keywords; ?>">
     <input type=hidden name="results_pageno" id="results_pageno" value="0">
   </td>
-  <td width="100%"><? echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>
+  <td><?php echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>
+  <td width="100%"><div id=searchType><ul>
+    <li><input <?php if ($searchType == "WORDS") echo "CHECKED"; ?> type=radio id=st_words name=search_type value="WORDS"><label for="st_words">Any Words</label></li>
+    <li><input <?php if ($searchType == "PHRASE") echo "CHECKED"; ?> type=radio id=st_phrase name=search_type value="PHRASE"><label for="st_phrase">Exact Phrase</label></li>
+  </ul></div></td>
 </tr>
 </table>
 </form>
 
-<?
+<?php
 include $root.'tpl/results.php';
 include $root.'tpl/bot.php';
 ?>

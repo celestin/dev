@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007,2008 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * Style Sheet
  *
@@ -18,6 +18,7 @@
  * CAM  15-Jun-2008  10272 : Added fn for footnotes (and white background on rh).
  * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
  * CAM  29-Sep-2008  10302 : Added Hymn classes.
+ * CAM  28-Mar-2009  10407 : Added SearchType.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -34,7 +35,7 @@ p, table, td, input, select, textarea {
 a#linkGt,
 a#linkHymn,
 a#linkEaston,
-a#linkHitchcock 
+a#linkHitchcock
 {
   font-family: Tahoma, Arial, Helvetica;
   font-size: 11pt;
@@ -47,7 +48,7 @@ a#linkHitchcock
 body#pageGt a#linkGt,
 body#pageHymn a#linkHymn,
 body#pageEaston a#linkEaston,
-body#pageHitchcock a#linkHitchcock 
+body#pageHitchcock a#linkHitchcock
 {
   color: #66B7E2;
   background: #fff;
@@ -56,7 +57,7 @@ body#pageHitchcock a#linkHitchcock
 a#linkGt:hover,
 a#linkHymn:hover,
 a#linkEaston:hover,
-a#linkHitchcock:hover 
+a#linkHitchcock:hover
 {
   background: #f6b33a;
 }
@@ -65,7 +66,7 @@ a#linkHitchcock:hover
 body#pageGt a#linkGt:hover,
 body#pageHymn a#linkHymn:hover,
 body#pageEaston a#linkEaston:hover,
-body#pageHitchcock a#linkHitchcock:hover 
+body#pageHitchcock a#linkHitchcock:hover
 {
   background: #f6b33a;
   color: #fff;
@@ -152,6 +153,19 @@ th {
 
 .rd {
   BORDER-BOTTOM:  #0A6CDA 1px solid;
+}
+
+
+#searchType ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#searchType li {
+  margin: 0 0 0 0;
+  padding: .1em .1em;
+  display: inline;
 }
 
 .fld {

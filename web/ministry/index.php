@@ -15,6 +15,7 @@
  * CAM  18-Nov-2007  10205 : Added search_previous.
  * CAM  04-Jun-2008  10268 : Added Latest Volumes.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added $_SESSION['search_type'].
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
@@ -22,6 +23,7 @@ $title = "Home";
 include $root.'tpl/top.php';
 
 $_SESSION['search_keywords'] = "";
+$_SESSION['search_type'] = "";
 $_SESSION['search_author'] = array('ALL'=>'ALL');
 
 $_SESSION['search_bookid'] = "";

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007,2008 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * Page Preview Pane
  *
@@ -14,6 +14,7 @@
  * CAM  02-Jan-2008  10206 : Added Page Controls.
  * CAM  15-Jun-2008  10272 : Added footnote class.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10407 : Added Search Type.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once($root.'functions.php');
@@ -64,15 +65,19 @@ if ($pagechanged && !empty($gotopage)) {
   $preview_page = ($gotopage * 1);
 }
 
-$keywords = $_SESSION['search_keywords'];
-$author   = $_SESSION['search_author'];
-$bookid   = $_SESSION['search_bookid'];
-$chapter  = $_SESSION['search_chapter'];
-$vstart   = $_SESSION['search_vstart'];
+$keywords   = $_SESSION['search_keywords'];
+$searchType = $_SESSION['search_type'];
+$author     = $_SESSION['search_author'];
+$bookid     = $_SESSION['search_bookid'];
+$chapter    = $_SESSION['search_chapter'];
+$vstart     = $_SESSION['search_vstart'];
 
 $sqlFactory = new SqlFactory();
 if (!empty($keywords)) {
   $sqlFactory->setSearchText($keywords);
+}
+if (!empty($searchType)) {
+  $sqlFactory->setSearchType($searchType);
 }
 if ((count($author)>0) && (empty($author['ALL']))) {
   $sqlFactory->setAuthors($author);
@@ -86,7 +91,7 @@ if (!empty($preview_author)) {
 
   echo "<p align=center><b>$preview_author</b> Volume <b>$preview_vol</b> Page <b>$preview_page</b></p>";
 
-?><table border=0 cellpadding=0 cellspacing=4><?
+?><table border=0 cellpadding=0 cellspacing=4><?php
 
   $sql = "SELECT inits, text, page, newpages ".
          "FROM mse_text ".
@@ -122,9 +127,9 @@ if (!empty($preview_author)) {
     if (substr($row[1],0,5) === "<span") {
       $className = "fn";
     }
-?><tr><td valign=top><b><? echo $row[0];  ?></b></td><td<?
+?><tr><td valign=top><b><?php echo $row[0];  ?></b></td><td<?php
   if (!empty($className)) echo " class=\"$className\"";
-?>><? echo $newtext; ?></td></tr><?
+?>><?php echo $newtext; ?></td></tr><?php
   }
 
 ?></table><div align="center" style="padding-top:10px;">
@@ -132,13 +137,13 @@ if (!empty($preview_author)) {
     <input type=hidden id="pagechanged" name="pagechanged" value="1">
     <table border=0 cellpadding=5 cellspacing=0><tr>
       <td><img width="16" height="16" class="imagebutton" title="Goto first page" src="img/page_first.png" onclick="ChangePageNo(pageSelector, gotopage, 1);"></td>
-      <td><img width="16" height="16" class="imagebutton" title="Goto previous page" src="img/page_prev.png" onclick="ChangePageNo(pageSelector, gotopage, <? echo max(1, ($preview_page-1)); ?>);"></td>
-      <td><input class="volpage" id="gotopage" name="gotopage" size=4 value="<? echo $preview_page; ?>" onKeyUp="ValidationPageNo(this);" onChange="ValidationPageNo(this, <? echo $volPages; ?>);" onclick="this.className='volpageedit';" onBlur="this.className='volpage';"></td>
-      <td><img width="16" height="16" class="imagebutton" title="Goto next page" src="img/page_next.png" onclick="ChangePageNo(pageSelector, gotopage, <? echo min($volPages, ($preview_page+1)); ?>);"></td>
-      <td><img width="16" height="16" class="imagebutton" title="Goto last page (<? echo $volPages; ?>)" src="img/page_last.png" onclick="ChangePageNo(pageSelector, gotopage, <? echo $volPages; ?>);"></td>
+      <td><img width="16" height="16" class="imagebutton" title="Goto previous page" src="img/page_prev.png" onclick="ChangePageNo(pageSelector, gotopage, <?php echo max(1, ($preview_page-1)); ?>);"></td>
+      <td><input class="volpage" id="gotopage" name="gotopage" size=4 value="<?php echo $preview_page; ?>" onKeyUp="ValidationPageNo(this);" onChange="ValidationPageNo(this, <?php echo $volPages; ?>);" onclick="this.className='volpageedit';" onBlur="this.className='volpage';"></td>
+      <td><img width="16" height="16" class="imagebutton" title="Goto next page" src="img/page_next.png" onclick="ChangePageNo(pageSelector, gotopage, <?php echo min($volPages, ($preview_page+1)); ?>);"></td>
+      <td><img width="16" height="16" class="imagebutton" title="Goto last page (<?php echo $volPages; ?>)" src="img/page_last.png" onclick="ChangePageNo(pageSelector, gotopage, <?php echo $volPages; ?>);"></td>
     </td></table>
   </form>
-</div><?
+</div><?php
 
 } else {
   echo "&nbsp;";

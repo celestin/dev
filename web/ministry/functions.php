@@ -1,4 +1,4 @@
-<?
+<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
  * Copyright (c) 2006,2008 Southesk.com
@@ -13,6 +13,7 @@
  * CAM  18-Nov-2007  10205 : Added f_search_parameter_string - will be used for favourites eventually but initially to determine new search.
  * CAM  29-Dec-2007  10211 : Improved the highlight function and removed redundant code.
  * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
+ * CAM  28-Mar-2009  10407 : Correct PHP syntax.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -168,13 +169,13 @@ function f_show_books() {
 
     if ($testament <> $prevtest) {
 ?>
-<h3><? echo $testament; ?></h3>
-<?
+<h3><?php echo $testament; ?></h3>
+<?php
       $prevtest = $testament;
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bookid; ?>);return false;"><?
+?><a href="javascript:void();" onclick="submitBookRef(<?php echo $bookid; ?>);return false;"><?php
 echo str_replace(" ", "&nbsp;", $bookname); ?></a>
-<?
+<?php
   }
 }
 
@@ -196,17 +197,17 @@ function f_show_chapters() {
 */
   $sql .= "ORDER BY chapter \n";
 ?>
-<a href="javascript:void" onclick="submitBookRef('NULL');return false;">Books</a>&nbsp;|&nbsp;<? echo $bibleBook->getBookName(); ?></td></tr><tr><td>Chapters
-<?
+<a href="javascript:void" onclick="submitBookRef('NULL');return false;">Books</a>&nbsp;|&nbsp;<?php echo $bibleBook->getBookName(); ?></td></tr><tr><td>Chapters
+<?php
 
   $ssql = mysql_query($sql);
   while ($row = mysql_fetch_array($ssql)) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>);return false;"><?
+?><a href="javascript:void();" onclick="submitBookRef(<?php echo $bibleBook->getBookId(); ?>, <?php echo $chapter; ?>);return false;"><?php
 echo $chapter; ?></a>
-<?
+<?php
   }
 }
 
@@ -234,19 +235,19 @@ function f_show_verses() {
   //echo "<pre>$sql</pre>";
 ?>
 <a href="javascript:void" onclick="submitBookRef('NULL');return false;">Books</a>&nbsp;|
-<a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, 'NULL'); return false;"><? echo $bibleBook->getBookName(); ?></a>
-<?
+<a href="javascript:void();" onclick="submitBookRef(<?php echo $bibleBook->getBookId(); ?>, 'NULL'); return false;"><?php echo $bibleBook->getBookName(); ?></a>
+<?php
 if (!$bibleBook->isSingleChap()) {
   echo "&nbsp;|&nbsp;Chapter $chapter";
 }
 ?></td></tr><tr><td>Verses
-<?
+<?php
   $ssql = mysql_query($sql);
   while ($row = mysql_fetch_array($ssql)) {
     foreach($row AS $key => $val) {
       $$key = stripslashes($val);
     }
-?><a href="javascript:void();" onclick="submitBookRef(<? echo $bibleBook->getBookId(); ?>, <? echo $chapter; ?>, <? echo $vstart; ?>); return false;"><? echo ($vstart==0) ? "All": $vstart; ?></a>&nbsp;<?
+?><a href="javascript:void();" onclick="submitBookRef(<?php echo $bibleBook->getBookId(); ?>, <?php echo $chapter; ?>, <?php echo $vstart; ?>); return false;"><?php echo ($vstart==0) ? "All": $vstart; ?></a>&nbsp;<?php
   }
 }
 

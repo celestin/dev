@@ -37,22 +37,22 @@ namespace FrontBurner.Ministry.MseBuilder.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=herald;Persist Security Info=True;User ID=mpower4;Password=monitor;Un" +
-            "icode=True")]
-        public string mpowerConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=goodteaching;Password=psalm45;persist security info=True" +
+            ";database=goodteaching_org_min")]
+        public string GoodTeachingConnectionString {
             get {
-                return ((string)(this["mpowerConnectionString"]));
+                return ((string)(this["GoodTeachingConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=goodteaching;Password=psalm45;persist security info=True" +
-            ";database=goodteaching_org_min")]
-        public string GoodTeachingConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("server=hercules;user id=bugs;Password=bugs;persist security info=True;database=bu" +
+            "gs")]
+        public string BugzillaConnectionString {
             get {
-                return ((string)(this["GoodTeachingConnectionString"]));
+                return ((string)(this["BugzillaConnectionString"]));
             }
         }
     }

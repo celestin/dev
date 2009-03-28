@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007,2008 Front Burner
+ * Copyright (c) 2007,2009 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -13,6 +13,7 @@
  * CAM  17-May-2008  10266 : Show Errors on completion of Build.
  * CAM  18-May-2008  10267 : Moved buttons to new toolbar, created CopyToMySQL.
  * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
+ * CAM  28-Mar-2009  10412 : Call new Bugzilla table adapter.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -184,7 +185,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     private void _tsbVersionHistory_Click(object sender, EventArgs e)
     {
-      //mpowerCompletedJobsTableAdapter.CopyToMySQL();
+      _bugsTableAdapter.CopyToMySQL();
     }
 
     private void toolStripButton1_Click(object sender, EventArgs e)

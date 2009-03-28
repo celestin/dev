@@ -10,6 +10,7 @@
  * CAM  11-May-2008  10264 : Replaced FlexCell with DataGridView.
  * CAM  18-May-2008  10267 : Moved buttons to new toolbar.
  * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
+ * CAM  28-Mar-2009  10412 : Use new Bugzilla table adapter.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace FrontBurner.Ministry.MseBuilder
@@ -59,6 +60,8 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tsbVersionHistory = new System.Windows.Forms.ToolStripButton();
       this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
       this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
+      this._bdsBugs = new System.Windows.Forms.BindingSource(this.components);
+      this._bugsTableAdapter = new FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter();
       ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).BeginInit();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -66,6 +69,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this.tableLayoutPanel1.SuspendLayout();
       this._tspMain.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mseData)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsBugs)).BeginInit();
       this.SuspendLayout();
       // 
       // cmbAuthor
@@ -213,7 +217,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tsbVersionHistory.Name = "_tsbVersionHistory";
       this._tsbVersionHistory.Size = new System.Drawing.Size(52, 52);
       this._tsbVersionHistory.Text = "toolStripButton3";
-      this._tsbVersionHistory.ToolTipText = "Copy Version History from mpower";
+      this._tsbVersionHistory.ToolTipText = "Copy Version History from Bugzilla";
       this._tsbVersionHistory.Click += new System.EventHandler(this._tsbVersionHistory_Click);
       // 
       // toolStripButton1
@@ -231,6 +235,15 @@ namespace FrontBurner.Ministry.MseBuilder
       // 
       this.mseData.DataSetName = "MseData";
       this.mseData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+      // 
+      // _bdsBugs
+      // 
+      this._bdsBugs.DataMember = "CompletedBugs";
+      this._bdsBugs.DataSource = this.mseData;
+      // 
+      // _bugsTableAdapter
+      // 
+      this._bugsTableAdapter.ClearBeforeFill = true;
       // 
       // MseBuilder
       // 
@@ -252,6 +265,7 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tspMain.ResumeLayout(false);
       this._tspMain.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mseData)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsBugs)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -273,6 +287,8 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.ToolStripButton _tsbVersionHistory;
     private MseData mseData;
     private System.Windows.Forms.ToolStripButton toolStripButton1;
+    private System.Windows.Forms.BindingSource _bdsBugs;
+    private FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter _bugsTableAdapter;
   }
 }
 

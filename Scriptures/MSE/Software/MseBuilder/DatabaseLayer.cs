@@ -644,7 +644,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertFootnote.Parameters.Add("?bookid", MySqlDbType.Int32);
         _cmdInsertFootnote.Parameters.Add("?chapter", MySqlDbType.Int32);
         _cmdInsertFootnote.Parameters.Add("?verse", MySqlDbType.Int32);
-        _cmdInsertFootnote.Parameters.Add("?symbol", MySqlDbType.Char);
+        _cmdInsertFootnote.Parameters.Add("?symbol", MySqlDbType.UByte);
         _cmdInsertFootnote.Parameters.Add("?text", MySqlDbType.String);
       }
 

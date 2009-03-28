@@ -44,5 +44,16 @@ namespace FrontBurner.Ministry.MseBuilder.Properties {
                 return ((string)(this["mpowerConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=goodteaching;Password=psalm45;persist security info=True" +
+            ";database=goodteaching_org_min")]
+        public string GoodTeachingConnectionString {
+            get {
+                return ((string)(this["GoodTeachingConnectionString"]));
+            }
+        }
     }
 }

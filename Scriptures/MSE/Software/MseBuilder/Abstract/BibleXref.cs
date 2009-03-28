@@ -123,11 +123,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
       if (_book == null || _fullId.Length == 0) return false;
 
-      if (_book.BookId == 62)
-      {
-        int x = 1;
-      }
-
       if (!_book.Elements.Contains(_fullId) || _refFrom == null) return false;
 
       _refTo = _book.Elements[_fullId];

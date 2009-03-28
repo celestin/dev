@@ -184,7 +184,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     private void _tsbVersionHistory_Click(object sender, EventArgs e)
     {
-      mpowerCompletedJobsTableAdapter.CopyToMySQL();
+      //mpowerCompletedJobsTableAdapter.CopyToMySQL();
     }
 
     private void toolStripButton1_Click(object sender, EventArgs e)

@@ -41,10 +41,10 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       this.components = new System.ComponentModel.Container();
       this._tbpBadBibleRef = new System.Windows.Forms.TabPage();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
       this.badBibleRefBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
+      this.tabControl1 = new System.Windows.Forms.TabControl();
       this.badBibleRefTableAdapter = new FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.BadBibleRefTableAdapter();
       this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.volDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,10 +54,10 @@ namespace FrontBurner.Ministry.MseBuilder
       this.errorcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this._tbpBadBibleRef.SuspendLayout();
-      this.tabControl1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.mseData)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.badBibleRefBindingSource)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.mseData)).BeginInit();
+      this.tabControl1.SuspendLayout();
       this.SuspendLayout();
       // 
       // _tbpBadBibleRef
@@ -70,17 +70,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tbpBadBibleRef.TabIndex = 0;
       this._tbpBadBibleRef.Text = "Bad Bible Refs";
       this._tbpBadBibleRef.UseVisualStyleBackColor = true;
-      // 
-      // tabControl1
-      // 
-      this.tabControl1.Controls.Add(this._tbpBadBibleRef);
-      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabControl1.Location = new System.Drawing.Point(0, 0);
-      this.tabControl1.Name = "tabControl1";
-      this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(617, 330);
-      this.tabControl1.TabIndex = 0;
       // 
       // dataGridView1
       // 
@@ -104,15 +93,26 @@ namespace FrontBurner.Ministry.MseBuilder
       this.dataGridView1.Size = new System.Drawing.Size(603, 298);
       this.dataGridView1.TabIndex = 0;
       // 
+      // badBibleRefBindingSource
+      // 
+      this.badBibleRefBindingSource.DataMember = "BadBibleRef";
+      this.badBibleRefBindingSource.DataSource = this.mseData;
+      // 
       // mseData
       // 
       this.mseData.DataSetName = "MseData";
       this.mseData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
       // 
-      // badBibleRefBindingSource
+      // tabControl1
       // 
-      this.badBibleRefBindingSource.DataMember = "BadBibleRef";
-      this.badBibleRefBindingSource.DataSource = this.mseData;
+      this.tabControl1.Controls.Add(this._tbpBadBibleRef);
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
+      this.tabControl1.Name = "tabControl1";
+      this.tabControl1.SelectedIndex = 0;
+      this.tabControl1.Size = new System.Drawing.Size(617, 330);
+      this.tabControl1.TabIndex = 0;
       // 
       // badBibleRefTableAdapter
       // 
@@ -124,7 +124,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.authorDataGridViewTextBoxColumn.HeaderText = "author";
       this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
       this.authorDataGridViewTextBoxColumn.ReadOnly = true;
-      this.authorDataGridViewTextBoxColumn.Width = 50;
       // 
       // volDataGridViewTextBoxColumn
       // 
@@ -132,7 +131,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.volDataGridViewTextBoxColumn.HeaderText = "vol";
       this.volDataGridViewTextBoxColumn.Name = "volDataGridViewTextBoxColumn";
       this.volDataGridViewTextBoxColumn.ReadOnly = true;
-      this.volDataGridViewTextBoxColumn.Width = 40;
       // 
       // pageDataGridViewTextBoxColumn
       // 
@@ -140,7 +138,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.pageDataGridViewTextBoxColumn.HeaderText = "page";
       this.pageDataGridViewTextBoxColumn.Name = "pageDataGridViewTextBoxColumn";
       this.pageDataGridViewTextBoxColumn.ReadOnly = true;
-      this.pageDataGridViewTextBoxColumn.Width = 40;
       // 
       // paraDataGridViewTextBoxColumn
       // 
@@ -148,7 +145,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.paraDataGridViewTextBoxColumn.HeaderText = "para";
       this.paraDataGridViewTextBoxColumn.Name = "paraDataGridViewTextBoxColumn";
       this.paraDataGridViewTextBoxColumn.ReadOnly = true;
-      this.paraDataGridViewTextBoxColumn.Width = 40;
       // 
       // refDataGridViewTextBoxColumn
       // 
@@ -156,7 +152,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.refDataGridViewTextBoxColumn.HeaderText = "ref";
       this.refDataGridViewTextBoxColumn.Name = "refDataGridViewTextBoxColumn";
       this.refDataGridViewTextBoxColumn.ReadOnly = true;
-      this.refDataGridViewTextBoxColumn.Width = 40;
       // 
       // errorcodeDataGridViewTextBoxColumn
       // 
@@ -164,7 +159,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.errorcodeDataGridViewTextBoxColumn.HeaderText = "error_code";
       this.errorcodeDataGridViewTextBoxColumn.Name = "errorcodeDataGridViewTextBoxColumn";
       this.errorcodeDataGridViewTextBoxColumn.ReadOnly = true;
-      this.errorcodeDataGridViewTextBoxColumn.Width = 50;
       // 
       // textDataGridViewTextBoxColumn
       // 
@@ -172,7 +166,6 @@ namespace FrontBurner.Ministry.MseBuilder
       this.textDataGridViewTextBoxColumn.HeaderText = "text";
       this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
       this.textDataGridViewTextBoxColumn.ReadOnly = true;
-      this.textDataGridViewTextBoxColumn.Width = 300;
       // 
       // BuildErrors
       // 
@@ -184,10 +177,10 @@ namespace FrontBurner.Ministry.MseBuilder
       this.Text = "Build Errors";
       this.Load += new System.EventHandler(this.BuildErrors_Load);
       this._tbpBadBibleRef.ResumeLayout(false);
-      this.tabControl1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.mseData)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.badBibleRefBindingSource)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.mseData)).EndInit();
+      this.tabControl1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }

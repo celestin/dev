@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2008 frontburner.co.uk
+ * Copyright (c) 2008,2009 frontburner.co.uk
  *
  * Release History
  *
@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  18-May-2008  10267 : File created.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  28-Mar-2009  10412 : Changes to release due to Bugzilla version format.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Release History";
@@ -27,7 +28,7 @@ include $root.'tpl/top.php';
 <?
 $sql = "SELECT release_no, task_id, description, completion_date ".
        "FROM mse_release_history ".
-       "ORDER BY 1 DESC, 4 DESC, 2";
+       "ORDER BY 4 DESC, 1 DESC, 2";
 
 $prev_release_no = "";
 $ssql = mysql_query($sql);

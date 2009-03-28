@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine Data Builder
- * Copyright (c) 2007,2008 Front Burner
+ * Copyright (c) 2007,2009 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -14,6 +14,7 @@
  * CAM  25-Nov-2007  10208 : Added newpages to sql extraction in GetText.
  * CAM  11-May-2008  10264 : Added handling of error refs.
  * CAM  08-Jun-2008  10269 : Update the local volume when deleting to see meaningful info on the home page.
+ * CAM  28-Mar-2009  10409 : Added Footnote support.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -39,6 +40,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected MySqlConnection _conn;
 
     protected MySqlCommand _cmdVolume;
+    protected MySqlCommand _cmdVersions;
     protected MySqlCommand _cmdBooks;
     protected MySqlCommand _cmdArticles;
     protected MySqlCommand _cmdText;
@@ -47,6 +49,14 @@ namespace FrontBurner.Ministry.MseBuilder
     protected MySqlCommand _cmdInsertText;
     protected MySqlCommand _cmdInsertBibleRef;
     protected MySqlCommand _cmdInsertBadBibleRef;
+
+    // Bible commands
+    protected MySqlCommand _cmdInsertVerse;
+    protected MySqlCommand _cmdInsertFootnote;
+    protected MySqlCommand _cmdInsertFootnoteInst;    
+    protected MySqlCommand _cmdDeleteVerse;
+    protected MySqlCommand _cmdDeleteFootnote;
+    protected MySqlCommand _cmdDeleteFootnoteInst;
 
     protected MySqlDataAdapter _dadAuthor;
 
@@ -73,10 +83,10 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       string DataSource = "localhost";
       string Database = "goodteaching_org_min";
-      string UserID     = "goodteaching";
-      string Password   = "psalm45";
+      string UserID = "goodteaching";
+      string Password = "psalm45";
 
-      string MyConString  = "Data Source=" + DataSource +
+      string MyConString = "Data Source=" + DataSource +
           ";Database=" + Database +
           ";User ID=" + UserID +
           ";Password=" + Password;
@@ -108,6 +118,37 @@ namespace FrontBurner.Ministry.MseBuilder
       }
     }
 
+    public BibleVersionCollection GetBibleVersions()
+    {
+      String sql;
+      MySqlDataReader dr;
+      BibleVersionCollection versions = new BibleVersionCollection();
+
+      sql = "SELECT verid, vercode, versionname " +
+            "FROM mse_bible_version ";
+
+      lock (_semaphore)
+      {
+        if (_cmdVersions == null)
+        {
+          _cmdVersions = new MySqlCommand(sql, _conn);
+        }
+        dr = _cmdVersions.ExecuteReader();
+      }
+
+      do
+      {
+        while (dr.Read())
+        {
+          versions.Add(new BibleVersion(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
+        }
+      } while (dr.NextResult());
+
+      dr.Close();
+
+      return versions;
+    }
+
     public BibleBookCollection GetBooks()
     {
       String sql;
@@ -132,7 +173,7 @@ namespace FrontBurner.Ministry.MseBuilder
         while (dr.Read())
         {
           book = new BibleBook(dr.GetInt32(0), dr.GetString(1));
-          if (!dr.IsDBNull(2)) book.SingleChap = (dr.GetInt32(2)==1);
+          if (!dr.IsDBNull(2)) book.SingleChap = (dr.GetInt32(2) == 1);
 
           books.Add(book);
         }
@@ -462,6 +503,199 @@ namespace FrontBurner.Ministry.MseBuilder
       this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
       this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref_error WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
+    }
+
+    public void SaveBibleBook(BibleBook book)
+    {
+      DeleteVerse(book);
+      DeleteFootnoteInstance(book);
+      DeleteFootnote(book);
+
+      foreach (BibleVerse verse in book.Verses)
+      {
+        InsertVerse(verse);
+      }
+
+      foreach (BibleFootnote footnote in book.Footnotes)
+      {
+        InsertFootnote(footnote);
+
+        foreach (BibleXref xref in footnote)
+        {
+          InsertFootnoteInst(xref);
+        }
+      }
+    }
+
+    public void DeleteVerse(BibleBook book)
+    {
+      if (_cmdDeleteVerse == null)
+      {
+        string sql =
+          "DELETE FROM mse_bible_text " +
+          "WHERE verid = ?verid " +
+          "AND bookid = ?bookid";
+
+        _cmdDeleteVerse = new MySqlCommand(sql, _conn);
+        _cmdDeleteVerse.Prepare();
+
+        _cmdDeleteVerse.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdDeleteVerse.Parameters.Add("?bookid", MySqlDbType.Int32);
+      }
+
+      _cmdDeleteVerse.Parameters["?verid"].Value = book.Version.VersionId;
+      _cmdDeleteVerse.Parameters["?bookid"].Value = book.BookId;
+
+      _cmdDeleteVerse.ExecuteNonQuery();
+    }
+
+    public void DeleteFootnoteInstance(BibleBook book)
+    {
+      if (_cmdDeleteFootnoteInst == null)
+      {
+        string sql =
+          "DELETE FROM mse_bible_footnote_instance " +
+          "WHERE EXISTS (SELECT 1 FROM mse_bible_footnote " +
+                        "WHERE verid = ?verid " +
+                        "AND bookid = ?bookid " +
+                        "AND footnoteid = mse_bible_footnote_instance.footnoteid)";
+
+        _cmdDeleteFootnoteInst = new MySqlCommand(sql, _conn);
+        _cmdDeleteFootnoteInst.Prepare();
+
+        _cmdDeleteFootnoteInst.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdDeleteFootnoteInst.Parameters.Add("?bookid", MySqlDbType.Int32);
+      }
+
+      _cmdDeleteFootnoteInst.Parameters["?verid"].Value = book.Version.VersionId;
+      _cmdDeleteFootnoteInst.Parameters["?bookid"].Value = book.BookId;
+
+      _cmdDeleteFootnoteInst.ExecuteNonQuery();
+    }
+
+    public void DeleteFootnote(BibleBook book)
+    {
+      if (_cmdDeleteFootnote == null)
+      {
+        string sql =
+          "DELETE FROM mse_bible_footnote " +
+          "WHERE verid = ?verid " +
+          "AND bookid = ?bookid";
+
+        _cmdDeleteFootnote = new MySqlCommand(sql, _conn);
+        _cmdDeleteFootnote.Prepare();
+
+        _cmdDeleteFootnote.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdDeleteFootnote.Parameters.Add("?bookid", MySqlDbType.Int32);
+      }
+
+      _cmdDeleteFootnote.Parameters["?verid"].Value = book.Version.VersionId;
+      _cmdDeleteFootnote.Parameters["?bookid"].Value = book.BookId;
+
+      _cmdDeleteFootnote.ExecuteNonQuery();
+    }
+
+    public void InsertVerse(BibleVerse verse)
+    {
+      if (_cmdInsertVerse == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_text (" +
+            "verid, bookid, chapter, verse, text" +
+          ") VALUES (" +
+            "?verid, ?bookid, ?chapter, ?verse, ?text" +
+          ")";
+
+        _cmdInsertVerse = new MySqlCommand(sql, _conn);
+        _cmdInsertVerse.Prepare();
+
+        _cmdInsertVerse.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdInsertVerse.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdInsertVerse.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertVerse.Parameters.Add("?verse", MySqlDbType.Int32);
+        _cmdInsertVerse.Parameters.Add("?text", MySqlDbType.String);
+      }
+
+      _cmdInsertVerse.Parameters["?verid"].Value = verse.Book.Version.VersionId;
+      _cmdInsertVerse.Parameters["?bookid"].Value = verse.Book.BookId;
+      _cmdInsertVerse.Parameters["?chapter"].Value = verse.Chapter;
+      _cmdInsertVerse.Parameters["?verse"].Value = verse.Verse;
+      _cmdInsertVerse.Parameters["?text"].Value = verse.Text;
+
+      _cmdInsertVerse.ExecuteNonQuery();
+    }
+
+    public void InsertFootnote(BibleFootnote footnote)
+    {
+      if (_cmdInsertFootnote == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_footnote (" +
+            "footnoteid, verid, bookid, chapter, verse, symbol, text" +
+          ") VALUES (" +
+            "?footnoteid, ?verid, ?bookid, ?chapter, ?verse, ?symbol, ?text" +
+          ")";
+
+        _cmdInsertFootnote = new MySqlCommand(sql, _conn);
+        _cmdInsertFootnote.Prepare();
+
+        _cmdInsertFootnote.Parameters.Add("?footnoteid", MySqlDbType.Int32);
+        _cmdInsertFootnote.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdInsertFootnote.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdInsertFootnote.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertFootnote.Parameters.Add("?verse", MySqlDbType.Int32);
+        _cmdInsertFootnote.Parameters.Add("?symbol", MySqlDbType.Char);
+        _cmdInsertFootnote.Parameters.Add("?text", MySqlDbType.String);
+      }
+
+      _cmdInsertFootnote.Parameters["?footnoteid"].Value = footnote.FoonoteId;
+      _cmdInsertFootnote.Parameters["?verid"].Value = footnote.Book.Version.VersionId;
+      _cmdInsertFootnote.Parameters["?bookid"].Value = footnote.Book.BookId;
+      _cmdInsertFootnote.Parameters["?chapter"].Value = footnote.Chapter;
+      _cmdInsertFootnote.Parameters["?verse"].Value = footnote.Verse;
+      _cmdInsertFootnote.Parameters["?symbol"].Value = footnote.Symbol;
+      _cmdInsertFootnote.Parameters["?text"].Value = footnote.Text;
+
+      _cmdInsertFootnote.ExecuteNonQuery();
+    }
+
+    public void InsertFootnoteInst(BibleXref xref)
+    {
+      if (xref.Type != XrefType.VerseToFootnote) return;
+      BibleFootnote refTo = xref.RefTo as BibleFootnote;
+      BibleVerse refFrom = xref.RefFrom;
+
+      if (_cmdInsertFootnoteInst == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_footnote_instance (" +
+            "footnoteid, verid, bookid, chapter, verse, instance, word" +
+          ") VALUES (" +
+            "?footnoteid, ?verid, ?bookid, ?chapter, ?verse, ?instance, ?word" +
+          ")";
+
+        _cmdInsertFootnoteInst = new MySqlCommand(sql, _conn);
+        _cmdInsertFootnoteInst.Prepare();
+
+        _cmdInsertFootnoteInst.Parameters.Add("?footnoteid", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?verse", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?instance", MySqlDbType.Int32);
+        _cmdInsertFootnoteInst.Parameters.Add("?word", MySqlDbType.String);
+      }
+
+
+      _cmdInsertFootnoteInst.Parameters["?footnoteid"].Value = refTo.FoonoteId;
+      _cmdInsertFootnoteInst.Parameters["?verid"].Value = refFrom.Book.Version.VersionId;
+      _cmdInsertFootnoteInst.Parameters["?bookid"].Value = refFrom.Book.BookId;
+      _cmdInsertFootnoteInst.Parameters["?chapter"].Value = refFrom.Chapter;
+      _cmdInsertFootnoteInst.Parameters["?verse"].Value = refFrom.Verse;
+      _cmdInsertFootnoteInst.Parameters["?instance"].Value = xref.InstanceId;
+      _cmdInsertFootnoteInst.Parameters["?word"].Value = xref.Word;
+
+      _cmdInsertFootnoteInst.ExecuteNonQuery();
     }
 
     public void ExecuteSql(string sql)

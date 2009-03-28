@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2009 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  26-Sep-2007  Early working version.
+ * CAM  28-Mar-2009  10409 : Added Footnote support.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -23,7 +24,7 @@ using FrontBurner.Ministry.MseBuilder.Abstract;
 namespace FrontBurner.Ministry.MseBuilder
 {
   /// <summary>
-  /// Retrieves MySQL data
+  /// All Business data and processes
   /// </summary>
   public class BusinessLayer
   {
@@ -31,8 +32,10 @@ namespace FrontBurner.Ministry.MseBuilder
     protected static readonly object _semaphore = new object();
 
     protected BibleBookCollection _books;
+    protected BibleVersionCollection _versions;
     protected ArticleCollection _articles;
     protected VolumeCollection _volumes;
+    protected int _nextFootnoteId;
 
     public ArticleCollection Articles
     {
@@ -40,11 +43,12 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         return _articles;
       }
-    }    
-    
+    }   
+
     private BusinessLayer()
     {
       _articles = new ArticleCollection();
+      _nextFootnoteId = 1;
     }
 
     public static BusinessLayer Instance
@@ -72,6 +76,15 @@ namespace FrontBurner.Ministry.MseBuilder
       return _books;
     }
 
+    public BibleVersionCollection GetVersions()
+    {
+      if (_versions == null)
+      {
+        _versions = DatabaseLayer.Instance.GetBibleVersions();
+      }
+      return _versions;
+    }
+
     public VolumeCollection GetVolumes()
     {
       if (_volumes == null)
@@ -80,6 +93,11 @@ namespace FrontBurner.Ministry.MseBuilder
       }
 
       return _volumes;
+    }
+
+    public int GetNextFootnoteId()
+    {
+      return _nextFootnoteId++;
     }
   }
 }

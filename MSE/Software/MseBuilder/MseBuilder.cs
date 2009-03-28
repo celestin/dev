@@ -12,6 +12,7 @@
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
  * CAM  17-May-2008  10266 : Show Errors on completion of Build.
  * CAM  18-May-2008  10267 : Moved buttons to new toolbar, created CopyToMySQL.
+ * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,6 +23,9 @@ using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+
+using FrontBurner.Ministry.MseBuilder.Bible;
+
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
 
@@ -181,6 +185,16 @@ namespace FrontBurner.Ministry.MseBuilder
     private void _tsbVersionHistory_Click(object sender, EventArgs e)
     {
       mpowerCompletedJobsTableAdapter.CopyToMySQL();
+    }
+
+    private void toolStripButton1_Click(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      MseBibleEngine bible = new MseBibleEngine();
+      bible.Build();
+
+      _tspMain.Enabled = true;
     }
   }
 }

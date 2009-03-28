@@ -35,9 +35,12 @@
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\ICSharp\SharpZipLib\net-20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>Dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=5.1.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=1.0.10.1, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
@@ -49,10 +52,15 @@
   <ItemGroup>
     <Compile Include="Abstract\Article.cs" />
     <Compile Include="Abstract\BibleBook.cs" />
+    <Compile Include="Abstract\BibleFootnote.cs" />
     <Compile Include="Abstract\BibleRef.cs" />
     <Compile Include="Abstract\Footnotes.cs" />
     <Compile Include="Abstract\Paragraph.cs" />
+    <Compile Include="Abstract\BibleVersion.cs" />
+    <Compile Include="Abstract\BibleVerse.cs" />
     <Compile Include="Abstract\Volume.cs" />
+    <Compile Include="Abstract\BibleXref.cs" />
+    <Compile Include="Bible\MseBibleEngine.cs" />
     <Compile Include="BuildErrors.cs">
       <SubType>Form</SubType>
     </Compile>

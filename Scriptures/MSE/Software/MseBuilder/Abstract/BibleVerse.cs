@@ -3,7 +3,7 @@
  * Copyright (c) 2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File created.

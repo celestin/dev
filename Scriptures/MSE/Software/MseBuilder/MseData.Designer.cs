@@ -1892,7 +1892,7 @@ namespace FrontBurner.Ministry.MseBuilder.MseDataTableAdapters {
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_delta_ts";
             param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
             param.IsNullable = true;
             param.SourceColumn = "delta_ts";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -1923,7 +1923,7 @@ namespace FrontBurner.Ministry.MseBuilder.MseDataTableAdapters {
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@delta_ts";
             param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
             param.IsNullable = true;
             param.SourceColumn = "delta_ts";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -1952,7 +1952,7 @@ namespace FrontBurner.Ministry.MseBuilder.MseDataTableAdapters {
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_delta_ts";
             param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.DateTime;
             param.IsNullable = true;
             param.SourceColumn = "delta_ts";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;

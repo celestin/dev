@@ -15,6 +15,7 @@
  * CAM  11-May-2008  10264 : Added handling of error refs.
  * CAM  08-Jun-2008  10269 : Update the local volume when deleting to see meaningful info on the home page.
  * CAM  28-Mar-2009  10409 : Added Footnote support.
+ * CAM  04-Apr-2009  10413 : Save Footnote Refs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -53,10 +54,13 @@ namespace FrontBurner.Ministry.MseBuilder
     // Bible commands
     protected MySqlCommand _cmdInsertVerse;
     protected MySqlCommand _cmdInsertFootnote;
-    protected MySqlCommand _cmdInsertFootnoteInst;    
+    protected MySqlCommand _cmdInsertFootnoteRef;
+    protected MySqlCommand _cmdInsertFootnoteXref;
     protected MySqlCommand _cmdDeleteVerse;
     protected MySqlCommand _cmdDeleteFootnote;
-    protected MySqlCommand _cmdDeleteFootnoteInst;
+    protected MySqlCommand _cmdDeleteFootnoteRef;
+    protected MySqlCommand _cmdDeleteFootnoteXref1;
+    protected MySqlCommand _cmdDeleteFootnoteXref2;
 
     protected MySqlDataAdapter _dadAuthor;
 
@@ -508,7 +512,7 @@ namespace FrontBurner.Ministry.MseBuilder
     public void SaveBibleBook(BibleBook book)
     {
       DeleteVerse(book);
-      DeleteFootnoteInstance(book);
+      DeleteFootnoteRef(book);
       DeleteFootnote(book);
 
       foreach (BibleVerse verse in book.Verses)
@@ -520,9 +524,14 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         InsertFootnote(footnote);
 
+        foreach (BibleFootnoteRef fRef in footnote.Refs)
+        {
+          InsertFootnoteRef(fRef);
+        }
+
         foreach (BibleXref xref in footnote)
         {
-          InsertFootnoteInst(xref);
+          InsertFootnoteXref(xref);
         }
       }
     }
@@ -549,28 +558,58 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdDeleteVerse.ExecuteNonQuery();
     }
 
-    public void DeleteFootnoteInstance(BibleBook book)
+    public void DeleteFootnoteRef(BibleBook book)
     {
-      if (_cmdDeleteFootnoteInst == null)
+      DeleteFootnoteXref1(book);
+      DeleteFootnoteXref2(book);
+    }
+
+    protected void DeleteFootnoteXref1(BibleBook book)
+    {
+      if (_cmdDeleteFootnoteXref1 == null)
       {
         string sql =
-          "DELETE FROM mse_bible_footnote_instance " +
+          "DELETE FROM mse_bible_footnote_xref " +
           "WHERE EXISTS (SELECT 1 FROM mse_bible_footnote " +
                         "WHERE verid = ?verid " +
                         "AND bookid = ?bookid " +
-                        "AND footnoteid = mse_bible_footnote_instance.footnoteid)";
+                        "AND footnoteid = mse_bible_footnote_xref.footnoteid)";
+        _cmdDeleteFootnoteXref1 = new MySqlCommand(sql, _conn);
+        _cmdDeleteFootnoteXref1.Prepare();
 
-        _cmdDeleteFootnoteInst = new MySqlCommand(sql, _conn);
-        _cmdDeleteFootnoteInst.Prepare();
-
-        _cmdDeleteFootnoteInst.Parameters.Add("?verid", MySqlDbType.Int32);
-        _cmdDeleteFootnoteInst.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdDeleteFootnoteXref1.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdDeleteFootnoteXref1.Parameters.Add("?bookid", MySqlDbType.Int32);
       }
 
-      _cmdDeleteFootnoteInst.Parameters["?verid"].Value = book.Version.VersionId;
-      _cmdDeleteFootnoteInst.Parameters["?bookid"].Value = book.BookId;
+      _cmdDeleteFootnoteXref1.Parameters["?verid"].Value = book.Version.VersionId;
+      _cmdDeleteFootnoteXref1.Parameters["?bookid"].Value = book.BookId;
 
-      _cmdDeleteFootnoteInst.ExecuteNonQuery();
+      _cmdDeleteFootnoteXref1.ExecuteNonQuery();
+    }
+
+    protected void DeleteFootnoteXref2(BibleBook book)
+    {
+      if (_cmdDeleteFootnoteXref2 == null)
+      {
+        string sql =
+          "DELETE FROM mse_bible_footnote_xref " +
+          "WHERE EXISTS (SELECT 1 FROM mse_bible_footnote " +
+                        "WHERE verid = ?verid " +
+                        "AND bookid = ?bookid " +
+                        "AND footnoteid = mse_bible_footnote_xref.from_footnoteid) " +
+         "AND from_footnoteid IS NOT NULL";
+         
+        _cmdDeleteFootnoteXref2 = new MySqlCommand(sql, _conn);
+        _cmdDeleteFootnoteXref2.Prepare();
+
+        _cmdDeleteFootnoteXref2.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdDeleteFootnoteXref2.Parameters.Add("?bookid", MySqlDbType.Int32);
+      }
+
+      _cmdDeleteFootnoteXref2.Parameters["?verid"].Value = book.Version.VersionId;
+      _cmdDeleteFootnoteXref2.Parameters["?bookid"].Value = book.BookId;
+
+      _cmdDeleteFootnoteXref2.ExecuteNonQuery();
     }
 
     public void DeleteFootnote(BibleBook book)
@@ -644,7 +683,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertFootnote.Parameters.Add("?bookid", MySqlDbType.Int32);
         _cmdInsertFootnote.Parameters.Add("?chapter", MySqlDbType.Int32);
         _cmdInsertFootnote.Parameters.Add("?verse", MySqlDbType.Int32);
-        _cmdInsertFootnote.Parameters.Add("?symbol", MySqlDbType.UByte);
+        _cmdInsertFootnote.Parameters.Add("?symbol", MySqlDbType.VarChar);
         _cmdInsertFootnote.Parameters.Add("?text", MySqlDbType.String);
       }
 
@@ -659,43 +698,86 @@ namespace FrontBurner.Ministry.MseBuilder
       _cmdInsertFootnote.ExecuteNonQuery();
     }
 
-    public void InsertFootnoteInst(BibleXref xref)
+    public void InsertFootnoteRef(BibleFootnoteRef fref)
     {
-      if (xref.Type != XrefType.VerseToFootnote) return;
+      if (_cmdInsertFootnoteRef == null)
+      {
+        string sql =
+          "INSERT INTO mse_bible_footnote_ref (" +
+            "footnoteid, verid, bookid, chapter, verse, refid, phrase" +
+          ") VALUES (" +
+            "?footnoteid, ?verid, ?bookid, ?chapter, ?verse, ?refid, ?phrase" +
+          ")";
+
+        _cmdInsertFootnoteRef = new MySqlCommand(sql, _conn);
+        _cmdInsertFootnoteRef.Prepare();
+
+        _cmdInsertFootnoteRef.Parameters.Add("?footnoteid", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?verse", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?refid", MySqlDbType.Int32);
+        _cmdInsertFootnoteRef.Parameters.Add("?phrase", MySqlDbType.String);
+      }
+
+      _cmdInsertFootnoteRef.Parameters["?footnoteid"].Value = fref.Footnote.FoonoteId;
+      _cmdInsertFootnoteRef.Parameters["?verid"].Value = fref.Footnote.Book.Version.VersionId;
+      _cmdInsertFootnoteRef.Parameters["?bookid"].Value = fref.Footnote.Book.BookId;
+      _cmdInsertFootnoteRef.Parameters["?chapter"].Value = fref.Chapter;
+      _cmdInsertFootnoteRef.Parameters["?verse"].Value = fref.Verse;
+      _cmdInsertFootnoteRef.Parameters["?refid"].Value = fref.RefId;
+      _cmdInsertFootnoteRef.Parameters["?phrase"].Value = fref.Phrase;
+
+      _cmdInsertFootnoteRef.ExecuteNonQuery();
+    }
+
+    public void InsertFootnoteXref(BibleXref xref)
+    {
       BibleFootnote refTo = xref.RefTo as BibleFootnote;
       BibleVerse refFrom = xref.RefFrom;
 
-      if (_cmdInsertFootnoteInst == null)
+      if (_cmdInsertFootnoteXref == null)
       {
         string sql =
-          "INSERT INTO mse_bible_footnote_instance (" +
-            "footnoteid, verid, bookid, chapter, verse, instance, word" +
+          "INSERT INTO mse_bible_footnote_xref (" +
+            "footnoteid, verid, bookid, chapter, verse, xrefid, from_footnoteid, phrase" +
           ") VALUES (" +
-            "?footnoteid, ?verid, ?bookid, ?chapter, ?verse, ?instance, ?word" +
+            "?footnoteid, ?verid, ?bookid, ?chapter, ?verse, ?xrefid, ?from_footnoteid, ?phrase" +
           ")";
 
-        _cmdInsertFootnoteInst = new MySqlCommand(sql, _conn);
-        _cmdInsertFootnoteInst.Prepare();
+        _cmdInsertFootnoteXref = new MySqlCommand(sql, _conn);
+        _cmdInsertFootnoteXref.Prepare();
 
-        _cmdInsertFootnoteInst.Parameters.Add("?footnoteid", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?verid", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?bookid", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?chapter", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?verse", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?instance", MySqlDbType.Int32);
-        _cmdInsertFootnoteInst.Parameters.Add("?word", MySqlDbType.String);
+        _cmdInsertFootnoteXref.Parameters.Add("?footnoteid", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?verid", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?bookid", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?chapter", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?verse", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?xrefid", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?from_footnoteid", MySqlDbType.Int32);
+        _cmdInsertFootnoteXref.Parameters.Add("?phrase", MySqlDbType.String);
       }
 
+      _cmdInsertFootnoteXref.Parameters["?footnoteid"].Value = refTo.FoonoteId;
+      _cmdInsertFootnoteXref.Parameters["?verid"].Value = refFrom.Book.Version.VersionId;
+      _cmdInsertFootnoteXref.Parameters["?bookid"].Value = refFrom.Book.BookId;
+      _cmdInsertFootnoteXref.Parameters["?chapter"].Value = refFrom.Chapter;
+      _cmdInsertFootnoteXref.Parameters["?verse"].Value = refFrom.Verse;
+      _cmdInsertFootnoteXref.Parameters["?xrefid"].Value = xref.InstanceId;
 
-      _cmdInsertFootnoteInst.Parameters["?footnoteid"].Value = refTo.FoonoteId;
-      _cmdInsertFootnoteInst.Parameters["?verid"].Value = refFrom.Book.Version.VersionId;
-      _cmdInsertFootnoteInst.Parameters["?bookid"].Value = refFrom.Book.BookId;
-      _cmdInsertFootnoteInst.Parameters["?chapter"].Value = refFrom.Chapter;
-      _cmdInsertFootnoteInst.Parameters["?verse"].Value = refFrom.Verse;
-      _cmdInsertFootnoteInst.Parameters["?instance"].Value = xref.InstanceId;
-      _cmdInsertFootnoteInst.Parameters["?word"].Value = xref.Word;
+      if (xref.RefFrom is BibleFootnote)
+      {
+        _cmdInsertFootnoteXref.Parameters["?from_footnoteid"].Value = ((BibleFootnote)refFrom).FoonoteId;
+      }
+      else
+      {
+        _cmdInsertFootnoteXref.Parameters["?from_footnoteid"].Value = DBNull.Value;
+      }
 
-      _cmdInsertFootnoteInst.ExecuteNonQuery();
+      _cmdInsertFootnoteXref.Parameters["?phrase"].Value = xref.Word;
+
+      _cmdInsertFootnoteXref.ExecuteNonQuery();
     }
 
     public void ExecuteSql(string sql)

@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  28-Mar-2009  10409 : Added BibleVersion.
+ * CAM  04-Apr-2009  10413 : Added ToString.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -139,6 +140,11 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       BibleBook book = new BibleBook(_bookId, _bookName, _singleChap);
       version.Add(book);
       return book;
+    }
+
+    public override string ToString()
+    {
+      return BookName;
     }
   }
 

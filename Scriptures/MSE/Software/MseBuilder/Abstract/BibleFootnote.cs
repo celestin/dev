@@ -3,7 +3,7 @@
  * Copyright (c) 2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File created.
@@ -19,6 +19,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
   {
     private int _foonoteId;
     private char _symbol;
+    private BibleFootnoteRefCollection _refs;
 
     public override string FullId
     {
@@ -43,6 +44,17 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       set
       {
         _symbol = value;
+      }
+    }
+    public BibleFootnoteRefCollection Refs
+    {
+      get
+      {
+        if (_refs == null)
+        {
+          _refs = new BibleFootnoteRefCollection();
+        }
+        return _refs;
       }
     }
 

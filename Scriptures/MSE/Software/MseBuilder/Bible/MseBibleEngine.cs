@@ -3,10 +3,11 @@
  * Copyright (c) 2008 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  22-Jun-2008  10409 : File created.
+ * CAM  04-Apr-2009  10413 : Parse Footnote refs and record ALL of them, and the phrases that they are connected to.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -37,9 +38,13 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
 
   public class MseBibleEngine
   {
-    Sourcefiles _jndText;
-    Sourcefiles _jndFootnotes;
-    Sourcefiles _kjvText;
+    private const string AnchorStartOpen = "<A HREF=\"";
+    private const string AnchorStartClose = "\">";
+    private const string AnchorEnd = "</A>";
+
+    private Sourcefiles _jndText;
+    private Sourcefiles _jndFootnotes;
+    private Sourcefiles _kjvText;
 
     public MseBibleEngine()
     {
@@ -69,7 +74,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
 
       DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_text");
       DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote");
-      DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote_instance");
+      DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote_ref");
 
       foreach (BibleVersion version in versions)
       {
@@ -139,6 +144,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
       string text;
       BibleBookCollection books = BusinessLayer.Instance.GetBooks();
       BibleBook book = null;
+      BibleFootnote footnote = null;
 
       foreach (FileInfo file in files)
       {
@@ -169,23 +175,111 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
 
               p = buffer.IndexOf("<DD>");
               text = buffer.Substring(p + 4, buffer.Length - p - 4); // remove remaining prefix
-              book.Footnotes.Add(new BibleFootnote(book, shortCode, symbol, text));
+              footnote = new BibleFootnote(book, shortCode, symbol, text);
+              book.Footnotes.Add(footnote);
+
+              // Now parse the Refs
+              // Usually there is only one ref.  Where there are two, the ref word can either follow the list meaning
+              // the same word is used in each ref.  Alternatively, if different words are used, they will follow each ref.
+              p = buffer.IndexOf("</A>");
+              ParseRefs(footnote, buffer.Substring(0, p));
             }
           }
         }
       }
     }
 
+    /// <summary>
+    /// Parse multiple refs to the same footnote, usually on the one page.  
+    /// Not to be confused with Xrefs which is a reference to one footnote from another.
+    /// </summary>
+    /// <remarks>
+    /// Unfortunately we can't use a comma as the separator, because the same verse may have several refs to the same footnote, e.g. 
+    /// Acts "16:6c through, forbidden, 16:7c down"
+    /// Is really three refs:
+    ///   16:6c through
+    ///   16:6c forbidden
+    ///   16:7c down
+    /// Also, each ref may not specify the word
+    /// "8:15h appearance, 8:16h, 8:26h vision"
+    ///   8:15h appearance
+    ///   8:16h vision
+    ///   8:26h vision
+    /// "8:10a, 8:14a horses of blood" - 'word' can really be a phrase
+    /// </remarks>
+    /// <param name="footnote"></param>
+    /// <param name="refs"></param>
+    protected void ParseRefs(BibleFootnote footnote, string refs)
+    {
+      char[] r = refs.ToCharArray();
+      int i = 0;
+      int prevSt = r.Length;
+      string prevPhrase = null;
+      bool nextSpace = false;
+
+      for (i = r.Length - 1; i >= 0; i--)
+      {
+        if (r[i] == ':')
+        {
+          nextSpace = true;
+        }
+        if (r[i] == ' ' && nextSpace)
+        {
+          prevPhrase = ParseRef(footnote, refs.Substring(i, prevSt - i).Trim(), prevPhrase);
+
+          nextSpace = false;
+          prevSt = i;
+        }
+      }
+
+      ParseRef(footnote, refs.Substring(i + 1, prevSt).ToString(), prevPhrase);
+    }
+
+    protected string ParseRef(BibleFootnote footnote, string fullRef, string prevPhrase)
+    {
+      if (fullRef.EndsWith(","))
+      {
+        fullRef = fullRef.Substring(0, fullRef.Length - 1).Trim();
+      }
+      if (!fullRef.Contains(" "))
+      {
+        // If there is no space, then there is no phrase after the Chapter:VerseSymbol.
+        // Therefore, use the previous Phrase.
+        footnote.Refs.Add(new BibleFootnoteRef(footnote, footnote.Refs.Count + 1, fullRef, prevPhrase));
+      }
+      else
+      {
+        // If there is a space, parse to separate the Chapter:VerseSymbol and Phrase.
+        prevPhrase = AddRef(footnote, fullRef);
+      }
+
+      return prevPhrase;
+    }
+
+    protected string AddRef(BibleFootnote footnote, string fullRef)
+    {
+      int p = fullRef.IndexOf(' ');
+      string shortCode = fullRef.Substring(0, p).Trim();
+      string rval = null;
+
+      string[] phraseList = fullRef.Substring(p + 1).Trim().Split(new char[] { ',' });
+      foreach (string phrase in phraseList)
+      {
+        if (rval == null) rval = phrase;
+        footnote.Refs.Add(new BibleFootnoteRef(footnote, footnote.Refs.Count + 1, shortCode, phrase));
+      }
+
+      return rval;
+    }
+
     protected void CrossReference(BibleBook book)
     {
       CrossReferenceVerses(book);
+      CrossReferenceFootnotes(book);
     }
 
     protected void CrossReferenceVerses(BibleBook book)
     {
-      const string AnchorStartOpen = "<A HREF=\"";
-      const string AnchorStartClose = "\">";
-      const string AnchorEnd = "</A>";
       int p;
       int p2;
       string text;
@@ -195,6 +289,54 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
       BibleXref xref;
 
       foreach (BibleVerse verse in book.Verses)
+      {
+        text = verse.Text;
+        rf = word = newLine = "";
+
+        while ((p = text.IndexOf(AnchorStartOpen)) >= 0)
+        {
+          newLine += text.Substring(0, p) + AnchorStartOpen + "showFootnote.php?";
+
+          text = text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length);
+
+          if ((p = text.IndexOf(AnchorStartClose)) >= 0)
+          {
+            rf = text.Substring(0, p);
+            newLine += rf + AnchorStartClose;
+
+            if ((p2 = text.IndexOf(AnchorEnd)) >= 0)
+            {
+              word = text.Substring(p + AnchorStartClose.Length, p2 - p - AnchorStartClose.Length).Trim();
+            }
+
+            text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
+          }
+
+          if (newLine.Length > 0)
+          {
+            newLine += text;
+            xref = new BibleXref(verse, XrefType.VerseToFootnote, rf, word);
+            if (!xref.AddXref(book.Version))
+            {
+              MessageBox.Show("Failed!");
+            }
+            verse.Text = newLine;
+          }
+        }
+      }
+    }
+
+    protected void CrossReferenceFootnotes(BibleBook book)
+    {
+      int p;
+      int p2;
+      string text;
+      string rf;
+      string word;
+      string newLine;
+      BibleXref xref;
+
+      foreach (BibleFootnote footnote in book.Footnotes)
       {
         text = verse.Text;
         rf = word = newLine = "";

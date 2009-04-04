@@ -55,6 +55,7 @@
     <Compile Include="Abstract\Article.cs" />
     <Compile Include="Abstract\BibleBook.cs" />
     <Compile Include="Abstract\BibleFootnote.cs" />
+    <Compile Include="Abstract\BibleFootnoteRef.cs" />
     <Compile Include="Abstract\BibleRef.cs" />
     <Compile Include="Abstract\Footnotes.cs" />
     <Compile Include="Abstract\Paragraph.cs" />

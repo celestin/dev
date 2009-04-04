@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File created.
+ * CAM  04-Apr-2009  10414 : Moved CrossReference here.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -18,8 +19,12 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
   /// <summary>
   /// Representation of a Bible Verse.
   /// </summary>
-  public class BibleVerse : Collection<BibleXref>
+  public class BibleVerse : Collection<BibleXref>, IEquatable<BibleVerse>
   {
+    private const string AnchorStartOpen = "<A HREF=\"";
+    private const string AnchorStartClose = "\">";
+    private const string AnchorEnd = "</A>";
+
     private BibleBook _book;
     private string _shortCode;
     private int _chapter;
@@ -69,7 +74,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        return _text; 
+        return _text;
       }
       set
       {
@@ -86,7 +91,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       if (colon > 0)
       {
         _chapter = int.Parse(shortCode.Substring(0, colon).Trim());
-        
+
         shortCode = shortCode.Substring(colon + 1, shortCode.Length - colon - 1).Trim();
         string verse = "";
         for (int i = 0; i < shortCode.Length; i++)
@@ -102,10 +107,64 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       Text = text;
     }
 
+    public bool CrossReference()
+    {
+      int p;
+      int p2;
+      string text;
+      string rf;
+      string word;
+      string newLine;
+      BibleXref xref;
+      BibleVerse verse = this;
+
+      text = verse.Text;
+      rf = word = newLine = "";
+
+      while ((p = text.IndexOf(AnchorStartOpen)) >= 0)
+      {
+        newLine += text.Substring(0, p) + AnchorStartOpen + "showFootnote.php?";
+
+        text = text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length);
+
+        if ((p = text.IndexOf(AnchorStartClose)) >= 0)
+        {
+          rf = text.Substring(0, p);
+          newLine += rf + AnchorStartClose;
+
+          if ((p2 = text.IndexOf(AnchorEnd)) >= 0)
+          {
+            word = text.Substring(p + AnchorStartClose.Length, p2 - p - AnchorStartClose.Length).Trim();
+          }
+
+          text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
+        }
+
+        if (newLine.Length > 0)
+        {
+          newLine += text;
+          xref = new BibleXref(verse, rf, word);
+          if (!xref.AddXref(Book.Version)) return false;
+          verse.Text = newLine;
+        }
+      }
+
+      return true;
+    }
+
     protected override void InsertItem(int index, BibleXref item)
     {
       base.InsertItem(index, item);
       item.InstanceId = this.Count;
+    }
+
+    public virtual bool Equals(BibleVerse other)
+    {
+      if (other == null) return false;
+      if (_book.BookId.Equals(other._book.BookId) && 
+        _chapter.Equals(other._chapter) &&
+        _verse.Equals(other._verse)) return true;
+      return false;
     }
   }
 

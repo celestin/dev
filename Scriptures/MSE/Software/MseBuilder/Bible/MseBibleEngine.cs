@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Jun-2008  10409 : File created.
  * CAM  04-Apr-2009  10413 : Parse Footnote refs and record ALL of them, and the phrases that they are connected to.
+ * CAM  04-Apr-2009  10414 : Moved CrossReference to BibleVerse.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -75,6 +76,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
       DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_text");
       DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote");
       DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote_ref");
+      DatabaseLayer.Instance.ExecuteSql("TRUNCATE TABLE mse_bible_footnote_xref");
 
       foreach (BibleVersion version in versions)
       {
@@ -274,103 +276,10 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
 
     protected void CrossReference(BibleBook book)
     {
-      CrossReferenceVerses(book);
-      CrossReferenceFootnotes(book);
-    }
-
-    protected void CrossReferenceVerses(BibleBook book)
-    {
-      int p;
-      int p2;
-      string text;
-      string rf;
-      string word;
-      string newLine;
-      BibleXref xref;
-
-      foreach (BibleVerse verse in book.Verses)
+      foreach (BibleVerse element in book.Elements)
       {
-        text = verse.Text;
-        rf = word = newLine = "";
-
-        while ((p = text.IndexOf(AnchorStartOpen)) >= 0)
-        {
-          newLine += text.Substring(0, p) + AnchorStartOpen + "showFootnote.php?";
-
-          text = text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length);
-
-          if ((p = text.IndexOf(AnchorStartClose)) >= 0)
-          {
-            rf = text.Substring(0, p);
-            newLine += rf + AnchorStartClose;
-
-            if ((p2 = text.IndexOf(AnchorEnd)) >= 0)
-            {
-              word = text.Substring(p + AnchorStartClose.Length, p2 - p - AnchorStartClose.Length).Trim();
-            }
-
-            text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
-          }
-
-          if (newLine.Length > 0)
-          {
-            newLine += text;
-            xref = new BibleXref(verse, XrefType.VerseToFootnote, rf, word);
-            if (!xref.AddXref(book.Version))
-            {
-              MessageBox.Show("Failed!");
-            }
-            verse.Text = newLine;
-          }
-        }
-      }
-    }
-
-    protected void CrossReferenceFootnotes(BibleBook book)
-    {
-      int p;
-      int p2;
-      string text;
-      string rf;
-      string word;
-      string newLine;
-      BibleXref xref;
-
-      foreach (BibleFootnote footnote in book.Footnotes)
-      {
-        text = verse.Text;
-        rf = word = newLine = "";
-
-        while ((p = text.IndexOf(AnchorStartOpen)) >= 0)
-        {
-          newLine += text.Substring(0, p) + AnchorStartOpen + "showFootnote.php?";
-
-          text = text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length);
-
-          if ((p = text.IndexOf(AnchorStartClose)) >= 0)
-          {
-            rf = text.Substring(0, p);
-            newLine += rf + AnchorStartClose;
-
-            if ((p2 = text.IndexOf(AnchorEnd)) >= 0)
-            {
-              word = text.Substring(p + AnchorStartClose.Length, p2 - p - AnchorStartClose.Length).Trim();
-            }
-
-            text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
-          }
-
-          if (newLine.Length > 0)
-          {
-            newLine += text;
-            xref = new BibleXref(verse, XrefType.VerseToFootnote, rf, word);
-            if (!xref.AddXref(book.Version))
-            {
-              MessageBox.Show("Failed!");
-            }
-            verse.Text = newLine;
-          }
-        }
+        // Verses and Footnotes
+        element.CrossReference();
       }
     }
 

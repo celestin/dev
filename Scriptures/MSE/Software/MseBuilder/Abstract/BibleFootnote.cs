@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File created.
+ * CAM  04-Apr-2009  10414 : Override equality.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,7 +18,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class BibleFootnote : BibleVerse
   {
-    private int _foonoteId;
+    private int _footnoteId;
     private char _symbol;
     private BibleFootnoteRefCollection _refs;
 
@@ -32,7 +33,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        return _foonoteId;
+        return _footnoteId;
       }
     }
     public char Symbol
@@ -61,8 +62,18 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     public BibleFootnote(BibleBook book, string shortCode, char symbol, string text)
       : base(book, shortCode, text)
     {
-      _foonoteId = BusinessLayer.Instance.GetNextFootnoteId();
+      _footnoteId = BusinessLayer.Instance.GetNextFootnoteId();
       _symbol = symbol;
+    }
+
+    public override bool Equals(BibleVerse other)
+    {
+      if (other == null) return false;
+      if (!(other is BibleFootnote)) return false;
+
+      BibleFootnote otherFootnote = other as BibleFootnote;
+      if (_footnoteId.Equals(otherFootnote._footnoteId)) return true;
+      return false;
     }
   }
 

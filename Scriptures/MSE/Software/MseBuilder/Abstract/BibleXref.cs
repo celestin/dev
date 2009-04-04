@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File added.
+ * CAM  04-Apr-2009  10414 : Determine XrefType here.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -16,15 +17,16 @@ using System.Windows.Forms;
 
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
-  public enum XrefType
+  public enum XrefType 
   {
     VerseToFootnote = 1,
     FootnoteToVerse = 2,
     FootnoteToFootnote = 3
   }
 
-  public class BibleXref
+  public class BibleXref 
   {
+    #region Member Vars
     private string _xref;
     private string _word;
     private BibleBook _book;
@@ -33,7 +35,9 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     private BibleVerse _refTo;
     private BibleVerse _refFrom;
     private int _instanceId;
+    #endregion
 
+    #region Properties
     public BibleBook Book
     {
       get
@@ -46,7 +50,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       get
       {
         return _fullId;
-      }       
+      }
     }
     public XrefType Type
     {
@@ -87,6 +91,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _instanceId = value;
       }
     }
+    #endregion
 
     public BibleXref(BibleVerse refFrom, XrefType type, string xref, string word)
     {
@@ -94,6 +99,30 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       _type = type;
       _xref = xref;
       _word = word;
+    }
+
+    public BibleXref(BibleVerse refFrom, string xref, string word)
+    {
+      _refFrom = refFrom;
+      _xref = xref;
+      _word = word;
+
+      if (RefFrom is BibleFootnote)
+      {
+
+        if (_xref.Contains("/br/"))
+        {
+          _type = XrefType.FootnoteToVerse;
+        }
+        else
+        {
+          _type = XrefType.FootnoteToFootnote;
+        }
+      }
+      else
+      {
+        _type = XrefType.VerseToFootnote;
+      }
     }
 
     public bool AddXref(BibleVersion version)
@@ -121,11 +150,18 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _book = version.FindBookByShortCode(bookCode.Substring(0, p));
       }
 
-      if (_book == null || _fullId.Length == 0) return false;
+      if (_book == null || _fullId.Length == 0 || _refFrom == null) return false;
 
-      if (!_book.Elements.Contains(_fullId) || _refFrom == null) return false;
-
+      if (!_book.Elements.Contains(_fullId)) return false;
       _refTo = _book.Elements[_fullId];
+
+      //bool alreadyLinked = false;
+      //foreach (BibleXref xref in _refTo)
+      //{
+      //  if (xref._refTo.Equals(_refFrom)) 
+      //    alreadyLinked = true;
+      //}
+      //if (!alreadyLinked) _refTo.Add(this);
       _refTo.Add(this);
 
       return true;

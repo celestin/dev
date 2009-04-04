@@ -16,6 +16,7 @@
  * CAM  08-Jun-2008  10269 : Update the local volume when deleting to see meaningful info on the home page.
  * CAM  28-Mar-2009  10409 : Added Footnote support.
  * CAM  04-Apr-2009  10413 : Save Footnote Refs.
+ * CAM  04-Apr-2009  10414 : Truncate rather than Delete Xrefs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -560,8 +561,8 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public void DeleteFootnoteRef(BibleBook book)
     {
-      DeleteFootnoteXref1(book);
-      DeleteFootnoteXref2(book);
+      //DeleteFootnoteXref1(book);
+      //DeleteFootnoteXref2(book);
     }
 
     protected void DeleteFootnoteXref1(BibleBook book)

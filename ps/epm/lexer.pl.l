@@ -1,23 +1,17 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2005 Power Software
+ * Copyright (c) 2004,2009 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Perl parser
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  03-Aug-05   114 : File created.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  03-Aug-05    114 : File created.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  07-Apr-2009  10415 : Rewrote parser to handle all Perl eventualities correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
 
 %{
 
@@ -46,8 +40,6 @@ int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
 int prev_com_line=-1;
-
-void string_literal();
 
 set<int> sloc;
 set<int> operators;
@@ -96,19 +88,98 @@ void store_operand(char* txt) {
 
 %}
 
-%p 3500
-%x PODTAG LCOMMENT
+%x PODTAG 
+
+NL            "\n"
+NOTNL         .                					
+ANY           ({NOTNL}|{NL})   					
+BACKSL        "\\"             					
+BOL           ^                					
+LETTER        [A-Za-z_]  
+ALNUM         [A-Za-z_0-9]     					
+DIGIT         [0-9]            					
+HEXDIGIT      [0-9A-Fa-f]
+DIGITS        ({DIGIT}+)       					
+EXP           [Ee][+-]?DIGITS
+HEXDIGITS     ({HEXDIGIT}+)    					
+SIGN          ("+"|"-")        					
+ELL_SUFFIX    [lL]([lL]?)      					
+INT_SUFFIX    ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
+FLOAT_SUFFIX  [flFL]           					
+STRCHAR       [^\"\n\\]        					
+ESCAPE        ({BACKSL}{ANY})  					
+QUOTE         [\"]             					
+SPTAB         [ \t]            					
 
 %%
 
+\n                      {perl_lineno++;}
+
 ^=                      {BEGIN(PODTAG);}
 <PODTAG>^"=cut"         {++c_comments;BEGIN(INITIAL);}
+<PODTAG>\n              {++c_comments;++com_loc;++perl_lineno;}
 <PODTAG>.*              {;}
-<PODTAG>\n              {++c_comments;++perl_lineno;}
 
-"#"                     {BEGIN(LCOMMENT);}
-<LCOMMENT>.*            {;}
-<LCOMMENT>\n            {++cpp_comments;++perl_lineno;BEGIN(INITIAL);}
+"!"                     {store_operator('!');}
+"*"                     {store_operator('*');}
+"+"                     {store_operator('+');}
+","                     {store_operator(',');}
+"-"                     {store_operator('-');}
+"."                     {store_operator('.');}
+":"                     {store_operator(':');}
+"<"                     {store_operator('<');}
+"="                     {store_operator('=');}
+">"                     {store_operator('>');}
+"?"                     {store_operator('?');}
+"\\"                    {store_operator('\\');}
+"^"                     {store_operator('^');}
+"|"                     {store_operator('|');}
+"~"                     {store_operator('~');}
+"$"                     {store_operator('$');}
+
+"^="                    {store_operator(CARAT_EQUALS);}
+"||"                    {store_operator(BAR_BAR);}
+"||="                   {store_operator(BAR_BAR_EQUALS);}
+"|="                    {store_operator(BAR_EQUALS);}
+"<="                    {store_operator(LEFT_EQUALS);}
+"<=>"                   {store_operator(LEFT_EQUALS_RIGHT);}
+"<<"                    {store_operator(LEFT_LEFT);}
+"<<="                   {store_operator(LEFT_LEFT_EQUALS);}
+"%"                     {store_operator(PERCENT);}
+"%="                    {store_operator(PERCENT_EQUALS);}
+">="                    {store_operator(RIGHT_EQUALS);}
+">>"                    {store_operator(RIGHT_RIGHT);}
+">>="                   {store_operator(RIGHT_RIGHT_EQUALS);}
+"-="                    {store_operator(MINUS_EQUALS);}
+"--"                    {store_operator(MINUS_MINUS);}
+"->"                    {store_operator(MINUS_RIGHT);}
+"/"                     {store_operator(SLASH);}
+"/="                    {store_operator(SLASH_EQUALS);}
+"!="                    {store_operator(PLING_EQUALS);}
+"!~"                    {store_operator(PLING_TILDE);}
+"+="                    {store_operator(PLUS_EQUALS);}
+"++"                    {store_operator(PLUS_PLUS);}
+"&"                     {store_operator(AMP);}
+"&&"                    {store_operator(AMP_AMP);}
+"&&="                   {store_operator(AMP_AMP_EQUALS);}
+"&="                    {store_operator(AMP_EQUALS);}
+"*="                    {store_operator(AMP_EQUALS);}
+".."                    {store_operator(DOT_DOT);}
+".="                    {store_operator(DOT_EQUALS);}
+"=="                    {store_operator(EQUALS_EQUALS);}
+"=>"                    {store_operator(EQUALS_RIGHT);}
+"=~"                    {store_operator(EQUALS_TILDE);}
+"**"                    {store_operator(AST_AST);}
+"**="                   {store_operator(AST_AST_EQUALS);}
+"x="                    {store_operator(X_EQUALS);}
+
+";"                     {COUNT(); SEMI();}
+[ \t\v\f]               {;}
+
+"("                     {COUNT();}
+")"                     {COUNT();}
+"{"                     {COUNT();}
+"}"                     {COUNT();}
 
 "and"                   {store_operator(OP_AND);}
 "bless"                 {store_operator(BLESS);}
@@ -160,85 +231,31 @@ void store_operand(char* txt) {
 "x"                     {store_operator(OP_X);}
 "xor"                   {store_operator(OP_XOR);}
 
-{L}({L}|{D})*           {store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
-0{D}+{IS}?              {store_operand(_strdup(yytext));}
-{D}+{IS}?               {store_operand(_strdup(yytext));}
-'(\\.|[^\\'])+'         {store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
+{LETTER}{ALNUM}* 						{store_operand(_strdup(yytext));}
 
-\"                      {COUNT(); string_literal();}
+[1-9][0-9]*{INT_SUFFIX}?           |
+[0][0-7]*{INT_SUFFIX}?             |
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?   				{store_operand(_strdup(yytext));}
 
-"!"                     {store_operator('!');}
-"*"                     {store_operator('*');}
-"+"                     {store_operator('+');}
-","                     {store_operator(',');}
-"-"                     {store_operator('-');}
-"."                     {store_operator('.');}
-":"                     {store_operator(':');}
-"<"                     {store_operator('<');}
-"="                     {store_operator('=');}
-">"                     {store_operator('>');}
-"?"                     {store_operator('?');}
-"\\"                    {store_operator('\\');}
-"^"                     {store_operator('^');}
-"|"                     {store_operator('|');}
-"~"                     {store_operator('~');}
+[0][xX] 							{store_operand(_strdup(yytext));}
 
-"^="                    {store_operator(CARAT_EQUALS);}
-"||"                    {store_operator(BAR_BAR);}
-"||="                   {store_operator(BAR_BAR_EQUALS);}
-"|="                    {store_operator(BAR_EQUALS);}
-"<="                    {store_operator(LEFT_EQUALS);}
-"<=>"                   {store_operator(LEFT_EQUALS_RIGHT);}
-"<<"                    {store_operator(LEFT_LEFT);}
-"<<="                   {store_operator(LEFT_LEFT_EQUALS);}
-"%"                     {store_operator(PERCENT);}
-"%="                    {store_operator(PERCENT_EQUALS);}
-">="                    {store_operator(RIGHT_EQUALS);}
-">>"                    {store_operator(RIGHT_RIGHT);}
-">>="                   {store_operator(RIGHT_RIGHT_EQUALS);}
-"-="                    {store_operator(MINUS_EQUALS);}
-"--"                    {store_operator(MINUS_MINUS);}
-"->"                    {store_operator(MINUS_RIGHT);}
-"/"                     {store_operator(SLASH);}
-"/="                    {store_operator(SLASH_EQUALS);}
-"!="                    {store_operator(PLING_EQUALS);}
-"!~"                    {store_operator(PLING_TILDE);}
-"+="                    {store_operator(PLUS_EQUALS);}
-"++"                    {store_operator(PLUS_PLUS);}
-"&"                     {store_operator(AMP);}
-"&&"                    {store_operator(AMP_AMP);}
-"&&="                   {store_operator(AMP_AMP_EQUALS);}
-"&="                    {store_operator(AMP_EQUALS);}
-"*="                    {store_operator(AMP_EQUALS);}
-".."                    {store_operator(DOT_DOT);}
-".="                    {store_operator(DOT_EQUALS);}
-"=="                    {store_operator(EQUALS_EQUALS);}
-"=>"                    {store_operator(EQUALS_RIGHT);}
-"=~"                    {store_operator(EQUALS_TILDE);}
-"**"                    {store_operator(AST_AST);}
-"**="                   {store_operator(AST_AST_EQUALS);}
-"x="                    {store_operator(X_EQUALS);}
+{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?	    |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?		{store_operand(_strdup(yytext));}    
 
-";"                     {COUNT(); SEMI();}
-[ \t\v\f]               {;}
-"\n"                    {perl_lineno++;}
-.                       { /* ignore bad characters */ }
+{DIGITS}"."{DIGITS}?[eE]{SIGN}?   |
+{DIGITS}"."?[eE]{SIGN}?           |
+"."{DIGITS}[eE]{SIGN}?            				{store_operand(_strdup(yytext));}
+
+"#"{NOTNL}*{NL}         {++cpp_comments;++com_loc;++perl_lineno;BEGIN(INITIAL);}
+
+"L"?{QUOTE}({STRCHAR}|{ESCAPE})*{QUOTE} {COUNT();}
+
+.                       {;}
+
 %%
-int yywrap() {
+int yywrap() 
+{
   return(1);
-}
-
-
-void string_literal() {
-  char c=0;
-
-  while ((c!='\"') && (c!=EOF))
-     if ((c=yyinput())=='\\')
-        if ((c=yyinput())=='\"')
-           c=yyinput() ;
 }
 

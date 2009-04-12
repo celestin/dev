@@ -14,16 +14,17 @@
  * CAM  18-Nov-2007  10205 : Reset PageNo to 1 if new query (and send email).
  * CAM  29-Dec-2007  10211 : Call the highlight function with SqlFactory.
  * CAM  28-Mar-2009  10407 : Added Search Type.
+ * CAM  12-Apr-2009  10419 : Changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once($root.'functions.php');
 
-$keywords   = $_SESSION['search_keywords'];
-$searchType = $_SESSION['search_type'];
-$author     = $_SESSION['search_author'];
-$bookid     = $_SESSION['search_bookid'];
-$chapter    = $_SESSION['search_chapter'];
-$vstart     = $_SESSION['search_vstart'];
+$keywords   = $_SESSION['search_min_keywords'];
+$searchType = $_SESSION['search_min_type'];
+$author     = $_SESSION['search_min_author'];
+$bookid     = $_SESSION['search_min_bookid'];
+$chapter    = $_SESSION['search_min_chapter'];
+$vstart     = $_SESSION['search_min_vstart'];
 
 $prevQuery  = $_SESSION['search_previous'];
 $thisQuery  = f_search_parameter_string();

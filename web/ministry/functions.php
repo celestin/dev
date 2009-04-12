@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2006,2008 Southesk.com
+ * Copyright (c) 2006,2009 Southesk.com
  *
  * $Id$
  *
@@ -14,6 +14,7 @@
  * CAM  29-Dec-2007  10211 : Improved the highlight function and removed redundant code.
  * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
  * CAM  28-Mar-2009  10407 : Correct PHP syntax.
+ * CAM  12-Apr-2009  10419 : Changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function f_neat_truncate($text, $backpoint) {
@@ -256,11 +257,11 @@ function f_search_parameter_string(){
   $i = 0;
   $rval = "";
 
-  if (!empty($_SESSION['search_keywords'])) $list[$i++] = new Tuple("keywords", $_SESSION['search_keywords']);
-  if (!empty($_SESSION['search_author'])) $list[$i++] = new Tuple("author", $_SESSION['search_author']);
-  if (!empty($_SESSION['search_bookid'])) $list[$i++] = new Tuple("bookid", $_SESSION['search_bookid']);
-  if (!empty($_SESSION['search_chapter'])) $list[$i++] = new Tuple("chapter", $_SESSION['search_chapter']);
-  if (!empty($_SESSION['search_vstart'])) $list[$i++] = new Tuple("vstart", $_SESSION['search_vstart']);
+  if (!empty($_SESSION['search_min_keywords'])) $list[$i++] = new Tuple("keywords", $_SESSION['search_min_keywords']);
+  if (!empty($_SESSION['search_min_author'])) $list[$i++] = new Tuple("author", $_SESSION['search_min_author']);
+  if (!empty($_SESSION['search_min_bookid'])) $list[$i++] = new Tuple("bookid", $_SESSION['search_min_bookid']);
+  if (!empty($_SESSION['search_min_chapter'])) $list[$i++] = new Tuple("chapter", $_SESSION['search_min_chapter']);
+  if (!empty($_SESSION['search_min_vstart'])) $list[$i++] = new Tuple("vstart", $_SESSION['search_min_vstart']);
 
   for ($i=0; $i<count($list); $i++) {
     if ($i > 0) $rval .= "|";

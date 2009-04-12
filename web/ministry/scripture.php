@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * $Id$
  *
@@ -10,17 +10,18 @@
  * CAM  15-Oct-2007  10187 : Reworked to use BibleBook.
  * CAM  25-Oct-2007  10187 : Added Verse Start to search.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  12-Apr-2009  10419 : Added more flexibility to tabs, and changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Scripture Search";
 $tab = "scripture";
-$tabs = true;
+$tabs = "MINISTRY";
 include $root.'tpl/top.php';
 include_once $root.'functions.php';
 
-$bookid = $_SESSION['search_bookid'];    if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
-$chapter = $_SESSION['search_chapter'];  if (!empty($_POST['chapter'])) $chapter = $_POST['chapter'];
-$vstart = $_SESSION['search_vstart'];    if (!empty($_POST['chapter']) && ($_POST['vstart']!="")) $vstart = $_POST['vstart'];
+$bookid = $_SESSION['search_min_bookid'];    if (!empty($_POST['bookid'])) $bookid = $_POST['bookid'];
+$chapter = $_SESSION['search_min_chapter'];  if (!empty($_POST['chapter'])) $chapter = $_POST['chapter'];
+$vstart = $_SESSION['search_min_vstart'];    if (!empty($_POST['chapter']) && ($_POST['vstart']!="")) $vstart = $_POST['vstart'];
 
 if ($bookid == "NULL") {
   $bookid = "";
@@ -31,9 +32,9 @@ if ($bookid == "NULL") {
   $vstart = 0;
 }
 
-$_SESSION['search_bookid'] = $bookid;
-$_SESSION['search_chapter'] = $chapter;
-$_SESSION['search_vstart'] = $vstart;
+$_SESSION['search_min_bookid'] = $bookid;
+$_SESSION['search_min_chapter'] = $chapter;
+$_SESSION['search_min_vstart'] = $vstart;
 
 $entity = "";
 $bibleBook = "";

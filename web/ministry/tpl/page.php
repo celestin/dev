@@ -15,6 +15,7 @@
  * CAM  15-Jun-2008  10272 : Added footnote class.
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10407 : Added Search Type.
+ * CAM  12-Apr-2009  10419 : Changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once($root.'functions.php');
@@ -65,12 +66,12 @@ if ($pagechanged && !empty($gotopage)) {
   $preview_page = ($gotopage * 1);
 }
 
-$keywords   = $_SESSION['search_keywords'];
-$searchType = $_SESSION['search_type'];
-$author     = $_SESSION['search_author'];
-$bookid     = $_SESSION['search_bookid'];
-$chapter    = $_SESSION['search_chapter'];
-$vstart     = $_SESSION['search_vstart'];
+$keywords   = $_SESSION['search_min_keywords'];
+$searchType = $_SESSION['search_min_type'];
+$author     = $_SESSION['search_min_author'];
+$bookid     = $_SESSION['search_min_bookid'];
+$chapter    = $_SESSION['search_min_chapter'];
+$vstart     = $_SESSION['search_min_vstart'];
 
 $sqlFactory = new SqlFactory();
 if (!empty($keywords)) {

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2008 Southesk.com
+ * Copyright (c) 2008,2009 Southesk.com
  *
  * 1962 Hymn Book Search CSS
  *
@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Sep-2008  10302 : Moved to GoodTeaching.org
+ * CAM  12-Apr-2009  10419 : Renamed CSS class to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function select_meters($meter_id) {
@@ -72,7 +73,7 @@ function nbsp($value) {
 
 function describe_search($searchType) {
 ?>
-  <div class="searchType"><? echo $searchType; ?></div>
+  <div class="hymnSearchType"><? echo $searchType; ?></div>
 <?
 }
 

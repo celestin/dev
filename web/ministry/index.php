@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * Home Page Context
  *
@@ -15,20 +15,22 @@
  * CAM  18-Nov-2007  10205 : Added search_previous.
  * CAM  04-Jun-2008  10268 : Added Latest Volumes.
  * CAM  29-Sep-2008  10302 : Added root.
- * CAM  28-Mar-2009  10407 : Added $_SESSION['search_type'].
+ * CAM  28-Mar-2009  10407 : Added $_SESSION['search_min_type'].
+ * CAM  12-Apr-2009  10419 : Changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Home";
+$tabs = "NONE";
 
 include $root.'tpl/top.php';
 
-$_SESSION['search_keywords'] = "";
-$_SESSION['search_type'] = "";
-$_SESSION['search_author'] = array('ALL'=>'ALL');
+$_SESSION['search_min_keywords'] = "";
+$_SESSION['search_min_type'] = "";
+$_SESSION['search_min_author'] = array('ALL'=>'ALL');
 
-$_SESSION['search_bookid'] = "";
-$_SESSION['search_chapter'] = "";
-$_SESSION['search_vstart'] = "";
+$_SESSION['search_min_bookid'] = "";
+$_SESSION['search_min_chapter'] = "";
+$_SESSION['search_min_vstart'] = "";
 
 $_SESSION['search_previous'] = "";
 

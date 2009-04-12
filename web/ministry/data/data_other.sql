@@ -7,6 +7,7 @@
 --
 -- Who  When         Why
 -- CAM  29-Sep-2008  10302 : Migrated to goodteaching.org.
+-- CAM  12-Apr-2009  10419 : Corrected collation on hymn_line_de and hymn_line_nl.
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 2.9.2
@@ -10404,7 +10405,7 @@ CREATE TABLE `hymn_line_de` (
   `hymn_no` int(10) NOT NULL default '0',
   `vers_no` int(10) NOT NULL default '0',
   `line_no` int(10) NOT NULL default '0',
-  `line_text` varchar(255) character set latin1 collate latin1_german1_ci NOT NULL default '',
+  `line_text` varchar(255) character set latin1 collate latin1_swedish_ci NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -19091,7 +19092,7 @@ CREATE TABLE `hymn_line_nl` (
   `hymn_no` int(10) NOT NULL default '0',
   `vers_no` int(10) NOT NULL default '0',
   `line_no` int(10) NOT NULL default '0',
-  `line_text` varchar(255) character set latin1 collate latin1_german1_ci NOT NULL default '',
+  `line_text` varchar(255) character set latin1 collate latin1_swedish_ci NOT NULL default '',
   PRIMARY KEY  (`hymn_no`,`vers_no`,`line_no`),
   FULLTEXT KEY `LINE_SEARCH` (`line_text`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

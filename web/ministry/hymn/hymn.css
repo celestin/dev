@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2008 Southesk.com
+ * Copyright (c) 2008,2009 Southesk.com
  *
  * 1962 Hymn Book Search CSS
  *
@@ -8,6 +8,7 @@
  *
  * Who  When         Why
  * CAM  29-Sep-2008  10302 : File created.
+ * CAM  12-Apr-2009  10419 : Matched Hymn Search Type banner to Results border.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 .error {
@@ -52,11 +53,11 @@
   font-weight:bold;
   text-align: right;
 }
-.searchType {
+.hymnSearchType {
   font-size:10px;
   font-weight:bold;
   color:#FFFFFF;
-  background:#DB0954;
+  background:#0A6CDA;
   padding:4px;
   text-align: left;
 }

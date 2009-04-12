@@ -13,6 +13,7 @@
  * CAM  12-Nov-2007  10203 : Removed getObjRef as its in form.js.
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10407 : Added $cfg['Site']['Status'].
+ * CAM  12-Apr-2009  10419 : Removed override database option.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Good Teaching Search Engine";
@@ -25,12 +26,8 @@ $cfg['Site']['Db']['Username'] = "goodteaching";
 $cfg['Site']['Db']['Password'] = "psalm45";
 $cfg['Site']['Db']['Database'] = "goodteaching_org_min";
 
-if (!empty($db)) {
-  $cfg['Site']['Db']['Database'] = $db;
-}
-
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
-  $cfg['Site']['URL'] = "http://localhost/ministry";
+  $cfg['Site']['URL'] = "http://localhost:90/ministry";
   $cfg['Site']['Status'] = "Development";
 }
 

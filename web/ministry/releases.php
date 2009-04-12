@@ -11,10 +11,11 @@
  * CAM  18-May-2008  10267 : File created.
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10412 : Changes to release due to Bugzilla version format.
+ * CAM  12-Apr-2009  10419 : Added more flexibility to tabs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Release History";
-$tabs = false;
+$tabs = "NONE";
 include $root.'tpl/top.php';
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * Top of the page
  *
@@ -13,6 +13,7 @@
  * CAM  12-Nov-2007  10202 : Migrated to goodteaching.org.
  * CAM  12-Nov-2007  10203 : Removed whitespace.
  * CAM  29-Sep-2008  10302 : Added root.
+ * CAM  12-Apr-2009  10419 : Added more flexibility to tabs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 if (empty($root)) {
@@ -96,13 +97,18 @@ if (empty($title)) {
     </table></td></tr>
 
 <?
-    if ($tabs) {
+    if ($tabs == "MINISTRY") {
       $className = $tab . "border";
 ?>
     <tr><td colspan=3><? include $root.'tpl/tabs.php'; ?></td></tr>
 <?
     } else {
-      $className = "mainborder";
+    
+      if ($tabs == "NONE") {
+        $className = "mainborder";
+      } else {
+        $className = "KEYWORDborder";
+      } 
 ?>
     <tr><td colspan=3><img src="<? echo $root; ?>img/f.gif" height=10></td></tr>
 <?

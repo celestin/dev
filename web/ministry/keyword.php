@@ -13,15 +13,16 @@
  * CAM  08-Nov-2007  10200 : Added results_pageno.
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10407 : Added Search Type.
+ * CAM  12-Apr-2009  10419 : Added more flexibility to tabs, and changed session vars to include module name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
 $tab = "KEYWORD";
-$tabs = true;
+$tabs = "MINISTRY";
 include $root.'tpl/top.php';
 
-$keywords = $_SESSION['search_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
-$searchType = $_SESSION['search_type'];  if (!empty($_POST['search_type'])) $searchType = $_POST['search_type'];
+$keywords = $_SESSION['search_min_keywords'];  if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+$searchType = $_SESSION['search_min_type'];  if (!empty($_POST['search_min_type'])) $searchType = $_POST['search_min_type'];
 
 if ($keywords == "NULL") $keywords = "";
 if (empty($searchType)) $searchType = "WORDS";
@@ -31,8 +32,8 @@ $keywords = str_replace("\\'", "", $keywords);
 $keywords = str_replace("\\", "", $keywords);
 $keywords = str_replace("  ", " ", $keywords);
 
-$_SESSION['search_keywords'] = $keywords;
-$_SESSION['search_type'] = $searchType;
+$_SESSION['search_min_keywords'] = $keywords;
+$_SESSION['search_min_type'] = $searchType;
 
 ?>
 <form action="keyword.php" method="post" name=searchText id=searchText>
@@ -56,8 +57,8 @@ $_SESSION['search_type'] = $searchType;
   </td>
   <td><?php echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>
   <td width="100%"><div id=searchType><ul>
-    <li><input <?php if ($searchType == "WORDS") echo "CHECKED"; ?> type=radio id=st_words name=search_type value="WORDS"><label for="st_words">Any Words</label></li>
-    <li><input <?php if ($searchType == "PHRASE") echo "CHECKED"; ?> type=radio id=st_phrase name=search_type value="PHRASE"><label for="st_phrase">Exact Phrase</label></li>
+    <li><input <?php if ($searchType == "WORDS") echo "CHECKED"; ?> type=radio id=st_words name=search_min_type value="WORDS"><label for="st_words">Any Words</label></li>
+    <li><input <?php if ($searchType == "PHRASE") echo "CHECKED"; ?> type=radio id=st_phrase name=search_min_type value="PHRASE"><label for="st_phrase">Exact Phrase</label></li>
   </ul></div></td>
 </tr>
 </table>

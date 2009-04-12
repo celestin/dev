@@ -11,12 +11,12 @@
  * CAM  29-Jul-2007  File created.
  * CAM  12-Nov-2007  10204 : Added calls to Servant checkbox functions.
  * CAM  29-Sep-2008  10302 : Moved to GoodTeaching.org.
+ * CAM  12-Apr-2009  10419 : Added more flexibility to tabs, and use common database.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "1962 Hymn Search";
-$db = "goodteaching_org_other";
 $root = "../";
-$tabs = false;
+$tabs = "HYMN";
 $pageName = "pageHymn";
 $pageCss = "hymn.css";
 include $root.'tpl/top.php';
@@ -66,18 +66,26 @@ $language = NULL;    if (!empty($_POST['language'])) $language = $_POST['languag
   <input type="hidden" name="sitename" value="<?php echo $sitename; ?>" />
   <input type="hidden" name="op" value="search" />
   </form>
+  
+  </td></tr>
+  <tr>
+    <th class="resultsheader">Hymn</th>
+    <td class="resultsheader"><img src="img/f.gif" border=0 width=0></td>
+    <th class="resultsheader">Results</th>
+  </tr>
+  <tr><td colspan=3>
 
-<table border=0 cellspacing=0 cellpadding=4 width="100%">
-<tr><td valign=top width="50%">
-<?
+<tr>
+  <td class="pageresults" valign=top><?
   if (!empty($hymn_no)) {
     show_hymn($hymn_no, $language);
   } else {
     echo "&nbsp;";
   }
 ?>
-</td><td valign=top>
-<?
+  </td>
+  <td class="resultsheader"><img src="<? echo $root; ?>img/f.gif" border=0 width=12></td>
+  <td height="100" class="searchresults" valign=top><?
   $keywordsList = explode(" ", $keywords);
   $authorList = explode(" ", $author);
 
@@ -124,10 +132,12 @@ $language = NULL;    if (!empty($_POST['language'])) $language = $_POST['languag
     author_search($authorList, "Authors like \"$author\" and their hymns");
   } else if ($meter_id != "ALL" || $category_id != "ALL") {
     body_search($keywordsList, "Hymns $metdesc $catdesc");
+  } else {
+    echo "&nbsp;";
   }
 ?>
-</td></tr>
-</table>
+</td>
+</tr>
 <?
 include $root.'tpl/bot.php';
 ?>

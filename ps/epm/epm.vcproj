@@ -777,6 +777,10 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\lex.ht.cpp"
+					>
+				</File>
+				<File
 					RelativePath="lex.idl.cpp"
 					>
 					<FileConfiguration
@@ -995,6 +999,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.ht.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.idl.l"
 					>
 				</File>
@@ -1048,6 +1056,10 @@
 				</File>
 				<File
 					RelativePath="y.cs.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.ht.h"
 					>
 				</File>
 				<File

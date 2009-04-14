@@ -8,17 +8,14 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  04-Nov-06    301 : File created.
- * CAM  28-Nov-07    323 : Rewrote parser with many improvements.
- * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  14-Apr-2009  10426 : Removed old GS comment/string code and replaced with flex states and rule ordering.
+ * CAM  14-Apr-2009  10401 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
 
 #include <stdio.h>
 #include <string.h>
-#include "y.php.h"
+#include "y.ht.h"
 
 #ifdef WIN32
 
@@ -34,14 +31,13 @@ using namespace std;
 
 #endif
 
-int php_lineno=0;
+int html_lineno=0;
 int j_comments=0;
 int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
 
 set<int> sloc;
-set<int> slnat;
 set<int> slhtm;
 set<int> slscr;
 set<int> operators;
@@ -50,10 +46,9 @@ int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC() sloc.insert(php_lineno)
-#define NOTE_SLOC_NAT() NOTE_SLOC(); slnat.insert(php_lineno)
-#define NOTE_SLOC_SCR() NOTE_SLOC(); slscr.insert(php_lineno)
-#define NOTE_SLOC_HTM() NOTE_SLOC(); slhtm.insert(php_lineno)
+#define NOTE_SLOC() sloc.insert(html_lineno)
+#define NOTE_SLOC_SCR() NOTE_SLOC(); slscr.insert(html_lineno)
+#define NOTE_SLOC_HTM() NOTE_SLOC(); slhtm.insert(html_lineno)
 
 void lexclear();
 void store_operand(char* txt);
@@ -63,11 +58,6 @@ void store_operator(int op, int typ);
 
 %p 4096
 %x HTML_COM
-%x SLOC_NAT
-%x SLOC_NAT_ECOM
-%x SLOC_NAT_MCOM
-%x SLOC_NAT_STRS
-%x SLOC_NAT_STRD
 %x SLOC_SCR
 %x SLOC_SCR_ECOM
 
@@ -96,129 +86,17 @@ SPTAB                             [ \t]
 
 "<!--"                            {com_loc++; c_comments++; BEGIN HTML_COM;}
 <HTML_COM>"-->"                   {BEGIN 0;}
-<HTML_COM>\n                      {com_loc++; php_lineno++;}
+<HTML_COM>\n                      {com_loc++; html_lineno++;}
 <HTML_COM>.                       {;}
-
-"<?"                              |
-"<?php"                           {NOTE_SLOC_NAT(); BEGIN SLOC_NAT;}
-<SLOC_NAT>"?>"                    {NOTE_SLOC_NAT(); BEGIN 0;}
-<SLOC_NAT>\n                      {php_lineno++;}
-<SLOC_NAT>\"                      {BEGIN SLOC_NAT_STRD;}
-<SLOC_NAT>\'                      {BEGIN SLOC_NAT_STRS;}
-<SLOC_NAT>"/*"                    {BEGIN SLOC_NAT_MCOM; c_comments++;}
-<SLOC_NAT>"//"                    {BEGIN SLOC_NAT_ECOM; cpp_comments++;}
-<SLOC_NAT>";"                     {nsemi++;}
-
-<SLOC_NAT>"{"                     |
-<SLOC_NAT>"}"                     |
-<SLOC_NAT>"("                     |
-<SLOC_NAT>")"                     |
-<SLOC_NAT>"["                     |
-<SLOC_NAT>"]"                     {NOTE_SLOC_NAT();}
-
-<SLOC_NAT>"__CLASS__"             {store_operator(PHP__CLASS,1);}
-<SLOC_NAT>"__FILE__"              {store_operator(PHP__FILE,1);}
-<SLOC_NAT>"__FUNCTION__"          {store_operator(PHP__FUNCTION,1);}
-<SLOC_NAT>"__LINE__"              {store_operator(PHP__LINE,1);}
-<SLOC_NAT>"__METHOD__"            {store_operator(PHP__METHOD,1);}
-<SLOC_NAT>"abstract"              {store_operator(PHP_ABSTRACT,1);}
-<SLOC_NAT>"and"                   {store_operator(PHP_AND,1);}
-<SLOC_NAT>"array"                 {store_operator(PHP_ARRAY,1);}
-<SLOC_NAT>"as"                    {store_operator(PHP_AS,1);}
-<SLOC_NAT>"break"                 {store_operator(PHP_BREAK,1);}
-<SLOC_NAT>"case"                  {store_operator(PHP_CASE,1);}
-<SLOC_NAT>"catch"                 {store_operator(PHP_CATCH,1);}
-<SLOC_NAT>"cfunction"             {store_operator(PHP_CFUNCTION,1);}
-<SLOC_NAT>"class"                 {store_operator(PHP_CLASS,1);}
-<SLOC_NAT>"clone"                 {store_operator(PHP_CLONE,1);}
-<SLOC_NAT>"const"                 {store_operator(PHP_CONST,1);}
-<SLOC_NAT>"continue"              {store_operator(PHP_CONTINUE,1);}
-<SLOC_NAT>"declare"               {store_operator(PHP_DECLARE,1);}
-<SLOC_NAT>"default"               {store_operator(PHP_DEFAULT,1);}
-<SLOC_NAT>"die"                   {store_operator(PHP_DIE,1);}
-<SLOC_NAT>"do"                    {store_operator(PHP_DO,1);}
-<SLOC_NAT>"echo"                  {store_operator(PHP_ECHO,1);}
-<SLOC_NAT>"else"                  {store_operator(PHP_ELSE,1);}
-<SLOC_NAT>"elseif"                {store_operator(PHP_ELSEIF,1);}
-<SLOC_NAT>"empty"                 {store_operator(PHP_EMPTY,1);}
-<SLOC_NAT>"enddeclare"            {store_operator(PHP_ENDDECLARE,1);}
-<SLOC_NAT>"endfor"                {store_operator(PHP_ENDFOR,1);}
-<SLOC_NAT>"endforeach"            {store_operator(PHP_ENDFOREACH,1);}
-<SLOC_NAT>"endif"                 {store_operator(PHP_ENDIF,1);}
-<SLOC_NAT>"endswitch"             {store_operator(PHP_ENDSWITCH,1);}
-<SLOC_NAT>"endwhile"              {store_operator(PHP_ENDWHILE,1);}
-<SLOC_NAT>"eval"                  {store_operator(PHP_EVAL,1);}
-<SLOC_NAT>"exception"             {store_operator(PHP_EXCEPTION,1);}
-<SLOC_NAT>"exit"                  {store_operator(PHP_EXIT,1);}
-<SLOC_NAT>"extends"               {store_operator(PHP_EXTENDS,1);}
-<SLOC_NAT>"final"                 {store_operator(PHP_FINAL,1);}
-<SLOC_NAT>"for"                   {store_operator(PHP_FOR,1);}
-<SLOC_NAT>"foreach"               {store_operator(PHP_FOREACH,1);}
-<SLOC_NAT>"function"              {store_operator(PHP_FUNCTION,1);}
-<SLOC_NAT>"global"                {store_operator(PHP_GLOBAL,1);}
-<SLOC_NAT>"if"                    {store_operator(PHP_IF,1);}
-<SLOC_NAT>"implements"            {store_operator(PHP_IMPLEMENTS,1);}
-<SLOC_NAT>"include"               {store_operator(PHP_INCLUDE,1);}
-<SLOC_NAT>"include_once"          {store_operator(PHP_INCLUDE_ONCE,1);}
-<SLOC_NAT>"interface"             {store_operator(PHP_INTERFACE,1);}
-<SLOC_NAT>"isset"                 {store_operator(PHP_ISSET,1);}
-<SLOC_NAT>"list"                  {store_operator(PHP_LIST,1);}
-<SLOC_NAT>"new"                   {store_operator(PHP_NEW,1);}
-<SLOC_NAT>"old_function"          {store_operator(PHP_OLD_FUNCTION,1);}
-<SLOC_NAT>"or"                    {store_operator(PHP_OR,1);}
-<SLOC_NAT>"php_user_filter"       {store_operator(PHP_PHP_USER_FILTER,1);}
-<SLOC_NAT>"print"                 {store_operator(PHP_PRINT,1);}
-<SLOC_NAT>"private"               {store_operator(PHP_PRIVATE,1);}
-<SLOC_NAT>"protected"             {store_operator(PHP_PROTECTED,1);}
-<SLOC_NAT>"public"                {store_operator(PHP_PUBLIC,1);}
-<SLOC_NAT>"require"               {store_operator(PHP_REQUIRE,1);}
-<SLOC_NAT>"require_once"          {store_operator(PHP_REQUIRE_ONCE,1);}
-<SLOC_NAT>"return"                {store_operator(PHP_RETURN,1);}
-<SLOC_NAT>"static"                {store_operator(PHP_STATIC,1);}
-<SLOC_NAT>"switch"                {store_operator(PHP_SWITCH,1);}
-<SLOC_NAT>"throw"                 {store_operator(PHP_THROW,1);}
-<SLOC_NAT>"try"                   {store_operator(PHP_TRY,1);}
-<SLOC_NAT>"unset"                 {store_operator(PHP_UNSET,1);}
-<SLOC_NAT>"use"                   {store_operator(PHP_USE,1);}
-<SLOC_NAT>"var"                   {store_operator(PHP_VAR,1);}
-<SLOC_NAT>"while"                 {store_operator(PHP_WHILE,1);}
-<SLOC_NAT>"xor"                   {store_operator(PHP_XOR,1);}
-
-<SLOC_NAT>{LETTER}{ALNUM}*                                            |
-<SLOC_NAT>[1-9][0-9]*{INT_SUFFIX}?                                    |
-<SLOC_NAT>[0][0-7]*{INT_SUFFIX}?                                      |
-<SLOC_NAT>[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
-<SLOC_NAT>[0][xX]                                                     |
-<SLOC_NAT>{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
-<SLOC_NAT>{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
-<SLOC_NAT>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
-<SLOC_NAT>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
-<SLOC_NAT>{DIGITS}"."?[eE]{SIGN}?                                     |
-<SLOC_NAT>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_NAT();}
-
-<SLOC_NAT>.                       {;}
-
-<SLOC_NAT_STRD>\n                 {php_lineno++; /* Double-quoted string literals */}
-<SLOC_NAT_STRD>\"                 {BEGIN SLOC_NAT;}
-<SLOC_NAT_STRD>.                  {NOTE_SLOC_NAT();}
-
-<SLOC_NAT_STRS>\n                 {php_lineno++; /* Single-quoted string literals */}
-<SLOC_NAT_STRS>"'"                {BEGIN SLOC_NAT;}
-<SLOC_NAT_STRS>.                  {NOTE_SLOC_NAT();}
-
-<SLOC_NAT_MCOM>\n                 {php_lineno++; com_loc++; /* Multi Line Comments within Native PHP */}
-<SLOC_NAT_MCOM>"*/"               {BEGIN SLOC_NAT;}
-<SLOC_NAT_MCOM>.                  {;}
-
-<SLOC_NAT_ECOM>\n                 {php_lineno++; com_loc++; BEGIN SLOC_NAT;}
-<SLOC_NAT_ECOM>.                  {/* To-end-of-line Comments within Native PHP */}
 
 "<script"                         {NOTE_SLOC_SCR(); BEGIN SLOC_SCR; /* Script tags */}
 <SLOC_SCR>"/>"                    |
 <SLOC_SCR>"</script>"             {NOTE_SLOC_SCR(); BEGIN 0;}
 <SLOC_SCR>"//"                    {BEGIN SLOC_SCR_ECOM; cpp_comments++;}
-<SLOC_SCR>\n                      {php_lineno++;}
+<SLOC_SCR>\n                      {html_lineno++;}
 
+<SLOC_SCR>"<"                     |
+<SLOC_SCR>">"                     |
 <SLOC_SCR>"{"                     |
 <SLOC_SCR>"}"                     |
 <SLOC_SCR>"("                     |
@@ -241,9 +119,9 @@ SPTAB                             [ \t]
 <SLOC_SCR>.                       {;}
 
 <SLOC_SCR_ECOM>.                  {/* To-end-of-line Comments within Script */}
-<SLOC_SCR_ECOM>\n                 {php_lineno++; com_loc++; BEGIN SLOC_SCR;}
+<SLOC_SCR_ECOM>\n                 {html_lineno++; com_loc++; BEGIN SLOC_SCR;}
 
-\n                                {php_lineno++;}
+\n                                {html_lineno++;}
 
 "ALIGN"                           {store_operator(HTM_ALIGN,3);}
 "ALT"                             {store_operator(HTM_ALT,3);}
@@ -355,12 +233,11 @@ void lexclear() {
   noperands=0;
   j_comments=c_comments=cpp_comments=com_loc=0;
   nsemi=noperators=0;
-  php_lineno=1;
+  html_lineno=1;
 
   sloc.clear();
   operators.clear();
 
-  slnat.clear();
   slhtm.clear();
   slscr.clear();
 
@@ -389,14 +266,11 @@ void store_operator(int op, int typ) {
   NOTE_SLOC();
 
   switch (typ) {
-    case 1:
-      slnat.insert(php_lineno);
-      break;
     case 3:
-      slhtm.insert(php_lineno);
+      slhtm.insert(html_lineno);
       break;
     case 4:
-      slscr.insert(php_lineno);
+      slscr.insert(html_lineno);
       break;
   }
 }

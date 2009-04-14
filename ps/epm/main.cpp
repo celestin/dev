@@ -68,6 +68,8 @@
  * CAM  24-Apr-08   359 : Version 1.16.003.
  * CAM  26-Apr-08   360 : Version 1.16.004.
  * CAM  30-May-08   365 : Only start the MySQL process if required.  Version 1.16.005.
+ * CAM  14-Apr-2009  10400 : Added JavaScript language support.
+ * CAM  14-Apr-2009  10401 : Added HTML language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -104,7 +106,7 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml, *yyin_jt;
+            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -119,6 +121,7 @@ extern void lexclear_idl();
 extern void lexclear_vhdl();
 extern void lexclear_xml();
 extern void lexclear_jt();
+extern void lexclear_ht();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -133,6 +136,7 @@ extern int yylex_idl();
 extern int yylex_vhdl();
 extern int yylex_xml();
 extern int yylex_jt();
+extern int yylex_ht();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -194,6 +198,11 @@ extern int c_comments_jt,cpp_comments_jt,com_loc_jt,nsemi_jt,noperands_jt,nopera
 extern set<int> sloc_jt,operators_jt;
 extern set<int> sltag_jt;
 extern vector<char*> operands_jt[255];
+
+extern int c_comments_ht,cpp_comments_ht,com_loc_ht,nsemi_ht,noperands_ht,noperators_ht;
+extern set<int> sloc_ht,operators_ht;
+extern set<int> slnat_ht,slhtm_ht,slscr_ht;
+extern vector<char*> operands_ht[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -488,6 +497,24 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_jt;
     com_loc = com_loc_jt;
     break;
+
+    case LANG_HTML:
+    sloc = sloc_ht.size();                     // Source Lines of Code
+    met.set(MET(SLOC_HTM), slhtm_ht.size());   // Source Lines containing HTML
+    met.set(MET(SLOC_SCR), slscr_ht.size());   // Source Lines containing client-side script
+
+    met.set(MET(NSC), nsemi_ht);               // Halstead
+    met.set(MET(N1), noperators_ht);
+    met.set(MET(N1S), operators_ht.size());
+    met.set(MET(N2), noperands_ht);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_ht[i].size());
+    }
+
+    c_com = c_comments_ht;                   // Comments
+    cpp_com = cpp_comments_ht;
+    com_loc = com_loc_ht;
+    break;
   }
 
   met.set(MET(SLOC), sloc);
@@ -534,6 +561,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_ASP:
     case LANG_JSP:
     case LANG_PHP:
+    case LANG_HTML:
     case LANG_XML:
     d = new DiffASP(filename2.c_str(), filename.c_str());
     break;
@@ -958,6 +986,11 @@ bool analyse(string &filename) {
       yyin_jt = src;
       lexclear_jt();
       yylex_jt();
+      break;
+    case LANG_HTML:
+      yyin_ht = src;
+      lexclear_ht();
+      yylex_ht();
       break;
   }
 

@@ -73,11 +73,16 @@ rem    echo Generating parser... XML
 rem    flex -i -olex.xml.tmp -8 -f lexer.xml.l
 rem    sed -f sed/xml.sed <lex.xml.tmp >lex.xml.cpp
 rem    del lex.xml.tmp
+rem    
+rem    echo Generating parser... JavaScript
+rem    flex -olex.jt.tmp -8 -f lexer.jt.l
+rem    sed -f sed/jt.sed <lex.jt.tmp >lex.jt.cpp
+rem    del lex.jt.tmp
 
-echo Generating parser... JavaScript
-flex -olex.jt.tmp -8 -f lexer.jt.l
-sed -f sed/jt.sed <lex.jt.tmp >lex.jt.cpp
-del lex.jt.tmp
+echo Generating parser... HTML
+flex -olex.ht.tmp -i -8 -f lexer.ht.l
+sed -f sed/ht.sed <lex.ht.tmp >lex.ht.cpp
+del lex.ht.tmp
 
 
 echo.

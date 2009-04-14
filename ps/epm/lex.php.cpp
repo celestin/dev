@@ -28677,7 +28677,7 @@ case 130:
 case 131:
 YY_RULE_SETUP
 #line 239 "lexer.php.l"
-{store_operand_php(_strdup(yytext_php));NOTE_SLOC_SCR();printf("%1", yytext_php);}
+{store_operand_php(_strdup(yytext_php));NOTE_SLOC_SCR();}
 	YY_BREAK
 case 132:
 YY_RULE_SETUP

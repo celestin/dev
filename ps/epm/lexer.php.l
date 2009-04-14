@@ -1,24 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * PHP Parser
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  04-Nov-06   301 : File created.
- * CAM  28-Nov-07   323 : Rewrote parser with many improvements.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  04-Nov-06    301 : File created.
+ * CAM  28-Nov-07    323 : Rewrote parser with many improvements.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  14-Apr-2009  10426 : Removed old GS comment/string code and replaced with flex states and rule ordering.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
 
 %{
 
@@ -58,6 +52,8 @@ int noperands=0;        // Total number of operands
 
 #define NOTE_SLOC() sloc.insert(php_lineno)
 #define NOTE_SLOC_NAT() NOTE_SLOC(); slnat.insert(php_lineno)
+#define NOTE_SLOC_SCR() NOTE_SLOC(); slscr.insert(php_lineno)
+#define NOTE_SLOC_HTM() NOTE_SLOC(); slhtm.insert(php_lineno)
 
 void lexclear();
 void store_operand(char* txt);
@@ -74,26 +70,51 @@ void store_operator(int op, int typ);
 %x SLOC_NAT_STRD
 %x SLOC_SCR
 %x SLOC_SCR_ECOM
-%x STR_LIT
+
+NL                                "\n"
+NOTNL                             .
+ANY                               ({NOTNL}|{NL})
+BACKSL                            "\\"
+BOL                               ^
+LETTER                            [A-Za-z_]
+ALNUM                             [A-Za-z_0-9]
+DIGIT                             [0-9]
+HEXDIGIT                          [0-9A-Fa-f]
+DIGITS                            ({DIGIT}+)
+EXP                               [Ee][+-]?DIGITS
+HEXDIGITS                         ({HEXDIGIT}+)
+SIGN                              ("+"|"-")
+ELL_SUFFIX                        [lL]([lL]?)
+INT_SUFFIX                        ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
+FLOAT_SUFFIX                      [flFL]
+STRCHAR                           [^\"\n\\]
+ESCAPE                            ({BACKSL}{ANY})
+QUOTE                             [\"]
+SPTAB                             [ \t]
 
 %%
 
-^[ \t\v\f]*                       {;}
-
 "<!--"                            {com_loc++; c_comments++; BEGIN HTML_COM;}
 <HTML_COM>"-->"                   {BEGIN 0;}
-<HTML_COM>"\n"                    {com_loc++; php_lineno++;}
+<HTML_COM>\n                      {com_loc++; php_lineno++;}
 <HTML_COM>.                       {;}
 
 "<?"                              |
-"<?php"                           {NOTE_SLOC_NAT(); BEGIN SLOC_NAT; }
+"<?php"                           {NOTE_SLOC_NAT(); BEGIN SLOC_NAT;}
 <SLOC_NAT>"?>"                    {NOTE_SLOC_NAT(); BEGIN 0;}
-<SLOC_NAT>"\n"                    {NOTE_SLOC_NAT(); php_lineno++;}
+<SLOC_NAT>\n                      {php_lineno++;}
 <SLOC_NAT>\"                      {BEGIN SLOC_NAT_STRD;}
-<SLOC_NAT>"'"                     {BEGIN SLOC_NAT_STRS;}
-<SLOC_NAT>"/*"                    {BEGIN SLOC_NAT_MCOM;}
-<SLOC_NAT>"//"                    {BEGIN SLOC_NAT_ECOM;}
+<SLOC_NAT>\'                      {BEGIN SLOC_NAT_STRS;}
+<SLOC_NAT>"/*"                    {BEGIN SLOC_NAT_MCOM; c_comments++;}
+<SLOC_NAT>"//"                    {BEGIN SLOC_NAT_ECOM; cpp_comments++;}
 <SLOC_NAT>";"                     {nsemi++;}
+
+<SLOC_NAT>"{"                     |
+<SLOC_NAT>"}"                     |
+<SLOC_NAT>"("                     |
+<SLOC_NAT>")"                     |
+<SLOC_NAT>"["                     |
+<SLOC_NAT>"]"                     {NOTE_SLOC_NAT();}
 
 <SLOC_NAT>"__CLASS__"             {store_operator(PHP__CLASS,1);}
 <SLOC_NAT>"__FILE__"              {store_operator(PHP__FILE,1);}
@@ -162,40 +183,67 @@ void store_operator(int op, int typ);
 <SLOC_NAT>"var"                   {store_operator(PHP_VAR,1);}
 <SLOC_NAT>"while"                 {store_operator(PHP_WHILE,1);}
 <SLOC_NAT>"xor"                   {store_operator(PHP_XOR,1);}
-<SLOC_NAT>{L}({L}|{D})*           |
-<SLOC_NAT>0[xX]{H}+{IS}?          |
-<SLOC_NAT>0{D}+{IS}?              |
-<SLOC_NAT>{D}+{IS}?               |
-<SLOC_NAT>'(\\.|[^\\'])+'         |
-<SLOC_NAT>{D}+{E}{FS}?            |
-<SLOC_NAT>{D}*"."{D}+({E})?{FS}?  |
-<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); store_operand(_strdup(yytext));}
-<SLOC_NAT>.                       {NOTE_SLOC_NAT();}
 
-<SLOC_NAT_STRD>"\n"               {php_lineno++; /* Double-quoted string literals */}
+<SLOC_NAT>{LETTER}{ALNUM}*                                            |
+<SLOC_NAT>[1-9][0-9]*{INT_SUFFIX}?                                    |
+<SLOC_NAT>[0][0-7]*{INT_SUFFIX}?                                      |
+<SLOC_NAT>[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+<SLOC_NAT>[0][xX]                                                     |
+<SLOC_NAT>{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+<SLOC_NAT>{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+<SLOC_NAT>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+<SLOC_NAT>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+<SLOC_NAT>{DIGITS}"."?[eE]{SIGN}?                                     |
+<SLOC_NAT>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_NAT();}
+
+<SLOC_NAT>.                       {;}
+
+<SLOC_NAT_STRD>\n                 {php_lineno++; /* Double-quoted string literals */}
 <SLOC_NAT_STRD>\"                 {BEGIN SLOC_NAT;}
 <SLOC_NAT_STRD>.                  {NOTE_SLOC_NAT();}
 
-<SLOC_NAT_STRS>"\n"               {php_lineno++; /* Single-quoted string literals */}
+<SLOC_NAT_STRS>\n                 {php_lineno++; /* Single-quoted string literals */}
 <SLOC_NAT_STRS>"'"                {BEGIN SLOC_NAT;}
 <SLOC_NAT_STRS>.                  {NOTE_SLOC_NAT();}
 
-<SLOC_NAT_MCOM>"\n"               {php_lineno++; com_loc++; /* Multi Line Comments within Native PHP */}
+<SLOC_NAT_MCOM>\n                 {php_lineno++; com_loc++; /* Multi Line Comments within Native PHP */}
+<SLOC_NAT_MCOM>"*/"               {BEGIN SLOC_NAT;}
 <SLOC_NAT_MCOM>.                  {;}
-<SLOC_NAT_MCOM>"*/"               {c_comments++; com_loc++; BEGIN SLOC_NAT;}
 
+<SLOC_NAT_ECOM>\n                 {php_lineno++; com_loc++; BEGIN SLOC_NAT;}
 <SLOC_NAT_ECOM>.                  {/* To-end-of-line Comments within Native PHP */}
-<SLOC_NAT_ECOM>"\n"               {php_lineno++; com_loc++; cpp_comments++; BEGIN SLOC_NAT;}
 
-"<script"                         {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN SLOC_SCR; /* Script tags */}
+"<script"                         {NOTE_SLOC_SCR(); BEGIN SLOC_SCR; /* Script tags */}
 <SLOC_SCR>"/>"                    |
-<SLOC_SCR>"</script>"             {NOTE_SLOC(); slscr.insert(php_lineno); BEGIN 0;}
-<SLOC_SCR>"//"                    {BEGIN SLOC_SCR_ECOM;}
-<SLOC_SCR>"\n"                    {NOTE_SLOC(); slscr.insert(php_lineno); php_lineno++;}
-<SLOC_SCR>.                       {NOTE_SLOC(); slscr.insert(php_lineno); }
+<SLOC_SCR>"</script>"             {NOTE_SLOC_SCR(); BEGIN 0;}
+<SLOC_SCR>"//"                    {BEGIN SLOC_SCR_ECOM; cpp_comments++;}
+<SLOC_SCR>\n                      {php_lineno++;}
+
+<SLOC_SCR>"{"                     |
+<SLOC_SCR>"}"                     |
+<SLOC_SCR>"("                     |
+<SLOC_SCR>")"                     |
+<SLOC_SCR>"["                     |
+<SLOC_SCR>"]"                     {NOTE_SLOC_SCR();}
+
+<SLOC_SCR>{LETTER}{ALNUM}*                                            |
+<SLOC_SCR>[1-9][0-9]*{INT_SUFFIX}?                                    |
+<SLOC_SCR>[0][0-7]*{INT_SUFFIX}?                                      |
+<SLOC_SCR>[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+<SLOC_SCR>[0][xX]                                                     |
+<SLOC_SCR>{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+<SLOC_SCR>{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+<SLOC_SCR>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+<SLOC_SCR>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+<SLOC_SCR>{DIGITS}"."?[eE]{SIGN}?                                     |
+<SLOC_SCR>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_SCR();printf("%1", yytext);}
+
+<SLOC_SCR>.                       {;}
 
 <SLOC_SCR_ECOM>.                  {/* To-end-of-line Comments within Script */}
-<SLOC_SCR_ECOM>"\n"               {php_lineno++; com_loc++; cpp_comments++; BEGIN SLOC_SCR;}
+<SLOC_SCR_ECOM>\n                 {php_lineno++; com_loc++; BEGIN SLOC_SCR;}
+
+\n                                {php_lineno++;}
 
 "ALIGN"                           {store_operator(HTM_ALIGN,3);}
 "ALT"                             {store_operator(HTM_ALT,3);}
@@ -296,7 +344,6 @@ void store_operator(int op, int typ);
 "WIDTH"                           {store_operator(HTM_WIDTH,3);}
 
 [ \t\v\f]                         {;}
-"\n"                              {php_lineno++;}
 .                                 { /* ignore bad characters */ }
 %%
 int yywrap() {

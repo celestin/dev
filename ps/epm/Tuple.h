@@ -9,7 +9,7 @@
  *
  * Who  When       Why
  * CAM  06-Jan-06  168 : File created.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08  358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef TUPLE_H

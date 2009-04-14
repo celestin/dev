@@ -1,24 +1,25 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Language Utility Class
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  03-May-05    50 : File created.
  * CAM  09-May-05    49 : Added more languages.
  * CAM  02-Aug-05    76 : Added ADA.
- * CAM  13-Aug-05   114 : Added Perl.
- * CAM  18-Jul-06   272 : Added hasLogicalLines.
- * CAM  19-Sep-06   117 : Added ASP.
- * CAM  04-Nov-06   301 : Added PHP.
- * CAM  28-Jun-07   314 : Added Ericsson IDL.
- * CAM  26-Jul-07   316 : Added VHDL.
- * CAM  04-Dec-07   324 : Added JSP/XML (#325).
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  13-Aug-05    114 : Added Perl.
+ * CAM  18-Jul-06    272 : Added hasLogicalLines.
+ * CAM  19-Sep-06    117 : Added ASP.
+ * CAM  04-Nov-06    301 : Added PHP.
+ * CAM  28-Jun-07    314 : Added Ericsson IDL.
+ * CAM  26-Jul-07    316 : Added VHDL.
+ * CAM  04-Dec-07    324 : Added JSP/XML (#325).
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  14-Apr-2009  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -30,7 +31,8 @@ enum Langs {
   LANG_OTHER, LANG_ADA, LANG_ASP, LANG_CPP, LANG_CS, LANG_IDL,
   LANG_JAVA, LANG_JSP,
   LANG_S1, LANG_PERL, LANG_PHP,
-  LANG_VB, LANG_VHDL, LANG_XML
+  LANG_VB, LANG_VHDL, LANG_XML,
+  LANG_ASM, LANG_HTML, LANG_JT, LANG_PYTHON
 };
 
 namespace metrics
@@ -73,6 +75,14 @@ namespace metrics
         theLang = LANG_VHDL;
       } else if (!_stricmp(lang.c_str(), "XM")) {
         theLang = LANG_XML;
+      } else if (!_stricmp(lang.c_str(), "AY")) {
+        theLang = LANG_ASM;
+      } else if (!_stricmp(lang.c_str(), "HT")) {
+        theLang = LANG_HTML;
+      } else if (!_stricmp(lang.c_str(), "JT")) {
+        theLang = LANG_JT;
+      } else if (!_stricmp(lang.c_str(), "PY")) {
+        theLang = LANG_PYTHON;
       }
 
       return theLang;
@@ -110,6 +120,14 @@ namespace metrics
         return "VHDL";
         case LANG_XML:
         return "XML";
+        case LANG_ASM:
+        return "TI Assembly";
+        case LANG_HTML:
+        return "HTML";
+        case LANG_JT:
+        return "JavaScript";
+        case LANG_PYTHON:
+        return "Python";
       }
 
       return "Other";
@@ -127,12 +145,16 @@ namespace metrics
         case LANG_PHP:
         case LANG_VHDL:
         case LANG_XML:
+        case LANG_JT:
           return true;
           break;
 
         case LANG_PERL:
         case LANG_S1:
         case LANG_VB:
+        case LANG_ASM:
+        case LANG_HTML:
+        case LANG_PYTHON:
           return false;
           break;
       }

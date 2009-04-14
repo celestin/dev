@@ -22,6 +22,7 @@
  * CAM  26-Jul-07   316 : Added VHDL.
  * CAM  04-Dec-07   324 : Added JSP/XML (#325).
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  26-Mar-09  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -41,6 +42,10 @@ bool bLangID = false;
 bool bLangVH = false;
 bool bLangJS = false;
 bool bLangXM = false;
+bool bLangAY = false;
+bool bLangHT = false;
+bool bLangJT = false;
+bool bLangPY = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -84,41 +89,34 @@ bool validLicense() {
   bLangVH = !((lpExitCode & EPM_VH) == 0);
   bLangJS = !((lpExitCode & EPM_JS) == 0);
   bLangXM = !((lpExitCode & EPM_XM) == 0);
+  bLangAY = !((lpExitCode & EPM_AY) == 0);
+  bLangHT = !((lpExitCode & EPM_HT) == 0);
+  bLangJT = !((lpExitCode & EPM_JT) == 0);
+  bLangPY = !((lpExitCode & EPM_PY) == 0);
 
-  /**
-  if (bLangCS) cout << "bLangCS" << endl;
-  if (bLangCP) cout << "bLangCP" << endl;
-  if (bLangJV) cout << "bLangJV" << endl;
-  if (bLangVB) cout << "bLangVB" << endl;
-  if (bLangS1) cout << "bLangS1" << endl;
-  if (bLangAD) cout << "bLangAD" << endl;
-  if (bLangPL) cout << "bLangPL" << endl;
-  if (bLangAS) cout << "bLangAS" << endl;
-  if (bLangPH) cout << "bLangPH" << endl;
-  if (bLangID) cout << "bLangID" << endl;
-  if (bLangVH) cout << "bLangVH" << endl;
-  if (bLangJS) cout << "bLangJS" << endl;
-  if (bLangXM) cout << "bLangXM" << endl;
-  **/
-
-  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||bLangID||bLangVH||bLangJS||bLangXM);
+  return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||
+	  bLangID||bLangVH||bLangJS||bLangXM||bLangAY||bLangHT||bLangJT||bLangPY);
 }
 
 bool validLanguage(Langs l) {
   switch (l) {
-    case LANG_CPP:  return bLangCP;
-    case LANG_CS:   return bLangCS;
-    case LANG_JAVA: return bLangJV;
-    case LANG_VB:   return bLangVB;
-    case LANG_S1:   return bLangS1;
-    case LANG_ADA:  return bLangAD;
-    case LANG_PERL: return bLangPL;
-    case LANG_ASP:  return bLangAS;
-    case LANG_PHP:  return bLangPH;
-    case LANG_IDL:  return bLangID;
-    case LANG_VHDL: return bLangVH;
-    case LANG_JSP:  return bLangJS;
-    case LANG_XML:  return bLangXM;
+    case LANG_CPP:  	return bLangCP;
+    case LANG_CS:   	return bLangCS;
+    case LANG_JAVA: 	return bLangJV;
+    case LANG_VB:   	return bLangVB;
+    case LANG_S1:   	return bLangS1;
+    case LANG_ADA:  	return bLangAD;
+    case LANG_PERL: 	return bLangPL;
+    case LANG_ASP:  	return bLangAS;
+    case LANG_PHP:  	return bLangPH;
+    case LANG_IDL:  	return bLangID;
+    case LANG_VHDL: 	return bLangVH;
+    case LANG_JSP:  	return bLangJS;
+    case LANG_XML:  	return bLangXM;
+	  case LANG_ASM:  	return bLangAY;
+	  case LANG_HTML:		return bLangHT;
+	  case LANG_JT:  		return bLangJT;
+	  case LANG_PYTHON:	return bLangPY;
   }
 
   return false;

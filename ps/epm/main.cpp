@@ -104,7 +104,7 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml;
+            *yyin_vhdl, *yyin_xml, *yyin_jt;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -118,6 +118,7 @@ extern void lexclear_php();
 extern void lexclear_idl();
 extern void lexclear_vhdl();
 extern void lexclear_xml();
+extern void lexclear_jt();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -131,6 +132,7 @@ extern int yylex_php();
 extern int yylex_idl();
 extern int yylex_vhdl();
 extern int yylex_xml();
+extern int yylex_jt();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -187,6 +189,11 @@ extern int c_comments_xml,cpp_comments_xml,com_loc_xml,nsemi_xml,noperands_xml,n
 extern set<int> sloc_xml,operators_xml;
 extern set<int> sltag_xml;
 extern vector<char*> operands_xml[255];
+
+extern int c_comments_jt,cpp_comments_jt,com_loc_jt,nsemi_jt,noperands_jt,noperators_jt;
+extern set<int> sloc_jt,operators_jt;
+extern set<int> sltag_jt;
+extern vector<char*> operands_jt[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -466,6 +473,21 @@ void setMetrics(int sfid, string filename) {
     com_loc = com_loc_xml;
     break;
 
+    case LANG_JT:
+    sloc = sloc_jt.size();                     // Source Lines of Code
+
+    met.set(MET(NSC), nsemi_jt);               // Halstead
+    met.set(MET(N1), noperators_jt);
+    met.set(MET(N1S), operators_jt.size());
+    met.set(MET(N2), noperands_jt);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_jt[i].size());
+    }
+
+    c_com = c_comments_jt;                   // Comments
+    cpp_com = cpp_comments_jt;
+    com_loc = com_loc_jt;
+    break;
   }
 
   met.set(MET(SLOC), sloc);
@@ -487,6 +509,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_CPP:
     case LANG_CS:
     case LANG_JAVA:
+    case LANG_JT:
     case LANG_IDL:
     d = new DiffCpp(filename2.c_str(), filename.c_str());
     break;
@@ -931,6 +954,11 @@ bool analyse(string &filename) {
       lexclear_xml();
       yylex_xml();
       break;
+    case LANG_JT:
+      yyin_jt = src;
+      lexclear_jt();
+      yylex_jt();
+      break;
   }
 
   fclose(src);
@@ -942,8 +970,8 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.005\n"
-       << "Copyright (c) 2004,2008 Powersoftware.com.  All rights reserved.\n\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.005.ab\n"
+       << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
   char szAppPath[MAX_PATH];

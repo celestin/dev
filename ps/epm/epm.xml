@@ -92,4 +92,26 @@
       <ext name="Style Sheet Translation" value="xslt" />
     </filetype>
   </lang>
+  <lang name="Assembler" parser="AY">
+    <filetype name="Source">
+      <ext name="Assembly" value="asm" />
+    </filetype>
+  </lang>
+  <lang name="JavaScript" parser="JT">
+    <filetype name="Source">
+      <ext name="Script" value="js" />
+    </filetype>
+  </lang>
+  <lang name="HTML" parser="HT">
+    <filetype name="Source">
+      <ext name="Html" value="htm" />
+      <ext name="Html" value="html" />
+      <ext name="Html" value="htp" />
+    </filetype>
+  </lang>
+  <lang name="Python" parser="PY">
+    <filetype name="Source">
+      <ext name="Script" value="py" />
+    </filetype>
+  </lang>
 </epm>

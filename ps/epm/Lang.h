@@ -20,6 +20,7 @@
  * CAM  04-Dec-07    324 : Added JSP/XML (#325).
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  14-Apr-2009  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
+ * CAM  14-Apr-2009  10403 : Python and XML do not have logical lines.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -144,17 +145,17 @@ namespace metrics
         case LANG_JSP:
         case LANG_PHP:
         case LANG_VHDL:
-        case LANG_XML:
         case LANG_JT:
           return true;
           break;
 
         case LANG_PERL:
+        case LANG_PYTHON:
         case LANG_S1:
         case LANG_VB:
         case LANG_ASM:
         case LANG_HTML:
-        case LANG_PYTHON:
+        case LANG_XML:
           return false;
           break;
       }

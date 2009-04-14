@@ -11,6 +11,7 @@
  * CAM  03-Aug-05    114 : File created.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  07-Apr-2009  10415 : Rewrote parser to handle all Perl eventualities correctly.
+ * CAM  14-Apr-2009  10416 : Corrected multi-line comments (in line with lexer.cs.l).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -88,37 +89,37 @@ void store_operand(char* txt) {
 
 %}
 
-%x PODTAG 
+%x PODTAG
 
 NL            "\n"
-NOTNL         .                					
-ANY           ({NOTNL}|{NL})   					
-BACKSL        "\\"             					
-BOL           ^                					
-LETTER        [A-Za-z_]  
-ALNUM         [A-Za-z_0-9]     					
-DIGIT         [0-9]            					
+NOTNL         .
+ANY           ({NOTNL}|{NL})
+BACKSL        "\\"
+BOL           ^
+LETTER        [A-Za-z_]
+ALNUM         [A-Za-z_0-9]
+DIGIT         [0-9]
 HEXDIGIT      [0-9A-Fa-f]
-DIGITS        ({DIGIT}+)       					
+DIGITS        ({DIGIT}+)
 EXP           [Ee][+-]?DIGITS
-HEXDIGITS     ({HEXDIGIT}+)    					
-SIGN          ("+"|"-")        					
-ELL_SUFFIX    [lL]([lL]?)      					
+HEXDIGITS     ({HEXDIGIT}+)
+SIGN          ("+"|"-")
+ELL_SUFFIX    [lL]([lL]?)
 INT_SUFFIX    ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
-FLOAT_SUFFIX  [flFL]           					
-STRCHAR       [^\"\n\\]        					
-ESCAPE        ({BACKSL}{ANY})  					
-QUOTE         [\"]             					
-SPTAB         [ \t]            					
+FLOAT_SUFFIX  [flFL]
+STRCHAR       [^\"\n\\]
+ESCAPE        ({BACKSL}{ANY})
+QUOTE         [\"]
+SPTAB         [ \t]
 
 %%
 
-\n                      {perl_lineno++;}
+^=                      {com_loc++; c_comments++; BEGIN PODTAG;}
+<PODTAG>^"=cut"         {BEGIN 0;}
+<PODTAG>\n              {++com_loc;++perl_lineno;}
+<PODTAG>.               {;}
 
-^=                      {BEGIN(PODTAG);}
-<PODTAG>^"=cut"         {++c_comments;BEGIN(INITIAL);}
-<PODTAG>\n              {++c_comments;++com_loc;++perl_lineno;}
-<PODTAG>.*              {;}
+\n                      {perl_lineno++;}
 
 "!"                     {store_operator('!');}
 "*"                     {store_operator('*');}
@@ -231,21 +232,21 @@ SPTAB         [ \t]
 "x"                     {store_operator(OP_X);}
 "xor"                   {store_operator(OP_XOR);}
 
-{LETTER}{ALNUM}* 						{store_operand(_strdup(yytext));}
+{LETTER}{ALNUM}*            {store_operand(_strdup(yytext));}
 
 [1-9][0-9]*{INT_SUFFIX}?           |
 [0][0-7]*{INT_SUFFIX}?             |
-[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?   				{store_operand(_strdup(yytext));}
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {store_operand(_strdup(yytext));}
 
-[0][xX] 							{store_operand(_strdup(yytext));}
+[0][xX]               {store_operand(_strdup(yytext));}
 
 {DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
-{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?	    |
-"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?		{store_operand(_strdup(yytext));}    
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?     |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {store_operand(_strdup(yytext));}
 
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?   |
 {DIGITS}"."?[eE]{SIGN}?           |
-"."{DIGITS}[eE]{SIGN}?            				{store_operand(_strdup(yytext));}
+"."{DIGITS}[eE]{SIGN}?                    {store_operand(_strdup(yytext));}
 
 "#"{NOTNL}*{NL}         {++cpp_comments;++com_loc;++perl_lineno;BEGIN(INITIAL);}
 
@@ -254,7 +255,7 @@ SPTAB         [ \t]
 .                       {;}
 
 %%
-int yywrap() 
+int yywrap()
 {
   return(1);
 }

@@ -279,6 +279,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\DiffAsm.cpp"
+				>
+			</File>
+			<File
 				RelativePath="DiffASP.cpp"
 				>
 				<FileConfiguration
@@ -590,6 +594,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DiffAsm.h"
+				>
+			</File>
+			<File
 				RelativePath="DiffASP.h"
 				>
 			</File>
@@ -731,6 +739,10 @@
 							PreprocessorDefinitions=""
 						/>
 					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\lex.ay.cpp"
+					>
 				</File>
 				<File
 					RelativePath="lex.c.cpp"
@@ -995,6 +1007,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.ay.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.c.l"
 					>
 				</File>
@@ -1056,6 +1072,10 @@
 				>
 				<File
 					RelativePath="y.ada.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.ay.h"
 					>
 				</File>
 				<File

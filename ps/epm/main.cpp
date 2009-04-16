@@ -71,10 +71,12 @@
  * CAM  14-Apr-2009  10400 : Added JavaScript language support.
  * CAM  14-Apr-2009  10401 : Added HTML language support.
  * CAM  14-Apr-2009  10403 : Added Python language support.  Changed non-logical lines languages to set NSC (LLOC) to SLOC.
+ * CAM  16-Apr-2009  10402 : Added Assembler language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
 #include "DiffAda.h"
+#include "DiffAsm.h"
 #include "DiffASP.h"
 #include "DiffCpp.h"
 #include "DiffOracle.h"
@@ -107,7 +109,7 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py;
+            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -124,6 +126,7 @@ extern void lexclear_xml();
 extern void lexclear_jt();
 extern void lexclear_ht();
 extern void lexclear_py();
+extern void lexclear_ay();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -140,6 +143,7 @@ extern int yylex_xml();
 extern int yylex_jt();
 extern int yylex_ht();
 extern int yylex_py();
+extern int yylex_ay();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -210,6 +214,10 @@ extern vector<char*> operands_ht[255];
 extern int c_comments_py,cpp_comments_py,com_loc_py,nsemi_py,noperands_py,noperators_py;
 extern set<int> sloc_py,operators_py;
 extern vector<char*> operands_py[255];
+
+extern int c_comments_ay,cpp_comments_ay,com_loc_ay,nsemi_ay,noperands_ay,noperators_ay;
+extern set<int> sloc_ay,operators_ay;
+extern vector<char*> operands_ay[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -536,6 +544,22 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_py;
     com_loc = com_loc_py;
     break;
+
+    case LANG_ASM:
+    sloc = sloc_ay.size();                     // Source Lines of Code
+
+    met.set(MET(NSC), nsemi_ay);               // Halstead
+    met.set(MET(N1), noperators_ay);
+    met.set(MET(N1S), operators_ay.size());
+    met.set(MET(N2), noperands_ay);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_ay[i].size());
+    }
+
+    c_com = c_comments_ay;                   // Comments
+    cpp_com = cpp_comments_ay;
+    com_loc = com_loc_ay;
+    break;
   }
 
   if (!lang.hasLogicalLines()) met.set(MET(NSC), sloc);
@@ -588,6 +612,10 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_HTML:
     case LANG_XML:
     d = new DiffASP(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_ASM:
+    d = new DiffAsm(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -1021,6 +1049,11 @@ bool analyse(string &filename) {
       lexclear_py();
       yylex_py();
       break;
+    case LANG_ASM:
+      yyin_ay = src;
+      lexclear_ay();
+      yylex_ay();
+      break;
   }
 
   fclose(src);
@@ -1032,7 +1065,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.005.ab\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.16.005.ad\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

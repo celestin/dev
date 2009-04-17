@@ -1,47 +1,48 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2007 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   152 : Added to Source Safe.
- * CAM  28-Nov-05   134 : Added Version variable.
- * CAM  20-Dec-05   170 : Version 1.00.005.
- * CAM  24-Jan-06   179 : Version 1.00.006.
- * CAM  28-Jan-06   168 : Version 1.01.000.
- * CAM  13-Feb-06   185 : Version 1.01.001.
- * CAM  12-Mar-06   199 : Version 1.01.002.
- * CAM  14-Mar-06   202 : Version 1.01.003.
- * CAM  18-Mar-06   210 : Version 1.01.004.
- * CAM  23-Mar-06   220 : Version 1.01.005; EPM Version 1.09.004.
- * CAM  23-Mar-06   221 : Version 1.02.000; EPM Version 1.10.000.
- * CAM  08-Apr-06   230 : Version 1.02.001; EPM Version 1.10.001.
- * CAM  02-Jun-06   252 : Version 1.02.003; EPM Version 1.10.003.
- * CAM  06-Jun-06   255 : Version 1.02.004; EPM Version 1.10.004.
- * CAM  08-Jun-06   243 : Version 1.02.005; EPM Version 1.10.004.
- * CAM  14-Jun-06   258 : Version 1.02.006; EPM Version 1.10.004.
- * CAM  15-Jun-06   258 : Version 1.02.007; EPM Version 1.10.004.
- * CAM  07-Jul-06   258 : Version 1.02.008; EPM Version 1.10.004.
- * CAM  12-Jul-06   282 : Version 1.02.009; EPM Version 1.10.004.
- * CAM  18-Jul-06   272 : Version 1.03.000; EPM Version 1.11.000.
- * CAM  18-Jul-06   291 : Version 1.03.001; EPM Version 1.11.000.
- * CAM  02-Nov-06   117 : Version 1.04.000; EPM Version 1.12.000.
- * CAM  09-Nov-06   301 : Version 1.05.000; EPM Version 1.13.000.
- * CAM  09-Nov-06   314 : Version 1.06.000; EPM Version 1.14.000.
- * CAM  26-Jul-07   316 : Version 1.07.000; EPM Version 1.15.000.
- * CAM  28-Jul-07   317 : Version 1.07.001; EPM Version 1.15.001.
- * CAM  26-Oct-07   319 : Version 1.07.002; EPM Version 1.15.002.
- * CAM  01-Nov-07   321 : Version 1.07.003; EPM Version 1.15.003.
- * CAM  28-Nov-07   323 : Version 1.07.004; EPM Version 1.15.004.
- * CAM  11-Dec-07   325 : Version 1.08.000; EPM Version 1.16.000.
- * CAM  13-Dec-07   328 : Version 1.08.001; EPM Version 1.16.001.
- * CAM  04-Jan-08   336 : Version 1.08.002; EPM Version 1.16.002.
- * CAM  24-Apr-08   357 : Version 1.08.003; EPM Version 1.16.003.
- * CAM  26-Apr-08   360 : Version 1.08.004; EPM Version 1.16.004.
- * CAM  29-May-08   364 : Version 1.09.000.
- * CAM  30-May-08   366 : EPM Version 1.16.005.
+ * Who  When         Why
+ * CAM  11-Oct-05    152 : Added to Source Safe.
+ * CAM  28-Nov-05    134 : Added Version variable.
+ * CAM  20-Dec-05    170 : Version 1.00.005.
+ * CAM  24-Jan-06    179 : Version 1.00.006.
+ * CAM  28-Jan-06    168 : Version 1.01.000.
+ * CAM  13-Feb-06    185 : Version 1.01.001.
+ * CAM  12-Mar-06    199 : Version 1.01.002.
+ * CAM  14-Mar-06    202 : Version 1.01.003.
+ * CAM  18-Mar-06    210 : Version 1.01.004.
+ * CAM  23-Mar-06    220 : Version 1.01.005; EPM Version 1.09.004.
+ * CAM  23-Mar-06    221 : Version 1.02.000; EPM Version 1.10.000.
+ * CAM  08-Apr-06    230 : Version 1.02.001; EPM Version 1.10.001.
+ * CAM  02-Jun-06    252 : Version 1.02.003; EPM Version 1.10.003.
+ * CAM  06-Jun-06    255 : Version 1.02.004; EPM Version 1.10.004.
+ * CAM  08-Jun-06    243 : Version 1.02.005; EPM Version 1.10.004.
+ * CAM  14-Jun-06    258 : Version 1.02.006; EPM Version 1.10.004.
+ * CAM  15-Jun-06    258 : Version 1.02.007; EPM Version 1.10.004.
+ * CAM  07-Jul-06    258 : Version 1.02.008; EPM Version 1.10.004.
+ * CAM  12-Jul-06    282 : Version 1.02.009; EPM Version 1.10.004.
+ * CAM  18-Jul-06    272 : Version 1.03.000; EPM Version 1.11.000.
+ * CAM  18-Jul-06    291 : Version 1.03.001; EPM Version 1.11.000.
+ * CAM  02-Nov-06    117 : Version 1.04.000; EPM Version 1.12.000.
+ * CAM  09-Nov-06    301 : Version 1.05.000; EPM Version 1.13.000.
+ * CAM  09-Nov-06    314 : Version 1.06.000; EPM Version 1.14.000.
+ * CAM  26-Jul-07    316 : Version 1.07.000; EPM Version 1.15.000.
+ * CAM  28-Jul-07    317 : Version 1.07.001; EPM Version 1.15.001.
+ * CAM  26-Oct-07    319 : Version 1.07.002; EPM Version 1.15.002.
+ * CAM  01-Nov-07    321 : Version 1.07.003; EPM Version 1.15.003.
+ * CAM  28-Nov-07    323 : Version 1.07.004; EPM Version 1.15.004.
+ * CAM  11-Dec-07    325 : Version 1.08.000; EPM Version 1.16.000.
+ * CAM  13-Dec-07    328 : Version 1.08.001; EPM Version 1.16.001.
+ * CAM  04-Jan-08    336 : Version 1.08.002; EPM Version 1.16.002.
+ * CAM  24-Apr-08    357 : Version 1.08.003; EPM Version 1.16.003.
+ * CAM  26-Apr-08    360 : Version 1.08.004; EPM Version 1.16.004.
+ * CAM  29-May-08    364 : Version 1.09.000.
+ * CAM  30-May-08    366 : EPM Version 1.16.005.
+ * CAM  17-Apr-2009  10433 : Version 1.10.000; EPM Version 1.17.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -68,9 +69,9 @@ namespace KrakatauEPM
     private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
 
-    private String sVersion = "1.09.000";
+    private String sVersion = "1.10.000";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.16.005";
+    private String sEpmVersion = "1.17.000";
 
     public HelpAbout()
     {
@@ -165,7 +166,7 @@ namespace KrakatauEPM
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(400, 32);
       this.label3.TabIndex = 4;
-      this.label3.Text = "Copyright (c) 2005,2008 Powersoftware.com";
+      this.label3.Text = "Copyright (c) 2005,2009 SourceCodeMetrics.com";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       //
       // lklProduct

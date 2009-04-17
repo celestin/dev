@@ -1,18 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004,2008 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Dialog to edit a Metric Set.
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  14-Jun-06   258 : File created.
- * CAM  12-Jul-06   282 : Ensure Cancel button can be pressed even if Metric Set exists.
- * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
- * CAM  02-Nov-06   117 : Renumber Metric IDs to suit new SLOC* metrics.
- * CAM  24-Apr-08   357 : Correctly number Metric IDs.
+ * Who  When         Why
+ * CAM  14-Jun-06    258 : File created.
+ * CAM  12-Jul-06    282 : Ensure Cancel button can be pressed even if Metric Set exists.
+ * CAM  18-Jul-06    272 : Added CHG,DEL,ADD LLOC metrics.
+ * CAM  02-Nov-06    117 : Renumber Metric IDs to suit new SLOC* metrics.
+ * CAM  24-Apr-08    357 : Correctly number Metric IDs.
+ * CAM  17-Apr-2009  10433 : Added Churn metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -89,18 +90,18 @@ namespace KrakatauEPM
 
     private void AddMetric(SortedList m, GroupBox grp, int id, string name)
     {
-      Hashtable f = (Hashtable) m.GetByIndex(m.Count-1);
+      Hashtable f = (Hashtable)m.GetByIndex(m.Count - 1);
       CheckBox chkMet = new CheckBox();
       CheckBox chkLower = new CheckBox();
       TextBox txtLower = new TextBox();
       CheckBox chkUpper = new CheckBox();
       TextBox txtUpper = new TextBox();
 
-      CheckBox chkRefMet = (CheckBox) f["chkMet"];
-      CheckBox chkRefLower = (CheckBox) f["chkLower"];
-      TextBox txtRefLower = (TextBox) f["txtLower"];
-      CheckBox chkRefUpper = (CheckBox) f["chkUpper"];
-      TextBox txtRefUpper = (TextBox) f["txtUpper"];
+      CheckBox chkRefMet = (CheckBox)f["chkMet"];
+      CheckBox chkRefLower = (CheckBox)f["chkLower"];
+      TextBox txtRefLower = (TextBox)f["txtLower"];
+      CheckBox chkRefUpper = (CheckBox)f["chkUpper"];
+      TextBox txtRefUpper = (TextBox)f["txtUpper"];
 
       SetLocation(grp, chkRefMet, chkMet, true);
       SetLocation(grp, chkRefLower, chkLower, false);
@@ -177,14 +178,17 @@ namespace KrakatauEPM
       AddMetric(_mets1, grpFileMet, 121, "BYTES");
       AddMetric(_mets1, grpFileMet, 122, "NFILE");
 
-      AddMetric(_mets2, grpChgMet,  124, "DEL_SLOC");
-      AddMetric(_mets2, grpChgMet,  125, "ADD_SLOC");
-      AddMetric(_mets2, grpChgMet,  126, "CHG_LLOC");
-      AddMetric(_mets2, grpChgMet,  127, "DEL_LLOC");
-      AddMetric(_mets2, grpChgMet,  128, "ADD_LLOC");
-      AddMetric(_mets2, grpChgMet,  129, "CHG_FILE");
-      AddMetric(_mets2, grpChgMet,  130, "DEL_FILE");
-      AddMetric(_mets2, grpChgMet,  131, "ADD_FILE");
+      AddMetric(_mets2, grpChgMet, 124, "DEL_SLOC");
+      AddMetric(_mets2, grpChgMet, 125, "ADD_SLOC");
+      AddMetric(_mets2, grpChgMet, 126, "CRN_SLOC");
+      AddMetric(_mets2, grpChgMet, 127, "CHG_LLOC");
+      AddMetric(_mets2, grpChgMet, 128, "DEL_LLOC");
+      AddMetric(_mets2, grpChgMet, 129, "ADD_LLOC");
+      AddMetric(_mets2, grpChgMet, 130, "CRN_LLOC");
+      AddMetric(_mets2, grpChgMet, 131, "CHG_FILE");
+      AddMetric(_mets2, grpChgMet, 132, "DEL_FILE");
+      AddMetric(_mets2, grpChgMet, 133, "ADD_FILE");
+      AddMetric(_mets2, grpChgMet, 134, "CRN_FILE");
 
       SetLayout(this._mets1, this.grpFileMet);
       SetLayout(this._mets2, this.grpChgMet);
@@ -207,12 +211,12 @@ namespace KrakatauEPM
       IEnumerator e = m.GetEnumerator();
       while (e.MoveNext())
       {
-        f = (Hashtable) ((DictionaryEntry) e.Current).Value;
-        chkRefMet = (CheckBox) f["chkMet"];
-        chkRefLower = (CheckBox) f["chkLower"];
-        txtRefLower = (TextBox) f["txtLower"];
-        chkRefUpper = (CheckBox) f["chkUpper"];
-        txtRefUpper = (TextBox) f["txtUpper"];
+        f = (Hashtable)((DictionaryEntry)e.Current).Value;
+        chkRefMet = (CheckBox)f["chkMet"];
+        chkRefLower = (CheckBox)f["chkLower"];
+        txtRefLower = (TextBox)f["txtLower"];
+        chkRefUpper = (CheckBox)f["chkUpper"];
+        txtRefUpper = (TextBox)f["txtUpper"];
 
         chkRefMet.TabIndex = _tabIndex++;
         chkRefLower.TabIndex = _tabIndex++;
@@ -229,7 +233,7 @@ namespace KrakatauEPM
       if (grp == this.grpFileMet)
       {
         this.Size = new Size(this.Size.Width, this.Size.Height + shift);
-        shift = (grp.Size.Height + winsize) - (this.btnOK.Size.Height);
+        shift = (grp.Size.Height + winsize - 20) - (this.btnOK.Size.Height);
         this.btnOK.Location = new Point(this.btnOK.Location.X, shift);
         this.btnCancel.Location = new Point(this.btnCancel.Location.X, shift);
       }
@@ -238,16 +242,16 @@ namespace KrakatauEPM
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
-    protected override void Dispose( bool disposing )
+    protected override void Dispose(bool disposing)
     {
-      if( disposing )
+      if (disposing)
       {
-        if(components != null)
+        if (components != null)
         {
           components.Dispose();
         }
       }
-      base.Dispose( disposing );
+      base.Dispose(disposing);
     }
 
     private void AppendMetricDefs(SortedList mets)
@@ -257,8 +261,8 @@ namespace KrakatauEPM
       Hashtable f;
       while (defs.MoveNext())
       {
-        f = (Hashtable) defs.Current;
-        MetricDef md = (MetricDef) f["MetricDef"];
+        f = (Hashtable)defs.Current;
+        MetricDef md = (MetricDef)f["MetricDef"];
         if (md != null && md.Active)
         {
           ms.Add(md);
@@ -297,7 +301,7 @@ namespace KrakatauEPM
 
     private void txtName_TextChanged(object sender, System.EventArgs e)
     {
-      if (txtName.Text.IndexOf(" ")>0)
+      if (txtName.Text.IndexOf(" ") > 0)
       {
         stbMsg.Text = "No spaces in Metric Set names, please... they will be removed.";
       }
@@ -307,7 +311,7 @@ namespace KrakatauEPM
       }
 
       btnOK.Enabled = false;
-      if (txtName.Text.Length>0)
+      if (txtName.Text.Length > 0)
       {
         btnOK.Enabled = true;
       }
@@ -518,6 +522,7 @@ namespace KrakatauEPM
       //
       this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+      this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(842, 175);
       this.ControlBox = false;
       this.Controls.Add(this.stbMsg);
@@ -535,7 +540,6 @@ namespace KrakatauEPM
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Metric Set";
-      this.Load += new System.EventHandler(this.FormMetricSet_Load);
       this.Closing += new System.ComponentModel.CancelEventHandler(this.FormMetricSet_Closing);
       this.grpChgMet.ResumeLayout(false);
       this.grpChgMet.PerformLayout();
@@ -546,11 +550,5 @@ namespace KrakatauEPM
 
     }
     #endregion
-
-    private void FormMetricSet_Load(object sender, EventArgs e)
-    {
-
-    }
-
   }
 }

@@ -1,38 +1,39 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Creates and manages MySQL Project databases
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  20-Dec-04  File added.
- * CAM  30-Dec-04  Added serverName to createDatabase.
- * CAM  03-Jan-05  Changed OurSQL pointers to refs.
- * CAM  04-Jan-05  Added indexes to sourcefile.
- * CAM  08-Jan-05  Changed executeQuery to executeResultlessQuery.
- * CAM  13-Jan-05  Added username and password to createDatabase.
- * CAM  24-Jan-05  Added Halstead metrics and changed save of value to float.
+ * Who  When         Why
+ * CAM  20-Dec-04    File added.
+ * CAM  30-Dec-04    Added serverName to createDatabase.
+ * CAM  03-Jan-05    Changed OurSQL pointers to refs.
+ * CAM  04-Jan-05    Added indexes to sourcefile.
+ * CAM  08-Jan-05    Changed executeQuery to executeResultlessQuery.
+ * CAM  13-Jan-05    Added username and password to createDatabase.
+ * CAM  24-Jan-05    Added Halstead metrics and changed save of value to float.
  * CAM  03-Feb-05    39 : Added Project Snapshot Date.
  * CAM  14-Mar-05    78 : Ensure sourcemetric.mvalue is double - large enough for big values.
  * CAM  19-Mar-05    81 : Remove BINARY attribute to sourcefile.sf_name - matching will be case insensitive.
  * CAM  04-May-05    50 : Set Language.
  * CAM  12-May-05    96 : Added VB.
  * CAM  18-May-05    97 : Added PL/SQL.
- * CAM  13-Aug-05   114 : Added Perl.
- * CAM  23-Aug-05   114 : Corrected n2 from Operators to Operands.
- * CAM  28-Nov-05   164 : Added NFILE to insert into metric table.
- * CAM  07-Feb-06   187 : Ensure Project Names are MySQL-quoted to allow user-entered names.
- * CAM  13-Feb-06   185 : Corrected the duplication of PRIMARY and UNIQUE indices on the same columns.
- * CAM  16-Feb-06   188 : Added MS VS 6 DSP parsing.
- * CAM  18-Mar-06   211 : Changed CPP_COM to EOL_COM.
- * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
- * CAM  19-Sep-06   117 : Added SLOC* metrics.
- * CAM  25-Oct-07   319 : Remove duplicate filenames during project creation.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  30-May-08   365 : Incorrect not null field in sourcefile.
+ * CAM  13-Aug-05    114 : Added Perl.
+ * CAM  23-Aug-05    114 : Corrected n2 from Operators to Operands.
+ * CAM  28-Nov-05    164 : Added NFILE to insert into metric table.
+ * CAM  07-Feb-06    187 : Ensure Project Names are MySQL-quoted to allow user-entered names.
+ * CAM  13-Feb-06    185 : Corrected the duplication of PRIMARY and UNIQUE indices on the same columns.
+ * CAM  16-Feb-06    188 : Added MS VS 6 DSP parsing.
+ * CAM  18-Mar-06    211 : Changed CPP_COM to EOL_COM.
+ * CAM  18-Jul-06    272 : Added CHG,DEL,ADD LLOC metrics.
+ * CAM  19-Sep-06    117 : Added SLOC* metrics.
+ * CAM  25-Oct-07    319 : Remove duplicate filenames during project creation.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-May-08    365 : Incorrect not null field in sourcefile.
+ * CAM  17-Apr-2009  10430 : Added Churn metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -201,7 +202,7 @@ bool createDatabase(string serverName, string userName, string password,
   projDb.executeResultlessQuery("CREATE TABLE IF NOT exists metric (mid int not null, m_name varchar(10) not null, m_desc varchar(255) NOT NULL, primary key (mid))");
   projDb.executeResultlessQuery("INSERT INTO metric VALUES (100,'LOC','Lines of Code'),(101,'SLOC','Source Lines of Code'),(106,'LLOC','Number of Logical Lines of Code (terminated by semi-colons)'),(107,'N1','Total No. of Operators'),(108,'N2','Total No. of Operands'),(109,'n1','No. of unique or distinct Operators'),(110,'n2','No. of unique or distinct Operands'),(111,'N','Halstead program Length (calculated as N1 + N2)'),(112,'n','Halstead program Vocabulary (calculated as n1 + n2)'),(113,'V','Halstead Volume (calculated as V = Nlog2n)'),(114,'D','Halstead program Difficulty'),(115,'E','Halstead program Effort (calculated as D * V)'),(116,'B','Halstead Bug Prediction'),(117,'J_COM','Java-style Comment Lines'),(118,'C_COM','C-style Comment Lines'),(119,'EOL_COM','To End Of Line Comment Lines'),(120,'COM_LOC','Total Comment Lines'),(121,'BYTES','File size in bytes'),(122,'NFILE','Number of Files')");
   projDb.executeResultlessQuery("INSERT INTO metric VALUES (102,'SLOC_NAT','Native Source Lines of Code'),(103,'SLOC_TAG','Tag Source Lines of Code'),(104,'SLOC_HTM','HTML Source Lines of Code'),(105,'SLOC_SCR','Script Source Lines of Code')");
-  projDb.executeResultlessQuery("INSERT INTO metric VALUES (123,'CHG_SLOC','Changed Source Lines of Code'),(124,'DEL_SLOC','Deleted Source Lines of Code'),(125,'ADD_SLOC','Added Source Lines of Code'),(126,'CHG_LLOC','Changed Logical Lines of Code'),(127,'DEL_LLOC','Deleted Logical Lines of Code'),(128,'ADD_LLOC','Added Logical Lines of Code'),(129,'CHG_FILE','Changed Files'),(130,'DEL_FILE','Deleted Files'),(131,'ADD_FILE','Added Files')");
+  projDb.executeResultlessQuery("INSERT INTO metric VALUES (123,'CHG_SLOC','Changed Source Lines of Code'),(124,'DEL_SLOC','Deleted Source Lines of Code'),(125,'ADD_SLOC','Added Source Lines of Code'),(126,'CRN_SLOC','Churn Source Lines of Code'),(127,'CHG_LLOC','Changed Logical Lines of Code'),(128,'DEL_LLOC','Deleted Logical Lines of Code'),(129,'ADD_LLOC','Added Logical Lines of Code'),(130,'CRN_LLOC','Churn Logical Lines of Code'),(131,'CHG_FILE','Changed Files'),(132,'DEL_FILE','Deleted Files'),(133,'ADD_FILE','Added Files'),(134,'CRN_FILE','Churn Files')");
 
   projDb.executeResultlessQuery("CREATE TABLE IF NOT EXISTS project (projid int not null, pr_name varchar(255) binary not null, snap_date varchar(255) binary, base_dir varchar(255) NOT NULL, external_type char(3) NULL, external_source varchar(255) NULL, PRIMARY KEY (projid))");
 

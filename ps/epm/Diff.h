@@ -103,16 +103,15 @@ class Diff
 
   public:
 
-    //Diff();
     Diff(const char*, const char*, bool);
     ~Diff() {}
 
     void compare(bool);
     void compare();
 
-    int getChangedLines() { return theChangedLines; }
-    int getDeletedLines() { return theDeletedLines; }
-    int getInsertedLines() { return theInsertedLines; }
+    int getChangedLines()   { return theChangedLines; }
+    int getDeletedLines()   { return theDeletedLines; }
+    int getInsertedLines()  { return theInsertedLines; }
 
     void printTrace();
 };

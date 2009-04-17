@@ -1,25 +1,26 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Metrics
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  04-Jan-05  File added.
- * CAM  24-Jan-05  Changed to metrics value to float and added Halstead calcs.
+ * Who  When         Why
+ * CAM  04-Jan-05    File added.
+ * CAM  24-Jan-05    Changed to metrics value to float and added Halstead calcs.
  * CAM  03-Feb-05    40 : Added calculateChange to encapsulate this logic.
  * CAM  14-Mar-05    78 : Correctly calculate Effort.
  * CAM  19-Mar-05    81 : Correctly calculate all Halstead values.
  * CAM  24-Mar-05    82 : Correctly calculate Changed status (based on CHG_SLOC metrics).
- * CAM  28-Nov-05   164 : Added metshow.
- * CAM  28-Jan-06   180 : metshow must be intialised for *all* metrics, then disabled.
- * CAM  14-Mar-06   202 : Calculate old and new projects when performing calculateHalstead.
- * CAM  23-Mar-06   218 : Hide Halstead metrics for Project level summary.
- * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  28-Nov-05    164 : Added metshow.
+ * CAM  28-Jan-06    180 : metshow must be intialised for *all* metrics, then disabled.
+ * CAM  14-Mar-06    202 : Calculate old and new projects when performing calculateHalstead.
+ * CAM  23-Mar-06    218 : Hide Halstead metrics for Project level summary.
+ * CAM  01-Jun-06    252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  17-Apr-2009  10430 : Added Churn metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_METRICS
@@ -38,6 +39,17 @@ namespace metrics
   protected:
     float met[METS][5];
     bool metshow[METS][2];
+
+    float calculateChurn(int metStart, int metEnd)
+    {
+      int i=0;
+      float churn=0;
+      for (i=metStart; i<=metEnd; i++)
+      {
+        churn += this->get(MET(i), 0);
+      }
+      return churn;
+    }
 
   public:
     Metrics() {
@@ -163,7 +175,18 @@ namespace metrics
           break;
       }
 
-      if (metID) this->add(metID, 1);  // Increment changed, deleted, added file where appropriate
+      if (metID)
+      {
+        this->add(metID, 1);        // Increment changed, deleted, added file where appropriate
+        this->add(MET(XFILE), 1);   // Increment churn
+      }
+    }
+
+    void calculateChurn()
+    {
+      this->set(MET(XLOC), calculateChurn(CLOC, ALOC));
+      this->set(MET(XLLOC), calculateChurn(CLLOC, ALLOC));
+      //this->set(MET(XFILE), calculateChurn(CFILE, AFILE));    // Not sure why this isn't working but added increment in calculateChange
     }
 
   };

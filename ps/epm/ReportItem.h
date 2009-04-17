@@ -1,21 +1,22 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Stores information about items (Projects, Packages, Files) used in reporting
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  04-Jan-05  File added.
- * CAM  04-Jan-05  Expanded to use multiple types.
- * CAM  26-Jan-05  Added setStatus.
- * CAM  31-Jan-05  Added enum for Status.
+ * Who  When         Why
+ * CAM  04-Jan-05    File added.
+ * CAM  04-Jan-05    Expanded to use multiple types.
+ * CAM  26-Jan-05    Added setStatus.
+ * CAM  31-Jan-05    Added enum for Status.
  * CAM  03-Feb-05    39 : Added Text1.
  * CAM  04-May-05    50 : Added Language.
- * CAM  28-Jan-06   168 : Added getLastMetric.
- * CAM  18-Jul-06   272 : Added getLang.
+ * CAM  28-Jan-06    168 : Added getLastMetric.
+ * CAM  18-Jul-06    272 : Added getLang.
+ * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_REPORTITEM
@@ -88,9 +89,9 @@ namespace metrics
 
     int getLastMetric() {
       if (theType == ITEM_PROJECT) {
-        return AFILE;
+        return XFILE;
       }
-      return ALLOC;
+      return XLLOC;
     }
 
     string getReportFile()                { return theReportFile; }

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * MetricHelp Data and Functions for HTML Reporting
@@ -9,7 +9,8 @@
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File created.
- * CAM  27-Oct-2006   117 : New SLOC* metrics added.
+ * CAM  27-Oct-2006  117 : New SLOC* metrics added.
+ * CAM  17-Apr-2009  10430 : Added Churn (CRN*) metrics.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 var metd = new Array();
@@ -127,6 +128,11 @@ metd["F"]["120"]["C"] = "COM_LOC";
 metd["F"]["120"]["N"] = "Comment lines of code";
 metd["F"]["120"]["H"] = "The total number of lines of comment in the file.";
 
+metd["F"]["121"] = new Array();
+metd["F"]["121"]["C"] = "BYTES";
+metd["F"]["121"]["N"] = "Number of bytes";
+metd["F"]["121"]["H"] = "The number of bytes in the file.";
+
 metd["F"]["123"] = new Array();
 metd["F"]["123"]["C"] = "CHG_SLOC";
 metd["F"]["123"]["N"] = "Source Lines of Code (Changed)";
@@ -143,19 +149,31 @@ metd["F"]["125"]["N"] = "Source Lines of Code (Added)";
 metd["F"]["125"]["H"] = "Number of source lines that have been added between the new file and the old file.<br><br>For example the following would have ADD_SLOC=4.<br><br><u>Old File</u><br><font face=\"Courier New\">void functionA(int k) {<br>&#09;cout &#60;&#60; \"Parameter: \" &#60;&#60; k &#60;&#60; endl ;<br>}<br><br><font color=\"#000099\">void functionB(j) {<br>&#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;j-= 5 ;<br>&#09;&#09;}<br><br>&#09;}<br>}</font><br><br><br><u>New File</u><br><font face=\"Courier New\">void functionA(int k) {<br>&#09;cout &#60;&#60; \"Parameter: \" &#60;&#60; k &#60;&#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br><font color=\"#116611\">&#09;int count=0 ;</font><br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;<font color=\"#990000\">j-= 10 ;</font><br>&#09;&#09;}<br><br><font color=\"#116611\">&#09;&#09;while(count&#60;10) {<br>&#09;&#09;&#09;count++ ;<br>&#09;&#09;}</font><br><br>&#09;}<br>}</font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
 
 metd["F"]["126"] = new Array();
-metd["F"]["126"]["C"] = "CHG_LLOC";
-metd["F"]["126"]["N"] = "Changed Logical Lines of Code";
-metd["F"]["126"]["H"] = "The number of changed Logical Lines of Code in this file.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["126"]["C"] = "CRN_SLOC";
+metd["F"]["126"]["N"] = "Churn Source Lines of Code";
+metd["F"]["126"]["H"] = "Churn metrics give an overall indicator of the total &quot;change&quot; in source lines between the new file and the old file.";
+metd["F"]["126"]["F"] = "CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC";
 
 metd["F"]["127"] = new Array();
-metd["F"]["127"]["C"] = "DEL_LLOC";
-metd["F"]["127"]["N"] = "Deleted Logical Lines of Code";
-metd["F"]["127"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["127"]["C"] = "CHG_LLOC";
+metd["F"]["127"]["N"] = "Changed Logical Lines of Code";
+metd["F"]["127"]["H"] = "The number of changed Logical Lines of Code in this file.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in this file.";
 
 metd["F"]["128"] = new Array();
-metd["F"]["128"]["C"] = "ADD_LLOC";
-metd["F"]["128"]["N"] = "Added Logical Lines of Code";
-metd["F"]["128"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["128"]["C"] = "DEL_LLOC";
+metd["F"]["128"]["N"] = "Deleted Logical Lines of Code";
+metd["F"]["128"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+
+metd["F"]["129"] = new Array();
+metd["F"]["129"]["C"] = "ADD_LLOC";
+metd["F"]["129"]["N"] = "Added Logical Lines of Code";
+metd["F"]["129"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+
+metd["F"]["130"] = new Array();
+metd["F"]["130"]["C"] = "CRN_LLOC";
+metd["F"]["130"]["N"] = "Churn Logical Lines of Code";
+metd["F"]["130"]["H"] = "Churn metrics give an overall indicator of the total &quot;change&quot; in logical lines between the new file and the old file.";
+metd["F"]["130"]["F"] = "CRN_LLOC = CHG_LLOC + DEL_LLOC + ADD_LLOC";
 
 metd["P"] = new Array();
 
@@ -270,6 +288,11 @@ metd["P"]["120"]["C"] = "COM_LOC";
 metd["P"]["120"]["N"] = "Comment lines of code";
 metd["P"]["120"]["H"] = "The total number of lines of comment in the project.";
 
+metd["P"]["121"] = new Array();
+metd["P"]["121"]["C"] = "BYTES";
+metd["P"]["121"]["N"] = "Number of bytes";
+metd["P"]["121"]["H"] = "The total number of bytes in all the files in the project.";
+
 metd["P"]["122"] = new Array();
 metd["P"]["122"]["C"] = "NFILE";
 metd["P"]["122"]["N"] = "Number of Files";
@@ -294,34 +317,52 @@ metd["P"]["125"]["H"] = "This gives the total added source lines of code between
 metd["P"]["125"]["F"] = "(&#0931; changed file ADD_SLOC ) + (&#0931; SLOC added files)";
 
 metd["P"]["126"] = new Array();
-metd["P"]["126"]["C"] = "CHG_LLOC";
-metd["P"]["126"]["N"] = "Changed Logical Lines of Code";
-metd["P"]["126"]["H"] = "The number of changed Logical Lines of Code in this project.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["126"]["C"] = "CRN_SLOC";
+metd["P"]["126"]["N"] = "Churn Source Lines of Code";
+metd["P"]["126"]["H"] = "Churn metrics give an overall indicator of the total &quot;change&quot; in source lines between the new project and the old project.";
+metd["P"]["126"]["F"] = "CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC";
 
 metd["P"]["127"] = new Array();
-metd["P"]["127"]["C"] = "DEL_LLOC";
-metd["P"]["127"]["N"] = "Deleted Logical Lines of Code";
-metd["P"]["127"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["127"]["C"] = "CHG_LLOC";
+metd["P"]["127"]["N"] = "Changed Logical Lines of Code";
+metd["P"]["127"]["H"] = "The number of changed Logical Lines of Code in this project.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in the file.";
 
 metd["P"]["128"] = new Array();
-metd["P"]["128"]["C"] = "ADD_LLOC";
-metd["P"]["128"]["N"] = "Added Logical Lines of Code";
-metd["P"]["128"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["128"]["C"] = "DEL_LLOC";
+metd["P"]["128"]["N"] = "Deleted Logical Lines of Code";
+metd["P"]["128"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
 
 metd["P"]["129"] = new Array();
-metd["P"]["129"]["C"] = "CHG_FILE";
-metd["P"]["129"]["N"] = "Number of Files (Changed)";
-metd["P"]["129"]["H"] = "Number of Files that have been changed between the old project and the new project.<br><br>For example the following would have CHG_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+metd["P"]["129"]["C"] = "ADD_LLOC";
+metd["P"]["129"]["N"] = "Added Logical Lines of Code";
+metd["P"]["129"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
 
 metd["P"]["130"] = new Array();
-metd["P"]["130"]["C"] = "DEL_FILE";
-metd["P"]["130"]["N"] = "Number of Files (Deleted)";
-metd["P"]["130"]["H"] = "Number of Files that have been deleted between the old project and the new project.<br><br>For example the following would have DEL_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+metd["P"]["130"]["C"] = "CRN_LLOC";
+metd["P"]["130"]["N"] = "Churn Logical Lines of Code";
+metd["P"]["130"]["H"] = "Churn metrics give an overall indicator of the total &quot;change&quot; in logical lines between the new project and the old project.";
+metd["P"]["130"]["F"] = "CRN_LLOC = CHG_LLOC + DEL_LLOC + ADD_LLOC";
 
 metd["P"]["131"] = new Array();
-metd["P"]["131"]["C"] = "ADD_FILE";
-metd["P"]["131"]["N"] = "Number of Files (Added)";
-metd["P"]["131"]["H"] = "Number of Files that have been added between the old project and the new project.<br><br>For example the following would have ADD_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+metd["P"]["131"]["C"] = "CHG_FILE";
+metd["P"]["131"]["N"] = "Number of Files (Changed)";
+metd["P"]["131"]["H"] = "Number of Files that have been changed between the old project and the new project.<br><br>For example the following would have CHG_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+
+metd["P"]["132"] = new Array();
+metd["P"]["132"]["C"] = "DEL_FILE";
+metd["P"]["132"]["N"] = "Number of Files (Deleted)";
+metd["P"]["132"]["H"] = "Number of Files that have been deleted between the old project and the new project.<br><br>For example the following would have DEL_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+
+metd["P"]["133"] = new Array();
+metd["P"]["133"]["C"] = "ADD_FILE";
+metd["P"]["133"]["N"] = "Number of Files (Added)";
+metd["P"]["133"]["H"] = "Number of Files that have been added between the old project and the new project.<br><br>For example the following would have ADD_FILE=1.<br><br><font face=\"Courier New\"><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=\"#990000\">sourcefile2&#09;&#09;sourcefile2</font><br><font color=\"#000099\">sourcefile3</font>&#09;&#09;<font color=\"#116611\">sourcefile4</font></font><br><br><u>Color Key</u><br><font color=\"#116611\">Added</font><br><font color=\"#990000\">Changed</font><br><font color=\"#000099\">Deleted</font>";
+
+metd["P"]["134"] = new Array();
+metd["P"]["134"]["C"] = "CRN_FILE";
+metd["P"]["134"]["N"] = "Churn Files";
+metd["P"]["134"]["H"] = "Churn metrics give an overall indicator of the total &quot;change&quot; between the new project and the old project.";
+metd["P"]["134"]["F"] = "CRN_FILE = CHG_FILE + DEL_FILE + ADD_FILE";
 
 
 function getObjRef(ref) {

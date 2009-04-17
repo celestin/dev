@@ -37,7 +37,6 @@ Diff::Diff(const char *filename1, const char *filename2, bool nscValid) : theTra
   theNSCValid = nscValid;
 }
 
-
 void Diff::greedy(const int *A, const int Aoffset, const int N, const int *B, const int Boffset, const int M)
 {
   delta = N-M;

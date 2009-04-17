@@ -7,13 +7,13 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  02-Jan-05  File added.
- * CAM  04-Jan-05  Changed report to use frames.
- * CAM  08-Jan-05  Added Single HTML report.
- * CAM  24-Jan-05  Calculate Halstead metrics on Project.
- * CAM  26-Jan-05  Added formatting for Changed metrics (new table).
- * CAM  31-Jan-05  Added options for Unchanged, Added, Deleted filelists.
+ * Who  When         Why
+ * CAM  02-Jan-05    File added.
+ * CAM  04-Jan-05    Changed report to use frames.
+ * CAM  08-Jan-05    Added Single HTML report.
+ * CAM  24-Jan-05    Calculate Halstead metrics on Project.
+ * CAM  26-Jan-05    Added formatting for Changed metrics (new table).
+ * CAM  31-Jan-05    Added options for Unchanged, Added, Deleted filelists.
  * CAM  31-Jan-05    37 : Changed 'A' and Added to 'N' and New.
  * CAM  03-Feb-05    39 : Added Project Snapshot Date to report, move change calcs to Metrics.
  * CAM  03-Feb-05    40 : Added Changed/Added/Deleted files to Project metrics.
@@ -21,20 +21,21 @@
  * CAM  24-Mar-05    83 : Represent Project E in 1000s.
  * CAM  26-Mar-05    79 : Moved common code to Report class.
  * CAM  04-May-05    50 : Display Language in report.
- * CAM  28-Nov-05   164 : Check item.isShow().
- * CAM  28-Jan-06   174 : Added link to new epm_chg_ex.pdf.
- * CAM  28-Jan-06   168 : If a MetricSet has been specified, only display chosen metrics.
- * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
- * CAM  26-Mar-06   222 : Added link to new proof_ada.pdf.
- * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
- * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC metrics.
- * CAM  18-Jul-06   265 : Added MetricsHelp legend.
- * CAM  19-Jul-06   285 : Change script tag in EPM HTML H2 report to </script>.
- * CAM  20-Jul-06   285 : Changed MetricsHelp to call javascript in the href rather than onclick.
- * CAM  13-Dec-07   328 : Added MetricsDefinitions.pdf.
- * CAM  14-Dec-07   328 : Added (EPM) UserGuide.pdf.
- * CAM  04-Jan-08   330 : Improved layout of links in footer.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  28-Nov-05    164 : Check item.isShow().
+ * CAM  28-Jan-06    174 : Added link to new epm_chg_ex.pdf.
+ * CAM  28-Jan-06    168 : If a MetricSet has been specified, only display chosen metrics.
+ * CAM  07-Feb-06    187 : Check getItems() are report error if zero.
+ * CAM  26-Mar-06    222 : Added link to new proof_ada.pdf.
+ * CAM  01-Jun-06    252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  18-Jul-06    272 : Added CHG,DEL,ADD LLOC metrics.
+ * CAM  18-Jul-06    265 : Added MetricsHelp legend.
+ * CAM  19-Jul-06    285 : Change script tag in EPM HTML H2 report to </script>.
+ * CAM  20-Jul-06    285 : Changed MetricsHelp to call javascript in the href rather than onclick.
+ * CAM  13-Dec-07    328 : Added MetricsDefinitions.pdf.
+ * CAM  14-Dec-07    328 : Added (EPM) UserGuide.pdf.
+ * CAM  04-Jan-08    330 : Improved layout of links in footer.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -364,6 +365,11 @@ void HTMLReport::metTdVal(ofstream &current, int metId, long value) {
   case MET(AFILE):
     className = "diffAdd";
     break;
+  case MET(XLOC):
+  case MET(XLLOC):
+  case MET(XFILE):
+    className = "diffChurn";
+    break;
   default:
     className = "val";
     break;
@@ -466,14 +472,15 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
 
     for (i=vstart; i<=vend; i++) {
       if (isSetMember(METID(i))) {
-        current << "<tr>" << endl;
 
         bool showMet = true;
-        if ((i >= MET(CLLOC)) && (i <= MET(ALLOC))) {
+        if ((i >= MET(CLLOC)) && (i <= MET(XLLOC))) {
           showMet = currItem.getLang().hasLogicalLines();
         }
 
         if ((showMet && m.isShow(currItem, i)) || currItem.getType() == ITEM_PROJECT) {
+          current << "<tr>" << endl;
+
           metTd(current, currItem, i);
 
           if (m.isShow(currItem, i)) {

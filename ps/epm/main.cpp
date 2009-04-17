@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM entry point
@@ -72,6 +72,7 @@
  * CAM  14-Apr-2009  10401 : Added HTML language support.
  * CAM  14-Apr-2009  10403 : Added Python language support.  Changed non-logical lines languages to set NSC (LLOC) to SLOC.
  * CAM  16-Apr-2009  10402 : Added Assembler language support.
+ * CAM  17-Apr-2009  10430 : Added calculation of Churn metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -598,7 +599,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     break;
 
     case LANG_PERL:
-    case LANG_PYTHON: 
+    case LANG_PYTHON:
     d = new DiffPerl(filename2.c_str(), filename.c_str());
     break;
 
@@ -625,15 +626,28 @@ void calcDiff(int sfid, string &filename, string &filename2) {
   met.set(MET(DLOC), d->getDeletedLines());
   met.set(MET(ALOC), d->getInsertedLines());
 
-  d->compare(true);
+  if (lang.hasLogicalLines())
+  {
+    d->compare(true);
 
-  met.set(MET(CLLOC), d->getChangedLines());
-  met.set(MET(DLLOC), d->getDeletedLines());
-  met.set(MET(ALLOC), d->getInsertedLines());
+    met.set(MET(CLLOC), d->getChangedLines());
+    met.set(MET(DLLOC), d->getDeletedLines());
+    met.set(MET(ALLOC), d->getInsertedLines());
+  }
+  else
+  {
+    // Set Logical Lines equal to Source Lines
+    // This is how the LLOC metric itself is set, therefore changed metrics should mirror
+    met.set(MET(CLLOC), d->getChangedLines());
+    met.set(MET(DLLOC), d->getDeletedLines());
+    met.set(MET(ALLOC), d->getInsertedLines());
+  }
+
+  met.calculateChurn();
 
   delete d;
 
-  saveDb(sfid, met, MET(CLOC), MET(ALLOC));
+  saveDb(sfid, met, MET(CLOC), MET(XLLOC));
 }
 
 void calcAddDel(int sfid, char status, int metid, float mvalue) {
@@ -647,10 +661,12 @@ void calcAddDel(int sfid, char status, int metid, float mvalue) {
     if (metid == NSC)  met.set(MET(DLLOC), mvalue);
   }
 
+  met.calculateChurn();
+
   if (metid == SLOC) {
-    saveDb(sfid, met, MET(CLOC), MET(ALOC));
+    saveDb(sfid, met, MET(CLOC), MET(XLOC));
   } else if (metid == NSC) {
-    saveDb(sfid, met, MET(CLLOC), MET(ALLOC));
+    saveDb(sfid, met, MET(CLLOC), MET(XLLOC));
   }
 }
 

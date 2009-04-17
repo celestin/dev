@@ -1,26 +1,27 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Metrics Constants
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  03-Jan-05  File added.
- * CAM  24-Jan-05  Added Halstead metrics.
+ * Who  When         Why
+ * CAM  03-Jan-05    File added.
+ * CAM  24-Jan-05    Added Halstead metrics.
  * CAM  03-Feb-05    40 : Added Changed FILE metrics
- * CAM  25-Nov-05   164 : Added NFILE metric.
- * CAM  28-Jan-06   168 : Added METID.
- * CAM  18-Jul-06   272 : Added CHG,DEL,ADD LLOC.
- * CAM  19-Sep-06   117 : Added SLOC* metrics for html-generating languages.
+ * CAM  25-Nov-05    164 : Added NFILE metric.
+ * CAM  28-Jan-06    168 : Added METID.
+ * CAM  18-Jul-06    272 : Added CHG,DEL,ADD LLOC.
+ * CAM  19-Sep-06    117 : Added SLOC* metrics for html-generating languages.
+ * CAM  17-Apr-2009  10430 : Added Churn metrics.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LOG2 0.693147
 
-#define METS      32
-#define METFILE   29
+#define METS      35
+#define METFILE   31
 
 #define LOC       100
 #define SLOC      101
@@ -49,14 +50,17 @@
 #define CLOC      123
 #define DLOC      124
 #define ALOC      125
+#define XLOC      126
 
-#define CLLOC     126
-#define DLLOC     127
-#define ALLOC     128
+#define CLLOC     127
+#define DLLOC     128
+#define ALLOC     129
+#define XLLOC     130
 
-#define CFILE     129
-#define DFILE     130
-#define AFILE     131
+#define CFILE     131
+#define DFILE     132
+#define AFILE     133
+#define XFILE     134
 
 #define MET(X)    (X-100)
 #define METID(X)  (X+100)

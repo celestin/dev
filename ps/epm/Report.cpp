@@ -1,28 +1,29 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM Reporting
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  02-Jan-05  File added.
- * CAM  08-Jan-05  Improved efficiency of isPM() by adding getProjectCount().
+ * Who  When         Why
+ * CAM  02-Jan-05    File added.
+ * CAM  08-Jan-05    Improved efficiency of isPM() by adding getProjectCount().
  * CAM  26-Mar-05    79 : Moved common code to Report class.
  * CAM  04-May-05    50 : Set Language.
- * CAM  23-Aug-05   115 : SQL for Single Project correct (Language).
- * CAM  28-Nov-05   164 : Added retrieval of NFILE for Project metrics.
- * CAM  28-Jan-06   180 : Use Metric ID (mid) from the database not an calculated index.
- * CAM  28-Jan-06   168 : Added setMetricsSet and related functions for MetricSets.
- * CAM  07-Feb-06   187 : Added return number of items to getItems().
- * CAM  23-Mar-06   220 : Ensure New metric values are stored in position 1 (as are Deleted).
- * CAM  23-Mar-06   218 : Commented out the Project Halstead metrics retrieve.
- * CAM  25-Mar-06   220 : Above (220) comment is nonsense - new values should be in position 0.  Adjusted HTMLReport accordingly.
- * CAM  01-Jun-06   252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
- * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  23-Aug-05    115 : SQL for Single Project correct (Language).
+ * CAM  28-Nov-05    164 : Added retrieval of NFILE for Project metrics.
+ * CAM  28-Jan-06    180 : Use Metric ID (mid) from the database not an calculated index.
+ * CAM  28-Jan-06    168 : Added setMetricsSet and related functions for MetricSets.
+ * CAM  07-Feb-06    187 : Added return number of items to getItems().
+ * CAM  23-Mar-06    220 : Ensure New metric values are stored in position 1 (as are Deleted).
+ * CAM  23-Mar-06    218 : Commented out the Project Halstead metrics retrieve.
+ * CAM  25-Mar-06    220 : Above (220) comment is nonsense - new values should be in position 0.  Adjusted HTMLReport accordingly.
+ * CAM  01-Jun-06    252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
+ * CAM  18-Jul-06    286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -201,7 +202,7 @@ void Report::getMetrics(ReportItem &currItem) {
       }
 
       // Ensure Changed metrics are always in position 0
-      k = ((mid >= CLOC) && (mid <= ALLOC)) ? 0 : j;
+      k = ((mid >= CLOC) && (mid <= XLLOC)) ? 0 : j;
       met.set(MET(mid), k, (float)value);
     }
     theDb.clearResults();

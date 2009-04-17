@@ -1,15 +1,16 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2008 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Stylesheet for HTML Reporting
  *
  * $Id$
  *
- * Who  When        Why
- * CAM  18-Jul-06   MetricHelp ids added.
- * CAM  04-Jan-08   330 : Added classes to support improved footer.
+ * Who  When         Why
+ * CAM  18-Jul-06    MetricHelp ids added.
+ * CAM  04-Jan-08    330 : Added classes to support improved footer.
+ * CAM  17-Apr-2009  10430 : Added diffChurn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body, p, table, td {
@@ -67,6 +68,12 @@ body, p, table, td {
   color: white;
   font-weight: bold;
   background-color: #3333DD;
+}
+
+.diffChurn {
+  color: black;
+  font-weight: bold;
+  background-color: #FFCC00;
 }
 
 .mhBox {

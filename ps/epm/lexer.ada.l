@@ -1,25 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2005 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * ADA Parser
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  02-Aug-05    76 : File created.
- * CAM  18-Mar-06   208 : Correctly handle APOSTROPHEs.
- * CAM  08-Apr-06   230 : Added several missing delimiters, and removed redundant entries.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  18-Mar-06    208 : Correctly handle APOSTROPHEs.
+ * CAM  08-Apr-06    230 : Added several missing delimiters, and removed redundant entries.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  18-Apr-2009  10420 : Removed old GS comment/string code and replaced with flex states and correct rule order.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
 
 %{
 
@@ -99,14 +93,70 @@ void eol_comment_skip();
 
 %p 3500
 %x DEFINE
+%x CCOM
+
+NL                      "\n"
+NOTNL                   .
+ANY                     ({NOTNL}|{NL})
+BACKSL                  "\\"
+BOL                     ^
+LETTER                  [A-Za-z_]
+ALNUM                   [A-Za-z_0-9]
+DIGIT                   [0-9]
+HEXDIGIT                [0-9A-Fa-f]
+DIGITS                  ({DIGIT}+)
+EXP                     [Ee][+-]?DIGITS
+HEXDIGITS               ({HEXDIGIT}+)
+SIGN                    ("+"|"-")
+ELL_SUFFIX              [lL]([lL]?)
+INT_SUFFIX              ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
+FLOAT_SUFFIX            [flFL]
+STRCHAR                 [^\"\n\\]
+ESCAPE                  ({BACKSL}{ANY})
+QUOTE                   [\"]
+SPTAB                   [ \t]
 
 %%
 
-"--"                    {eol_comment_skip(); }
+\n                      {ada_lineno++;}
+
+";"                     {NOTE_SLOC(); nsemi++;}
+
+"&"                     {store_operator(AMPERSAND);}
+"'"                     {store_operator(APOSTROPHE);}
+"*"                     {store_operator(ASTERISK);}
+"+"                     {store_operator(PLUS);}
+"-"                     {store_operator(MINUS);}
+"/"                     {store_operator(SLASH);}
+"<"                     {store_operator(LESS_THAN);}
+"="                     {store_operator(EQUAL);}
+">"                     {store_operator(GREATER_THAN);}
+"."                     {store_operator(DOT);}
+
+","                     {NOTE_SLOC();}
+":"                     {NOTE_SLOC();}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
+"["                     {NOTE_SLOC();}
+"]"                     {NOTE_SLOC();}
+"{"                     {NOTE_SLOC();}
+"}"                     {NOTE_SLOC();}
+"|"                     {NOTE_SLOC();}
+
+"=>"                    {store_operator(ARROW);}
+":="                    {store_operator(ASSIGNMENT);}
+"**"                    {store_operator(EXPONENT);}
+"/="                    {store_operator(NOT_EQUAL);}
+">="                    {store_operator(GREATER_EQUAL);}
+"<="                    {store_operator(LESS_EQUAL);}
+"<<"                    {store_operator(LEFT_LABEL);}
+">>"                    {store_operator(RIGHT_LABEL);}
+"<>"                    {store_operator(BOX);}
+".."                    {store_operator(DOUBLE_DOT);}
 
 ^[ \t\v\f]*#            {NOTE_SLOC(); BEGIN DEFINE;}
-<DEFINE>[^\\]"\n"       {NOTE_SLOC(); ada_lineno++; BEGIN 0;}
-<DEFINE>"\n"            {NOTE_SLOC(); ada_lineno++;}
+<DEFINE>[^\\]\n         {NOTE_SLOC(); ada_lineno++; BEGIN 0;}
+<DEFINE>\n              {NOTE_SLOC(); ada_lineno++;}
 <DEFINE>.               {;}
 
 "ABORT"                 {store_operator(ABORT);}
@@ -182,52 +232,23 @@ void eol_comment_skip();
 "WITH"                  {store_operator(WITH);}
 "XOR"                   {store_operator(XOR);}
 
-{L}({L}|{D})*           {store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
-0{D}+{IS}?              {store_operand(_strdup(yytext));}
-{D}+{IS}?               {store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
-\"                      {sloc.insert(ada_lineno); string_literal();}
+{LETTER}{ALNUM}*                                            |
+[1-9][0-9]*{INT_SUFFIX}?                                    |
+[0][0-7]*{INT_SUFFIX}?                                      |
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+[0][xX]                                                     |
+{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+{DIGITS}"."?[eE]{SIGN}?                                     |
+"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC();}
 
-";"                     {NOTE_SLOC(); nsemi++;}
-
-"=>"                    {store_operator(ARROW);}
-":="                    {store_operator(ASSIGNMENT);}
-"**"                    {store_operator(EXPONENT);}
-"/="                    {store_operator(NOT_EQUAL);}
-">="                    {store_operator(GREATER_EQUAL);}
-"<="                    {store_operator(LESS_EQUAL);}
-"<<"                    {store_operator(LEFT_LABEL);}
-">>"                    {store_operator(RIGHT_LABEL);}
-"<>"                    {store_operator(BOX);}
-".."                    {store_operator(DOUBLE_DOT);}
-
-"&"                     {store_operator(AMPERSAND);}
-"'"                     {store_operator(APOSTROPHE);}
-"*"                     {store_operator(ASTERISK);}
-"+"                     {store_operator(PLUS);}
-"-"                     {store_operator(MINUS);}
-"/"                     {store_operator(SLASH);}
-"<"                     {store_operator(LESS_THAN);}
-"="                     {store_operator(EQUAL);}
-">"                     {store_operator(GREATER_THAN);}
-"."                     {store_operator(DOT);}
-
-","                     {NOTE_SLOC();}
-":"                     {NOTE_SLOC();}
-"("                     {NOTE_SLOC();}
-")"                     {NOTE_SLOC();}
-"["                     {NOTE_SLOC();}
-"]"                     {NOTE_SLOC();}
-"{"                     {NOTE_SLOC();}
-"}"                     {NOTE_SLOC();}
-"|"                     {NOTE_SLOC();}
+"--"{NOTNL}*{NL}        {cpp_comments++;com_loc++;ada_lineno++;}
 
 [ \t\v\f]               {;}
-"\n"                    {ada_lineno++;}
 .                       { /* ignore bad characters */ }
+
 %%
 int yywrap() {
   return(1);

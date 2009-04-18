@@ -61153,7 +61153,7 @@ YY_RULE_SETUP
 case 371:
 YY_RULE_SETUP
 #line 488 "lexer.asp.l"
-{ /* To-end-of-line Comments within Client-side Script */ asp_lineno++; com_loc_asp++; BEGIN SLOC_SCR; printf("gotcha!\n");}
+{ /* To-end-of-line Comments within Client-side Script */ asp_lineno++; com_loc_asp++; BEGIN SLOC_SCR;}
 	YY_BREAK
 case 372:
 YY_RULE_SETUP

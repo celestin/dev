@@ -73,6 +73,7 @@
  * CAM  14-Apr-2009  10403 : Added Python language support.  Changed non-logical lines languages to set NSC (LLOC) to SLOC.
  * CAM  16-Apr-2009  10402 : Added Assembler language support.
  * CAM  17-Apr-2009  10430 : Added calculation of Churn metrics.
+ * CAM  18-Apr-2009  10434 : Version 1.17.000.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1081,7 +1082,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.16.005.ad\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.17.000\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * HTML Reporting
@@ -36,6 +36,7 @@
  * CAM  04-Jan-08    330 : Improved layout of links in footer.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
+ * CAM  18-Apr-2009  10434 : Extended copyright year.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -242,7 +243,7 @@ void HTMLReport::createFrameset() {
         << "  <div class=\"colmid\">" << endl
         << "    <div class=\"colleft\">" << endl;
 
-  frame << "      <div class=\"col1\"><p class=\"pstext\">Copyright &copy; 2004-2007 <b>SourceCodeMetrics.com</b></p></div>" << endl
+  frame << "      <div class=\"col1\"><p class=\"pstext\">Copyright &copy; 2004,2009 <b>SourceCodeMetrics.com</b></p></div>" << endl
         << "      <div class=\"col2\"><ul>" << endl
         << "        <li><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a></li>" << endl
         << "        <li><a class=top href=\"http://www.powersoftware.com/epm/UserGuide.pdf\" target=\"_blank\">EPM User Guide</a></li>" << endl

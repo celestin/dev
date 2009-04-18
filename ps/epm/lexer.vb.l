@@ -12,13 +12,6 @@
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
-
 %{
 
 #include <stdio.h>
@@ -53,58 +46,63 @@ int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-void lexclear() {
-  BEGIN 0;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  vb_lineno=nsemi=noperators=0;
+#define COUNT() sloc.insert(vb_lineno)
 
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  sloc.insert(vb_lineno);
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  sloc.insert(vb_lineno);
-}
-
-void string_literal();
-void eol_comment_skip();
-
+void lexclear();
+void store_operand(char* txt);
+void store_operator(int op);
 %}
 
 %p 3500
 %x DEFINE
 
+NL                      "\n"
+NOTNL                   .
+ANY                     ({NOTNL}|{NL})
+BACKSL                  "\\"
+BOL                     ^
+LETTER                  [A-Za-z_]
+ALNUM                   [A-Za-z_0-9]
+DIGIT                   [0-9]
+HEXDIGIT                [0-9A-Fa-f]
+DIGITS                  ({DIGIT}+)
+EXP                     [Ee][+-]?DIGITS
+HEXDIGITS               ({HEXDIGIT}+)
+SIGN                    ("+"|"-")
+ELL_SUFFIX              [lL]([lL]?)
+INT_SUFFIX              ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
+FLOAT_SUFFIX            [flFL]
+STRCHAR                 [^\"\n\\]
+ESCAPE                  ({BACKSL}{ANY})
+QUOTE                   [\"]
+SPTAB                   [ \t]
+
 %%
 
-"'"                     {eol_comment_skip(); }
-"REM"                   {eol_comment_skip(); }
+\n                      {vb_lineno++;}
 
-^[ \t\v\f]*#            {sloc.insert(vb_lineno); BEGIN DEFINE;}
-<DEFINE>[^\\]"\n"       {sloc.insert(vb_lineno); vb_lineno++; BEGIN 0;}
-<DEFINE>"\n"            {sloc.insert(vb_lineno); vb_lineno++;}
+^[ \t\v\f]*#            {COUNT(); BEGIN DEFINE;}
+<DEFINE>[^\\]"\n"       {COUNT(); vb_lineno++; BEGIN 0;}
+<DEFINE>"\n"            {COUNT(); vb_lineno++;}
 <DEFINE>.               {;}
+
+\".*\"                  {store_operand(_strdup(yytext));COUNT();}
+
+"&"                     {store_operator(CONCAT);}
+"*"                     {store_operator(ASTERISK);}
+"+"                     {store_operator(PLUS);}
+"-"                     {store_operator(MINUS);}
+"/"                     {store_operator(SLASH);}
+"<"                     {store_operator(LESS_THAN);}
+"<<"                    {store_operator(SHIFT_LEFT);}
+"<="                    {store_operator(LESS_EQUAL);}
+"<>"                    {store_operator(NOT_EQUAL);}
+"="                     {store_operator(EQUAL);}
+">"                     {store_operator(GREATER_THAN);}
+">="                    {store_operator(GREATER_EQUAL);}
+">>"                    {store_operator(SHIFT_RIGHT);}
+"\\"                    {store_operator(INT_DIVIDE);}
+"^"                     {store_operator(EXPONENT);}
 
 "AddHandler"            {store_operator(ADD_HANDLER);}
 "AddressOf"             {store_operator(ADDRESS_OF);}
@@ -245,62 +243,59 @@ void eol_comment_skip();
 "WriteOnly"             {store_operator(WRITE_ONLY);}
 "Xor"                   {store_operator(XOR);}
 
-{L}({L}|{D})*           {store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
-0{D}+{IS}?              {store_operand(_strdup(yytext));}
-{D}+{IS}?               {store_operand(_strdup(yytext));}
-'(\\.|[^\\'])+'         {store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
-\"                      {sloc.insert(vb_lineno); string_literal();}
+{LETTER}{ALNUM}*                                            |
+[1-9][0-9]*{INT_SUFFIX}?                                    |
+[0][0-7]*{INT_SUFFIX}?                                      |
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+[0][xX]                                                     |
+{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+{DIGITS}"."?[eE]{SIGN}?                                     |
+"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));COUNT();}
 
-"&"                     {store_operator(CONCAT);}
-"*"                     {store_operator(ASTERISK);}
-"+"                     {store_operator(PLUS);}
-"-"                     {store_operator(MINUS);}
-"/"                     {store_operator(SLASH);}
-"<"                     {store_operator(LESS_THAN);}
-"<<"                    {store_operator(SHIFT_LEFT);}
-"<="                    {store_operator(LESS_EQUAL);}
-"<>"                    {store_operator(NOT_EQUAL);}
-"="                     {store_operator(EQUAL);}
-">"                     {store_operator(GREATER_THAN);}
-">="                    {store_operator(GREATER_EQUAL);}
-">>"                    {store_operator(SHIFT_RIGHT);}
-"\\"                    {store_operator(INT_DIVIDE);}
-"^"                     {store_operator(EXPONENT);}
+"'"{NOTNL}*{NL}         |
+"REM "{NOTNL}*{NL}      {cpp_comments++;com_loc++;vb_lineno++;}
 
-[ \t\v\f]               {;}
-"\n"                    {vb_lineno++;}
+[ \t\v\f]*              {;}
 .                       { /* ignore bad characters */ }
 %%
 int yywrap() {
   return(1);
 }
 
-void string_literal() {
-  char c=0;
+void lexclear() {
+  BEGIN 0;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  vb_lineno=nsemi=noperators=0;
 
-  while ((c!='\"') && (c!=EOF))
-     if ((c=yyinput())=='\\')
-        if ((c=yyinput())=='\"')
-           c=yyinput();
+  sloc.clear();
+  operators.clear();
 
-  sloc.insert(vb_lineno);
+  for (int i=0; i<255; i++) {
+    if (operands[i].size() > 0) operands[i].clear();
+  }
 }
 
-
-void eol_comment_skip() {
+void store_operand(char* txt) {
   char c;
+  unsigned int i;
+  noperands++;
 
-  while (((c=yyinput()) !='\n') && (c!=0) && (c!=EOF)) ;
+  c=txt[0];
+  for (i=0;i<operands[c].size();i++) {
+    if (!strcmp(txt,operands[c][i])) return;
+  }
+  operands[c].push_back(txt);
 
-  cpp_comments++;
+  COUNT();
+}
 
-  if (vb_lineno!=prev_com_line)
-    com_loc++;
-
-  prev_com_line=vb_lineno;
-  if (c=='\n') vb_lineno++;
+void store_operator(int op) {
+  operators.insert(op);
+  noperators++;
+  COUNT();
 }

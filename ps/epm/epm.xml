@@ -42,6 +42,11 @@
       <ext name="General Source" value="vb" />
     </filetype>
   </lang>
+  <lang name="VBScript" parser="VB">
+    <filetype name="Source">
+      <ext name="Script" value="vbs" />
+    </filetype>
+  </lang>
   <lang name="Perl" parser="PL">
     <filetype name="Source">
       <ext name="Perl Script" value="pl" />

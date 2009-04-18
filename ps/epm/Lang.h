@@ -21,6 +21,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  14-Apr-2009  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  14-Apr-2009  10403 : Python and XML do not have logical lines.
+ * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -137,7 +138,6 @@ namespace metrics
     bool hasLogicalLines() {
       switch (theLang) {
         case LANG_ADA:
-        case LANG_ASP:
         case LANG_CPP:
         case LANG_CS:
         case LANG_IDL:
@@ -149,6 +149,7 @@ namespace metrics
           return true;
           break;
 
+        case LANG_ASP:    // C# within ASP does, but safer to exclude
         case LANG_PERL:
         case LANG_PYTHON:
         case LANG_S1:

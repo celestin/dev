@@ -1,17 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * ASP language Diff
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  19-Sep-06   117 : File created.
- * CAM  25-Oct-07   319 : Correct leak in getLine*.
- * CAM  01-Nov-07   321 : Correct issue with theMultiLine in getLineSC.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  19-Sep-06    117 : File created.
+ * CAM  25-Oct-07    319 : Correct leak in getLine*.
+ * CAM  01-Nov-07    321 : Correct issue with theMultiLine in getLineSC.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  18-Apr-2009  10421 : Do not parse logical lines (getLineSC).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffASP.h"
@@ -263,120 +264,4 @@ void DiffASP::getLineCR(FILE *input, char *&currline)
   }
 }
 
-void DiffASP::getLineSC(FILE *input, char *&currline)
-{
-  char *retval = (char*) malloc(MAX_LLOC_LEN*sizeof(char));
-  int b = 0;
-
-  bool debugon = false;
-
-  try
-  {
-    int nc,nc2,nc3,nc4 = 0;
-    bool skip = false;
-    bool comskip = false;
-    theMultiLine = false;
-
-    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
-      switch (nc)
-      {
-      case '"':
-        {
-          if (skip) {
-            skip = false;
-          } else {
-            skip = true;
-          }
-          retval[b++] = nc;
-          break;
-        }
-      case ';':
-        {
-          if (!skip && !comskip && !theMultiLine) {
-            retval[b++] = ';';
-            retval[b++] = '\0';
-            currline = retval;
-            if (debugon) cout << '[' << currline << ']' << endl;
-            return;
-          }
-        }
-      case '\n':
-        {
-          // This is where we *could* (and should) reset b to 0 if the only thing in the retval so far is spaces - to chop trailing
-          comskip = false;
-          break;
-        }
-      case '<':
-        {
-          if (skip) {
-            // Ignore
-          } else {
-            if ( ((nc2=fgetc(input))!=EOF) && ((nc3=fgetc(input))!=EOF) && ((nc4=fgetc(input))!=EOF) ) {
-
-              if ((nc2 == '!') && (nc3 == '-') && (nc4 == '-') ) {
-                theMultiLine = true;
-
-              } else if (!comskip && !theMultiLine) {
-                retval[b++] = nc;
-                retval[b++] = nc2;
-                retval[b++] = nc3;
-                retval[b++] = nc4;
-              }
-            }
-          }
-          break;
-        }
-      case '-':
-        {
-          if (skip) {
-            // Ignore
-          } else {
-            if ( ((nc2=fgetc(input))!=EOF) && ((nc3=fgetc(input))!=EOF) ) {
-
-              if ((nc2 == '-') && (nc3 == '>') ) {
-                theMultiLine = false;
-
-              } else if (!comskip && !theMultiLine) {
-                retval[b++] = nc;
-                retval[b++] = nc2;
-                retval[b++] = nc3;
-              }
-            }
-          }
-          break;
-        }
-      case '\\':
-        {
-          retval[b++] = nc;
-          if (skip)
-          {
-            if ((nc2=fgetc(input))!=EOF) {
-              retval[b++] = nc2;
-            }
-          }
-          break;
-        }
-      default:
-        {
-          if (!comskip && !theMultiLine) retval[b++] = nc;
-          break;
-        }
-      }
-    }
-  }
-  catch (...)
-  {
-    currline = _strdup("");
-    return;
-  }
-
-  if (b == 0) {
-    try { free(retval); } catch (...) {}
-    currline = NULL;
-    return;
-  }
-
-  retval[b++] = '\0';
-  currline = retval;
-}
-
+void DiffASP::getLineSC(FILE *input, char *&currline) { }

@@ -485,7 +485,7 @@ SPTAB                                                                 [ \t]
 <SLOC_SCR_STRD>\"                                                     {BEGIN SLOC_SCR;}
 <SLOC_SCR_STRD>.                                                      {NOTE_SLOC_SCR();}
 
-<SLOC_SCR_ECOM>\n                                                     { /* To-end-of-line Comments within Client-side Script */ asp_lineno++; com_loc++; BEGIN SLOC_SCR; printf("gotcha!\n");}
+<SLOC_SCR_ECOM>\n                                                     { /* To-end-of-line Comments within Client-side Script */ asp_lineno++; com_loc++; BEGIN SLOC_SCR;}
 <SLOC_SCR_ECOM>.                                                      {;}
 
 "<asp"                                                                {NOTE_SLOC_TAG(); BEGIN ASP_TAG; }

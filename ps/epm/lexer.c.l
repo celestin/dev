@@ -1,25 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2005 Power Software
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * C/C++ parser
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  12-Apr-05  File added.
+ * Who  When         Why
+ * CAM  12-Apr-05    File added.
  * CAM  09-May-05    49 : Changed variables to be more consistent.
  * CAM  11-May-05    96 : Rationalised variables.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  18-Apr-2009  10422 : Removed old GS comment/string code and replaced with flex states and correct rule order.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
 
 %{
 
@@ -41,20 +35,12 @@ using namespace std;
 
 #endif
 
-const int INITIAL_STATE=0;
-const int WAITING_START_OF_COMMENT=1;
-const int WAITING_END_OF_COMMENT=2;
-
 int cpp_lineno=0;
 int j_comments=0;
 int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
 int prev_com_line=-1;
-
-void comment_skip();
-void string_literal();
-void eol_comment_skip();
 
 set<int> sloc;
 set<int> operators;
@@ -68,48 +54,112 @@ int noperands=0;        // Total number of operands
 #define SEMI() nsemi++;
 #define COUNT() sloc.insert(cpp_lineno)
 
-void lexclear() {
-  BEGIN 0 ;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  cpp_lineno=nsemi=noperators=0;
-
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-}
+void lexclear();
+void store_operand(char* txt);
 
 %}
 
 %p 3500
 %x DEFINE
+%x JCOM CCOM
+%x STRD
+
+NL                      "\n"
+NOTNL                   .
+ANY                     ({NOTNL}|{NL})
+BACKSL                  "\\"
+BOL                     ^
+LETTER                  [A-Za-z_]
+ALNUM                   [A-Za-z_0-9]
+DIGIT                   [0-9]
+HEXDIGIT                [0-9A-Fa-f]
+DIGITS                  ({DIGIT}+)
+EXP                     [Ee][+-]?DIGITS
+HEXDIGITS               ({HEXDIGIT}+)
+SIGN                    ("+"|"-")
+ELL_SUFFIX              [lL]([lL]?)
+INT_SUFFIX              ([uU]{ELL_SUFFIX}?|{ELL_SUFFIX}[uU]?)
+FLOAT_SUFFIX            [flFL]
+STRCHAR                 [^\"\n\\]
+ESCAPE                  ({BACKSL}{ANY})
+QUOTE                   [\"]
+SPTAB                   [ \t]
 
 %%
 
-"/**"                   {comment_skip();j_comments++;}
-"/*"                    {comment_skip();c_comments++;}
-"//"                    {eol_comment_skip(); }
+[ \t\v\f]*              {;}
+
+"/**"                   {com_loc++; j_comments++; BEGIN JCOM;}
+<JCOM>"*/"              {BEGIN 0;}
+<JCOM>\n                {com_loc++; cpp_lineno++;}
+<JCOM>.                 {;}
+
+"/*"                    {com_loc++; c_comments++; BEGIN CCOM;}
+<CCOM>"*/"              {BEGIN 0;}
+<CCOM>\n                {com_loc++; cpp_lineno++;}
+<CCOM>.                 {;}
+
+\n                      {cpp_lineno++;}
 
 ^[ \t\v\f]*#            {COUNT(); BEGIN DEFINE;}
-<DEFINE>[^\\]"\n"       {COUNT(); cpp_lineno++; BEGIN 0;}
-<DEFINE>"\n"            {COUNT(); cpp_lineno++;}
+<DEFINE>[^\\]\n         {COUNT(); cpp_lineno++; BEGIN 0;}
+<DEFINE>\n              {COUNT(); cpp_lineno++;}
 <DEFINE>.               {;}
+
+\".*\\\"*\"             |
+\".*\"                  {store_operand(_strdup(yytext));COUNT();}
+"'"."'"                 {store_operand(_strdup(yytext));COUNT();}
+
+";"                     {COUNT(); SEMI();}
+"{"                     {COUNT();}
+"}"                     {COUNT();}
+","                     {COUNT();}
+":"                     {COUNT();}
+"="                     {COUNT(); STORE_OPERATOR('=');}
+"("                     {COUNT();}
+")"                     {COUNT();}
+"["                     {COUNT(); STORE_OPERATOR('[');}
+"]"                     {COUNT();}
+"."                     {COUNT(); STORE_OPERATOR('.');}
+"&"                     {COUNT(); STORE_OPERATOR('&');}
+"!"                     {COUNT(); STORE_OPERATOR('!');}
+"~"                     {COUNT(); STORE_OPERATOR('~');}
+"-"                     {COUNT(); STORE_OPERATOR('-');}
+"+"                     {COUNT(); STORE_OPERATOR('+');}
+"*"                     {COUNT(); STORE_OPERATOR('*');}
+"/"                     {COUNT(); STORE_OPERATOR('/');}
+"%"                     {COUNT(); STORE_OPERATOR('%');}
+"<"                     {COUNT(); STORE_OPERATOR(LT);}
+">"                     {COUNT(); STORE_OPERATOR(GT);}
+"^"                     {COUNT(); STORE_OPERATOR('^');}
+"|"                     {COUNT(); STORE_OPERATOR('|');}
+"?"                     {COUNT(); STORE_OPERATOR('?');}
+
+"::"                    {COUNT(); STORE_OPERATOR(COLONCOLON);}
+"..."                   {COUNT(); }
+">>="                   {COUNT(); STORE_OPERATOR(GREATGREATEQUALS);}
+"<<="                   {COUNT(); STORE_OPERATOR(LESSLESSEQUALS);}
+"+="                    {COUNT(); STORE_OPERATOR(PLUSEQUALS);}
+"-="                    {COUNT(); STORE_OPERATOR(MINUSEQUALS);}
+"*="                    {COUNT(); STORE_OPERATOR(TIMESEQUALS);}
+"/="                    {COUNT(); STORE_OPERATOR(DIVEQUALS);}
+"%="                    {COUNT(); STORE_OPERATOR(MODEQUALS);}
+"&="                    {COUNT(); STORE_OPERATOR(ANDEQUALS);}
+"^="                    {COUNT(); STORE_OPERATOR(CARETEQUALS);}
+"|="                    {COUNT(); STORE_OPERATOR(BAREQUALS);}
+">>"                    {COUNT(); STORE_OPERATOR(GREATERGREATER);}
+"<<"                    {COUNT(); STORE_OPERATOR(LESSLESS);}
+"++"                    {COUNT(); STORE_OPERATOR(INC_OP);}
+"--"                    {COUNT(); STORE_OPERATOR(DEC_OP);}
+".*"                    {COUNT(); STORE_OPERATOR(DOT_STAR);}
+"->*"                   {COUNT(); STORE_OPERATOR(PTR_OP_STAR);}
+"->"                    {COUNT(); STORE_OPERATOR(PTR_OP);}
+"&&"                    {COUNT(); STORE_OPERATOR(AND_OP);}
+"||"                    {COUNT(); STORE_OPERATOR(OR_OP);}
+"<="                    {COUNT(); STORE_OPERATOR(LESSEQUALS);}
+">="                    {COUNT(); STORE_OPERATOR(GREATEREQUALS);}
+"=="                    {COUNT(); STORE_OPERATOR(EQUALS);}
+"!="                    {COUNT(); STORE_OPERATOR(NOTEQUALS);}
 
 "asm"                   {COUNT(); STORE_OPERATOR(ASM);}
 "auto"                  {COUNT(); STORE_OPERATOR(AUTO);}
@@ -172,150 +222,56 @@ void store_operand(char* txt) {
 "delete"                {COUNT(); STORE_OPERATOR(DELETE);}
 "this"                  {COUNT(); STORE_OPERATOR(THIS);}
 "throw"                 {COUNT(); STORE_OPERATOR(THROW);}
-{L}({L}|{D})*           {COUNT(); store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {COUNT(); store_operand(_strdup(yytext));}
-0{D}+{IS}?              {COUNT(); store_operand(_strdup(yytext));}
-{D}+{IS}?               {COUNT(); store_operand(_strdup(yytext));}
-'(\\.|[^\\'])+'         {COUNT(); store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {COUNT(); store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
-\"                      {COUNT(); string_literal();}
-"::"                    {COUNT(); STORE_OPERATOR(COLONCOLON);}
-"..."                   {COUNT(); }
-">>="                   {COUNT(); STORE_OPERATOR(GREATGREATEQUALS);}
-"<<="                   {COUNT(); STORE_OPERATOR(LESSLESSEQUALS);}
-"+="                    {COUNT(); STORE_OPERATOR(PLUSEQUALS);}
-"-="                    {COUNT(); STORE_OPERATOR(MINUSEQUALS);}
-"*="                    {COUNT(); STORE_OPERATOR(TIMESEQUALS);}
-"/="                    {COUNT(); STORE_OPERATOR(DIVEQUALS);}
-"%="                    {COUNT(); STORE_OPERATOR(MODEQUALS);}
-"&="                    {COUNT(); STORE_OPERATOR(ANDEQUALS);}
-"^="                    {COUNT(); STORE_OPERATOR(CARETEQUALS);}
-"|="                    {COUNT(); STORE_OPERATOR(BAREQUALS);}
-">>"                    {COUNT(); STORE_OPERATOR(GREATERGREATER);}
-"<<"                    {COUNT(); STORE_OPERATOR(LESSLESS);}
-"++"                    {COUNT(); STORE_OPERATOR(INC_OP);}
-"--"                    {COUNT(); STORE_OPERATOR(DEC_OP);}
-".*"                    {COUNT(); STORE_OPERATOR(DOT_STAR);}
-"->*"                   {COUNT(); STORE_OPERATOR(PTR_OP_STAR);}
-"->"                    {COUNT(); STORE_OPERATOR(PTR_OP);}
-"&&"                    {COUNT(); STORE_OPERATOR(AND_OP);}
-"||"                    {COUNT(); STORE_OPERATOR(OR_OP);}
-"<="                    {COUNT(); STORE_OPERATOR(LESSEQUALS);}
-">="                    {COUNT(); STORE_OPERATOR(GREATEREQUALS);}
-"=="                    {COUNT(); STORE_OPERATOR(EQUALS);}
-"!="                    {COUNT(); STORE_OPERATOR(NOTEQUALS);}
-";"                     {COUNT(); SEMI();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
-","                     {COUNT();}
-":"                     {COUNT();}
-"="                     {COUNT(); STORE_OPERATOR('=');}
-"("                     {COUNT();}
-")"                     {COUNT();}
-"["                     {COUNT(); STORE_OPERATOR('[');}
-"]"                     {COUNT();}
-"."                     {COUNT(); STORE_OPERATOR('.');}
-"&"                     {COUNT(); STORE_OPERATOR('&');}
-"!"                     {COUNT(); STORE_OPERATOR('!');}
-"~"                     {COUNT(); STORE_OPERATOR('~');}
-"-"                     {COUNT(); STORE_OPERATOR('-');}
-"+"                     {COUNT(); STORE_OPERATOR('+');}
-"*"                     {COUNT(); STORE_OPERATOR('*');}
-"/"                     {COUNT(); STORE_OPERATOR('/');}
-"%"                     {COUNT(); STORE_OPERATOR('%');}
-"<"                     {COUNT(); STORE_OPERATOR(LT);}
-">"                     {COUNT(); STORE_OPERATOR(GT);}
-"^"                     {COUNT(); STORE_OPERATOR('^');}
-"|"                     {COUNT(); STORE_OPERATOR('|');}
-"?"                     {COUNT(); STORE_OPERATOR('?');}
-[ \t\v\f]               {;}
-"\n"                    {cpp_lineno++;}
+
+{LETTER}{ALNUM}*                                            |
+[1-9][0-9]*{INT_SUFFIX}?                                    |
+[0][0-7]*{INT_SUFFIX}?                                      |
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+[0][xX]                                                     |
+{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+{DIGITS}"."?[eE]{SIGN}?                                     |
+"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));COUNT();}
+
+<STRD>\n                                                    { /* Double-quoted string literals */ cpp_lineno++;}
+<STRD>\"                                                    {BEGIN 0;}
+<STRD>.                                                     {COUNT();}
+
+"//"{NOTNL}*{NL}        {cpp_comments++;com_loc++;cpp_lineno++;}
+
 .                       { /* ignore bad characters */ }
+
 %%
 int yywrap() {
   return(1);
 }
 
-void comment_skip() {
-  char c=0 ;
-  int state=INITIAL_STATE ;
+void lexclear() {
+  BEGIN 0 ;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  cpp_lineno=nsemi=noperators=0;
 
-  // If there are two c comments on one line it is treated as two
-  // c comments but only one comment LOC. Therefore we have to check
-  // what line the previous c comment was on.
-  if (cpp_lineno!=prev_com_line) {
-    // Not on the same line as the previous comment so increment
-    // comment LOC
-    com_loc++;
+  sloc.clear();
+  operators.clear();
 
-    // Set the previous c comment line no. to the current line
-    prev_com_line=cpp_lineno;
-  }
-
-  while (c!=EOF) {
-    c=yyinput();
-
-    switch (c) {
-      case '*':
-        state=WAITING_END_OF_COMMENT ;
-        break ;
-
-      case '\n':
-        // Set the previous c comment line no. to the current line
-        prev_com_line=cpp_lineno;
-
-        // Update the cpp_lineno variable to correspond with moving
-        // onto the next line
-        cpp_lineno++;
-
-        // Increment the comment LOC
-        com_loc++;
-
-        // Set the state to INITIAL_STATE
-        state=INITIAL_STATE ;
-        break ;
-
-      case '/':
-        if (state==WAITING_END_OF_COMMENT) {
-          return;
-        }
-
-        // Set the state to INITIAL_STATE
-        state=INITIAL_STATE ;
-        break ;
-
-      default:
-        state=INITIAL_STATE ;
-    }
+  for (int i=0; i<255; i++) {
+    if (operands[i].size() > 0) operands[i].clear();
   }
 }
 
-
-void string_literal() {
-  char c=0;
-
-  while ((c!='\"') && (c!=EOF))
-     if ((c=yyinput())=='\\')
-        if ((c=yyinput())=='\"')
-           c=yyinput() ;
-}
-
-
-void eol_comment_skip() {
+void store_operand(char* txt) {
   char c;
+  unsigned int i;
+  noperands++;
 
-  while (((c=yyinput()) !='\n') && (c!=0) && (c!=EOF)) ;
-
-  cpp_comments++;
-
-  if (cpp_lineno!=prev_com_line)
-    com_loc++;
-
-  prev_com_line=cpp_lineno;
-  if (c=='\n') cpp_lineno++;
+  c=txt[0];
+  for (i=0;i<operands[c].size();i++) {
+    if (!strcmp(txt,operands[c][i])) return;
+  }
+  operands[c].push_back(txt) ;
 }
-
-/* ************************************* */
 

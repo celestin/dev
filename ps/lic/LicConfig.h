@@ -18,6 +18,7 @@
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * CAM  17-Jul-07   316 : Added VHDL.
  * CAM  04-Dec-07   324 : Added JSP/XML (#325).
+ * CAM  26-Mar-09   10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -36,6 +37,10 @@
 #define LIC_VH   "epmvh"
 #define LIC_JS   "epmjs"
 #define LIC_XM   "epmxm"
+#define LIC_AY   "epmay"
+#define LIC_HT   "epmht"
+#define LIC_JT   "epmjt"
+#define LIC_PY   "epmpy"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -51,3 +56,8 @@
 #define EPM_VH   2048
 #define EPM_JS   4096
 #define EPM_XM   8192
+#define EPM_AY   16384
+#define EPM_HT   32768
+#define EPM_JT   65536
+#define EPM_PY   131072
+

@@ -20,6 +20,7 @@
  * CAM  28-Jun-07   314 : Added Ericsson IDL.
  * CAM  17-Jul-07   316 : Added VHDL.
  * CAM  11-Dec-07   325 : Added JSP/XML.
+ * CAM  26-Mar-09   10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"
@@ -79,7 +80,11 @@ DWORD main(int argc, char* argv[]) {
   inc(EPM_JS, LIC_JS);
   inc(EPM_XM, LIC_XM);
   inc(EPM_KR, LIC_KR);
-
+  inc(EPM_AY, LIC_AY);
+  inc(EPM_HT, LIC_HT);
+  inc(EPM_JT, LIC_JT);
+  inc(EPM_PY, LIC_PY);
+ 
   if (debug) cout << endl << "Total:" << rval << endl;
 
   return rval;

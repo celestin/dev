@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="lic"
 	ProjectGUID="{BA08B636-7913-4F97-B23C-6D973AA97560}"
+	RootNamespace="lic"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="0"
 	>
@@ -49,7 +50,7 @@
 				AdditionalIncludeDirectories="C:\Program Files\FLEXlm\v7.2\machind"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				StringPooling="true"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderFile=".\Release/lic.pch"
 				AssemblerListingLocation=".\Release/"

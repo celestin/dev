@@ -34,6 +34,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  30-May-08    365 : Incorrect not null field in sourcefile.
  * CAM  17-Apr-2009  10430 : Added Churn metrics.
+ * CAM  28-Apr-2009  10436 : Allowed use of blank file extensions.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -93,7 +94,23 @@ char* getFileType(char *srcf, char *rval) {
   strcpy_s(rval, MAX_PATH, "CP");
   char *lastperiod = strrchr(srcf, '.');
 
-  if (lastperiod != NULL) {
+  if (lastperiod == NULL)
+  {
+    // If there is no period, look for an extension with only a space, and return this language
+    for (int i=0; i<ext->nLang; i++) {
+      for (int j=0; j<ext->nType[i]; j++) {
+        for (int k=0; k<ext->nExt[i][j]; k++) {
+          if (ext->sExt[i][j][k].fDesc[0] == ' ') {
+            strcpy_s(rval, MAX_PATH, ext->sLang[i].fDesc);
+            return rval;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    // Period was found, skip past the period itself and look for a matching extension
     lastperiod++;
 
     for (int i=0; i<ext->nLang; i++) {
@@ -101,12 +118,14 @@ char* getFileType(char *srcf, char *rval) {
         for (int k=0; k<ext->nExt[i][j]; k++) {
           if (!_stricmp(lastperiod, ext->sExt[i][j][k].fDesc)) {
             strcpy_s(rval, MAX_PATH, ext->sLang[i].fDesc);
+            return rval;
           }
         }
       }
     }
   }
 
+  // Otherwise, it's C++!
   return rval;
 }
 

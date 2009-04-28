@@ -15,7 +15,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 {
 	/// <summary>
 	/// UI Project Item.

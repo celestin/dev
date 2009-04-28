@@ -20,7 +20,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.ComponentModel;
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Threading
 {
     /// <summary>
     /// Delegate used by the events StdOutReceived and

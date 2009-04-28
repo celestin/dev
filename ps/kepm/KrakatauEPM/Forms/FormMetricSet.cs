@@ -22,7 +22,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Config;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// Allowing the editing of a Metric Set.

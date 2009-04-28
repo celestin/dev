@@ -19,7 +19,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Config;
+using SourceCodeMetrics.Krakatau.Kepm.Projects;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// New Project Wizard Form.  Takes the user through the steps required to

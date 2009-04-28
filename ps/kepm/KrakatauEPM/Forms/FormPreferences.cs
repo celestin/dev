@@ -12,7 +12,9 @@
 using System;
 using System.Windows.Forms;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Win32;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   public partial class FormPreferences : Form
   {

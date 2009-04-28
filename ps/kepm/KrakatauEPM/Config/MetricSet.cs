@@ -14,7 +14,7 @@
 using System;
 using System.Collections;
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Config
 {
 	/// <summary>
 	/// Metric Definition

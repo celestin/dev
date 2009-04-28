@@ -8,12 +8,12 @@
     <ProjectGuid>{7E20EF1B-4B0E-4DE1-9237-79F37CD05C7A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KrakatauEPM</RootNamespace>
+    <RootNamespace>SourceCodeMetrics.Krakatau.Kepm</RootNamespace>
     <AssemblyName>KrakatauEPM</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>VolcanoEPM.ico</ApplicationIcon>
-    <StartupObject>KrakatauEPM.Program</StartupObject>
+    <StartupObject>SourceCodeMetrics.Krakatau.Kepm.KrakatauEPM</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,77 +41,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analyse.cs">
+    <Compile Include="Forms\FormAnalyse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Arguments.cs" />
-    <Compile Include="AsyncOperation.cs" />
-    <Compile Include="Ext.cs" />
-    <Compile Include="FormKrakatauEPM.cs">
+    <Compile Include="Projects\Arguments.cs" />
+    <Compile Include="Threading\AsyncOperation.cs" />
+    <Compile Include="Config\Ext.cs" />
+    <Compile Include="Forms\FormKrakatauEPM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormKrakatauEPM.Designer.cs">
+    <Compile Include="Forms\FormKrakatauEPM.Designer.cs">
       <DependentUpon>FormKrakatauEPM.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMetricSet.cs">
+    <Compile Include="Forms\FormMetricSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMetricSets.cs">
+    <Compile Include="Forms\FormMetricSets.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPreferences.cs">
+    <Compile Include="Forms\FormPreferences.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPreferences.Designer.cs">
+    <Compile Include="Forms\FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHelpAbout.cs">
+    <Compile Include="Forms\FormHelpAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewProject.cs">
+    <Compile Include="Forms\FormNewProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MetricDef.cs" />
-    <Compile Include="MetricSet.cs" />
-    <Compile Include="MetricSetItem.cs" />
-    <Compile Include="Prefs.cs" />
-    <Compile Include="ProcessCaller.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Project.cs" />
-    <Compile Include="ProjectItem.cs" />
-    <Compile Include="ProjectsView.cs">
+    <Compile Include="Config\MetricDef.cs" />
+    <Compile Include="Config\MetricSet.cs" />
+    <Compile Include="Config\MetricSetItem.cs" />
+    <Compile Include="Win32\Prefs.cs" />
+    <Compile Include="Threading\ProcessCaller.cs" />
+    <Compile Include="KrakatauEPM.cs" />
+    <Compile Include="Projects\Project.cs" />
+    <Compile Include="Projects\ProjectItem.cs" />
+    <Compile Include="Controls\ProjectsView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Analyse.resx">
-      <DependentUpon>Analyse.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAnalyse.resx">
+      <DependentUpon>FormAnalyse.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormKrakatauEPM.resx">
+    <EmbeddedResource Include="Forms\FormKrakatauEPM.resx">
       <DependentUpon>FormKrakatauEPM.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMetricSet.resx">
+    <EmbeddedResource Include="Forms\FormMetricSet.resx">
       <DependentUpon>FormMetricSet.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMetricSets.resx">
+    <EmbeddedResource Include="Forms\FormMetricSets.resx">
       <DependentUpon>FormMetricSets.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPreferences.resx">
+    <EmbeddedResource Include="Forms\FormPreferences.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHelpAbout.resx">
-      <DependentUpon>frmHelpAbout.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormHelpAbout.resx">
+      <DependentUpon>FormHelpAbout.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewProject.resx">
-      <DependentUpon>frmNewProject.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormNewProject.resx">
+      <DependentUpon>FormNewProject.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectsView.resx">
+    <EmbeddedResource Include="Controls\ProjectsView.resx">
       <DependentUpon>ProjectsView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -153,12 +153,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="XMLConfig.cs" />
+    <Compile Include="Config\XMLConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\ico\About.ico" />
     <Content Include="img\ico\Prefs.ico" />
     <None Include="img\menu\prefs.png" />
+    <None Include="img\menu\jar_new.png" />
+    <None Include="img\menu\jar_into.png" />
+    <None Include="img\menu\jar_delete.png" />
     <Content Include="img\ms\delete.bmp" />
     <Content Include="img\ms\edit.bmp" />
     <Content Include="img\ms\jar.bmp" />

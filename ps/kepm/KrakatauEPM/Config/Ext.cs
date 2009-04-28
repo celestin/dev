@@ -13,7 +13,7 @@
 
 using System;
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Config
 {
 	/// <summary>
 	/// Summary description for Ext.

@@ -21,7 +21,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Projects;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Controls
 {
   /// <summary>
   /// ProjectsView is a ListView to display ProjectItems.

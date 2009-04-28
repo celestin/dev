@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KrakatauEPM.Properties {
+namespace SourceCodeMetrics.Krakatau.Kepm.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KrakatauEPM.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KrakatauEPM.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SourceCodeMetrics.Krakatau.Kepm.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,13 @@ namespace KrakatauEPM.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _new {
+            get {
+                object obj = ResourceManager.GetObject("new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -98,6 +105,27 @@ namespace KrakatauEPM.Properties {
         internal static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap jar_delete {
+            get {
+                object obj = ResourceManager.GetObject("jar_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap jar_into {
+            get {
+                object obj = ResourceManager.GetObject("jar_into", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap jar_new {
+            get {
+                object obj = ResourceManager.GetObject("jar_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

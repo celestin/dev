@@ -10,7 +10,7 @@
  * CAM  30-May-08   366 : Resized window.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   partial class FormPreferences
   {

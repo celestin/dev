@@ -20,7 +20,9 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Win32;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Config
 {
   /// <summary>
   /// Summary description for XmlConfig.

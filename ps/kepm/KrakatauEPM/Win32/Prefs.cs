@@ -21,7 +21,10 @@ using System.IO;
 using System.Collections;
 using Microsoft.Win32;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Controls;
+using SourceCodeMetrics.Krakatau.Kepm.Projects;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Win32
 {
   /// <summary>
   /// KEPM Preferences - stored in the Windows Registry
@@ -281,7 +284,7 @@ namespace KrakatauEPM
       rk = rk.OpenSubKey("Software", true);
       key = getKey(rk, "SOFTWARE");
       key = getKey(key, "Power Software");
-      key = getKey(key, "Krakatau EPM");
+      key = getKey(key, KrakatauEPM.AssemblyProduct);
 
       if (key.GetValue("InstallDir") == null)
       {

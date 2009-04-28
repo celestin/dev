@@ -51,7 +51,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace KrakatauEPM
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// Help - About Dialog
@@ -59,8 +59,8 @@ namespace KrakatauEPM
   public class HelpAbout : System.Windows.Forms.Form
   {
     private System.Windows.Forms.PictureBox pictureBox1;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label lblDescription;
+    private System.Windows.Forms.Label lblCopyright;
     private System.Windows.Forms.Button btnClose;
     private System.Windows.Forms.LinkLabel lklProduct;
     /// <summary>
@@ -68,23 +68,15 @@ namespace KrakatauEPM
     /// </summary>
     private System.ComponentModel.Container components = null;
     private System.Windows.Forms.Label lblVersion;
-
-    private String sVersion = "1.10.000";
     private System.Windows.Forms.Label lblEpmVersion;
-    private String sEpmVersion = "1.17.000";
 
     public HelpAbout()
     {
-      //
-      // Required for Windows Form Designer support
-      //
       InitializeComponent();
-      this.lblVersion.Text = sVersion;
-      this.lblEpmVersion.Text = "Powered by EPM " + sEpmVersion;
-
-      //
-      // TODO: Add any constructor code after InitializeComponent call
-      //
+      lblVersion.Text = KrakatauEPM.AssemblyVersion;
+      lblEpmVersion.Text = String.Format("Powered by {0}", KrakatauEPM.AssemblyEpmConfiguration);
+      lblDescription.Text = KrakatauEPM.AssemblyDescription;
+      lblCopyright.Text = KrakatauEPM.AssemblyCopyright;
     }
 
     /// <summary>
@@ -111,45 +103,46 @@ namespace KrakatauEPM
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpAbout));
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.label1 = new System.Windows.Forms.Label();
+      this.lblDescription = new System.Windows.Forms.Label();
       this.lblVersion = new System.Windows.Forms.Label();
       this.btnClose = new System.Windows.Forms.Button();
-      this.label3 = new System.Windows.Forms.Label();
+      this.lblCopyright = new System.Windows.Forms.Label();
       this.lklProduct = new System.Windows.Forms.LinkLabel();
       this.lblEpmVersion = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
-      //
+      // 
       // pictureBox1
-      //
+      // 
       this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
       this.pictureBox1.Location = new System.Drawing.Point(96, 16);
       this.pictureBox1.Name = "pictureBox1";
       this.pictureBox1.Size = new System.Drawing.Size(200, 200);
       this.pictureBox1.TabIndex = 0;
       this.pictureBox1.TabStop = false;
-      //
-      // label1
-      //
-      this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(0, 232);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(400, 32);
-      this.label1.TabIndex = 1;
-      this.label1.Text = "Krakatau Essential Project Manager";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      //
+      // 
+      // lblDescription
+      // 
+      this.lblDescription.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblDescription.Location = new System.Drawing.Point(0, 232);
+      this.lblDescription.Name = "lblDescription";
+      this.lblDescription.Size = new System.Drawing.Size(400, 32);
+      this.lblDescription.TabIndex = 1;
+      this.lblDescription.Text = "DESCRIPTION";
+      this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
       // lblVersion
-      //
+      // 
       this.lblVersion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblVersion.Location = new System.Drawing.Point(0, 264);
       this.lblVersion.Name = "lblVersion";
       this.lblVersion.Size = new System.Drawing.Size(400, 32);
       this.lblVersion.TabIndex = 2;
+      this.lblVersion.Text = "KEPM VERSION";
       this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      //
+      // 
       // btnClose
-      //
+      // 
       this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.btnClose.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnClose.Location = new System.Drawing.Point(144, 400);
@@ -158,19 +151,19 @@ namespace KrakatauEPM
       this.btnClose.TabIndex = 3;
       this.btnClose.Text = "&OK";
       this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-      //
-      // label3
-      //
-      this.label3.Font = new System.Drawing.Font("Tahoma", 10F);
-      this.label3.Location = new System.Drawing.Point(0, 296);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(400, 32);
-      this.label3.TabIndex = 4;
-      this.label3.Text = "Copyright (c) 2005,2009 SourceCodeMetrics.com";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      //
+      // 
+      // lblCopyright
+      // 
+      this.lblCopyright.Font = new System.Drawing.Font("Tahoma", 10F);
+      this.lblCopyright.Location = new System.Drawing.Point(0, 296);
+      this.lblCopyright.Name = "lblCopyright";
+      this.lblCopyright.Size = new System.Drawing.Size(400, 32);
+      this.lblCopyright.TabIndex = 4;
+      this.lblCopyright.Text = "COPYRIGHT";
+      this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
       // lklProduct
-      //
+      // 
       this.lklProduct.Font = new System.Drawing.Font("Tahoma", 10F);
       this.lklProduct.Location = new System.Drawing.Point(0, 328);
       this.lklProduct.Name = "lklProduct";
@@ -180,9 +173,9 @@ namespace KrakatauEPM
       this.lklProduct.Text = "http://www.powersoftware.com/kepm/";
       this.lklProduct.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.lklProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklProduct_LinkClicked);
-      //
+      // 
       // lblEpmVersion
-      //
+      // 
       this.lblEpmVersion.Font = new System.Drawing.Font("Tahoma", 10F);
       this.lblEpmVersion.ForeColor = System.Drawing.SystemColors.GrayText;
       this.lblEpmVersion.Location = new System.Drawing.Point(0, 352);
@@ -191,19 +184,19 @@ namespace KrakatauEPM
       this.lblEpmVersion.TabIndex = 6;
       this.lblEpmVersion.Text = "Powered by EPM";
       this.lblEpmVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      //
+      // 
       // HelpAbout
-      //
+      // 
       this.AcceptButton = this.btnClose;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.CancelButton = this.btnClose;
       this.ClientSize = new System.Drawing.Size(400, 447);
       this.Controls.Add(this.lblEpmVersion);
       this.Controls.Add(this.lklProduct);
-      this.Controls.Add(this.label3);
+      this.Controls.Add(this.lblCopyright);
       this.Controls.Add(this.btnClose);
       this.Controls.Add(this.lblVersion);
-      this.Controls.Add(this.label1);
+      this.Controls.Add(this.lblDescription);
       this.Controls.Add(this.pictureBox1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

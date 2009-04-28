@@ -15,7 +15,12 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Config;
+using SourceCodeMetrics.Krakatau.Kepm.Controls;
+using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using SourceCodeMetrics.Krakatau.Kepm.Win32;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   public partial class FormKrakatauEPM : Form
   {
@@ -76,15 +81,15 @@ namespace KrakatauEPM
         }
       }
 
-      Analyse an = null;
+      FormAnalyse an = null;
 
       if (newProject != null && oldProject != null)
       {
-        an = new Analyse(newProject.Project, oldProject.Project);
+        an = new FormAnalyse(newProject.Project, oldProject.Project);
       }
       else if (newProject != null)
       {
-        an = new Analyse(newProject.Project);
+        an = new FormAnalyse(newProject.Project);
       }
       else
       {
@@ -92,7 +97,7 @@ namespace KrakatauEPM
           "project and choosing 'Set as New')" + System.Environment.NewLine +
           "before attempting to Analyse." + System.Environment.NewLine + System.Environment.NewLine +
           "If you wish to compare two projects, also set an Old Project.",
-          "Krakatau EPM Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          KrakatauEPM.AssemblyProduct + " Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
 
       if (an != null)
@@ -182,7 +187,7 @@ namespace KrakatauEPM
       if (!pdf.Exists)
       {
         MessageBox.Show(String.Format("Could not find the file {0} that is supplied with " +
-          "Krakatau EPM - please reinstall the application.", fname),
+          KrakatauEPM.AssemblyProduct + " - please reinstall the application.", fname),
           String.Format("{0} missing!", fname), MessageBoxButtons.OK, MessageBoxIcon.Error);
         return;
       }

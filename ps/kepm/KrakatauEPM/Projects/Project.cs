@@ -16,12 +16,14 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-using System.IO;
 using System.Collections;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
-namespace KrakatauEPM
+using SourceCodeMetrics.Krakatau.Kepm.Config;
+
+namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 {
   /// <summary>
   /// Representation of an EPM Project.
@@ -57,18 +59,19 @@ namespace KrakatauEPM
     {
       string extList = "";
       Ext e;
-      int nChecked=0;
-      foreach (object fileExt in checkedItems) {
+      int nChecked = 0;
+      foreach (object fileExt in checkedItems)
+      {
         if (fileExt is Ext)
         {
-          e = (Ext) fileExt;
+          e = (Ext)fileExt;
           extList += (" *." + e.Extension);
           nChecked++;
         }
       }
 
       if ((_ProjectFile == null) || "".Equals(_sProjectTitle) ||
-          "".Equals(_sBasedir) || nChecked==0)
+          "".Equals(_sBasedir) || nChecked == 0)
       {
         return false;
       }
@@ -76,16 +79,18 @@ namespace KrakatauEPM
       // Create a Project Command file
       TextWriter tw = new StreamWriter(this.ProjectBuildFile.FullName, false);
       tw.WriteLine("@echo off");
-      tw.WriteLine("set FILELIST=\"" + _ProjectFile.FullName + "\"");
-      tw.WriteLine("set PATH=" + _sBasedir);
-      tw.WriteLine("");
-      tw.WriteLine("echo " + _sProjectTitle + ">%FILELIST%");
-      tw.WriteLine("echo " + _dSnapshot.ToShortDateString() + ">>%FILELIST%");
-      tw.WriteLine("echo %PATH%>>%FILELIST%");
-      tw.WriteLine("");
-      tw.WriteLine(_sBasedir.Substring(0,1) + ":");
-      tw.WriteLine("cd \"%PATH%\"");
-      tw.WriteLine("dir " + extList + " /s /b>>%FILELIST%");
+      tw.WriteLine(String.Format("rem Created by {0} {1}", KrakatauEPM.AssemblyProduct, KrakatauEPM.AssemblyVersion));
+      tw.WriteLine();
+      tw.WriteLine(String.Format("set FILELIST=\"{0}\"", _ProjectFile.FullName));
+      tw.WriteLine(String.Format("set BASEDIR={0}", _sBasedir));
+      tw.WriteLine();
+      tw.WriteLine(String.Format("echo {0} >%FILELIST%", _sProjectTitle));
+      tw.WriteLine(String.Format("echo {0} >>%FILELIST%", _dSnapshot.ToShortDateString()));
+      tw.WriteLine("echo %BASEDIR% >>%FILELIST%");
+      tw.WriteLine();
+      tw.WriteLine(_sBasedir.Substring(0, 1) + ":");
+      tw.WriteLine("cd \"%BASEDIR%\"");
+      tw.WriteLine("dir " + extList + " /s /b /a-d >>%FILELIST%");
       tw.Close();
 
       // Execute the Command file to create our Project text file
@@ -124,8 +129,8 @@ namespace KrakatauEPM
         if (line.StartsWith("dir"))
         {
           tr.Close();
-          line = line.Substring(3, line.Length-3);
-          if ((p = line.IndexOf("/s"))>=0)
+          line = line.Substring(3, line.Length - 3);
+          if ((p = line.IndexOf("/s")) >= 0)
           {
             line = line.Substring(0, p);
           }
@@ -140,24 +145,33 @@ namespace KrakatauEPM
     {
       string extList = this.GetExtensions();
       if (extList == null) return;
-      char[] splitter  = {' '};
+      char[] splitter = { ' ' };
       string[] exts = extList.Trim().Split(splitter);
       Ext ex;
       int i;
+      string e;
 
-      for (i=0; i<clbFileTypes.Items.Count; i++)
+      for (i = 0; i < clbFileTypes.Items.Count; i++)
       {
         clbFileTypes.SetItemChecked(i, false);
       }
 
-      for(int n=0; n<exts.Length; n++)
+      for (int n = 0; n < exts.Length; n++)
       {
-        string e = exts[n].Substring(2, exts[n].Length-2);
-        for (i=0; i<clbFileTypes.Items.Count; i++)
+        if (exts[n].Length <= 2)
+        {
+          e = " ";
+        }
+        else
+        {
+          e = exts[n].Substring(2, exts[n].Length - 2);
+        }
+
+        for (i = 0; i < clbFileTypes.Items.Count; i++)
         {
           if (clbFileTypes.Items[i] is Ext)
           {
-            ex = (Ext) clbFileTypes.Items[i];
+            ex = (Ext)clbFileTypes.Items[i];
             if (ex.Extension == e)
             {
               clbFileTypes.SetItemChecked(i, true);
@@ -339,7 +353,7 @@ namespace KrakatauEPM
       set
       {
         _sBasedir = value.Trim();
-        if (!_sBasedir.Substring(_sBasedir.Length-1,1).Equals("\\"))
+        if (!_sBasedir.Substring(_sBasedir.Length - 1, 1).Equals("\\"))
         {
           _sBasedir += "\\";
         }
@@ -353,13 +367,13 @@ namespace KrakatauEPM
         char[] name = this.Title.Trim().ToLower().ToCharArray();
         string rval = "epm_";
 
-        for(int i=0; i<name.Length && i<MaxProjectDbName; i++)
+        for (int i = 0; i < name.Length && i < MaxProjectDbName; i++)
         {
-          if ((name[i] >= 'a') && (name[i]<= 'z'))
+          if ((name[i] >= 'a') && (name[i] <= 'z'))
           {
             rval += name[i];
           }
-          else if ((name[i] >= '0') && (name[i]<= '9'))
+          else if ((name[i] >= '0') && (name[i] <= '9'))
           {
             rval += name[i];
           }
@@ -369,7 +383,7 @@ namespace KrakatauEPM
           }
         }
 
-        while(rval.IndexOf("__")>=0)
+        while (rval.IndexOf("__") >= 0)
         {
           rval = rval.Replace("__", "_");
         }

@@ -74,6 +74,7 @@
  * CAM  16-Apr-2009  10402 : Added Assembler language support.
  * CAM  17-Apr-2009  10430 : Added calculation of Churn metrics.
  * CAM  18-Apr-2009  10434 : Version 1.17.000.
+ * CAM  30-Apr-2009  10438 : Version 1.17.1.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1082,7 +1083,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.17.000\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.17.1.0\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

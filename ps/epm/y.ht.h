@@ -9,6 +9,7 @@
  *
  * Who  When       Why
  * CAM  14-Apr-2009  10401 : File created.
+ * CAM  05-May-2009  10441 : Added HTML operators.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define HTM_ALIGN                256
@@ -108,3 +109,6 @@
 #define HTM_VALIGN               350
 #define HTM_VALUE                351
 #define HTM_WIDTH                352
+#define HTM_LT                   353
+#define HTM_GT                   354
+#define HTM_EQ                   355

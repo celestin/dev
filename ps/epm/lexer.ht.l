@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10401 : File created.
+ * CAM  05-May-2009  10441 : Added HTML operands and operators.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -220,6 +221,22 @@ SPTAB                             [ \t]
 "VALIGN"                          {store_operator(HTM_VALIGN,3);}
 "VALUE"                           {store_operator(HTM_VALUE,3);}
 "WIDTH"                           {store_operator(HTM_WIDTH,3);}
+
+{LETTER}{ALNUM}*                                            |
+[1-9][0-9]*{INT_SUFFIX}?                                    |
+[0][0-7]*{INT_SUFFIX}?                                      |
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?                            |
+[0][xX]                                                     |
+{DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
+{DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?           |
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
+{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
+{DIGITS}"."?[eE]{SIGN}?                                     |
+"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_HTM();}
+
+"<"                               {store_operator(HTM_LT,3);}
+">"                               {store_operator(HTM_GT,3);}
+"="                               {store_operator(HTM_EQ,3);}
 
 [ \t\v\f]                         {;}
 .                                 { /* ignore bad characters */ }

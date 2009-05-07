@@ -1,20 +1,21 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-using Southesk.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.Data;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.Forms
 {
   public partial class FrmNewGroup : Form
   {
@@ -29,14 +30,10 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmNewGroup_Load(object sender, EventArgs e)
     {
-      teamTableAdapter.Fill(_dataSet.Team);
       categoryTableAdapter.Fill(_dataSet.Category);
       groupTableAdapter.Fill(_dataSet.Group);
 
       _bdsGroup.Filter = String.Format("groupID='{0}'", _groupId);
-
-      _dataSet.Team.DefaultView.Sort = "TeamName";
-      _bdsTeam.DataSource = _dataSet.Team;
     }
 
     private void _tsbExit_Click(object sender, EventArgs e)
@@ -52,20 +49,20 @@ namespace Southesk.Apps.EmitScore.Forms
         "Clicked the Header Row?", MessageBoxButtons.YesNo,
         MessageBoxIcon.Question) == DialogResult.Yes)
       {
-        foreach (DataRow row in _dataSet.Group)
-        {
-          EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
-          if (group.GroupId == _groupId)
-          {
-            if (!group.IsTeamIdNull())
-            {
-              group.BeginEdit();
-              EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);
-              group.CategoryId = team.CategoryId;
-              group.EndEdit();
-            }
-          }
-        }
+        //foreach (DataRow row in _dataSet.Group)
+        //{
+        //  EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
+        //  if (group.GroupId == _groupId)
+        //  {
+        //    if (!group.IsTeamIdNull())
+        //    {
+        //      group.BeginEdit();
+        //      EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);
+        //      group.CategoryId = team.CategoryId;
+        //      group.EndEdit();
+        //    }
+        //  }
+        //}
 
         groupTableAdapter.Update(_dataSet.Group);
       }

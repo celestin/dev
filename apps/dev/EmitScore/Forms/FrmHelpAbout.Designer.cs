@@ -1,4 +1,15 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+namespace FrontBurner.Apps.EmitScore.Forms
 {
   partial class FrmHelpAbout
   {
@@ -90,7 +101,7 @@
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(198, 16);
       this.label3.TabIndex = 2;
-      this.label3.Text = "Copyright (c) 2008 Southesk.com";
+      this.label3.Text = "Copyright (c) 2009 Front Burner Ltd";
       // 
       // label4
       // 
@@ -101,7 +112,7 @@
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(260, 16);
       this.label4.TabIndex = 3;
-      this.label4.Text = "Author Craig McKay <craig@southesk.com>";
+      this.label4.Text = "Author Craig McKay <craig@frontburner.co.uk>";
       // 
       // _btnOk
       // 

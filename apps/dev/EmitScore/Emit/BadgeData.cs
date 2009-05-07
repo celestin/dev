@@ -1,18 +1,19 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 
-using Southesk.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.Data;
 
-namespace Southesk.Apps.EmitScore.Emit
+namespace FrontBurner.Apps.EmitScore.Emit
 {
   public class BadgeData
   {    

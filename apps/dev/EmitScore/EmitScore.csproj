@@ -8,7 +8,7 @@
     <ProjectGuid>{2DC55690-22EF-4E18-9B1C-68965CD7D071}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Southesk.Apps.EmitScore</RootNamespace>
+    <RootNamespace>FrontBurner.Apps.EmitScore</RootNamespace>
     <AssemblyName>EmitScore</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -116,12 +116,6 @@
     <Compile Include="Forms\FrmNewGroup.Designer.cs">
       <DependentUpon>FrmNewGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmTeams.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmTeams.Designer.cs">
-      <DependentUpon>FrmTeams.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmCategories.resx">
       <DependentUpon>FrmCategories.cs</DependentUpon>
@@ -149,10 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNewGroup.resx">
       <DependentUpon>FrmNewGroup.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmTeams.resx">
-      <DependentUpon>FrmTeams.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

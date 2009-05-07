@@ -1,9 +1,19 @@
-﻿using System;
-//using System.Collections.Generic;
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+using System;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace Southesk.Apps.EmitScore.Data
+namespace FrontBurner.Apps.EmitScore.Data
 {
   public class LocationItem
   {

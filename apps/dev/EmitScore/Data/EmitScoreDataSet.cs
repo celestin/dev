@@ -1,18 +1,19 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Data;
 
-using Southesk.Apps.EmitScore.Emit;
+using FrontBurner.Apps.EmitScore.Emit;
 
-namespace Southesk.Apps.EmitScore.Data
+namespace FrontBurner.Apps.EmitScore.Data
 {
   public partial class EmitScoreDataSet
   {
@@ -38,7 +39,7 @@ namespace Southesk.Apps.EmitScore.Data
   }
 }
 
-namespace Southesk.Apps.EmitScore.EmitScoreDataSetTableAdapters
+namespace FrontBurner.Apps.EmitScore.EmitScoreDataSetTableAdapters
 {
   partial class TeamTableAdapter
   {

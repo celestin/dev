@@ -1,23 +1,24 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-using Southesk.Apps.EmitScore.Data;
-using Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters;
-using Southesk.Apps.EmitScore.Emit;
-using Southesk.Apps.EmitScore.Report;
+using FrontBurner.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters;
+using FrontBurner.Apps.EmitScore.Emit;
+using FrontBurner.Apps.EmitScore.Report;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.Forms
 {
   public partial class FrmMain : Form
   {
@@ -98,9 +99,6 @@ namespace Southesk.Apps.EmitScore.Forms
           groupTableAdapter.Fill(groupTable);
           EmitScoreDataSet.GroupRow groupRow = groupTable.FindByGroupId(badge.BadgeNo);
 
-          // Reset Group points to zero (they will be accumulated below)
-          badge.SwipeList.TotalPoints = 0;
-
           // Delete any existing result rows for this badge
           EmitScoreDataSet.GroupResultDataTable resultTable = new EmitScoreDataSet.GroupResultDataTable();
           groupResultTableAdapter.Fill(resultTable);
@@ -112,35 +110,13 @@ namespace Southesk.Apps.EmitScore.Forms
           resultTable.Clear();
           groupResultTableAdapter.Fill(resultTable);
 
-          // Get the Team Results - to check if any other teams have visited these points
-          EmitScoreDataSet.TeamResultsDataTable teamResTable = new EmitScoreDataSet.TeamResultsDataTable();
-          teamResultsTableAdapter.Fill(teamResTable);
-
           foreach (Swipe swipe in badge.SwipeList)
           {
-            bool existingLocation = false;
-
-            if (!groupRow.IsTeamIdNull())
-            {
-              DataRow[] dr = teamResTable.Select(
-                String.Format("TeamId='{0}' AND LocationId='{1}'",
-                groupRow.TeamId, swipe.Location.Id));
-
-              existingLocation = (dr.Length > 0);
-            }
-
             EmitScoreDataSet.GroupResultRow resultRow = resultTable.NewGroupResultRow();
             resultRow.GroupId = badge.BadgeNo;
             resultRow.LocationId = swipe.Location.Id;
 
-            if (existingLocation)
-            {
-              // Someone else in the team has collected this Location's points
-              swipe.Points = 0;
-            }
-
             resultRow.Points = swipe.Points;
-            badge.SwipeList.TotalPoints += swipe.Points;            
             resultRow.Time = swipe.LocationTime;
             resultRow.CumTime = swipe.CummulativeTime;
             resultRow.EndEdit();
@@ -160,40 +136,6 @@ namespace Southesk.Apps.EmitScore.Forms
           groupTableAdapter.Update(groupRow);
           groupRow.AcceptChanges();
 
-          if (!groupRow.IsTeamIdNull())
-          {
-            // Check to see if this group, or any others in the team
-            // have been time disqualified, and disqualify them all
-            groupTable = new EmitScoreDataSet.GroupDataTable();
-            groupTableAdapter.Fill(groupTable);
-            bool anyDisqualified = false;
-            foreach (EmitScoreDataSet.GroupRow gr1 in groupTable)
-            {
-              if (!gr1.IsTeamIdNull() && (gr1.TeamId == groupRow.TeamId))
-              {
-                if (!gr1.IsTimeDisqualifiedNull() && (gr1.TimeDisqualified == 1))
-                {
-                  anyDisqualified = true;
-                }
-              }
-            }
-            if (anyDisqualified)
-            {
-              foreach (EmitScoreDataSet.GroupRow gr1 in groupTable)
-              {
-                if (!gr1.IsTeamIdNull() && (gr1.TeamId == groupRow.TeamId))
-                {
-                  gr1.BeginEdit();
-                  gr1.NettPoints = 0;
-                  gr1.TimeDisqualified = 1;
-                  gr1.EndEdit();
-                  groupTableAdapter.Update(gr1);
-                  gr1.AcceptChanges();
-                }
-              }
-            }
-          }
-
           MessageBox.Show(String.Format("Group {0} - {1} results received.",
             groupRow.GroupId, groupRow.GroupName), "Results Received",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -203,8 +145,6 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
-      reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
-      teamResultsTableAdapter.Fill(_dataSet.TeamResults);
       groupResultTableAdapter.Fill(_dataSet.GroupResult);
       locationTableAdapter.Fill(_dataSet.Location);
       categoryTableAdapter.Fill(_dataSet.Category);
@@ -252,12 +192,6 @@ namespace Southesk.Apps.EmitScore.Forms
       cats.ShowDialog();
     }
 
-    protected void ShowTeams()
-    {
-      FrmTeams teams = new FrmTeams();
-      teams.ShowDialog();
-    }
-
     protected void ShowGroups()
     {
       FrmGroups groups = new FrmGroups();
@@ -290,12 +224,13 @@ namespace Southesk.Apps.EmitScore.Forms
     }
     protected void ExportReport()
     {
-      ReportTeamResultTableAdapter reportTeamResultTableAdapter = new ReportTeamResultTableAdapter();
-      ReportGroupResultTableAdapter reportGroupResultTableAdapter = new ReportGroupResultTableAdapter();      
+      ReportGroupTableAdapter reportGroupTableAdapter = new ReportGroupTableAdapter();
+      ReportGroupResultTableAdapter reportGroupResultTableAdapter = new ReportGroupResultTableAdapter();
 
+      reportGroupTableAdapter.Fill(_dataSet.ReportGroup);
       reportGroupResultTableAdapter.Fill(_dataSet.ReportGroupResult);
-      reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
       categoryTableAdapter.Fill(_dataSet.Category);
+      locationTableAdapter.Fill(_dataSet.Location);
 
       try
       {
@@ -347,7 +282,7 @@ namespace Southesk.Apps.EmitScore.Forms
         _sslRegister.Text = String.Format("{0} groups registered.",
           _dataSet.Group.Rows.Count);
 
-        reportTeamResultTableAdapter.Fill(_dataSet.ReportTeamResult);
+        ReportGroupTableAdapter.Fill(_dataSet.ReportGroup);
         _dgvResults.Refresh();
       }
     }
@@ -375,16 +310,6 @@ namespace Southesk.Apps.EmitScore.Forms
     private void mniComPort_Click(object sender, EventArgs e)
     {
       ShowConfig();
-    }
-
-    private void mniTeams_Click(object sender, EventArgs e)
-    {
-      ShowTeams();
-    }
-
-    private void _tsbTeams_Click(object sender, EventArgs e)
-    {
-      ShowTeams();
     }
 
     private void mniFileNew_Click(object sender, EventArgs e)
@@ -421,7 +346,6 @@ namespace Southesk.Apps.EmitScore.Forms
 
       FrmNewGroup newGroup = new FrmNewGroup(484356);
       newGroup.ShowDialog();
-
     }
 
     private void _dgvResults_DataError(object sender, DataGridViewDataErrorEventArgs e)

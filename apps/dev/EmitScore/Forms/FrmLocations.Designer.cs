@@ -1,4 +1,4 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+﻿namespace FrontBurner.Apps.EmitScore.Forms
 {
   partial class FrmLocations
   {
@@ -35,10 +35,10 @@
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this._bdsLocations = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this.emitScoreDataSet = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSet();
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
+      this.locationTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
       this.locationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.locationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,7 +125,7 @@
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this._tsbExit.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.ExitLarge;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
@@ -190,8 +190,8 @@
     private System.Windows.Forms.ToolStripContainer toolStripContainer1;
     private System.Windows.Forms.ToolStrip _tspMain;
     private System.Windows.Forms.BindingSource _bdsLocations;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
+    private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
+    private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
     private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.ToolStripButton _tsbExit;
     private System.Windows.Forms.DataGridViewTextBoxColumn locationIdDataGridViewTextBoxColumn;

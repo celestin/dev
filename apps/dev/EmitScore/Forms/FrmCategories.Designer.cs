@@ -1,4 +1,15 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * EmitScore
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+namespace FrontBurner.Apps.EmitScore.Forms
 {
   partial class FrmCategories
   {
@@ -35,12 +46,13 @@
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this._bdsCategory = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this.emitScoreDataSet = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSet();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.categoryTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
+      this.categoryTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
       this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColCategoryCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
@@ -56,11 +68,11 @@
       // toolStripContainer1.ContentPanel
       // 
       this.toolStripContainer1.ContentPanel.Controls.Add(this.dataGridView1);
-      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(443, 294);
+      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(644, 419);
       this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
       this.toolStripContainer1.Name = "toolStripContainer1";
-      this.toolStripContainer1.Size = new System.Drawing.Size(443, 349);
+      this.toolStripContainer1.Size = new System.Drawing.Size(644, 474);
       this.toolStripContainer1.TabIndex = 0;
       this.toolStripContainer1.Text = "toolStripContainer1";
       // 
@@ -82,7 +94,8 @@
       this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.categoryIdDataGridViewTextBoxColumn,
-            this.categoryNameDataGridViewTextBoxColumn});
+            this.categoryNameDataGridViewTextBoxColumn,
+            this.ColCategoryCode});
       this.dataGridView1.DataSource = this._bdsCategory;
       dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -96,7 +109,7 @@
       this.dataGridView1.Location = new System.Drawing.Point(0, 0);
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.RowTemplate.Height = 26;
-      this.dataGridView1.Size = new System.Drawing.Size(443, 294);
+      this.dataGridView1.Size = new System.Drawing.Size(644, 419);
       this.dataGridView1.TabIndex = 0;
       // 
       // _bdsCategory
@@ -123,7 +136,7 @@
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this._tsbExit.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.ExitLarge;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
@@ -140,7 +153,7 @@
       this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
       this.categoryIdDataGridViewTextBoxColumn.HeaderText = "Category Id";
       this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
-      this.categoryIdDataGridViewTextBoxColumn.Width = 103;
+      this.categoryIdDataGridViewTextBoxColumn.Width = 112;
       // 
       // categoryNameDataGridViewTextBoxColumn
       // 
@@ -149,11 +162,19 @@
       this.categoryNameDataGridViewTextBoxColumn.HeaderText = "Category Name";
       this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
       // 
+      // ColCategoryCode
+      // 
+      this.ColCategoryCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.ColCategoryCode.DataPropertyName = "CategoryCode";
+      this.ColCategoryCode.HeaderText = "Code";
+      this.ColCategoryCode.Name = "ColCategoryCode";
+      this.ColCategoryCode.Width = 67;
+      // 
       // FrmCategories
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(443, 349);
+      this.ClientSize = new System.Drawing.Size(644, 474);
       this.Controls.Add(this.toolStripContainer1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmCategories";
@@ -180,10 +201,11 @@
     private System.Windows.Forms.ToolStrip toolStrip1;
     private System.Windows.Forms.ToolStripButton _tsbExit;
     private System.Windows.Forms.BindingSource _bdsCategory;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+    private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
+    private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
     private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn categoryNameDataGridViewTextBoxColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColCategoryCode;
   }
 }

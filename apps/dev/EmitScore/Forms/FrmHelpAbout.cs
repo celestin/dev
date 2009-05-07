@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.Forms
 {
   public partial class FrmHelpAbout : Form
   {

@@ -1,20 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
+ * CAM  07-May-2009  10444 : Changed to Front Burner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using Southesk.Library.Xls;
 
-namespace Southesk.Apps.EmitScore.Report
+namespace FrontBurner.Apps.EmitScore.Report
 {
   /// <summary>
-  /// Base class for all JCAMS Excel reports.
+  /// Base class for all Excel reports.
   /// </summary>
   public abstract class XlsReport : XlsDocument
   {

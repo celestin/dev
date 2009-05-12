@@ -1,20 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * CSV Reporting
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  26-Mar-05    79 : Class created.
- * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
- * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
- * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
- * CAM  06-Jun-06   255 : Ensure DEL_SLOC and DEL_FILE appear on the Old Line for CSV.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  24-Apr-08   356 : Added DLLOC special condition along with DLOC and DFILE.
+ * CAM  07-Feb-06    187 : Check getItems() are report error if zero.
+ * CAM  25-Mar-06    221 : Obey the Metrics.isShow rules.
+ * CAM  06-Jun-06    257 : If a MetricSet has been specified, only display chosen metrics.
+ * CAM  06-Jun-06    255 : Ensure DEL_SLOC and DEL_FILE appear on the Old Line for CSV.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08    356 : Added DLLOC special condition along with DLOC and DFILE.
+ * CAM  12-May-2009  10445 : Quotes around text/filenames to prevent commas disrupting the CSV format.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -41,7 +42,7 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
   string status;
   Metrics m;
 
-  sprintf_s(startLine, MAX_CSVLINE, "%d,%d,%s,%s,", currItem.getID().c_str(), currItem.getType(), currItem.getShortName().c_str(), currItem.getText1().c_str());
+  sprintf_s(startLine, MAX_CSVLINE, "%d,%d,\"%s\",\"%s\",", currItem.getID().c_str(), currItem.getType(), currItem.getShortName().c_str(), currItem.getText1().c_str());
 
   if (currItem.getType() == ITEM_PROJECT) {
     m = projMet;
@@ -70,7 +71,7 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
   strcat_s(diffLine, MAX_CSVLINE, "X");
 
   if (currItem.getType() == ITEM_PROJECT && isPM()) {
-    sprintf_s(startLine, MAX_CSVLINE, "%d,%d,%s,%s,", project[1].getID().c_str(), project[1].getType(), project[1].getShortName().c_str(), project[1].getText1().c_str());
+    sprintf_s(startLine, MAX_CSVLINE, "%d,%d,\"%s\",\"%s\",", project[1].getID().c_str(), project[1].getType(), project[1].getShortName().c_str(), project[1].getText1().c_str());
   }
 
   strcpy_s(oldLine, MAX_CSVLINE, startLine);

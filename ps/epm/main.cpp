@@ -76,6 +76,7 @@
  * CAM  18-Apr-2009  10434 : Version 1.17.000.
  * CAM  30-Apr-2009  10438 : Version 1.17.1.0.
  * CAM  05-May-2009  10441 : Version 1.17.2.0.
+ * CAM  12-May-2009  10445 : Version 1.17.3.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1084,7 +1085,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.17.2.0\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.17.3.0\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

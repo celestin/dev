@@ -1,19 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2008 Power Software
+ * Copyright (c) 2004,2008,2009 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * Singleton for KEPM Preferences
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   152 : Added to Source Safe.
- * CAM  09-Feb-06   185 : Save/Restore open Projects to Windows Registry.
- * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
- * CAM  22-Jul-06   291 : Increase remembered projects from 20 to 50.
- * CAM  29-May-08   363 : Completed toolbar buttons.
- * CAM  29-May-08   364 : Added MySql default options.
+ * Who  When         Why
+ * CAM  11-Oct-05    152 : Added to Source Safe.
+ * CAM  09-Feb-06    185 : Save/Restore open Projects to Windows Registry.
+ * CAM  26-Mar-06    213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  22-Jul-06    291 : Increase remembered projects from 20 to 50.
+ * CAM  29-May-08    363 : Completed toolbar buttons.
+ * CAM  29-May-08    364 : Added MySql default options.
+ * CAM  18-Jun-2009  10447 : Added MySql default options.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,6 +27,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
 {
   /// <summary>
   /// KEPM Preferences - stored in the Windows Registry
+  /// <remarks>Singleton for KEPM Preferences.</remarks>
   /// </summary>
   public class Prefs
   {
@@ -281,9 +281,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
 
       // Now retrieve general Software settings
       rk = Registry.LocalMachine;
-      rk = rk.OpenSubKey("Software", true);
-      key = getKey(rk, "SOFTWARE");
-      key = getKey(key, "Power Software");
+      rk = rk.OpenSubKey("SOFTWARE", true);
+      key = getKey(rk, "Power Software");
       key = getKey(key, KrakatauEPM.AssemblyProduct);
 
       if (key.GetValue("InstallDir") == null)

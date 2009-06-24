@@ -11,8 +11,9 @@
  * CAM  28-Jun-07    314 : Added Ericsson IDL.
  * CAM  17-Juj-07    316 : Added VHDL.
  * CAM  30-Nov-07    324 : Added JSP, XML and 'Select All'.
- * CAM  27-Sep-08   1000 : Upgraded to include Classic licensing options.
- * CAM  26-Mar-09  10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
+ * CAM  27-Sep-08    1000 : Upgraded to include Classic licensing options.
+ * CAM  26-Mar-09    10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
+ * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -62,8 +63,8 @@ namespace Scm.Tools.LicGen
 
     private void RefreshControls()
     {
-      bool blnDate=true;
-      bool blnNumLic=true;
+      bool blnDate = true;
+      bool blnNumLic = true;
 
       if (optLicTimed.Checked)
       {
@@ -123,6 +124,12 @@ namespace Scm.Tools.LicGen
       AddProduct("epmvh", "VHDL");
       AddProduct("epmjs", "JSP");
       AddProduct("epmxm", "XML");
+      AddProduct("epmcs", "CSS Stylesheet");
+      AddProduct("epmft", "Fortran");
+      AddProduct("epmrb", "Ruby");
+      AddProduct("epmsh", "Shell Script");
+      AddProduct("epmtx", "Text");
+      AddProduct("epmwb", "Windows Batch File");
 
       AddProduct("krakatau", "Krakatau GUI", true);
       AddProduct("cpppm", "Krakatau PM C++", true);
@@ -186,7 +193,7 @@ namespace Scm.Tools.LicGen
         {
           this.fmeProds.Height += HORZ_INC;
           //this.txtOutput.Height += HORZ_INC;
-          this.Height += HORZ_INC ;
+          this.Height += HORZ_INC;
         }
 
         chk.Add(cb);
@@ -202,7 +209,7 @@ namespace Scm.Tools.LicGen
 
     public string LicenseString()
     {
-      string rval="";
+      string rval = "";
 
       if (optLicFloat.Checked)
       {
@@ -289,7 +296,7 @@ namespace Scm.Tools.LicGen
       TextReader tr = null;
       tr = new StreamReader(_licenseDat.FullName);
 
-      string line,line2 = null;
+      string line, line2 = null;
       string tab = "" + (char)9;
 
       while ((line = tr.ReadLine()) != null)
@@ -301,8 +308,8 @@ namespace Scm.Tools.LicGen
           {
             if (line2.StartsWith(tab))
             {
-              line2 = line2.Substring(1, line2.Length-1);
-              line = line.Substring(0, line.Length-1) + " " + line2.Trim();
+              line2 = line2.Substring(1, line2.Length - 1);
+              line = line.Substring(0, line.Length - 1) + " " + line2.Trim();
             }
           }
         }
@@ -315,18 +322,18 @@ namespace Scm.Tools.LicGen
 
     protected string ChopUp(string strLine)
     {
-      string rval="";
+      string rval = "";
 
       if (strLine.Length > MAX_LIC_LINE_LEN)
       {
         int p = MAX_LIC_LINE_LEN;
         string ch = strLine.Substring(p, 1);
-        while (p>1 && !ch.Equals(" "))
+        while (p > 1 && !ch.Equals(" "))
         {
           ch = strLine.Substring(--p, 1);
         }
 
-        rval = strLine.Substring(0, p) + " \\ " + (char)13 + (char)10 + ChopUp(strLine.Substring(p, strLine.Length-p).Trim());
+        rval = strLine.Substring(0, p) + " \\ " + (char)13 + (char)10 + ChopUp(strLine.Substring(p, strLine.Length - p).Trim());
       }
       else
       {
@@ -386,8 +393,8 @@ namespace Scm.Tools.LicGen
     }
 
     private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-    {      
-      MessageBox.Show(this, 
+    {
+      MessageBox.Show(this,
         String.Format("SCM License Generator\n" +
         "Version {0}\n\n" +
         "by Craig A McKay 26-Mar-2009\n\n" +

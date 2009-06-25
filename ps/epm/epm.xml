@@ -96,6 +96,25 @@
       <ext name="Style Sheet" value="xsl" />
       <ext name="Style Sheet Translation" value="xslt" />
     </filetype>
+    <filetype name=".NET Config">
+      <ext name="Config" value="config" />
+    </filetype>
+    <filetype name=".NET Project">
+      <ext name="C# Project" value="csproj" />
+      <ext name="VS Solution" value="sln" />
+      <ext name="User" value="user" />
+      <ext name="VB Project" value="vbproj" />
+      <ext name="C/C++ Project" value="vcproj" />
+      <ext name="Deployment Project" value="vdproj" />
+      <ext name="Dynamic Discovery" value="vsdisco" />
+      <ext name="VS Project" value="vsproj" />
+      <ext name="Webinfo" value="webinfo" />
+    </filetype>
+    <filetype name=".NET Resource">
+      <ext name="License" value="licx" />
+      <ext name="Resources" value="resources" />
+      <ext name="Resource" value="resx" />
+    </filetype>   
   </lang>
   <lang name="Assembler" parser="AY">
     <filetype name="Source">
@@ -117,6 +136,63 @@
   <lang name="Python" parser="PY">
     <filetype name="Source">
       <ext name="Script" value="py" />
+    </filetype>
+  </lang>
+  <lang name="Fortran" parser="FT">
+    <filetype name="Source">
+      <ext name="General Source" value="f" />
+      <ext name="General Source" value="f90" />
+    </filetype>
+  </lang>
+  <lang name="Textfile" parser="TX">
+    <filetype name="Source">
+      <ext name="General Source" value="def" />
+      <ext name="General Source" value="in" />
+      <ext name="General Source" value="ref" />
+    </filetype>
+    <filetype name="Makefile">
+      <ext name="Makefile" value="mak" />
+      <ext name="Makefile" value="makefile" />
+      <ext name="Makefile" value="mk" />
+    </filetype>
+    <filetype name="Legacy VS Projects">
+      <ext name="VS Project" value="dsp" />
+      <ext name="VS Workspace" value="dsw" />
+    </filetype>
+    <filetype name="Textfile">
+      <ext name="CSV" value="cvs" />
+      <ext name="Install" value="install" />
+      <ext name="Readme" value="readme" />
+      <ext name="Text" value="tsv" />
+      <ext name="Text" value="txt" />
+    </filetype>
+  </lang>
+  <lang name="Ruby" parser="RB">
+    <filetype name="Source">
+      <ext name="General Source" value="rb" />
+    </filetype>
+  </lang>
+  <lang name="Shell Script" parser="SH">
+    <filetype name="Script">
+      <ext name="Script" value="ash" />
+      <ext name="Script" value="bash" />
+      <ext name="Script" value="bsh" />
+      <ext name="Script" value="csh" />
+      <ext name="Script" value="sh" />
+      <ext name="Script" value="tcsh" />
+      <ext name="Script" value="tsh" />
+      <ext name="Script" value="zsh" />
+    </filetype>
+  </lang>
+  <lang name="Stylesheet" parser="CS">
+    <filetype name="Source">
+      <ext name="Stylesheet" value="css" />
+    </filetype>
+  </lang>
+  <lang name="Windows Batch File" parser="WB">
+    <filetype name="Source">
+      <ext name="Windows Batch File" value="bat" />
+      <ext name="Windows Batch File" value="cmd" />
     </filetype>
   </lang>
 </epm>

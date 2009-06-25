@@ -1,21 +1,22 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Extension Class to manage Languages, File Types and Extensions.
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  23-Aug-05  115 : File added.
- * CAM  06-Jan-06  168 : Moved Tuple to own file.
+ * Who  When         Why
+ * CAM  23-Aug-05    115 : File added.
+ * CAM  06-Jan-06    168 : Moved Tuple to own file.
+ * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef EXTENSION_H
 #define EXTENSION_H
 
-#define MAXLANG 20
+#define MAXLANG 24
 #define MAXTYPE 5
 #define MAXEXT  10
 

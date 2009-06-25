@@ -22,6 +22,7 @@
  * CAM  14-Apr-2009  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  14-Apr-2009  10403 : Python and XML do not have logical lines.
  * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
+ * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -34,7 +35,8 @@ enum Langs {
   LANG_JAVA, LANG_JSP,
   LANG_S1, LANG_PERL, LANG_PHP,
   LANG_VB, LANG_VHDL, LANG_XML,
-  LANG_ASM, LANG_HTML, LANG_JT, LANG_PYTHON
+  LANG_ASM, LANG_HTML, LANG_JT, LANG_PYTHON,
+  LANG_CSS, LANG_FT, LANG_RUBY, LANG_SH, LANG_TXT, LANG_WB
 };
 
 namespace metrics
@@ -85,6 +87,18 @@ namespace metrics
         theLang = LANG_JT;
       } else if (!_stricmp(lang.c_str(), "PY")) {
         theLang = LANG_PYTHON;
+      } else if (!_stricmp(lang.c_str(), "CS")) {
+        theLang = LANG_CSS;
+      } else if (!_stricmp(lang.c_str(), "FT")) {
+        theLang = LANG_FT;
+      } else if (!_stricmp(lang.c_str(), "RB")) {
+        theLang = LANG_RUBY;
+      } else if (!_stricmp(lang.c_str(), "SH")) {
+        theLang = LANG_SH;
+      } else if (!_stricmp(lang.c_str(), "TX")) {
+        theLang = LANG_TXT;
+      } else if (!_stricmp(lang.c_str(), "WB")) {
+        theLang = LANG_WB;
       }
 
       return theLang;
@@ -130,6 +144,18 @@ namespace metrics
         return "JavaScript";
         case LANG_PYTHON:
         return "Python";
+        case LANG_CSS:
+        return "CSS Stylesheet";
+        case LANG_FT:
+        return "Fortran";
+        case LANG_RUBY:
+        return "Ruby";
+        case LANG_SH:
+        return "Shell Script";
+        case LANG_TXT:
+        return "Textfile";
+        case LANG_WB:
+        return "Windows Batch File";
       }
 
       return "Other";
@@ -146,10 +172,12 @@ namespace metrics
         case LANG_PHP:
         case LANG_VHDL:
         case LANG_JT:
+        case LANG_CSS:
           return true;
           break;
 
         case LANG_ASP:    // C# within ASP does, but safer to exclude
+        case LANG_FT:     // Lines can be continued using a + on the NEXT line - too awkward for CAM!
         case LANG_PERL:
         case LANG_PYTHON:
         case LANG_S1:
@@ -157,6 +185,10 @@ namespace metrics
         case LANG_ASM:
         case LANG_HTML:
         case LANG_XML:
+        case LANG_RUBY:
+        case LANG_SH:
+        case LANG_TXT:
+        case LANG_WB:
           return false;
           break;
       }

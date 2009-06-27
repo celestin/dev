@@ -14,6 +14,7 @@
  * CAM  27-Sep-08    1000 : Upgraded to include Classic licensing options.
  * CAM  26-Mar-09    10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  24-Jun-2009  10448 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  27-Jun-2009  10448 : Renamed CSS Stylesheet CS to SS.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -124,7 +125,7 @@ namespace Scm.Tools.LicGen
       AddProduct("epmvh", "VHDL");
       AddProduct("epmjs", "JSP");
       AddProduct("epmxm", "XML");
-      AddProduct("epmcs", "CSS Stylesheet");
+      AddProduct("epmss", "CSS Stylesheet");
       AddProduct("epmft", "Fortran");
       AddProduct("epmrb", "Ruby");
       AddProduct("epmsh", "Shell Script");

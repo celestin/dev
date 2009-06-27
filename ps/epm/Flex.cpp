@@ -1,28 +1,29 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * License Validation
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  04-Jan-05  File added.
- * CAM  08-Jan-05  Added called to separate 'lic.exe'.
+ * Who  When         Why
+ * CAM  04-Jan-05    File added.
+ * CAM  08-Jan-05    Added called to separate 'lic.exe'.
  * CAM  09-May-05    49 : Changed interrogation of lic results.
  * CAM  18-May-05    97 : Added Language Validation
  * CAM  02-Aug-05    76 : Added ADA.
- * CAM  12-Aug-05   110 : Glorious Twelfth - Correct license problems.
- * CAM  13-Aug-05   114 : Added Perl.
- * CAM  23-Aug-05   115 : Standard Code/Error in brackets.
- * CAM  19-Sep-06   117 : Added ASP.
- * CAM  04-Nov-06   301 : Added PHP.
- * CAM  28-Jun-07   314 : Added Ericsson IDL.
- * CAM  26-Jul-07   316 : Added VHDL.
- * CAM  04-Dec-07   324 : Added JSP/XML (#325).
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  26-Mar-09  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
+ * CAM  12-Aug-05    110 : Glorious Twelfth - Correct license problems.
+ * CAM  13-Aug-05    114 : Added Perl.
+ * CAM  23-Aug-05    115 : Standard Code/Error in brackets.
+ * CAM  19-Sep-06    117 : Added ASP.
+ * CAM  04-Nov-06    301 : Added PHP.
+ * CAM  28-Jun-07    314 : Added Ericsson IDL.
+ * CAM  26-Jul-07    316 : Added VHDL.
+ * CAM  04-Dec-07    324 : Added JSP/XML (#325).
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  26-Mar-09    10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
+ * CAM  27-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -46,6 +47,12 @@ bool bLangAY = false;
 bool bLangHT = false;
 bool bLangJT = false;
 bool bLangPY = false;
+bool bLangSS = false;
+bool bLangFT = false;
+bool bLangRB = false;
+bool bLangSH = false;
+bool bLangTX = false;
+bool bLangWB = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -94,29 +101,43 @@ bool validLicense() {
   bLangJT = !((lpExitCode & EPM_JT) == 0);
   bLangPY = !((lpExitCode & EPM_PY) == 0);
 
+  bLangSS = !((lpExitCode & EPM_SS) == 0);
+  bLangFT = !((lpExitCode & EPM_FT) == 0);
+  bLangRB = !((lpExitCode & EPM_RB) == 0);
+  bLangSH = !((lpExitCode & EPM_SH) == 0);
+  bLangTX = !((lpExitCode & EPM_TX) == 0);
+  bLangWB = !((lpExitCode & EPM_WB) == 0);
+
   return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||
-	  bLangID||bLangVH||bLangJS||bLangXM||bLangAY||bLangHT||bLangJT||bLangPY);
+    bLangID||bLangVH||bLangJS||bLangXM||bLangAY||bLangHT||bLangJT||bLangPY||
+    bLangSS||bLangFT||bLangRB||bLangSH||bLangTX||bLangWB);
 }
 
 bool validLanguage(Langs l) {
   switch (l) {
-    case LANG_CPP:  	return bLangCP;
-    case LANG_CS:   	return bLangCS;
-    case LANG_JAVA: 	return bLangJV;
-    case LANG_VB:   	return bLangVB;
-    case LANG_S1:   	return bLangS1;
-    case LANG_ADA:  	return bLangAD;
-    case LANG_PERL: 	return bLangPL;
-    case LANG_ASP:  	return bLangAS;
-    case LANG_PHP:  	return bLangPH;
-    case LANG_IDL:  	return bLangID;
-    case LANG_VHDL: 	return bLangVH;
-    case LANG_JSP:  	return bLangJS;
-    case LANG_XML:  	return bLangXM;
-	  case LANG_ASM:  	return bLangAY;
-	  case LANG_HTML:		return bLangHT;
-	  case LANG_JT:  		return bLangJT;
-	  case LANG_PYTHON:	return bLangPY;
+    case LANG_CPP:    return bLangCP;
+    case LANG_CS:     return bLangCS;
+    case LANG_JAVA:   return bLangJV;
+    case LANG_VB:     return bLangVB;
+    case LANG_S1:     return bLangS1;
+    case LANG_ADA:    return bLangAD;
+    case LANG_PERL:   return bLangPL;
+    case LANG_ASP:    return bLangAS;
+    case LANG_PHP:    return bLangPH;
+    case LANG_IDL:    return bLangID;
+    case LANG_VHDL:   return bLangVH;
+    case LANG_JSP:    return bLangJS;
+    case LANG_XML:    return bLangXM;
+    case LANG_ASM:    return bLangAY;
+    case LANG_HTML:   return bLangHT;
+    case LANG_JT:     return bLangJT;
+    case LANG_PYTHON: return bLangPY;
+    case LANG_CSS:    return bLangSS;
+    case LANG_FT:     return bLangFT;
+    case LANG_RUBY:   return bLangRB;
+    case LANG_SH:     return bLangSH;
+    case LANG_TXT:    return bLangTX;
+    case LANG_WB:     return bLangWB;
   }
 
   return false;

@@ -43,12 +43,12 @@ rem    echo Generating parser... Perl
 rem    flex -i -olex.pl.tmp -8 -f lexer.pl.l
 rem    sed -f sed/pl.sed <lex.pl.tmp >lex.pl.cpp
 rem    del lex.pl.tmp
-rem     
+rem    
 rem    echo Generating parser... ASP
 rem    flex -i -olex.asp.tmp -8 -f lexer.asp.l
 rem    sed -f sed/asp.sed <lex.asp.tmp >lex.asp.cpp
 rem    del lex.asp.tmp
-rem    
+rem   
 rem    echo Generating parser... PHP
 rem    flex -i -olex.php.tmp -8 -f lexer.php.l
 rem    sed -f sed/php.sed <lex.php.tmp >lex.php.cpp
@@ -88,10 +88,19 @@ rem    echo Generating parser... Python
 rem    flex -i -olex.py.tmp -8 -f lexer.py.l
 rem    sed -f sed/py.sed <lex.py.tmp >lex.py.cpp
 rem    del lex.py.tmp
+rem    
+rem    echo Generating parser... Assembler
+rem    flex -olex.ay.tmp -8 -f lexer.ay.l
+rem    sed -f sed/ay.sed <lex.ay.tmp >lex.ay.cpp
+rem    del lex.ay.tmp
+echo Generating parser... Shell Script
+flex -olex.sh.tmp -8 -f lexer.sh.l
+sed -f sed/sh.sed <lex.sh.tmp >lex.sh.cpp
+del lex.sh.tmp
 
-echo Generating parser... Assembler
-flex -olex.ay.tmp -8 -f lexer.ay.l
-sed -f sed/ay.sed <lex.ay.tmp >lex.ay.cpp
-del lex.ay.tmp
+echo Generating parser... Textfile
+flex -olex.tx.tmp -8 -f lexer.tx.l
+sed -f sed/tx.sed <lex.tx.tmp >lex.tx.cpp
+del lex.tx.tmp
 
 echo.

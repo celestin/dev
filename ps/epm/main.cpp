@@ -1,3 +1,4 @@
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
  * Copyright (c) 2004,2009 SourceCodeMetrics.com
@@ -77,6 +78,7 @@
  * CAM  30-Apr-2009  10438 : Version 1.17.1.0.
  * CAM  05-May-2009  10441 : Version 1.17.2.0.
  * CAM  12-May-2009  10445 : Version 1.17.3.0.
+ * CAM  27-Jun-2009  10453 : Added Shell Script language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -114,7 +116,7 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay;
+            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -132,6 +134,8 @@ extern void lexclear_jt();
 extern void lexclear_ht();
 extern void lexclear_py();
 extern void lexclear_ay();
+extern void lexclear_sh();
+extern void lexclear_tx();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -149,6 +153,8 @@ extern int yylex_jt();
 extern int yylex_ht();
 extern int yylex_py();
 extern int yylex_ay();
+extern int yylex_sh();
+extern int yylex_tx();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -223,6 +229,14 @@ extern vector<char*> operands_py[255];
 extern int c_comments_ay,cpp_comments_ay,com_loc_ay,nsemi_ay,noperands_ay,noperators_ay;
 extern set<int> sloc_ay,operators_ay;
 extern vector<char*> operands_ay[255];
+
+extern int c_comments_sh,cpp_comments_sh,com_loc_sh,nsemi_sh,noperands_sh,noperators_sh;
+extern set<int> sloc_sh,operators_sh;
+extern vector<char*> operands_sh[255];
+
+extern int c_comments_tx,cpp_comments_tx,com_loc_tx,nsemi_tx,noperands_tx,noperators_tx;
+extern set<int> sloc_tx,operators_tx;
+extern vector<char*> operands_tx[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -565,6 +579,30 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_ay;
     com_loc = com_loc_ay;
     break;
+
+    case LANG_SH:
+    sloc = sloc_sh.size();                   // Source Lines of Code
+    met.set(MET(NSC), nsemi_sh);             // Halstead
+    met.set(MET(N1), noperators_sh);
+    met.set(MET(N1S), operators_sh.size());
+    met.set(MET(N2), noperands_sh);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_sh[i].size());
+    }
+
+    c_com = c_comments_sh;                   // Comments
+    cpp_com = cpp_comments_sh;
+    com_loc = com_loc_sh;
+    break;
+
+    case LANG_TXT:
+    sloc = sloc_tx.size();                   // Source Lines of Code
+    met.set(MET(NSC), 0);             // Halstead
+    met.set(MET(N1), 0);
+    met.set(MET(N1S), 0);
+    met.set(MET(N2), 0);
+    met.set(MET(N2S), 0);
+    c_com = cpp_com = com_loc = 0;
   }
 
   if (!lang.hasLogicalLines()) met.set(MET(NSC), sloc);
@@ -574,7 +612,7 @@ void setMetrics(int sfid, string filename) {
   met.set(MET(C_COM), c_com);
   met.set(MET(CPP_COM), cpp_com);
   met.set(MET(COM_LOC), com_loc);
-  met.calculateHalstead();
+  if (met.get(MET(N1)) + met.get(MET(N2)) > 0) met.calculateHalstead();
 
   met.set(MET(BYTES), Utilities::getFileSize(filename));  // Filesize
   saveDb(sfid, met, MET(LOC), MET(BYTES));
@@ -604,6 +642,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_PERL:
     case LANG_PYTHON:
+    case LANG_SH:
     d = new DiffPerl(filename2.c_str(), filename.c_str());
     break;
 
@@ -621,6 +660,11 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_ASM:
     d = new DiffAsm(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_TXT:
+      // TODO #10454 - create new text diff
+    d = new DiffCpp(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -1073,6 +1117,16 @@ bool analyse(string &filename) {
       yyin_ay = src;
       lexclear_ay();
       yylex_ay();
+      break;
+    case LANG_SH:
+      yyin_sh = src;
+      lexclear_sh();
+      yylex_sh();
+      break;
+    case LANG_TXT:
+      yyin_tx = src;
+      lexclear_tx();
+      yylex_tx();
       break;
   }
 

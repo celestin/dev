@@ -10,14 +10,14 @@
  * Who  When         Why
  * CAM  23-Aug-05    115 : File added.
  * CAM  06-Jan-06    168 : Moved Tuple to own file.
- * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef EXTENSION_H
 #define EXTENSION_H
 
-#define MAXLANG 24
-#define MAXTYPE 5
+#define MAXLANG 40
+#define MAXTYPE 10
 #define MAXEXT  10
 
 #include "Tuple.h"

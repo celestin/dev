@@ -22,7 +22,7 @@
  * CAM  14-Apr-2009  10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  14-Apr-2009  10403 : Python and XML do not have logical lines.
  * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
- * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -87,7 +87,7 @@ namespace metrics
         theLang = LANG_JT;
       } else if (!_stricmp(lang.c_str(), "PY")) {
         theLang = LANG_PYTHON;
-      } else if (!_stricmp(lang.c_str(), "CS")) {
+      } else if (!_stricmp(lang.c_str(), "SS")) {
         theLang = LANG_CSS;
       } else if (!_stricmp(lang.c_str(), "FT")) {
         theLang = LANG_FT;

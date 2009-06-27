@@ -371,6 +371,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\DiffText.cpp"
+				>
+			</File>
+			<File
 				RelativePath="DiffVB.cpp"
 				>
 				<FileConfiguration
@@ -611,6 +615,10 @@
 			</File>
 			<File
 				RelativePath="DiffPerl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DiffText.h"
 				>
 			</File>
 			<File

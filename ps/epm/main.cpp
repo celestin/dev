@@ -79,6 +79,7 @@
  * CAM  05-May-2009  10441 : Version 1.17.2.0.
  * CAM  12-May-2009  10445 : Version 1.17.3.0.
  * CAM  27-Jun-2009  10453 : Added Shell Script language support.
+ * CAM  27-Jun-2009  10454 : Added Textfile language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -88,6 +89,7 @@
 #include "DiffCpp.h"
 #include "DiffOracle.h"
 #include "DiffPerl.h"
+#include "DiffText.h"
 #include "DiffVB.h"
 #include "OurSQL.h"
 #include "Utilities.h"
@@ -663,8 +665,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     break;
 
     case LANG_TXT:
-      // TODO #10454 - create new text diff
-    d = new DiffCpp(filename2.c_str(), filename.c_str());
+    d = new DiffText(filename2.c_str(), filename.c_str());
     break;
   }
 

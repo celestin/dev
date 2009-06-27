@@ -1,31 +1,30 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * VB language Diff
+ * Textfile language Diff
  *
- * $Id$
+ * $Id: $
  *
- * Who  When       Why
- * CAM  18-Mar-06   212 : File created.
- * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
- * CAM  25-Oct-07   319 : Correct leak in getLine*.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  27-Jun-2009  10454 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include "DiffVB.h"
+#include "DiffText.h"
 
 #include <iostream>
 using namespace std;
 
-DiffVB::DiffVB(const char *filename1, const char *filename2) : Diff(filename1, filename2, false)
+#define BUFFLEN 1000
+
+DiffText::DiffText(const char *filename1, const char *filename2) : Diff(filename1, filename2, true)
 {
-  theNSCValid = false;
+  theNSCValid = true;
 }
 
 
-void DiffVB::getLineCR(FILE *input, char *&currline)
+void DiffText::getLineCR(FILE *input, char *&currline)
 {
   try
   {
@@ -132,21 +131,6 @@ void DiffVB::getLineCR(FILE *input, char *&currline)
 
       switch (*c)
       {
-      case '"':
-        {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
-
-          retval[retLength] = *c;
-          retLength++;
-
-          c++;
-          i++;
-
-          break;
-        }
       case ' ':
       case '\t':
         {
@@ -166,42 +150,6 @@ void DiffVB::getLineCR(FILE *input, char *&currline)
           i++;
           break;
         }
-      case '\'':
-        {
-          if (!skip)
-          {
-            *c = '\n';
-            *(c+1) = '\0';
-          }
-          else
-          {
-            // Skip was true, ie we are in a string so just output the '
-            retval[retLength] = *c;
-            retLength++;
-
-            c++;
-            i++;
-          }
-
-          break;
-        }
-      case '\\':
-        {
-          if (skip)
-          {
-            // We are in a string so this is the start of an escape sequence
-            // so output the '\' then move onto the next char
-
-            retval[retLength] = *c;
-            retLength++;
-
-            c++;
-            i++;
-
-            // Do not break - instead move onto the defualt clause to output
-            // the char following the '\'
-          }
-        }
       default:
         {
           retval[retLength] = *c;
@@ -220,4 +168,4 @@ void DiffVB::getLineCR(FILE *input, char *&currline)
   }
 }
 
-void DiffVB::getLineSC(FILE *input, char *&currline) {}
+void DiffText::getLineSC(FILE *input, char *&currline) {}

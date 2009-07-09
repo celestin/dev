@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * C/C++/Java language Diff
@@ -16,6 +16,7 @@
  * CAM  11-Oct-07   318 : Corrected getLineSC button - theMultiLine.
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * CAM  22-Apr-08   355 : Corrected C++-style comments within C-style comments issue.
+ * CAM  09-Jul-2009  10457 : Allow extra space at the end of getLineCR.currline for the null terminator.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -290,7 +291,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
     bool skip = false;
     bool comskip = false;
 
-    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
+    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-2)) {
       switch (nc)
       {
       case '"':
@@ -393,4 +394,3 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
   retval[b++] = '\0';
   currline = retval;
 }
-

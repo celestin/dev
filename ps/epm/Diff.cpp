@@ -1,18 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Original Powersoftware Diff (C/C++/Java)
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  29-Dec-04  File added.
- * CAM  11-Mar-06   199 : Separate Diff by Language.
- * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  24-Apr-08   359 : Added WSTrim to correct LLOC Diff errors.
+ * Who  When         Why
+ * CAM  29-Dec-04    File added.
+ * CAM  11-Mar-06    199 : Separate Diff by Language.
+ * CAM  18-Jul-06    272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08    359 : Added WSTrim to correct LLOC Diff errors.
+ * CAM  09-Jul-2009  10457 : Optimise getLine.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -462,13 +463,16 @@ void Diff::WSTrim(char *&currline)
   currline = _strdup(str.c_str());
 }
 
-void Diff::getLine(FILE *input, char *&currline) {
-  if (theNSC) {
+void Diff::getLine(FILE *input, char *&currline)
+{
+  if (theNSC)
+  {
     getLineSC(input, currline);
-    if (currline) WSTrim(currline);
-    //if (currline) cout << currline << endl;
-  } else {
-    getLineCR(input, currline);
-    if (currline) WSTrim(currline);
   }
+  else
+  {
+    getLineCR(input, currline);
+  }
+
+  if (currline) WSTrim(currline);
 }

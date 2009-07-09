@@ -7,14 +7,15 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Mar-06   199 : Separate Diff by Language.
- * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
- * CAM  20-Jul-06   272 : GetLineSC now includes string contents.
- * CAM  22-Jul-06   291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
- * CAM  25-Oct-07   319 : Correct leak in getLine*.
- * CAM  01-Nov-07   320 : Correct issue with theMultiLine in getLineSC.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  11-Mar-06    199 : Separate Diff by Language.
+ * CAM  18-Jul-06    272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  20-Jul-06    272 : GetLineSC now includes string contents.
+ * CAM  22-Jul-06    291 : Stop looking for semi-colons on a "lines" after MAX_LLOC_LEN.
+ * CAM  25-Oct-07    319 : Correct leak in getLine*.
+ * CAM  01-Nov-07    320 : Correct issue with theMultiLine in getLineSC.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  09-Jul-2009  10457 : Allow extra space at the end of getLineCR.currline for the null terminator.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -257,7 +258,7 @@ void DiffAda::getLineSC(FILE *input, char *&currline)
     bool skip = false;
     bool comskip = false;
 
-    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-1)) {
+    while ((nc=fgetc(input))!=EOF && b<(MAX_LLOC_LEN-2)) {
       switch (nc)
       {
       //case 9:

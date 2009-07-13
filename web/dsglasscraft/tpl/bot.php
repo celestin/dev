@@ -2,7 +2,7 @@
 </table></td></tr>
 
 <tr>
-  <td align=center class=cpyrght>Copyright &copy; 2007 Dunc Smith. All rights reserved.<br />
+  <td align=center class=cpyrght>Copyright &copy; <? echo strftime("%Y"); ?> Dunc Smith. All rights reserved.<br />
   Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td>
 </tr>
 

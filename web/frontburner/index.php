@@ -22,19 +22,15 @@
 
 <tr>
 
-  <td class="sitetitle" colspan=2>1st Summerhouses</td>
+  <td class="sitetitle" colspan=2>Aberdeen Squash Racquets Club</td>
   <td class="sitetitle" colspan=2>Airylea Motors</td>
-  <td class="sitetitle" colspan=2>John Mutch Electrical Services</td>
+  <td class="sitetitle" colspan=2>Andover Primary</td>
 
 </tr><tr>
 
-  <td width="150"><a class="domain" href="http://www.1stsummerhouses.com/"><img border=0 src="img/1stsummerhouses.gif"></a></td>
+  <td width="150"><a class="domain" href="http://www.asrc.biz/"><img border=0 src="img/asrc.gif"></a></td>
   <td width="150">
-    <li><a class="domain" href="http://www.1stsummerhouses.com/">1stsummerhouses.com</a></li>
-    <li><a class="domain" href="http://www.1stsummerhouses.co.uk/">1stsummerhouses.co.uk</a></li>
-    <li><a class="domain" href="http://www.firstsummerhouses.com/">firstsummerhouses.com</a></li>
-    <li><a class="domain" href="http://www.firstsummerhouses.co.uk/">firstsummerhouses.co.uk</a></li>
-    <li><a class="domain" href="http://www.logcabinscotland.com/">logcabinscotland.com</a></li>
+    <li><a class="domain" href="http://www.asrc.biz/">asrc.biz</a></li>
   </td>
 
   <td width="150"><a class="domain" href="http://www.airylea.com/"><img border=0 src="img/airylea.gif"></a></td>
@@ -44,16 +40,16 @@
     <li><a class="domain" href="http://www.airyleamotors.com/">airyleamotors.com</a></li>
   </td>
 
-  <td width="150"><a class="domain" href="http://www.johnmutch.com/"><img border=0 src="img/johnmutch.gif"></a></td>
+  <td width="150"><a class="domain" href="http://www.andoverprimary.org/"><img border=0 src="img/andover.gif"></a></td>
   <td width="150">
-    <li><a class="domain" href="http://www.johnmutch.com/">johnmutch.com</a></li>
+    <li><a class="domain" href="http://www.andoverprimary.org/">andoverprimary.org</a></li>
   </td>
 
 </tr><tr>
 
-  <td colspan=2 width=301>Suppliers of Summerhouses, Log cabins, Sheds and outdoor Play Equipment</td>
+  <td colspan=2 width=301>Online booking system for a local squash club.</td>
   <td colspan=2 width=301>Airylea Motors are specialists in all types of diesel fuel injection systems.
-  <td colspan=2 width=301>Electrical Services in the Aberdeen area - friendly and reliable!</td>
+  <td colspan=2 width=301>Joomla-based website for local primary school.</td>
 
 </tr><tr>
 
@@ -62,12 +58,12 @@
   <td class="sitetitle" colspan=2>Stour Valley Timber Engineering</td>
 
 </tr><tr>
-  <td width="150"><img border=0 src="img/dsglasscraft.gif"></td>
+  <td width="150"><a href="http://www.dsglasscraft.com/"><img border=0 src="img/dsglasscraft.gif"></a></td>
   <td width="150">
     <li><a class="domain" href="http://www.dsglasscraft.com/">dsglasscraft.com</a></li>
   </td>
 
-  <td><img border=0 src="img/mwmf.gif"></td>
+  <td><a href="http://www.mwmf.co.uk/"><img border=0 src="img/mwmf.gif"></a></td>
   <td>
     <li><a class="domain" href="http://www.mwmf.co.uk/">mwmf.co.uk</a></li>
     <li><a class="domain" href="http://www.filtra.co.uk/">filtra.co.uk</a></li>
@@ -77,8 +73,10 @@
     <li><a class="domain" href="http://www.midwestmarketforce.info/">midwestmarketforce.info</a></li>
   </td>
 
-  <td><img border=0 src="img/svte.gif"></td>
+  <td><a href="http://www.svts.co.uk/"><img border=0 src="img/svte.gif"></a></td>
   <td>
+    <li><a class="domain" href="http://www.svts.co.uk/">svts.co.uk</a></li>
+    <li><a class="domain" href="http://www.svte.co.uk/">svte.co.uk</a></li>
     <li><a class="domain" href="http://www.stourvalleytimberengineering.co.uk/">stourvalley<br>timberengineering.co.uk</a></li>
   </td>
 

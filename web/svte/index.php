@@ -71,11 +71,12 @@ a:hover {
 
 <tr>
   <td colspan=2><p><font size="6" color="#00A63B">Stour Valley Technical Services</font></p></td>
-  <td rowspan=5 valign=top align=right><img border=0 src="svts_logo2.png" width=164 height=212></td>
+  <td rowspan=4 valign=top align=right><img border=0 src="svts_logo2.png" width=164 height=212></td>
 </tr>
 
 <tr><td colspan=2 style="margin-top: 0;"><b><i>Providing technical services to the construction industry</i></b></td></tr>
 
+<!--
 <tr>
   <td>
     <font size="2" color="#999999" style="padding: 0;"><i>previously known as</i></font><br>
@@ -86,8 +87,12 @@ a:hover {
 </td></tr>
 
 <tr><td>postal address:</td></tr>
+-->
 
-<tr><td>20 Hiplands Road,<br>Halesowen<br>West Midlands, B62 0AE.</td>
+<tr>
+  <td>20 Hiplands Road,<br>Halesowen<br>West Midlands, B62 0AE.</td>
+  <td rowspan=2 valign=top align=right><img border=0 src="trada_member_logo.png" width=120 height=72></td>
+</tr>
 
 <tr>
   <td valign=middle>
@@ -102,6 +107,7 @@ a:hover {
     </div>
   </td>
 
+  <!--
   <td colspan=2 align=right>
   <div id="downloads">
   <table border=1 cellspacing=0 cellpadding=4>
@@ -110,22 +116,21 @@ a:hover {
   <tr><td align=center><a href="flyer_rev8_jan09.pdf">Leaflet &amp; Price List</a></td></tr>
   <tr><td align=center><a href="order_form_rev9_jan09.pdf">Order Form</a></td></tr>
   <tr><td align=center><a href="maint_renewal_rev1_2008.pdf">Annual Maintenance Renewal</a></td></tr>
-  </div>
   </table>
+  </div>
+  -->
 </tr>
 
 <tr>
-<td colspan=4 width=800>
+<td colspan=3 width=800>
 
 <div id="mainText">
-<p>Stour Valley Technical Services has moved on, and is a progression from Stour Valley Timber Engineering,
-in as much as a greater range of services are available to a wider spectrum of companies within the construction industry.
-Ownership of the <span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font> software has been resumed.</p>
+<p>Stour Valley Technical Services now offers a greater range of services to a wider spectrum of companies within the construction industry.
 
 <p><b>Consultancy services</b> include:
 <ul>
 <li>Structural engineering services to domestic & commercial clients</li>
-<li>Specialist timber frame engineering experience using software, <span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font></li>
+<li>Specialist timber frame engineering experience</li>
 <li>Light gauge steel frame experience</li>
 <li>Draughting services</li>
 <li>Domestic Building Regulation applications</li>
@@ -141,49 +146,11 @@ Ownership of the <span class="tfe">Timber Frame Engineering</span><font size="2"
 </ul>
 </p>
 
-<p><b><span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font> software</b>
-<ul>
-<li>We provide specialist design software for purchase by other engineers in the timber frame industry. The software, <span class="tfe">Timber Frame Engineering</span><font size="2"><sup>TM</sup></font>, is easy to use and produces a consistent quality format output - every time, which is easy to read. It uses BS 5268 Parts 2 & 6.1 as its foundation and other relevant British Standards are utilised as required. A new version based on EC5 is currently in the process of being written. This release will be driven by demand for the software; so if you are interested please send an email to us so that we can see who is queuing up to be first off the mark with EC5.</li>
-</ul>
-</p>
-
-<p>The <b>EUROCODES</b> (BS EN 1990 - BS EN 1999) are now available for use for the
-design of structures in all materials, and <b>BS EN 1995 for timber structures</b> is the one
-that is of interest to all those designing in timber. Eurocode 0 series
-(Basis of structural design) and Eurocode 1 series (Actions on structures)
-will also be required. In addition to the BS EN codes themselves there are
-also the National Application Documents, which provide additional guidance
-applicable to each country; or ‘Member State’ in the language of the Eurocode.
-We are now in the 2 year period of coexistence and the current date published
-for withdrawal of the current National codes is March 2010. We are in the process of
-creating a new version of the software to comply with the Eurocodes, and the current
-release date is expected to be January 2009, subject to all documentation being
-available from BSI.</p>
-
-<h1>Coming soon...</h1>
-
-<h2>Energy assessment services: Non-Domestic (Commercial) Energy Assessor Level 3 (DipNDEA)</h2>
-
-<p>From 1st October 2008 Government started legally requiring all commercial properties being sold,
-let or built and all homes being rented to have Energy Assessments.
-All larger public buildings also now require Assessments, which must be renewed every year,
-and homes for sale have required them since August 2007. Government brought in these new 'green'
-environmental laws, which are permanent, to comply with the EU's Energy Performance of Buildings Directive.
-Buildings being modified and resulting in the addition or removal of parts of the building and also buildings
-having Heating, Ventilation and Air Conditioning (HVAC) systems installed or modified may also require an EPC.</p>
-
-<p>In order to provide this service we are undergoing formal training to secure a qualification known as
-<b>Non-Domestic (Commercial) Energy Assessor Level 3 (DipNDEA)</b> - for carrying out Energy Assessments
-for commercial properties. We expect to start offering this service from April 2009.
-Updates will be posted, but please call me if you would like to discuss this particular service and
-maybe make an appointment to carry out pre-report assessment of you property.</p>
-
-<p><i>Please note that this web site is regularly updated and further additional information will
-be added in due course. Last updated: <b><? echo strftime("%B %Y"); ?></b></i>.</p>
+<p><i>Please note that this web site is regularly updated. Last updated: <b><? echo strftime("%B %Y"); ?></b></i>.</p>
 </div>
 
 <tr>
-  <td valign=center align=center colspan=4><font size=1>
+  <td valign=center align=center colspan=3><font size=1>
   <p><b>Jonathan Bedford</b> trading as <b>Stour Valley Technical Services</b>,<br>Address 20 Hiplands Road, Halesowen, West Midlands, B62 0AE, Email sales@stourvalleytechnicalservices.co.uk.</p>
   <br>Copyright &copy; <? echo strftime("%Y"); ?> Stour Valley Timber Engineering. All rights reserved.
   <br>Site maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:craig@frontburner.co.uk">Webmaster</a></font></td>

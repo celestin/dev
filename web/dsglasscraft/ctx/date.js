@@ -1,7 +1,13 @@
-/**
- * date.js
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Dunc Smith Glasscraft
+ * Copyright (c) 2009 Dunc Smith
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- */
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  13-Jul-2009  10459 : Added new images and file headers.
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 // extract front part of string prior to searchString
 function getFront(mainStr,searchStr){
@@ -328,6 +334,6 @@ function checkLeapMonth(mm,dd,yyyy) {
 }
 
 function checkDate(Field) {
-  if (!isDate(Field,false)) {    
+  if (!isDate(Field,false)) {
   }
 }

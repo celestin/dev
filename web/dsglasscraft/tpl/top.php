@@ -1,7 +1,16 @@
-<?
+<?php
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Dunc Smith Glasscraft
+ * Copyright (c) 2009 Dunc Smith
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  13-Jul-2009  10459 : Added new images and file headers.
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 include "db.php"
-
 ?>
 
 <html>

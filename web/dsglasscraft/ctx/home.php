@@ -1,15 +1,14 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * DS Glasscraft page
- * Copyright (c) 2006 frontburner.co.uk
+ * Dunc Smith Glasscraft
+ * Copyright (c) 2009 Dunc Smith
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Log: /web/dsglasscraft/ctx/home.php $
- * 
- * 2     11/04/06 19:21 Craig
+ * $Id$
  *
  * Who  When         Why
  * CAM  10-Apr-2006  Image changed.
+ * CAM  13-Jul-2009  10459 : Added new images and file headers.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <table border=0 cellpadding=4 cellspacing=4>

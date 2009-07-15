@@ -104,7 +104,7 @@ rem    sed -f sed/tx.sed <lex.tx.tmp >lex.tx.cpp
 rem    del lex.tx.tmp
 rem    
 echo Generating parser... Fortran
-flex -olex.ft.tmp -8 -f lexer.ft.l
+flex -i -olex.ft.tmp -8 -f lexer.ft.l
 sed -f sed/ft.sed <lex.ft.tmp >lex.ft.cpp
 del lex.ft.tmp
 

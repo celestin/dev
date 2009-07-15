@@ -93,14 +93,21 @@ rem    echo Generating parser... Assembler
 rem    flex -olex.ay.tmp -8 -f lexer.ay.l
 rem    sed -f sed/ay.sed <lex.ay.tmp >lex.ay.cpp
 rem    del lex.ay.tmp
-echo Generating parser... Shell Script
-flex -olex.sh.tmp -8 -f lexer.sh.l
-sed -f sed/sh.sed <lex.sh.tmp >lex.sh.cpp
-del lex.sh.tmp
-
-echo Generating parser... Textfile
-flex -olex.tx.tmp -8 -f lexer.tx.l
-sed -f sed/tx.sed <lex.tx.tmp >lex.tx.cpp
-del lex.tx.tmp
+rem    echo Generating parser... Shell Script
+rem    flex -olex.sh.tmp -8 -f lexer.sh.l
+rem    sed -f sed/sh.sed <lex.sh.tmp >lex.sh.cpp
+rem    del lex.sh.tmp
+rem    
+rem    echo Generating parser... Textfile
+rem    flex -olex.tx.tmp -8 -f lexer.tx.l
+rem    sed -f sed/tx.sed <lex.tx.tmp >lex.tx.cpp
+rem    del lex.tx.tmp
+rem    
+echo Generating parser... Fortran
+flex -olex.ft.tmp -8 -f lexer.ft.l
+sed -f sed/ft.sed <lex.ft.tmp >lex.ft.cpp
+del lex.ft.tmp
 
 echo.
+
+

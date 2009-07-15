@@ -327,6 +327,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\DiffFortran.cpp"
+				>
+			</File>
+			<File
 				RelativePath="DiffOracle.cpp"
 				>
 				<FileConfiguration
@@ -610,6 +614,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DiffFortran.h"
+				>
+			</File>
+			<File
 				RelativePath="DiffOracle.h"
 				>
 			</File>
@@ -795,6 +803,10 @@
 							PreprocessorDefinitions=""
 						/>
 					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\lex.ft.cpp"
+					>
 				</File>
 				<File
 					RelativePath=".\lex.ht.cpp"
@@ -1035,6 +1047,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.ft.l"
+					>
+				</File>
+				<File
 					RelativePath=".\lexer.ht.l"
 					>
 				</File>
@@ -1108,6 +1124,10 @@
 				</File>
 				<File
 					RelativePath="y.cs.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.ft.h"
 					>
 				</File>
 				<File

@@ -1,4 +1,3 @@
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
  * Copyright (c) 2004,2009 SourceCodeMetrics.com
@@ -8,17 +7,17 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  19-Dec-04  File added.
- * CAM  30-Dec-04  Added -s servername.
- * CAM  04-Jan-05  Attempting to add FLEXlm licensing.
- * CAM  08-Jan-05  Exit on failed license check.
- * CAM  08-Jan-05  Improve error messages.
- * CAM  13-Jan-05  Added -u username and -p password.
- * CAM  19-Jan-05  If localhost, start a local MySQL server.
- * CAM  24-Jan-05  Use 'Metrics' class rather than array.
- * CAM  26-Jan-05  Increment ADD_SLOC and DEL_SLOC for Added/Deleted files respectively.
- * CAM  26-Jan-05  Changed command line help from 'csp' to 'epm'.
+ * Who  When         Why
+ * CAM  19-Dec-04    File added.
+ * CAM  30-Dec-04    Added -s servername.
+ * CAM  04-Jan-05    Attempting to add FLEXlm licensing.
+ * CAM  08-Jan-05    Exit on failed license check.
+ * CAM  08-Jan-05    Improve error messages.
+ * CAM  13-Jan-05    Added -u username and -p password.
+ * CAM  19-Jan-05    If localhost, start a local MySQL server.
+ * CAM  24-Jan-05    Use 'Metrics' class rather than array.
+ * CAM  26-Jan-05    Increment ADD_SLOC and DEL_SLOC for Added/Deleted files respectively.
+ * CAM  26-Jan-05    Changed command line help from 'csp' to 'epm'.
  * CAM  14-Mar-05    78 : Correct LOC count.
  * CAM  26-Mar-05    79 : Added CSV reports.
  * CAM  29-Mar-05    85 : Added XML reports.
@@ -27,48 +26,48 @@
  * CAM  12-May-05    96 : Added VB.
  * CAM  17-May-05    97 : Added PL/SQL.
  * CAM  02-Aug-05    76 : Added ADA.
- * CAM  13-Aug-05   114 : Added Perl.
- * CAM  23-Aug-05   115 : Added XML Config.
- * CAM  16-Jan-06   177 : Added EPM Version No.
- * CAM  28-Jan-06   168 : Added -m MetricSet.
- * CAM  28-Jan-06   168 : Version 1.08.000.
- * CAM  07-Feb-06   184 : Version 1.08.001.
- * CAM  07-Feb-06   187 : Use MYSQL_PARAM_SIZE to malloc spaces for params.
- * CAM  13-Feb-06   185 : Version 1.08.002.
- * CAM  21-Feb-06   188 : Moved file checking in initFileSource to Project.h.
- * CAM  21-Feb-06   188 : Version 1.09.000.
- * CAM  11-Mar-06   199 : Separate Diff by Language.
- * CAM  14-Mar-06   202 : Version 1.09.002.
- * CAM  18-Mar-06   211 : Version 1.09.003.
- * CAM  18-Mar-06   220 : Version 1.09.004.
- * CAM  25-Mar-06   221 : Version 1.10.000.
- * CAM  08-Apr-06   230 : Version 1.10.001.
- * CAM  11-May-06   241 : Allow EPM to be run from any location.  Version 1.10.002.
- * CAM  11-May-06   252 : Min/Max/Avg in HTML Reports.  Version 1.10.003.
- * CAM  06-Jun-06   255 : Version 1.10.004.
- * CAM  18-Jul-06   272 : Version 1.11.000.
- * CAM  18-Jul-06   286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
- * CAM  22-Jul-06   291 : Ensure "lines" of 64Kb semi-colon are truncated and diff'ing continues.
- * CAM  19-Sep-06   117 : Added ASP.
- * CAM  27-Oct-06   117 : Version 1.12.000.
- * CAM  09-Nov-06   301 : Version 1.13.000.
- * CAM  10-Jul-07   314 : Added IDL.
- * CAM  10-Jul-07   314 : Version 1.14.000.
- * CAM  26-Jul-07   316 : Added VHDL.
- * CAM  26-Jul-07   316 : Version 1.15.000.
- * CAM  26-Jul-07   317 : Version 1.15.001.
- * CAM  26-Oct-07   319 : Version 1.15.002.
- * CAM  01-Nov-07   321 : Version 1.15.003.
- * CAM  28-Nov-07   323 : Call PHP Parser. Version 1.15.004.
- * CAM  10-Dec-07   324 : Added JSP.
- * CAM  10-Dec-07   325 : Added XML.
- * CAM  01-Nov-07   325 : Version 1.16.000.
- * CAM  13-Dec-07   328 : Version 1.16.001.
- * CAM  04-Jan-08   330 : Version 1.16.002.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  24-Apr-08   359 : Version 1.16.003.
- * CAM  26-Apr-08   360 : Version 1.16.004.
- * CAM  30-May-08   365 : Only start the MySQL process if required.  Version 1.16.005.
+ * CAM  13-Aug-05    114 : Added Perl.
+ * CAM  23-Aug-05    115 : Added XML Config.
+ * CAM  16-Jan-06    177 : Added EPM Version No.
+ * CAM  28-Jan-06    168 : Added -m MetricSet.
+ * CAM  28-Jan-06    168 : Version 1.08.000.
+ * CAM  07-Feb-06    184 : Version 1.08.001.
+ * CAM  07-Feb-06    187 : Use MYSQL_PARAM_SIZE to malloc spaces for params.
+ * CAM  13-Feb-06    185 : Version 1.08.002.
+ * CAM  21-Feb-06    188 : Moved file checking in initFileSource to Project.h.
+ * CAM  21-Feb-06    188 : Version 1.09.000.
+ * CAM  11-Mar-06    199 : Separate Diff by Language.
+ * CAM  14-Mar-06    202 : Version 1.09.002.
+ * CAM  18-Mar-06    211 : Version 1.09.003.
+ * CAM  18-Mar-06    220 : Version 1.09.004.
+ * CAM  25-Mar-06    221 : Version 1.10.000.
+ * CAM  08-Apr-06    230 : Version 1.10.001.
+ * CAM  11-May-06    241 : Allow EPM to be run from any location.  Version 1.10.002.
+ * CAM  11-May-06    252 : Min/Max/Avg in HTML Reports.  Version 1.10.003.
+ * CAM  06-Jun-06    255 : Version 1.10.004.
+ * CAM  18-Jul-06    272 : Version 1.11.000.
+ * CAM  18-Jul-06    286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
+ * CAM  22-Jul-06    291 : Ensure "lines" of 64Kb semi-colon are truncated and diff'ing continues.
+ * CAM  19-Sep-06    117 : Added ASP.
+ * CAM  27-Oct-06    117 : Version 1.12.000.
+ * CAM  09-Nov-06    301 : Version 1.13.000.
+ * CAM  10-Jul-07    314 : Added IDL.
+ * CAM  10-Jul-07    314 : Version 1.14.000.
+ * CAM  26-Jul-07    316 : Added VHDL.
+ * CAM  26-Jul-07    316 : Version 1.15.000.
+ * CAM  26-Jul-07    317 : Version 1.15.001.
+ * CAM  26-Oct-07    319 : Version 1.15.002.
+ * CAM  01-Nov-07    321 : Version 1.15.003.
+ * CAM  28-Nov-07    323 : Call PHP Parser. Version 1.15.004.
+ * CAM  10-Dec-07    324 : Added JSP.
+ * CAM  10-Dec-07    325 : Added XML.
+ * CAM  01-Nov-07    325 : Version 1.16.000.
+ * CAM  13-Dec-07    328 : Version 1.16.001.
+ * CAM  04-Jan-08    330 : Version 1.16.002.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08    359 : Version 1.16.003.
+ * CAM  26-Apr-08    360 : Version 1.16.004.
+ * CAM  30-May-08    365 : Only start the MySQL process if required.  Version 1.16.005.
  * CAM  14-Apr-2009  10400 : Added JavaScript language support.
  * CAM  14-Apr-2009  10401 : Added HTML language support.
  * CAM  14-Apr-2009  10403 : Added Python language support.  Changed non-logical lines languages to set NSC (LLOC) to SLOC.
@@ -80,6 +79,9 @@
  * CAM  12-May-2009  10445 : Version 1.17.3.0.
  * CAM  27-Jun-2009  10453 : Added Shell Script language support.
  * CAM  27-Jun-2009  10454 : Added Textfile language support.
+ * CAM  06-Jul-2009  10457 : Version 1.17.3.1.
+ * CAM  09-Jul-2009  10457 : Version 1.17.3.2.
+ * CAM  15-Jul-2009  10451 : Added Fortran.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -87,6 +89,7 @@
 #include "DiffAsm.h"
 #include "DiffASP.h"
 #include "DiffCpp.h"
+#include "DiffFortran.h"
 #include "DiffOracle.h"
 #include "DiffPerl.h"
 #include "DiffText.h"
@@ -118,7 +121,7 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx;
+            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx, *yyin_ft;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -138,6 +141,7 @@ extern void lexclear_py();
 extern void lexclear_ay();
 extern void lexclear_sh();
 extern void lexclear_tx();
+extern void lexclear_ft();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -157,6 +161,7 @@ extern int yylex_py();
 extern int yylex_ay();
 extern int yylex_sh();
 extern int yylex_tx();
+extern int yylex_ft();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -239,6 +244,10 @@ extern vector<char*> operands_sh[255];
 extern int c_comments_tx,cpp_comments_tx,com_loc_tx,nsemi_tx,noperands_tx,noperators_tx;
 extern set<int> sloc_tx,operators_tx;
 extern vector<char*> operands_tx[255];
+
+extern int c_comments_ft,cpp_comments_ft,com_loc_ft,nsemi_ft,noperands_ft,noperators_ft;
+extern set<int> sloc_ft,operators_ft;
+extern vector<char*> operands_ft[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -599,12 +608,28 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_TXT:
     sloc = sloc_tx.size();                   // Source Lines of Code
-    met.set(MET(NSC), 0);             // Halstead
+    met.set(MET(NSC), 0);
     met.set(MET(N1), 0);
     met.set(MET(N1S), 0);
     met.set(MET(N2), 0);
     met.set(MET(N2S), 0);
     c_com = cpp_com = com_loc = 0;
+    break;
+
+    case LANG_FT:
+    sloc = sloc_ft.size();                   // Source Lines of Code
+
+    met.set(MET(N1), noperators_ft);
+    met.set(MET(N1S), operators_ft.size());
+    met.set(MET(N2), noperands_ft);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_ft[i].size());
+    }
+
+    c_com = c_comments_ft;                   // Comments
+    cpp_com = cpp_comments_ft;
+    com_loc = com_loc_ft;
+    break;
   }
 
   if (!lang.hasLogicalLines()) met.set(MET(NSC), sloc);
@@ -666,6 +691,10 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_TXT:
     d = new DiffText(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_FT:
+    d = new DiffFortran(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -1128,6 +1157,10 @@ bool analyse(string &filename) {
       yyin_tx = src;
       lexclear_tx();
       yylex_tx();
+    case LANG_FT:
+      yyin_ft = src;
+      lexclear_ft();
+      yylex_ft();
       break;
   }
 
@@ -1140,7 +1173,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.17.3.0\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.17.3.2\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

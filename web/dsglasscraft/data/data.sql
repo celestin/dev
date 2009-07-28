@@ -214,7 +214,7 @@ INSERT INTO piece VALUES ('goldfish', 'WATER', 'Goldfish', '');
 INSERT INTO piece VALUES ('hummingbird_blue', 'BIRD', 'Blue Humming Bird', '');
 INSERT INTO piece VALUES ('kingfisher_frog', 'KFISH', 'Kingfisher with Frog', '');
 INSERT INTO piece VALUES ('leopardgecko', 'REPTILE', 'Leopard Gecko', '');
-INSERT INTO piece VALUES ('otters', 'WOODLAND', 'Otters', '');
+INSERT INTO piece VALUES ('otters', 'WATER', 'Otters', '');
 INSERT INTO piece VALUES ('puffins_clifftop2', 'BIRD', 'Puffins on Clifftop 2', '');
 INSERT INTO piece VALUES ('puffins_clifftop1', 'BIRD', 'Puffins on Clifftop 1', '');
 INSERT INTO piece VALUES ('redcardinal_holly', 'BIRD', 'Red Cardinal with Holly', '');

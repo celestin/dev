@@ -22908,7 +22908,7 @@ char *yytext_ft;
  *
  * Fortran parser
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  14-Jul-2009  10451 : File created.

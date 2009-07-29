@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  15-Jul-2009  10451 : File created.
+ * CAM  29-Jul-2009  10464 : Corrected handling of exclamation marks within strings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffFortran.h"
@@ -50,7 +51,7 @@ void DiffFortran::getLineCR(FILE *input, char *&currline)
     while (true)
     {
       if (*c=='\0')   // We have reached the end of the buffer but not found a newline
-      {              
+      {
         // Get the next 1000 chars from the file
         if (!fgets(buffer,1000,input))  // EOF or error
         {
@@ -165,8 +166,17 @@ void DiffFortran::getLineCR(FILE *input, char *&currline)
         }
       case '!':
         {
-          if (!skip)
+          if (skip)
           {
+            // We are in a string and the exclaimation mark should be counted
+            retval[retLength] = *c;
+            retLength++;
+            c++;
+            i++;
+          }
+          else
+          {
+            // We are not in a string, therefore this is a comment line and it should all be ignored
             *c = '\n';
             *(c+1) = '\0';
           }
@@ -185,7 +195,7 @@ void DiffFortran::getLineCR(FILE *input, char *&currline)
             c++;
             i++;
 
-            // Do not break - instead move onto the defualt clause to output
+            // Do not break - instead move onto the default clause to output
             // the char following the '\'
           }
         }

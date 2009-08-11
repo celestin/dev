@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2008 Frontburner
+ * Copyright (c) 2006,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Template: Top of every page
@@ -17,6 +17,7 @@
  * CAM  12-Apr-2008  10241 : Corrected HTML .
  * CAM  20-Aug-2008  10113 : Added AquaFinesse bottle beside Beachcomber logo.
  * CAM  08-Nov-2008  10236 : Added QuickShip and BarrelSauna.
+ * CAM  11-Aug-2009  10470 : Added email icon and link.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -64,7 +65,7 @@
       <tr>
         <td align=center class="rxtop">
         <div id="rxfeature">
-    <ul>
+        <ul>
             <li><a id="linkwater" href="water.php">water</a></li>
             <li><a id="linkhealth" href="health.php">health &amp; well-being</a></li>
             <li><a id="linkrelaxation" href="relaxation.php">relaxation</a></li>
@@ -74,6 +75,7 @@
         </ul>
         </div>
         </td>
+        <td class="rxtop"><a title="Send us an email!" href="mailto:hazel@relaxatub.com?subject=Website%20Response"><img border=0 src="img/icon/mail_write.png"></a></td>
       </tr>
       <tr><td align=center valign=middle>
 

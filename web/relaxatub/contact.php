@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2008 Frontburner
+ * Copyright (c) 2006,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Contact page
@@ -12,6 +12,7 @@
  * CAM  18-Jul-2006  File added to source control.
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * CAM  26-Apr-2008  10261 : Added opening hours.
+ * CAM  11-Aug-2009  10469 : Auto-year on copyright.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagecontact";
@@ -33,12 +34,13 @@ include "tpl/top.php";
       <td valign=top>
         <table border=0 cellspacing=0 cellpadding=4>
         <tr>
-          <td class="fldlbl">Telephone</td><td class="fldtxt">01224 580792</td>
+          <td class="fldlbl">Telephone</td><td class="fldtxt">01224 <b>875620</b></td>
         </tr>
         <tr>
-          <td class="fldlbl" valign=top>Visit our Showroom</td><td class="fldtxt">126-128 Crown Street<br />
+          <td class="fldlbl" valign=top>Visit our Showroom</td><td class="fldtxt">The Fishing Station<br />
+          Burnbanks<br />
           Aberdeen, UK<br />
-          AB11 6HQ<br /></td></tr>
+          AB12 3WN<br /></td></tr>
         </tr>
         </table>
       </td>
@@ -50,8 +52,7 @@ include "tpl/top.php";
         <tr>
           <td class="fldlbl" valign=top>Opening Hours</td><td class="fldtxt">
             <table border=0 cellspacing=0 cellpadding=0>
-              <tr><td><b>Mon Tue Wed Fri</b></td><td>&nbsp;10pm-5pm</td></tr>
-              <tr><td><b>Thu</b></td><td>&nbsp;2pm-5pm</td></tr>
+              <tr><td><b>Mon - Fri</b></td><td>&nbsp;10pm-5pm</td></tr>
               <tr><td><b>Sat</b></td><td>&nbsp;10am-2pm</td></tr>
             </table>
           </td>
@@ -70,7 +71,7 @@ include "tpl/top.php";
 
 </tr><tr>
 
-  <td colspan=2 align=center><img class="thumb" src="img/map1.gif" width="541" height="450" alt="Map to reach us"></td>
+  <td colspan=2 align=center><img src="img/map2.jpg" width="560" height="442" alt="Map to reach us"></td>
 </tr>
 
 </table>

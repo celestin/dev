@@ -13,17 +13,20 @@
  * CAM  18-Sep-2008  10280 : Added Suppliers.
  * CAM  05-Feb-2009  10280 : Converted Topbar to Div and added Navbar.
  * CAM  14-Mar-2009  10334 : Use new Bosch logo.
+ * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = (session_is_registered('memberid') && session_is_registered('airylea_co_uk'));
 
-if (empty($title)) {
-  $title = $cfg['Site']['Name'];
-} else {
-  $title = $cfg['Site']['Name'] . " - $title";
+$pageTitle = $cfg['Site']['Name'];
+
+if (!empty($title)) {
+  $pageTitle = $cfg['Site']['Name'] . " - $title";
 }
+
+$pageTitle .= ", " . $cfg['Site']['Location'];
 
 $toolbar = "none";
 if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
@@ -32,7 +35,7 @@ if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
 ?>
 <html>
 <head>
-  <title><? echo $title;?></title>
+  <title><? echo $pageTitle;?></title>
   <link rel="stylesheet" href="css/airylea.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
 

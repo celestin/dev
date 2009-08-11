@@ -11,9 +11,10 @@
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
  * CAM  05-Feb-2009  10280 : Added Page Id.
+ * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Welcome";
+$title = "Diesel Fuel Injection Repair, Inspection &amp; Servicing Specialists";
 $pageId = "home";
 include 'tpl/top.php';
 
@@ -26,10 +27,10 @@ showFlash();
   <td colspan=2 width=700>
     <h1>Welcome to Airylea Motors</h1>
     <p><span class=am>Airylea Motors</span> are specialists in all types of diesel
-    fuel injection systems.</p>
+    fuel injection systems and repairs.</p>
 
     <p>With over 35 years in the business we have the experience to service and repair
-    all your diesel fuel systems quickly and efficiently. We deal with both marine and
+    all your diesel fuel injection systems quickly and efficiently. We deal with both marine and
     commercial vehicle fuel injection systems as well as most other types of industrial
     diesel applications.</p>
 

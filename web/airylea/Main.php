@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Airylea Motors Website
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006-2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Main page setup
@@ -10,9 +10,11 @@
  *
  * Who  When         Why
  * CAM  28-Aug-2008  10280 : File created.
+ * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Airylea Motors";
+$cfg['Site']['Location'] = "Aberdeen, Scotland, UK";
 $cfg['Site']['URL']   = "http://www.airylea.co.uk";                 // no trailing slash
 $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 

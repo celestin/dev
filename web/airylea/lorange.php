@@ -11,9 +11,10 @@
  * Who  When         Why
  * CAM  18-Sep-2008  10280 : File created.
  * CAM  14-Mar-2009  10334 : Changed image gallery to use Lightbox.
+ * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Welcome";
+$title = "L'Orange Diesel Fuel Injection Service &amp; Repairs";
 include 'tpl/top.php';
 
 global $flash;

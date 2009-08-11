@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Airylea Motors Website
- * Copyright (c) 2008 Frontburner
+ * Copyright (c) 2008,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Home Page Context
@@ -10,9 +10,10 @@
  *
  * Who  When         Why
  * CAM  18-Sep-2008  10280 : File created.
+ * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Welcome";
+$title = "Stanadyne Diesel Fuel Injection Service &amp; Repairs";
 include 'tpl/top.php';
 
 global $flash;

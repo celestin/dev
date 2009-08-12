@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2008 Frontburner
+ * Copyright (c) 2006,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Style Sheet
@@ -18,6 +18,7 @@
  * CAM  20-Aug-2008  10113 : Added classes for H3 and AquaFinesse logo.
  * CAM  08-Nov-2008  10237 : Added classes for QuickShip.
  * CAM  08-Nov-2008  10239 : Added classes for BarrelSauna.
+ * CAM  11-Aug-2009  10471 : Added tubtype (for Hybrid/Portable).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -82,6 +83,10 @@ h3 {
   font-size: 9pt;
   font-weight: bold;
   text-align: center;
+}
+
+#quickship #tubtype {
+  font-size: 8pt;
 }
 
 #barrelsauna p {

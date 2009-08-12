@@ -83,6 +83,7 @@
  * CAM  09-Jul-2009  10457 : Version 1.17.3.2.
  * CAM  15-Jul-2009  10451 : Added Fortran.
  * CAM  27-Jul-2009  10457 : Version 1.18.0.0.
+ * CAM  12-Aug-2009  10450 : Added CSS language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -122,7 +123,8 @@ using namespace metrics;
 using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
-            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx, *yyin_ft;
+            *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx, *yyin_ft,
+            *yyin_ss;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -143,6 +145,7 @@ extern void lexclear_ay();
 extern void lexclear_sh();
 extern void lexclear_tx();
 extern void lexclear_ft();
+extern void lexclear_ss();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -163,6 +166,7 @@ extern int yylex_ay();
 extern int yylex_sh();
 extern int yylex_tx();
 extern int yylex_ft();
+extern int yylex_ss();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -249,6 +253,10 @@ extern vector<char*> operands_tx[255];
 extern int c_comments_ft,cpp_comments_ft,com_loc_ft,nsemi_ft,noperands_ft,noperators_ft;
 extern set<int> sloc_ft,operators_ft;
 extern vector<char*> operands_ft[255];
+
+extern int j_comments_ss,c_comments_ss,cpp_comments_ss,com_loc_ss,nsemi_ss,noperands_ss,noperators_ss;
+extern set<int> sloc_ss,operators_ss;
+extern vector<char*> operands_ss[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -617,19 +625,19 @@ void setMetrics(int sfid, string filename) {
     c_com = cpp_com = com_loc = 0;
     break;
 
-    case LANG_FT:
-    sloc = sloc_ft.size();                   // Source Lines of Code
+    case LANG_CSS:
+    sloc = sloc_ss.size();                   // Source Lines of Code
 
-    met.set(MET(N1), noperators_ft);
-    met.set(MET(N1S), operators_ft.size());
-    met.set(MET(N2), noperands_ft);
+    met.set(MET(N1), noperators_ss);
+    met.set(MET(N1S), operators_ss.size());
+    met.set(MET(N2), noperands_ss);
     for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_ft[i].size());
+      met.add(MET(N2S), operands_ss[i].size());
     }
 
-    c_com = c_comments_ft;                   // Comments
-    cpp_com = cpp_comments_ft;
-    com_loc = com_loc_ft;
+    c_com = c_comments_ss;                   // Comments
+    cpp_com = cpp_comments_ss;
+    com_loc = com_loc_ss;
     break;
   }
 
@@ -656,6 +664,7 @@ void calcDiff(int sfid, string &filename, string &filename2) {
     case LANG_JAVA:
     case LANG_JT:
     case LANG_IDL:
+    case LANG_CSS:
     d = new DiffCpp(filename2.c_str(), filename.c_str());
     break;
 
@@ -1163,6 +1172,11 @@ bool analyse(string &filename) {
       lexclear_ft();
       yylex_ft();
       break;
+    case LANG_CSS:
+      yyin_ss = src;
+      lexclear_ss();
+      yylex_ss();
+      break;
   }
 
   fclose(src);
@@ -1174,7 +1188,7 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
 
-  cout << "\nEssential Project Manager (EPM) Version 1.18.0.0\n"
+  cout << "\nEssential Project Manager (EPM) Version 1.19.0.0\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
@@ -1297,7 +1311,7 @@ int main(int argc, char* argv[]) {
           pct = (int)((double)r/(double)projDb.rows()*100);
 
           if (validLanguage(lang.getLanguage())) {
-            if (pct > lastpct) cout << "diff " << sfid << ":" << shortname << " (" << pct << "%)" << endl;
+            /*if (pct > lastpct)*/ cout << "diff " << sfid << ":" << shortname << " (" << pct << "%)" << endl;
             calcDiff(sfid, filename, filename2);
           }
           lastpct = pct;

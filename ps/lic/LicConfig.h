@@ -19,7 +19,7 @@
  * CAM  17-Jul-07    316 : Added VHDL.
  * CAM  04-Dec-07    324 : Added JSP/XML (#325).
  * CAM  26-Mar-09    10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
- * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -42,7 +42,7 @@
 #define LIC_HT   "epmht"
 #define LIC_JT   "epmjt"
 #define LIC_PY   "epmpy"
-#define LIC_CS   "epmcs"
+#define LIC_SS   "epmss"
 #define LIC_FT   "epmft"
 #define LIC_RB   "epmrb"
 #define LIC_SH   "epmsh"
@@ -67,7 +67,7 @@
 #define EPM_HT   32768
 #define EPM_JT   65536
 #define EPM_PY   131072
-#define EPM_CS   262144
+#define EPM_SS   262144
 #define EPM_FT   524288
 #define EPM_RB   1048576
 #define EPM_SH   2097152

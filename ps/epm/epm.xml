@@ -184,7 +184,7 @@
       <ext name="Script" value="zsh" />
     </filetype>
   </lang>
-  <lang name="Stylesheet" parser="CS">
+  <lang name="Stylesheet" parser="SS">
     <filetype name="Source">
       <ext name="Stylesheet" value="css" />
     </filetype>

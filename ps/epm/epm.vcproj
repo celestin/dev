@@ -957,6 +957,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lex.ss.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\lex.tx.cpp"
 					>
 				</File>
@@ -1091,6 +1095,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.ss.l"
+					>
+				</File>
+				<File
 					RelativePath=".\lexer.tx.l"
 					>
 				</File>
@@ -1168,6 +1176,10 @@
 				</File>
 				<File
 					RelativePath=".\y.sh.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.ss.h"
 					>
 				</File>
 				<File

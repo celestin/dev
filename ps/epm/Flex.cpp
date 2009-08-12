@@ -70,8 +70,8 @@ bool validLicense() {
   si.dwFlags |= STARTF_USESHOWWINDOW;
   si.wShowWindow |= SW_SHOWMINIMIZED;
 
-  char mpath[256] ;
-  strcpy_s(mpath, 256, "lic.exe") ;
+  char mpath[MAX_PATH] ;
+  strcpy_s(mpath, MAX_PATH, "lic.exe") ;
 
   if (!CreateProcess(0,mpath, 0, 0, 0, 0, 0, 0, &si,&pi)) return false;   // Execute lic.exe
   WaitForSingleObject(pi.hProcess, 25000);                                // Wait until completion

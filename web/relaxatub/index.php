@@ -21,6 +21,7 @@
  * CAM  17-May-2008  10232 : Corrected links for 350H.
  * CAM  20-Aug-2008  10113 : Added AquaFinesse logo under tubs.
  * CAM  20-Aug-2008  10284 : Added "30 years" logo under tubs.
+ * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild banner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageTitle = "Home";
@@ -31,6 +32,8 @@ $randomImage = new RandomImage("img/re");
 ?>
 
 <div id="RandomImage">
+<a href="http://www.renovateandselfbuild.co.uk/comp-relaxa.html"><img style="margin: 8px;" border=0 src="img/promo/renovateandselfbuild_2009_banner.gif"></a>
+
 <img src="<? echo $randomImage->GetRandomImage(); ?>" width="538" height="301">
 <table border=0 width="538">
   <tr>

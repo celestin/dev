@@ -18,6 +18,7 @@
  * CAM  20-Aug-2008  10113 : Added AquaFinesse bottle beside Beachcomber logo.
  * CAM  08-Nov-2008  10236 : Added QuickShip and BarrelSauna.
  * CAM  11-Aug-2009  10470 : Added email icon and link.
+ * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -56,10 +57,14 @@
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkprotec" class="nav" href="protec.php">protec</a></td></tr>
       <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
-      <tr><td align=center><table border="0"><tr>
+      <tr><td align=center><table border="0">
+      <tr>
+        <td colspan=2 align=center><a href="http://www.renovateandselfbuild.co.uk/comp-relaxa.html"><img border=0 src="img/promo/renovateandselfbuild_2009_button.gif"></a></td>
+      </tr><tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>
         <td><a href="http://www.beachcomberhottubs.com/"><img width=123 height=118 src="img/bc4.gif" border=0 alt="Beachcomber Hot Tubs"></a></td>
-      </td></tr></table></td></tr>
+      </tr>
+      </table></td></tr>
     </table></td>
     <td class=rxbox valign=top><table cellspacing=0 cellpadding=0 border=0 width="650" height="600">
       <tr>

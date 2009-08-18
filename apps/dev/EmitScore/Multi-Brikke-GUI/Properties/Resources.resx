@@ -169,10 +169,10 @@
   <data name="LocationSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\flag_blue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="atom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CourseSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\atom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="atom1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CourseLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\tb\atom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

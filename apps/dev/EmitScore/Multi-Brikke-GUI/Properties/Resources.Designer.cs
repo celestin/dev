@@ -60,20 +60,6 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap atom {
-            get {
-                object obj = ResourceManager.GetObject("atom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap atom1 {
-            get {
-                object obj = ResourceManager.GetObject("atom1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap CategoryLarge {
             get {
                 object obj = ResourceManager.GetObject("CategoryLarge", resourceCulture);
@@ -98,6 +84,20 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Properties {
         internal static System.Drawing.Bitmap CompassSmall {
             get {
                 object obj = ResourceManager.GetObject("CompassSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap CourseLarge {
+            get {
+                object obj = ResourceManager.GetObject("CourseLarge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap CourseSmall {
+            get {
+                object obj = ResourceManager.GetObject("CourseSmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

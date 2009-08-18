@@ -403,7 +403,7 @@
       // 
       // mniCourses
       // 
-      this.mniCourses.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.atom;
+      this.mniCourses.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.CourseSmall;
       this.mniCourses.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this.mniCourses.Name = "mniCourses";
       this.mniCourses.Size = new System.Drawing.Size(183, 24);
@@ -511,7 +511,7 @@
       // _tsbCourses
       // 
       this._tsbCourses.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbCourses.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.atom1;
+      this._tsbCourses.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.CourseLarge;
       this._tsbCourses.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbCourses.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbCourses.Name = "_tsbCourses";

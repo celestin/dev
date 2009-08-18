@@ -1,4 +1,4 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+﻿namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   partial class FrmGroups
   {
@@ -34,19 +34,18 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGroups));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this._dgvGroups = new System.Windows.Forms.DataGridView();
-      this.groupIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.TeamId = new System.Windows.Forms.DataGridViewComboBoxColumn();
       this._bdsTeam = new System.Windows.Forms.BindingSource(this.components);
-      this._dataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
-      this.groupNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+      this._dataSet = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet();
       this._bdsCategory = new System.Windows.Forms.BindingSource(this.components);
       this._bdsGroup = new System.Windows.Forms.BindingSource(this.components);
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.groupTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter();
-      this.categoryTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
-      this.teamTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter();
+      this.groupTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter();
+      this.categoryTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter();
+      this.teamTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter();
+      this.groupIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.TeamId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+      this.groupNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
@@ -92,8 +91,7 @@
       this._dgvGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupIdDataGridViewTextBoxColumn,
             this.TeamId,
-            this.groupNameDataGridViewTextBoxColumn,
-            this.categoryIdDataGridViewTextBoxColumn});
+            this.groupNameDataGridViewTextBoxColumn});
       this._dgvGroups.DataSource = this._bdsGroup;
       dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -110,24 +108,6 @@
       this._dgvGroups.Size = new System.Drawing.Size(728, 379);
       this._dgvGroups.TabIndex = 0;
       // 
-      // groupIdDataGridViewTextBoxColumn
-      // 
-      this.groupIdDataGridViewTextBoxColumn.DataPropertyName = "GroupId";
-      this.groupIdDataGridViewTextBoxColumn.HeaderText = "Group";
-      this.groupIdDataGridViewTextBoxColumn.Name = "groupIdDataGridViewTextBoxColumn";
-      // 
-      // TeamId
-      // 
-      this.TeamId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-      this.TeamId.DataPropertyName = "TeamId";
-      this.TeamId.DataSource = this._bdsTeam;
-      this.TeamId.DisplayMember = "TeamName";
-      this.TeamId.HeaderText = "Team";
-      this.TeamId.MaxDropDownItems = 20;
-      this.TeamId.Name = "TeamId";
-      this.TeamId.ValueMember = "TeamId";
-      this.TeamId.Width = 54;
-      // 
       // _bdsTeam
       // 
       this._bdsTeam.DataMember = "Team";
@@ -137,25 +117,6 @@
       // 
       this._dataSet.DataSetName = "EmitScoreDataSet";
       this._dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-      // 
-      // groupNameDataGridViewTextBoxColumn
-      // 
-      this.groupNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.groupNameDataGridViewTextBoxColumn.DataPropertyName = "GroupName";
-      this.groupNameDataGridViewTextBoxColumn.HeaderText = "Group Name";
-      this.groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
-      // 
-      // categoryIdDataGridViewTextBoxColumn
-      // 
-      this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
-      this.categoryIdDataGridViewTextBoxColumn.DataSource = this._bdsCategory;
-      this.categoryIdDataGridViewTextBoxColumn.DisplayMember = "CategoryName";
-      this.categoryIdDataGridViewTextBoxColumn.HeaderText = "Category";
-      this.categoryIdDataGridViewTextBoxColumn.MaxDropDownItems = 20;
-      this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
-      this.categoryIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.categoryIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-      this.categoryIdDataGridViewTextBoxColumn.ValueMember = "CategoryId";
       // 
       // _bdsCategory
       // 
@@ -181,7 +142,7 @@
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this._tsbExit.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.ExitLarge;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
@@ -199,6 +160,31 @@
       // teamTableAdapter
       // 
       this.teamTableAdapter.ClearBeforeFill = true;
+      // 
+      // groupIdDataGridViewTextBoxColumn
+      // 
+      this.groupIdDataGridViewTextBoxColumn.DataPropertyName = "GroupId";
+      this.groupIdDataGridViewTextBoxColumn.HeaderText = "Group";
+      this.groupIdDataGridViewTextBoxColumn.Name = "groupIdDataGridViewTextBoxColumn";
+      // 
+      // TeamId
+      // 
+      this.TeamId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.TeamId.DataPropertyName = "TeamId";
+      this.TeamId.DataSource = this._bdsTeam;
+      this.TeamId.DisplayMember = "TeamName";
+      this.TeamId.HeaderText = "Team";
+      this.TeamId.MaxDropDownItems = 20;
+      this.TeamId.Name = "TeamId";
+      this.TeamId.ValueMember = "TeamId";
+      this.TeamId.Width = 54;
+      // 
+      // groupNameDataGridViewTextBoxColumn
+      // 
+      this.groupNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.groupNameDataGridViewTextBoxColumn.DataPropertyName = "GroupName";
+      this.groupNameDataGridViewTextBoxColumn.HeaderText = "Group Name";
+      this.groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
       // 
       // FrmGroups
       // 
@@ -232,17 +218,16 @@
     private System.Windows.Forms.ToolStripContainer toolStripContainer1;
     private System.Windows.Forms.ToolStrip _tspMain;
     private System.Windows.Forms.BindingSource _bdsGroup;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet _dataSet;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet _dataSet;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
     private System.Windows.Forms.DataGridView _dgvGroups;
     private System.Windows.Forms.BindingSource _bdsCategory;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
     private System.Windows.Forms.ToolStripButton _tsbExit;
     private System.Windows.Forms.BindingSource _bdsTeam;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter teamTableAdapter;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.TeamTableAdapter teamTableAdapter;
     private System.Windows.Forms.DataGridViewTextBoxColumn groupIdDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewComboBoxColumn TeamId;
     private System.Windows.Forms.DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewComboBoxColumn categoryIdDataGridViewTextBoxColumn;
   }
 }

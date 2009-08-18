@@ -1,20 +1,21 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: FrmGroups.cs 876 2008-08-16 12:58:28Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Allow groups to be deleted.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-using Southesk.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   public partial class FrmGroups : Form
   {
@@ -43,7 +44,7 @@ namespace Southesk.Apps.EmitScore.Forms
       foreach (DataRow row in _dataSet.Group)
       {
         EmitScoreDataSet.GroupRow group = (EmitScoreDataSet.GroupRow)row;
-        if (!group.IsTeamIdNull())
+        if (group.RowState != DataRowState.Deleted && !group.IsTeamIdNull())
         {
           group.BeginEdit();
           EmitScoreDataSet.TeamRow team = _dataSet.Team.FindByTeamId(group.TeamId);

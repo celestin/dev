@@ -1,4 +1,4 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+﻿namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   partial class FrmLocations
   {
@@ -35,10 +35,13 @@
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this._bdsLocations = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this.emitScoreDataSet = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet();
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.locationTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
+      this.locationTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter();
+      this._bdsCourses = new System.Windows.Forms.BindingSource(this.components);
+      this.courseTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.CourseTableAdapter();
+      this.CourseId = new System.Windows.Forms.DataGridViewComboBoxColumn();
       this.locationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.locationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +52,7 @@
       ((System.ComponentModel.ISupportInitialize)(this._bdsLocations)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).BeginInit();
       this._tspMain.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsCourses)).BeginInit();
       this.SuspendLayout();
       // 
       // toolStripContainer1
@@ -82,6 +86,7 @@
       this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CourseId,
             this.locationIdDataGridViewTextBoxColumn,
             this.locationNameDataGridViewTextBoxColumn,
             this.pointsDataGridViewTextBoxColumn});
@@ -125,7 +130,7 @@
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this._tsbExit.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.ExitLarge;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
@@ -136,6 +141,24 @@
       // locationTableAdapter
       // 
       this.locationTableAdapter.ClearBeforeFill = true;
+      // 
+      // _bdsCourses
+      // 
+      this._bdsCourses.DataMember = "Course";
+      this._bdsCourses.DataSource = this.emitScoreDataSet;
+      // 
+      // courseTableAdapter
+      // 
+      this.courseTableAdapter.ClearBeforeFill = true;
+      // 
+      // CourseId
+      // 
+      this.CourseId.DataPropertyName = "CourseId";
+      this.CourseId.DataSource = this._bdsCourses;
+      this.CourseId.DisplayMember = "CourseName";
+      this.CourseId.HeaderText = "Course";
+      this.CourseId.Name = "CourseId";
+      this.CourseId.ValueMember = "CourseId";
       // 
       // locationIdDataGridViewTextBoxColumn
       // 
@@ -181,6 +204,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.emitScoreDataSet)).EndInit();
       this._tspMain.ResumeLayout(false);
       this._tspMain.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsCourses)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -190,10 +214,13 @@
     private System.Windows.Forms.ToolStripContainer toolStripContainer1;
     private System.Windows.Forms.ToolStrip _tspMain;
     private System.Windows.Forms.BindingSource _bdsLocations;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet emitScoreDataSet;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
     private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.ToolStripButton _tsbExit;
+    private System.Windows.Forms.BindingSource _bdsCourses;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
+    private System.Windows.Forms.DataGridViewComboBoxColumn CourseId;
     private System.Windows.Forms.DataGridViewTextBoxColumn locationIdDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn locationNameDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;

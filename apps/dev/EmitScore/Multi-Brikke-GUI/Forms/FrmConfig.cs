@@ -1,17 +1,18 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: FrmConfig.cs 872 2008-08-11 23:42:36Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Changed copyright text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Windows.Forms;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   public partial class FrmConfig : Form
   {

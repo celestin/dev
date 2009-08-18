@@ -1,4 +1,4 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+﻿namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   partial class FrmHelpAbout
   {
@@ -86,22 +86,22 @@
       this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.label3.AutoSize = true;
       this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(87, 77);
+      this.label3.Location = new System.Drawing.Point(80, 77);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(198, 16);
+      this.label3.Size = new System.Drawing.Size(211, 16);
       this.label3.TabIndex = 2;
-      this.label3.Text = "Copyright (c) 2008 Southesk.com";
+      this.label3.Text = "Copyright (c) 2009 Front Burner Ltd";
       // 
       // label4
       // 
       this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(56, 107);
+      this.label4.Location = new System.Drawing.Point(45, 107);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(260, 16);
+      this.label4.Size = new System.Drawing.Size(281, 16);
       this.label4.TabIndex = 3;
-      this.label4.Text = "Author Craig McKay <craig@southesk.com>";
+      this.label4.Text = "Author Craig McKay <craig@frontburner.co.uk>";
       // 
       // _btnOk
       // 

@@ -1,17 +1,18 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: FrmTeams.cs 876 2008-08-16 12:58:28Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Added datatable for Courses.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Windows.Forms;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   public partial class FrmTeams : Form
   {
@@ -22,6 +23,7 @@ namespace Southesk.Apps.EmitScore.Forms
 
     private void FrmTeams_Load(object sender, EventArgs e)
     {
+      courseTableAdapter.Fill(_dataSet.Course);
       categoryTableAdapter.Fill(_dataSet.Category);
       teamTableAdapter.Fill(_dataSet.Team);
 

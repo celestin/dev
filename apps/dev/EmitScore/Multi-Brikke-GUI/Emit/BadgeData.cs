@@ -1,31 +1,44 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: BadgeData.cs 876 2008-08-16 12:58:28Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Added GroupMap and search by CourseLocation.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 
-using Southesk.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data;
 
-namespace Southesk.Apps.EmitScore.Emit
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
 {
   public class BadgeData
   {    
     private string _messageType;
     private int _badgeNo;
+    private int _courseId;
     private SwipeList _swipeList;
-    private LocationMap _map;
+    private GroupMap _groupMap;
+    private LocationMap _locationMap;
 
     public int BadgeNo
     {
       get { return _badgeNo; }
-      set { _badgeNo = value; }
-    }
+      set 
+      { 
+        _badgeNo = value; 
+
+        // Look up Course Id
+        if (_groupMap.Contains((long)_badgeNo))
+        {
+          _courseId = _groupMap[(long)_badgeNo].CourseId;
+        }
+
+      }
+    }    
     public SwipeList SwipeList
     {
       get { return _swipeList; }
@@ -39,12 +52,13 @@ namespace Southesk.Apps.EmitScore.Emit
       }
     }
 
-    public BadgeData(LocationMap map, string badgeData)
+    public BadgeData(GroupMap groupMap, LocationMap locationMap, string badgeData)
     {
-      _map = map;
+      _groupMap = groupMap;
+      _locationMap = locationMap;
       Parse(badgeData);
       _swipeList.Process();
-    }
+    }    
 
     protected void Parse(string badgeData)
     {
@@ -55,6 +69,7 @@ namespace Southesk.Apps.EmitScore.Emit
       Swipe swipe = null;
       Swipe previousSwipe = null;
       int locationId = 0;
+      CourseLocation cl;
       
       _swipeList = new SwipeList();
 
@@ -79,7 +94,7 @@ namespace Southesk.Apps.EmitScore.Emit
         }
         else if (i == 4)
         {
-          _badgeNo = int.Parse(item);
+          BadgeNo = int.Parse(item);
         }
         else if (i >= 12)
         {
@@ -103,9 +118,10 @@ namespace Southesk.Apps.EmitScore.Emit
             //  throw new Exception(String.Format("Could not find Location {0}!", locationId));
             //}
 
-            if (_map.Contains(locationId))
+            cl = new CourseLocation(_courseId, locationId);
+            if (_locationMap.Contains(cl.FullId))
             {
-              swipe = new Swipe(_map[locationId], previousSwipe);
+              swipe = new Swipe(_locationMap[cl.FullId], previousSwipe);
               previousSwipe = swipe;
               _swipeList.Add(swipe);
             }

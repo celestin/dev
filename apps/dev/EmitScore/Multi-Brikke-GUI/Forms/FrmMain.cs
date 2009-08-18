@@ -1,27 +1,29 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: FrmMain.cs 876 2008-08-16 12:58:28Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Added GroupMap and Courses buttons/menu.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-using Southesk.Apps.EmitScore.Data;
-using Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters;
-using Southesk.Apps.EmitScore.Emit;
-using Southesk.Apps.EmitScore.Report;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Emit;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Report;
 
-namespace Southesk.Apps.EmitScore.Forms
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   public partial class FrmMain : Form
   {
     private LocationMap _locationMap;
+    private GroupMap _groupMap;
     private object _semaphore = new object();
     private bool _processing;
 
@@ -58,7 +60,7 @@ namespace Southesk.Apps.EmitScore.Forms
 
       try
       {
-        badge = new BadgeData(_locationMap, data);
+        badge = new BadgeData(_groupMap, _locationMap, data);
       }
       catch (Exception e)
       {
@@ -124,14 +126,15 @@ namespace Southesk.Apps.EmitScore.Forms
             {
               DataRow[] dr = teamResTable.Select(
                 String.Format("TeamId='{0}' AND LocationId='{1}'",
-                groupRow.TeamId, swipe.Location.Id));
+                groupRow.TeamId, 
+                swipe.Location.CourseLocation.LocationId));
 
               existingLocation = (dr.Length > 0);
             }
 
             EmitScoreDataSet.GroupResultRow resultRow = resultTable.NewGroupResultRow();
             resultRow.GroupId = badge.BadgeNo;
-            resultRow.LocationId = swipe.Location.Id;
+            resultRow.LocationId = swipe.Location.LocationId;
 
             if (existingLocation)
             {
@@ -157,8 +160,12 @@ namespace Southesk.Apps.EmitScore.Forms
           groupRow.TotalTime = badge.SwipeList.TotalTime;
           groupRow.TimeDisqualified = badge.SwipeList.TimeDisqualified;
           groupRow.EndEdit();
-          groupTableAdapter.Update(groupRow);
-          groupRow.AcceptChanges();
+
+          if (groupRow.TotalTime > DateTime.MinValue)
+          {
+            groupTableAdapter.Update(groupRow);
+            groupRow.AcceptChanges();
+          }
 
           if (!groupRow.IsTeamIdNull())
           {
@@ -210,10 +217,11 @@ namespace Southesk.Apps.EmitScore.Forms
       categoryTableAdapter.Fill(_dataSet.Category);
       configTableAdapter.Fill(_dataSet.Config);
       groupTableAdapter.Fill(_dataSet.Group);
+      groupTeamTableAdapter.Fill(_dataSet.GroupTeam);
       ToggleButtons(false);
 
-      EmitScoreDataSet.LocationDataTable location = _dataSet.Location;
-      _locationMap = location.BuildLocationMap();
+      _locationMap = _dataSet.Location.BuildLocationMap();
+      _groupMap = _dataSet.GroupTeam.BuildGroupMap();
 
       EmitScoreDataSet.ConfigDataTable config = _dataSet.Config;
       _emitReader.ComPrt = short.Parse(config.Rows[0][config.ComPortColumn].ToString());
@@ -264,6 +272,12 @@ namespace Southesk.Apps.EmitScore.Forms
       groups.ShowDialog();
     }
 
+    protected void ShowCourses()
+    {
+      FrmCourses courses = new FrmCourses();
+      courses.ShowDialog();
+    }
+
     protected void ClearResultData()
     {
       if (MessageBox.Show("This will remove all Groups and Race results.\n" +
@@ -300,7 +314,7 @@ namespace Southesk.Apps.EmitScore.Forms
       try
       {
         EmitReport report = new EmitReport(_dataSet);
-        report.Save(true);
+        report.Save();
         report.Launch();
       }
       catch (Exception e)
@@ -360,6 +374,16 @@ namespace Southesk.Apps.EmitScore.Forms
     private void tsbCategories_Click(object sender, EventArgs e)
     {
       ShowCategories();
+    }
+
+    private void mniCourses_Click(object sender, EventArgs e)
+    {
+      ShowCourses();
+    }
+
+    private void _tsbCourses_Click(object sender, EventArgs e)
+    {
+      ShowCourses();
     }
 
     private void _tsbLocations_Click(object sender, EventArgs e)

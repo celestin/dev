@@ -6,7 +6,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  18-Aug-2009  10473 : Changed copyright text.
+ * CAM  18-Aug-2009  10473 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
-  public partial class FrmCategories : Form
+  public partial class FrmCourses : Form
   {
-    public FrmCategories()
+    public FrmCourses()
     {
       InitializeComponent();
     }
@@ -26,14 +26,14 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
       this.Dispose();
     }
 
-    private void FrmCategories_Load(object sender, EventArgs e)
+    private void FrmCourses_Load(object sender, EventArgs e)
     {
-      this.categoryTableAdapter.Fill(emitScoreDataSet.Category);
+      courseTableAdapter.Fill(this.emitScoreDataSet.Course);
     }
 
-    private void FrmCategories_FormClosing(object sender, FormClosingEventArgs e)
+    private void FrmCourses_FormClosing(object sender, FormClosingEventArgs e)
     {
-      categoryTableAdapter.Update(emitScoreDataSet.Category);
+      courseTableAdapter.Update(emitScoreDataSet.Course);
     }
   }
 }

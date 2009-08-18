@@ -1,4 +1,4 @@
-﻿namespace Southesk.Apps.EmitScore.Forms
+﻿namespace FrontBurner.Apps.EmitScore.MultiBrikke.Forms
 {
   partial class FrmConfig
   {
@@ -37,10 +37,10 @@
       this.comPortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.emitUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this._bdsConfig = new System.Windows.Forms.BindingSource(this.components);
-      this.emitScoreDataSet = new Southesk.Apps.EmitScore.Data.EmitScoreDataSet();
+      this.emitScoreDataSet = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet();
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.configTableAdapter = new Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter();
+      this.configTableAdapter = new FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
@@ -137,7 +137,7 @@
       // _tsbExit
       // 
       this._tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbExit.Image = global::Southesk.Apps.EmitScore.Properties.Resources.ExitLarge;
+      this._tsbExit.Image = global::FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources.ExitLarge;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(52, 52);
@@ -179,8 +179,8 @@
     private System.Windows.Forms.ToolStrip _tspMain;
     private System.Windows.Forms.ToolStripButton _tsbExit;
     private System.Windows.Forms.BindingSource _bdsConfig;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSet emitScoreDataSet;
-    private Southesk.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter configTableAdapter;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSet emitScoreDataSet;
+    private FrontBurner.Apps.EmitScore.MultiBrikke.Data.EmitScoreDataSetTableAdapters.ConfigTableAdapter configTableAdapter;
     private System.Windows.Forms.DataGridView _dgvConfig;
     private System.Windows.Forms.DataGridViewTextBoxColumn comPortDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn emitUnitDataGridViewTextBoxColumn;

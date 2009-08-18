@@ -1,22 +1,23 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: EmitReport.cs 874 2008-08-14 22:54:15Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Changed copyright text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-using Southesk.Apps.EmitScore.Data;
-using Southesk.Apps.EmitScore.Emit;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Emit;
 using Southesk.Library.Xls;
 
-namespace Southesk.Apps.EmitScore.Report
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Report
 {
   class EmitReport : XlsReport
   {

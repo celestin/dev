@@ -1,20 +1,21 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
- * Copyright (c) 2008 Southesk.com
- * Author Craig McKay <craig@southesk.com>
+ * Copyright (c) 2008,2009 Front Burner Ltd
+ * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: Swipe.cs 874 2008-08-14 22:54:15Z craig $
+ * $Id$
  *
  * Who  When         Why
+ * CAM  18-Aug-2009  10473 : Added Course to Id.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using Southesk.Apps.EmitScore.Data;
+using FrontBurner.Apps.EmitScore.MultiBrikke.Data;
 
-namespace Southesk.Apps.EmitScore.Emit
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
 {
   public class Swipe
   {
@@ -33,7 +34,9 @@ namespace Southesk.Apps.EmitScore.Emit
     {
       get
       {
-        return String.Format("-{0}-", _location.Id);
+        return String.Format("{0}_{1}",
+          _location.CourseId,
+          _location.LocationId);
       }
     }
     public long Seconds
@@ -161,29 +164,31 @@ namespace Southesk.Apps.EmitScore.Emit
       {
         // on time
       }
-      else if (diff > 30)
-      {
-        // more than 30 minutes late
-        _nettPoints = 0; // harsh!
-        _timeDisqualified = true;
-      }
+      //else if (diff > 30)
+      //{
+      //  // more than 30 minutes late
+      //  _nettPoints = 0; // harsh!
+      //  _timeDisqualified = true;
+      //}
       else
       {
         // Reduce points by band
         for (int band = 1; band <= diff; band++)
         {
-          if (band <= 10)
-          {
-            _nettPoints -= 5;
-          }
-          else if (band <= 20)
-          {
-            _nettPoints -= 10;
-          }
-          else if (band <= 30)
-          {
-            _nettPoints -= 20;
-          }          
+          //if (band <= 10)
+          //{
+          //  _nettPoints -= 5;
+          //}
+          //else if (band <= 20)
+          //{
+          //  _nettPoints -= 10;
+          //}
+          //else if (band <= 30)
+          //{
+          //  _nettPoints -= 20;
+          //}          
+          
+          _nettPoints -= 10; // always 10 points per minute
         }
       }
     }

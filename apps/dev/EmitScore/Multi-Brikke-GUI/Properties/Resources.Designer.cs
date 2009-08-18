@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Southesk.Apps.EmitScore.Properties {
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Southesk.Apps.EmitScore.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Southesk.Apps.EmitScore.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FrontBurner.Apps.EmitScore.MultiBrikke.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,20 @@ namespace Southesk.Apps.EmitScore.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        internal static System.Drawing.Bitmap atom {
+            get {
+                object obj = ResourceManager.GetObject("atom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap atom1 {
+            get {
+                object obj = ResourceManager.GetObject("atom1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

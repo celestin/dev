@@ -8,8 +8,8 @@
     <ProjectGuid>{2DC55690-22EF-4E18-9B1C-68965CD7D071}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Southesk.Apps.EmitScore</RootNamespace>
-    <AssemblyName>EmitScore</AssemblyName>
+    <RootNamespace>FrontBurner.Apps.EmitScore.MultiBrikke</RootNamespace>
+    <AssemblyName>EmitScore.MultiBrikke</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmitScoreDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\GroupItem.cs" />
     <Compile Include="Data\LocationItem.cs" />
     <Compile Include="Emit\BadgeData.cs" />
     <Compile Include="Emit\Swipe.cs" />
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="Forms\FrmConfig.Designer.cs">
       <DependentUpon>FrmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCourses.Designer.cs">
+      <DependentUpon>FrmCourses.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmGroups.cs">
       <SubType>Form</SubType>
@@ -129,6 +136,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmConfig.resx">
       <DependentUpon>FrmConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCourses.resx">
+      <DependentUpon>FrmCourses.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmGroups.resx">
@@ -217,6 +228,8 @@
     <Content Include="img\ico\flag_blue.ico" />
     <Content Include="img\ico\users4.ico" />
     <Content Include="img\ico\wrench.ico" />
+    <None Include="img\tb\atom.png" />
+    <None Include="img\menu\atom.png" />
     <None Include="img\menu\help2.png" />
     <None Include="img\tb\disk_blue.png" />
     <None Include="img\menu\disk_blue.png" />

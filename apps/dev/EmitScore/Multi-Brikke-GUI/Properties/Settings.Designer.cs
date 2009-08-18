@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Southesk.Apps.EmitScore.Properties {
+namespace FrontBurner.Apps.EmitScore.MultiBrikke.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -30,16 +30,6 @@ namespace Southesk.Apps.EmitScore.Properties {
         public string EmitScoreConnectionString {
             get {
                 return ((string)(this["EmitScoreConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\bin\\Debug\\Data\\EmitScore.sdf")]
-        public string EmitScoreConnectionString1 {
-            get {
-                return ((string)(this["EmitScoreConnectionString1"]));
             }
         }
     }

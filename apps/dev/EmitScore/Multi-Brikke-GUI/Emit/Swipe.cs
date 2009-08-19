@@ -1,4 +1,4 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
  * Copyright (c) 2008,2009 Front Burner Ltd
  * Author Craig McKay <craig@frontburner.co.uk>
@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  18-Aug-2009  10473 : Added Course to Id.
+ * CAM  19-Aug-2009  10475 : Corrected calculation of Delta Time.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -60,7 +61,7 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
 
         if (_previous != null)
         {
-          _seconds -= _previous._seconds;
+          _seconds -= _previous._cummulative;
         }
       }
     }
@@ -186,8 +187,8 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
           //else if (band <= 30)
           //{
           //  _nettPoints -= 20;
-          //}          
-          
+          //}
+
           _nettPoints -= 10; // always 10 points per minute
         }
       }

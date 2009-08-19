@@ -1,4 +1,4 @@
-/* * * * * * * * * * * * * * * * * * * * * * * *
+﻿/* * * * * * * * * * * * * * * * * * * * * * * *
  * EmitScore
  * Copyright (c) 2008,2009 Front Burner Ltd
  * Author Craig McKay <craig@frontburner.co.uk>
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  18-Aug-2009  10473 : Added Course to Id.
  * CAM  19-Aug-2009  10475 : Corrected calculation of Delta Time.
+ * CAM  19-Aug-2009  10474 : Changed max time to 1.5 hours, and reinstated disqualification after 30 mins.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -155,7 +156,7 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
 
     public void AdjustPoints()
     {
-      DateTime timeLimit = Swipe.CreateBaseDate().AddHours(5);
+      DateTime timeLimit = Swipe.CreateBaseDate().AddHours(1.5);
       int diff = (int)_totalTime.Subtract(timeLimit).TotalMinutes;
 
       _nettPoints = _totalPoints;
@@ -165,12 +166,12 @@ namespace FrontBurner.Apps.EmitScore.MultiBrikke.Emit
       {
         // on time
       }
-      //else if (diff > 30)
-      //{
-      //  // more than 30 minutes late
-      //  _nettPoints = 0; // harsh!
-      //  _timeDisqualified = true;
-      //}
+      else if (diff > 30)
+      {
+        // more than 30 minutes late... disqualified!
+        _nettPoints = 0;
+        _timeDisqualified = true;
+      }
       else
       {
         // Reduce points by band

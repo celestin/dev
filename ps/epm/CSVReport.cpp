@@ -16,6 +16,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  24-Apr-08    356 : Added DLLOC special condition along with DLOC and DFILE.
  * CAM  12-May-2009  10445 : Quotes around text/filenames to prevent commas disrupting the CSV format.
+ * CAM  20-Aug-2009  10456 : Output values as floats.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -89,13 +90,13 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
           oline = 0;
         }
 
-        sprintf_s(metValue, 256, ",%d", (long) m.get(i,nline));
+        sprintf_s(metValue, 256, ",%f", m.get(i,nline));
         strcat_s(newLine, MAX_CSVLINE, metValue);
 
-        sprintf_s(metValue, 256, ",%d", (long) m.get(i,oline));
+        sprintf_s(metValue, 256, ",%f", m.get(i,oline));
         strcat_s(oldLine, MAX_CSVLINE, metValue);
 
-        sprintf_s(metValue, 256, ",%d", (long) diff);
+        sprintf_s(metValue, 256, ",%f", diff);
         strcat_s(diffLine, MAX_CSVLINE, metValue);
       } else {
         strcpy_s(metValue, 256, ",");

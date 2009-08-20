@@ -1,20 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Report Builder
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  02-Jan-05  File added.
- * CAM  08-Jan-05  Added theProjCount and getProjectCount().
+ * Who  When         Why
+ * CAM  02-Jan-05    File added.
+ * CAM  08-Jan-05    Added theProjCount and getProjectCount().
  * CAM  26-Mar-05    79 : Moved common code to Report class.
  * CAM  29-Mar-05    85 : Added lastMetric.
- * CAM  28-Jan-06   168 : Added setMetricsSet and related functions for MetricSets.
- * CAM  07-Feb-06   187 : Added return number of items to getItems().
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  28-Jan-06    168 : Added setMetricsSet and related functions for MetricSets.
+ * CAM  07-Feb-06    187 : Added return number of items to getItems().
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  20-Aug-2009  10456 : Added isPrecisionRequired for Reports that wish to use.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_REPORT
@@ -51,7 +52,7 @@ namespace metrics
     bool isSetMember(int);              // Is the specified Metric ID part of the Active Set?
     bool isAnyStandard();
     bool isAnyChanged(long);
-
+    bool isPrecisionRequired(long);
 
   public:
     Report(OurSQL &db, std::string path);

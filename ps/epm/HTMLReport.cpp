@@ -37,10 +37,12 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * CAM  18-Apr-2009  10434 : Extended copyright year.
+ * CAM  20-Aug-2009  10456 : Output Halstead D & B values as floats.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <vector>
 using namespace std;
 
@@ -347,7 +349,7 @@ void HTMLReport::metTd(ofstream &current, ReportItem &currItem, int metId) {
   current << "</td>" << flush;
 }
 
-void HTMLReport::metTdVal(ofstream &current, int metId, long value) {
+void HTMLReport::metTdVal(ofstream &current, int metId, float value) {
   string className;
 
   switch (metId) {
@@ -391,6 +393,7 @@ void HTMLReport::metTdNA(ofstream &current) {
 
 void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
   int i,j;
+  float diff=0;
   Metrics m;
   bool showStandard = true;
   char diffValue[512];
@@ -423,25 +426,43 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
     for (i=0; i<MET(CLOC); i++) {
       if (m.isShow(currItem, i) && isSetMember(METID(i))) {
         metTd(current, currItem, i);
+
+        if (isPrecisionRequired(METID(i)))
+          current << fixed << setprecision(3);
+        else
+          current << fixed << setprecision(0);
+
         float diff = (m.get(i,0) - m.get(i,1));
 
-        if (diff != 0) {
-          sprintf_s(diffValue, 512, "%+d", (long)diff);
-        } else {
-          strcpy_s(diffValue, 512, "&nbsp;");
-        }
+        if (currItem.getItemStatus() == STATUS_CHANGED || currItem.getType() == ITEM_PROJECT)
+        {
+          current << "<td class=val>" << m.get(i,1) <<
+            "</td><td class=val>" << m.get(i,0) <<
+            "</td><td class=val>";
 
-        if (currItem.getItemStatus() == STATUS_CHANGED || currItem.getType() == ITEM_PROJECT) {
-          current << "<td class=val>" << (long) m.get(i,1) << "</td><td class=val>"
-                  << (long) m.get(i,0) << "</td><td class=val>" << diffValue << "</td></tr>" << endl;
-        } else {
-          if (currItem.getItemStatus() == STATUS_DELETED) {
+          if (diff != 0)
+          {
+            current << diff;
+          }
+          else
+          {
+            current << "&nbsp;";
+          }
+
+          current << "</td></tr>" << endl;
+        }
+        else
+        {
+          if (currItem.getItemStatus() == STATUS_DELETED)
+          {
             j=1;
-          } else {
+          }
+          else
+          {
             j=0;
           }
 
-          current << "<td class=val>" << (long) m.get(i,j) << "</td></tr>" << endl;
+          current << "<td class=val>" << m.get(i,j) << "</td></tr>" << endl;
         }
       }
     }
@@ -485,16 +506,16 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
           metTd(current, currItem, i);
 
           if (m.isShow(currItem, i)) {
-            metTdVal(current, i, (long) m.get(i,0));
+            metTdVal(current, i, m.get(i,0));
           } else {
             metTdNA(current);
           }
 
           if (currItem.getType() == ITEM_PROJECT && !isPM()) {
             if (m.isShow(ITEM_FILE, i)) {
-              metTdVal(current, i, (long) m.get(i,2));
-              metTdVal(current, i, (long) m.get(i,3));
-              metTdVal(current, i, (long) m.get(i,4));
+              metTdVal(current, i, m.get(i,2));
+              metTdVal(current, i, m.get(i,3));
+              metTdVal(current, i, m.get(i,4));
             } else {
               metTdNA(current);
               metTdNA(current);

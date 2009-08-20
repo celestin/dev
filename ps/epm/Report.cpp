@@ -24,6 +24,7 @@
  * CAM  18-Jul-06    286 : Ensure ADD_LLOC and DEL_LLOC are reported on New/Del files.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
+ * CAM  20-Aug-2009  10456 : Return metrics as doubles.  Added isPrecisionRequired for Reports that wish to use.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -173,7 +174,8 @@ long Report::getItems() {
 void Report::getMetrics(ReportItem &currItem) {
   char sql[QUERY_MAX];
   int r,j,k;
-  long id,mid,value;
+  long id,mid;
+  float value;
 
   met.clearMetrics();
 
@@ -195,7 +197,7 @@ void Report::getMetrics(ReportItem &currItem) {
     for (r=0; r<theDb.rows(); r++) {
       id = theDb.longCell(r, 0);
       mid = theDb.longCell(r, 1);
-      value = theDb.longCell(r, 2);
+      value = (float)theDb.doubleCell(r, 2);
 
       if (currItem != id && (j == 0)) {
         j++;
@@ -203,7 +205,7 @@ void Report::getMetrics(ReportItem &currItem) {
 
       // Ensure Changed metrics are always in position 0
       k = ((mid >= CLOC) && (mid <= XLLOC)) ? 0 : j;
-      met.set(MET(mid), k, (float)value);
+      met.set(MET(mid), k, value);
     }
     theDb.clearResults();
   }
@@ -211,6 +213,12 @@ void Report::getMetrics(ReportItem &currItem) {
   met.calculateChange(currItem);
 
   projMet.add(met);
+}
+
+bool Report::isPrecisionRequired(long mid)
+{
+  if ((mid == D) || (mid == B)) return true;
+  return false;
 }
 
 void Report::calculateProjectMetrics() {

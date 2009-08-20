@@ -21,6 +21,7 @@
  * CAM  01-Jun-06    252 : Re-instate Halstead metrics for Project level, but only show Min/Max/Avg.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Added Churn metrics.
+ * CAM  20-Aug-2009  10456 : Corrected Halstead Bug Prediction and tidied other Halsteads.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_METRICS
@@ -120,7 +121,7 @@ namespace metrics
     }
 
     void calculateHalstead() {
-      float n,ns,n1,n2,n1s,n2s,v,d,e;
+      float n,ns,n1,n2,n1s,n2s,v,d,e,b;
 
       for (int i=0; i<2; i++) {
         n=ns=n1=n2=n1s=n2s=n2=v=d=e=0;
@@ -130,24 +131,20 @@ namespace metrics
         n1 = this->get(MET(N1), i);
         n2 = this->get(MET(N2), i);
 
-        n = n1 + n2;                              // Halstead Program Length
-        ns = n1s + n2s;                           // Halstead Program Vocabulary
-        if (ns > 0) v = (float)(n * (log(ns) / LOG2));   // Halstead Volume
-
-        if (n2s > 0) d = ((n1s / 2) *     // Halstead Difficulty
-                        (n2 / n2s));
-
-        e = v * d;                                // Halstead Effort
+        n = n1 + n2;                                    // Halstead Program Length
+        ns = n1s + n2s;                                 // Halstead Program Vocabulary
+        if (ns > 0) v = (float)(n * (log(ns) / LOG2));  // Halstead Volume
+        if (n2s > 0) d = ((n1s / 2) * (n2 / n2s));      // Halstead Difficulty
+        e = v * d;                                      // Halstead Effort
+        b = (n * log(ns)) / 3000.0f;                    // Halstead Bugs (N1 + N2) log(n1 + n2) / 3000
 
         // Set these values
-        this->set(MET(N), i, (float)n);
-        this->set(MET(NS), i, (float)ns);
-        this->set(MET(V), i, (float)v);
-        this->set(MET(D), i, (float)d);
-        this->set(MET(E), i, (float)e);
-
-        // Halstead Bugs
-        this->set(MET(B), i, ((float)pow(e, (0.666f / 3000.0f))));
+        this->set(MET(N), i, n);
+        this->set(MET(NS), i, ns);
+        this->set(MET(V), i, v);
+        this->set(MET(D), i, d);
+        this->set(MET(E), i, e);
+        this->set(MET(B), i, b);
       }
     }
 

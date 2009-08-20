@@ -108,12 +108,20 @@ rem echo Generating parser... Fortran
 rem flex -i -olex.ft.tmp -8 -f lexer.ft.l
 rem sed -f sed/ft.sed <lex.ft.tmp >lex.ft.cpp
 rem del lex.ft.tmp
+rem    
+rem    echo Generating parser... CSS
+rem    flex -i -olex.ss.tmp -8 -f lexer.ss.l
+rem    sed -f sed/ss.sed <lex.ss.tmp >lex.ss.cpp
+rem    del lex.ss.tmp
+rem    
 
-echo Generating parser... CSS
-flex -i -olex.ss.tmp -8 -f lexer.ss.l
-sed -f sed/ss.sed <lex.ss.tmp >lex.ss.cpp
-del lex.ss.tmp
+echo Generating parser... Ruby
+flex -i -olex.rb.tmp -8 -f lexer.rb.l
+sed -f sed/rb.sed <lex.rb.tmp >lex.rb.cpp
+del lex.rb.tmp
 
 echo.
+
+
 
 

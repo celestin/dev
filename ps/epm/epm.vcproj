@@ -931,6 +931,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lex.rb.cpp"
+					>
+				</File>
+				<File
 					RelativePath="lex.s1.cpp"
 					>
 					<FileConfiguration
@@ -1087,6 +1091,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.rb.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.s1.l"
 					>
 				</File>
@@ -1168,6 +1176,10 @@
 				</File>
 				<File
 					RelativePath=".\y.py.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.rb.h"
 					>
 				</File>
 				<File

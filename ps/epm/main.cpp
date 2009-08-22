@@ -86,6 +86,7 @@
  * CAM  12-Aug-2009  10450 : Added CSS language support.
  * CAM  20-Aug-2009  10452 : Added Ruby language support.
  * CAM  22-Aug-2009  10455 : Added Windows Batch language support.
+ * CAM  22-Aug-2009  10477 : Version 1.19.0.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"

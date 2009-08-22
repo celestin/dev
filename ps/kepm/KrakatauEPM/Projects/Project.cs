@@ -5,14 +5,15 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   152 : Added to Source Safe.
- * CAM  24-Jan-06   179 : Ensure spaces in Project Titles are converted to underscores.
- * CAM  24-Jan-06   185 : Added New/Old awareness for saving/restoring projects.
- * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
- * CAM  08-Jun-06   243 : Remember selected file types.
- * CAM  14-Jun-06   268 : Better error handling on files.
- * CAM  11-Dec-07   327 : Added MaxProjectDbName and parse DbName more selectively in Databasename property.
+ * Who  When         Why
+ * CAM  11-Oct-05    152 : Added to Source Safe.
+ * CAM  24-Jan-06    179 : Ensure spaces in Project Titles are converted to underscores.
+ * CAM  24-Jan-06    185 : Added New/Old awareness for saving/restoring projects.
+ * CAM  26-Mar-06    213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  08-Jun-06    243 : Remember selected file types.
+ * CAM  14-Jun-06    268 : Better error handling on files.
+ * CAM  11-Dec-07    327 : Added MaxProjectDbName and parse DbName more selectively in Databasename property.
+ * CAM  22-Aug-2009  10461 : Added Check/Uncheck All box.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -141,10 +142,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       return null;
     }
 
-    public void ReadExtensions(CheckedListBox clbFileTypes)
+    public CheckState ReadExtensions(CheckedListBox clbFileTypes)
     {
       string extList = this.GetExtensions();
-      if (extList == null) return;
+      if (extList == null) return CheckState.Unchecked;
       char[] splitter = { ' ' };
       string[] exts = extList.Trim().Split(splitter);
       Ext ex;
@@ -179,6 +180,17 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
           }
         }
       }
+
+      // Now count the number of checked items to return a meaningful value for the "check all" box
+      int checkCount = 0;
+      for (i = 0; i < clbFileTypes.Items.Count; i++)
+      {
+        if (clbFileTypes.GetItemChecked(i)) checkCount++;
+      }
+
+      if (checkCount == 0) return CheckState.Unchecked;
+      if (checkCount == clbFileTypes.Items.Count) return CheckState.Checked;
+      return CheckState.Indeterminate;
     }
 
     public Arguments GetAnalysisOptions()

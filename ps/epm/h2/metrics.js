@@ -11,6 +11,7 @@
  * CAM  18-Jul-2006  File created.
  * CAM  27-Oct-2006  117 : New SLOC* metrics added.
  * CAM  17-Apr-2009  10430 : Added Churn (CRN*) metrics.
+ * CAM  22-Aug-2009  10456 : Modified Halstead Bug Prediction description.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 var metd = new Array();
@@ -50,7 +51,7 @@ metd["F"]["105"]["H"] = "The number of lines of code in this file containing Scr
 metd["F"]["106"] = new Array();
 metd["F"]["106"]["C"] = "LLOC";
 metd["F"]["106"]["N"] = "Logical Lines of Code";
-metd["F"]["106"]["H"] = "A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating \"logical lines of code\".  E.g.:<br><br><font face=\"Courier New\">cout &lt;&lt; \"Hello\" &lt;&lt; endl <font color=\"FF1111\">;</font> /* output ; return */<br>cout &lt;&lt; \"Hello ; World\" &lt;&lt; endl <font color=\"FF1111\">;</font></font><br><br>LLOC = 2.";
+metd["F"]["106"]["H"] = "A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=\"Courier New\">cout &lt;&lt; \"Hello\" &lt;&lt; endl <font color=\"FF1111\">;</font> /* output ; return */<br>cout &lt;&lt; \"Hello ; World\" &lt;&lt; endl <font color=\"FF1111\">;</font></font><br><br>LLOC = 2.";
 
 metd["F"]["107"] = new Array();
 metd["F"]["107"]["C"] = "N1";
@@ -106,7 +107,7 @@ metd["F"]["116"] = new Array();
 metd["F"]["116"]["C"] = "B";
 metd["F"]["116"]["N"] = "Halstead Bug Prediction";
 metd["F"]["116"]["H"] = "This variant of Halstead Effort is a measure of the likelihood of bugs within the file.";
-metd["F"]["116"]["F"] = "E<sup>2/3</sup> / 3000";
+metd["F"]["116"]["F"] = "(N <i>log</i>n) / 3000";
 
 metd["F"]["117"] = new Array();
 metd["F"]["117"]["C"] = "J_COM";
@@ -131,7 +132,7 @@ metd["F"]["120"]["H"] = "The total number of lines of comment in the file.";
 metd["F"]["121"] = new Array();
 metd["F"]["121"]["C"] = "BYTES";
 metd["F"]["121"]["N"] = "Number of bytes";
-metd["F"]["121"]["H"] = "The number of bytes in the file.";
+metd["F"]["121"]["H"] = "The total number of bytes in the file.";
 
 metd["F"]["123"] = new Array();
 metd["F"]["123"]["C"] = "CHG_SLOC";
@@ -157,17 +158,17 @@ metd["F"]["126"]["F"] = "CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC";
 metd["F"]["127"] = new Array();
 metd["F"]["127"]["C"] = "CHG_LLOC";
 metd["F"]["127"]["N"] = "Changed Logical Lines of Code";
-metd["F"]["127"]["H"] = "The number of changed Logical Lines of Code in this file.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["127"]["H"] = "The number of changed Logical Lines of Code in this file.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.";
 
 metd["F"]["128"] = new Array();
 metd["F"]["128"]["C"] = "DEL_LLOC";
 metd["F"]["128"]["N"] = "Deleted Logical Lines of Code";
-metd["F"]["128"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["128"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.";
 
 metd["F"]["129"] = new Array();
 metd["F"]["129"]["C"] = "ADD_LLOC";
 metd["F"]["129"]["N"] = "Added Logical Lines of Code";
-metd["F"]["129"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in this file.";
+metd["F"]["129"]["H"] = "The number of deleted Logical Lines of Code in this file.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.";
 
 metd["F"]["130"] = new Array();
 metd["F"]["130"]["C"] = "CRN_LLOC";
@@ -190,27 +191,27 @@ metd["P"]["101"]["H"] = "Number of Source lines in the project, excluding whites
 metd["P"]["102"] = new Array();
 metd["P"]["102"]["C"] = "SLOC_NAT";
 metd["P"]["102"]["N"] = "Source Native Lines of Code";
-metd["P"]["102"]["H"] = "The number of lines of code in this project containing Native Source.<br><br>Native Source is code that is native to the main language, used when analysing HTML-generating software.";
+metd["P"]["102"]["H"] = "The number of lines of code in the project containing Native Source.<br><br>Native Source is code that is native to the main language, used when analysing HTML-generating software.";
 
 metd["P"]["103"] = new Array();
 metd["P"]["103"]["C"] = "SLOC_TAG";
 metd["P"]["103"]["N"] = "Source Tag Lines of Code";
-metd["P"]["103"]["H"] = "The number of lines of code in this project containing Tags.<br><br>Tags are used in conjuction with HTML-generating software, such as ASP or JSP.";
+metd["P"]["103"]["H"] = "The number of lines of code in the project containing Tags.<br><br>Tags are used in conjuction with HTML-generating software, such as ASP or JSP.";
 
 metd["P"]["104"] = new Array();
 metd["P"]["104"]["C"] = "SLOC_HTM";
 metd["P"]["104"]["N"] = "Source HTML Lines of Code";
-metd["P"]["104"]["H"] = "The number of lines of code in this project containing HTML.";
+metd["P"]["104"]["H"] = "The number of lines of code in the project containing HTML.";
 
 metd["P"]["105"] = new Array();
 metd["P"]["105"]["C"] = "SLOC_SCR";
 metd["P"]["105"]["N"] = "Source Script Lines of Code";
-metd["P"]["105"]["H"] = "The number of lines of code in this project containing Script.<br><br>Script in this context means Javascript or VBScript used in HTML source files in the project.";
+metd["P"]["105"]["H"] = "The number of lines of code in the project containing Script.<br><br>Script in this context means Javascript or VBScript used in HTML source, either a HTML file or HTML-generating source.";
 
 metd["P"]["106"] = new Array();
 metd["P"]["106"]["C"] = "LLOC";
 metd["P"]["106"]["N"] = "Logical Lines of Code";
-metd["P"]["106"]["H"] = "A count of the total number of semicolons in the project excluding those within comments and string literals.  This is useful for approximating \"logical lines of code\".  E.g.:<br><br><font face=\"Courier New\">cout &lt;&lt; \"Hello\" &lt;&lt; endl <font color=\"FF1111\">;</font> /* output ; return */<br>cout &lt;&lt; \"Hello ; World\" &lt;&lt; endl <font color=\"FF1111\">;</font></font><br><br>LLOC = 2.";
+metd["P"]["106"]["H"] = "A count of the total number of semicolons in the project excluding those within comments and string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=\"Courier New\">cout &lt;&lt; \"Hello\" &lt;&lt; endl <font color=\"FF1111\">;</font> /* output ; return */<br>cout &lt;&lt; \"Hello ; World\" &lt;&lt; endl <font color=\"FF1111\">;</font></font><br><br>LLOC = 2.";
 
 metd["P"]["107"] = new Array();
 metd["P"]["107"]["C"] = "N1";
@@ -266,7 +267,7 @@ metd["P"]["116"] = new Array();
 metd["P"]["116"]["C"] = "B";
 metd["P"]["116"]["N"] = "Halstead Bug Prediction";
 metd["P"]["116"]["H"] = "This variant of Halstead Effort is a measure of the likelihood of bugs within the project.";
-metd["P"]["116"]["F"] = "E<sup>2/3</sup> / 3000";
+metd["P"]["116"]["F"] = "(N <i>log</i>n) / 3000";
 
 metd["P"]["117"] = new Array();
 metd["P"]["117"]["C"] = "J_COM";
@@ -325,17 +326,17 @@ metd["P"]["126"]["F"] = "CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC";
 metd["P"]["127"] = new Array();
 metd["P"]["127"]["C"] = "CHG_LLOC";
 metd["P"]["127"]["N"] = "Changed Logical Lines of Code";
-metd["P"]["127"]["H"] = "The number of changed Logical Lines of Code in this project.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["127"]["H"] = "The number of changed Logical Lines of Code in this project.<br><br>Changes are measured using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.";
 
 metd["P"]["128"] = new Array();
 metd["P"]["128"]["C"] = "DEL_LLOC";
 metd["P"]["128"]["N"] = "Deleted Logical Lines of Code";
-metd["P"]["128"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["128"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Deleted logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.";
 
 metd["P"]["129"] = new Array();
 metd["P"]["129"]["C"] = "ADD_LLOC";
 metd["P"]["129"]["N"] = "Added Logical Lines of Code";
-metd["P"]["129"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between \"lines\" terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single \"logical line\" spans multiple lines in the file.";
+metd["P"]["129"]["H"] = "The number of deleted Logical Lines of Code in this project.<br><br>Added logical lines are counted using Power Software's implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.";
 
 metd["P"]["130"] = new Array();
 metd["P"]["130"]["C"] = "CRN_LLOC";

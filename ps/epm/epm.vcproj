@@ -401,6 +401,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\DiffWB.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Flex.cpp"
 				>
 				<FileConfiguration
@@ -631,6 +635,10 @@
 			</File>
 			<File
 				RelativePath="DiffVB.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DiffWB.h"
 				>
 			</File>
 			<File
@@ -1013,6 +1021,10 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\lex.wb.cpp"
+					>
+				</File>
+				<File
 					RelativePath="lex.xml.cpp"
 					>
 					<FileConfiguration
@@ -1119,6 +1131,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.wb.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.xml.l"
 					>
 				</File>
@@ -1204,6 +1220,10 @@
 				</File>
 				<File
 					RelativePath="y.vhdl.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.wb.h"
 					>
 				</File>
 				<File

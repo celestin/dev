@@ -1,0 +1,22 @@
+  <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>

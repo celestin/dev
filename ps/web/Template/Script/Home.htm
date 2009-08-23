@@ -1,0 +1,132 @@
+<SCRIPT Language="JavaScript">
+<!-- hide
+  var metImg;
+  var metCode;
+  var metName;
+  var metDsc;
+  var currentIndex;
+  browserOK = true;
+  sensImage = new Array();
+  subImage = new Array();
+
+  var MET_PATH;
+  var MET_ACTIVE = "_a.gif";
+  var MET_PASSIVE = ".gif";
+  var metBannerRandomised=false;
+
+  function populateMet()
+  {
+    metImg = new Array();
+    metCode = new Array();
+    metName = new Array();
+    metDsc = new Array();
+
+    MET_PATH = "./img/metric/";
+
+    metCode[metCode.length] = "SEIMI";
+    metName[metName.length] = "SEI Maintainability index";
+    metDsc[metDsc.length] = "Quantitative measurement of an operational system\'s maintainability is desirable both as an instantaneous measure and as a predictor of maintainability over time. Efforts to measure and track maintainability are intended to help reduce or reverse a system\'s tendency toward &quot;code entropy&quot; or degraded integrity, and to indicate when it becomes cheaper and/or less risky to rewrite the code than to change it.<br><br>Software Maintainability Metrics Models in Practice is the latest report from an ongoing, multi-year joint effort (involving the Software Engineering Test Laboratory of the University of Idaho, the Idaho National Engineering Laboratory, Hewlett-Packard, and other companies) to quantify maintainability via a Maintainability Index (MI). Measurement and use of the MI is a process technology, facilitated by simple tools, that in implementation becomes part of the overall development or maintenance process. These efforts also indicate that MI measurement applied during software development can help reduce lifecycle costs.<br><br>The developer can track and control the MI of code as it is developed, and then supply the measurement as part of code delivery to aid in the transition to maintenance.<br><br><a href=\"http://www.sei.cmu.edu/activities/str/descriptions/mitmpm_body.html\" target=\"_blank\" onClick=\"window.close()\">Further reading...</a>";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "LCOM";
+    metName[metName.length] = "Lack of COhesion on Methods";
+    metDsc[metDsc.length] = "Lack of cohesion on methods is the degree of similarity of methods; if methods have no instance variables in common, then their similarity is zero. It is evaluated as the number of pairs of member functions without shared instance variables minus the number of pairs of member functions with shared instance variables. It is set to zero when this is negative.<br><br>Classes with low cohesion suggest an inappropriate design such as the encapsulation of unrelated objects and member functions and is likely to be fault-prone.";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "v(G)";
+    metName[metName.length] = "Cyclomatic Complexity";
+    metDsc[metDsc.length] = "Cyclomatic complexity is the most widely used member of a class of static software metrics. Cyclomatic complexity may be considered a broad measure of soundness and confidence for a program. Introduced by Thomas McCabe in 1976, it measures the number of linearly-independent paths through a program module.<br><br>This measure provides a single ordinal number that can be compared to the complexity of other programs. Cyclomatic complexity is often referred to simply as program complexity, or as McCabe\'s complexity. It is often used in concert with other software metrics. As one of the more widely-accepted software metrics, it is intended to be independent of language and language format.<br><br><a href=\"http://www.sei.cmu.edu/str/descriptions/cyclomatic_body.html\" target=\"_blank\" onClick=\"window.close()\">Further reading...</a>";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "CHG_SLOC";
+    metName[metName.length] = "CHanGed Source Lines Of Code";
+    metDsc[metDsc.length] = "Changed source lines of code gives an indication of the changes between two versions of a project / file. The value is calculated by comparing two files and ascertaining how many source lines have changed between them (using standard comparison algorithms).<br><br>This can used to determine which sections of the project are changing as well as giving a numerical value to the number of changes that are occuring between versions. There are two common uses of this metric, the first is to keep track of changes in critical sections of code. Secondly CHG_SLOC can be used to determine if a project is deviating from its objectives by showing which files are changing.";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "CMM";
+    metName[metName.length] = "Capability Maturity Model - Level 3";
+    metDsc[metDsc.length] = "At the Defined Level, the standard process for developing and maintaining software across the organization is documented, including both software engineering and management processes, and these processes are integrated into a coherent whole. This standard process is referred to throughout the CMM as the organization's standard software process. Processes established at Level 3 are used (and changed, as appropriate) to help the software managers and technical staff perform more effectively. The organization exploits effective software engineering practices when standardizing its software processes. There is a group that is responsible for the organization's software process activities, e.g., a software engineering process group, or SEPG. An organization-wide training program is implemented to ensure that the staff and managers have the knowledge and skills required to fulfill their assigned roles.<br><br>Projects tailor the organization's standard software process to develop their own defined software process, which accounts for the unique characteristics of the project. This tailored process is referred to in the CMM as the project's defined software process. <i><b>A defined software process contains a coherent, integrated set of well-defined software engineering and management processes</b></i>. A well-defined process can be characterized as including readiness criteria, inputs, standards and procedures for performing the work, verification mechanisms (such as peer reviews), outputs, and completion criteria. Because the software process is well defined, management has good insight into technical progress on all projects.<br><br>The software process capability of Level 3 organizations can be summarized as standard and consistent because both software engineering and management activities are stable and repeatable. Within established product lines, cost, schedule, and functionality are under control, <i><b>and software quality is tracked</b></i>. This process capability is based on a common, organization-wide understanding of the activities, roles, and responsibilities in a defined software process.";
+    preloadImage(metCode.length-1);
+  }
+
+
+  function preloadImage(i)
+  {
+    var preloadActive = new Image();
+    preloadActive.src = MET_PATH + metCode[i].toLowerCase() + MET_ACTIVE;
+    var preloadPassive = new Image();
+    preloadPassive.src = MET_PATH + metCode[i].toLowerCase() + MET_PASSIVE;
+  }
+
+
+  function getImageFile(i, imgType)
+  {
+    if (!metBannerRandomised) return document.images["em"+i].src
+
+    return MET_PATH + metCode[i].toLowerCase() + imgType;
+  }
+
+
+  function randomMet()
+  {
+    populateMet();
+    metBannerRandomised = true;
+
+    currentIndex = parseInt((Math.random() * metCode.length));
+
+    document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+  }
+
+
+  function nextMetric()
+  {
+    currentIndex = (currentIndex+1) % metCode.length;
+    document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+  }
+
+
+  function metHover(hover)
+  {
+    if (hover)
+    {
+      document.images["currMet"].src = getImageFile(currentIndex, MET_ACTIVE);
+    }
+    else
+    {
+      document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+    }
+  }
+
+
+  function showCurrentMetricHelp()
+  {
+    showMetricHelp("./", metCode[currentIndex], metName[currentIndex], metDsc[currentIndex]);
+  }
+
+
+  function showMetricHelp(relativePath, mttCode, mttName, mttDescription)
+  {
+    var desc1 = new String(mttDescription);
+    var desc = desc1.replace(/JSAFEQUOT/g, '"');
+
+    var helpWin = window.open("", "mhWindow", "width=500,height=350,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no,left=50,top=100,screenX=50,screenY=100");
+    helpWin.document.write('<html><head><title>Metric Help - ' + mttName + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n');
+    helpWin.document.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>');
+    helpWin.document.write(mttCode + '</b>&nbsp;' + mttName + '</font></td></tr>\n');
+    helpWin.document.write('<tr><td background="' + relativePath + 'img/top_bev.gif"><img src="' + relativePath + 'img/f.gif"></td></tr><tr height="100%"><td valign=top class="narr">');
+    helpWin.document.write(desc + '</td></tr><tr><td align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>');
+    helpWin.document.close();
+  }
+
+
+  function specialOffer()
+  {
+    var popupWin = window.open("", "mhWindow", "width=350,height=250,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no,left=100,top=150,screenX=100,screenY=150");
+    popupWin.document.write('<html><head><title>Essential Metrics Special Offer</title><link href="style.css" rel=stylesheet type=text/css></head>\n\n');
+    popupWin.document.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>Essential Metrics Special Offer</b></font></td></tr>\n');
+    popupWin.document.write('<tr><td background="img/top_bev.gif"><img src="img/f.gif"></td></tr><tr height="100%"><td valign=top class="narr">');
+    popupWin.document.write('We are happy to extend the following special offer to our existing customers:<br><br>Receive a complimentary copy of Essential Metrics when you renew your annual maintenance contract for Krakatau Professional / Project Manager or when you upgrade to our new floating license model.<br><br>Contact <a href"mailto:objects@powersoftware.com>objects@powersoftware.com</a> to claim your free copy.</td></tr><tr><td align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>');
+    popupWin.document.close();
+  }
+  //-->
+</SCRIPT>

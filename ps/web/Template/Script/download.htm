@@ -1,0 +1,98 @@
+  <Script Language="JavaScript">
+  <!--
+     var theCombo ; var theRadSrch ; var theRadColl ; var theRadEmail ; var theOther ; var theLang ; var theList ; var theCount ;
+   var OTHER_VALUE = "Other" ;
+  // -->
+  </Script>
+  <Script Language="JavaScript1.1">
+  <!--
+     function locateFormFields() {
+       theCombo = document.dload.lead ;
+       theRadSrch = document.dload.radSrch ;
+       theRadColl = document.dload.radColl ;
+       theRadEmail = document.dload.radEmail ;
+       theOther = document.dload.leadother ;
+       theLang = document.dload.langc ;
+
+       theOther.enabled = false ;
+       populateSearch() ;
+
+       document.dload.name.focus() ;
+     }
+
+     function populateCombo() {
+
+       theCombo.options.length = theCount+2 ;
+       theCombo.options[0].text = "(Pick One)" ;
+
+       for(var i=0; i<theCount; i++) {
+         theCombo.options[i+1].text = theList[i] ;
+       }
+
+       theCombo.options[theCount+1].text = OTHER_VALUE ;
+       theCombo.selectedIndex = 0 ;
+     }
+
+     function moveToNextField() {
+       if (theCombo.options[theCombo.selectedIndex].text == OTHER_VALUE) {
+
+         theOther.focus() ;
+
+       } else {
+
+         theLang.focus() ;
+       }
+     }
+
+     function populateSearch() {
+
+       theCount = 0 ; theList = new Array() ;
+       theList = new Array() ;
+
+       theList[theCount++] = "Google" ;
+       theList[theCount++] = "Yahoo" ;
+       theList[theCount++] = "AltaVista" ;
+       theList[theCount++] = "Ask Jeeves" ;
+       theList[theCount++] = "Direct Hit" ;
+       theList[theCount++] = "dmoz.org" ;
+       theList[theCount++] = "Dogpile" ;
+       theList[theCount++] = "Excite" ;
+       theList[theCount++] = "FAST Search" ;
+       theList[theCount++] = "HotBot" ;
+       theList[theCount++] = "LookSmart" ;
+       theList[theCount++] = "Lycos" ;
+
+       populateCombo() ;
+     theRadSrch.checked = true ;
+       theRadColl.checked = false ;
+       theRadEmail.checked = false ;
+     }
+
+     function populateColleague() {
+
+       theCount = 0 ; theList = new Array() ;
+       theList[theCount++] = "Within Organisation" ;
+       theList[theCount++] = "Another Organisation" ;
+
+       populateCombo() ;
+
+       theRadColl.checked = true ;
+     theRadSrch.checked = false ;
+       theRadEmail.checked = false ;
+     }
+
+     function populateEmail() {
+
+       theCount = 0 ; theList = new Array() ;
+       theList = new Array() ;
+
+       theList[theCount++] = "Grey Matter" ;
+
+       populateCombo() ;
+       theRadEmail.checked = true ;
+     theRadSrch.checked = false ;
+       theRadColl.checked = false ;
+     }
+
+  // -->
+  </Script>

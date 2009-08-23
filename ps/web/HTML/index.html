@@ -1,0 +1,459 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - Home</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - Home">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="./ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    // JavaScript browser, although not necessarily 1.1
+    var browserOK = false ; var sensImage ; var curImage ; var nSensImages = 0 ;
+    var ImgOn = "./img/navx/select2.gif" ;
+    var ImgOff = "./img/navx/go2.gif" ;
+    var ImgClick = "./img/navx/go2.gif" ;
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ; }
+    browserOK = true ;  sensImage = new Array() ;
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgOn ; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgClick ; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff ; } }
+  //-->
+  </SCRIPT>
+  <SCRIPT Language="JavaScript">
+<!-- hide
+  var metImg;
+  var metCode;
+  var metName;
+  var metDsc;
+  var currentIndex;
+  browserOK = true;
+  sensImage = new Array();
+  subImage = new Array();
+
+  var MET_PATH;
+  var MET_ACTIVE = "_a.gif";
+  var MET_PASSIVE = ".gif";
+  var metBannerRandomised=false;
+
+  function populateMet()
+  {
+    metImg = new Array();
+    metCode = new Array();
+    metName = new Array();
+    metDsc = new Array();
+
+    MET_PATH = "./img/metric/";
+
+    metCode[metCode.length] = "SEIMI";
+    metName[metName.length] = "SEI Maintainability index";
+    metDsc[metDsc.length] = "Quantitative measurement of an operational system\'s maintainability is desirable both as an instantaneous measure and as a predictor of maintainability over time. Efforts to measure and track maintainability are intended to help reduce or reverse a system\'s tendency toward &quot;code entropy&quot; or degraded integrity, and to indicate when it becomes cheaper and/or less risky to rewrite the code than to change it.<br><br>Software Maintainability Metrics Models in Practice is the latest report from an ongoing, multi-year joint effort (involving the Software Engineering Test Laboratory of the University of Idaho, the Idaho National Engineering Laboratory, Hewlett-Packard, and other companies) to quantify maintainability via a Maintainability Index (MI). Measurement and use of the MI is a process technology, facilitated by simple tools, that in implementation becomes part of the overall development or maintenance process. These efforts also indicate that MI measurement applied during software development can help reduce lifecycle costs.<br><br>The developer can track and control the MI of code as it is developed, and then supply the measurement as part of code delivery to aid in the transition to maintenance.<br><br><a href=\"http://www.sei.cmu.edu/activities/str/descriptions/mitmpm_body.html\" target=\"_blank\" onClick=\"window.close()\">Further reading...</a>";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "LCOM";
+    metName[metName.length] = "Lack of COhesion on Methods";
+    metDsc[metDsc.length] = "Lack of cohesion on methods is the degree of similarity of methods; if methods have no instance variables in common, then their similarity is zero. It is evaluated as the number of pairs of member functions without shared instance variables minus the number of pairs of member functions with shared instance variables. It is set to zero when this is negative.<br><br>Classes with low cohesion suggest an inappropriate design such as the encapsulation of unrelated objects and member functions and is likely to be fault-prone.";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "v(G)";
+    metName[metName.length] = "Cyclomatic Complexity";
+    metDsc[metDsc.length] = "Cyclomatic complexity is the most widely used member of a class of static software metrics. Cyclomatic complexity may be considered a broad measure of soundness and confidence for a program. Introduced by Thomas McCabe in 1976, it measures the number of linearly-independent paths through a program module.<br><br>This measure provides a single ordinal number that can be compared to the complexity of other programs. Cyclomatic complexity is often referred to simply as program complexity, or as McCabe\'s complexity. It is often used in concert with other software metrics. As one of the more widely-accepted software metrics, it is intended to be independent of language and language format.<br><br><a href=\"http://www.sei.cmu.edu/str/descriptions/cyclomatic_body.html\" target=\"_blank\" onClick=\"window.close()\">Further reading...</a>";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "CHG_SLOC";
+    metName[metName.length] = "CHanGed Source Lines Of Code";
+    metDsc[metDsc.length] = "Changed source lines of code gives an indication of the changes between two versions of a project / file. The value is calculated by comparing two files and ascertaining how many source lines have changed between them (using standard comparison algorithms).<br><br>This can used to determine which sections of the project are changing as well as giving a numerical value to the number of changes that are occuring between versions. There are two common uses of this metric, the first is to keep track of changes in critical sections of code. Secondly CHG_SLOC can be used to determine if a project is deviating from its objectives by showing which files are changing.";
+    preloadImage(metCode.length-1);
+
+    metCode[metCode.length] = "CMM";
+    metName[metName.length] = "Capability Maturity Model - Level 3";
+    metDsc[metDsc.length] = "At the Defined Level, the standard process for developing and maintaining software across the organization is documented, including both software engineering and management processes, and these processes are integrated into a coherent whole. This standard process is referred to throughout the CMM as the organization's standard software process. Processes established at Level 3 are used (and changed, as appropriate) to help the software managers and technical staff perform more effectively. The organization exploits effective software engineering practices when standardizing its software processes. There is a group that is responsible for the organization's software process activities, e.g., a software engineering process group, or SEPG. An organization-wide training program is implemented to ensure that the staff and managers have the knowledge and skills required to fulfill their assigned roles.<br><br>Projects tailor the organization's standard software process to develop their own defined software process, which accounts for the unique characteristics of the project. This tailored process is referred to in the CMM as the project's defined software process. <i><b>A defined software process contains a coherent, integrated set of well-defined software engineering and management processes</b></i>. A well-defined process can be characterized as including readiness criteria, inputs, standards and procedures for performing the work, verification mechanisms (such as peer reviews), outputs, and completion criteria. Because the software process is well defined, management has good insight into technical progress on all projects.<br><br>The software process capability of Level 3 organizations can be summarized as standard and consistent because both software engineering and management activities are stable and repeatable. Within established product lines, cost, schedule, and functionality are under control, <i><b>and software quality is tracked</b></i>. This process capability is based on a common, organization-wide understanding of the activities, roles, and responsibilities in a defined software process.";
+    preloadImage(metCode.length-1);
+  }
+
+
+  function preloadImage(i)
+  {
+    var preloadActive = new Image();
+    preloadActive.src = MET_PATH + metCode[i].toLowerCase() + MET_ACTIVE;
+    var preloadPassive = new Image();
+    preloadPassive.src = MET_PATH + metCode[i].toLowerCase() + MET_PASSIVE;
+  }
+
+
+  function getImageFile(i, imgType)
+  {
+    if (!metBannerRandomised) return document.images["em"+i].src
+
+    return MET_PATH + metCode[i].toLowerCase() + imgType;
+  }
+
+
+  function randomMet()
+  {
+    populateMet();
+    metBannerRandomised = true;
+
+    currentIndex = parseInt((Math.random() * metCode.length));
+
+    document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+  }
+
+
+  function nextMetric()
+  {
+    currentIndex = (currentIndex+1) % metCode.length;
+    document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+  }
+
+
+  function metHover(hover)
+  {
+    if (hover)
+    {
+      document.images["currMet"].src = getImageFile(currentIndex, MET_ACTIVE);
+    }
+    else
+    {
+      document.images["currMet"].src = getImageFile(currentIndex, MET_PASSIVE);
+    }
+  }
+
+
+  function showCurrentMetricHelp()
+  {
+    showMetricHelp("./", metCode[currentIndex], metName[currentIndex], metDsc[currentIndex]);
+  }
+
+
+  function showMetricHelp(relativePath, mttCode, mttName, mttDescription)
+  {
+    var desc1 = new String(mttDescription);
+    var desc = desc1.replace(/JSAFEQUOT/g, '"');
+
+    var helpWin = window.open("", "mhWindow", "width=500,height=350,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no,left=50,top=100,screenX=50,screenY=100");
+    helpWin.document.write('<html><head><title>Metric Help - ' + mttName + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n');
+    helpWin.document.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>');
+    helpWin.document.write(mttCode + '</b>&nbsp;' + mttName + '</font></td></tr>\n');
+    helpWin.document.write('<tr><td background="' + relativePath + 'img/top_bev.gif"><img src="' + relativePath + 'img/f.gif"></td></tr><tr height="100%"><td valign=top class="narr">');
+    helpWin.document.write(desc + '</td></tr><tr><td align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>');
+    helpWin.document.close();
+  }
+
+
+  function specialOffer()
+  {
+    var popupWin = window.open("", "mhWindow", "width=350,height=250,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no,left=100,top=150,screenX=100,screenY=150");
+    popupWin.document.write('<html><head><title>Essential Metrics Special Offer</title><link href="style.css" rel=stylesheet type=text/css></head>\n\n');
+    popupWin.document.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>Essential Metrics Special Offer</b></font></td></tr>\n');
+    popupWin.document.write('<tr><td background="img/top_bev.gif"><img src="img/f.gif"></td></tr><tr height="100%"><td valign=top class="narr">');
+    popupWin.document.write('We are happy to extend the following special offer to our existing customers:<br><br>Receive a complimentary copy of Essential Metrics when you renew your annual maintenance contract for Krakatau Professional / Project Manager or when you upgrade to our new floating license model.<br><br>Contact <a href"mailto:objects@powersoftware.com>objects@powersoftware.com</a> to claim your free copy.</td></tr><tr><td align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>');
+    popupWin.document.close();
+  }
+  //-->
+</SCRIPT>
+  <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>
+</HEAD>
+
+<Body OnLoad="randomMet();" bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="6"><img src="./img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="./img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="./img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="./img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="./img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="./img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="./img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"><img src="./img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><TABLE border=0 cellspacing=8 cellpadding=0 width="100%">
+  <TR valign=top>
+    <TD width="35%" valign=top><TABLE border=0 cellspacing=0 cellpadding=5>
+      <TR valign=top>
+        <TD rowspan=2><a href="kepm/"><img border=0 src="img/prod/box_kepm.gif"></a></TD>
+        <TD align=right><img src="img/prod/small_kepm.gif"></TD>
+      </TR>
+      <TR valign=middle>
+        <TD><p class="narr">Introducing <a href="kepm/">Krakatau Essential PM</a>,
+        the latest addition to the Power Software
+        range of professional software metrics tools.</p>
+
+        <p class="narr">KEPM/EPM is the product of choice for
+        <a href="http://www-306.ibm.com/software/awdtools/clearcase/support/index.html">IBM Rational ClearCase</a> Managers
+        and Users/Groups who require to measure or monitor <a class="hotnew" href="kepm">churn metrics</a>,
+        changed source lines or changed logical lines of source code.</p>
+
+        <p class="narr">KEPM is independent of version control systems; we have
+        users on <a href="http://www.nongnu.org/cvs/">CVS</a>, <a href="http://subversion.tigris.org/">Subversion</a> and
+        <a href="http://msdn.microsoft.com/en-us/teamsystem/default.aspx">Microsoft Team Foundation Server</a> measuring SLOC &amp; churn metrics.</p>
+        </TD>
+      </TR>
+      <TR valign=top>
+        <TD colspan=2><table border=0 cellspacing=0 cellpadding=2>
+          <tr>
+          <td><img border=0 src="img/vistalogo.png"></td>
+          <td><p class="narr"><b>Krakatau Essential PM</b> and <b>Essential Project Manager</b> are fully compatible with Microsoft Windows Vista.</p></td>
+        </tr></table></TD>
+      </TR>
+      <TR>
+        <TD colspan=2><hr width="90%"></td>
+      </TR>
+      <TR valign=top>
+        <TD colspan=2 align=left><img src="img/prod/small_km.gif"></TD>
+      </TR>
+      <TR valign=top>
+        <TD colspan=2><p class="narr">Power Software manufactures and supports the industry standard
+          <a href="products/">Krakatau Metrics</a> range of professional software metrics tools.</p>
+          <ul class="narr">
+          <li><a href="details.html">Pricing and details</a></li>
+          <li><a class="hotnew" href="docs/faq/">See the general FAQ</a></li>
+          <li><a href="customers/">What our customers have to say</a></li></ul>
+        </TD>
+      </TR>
+    </TABLE></TD>
+
+    <TD width="35%" valign=top><TABLE border=0 cellspacing=0 cellpadding=0>
+      <TR valign=top>
+        <TD><div><a href="epm/"><img src="img/prod/small_epm.gif" border=0></a></div>
+        <p class="narr"><a href="epm/">Essential Project Manager</a> exploits PowerSoftware.com's extensive experience of measuring changed, added and deleted SLOC.
+        Available today for Ada, Assembly, ASP, C#, C/C&#43;&#43;, IDL, HTML, Java, JavaScript, JSP, Perl, PL/SQL, Python VB6/VB.NET/VBScript, VDHL &amp; XML.</p>
+
+        <p class="narr">You can now customise <a href="epm/">EPM</a> to match the various languages and
+        file types used in your business; the new XML configuration achieves this quickly and easily.</p>
+
+        <p class="narr"><a href="epm/">EPM</a> delivers essential metrics for single projects and difference and changed
+        metrics across various versions of your source code projects.</p>
+
+<div>
+<img title="Ada" src="./img/lang/ada.gif">
+<img title="ASP" src="./img/lang/aspx.gif">
+<img title="Assembly" src="./img/lang/asm.png">
+<img title="C++" src="./img/lang/cpp.gif">
+<img title="C#" src="./img/lang/cs.gif">
+<img title="Cascading Style Sheets" src="./img/lang/css.png">
+<img title="IDL" src="./img/lang/idl.gif">
+<img title="HTML" src="./img/lang/html.png">
+<img title="Java" src="./img/lang/java.gif">
+<img title="JavaScript" src="./img/lang/javascript.png">
+<img title="JSP" src="./img/lang/jsp.gif">
+<img title="Oracle PL/SQL" src="./img/lang/ora.gif">
+<img title="PHP" src="./img/lang/php.gif">
+<img title="Perl" src="./img/lang/perl.gif">
+<img title="Python" src="./img/lang/python.png">
+<img title="Ruby" src="./img/lang/ruby.png">
+<img title="VHDL" src="./img/lang/vhdl.gif">
+<img title="Visual Basic" src="./img/lang/vb.gif">
+<img title="Windows Batch" src="./img/lang/batch.png">
+<img title="XML" src="./img/lang/xml.gif">
+</div>
+        <p class="narr">View Sample Changed Metrics <a class="hotnew" href="epm/screenshot.html">screens and output</a>.</p>
+
+        <table border=0 cellspacing=0 cellpadding=5 width="100%">
+          <tr>
+            <td class="narr" align=left>More about <a href="./epm/epm_chg_ex.pdf">Changed Metrics</a>.</td>
+            <td align=right><a href="javaScript:showFlash('./kepm/kepm.swf','Krakatau EPM','Krakatau EPM Demo', 'Home', 1216, 943);"><img src="./img/flash_off.png" width=30 height=30 onmouseover="this.src='./img/flash_on.png';" onmouseout="this.src='./img/flash_off.png';" border=0></a></td>
+            <td class="narr"><a href="javaScript:showFlash('./kepm/kepm.swf','Krakatau EPM','Krakatau EPM Demo', 'Home', 1216, 943);">View Flash Demo</a></td>
+          </tr>
+        </table>
+        </TD>
+      </TR>
+    </TABLE></TD>
+    <TD valign=top rowspan="3"><TABLE border=0 cellspacing=0 cellpadding=5 width="220" align=right>
+      <TR align=center bgcolor="#999999">
+        <TD><p class="narr"><font color="#ffffff"><b>News</b></font></p></TD>
+      </TR>
+      <TR bgcolor="#cccccc">
+<TD>
+<b>22 Aug 2009</b> New languages - CSS, Ruby &amp; Windows Batch - added to <a href="epm/">Essential PM</a> 1.19.0.0 and <a href="kepm/">Krakatau EPM</a> 1.12.0.0.<BR><BR>
+<b>27 Jul 2009</b> New languages - Fortran, ShellScript &amp; Textfile - added to <a href="epm/">Essential PM</a> 1.18.0.0 and <a href="kepm/">Krakatau EPM</a> 1.11.0.0.<BR><BR>
+<b>18 Jun 2009</b> Issue relating to installation on drive other than C: corrected in <a class="news" href="kepm/">Krakatau EPM</a> 1.10.3.1.<BR><BR>
+<!--
+<b>12 May 2009</b> Commas in filenames handled correctly in CSV Reports in <a href="epm/">Essential PM</a> 1.17.3.0 and <a href="kepm/">Krakatau EPM</a> 1.10.3.0.<BR><BR>
+<b>05 May 2009</b> Free text within HTML correctly counted as SLOC in <a class="news" href="epm/">Essential PM</a> 1.17.2.0 and <a class="news" href="kepm/">Krakatau EPM</a> 1.10.2.0.<BR><BR>
+<b>30 Apr 2009</b> Support for files without extensions added to <a class="news" href="epm/">Essential PM</a> 1.17.1.0 and <a class="news" href="kepm/">Krakatau EPM</a> 1.10.1.0.<BR><BR>
+<b>18 Apr 2009</b> New languages - Assembly, HTML, JavaScript, Python &amp; VBScript - added to <a class="news" href="kp/"><a class="news" href="epm/">Essential PM</a> 1.17.000 and <a class="news" href="kepm/">Krakatau EPM</a> 1.10.000.<BR><BR>
+<b>12 Jun 2008</b> New versions of <a class="news" href="kp/">Krakatau Professional C/C++ and Java</a> and <a class="news" href="em/">Essential Metrics C/C++ and Java</a> implementing full <b>SEI MI</b> metric.<BR><BR>
+-->
+<b>04 Jun 2008</b> Microsoft Windows Vista supported added to <a class="news" href="epm/">Essential PM</a> 1.16.005 and <a class="news" href="kepm/">Krakatau EPM</a> 1.09.000.<BR><BR>
+<!--
+<b>26 Apr 2008</b> Various LLOC fixes to <a class="news" href="epm/">Essential PM</a> 1.16.004 and <a class="news" href="kepm/">Krakatau EPM</a> 1.08.004, which now uses .NET Framework 2.0.<BR><BR>
+<b>24 Apr 2008</b> Various LLOC fixes to <a class="news" href="epm/">Essential PM</a> 1.16.003 and <a class="news" href="kepm/">Krakatau EPM</a> 1.08.003.<BR><BR>
+<b>21 Apr 2008</b> <a class="news" href="em/">Essential Metrics C/C++ and Java</a> versions 1.00.002 released, correcting <b>CBO</b>, <B>SEI MI</B> and <b>LCOM</b> metrics.<BR><BR>
+<b>15 Apr 2008</b> <a class="news" href="kp/">Krakatau Professional (Java)</a> version 2.11.002 released, correcting <b>CBO</b>, <B>SEI MI</B> and <b>LCOM</b> metrics.<BR><BR>
+-->
+<b>14 Apr 2008</b> <a class="news" href="kp/">Krakatau Professional (C++)</a> version 2.11.004 released, correcting <b>CBO</b>, <B>SEI MI</B> and <b>LCOM</b> metrics.<BR><BR>
+<!--
+<b>04 Jan 2008</b> Improved the footer of our HTML report in <a class="news" href="epm/">Essential PM</a> 1.16.002 and <a class="news" href="kepm/">Krakatau EPM</a> 1.08.002.  Our <a class="news" href="epm/MetricsDefinitions.pdf">Metrics Definitions</a> help file is now available via a Start menu shortcut and additionally within Krakatau EPM you can access it through the Help menu.<BR><BR><b>REMEMBER</b> to copy new <span style="font-family:monospace">STYLE.CSS</span> from your the HTML folder in your installation path!<BR><BR>
+<b>14 Dec 2007</b> Added a link to our <span class="hotnew">new</a> <a class="news" href="epm/MetricsDefinitions.pdf">Metrics Definitions</a> help file to the EPM HTML Report in <a class="news" href="epm/">Essential PM</a> 1.16.001 and <a class="news" href="kepm/">Krakatau EPM</a> 1.08.001.<BR><BR>
+-->
+<b>11 Dec 2007</b> We have added <b>JSP</b> and <b>XML</b> parsing to <a class="news" href="epm/">Essential PM</a> 1.16.000 and <a class="news" href="kepm/">Krakatau EPM</a> 1.08.000.<BR><BR>
+<!--
+<b>29 Nov 2007</b> Improvements to PHP metrics in <a class="news" href="epm/">Essential PM</a> 1.15.004 and <a class="news" href="kepm/">Krakatau EPM</a> 1.07.004.<BR><BR>
+<b>02 Nov 2007</b> Improvements to Logical Changed Lines in <a class="news" href="epm/">Essential PM</a> 1.15.003 and <a class="news" href="kepm/">Krakatau EPM</a> 1.07.003.<BR><BR>
+<b>30 Oct 2007</b> Improved error handling of duplicate filenames in projects in <a class="news" href="epm/">Essential PM</a> 1.15.002 and <a class="news" href="kepm/">Krakatau EPM</a> 1.07.002.<BR><BR>
+<b>04 Sep 2007</b> New releases of <a class="news" href="em/">Essential Metrics C/C++ and Java</a> 1.00.001.<BR><BR>
+-->
+<b>28 Jul 2007</b> VHDL language support introduced to <a class="news" href="epm/">Essential PM</a> 1.15.001 and <a class="news" href="kepm/">Krakatau EPM</a> 1.07.001.<BR><BR>
+<!--
+<b>16 Jul 2007</b> IDL language support introduced to <a class="news" href="kepm/">Krakatau EPM</a> 1.06.000.<BR><BR>
+<b>10 Jul 2007</b> IDL language support introduced to <a class="news" href="epm/">Essential PM</a> 1.14.000.<BR><BR>
+<b>10 Nov 2006</b> PHP language support introduced to <a class="news" href="kepm/">Krakatau EPM</a> 1.05.000 and
+<a class="news" href="epm/">Essential PM</a> 1.13.000.<BR><BR>
+<b>02 Nov 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.04.000 released - including ASP language support<BR><BR>
+<b>27 Oct 2006</b> <a class="news" href="epm/">Essential PM</a> 1.12.000 released - ASP language parsing added!<BR><BR>
+<b>24 Jul 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.03.001 released including our new Changed/Added/Deleted &quot;Logical Lines of Code&quot; (<b>LLOC</b>) metrics.<BR><BR>
+<b>12 Jul 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.02.009 released - Metric Sets can now be managed within KEPM!<BR><BR>
+<b>08 Jun 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.02.005 released - correctly remember file types<BR><BR>
+<b>06 Jun 2006</b> <a class="news" href="epm/">Essential PM</a> 1.10.004 released - Metric Sets apply to CSV/XML<BR><BR>
+<b>02 Jun 2006</b> <a class="news" href="epm/">Essential PM</a> 1.10.003 and <a class="news" href="kepm/">Krakatau EPM</a> 1.02.002 released<BR><BR>
+<b>17 Apr 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.02.001 released<BR><BR>
+<b>17 Mar 2006</b> <a class="news" href="epm/">Essential PM</a> 1.10.001 released - Case-insensitive Ada parsing<BR><BR>
+<b>26 Mar 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.02.000 released - now remembers Project Analysis options for each project<BR><BR>
+<b>26 Mar 2006</b> <a class="news" href="epm/">Essential PM</a> 1.10.000 released - CSV and XML Reports now obeying the specific metric visibility rules<BR><BR>
+<b>18 Mar 2006</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.01.004 released - ability to Deselect a project<BR><BR>
+<b>18 Mar 2006</b> <a class="news" href="epm/">Essential PM</a> 1.09.003 released - improved Diff algorithms for all languages<BR><BR>
+<b>21 Feb 2006</b> Essential PM able to parse Visual Studio DSP files<BR><BR>
+<b>14 Feb 2006</b> Krakatau EPM now remembers last-used Projects<BR><BR>
+<b>14 Feb 2006</b> Essential PM now with Metrics Chooser<BR><BR>
+<b>28 Jan 2006</b> <a class="news" href="epm/">Essential PM</a> 1.08.000 released - now with Metrics Chooser<BR><BR>
+<b>20 Dec 2005</b> <a class="news" href="kepm/">Krakatau EPM</a> 1.00.005 released - NFILE metric and improved user interface<BR><BR>
+<b>20 Sep 2005</b> <a class="news" href="kepm/">Krakatau EPM</a> Released!<BR><BR>
+-->
+<!--
+<b>23 Aug 2005</b> XML Configuration added to <a class="news" href="epm/">Essential Metrics PM</a><BR><BR>
+<b>15 Aug 2005</b> Perl language support added to <a class="news" href="epm/">Essential Metrics PM</a><BR><BR>
+<b>02 Aug 2005</b> ADA language support added to <a class="news" href="epm/">Essential Metrics PM</a><BR><BR>
+<b>19 May 2005</b> PL/SQL language support added to <a class="news" href="epm/">Essential Metrics PM</a><BR><BR>
+<b>13 May 2005</b> VB6 and VB.NET language support added to <a class="news" href="epm/">EPM</a><BR><BR>
+<b>09 May 2005</b> Java language support added to <a class="news" href="epm/">EPM</a><BR><BR>
+<b>04 May 2005</b> C/C&#43;&#43; language support added to <a class="news" href="epm/">Essential Metrics PM</a><BR><BR>
+<b>29 Mar 2005</b> XML Reporting added to <a class="news" href="epm/">Essential Metrics PM for C#</a><BR><BR>
+<b>28 Mar 2005</b> CSV Reporting added to <a class="news" href="epm/">Essential Metrics PM for C#</a><BR><BR>
+<b>01 Jan 2005</b> <a class="news" href="epm/">Essential Metrics PM for C#</a> released.<BR><BR>
+-->
+<b>01 Mar 2002</b> New HTML reports added to Krakatau Project Manager. <a class="news" href="pm/index.html">More details...</a><BR><BR>
+<!--
+
+<BR><BR>
+Flash demos now available for our tools online, go to the <a class="news" href="products/">product pages</a> for more information.<BR><BR>
+-->
+</TD>
+      </TR>
+      <TR align=center bgcolor="#999999">
+        <TD><font color="#ffffff"><b>Metrics Helpdesk</b></font></TD>
+      </TR>
+      <TR valign=center>
+        <TD align=center bgcolor="#cccccc"><a href="javascript:showCurrentMetricHelp() ;" onMouseOver="javascript:metHover(true);" onMouseOut="javascript:metHover(false);"><img border=0 name="currMet" src="./img/f.gif" height=38></a>
+        <br><br><a class="news" href="javascript:nextMetric() ;">Next &gt;</a></TD>
+      </TR>
+    </TABLE></TD>
+  </TR>
+  <TR valign=top>
+    <TD colspan=2><hr width="90%"></td>
+  </TR>
+  <TR valign=top>
+    <TD valign=top><TABLE border=0 cellspacing=0 cellpadding=0>
+      <TR valign=center>
+        <TD colspan="2"><a href="em/"><img border=0 src="img/prod/small_em.gif"></a></TD>
+      </TR>
+      <TR valign=top>
+        <TD colspan="2"><p class="narr"><a class="hotnew" href="em/">Essential Metrics</a> is a
+        command line metrics tool that combines ease of use with advanced reporting facilities.
+        CSV, HTML and XML reports are all available in a single command line metrics tool.</p>
+        <p class="narr">Prices start from just 495 per seat!</p>
+
+        <ul class="narr">
+        <li><a href="em/screenshot.html">View sample output</a></li>
+        <li><a class="hotnew" href="download/">Download free test version</a></li>
+        <li><a href="javascript:specialOffer();">Special offer</a></li></ul>
+        </TD>
+      </TR>
+  </TABLE></TD>
+    <TD width="35%" valign=top><TABLE border=0 cellspacing=0 cellpadding=0>
+      <TR valign=top>
+        <TD align=left><a href="pm/"><img src="img/prod/small_pm.gif" border=0></a></TD>
+      </TR>
+      <TR valign=top>
+        <TD><p class="narr">There is an increasing need to monitor and control how your
+        project is changing.</p>
+
+        <p class="narr"><a href="pm/">Krakatau Project Manager</a> compares two
+        versions of your source code and calculates the number of changed, added and
+        deleted source lines of code. It also reports on the differences in metrics between
+        these two versions.</p>
+
+        <ul class="narr">
+        <li><a class="hotnew" href="javaScript:showFlash('/pm/pm.swf','Krakatau Project Manager','Krakatau Project Manager Demo', 'Home', 550, 500);">View the flash demo</a></li>
+        <li><a href="pm/pm_chg_ex.pdf" target="blank">Find out about the Change metrics</a></li>
+        </TD>
+      </TR>
+    </TABLE></TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD bgcolor="#ffffff" rowspan="4" width="100%"><img src="./img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TD width="130" background="img/navx/thin2.gif"><img border=0 alt="Home" width="80" height="32" src="img/nav/home2_but.gif"></TD><TD width="30"><img border=0 src="img/navx/stop2.gif"></TD></TR><TR valign=top><TD width="130" background="img/navx/thin2.gif"><a class="nav" href="products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="img/navx/thin2.gif"><a class="nav" href="docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="img/navx/thin2.gif"><a class="nav" href="customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="img/navx/thin2.gif"><a class="nav" href="download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="img/navx/thin2.gif"><a class="nav" href="contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>23 Aug 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">SourceCodeMetrics.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

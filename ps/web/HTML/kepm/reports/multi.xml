@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project name="Multilanguage_Project_1.3" snapshotDate="2-Jan-2005">
+  <Items>
+    <File id="22" name="ada/do_search_type_body.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="23" name="ada/numbers.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="24" name="ada/numbers_body.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="25" name="ada/pdi.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="56" name="ada/process_normal_input_body.a" status="D">
+      <Metrics>
+        <Met id="100" oldVal="0" />
+        <Met id="101" oldVal="0" />
+        <Met id="102" oldVal="0" />
+        <Met id="103" oldVal="0" />
+        <Met id="104" oldVal="0" />
+        <Met id="105" oldVal="0" />
+        <Met id="106" oldVal="0" />
+        <Met id="107" oldVal="0" />
+        <Met id="108" oldVal="0" />
+        <Met id="109" oldVal="0" />
+        <Met id="110" oldVal="0" />
+        <Met id="111" oldVal="0" />
+        <Met id="112" oldVal="0" />
+        <Met id="113" oldVal="0" />
+        <Met id="114" oldVal="0" />
+        <Met id="115" oldVal="0" />
+        <Met id="116" oldVal="0" />
+        <Met id="117" oldVal="0" />
+        <Met id="118" />
+        <Met id="119" />
+        <Met id="120" />
+      </Metrics>
+    </File>
+    <File id="26" name="ada/timekeeper.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="27" name="ada/timekeeper_body.a">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="1" name="cpp/hps.c">
+      <Metrics>
+        <Met id="100" val="217" />
+        <Met id="101" val="166" />
+        <Met id="102" val="67" />
+        <Met id="103" val="289" />
+        <Met id="104" val="341" />
+        <Met id="105" val="22" />
+        <Met id="106" val="97" />
+        <Met id="107" val="630" />
+        <Met id="108" val="119" />
+        <Met id="109" val="4343" />
+        <Met id="110" val="38" />
+        <Met id="111" val="165034" />
+        <Met id="112" val="1" />
+        <Met id="113" val="0" />
+        <Met id="114" val="6" />
+        <Met id="115" val="0" />
+        <Met id="116" val="8" />
+        <Met id="117" val="5363" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="2" name="cpp/scratch.c">
+      <Metrics>
+        <Met id="100" val="73" />
+        <Met id="101" val="56" />
+        <Met id="102" val="26" />
+        <Met id="103" val="81" />
+        <Met id="104" val="114" />
+        <Met id="105" val="22" />
+        <Met id="106" val="38" />
+        <Met id="107" val="195" />
+        <Met id="108" val="60" />
+        <Met id="109" val="1151" />
+        <Met id="110" val="33" />
+        <Met id="111" val="37983" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="1" />
+        <Met id="115" val="0" />
+        <Met id="116" val="1" />
+        <Met id="117" val="1653" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="3" name="cpp/shmdel.c">
+      <Metrics>
+        <Met id="100" val="15" />
+        <Met id="101" val="9" />
+        <Met id="102" val="2" />
+        <Met id="103" val="6" />
+        <Met id="104" val="5" />
+        <Met id="105" val="4" />
+        <Met id="106" val="5" />
+        <Met id="107" val="11" />
+        <Met id="108" val="9" />
+        <Met id="109" val="34" />
+        <Met id="110" val="2" />
+        <Met id="111" val="68" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="1" />
+        <Met id="115" val="0" />
+        <Met id="116" val="1" />
+        <Met id="117" val="234" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="4" name="cs/boxtest.cs" status="C">
+      <Metrics>
+        <Met id="100" val="20" oldVal="23" diffVal="-3" />
+        <Met id="101" val="11" oldVal="14" diffVal="-3" />
+        <Met id="102" val="7" oldVal="10" diffVal="-3" />
+        <Met id="103" val="18" oldVal="311" diffVal="-293" />
+        <Met id="104" val="15" oldVal="22" diffVal="-7" />
+        <Met id="105" val="12" oldVal="12" diffVal="0" />
+        <Met id="106" val="9" oldVal="9" diffVal="0" />
+        <Met id="107" val="33" oldVal="333" diffVal="-300" />
+        <Met id="108" val="21" oldVal="21" diffVal="0" />
+        <Met id="109" val="144" oldVal="1462" diffVal="-1318" />
+        <Met id="110" val="10" oldVal="14" diffVal="-4" />
+        <Met id="111" val="1440" oldVal="20468" diffVal="-19028" />
+        <Met id="112" val="0" oldVal="0" diffVal="0" />
+        <Met id="113" val="0" oldVal="0" diffVal="0" />
+        <Met id="114" val="0" oldVal="0" diffVal="0" />
+        <Met id="115" val="0" oldVal="0" diffVal="0" />
+        <Met id="116" val="0" oldVal="0" diffVal="0" />
+        <Met id="117" val="188" oldVal="241" diffVal="-53" />
+        <Met id="118" val="0" />
+        <Met id="119" val="3" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="33" name="cs/cmov1.cs" status="D">
+      <Metrics>
+        <Met id="100" oldVal="29" />
+        <Met id="101" oldVal="23" />
+        <Met id="102" oldVal="12" />
+        <Met id="103" oldVal="344" />
+        <Met id="104" oldVal="38" />
+        <Met id="105" oldVal="12" />
+        <Met id="106" oldVal="11" />
+        <Met id="107" oldVal="382" />
+        <Met id="108" oldVal="23" />
+        <Met id="109" oldVal="1728" />
+        <Met id="110" oldVal="20" />
+        <Met id="111" oldVal="34560" />
+        <Met id="112" oldVal="0" />
+        <Met id="113" oldVal="0" />
+        <Met id="114" oldVal="0" />
+        <Met id="115" oldVal="0" />
+        <Met id="116" oldVal="0" />
+        <Met id="117" oldVal="319" />
+        <Met id="118" />
+        <Met id="119" />
+        <Met id="120" />
+      </Metrics>
+    </File>
+    <File id="5" name="cs/inline1.cs">
+      <Metrics>
+        <Met id="100" val="25" />
+        <Met id="101" val="15" />
+        <Met id="102" val="10" />
+        <Met id="103" val="49" />
+        <Met id="104" val="33" />
+        <Met id="105" val="16" />
+        <Met id="106" val="19" />
+        <Met id="107" val="82" />
+        <Met id="108" val="35" />
+        <Met id="109" val="420" />
+        <Met id="110" val="13" />
+        <Met id="111" val="5460" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="364" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="6" name="cs/life.cs">
+      <Metrics>
+        <Met id="100" val="75" />
+        <Met id="101" val="71" />
+        <Met id="102" val="47" />
+        <Met id="103" val="187" />
+        <Met id="104" val="163" />
+        <Met id="105" val="27" />
+        <Met id="106" val="56" />
+        <Met id="107" val="350" />
+        <Met id="108" val="83" />
+        <Met id="109" val="2231" />
+        <Met id="110" val="39" />
+        <Met id="111" val="87009" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="1" />
+        <Met id="116" val="1" />
+        <Met id="117" val="1607" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="7" name="cs/logic.cs" status="A">
+      <Metrics>
+        <Met id="100" val="90" />
+        <Met id="101" val="53" />
+        <Met id="102" val="42" />
+        <Met id="103" val="287" />
+        <Met id="104" val="102" />
+        <Met id="105" val="21" />
+        <Met id="106" val="32" />
+        <Met id="107" val="389" />
+        <Met id="108" val="53" />
+        <Met id="109" val="2228" />
+        <Met id="110" val="33" />
+        <Met id="111" val="73524" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="2" />
+        <Met id="115" val="2" />
+        <Met id="116" val="23" />
+        <Met id="117" val="2119" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="53" />
+      </Metrics>
+    </File>
+    <File id="8" name="java/Browse.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="9" name="java/Diff.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="10" name="java/FileChooserFactory.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="11" name="java/FileCopy.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="12" name="java/FileUtilities.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="13" name="java/History.java">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="28" name="perl/cc_ver.pl">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="14" name="plsql/f_create.ora">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="43" name="plsql/p_cycle.sql" status="D">
+      <Metrics>
+        <Met id="100" oldVal="0" />
+        <Met id="101" oldVal="0" />
+        <Met id="102" oldVal="0" />
+        <Met id="103" oldVal="0" />
+        <Met id="104" oldVal="0" />
+        <Met id="105" oldVal="0" />
+        <Met id="106" oldVal="0" />
+        <Met id="107" oldVal="0" />
+        <Met id="108" oldVal="0" />
+        <Met id="109" oldVal="0" />
+        <Met id="110" oldVal="0" />
+        <Met id="111" oldVal="0" />
+        <Met id="112" oldVal="0" />
+        <Met id="113" oldVal="0" />
+        <Met id="114" oldVal="0" />
+        <Met id="115" oldVal="0" />
+        <Met id="116" oldVal="0" />
+        <Met id="117" oldVal="0" />
+        <Met id="118" />
+        <Met id="119" />
+        <Met id="120" />
+      </Metrics>
+    </File>
+    <File id="15" name="plsql/p_engineer.ora">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="16" name="plsql/p_generate.sql">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="17" name="vb/AssemblyInfo.vb">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="18" name="vb/ExternalLineMapping.vb">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="19" name="vb/IntegerBase.vb">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="20" name="vb/Location.vb">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+    <File id="50" name="vb/LocationCollection.vb" status="D">
+      <Metrics>
+        <Met id="100" oldVal="0" />
+        <Met id="101" oldVal="0" />
+        <Met id="102" oldVal="0" />
+        <Met id="103" oldVal="0" />
+        <Met id="104" oldVal="0" />
+        <Met id="105" oldVal="0" />
+        <Met id="106" oldVal="0" />
+        <Met id="107" oldVal="0" />
+        <Met id="108" oldVal="0" />
+        <Met id="109" oldVal="0" />
+        <Met id="110" oldVal="0" />
+        <Met id="111" oldVal="0" />
+        <Met id="112" oldVal="0" />
+        <Met id="113" oldVal="0" />
+        <Met id="114" oldVal="0" />
+        <Met id="115" oldVal="0" />
+        <Met id="116" oldVal="0" />
+        <Met id="117" oldVal="0" />
+        <Met id="118" />
+        <Met id="119" />
+        <Met id="120" />
+      </Metrics>
+    </File>
+    <File id="21" name="vb/Parser.vb">
+      <Metrics>
+        <Met id="100" val="0" />
+        <Met id="101" val="0" />
+        <Met id="102" val="0" />
+        <Met id="103" val="0" />
+        <Met id="104" val="0" />
+        <Met id="105" val="0" />
+        <Met id="106" val="0" />
+        <Met id="107" val="0" />
+        <Met id="108" val="0" />
+        <Met id="109" val="0" />
+        <Met id="110" val="0" />
+        <Met id="111" val="0" />
+        <Met id="112" val="0" />
+        <Met id="113" val="0" />
+        <Met id="114" val="0" />
+        <Met id="115" val="0" />
+        <Met id="116" val="0" />
+        <Met id="117" val="0" />
+        <Met id="118" val="0" />
+        <Met id="119" val="0" />
+        <Met id="120" val="0" />
+      </Metrics>
+    </File>
+  </Items>
+  <Metrics>
+    <Met id="100" code="LOC" description="Lines of Code" val="515" oldVal="460" diffVal="55" />
+    <Met id="101" code="SLOC" description="Source Lines of Code" val="381" oldVal="354" diffVal="27" />
+    <Met id="102" code="NSC" description="Number of Semi-colon lines (Logical LOC)" val="201" oldVal="174" diffVal="27" />
+    <Met id="103" code="N1" description="Total No. of Operators" val="917" oldVal="1919" diffVal="-1002" />
+    <Met id="104" code="N2" description="Total No. of Operands" val="773" oldVal="716" diffVal="57" />
+    <Met id="105" code="n1" description="No. of unique or distinct Operators" val="124" oldVal="115" diffVal="9" />
+    <Met id="106" code="n2" description="No. of unique or distinct Operands" val="256" oldVal="235" diffVal="21" />
+    <Met id="107" code="N" description="Halstead program Length (calculated as N1 + N2)" val="1690" oldVal="2635" diffVal="-945" />
+    <Met id="108" code="n" description="Halstead program Vocabulary (calculated as n1 + n2)" val="380" oldVal="350" diffVal="30" />
+    <Met id="109" code="V" description="Halstead Volume (calculated as V = Nlog2n)" val="14483" oldVal="15119" diffVal="-636" />
+    <Met id="110" code="D" description="Halstead program Difficulty" val="187" oldVal="159" diffVal="28" />
+    <Met id="111" code="E" description="Halstead program Effort (calculated as D * V)" val="370" oldVal="453" diffVal="-83" />
+    <Met id="112" code="B" description="Halstead Bug Prediction" val="6" oldVal="2" diffVal="4" />
+    <Met id="113" code="J_COM" description="Java-style Comment Lines" val="0" oldVal="0" diffVal="0" />
+    <Met id="114" code="C_COM" description="C-style Comment Lines" val="10" oldVal="9" diffVal="1" />
+    <Met id="115" code="CPP_COM" description="C++ style Comment Lines" val="3" oldVal="1" diffVal="2" />
+    <Met id="116" code="COM_LOC" description="Total Comment Lines" val="34" oldVal="14" diffVal="20" />
+    <Met id="117" code="BYTES" description="File size in bytes" val="11528" oldVal="10010" diffVal="1518" />
+    <Met id="118" code="CHG_SLOC" description="Changed Source Lines of Code" val="0" />
+    <Met id="119" code="DEL_SLOC" description="Deleted Source Lines of Code" val="26" />
+    <Met id="120" code="ADD_SLOC" description="Added Source Lines of Code" val="53" />
+    <Met id="121" code="CHG_FILE" description="Changed Files" val="1" />
+    <Met id="122" code="DEL_FILE" description="Deleted Files" val="4" />
+    <Met id="123" code="ADD_FILE" description="Added Files" val="1" />
+  </Metrics>
+</Project>

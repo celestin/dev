@@ -44,6 +44,9 @@
     <Compile Include="Forms\FormAnalyse.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FormAnalyse.Designer.cs">
+      <DependentUpon>FormAnalyse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Projects\Arguments.cs" />
     <Compile Include="Threading\AsyncOperation.cs" />
     <Compile Include="Config\Ext.cs" />
@@ -158,6 +161,7 @@
   <ItemGroup>
     <Content Include="img\ico\About.ico" />
     <Content Include="img\ico\Prefs.ico" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="img\menu\prefs.png" />
     <None Include="img\menu\jar_new.png" />
     <None Include="img\menu\jar_into.png" />

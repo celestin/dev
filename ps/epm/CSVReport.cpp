@@ -17,6 +17,7 @@
  * CAM  24-Apr-08    356 : Added DLLOC special condition along with DLOC and DFILE.
  * CAM  12-May-2009  10445 : Quotes around text/filenames to prevent commas disrupting the CSV format.
  * CAM  20-Aug-2009  10456 : Output values as floats.
+ * CAM  27-Aug-2009  10483 : Removed event output to main program.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -129,7 +130,7 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
   }
 }
 
-void CSVReport::executeCSV() {
+void CSVReport::execute() {
   ofstream current;
   string fname;
   unsigned int f;
@@ -167,15 +168,4 @@ void CSVReport::executeCSV() {
   csvLine(current, project[0]);
 
   current.close();
-}
-
-void CSVReport::execute() {
-  if (isPM()) {
-    cout << "CSV PM Report... " << flush;
-  } else {
-    cout << "CSV single project Report... " << flush;
-  }
-
-  executeCSV();
-  cout << "Done." << endl;
 }

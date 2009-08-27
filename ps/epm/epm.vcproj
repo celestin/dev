@@ -646,6 +646,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EpmVersion.h"
+				>
+			</File>
+			<File
 				RelativePath="Extension.h"
 				>
 			</File>
@@ -659,6 +663,10 @@
 			</File>
 			<File
 				RelativePath="..\lic\LicConfig.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Log.h"
 				>
 			</File>
 			<File

@@ -19,6 +19,7 @@
  * CAM  28-Jan-06    168 : Added metTdVal.
  * CAM  01-Jun-06    252 : Added metTdNA.
  * CAM  20-Aug-2009  10456 : Changed metTdVal to accept floats.
+ * CAM  27-Aug-2009  10483 : Removed specific execute implementation.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_HTMLREPORT
@@ -53,8 +54,6 @@ namespace metrics
     void metTdVal(ofstream&, int, float);
     void metTdNA(ofstream&);
     void metTable(std::ofstream&, ReportItem&);
-
-    void executeHTML();
   };
 };
 

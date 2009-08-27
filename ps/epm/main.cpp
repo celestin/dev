@@ -87,6 +87,7 @@
  * CAM  20-Aug-2009  10452 : Added Ruby language support.
  * CAM  22-Aug-2009  10455 : Added Windows Batch language support.
  * CAM  22-Aug-2009  10477 : Version 1.19.0.0.
+ * CAM  27-Aug-2009  10483 : Added Event logging.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -110,7 +111,9 @@
 #include "Db.h"
 #include "Metric.h"
 #include "Lang.h"
+#include "Log.h"
 #include "Extension.h"
+#include "EpmVersion.h"
 
 using namespace metrics;
 
@@ -826,6 +829,7 @@ void showHelp() {
 //  cout << "   -h3 html_file    Create single page HTML report (grid)." << endl;
 //  cout << "   -h4 html_dir     Create multiple page HTML report (grid)." << endl;
   cout << "   -x  xml_file     Create XML report." << endl;
+  cout << "   -l  log_file     Log output of the session to a logfile." << endl;
   cout << "   -?               Show this help screen." << endl;
 
   cout << "\nName" << endl;
@@ -863,6 +867,15 @@ void parseCmdLineOptions(int argc, char *argv[]) {
             csvfile = (char*) malloc(PATH_MAX*sizeof(char));
             realpath(argv[i],csvfile);
             OPTION_MASK |= CSV_MASK;
+          } else {
+            showHelp();
+          }
+          break;
+        case 'l':
+          if (++i<argc && argv[i]) {
+            logfilename = (char*) malloc(PATH_MAX*sizeof(char));
+            realpath(argv[i],logfilename);
+            OPTION_MASK |= LOG_MASK;
           } else {
             showHelp();
           }
@@ -1245,11 +1258,11 @@ bool analyse(string &filename) {
 }
 
 
-
 int main(int argc, char* argv[]) {
   int i,e;
+  char eventMsg[4096];
 
-  cout << "\nEssential Project Manager (EPM) Version 1.19.0.0\n"
+  cout << "\nEssential Project Manager (EPM) Version " << EPM_VERSION << "\n"
        << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
@@ -1258,30 +1271,40 @@ int main(int argc, char* argv[]) {
   strncpy_s(szAppDirectory, MAX_PATH, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
   szAppDirectory[strlen(szAppDirectory)] = '\0';
 
-  if (!validLicense()) {
-    cout << "You must have a valid license.dat file." << endl;
-    cout << "Please contact laurence.arthur@powersoftware.com." << endl << endl;
-    return 1;
-  }
-
   parseCmdLineOptions(argc,argv);
 
-  if (e=xmlConfig()) {
-    cerr << "Please correct problems in the XML Config file before proceding [Err:" << e << "]" << endl;
+  openLogfile();
+
+  if (!validLicense())
+  {
+    sprintf_s(eventMsg, "You must have a valid license.dat file.\nPlease contact laurence.arthur@powersoftware.com.");
+    cout << eventMsg << endl;
+    logEvent(eventMsg);
     return 1;
   }
 
-  for (i=0; i<nProjects; i++) {
+  if (e=xmlConfig())
+  {
+    sprintf_s(eventMsg, "Please correct problems in the XML Config file before proceding [Err:%d]", e);
+    cerr << eventMsg << endl;
+    logEvent(eventMsg);
+    return 1;
+  }
+
+  for (i=0; i<nProjects; i++)
+  {
     initFileSource(i);
   }
 
   if (bLocalDb) startDatabase(true);
 
   // Now connect to the current DB
-  if (!createDatabase(servername, musername, mpassword, projname, nProjects)) {
-    cerr << "There was a problem connecting to the database on server '" << servername << "'." << endl;
-    cerr << " * Username [" << musername << "]" << endl;
-    cerr << " * Password [" << mpassword << "]" << endl;
+  if (!createDatabase(servername, musername, mpassword, projname, nProjects))
+  {
+    sprintf_s(eventMsg, "There was a problem connecting to the database on server '%s'\n * Username [%s]\n * Password [%s]",
+      servername, musername, mpassword);
+    cerr << eventMsg << endl;
+    logEvent(eventMsg);
     return 1;
   }
 
@@ -1343,9 +1366,13 @@ int main(int argc, char* argv[]) {
           pct = (int)((double)r/(double)projDb.rows()*100);
 
           if (validLanguage(lang.getLanguage())) {
-            if (pct > lastpct) cout << "file " << sfid << ":" << shortname << " - " << lang.getDescription() << " (" << pct << "%)" << endl;
 
-            if (analyse(filename)) {
+            sprintf_s(eventMsg, "file %d:%s - %s (%d%%)", sfid, shortname.c_str(), lang.getDescription().c_str(), pct);
+            if (pct > lastpct) cout << eventMsg << endl;
+            logEvent(eventMsg);
+
+            if (analyse(filename))
+            {
               setMetrics(sfid, filename);
             }
           }
@@ -1372,7 +1399,10 @@ int main(int argc, char* argv[]) {
           pct = (int)((double)r/(double)projDb.rows()*100);
 
           if (validLanguage(lang.getLanguage())) {
-            /*if (pct > lastpct)*/ cout << "diff " << sfid << ":" << shortname << " (" << pct << "%)" << endl;
+            sprintf_s(eventMsg, "diff %d:%s (%d%%)", sfid, shortname.c_str(), pct);
+            if (pct > lastpct) cout << eventMsg << endl;
+            logEvent(eventMsg);
+
             calcDiff(sfid, filename, filename2);
           }
           lastpct = pct;
@@ -1400,7 +1430,10 @@ int main(int argc, char* argv[]) {
           pct = (int)((double)r/(double)projDb.rows()*100);
 
           if (validLanguage(lang.getLanguage())) {
-            if (pct > lastpct) cout << "add/del " << sfid << " (" << pct << "%)" << endl;
+            sprintf_s(eventMsg, "add/del %d:%s (%d%%)", sfid, shortname.c_str(), pct);
+            if (pct > lastpct) cout << eventMsg << endl;
+            logEvent(eventMsg);
+
             calcAddDel(sfid, status, metid, (float)mvalue);
           }
           lastpct = pct;
@@ -1414,19 +1447,69 @@ int main(int argc, char* argv[]) {
   if (OPTION_MASK & MULTIPLE_SYMB_MASK) {
     HTMLReport hr(projDb, symb_dir);
     if (OPTION_MASK & METRICS_SET_MASK) hr.setMetricsSet(metricsset);
+
+    if (hr.isPM())
+    {
+      sprintf_s(eventMsg, "HTML PM Report... ");
+    }
+    else
+    {
+      sprintf_s(eventMsg, "HTML single project Report... ");
+    }
+    cout << eventMsg << flush;
+    logEvent(eventMsg);
+
     hr.execute();
+
+    sprintf_s(eventMsg, "Done.");
+    cout << eventMsg << endl;
+    logEvent(eventMsg);
   }
 
-  if (OPTION_MASK & CSV_MASK) {
+  if (OPTION_MASK & CSV_MASK)
+  {
     CSVReport csv(projDb, csvfile);
     if (OPTION_MASK & METRICS_SET_MASK) csv.setMetricsSet(metricsset);
+
+    if (csv.isPM())
+    {
+      sprintf_s(eventMsg, "CSV PM Report... ");
+    }
+    else
+    {
+      sprintf_s(eventMsg, "CSV single project Report... ");
+    }
+    cout << eventMsg << flush;
+    logEvent(eventMsg);
+
     csv.execute();
+
+    sprintf_s(eventMsg, "Done.");
+    cout << eventMsg << endl;
+    logEvent(eventMsg);
   }
 
-  if (OPTION_MASK & XML_MASK) {
+  if (OPTION_MASK & XML_MASK)
+  {
     XMLReport xml(projDb, xmlfile);
     if (OPTION_MASK & METRICS_SET_MASK) xml.setMetricsSet(metricsset);
+
+    if (xml.isPM())
+    {
+      sprintf_s(eventMsg, "XML PM Report... ");
+    }
+    else
+    {
+      sprintf_s(eventMsg, "XML single project Report... ");
+    }
+    cout << eventMsg << flush;
+    logEvent(eventMsg);
+
     xml.execute();
+
+    sprintf_s(eventMsg, "Done.");
+    cout << eventMsg << endl;
+    logEvent(eventMsg);
   }
 
   closeDatabase();

@@ -1,19 +1,20 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Create Process
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  20-Dec-04  File added.
- * CAM  19-Jan-04  Added TIME_TO_WAIT.
- * CAM  24-Nov-05  160 : Added ignoreHandles to createProcess.
- * CAM  28-Jan-06   168 : Added METRICS_SET_MASK.
- * CAM  07-Feb-06   187 : Added MYSQL_PARAM_SIZE.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  20-Dec-04    File added.
+ * CAM  19-Jan-04    Added TIME_TO_WAIT.
+ * CAM  24-Nov-05    160 : Added ignoreHandles to createProcess.
+ * CAM  28-Jan-06    168 : Added METRICS_SET_MASK.
+ * CAM  07-Feb-06    187 : Added MYSQL_PARAM_SIZE.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  27-Aug-2009  10483 : Added LOG_MASK.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "OurSQL.h"
@@ -24,20 +25,8 @@
 #include <stack>
 
 #include <windows.h>
-#include <windef.h>
-#include <process.h>
-#include <io.h>
 #include <direct.h>
-
-#include <iostream>
 #include <fstream>
-
-#define FEATURE "cspm"
-
-//#include "lmpolicy.h"
-#include <limits.h>
-#include <fcntl.h>
-
 
 #ifndef PATH_MAX
   #ifdef MAX_PATH
@@ -90,7 +79,6 @@ HANDLE createProcess(std::string cmdLine)
 
 #include <sys/types.h>
 #include <sys/stat.h>
-//#include <sys/wait.h>
 
 #define RECURSIVE_MASK      0x0000001
 #define DIR_MASK            0x0000002
@@ -103,5 +91,6 @@ HANDLE createProcess(std::string cmdLine)
 #define XML_MASK            0x0000100
 #define OEM_MASK            0x0000200
 #define METRICS_SET_MASK    0x0000400
+#define LOG_MASK            0x0000800
 
 #endif

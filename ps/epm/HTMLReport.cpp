@@ -38,6 +38,7 @@
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * CAM  18-Apr-2009  10434 : Extended copyright year.
  * CAM  20-Aug-2009  10456 : Output Halstead D & B values as floats.
+ * CAM  27-Aug-2009  10483 : Removed event output to main program.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -396,7 +397,6 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
   float diff=0;
   Metrics m;
   bool showStandard = true;
-  char diffValue[512];
   int vstart=0,vend=MET(NFILE);
 
   if (currItem.getType() == ITEM_PROJECT) {
@@ -532,7 +532,7 @@ void HTMLReport::metTable(ofstream &current, ReportItem &currItem) {
   }
 }
 
-void HTMLReport::executeHTML() {
+void HTMLReport::execute() {
   ofstream current;
   string fname;
 
@@ -558,13 +558,3 @@ void HTMLReport::executeHTML() {
   createFrameset();
 }
 
-void HTMLReport::execute() {
-  if (isPM()) {
-    cout << "HTML PM Report... " << flush;
-  } else {
-    cout << "HTML single project Report... " << flush;
-  }
-
-  executeHTML();
-  cout << "Done." << endl;
-}

@@ -7,8 +7,9 @@
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  29-Mar-05    85 : Class created.
+ * CAM  27-Aug-2009  10483 : Removed specific execute implementation.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_XMLREPORT
@@ -33,7 +34,6 @@ namespace metrics
   protected:
     void projectLine(std::ofstream&);
     void xmlMetrics(std::ofstream&, ReportItem&, std::string&);
-    void executeXML();
   };
 };
 

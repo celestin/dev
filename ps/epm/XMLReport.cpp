@@ -1,18 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 SourceCodeMetrics.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * XML Reporting
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  29-Mar-05    85 : Class created.
- * CAM  07-Feb-06   187 : Check getItems() are report error if zero.
- * CAM  25-Mar-06   221 : Obey the Metrics.isShow rules.
- * CAM  06-Jun-06   257 : If a MetricSet has been specified, only display chosen metrics.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  07-Feb-06    187 : Check getItems() are report error if zero.
+ * CAM  25-Mar-06    221 : Obey the Metrics.isShow rules.
+ * CAM  06-Jun-06    257 : If a MetricSet has been specified, only display chosen metrics.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  27-Aug-2009  10483 : Removed event output to main program.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -99,7 +100,7 @@ void XMLReport::xmlMetrics(ofstream &current, ReportItem &currItem, std::string 
   current << tab << "</Metrics>" << endl;
 }
 
-void XMLReport::executeXML() {
+void XMLReport::execute() {
   ofstream current;
   string fname;
   string tab = "      ";
@@ -157,15 +158,4 @@ void XMLReport::executeXML() {
   current << "</Project>" << endl;
 
   current.close();
-}
-
-void XMLReport::execute() {
-  if (isPM()) {
-    cout << "XML PM Report... " << flush;
-  } else {
-    cout << "XML single project Report... " << flush;
-  }
-
-  executeXML();
-  cout << "Done." << endl;
 }

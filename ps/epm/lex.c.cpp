@@ -14197,7 +14197,7 @@ char *yytext_c;
  * CAM  11-May-05    96 : Rationalised variables.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  18-Apr-2009  10422 : Removed old GS comment/string code and replaced with flex states and correct rule order.
- * CAM  08-Sep-2009  10479 : Add PLOC.
+ * CAM  09-Sep-2009  10479 : Add PLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #line 20 "lexer.c.l"
 

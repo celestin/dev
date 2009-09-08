@@ -13844,8 +13844,9 @@ char *yytext_ay;
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10402 : File created.
+ * CAM  09-Sep-2009  10479 : Added PLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#line 15 "lexer.ay.l"
+#line 16 "lexer.ay.l"
 #include <stdio.h>
 #include <string.h>
 #include "y.ay.h"
@@ -13887,7 +13888,7 @@ void remove_sloc_ay(int);
 
 #define DEFINE 1
 
-#line 13893 "lex.ay.tmp"
+#line 13894 "lex.ay.tmp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -14028,10 +14029,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 79 "lexer.ay.l"
+#line 80 "lexer.ay.l"
 
 
-#line 14037 "lex.ay.tmp"
+#line 14038 "lex.ay.tmp"
 
 	if ( yy_init )
 		{
@@ -14105,535 +14106,535 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 81 "lexer.ay.l"
+#line 82 "lexer.ay.l"
 {ay_lineno++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 83 "lexer.ay.l"
+#line 84 "lexer.ay.l"
 {STORE_OPERATOR(SYM_COLON);COUNT();}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 84 "lexer.ay.l"
+#line 85 "lexer.ay.l"
 {STORE_OPERATOR(SYM_PERIOD);COUNT();}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 85 "lexer.ay.l"
+#line 86 "lexer.ay.l"
 {STORE_OPERATOR(SYM_COMMA);COUNT();}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 87 "lexer.ay.l"
+#line 88 "lexer.ay.l"
 {COUNT(); BEGIN DEFINE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 88 "lexer.ay.l"
+#line 89 "lexer.ay.l"
 {COUNT(); ay_lineno++; ploc_count_ay++; BEGIN 0;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 89 "lexer.ay.l"
+#line 90 "lexer.ay.l"
 {COUNT(); ay_lineno++; ploc_count_ay++;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 90 "lexer.ay.l"
+#line 91 "lexer.ay.l"
 {;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 92 "lexer.ay.l"
+#line 93 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ALGEBRAIC);COUNT();}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 93 "lexer.ay.l"
+#line 94 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ALIGN);COUNT();}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 94 "lexer.ay.l"
+#line 95 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ASG);COUNT();}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 95 "lexer.ay.l"
+#line 96 "lexer.ay.l"
 {STORE_OPERATOR(KEY_BES);COUNT();}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 96 "lexer.ay.l"
+#line 97 "lexer.ay.l"
 {STORE_OPERATOR(KEY_BREAK);COUNT();}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 97 "lexer.ay.l"
+#line 98 "lexer.ay.l"
 {STORE_OPERATOR(KEY_BSS);COUNT();}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 98 "lexer.ay.l"
+#line 99 "lexer.ay.l"
 {STORE_OPERATOR(KEY_BYTE);COUNT();}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 99 "lexer.ay.l"
+#line 100 "lexer.ay.l"
 {STORE_OPERATOR(KEY_C_MODE);COUNT();}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 100 "lexer.ay.l"
+#line 101 "lexer.ay.l"
 {STORE_OPERATOR(KEY_CHAR);COUNT();}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 101 "lexer.ay.l"
+#line 102 "lexer.ay.l"
 {STORE_OPERATOR(KEY_CLINK);COUNT();}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 102 "lexer.ay.l"
+#line 103 "lexer.ay.l"
 {STORE_OPERATOR(KEY_COPY);COUNT();}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 103 "lexer.ay.l"
+#line 104 "lexer.ay.l"
 {STORE_OPERATOR(KEY_DATA);COUNT();}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 104 "lexer.ay.l"
+#line 105 "lexer.ay.l"
 {STORE_OPERATOR(KEY_DEF);COUNT();}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 105 "lexer.ay.l"
+#line 106 "lexer.ay.l"
 {STORE_OPERATOR(KEY_DOUBLE);COUNT();}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 106 "lexer.ay.l"
+#line 107 "lexer.ay.l"
 {STORE_OPERATOR(KEY_DRLIST);COUNT();}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 107 "lexer.ay.l"
+#line 108 "lexer.ay.l"
 {STORE_OPERATOR(KEY_DRNOLIST);COUNT();}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 108 "lexer.ay.l"
+#line 109 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ELSE);COUNT();}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 109 "lexer.ay.l"
+#line 110 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ELSEIF);COUNT();}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 110 "lexer.ay.l"
+#line 111 "lexer.ay.l"
 {STORE_OPERATOR(KEY_EMSG);COUNT();}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 111 "lexer.ay.l"
+#line 112 "lexer.ay.l"
 {STORE_OPERATOR(KEY_END);COUNT();}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 112 "lexer.ay.l"
+#line 113 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ENDIF);COUNT();}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 113 "lexer.ay.l"
+#line 114 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ENDLOOP);COUNT();}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 114 "lexer.ay.l"
+#line 115 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ENDM);COUNT();}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 115 "lexer.ay.l"
+#line 116 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ENDSTRUCT);COUNT();}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 116 "lexer.ay.l"
+#line 117 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ENDUNION);COUNT();}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 117 "lexer.ay.l"
+#line 118 "lexer.ay.l"
 {STORE_OPERATOR(KEY_EQU);COUNT();}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 118 "lexer.ay.l"
+#line 119 "lexer.ay.l"
 {STORE_OPERATOR(KEY_EVAL);COUNT();}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 119 "lexer.ay.l"
+#line 120 "lexer.ay.l"
 {STORE_OPERATOR(KEY_EVEN);COUNT();}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 120 "lexer.ay.l"
+#line 121 "lexer.ay.l"
 {STORE_OPERATOR(KEY_FAR_MODE);COUNT();}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 121 "lexer.ay.l"
+#line 122 "lexer.ay.l"
 {STORE_OPERATOR(KEY_FCLIST);COUNT();}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 122 "lexer.ay.l"
+#line 123 "lexer.ay.l"
 {STORE_OPERATOR(KEY_FCNOLIST);COUNT();}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 123 "lexer.ay.l"
+#line 124 "lexer.ay.l"
 {STORE_OPERATOR(KEY_FIELD);COUNT();}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 124 "lexer.ay.l"
+#line 125 "lexer.ay.l"
 {STORE_OPERATOR(KEY_FLOAT);COUNT();}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 125 "lexer.ay.l"
+#line 126 "lexer.ay.l"
 {STORE_OPERATOR(KEY_GLOBAL);COUNT();}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 126 "lexer.ay.l"
+#line 127 "lexer.ay.l"
 {STORE_OPERATOR(KEY_HALF);COUNT();}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 127 "lexer.ay.l"
+#line 128 "lexer.ay.l"
 {STORE_OPERATOR(KEY_IF);COUNT();}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 128 "lexer.ay.l"
+#line 129 "lexer.ay.l"
 {STORE_OPERATOR(KEY_INCLUDE);COUNT();}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 129 "lexer.ay.l"
+#line 130 "lexer.ay.l"
 {STORE_OPERATOR(KEY_INT);COUNT();}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 130 "lexer.ay.l"
+#line 131 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LABEL);COUNT();}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 131 "lexer.ay.l"
+#line 132 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LDOUBLE);COUNT();}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 132 "lexer.ay.l"
+#line 133 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LENGTH);COUNT();}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 133 "lexer.ay.l"
+#line 134 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LIST);COUNT();}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 134 "lexer.ay.l"
+#line 135 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LONG);COUNT();}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 135 "lexer.ay.l"
+#line 136 "lexer.ay.l"
 {STORE_OPERATOR(KEY_LOOP);COUNT();}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 136 "lexer.ay.l"
+#line 137 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MACRO);COUNT();}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 137 "lexer.ay.l"
+#line 138 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MEXIT);COUNT();}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 138 "lexer.ay.l"
+#line 139 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MLIB);COUNT();}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 139 "lexer.ay.l"
+#line 140 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MLIST);COUNT();}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 140 "lexer.ay.l"
+#line 141 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MMREGS);COUNT();}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 141 "lexer.ay.l"
+#line 142 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MMSG);COUNT();}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 142 "lexer.ay.l"
+#line 143 "lexer.ay.l"
 {STORE_OPERATOR(KEY_MNOLIST);COUNT();}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 143 "lexer.ay.l"
+#line 144 "lexer.ay.l"
 {STORE_OPERATOR(KEY_NEWBLOCK);COUNT();}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 144 "lexer.ay.l"
+#line 145 "lexer.ay.l"
 {STORE_OPERATOR(KEY_NOLIST);COUNT();}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 145 "lexer.ay.l"
+#line 146 "lexer.ay.l"
 {STORE_OPERATOR(KEY_NOREMARK);COUNT();}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 146 "lexer.ay.l"
+#line 147 "lexer.ay.l"
 {STORE_OPERATOR(KEY_OPTION);COUNT();}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 147 "lexer.ay.l"
+#line 148 "lexer.ay.l"
 {STORE_OPERATOR(KEY_PAGE);COUNT();}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 148 "lexer.ay.l"
+#line 149 "lexer.ay.l"
 {STORE_OPERATOR(KEY_PSTRING);COUNT();}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 149 "lexer.ay.l"
+#line 150 "lexer.ay.l"
 {STORE_OPERATOR(KEY_REF);COUNT();}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 150 "lexer.ay.l"
+#line 151 "lexer.ay.l"
 {STORE_OPERATOR(KEY_REMARK);COUNT();}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 151 "lexer.ay.l"
+#line 152 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SBLOCK);COUNT();}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 152 "lexer.ay.l"
+#line 153 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SECT);COUNT();}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 153 "lexer.ay.l"
+#line 154 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SET);COUNT();}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 154 "lexer.ay.l"
+#line 155 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SHORT);COUNT();}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 155 "lexer.ay.l"
+#line 156 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SPACE);COUNT();}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 156 "lexer.ay.l"
+#line 157 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SSLIST);COUNT();}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 157 "lexer.ay.l"
+#line 158 "lexer.ay.l"
 {STORE_OPERATOR(KEY_SSNOLIST);COUNT();}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 158 "lexer.ay.l"
+#line 159 "lexer.ay.l"
 {STORE_OPERATOR(KEY_STRING);COUNT();}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 159 "lexer.ay.l"
+#line 160 "lexer.ay.l"
 {STORE_OPERATOR(KEY_STRUCT);COUNT();}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 160 "lexer.ay.l"
+#line 161 "lexer.ay.l"
 {STORE_OPERATOR(KEY_TAB);COUNT();}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 161 "lexer.ay.l"
+#line 162 "lexer.ay.l"
 {STORE_OPERATOR(KEY_TAG);COUNT();}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 162 "lexer.ay.l"
+#line 163 "lexer.ay.l"
 {STORE_OPERATOR(KEY_TEXT);COUNT();}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 163 "lexer.ay.l"
+#line 164 "lexer.ay.l"
 {STORE_OPERATOR(KEY_TITLE);COUNT();}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 164 "lexer.ay.l"
+#line 165 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UBYTE);COUNT();}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 165 "lexer.ay.l"
+#line 166 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UCHAR);COUNT();}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 166 "lexer.ay.l"
+#line 167 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UHALF);COUNT();}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 167 "lexer.ay.l"
+#line 168 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UINT);COUNT();}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 168 "lexer.ay.l"
+#line 169 "lexer.ay.l"
 {STORE_OPERATOR(KEY_ULONG);COUNT();}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 169 "lexer.ay.l"
+#line 170 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UNION);COUNT();}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 170 "lexer.ay.l"
+#line 171 "lexer.ay.l"
 {STORE_OPERATOR(KEY_USECT);COUNT();}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 171 "lexer.ay.l"
+#line 172 "lexer.ay.l"
 {STORE_OPERATOR(KEY_USHORT);COUNT();}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 172 "lexer.ay.l"
+#line 173 "lexer.ay.l"
 {STORE_OPERATOR(KEY_UWORD);COUNT();}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 173 "lexer.ay.l"
+#line 174 "lexer.ay.l"
 {STORE_OPERATOR(KEY_VAR);COUNT();}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 174 "lexer.ay.l"
+#line 175 "lexer.ay.l"
 {STORE_OPERATOR(KEY_VERSION);COUNT();}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 175 "lexer.ay.l"
+#line 176 "lexer.ay.l"
 {STORE_OPERATOR(KEY_WIDTH);COUNT();}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 176 "lexer.ay.l"
+#line 177 "lexer.ay.l"
 {STORE_OPERATOR(KEY_WMSG);COUNT();}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 177 "lexer.ay.l"
+#line 178 "lexer.ay.l"
 {STORE_OPERATOR(KEY_WORD);COUNT();}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 178 "lexer.ay.l"
+#line 179 "lexer.ay.l"
 {STORE_OPERATOR(KEY_XFLOAT);COUNT();}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 179 "lexer.ay.l"
+#line 180 "lexer.ay.l"
 {STORE_OPERATOR(KEY_XLONG);COUNT();}
 	YY_BREAK
 case 97:
-#line 182 "lexer.ay.l"
-case 98:
 #line 183 "lexer.ay.l"
-case 99:
+case 98:
 #line 184 "lexer.ay.l"
-case 100:
+case 99:
 #line 185 "lexer.ay.l"
-case 101:
+case 100:
 #line 186 "lexer.ay.l"
-case 102:
+case 101:
 #line 187 "lexer.ay.l"
-case 103:
+case 102:
 #line 188 "lexer.ay.l"
-case 104:
+case 103:
 #line 189 "lexer.ay.l"
-case 105:
+case 104:
 #line 190 "lexer.ay.l"
-case 106:
+case 105:
 #line 191 "lexer.ay.l"
+case 106:
+#line 192 "lexer.ay.l"
 case 107:
 YY_RULE_SETUP
-#line 191 "lexer.ay.l"
+#line 192 "lexer.ay.l"
 {store_operand_ay(_strdup(yytext_ay));COUNT();}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 193 "lexer.ay.l"
+#line 194 "lexer.ay.l"
 {cpp_comments_ay++;com_loc_ay++;ay_lineno++; /* To EOL Comments */}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 194 "lexer.ay.l"
+#line 195 "lexer.ay.l"
 {c_comments_ay++;com_loc_ay++;remove_sloc_ay(ay_lineno++); /* Whole line is comment and must be excluded from SLOC */}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 196 "lexer.ay.l"
+#line 197 "lexer.ay.l"
 { /* ignore whitespace     */ }
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 197 "lexer.ay.l"
+#line 198 "lexer.ay.l"
 { /* ignore bad characters */ }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 199 "lexer.ay.l"
+#line 200 "lexer.ay.l"
 ECHO;
 	YY_BREAK
-#line 14639 "lex.ay.tmp"
+#line 14640 "lex.ay.tmp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(DEFINE):
 	yyterminate();
@@ -15517,7 +15518,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 199 "lexer.ay.l"
+#line 200 "lexer.ay.l"
 
 
 int yywrap_ay() {

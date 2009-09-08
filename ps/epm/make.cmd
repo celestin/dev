@@ -13,12 +13,12 @@ rem    echo Generating parser... C#
 rem    flex -olex.cs.tmp -8 -f lexer.cs.l
 rem    sed -f sed/cs.sed <lex.cs.tmp >lex.cs.cpp
 rem    del lex.cs.tmp
-rem
-rem    echo Generating parser... C/C++
-rem    flex -olex.c.tmp -8 -f lexer.c.l
-rem    sed -f sed/c.sed <lex.c.tmp >lex.c.cpp
-rem    del lex.c.tmp
-rem
+
+echo Generating parser... C/C++
+flex -olex.c.tmp -8 -f lexer.c.l
+sed -f sed/c.sed <lex.c.tmp >lex.c.cpp
+del lex.c.tmp
+
 rem    echo Generating parser... Java
 rem    flex -olex.j.tmp -8 -f lexer.j.l
 rem    sed -f sed/j.sed <lex.j.tmp >lex.j.cpp
@@ -88,12 +88,12 @@ rem    echo Generating parser... Python
 rem    flex -i -olex.py.tmp -8 -f lexer.py.l
 rem    sed -f sed/py.sed <lex.py.tmp >lex.py.cpp
 rem    del lex.py.tmp
-rem
-rem    echo Generating parser... Assembler
-rem    flex -olex.ay.tmp -8 -f lexer.ay.l
-rem    sed -f sed/ay.sed <lex.ay.tmp >lex.ay.cpp
-rem    del lex.ay.tmp
-rem
+
+echo Generating parser... Assembler
+flex -olex.ay.tmp -8 -f lexer.ay.l
+sed -f sed/ay.sed <lex.ay.tmp >lex.ay.cpp
+del lex.ay.tmp
+
 rem    echo Generating parser... Shell Script
 rem    flex -olex.sh.tmp -8 -f lexer.sh.l
 rem    sed -f sed/sh.sed <lex.sh.tmp >lex.sh.cpp
@@ -119,12 +119,11 @@ rem    flex -i -olex.rb.tmp -8 -f lexer.rb.l
 rem    sed -f sed/rb.sed <lex.rb.tmp >lex.rb.cpp
 rem    del lex.rb.tmp
 rem
-
-echo Generating parser... Windows Batch
-flex -i -olex.wb.tmp -8 -f lexer.wb.l
-sed -f sed/wb.sed <lex.wb.tmp >lex.wb.cpp
-del lex.wb.tmp
-
+rem    echo Generating parser... Windows Batch
+rem    flex -i -olex.wb.tmp -8 -f lexer.wb.l
+rem    sed -f sed/wb.sed <lex.wb.tmp >lex.wb.cpp
+rem    del lex.wb.tmp
+rem
 echo.
 
 

@@ -13,6 +13,7 @@
  * CAM  11-May-05    96 : Rationalised variables.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  18-Apr-2009  10422 : Removed old GS comment/string code and replaced with flex states and correct rule order.
+ * CAM  09-Sep-2009  10479 : Add PLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -41,13 +42,14 @@ int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
 int prev_com_line=-1;
+int ploc_count=0;
 
 set<int> sloc;
 set<int> operators;
 vector<char*> operands[255];
 
-int nsemi=0 ;           // Number of semi-colons
-int noperators=0 ;      // Total number of operators
+int nsemi=0;            // Number of semi-colons
+int noperators=0;       // Total number of operators
 int noperands=0;        // Total number of operands
 
 #define STORE_OPERATOR(X) operators.insert(X); noperators++;
@@ -102,8 +104,8 @@ SPTAB                   [ \t]
 \n                      {cpp_lineno++;}
 
 ^[ \t\v\f]*#            {COUNT(); BEGIN DEFINE;}
-<DEFINE>[^\\]\n         {COUNT(); cpp_lineno++; BEGIN 0;}
-<DEFINE>\n              {COUNT(); cpp_lineno++;}
+<DEFINE>[^\\]\n         {COUNT(); cpp_lineno++; ploc_count++; BEGIN 0;}
+<DEFINE>\n              {COUNT(); cpp_lineno++; ploc_count++;}
 <DEFINE>.               {;}
 
 \".*\\\"*\"             |
@@ -251,7 +253,7 @@ int yywrap() {
 void lexclear() {
   BEGIN 0 ;
   noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
+  j_comments=c_comments=cpp_comments=com_loc=ploc_count=0;
   prev_com_line=-1;
   cpp_lineno=nsemi=noperators=0;
 

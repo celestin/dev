@@ -9,6 +9,7 @@ s/nsemi/nsemi_c/g
 s/operands/operands_c/g
 s/operators/operators_c/g
 s/sloc/sloc_c/g
+s/ploc_count/ploc_count_c/g
 s/store_operand/store_operand_c/g
 s/yy_buffer_state/yy_buffer_state_c/g
 s/yy_load_buffer_state/yy_load_buffer_state_c/g

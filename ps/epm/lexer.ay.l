@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10402 : File created.
+ * CAM  09-Sep-2009  10479 : Added PLOC.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -34,6 +35,7 @@ int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
 int prev_com_line=-1;
+int ploc_count=0;
 
 set<int> sloc;
 set<int> operators;
@@ -52,7 +54,7 @@ void store_operand(char*);
 void remove_sloc(int);
 
 %}
-
+%x DEFINE
 
 NL                                      "\n"
 NOTNL                                   .
@@ -82,7 +84,11 @@ SPTAB                                   [ \t]
 ":"                                     {STORE_OPERATOR(SYM_COLON);COUNT();}
 "."                                     {STORE_OPERATOR(SYM_PERIOD);COUNT();}
 ","                                     {STORE_OPERATOR(SYM_COMMA);COUNT();}
-"#"                                     {STORE_OPERATOR(SYM_HASH);COUNT();}
+
+^[ \t\v\f]*#                            {COUNT(); BEGIN DEFINE;}
+<DEFINE>[^\\]\n                         {COUNT(); ay_lineno++; ploc_count++; BEGIN 0;}
+<DEFINE>\n                              {COUNT(); ay_lineno++; ploc_count++;}
+<DEFINE>.                               {;}
 
 "algebraic"                             {STORE_OPERATOR(KEY_ALGEBRAIC);COUNT();}
 "align"                                 {STORE_OPERATOR(KEY_ALIGN);COUNT();}
@@ -200,7 +206,7 @@ int yywrap() {
 void lexclear() {
   BEGIN 0;
   noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
+  j_comments=c_comments=cpp_comments=com_loc=ploc_count=0;
   prev_com_line=-1;
   ay_lineno=nsemi=noperators=0;
 

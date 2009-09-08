@@ -14,6 +14,7 @@ s/slnat/slnat_ay/g
 s/sltag/sltag_ay/g
 s/slhtm/slhtm_ay/g
 s/slscr/slscr_ay/g
+s/ploc_count/ploc_count_ay/g
 s/store_operand/store_operand_ay/g
 s/store_operator/store_operator_ay/g
 s/yy_buffer_state/yy_buffer_state_ay/g

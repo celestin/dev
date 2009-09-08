@@ -42,8 +42,8 @@ set<int> sloc;
 set<int> operators;
 vector<char*> operands[255];
 
-int nsemi=0 ;           // Number of semi-colons
-int noperators=0 ;      // Total number of operators
+int nsemi=0;            // Number of semi-colons
+int noperators=0;       // Total number of operators
 int noperands=0;        // Total number of operands
 
 #define STORE_OPERATOR(X) operators.insert(X); noperators++; COUNT()

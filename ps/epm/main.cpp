@@ -88,6 +88,7 @@
  * CAM  22-Aug-2009  10455 : Added Windows Batch language support.
  * CAM  22-Aug-2009  10477 : Version 1.19.0.0.
  * CAM  27-Aug-2009  10483 : Added Event logging.
+ * CAM  09-Sep-2009  10479 : Add PLOC for C/C++ and Assembler.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -183,7 +184,7 @@ extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noper
 extern set<int> sloc_cs,operators_cs;
 extern vector<char*> operands_cs[255];
 
-extern int j_comments_c,c_comments_c,cpp_comments_c,com_loc_c,nsemi_c,noperands_c,noperators_c;
+extern int j_comments_c,c_comments_c,cpp_comments_c,com_loc_c,nsemi_c,noperands_c,noperators_c,ploc_count_c;
 extern set<int> sloc_c,operators_c;
 extern vector<char*> operands_c[255];
 
@@ -249,7 +250,7 @@ extern int c_comments_py,cpp_comments_py,com_loc_py,nsemi_py,noperands_py,nopera
 extern set<int> sloc_py,operators_py;
 extern vector<char*> operands_py[255];
 
-extern int c_comments_ay,cpp_comments_ay,com_loc_ay,nsemi_ay,noperands_ay,noperators_ay;
+extern int c_comments_ay,cpp_comments_ay,com_loc_ay,nsemi_ay,noperands_ay,noperators_ay,ploc_count_ay;
 extern set<int> sloc_ay,operators_ay;
 extern vector<char*> operands_ay[255];
 
@@ -345,7 +346,8 @@ void setMetrics(int sfid, string filename) {
   switch (lang.getLanguage()) {
     case LANG_CPP:
     sloc = sloc_c.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_c);             // Halstead
+    met.set(MET(PLOC), ploc_count_c);       // Preprocessor Directive LOC
+    met.set(MET(LLOC), nsemi_c);
     met.set(MET(N1), noperators_c);
     met.set(MET(N1S), operators_c.size());
     met.set(MET(N2), noperands_c);
@@ -361,7 +363,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_CS:
     sloc = sloc_cs.size();                  // Source Lines of Code
-    met.set(MET(NSC), nsemi_cs);            // Halstead
+    met.set(MET(LLOC), nsemi_cs);
     met.set(MET(N1), noperators_cs);
     met.set(MET(N1S), operators_cs.size());
     met.set(MET(N2), noperands_cs);
@@ -377,7 +379,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_JAVA:
     sloc = sloc_j.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_j);             // Halstead
+    met.set(MET(LLOC), nsemi_j);
     met.set(MET(N1), noperators_j);
     met.set(MET(N1S), operators_j.size());
     met.set(MET(N2), noperands_j);
@@ -398,7 +400,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(SLOC_NAT), slnat_jsp.size());   // Source Lines containing native, server-side code
     met.set(MET(SLOC_SCR), slscr_jsp.size());   // Source Lines containing client-side script
 
-    met.set(MET(NSC), nsemi_jsp);               // Halstead
+    met.set(MET(LLOC), nsemi_jsp);
     met.set(MET(N1), noperators_jsp);
     met.set(MET(N1S), operators_jsp.size());
     met.set(MET(N2), noperands_jsp);
@@ -414,7 +416,7 @@ void setMetrics(int sfid, string filename) {
     case LANG_VB:
     sloc = sloc_vb.size();                  // Source Lines of Code
 
-    met.set(MET(N1), noperators_vb);        // Halstead
+    met.set(MET(N1), noperators_vb);
     met.set(MET(N1S), operators_vb.size());
     met.set(MET(N2), noperands_vb);
     for (i=0;i<255;i++) {
@@ -442,7 +444,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_ADA:
     sloc = sloc_ada.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_ada);             // Halstead
+    met.set(MET(LLOC), nsemi_ada);
     met.set(MET(N1), noperators_ada);
     met.set(MET(N1S), operators_ada.size());
     met.set(MET(N2), noperands_ada);
@@ -477,7 +479,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(SLOC_NAT), slnat_asp.size());   // Source Lines containing native, server-side code
     met.set(MET(SLOC_SCR), slscr_asp.size());   // Source Lines containing client-side script
 
-    met.set(MET(NSC), nsemi_asp);               // Halstead
+    met.set(MET(LLOC), nsemi_asp);
     met.set(MET(N1), noperators_asp);
     met.set(MET(N1S), operators_asp.size());
     met.set(MET(N2), noperands_asp);
@@ -496,7 +498,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(SLOC_NAT), slnat_php.size());   // Source Lines containing native, server-side code
     met.set(MET(SLOC_SCR), slscr_php.size());   // Source Lines containing client-side script
 
-    met.set(MET(NSC), nsemi_php);               // Halstead
+    met.set(MET(LLOC), nsemi_php);
     met.set(MET(N1), noperators_php);
     met.set(MET(N1S), operators_php.size());
     met.set(MET(N2), noperands_php);
@@ -511,7 +513,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_IDL:
     sloc = sloc_idl.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_idl);             // Halstead
+    met.set(MET(LLOC), nsemi_idl);
     met.set(MET(N1), noperators_idl);
     met.set(MET(N1S), operators_idl.size());
     met.set(MET(N2), noperands_idl);
@@ -526,7 +528,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_VHDL:
     sloc = sloc_vhdl.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_vhdl);             // Halstead
+    met.set(MET(LLOC), nsemi_vhdl);
     met.set(MET(N1), noperators_vhdl);
     met.set(MET(N1S), operators_vhdl.size());
     met.set(MET(N2), noperands_vhdl);
@@ -558,7 +560,7 @@ void setMetrics(int sfid, string filename) {
     case LANG_JT:
     sloc = sloc_jt.size();                     // Source Lines of Code
 
-    met.set(MET(NSC), nsemi_jt);               // Halstead
+    met.set(MET(LLOC), nsemi_jt);
     met.set(MET(N1), noperators_jt);
     met.set(MET(N1S), operators_jt.size());
     met.set(MET(N2), noperands_jt);
@@ -605,8 +607,9 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_ASM:
     sloc = sloc_ay.size();                     // Source Lines of Code
+    met.set(MET(PLOC), ploc_count_ay);         // Preprocessor Directive LOC
 
-    met.set(MET(NSC), nsemi_ay);               // Halstead
+    met.set(MET(LLOC), nsemi_ay);
     met.set(MET(N1), noperators_ay);
     met.set(MET(N1S), operators_ay.size());
     met.set(MET(N2), noperands_ay);
@@ -621,7 +624,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_SH:
     sloc = sloc_sh.size();                   // Source Lines of Code
-    met.set(MET(NSC), nsemi_sh);             // Halstead
+    met.set(MET(LLOC), nsemi_sh);
     met.set(MET(N1), noperators_sh);
     met.set(MET(N1S), operators_sh.size());
     met.set(MET(N2), noperands_sh);
@@ -636,7 +639,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_TXT:
     sloc = sloc_tx.size();                   // Source Lines of Code
-    met.set(MET(NSC), 0);
+    met.set(MET(LLOC), 0);
     met.set(MET(N1), 0);
     met.set(MET(N1S), 0);
     met.set(MET(N2), 0);
@@ -646,6 +649,7 @@ void setMetrics(int sfid, string filename) {
 
     case LANG_CSS:
     sloc = sloc_ss.size();                   // Source Lines of Code
+    met.set(MET(LLOC), nsemi_ss);             // Logical Lines
 
     met.set(MET(N1), noperators_ss);
     met.set(MET(N1S), operators_ss.size());
@@ -690,7 +694,7 @@ void setMetrics(int sfid, string filename) {
     break;
   }
 
-  if (!lang.hasLogicalLines()) met.set(MET(NSC), sloc);
+  if (!lang.hasLogicalLines()) met.set(MET(LLOC), sloc);
 
   met.set(MET(SLOC), sloc);
   met.set(MET(J_COM), j_com);
@@ -797,17 +801,17 @@ void calcAddDel(int sfid, char status, int metid, float mvalue) {
 
   if (status == 'A') {
     if (metid == SLOC) met.set(MET(ALOC), mvalue);
-    if (metid == NSC)  met.set(MET(ALLOC), mvalue);
+    if (metid == LLOC)  met.set(MET(ALLOC), mvalue);
   } else {
     if (metid == SLOC) met.set(MET(DLOC), mvalue);
-    if (metid == NSC)  met.set(MET(DLLOC), mvalue);
+    if (metid == LLOC)  met.set(MET(DLLOC), mvalue);
   }
 
   met.calculateChurn();
 
   if (metid == SLOC) {
     saveDb(sfid, met, MET(CLOC), MET(XLOC));
-  } else if (metid == NSC) {
+  } else if (metid == LLOC) {
     saveDb(sfid, met, MET(CLLOC), MET(XLLOC));
   }
 }
@@ -1414,7 +1418,7 @@ int main(int argc, char* argv[]) {
       strcat_s(sql, QUERY_MAX, "FROM sourcefile sf1, comparefile cf, sourcemetric sm ");
       strcat_s(sql, QUERY_MAX, "WHERE sf1.sfid = cf.sfid ");
       strcat_s(sql, QUERY_MAX, "AND cf.sfid = sm.sfid ");
-      sprintf_s(mid, QUERY_MAX, "AND sm.mid IN (%d,%d) ", SLOC, NSC);
+      sprintf_s(mid, QUERY_MAX, "AND sm.mid IN (%d,%d) ", SLOC, LLOC);
       strcat_s(sql, QUERY_MAX, mid);
       strcat_s(sql, QUERY_MAX, "AND cf.status in ('A','D') ");
 

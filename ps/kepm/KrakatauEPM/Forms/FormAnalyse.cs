@@ -7,13 +7,14 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   152 : Added to Source Safe.
- * CAM  26-Mar-06   213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
- * CAM  19-Jul-06   284 : Add Defensive checks for style.css and metrics.js.
- * CAM  22-Jul-06   291 : Add some tooltips and help around the reporting options.
- * CAM  29-May-08   364 : Added defaulting of MySQL options.
- * CAM  30-May-08   366 : Set UseSystemPasswordChar to true.
+ * Who  When         Why
+ * CAM  11-Oct-05    152 : Added to Source Safe.
+ * CAM  26-Mar-06    213 : Remove Analysis options from Windows Registry (now parse epm.cmd file).
+ * CAM  19-Jul-06    284 : Add Defensive checks for style.css and metrics.js.
+ * CAM  22-Jul-06    291 : Add some tooltips and help around the reporting options.
+ * CAM  29-May-08    364 : Added defaulting of MySQL options.
+ * CAM  30-May-08    366 : Set UseSystemPasswordChar to true.
+ * CAM  14-Sep-2009  10484 : Ensure logging is based on chkLog.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -264,42 +265,42 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
         tw.Write(" -f2 \"" + _oldProject.ProjectFile.FullName + "\"");
       }
 
-      if (this.chkH2.Checked)
+      if (chkH2.Checked)
       {
         tw.Write(" -h2 \"" + txtH2.Text + "\"");
       }
 
-      if (this.chkCSV.Checked)
+      if (chkCSV.Checked)
       {
         tw.Write(" -c \"" + txtCSV.Text + "\"");
       }
 
-      if (this.chkXML.Checked)
+      if (chkXML.Checked)
       {
         tw.Write(" -x \"" + txtXML.Text + "\"");
       }
 
-      if (this.chkXML.Checked)
+      if (chkLog.Checked)
       {
         tw.Write(" -l \"" + txtLog.Text + "\"");
       }
 
-      if (this.chkMetSet.Checked)
+      if (chkMetSet.Checked)
       {
         tw.Write(" -m \"" + cmbMetSet.Text + "\"");
       }
 
-      if (this.chkMyServer.Checked)
+      if (chkMyServer.Checked)
       {
         tw.Write(" -s " + txtMyServer.Text);
       }
 
-      if (this.chkMyUser.Checked)
+      if (chkMyUser.Checked)
       {
         tw.Write(" -u " + txtMyUser.Text);
       }
 
-      if (this.chkMyPwd.Checked)
+      if (chkMyPwd.Checked)
       {
         tw.Write(" -p " + txtMyPwd.Text);
       }

@@ -14,6 +14,7 @@
  * CAM  02-Nov-06    117 : Renumber Metric IDs to suit new SLOC* metrics.
  * CAM  24-Apr-08    357 : Correctly number Metric IDs.
  * CAM  17-Apr-2009  10433 : Added Churn metrics.
+ * CAM  14-Sep-2009  10479 : Added PLOC metric.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -145,7 +146,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       f["MetricDef"] = md;
       _mets1.Add(f["id"], f);
 
-      md = new MetricDef(123, this.chkMet2, this.chkLower2, this.txtLower2, this.chkUpper2, this.txtUpper2, this._msi.MetricSet);
+      md = new MetricDef(124, this.chkMet2, this.chkLower2, this.txtLower2, this.chkUpper2, this.txtUpper2, this._msi.MetricSet);
       f = new Hashtable();
       f["id"] = md.Id;
       f["name"] = "CHG_SLOC";
@@ -162,38 +163,39 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       AddMetric(_mets1, grpFileMet, 103, "SLOC_TAG");
       AddMetric(_mets1, grpFileMet, 104, "SLOC_HTM");
       AddMetric(_mets1, grpFileMet, 105, "SLOC_SCR");
-      AddMetric(_mets1, grpFileMet, 106, "LLOC");
-      AddMetric(_mets1, grpFileMet, 107, "N1");
-      AddMetric(_mets1, grpFileMet, 108, "N2");
-      AddMetric(_mets1, grpFileMet, 109, "N1S");
-      AddMetric(_mets1, grpFileMet, 110, "N2S");
-      AddMetric(_mets1, grpFileMet, 111, "N");
-      AddMetric(_mets1, grpFileMet, 112, "NS");
-      AddMetric(_mets1, grpFileMet, 113, "V");
-      AddMetric(_mets1, grpFileMet, 114, "D");
-      AddMetric(_mets1, grpFileMet, 115, "E");
-      AddMetric(_mets1, grpFileMet, 116, "B");
-      AddMetric(_mets1, grpFileMet, 117, "J_COM");
-      AddMetric(_mets1, grpFileMet, 118, "C_COM");
-      AddMetric(_mets1, grpFileMet, 119, "CPP_COM");
-      AddMetric(_mets1, grpFileMet, 120, "COM_LOC");
-      AddMetric(_mets1, grpFileMet, 121, "BYTES");
-      AddMetric(_mets1, grpFileMet, 122, "NFILE");
+      AddMetric(_mets1, grpFileMet, 106, "PLOC");
+      AddMetric(_mets1, grpFileMet, 107, "LLOC");
+      AddMetric(_mets1, grpFileMet, 108, "N1");
+      AddMetric(_mets1, grpFileMet, 109, "N2");
+      AddMetric(_mets1, grpFileMet, 110, "N1S");
+      AddMetric(_mets1, grpFileMet, 111, "N2S");
+      AddMetric(_mets1, grpFileMet, 112, "N");
+      AddMetric(_mets1, grpFileMet, 113, "NS");
+      AddMetric(_mets1, grpFileMet, 114, "V");
+      AddMetric(_mets1, grpFileMet, 115, "D");
+      AddMetric(_mets1, grpFileMet, 116, "E");
+      AddMetric(_mets1, grpFileMet, 117, "B");
+      AddMetric(_mets1, grpFileMet, 118, "J_COM");
+      AddMetric(_mets1, grpFileMet, 119, "C_COM");
+      AddMetric(_mets1, grpFileMet, 120, "CPP_COM");
+      AddMetric(_mets1, grpFileMet, 121, "COM_LOC");
+      AddMetric(_mets1, grpFileMet, 122, "BYTES");
+      AddMetric(_mets1, grpFileMet, 123, "NFILE");
 
-      AddMetric(_mets2, grpChgMet, 124, "DEL_SLOC");
-      AddMetric(_mets2, grpChgMet, 125, "ADD_SLOC");
-      AddMetric(_mets2, grpChgMet, 126, "CRN_SLOC");
-      AddMetric(_mets2, grpChgMet, 127, "CHG_LLOC");
-      AddMetric(_mets2, grpChgMet, 128, "DEL_LLOC");
-      AddMetric(_mets2, grpChgMet, 129, "ADD_LLOC");
-      AddMetric(_mets2, grpChgMet, 130, "CRN_LLOC");
-      AddMetric(_mets2, grpChgMet, 131, "CHG_FILE");
-      AddMetric(_mets2, grpChgMet, 132, "DEL_FILE");
-      AddMetric(_mets2, grpChgMet, 133, "ADD_FILE");
-      AddMetric(_mets2, grpChgMet, 134, "CRN_FILE");
+      AddMetric(_mets2, grpChgMet, 125, "DEL_SLOC");
+      AddMetric(_mets2, grpChgMet, 126, "ADD_SLOC");
+      AddMetric(_mets2, grpChgMet, 127, "CRN_SLOC");
+      AddMetric(_mets2, grpChgMet, 128, "CHG_LLOC");
+      AddMetric(_mets2, grpChgMet, 129, "DEL_LLOC");
+      AddMetric(_mets2, grpChgMet, 130, "ADD_LLOC");
+      AddMetric(_mets2, grpChgMet, 131, "CRN_LLOC");
+      AddMetric(_mets2, grpChgMet, 132, "CHG_FILE");
+      AddMetric(_mets2, grpChgMet, 133, "DEL_FILE");
+      AddMetric(_mets2, grpChgMet, 134, "ADD_FILE");
+      AddMetric(_mets2, grpChgMet, 135, "CRN_FILE");
 
-      SetLayout(this._mets1, this.grpFileMet);
-      SetLayout(this._mets2, this.grpChgMet);
+      SetLayout(_mets1, this.grpFileMet);
+      SetLayout(_mets2, this.grpChgMet);
 
       this.btnOK.TabIndex = _tabIndex++;
       this.btnCancel.TabIndex = _tabIndex++;

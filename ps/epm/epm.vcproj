@@ -1248,6 +1248,10 @@
 				</File>
 			</Filter>
 		</Filter>
+		<File
+			RelativePath="..\kepm\KrakatauEPM\Volcano.ico"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

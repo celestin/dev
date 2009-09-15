@@ -294,6 +294,8 @@ and test <b>EPM</b> on your source code today.</p>
  | 
 <a href="javascript:showMetricHelp('../','NFILE','Number of Files','The total number of files in the project.','');">NFILE</a>
  | 
+<a href="javascript:showMetricHelp('../','PLOC','Preprocessor Directive Lines of Code','The number of preprocessor directive lines in the project, typically those that begin with a #.  Preprocessor Directive LOC is included as part of SLOC and LOC, but identified separately at the project level for clarity.','');">PLOC</a>
+ | 
 <a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
  | 
 <a href="javascript:showMetricHelp('../','SLOC_HTM','Source HTML Lines of Code','The number of lines of code in the project containing HTML.','');">SLOC_HTM</a>
@@ -326,17 +328,19 @@ and test <b>EPM</b> on your source code today.</p>
  | 
 <a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.','');">LOC</a>
  | 
-<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
- | 
 <a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','N = N1 + N2');">N</a>
  | 
-<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
  | 
 <a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
  | 
-<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
  | 
 <a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','PLOC','Preprocessor Directive Lines of Code','The number of preprocessor directive lines in the file, typically those that begin with a #.  Preprocessor Directive LOC is included as part of SLOC and LOC, but identified separately at the filelevel for clarity.','');">PLOC</a>
  | 
 <a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
  | 
@@ -424,7 +428,7 @@ and test <b>EPM</b> on your source code today.</p>
     </TR>
     <TR>
       <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
-      <B>23 Aug 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">SourceCodeMetrics.com</span><BR><BR></TD>
+      <B>15 Sep 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">SourceCodeMetrics.com</span><BR><BR></TD>
     </TR>
   </TABLE>
 </BODY>

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  27-Aug-2009  10483 : File created.
+ * CAM  15-Sep-2009  10483 : Check for logfile before opening in logEvent.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <time.h>
@@ -40,6 +41,8 @@ void openLogfile()
 
 void logEvent(char* message)
 {
+  if (!logfilename) return;
+
   logfile.open(logfilename, ios::app);
   logDateTime();
   logfile << message << endl;

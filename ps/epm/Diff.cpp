@@ -14,6 +14,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  24-Apr-08    359 : Added WSTrim to correct LLOC Diff errors.
  * CAM  09-Jul-2009  10457 : Optimise getLine.
+ * CAM  13-Oct-2009  10493 : Reset theMultiLine between comparing file1 and file2.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -390,6 +391,8 @@ void Diff::compare()
       getLine(file1, currString);
     }
 
+    theMultiLine = false;
+
     avail_size = 1000;
     int *second= (int*) malloc(avail_size*sizeof(int));
     int ssize = 0;
@@ -472,6 +475,7 @@ void Diff::getLine(FILE *input, char *&currline)
   else
   {
     getLineCR(input, currline);
+    if (currline) cout << currline << endl;
   }
 
   if (currline) WSTrim(currline);

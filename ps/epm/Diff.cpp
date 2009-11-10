@@ -15,6 +15,7 @@
  * CAM  24-Apr-08    359 : Added WSTrim to correct LLOC Diff errors.
  * CAM  09-Jul-2009  10457 : Optimise getLine.
  * CAM  13-Oct-2009  10493 : Reset theMultiLine between comparing file1 and file2.
+ * CAM  10-Nov-2009  10501 : Removed debug output.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -475,7 +476,6 @@ void Diff::getLine(FILE *input, char *&currline)
   else
   {
     getLineCR(input, currline);
-    if (currline) cout << currline << endl;
   }
 
   if (currline) WSTrim(currline);

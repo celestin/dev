@@ -1,17 +1,16 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004,2009 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
- *
- * XML Configuration Parser
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  11-Oct-05   152 : Added to Source Safe.
- * CAM  13-Jun-06   258 : Added reading/writing of Metric Sets.
- * CAM  12-Jul-06   282 : Ensure renames to Sets are reflected in the _sets hashtable.
- * CAM  02-Nov-06   117 : No real change.
+ * Who  When         Why
+ * CAM  11-Oct-05    152 : Added to Source Safe.
+ * CAM  13-Jun-06    258 : Added reading/writing of Metric Sets.
+ * CAM  12-Jul-06    282 : Ensure renames to Sets are reflected in the _sets hashtable.
+ * CAM  02-Nov-06    117 : No real change.
+ * CAM  11-Nov-2009  10502 : Corrected obselete calls.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -25,10 +24,12 @@ using SourceCodeMetrics.Krakatau.Kepm.Win32;
 namespace SourceCodeMetrics.Krakatau.Kepm.Config
 {
   /// <summary>
-  /// Summary description for XmlConfig.
+  /// EPM.XML Configuration Parser.
   /// </summary>
   public class XmlConfig
   {
+    public static readonly string EpmConfig = "epm.xml";
+
     private static XmlConfig _xmlConfig = null;
     private Hashtable _config;
     private SortedList _list;
@@ -58,18 +59,15 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
     public void ParseFile()
     {
       XmlTextReader txtreader = null;
-      XmlValidatingReader reader = null;
+      XmlReader reader = null;
       IEnumerator el, ef, ee = null;
 
       try
       {
         // Load the reader with the data file and ignore all whitespace nodes.
-        txtreader = new XmlTextReader(Prefs.Preferences.InstallDir.FullName + "epm.xml");
+        txtreader = new XmlTextReader(Prefs.Preferences.InstallDir.FullName + EpmConfig);
         txtreader.WhitespaceHandling = WhitespaceHandling.None;
-
-        // Implement the validating reader over the text reader.
-        reader = new XmlValidatingReader(txtreader);
-        reader.ValidationType = ValidationType.None;
+        reader = XmlReader.Create(txtreader.GetRemainder());
 
         _doc.Load(reader);
 

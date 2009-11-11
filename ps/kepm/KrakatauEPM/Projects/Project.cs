@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004,2009 Power Software
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -14,10 +14,12 @@
  * CAM  14-Jun-06    268 : Better error handling on files.
  * CAM  11-Dec-07    327 : Added MaxProjectDbName and parse DbName more selectively in Databasename property.
  * CAM  22-Aug-2009  10461 : Added Check/Uncheck All box.
+ * CAM  11-Nov-2009  10502 : Removed use of CMD file to create filelist (if the file still exists, we read it for smooth migration).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -33,86 +35,220 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
   {
     public static readonly int MaxProjectDbName = 30;
 
-    private FileInfo _ProjectFile = null;
+    #region Member vars
+    private FileInfo _projectFile = null;
+    private ProjectOptions _projectOptions = null;
     private FileInfo _fBuildFile = null;
     private FileInfo _fAnalysisFile = null;
-    private String _sProjectTitle = null;
-    private DateTime _dSnapshot;
-    private String _sBasedir = null;
-    private bool _bIsNew = false;
-    private bool _bIsOld = false;
+    private String _projectTitle = null;
+    private DateTime _snapshotDate;
+    private String _basedir = null;
+    private bool _isNew = false;
+    private bool _isOld = false;
+    #endregion
 
+    #region Properties
+    public FileInfo ProjectFile
+    {
+      get
+      {
+        return _projectFile;
+      }
+      set
+      {
+        _projectFile = value;
+      }
+    }
+    public FileInfo ProjectBuildFile
+    {
+      get
+      {
+        if (_projectFile == null)
+        {
+          return null;
+        }
+        if (_fBuildFile == null)
+        {
+          _fBuildFile = new FileInfo(_projectFile.FullName + ".cmd");
+        }
+        return _fBuildFile;
+      }
+    }
+
+    public FileInfo ProjectAnalysisFile
+    {
+      get
+      {
+        if (_fAnalysisFile == null)
+        {
+          _fAnalysisFile = new FileInfo(_projectFile.FullName + ".epm.cmd");
+        }
+        return _fAnalysisFile;
+      }
+    }
+
+    public string Title
+    {
+      get
+      {
+        return _projectTitle;
+      }
+      set
+      {
+        _projectTitle = value.Trim();
+      }
+    }
+
+    public bool NewProject
+    {
+      get
+      {
+        return this._isNew;
+      }
+      set
+      {
+        this._isNew = value;
+        this._isOld = false;
+      }
+    }
+    public bool OldProject
+    {
+      get
+      {
+        return this._isOld;
+      }
+      set
+      {
+        this._isOld = value;
+        this._isNew = false;
+      }
+    }
+
+    public string Basedir
+    {
+      get
+      {
+        return _basedir;
+      }
+      set
+      {
+        _basedir = value.Trim();
+        if (!_basedir.Substring(_basedir.Length - 1, 1).Equals("\\"))
+        {
+          _basedir += "\\";
+        }
+      }
+    }
+
+    public string Databasename
+    {
+      get
+      {
+        char[] name = this.Title.Trim().ToLower().ToCharArray();
+        string rval = "epm_";
+
+        for (int i = 0; i < name.Length && i < MaxProjectDbName; i++)
+        {
+          if ((name[i] >= 'a') && (name[i] <= 'z'))
+          {
+            rval += name[i];
+          }
+          else if ((name[i] >= '0') && (name[i] <= '9'))
+          {
+            rval += name[i];
+          }
+          else if (name[i] == ' ')
+          {
+            rval += "_";
+          }
+        }
+
+        while (rval.IndexOf("__") >= 0)
+        {
+          rval = rval.Replace("__", "_");
+        }
+
+        return rval;
+      }
+    }
+
+    public DateTime Snapshot
+    {
+      get
+      {
+        return _snapshotDate;
+      }
+      set
+      {
+        _snapshotDate = value;
+      }
+    }
+    #endregion
+
+    #region Methods
     public Project()
     {
-      _sProjectTitle = "";
-      _dSnapshot = System.DateTime.Today;
-      _sBasedir = "";
-      _bIsNew = false;
-      _bIsOld = false;
+      _projectTitle = "";
+      _snapshotDate = System.DateTime.Today;
+      _basedir = "";
+      _isNew = false;
+      _isOld = false;
+
+      _projectOptions = new ProjectOptions(this);
+
     }
 
     public Project(String sProjectFile)
     {
-      _ProjectFile = new FileInfo(sProjectFile);
+      _projectFile = new FileInfo(sProjectFile);
+      _projectOptions = new ProjectOptions(this);
+
+      _projectOptions.ReadOptions();
     }
 
     public bool BuildFile(CheckedListBox.CheckedItemCollection checkedItems)
     {
-      string extList = "";
-      Ext e;
-      int nChecked = 0;
-      foreach (object fileExt in checkedItems)
+      ExtList list = new ExtList();
+      foreach (Ext fileExt in checkedItems)
       {
-        if (fileExt is Ext)
-        {
-          e = (Ext)fileExt;
-          extList += (" *." + e.Extension);
-          nChecked++;
-        }
+        list.Add(fileExt);
       }
 
-      if ((_ProjectFile == null) || "".Equals(_sProjectTitle) ||
-          "".Equals(_sBasedir) || nChecked == 0)
+      if ((_projectFile == null) || "".Equals(_projectTitle) ||
+          "".Equals(_basedir) || list.Count == 0)
       {
         return false;
       }
 
-      // Create a Project Command file
-      TextWriter tw = new StreamWriter(this.ProjectBuildFile.FullName, false);
-      tw.WriteLine("@echo off");
-      tw.WriteLine(String.Format("rem Created by {0} {1}", KrakatauEPM.AssemblyProduct, KrakatauEPM.AssemblyVersion));
-      tw.WriteLine();
-      tw.WriteLine(String.Format("set FILELIST=\"{0}\"", _ProjectFile.FullName));
-      tw.WriteLine(String.Format("set BASEDIR={0}", _sBasedir));
-      tw.WriteLine();
-      tw.WriteLine(String.Format("echo {0} >%FILELIST%", _sProjectTitle));
-      tw.WriteLine(String.Format("echo {0} >>%FILELIST%", _dSnapshot.ToShortDateString()));
-      tw.WriteLine("echo %BASEDIR% >>%FILELIST%");
-      tw.WriteLine();
-      tw.WriteLine(_sBasedir.Substring(0, 1) + ":");
-      tw.WriteLine("cd \"%BASEDIR%\"");
-      tw.WriteLine("dir " + extList + " /s /b /a-d >>%FILELIST%");
-      tw.Close();
+      _projectOptions.Extensions = list;
 
-      // Execute the Command file to create our Project text file
-      Process p = new Process();
-      p.StartInfo.RedirectStandardOutput = false;
-      p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-      p.StartInfo.UseShellExecute = true;
-      p.StartInfo.FileName = this.ProjectBuildFile.FullName;
-      p.Start();
-      p.WaitForExit();
+      _projectOptions.SaveOptions();
+      // TODO - Write the actual project filelist!
 
       return true;
     }
 
-    private string GetExtensions()
+    private string[] GetExtensions()
+    {
+      if (_projectFile == null) return null;
+
+      // Preferably, use new Options File
+      if (_projectOptions.OptionsFile.Exists)
+      {
+        _projectOptions.ReadOptions();
+        return _projectOptions.Extensions.ConvertToArray();
+      }
+
+      // If old Build File exists, read from this
+      if (ProjectBuildFile.Exists) return GetBuildFileExtensions();
+
+      return null;
+    }
+
+    private string[] GetBuildFileExtensions()
     {
       TextReader tr = null;
-      if (_ProjectFile == null || !this.ProjectBuildFile.Exists)
-      {
-        return null;
-      }
+
       try
       {
         tr = new StreamReader(this.ProjectBuildFile.FullName, false);
@@ -135,7 +271,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
           {
             line = line.Substring(0, p);
           }
-          return line;
+
+          char[] splitter = { ' ' };
+          string[] exts = line.Trim().Split(splitter);
+          return exts;
         }
       }
       tr.Close();
@@ -144,10 +283,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 
     public CheckState ReadExtensions(CheckedListBox clbFileTypes)
     {
-      string extList = this.GetExtensions();
-      if (extList == null) return CheckState.Unchecked;
-      char[] splitter = { ' ' };
-      string[] exts = extList.Trim().Split(splitter);
+      string[] exts = GetExtensions();
+      if (exts == null) return CheckState.Unchecked;
+
       Ext ex;
       int i;
       string e;
@@ -196,7 +334,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     public Arguments GetAnalysisOptions()
     {
       this.ProjectAnalysisFile.Refresh();
-      if (_ProjectFile == null || !this.ProjectAnalysisFile.Exists)
+      if (_projectFile == null || !this.ProjectAnalysisFile.Exists)
       {
         return null;
       }
@@ -227,12 +365,12 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 
     public bool ReadFile()
     {
-      if (_ProjectFile != null)
+      if (_projectFile != null)
       {
         TextReader re = null;
         try
         {
-          re = new StreamReader(_ProjectFile.FullName);
+          re = new StreamReader(_projectFile.FullName);
         }
         catch
         {
@@ -275,158 +413,23 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 
     public override String ToString()
     {
-      return "Project {" + _sProjectTitle +
-        "} SnapshotDate {" + _dSnapshot.ToShortDateString() +
-        "} Basedir {" + _sBasedir + "}";
-    }
-
-    public FileInfo ProjectFile
-    {
-      get
-      {
-        return _ProjectFile;
-      }
-      set
-      {
-        _ProjectFile = value;
-      }
-    }
-
-    public FileInfo ProjectBuildFile
-    {
-      get
-      {
-        if (_ProjectFile == null)
-        {
-          return null;
-        }
-        if (_fBuildFile == null)
-        {
-          _fBuildFile = new FileInfo(_ProjectFile.FullName + ".cmd");
-        }
-        return _fBuildFile;
-      }
-    }
-
-    public FileInfo ProjectAnalysisFile
-    {
-      get
-      {
-        if (_fAnalysisFile == null)
-        {
-          _fAnalysisFile = new FileInfo(_ProjectFile.FullName + ".epm.cmd");
-        }
-        return _fAnalysisFile;
-      }
-    }
-
-    public string Title
-    {
-      get
-      {
-        return _sProjectTitle;
-      }
-      set
-      {
-        _sProjectTitle = value.Trim();
-      }
+      return "Project {" + _projectTitle +
+        "} SnapshotDate {" + _snapshotDate.ToShortDateString() +
+        "} Basedir {" + _basedir + "}";
     }
 
     public void ParseSnapshot(string value)
     {
       try
       {
-        _dSnapshot = DateTime.Parse(value).Date;
+        _snapshotDate = DateTime.Parse(value).Date;
       }
       catch (System.FormatException)
       {
-        _dSnapshot = DateTime.Today.Date;
+        _snapshotDate = DateTime.Today.Date;
       }
     }
 
-    public DateTime Snapshot
-    {
-      get
-      {
-        return _dSnapshot;
-      }
-      set
-      {
-        _dSnapshot = value;
-      }
-    }
-
-    public string Basedir
-    {
-      get
-      {
-        return _sBasedir;
-      }
-      set
-      {
-        _sBasedir = value.Trim();
-        if (!_sBasedir.Substring(_sBasedir.Length - 1, 1).Equals("\\"))
-        {
-          _sBasedir += "\\";
-        }
-      }
-    }
-
-    public string Databasename
-    {
-      get
-      {
-        char[] name = this.Title.Trim().ToLower().ToCharArray();
-        string rval = "epm_";
-
-        for (int i = 0; i < name.Length && i < MaxProjectDbName; i++)
-        {
-          if ((name[i] >= 'a') && (name[i] <= 'z'))
-          {
-            rval += name[i];
-          }
-          else if ((name[i] >= '0') && (name[i] <= '9'))
-          {
-            rval += name[i];
-          }
-          else if (name[i] == ' ')
-          {
-            rval += "_";
-          }
-        }
-
-        while (rval.IndexOf("__") >= 0)
-        {
-          rval = rval.Replace("__", "_");
-        }
-
-        return rval;
-      }
-    }
-
-    public bool NewProject
-    {
-      get
-      {
-        return this._bIsNew;
-      }
-      set
-      {
-        this._bIsNew = value;
-        this._bIsOld = false;
-      }
-    }
-    public bool OldProject
-    {
-      get
-      {
-        return this._bIsOld;
-      }
-      set
-      {
-        this._bIsOld = value;
-        this._bIsNew = false;
-      }
-    }
+    #endregion
   }
 }

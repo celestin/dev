@@ -48,6 +48,7 @@
       <DependentUpon>FormAnalyse.cs</DependentUpon>
     </Compile>
     <Compile Include="Projects\Arguments.cs" />
+    <Compile Include="Projects\ProjectOptions.cs" />
     <Compile Include="Threading\AsyncOperation.cs" />
     <Compile Include="Config\Ext.cs" />
     <Compile Include="Forms\FormKrakatauEPM.cs">

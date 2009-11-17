@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2009 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM entry point
@@ -89,6 +89,7 @@
  * CAM  22-Aug-2009  10477 : Version 1.19.0.0.
  * CAM  27-Aug-2009  10483 : Added Event logging.
  * CAM  09-Sep-2009  10479 : Add PLOC for C/C++ and Assembler.
+ * CAM  17-Nov-2009  10503 : Changed to PowerSoftware.com.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1267,7 +1268,7 @@ int main(int argc, char* argv[]) {
   char eventMsg[4096];
 
   cout << "\nEssential Project Manager (EPM) Version " << EPM_VERSION << "\n"
-       << "Copyright (c) 2004,2009 SourceCodeMetrics.com.  All rights reserved.\n\n"
+       << "Copyright (c) 2004,2009 PowerSoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
   char szAppPath[MAX_PATH];

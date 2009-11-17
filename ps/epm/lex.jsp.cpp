@@ -23857,7 +23857,7 @@ char *yytext_jsp;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 SourceCodeMetrics.com
+ * Copyright (c) 2004,2008 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * JSP Parser

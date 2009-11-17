@@ -8519,7 +8519,7 @@ char *yytext_rb;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2009 Power Software
+ * Copyright (c) 2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Ruby parser

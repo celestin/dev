@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+-- # Essential Project Manager (EPM)
+-- # Copyright (c) 2005,2009 PowerSoftware.com
+-- # Author Craig McKay <craig.mckay@powersoftware.com>
+-- # 
 -- # EPM XML Specification
--- #
--- # $Header: /cspm/epm.dtd 3     29/03/05 23:15 Craig $
--- #
--- # $Log: /cspm/epm.dtd $
 -- # 
--- # 3     29/03/05 23:15 Craig
--- # 85
+-- # $Id$
 -- # 
--- # 2     29/03/05 22:10 Craig
--- # 
--- # Copyright 2005 Craig McKay <craig@southesk.com>
--- #
--- # $Revision: 3 $ Amendment History
--- #
--- # Who  When       Why
--- # CAM  29-Mar-05    85 : file created.
+-- # Who  When         Why
+-- # CAM  29-Mar-2005  85 : File created.
 -->
 <!ENTITY % Datetime "CDATA">
 <!ENTITY % Text     "CDATA">

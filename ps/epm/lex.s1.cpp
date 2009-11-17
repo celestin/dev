@@ -27070,7 +27070,7 @@ char *yytext_s1;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004-2005 Power Software
+ * Copyright (c) 2004-2005 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * PL/SQL parser

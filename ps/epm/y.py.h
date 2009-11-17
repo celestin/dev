@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2009 SourceCodeMetrics.com
+ * Copyright (c) 2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Python Parser lexemes

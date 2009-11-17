@@ -11638,7 +11638,7 @@ char *yytext_jt;
 #define INITIAL 0
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2009 Power Software
+ * Copyright (c) 2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * JavaScript parser

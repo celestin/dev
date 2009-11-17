@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2009 SourceCodeMetrics.com
+ * Copyright (c) 2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * EPM Version Number
@@ -12,6 +12,7 @@
  * CAM  15-Sep-2009  10490 : Version 1.19.2.0.
  * CAM  27-Oct-2009  10499 : Version 1.19.3.0.
  * CAM  10-Nov-2009  10501 : Version 1.19.3.1 for Intel to test.
+ * CAM  17-Nov-2009  10503 : Version 1.19.4.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#define EPM_VERSION "1.19.3.1"
+#define EPM_VERSION "1.19.4.0"

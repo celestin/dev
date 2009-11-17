@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2009 SourceCodeMetrics.com
+ * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * HTML Reporting
@@ -246,7 +246,7 @@ void HTMLReport::createFrameset() {
         << "  <div class=\"colmid\">" << endl
         << "    <div class=\"colleft\">" << endl;
 
-  frame << "      <div class=\"col1\"><p class=\"pstext\">Copyright &copy; 2004,2009 <b>SourceCodeMetrics.com</b></p></div>" << endl
+  frame << "      <div class=\"col1\"><p class=\"pstext\">Copyright &copy; 2004,2009 <b>PowerSoftware.com</b></p></div>" << endl
         << "      <div class=\"col2\"><ul>" << endl
         << "        <li><a class=top href=\"http://www.powersoftware.com/epm/proof_ada.pdf\" target=\"_blank\">Proof of Results</a></li>" << endl
         << "        <li><a class=top href=\"http://www.powersoftware.com/epm/UserGuide.pdf\" target=\"_blank\">EPM User Guide</a></li>" << endl

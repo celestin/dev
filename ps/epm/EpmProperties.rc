@@ -53,8 +53,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,19,3,1
- PRODUCTVERSION 1,19,3,1
+ FILEVERSION 1,19,4,0
+ PRODUCTVERSION 1,19,4,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -69,15 +69,14 @@ BEGIN
     BEGIN
         BLOCK "080904b0"
         BEGIN
-            VALUE "Comments", "TEST RELEASE FOR INTEL - ISSUE #10501"
             VALUE "CompanyName", "Power Software"
             VALUE "FileDescription", "Essential Project Manager (EPM)"
-            VALUE "FileVersion", "1, 19, 3, 1"
+            VALUE "FileVersion", "1, 19, 4, 0"
             VALUE "InternalName", "epm"
-            VALUE "LegalCopyright", "Copyright (c) 2009 SourceCodeMetrics.com"
+            VALUE "LegalCopyright", "Copyright (c) 2009 PowerSoftware.com"
             VALUE "OriginalFilename", "epm.exe"
             VALUE "ProductName", "Power Software Essential Project Manager (EPM)"
-            VALUE "ProductVersion", "1, 19, 3, 1"
+            VALUE "ProductVersion", "1, 19, 4, 0"
         END
     END
     BLOCK "VarFileInfo"

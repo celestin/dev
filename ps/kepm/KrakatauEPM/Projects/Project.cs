@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004,2009 Power Software
+ * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -15,6 +15,7 @@
  * CAM  11-Dec-07    327 : Added MaxProjectDbName and parse DbName more selectively in Databasename property.
  * CAM  22-Aug-2009  10461 : Added Check/Uncheck All box.
  * CAM  11-Nov-2009  10502 : Removed use of CMD file to create filelist (if the file still exists, we read it for smooth migration).
+ * CAM  17-Nov-2009  10502 : Modified to support new Project Options (.kepm) file.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -42,7 +43,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     private FileInfo _fAnalysisFile = null;
     private String _projectTitle = null;
     private DateTime _snapshotDate;
-    private String _basedir = null;
+    private DirectoryInfo _basedir = null;
     private bool _isNew = false;
     private bool _isOld = false;
     #endregion
@@ -58,6 +59,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       {
         _projectFile = value;
       }
+    }
+    public ProjectOptions ProjectOptions
+    {
+      get { return _projectOptions; }
+      set { _projectOptions = value; }
     }
     public FileInfo ProjectBuildFile
     {
@@ -124,7 +130,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       }
     }
 
-    public string Basedir
+    public DirectoryInfo Basedir
     {
       get
       {
@@ -132,11 +138,20 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       }
       set
       {
-        _basedir = value.Trim();
-        if (!_basedir.Substring(_basedir.Length - 1, 1).Equals("\\"))
+        _basedir = value;
+      }
+    }
+
+    public string TidyBasedir
+    {
+      get
+      {
+        string rval = _basedir.FullName.Trim();
+        if (!rval.EndsWith("\\"))
         {
-          _basedir += "\\";
+          rval += "\\";
         }
+        return rval;
       }
     }
 
@@ -190,12 +205,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     {
       _projectTitle = "";
       _snapshotDate = System.DateTime.Today;
-      _basedir = "";
       _isNew = false;
       _isOld = false;
 
       _projectOptions = new ProjectOptions(this);
-
     }
 
     public Project(String sProjectFile)
@@ -209,6 +222,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     public bool BuildFile(CheckedListBox.CheckedItemCollection checkedItems)
     {
       ExtList list = new ExtList();
+      _projectOptions.Extensions = list;
+
       foreach (Ext fileExt in checkedItems)
       {
         list.Add(fileExt);
@@ -220,12 +235,48 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
         return false;
       }
 
-      _projectOptions.Extensions = list;
-
       _projectOptions.SaveOptions();
-      // TODO - Write the actual project filelist!
+      BuildProjectFile();
+
+      FileInfo legacy = ProjectBuildFile;
+      if (legacy != null && legacy.Exists)
+      {
+        legacy.Delete();
+      }
 
       return true;
+    }
+
+    public void BuildProjectFile()
+    {
+      TextWriter tw = new StreamWriter(ProjectFile.FullName, false);
+      tw.WriteLine(Title);  // Project Title
+      tw.WriteLine(Snapshot.ToShortDateString());  // Snapshot date
+      tw.WriteLine(Basedir.FullName);  // Base directory
+
+      AddFiles(Basedir, tw);
+
+      tw.Close();
+    }
+
+    private void AddFiles(DirectoryInfo dir, TextWriter tw)
+    {
+      if (!ProjectOptions.ExcludedDirectories.Exists(dir))
+      {
+        // This is not an excluded directory - add the relevant files in this folder
+        foreach (FileInfo file in dir.GetFiles())
+        {
+          if (ProjectOptions.Extensions.Contains(file.Extension))
+          {
+            tw.WriteLine(file.FullName);
+          }
+        }
+      }
+
+      foreach (DirectoryInfo childDir in dir.GetDirectories())
+      {
+        AddFiles(childDir, tw);
+      }
     }
 
     private string[] GetExtensions()
@@ -398,7 +449,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
         }
         if ((input = re.ReadLine()) != null)
         {
-          this.Basedir = input;
+          this.Basedir = new DirectoryInfo(input);
         }
         else
         {
@@ -415,7 +466,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     {
       return "Project {" + _projectTitle +
         "} SnapshotDate {" + _snapshotDate.ToShortDateString() +
-        "} Basedir {" + _basedir + "}";
+        "} Basedir {" + _basedir.FullName + "}";
     }
 
     public void ParseSnapshot(string value)

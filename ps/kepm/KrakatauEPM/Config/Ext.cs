@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004,2009 Power Software
+ * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  11-Oct-05    152 : Added to Source Safe.
  * CAM  11-Nov-2009  10502 : Added ExtList.
+ * CAM  17-Nov-2009  10502 : Enable searching of ExtList by string.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -94,6 +95,20 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
     public ExtList()
       : base()
     {
+    }
+
+    public bool Contains(string ext)
+    {
+      if (ext.StartsWith("."))
+      {
+        ext = ext.Substring(1);
+      }
+
+      foreach (Ext e in this)
+      {
+        if (e.Extension.Equals(ext)) return true;
+      }
+      return false;
     }
 
     public string[] ConvertToArray()

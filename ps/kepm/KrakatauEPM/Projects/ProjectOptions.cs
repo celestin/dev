@@ -1,12 +1,13 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2006 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: XMLConfig.cs 968 2009-04-28 23:07:00Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  11-Nov-2009  10502 : File created to support KEPM options in creating the EPM filelist.
+ * CAM  17-Nov-2009  10502 : Added ExcludedDirectories.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,16 +29,23 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     public static readonly string ProjectOptionsExtension = ".kepm";
 
     private Project _project;
-    private FileInfo _optionsFile;
     private Hashtable _config;
     private SortedList _list;
     private XmlDocument _doc;
     private Hashtable _sets;
     private ExtList _extensions;
+    private DirectoryMap _excludedDirectories;
 
     public FileInfo OptionsFile
     {
-      get { return _optionsFile; }
+      get
+      {
+        if (_project.ProjectFile != null)
+        {
+          return new FileInfo(_project.ProjectFile.FullName + ProjectOptions.ProjectOptionsExtension);
+        }
+        return null;
+      }
     }
     public ExtList Extensions
     {
@@ -54,14 +62,25 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
         _extensions = value;
       }
     }
+    public DirectoryMap ExcludedDirectories
+    {
+      get
+      {
+        if (_excludedDirectories == null)
+        {
+          _excludedDirectories = new DirectoryMap();
+        }
+        return _excludedDirectories;
+      }
+      set
+      {
+        _excludedDirectories = value;
+      }
+    }
 
     public ProjectOptions(Project project)
     {
       _project = project;
-
-      string projectFile = _project.ProjectFile.FullName;
-
-      _optionsFile = new FileInfo(_project.ProjectFile.FullName + ProjectOptions.ProjectOptionsExtension);
 
       _config = new Hashtable();
       _list = new SortedList();
@@ -71,14 +90,14 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 
     public void ReadOptions()
     {
-      if (!_optionsFile.Exists) return;
+      if (!OptionsFile.Exists) return;
 
       XmlTextReader txtreader = null;
       XmlReader reader = null;
       IEnumerator el, ef = null;
 
       // Load the reader with the data file and ignore all whitespace nodes.
-      txtreader = new XmlTextReader(_optionsFile.FullName);
+      txtreader = new XmlTextReader(OptionsFile.FullName);
       txtreader.WhitespaceHandling = WhitespaceHandling.None;
 
       // Implement the validating reader over the text reader.
@@ -92,6 +111,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       XmlNode a;
 
       Extensions.Clear();
+      ExcludedDirectories.Clear();
 
       if (((a = root.Attributes.GetNamedItem("projectFile")) != null) && !"".Equals(a.Value)) _project.ProjectFile = new FileInfo(a.Value);
 
@@ -115,10 +135,25 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
             }
           }
         }
+        else if (child.Name.Equals("exclude"))
+        {
+          ef = child.ChildNodes.GetEnumerator();
+          while (ef.MoveNext())
+          {
+            extNode = (XmlNode)ef.Current;
+            if (extNode.Name.Equals("dir"))
+            {
+              if (((a = extNode.Attributes.GetNamedItem("value")) != null) && !"".Equals(a.Value))
+              {
+                ExcludedDirectories.Add(new DirectoryInfo(a.Value));
+              }
+            }
+          }
+        }
+
       }
       if (reader != null) reader.Close();
-
-      MessageBox.Show(Extensions.Count.ToString());
+      if (txtreader != null) txtreader.Close();
     }
 
     private XmlDocument CreateXml()
@@ -139,6 +174,13 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
         valueAttr.Value = e.Extension;
       }
 
+      foreach (DirectoryInfo dir in ExcludedDirectories)
+      {
+        XmlNode dirNode = excludeNode.AppendChild(doc.CreateElement("dir"));
+        XmlAttribute valueAttr = dirNode.Attributes.Append(doc.CreateAttribute("value"));
+        valueAttr.Value = dir.FullName;
+      }
+
       return doc;
     }
 
@@ -149,33 +191,15 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       XmlDocument upd = CreateXml();
       if (upd == null) return;
 
-      try
-      {
-        tw = new StreamWriter(_optionsFile.FullName, false);
-        txtwriter = new XmlTextWriter(tw);
-        txtwriter.Formatting = Formatting.Indented;
+      tw = new StreamWriter(OptionsFile.FullName, false);
+      txtwriter = new XmlTextWriter(tw);
+      txtwriter.Formatting = Formatting.Indented;
 
-        if (upd != null)
-        {
-          upd.Save(txtwriter);
-        }
-      }
-      finally
+      if (upd != null)
       {
-        if (tw != null) tw.Close();
+        upd.Save(txtwriter);
       }
+      if (tw != null) tw.Close();
     }
-
-    //public st[] Extensions()
-    //{
-    //  object[] list = new object[_list.Count];
-    //  int i = 0;
-    //  IEnumerator e = _list.Values.GetEnumerator();
-    //  while (e.MoveNext())
-    //  {
-    //    list[i++] = e.Current;
-    //  }
-    //  return list;
-    //}
   }
 }

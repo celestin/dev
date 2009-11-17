@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2008 Power Software
+ * Copyright (c) 2004-2008 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * A ListView for displaying ProjectItems

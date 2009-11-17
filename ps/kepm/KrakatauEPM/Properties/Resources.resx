@@ -121,11 +121,17 @@
   <data name="ProjectNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\app\project_new.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="jar_into" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\jar_into.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SetNewProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\setnew.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MetricSetMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\metset.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jar_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\jar_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\help.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +157,17 @@
   <data name="ProjectClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\app\project.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="jar_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\jar_delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NewProjectToolbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\app\new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\ms\new.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SetOldProjectToolbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\app\setold.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,16 +190,7 @@
   <data name="AnalyseProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\analyse.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\ms\new.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jar_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\jar_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jar_into" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\jar_into.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jar_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\jar_delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="directory_selector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\app\directory_selector.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

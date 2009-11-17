@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 Power Software
+ * Copyright (c) 2004-2006 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Representation of Metric Definition in Metric Set

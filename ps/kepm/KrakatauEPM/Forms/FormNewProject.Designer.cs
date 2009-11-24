@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Nov-2009  10502 : File created.
+ * CAM  24-Nov-2009  10506 : Ensure Excluded Directories button is disabled on launch of the New Project form..
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Windows.Forms;
@@ -240,6 +241,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       // cmdSelect
       //
+      this.cmdSelect.Enabled = false;
       this.cmdSelect.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdSelect.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.directory_selector;
       this.cmdSelect.Location = new System.Drawing.Point(376, 88);

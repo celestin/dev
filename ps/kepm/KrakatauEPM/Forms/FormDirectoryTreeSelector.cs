@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Nov-2009  10502 : File created.
+ * CAM  24-Nov-2009  10506 : Scroll to top of treeview after populating.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,6 +37,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       AddChildDirs(basedir, _project.Basedir);
 
       basedir.ExpandAll();
+      basedir.EnsureVisible();
     }
 
     private void AddChildDirs(TreeNode node, DirectoryInfo dir)

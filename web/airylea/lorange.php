@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Airylea Motors Website
- * Copyright (c) 2008 Frontburner
+ * Copyright (c) 2008,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Home Page Context
@@ -12,9 +12,11 @@
  * CAM  18-Sep-2008  10280 : File created.
  * CAM  14-Mar-2009  10334 : Changed image gallery to use Lightbox.
  * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
+ * CAM  29-Nov-2009  10507 : Force load of Lightbox scripts.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "L'Orange Diesel Fuel Injection Service &amp; Repairs";
+$lightbox = true;
 include 'tpl/top.php';
 
 global $flash;

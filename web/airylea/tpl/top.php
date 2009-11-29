@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Airylea Motors Website
- * Copyright (c) 2008 Frontburner
+ * Copyright (c) 2008,2009 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Top of the page
@@ -14,6 +14,7 @@
  * CAM  05-Feb-2009  10280 : Converted Topbar to Div and added Navbar.
  * CAM  14-Mar-2009  10334 : Use new Bosch logo.
  * CAM  11-Aug-2009  10467 : Implemented First Found recommendations.
+ * CAM  29-Nov-2009  10507 : Test for loading of Lightbox scripts.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -21,12 +22,12 @@ $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION
 $loggedin = (session_is_registered('memberid') && session_is_registered('airylea_co_uk'));
 
 $pageTitle = $cfg['Site']['Name'];
-
 if (!empty($title)) {
   $pageTitle = $cfg['Site']['Name'] . " - $title";
 }
-
 $pageTitle .= ", " . $cfg['Site']['Location'];
+
+if (!isset($lightbox)) $lightbox = false;
 
 $toolbar = "none";
 if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
@@ -41,10 +42,15 @@ if ($loggedin || (endsWith($_SERVER['REQUEST_URI'], "login.php"))) {
 
   <script type="text/javascript" src="js/date.js"></script>
   <script type="text/javascript" src="js/ajax.js"></script>
+<?php
+  if ($lightbox) {
+?>
   <script type="text/javascript" src="js/prototype.js"></script>
   <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
   <script type="text/javascript" src="js/lightbox.js"></script>
-
+<?php
+  }
+?>
 </head>
 <body topmargin=0 leftmargin=0<?
 if (!empty($pageId)) {

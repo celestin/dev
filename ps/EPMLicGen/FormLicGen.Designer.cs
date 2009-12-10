@@ -15,7 +15,7 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Scm.Tools.LicGen
+namespace PowerSoftware.Tools.LicGen
 {
   partial class FormLicGen
   {
@@ -317,7 +317,6 @@ namespace Scm.Tools.LicGen
       this.frmLicType.TabIndex = 22;
       this.frmLicType.TabStop = false;
       this.frmLicType.Text = "&License Type";
-      this.frmLicType.Enter += new System.EventHandler(this.frmLicType_Enter);
       // 
       // txtOutput
       // 
@@ -430,10 +429,10 @@ namespace Scm.Tools.LicGen
       // 
       // exitToolStripMenuItem
       // 
-      this.exitToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Exit;
+      this.exitToolStripMenuItem.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Exit;
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
       this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.exitToolStripMenuItem.Text = "E&xit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
       // 
@@ -449,7 +448,7 @@ namespace Scm.Tools.LicGen
       // 
       // generateToolStripMenuItem
       // 
-      this.generateToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Generate;
+      this.generateToolStripMenuItem.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Generate;
       this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
       this.generateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
       this.generateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -463,7 +462,7 @@ namespace Scm.Tools.LicGen
       // 
       // optionsToolStripMenuItem
       // 
-      this.optionsToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.Options;
+      this.optionsToolStripMenuItem.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Options;
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
       this.optionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
       this.optionsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -480,11 +479,11 @@ namespace Scm.Tools.LicGen
       // 
       // aboutToolStripMenuItem
       // 
-      this.aboutToolStripMenuItem.Image = global::Scm.Tools.LicGen.Properties.Resources.HelpAbout;
+      this.aboutToolStripMenuItem.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.HelpAbout;
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+      this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.aboutToolStripMenuItem.Text = "&About";
-      this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+      this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutLicenseGenerator);
       // 
       // toolStrip1
       // 
@@ -500,7 +499,7 @@ namespace Scm.Tools.LicGen
       // 
       // _tsbGenerate
       // 
-      this._tsbGenerate.Image = global::Scm.Tools.LicGen.Properties.Resources.Generate;
+      this._tsbGenerate.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Generate;
       this._tsbGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbGenerate.Name = "_tsbGenerate";
       this._tsbGenerate.Size = new System.Drawing.Size(72, 22);
@@ -509,7 +508,7 @@ namespace Scm.Tools.LicGen
       // 
       // _tsbOptions
       // 
-      this._tsbOptions.Image = global::Scm.Tools.LicGen.Properties.Resources.Options;
+      this._tsbOptions.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Options;
       this._tsbOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbOptions.Name = "_tsbOptions";
       this._tsbOptions.Size = new System.Drawing.Size(64, 22);
@@ -518,7 +517,7 @@ namespace Scm.Tools.LicGen
       // 
       // _tsbExit
       // 
-      this._tsbExit.Image = global::Scm.Tools.LicGen.Properties.Resources.Exit;
+      this._tsbExit.Image = global::PowerSoftware.Tools.LicGen.Properties.Resources.Exit;
       this._tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbExit.Name = "_tsbExit";
       this._tsbExit.Size = new System.Drawing.Size(45, 22);
@@ -533,7 +532,7 @@ namespace Scm.Tools.LicGen
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "FormLicGen";
-      this.Text = "SCM License Generator";
+      this.Text = "PowerSoftware.com License Generator";
       this.fmeProds.ResumeLayout(false);
       this.fmeProds.PerformLayout();
       this.frmLicType.ResumeLayout(false);

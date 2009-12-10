@@ -12,16 +12,16 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("SCM License Generator")]
-[assembly: AssemblyDescription("SCM License Generator")]
+[assembly: AssemblyTitle("PowerSoftware.com License Generator")]
+[assembly: AssemblyDescription("PowerSoftware.com License Generator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SourceCodeMetrics.com")]
-[assembly: AssemblyProduct("SCM License Generator")]
-[assembly: AssemblyCopyright("Copyright (c) 2006,2008 SourceCodeMetrics.com")]
+[assembly: AssemblyCompany("PowerSoftware.com")]
+[assembly: AssemblyProduct("PowerSoftware.com License Generator")]
+[assembly: AssemblyCopyright("Copyright (c) 2009 PowerSoftware.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("3.0.*")]
+[assembly: AssemblyVersion("3.2.0.0")]
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]

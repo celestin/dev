@@ -12,7 +12,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Scm.Tools.LicGen
+namespace PowerSoftware.Tools.LicGen
 {
   class LicGen
   {

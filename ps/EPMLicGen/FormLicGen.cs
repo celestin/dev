@@ -29,7 +29,7 @@ using System.Diagnostics;
 using System.Threading;
 using Microsoft.Win32;
 
-namespace Scm.Tools.LicGen
+namespace PowerSoftware.Tools.LicGen
 {
   /// <summary>
   /// Essential Project Manager License Generator.
@@ -395,19 +395,14 @@ namespace Scm.Tools.LicGen
       _opt.ShowDialog(this);
     }
 
-    private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void AboutLicenseGenerator(object sender, EventArgs e)
     {
       MessageBox.Show(this,
-        String.Format("SCM License Generator\n" +
+        String.Format("PowerSoftware.com License Generator\n" +
         "Version {0}\n\n" +
-        "by Craig A McKay 26-Mar-2009\n\n" +
-        "Copyright (c) 2006,2008,2009 SourceCodeMetrics.com", Application.ProductVersion), "About SCM License Generator",
+        "by Craig McKay <craig.mckay@powersoftware.com> 10-Dec-2009\n\n" +
+        "Copyright (c) 2009 PowerSoftware.com", Application.ProductVersion), "About PowerSoftware.com License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-
-    private void frmLicType_Enter(object sender, EventArgs e)
-    {
-
     }
   }
 }

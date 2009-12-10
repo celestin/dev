@@ -18,7 +18,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Scm.Tools.LicGen
+namespace PowerSoftware.Tools.LicGen
 {
   /// <summary>
   /// Summary description for Options.

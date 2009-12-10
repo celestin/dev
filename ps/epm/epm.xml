@@ -195,4 +195,13 @@
       <ext name="Windows Batch File" value="cmd" />
     </filetype>
   </lang>
+  <lang name="PowerBuilder" parser="PB">
+    <filetype name="Source">
+      <ext name="Window" value="srw" />
+      <ext name="Datawindow" value="srd" />
+      <ext name="Function" value="srf" />
+      <ext name="Structure" value="srs" />
+      <ext name="User object" value="sru" />
+    </filetype>
+  </lang>
 </epm>

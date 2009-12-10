@@ -23,6 +23,7 @@
  * CAM  14-Apr-2009  10403 : Python and XML do not have logical lines.
  * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
  * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -36,7 +37,7 @@ enum Langs {
   LANG_S1, LANG_PERL, LANG_PHP,
   LANG_VB, LANG_VHDL, LANG_XML,
   LANG_ASM, LANG_HTML, LANG_JT, LANG_PYTHON,
-  LANG_CSS, LANG_FT, LANG_RUBY, LANG_SH, LANG_TXT, LANG_WB
+  LANG_CSS, LANG_FT, LANG_RUBY, LANG_SH, LANG_TXT, LANG_WB, LANG_PB
 };
 
 namespace metrics
@@ -99,6 +100,8 @@ namespace metrics
         theLang = LANG_TXT;
       } else if (!_stricmp(lang.c_str(), "WB")) {
         theLang = LANG_WB;
+      } else if (!_stricmp(lang.c_str(), "PB")) {
+        theLang = LANG_PB;
       }
 
       return theLang;
@@ -156,6 +159,8 @@ namespace metrics
         return "Textfile";
         case LANG_WB:
         return "Windows Batch File";
+        case LANG_PB:
+        return "PowerBuilder";
       }
 
       return "Other";
@@ -189,6 +194,7 @@ namespace metrics
         case LANG_SH:
         case LANG_TXT:
         case LANG_WB:
+        case LANG_PB:
           return false;
           break;
       }

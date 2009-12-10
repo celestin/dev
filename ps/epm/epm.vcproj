@@ -375,6 +375,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\DiffPowerBuilder.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DiffText.cpp"
 				>
 			</File>
@@ -631,6 +635,10 @@
 			</File>
 			<File
 				RelativePath="DiffPerl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DiffPowerBuilder.h"
 				>
 			</File>
 			<File
@@ -907,6 +915,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lex.pb.cpp"
+					>
+				</File>
+				<File
 					RelativePath="lex.php.cpp"
 					>
 					<FileConfiguration
@@ -1107,6 +1119,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.pb.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.php.l"
 					>
 				</File>
@@ -1196,6 +1212,10 @@
 				</File>
 				<File
 					RelativePath=".\y.jt.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.pb.h"
 					>
 				</File>
 				<File

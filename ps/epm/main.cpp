@@ -90,6 +90,7 @@
  * CAM  27-Aug-2009  10483 : Added Event logging.
  * CAM  09-Sep-2009  10479 : Add PLOC for C/C++ and Assembler.
  * CAM  17-Nov-2009  10503 : Changed to PowerSoftware.com.
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -103,6 +104,7 @@
 #include "DiffText.h"
 #include "DiffVB.h"
 #include "DiffWB.h"
+#include "DiffPowerBuilder.h"
 #include "OurSQL.h"
 #include "Utilities.h"
 #include "CSVReport.h"
@@ -133,7 +135,7 @@ using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
             *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx, *yyin_ft,
-            *yyin_ss, *yyin_rb, *yyin_wb;
+            *yyin_ss, *yyin_rb, *yyin_wb, *yyin_pb;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -157,6 +159,7 @@ extern void lexclear_ft();
 extern void lexclear_ss();
 extern void lexclear_rb();
 extern void lexclear_wb();
+extern void lexclear_pb();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -180,6 +183,7 @@ extern int yylex_ft();
 extern int yylex_ss();
 extern int yylex_rb();
 extern int yylex_wb();
+extern int yylex_pb();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -278,6 +282,10 @@ extern vector<char*> operands_rb[255];
 extern int j_comments_wb,c_comments_wb,cpp_comments_wb,com_loc_wb,nsemi_wb,noperands_wb,noperators_wb;
 extern set<int> sloc_wb,operators_wb;
 extern vector<char*> operands_wb[255];
+
+extern int j_comments_pb,c_comments_pb,cpp_comments_pb,com_loc_pb,nsemi_pb,noperands_pb,noperators_pb;
+extern set<int> sloc_pb,operators_pb;
+extern vector<char*> operands_pb[255];
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -693,6 +701,21 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_wb;
     com_loc = com_loc_wb;
     break;
+
+    case LANG_PB:
+    sloc = sloc_pb.size();                   // Source Lines of Code
+
+    met.set(MET(N1), noperators_pb);
+    met.set(MET(N1S), operators_pb.size());
+    met.set(MET(N2), noperands_pb);
+    for (i=0;i<255;i++) {
+      met.add(MET(N2S), operands_pb[i].size());
+    }
+
+    c_com = c_comments_pb;                   // Comments
+    cpp_com = cpp_comments_pb;
+    com_loc = com_loc_pb;
+    break;
   }
 
   if (!lang.hasLogicalLines()) met.set(MET(LLOC), sloc);
@@ -764,6 +787,10 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_WB:
     d = new DiffWB(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_PB:
+    d = new DiffPowerBuilder(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -1255,6 +1282,11 @@ bool analyse(string &filename) {
       yyin_wb = src;
       lexclear_wb();
       yylex_wb();
+      break;
+    case LANG_PB:
+      yyin_pb = src;
+      lexclear_pb();
+      yylex_pb();
       break;
   }
 

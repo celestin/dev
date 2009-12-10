@@ -24,6 +24,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  26-Mar-09    10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  27-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -53,6 +54,7 @@ bool bLangRB = false;
 bool bLangSH = false;
 bool bLangTX = false;
 bool bLangWB = false;
+bool bLangPB = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -107,10 +109,11 @@ bool validLicense() {
   bLangSH = !((lpExitCode & EPM_SH) == 0);
   bLangTX = !((lpExitCode & EPM_TX) == 0);
   bLangWB = !((lpExitCode & EPM_WB) == 0);
+  bLangPB = !((lpExitCode & EPM_WB) == 0);
 
   return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||
     bLangID||bLangVH||bLangJS||bLangXM||bLangAY||bLangHT||bLangJT||bLangPY||
-    bLangSS||bLangFT||bLangRB||bLangSH||bLangTX||bLangWB);
+    bLangSS||bLangFT||bLangRB||bLangSH||bLangTX||bLangWB||bLangPB);
 }
 
 bool validLanguage(Langs l) {
@@ -138,6 +141,7 @@ bool validLanguage(Langs l) {
     case LANG_SH:     return bLangSH;
     case LANG_TXT:    return bLangTX;
     case LANG_WB:     return bLangWB;
+    case LANG_PB:     return bLangPB;
   }
 
   return false;

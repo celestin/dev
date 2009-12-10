@@ -15,6 +15,7 @@
  * CAM  26-Mar-09    10404 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  24-Jun-2009  10448 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  27-Jun-2009  10448 : Renamed CSS Stylesheet CS to SS.
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -131,6 +132,7 @@ namespace Scm.Tools.LicGen
       AddProduct("epmsh", "Shell Script");
       AddProduct("epmtx", "Text");
       AddProduct("epmwb", "Windows Batch File");
+      AddProduct("epmpb", "Windows Batch File");
 
       AddProduct("krakatau", "Krakatau GUI", true);
       AddProduct("cpppm", "Krakatau PM C++", true);

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  10-Dec-2009  10508 : File created.
+ * CAM  12-Dec-2009  10508 : Added correct symbols and keywords.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -47,7 +48,7 @@ int nsemi=0;            // Number of semi-colons
 int noperators=0;       // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define STORE_OPERATOR(X) operators.insert(X); noperators++;
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; COUNT();
 #define SEMI() nsemi++;
 #define COUNT() sloc.insert(pb_lineno)
 
@@ -96,118 +97,146 @@ SPTAB                   [ \t]
 \".*\"                  {store_operand(_strdup(yytext));COUNT();}
 "'"."'"                 {store_operand(_strdup(yytext));COUNT();}
 
-";"                     {COUNT(); SEMI();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
-","                     {COUNT();}
-":"                     {COUNT();}
-"="                     {COUNT(); STORE_OPERATOR('=');}
 "("                     {COUNT();}
 ")"                     {COUNT();}
-"["                     {COUNT(); STORE_OPERATOR('[');}
+"["                     {COUNT();}
 "]"                     {COUNT();}
-"."                     {COUNT(); STORE_OPERATOR('.');}
-"&"                     {COUNT(); STORE_OPERATOR('&');}
-"!"                     {COUNT(); STORE_OPERATOR('!');}
-"~"                     {COUNT(); STORE_OPERATOR('~');}
-"-"                     {COUNT(); STORE_OPERATOR('-');}
-"+"                     {COUNT(); STORE_OPERATOR('+');}
-"*"                     {COUNT(); STORE_OPERATOR('*');}
-"/"                     {COUNT(); STORE_OPERATOR('/');}
-"%"                     {COUNT(); STORE_OPERATOR('%');}
-"<"                     {COUNT(); STORE_OPERATOR(LT);}
-">"                     {COUNT(); STORE_OPERATOR(GT);}
-"^"                     {COUNT(); STORE_OPERATOR('^');}
-"|"                     {COUNT(); STORE_OPERATOR('|');}
-"?"                     {COUNT(); STORE_OPERATOR('?');}
+"."                     {COUNT();}
+"::"                    {COUNT();}
 
-"::"                    {COUNT(); STORE_OPERATOR(COLONCOLON);}
-"..."                   {COUNT(); }
-">>="                   {COUNT(); STORE_OPERATOR(GREATGREATEQUALS);}
-"<<="                   {COUNT(); STORE_OPERATOR(LESSLESSEQUALS);}
-"+="                    {COUNT(); STORE_OPERATOR(PLUSEQUALS);}
-"-="                    {COUNT(); STORE_OPERATOR(MINUSEQUALS);}
-"*="                    {COUNT(); STORE_OPERATOR(TIMESEQUALS);}
-"/="                    {COUNT(); STORE_OPERATOR(DIVEQUALS);}
-"%="                    {COUNT(); STORE_OPERATOR(MODEQUALS);}
-"&="                    {COUNT(); STORE_OPERATOR(ANDEQUALS);}
-"^="                    {COUNT(); STORE_OPERATOR(CARETEQUALS);}
-"|="                    {COUNT(); STORE_OPERATOR(BAREQUALS);}
-">>"                    {COUNT(); STORE_OPERATOR(GREATERGREATER);}
-"<<"                    {COUNT(); STORE_OPERATOR(LESSLESS);}
-"++"                    {COUNT(); STORE_OPERATOR(INC_OP);}
-"--"                    {COUNT(); STORE_OPERATOR(DEC_OP);}
-".*"                    {COUNT(); STORE_OPERATOR(DOT_STAR);}
-"->*"                   {COUNT(); STORE_OPERATOR(PTR_OP_STAR);}
-"->"                    {COUNT(); STORE_OPERATOR(PTR_OP);}
-"&&"                    {COUNT(); STORE_OPERATOR(AND_OP);}
-"||"                    {COUNT(); STORE_OPERATOR(OR_OP);}
-"<="                    {COUNT(); STORE_OPERATOR(LESSEQUALS);}
-">="                    {COUNT(); STORE_OPERATOR(GREATEREQUALS);}
-"=="                    {COUNT(); STORE_OPERATOR(EQUALS);}
-"!="                    {COUNT(); STORE_OPERATOR(NOTEQUALS);}
+"-"                     {STORE_OPERATOR(SYM_MINUS);}
+"%"                     {STORE_OPERATOR(SYM_PCT);}
+"&"                     {STORE_OPERATOR(SYM_AND);}
+"^"                     {STORE_OPERATOR(SYM_CARAT);}
+"~"                     {STORE_OPERATOR(SYM_TILDE);}
+"+"                     {STORE_OPERATOR(SYM_PLUS);}
+"="                     {STORE_OPERATOR(SYM_EQ);}
+"!"                     {STORE_OPERATOR(SYM_NOT);}
+"*"                     {STORE_OPERATOR(SYM_AST);}
+"/"                     {STORE_OPERATOR(SYM_DIV);}
+"|"                     {STORE_OPERATOR(SYM_OR);}
+"<"                     {STORE_OPERATOR(SYM_LT);}
+">"                     {STORE_OPERATOR(SYM_GT);}
+"<>"                    {STORE_OPERATOR(SYM_NOT);}
 
-"asm"                   {COUNT(); STORE_OPERATOR(ASM);}
-"auto"                  {COUNT(); STORE_OPERATOR(AUTO);}
-"bool"                  {COUNT(); STORE_OPERATOR(BOOL);}
-"break"                 {COUNT(); STORE_OPERATOR(BREAK);}
-"case"                  {COUNT(); STORE_OPERATOR(CASE);}
-"char"                  {COUNT(); STORE_OPERATOR(CHAR);}
-"class"                 {COUNT(); STORE_OPERATOR(CLASS);}
-"const_cast"            {COUNT(); STORE_OPERATOR(CONST_CAST);}
-"const"                 {COUNT(); STORE_OPERATOR(CONST);}
-"continue"              {COUNT(); STORE_OPERATOR(CONTINUE);}
-"default"               {COUNT(); STORE_OPERATOR(DEFAULT);}
-"do"                    {COUNT(); STORE_OPERATOR(DO);}
-"double"                {COUNT(); STORE_OPERATOR(DOUBLE);}
-"dynamic_cast"          {COUNT(); STORE_OPERATOR(DYNAMIC_CAST);}
-"else"                  {COUNT(); STORE_OPERATOR(ELSE);}
-"enum"                  {COUNT(); STORE_OPERATOR(ENUM);}
-"explicit"              {COUNT(); STORE_OPERATOR(EXPLICIT);}
-"export"                {COUNT(); STORE_OPERATOR(EXPORT);}
-"extern"                {COUNT(); STORE_OPERATOR(EXTERN);}
-"float"                 {COUNT(); STORE_OPERATOR(FLOAT);}
-"for"                   {COUNT(); STORE_OPERATOR(FOR);}
-"friend"                {COUNT(); STORE_OPERATOR(FRIEND);}
-"goto"                  {COUNT(); STORE_OPERATOR(GOTO);}
-"if"                    {COUNT(); STORE_OPERATOR(IF);}
-"inline"                {COUNT(); STORE_OPERATOR(INLINE);}
-"int"                   {COUNT(); STORE_OPERATOR(INT);}
-"long"                  {COUNT(); STORE_OPERATOR(LONG);}
-"operator"              {COUNT(); STORE_OPERATOR(OPERATOR);}
-"mutable"               {COUNT(); STORE_OPERATOR(MUTABLE);}
-"namespace"             {COUNT(); STORE_OPERATOR(NAMESPACE);}
-"private"               {COUNT(); STORE_OPERATOR(PRIVATE);}
-"protected"             {COUNT(); STORE_OPERATOR(PROTECTED);}
-"public"                {COUNT(); STORE_OPERATOR(PUBLIC);}
-"register"              {COUNT(); STORE_OPERATOR(REGISTER);}
-"reinterpret_cast"      {COUNT(); STORE_OPERATOR(REINTERPRET_CAST);}
-"return"                {COUNT(); STORE_OPERATOR(RETURN);}
-"short"                 {COUNT(); STORE_OPERATOR(SHORT);}
-"signed"                {COUNT(); STORE_OPERATOR(SIGNED);}
-"sizeof"                {COUNT(); STORE_OPERATOR(SIZEOF);}
-"static_cast"           {COUNT(); STORE_OPERATOR(STATIC_CAST);}
-"static"                {COUNT(); STORE_OPERATOR(STATIC);}
-"struct"                {COUNT(); STORE_OPERATOR(STRUCT);}
-"switch"                {COUNT(); STORE_OPERATOR(SWITCH);}
-"template"              {COUNT(); STORE_OPERATOR(TEMPLATE);}
-"try"                   {COUNT(); STORE_OPERATOR(TRY);}
-"catch"                 {COUNT(); STORE_OPERATOR(CATCH);}
-"typedef"               {COUNT(); STORE_OPERATOR(TYPEDEF);}
-"typeid"                {COUNT(); STORE_OPERATOR(TYPEID);}
-"typename"              {COUNT(); STORE_OPERATOR(TYPENAME);}
-"union"                 {COUNT(); STORE_OPERATOR(UNION);}
-"void"                  {COUNT(); STORE_OPERATOR(VOID);}
-"virtual"               {COUNT(); STORE_OPERATOR(VIRTUAL);}
-"volatile"              {COUNT(); STORE_OPERATOR(VOLATILE);}
-"wchar_t"               {COUNT(); STORE_OPERATOR(WCHAR_T);}
-"while"                 {COUNT(); STORE_OPERATOR(WHILE);}
-"using"                 {COUNT(); STORE_OPERATOR(USING);}
-"unsigned"              {COUNT(); STORE_OPERATOR(UNSIGNED);}
-"new"                   {COUNT(); STORE_OPERATOR(NEW);}
-"delete"                {COUNT(); STORE_OPERATOR(DELETE);}
-"this"                  {COUNT(); STORE_OPERATOR(THIS);}
-"throw"                 {COUNT(); STORE_OPERATOR(THROW);}
+"_debug"                {STORE_OPERATOR(KEY_UNDERDEBUG);}
+"alias"                 {STORE_OPERATOR(KEY_ALIAS);}
+"and"                   {STORE_OPERATOR(KEY_AND);}
+"autoinstantiate"       {STORE_OPERATOR(KEY_AUTOINSTANTIATE);}
+"blob"                  {STORE_OPERATOR(KEY_BLOB);}
+"boolean"               {STORE_OPERATOR(KEY_BOOLEAN);}
+"call"                  {STORE_OPERATOR(KEY_CALL);}
+"case"                  {STORE_OPERATOR(KEY_CASE);}
+"char"                  {STORE_OPERATOR(KEY_CHAR);}
+"character"             {STORE_OPERATOR(KEY_CHARACTER);}
+"choose"                {STORE_OPERATOR(KEY_CHOOSE);}
+"close"                 {STORE_OPERATOR(KEY_CLOSE);}
+"commit"                {STORE_OPERATOR(KEY_COMMIT);}
+"connect"               {STORE_OPERATOR(KEY_CONNECT);}
+"constant"              {STORE_OPERATOR(KEY_CONSTANT);}
+"continue"              {STORE_OPERATOR(KEY_CONTINUE);}
+"create"                {STORE_OPERATOR(KEY_CREATE);}
+"cursor"                {STORE_OPERATOR(KEY_CURSOR);}
+"date"                  {STORE_OPERATOR(KEY_DATE);}
+"datetime"              {STORE_OPERATOR(KEY_DATETIME);}
+"dec"                   {STORE_OPERATOR(KEY_DEC);}
+"decimal"               {STORE_OPERATOR(KEY_DECIMAL);}
+"declare"               {STORE_OPERATOR(KEY_DECLARE);}
+"delete"                {STORE_OPERATOR(KEY_DELETE);}
+"describe"              {STORE_OPERATOR(KEY_DESCRIBE);}
+"descriptor"            {STORE_OPERATOR(KEY_DESCRIPTOR);}
+"destroy"               {STORE_OPERATOR(KEY_DESTROY);}
+"disconnect"            {STORE_OPERATOR(KEY_DISCONNECT);}
+"do"                    {STORE_OPERATOR(KEY_DO);}
+"double"                {STORE_OPERATOR(KEY_DOUBLE);}
+"dynamic"               {STORE_OPERATOR(KEY_DYNAMIC);}
+"else"                  {STORE_OPERATOR(KEY_ELSE);}
+"elseif"                {STORE_OPERATOR(KEY_ELSEIF);}
+"end"                   {STORE_OPERATOR(KEY_END);}
+"enumerated"            {STORE_OPERATOR(KEY_ENUMERATED);}
+"event"                 {STORE_OPERATOR(KEY_EVENT);}
+"execute"               {STORE_OPERATOR(KEY_EXECUTE);}
+"exit"                  {STORE_OPERATOR(KEY_EXIT);}
+"external"              {STORE_OPERATOR(KEY_EXTERNAL);}
+"fetch"                 {STORE_OPERATOR(KEY_FETCH);}
+"first"                 {STORE_OPERATOR(KEY_FIRST);}
+"for"                   {STORE_OPERATOR(KEY_FOR);}
+"forward"               {STORE_OPERATOR(KEY_FORWARD);}
+"from"                  {STORE_OPERATOR(KEY_FROM);}
+"function"              {STORE_OPERATOR(KEY_FUNCTION);}
+"global"                {STORE_OPERATOR(KEY_GLOBAL);}
+"goto"                  {STORE_OPERATOR(KEY_GOTO);}
+"halt"                  {STORE_OPERATOR(KEY_HALT);}
+"if"                    {STORE_OPERATOR(KEY_IF);}
+"immediate"             {STORE_OPERATOR(KEY_IMMEDIATE);}
+"indirect"              {STORE_OPERATOR(KEY_INDIRECT);}
+"insert"                {STORE_OPERATOR(KEY_INSERT);}
+"int"                   {STORE_OPERATOR(KEY_INT);}
+"integer"               {STORE_OPERATOR(KEY_INTEGER);}
+"into"                  {STORE_OPERATOR(KEY_INTO);}
+"intrinsic"             {STORE_OPERATOR(KEY_INTRINSIC);}
+"is"                    {STORE_OPERATOR(KEY_IS);}
+"last"                  {STORE_OPERATOR(KEY_LAST);}
+"library"               {STORE_OPERATOR(KEY_LIBRARY);}
+"long"                  {STORE_OPERATOR(KEY_LONG);}
+"loop"                  {STORE_OPERATOR(KEY_LOOP);}
+"next"                  {STORE_OPERATOR(KEY_NEXT);}
+"not"                   {STORE_OPERATOR(KEY_NOT);}
+"of"                    {STORE_OPERATOR(KEY_OF);}
+"on"                    {STORE_OPERATOR(KEY_ON);}
+"open"                  {STORE_OPERATOR(KEY_OPEN);}
+"or"                    {STORE_OPERATOR(KEY_OR);}
+"parent"                {STORE_OPERATOR(KEY_PARENT);}
+"post"                  {STORE_OPERATOR(KEY_POST);}
+"prepare"               {STORE_OPERATOR(KEY_PREPARE);}
+"prior"                 {STORE_OPERATOR(KEY_PRIOR);}
+"private"               {STORE_OPERATOR(KEY_PRIVATE);}
+"privateread"           {STORE_OPERATOR(KEY_PRIVATEREAD);}
+"privatewrite"          {STORE_OPERATOR(KEY_PRIVATEWRITE);}
+"procedure"             {STORE_OPERATOR(KEY_PROCEDURE);}
+"protected"             {STORE_OPERATOR(KEY_PROTECTED);}
+"protectedread"         {STORE_OPERATOR(KEY_PROTECTEDREAD);}
+"protectedwrite"        {STORE_OPERATOR(KEY_PROTECTEDWRITE);}
+"prototypes"            {STORE_OPERATOR(KEY_PROTOTYPES);}
+"public"                {STORE_OPERATOR(KEY_PUBLIC);}
+"readonly"              {STORE_OPERATOR(KEY_READONLY);}
+"real"                  {STORE_OPERATOR(KEY_REAL);}
+"ref"                   {STORE_OPERATOR(KEY_REF);}
+"return"                {STORE_OPERATOR(KEY_RETURN);}
+"rollback"              {STORE_OPERATOR(KEY_ROLLBACK);}
+"rpcfunc"               {STORE_OPERATOR(KEY_RPCFUNC);}
+"select"                {STORE_OPERATOR(KEY_SELECT);}
+"selectblob"            {STORE_OPERATOR(KEY_SELECTBLOB);}
+"shared"                {STORE_OPERATOR(KEY_SHARED);}
+"static"                {STORE_OPERATOR(KEY_STATIC);}
+"step"                  {STORE_OPERATOR(KEY_STEP);}
+"string"                {STORE_OPERATOR(KEY_STRING);}
+"subroutine"            {STORE_OPERATOR(KEY_SUBROUTINE);}
+"super"                 {STORE_OPERATOR(KEY_SUPER);}
+"system"                {STORE_OPERATOR(KEY_SYSTEM);}
+"systemread"            {STORE_OPERATOR(KEY_SYSTEMREAD);}
+"systemwrite"           {STORE_OPERATOR(KEY_SYSTEMWRITE);}
+"then"                  {STORE_OPERATOR(KEY_THEN);}
+"this"                  {STORE_OPERATOR(KEY_THIS);}
+"time"                  {STORE_OPERATOR(KEY_TIME);}
+"to"                    {STORE_OPERATOR(KEY_TO);}
+"trigger"               {STORE_OPERATOR(KEY_TRIGGER);}
+"type"                  {STORE_OPERATOR(KEY_TYPE);}
+"uint"                  {STORE_OPERATOR(KEY_UINT);}
+"ulong"                 {STORE_OPERATOR(KEY_ULONG);}
+"unsignedint"           {STORE_OPERATOR(KEY_UNSIGNEDINT);}
+"unsignedinteger"       {STORE_OPERATOR(KEY_UNSIGNEDINTEGER);}
+"unsignedlong"          {STORE_OPERATOR(KEY_UNSIGNEDLONG);}
+"until"                 {STORE_OPERATOR(KEY_UNTIL);}
+"update"                {STORE_OPERATOR(KEY_UPDATE);}
+"updateblob"            {STORE_OPERATOR(KEY_UPDATEBLOB);}
+"using"                 {STORE_OPERATOR(KEY_USING);}
+"variables"             {STORE_OPERATOR(KEY_VARIABLES);}
+"while"                 {STORE_OPERATOR(KEY_WHILE);}
+"with"                  {STORE_OPERATOR(KEY_WITH);}
+"within"                {STORE_OPERATOR(KEY_WITHIN);}
+"false"                 {STORE_OPERATOR(KEY_FALSE);}
+"true"                  {STORE_OPERATOR(KEY_TRUE);}
 
 {LETTER}{ALNUM}*                                            |
 [1-9][0-9]*{INT_SUFFIX}?                                    |

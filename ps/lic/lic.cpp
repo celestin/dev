@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * FLEXlm License Verifier
- * Copyright 2004,2009 Power Software
+ * Copyright 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Performs the FLEXlm check
@@ -22,6 +22,7 @@
  * CAM  11-Dec-07    325 : Added JSP/XML.
  * CAM  26-Mar-09    10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"
@@ -91,6 +92,7 @@ DWORD main(int argc, char* argv[]) {
   inc(EPM_SH, LIC_SH);
   inc(EPM_TX, LIC_TX);
   inc(EPM_WB, LIC_WB);
+  inc(EPM_PB, LIC_PB);
 
   if (debug) cout << endl << "Total:" << rval << endl;
 

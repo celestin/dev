@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * FLEXlm License Verifier
- * Copyright 2004,2009 Power Software
+ * Copyright 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Configure the various licensing options
@@ -20,6 +20,7 @@
  * CAM  04-Dec-07    324 : Added JSP/XML (#325).
  * CAM  26-Mar-09    10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
+ * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -48,6 +49,7 @@
 #define LIC_SH   "epmsh"
 #define LIC_TX   "epmtx"
 #define LIC_WB   "epmwb"
+#define LIC_PB   "epmpb"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -73,3 +75,4 @@
 #define EPM_SH   2097152
 #define EPM_TX   4194304
 #define EPM_WB   8388608
+#define EPM_PB   16777216

@@ -10,22 +10,21 @@
 
   <SCRIPT Language="JavaScript">
   <!-- hide
-    // JavaScript browser, although not necessarily 1.1
-    var browserOK = false ; var sensImage ; var curImage ; var nSensImages = 0 ;
-    var ImgOn = "../img/navx/select2.gif" ;
-    var ImgOff = "../img/navx/go2.gif" ;
-    var ImgClick = "../img/navx/go2.gif" ;
-    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ; }
-    browserOK = true ;  sensImage = new Array() ;
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../img/navx/select2.gif";
+    var ImgOff = "../img/navx/go2.gif";
+    var ImgClick = "../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
      sensImage[nSensImages++] = "B01" ;
      sensImage[nSensImages++] = "B06" ;
      sensImage[nSensImages++] = "B12" ;
      sensImage[nSensImages++] = "B09" ;
      sensImage[nSensImages++] = "B02" ;
      sensImage[nSensImages++] = "B04" ;
-    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgOn ; }
-    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgClick ; }
-    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff ; } }
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
   //-->
   </SCRIPT>
     <Script Language="JavaScript">
@@ -168,9 +167,9 @@ In single project mode KEPM displays LOC/SLOC/Halstead metrics for individual (n
 <div id="hotnew">
 <p>EPM now features <b>churn metrics</b>, giving you the ability to tell at-a-glance how much <i>change has occurred between two projects</i>.  Churn metrics include:
 <ul>
-	<li>CRN_SLOC: Churn Source lines of code: total changed, new and deleted <i>source</i> lines of code.</li>
-	<li>CRN_LLOC: Churn Logical lines of code: total changed, new and deleted <i>logical</i> lines of code.</li>
-	<li>CRN_FILE: Churn Files: total number of changed, new and deleted files.</li>
+  <li>CRN_SLOC: Churn Source lines of code: total changed, new and deleted <i>source</i> lines of code.</li>
+  <li>CRN_LLOC: Churn Logical lines of code: total changed, new and deleted <i>logical</i> lines of code.</li>
+  <li>CRN_FILE: Churn Files: total number of changed, new and deleted files.</li>
 </ul>
 </p>
 </div>
@@ -249,6 +248,7 @@ day trial license key.</li>
 <img title="Oracle PL/SQL" src="../img/lang/ora.gif">
 <img title="PHP" src="../img/lang/php.gif">
 <img title="Perl" src="../img/lang/perl.gif">
+<img title="PowerBuilder" src="../img/lang/powerbuilder.png">
 <img title="Python" src="../img/lang/python.png">
 <img title="Ruby" src="../img/lang/ruby.png">
 <img title="VHDL" src="../img/lang/vhdl.gif">
@@ -291,7 +291,7 @@ day trial license key.</li>
     </TR>
     <TR>
       <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
-      <B>15 Sep 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">SourceCodeMetrics.com</span><BR><BR></TD>
+      <B>12 Dec 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
     </TR>
   </TABLE>
 </BODY>

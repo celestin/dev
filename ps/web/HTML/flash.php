@@ -30,7 +30,7 @@ $message = "<html><head>$cr".
 "<li>Server <b class=server>" . $_SERVER[SERVER_NAME] . "</b>.</li>$cr$cr".
 "<li>IP address <b>" . $_SERVER[REMOTE_ADDR] . "</b>.</li>$cr$cr".
 "<li>Browser <b>" . $_SERVER[HTTP_USER_AGENT] . "</b>.</li></ul>$cr$cr".
-"<p class=cpyrght>Copyright &copy; " . strftime("%Y"). " SourceCodeMetrics.com.  All Rights Reserved.</p>$cr$cr".
+"<p class=cpyrght>Copyright &copy; " . strftime("%Y"). " PowerSoftware.com.  All Rights Reserved.</p>$cr$cr".
 "</body></html>";
 
 mail($to,$subject,$message,$headers);

@@ -263,13 +263,13 @@ print MAIL "------------------------------------------------------------\n";
       $products.= "Essential Metrics Java (Windows NT/2000/XP/2003) Version 1.00.003\n"; }
 
     if ($FORM{'emwinepm'} eq 'y') {
-      $actpage.="<a href=/download/em/epm_119_0200.zip>Essential Metrics PM Edition ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.19.2.0</b></a><br>\n";
-      $products.= "Essential Metrics PM Edition ADA Assembly ASP C# C/C++ Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.19.2.0\n";
+      $actpage.="<a href=/download/em/epm_119_0400.zip>Essential Metrics PM Edition ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.19.4.0</b></a><br>\n";
+      $products.= "Essential Metrics PM Edition ADA Assembly ASP C# C/C++ Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.19.4.0\n";
     }
 
     if ($FORM{'emwinkepm'} eq 'y') {
-      $actpage.="<a href=/download/em/kepm_112_0200.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.12.2.0</b></a><br>\n";
-      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.12.2.0\n";
+      $actpage.="<a href=/download/em/kepm_112_0400.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.12.4.0</b></a><br>\n";
+      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.12.4.0\n";
     }
 
     if ($FORM{'emwincpppmv1'} eq 'y')

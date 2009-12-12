@@ -10,22 +10,21 @@
 
   <SCRIPT Language="JavaScript">
   <!-- hide
-    // JavaScript browser, although not necessarily 1.1
-    var browserOK = false ; var sensImage ; var curImage ; var nSensImages = 0 ;
-    var ImgOn = "../img/navx/select2.gif" ;
-    var ImgOff = "../img/navx/go2.gif" ;
-    var ImgClick = "../img/navx/go2.gif" ;
-    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ; }
-    browserOK = true ;  sensImage = new Array() ;
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../img/navx/select2.gif";
+    var ImgOff = "../img/navx/go2.gif";
+    var ImgClick = "../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
      sensImage[nSensImages++] = "B01" ;
      sensImage[nSensImages++] = "B06" ;
      sensImage[nSensImages++] = "B12" ;
      sensImage[nSensImages++] = "B09" ;
      sensImage[nSensImages++] = "B02" ;
      sensImage[nSensImages++] = "B04" ;
-    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgOn ; }
-    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff ; else document.images[imageName].src = ImgClick ; }
-    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff ; } }
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
   //-->
   </SCRIPT>
     <Script Language="JavaScript">
@@ -147,7 +146,7 @@
     </TR>
     <TR>
       <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
-      <B>15 Sep 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">SourceCodeMetrics.com</span><BR><BR></TD>
+      <B>12 Dec 2009</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
     </TR>
   </TABLE>
 </BODY>

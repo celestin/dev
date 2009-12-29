@@ -14,6 +14,7 @@
  * CAM  12-Nov-2007  10203 : Removed whitespace.
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  12-Apr-2009  10419 : Added more flexibility to tabs.
+ * CAM  29-Dec-2009  10515 : Added Bible.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 if (empty($root)) {
@@ -55,7 +56,8 @@ if (empty($title)) {
   <tr>
   <td valign=top colspan=3><table border=0 cellpadding=0 cellspacing=0 width="100%" height="100%" class="topnav">
     <tr><td rowspan=2><a id="linkGt" href="<? echo $cfg['Site']['URL']; ?>"><? echo
-    str_replace(" ", "&nbsp;", $cfg['Site']['Name']); ?></a><span class="topsep">|</span><a id="linkHymn" href="<? echo
+    str_replace(" ", "&nbsp;", $cfg['Site']['Name']); ?></a><span class="topsep">|</span><a id="linkBible" href="<? echo
+    $cfg['Site']['URL']; ?>/bible/">Bible</a><span class="topsep">|</span><a id="linkHymn" href="<? echo
     $cfg['Site']['URL']; ?>/hymn/">Hymns</a><span class="topsep">|</span><a id="linkEaston" href="<? echo
     $cfg['Site']['URL']; ?>/easton/">Easton's</a><span class="topsep">|</span><a id="linkHitchcock" href="<? echo
     $cfg['Site']['URL']; ?>/hitchcock/">Hitchcock's</a></td>
@@ -103,12 +105,12 @@ if (empty($title)) {
     <tr><td colspan=3><? include $root.'tpl/tabs.php'; ?></td></tr>
 <?
     } else {
-    
+
       if ($tabs == "NONE") {
         $className = "mainborder";
       } else {
         $className = "KEYWORDborder";
-      } 
+      }
 ?>
     <tr><td colspan=3><img src="<? echo $root; ?>img/f.gif" height=10></td></tr>
 <?

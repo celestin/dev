@@ -11,6 +11,7 @@
 -- CAM  18-May-2008  10267 : Added mse_release_history.
 -- CAM  28-Mar-2009  10407 : Added member and member_type.
 -- CAM  29-Dec-2009  10514 : Structure only.
+-- CAM  29-Dec-2009  10515 : UTF16 charsets where required.
 -- --------------------------------------------------------
 
 --
@@ -277,7 +278,7 @@ CREATE TABLE mse_bible_footnote (
   text varchar(2000) NOT NULL,
   PRIMARY KEY  (footnoteid),
   UNIQUE KEY FOOTNOTE (verid,bookid,chapter,verse,symbol)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Bible Footnotes' AUTO_INCREMENT=8818 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Bible Footnotes' AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -294,7 +295,7 @@ CREATE TABLE mse_bible_footnote_ref (
   refid int(10) unsigned NOT NULL default '0',
   phrase varchar(200) default NULL,
   PRIMARY KEY  (footnoteid,verid,bookid,chapter,verse,refid)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Bible Footnote References';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Bible Footnote References';
 
 -- --------------------------------------------------------
 

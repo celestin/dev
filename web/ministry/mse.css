@@ -19,6 +19,7 @@
  * CAM  18-Jun-2007  10274 : Changed highlight to hlght to prevent the word "light" causing problems.
  * CAM  29-Sep-2008  10302 : Added Hymn classes.
  * CAM  28-Mar-2009  10407 : Added SearchType.
+ * CAM  29-Dec-2009  10515 : Added links for Bible.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -33,6 +34,7 @@ p, table, td, input, select, textarea {
 }
 
 a#linkGt,
+a#linkBible,
 a#linkHymn,
 a#linkEaston,
 a#linkHitchcock
@@ -46,6 +48,7 @@ a#linkHitchcock
 }
 
 body#pageGt a#linkGt,
+body#pageBible a#linkBible,
 body#pageHymn a#linkHymn,
 body#pageEaston a#linkEaston,
 body#pageHitchcock a#linkHitchcock
@@ -55,6 +58,7 @@ body#pageHitchcock a#linkHitchcock
 }
 
 a#linkGt:hover,
+a#linkBible:hover,
 a#linkHymn:hover,
 a#linkEaston:hover,
 a#linkHitchcock:hover
@@ -64,6 +68,7 @@ a#linkHitchcock:hover
 
 
 body#pageGt a#linkGt:hover,
+body#pageBible a#linkBible:hover,
 body#pageHymn a#linkHymn:hover,
 body#pageEaston a#linkEaston:hover,
 body#pageHitchcock a#linkHitchcock:hover

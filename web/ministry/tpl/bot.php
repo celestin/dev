@@ -21,11 +21,12 @@
  * CAM  15-Jun-2008  10272 : Version V0.11A.
  * CAM  18-Jun-2008  10274 : Version V0.12A.
  * CAM  28-Mar-2009  10412 : Version V0.0.13.
+ * CAM  29-Dec-2009  10519 : Version V0.0.14.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td></tr>
-<tr><td class="cpyrght"><a href="<? echo $root; ?>releases.php">V0.0.13</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+<tr><td class="cpyrght"><a href="<? echo $root; ?>releases.php">V0.0.14</a> System designed and maintained by <a class="nav" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
 <form method=post name=books id=books><input
 type=hidden name=bookid id=bookid><input
 type=hidden name=chapter id=chapter><input
@@ -35,3 +36,4 @@ type=hidden name=vend id=vend></form></tr>
 </table>
 </body>
 </html>
+

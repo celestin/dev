@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File created.
  * CAM  04-Apr-2009  10414 : Moved CrossReference here.
+ * CAM  29-Dec-2009  10516 : Remove Hrefs with basic MseLinks (until #10517 is defined and completed).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,8 +23,16 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
   public class BibleVerse : Collection<BibleXref>, IEquatable<BibleVerse>
   {
     private const string AnchorStartOpen = "<A HREF=\"";
+    private const string AnchorScriptureStartOpen = "/cgi-bin/br/BDB/";
+    private const string AnchorFootnoteStartOpen = "/cgi-bin/dr/";
     private const string AnchorStartClose = "\">";
     private const string AnchorEnd = "</A>";
+
+    private const string MseLinkStartClose = "]";
+    private const string MseLinkScriptureStart = "[scripture ";
+    private const string MseLinkScriptureEnd = "[/scripture]";
+    private const string MseLinkFootnoteStart = "[footnote ";
+    private const string MseLinkFootnoteEnd = "[/footnote]";
 
     private BibleBook _book;
     private string _shortCode;
@@ -117,35 +126,59 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       string newLine;
       BibleXref xref;
       BibleVerse verse = this;
+      XrefType xrefType;
 
       text = verse.Text;
       rf = word = newLine = "";
 
       while ((p = text.IndexOf(AnchorStartOpen)) >= 0)
       {
-        newLine += text.Substring(0, p) + AnchorStartOpen + "showFootnote.php?";
+        newLine += text.Substring(0, p);
 
-        text = text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length);
+        if (text.Substring(p + AnchorStartOpen.Length, text.Length - p - AnchorStartOpen.Length).StartsWith(AnchorScriptureStartOpen))
+        {
+          xrefType = XrefType.FootnoteToVerse;
+          newLine += MseLinkScriptureStart + "id=\"";  // TODO [#10517] Change id and value to convention
+          text = text.Substring(p + AnchorStartOpen.Length + AnchorScriptureStartOpen.Length, text.Length - p - AnchorStartOpen.Length - AnchorScriptureStartOpen.Length);
+        }
+        else
+        {
+          xrefType = XrefType.FootnoteToFootnote;
+          newLine += MseLinkFootnoteStart + "id=\""; // TODO [#10517] Change id and value to convention
+          text = text.Substring(p + AnchorStartOpen.Length + AnchorFootnoteStartOpen.Length, text.Length - p - AnchorStartOpen.Length - AnchorFootnoteStartOpen.Length);
+        }
 
         if ((p = text.IndexOf(AnchorStartClose)) >= 0)
         {
           rf = text.Substring(0, p);
-          newLine += rf + AnchorStartClose;
+          newLine += rf + "\"" + MseLinkStartClose; // TODO [#10517] Quotation end should be handled in line with convention
 
           if ((p2 = text.IndexOf(AnchorEnd)) >= 0)
           {
             word = text.Substring(p + AnchorStartClose.Length, p2 - p - AnchorStartClose.Length).Trim();
-          }
+            newLine += word;
+            if (xrefType == XrefType.FootnoteToVerse)
+            {
+              newLine += MseLinkScriptureEnd;
+            }
+            else
+            {
+              newLine += MseLinkFootnoteEnd;
+            }
 
-          text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
+            text = text.Substring(p2 + AnchorEnd.Length, text.Length - p2 - AnchorEnd.Length);
+          }
+          else
+          {
+            text = text.Substring(p + AnchorStartClose.Length, text.Length - p - AnchorStartClose.Length);
+          }
         }
 
         if (newLine.Length > 0)
         {
-          newLine += text;
-          xref = new BibleXref(verse, rf, word);
+          xref = new BibleXref(verse, xrefType, rf, word);
           if (!xref.AddXref(Book.Version)) return false;
-          verse.Text = newLine;
+          verse.Text = newLine + text;
         }
       }
 
@@ -161,7 +194,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     public virtual bool Equals(BibleVerse other)
     {
       if (other == null) return false;
-      if (_book.BookId.Equals(other._book.BookId) && 
+      if (_book.BookId.Equals(other._book.BookId) &&
         _chapter.Equals(other._chapter) &&
         _verse.Equals(other._verse)) return true;
       return false;

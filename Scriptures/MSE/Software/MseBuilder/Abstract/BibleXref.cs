@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2008 Front Burner
+ * Copyright (c) 2008,2009 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jun-2008  10409 : File added.
  * CAM  04-Apr-2009  10414 : Determine XrefType here.
+ * CAM  29-Dec-2009  10516 : Remove UTF16 characters.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,14 +18,14 @@ using System.Windows.Forms;
 
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
-  public enum XrefType 
+  public enum XrefType
   {
     VerseToFootnote = 1,
     FootnoteToVerse = 2,
     FootnoteToFootnote = 3
   }
 
-  public class BibleXref 
+  public class BibleXref
   {
     #region Member Vars
     private string _xref;
@@ -65,6 +66,10 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       {
         return _word;
       }
+      set
+      {
+        _word = value.Replace('ù', '~');
+      }
     }
     public BibleVerse RefFrom
     {
@@ -98,14 +103,14 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       _refFrom = refFrom;
       _type = type;
       _xref = xref;
-      _word = word;
+      Word = word;
     }
 
     public BibleXref(BibleVerse refFrom, string xref, string word)
     {
       _refFrom = refFrom;
       _xref = xref;
-      _word = word;
+      Word = word;
 
       if (RefFrom is BibleFootnote)
       {

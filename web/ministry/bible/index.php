@@ -17,7 +17,6 @@ $tabs = "BIBLE";
 $pageName = "pageBible";
 $pageCss = "bible.css";
 include $root.'tpl/top.php';
-include 'bible_fn.php';
 
 $searchType = NULL;     if (!empty($_POST['search_bible_type'])) $searchType = $_POST['search_bible_type'];
 $searchContext = NULL;  if (!empty($_POST['search_bible_context'])) $searchContext = $_POST['search_bible_context'];

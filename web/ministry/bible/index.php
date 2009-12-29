@@ -67,12 +67,19 @@ $keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywor
 <tr>
   <td class="searchresults" valign=top>
     <table border=0 cellpadding=3 cellspacing=0 width="100%">
+<?
+  if (empty($keywords)) {
+?>
+    <tr><td>&nbsp;</td></tr>
+<?
+  } else {
+?>
     <tr>
-    <th class="rh">Book</th>
-    <th class="rh">Chap.</th>
-    <th class="rh">V.</th>
-    <th class="rh">Sym</th>
-    <th class="rh"><span class="phrase">Phrase</span> &amp; Text</th>
+      <th class="rh">Book</th>
+      <th class="rh">Chap.</th>
+      <th class="rh">V.</th>
+      <th class="rh">Sym</th>
+      <th class="rh"><span class="phrase">Phrase</span> &amp; Text</th>
     </tr>
   <?
     $sql = "SELECT b.bookname, f.chapter, f.verse, f.footnoteid, f.symbol, f.text, fr.phrase ".
@@ -115,6 +122,9 @@ $keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywor
       $prevFootnoteId = $footnoteid;
     }
   ?>
+<?
+  }
+?>
     </table>
   </td>
   <td class="resultsheader"><img src="<? echo $root; ?>img/f.gif" border=0 width=12></td>

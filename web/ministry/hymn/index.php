@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2009 frontburner.co.uk
  *
  * 1962 Hymn Book Search
  *
@@ -12,6 +12,7 @@
  * CAM  12-Nov-2007  10204 : Added calls to Servant checkbox functions.
  * CAM  29-Sep-2008  10302 : Moved to GoodTeaching.org.
  * CAM  12-Apr-2009  10419 : Added more flexibility to tabs, and use common database.
+ * CAM  30-Dec-2009  10520 : Add focus formatting for dropdowns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "1962 Hymn Search";
@@ -48,7 +49,7 @@ $language = NULL;    if (!empty($_POST['language'])) $language = $_POST['languag
     </tr>
 
     <tr>
-      <td><select name="language" id="language" class="dropdown" onchange="toggle_language();">
+      <td><select <? dropdownFocus(); ?> name="language" id="language" class="dropdown" onchange="toggle_language();">
       <option value="" <? echo ($language == "" ? "SELECTED" : ""); ?>>English</option>
       <option value="_de" <? echo ($language == "_de" ? "SELECTED" : ""); ?>>Deutsche</option>
       <option value="_nl" <? echo ($language == "_nl" ? "SELECTED" : ""); ?>>Netherlands</option>
@@ -66,7 +67,7 @@ $language = NULL;    if (!empty($_POST['language'])) $language = $_POST['languag
   <input type="hidden" name="sitename" value="<?php echo $sitename; ?>" />
   <input type="hidden" name="op" value="search" />
   </form>
-  
+
   </td></tr>
   <tr>
     <th class="resultsheader">Hymn</th>

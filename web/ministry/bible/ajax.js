@@ -4,7 +4,7 @@
  *
  * Bible Search
  *
- * $Id: ajax.js 894 2008-09-29 21:22:54Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Dec-2009  10515 : File created.

@@ -14,6 +14,7 @@
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10407 : Added $cfg['Site']['Status'].
  * CAM  12-Apr-2009  10419 : Removed override database option.
+ * CAM  30-Dec-2009  10520 : Improved fieldFocus style, and added dropdownFocus.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Good Teaching Search Engine";
@@ -44,7 +45,11 @@ function fldmand($value) {
 }
 
 function fieldFocus() {
-  echo " onFocus=\"this.style.backgroundColor='#F0F0F0';\" onBlur=\"this.style.backgroundColor='#fff';\" ";
+  echo "style=\"border:solid 1px #666666;padding:4px;\" onFocus=\"this.style.backgroundColor='#f6a2c0';\" onBlur=\"this.style.backgroundColor='#fff';\" ";
+}
+
+function dropdownFocus() {
+  echo "style=\"border:solid 1px #666666;padding:2px;\" onFocus=\"this.style.backgroundColor='#f6a2c0';\" onBlur=\"this.style.backgroundColor='#fff';\" ";
 }
 
 session_start();

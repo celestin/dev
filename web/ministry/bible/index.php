@@ -5,10 +5,11 @@
  *
  * Bible Search
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Dec-2009  10515 : File created.
+ * CAM  30-Dec-2009  10520 : Ensure keywords are formatted correctly for SQL.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Bible Search";
@@ -21,13 +22,18 @@ include $root.'tpl/top.php';
 $searchType = NULL;     if (!empty($_POST['search_bible_type'])) $searchType = $_POST['search_bible_type'];
 $searchContext = NULL;  if (!empty($_POST['search_bible_context'])) $searchContext = $_POST['search_bible_context'];
 $searchVersion = NULL;  if (!empty($_POST['search_bible_version'])) $searchVersion = $_POST['search_bible_version'];
-$keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+$keywords = NULL;       if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
+
+$keywords = trim(str_replace("\'", " ", $keywords));
+$keywords = trim(str_replace("\"", " ", $keywords));
+$keywords = trim(str_replace("\\", " ", $keywords));
+$keywords = trim(str_replace("  ", " ", $keywords));
 
 ?>
   <script language="Javascript" src="ajax.js"></script>
 
   <form action="index.php" method="post" name="searchForm" target="_top" id="searchForm">
-  <table border=0>
+  <table border=0 cellpadding=3 cellpadding=0>
   <tr>
     <td><div id=searchType><ul>
     <li><input <?php if ($searchVersion == "DARBY" || empty($searchVersion)) echo "CHECKED"; ?> type=radio id=sv_darby name=search_bible_version value="DARBY"><label for="sv_darby">J.N.Darby</label></li>
@@ -82,14 +88,26 @@ $keywords = NULL;     if (!empty($_POST['keywords'])) $keywords = $_POST['keywor
       <th class="rh"><span class="phrase">Phrase</span> &amp; Text</th>
     </tr>
   <?
+    $keywords = "%$keywords%";
+    $keywords = str_replace(" ", "%", $keywords);
+    $keywords = str_replace(",", "%", $keywords);
+    $keywords = str_replace(";", "%", $keywords);
+    $keywords = str_replace(":", "%", $keywords);
+    $keywords = str_replace(".", "%", $keywords);
+    $keywords = str_replace("-", "%", $keywords);
+    $keywords = str_replace("\'", "%", $keywords);
+    $keywords = str_replace("\"", "%", $keywords);
+    $keywords = str_replace("%%", "%", $keywords);
+    $keywords = str_replace("%%", "%", $keywords);
+
     $sql = "SELECT b.bookname, f.chapter, f.verse, f.footnoteid, f.symbol, f.text, fr.phrase ".
-       "FROM mse_bible_footnote f, mse_bible_footnote_ref fr, mse_bible_version v, mse_bible_book b ".
-       "WHERE v.verid = f.verid ".
-       "AND b.bookid = f.bookid ".
-       "AND fr.footnoteid = f.footnoteid ".
-       "AND (f.text LIKE '%" . $keywords . "%' ".
-             "OR fr.phrase LIKE '%" . $keywords . "%') ".
-       "ORDER BY b.bookid, f.chapter, f.verse, f.footnoteid ";
+           "FROM mse_bible_footnote f, mse_bible_footnote_ref fr, mse_bible_version v, mse_bible_book b ".
+           "WHERE v.verid = f.verid ".
+           "AND b.bookid = f.bookid ".
+           "AND fr.footnoteid = f.footnoteid ".
+           "AND (f.text LIKE '" . $keywords . "' ".
+                "OR fr.phrase LIKE '" . $keywords . "') ".
+           "ORDER BY b.bookid, f.chapter, f.verse, f.footnoteid ";
 
     $ssql = mysql_query($sql) or die(mysql_error());
     $prevFootnoteId = 0;

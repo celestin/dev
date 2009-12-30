@@ -10,10 +10,11 @@
  * Who  When         Why
  * CAM  29-Sep-2008  10302 : Moved to GoodTeaching.org
  * CAM  12-Apr-2009  10419 : Renamed CSS class to include module name.
+ * CAM  30-Dec-2009  10520 : Add focus formatting for dropdowns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 function select_meters($meter_id) {
-?><select name="meter_id" id="meter_id" class="dropdown">
+?><select <? dropdownFocus(); ?> name="meter_id" id="meter_id" class="dropdown">
       <option value="ALL">All Meters</option>
 <?
   $meterSql = "SELECT m.id, m.meter, m.rhythm, m.chorus, m.disp_order ".
@@ -39,7 +40,7 @@ function select_meters($meter_id) {
 }
 
 function select_categories($category_id) {
-?><select name="category_id" id="category_id" class="dropdown">
+?><select <? dropdownFocus(); ?> name="category_id" id="category_id" class="dropdown">
       <option value="ALL">All Categories</option>
 <?
   $meterSql = "SELECT c.id, s.code scheme_code, c.code category, c.name ".
@@ -188,7 +189,7 @@ function author_search($authorList, $searchType) {
   $res = mysql_query($compSql) or die("</select><h1>Query failed</h1><pre>$compSql</pre>");
   output_hymn_table_start();
   while ($row = mysql_fetch_row($res)) {
-    output_hymn_line($row[0], $row[1], $row[2]);
+    output_hymn_line($row[0], utf8_encode($row[1]), $row[2]);
   }
   output_hymn_table_end();
 
@@ -233,7 +234,7 @@ function show_hymn($hymn, $language) {
              "WHERE hymn_no=$hymn ".
              "GROUP BY vers_no ".
              "ORDER BY if(vers_no=1,0,if(vers_no=99,1,vers_no)) ";
-  
+
   $res = mysql_query($hymnSql) or die("<h1>Query failed</h1><pre>$hymnSql</pre>");
   while ($row = mysql_fetch_row($res)) {
     $verseSql = "SELECT line_no,line_text FROM hymn_line$language ".

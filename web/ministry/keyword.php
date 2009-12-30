@@ -14,6 +14,7 @@
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  28-Mar-2009  10407 : Added Search Type.
  * CAM  12-Apr-2009  10419 : Added more flexibility to tabs, and changed session vars to include module name.
+ * CAM  30-Dec-2009  10520 : Add focus formatting for textboxes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Keyword Search";
@@ -52,7 +53,7 @@ $_SESSION['search_min_type'] = $searchType;
 ?></td></tr>
 <tr>
   <td>
-    <input name="keywords" id="keywords" size=50 value="<?php echo $keywords; ?>">
+    <input <? fieldFocus(); ?> name="keywords" id="keywords" size=50 value="<?php echo $keywords; ?>">
     <input type=hidden name="results_pageno" id="results_pageno" value="0">
   </td>
   <td><?php echo ActionUtil::submitButton("Search", "button", "buttonhover", "submitSearchText();"); ?></td>

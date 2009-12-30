@@ -4,10 +4,11 @@
  *
  * Bible Search
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  29-Dec-2009  10515 : File created.
+ * CAM  30-Dec-2009  10520 : Removed excess formatting on dropdowns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 .error {
@@ -16,8 +17,6 @@
 }
 .dropdown {
   font-size:13px;
-  background:#F0F0F0;
-  color:#1269A0;
 }
 .lines {
   font-family: Georgia, Arial, Helvetica;

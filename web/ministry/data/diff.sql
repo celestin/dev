@@ -9,26 +9,9 @@
 -- CAM  29-Dec-2009  10519 : Release 0.0.14.
 -- --------------------------------------------------------
 
-INSERT INTO `mse_release_history` VALUES ('0.0.14', '10515', 'Create Bible Search: Footnotes only', '2009-12-29 21:19:59');
-INSERT INTO `mse_release_history` VALUES ('0.0.14', '10516', 'Remove HTML links from Footnotes, replace with MSE convention', '2009-12-29 21:20:14');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mse_bible_footnote`
---
-
-CREATE TABLE `mse_bible_footnote` (
-  `footnoteid` int(10) unsigned NOT NULL auto_increment,
-  `verid` int(10) unsigned NOT NULL,
-  `bookid` int(10) unsigned NOT NULL,
-  `chapter` int(10) unsigned NOT NULL,
-  `verse` int(10) unsigned NOT NULL,
-  `symbol` char(1) NOT NULL,
-  `text` varchar(2000) NOT NULL,
-  PRIMARY KEY  (`footnoteid`),
-  UNIQUE KEY `FOOTNOTE` (`verid`,`bookid`,`chapter`,`verse`,`symbol`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Bible Footnotes' AUTO_INCREMENT=8818 ;
+INSERT INTO `mse_release_history` VALUES ('0.0.15', '10520', 'Bible Footnote: Split keyword phrases into multiple words', '2009-12-30 13:42:17');
+INSERT INTO `mse_release_history` VALUES ('0.0.15', '10521', 'Ensure multiple refs are parsed correctly', '2009-12-30 13:42:53');
+INSERT INTO `mse_release_history` VALUES ('0.0.15', '10522', 'Ensure multiple refs are displayed correctly', '2009-12-30 13:43:20');
 
 --
 -- Dumping data for table `mse_bible_footnote`
@@ -97,8 +80,8 @@ INSERT INTO `mse_bible_footnote` VALUES (60, 1, 13, 13, 11, 'c', 'Meaning, ''Bre
 INSERT INTO `mse_bible_footnote` VALUES (61, 1, 13, 13, 14, 'd', 'Lit. ''house.''');
 INSERT INTO `mse_bible_footnote` VALUES (62, 1, 13, 14, 11, 'e', 'Meaning, ''Place of breaches,'' as [scripture id="2sa?n=5:20"]2Sam. 5:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (63, 1, 13, 14, 15, 'f', 'Or ''camp.''');
-INSERT INTO `mse_bible_footnote` VALUES (64, 1, 13, 15, 20, 'b', 'Probably ''<I>voices</I> of young women,'' <A HREF="/cgi-bin/br/BDB/ps?n=46">Ps. 46</A>, title.');
-INSERT INTO `mse_bible_footnote` VALUES (65, 1, 13, 15, 21, 'c', 'Lit. ''eighth,'' probably the bass octave, <A HREF="/cgi-bin/br/BDB/ps?n=6">Ps. 6</A>, title.');
+INSERT INTO `mse_bible_footnote` VALUES (64, 1, 13, 15, 20, 'b', 'Probably ''<I>voices</I> of young women,'' [scripture id="ps?n=46"]Ps. 46[/scripture], title.');
+INSERT INTO `mse_bible_footnote` VALUES (65, 1, 13, 15, 21, 'c', 'Lit. ''eighth,'' probably the bass octave, [scripture id="ps?n=6"]Ps. 6[/scripture], title.');
 INSERT INTO `mse_bible_footnote` VALUES (66, 1, 13, 15, 22, 'd', 'Or ''transport.'' The Hebrew root means, ''to bear'' or ''to lift up.''');
 INSERT INTO `mse_bible_footnote` VALUES (67, 1, 13, 16, 3, 'a', 'Or ''a ration <I>of flesh</I>.''');
 INSERT INTO `mse_bible_footnote` VALUES (68, 1, 13, 16, 9, 'b', 'Or ''Talk of.''');
@@ -106,7 +89,7 @@ INSERT INTO `mse_bible_footnote` VALUES (69, 1, 13, 16, 12, 'c', 'Or ''ordinance
 INSERT INTO `mse_bible_footnote` VALUES (70, 1, 13, 16, 18, 'a', 'Lit. ''line.''');
 INSERT INTO `mse_bible_footnote` VALUES (71, 1, 13, 16, 26, 'b', 'Or ''nonentities.''');
 INSERT INTO `mse_bible_footnote` VALUES (72, 1, 13, 16, 36, 'c', 'See [scripture id="da?n=2:20"]Dan. 2:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (73, 1, 13, 16, 41, 'a', 'See titles, <A HREF="/cgi-bin/br/BDB/ps?n=39">Ps. 39</A>, <A HREF="/cgi-bin/br/BDB/ps?n=62">62</A>, <A HREF="/cgi-bin/br/BDB/ps?n=77">77</A>, and compare <A HREF="/cgi-bin/br/BDB/1ch?n=15:17">ch 15:17</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (73, 1, 13, 16, 41, 'a', 'See titles, [scripture id="ps?n=39"]Ps. 39[/scripture], [scripture id="ps?n=62"]62[/scripture], [scripture id="ps?n=77"]77[/scripture], and compare [scripture id="1ch?n=15:17"]ch 15:17[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (74, 1, 13, 17, 10, 'b', 'Or ''I have subdued.''');
 INSERT INTO `mse_bible_footnote` VALUES (75, 1, 13, 17, 21, 'a', 'Or ''by great and terrible acts.''');
 INSERT INTO `mse_bible_footnote` VALUES (76, 1, 13, 17, 26, 'b', 'Or ''Thou art the Same:'' see [scripture id="ne?n=9:7"]Neh. 9:7[/scripture] and compare [scripture id="de?n=32:39"]Deut. 32:39[/scripture].');
@@ -173,7 +156,7 @@ INSERT INTO `mse_bible_footnote` VALUES (136, 1, 46, 1, 27, 'g', 'Or ''those tha
 INSERT INTO `mse_bible_footnote` VALUES (137, 1, 46, 1, 30, 'h', '<I>Hagiasmos</I>. See [footnote id="n_ro?n=1:4a"]Note i at Rom. 1:4[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (138, 1, 46, 1, 31, 'i', 'See [scripture id="isa?n=45:25"]Isa. 45:25[/scripture]; [scripture id="jer?n=9:24"]Jer. 9:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (139, 1, 46, 1, 31, 'k', '<I>Kurios</I> without the article, for ''Jehovah.''');
-INSERT INTO `mse_bible_footnote` VALUES (140, 1, 46, 2, 2, 'l', '<I>Oida</I>, <A HREF="/cgi-bin/br/BDB/1co?n=2:11~a=1">vers. 2:11 (1st), 12</A>; <I>ginosko</I>, <A HREF="/cgi-bin/br/BDB/1co?n=8:11">vers. 8:11</A> (2nd), <A HREF="/cgi-bin/br/BDB/1co?n=14:16">14:16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (140, 1, 46, 2, 2, 'l', '<I>Oida</I>, [scripture id="1co?n=2:11~a=1"]vers. 2:11 (1st), 12[/scripture]; <I>ginosko</I>, [scripture id="1co?n=8:11"]vers. 8:11[/scripture] (2nd), [scripture id="1co?n=14:16"]14:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (141, 1, 46, 2, 5, 'm', 'Lit. ''be.''');
 INSERT INTO `mse_bible_footnote` VALUES (142, 1, 46, 2, 6, 'n', '<I>Aion</I>: see [footnote id="n_1co?n=1:20"]ch. 1:20, Note c[/footnote]. In [scripture id="1co?n=2:6"]ver. 6[/scripture] ''world'' has a moral signification: see [scripture id="eph?n=2:2"]Eph. 2:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (143, 1, 46, 2, 7, 'o', 'Or ''worlds'' ([scripture id="1co?n=2:7"]ver. 7[/scripture]), ''world'' ([scripture id="1co?n=2:8"]ver. 8[/scripture]). I add this in note to keep up the connection with ''world'' in [scripture id="1co?n=2:6"]ver. 6[/scripture].');
@@ -184,7 +167,7 @@ INSERT INTO `mse_bible_footnote` VALUES (147, 1, 46, 2, 12, 'c', 'Note here agai
 INSERT INTO `mse_bible_footnote` VALUES (148, 1, 46, 2, 13, 'd', 'It may perhaps be translated, ''taught words of human wisdom.''');
 INSERT INTO `mse_bible_footnote` VALUES (149, 1, 46, 2, 13, 'e', 'Or ''expounding:'' it means literally ''mixing or putting together;'' as interpreting or expounding, it is common in the LXX: [scripture id="ge?n=40:8"]Gen. 40:8[/scripture]; [scripture id="ge?n=41:12"]41:12[/scripture], [scripture id="ge?n=41:15"]15[/scripture]; ''determined,'' [scripture id="nu?n=15:34"]Num. 15:34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (150, 1, 46, 2, 14, 'f', '<I>Psuchikos</I>: the man animated merely by his created soul, without the teaching and power of the Holy Spirit.');
-INSERT INTO `mse_bible_footnote` VALUES (151, 1, 46, 2, 16, 'g', 'See <A HREF="/cgi-bin/br/BDB/isa?n=40:13~a=1">Isa. 40:13-14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (151, 1, 46, 2, 16, 'g', 'See [scripture id="isa?n=40:13~a=1"]Isa. 40:13-14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (152, 1, 46, 2, 16, 'h', '<I>Nous</I>, ''the intelligent faculty;'' see [footnote id="n_1co?n=1:5"]Note, ch. 1:5[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (153, 1, 46, 3, 1, 'i', '<I>Sarkinos</I>: as [scripture id="ro?n=7:14"]Rom. 7:14[/scripture]; [scripture id="heb?n=7:16"]Heb. 7:16[/scripture]; [scripture id="2co?n=3:3"]2Cor. 3:3[/scripture]. This word is said to mean properly the material -- the composition of a thing. ''Carnal,'' twice in verse 3, is <I>sarkinos</I>, a form used, in some places, to express either material or physical or moral ideas. It occurs also in [scripture id="ro?n=15:27"]Rom. 15:27[/scripture]; [scripture id="1co?n=9:11"]1Cor. 9:11[/scripture]; [scripture id="2co?n=1:12"]2Cor. 1:12[/scripture]; [scripture id="2co?n=10:4"]10:4[/scripture]; [scripture id="1pe?n=2:11"]1Pet. 2:11[/scripture]. This last passage, ''fleshly lusts,'' shows how the material and moral thoughts run into one another.');
 INSERT INTO `mse_bible_footnote` VALUES (154, 1, 46, 3, 5, 'k', '<I>Diakonos</I>: see [footnote id="n_1co?n=4:1"]Note, ch. 4:1[/footnote]; [footnote id="n_ro?n=16:1"]Rom. 16:1[/footnote].');
@@ -212,7 +195,7 @@ INSERT INTO `mse_bible_footnote` VALUES (175, 1, 46, 6, 5, 'c', 'Lit. ''between 
 INSERT INTO `mse_bible_footnote` VALUES (176, 1, 46, 6, 11, 'd', 'Or ''washed from'' what defiled, so as to be clean: see [scripture id="ac?n=22:16"]Acts 22:16[/scripture]. Washed is strengthened by the addition of the preposition ''from'' (apo).');
 INSERT INTO `mse_bible_footnote` VALUES (177, 1, 46, 6, 11, 'e', '<I>En</I>, ''in virtue of the power of.''');
 INSERT INTO `mse_bible_footnote` VALUES (178, 1, 46, 6, 16, 'a', 'Lit. ''to (<I>eis</I>) one flesh.'' In English ''shall'' or ''shall become'' is the nearest in sense. It corresponds to the Hebrew of [scripture id="ge?n=2:24"]Gen. 2:24[/scripture]. <I>Eis</I> is left out when he says ''one Spirit'' in [scripture id="1co?n=6:17"]ver. 17[/scripture]. We are really ''one Spirit,'' not two, with the Lord. But we cannot say, ''to'' or ''for one flesh.'' The two become so (i.e. ''one flesh'') practically by their union; they are created individually. The union induces unity in the flesh; ''shall be,'' or ''shall become'' partly, though imperfectly, implies this: see [scripture id="mt?n=19:5"]Matt. 19:5[/scripture]. It is not ''<I>shall be</I> one Spirit:'' but ''he is.'' The Spirit which is in the Lord himself dwells in us, and is the living power of the new life.');
-INSERT INTO `mse_bible_footnote` VALUES (179, 1, 46, 7, 5, 'b', 'It means to ''deprive another of anything wrongfully:'' so that it has the sense of ''rob,'' ''defraud;'' but with the sense of taking away, or depriving of, what another had a right to. Such is the sense. I have said ''defraud,'' as it is the same word as in <A HREF="/cgi-bin/br/BDB/1co?n=6:7~a=1">ch. 6:7, 8</A>. The sense is just the same; only here it is of one another.');
+INSERT INTO `mse_bible_footnote` VALUES (179, 1, 46, 7, 5, 'b', 'It means to ''deprive another of anything wrongfully:'' so that it has the sense of ''rob,'' ''defraud;'' but with the sense of taking away, or depriving of, what another had a right to. Such is the sense. I have said ''defraud,'' as it is the same word as in [scripture id="1co?n=6:7~a=1"]ch. 6:7, 8[/scripture]. The sense is just the same; only here it is of one another.');
 INSERT INTO `mse_bible_footnote` VALUES (180, 1, 46, 7, 6, 'c', 'Or ''permitting'' it. Not ''by permission;'' that would imply that he said it by the Lord''s permission. He said it in the way of permission, not as command.');
 INSERT INTO `mse_bible_footnote` VALUES (181, 1, 46, 7, 7, 'd', '<I>Charisma</I>: see [footnote id="n_ro?n=5:16"]Note h, Rom. 5:16[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (182, 1, 46, 7, 13, 'e', 'Lit. ''the husband.''');
@@ -221,7 +204,7 @@ INSERT INTO `mse_bible_footnote` VALUES (184, 1, 46, 7, 25, 'a', 'Whether men or
 INSERT INTO `mse_bible_footnote` VALUES (185, 1, 46, 7, 28, 'b', 'Or ''she has.'' I say ''they'' to embrace both sexes, which the ''such'' (<I>toioutoi</I>, plural), and what follows, distinctly implies. The Greek for ''virgin'' is feminine from its primary natural reference, but see [scripture id="re?n=14:4"]Rev. 14:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (186, 1, 46, 7, 29, 'c', 'It may be translated ''for the rest <I>I say it</I>, in order that even they who have wives.''');
 INSERT INTO `mse_bible_footnote` VALUES (187, 1, 46, 7, 31, 'd', 'See [footnote id="n_1co?n=9:18"]Note, ch. 9:18[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (188, 1, 46, 8, 1, 'a', 'Two Greek words are used for ''to know'' in the New Testament -- <I>ginosko</I> and <I>oida</I>. The former signifies objective knowledge, what a man has learned or acquired. The English expression ''being acquainted with'' perhaps conveys the meaning. <I>Oida</I> conveys the thought of what is inward, the inward consciousness in the mind, intuitive knowledge not immediately derived from what is external. The difference between the two words is illustrated in [scripture id="joh?n=8:55"]John 8:55[/scripture], ''ye know (<I>ginosko</I>) him not; but I know (<I>oida</I>) him;'' in [scripture id="joh?n=13:7"]John 13:7[/scripture], ''What I do thou dost not know (<I>oida</I>) now, but thou shalt know (<I>ginosko</I>) hereafter;'' and in [scripture id="heb?n=8:11"]Heb. 8:11[/scripture], ''they shall not teach ... saying, Know (<I>ginosko</I>) the Lord; because all shall know (<I>oida</I>) me.'' The word <I>oida</I> is used of Christ as knowing the Father, and as knowing the hypocrisy of the Scribes and Pharisees, of Paul''s knowledge of a ''man in Christ,'' and of the Christian''s knowledge that he has eternal life. ''I know whom I have believed,'' [scripture id="2ti?n=1:12"]2Tim. 1:12[/scripture] -- I have the inward conscious knowledge of who the person is: see also [scripture id="1co?n=16:15"]1Cor. 16:15[/scripture]; <A HREF="/cgi-bin/br/BDB/2ti?n=3:14~a=1">2Tim. 3:14 and 15</A> -- all of these refer to inward conscious knowledge. The difference between the significance of the two words is often slight; and objective knowledge may pass into conscious knowledge, but not vice versa. The Greek for <I>conscience</I> is derived from <I>oida</I>: see <A HREF="/cgi-bin/br/BDB/1co?n=4:4">ch. 4:4</A>, ''I am <I>conscious</I> of nothing in myself,'' that is, not conscious of any fault. In the present passage, ''We know that an idol is nothing'' is conscious knowledge: ''we all have knowledge'' and ''knowledge puffs up'' is objective knowledge. ''If any one think he knows (conscious knowledge), he knows ');
+INSERT INTO `mse_bible_footnote` VALUES (188, 1, 46, 8, 1, 'a', 'Two Greek words are used for ''to know'' in the New Testament -- <I>ginosko</I> and <I>oida</I>. The former signifies objective knowledge, what a man has learned or acquired. The English expression ''being acquainted with'' perhaps conveys the meaning. <I>Oida</I> conveys the thought of what is inward, the inward consciousness in the mind, intuitive knowledge not immediately derived from what is external. The difference between the two words is illustrated in [scripture id="joh?n=8:55"]John 8:55[/scripture], ''ye know (<I>ginosko</I>) him not; but I know (<I>oida</I>) him;'' in [scripture id="joh?n=13:7"]John 13:7[/scripture], ''What I do thou dost not know (<I>oida</I>) now, but thou shalt know (<I>ginosko</I>) hereafter;'' and in [scripture id="heb?n=8:11"]Heb. 8:11[/scripture], ''they shall not teach ... saying, Know (<I>ginosko</I>) the Lord; because all shall know (<I>oida</I>) me.'' The word <I>oida</I> is used of Christ as knowing the Father, and as knowing the hypocrisy of the Scribes and Pharisees, of Paul''s knowledge of a ''man in Christ,'' and of the Christian''s knowledge that he has eternal life. ''I know whom I have believed,'' [scripture id="2ti?n=1:12"]2Tim. 1:12[/scripture] -- I have the inward conscious knowledge of who the person is: see also [scripture id="1co?n=16:15"]1Cor. 16:15[/scripture]; [scripture id="2ti?n=3:14~a=1"]2Tim. 3:14 and 15[/scripture] -- all of these refer to inward conscious knowledge. The difference between the significance of the two words is often slight; and objective knowledge may pass into conscious knowledge, but not vice versa. The Greek for <I>conscience</I> is derived from <I>oida</I>: see [scripture id="1co?n=4:4"]ch. 4:4[/scripture], ''I am <I>conscious</I> of nothing in myself,'' that is, not conscious of any fault. In the present passage, ''We know that an idol is nothing'' is conscious knowledge: ''we all have knowledge'' and ''knowledge puffs up'' is objective knowledge. ''If any one think he knows (conscious knowledge), he knows (obj');
 INSERT INTO `mse_bible_footnote` VALUES (189, 1, 46, 8, 6, 'b', '''Of,'' <I>ek</I>; ''for,'' <I>eis</I>; ''by,'' <I>dia</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (190, 1, 46, 8, 9, 'c', 'Or ''liberty,'' <I>exousia</I>. Title in a man''s own conscience is the sense: see [footnote id="n_mt?n=10:1"]Note, Matt. 10:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (191, 1, 46, 8, 10, 'd', 'Lit. ''the conscience of him weak.''');
@@ -280,13 +263,13 @@ INSERT INTO `mse_bible_footnote` VALUES (243, 1, 46, 14, 9, 'a', 'Or ''ye, unles
 INSERT INTO `mse_bible_footnote` VALUES (244, 1, 46, 14, 12, 'b', '''Spiritual gifts,'' though in sum the sense, deprives the phrase of its force here. As Gentiles, they were in danger of confounding demons'' action with the Holy Spirit; and they did not adequately hold the unity of the Spirit, but looked for a spirit''s power and action to distinguish themselves. The apostle was obliged to point out the difference between demons and the Holy Spirit. But the word further tends to show the reality of a personal spirit acting, though for the Christian there be but one, the Spirit of God.');
 INSERT INTO `mse_bible_footnote` VALUES (245, 1, 46, 14, 20, 'c', '<I>Paidion</I>: see [scripture id="1jo?n=2:13"]1John 2:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (246, 1, 46, 14, 20, 'd', 'i.e. ''full-grown,'' as [scripture id="eph?n=4:13"]Eph. 4:13[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (247, 1, 46, 14, 21, 'e', 'See <A HREF="/cgi-bin/br/BDB/isa?n=28:11~a=1">Isa. 28:11-12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (247, 1, 46, 14, 21, 'e', 'See [scripture id="isa?n=28:11~a=1"]Isa. 28:11-12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (248, 1, 46, 14, 27, 'a', 'i.e. in turn.');
 INSERT INTO `mse_bible_footnote` VALUES (249, 1, 46, 14, 33, 'b', 'Or ''he is not the God of disorder.''');
 INSERT INTO `mse_bible_footnote` VALUES (250, 1, 46, 14, 33, 'c', 'Some connect this last phrase with what follows. The repetition of ''assemblies'' might seem harsh in that case. But [scripture id="1co?n=14:36"]ver. 36[/scripture] would perhaps tend to the opposite conclusion. It is a question of interpretation, not of translation.');
 INSERT INTO `mse_bible_footnote` VALUES (251, 1, 46, 15, 1, 'd', 'Lit. ''evangelized.''');
 INSERT INTO `mse_bible_footnote` VALUES (252, 1, 46, 15, 8, 'e', 'Or ''one born out of due time.'' As LXX, [scripture id="job?n=3:16"]Job 3:16[/scripture]; [scripture id="ec?n=6:3"]Eccles. 6:3[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (253, 1, 46, 15, 12, 'a', '''Are not raised,'' <A HREF="/cgi-bin/br/BDB/1co?n=15:15~a=1">vers. 15, 16</A>, applies to the abstract fact whenever it may be; the doctrinal fact as to dead people; ''he (Christ) is raised,'' <A HREF="/cgi-bin/br/BDB/1co?n=15:12~a=1">vers. 12, 13</A>, <A HREF="/cgi-bin/br/BDB/1co?n=15:16">16</A>, <A HREF="/cgi-bin/br/BDB/1co?n=15:20">20</A>, is an accomplished but continuing fact. The English tenses do not always secure this distinction. I have not put ''do not rise,'' because then the thought of being raised by God is lost.');
+INSERT INTO `mse_bible_footnote` VALUES (253, 1, 46, 15, 12, 'a', '''Are not raised,'' [scripture id="1co?n=15:15~a=1"]vers. 15, 16[/scripture], applies to the abstract fact whenever it may be; the doctrinal fact as to dead people; ''he (Christ) is raised,'' [scripture id="1co?n=15:12~a=1"]vers. 12, 13[/scripture], [scripture id="1co?n=15:16"]16[/scripture], [scripture id="1co?n=15:20"]20[/scripture], is an accomplished but continuing fact. The English tenses do not always secure this distinction. I have not put ''do not rise,'' because then the thought of being raised by God is lost.');
 INSERT INTO `mse_bible_footnote` VALUES (254, 1, 46, 15, 23, 'b', '* A military term.');
 INSERT INTO `mse_bible_footnote` VALUES (255, 1, 46, 15, 24, 'c', 'It is almost impossible to render the Greek idiom, which unites with one article either two qualities of the same person, or two persons under the same quality. But I prefer this awkward English to ''God, even the Father,'' because this phrase is uncertain in doctrine, and might be used as meaning that the Father only is God, which is not the sense.');
 INSERT INTO `mse_bible_footnote` VALUES (256, 1, 46, 15, 25, 'd', 'Lit. ''all the enemies:'' all those recognized or objectively manifested as such.');
@@ -316,9 +299,9 @@ INSERT INTO `mse_bible_footnote` VALUES (279, 1, 62, 1, 2, 'c', '<I>Hostis</I>: 
 INSERT INTO `mse_bible_footnote` VALUES (280, 1, 62, 1, 3, 'd', '<I>Koinonia</I>: see [scripture id="heb?n=2:14"]Heb. 2:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (281, 1, 62, 1, 6, 'e', 'In all these cases the verb is in the subjunctive, and puts the case of so doing. I should have translated them ''if we should say,'' &c., but that it is the case in [scripture id="1jo?n=1:9"]ver. 9[/scripture] also, where it cannot be done.');
 INSERT INTO `mse_bible_footnote` VALUES (282, 1, 62, 1, 7, 'f', 'Or ''every.''');
-INSERT INTO `mse_bible_footnote` VALUES (283, 1, 62, 2, 1, 'g', '<I>Teknia</I> (a diminutive). It is a term of parental affection. It applies to Christians irrespective of growth. Used in <A HREF="/cgi-bin/br/BDB/1jo?n=12:28">vers. 12:28</A>; <A HREF="/cgi-bin/br/BDB/1jo?n=3:7">chs. 3:7</A>, <A HREF="/cgi-bin/br/BDB/1jo?n=3:18">18</A>; <A HREF="/cgi-bin/br/BDB/1jo?n=4:4">4:4</A>; <A HREF="/cgi-bin/br/BDB/1jo?n=5:21">5:21</A>; <A HREF="/cgi-bin/br/BDB/joh?n=13:33">John 13:33</A>; <A HREF="/cgi-bin/br/BDB/ga?n=4:19">Gal. 4:19</A>');
+INSERT INTO `mse_bible_footnote` VALUES (283, 1, 62, 2, 1, 'g', '<I>Teknia</I> (a diminutive). It is a term of parental affection. It applies to Christians irrespective of growth. Used in [scripture id="1jo?n=12:28"]vers. 12:28[/scripture]; [scripture id="1jo?n=3:7"]chs. 3:7[/scripture], [scripture id="1jo?n=3:18"]18[/scripture]; [scripture id="1jo?n=4:4"]4:4[/scripture]; [scripture id="1jo?n=5:21"]5:21[/scripture]; [scripture id="joh?n=13:33"]John 13:33[/scripture]; [scripture id="ga?n=4:19"]Gal. 4:19[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (284, 1, 62, 2, 1, 'h', '<I>Parakletos</I>, as ''comforter,'' [scripture id="joh?n=14:16"]John 14:16[/scripture], [scripture id="joh?n=14:26"]26[/scripture]; [scripture id="joh?n=15:26"]15:26[/scripture]; [scripture id="joh?n=16:7"]16:7[/scripture]. Christ manages all our affairs for us above; the Holy Spirit below. I use ''patron'' in the sense rather of the Roman patron, who maintained the interests of his clients in every way. So Christ on high; the Spirit here for saints.');
-INSERT INTO `mse_bible_footnote` VALUES (285, 1, 62, 2, 3, 'a', '<I>Ginosko</I>: and so throughout chapter, except [scripture id="1jo?n=2:11"]vers. 11[/scripture], <A HREF="/cgi-bin/br/BDB/1jo?n=2:20~a=1">20, 21</A>, <A HREF="/cgi-bin/br/BDB/1jo?n=2:29">29</A> (first), <I>oida</I>. Perfect tense here: ''have come to know him, and continue so to do;'' and so <A HREF="/cgi-bin/br/BDB/1jo?n=2:4">vers. 4</A>, <A HREF="/cgi-bin/br/BDB/1jo?n=2:13~a=1">13, 14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (285, 1, 62, 2, 3, 'a', '<I>Ginosko</I>: and so throughout chapter, except [scripture id="1jo?n=2:11"]vers. 11[/scripture], [scripture id="1jo?n=2:20~a=1"]20, 21[/scripture], [scripture id="1jo?n=2:29"]29[/scripture] (first), <I>oida</I>. Perfect tense here: ''have come to know him, and continue so to do;'' and so [scripture id="1jo?n=2:4"]vers. 4[/scripture], [scripture id="1jo?n=2:13~a=1"]13, 14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (286, 1, 62, 2, 5, 'b', 'A subjunctive, or ''shall keep.''');
 INSERT INTO `mse_bible_footnote` VALUES (287, 1, 62, 2, 7, 'c', 'Or ''ye had.''');
 INSERT INTO `mse_bible_footnote` VALUES (288, 1, 62, 2, 9, 'd', '''The darkness.'' Though a little harsh in these cases in English, ''the'' ought to be retained, because it is not simply a state -- a man being in darkness; but a specific darkness, the ignorance and non-revelation of God is spoken of: only it is abstract, and so absolute. ''The darkness'' is the natural condition of sinful man without God, who is light; the creature without God. Hence in [scripture id="joh?n=1:5"]John 1:5[/scripture] ''the light appears in darkness, and the darkness apprehended it not.'' ''Is passing'' ([scripture id="1jo?n=2:8"]ver. 8[/scripture]) is abstract. ''The true light shines:'' that is absolute; it shines, whether seen or not. But though some had received the light, he could not say the darkness was all gone, for it was not, but only with some who ''were once darkness, but now light in the Lord.'' Thus it was not as in the gospel, when Christ was upon earth; for then the darkness apprehended not the light shining in darkness. It was putting the light out. As long as he was in the world, he was the light of the world. Now it was not so: there was a passing away of the darkness.');
@@ -342,13 +325,13 @@ INSERT INTO `mse_bible_footnote` VALUES (305, 1, 62, 3, 5, 'a', '<I>Oida</I>, as
 INSERT INTO `mse_bible_footnote` VALUES (306, 1, 62, 3, 6, 'b', 'Lit. ''every one that.''');
 INSERT INTO `mse_bible_footnote` VALUES (307, 1, 62, 3, 6, 'c', '<I>Ginosko</I>: perfect tense; implying here the continuously present state of not seeing or knowing.');
 INSERT INTO `mse_bible_footnote` VALUES (308, 1, 62, 3, 9, 'd', 'Or ''no one that has been begotten (or ''is born'') of God practises:'' see [scripture id="1jo?n=3:6"]vers. 6[/scripture], [scripture id="1jo?n=3:10"]10[/scripture]; [scripture id="1jo?n=2:29"]ch. 2:29[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (309, 1, 62, 3, 10, 'e', '<I>Poieo</I>, as [scripture id="1jo?n=1:6"]ch. 1:6[/scripture]; [scripture id="1jo?n=2:17"]2:17[/scripture] (does), [scripture id="1jo?n=2:29"]29[/scripture]; [scripture id="1jo?n=3:4"]3:4[/scripture], <A HREF="/cgi-bin/br/BDB/1jo?n=3:7~a=2">7, 8, 9</A>, <A HREF="/cgi-bin/br/BDB/1jo?n=3:22">22</A>: see <A HREF="/cgi-bin/br/BDB/ro?n=1:32">Rom. 1:32</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (309, 1, 62, 3, 10, 'e', '<I>Poieo</I>, as [scripture id="1jo?n=1:6"]ch. 1:6[/scripture]; [scripture id="1jo?n=2:17"]2:17[/scripture] (does), [scripture id="1jo?n=2:29"]29[/scripture]; [scripture id="1jo?n=3:4"]3:4[/scripture], [scripture id="1jo?n=3:7~a=2"]7, 8, 9[/scripture], [scripture id="1jo?n=3:22"]22[/scripture]: see [scripture id="ro?n=1:32"]Rom. 1:32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (310, 1, 62, 3, 14, 'f', 'Lit. ''the.''');
 INSERT INTO `mse_bible_footnote` VALUES (311, 1, 62, 3, 16, 'g', 'Perfect tense, as [scripture id="1jo?n=2:3"]ch. 2:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (312, 1, 62, 3, 17, 'h', '''What is necessary to life,'' ''subsistence.''');
 INSERT INTO `mse_bible_footnote` VALUES (313, 1, 62, 3, 19, 'i', 'Or ''assure.''');
-INSERT INTO `mse_bible_footnote` VALUES (314, 1, 62, 3, 20, 'k', 'Subjunctive. ''That,'' [scripture id="1jo?n=3:20"]ver. 20[/scripture], refers to ''hereby'' in [scripture id="1jo?n=3:19"]ver. 19[/scripture]. It is showing what tests ''in truth.'' The repetition of ''that'' is nothing uncommon. It is found in <A HREF="/cgi-bin/br/BDB/eph?n=2:11~a=1">Eph. 2:11, 12</A>. What ''hereby'' refers to very commonly follows in John, as in <A HREF="/cgi-bin/br/BDB/1jo?n=3:16">vers. 16</A>, <A HREF="/cgi-bin/br/BDB/1jo?n=3:24">24</A>, and <A HREF="/cgi-bin/br/BDB/1jo?n=4:17">ch. 4:17</A>, and elsewhere, frequently indeed with ''that.'' ''God being greater'' is evidently a testing, searching thing.');
-INSERT INTO `mse_bible_footnote` VALUES (315, 1, 62, 3, 21, 'l', 'Subjunctive, as [scripture id="1jo?n=3:20"]ver. 20[/scripture], and <A HREF="/cgi-bin/br/BDB/1jo?n=1:6~a=1">ch. 1:6, 7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (314, 1, 62, 3, 20, 'k', 'Subjunctive. ''That,'' [scripture id="1jo?n=3:20"]ver. 20[/scripture], refers to ''hereby'' in [scripture id="1jo?n=3:19"]ver. 19[/scripture]. It is showing what tests ''in truth.'' The repetition of ''that'' is nothing uncommon. It is found in [scripture id="eph?n=2:11~a=1"]Eph. 2:11, 12[/scripture]. What ''hereby'' refers to very commonly follows in John, as in [scripture id="1jo?n=3:16"]vers. 16[/scripture], [scripture id="1jo?n=3:24"]24[/scripture], and [scripture id="1jo?n=4:17"]ch. 4:17[/scripture], and elsewhere, frequently indeed with ''that.'' ''God being greater'' is evidently a testing, searching thing.');
+INSERT INTO `mse_bible_footnote` VALUES (315, 1, 62, 3, 21, 'l', 'Subjunctive, as [scripture id="1jo?n=3:20"]ver. 20[/scripture], and [scripture id="1jo?n=1:6~a=1"]ch. 1:6, 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (316, 1, 62, 4, 2, 'a', '<I>Ginosko</I>: and so throughout chapter: see [scripture id="1co?n=8:1"]1Cor. 8:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (317, 1, 62, 4, 7, 'b', 'Or ''is born.'' as [scripture id="1jo?n=3:9"]ch. 3:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (318, 1, 62, 4, 9, 'c', '''In our case,'' in respect of us. The idea of the love of God remains absolute: only it has been shown ''as respects us in this,'' &c.');
@@ -357,7 +340,7 @@ INSERT INTO `mse_bible_footnote` VALUES (320, 1, 62, 5, 6, 'a', 'Or ''truth:'' t
 INSERT INTO `mse_bible_footnote` VALUES (321, 1, 62, 5, 7, 'b', 'What is omitted here has no real manuscript authority.');
 INSERT INTO `mse_bible_footnote` VALUES (322, 1, 62, 5, 8, 'c', '''Are to one point or purpose'' -- to one thing in their testimony. It is more than ''agree.''');
 INSERT INTO `mse_bible_footnote` VALUES (323, 1, 62, 5, 10, 'd', '<I>Poieo</I>, as ''make,'' [scripture id="1jo?n=1:10"]ch. 1:10[/scripture]: see [footnote id="n_ro?n=1:32c"]Note k, Rom. 1:32[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (324, 1, 62, 5, 13, 'e', '<I>Oida</I>: ''conscious knowledge;'' so [scripture id="1jo?n=5:15"]vers. 15[/scripture], <A HREF="/cgi-bin/br/BDB/1jo?n=5:18~a=2">18, 19, 20</A>, first: <I>ginosko</I>, <A HREF="/cgi-bin/br/BDB/1jo?n=2:20">vers. 2:20</A>, second.');
+INSERT INTO `mse_bible_footnote` VALUES (324, 1, 62, 5, 13, 'e', '<I>Oida</I>: ''conscious knowledge;'' so [scripture id="1jo?n=5:15"]vers. 15[/scripture], [scripture id="1jo?n=5:18~a=2"]18, 19, 20[/scripture], first: <I>ginosko</I>, [scripture id="1jo?n=2:20"]vers. 2:20[/scripture], second.');
 INSERT INTO `mse_bible_footnote` VALUES (325, 1, 62, 5, 18, 'f', 'As ''whoever,'' [scripture id="1jo?n=3:6"]ch. 3:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (326, 1, 62, 5, 18, 'g', 'Or ''is born,'' as [scripture id="1jo?n=3:9"]chs. 3:9[/scripture]; [scripture id="1jo?n=4:7"]4:7[/scripture]; [scripture id="1jo?n=5:1"]5:1[/scripture], [scripture id="1jo?n=5:4"]4[/scripture],');
 INSERT INTO `mse_bible_footnote` VALUES (327, 1, 62, 5, 19, 'h', 'Or ''in wickedness.'' This word, which may mean both, is also used for ''the wicked one,'' as [scripture id="1jo?n=3:12"]ch. 3:12[/scripture].');
@@ -479,7 +462,7 @@ INSERT INTO `mse_bible_footnote` VALUES (442, 1, 11, 16, 34, 'a', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (443, 1, 11, 17, 1, 'b', 'Meaning, ''Whose God (<I>El</I>) is Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (444, 1, 11, 17, 7, 'c', 'Lit. ''at the end of days.''');
 INSERT INTO `mse_bible_footnote` VALUES (445, 1, 11, 17, 15, 'd', 'Lit. ''days.''');
-INSERT INTO `mse_bible_footnote` VALUES (446, 1, 11, 18, 23, 'a', '''Do;'' so <A HREF="/cgi-bin/br/BDB/1ki?n=18:25~a=1">vers. 25, 26</A>, as <A HREF="/cgi-bin/br/BDB/de?n=12:27">Deut. 12:27</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (446, 1, 11, 18, 23, 'a', '''Do;'' so [scripture id="1ki?n=18:25~a=1"]vers. 25, 26[/scripture], as [scripture id="de?n=12:27"]Deut. 12:27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (447, 1, 11, 18, 26, 'b', 'Or ''upon.''');
 INSERT INTO `mse_bible_footnote` VALUES (448, 1, 11, 18, 32, 'c', 'Heb. <I>seah</I>, corresponding nearly to a peck.');
 INSERT INTO `mse_bible_footnote` VALUES (449, 1, 11, 18, 43, 'a', 'Heb. ''young man:'' see [scripture id="1ki?n=20:14"]ch. 20:14[/scripture]; [scripture id="jud?n=7:10"]Judg. 7:10[/scripture]; [scripture id="ru?n=2:5"]Ruth 2:5[/scripture]; [scripture id="1sa?n=9:5"]1Sam. 9:5[/scripture].');
@@ -521,7 +504,7 @@ INSERT INTO `mse_bible_footnote` VALUES (484, 1, 60, 1, 15, 'i', 'i.e. ''manner 
 INSERT INTO `mse_bible_footnote` VALUES (485, 1, 60, 1, 16, 'k', 'See [scripture id="le?n=19:2"]Lev. 19:2[/scripture]. ''Holy'' here is <I>hagios</I>: see [footnote id="n_heb?n=7:26"]Note i, Heb. 7:26[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (486, 1, 60, 1, 19, 'l', 'Or ''by precious blood, as of Christ, a lamb, &c.;'' or ''by <I>the</I> precious blood of Christ, as of a lamb, &c.''');
 INSERT INTO `mse_bible_footnote` VALUES (487, 1, 60, 1, 21, 'm', 'Or ''so that your faith and hope are in God.''');
-INSERT INTO `mse_bible_footnote` VALUES (488, 1, 60, 1, 25, 'n', 'See <A HREF="/cgi-bin/br/BDB/isa?n=40:6~a=2">Isa. 40:6-8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (488, 1, 60, 1, 25, 'n', 'See [scripture id="isa?n=40:6~a=2"]Isa. 40:6-8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (489, 1, 60, 2, 2, 'a', 'The word here translated ''mental'' has the sense of ''suited to the rational faculties'' -- the mind in contrast with the body -- yet I believe there is allusion to <I>logos</I>, from which it is derived, and I have added ''of the word'' to mark this allusion.');
 INSERT INTO `mse_bible_footnote` VALUES (490, 1, 60, 2, 6, 'b', 'See [scripture id="isa?n=28:16"]Isa. 28:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (491, 1, 60, 2, 6, 'c', 'Or ''trusts in it,'' that is, the Stone, Christ. ''On'' (<I>epi</I>) implies reliance on; confidence in; the mind looking to another with trust: see [scripture id="2ti?n=1:12"]2Tim. 1:12[/scripture].');
@@ -552,15 +535,15 @@ INSERT INTO `mse_bible_footnote` VALUES (515, 1, 60, 3, 1, 'n', 'Not the aorist,
 INSERT INTO `mse_bible_footnote` VALUES (516, 1, 60, 3, 1, 'o', 'Or ''manner of life.''');
 INSERT INTO `mse_bible_footnote` VALUES (517, 1, 60, 3, 5, 'p', '''Have hoped'' is present, characterizing the woman.');
 INSERT INTO `mse_bible_footnote` VALUES (518, 1, 60, 3, 6, 'q', 'That is, assuming they do.');
-INSERT INTO `mse_bible_footnote` VALUES (519, 1, 60, 3, 12, 'a', 'See <A HREF="/cgi-bin/br/BDB/ps?n=34:12~a=4">Ps. 34:12-16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (519, 1, 60, 3, 12, 'a', 'See [scripture id="ps?n=34:12~a=4"]Ps. 34:12-16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (520, 1, 60, 3, 13, 'b', 'Or ''him that is good.''');
-INSERT INTO `mse_bible_footnote` VALUES (521, 1, 60, 3, 15, 'c', 'See <A HREF="/cgi-bin/br/BDB/isa?n=8:12~a=1">Isa. 8:12-13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (521, 1, 60, 3, 15, 'c', 'See [scripture id="isa?n=8:12~a=1"]Isa. 8:12-13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (522, 1, 60, 3, 15, 'd', 'Or ''a reason for,'' <I>logos</I>, as [scripture id="1pe?n=4:5"]ch. 4:5[/scripture]; it includes both ideas. In [scripture id="mt?n=12:36"]Matt. 12:36[/scripture] it is ''account,'' but in [scripture id="ac?n=19:40"]Acts 19:40[/scripture] ''a reason for,'' as elsewhere.');
 INSERT INTO `mse_bible_footnote` VALUES (523, 1, 60, 3, 16, 'e', 'See [footnote id="n_1pe?n=2:12a"]Note m, ch. 2:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (524, 1, 60, 3, 16, 'f', 'See [footnote id="n_1pe?n=3:1a"]Note o, ver. 1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (525, 1, 60, 3, 18, 'g', '''Just'' is singular, ''unjust'' plural. There is no article in either case. It is not ''the just'' <I>par excellence</I>, as [scripture id="ac?n=3:14"]Acts 3:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (526, 1, 60, 3, 18, 'h', 'The article being left out, it is characteristic, in contrast with ''in flesh.'' Both flesh and spirit are the manner and character of what is predicated of Christ. We could say ''present in spirit,'' ''fervent in spirit,'' because it is characteristic: but ''made alive in spirit'' conveys to the English mind the idea of an accomplished fact. It cannot be simply characteristic. In Greek, on the other hand, although conveying a fact, it has a characteristic significance. The sense given here is right.');
-INSERT INTO `mse_bible_footnote` VALUES (527, 1, 60, 3, 20, 'i', 'Or ''disbelieving:'' see [scripture id="joh?n=3:36"]John 3:36[/scripture] and <A HREF="/cgi-bin/br/BDB/1pe?n=2:7~a=1">ch. 2:7, 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (527, 1, 60, 3, 20, 'i', 'Or ''disbelieving:'' see [scripture id="joh?n=3:36"]John 3:36[/scripture] and [scripture id="1pe?n=2:7~a=1"]ch. 2:7, 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (528, 1, 60, 3, 20, 'k', '<I>Makrothumia</I>: see [footnote id="n_jas?n=5:7a"]Note f, Jas. 5:7[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (529, 1, 60, 3, 20, 'l', 'The Greek means ''arrive safe into a place of security through difficulty or danger,'' as [scripture id="ac?n=27:44"]Acts 27:44[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (530, 1, 60, 3, 20, 'm', 'This does not mean, I think, that they went through the water to get in, i.e. through the course of the flood. The apostle''s mind does not turn to the flood, but to the water as an instrument. Water was ruin and death, and they were saved through it.');
@@ -569,7 +552,7 @@ INSERT INTO `mse_bible_footnote` VALUES (532, 1, 60, 4, 4, 'a', 'Or ''dissoluten
 INSERT INTO `mse_bible_footnote` VALUES (533, 1, 60, 4, 13, 'b', '<I>Koinonos</I>: see [scripture id="heb?n=2:14"]Heb. 2:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (534, 1, 60, 4, 14, 'c', 'Or ''the Spirit of glory and of God.'' There is a shade of difference in this.');
 INSERT INTO `mse_bible_footnote` VALUES (535, 1, 60, 4, 17, 'd', 'See [scripture id="eze?n=9:6"]Ezek. 9:6[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (536, 1, 60, 4, 17, 'e', 'Or ''believe not.'' See <A HREF="/cgi-bin/br/BDB/1pe?n=2:7~a=1">ch. 2:7, 8</A> and <A HREF="/cgi-bin/br/BDB/1pe?n=3:20">3:20</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (536, 1, 60, 4, 17, 'e', 'Or ''believe not.'' See [scripture id="1pe?n=2:7~a=1"]ch. 2:7, 8[/scripture] and [scripture id="1pe?n=3:20"]3:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (537, 1, 60, 4, 18, 'f', 'Saved here on the earth, as through the trials and judgments which specially beset the Jewish Christians.');
 INSERT INTO `mse_bible_footnote` VALUES (538, 1, 60, 5, 2, 'g', 'The aorist and characteristic: the whole conduct in this character being looked at together as constituting it. They are to act in this character, or have it by acting. It is not simply an exhortation to do it, but to acquire that character by doing it; to be so characterized; ''Be shepherders.''');
 INSERT INTO `mse_bible_footnote` VALUES (539, 1, 60, 5, 3, 'a', 'Lit. ''the possessions.'' What they are is wholly beside the mark. No doubt the saints were in his thoughts; but the character of the elders'' conduct is what is in question. If there were no article, it would mean ''not like persons who lord it over possessions:'' but here it is more definite. Do not be as persons lording it over your possessions, viewing the saints as something belonging to you. ''Possessions'' is not the name of the flock, but the flock was not to be treated as the ''possessions'' of the elders.');
@@ -585,7 +568,7 @@ INSERT INTO `mse_bible_footnote` VALUES (548, 1, 9, 1, 2, 'f', 'Meaning, ''grace
 INSERT INTO `mse_bible_footnote` VALUES (549, 1, 9, 1, 6, 'a', 'Or ''rival.''');
 INSERT INTO `mse_bible_footnote` VALUES (550, 1, 9, 1, 16, 'b', 'See [scripture id="de?n=13:13"]Deut. 13:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (551, 1, 9, 1, 20, 'c', 'Meaning, ''heard of God,'' or ''asked for of God.''');
-INSERT INTO `mse_bible_footnote` VALUES (552, 1, 9, 2, 1, 'a', '<A HREF="/cgi-bin/br/BDB/1sa?n=2:1~a=9">Vers. 1-10</A> are poetical in Hebrew.');
+INSERT INTO `mse_bible_footnote` VALUES (552, 1, 9, 2, 1, 'a', '[scripture id="1sa?n=2:1~a=9"]Vers. 1-10[/scripture] are poetical in Hebrew.');
 INSERT INTO `mse_bible_footnote` VALUES (553, 1, 9, 2, 1, 'b', 'Or ''by.''');
 INSERT INTO `mse_bible_footnote` VALUES (554, 1, 9, 2, 3, 'c', 'The Hebrew is plural.');
 INSERT INTO `mse_bible_footnote` VALUES (555, 1, 9, 2, 6, 'd', 'See [scripture id="ge?n=37:35"]Gen. 37:35[/scripture].');
@@ -688,7 +671,7 @@ INSERT INTO `mse_bible_footnote` VALUES (651, 1, 9, 16, 15, 'f', 'Lit. ''of:'' s
 INSERT INTO `mse_bible_footnote` VALUES (652, 1, 9, 17, 1, 'a', 'Or ''camps:'' so [scripture id="1sa?n=28:1"]ch. 28:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (653, 1, 9, 17, 3, 'b', 'Rather, ''towards.''');
 INSERT INTO `mse_bible_footnote` VALUES (654, 1, 9, 17, 4, 'c', 'Lit. ''middle-man;'' and so [scripture id="1sa?n=17:23"]ver. 23[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (655, 1, 9, 17, 10, 'd', 'Or ''reproached;'' and so <A HREF="/cgi-bin/br/BDB/1sa?n=17:25~a=1">vers. 25, 26</A>, <A HREF="/cgi-bin/br/BDB/1sa?n=17:36">36</A>, <A HREF="/cgi-bin/br/BDB/1sa?n=17:45">45</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (655, 1, 9, 17, 10, 'd', 'Or ''reproached;'' and so [scripture id="1sa?n=17:25~a=1"]vers. 25, 26[/scripture], [scripture id="1sa?n=17:36"]36[/scripture], [scripture id="1sa?n=17:45"]45[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (656, 1, 9, 17, 17, 'e', 'Or ''run.''');
 INSERT INTO `mse_bible_footnote` VALUES (657, 1, 9, 17, 26, 'a', 'Strictly, ''ranks,'' as [scripture id="1sa?n=17:10"]vers. 10[/scripture], [scripture id="1sa?n=17:45"]45[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (658, 1, 9, 17, 29, 'b', 'Or, ''Is there not a cause?''');
@@ -843,7 +826,7 @@ INSERT INTO `mse_bible_footnote` VALUES (806, 1, 14, 2, 10, 'e', 'Heb. <I>Cors</
 INSERT INTO `mse_bible_footnote` VALUES (807, 1, 14, 2, 10, 'f', 'Perhaps ''wheat for food.''');
 INSERT INTO `mse_bible_footnote` VALUES (808, 1, 14, 2, 11, 'g', 'Lit. ''said.''');
 INSERT INTO `mse_bible_footnote` VALUES (809, 1, 14, 2, 13, 'h', 'Or ''of Huram my father;'' and so [scripture id="2ch?n=4:16"]ch. 4:16[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (810, 1, 14, 2, 14, 'i', '* In [scripture id="1ki?n=7:14"]1Kings 7:14[/scripture] Hiram is said to be of the tribe of Naphtali, but here of Dan, probably due to the fact that Naphtali belonged to the camp of Dan: <A HREF="/cgi-bin/br/BDB/nu?n=2:25~a=6">Num. 2:25-31</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (810, 1, 14, 2, 14, 'i', '* In [scripture id="1ki?n=7:14"]1Kings 7:14[/scripture] Hiram is said to be of the tribe of Naphtali, but here of Dan, probably due to the fact that Naphtali belonged to the camp of Dan: [scripture id="nu?n=2:25~a=6"]Num. 2:25-31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (811, 1, 14, 3, 1, 'a', 'Meaning, ''shewn by Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (812, 1, 14, 3, 1, 'b', 'Or ''which was shewn.''');
 INSERT INTO `mse_bible_footnote` VALUES (813, 1, 14, 3, 5, 'c', 'Or ''palms;'' and so elsewhere.');
@@ -870,7 +853,7 @@ INSERT INTO `mse_bible_footnote` VALUES (833, 1, 14, 6, 36, 'a', 'Lit. ''before.
 INSERT INTO `mse_bible_footnote` VALUES (834, 1, 14, 6, 36, 'b', 'Lit. ''those that take them captive have....''');
 INSERT INTO `mse_bible_footnote` VALUES (835, 1, 14, 6, 41, 'c', '<I>Chasid</I>: see [footnote id="n_2ch?n=6:42"]Note to ver. 42[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (836, 1, 14, 6, 41, 'd', 'Or ''in goodness'' or ''in that which is good.''');
-INSERT INTO `mse_bible_footnote` VALUES (837, 1, 14, 6, 42, 'e', '<I>Chesed</I>, whence the word <I>Chasid</I>, ''saint'' ([scripture id="2ch?n=6:41"]ver. 41[/scripture]). It is ''goodness'' in God, ''piety'' in man towards God, or one''s parents, ''loving-kindness,'' ''mercy.'' Christ Himself, as the One in whom these qualities are found, is called <I>Chasid</I>, ''Holy One:'' see [scripture id="2sa?n=22:26"]2Sam. 22:26[/scripture]; <A HREF="/cgi-bin/br/BDB/ps?n=89:1~a=2">Ps. 89:1-3</A>, <A HREF="/cgi-bin/br/BDB/ps?n=89:19">19</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (837, 1, 14, 6, 42, 'e', '<I>Chesed</I>, whence the word <I>Chasid</I>, ''saint'' ([scripture id="2ch?n=6:41"]ver. 41[/scripture]). It is ''goodness'' in God, ''piety'' in man towards God, or one''s parents, ''loving-kindness,'' ''mercy.'' Christ Himself, as the One in whom these qualities are found, is called <I>Chasid</I>, ''Holy One:'' see [scripture id="2sa?n=22:26"]2Sam. 22:26[/scripture]; [scripture id="ps?n=89:1~a=2"]Ps. 89:1-3[/scripture], [scripture id="ps?n=89:19"]19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (838, 1, 14, 8, 8, 'a', 'Or ''the levy.''');
 INSERT INTO `mse_bible_footnote` VALUES (839, 1, 14, 8, 14, 'b', 'Lit. ''for the thing of the day in its day,'' as [scripture id="1ch?n=16:37"]1Chron. 16:37[/scripture], and cf. [scripture id="2ch?n=31:16"]2Chron. 31:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (840, 1, 14, 9, 5, 'a', 'Lit. ''of thy things.''');
@@ -890,7 +873,7 @@ INSERT INTO `mse_bible_footnote` VALUES (853, 1, 14, 13, 9, 'b', 'Or ''to no-god
 INSERT INTO `mse_bible_footnote` VALUES (854, 1, 14, 14, 3, 'a', 'Or ''statues:'' see [scripture id="1ki?n=14:23"]1Kings 14:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (855, 1, 14, 14, 9, 'a', 'Cushite.');
 INSERT INTO `mse_bible_footnote` VALUES (856, 1, 14, 14, 11, 'b', '<I>Enosh</I>: see [scripture id="ge?n=4:26"]Gen. 4:26[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (857, 1, 14, 14, 13, 'c', 'Or ''that they could not revive:'' see <A HREF="/cgi-bin/br/BDB/ezr?n=9:8~a=1">Ezra 9:8, 9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (857, 1, 14, 14, 13, 'c', 'Or ''that they could not revive:'' see [scripture id="ezr?n=9:8~a=1"]Ezra 9:8, 9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (858, 1, 14, 14, 13, 'd', 'Elsewhere, ''camp.''');
 INSERT INTO `mse_bible_footnote` VALUES (859, 1, 14, 15, 3, 'e', 'Heb. ''many days.''');
 INSERT INTO `mse_bible_footnote` VALUES (860, 1, 14, 15, 16, 'a', 'See [scripture id="1ki?n=15:13"]1Kings 15:13[/scripture].');
@@ -965,7 +948,7 @@ INSERT INTO `mse_bible_footnote` VALUES (928, 1, 14, 30, 8, 'b', 'Heb. ''offer t
 INSERT INTO `mse_bible_footnote` VALUES (929, 1, 14, 30, 18, 'c', 'Or ''make atonement for:'' see [scripture id="de?n=21:8"]Deut. 21:8[/scripture]; [scripture id="de?n=32:43"]32:43[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (930, 1, 14, 30, 22, 'a', 'Or ''had good insight into the knowledge of Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (931, 1, 14, 31, 1, 'b', 'Or ''statues:'' see [scripture id="1ki?n=14:23"]1Kings 14:23[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (932, 1, 14, 31, 2, 'c', 'Lit. ''camps:'' see <A HREF="/cgi-bin/br/BDB/1ch?n=9:18~a=1">1Chron. 9:18, 19</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (932, 1, 14, 31, 2, 'c', 'Lit. ''camps:'' see [scripture id="1ch?n=9:18~a=1"]1Chron. 9:18, 19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (933, 1, 14, 31, 5, 'd', 'Lit. ''multiplied.''');
 INSERT INTO `mse_bible_footnote` VALUES (934, 1, 14, 31, 15, 'a', 'Lit. ''under his hand.''');
 INSERT INTO `mse_bible_footnote` VALUES (935, 1, 14, 31, 15, 'b', 'Or ''priests, faithfully to ...''');
@@ -998,7 +981,7 @@ INSERT INTO `mse_bible_footnote` VALUES (961, 1, 14, 36, 3, 'b', 'Or ''deposed h
 INSERT INTO `mse_bible_footnote` VALUES (962, 1, 14, 36, 6, 'c', 'Or ''bronze,'' and see [scripture id="2ch?n=33:11"]ch. 33:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (963, 1, 14, 36, 14, 'd', 'Or ''unfaithfulness.''');
 INSERT INTO `mse_bible_footnote` VALUES (964, 1, 14, 36, 15, 'e', 'Or ''he spared,'' as in [scripture id="2ch?n=36:17"]ver. 17[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (965, 1, 47, 1, 4, 'a', '<I>Parakaleo</I>, as [scripture id="mt?n=2:18"]Matt. 2:18[/scripture]; [scripture id="mt?n=5:4"]5:4[/scripture]; [scripture id="ac?n=20:12"]Acts 20:12[/scripture]; [scripture id="1th?n=3:7"]1Thess. 3:7[/scripture]. I do not say ''comfort,'' as that is rather conveyed in <I>paramutheomai</I>, so translated in [scripture id="1th?n=2:11"]1Thess. 2:11[/scripture]; [scripture id="1th?n=5:14"]5:14[/scripture]; ''console,'' [scripture id="joh?n=11:19"]John 11:19[/scripture], [scripture id="joh?n=11:31"]31[/scripture]; and ''consolation,'' [scripture id="1co?n=14:3"]1Cor. 14:3[/scripture]. The difference is slight, but here, as in <A HREF="/cgi-bin/br/BDB/ac?n=20">Acts 20</A>, there is the sense of ''cheered,'' and this might replace ''encourage'' and ''encouragement'' if there were a suitable noun.');
+INSERT INTO `mse_bible_footnote` VALUES (965, 1, 47, 1, 4, 'a', '<I>Parakaleo</I>, as [scripture id="mt?n=2:18"]Matt. 2:18[/scripture]; [scripture id="mt?n=5:4"]5:4[/scripture]; [scripture id="ac?n=20:12"]Acts 20:12[/scripture]; [scripture id="1th?n=3:7"]1Thess. 3:7[/scripture]. I do not say ''comfort,'' as that is rather conveyed in <I>paramutheomai</I>, so translated in [scripture id="1th?n=2:11"]1Thess. 2:11[/scripture]; [scripture id="1th?n=5:14"]5:14[/scripture]; ''console,'' [scripture id="joh?n=11:19"]John 11:19[/scripture], [scripture id="joh?n=11:31"]31[/scripture]; and ''consolation,'' [scripture id="1co?n=14:3"]1Cor. 14:3[/scripture]. The difference is slight, but here, as in [scripture id="ac?n=20"]Acts 20[/scripture], there is the sense of ''cheered,'' and this might replace ''encourage'' and ''encouragement'' if there were a suitable noun.');
 INSERT INTO `mse_bible_footnote` VALUES (966, 1, 47, 1, 5, 'b', 'I would take this opportunity of drawing attention to the difference between ''Christ'' and ''the Christ.'' ''The Christ'' is a title, the designation of a condition or office, not a name; ''Christ'' is a name. These are not used indifferently, and in the Gospels, where in Greek the word occurs alone, it is almost invariably ''the Christ,'' the Messiah, or Anointed; while in the Epistles it is rarely so, but is used as a name. Some cases are doubtful, because the structure of the Greek phrase requires or prefers the article: this is the case here. However, on the whole I believe the article should be inserted here in English. When the article is inserted in this translation, the office or condition is considered to be the prominent thought.');
 INSERT INTO `mse_bible_footnote` VALUES (967, 1, 47, 1, 9, 'c', '* Lit. ''<I>the</I> God who raises,'' &c.');
 INSERT INTO `mse_bible_footnote` VALUES (968, 1, 47, 1, 12, 'd', 'Lit. ''simplicity and sincerity of God.'' The force I take to be, ''such as God would have, and God would produce.'' As we say, ''That is the stroke of a master,'' ''the act of a prince.'' ''Godly'' seems to me feeble, but not wrong. One cannot say ''of God'' here.');
@@ -1022,10 +1005,10 @@ INSERT INTO `mse_bible_footnote` VALUES (985, 1, 47, 3, 5, 'f', 'I do not partic
 INSERT INTO `mse_bible_footnote` VALUES (986, 1, 47, 3, 6, 'g', 'The omission of the article makes it characteristic, as in the case of ''letter'' and ''spirit;'' perhaps it may be rendered ''competent <I>as</I> new covenant ministers.''');
 INSERT INTO `mse_bible_footnote` VALUES (987, 1, 47, 3, 6, 'h', 'Or ''For letter kills.''');
 INSERT INTO `mse_bible_footnote` VALUES (988, 1, 47, 3, 7, 'i', 'It is not said that the ministry was glorious, but that the system was introduced with glory. It is in contrast with ''subsist in glory'' ([scripture id="2co?n=3:8"]ver. 8[/scripture]).');
-INSERT INTO `mse_bible_footnote` VALUES (989, 1, 47, 3, 7, 'k', 'See <A HREF="/cgi-bin/br/BDB/ex?n=34:29~a=6">Ex. 34:29-35</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (990, 1, 47, 3, 11, 'a', '''That annulled,'' or ''done away,'' may appear a little harsh, but the apostle uses it as a formula for the old covenant done away in Christ. If this be borne in mind, the sense will be clearer by the use of it. It contrasts ''that annulled'' with ''that which abides:'' so <A HREF="/cgi-bin/br/BDB/2co?n=3:13~a=1">vers. 13 and 14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (989, 1, 47, 3, 7, 'k', 'See [scripture id="ex?n=34:29~a=6"]Ex. 34:29-35[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (990, 1, 47, 3, 11, 'a', '''That annulled,'' or ''done away,'' may appear a little harsh, but the apostle uses it as a formula for the old covenant done away in Christ. If this be borne in mind, the sense will be clearer by the use of it. It contrasts ''that annulled'' with ''that which abides:'' so [scripture id="2co?n=3:13~a=1"]vers. 13 and 14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (991, 1, 47, 3, 14, 'b', 'As ''hardened,'' [scripture id="mr?n=3:5"]Mark 3:5[/scripture]; ''blinded,'' [scripture id="ro?n=11:7"]Rom. 11:7[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (992, 1, 47, 3, 14, 'c', 'I have no doubt that the text is right, and that Moses covered his face <I>while</I> he talked to the people, and that the Hebrew, [scripture id="ex?n=34:33"]Ex. 34:33[/scripture], means nothing else, and <A HREF="/cgi-bin/br/BDB/2co?n=3:34">ver. 34</A> proves it.');
+INSERT INTO `mse_bible_footnote` VALUES (992, 1, 47, 3, 14, 'c', 'I have no doubt that the text is right, and that Moses covered his face <I>while</I> he talked to the people, and that the Hebrew, [scripture id="ex?n=34:33"]Ex. 34:33[/scripture], means nothing else, and [scripture id="2co?n=3:34"]ver. 34[/scripture] proves it.');
 INSERT INTO `mse_bible_footnote` VALUES (993, 1, 47, 3, 16, 'd', 'The parenthesis begins at [scripture id="2co?n=3:7"]ver. 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (994, 1, 47, 3, 18, 'e', 'As [scripture id="ro?n=12:2"]Rom. 12:2[/scripture]. From <I>metamorphoo</I>, translated ''transfigured'' in [scripture id="mt?n=17:2"]Matt. 17:2[/scripture] and [scripture id="mr?n=9:2"]Mark 9:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (995, 1, 47, 3, 18, 'f', 'See [scripture id="2co?n=3:6"]vers. 6[/scripture], [scripture id="2co?n=3:17"]17[/scripture].');
@@ -1064,7 +1047,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1027, 1, 47, 6, 12, 'b', 'Lit. ''bowels
 INSERT INTO `mse_bible_footnote` VALUES (1028, 1, 47, 6, 13, 'c', 'Lit. ''be ye also expanded.''');
 INSERT INTO `mse_bible_footnote` VALUES (1029, 1, 47, 6, 14, 'd', '''Unequally,'' as in A.V., is a consequence, but not stated in the text, which says ''diversely,'' referring to the Levitical law, which forbade different animals to be yoked together, [scripture id="de?n=22:10"]Deut. 22:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1030, 1, 47, 6, 16, 'e', '<I>Naos</I>: see [scripture id="1co?n=9:13"]1Cor. 9:13[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1031, 1, 47, 6, 16, 'f', 'See <A HREF="/cgi-bin/br/BDB/le?n=26:11~a=1">Lev. 26:11-12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1031, 1, 47, 6, 16, 'f', 'See [scripture id="le?n=26:11~a=1"]Lev. 26:11-12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1032, 1, 47, 6, 17, 'g', '''Lord'' is a proper name, answering to Jehovah. God, who in the Old Testament took the name of Jehovah with Israel, and of Shaddai (Almighty) with Abraham, Isaac, and Jacob, takes the name of Father with us.');
 INSERT INTO `mse_bible_footnote` VALUES (1033, 1, 47, 6, 17, 'h', 'See [scripture id="isa?n=52:11"]Isa. 52:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1034, 1, 47, 7, 1, 'i', '<I>Hagiosune:</I> See [footnote id="n_ro?n=1:4a"]Note at Rom. 1:4[/footnote].');
@@ -1156,7 +1139,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1119, 1, 12, 4, 18, 'f', 'Lit. ''the.''
 INSERT INTO `mse_bible_footnote` VALUES (1120, 1, 12, 4, 22, 'g', 'Here, ''she-asses.''');
 INSERT INTO `mse_bible_footnote` VALUES (1121, 1, 12, 4, 23, 'h', 'Lit. ''Peace,'' so also (4 times) in [scripture id="2ki?n=4:26"]ver. 26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1122, 1, 12, 5, 2, 'a', 'Lit. ''was before.''');
-INSERT INTO `mse_bible_footnote` VALUES (1123, 1, 12, 5, 10, 'b', 'Or ''bathe:'' so <A HREF="/cgi-bin/br/BDB/2ki?n=5:12~a=1">vers. 12, 13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1123, 1, 12, 5, 10, 'b', 'Or ''bathe:'' so [scripture id="2ki?n=5:12~a=1"]vers. 12, 13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1124, 1, 12, 5, 12, 'c', 'Or ''the Amanah.''');
 INSERT INTO `mse_bible_footnote` VALUES (1125, 1, 12, 5, 17, 'd', '''Do'' as [scripture id="de?n=12:27"]Deut. 12:27[/scripture]: see [scripture id="1ki?n=3:15"]1Kings 3:15[/scripture]; [scripture id="1ki?n=18:23"]18:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1126, 1, 12, 5, 18, 'e', 'A Syrian idol.');
@@ -1174,13 +1157,13 @@ INSERT INTO `mse_bible_footnote` VALUES (1137, 1, 12, 8, 4, 'c', 'Lit. ''young m
 INSERT INTO `mse_bible_footnote` VALUES (1138, 1, 12, 8, 6, 'd', 'Or ''eunuch.''');
 INSERT INTO `mse_bible_footnote` VALUES (1139, 1, 12, 8, 19, 'a', 'Lit. ''all the days.''');
 INSERT INTO `mse_bible_footnote` VALUES (1140, 1, 12, 9, 8, 'a', 'As [scripture id="1ki?n=14:10"]1Kings 14:10[/scripture]: see [scripture id="de?n=32:36"]Deut. 32:36[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1141, 1, 12, 9, 10, 'b', 'Or ''portion,'' ''allotment;'' and so [scripture id="2ki?n=9:21"]vers. 21[/scripture], <A HREF="/cgi-bin/br/BDB/2ki?n=9:25~a=1">25, 26</A>, <A HREF="/cgi-bin/br/BDB/2ki?n=9:36">36, 37</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1141, 1, 12, 9, 10, 'b', 'Or ''portion,'' ''allotment;'' and so [scripture id="2ki?n=9:21"]vers. 21[/scripture], [scripture id="2ki?n=9:25~a=1"]25, 26[/scripture], [scripture id="2ki?n=9:36"]36, 37[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1142, 1, 12, 9, 24, 'a', 'Lit. ''filled his hand with the bow.''');
 INSERT INTO `mse_bible_footnote` VALUES (1143, 1, 12, 9, 26, 'b', 'See [scripture id="ge?n=22:16"]Gen. 22:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1144, 1, 12, 9, 31, 'c', 'Or ''Had Zimri peace ...?''');
 INSERT INTO `mse_bible_footnote` VALUES (1145, 1, 12, 9, 32, 'a', 'Or ''eunuchs.''');
-INSERT INTO `mse_bible_footnote` VALUES (1146, 1, 12, 10, 1, 'b', 'Or ''a letter,'' as [scripture id="2ki?n=10:2"]vers 2[/scripture], <A HREF="/cgi-bin/br/BDB/2ki?n=10:6~a=1">6, 7</A>, but here it is the plural.');
-INSERT INTO `mse_bible_footnote` VALUES (1147, 1, 12, 10, 1, 'c', 'Or ''nursing-fathers:'' see <A HREF="/cgi-bin/br/BDB/2ki?n=10:5~a=1">vers. 5 and 6</A> and <A HREF="/cgi-bin/br/BDB/nu?n=11:12">Num. 11:12</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (1146, 1, 12, 10, 1, 'b', 'Or ''a letter,'' as [scripture id="2ki?n=10:2"]vers 2[/scripture], [scripture id="2ki?n=10:6~a=1"]6, 7[/scripture], but here it is the plural.');
+INSERT INTO `mse_bible_footnote` VALUES (1147, 1, 12, 10, 1, 'c', 'Or ''nursing-fathers:'' see [scripture id="2ki?n=10:5~a=1"]vers. 5 and 6[/scripture] and [scripture id="nu?n=11:12"]Num. 11:12[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (1148, 1, 12, 10, 12, 'd', 'Or ''Beth-Eked.''');
 INSERT INTO `mse_bible_footnote` VALUES (1149, 1, 12, 10, 13, 'a', 'See [scripture id="1ki?n=15:13"]1Kings 15:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1150, 1, 12, 10, 15, 'b', 'Lit. ''blessed.''');
@@ -1208,7 +1191,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1171, 1, 12, 17, 35, 'c', 'Or ''worship
 INSERT INTO `mse_bible_footnote` VALUES (1172, 1, 12, 18, 4, 'a', 'Or ''statues:'' see [scripture id="2ki?n=3:2"]chs. 3:2[/scripture]; [scripture id="2ki?n=23:14"]23:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1173, 1, 12, 18, 4, 'b', 'Meaning, ''Bronze'' or ''Brass.''');
 INSERT INTO `mse_bible_footnote` VALUES (1174, 1, 12, 18, 7, 'c', 'Or ''he dealt wisely:'' see [scripture id="1sa?n=18:5"]1Sam. 18:5[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1175, 1, 12, 18, 13, 'd', 'Compare <A HREF="/cgi-bin/br/BDB/2ki?n=18:13~a=82">ch. 18:13 to ch. 20:19</A> with <A HREF="/cgi-bin/br/BDB/isa?n=36:1~a=92">Isa. 36 to 39</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1175, 1, 12, 18, 13, 'd', 'Compare [scripture id="2ki?n=18:13~a=82"]ch. 18:13 to ch. 20:19[/scripture] with [scripture id="isa?n=36:1~a=92"]Isa. 36 to 39[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1176, 1, 12, 18, 17, 'e', 'Or ''the marshal, the chief chamberlain, and the chief officer.''');
 INSERT INTO `mse_bible_footnote` VALUES (1177, 1, 12, 18, 24, 'a', 'Elsewhere ''governor.''');
 INSERT INTO `mse_bible_footnote` VALUES (1178, 1, 12, 18, 26, 'b', 'Or ''Aramaic.''');
@@ -1246,12 +1229,12 @@ INSERT INTO `mse_bible_footnote` VALUES (1209, 1, 12, 23, 11, 'g', 'Or ''eunuch.
 INSERT INTO `mse_bible_footnote` VALUES (1210, 1, 12, 23, 11, 'h', 'Heb. <I>parvarim</I>, ''the dependencies of the temple,'' possibly the same as <I>parbar</I>, [scripture id="1ch?n=26:18"]1Chron. 26:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1211, 1, 12, 23, 14, 'a', 'Or ''statues:'' see [scripture id="2ki?n=3:2"]ch. 3:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1212, 1, 12, 23, 20, 'b', '''Slaughtered,'' as [scripture id="1ki?n=13:2"]1Kings 13:2[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1213, 1, 12, 23, 26, 'a', 'See <A HREF="/cgi-bin/br/BDB/jer?n=15:1~a=3">Jer. 15:1-4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1213, 1, 12, 23, 26, 'a', 'See [scripture id="jer?n=15:1~a=3"]Jer. 15:1-4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1214, 1, 12, 23, 30, 'b', 'Or perhaps ''dying:'' see [scripture id="2ch?n=35:24"]2Chron. 35:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1215, 1, 12, 23, 35, 'c', 'Or ''assessment.''');
 INSERT INTO `mse_bible_footnote` VALUES (1216, 1, 12, 24, 12, 'a', 'Or ''eunuchs.''');
 INSERT INTO `mse_bible_footnote` VALUES (1217, 1, 12, 24, 14, 'b', 'Or ''all those who were wealthy,'' as [scripture id="2ki?n=15:20"]ch. 15:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1218, 1, 12, 24, 18, 'c', 'Compare [scripture id="2ki?n=24:18"]ch. 24:18[/scripture] to [scripture id="2ki?n=25:21"]ch. 25:21[/scripture] with <A HREF="/cgi-bin/br/BDB/jer?n=52:1~a=26">Jer. 52:1-27</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1218, 1, 12, 24, 18, 'c', 'Compare [scripture id="2ki?n=24:18"]ch. 24:18[/scripture] to [scripture id="2ki?n=25:21"]ch. 25:21[/scripture] with [scripture id="jer?n=52:1~a=26"]Jer. 52:1-27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1219, 1, 12, 25, 1, 'd', 'Or ''siege-towers,'' or ''an enclosing wall;'' and so [scripture id="jer?n=52:4"]Jer. 52:4[/scripture]: see [scripture id="eze?n=4:2"]Ezek. 4:2[/scripture]; [scripture id="eze?n=17:17"]17:17[/scripture]; [scripture id="eze?n=21:22"]21:22[/scripture]; [scripture id="eze?n=26:8"]26:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1220, 1, 12, 25, 4, 'a', 'The <I>Arabah</I>: see [scripture id="jos?n=3:16"]Josh. 3:16[/scripture]. In [scripture id="2ki?n=25:5"]ver. 5[/scripture]: ''the parts of the Arabah about Jericho:'' so in [scripture id="jer?n=39:5"]Jer. 39:5[/scripture]; [scripture id="jer?n=52:8"]52:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1221, 1, 12, 25, 7, 'b', 'Or ''with double (or ''two'') chains of bronze.''');
@@ -1262,10 +1245,10 @@ INSERT INTO `mse_bible_footnote` VALUES (1225, 1, 12, 25, 15, 'f', 'Or ''basons:
 INSERT INTO `mse_bible_footnote` VALUES (1226, 1, 12, 25, 19, 'g', 'Or ''eunuch.''');
 INSERT INTO `mse_bible_footnote` VALUES (1227, 1, 12, 25, 19, 'h', 'Or ''scribe-in-chief.''');
 INSERT INTO `mse_bible_footnote` VALUES (1228, 1, 12, 25, 21, 'a', 'or ''from their soil.''');
-INSERT INTO `mse_bible_footnote` VALUES (1229, 1, 12, 25, 22, 'b', 'With <A HREF="/cgi-bin/br/BDB/2ki?n=25:23~a=1">vers. 23-24</A>. compare <A HREF="/cgi-bin/br/BDB/jer?n=40:7~a=2">Jer. 40:7-9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1229, 1, 12, 25, 22, 'b', 'With [scripture id="2ki?n=25:23~a=1"]vers. 23-24[/scripture]. compare [scripture id="jer?n=40:7~a=2"]Jer. 40:7-9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1230, 1, 12, 25, 23, 'c', 'Or ''both.''');
-INSERT INTO `mse_bible_footnote` VALUES (1231, 1, 12, 25, 25, 'd', 'With <A HREF="/cgi-bin/br/BDB/2ki?n=25:25~a=1">vers. 25-26</A>, compare <A HREF="/cgi-bin/br/BDB/jer?n=41:1~a=2">Jer. 41:1-3</A>; <A HREF="/cgi-bin/br/BDB/jer?n=43:4~a=3">43:4-7</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (1232, 1, 12, 25, 27, 'e', 'With <A HREF="/cgi-bin/br/BDB/2ki?n=25:27~a=3">vers. 27-30</A>, compare <A HREF="/cgi-bin/br/BDB/jer?n=52:31~a=3">Jer. 52:31-34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1231, 1, 12, 25, 25, 'd', 'With [scripture id="2ki?n=25:25~a=1"]vers. 25-26[/scripture], compare [scripture id="jer?n=41:1~a=2"]Jer. 41:1-3[/scripture]; [scripture id="jer?n=43:4~a=3"]43:4-7[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (1232, 1, 12, 25, 27, 'e', 'With [scripture id="2ki?n=25:27~a=3"]vers. 27-30[/scripture], compare [scripture id="jer?n=52:31~a=3"]Jer. 52:31-34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1233, 1, 61, 1, 2, 'i', '<I>Epignosis</I>, ''full knowledge,'' ''personal recognition,'' as [scripture id="col?n=1:9"]Col. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1234, 1, 61, 1, 3, 'k', 'Many read ''by (his) own glory.''');
 INSERT INTO `mse_bible_footnote` VALUES (1235, 1, 61, 1, 4, 'l', 'Or ''have been given.''');
@@ -1281,10 +1264,10 @@ INSERT INTO `mse_bible_footnote` VALUES (1244, 1, 61, 1, 17, 'h', 'Or ''brought,
 INSERT INTO `mse_bible_footnote` VALUES (1245, 1, 61, 1, 20, 'i', 'That is, ''it is not explained by its own meaning,'' as a human statement. It must be understood by and according to the Spirit that uttered it. The ''prophecy'' is, I take it, the sense of the prophecy, the thing meant by it. Now this is not gathered by a human interpretation of an isolated passage which has its own meaning and its own solution, as if a man uttered it; for it is a part of God''s mind, uttered as holy men were moved by the Holy Spirit to utter it. In the ''prophecy of scripture'' the apostle has in mind the thing prophesied, without losing the idea of the passage. Hence I have ventured to say ''<I>the scope of</I> no prophecy.'' One might almost say ''no prophecy explains itself.''');
 INSERT INTO `mse_bible_footnote` VALUES (1246, 1, 61, 1, 21, 'k', 'Or ''heretofore.''');
 INSERT INTO `mse_bible_footnote` VALUES (1247, 1, 61, 1, 21, 'l', 'As ''uttered'' in [footnote id="n_2pe?n=1:17a"]vers. 17 and 18. See Note h[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (1248, 1, 61, 1, 21, 'm', 'Lit. ''spake as borne by;'' from the same Greek root as ''uttered,'' <A HREF="/cgi-bin/br/BDB/2pe?n=1:17~a=1">vers. 17, 18</A>, and again in this verse.');
+INSERT INTO `mse_bible_footnote` VALUES (1248, 1, 61, 1, 21, 'm', 'Lit. ''spake as borne by;'' from the same Greek root as ''uttered,'' [scripture id="2pe?n=1:17~a=1"]vers. 17, 18[/scripture], and again in this verse.');
 INSERT INTO `mse_bible_footnote` VALUES (1249, 1, 61, 2, 1, 'a', '<I>Hostis</I>, as [scripture id="mt?n=7:24"]Matt. 7:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1250, 1, 61, 2, 1, 'b', 'Lit. ''and denying.'' It refers to false teachers, not heresies.');
-INSERT INTO `mse_bible_footnote` VALUES (1251, 1, 61, 2, 1, 'c', '''Despot,'' as [scripture id="ac?n=4:24"]Acts 4:24[/scripture]; <A HREF="/cgi-bin/br/BDB/1ti?n=6:1~a=1">1Tim. 6:1, 2</A>; <A HREF="/cgi-bin/br/BDB/tit?n=2:9">Tit. 2:9</A>; <A HREF="/cgi-bin/br/BDB/1pe?n=2:18">1Pet. 2:18</A>; <A HREF="/cgi-bin/br/BDB/re?n=6:10">Rev. 6:10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1251, 1, 61, 2, 1, 'c', '''Despot,'' as [scripture id="ac?n=4:24"]Acts 4:24[/scripture]; [scripture id="1ti?n=6:1~a=1"]1Tim. 6:1, 2[/scripture]; [scripture id="tit?n=2:9"]Tit. 2:9[/scripture]; [scripture id="1pe?n=2:18"]1Pet. 2:18[/scripture]; [scripture id="re?n=6:10"]Rev. 6:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1252, 1, 61, 2, 3, 'd', 'Or ''false,'' <I>plastos</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (1253, 1, 61, 2, 5, 'e', 'That is, ''one of eight.''');
 INSERT INTO `mse_bible_footnote` VALUES (1254, 1, 61, 2, 5, 'f', 'Lit. ''herald,'' as [scripture id="1ti?n=2:7"]1Tim. 2:7[/scripture]; [scripture id="2ti?n=1:11"]2Tim. 1:11[/scripture].');
@@ -1292,7 +1275,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1255, 1, 61, 2, 7, 'g', 'i.e. ''manner 
 INSERT INTO `mse_bible_footnote` VALUES (1256, 1, 61, 2, 8, 'h', 'Or ''settling down:'' it has a strengthening preposition.');
 INSERT INTO `mse_bible_footnote` VALUES (1257, 1, 61, 2, 10, 'i', 'Lit. ''glories.''');
 INSERT INTO `mse_bible_footnote` VALUES (1258, 1, 61, 2, 12, 'k', 'Or ''to be captured and perish.''');
-INSERT INTO `mse_bible_footnote` VALUES (1259, 1, 61, 2, 13, 'l', 'Or ''by day,'' in contrast with ''they that be drunk are drunk in the night,'' <A HREF="/cgi-bin/br/BDB/1th?n=5:7~a=1">1Thess. 5:7-8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1259, 1, 61, 2, 13, 'l', 'Or ''by day,'' in contrast with ''they that be drunk are drunk in the night,'' [scripture id="1th?n=5:7~a=1"]1Thess. 5:7-8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1260, 1, 61, 2, 14, 'm', 'Or ''carnal desire and seeking to seduce,'' ''practised in seduction'' is the sense.');
 INSERT INTO `mse_bible_footnote` VALUES (1261, 1, 61, 2, 19, 'a', 'Or ''to him.''');
 INSERT INTO `mse_bible_footnote` VALUES (1262, 1, 61, 2, 20, 'b', '<I>Epignosis</I>, see [footnote id="n_2pe?n=1:2"]Note i, ch. 1:3[/footnote].');
@@ -1529,7 +1512,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1492, 1, 44, 2, 42, 'c', 'As [scripture
 INSERT INTO `mse_bible_footnote` VALUES (1493, 1, 44, 2, 46, 'd', '<I>Hieron</I>, the general buildings.');
 INSERT INTO `mse_bible_footnote` VALUES (1494, 1, 44, 2, 47, 'e', 'See [footnote id="n_ac?n=3:1"]Note g, ch. 3:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1495, 1, 44, 2, 47, 'f', 'The remnant of Israel whom God was sparing. The Lord now added these to the Christian assembly. The present participle as here gives the character instead of the fact; as I might say, ''the being spared ones;'' it is the class of persons God was then saving. It is not a doubt as to their being saved, nor a state, but a class: see [scripture id="lu?n=13:23"]Luke 13:23[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1496, 1, 44, 3, 1, 'g', 'Some omit ''to the assembly,'' [scripture id="ac?n=2:47"]ch. 2:47[/scripture], and link ''together'' with the end of <A HREF="/cgi-bin/br/BDB/ac?n=2">ch. 2</A>. Probably we should read ''the Lord added together daily such as should be saved. And Peter (or, ''Now Peter'') and John went up into the temple.''');
+INSERT INTO `mse_bible_footnote` VALUES (1496, 1, 44, 3, 1, 'g', 'Some omit ''to the assembly,'' [scripture id="ac?n=2:47"]ch. 2:47[/scripture], and link ''together'' with the end of [scripture id="ac?n=2"]ch. 2[/scripture]. Probably we should read ''the Lord added together daily such as should be saved. And Peter (or, ''Now Peter'') and John went up into the temple.''');
 INSERT INTO `mse_bible_footnote` VALUES (1497, 1, 44, 3, 15, 'a', 'This word is difficult to render in English. It is a ''leader,'' but it is more. It is used for one who begins and sets a matter on. The Greek word occurs four times in the New Testament, here and [scripture id="ac?n=5:31"]ch. 5:31[/scripture]; [scripture id="heb?n=2:10"]Heb. 2:10[/scripture]; [scripture id="heb?n=12:2"]12:2[/scripture]. In [scripture id="heb?n=12:2"]Heb. 12:2[/scripture] it means, ''he began and finished the whole course;'' ''the origin'' or ''originator,'' though the word is harsh in connexion with life. The word is only used of our Lord.');
 INSERT INTO `mse_bible_footnote` VALUES (1498, 1, 44, 3, 16, 'b', '<I>Epi</I>: see [footnote id="n_1co?n=1:4"]Note, 1Cor. 1:4[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1499, 1, 44, 3, 21, 'c', '''Since time began'' refers to ''holy prophets:'' lit. ''his holy since-time-began prophets.''');
@@ -1543,7 +1526,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1506, 1, 44, 4, 11, 'd', 'Lit. ''head o
 INSERT INTO `mse_bible_footnote` VALUES (1507, 1, 44, 4, 13, 'e', 'Or ''had been.'' The council recognized them as former companions of Christ.');
 INSERT INTO `mse_bible_footnote` VALUES (1508, 1, 44, 4, 17, 'f', 'Lit. ''with threat.''');
 INSERT INTO `mse_bible_footnote` VALUES (1509, 1, 44, 4, 20, 'g', 'Lit. ''cannot not speak.''');
-INSERT INTO `mse_bible_footnote` VALUES (1510, 1, 44, 4, 24, 'a', 'Lit. ''despot,'' ''the master'' of a slave; ''one having sovereign power,'' as [scripture id="lu?n=2:29"]Luke 2:29[/scripture], <A HREF="/cgi-bin/br/BDB/1ti?n=6:1~a=1">1Tim. 6:1, 2</A>, <A HREF="/cgi-bin/br/BDB/2ti?n=2:21">2Tim. 2:21</A>, <A HREF="/cgi-bin/br/BDB/tit?n=2:9">Tit. 2:9</A>; <A HREF="/cgi-bin/br/BDB/1pe?n=2:18">1Pet. 2:18</A>; <A HREF="/cgi-bin/br/BDB/2pe?n=2:1">2Pet. 2:1</A>; <A HREF="/cgi-bin/br/BDB/jude?n=1:4">Jude 4</A>; <A HREF="/cgi-bin/br/BDB/re?n=6:10">Rev. 6:10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1510, 1, 44, 4, 24, 'a', 'Lit. ''despot,'' ''the master'' of a slave; ''one having sovereign power,'' as [scripture id="lu?n=2:29"]Luke 2:29[/scripture], [scripture id="1ti?n=6:1~a=1"]1Tim. 6:1, 2[/scripture], [scripture id="2ti?n=2:21"]2Tim. 2:21[/scripture], [scripture id="tit?n=2:9"]Tit. 2:9[/scripture]; [scripture id="1pe?n=2:18"]1Pet. 2:18[/scripture]; [scripture id="2pe?n=2:1"]2Pet. 2:1[/scripture]; [scripture id="jude?n=1:4"]Jude 4[/scripture]; [scripture id="re?n=6:10"]Rev. 6:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1511, 1, 44, 4, 24, 'b', 'Or ''thou art God,'' i.e. Elohim, the One who is God.');
 INSERT INTO `mse_bible_footnote` VALUES (1512, 1, 44, 4, 25, 'c', 'See [scripture id="ps?n=2:1"]Ps. 2:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1513, 1, 44, 5, 16, 'a', 'Lit. ''who indeed.''');
@@ -1559,7 +1542,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1522, 1, 44, 6, 8, 'd', 'Or ''great won
 INSERT INTO `mse_bible_footnote` VALUES (1523, 1, 44, 6, 9, 'e', 'Some translate ''Libertines,'' referring it to Libertum, a city in Africa.');
 INSERT INTO `mse_bible_footnote` VALUES (1524, 1, 44, 6, 10, 'a', 'Or ''by'' the Holy Spirit, but seen as in Stephen, that by which he spoke: ''which'' refers grammatically to Spirit, but in sense to wisdom and Spirit both.');
 INSERT INTO `mse_bible_footnote` VALUES (1525, 1, 44, 7, 3, 'b', 'See [scripture id="ge?n=12:1"]Gen. 12:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1526, 1, 44, 7, 6, 'c', 'See <A HREF="/cgi-bin/br/BDB/ge?n=15:13~a=3">Gen. 15:13-16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1526, 1, 44, 7, 6, 'c', 'See [scripture id="ge?n=15:13~a=3"]Gen. 15:13-16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1527, 1, 44, 7, 6, 'd', 'Lit. ''it,'' the seed.');
 INSERT INTO `mse_bible_footnote` VALUES (1528, 1, 44, 7, 7, 'e', '<I>Latreuo</I>, as [scripture id="ac?n=7:42"]ver. 42[/scripture]; [scripture id="mt?n=4:10"]Matt. 4:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1529, 1, 44, 7, 14, 'f', 'Quoted from the LXX.');
@@ -1567,16 +1550,16 @@ INSERT INTO `mse_bible_footnote` VALUES (1530, 1, 44, 7, 17, 'g', 'The Greek mea
 INSERT INTO `mse_bible_footnote` VALUES (1531, 1, 44, 7, 20, 'a', 'Lit. ''fair to God,'' a known Hebraism.');
 INSERT INTO `mse_bible_footnote` VALUES (1532, 1, 44, 7, 26, 'b', 'Lit. ''ye are men, brethren,'' see [footnote id="n_ac?n=1:16"]Note at ch. 1:16[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1533, 1, 44, 7, 31, 'c', 'The sentence is without the article and therefore much more emphatic. ''Lord'' is a solemn title. The expression amounts to ''there came an utterance of Jehovah.''');
-INSERT INTO `mse_bible_footnote` VALUES (1534, 1, 44, 7, 32, 'd', 'See <A HREF="/cgi-bin/br/BDB/ex?n=3:6~a=4">Ex. 3:6-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1534, 1, 44, 7, 32, 'd', 'See [scripture id="ex?n=3:6~a=4"]Ex. 3:6-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1535, 1, 44, 7, 34, 'e', 'It has the sense of ''taking to or for oneself,'' not merely deliverance as by removing the scourge, but by taking the people.');
 INSERT INTO `mse_bible_footnote` VALUES (1536, 1, 44, 7, 35, 'f', 'See [scripture id="ex?n=2:14"]Ex. 2:14[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1537, 1, 44, 7, 37, 'g', 'See <A HREF="/cgi-bin/br/BDB/de?n=18:15~a=3">Deut. 18:15-18</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1537, 1, 44, 7, 37, 'g', 'See [scripture id="de?n=18:15~a=3"]Deut. 18:15-18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1538, 1, 44, 7, 40, 'h', 'See [scripture id="ex?n=32:1"]Ex. 32:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1539, 1, 44, 7, 42, 'a', 'See <A HREF="/cgi-bin/br/BDB/am?n=5:25~a=2">Amos 5:25-27</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1539, 1, 44, 7, 42, 'a', 'See [scripture id="am?n=5:25~a=2"]Amos 5:25-27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1540, 1, 44, 7, 43, 'b', 'Quoted from the LXX. ''Yea'' here has the force of ''Nay, but.''');
 INSERT INTO `mse_bible_footnote` VALUES (1541, 1, 44, 7, 45, 'c', 'Lit. ''in taking possession of.''');
 INSERT INTO `mse_bible_footnote` VALUES (1542, 1, 44, 7, 48, 'd', 'See [scripture id="lu?n=1:32"]Luke 1:32[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1543, 1, 44, 7, 48, 'e', 'See <A HREF="/cgi-bin/br/BDB/isa?n=66:1~a=1">Isa. 66:1, 2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1543, 1, 44, 7, 48, 'e', 'See [scripture id="isa?n=66:1~a=1"]Isa. 66:1, 2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1544, 1, 44, 7, 53, 'f', '''Who are such as.''');
 INSERT INTO `mse_bible_footnote` VALUES (1545, 1, 44, 7, 53, 'g', 'See [scripture id="ga?n=3:19"]Gal. 3:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1546, 1, 44, 7, 59, 'h', 'Lit. ''invoking,'' ''calling on,'' but in English we must have a word after this, which mars the connexion here. The Authorized Version seems to separate God and the Lord Jesus. ''Calling on the Lord'' would leave out God. The Spirit of God, I doubt not, has purposely left out both ''Lord'' and ''God''. No one can be called upon really but God, so that the word has great force as used here. I have said ''praying'' for want of a better word.');
@@ -1584,7 +1567,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1547, 1, 44, 8, 10, 'a', 'Lit. ''This o
 INSERT INTO `mse_bible_footnote` VALUES (1548, 1, 44, 8, 23, 'b', 'Or ''iniquity,'' as [scripture id="ac?n=1:18"]ch. 1:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1549, 1, 44, 8, 25, 'c', 'A continuing work.');
 INSERT INTO `mse_bible_footnote` VALUES (1550, 1, 44, 8, 27, 'a', 'Lit. ''a man, an Ethiopian.''');
-INSERT INTO `mse_bible_footnote` VALUES (1551, 1, 44, 8, 32, 'b', 'See <A HREF="/cgi-bin/br/BDB/isa?n=53:7~a=1">Isa. 53:7-8</A>, LXX.');
+INSERT INTO `mse_bible_footnote` VALUES (1551, 1, 44, 8, 32, 'b', 'See [scripture id="isa?n=53:7~a=1"]Isa. 53:7-8[/scripture], LXX.');
 INSERT INTO `mse_bible_footnote` VALUES (1552, 1, 44, 8, 37, 'c', '[footnote id="BAV/ac?n=8:37"]Ver. 37[/footnote] in the Authorized Version is recognized as not genuine.');
 INSERT INTO `mse_bible_footnote` VALUES (1553, 1, 44, 8, 40, 'd', 'See [footnote id="n_jos?n=13:3a"]Note e, Josh. 13:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1554, 1, 44, 9, 2, 'e', '* The Christian way: see [scripture id="mr?n=10:32"]Mark 10:32[/scripture], [scripture id="mr?n=10:52"]52[/scripture]; [scripture id="ac?n=19:9"]Acts 19:9[/scripture], [scripture id="ac?n=19:23"]23[/scripture]; [scripture id="ac?n=22:4"]22:4[/scripture]; [scripture id="ac?n=24:14"]24:14[/scripture], [scripture id="ac?n=24:22"]22[/scripture].');
@@ -1667,7 +1650,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1630, 1, 44, 18, 22, 'e', 'i.e. to Jeru
 INSERT INTO `mse_bible_footnote` VALUES (1631, 1, 44, 18, 25, 'a', 'As [scripture id="ac?n=18:26"]ver. 26[/scripture]: [scripture id="lu?n=1:3"]Luke 1:3[/scripture], ''accurately.''');
 INSERT INTO `mse_bible_footnote` VALUES (1632, 1, 44, 18, 27, 'b', 'See [scripture id="lu?n=8:40"]Luke 8:40[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1633, 1, 44, 19, 9, 'c', 'See [footnote id="n_ac?n=9:2"]Note, ch. 9:2[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (1634, 1, 44, 19, 12, 'd', 'Or ''skin.'' As ''skin'' in <A HREF="/cgi-bin/br/BDB/ex?n=34:29~a=1">Ex. 34:29, 30</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1634, 1, 44, 19, 12, 'd', 'Or ''skin.'' As ''skin'' in [scripture id="ex?n=34:29~a=1"]Ex. 34:29, 30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1635, 1, 44, 19, 15, 'e', 'As [scripture id="mr?n=14:68"]Mark 14:68[/scripture], ''understand.''');
 INSERT INTO `mse_bible_footnote` VALUES (1636, 1, 44, 19, 22, 'a', 'As [scripture id="mt?n=27:55"]Matt. 27:55[/scripture]: [scripture id="lu?n=8:3"]Luke 8:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1637, 1, 44, 19, 23, 'b', 'See [footnote id="n_ac?n=9:2"]Note, ch. 9:2[/footnote].');
@@ -1681,7 +1664,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1644, 1, 44, 20, 4, 'b', 'Or ''Gaius of
 INSERT INTO `mse_bible_footnote` VALUES (1645, 1, 44, 20, 9, 'c', 'In the act of being so.');
 INSERT INTO `mse_bible_footnote` VALUES (1646, 1, 44, 20, 9, 'd', '''Having been already overpowered.''');
 INSERT INTO `mse_bible_footnote` VALUES (1647, 1, 44, 20, 10, 'e', 'Or ''soul.''');
-INSERT INTO `mse_bible_footnote` VALUES (1648, 1, 44, 20, 11, 'f', 'Or ''conversed:'' as [scripture id="ac?n=24:26"]ch. 24:26[/scripture], ''communed:'' <A HREF="/cgi-bin/br/BDB/lu?n=24:14~a=1">Luke 24:14, 15</A>; not as ''discoursed,'' <A HREF="/cgi-bin/br/BDB/ac?n=20:9">ver. 9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1648, 1, 44, 20, 11, 'f', 'Or ''conversed:'' as [scripture id="ac?n=24:26"]ch. 24:26[/scripture], ''communed:'' [scripture id="lu?n=24:14~a=1"]Luke 24:14, 15[/scripture]; not as ''discoursed,'' [scripture id="ac?n=20:9"]ver. 9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1649, 1, 44, 20, 19, 'a', 'Lit. ''serving as a bondman.''');
 INSERT INTO `mse_bible_footnote` VALUES (1650, 1, 44, 20, 28, 'b', 'Middle voice; reflexive: see [footnote id="n_heb?n=1:3c"]Note e, Heb. 1:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1651, 1, 44, 20, 28, 'c', 'I am fully satisfied that this is the right translation of [scripture id="ac?n=20:28"]ver. 28[/scripture]. To make it a question of the divinity of Christ (which I hold to be of the foundation of Christianity) is absurd. It has been questioned whether ''of his own'' can be used thus absolutely in the singular. But we have it in [scripture id="joh?n=15:19"]John 15:19[/scripture], and in the neuter singular for material things, [scripture id="ac?n=4:32"]Acts 4:32[/scripture]. The torturing of the passage by copyists arose, I believe, from not seeing, the real sense of it; a touching expression of the love of God.');
@@ -1727,14 +1710,14 @@ INSERT INTO `mse_bible_footnote` VALUES (1690, 1, 44, 28, 15, 'c', 'Three Tavern
 INSERT INTO `mse_bible_footnote` VALUES (1691, 1, 44, 28, 16, 'd', 'The commanding officer of the Emperor''s bodyguard');
 INSERT INTO `mse_bible_footnote` VALUES (1692, 1, 44, 28, 22, 'f', 'Or ''we should think well.''');
 INSERT INTO `mse_bible_footnote` VALUES (1693, 1, 44, 28, 24, 'a', '''Assented to them as true.'' It is used of giving credit to a person so as to follow him: as in [scripture id="ac?n=5:36"]ch. 5:36[/scripture], ''obeyed.''');
-INSERT INTO `mse_bible_footnote` VALUES (1694, 1, 44, 28, 26, 'b', 'See <A HREF="/cgi-bin/br/BDB/isa?n=6:9~a=1">Isa. 6:9-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1694, 1, 44, 28, 26, 'b', 'See [scripture id="isa?n=6:9~a=1"]Isa. 6:9-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1695, 1, 44, 28, 28, 'c', 'Rather ''that which saves'' than salvation itself: see [scripture id="lu?n=2:30"]Luke 2:30[/scripture]; [scripture id="lu?n=3:6"]3:6[/scripture]; [scripture id="eph?n=6:17"]Eph. 6:17[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1696, 1, 44, 28, 30, 'd', 'As [scripture id="lu?n=8:40"]Luke 8:40[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1697, 1, 44, 28, 31, 'e', 'As ''boldness,'' [scripture id="ac?n=4:13"]ch. 4:13[/scripture], [scripture id="ac?n=4:29"]29[/scripture], [scripture id="ac?n=4:31"]31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1698, 1, 30, 1, 1, 'h', '(The title of this Book, ''Amos''), Said to mean, ''Burden-bearer.''');
 INSERT INTO `mse_bible_footnote` VALUES (1699, 1, 30, 1, 1, 'i', 'Or ''sheepmasters,'' [scripture id="2ki?n=3:4"]2Kings 3:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1700, 1, 30, 1, 1, 'k', 'In Judah, [scripture id="2ch?n=11:6"]2Chron. 11:6[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1701, 1, 30, 1, 2, 'a', 'or ''habitations:'' see <A HREF="/cgi-bin/br/BDB/jer?n=9:10:">Jer. 9:10</A>; <A HREF="/cgi-bin/br/BDB/jer?n=23:10">23:10</A>; <A HREF="/cgi-bin/br/BDB/jer?n=25:37">25:37</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (1701, 1, 30, 1, 2, 'a', 'or ''habitations:'' see [scripture id="jer?n=9:10:"]Jer. 9:10[/scripture]; [scripture id="jer?n=23:10"]23:10[/scripture]; [scripture id="jer?n=25:37"]25:37[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (1702, 1, 30, 1, 5, 'b', 'See [scripture id="de?n=3:5"]Deut. 3:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1703, 1, 30, 1, 5, 'c', 'Or ''plain.'' see [footnote id="n_jos?n=11:8"]Note, Josh. 11:8[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1704, 1, 30, 1, 5, 'd', 'Or ''valley of idols.''');
@@ -1798,15 +1781,15 @@ INSERT INTO `mse_bible_footnote` VALUES (1761, 1, 51, 1, 16, 'l', 'Looked at as 
 INSERT INTO `mse_bible_footnote` VALUES (1762, 1, 51, 1, 16, 'a', 'See [footnote id="n_col?n=1:16a"]Note l ver. 16[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1763, 1, 51, 1, 16, 'b', '<I>Dia</I>, the instrumental power.');
 INSERT INTO `mse_bible_footnote` VALUES (1764, 1, 51, 1, 16, 'c', '<I>Eis</I>, ''for.'' These three prepositions, <I>en</I>, <I>dia</I>, <I>eis</I>, show Christ to be the characteristic power, the active instrument, and the end in creation.');
-INSERT INTO `mse_bible_footnote` VALUES (1765, 1, 51, 1, 19, 'd', 'I add ''<I>of the Godhead</I>'' from [scripture id="col?n=2:9"]ch. 2:9[/scripture], as it makes the ''it'' in <A HREF="/cgi-bin/br/BDB/col?n=1:21~a=1">vers. 21, 22</A> seem less harsh.');
+INSERT INTO `mse_bible_footnote` VALUES (1765, 1, 51, 1, 19, 'd', 'I add ''<I>of the Godhead</I>'' from [scripture id="col?n=2:9"]ch. 2:9[/scripture], as it makes the ''it'' in [scripture id="col?n=1:21~a=1"]vers. 21, 22[/scripture] seem less harsh.');
 INSERT INTO `mse_bible_footnote` VALUES (1766, 1, 51, 1, 20, 'b', '<I>Dia</I>, the instrumental power.');
 INSERT INTO `mse_bible_footnote` VALUES (1767, 1, 51, 1, 21, 'e', 'i.e. ''the fulness,'' [scripture id="col?n=1:19"]ver. 19[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1768, 1, 51, 1, 22, 'f', '''One against whom no charge can be brought,'' as <A HREF="/cgi-bin/br/BDB/tit?n=1:6~a=1">Tit. 1:6, 7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1768, 1, 51, 1, 22, 'f', '''One against whom no charge can be brought,'' as [scripture id="tit?n=1:6~a=1"]Tit. 1:6, 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1769, 1, 51, 1, 23, 'g', 'Or ''in faith,'' that is, full assurance of heart in the gospel.');
 INSERT INTO `mse_bible_footnote` VALUES (1770, 1, 51, 1, 23, 'h', 'The word is used either of ''the creation,'' or abstractly of ''the creature'' as such; once for ''institution,'' [scripture id="1pe?n=2:13"]1Pet. 2:13[/scripture]. Thus, in [scripture id="col?n=1:15"]ver. 15[/scripture], it is not of each individual as such, but of everything called ''creation'' in its nature: see [scripture id="heb?n=9:11"]Heb. 9:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1771, 1, 51, 1, 24, 'i', 'He had previously become minister (<I>diakonos</I>, [scripture id="col?n=1:23"]vers. 23[/scripture], [scripture id="col?n=1:25"]25[/scripture]); he was now in prison, but rejoicing in suffering.');
 INSERT INTO `mse_bible_footnote` VALUES (1772, 1, 51, 1, 24, 'k', 'This refers to what lacked as yet; not to Paul taking ''his turn'' as a person, in what is yet lacking.');
-INSERT INTO `mse_bible_footnote` VALUES (1773, 1, 51, 1, 25, 'l', 'Or, ''economy,'' as ''administration'' in [scripture id="1co?n=9:17"]1Cor. 9:17[/scripture]; [scripture id="eph?n=1:10"]Eph. 1:10[/scripture]; [scripture id="eph?n=3:2"]3:2[/scripture], [scripture id="eph?n=3:9"]9[/scripture]; ''dispensation,'' [scripture id="1ti?n=1:4"]1Tim. 1:4[/scripture]; and ''stewardship,'' <A HREF="/cgi-bin/br/BDB/lu?n=16:2~a=2">Luke 16:2, 3, 4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1773, 1, 51, 1, 25, 'l', 'Or, ''economy,'' as ''administration'' in [scripture id="1co?n=9:17"]1Cor. 9:17[/scripture]; [scripture id="eph?n=1:10"]Eph. 1:10[/scripture]; [scripture id="eph?n=3:2"]3:2[/scripture], [scripture id="eph?n=3:9"]9[/scripture]; ''dispensation,'' [scripture id="1ti?n=1:4"]1Tim. 1:4[/scripture]; and ''stewardship,'' [scripture id="lu?n=16:2~a=2"]Luke 16:2, 3, 4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1774, 1, 51, 1, 25, 'm', 'See [footnote id="n_col?n=1:9"]Note e, ch. 1:9[/footnote], also [footnote id="n_mt?n=5:17"]Note, Matt. 5:17[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1775, 1, 51, 2, 7, 'a', '''Rooted'' is the perfect participle; it speaks of what had been done and continued. ''Built up'' is the present, and is continuous: we might say ''being built up.''');
 INSERT INTO `mse_bible_footnote` VALUES (1776, 1, 51, 2, 7, 'b', 'Or ''confirmed.''');
@@ -1842,13 +1825,13 @@ INSERT INTO `mse_bible_footnote` VALUES (1805, 1, 27, 1, 4, 'a', 'Or ''writing;'
 INSERT INTO `mse_bible_footnote` VALUES (1806, 1, 27, 1, 7, 'b', 'See [scripture id="da?n=4:8"]ch. 4:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1807, 1, 27, 1, 11, 'c', 'Or ''Melzar.''');
 INSERT INTO `mse_bible_footnote` VALUES (1808, 1, 27, 1, 20, 'd', 'Or ''hieroglyphists,'' as [scripture id="ge?n=41:8"]Gen. 41:8[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1809, 1, 27, 2, 4, 'a', 'From here to the end of [scripture id="da?n=7:1"]ch. 7[/scripture] the same Aramaic dialect is employed as in <A HREF="/cgi-bin/br/BDB/ezr?n=4:8~a=53">Ezra 4:8 to 6:18</A>, and <A HREF="/cgi-bin/br/BDB/jer?n=10:11">Jer. 10:11</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (1810, 1, 27, 2, 5, 'b', 'Or ''word,'' as <A HREF="/cgi-bin/br/BDB/da?n=2:8~a=1">vers. 8, 9</A>; ''matter,'' <A HREF="/cgi-bin/br/BDB/da?n=2:10">ver. 10</A>; ''thing,'' <A HREF="/cgi-bin/br/BDB/da?n=2:11">ver 11</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1809, 1, 27, 2, 4, 'a', 'From here to the end of [scripture id="da?n=7:1"]ch. 7[/scripture] the same Aramaic dialect is employed as in [scripture id="ezr?n=4:8~a=53"]Ezra 4:8 to 6:18[/scripture], and [scripture id="jer?n=10:11"]Jer. 10:11[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (1810, 1, 27, 2, 5, 'b', 'Or ''word,'' as [scripture id="da?n=2:8~a=1"]vers. 8, 9[/scripture]; ''matter,'' [scripture id="da?n=2:10"]ver. 10[/scripture]; ''thing,'' [scripture id="da?n=2:11"]ver 11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1811, 1, 27, 2, 8, 'c', 'Lit. ''redeem.''');
 INSERT INTO `mse_bible_footnote` VALUES (1812, 1, 27, 2, 11, 'd', 'Or ''hard.''');
 INSERT INTO `mse_bible_footnote` VALUES (1813, 1, 27, 2, 11, 'e', 'Aramaic, <I>Elah</I>, here in the plural.');
 INSERT INTO `mse_bible_footnote` VALUES (1814, 1, 27, 2, 15, 'f', 'Or ''urgent,'' so [scripture id="da?n=3:22"]ch. 3:22[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1815, 1, 27, 2, 18, 'g', '<I>Elah</I>, corresponding to the Hebrew <I>Eloah</I>; and so throughout to end of <A HREF="/cgi-bin/br/BDB/da?n=7">ch. 7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1815, 1, 27, 2, 18, 'g', '<I>Elah</I>, corresponding to the Hebrew <I>Eloah</I>; and so throughout to end of [scripture id="da?n=7"]ch. 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1816, 1, 27, 2, 20, 'h', 'See [scripture id="1ch?n=16:36"]1Chron. 16:36[/scripture]; [scripture id="ne?n=9:5"]Neh. 9:5[/scripture]; [scripture id="ps?n=113:2"]Ps. 113:2[/scripture]; [scripture id="ps?n=115:18"]115:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1817, 1, 27, 2, 21, 'a', 'Or ''and appointed times,'' as [scripture id="da?n=3:7"]ch. 3:7[/scripture], ''time.''');
 INSERT INTO `mse_bible_footnote` VALUES (1818, 1, 27, 2, 28, 'b', 'See [scripture id="isa?n=2:2"]Isa. 2:2[/scripture].');
@@ -1860,21 +1843,21 @@ INSERT INTO `mse_bible_footnote` VALUES (1823, 1, 27, 3, 2, 'd', 'Or ''lawyers.'
 INSERT INTO `mse_bible_footnote` VALUES (1824, 1, 27, 3, 4, 'a', '''Tribes of people;'' and so in [scripture id="da?n=3:7"]vers. 7[/scripture], [scripture id="da?n=3:29"]29[/scripture]; [scripture id="da?n=4:1"]chs. 4:1[/scripture]; [scripture id="da?n=5:19"]5:19[/scripture]; [scripture id="da?n=6:25"]6:25[/scripture]; [scripture id="da?n=7:14"]7:14[/scripture]: see [scripture id="ge?n=25:16"]Gen. 25:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1825, 1, 27, 3, 5, 'b', 'Or ''horn.'' see [footnote id="n_le?n=25:10"]Note, Lev. 25:10[/footnote], and cf. [scripture id="jos?n=6:5"]Josh. 6:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1826, 1, 27, 3, 5, 'c', 'A stringed instrument.');
-INSERT INTO `mse_bible_footnote` VALUES (1827, 1, 27, 3, 8, 'd', 'Strictly, ''men, Chaldeans;'' so ''men, Jews,'' [scripture id="da?n=3:12"]ver. 12[/scripture]. ''Men'' is from <I>Geber</I>, and appears in <A HREF="/cgi-bin/br/BDB/da?n=3:12~a=1">vers. 12, 13</A>, <A HREF="/cgi-bin/br/BDB/da?n=3:20~a=7">20-27</A>; <A HREF="/cgi-bin/br/BDB/da?n=6:5">ch. 6:5</A>, <A HREF="/cgi-bin/br/BDB/da?n=6:11">11</A>, <A HREF="/cgi-bin/br/BDB/da?n=6:15">15</A>, <A HREF="/cgi-bin/br/BDB/da?n=6:24">24</A>: see <A HREF="/cgi-bin/br/BDB/job?n=3:3">Job 3:3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1827, 1, 27, 3, 8, 'd', 'Strictly, ''men, Chaldeans;'' so ''men, Jews,'' [scripture id="da?n=3:12"]ver. 12[/scripture]. ''Men'' is from <I>Geber</I>, and appears in [scripture id="da?n=3:12~a=1"]vers. 12, 13[/scripture], [scripture id="da?n=3:20~a=7"]20-27[/scripture]; [scripture id="da?n=6:5"]ch. 6:5[/scripture], [scripture id="da?n=6:11"]11[/scripture], [scripture id="da?n=6:15"]15[/scripture], [scripture id="da?n=6:24"]24[/scripture]: see [scripture id="job?n=3:3"]Job 3:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1828, 1, 27, 3, 8, 'e', 'Or ''spoke against:'' lit. ''ate the pieces of.'' See [footnote id="n_job?n=19:22"]Note to Job 19:22[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (1829, 1, 27, 3, 12, 'f', 'Or ''pray not to;'' so [scripture id="da?n=3:14"]vers. 14[/scripture], <A HREF="/cgi-bin/br/BDB/da?n=3:17~a=1">17, 18</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (1829, 1, 27, 3, 12, 'f', 'Or ''pray not to;'' so [scripture id="da?n=3:14"]vers. 14[/scripture], [scripture id="da?n=3:17~a=1"]17, 18[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (1830, 1, 27, 3, 19, 'a', 'Lit. ''than it had been seen.''');
 INSERT INTO `mse_bible_footnote` VALUES (1831, 1, 27, 3, 21, 'b', 'The wide covering of thighs and legs, used especially by the Persians.');
 INSERT INTO `mse_bible_footnote` VALUES (1832, 1, 27, 3, 24, 'c', 'Or ''viziers;'' and so [scripture id="da?n=3:27"]ver. 27[/scripture]; [scripture id="da?n=4:36"]chs. 4:36[/scripture]; [scripture id="da?n=6:7"]6:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1833, 1, 27, 3, 25, 'd', 'Or ''of the gods.'' <I>Elah</I>, Aramaic, in the plural, corresponding to the Hebrew <I>Elohim</I>: see [scripture id="da?n=2:11"]ch. 2:11[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1834, 1, 27, 4, 3, 'e', '<A HREF="/cgi-bin/br/BDB/da?n=4">Ch. 4</A> begins here in the original.');
+INSERT INTO `mse_bible_footnote` VALUES (1834, 1, 27, 4, 3, 'e', '[scripture id="da?n=4"]Ch. 4[/scripture] begins here in the original.');
 INSERT INTO `mse_bible_footnote` VALUES (1835, 1, 27, 4, 9, 'a', 'Strictly, ''overpowereth.''');
 INSERT INTO `mse_bible_footnote` VALUES (1836, 1, 27, 4, 10, 'b', 'Or ''a terebinth.''');
 INSERT INTO `mse_bible_footnote` VALUES (1837, 1, 27, 4, 17, 'c', 'Or ''demand,'' or ''matter.''');
 INSERT INTO `mse_bible_footnote` VALUES (1838, 1, 27, 4, 27, 'a', 'The LXX reads ''alms:'' see [footnote id="n_mt?n=6:1"]Note, Matt. 6:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1839, 1, 27, 4, 30, 'b', 'i.e. the royal residence.');
 INSERT INTO `mse_bible_footnote` VALUES (1840, 1, 27, 4, 37, 'a', 'Or ''justice.''');
-INSERT INTO `mse_bible_footnote` VALUES (1841, 1, 27, 4, 37, 'b', 'See <A HREF="/cgi-bin/br/BDB/job?n=40:11~a=1">Job 40:11, 12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1841, 1, 27, 4, 37, 'b', 'See [scripture id="job?n=40:11~a=1"]Job 40:11, 12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1842, 1, 27, 5, 5, 'c', 'Or ''candelabrum.''');
 INSERT INTO `mse_bible_footnote` VALUES (1843, 1, 27, 5, 9, 'd', 'Lit. ''upon.''');
 INSERT INTO `mse_bible_footnote` VALUES (1844, 1, 27, 5, 10, 'e', 'See [scripture id="1ki?n=15:13"]1Kings 15:13[/scripture].');
@@ -1902,8 +1885,8 @@ INSERT INTO `mse_bible_footnote` VALUES (1865, 1, 27, 8, 12, 'c', 'Or ''wrought,
 INSERT INTO `mse_bible_footnote` VALUES (1866, 1, 27, 8, 13, 'd', 'The word denotes a certain unknown person.');
 INSERT INTO `mse_bible_footnote` VALUES (1867, 1, 27, 8, 13, 'e', 'Or ''Until when.''');
 INSERT INTO `mse_bible_footnote` VALUES (1868, 1, 27, 8, 14, 'f', 'Lit. ''justified.''');
-INSERT INTO `mse_bible_footnote` VALUES (1869, 1, 27, 8, 15, 'g', 'Heb. <I>chazan</I>, from <I>chozeh</I>, seer, as <A HREF="/cgi-bin/br/BDB/da?n=8:1~a=1">vers. 1, 2</A>, <A HREF="/cgi-bin/br/BDB/da?n=8:13">13</A>, <A HREF="/cgi-bin/br/BDB/da?n=8:26">26</A> (second time).');
-INSERT INTO `mse_bible_footnote` VALUES (1870, 1, 27, 8, 15, 'h', 'Heb. <I>mareh</I>. Strictly ''appearance,'' but rendered ''vision'' in [scripture id="da?n=8:16"]vers. 16[/scripture], <A HREF="/cgi-bin/br/BDB/da?n=8:26~a=1">26 (first time), and 27</A>; <A HREF="/cgi-bin/br/BDB/da?n=9:23">ch. 9:23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1869, 1, 27, 8, 15, 'g', 'Heb. <I>chazan</I>, from <I>chozeh</I>, seer, as [scripture id="da?n=8:1~a=1"]vers. 1, 2[/scripture], [scripture id="da?n=8:13"]13[/scripture], [scripture id="da?n=8:26"]26[/scripture] (second time).');
+INSERT INTO `mse_bible_footnote` VALUES (1870, 1, 27, 8, 15, 'h', 'Heb. <I>mareh</I>. Strictly ''appearance,'' but rendered ''vision'' in [scripture id="da?n=8:16"]vers. 16[/scripture], [scripture id="da?n=8:26~a=1"]26 (first time), and 27[/scripture]; [scripture id="da?n=9:23"]ch. 9:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1871, 1, 27, 8, 18, 'i', 'Or perhaps ''set me upright,'' as [scripture id="da?n=10:11"]ch. 10:11[/scripture]; [scripture id="ge?n=19:27"]Gen. 19:27[/scripture]; but cf. the preceding verse.');
 INSERT INTO `mse_bible_footnote` VALUES (1872, 1, 27, 8, 21, 'k', 'Lit. ''hairy.''');
 INSERT INTO `mse_bible_footnote` VALUES (1873, 1, 27, 8, 21, 'l', '<I>Javan</I>, [scripture id="ge?n=10:2"]Gen. 10:2[/scripture].');
@@ -1913,20 +1896,20 @@ INSERT INTO `mse_bible_footnote` VALUES (1876, 1, 27, 8, 24, 'o', 'Or ''holy one
 INSERT INTO `mse_bible_footnote` VALUES (1877, 1, 27, 8, 25, 'p', 'Or ''in <I>their</I> security shall destroy many:'' see [scripture id="jer?n=12:10"]Jer. 12:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1878, 1, 27, 8, 27, 'a', 'See [footnote id="n_da?n=8:15a"]Note h ver. 16[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1879, 1, 27, 8, 27, 'b', 'Or ''explained.''');
-INSERT INTO `mse_bible_footnote` VALUES (1880, 1, 27, 9, 2, 'c', 'See <A HREF="/cgi-bin/br/BDB/jer?n=25:11~a=1">Jer. 25:11-12</A>; <A HREF="/cgi-bin/br/BDB/jer?n=29:10">29:10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1880, 1, 27, 9, 2, 'c', 'See [scripture id="jer?n=25:11~a=1"]Jer. 25:11-12[/scripture]; [scripture id="jer?n=29:10"]29:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1881, 1, 27, 9, 8, 'd', 'Some read ''Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (1882, 1, 27, 9, 13, 'e', 'Lit. ''entreated not the face of Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (1883, 1, 27, 9, 13, 'f', 'Or ''be skilful in.'' <I>Sachal</I>: see [footnote id="n_pr?n=1:3"]Note k, Prov. 1:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1884, 1, 27, 9, 18, 'a', 'See [scripture id="1ki?n=8:48"]1Kings 8:48[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1885, 1, 27, 9, 18, 'b', 'Lit. ''cause to fall,'' so [scripture id="da?n=9:20"]ver. 20[/scripture]: see [scripture id="jer?n=36:7"]Jer. 36:7[/scripture], &c.');
-INSERT INTO `mse_bible_footnote` VALUES (1886, 1, 27, 9, 23, 'c', '<I>Mareh</I>: see [footnote id="n_da?n=8:15a"]Note, ch. 8:16[/footnote]: so [scripture id="da?n=10:1"]ch. 10:1[/scripture], <A HREF="/cgi-bin/br/BDB/da?n=10:7~a=1">7,8</A>, <A HREF="/cgi-bin/br/BDB/da?n=10:16">16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1886, 1, 27, 9, 23, 'c', '<I>Mareh</I>: see [footnote id="n_da?n=8:15a"]Note, ch. 8:16[/footnote]: so [scripture id="da?n=10:1"]ch. 10:1[/scripture], [scripture id="da?n=10:7~a=1"]7,8[/scripture], [scripture id="da?n=10:16"]16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1887, 1, 27, 9, 24, 'd', 'Or ''to complete.''');
 INSERT INTO `mse_bible_footnote` VALUES (1888, 1, 27, 9, 24, 'e', 'Or ''to seal up.''');
 INSERT INTO `mse_bible_footnote` VALUES (1889, 1, 27, 9, 24, 'f', 'Or ''forgive,'' see [scripture id="ps?n=78:38"]Ps. 78:38[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1890, 1, 27, 9, 25, 'g', 'Or ''build up,'' or ''re-build.''');
 INSERT INTO `mse_bible_footnote` VALUES (1891, 1, 27, 9, 25, 'h', 'i.e. one anointed.');
 INSERT INTO `mse_bible_footnote` VALUES (1892, 1, 27, 9, 25, 'i', 'See [scripture id="2sa?n=7:8"]2Sam. 7:8[/scripture]; [scripture id="isa?n=55:4"]Isa. 55:4[/scripture]');
-INSERT INTO `mse_bible_footnote` VALUES (1893, 1, 27, 9, 26, 'k', 'Or ''the determined <I>portion</I> of desolations:'' see the following verse, and <A HREF="/cgi-bin/br/BDB/isa?n=10:22~a=1">Isa. 10:22, 23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1893, 1, 27, 9, 26, 'k', 'Or ''the determined <I>portion</I> of desolations:'' see the following verse, and [scripture id="isa?n=10:22~a=1"]Isa. 10:22, 23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1894, 1, 27, 9, 27, 'l', 'Strictly, ''in the dividing of the week.''');
 INSERT INTO `mse_bible_footnote` VALUES (1895, 1, 27, 9, 27, 'm', 'Lit. ''wing:'' see [scripture id="isa?n=8:8"]Isa. 8:8[/scripture]. It might be rendered: ''and the abominations (idols) of the desolator shall be on the pinnacle'' (i.e. of the temple).');
 INSERT INTO `mse_bible_footnote` VALUES (1896, 1, 27, 9, 27, 'n', 'idols.');
@@ -1937,7 +1920,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1900, 1, 27, 10, 10, 'c', 'Lit. ''shook
 INSERT INTO `mse_bible_footnote` VALUES (1901, 1, 27, 10, 11, 'd', 'Or ''stand where thou art.''');
 INSERT INTO `mse_bible_footnote` VALUES (1902, 1, 27, 10, 13, 'e', 'Or ''prevailed.''');
 INSERT INTO `mse_bible_footnote` VALUES (1903, 1, 27, 10, 14, 'f', 'Or ''for those days.'' ''Vision'' in this verse is <I>chazan</I>: see [footnote id="n_da?n=8:15"]ch. 8:15, Note g[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (1904, 1, 27, 10, 16, 'g', 'As [scripture id="da?n=10:1"]vers. 1[/scripture], <A HREF="/cgi-bin/br/BDB/da?n=10:7~a=1">7,8</A>: see <A HREF="/cgi-bin/br/BDB/da?n=9:23">ch. 9:23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1904, 1, 27, 10, 16, 'g', 'As [scripture id="da?n=10:1"]vers. 1[/scripture], [scripture id="da?n=10:7~a=1"]7,8[/scripture]: see [scripture id="da?n=9:23"]ch. 9:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1905, 1, 27, 10, 20, 'a', 'Heb. <I>Javan</I>, as [scripture id="da?n=8:21"]ch. 8:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1906, 1, 27, 10, 21, 'b', 'Or ''in these things.''');
 INSERT INTO `mse_bible_footnote` VALUES (1907, 1, 27, 11, 5, 'c', 'Heb. <I>Negeb</I>; and so throughout: see [scripture id="jos?n=10:40"]Josh. 10:40[/scripture].');
@@ -1954,7 +1937,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1917, 1, 27, 11, 26, 'g', 'Elsewhere ''
 INSERT INTO `mse_bible_footnote` VALUES (1918, 1, 27, 11, 30, 'a', 'Or ''act.'' as [scripture id="da?n=8:12"]ch. 8:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1919, 1, 27, 11, 31, 'b', 'Lit. ''arms,'' as [scripture id="da?n=11:15"]ver. 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1920, 1, 27, 11, 32, 'c', 'Or ''pollute.''');
-INSERT INTO `mse_bible_footnote` VALUES (1921, 1, 27, 11, 33, 'd', 'The <I>Maschilim</I>, from <I>Sachal</I>, [scripture id="pr?n=1:3"]Prov. 1:3[/scripture]: so [scripture id="da?n=12:3"]ch. 12:3[/scripture]. <I>Maschil</I> psalms, <A HREF="/cgi-bin/br/BDB/ps?n=32">32</A>, <A HREF="/cgi-bin/br/BDB/ps?n=42">42</A>, <A HREF="/cgi-bin/br/BDB/ps?n=44">44</A>, <A HREF="/cgi-bin/br/BDB/ps?n=45">45</A>, <A HREF="/cgi-bin/br/BDB/ps?n=52">52</A>, <A HREF="/cgi-bin/br/BDB/ps?n=53">53</A>, <A HREF="/cgi-bin/br/BDB/ps?n=54">54</A>, <A HREF="/cgi-bin/br/BDB/ps?n=55">55</A>, <A HREF="/cgi-bin/br/BDB/ps?n=74">74</A>, <A HREF="/cgi-bin/br/BDB/ps?n=78">78</A>, <A HREF="/cgi-bin/br/BDB/ps?n=88">88</A>, <A HREF="/cgi-bin/br/BDB/ps?n=89">89</A>, <A HREF="/cgi-bin/br/BDB/ps?n=142">142</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1921, 1, 27, 11, 33, 'd', 'The <I>Maschilim</I>, from <I>Sachal</I>, [scripture id="pr?n=1:3"]Prov. 1:3[/scripture]: so [scripture id="da?n=12:3"]ch. 12:3[/scripture]. <I>Maschil</I> psalms, [scripture id="ps?n=32"]32[/scripture], [scripture id="ps?n=42"]42[/scripture], [scripture id="ps?n=44"]44[/scripture], [scripture id="ps?n=45"]45[/scripture], [scripture id="ps?n=52"]52[/scripture], [scripture id="ps?n=53"]53[/scripture], [scripture id="ps?n=54"]54[/scripture], [scripture id="ps?n=55"]55[/scripture], [scripture id="ps?n=74"]74[/scripture], [scripture id="ps?n=78"]78[/scripture], [scripture id="ps?n=88"]88[/scripture], [scripture id="ps?n=89"]89[/scripture], [scripture id="ps?n=142"]142[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1922, 1, 27, 11, 36, 'e', 'Heb. <I>El Elim</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (1923, 1, 27, 11, 39, 'f', 'Or ''whom he shall acknowledge <I>and</I> increase.''');
 INSERT INTO `mse_bible_footnote` VALUES (1924, 1, 27, 11, 41, 'g', 'Or ''delight:'' see [scripture id="da?n=8:9"]ch. 8:9[/scripture].');
@@ -1981,7 +1964,7 @@ INSERT INTO `mse_bible_footnote` VALUES (1944, 1, 5, 1, 41, 'e', 'Or ''mountain,
 INSERT INTO `mse_bible_footnote` VALUES (1945, 1, 5, 1, 44, 'e', 'Or ''mountain,'' [scripture id="de?n=1:19"]ver. 19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1946, 1, 5, 1, 44, 'a', '''Destruction:'' see [scripture id="nu?n=14:45"]Num. 14:45[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1947, 1, 5, 2, 11, 'b', 'Rephaim; and so [scripture id="de?n=2:20"]ver. 20[/scripture] and [scripture id="de?n=3:11"]ch. 3:11[/scripture], [scripture id="de?n=3:13"]13[/scripture]; [scripture id="ge?n=14:5"]Gen. 14:5[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (1948, 1, 5, 2, 13, 'c', 'Or ''valley;'' elsewhere also translated ''river,'' as in [scripture id="de?n=2:24"]vers. 24[/scripture], <A HREF="/cgi-bin/br/BDB/de?n=2:36~a=1">36, 37</A>: the word applies equally to the gorge in which the torrent runs; <A HREF="/cgi-bin/br/BDB/ge?n=26:17">Gen. 26:17</A>. See <A HREF="/cgi-bin/dr/n_de?n=2:36">Note, ver. 36</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (1948, 1, 5, 2, 13, 'c', 'Or ''valley;'' elsewhere also translated ''river,'' as in [scripture id="de?n=2:24"]vers. 24[/scripture], [scripture id="de?n=2:36~a=1"]36, 37[/scripture]: the word applies equally to the gorge in which the torrent runs; [scripture id="ge?n=26:17"]Gen. 26:17[/scripture]. See [footnote id="n_de?n=2:36"]Note, ver. 36[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1949, 1, 5, 2, 32, 'a', 'Or perhaps ''Jahzah'' ([scripture id="jos?n=13:18"]Josh. 13:18[/scripture], &c.); and so in [scripture id="nu?n=21:23"]Num. 21:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (1950, 1, 5, 2, 36, 'b', '''River'' and ''ravine'' are here the same Hebrew word; and so [scripture id="de?n=3:16"]ch. 3:16[/scripture]; [scripture id="jos?n=12:2"]Josh. 12:2[/scripture], &c. See [footnote id="n_de?n=2:13"]Note, ch. 2:13[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (1951, 1, 5, 2, 37, 'c', 'Or ''highlands.''');
@@ -2082,7 +2065,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2045, 1, 5, 19, 15, 'b', 'Or ''in any s
 INSERT INTO `mse_bible_footnote` VALUES (2046, 1, 5, 19, 16, 'c', 'Lit. ''witness of violence,''');
 INSERT INTO `mse_bible_footnote` VALUES (2047, 1, 5, 19, 18, 'd', 'Lit. ''and behold, the witness is.''');
 INSERT INTO `mse_bible_footnote` VALUES (2048, 1, 5, 20, 5, 'e', 'See [scripture id="de?n=1:15"]ch. 1:15[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2049, 1, 5, 20, 6, 'a', 'Lit. ''profaned it,'' or ''made it common,'' according to the custom of the fifth year; see <A HREF="/cgi-bin/br/BDB/le?n=19:24~a=1">Lev. 19:24, 25</A>; <A HREF="/cgi-bin/br/BDB/jer?n=31:5">Jer. 31:5</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2049, 1, 5, 20, 6, 'a', 'Lit. ''profaned it,'' or ''made it common,'' according to the custom of the fifth year; see [scripture id="le?n=19:24~a=1"]Lev. 19:24, 25[/scripture]; [scripture id="jer?n=31:5"]Jer. 31:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2050, 1, 5, 20, 19, 'b', 'Others, ''not cut them down (for the tree of the field is man''s <I>life</I>), to employ them in the siege.''');
 INSERT INTO `mse_bible_footnote` VALUES (2051, 1, 5, 21, 4, 'a', 'Or ''valley,'' [scripture id="de?n=2:13"]ch. 2:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2052, 1, 5, 21, 5, 'b', 'Lit. ''mouth.''');
@@ -2149,7 +2132,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2112, 1, 5, 30, 10, 'b', 'Or ''when tho
 INSERT INTO `mse_bible_footnote` VALUES (2113, 1, 5, 31, 13, 'a', 'Lit. ''all the days that.''');
 INSERT INTO `mse_bible_footnote` VALUES (2114, 1, 5, 31, 17, 'b', 'Lit. ''find.''');
 INSERT INTO `mse_bible_footnote` VALUES (2115, 1, 5, 31, 17, 'c', 'Lit. ''found.''');
-INSERT INTO `mse_bible_footnote` VALUES (2116, 1, 5, 32, 1, 'a', '<A HREF="/cgi-bin/br/BDB/de?n=32:1~a=42">Ch. 32:1-43</A> is considered to be poetical in Hebrew.');
+INSERT INTO `mse_bible_footnote` VALUES (2116, 1, 5, 32, 1, 'a', '[scripture id="de?n=32:1~a=42"]Ch. 32:1-43[/scripture] is considered to be poetical in Hebrew.');
 INSERT INTO `mse_bible_footnote` VALUES (2117, 1, 5, 32, 2, 'b', '<I>Imrah</I>, ''a word,'' ''speech,'' see [footnote id="n_ps?n=119:11"]Note to Ps. 119:11[/footnote]. Occurs also in [scripture id="de?n=33:9"]ch. 33:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2118, 1, 5, 32, 4, 'c', 'As [scripture id="isa?n=45:9"]Isa. 45:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2119, 1, 5, 32, 4, 'd', 'Lit. ''what is right,'' ''just;'' elsewhere often ''judgment.'' Heb. <I>mishpat</I>.');
@@ -2166,11 +2149,11 @@ INSERT INTO `mse_bible_footnote` VALUES (2129, 1, 5, 32, 22, 'g', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (2130, 1, 5, 32, 36, 'a', 'Or ''shall have compassion upon.''');
 INSERT INTO `mse_bible_footnote` VALUES (2131, 1, 5, 32, 36, 'b', 'Lit. ''hand.''');
 INSERT INTO `mse_bible_footnote` VALUES (2132, 1, 5, 32, 36, 'c', 'Or ''at liberty.'' The phrase seems to be a proverbial expression, in itself a paronomasia, to express forcibly ''the totality:'' cf. [scripture id="1ki?n=14:10"]1Kings 14:10[/scripture]; [scripture id="2ki?n=14:26"]2Kings 14:26[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2133, 1, 5, 32, 39, 'd', '''<I>The Same</I>,'' ''the self-existent one.'' This expression becomes virtually a name of God: see [scripture id="2sa?n=7:28"]2Sam. 7:28[/scripture]; [scripture id="2ki?n=19:15"]2Kings 19:15[/scripture]; [scripture id="1ch?n=17:26"]1Chron. 17:26[/scripture]; [scripture id="2ch?n=20:6"]2Chron. 20:6[/scripture]; <A HREF="/cgi-bin/br/BDB/ne?n=9:6~a=1">Neh. 9:6, 7</A>; <A HREF="/cgi-bin/br/BDB/ps?n=44:4">Ps. 44:4</A>; <A HREF="/cgi-bin/br/BDB/ps?n=102:27">102:27</A>; <A HREF="/cgi-bin/br/BDB/isa?n=37:16">Isa. 37:16</A>; <A HREF="/cgi-bin/br/BDB/isa?n=41:4">41:4</A>; <A HREF="/cgi-bin/br/BDB/isa?n=43:10">43:10</A>, <A HREF="/cgi-bin/br/BDB/isa?n=43:13">13</A>; <A HREF="/cgi-bin/br/BDB/isa?n=46:4">46:4</A>; <A HREF="/cgi-bin/br/BDB/isa?n=48:12">48:12</A>; <A HREF="/cgi-bin/br/BDB/isa?n=51:9~a=1">51:9, 10</A>; <A HREF="/cgi-bin/br/BDB/isa?n=52:6">52:6</A>; <A HREF="/cgi-bin/br/BDB/jer?n=5:12">Jer. 5:12</A>; <A HREF="/cgi-bin/br/BDB/jer?n=14:22">14:22</A>; <A HREF="/cgi-bin/br/BDB/heb?n=1:12">Heb. 1:12</A>; <A HREF="/cgi-bin/br/BDB/heb?n=13:8">13:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2133, 1, 5, 32, 39, 'd', '''<I>The Same</I>,'' ''the self-existent one.'' This expression becomes virtually a name of God: see [scripture id="2sa?n=7:28"]2Sam. 7:28[/scripture]; [scripture id="2ki?n=19:15"]2Kings 19:15[/scripture]; [scripture id="1ch?n=17:26"]1Chron. 17:26[/scripture]; [scripture id="2ch?n=20:6"]2Chron. 20:6[/scripture]; [scripture id="ne?n=9:6~a=1"]Neh. 9:6, 7[/scripture]; [scripture id="ps?n=44:4"]Ps. 44:4[/scripture]; [scripture id="ps?n=102:27"]102:27[/scripture]; [scripture id="isa?n=37:16"]Isa. 37:16[/scripture]; [scripture id="isa?n=41:4"]41:4[/scripture]; [scripture id="isa?n=43:10"]43:10[/scripture], [scripture id="isa?n=43:13"]13[/scripture]; [scripture id="isa?n=46:4"]46:4[/scripture]; [scripture id="isa?n=48:12"]48:12[/scripture]; [scripture id="isa?n=51:9~a=1"]51:9, 10[/scripture]; [scripture id="isa?n=52:6"]52:6[/scripture]; [scripture id="jer?n=5:12"]Jer. 5:12[/scripture]; [scripture id="jer?n=14:22"]14:22[/scripture]; [scripture id="heb?n=1:12"]Heb. 1:12[/scripture]; [scripture id="heb?n=13:8"]13:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2134, 1, 5, 32, 42, 'a', 'Lit. ''captivity.''');
 INSERT INTO `mse_bible_footnote` VALUES (2135, 1, 5, 32, 43, 'b', 'Or. ''forgiveth.'' as [scripture id="de?n=21:8"]ch. 21:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2136, 1, 5, 32, 49, 'c', 'Or ''sons.''');
-INSERT INTO `mse_bible_footnote` VALUES (2137, 1, 5, 33, 1, 'd', '<A HREF="/cgi-bin/br/BDB/de?n=33:2~a=27">Ch. 33:2-29</A> is considered to be poetical in Hebrew.');
+INSERT INTO `mse_bible_footnote` VALUES (2137, 1, 5, 33, 1, 'd', '[scripture id="de?n=33:2~a=27"]Ch. 33:2-29[/scripture] is considered to be poetical in Hebrew.');
 INSERT INTO `mse_bible_footnote` VALUES (2138, 1, 5, 33, 1, 'e', 'Heb. <I>Ish</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (2139, 1, 5, 33, 2, 'f', 'Or ''holy myriads.''');
 INSERT INTO `mse_bible_footnote` VALUES (2140, 1, 5, 33, 2, 'g', 'Others, ''fire to guide them.''');
@@ -2202,7 +2185,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2165, 1, 21, 1, 14, 'c', 'Or ''feeding 
 INSERT INTO `mse_bible_footnote` VALUES (2166, 1, 21, 2, 1, 'd', 'Lit. ''see:'' so [scripture id="ec?n=2:24"]ver. 24[/scripture]; [scripture id="ec?n=3:13"]chs. 3:13[/scripture]; [scripture id="ec?n=6:6"]6:6[/scripture], &c');
 INSERT INTO `mse_bible_footnote` VALUES (2167, 1, 21, 2, 3, 'e', 'Or ''exercising.''');
 INSERT INTO `mse_bible_footnote` VALUES (2168, 1, 21, 2, 3, 'f', 'Lit. ''the number of:'' so [scripture id="ec?n=5:18"]chs. 5:18[/scripture]; [scripture id="ec?n=6:12"]6:12[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2169, 1, 21, 2, 11, 'g', 'Lit ''that I had laboured,'' as <A HREF="/cgi-bin/br/BDB/ec?n=2:19~a=1">vers. 19, 20</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2169, 1, 21, 2, 11, 'g', 'Lit ''that I had laboured,'' as [scripture id="ec?n=2:19~a=1"]vers. 19, 20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2170, 1, 21, 2, 14, 'a', '<I>Kesil</I>, and so generally in this Book, in which <I>Eveel</I> is not used: see [scripture id="pr?n=1:7"]Prov. 1:7[/scripture]; [scripture id="pr?n=18:2"]18:2[/scripture]; [scripture id="pr?n=26:1"]26:1[/scripture]; [scripture id="pr?n=28:26"]28:26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2171, 1, 21, 2, 15, 'b', 'Or ''more.''');
 INSERT INTO `mse_bible_footnote` VALUES (2172, 1, 21, 2, 19, 'c', '<I>Sakal</I>, ''stupid,'' ''infatuated:'' so [scripture id="ec?n=7:17"]chs. 7:17[/scripture]; [scripture id="ec?n=10:3"]10:3[/scripture], [scripture id="ec?n=10:14"]14[/scripture]; [scripture id="jer?n=4:22"]Jer. 4:22[/scripture]; [scripture id="jer?n=5:21"]5:21[/scripture]: as ''foolishly,'' [scripture id="1sa?n=13:13"]1Sam. 13:13[/scripture].');
@@ -2289,7 +2272,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2252, 1, 49, 3, 9, 'd', 'Or ''from eter
 INSERT INTO `mse_bible_footnote` VALUES (2253, 1, 49, 3, 11, 'e', 'Or ''eternal purpose.''');
 INSERT INTO `mse_bible_footnote` VALUES (2254, 1, 49, 3, 14, 'f', 'Many reject the words ''of our Lord Jesus Christ.'' But as they are well supported by manuscripts and the most ancient versions and fathers I have not struck them out, though disposed to think them an addition.');
 INSERT INTO `mse_bible_footnote` VALUES (2255, 1, 49, 3, 15, 'g', 'There is a distinct connection between the Greek words for Father and family.');
-INSERT INTO `mse_bible_footnote` VALUES (2256, 1, 49, 3, 21, 'a', '<A HREF="/cgi-bin/br/BDB/eph?n=3">Ch. 3</A>, except <A HREF="/cgi-bin/br/BDB/eph?n=3:1">ver. 1</A>, is a parenthesis.');
+INSERT INTO `mse_bible_footnote` VALUES (2256, 1, 49, 3, 21, 'a', '[scripture id="eph?n=3"]Ch. 3[/scripture], except [scripture id="eph?n=3:1"]ver. 1[/scripture], is a parenthesis.');
 INSERT INTO `mse_bible_footnote` VALUES (2257, 1, 49, 4, 1, 'b', 'Or ''according to which.''');
 INSERT INTO `mse_bible_footnote` VALUES (2258, 1, 49, 4, 3, 'c', 'It is not only ''bond,'' but the ''bond-together.'' It is not the power of union -- that is the Holy Spirit; but the practically uniting in fact, as amongst men on earth.');
 INSERT INTO `mse_bible_footnote` VALUES (2259, 1, 49, 4, 4, 'd', 'It may be translated ''<I>the</I> body is one,'' and so on. If we could leave out ''there is'' or ''is'', the force would be so much the greater.');
@@ -2306,7 +2289,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2269, 1, 49, 4, 22, 'd', 'Or ''goes on 
 INSERT INTO `mse_bible_footnote` VALUES (2270, 1, 49, 4, 24, 'e', 'Lit. ''righteousness and holiness of the truth:'' see [scripture id="eph?n=4:21"]ver. 21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2271, 1, 49, 4, 25, 'f', 'Everything that has the character and nature of falsehood. It is abstract, what has this quality, not merely the act of lying.');
 INSERT INTO `mse_bible_footnote` VALUES (2272, 1, 49, 4, 27, 'g', 'Or ''give way to.''');
-INSERT INTO `mse_bible_footnote` VALUES (2273, 1, 49, 4, 29, 'h', 'Or ''filthy;'' a figure drawn from what is evil and bad, as fruit: see <A HREF="/cgi-bin/br/BDB/mt?n=7:17~a=1">Matt. 7:17-18</A> ''worthless.''');
+INSERT INTO `mse_bible_footnote` VALUES (2273, 1, 49, 4, 29, 'h', 'Or ''filthy;'' a figure drawn from what is evil and bad, as fruit: see [scripture id="mt?n=7:17~a=1"]Matt. 7:17-18[/scripture] ''worthless.''');
 INSERT INTO `mse_bible_footnote` VALUES (2274, 1, 49, 4, 30, 'i', '<I>Eis</I>: see [scripture id="eph?n=1:14"]ch. 1:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2275, 1, 49, 4, 32, 'k', 'As ''good,'' [scripture id="lu?n=6:35"]Luke 6:35[/scripture]; [scripture id="1pe?n=2:3"]1Pet. 2:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2276, 1, 49, 4, 32, 'l', 'Or ''showing grace to,'' ''shown grace to,'' as [scripture id="lu?n=7:42"]Luke 7:42[/scripture].');
@@ -2371,7 +2354,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2334, 1, 2, 1, 1, 'a', 'Lit. ''the man 
 INSERT INTO `mse_bible_footnote` VALUES (2335, 1, 2, 1, 11, 'b', 'For wheat or other provisions.');
 INSERT INTO `mse_bible_footnote` VALUES (2336, 1, 2, 1, 12, 'c', 'The word implies fear and aversion.');
 INSERT INTO `mse_bible_footnote` VALUES (2337, 1, 2, 1, 16, 'd', 'Of uncertain meaning.');
-INSERT INTO `mse_bible_footnote` VALUES (2338, 1, 2, 2, 3, 'a', 'Same word as ark in <A HREF="/cgi-bin/br/BDB/ge?n=6:1~a=100">Gen. chs. 6 to 9</A>, but not as <A HREF="/cgi-bin/br/BDB/ex?n=25:10">Ex. 25:10</A>: see <A HREF="/cgi-bin/br/BDB/ge?n=50:26">Gen. 50:26</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2338, 1, 2, 2, 3, 'a', 'Same word as ark in [scripture id="ge?n=6:1~a=100"]Gen. chs. 6 to 9[/scripture], but not as [scripture id="ex?n=25:10"]Ex. 25:10[/scripture]: see [scripture id="ge?n=50:26"]Gen. 50:26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2339, 1, 2, 2, 10, 'b', 'Drawn out <I>from the water</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (2340, 1, 2, 2, 14, 'c', 'Lit. ''a man, a ruler.''');
 INSERT INTO `mse_bible_footnote` VALUES (2341, 1, 2, 2, 14, 'd', 'Lit. ''say.''');
@@ -2398,7 +2381,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2361, 1, 2, 6, 8, 'c', 'Lit. ''lifted u
 INSERT INTO `mse_bible_footnote` VALUES (2362, 1, 2, 6, 9, 'd', 'Or ''impatience.''');
 INSERT INTO `mse_bible_footnote` VALUES (2363, 1, 2, 7, 1, 'a', 'Or ''spokesman.''');
 INSERT INTO `mse_bible_footnote` VALUES (2364, 1, 2, 7, 9, 'b', 'Lit. ''give.''');
-INSERT INTO `mse_bible_footnote` VALUES (2365, 1, 2, 7, 9, 'c', 'Elsewhere ''crocodile:'' so in <A HREF="/cgi-bin/br/BDB/ex?n=7:9~a=1">vers. 9, 10</A>, <A HREF="/cgi-bin/br/BDB/ex?n=7:12">12</A>. See <A HREF="/cgi-bin/br/BDB/ge?n=1:21">Gen. 1:21</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2365, 1, 2, 7, 9, 'c', 'Elsewhere ''crocodile:'' so in [scripture id="ex?n=7:9~a=1"]vers. 9, 10[/scripture], [scripture id="ex?n=7:12"]12[/scripture]. See [scripture id="ge?n=1:21"]Gen. 1:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2366, 1, 2, 7, 11, 'd', 'See [scripture id="ge?n=41:8"]Gen. 41:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2367, 1, 2, 7, 14, 'e', 'Lit. ''heavy:'' so [scripture id="ex?n=9:7"]ch. 9:7[/scripture], and similarly [scripture id="ex?n=8:15"]chs. 8:15[/scripture], [scripture id="ex?n=8:32"]32[/scripture]; [scripture id="ex?n=9:34"]9:34[/scripture]; [scripture id="ex?n=10:1"]10:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2368, 1, 2, 7, 18, 'a', 'Lit. ''weary themselves.''');
@@ -2490,7 +2473,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2453, 1, 2, 20, 20, 'd', 'Lit. ''before
 INSERT INTO `mse_bible_footnote` VALUES (2454, 1, 2, 20, 24, 'e', 'Or ''thank-offerings.''');
 INSERT INTO `mse_bible_footnote` VALUES (2455, 1, 2, 21, 1, 'a', 'Fixed ordinances.');
 INSERT INTO `mse_bible_footnote` VALUES (2456, 1, 2, 21, 3, 'b', 'Lit. ''with his body.''');
-INSERT INTO `mse_bible_footnote` VALUES (2457, 1, 2, 21, 6, 'c', 'Lit. <I>elohim</I>: so <A HREF="/cgi-bin/br/BDB/ex?n=22:8~a=1">ch. 22:8, 9</A>, &c. See <A HREF="/cgi-bin/br/BDB/joh?n=10:34~a=1">John 10:34, 35</A>, and <A HREF="/cgi-bin/br/BDB/ps?n=82:1">Ps. 82:1</A>, <A HREF="/cgi-bin/br/BDB/ps?n=82:6">6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2457, 1, 2, 21, 6, 'c', 'Lit. <I>elohim</I>: so [scripture id="ex?n=22:8~a=1"]ch. 22:8, 9[/scripture], &c. See [scripture id="joh?n=10:34~a=1"]John 10:34, 35[/scripture], and [scripture id="ps?n=82:1"]Ps. 82:1[/scripture], [scripture id="ps?n=82:6"]6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2458, 1, 2, 21, 8, 'd', 'Lit. ''evil.''');
 INSERT INTO `mse_bible_footnote` VALUES (2459, 1, 2, 21, 19, 'e', 'Lit. ''his sitting still.''');
 INSERT INTO `mse_bible_footnote` VALUES (2460, 1, 2, 21, 22, 'f', 'Lit. ''her children go forth.''');
@@ -2539,7 +2522,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2502, 1, 2, 26, 33, 'c', 'Lit. ''holine
 INSERT INTO `mse_bible_footnote` VALUES (2503, 1, 2, 26, 36, 'd', 'Covering: so [scripture id="ex?n=27:16"]chs. 27:16[/scripture]; [scripture id="ex?n=35:15"]35:15[/scripture],17; [scripture id="ex?n=36:37"]36:37[/scripture]; [scripture id="ex?n=38:18"]38:18[/scripture]; [scripture id="ex?n=39:38"]39:38[/scripture], [scripture id="ex?n=39:40"]40[/scripture]; [scripture id="ex?n=40:5"]40:5[/scripture], [scripture id="ex?n=40:8"]8[/scripture], [scripture id="ex?n=40:28"]28[/scripture], [scripture id="ex?n=40:33"]33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2504, 1, 2, 27, 3, 'e', 'Or ''remove the ashes,'' see [scripture id="le?n=1:16"]Lev. 1:16[/scripture] and [scripture id="le?n=6:10"]6:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2505, 1, 2, 27, 13, 'a', 'Lit. ''toward sunrise:'' so [scripture id="ex?n=38:13"]ch. 38:13[/scripture], &c.');
-INSERT INTO `mse_bible_footnote` VALUES (2506, 1, 2, 27, 14, 'b', 'Lit. ''shoulder'' -- one part of the side up to the entrance: so <A HREF="/cgi-bin/br/BDB/ex?n=38:14~a=1">ch. 38:14, 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2506, 1, 2, 27, 14, 'b', 'Lit. ''shoulder'' -- one part of the side up to the entrance: so [scripture id="ex?n=38:14~a=1"]ch. 38:14, 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2507, 1, 2, 27, 18, 'c', 'Lit. ''fifty by fifty.''');
 INSERT INTO `mse_bible_footnote` VALUES (2508, 1, 2, 27, 18, 'd', 'Or ''the bases of the pillars.''');
 INSERT INTO `mse_bible_footnote` VALUES (2509, 1, 2, 27, 20, 'e', 'i.e. beaten in a mortar, not pressed.');
@@ -2548,9 +2531,9 @@ INSERT INTO `mse_bible_footnote` VALUES (2511, 1, 2, 28, 1, 'g', 'Lit. ''(serve)
 INSERT INTO `mse_bible_footnote` VALUES (2512, 1, 2, 28, 3, 'h', 'Or ''intelligent.''');
 INSERT INTO `mse_bible_footnote` VALUES (2513, 1, 2, 28, 4, 'i', 'Or ''tunic,'' ''shirt.''');
 INSERT INTO `mse_bible_footnote` VALUES (2514, 1, 2, 28, 4, 'k', 'The original word is used as well for that of Aaron (see also [scripture id="ex?n=28:39"]ver. 39[/scripture] and [scripture id="ex?n=39:29"]ch. 39:29[/scripture]) as for that of his sons.');
-INSERT INTO `mse_bible_footnote` VALUES (2515, 1, 2, 28, 8, 'l', 'The word means, of skilful workmanship: used only of the high priest''s girdle -- <A HREF="/cgi-bin/br/BDB/ex?n=28:27~a=1">vers. 27, 28</A>; <A HREF="/cgi-bin/br/BDB/ex?n=29:5">Ex. 29:5</A>; <A HREF="/cgi-bin/br/BDB/ex?n=39:5">ch. 39:5</A>, <A HREF="/cgi-bin/br/BDB/ex?n=39:20~a=1">20, 21</A>; <A HREF="/cgi-bin/br/BDB/le?n=8:7">Lev. 8:7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2515, 1, 2, 28, 8, 'l', 'The word means, of skilful workmanship: used only of the high priest''s girdle -- [scripture id="ex?n=28:27~a=1"]vers. 27, 28[/scripture]; [scripture id="ex?n=29:5"]Ex. 29:5[/scripture]; [scripture id="ex?n=39:5"]ch. 39:5[/scripture], [scripture id="ex?n=39:20~a=1"]20, 21[/scripture]; [scripture id="le?n=8:7"]Lev. 8:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2516, 1, 2, 28, 9, 'm', 'Or ''beryl.''');
-INSERT INTO `mse_bible_footnote` VALUES (2517, 1, 2, 28, 11, 'a', 'Or ''plaited-work:'' so <A HREF="/cgi-bin/br/BDB/ex?n=28:13~a=1">vers. 13, 14</A>, <A HREF="/cgi-bin/br/BDB/ex?n=28:25">25</A>, and <A HREF="/cgi-bin/br/BDB/ex?n=39:6">ch. 39:6</A>, <A HREF="/cgi-bin/br/BDB/ex?n=39:13">13</A>, <A HREF="/cgi-bin/br/BDB/ex?n=39:16">16</A>, <A HREF="/cgi-bin/br/BDB/ex?n=39:18">18</A>; <A HREF="/cgi-bin/br/BDB/ps?n=45:13">Ps. 45:13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2517, 1, 2, 28, 11, 'a', 'Or ''plaited-work:'' so [scripture id="ex?n=28:13~a=1"]vers. 13, 14[/scripture], [scripture id="ex?n=28:25"]25[/scripture], and [scripture id="ex?n=39:6"]ch. 39:6[/scripture], [scripture id="ex?n=39:13"]13[/scripture], [scripture id="ex?n=39:16"]16[/scripture], [scripture id="ex?n=39:18"]18[/scripture]; [scripture id="ps?n=45:13"]Ps. 45:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2518, 1, 2, 28, 17, 'b', 'Lit. ''fill in it fillings.''');
 INSERT INTO `mse_bible_footnote` VALUES (2519, 1, 2, 28, 17, 'c', 'Carnelian.');
 INSERT INTO `mse_bible_footnote` VALUES (2520, 1, 2, 28, 20, 'd', 'Or beryl.''');
@@ -2568,7 +2551,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2531, 1, 2, 29, 1, 'f', 'Lit. ''young b
 INSERT INTO `mse_bible_footnote` VALUES (2532, 1, 2, 29, 2, 'g', 'See [scripture id="le?n=2:4"]Lev. 2:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2533, 1, 2, 29, 9, 'a', 'Lit. ''fill their hand:'' so [scripture id="ex?n=29:33"]vers. 33[/scripture], [scripture id="ex?n=29:35"]35[/scripture]; [scripture id="ex?n=32:29"]ch. 32:29[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (2534, 1, 2, 29, 10, 'b', '''Lean with:'' so [scripture id="ex?n=29:15"]vers. 15[/scripture], [scripture id="ex?n=29:19"]19[/scripture]; [scripture id="le?n=1:4"]Lev. 1:4[/scripture], &c.');
-INSERT INTO `mse_bible_footnote` VALUES (2535, 1, 2, 29, 13, 'c', 'A term used for ''burning incense:'' so [scripture id="ex?n=29:18"]vers. 18[/scripture], [scripture id="ex?n=29:25"]25[/scripture]; <A HREF="/cgi-bin/br/BDB/ex?n=30:7~a=1">chs. 30:7, 8</A>, <A HREF="/cgi-bin/br/BDB/ex?n=30:20">20</A>; <A HREF="/cgi-bin/br/BDB/ex?n=40:27">40:27</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2535, 1, 2, 29, 13, 'c', 'A term used for ''burning incense:'' so [scripture id="ex?n=29:18"]vers. 18[/scripture], [scripture id="ex?n=29:25"]25[/scripture]; [scripture id="ex?n=30:7~a=1"]chs. 30:7, 8[/scripture], [scripture id="ex?n=30:20"]20[/scripture]; [scripture id="ex?n=40:27"]40:27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2536, 1, 2, 29, 14, 'd', '''Burn'' in [scripture id="ex?n=29:14"]ver. 14[/scripture] is ''to consume:'' see [scripture id="ex?n=29:34"]ver. 34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2537, 1, 2, 29, 21, 'e', 'As [scripture id="le?n=4:6"]Lev. 4:6[/scripture], [scripture id="le?n=4:17"]17[/scripture]; [scripture id="le?n=16:14"]16:14[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (2538, 1, 2, 29, 23, 'f', 'Lit. ''one cake of bread, round.;');
@@ -2603,7 +2586,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2566, 1, 2, 34, 18, 'e', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (2567, 1, 2, 34, 20, 'f', 'Or ''kid.''');
 INSERT INTO `mse_bible_footnote` VALUES (2568, 1, 2, 34, 25, 'g', '<I>Shachat</I>, ''kill,'' ''slaughter.''');
 INSERT INTO `mse_bible_footnote` VALUES (2569, 1, 2, 34, 29, 'a', 'Or ''while he talked.''');
-INSERT INTO `mse_bible_footnote` VALUES (2570, 1, 2, 34, 33, 'b', 'The force would be: ''having (or, when he had) put a covering over his face.'' [scripture id="ex?n=34:35"]Ver. 35[/scripture] would, I think, imply that as long as he was getting these divine communications he kept the veil over his face except when he went into the sanctuary. <A HREF="/cgi-bin/br/BDB/2co?n=3">2Cor. 3</A>, which has been alleged for the opposite view, proves this, for it alludes to the fact in saying of the veil on Israel''s heart, that when they turn to the Lord it will be taken off.');
+INSERT INTO `mse_bible_footnote` VALUES (2570, 1, 2, 34, 33, 'b', 'The force would be: ''having (or, when he had) put a covering over his face.'' [scripture id="ex?n=34:35"]Ver. 35[/scripture] would, I think, imply that as long as he was getting these divine communications he kept the veil over his face except when he went into the sanctuary. [scripture id="2co?n=3"]2Cor. 3[/scripture], which has been alleged for the opposite view, proves this, for it alludes to the fact in saying of the veil on Israel''s heart, that when they turn to the Lord it will be taken off.');
 INSERT INTO `mse_bible_footnote` VALUES (2571, 1, 2, 35, 2, 'c', 'Lit. ''holiness.'' <I>Kodesh</I>: see [footnote id="n_ex?n=25:8"]Note at ch. 25:8[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (2572, 1, 2, 35, 8, 'd', 'As [scripture id="ex?n=35:28"]ver. 28[/scripture], and [scripture id="ex?n=25:6"]chs. 25:6[/scripture]; [scripture id="ex?n=39:37"]39:37[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2573, 1, 2, 35, 12, 'e', 'Strictly, ''veil of the cover,'' or ''covering veil:'' so [scripture id="ex?n=39:34"]chs. 39:34[/scripture]; [scripture id="ex?n=40:21"]40:21[/scripture], &c.');
@@ -2612,7 +2595,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2575, 1, 2, 36, 22, 'a', 'Or ''answerin
 INSERT INTO `mse_bible_footnote` VALUES (2576, 1, 2, 36, 29, 'a', 'Or ''to.''');
 INSERT INTO `mse_bible_footnote` VALUES (2577, 1, 2, 37, 3, 'b', 'See [scripture id="ex?n=25:12"]ch. 25:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2578, 1, 2, 37, 16, 'a', 'Or ''for.''');
-INSERT INTO `mse_bible_footnote` VALUES (2579, 1, 2, 37, 17, 'b', 'Or ''lamp-stand,'' and so in <A HREF="/cgi-bin/br/BDB/ex?n=37:18~a=2">vers. 18, 19, 20</A>, and <A HREF="/cgi-bin/br/BDB/ex?n=25:34">ch. 25:34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2579, 1, 2, 37, 17, 'b', 'Or ''lamp-stand,'' and so in [scripture id="ex?n=37:18~a=2"]vers. 18, 19, 20[/scripture], and [scripture id="ex?n=25:34"]ch. 25:34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2580, 1, 2, 37, 19, 'c', 'Or ''almond-flowers,'' and so elsewhere.');
 INSERT INTO `mse_bible_footnote` VALUES (2581, 1, 2, 38, 24, 'a', 'A talent equals 3,000 shekels.');
 INSERT INTO `mse_bible_footnote` VALUES (2582, 1, 2, 39, 6, 'a', 'Or ''beryl.''');
@@ -2652,11 +2635,11 @@ INSERT INTO `mse_bible_footnote` VALUES (2615, 1, 26, 4, 14, 'd', 'Or ''unclean,
 INSERT INTO `mse_bible_footnote` VALUES (2616, 1, 26, 4, 17, 'e', 'Or ''through.''');
 INSERT INTO `mse_bible_footnote` VALUES (2617, 1, 26, 5, 1, 'f', 'Elsewhere ''sword.''');
 INSERT INTO `mse_bible_footnote` VALUES (2618, 1, 26, 5, 2, 'a', 'Lit. ''light,'' and so in [scripture id="isa?n=31:9"]Isa. 31:9[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2619, 1, 26, 5, 4, 'b', 'i.e. still from the third part last mentioned: see <A HREF="/cgi-bin/br/BDB/zec?n=13:8~a=1">Zech. 13:8, 9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2619, 1, 26, 5, 4, 'b', 'i.e. still from the third part last mentioned: see [scripture id="zec?n=13:8~a=1"]Zech. 13:8, 9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2620, 1, 26, 5, 6, 'c', 'Or ''judgments;'' so [scripture id="eze?n=11:12"]ch. 11:12[/scripture]; ''manner'' in [scripture id="2ki?n=17:26"]2Kings 17:26[/scripture], [scripture id="2ki?n=17:33"]33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2621, 1, 26, 5, 6, 'd', '<I>choq</I>, as [scripture id="ex?n=12:24"]Ex. 12:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2622, 1, 26, 5, 11, 'e', 'Lit. ''if ... not.'' A strong form of solemn declaration: see [scripture id="nu?n=14:23"]Num. 14:23[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2623, 1, 26, 5, 15, 'f', 'Or ''desolation,'' as <A HREF="/cgi-bin/br/BDB/eze?n=33:28~a=1">ch. 33:28, 29</A>, where both words are used.');
+INSERT INTO `mse_bible_footnote` VALUES (2623, 1, 26, 5, 15, 'f', 'Or ''desolation,'' as [scripture id="eze?n=33:28~a=1"]ch. 33:28, 29[/scripture], where both words are used.');
 INSERT INTO `mse_bible_footnote` VALUES (2624, 1, 26, 6, 3, 'a', 'Or ''ravines.''');
 INSERT INTO `mse_bible_footnote` VALUES (2625, 1, 26, 6, 4, 'b', 'A term of contempt, used 38 times in Ezekiel. See [scripture id="le?n=26:30"]Lev. 26:30[/scripture]; [scripture id="de?n=29:17"]Deut. 29:17[/scripture]; [scripture id="1ki?n=21:26"]1Kings 21:26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2626, 1, 26, 6, 9, 'c', 'Or ''because I am broken with their. ...''');
@@ -2723,7 +2706,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2686, 1, 26, 16, 36, 'g', 'Some read ''
 INSERT INTO `mse_bible_footnote` VALUES (2687, 1, 26, 16, 38, 'a', '[scripture id="nu?n=35:19"]Num. 35:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2688, 1, 26, 16, 40, 'b', 'See [scripture id="eze?n=23:24"]ch. 23:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2689, 1, 26, 16, 43, 'c', 'As [scripture id="eze?n=9:10"]ch. 9:10[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2690, 1, 26, 16, 44, 'd', 'Or ''parable,'' as [scripture id="nu?n=23:7"]Num. 23:7[/scripture]: see <A HREF="/cgi-bin/br/BDB/eze?n=12:22~a=1">chs. 12:22-23</A>; <A HREF="/cgi-bin/br/BDB/eze?n=14:8">14:8</A>; <A HREF="/cgi-bin/br/BDB/eze?n=17:2">17:2</A>; <A HREF="/cgi-bin/br/BDB/eze?n=18:2~a=1">18:2, 3</A>; <A HREF="/cgi-bin/br/BDB/eze?n=20:49">20:49</A>; <A HREF="/cgi-bin/br/BDB/eze?n=24:3">24:3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2690, 1, 26, 16, 44, 'd', 'Or ''parable,'' as [scripture id="nu?n=23:7"]Num. 23:7[/scripture]: see [scripture id="eze?n=12:22~a=1"]chs. 12:22-23[/scripture]; [scripture id="eze?n=14:8"]14:8[/scripture]; [scripture id="eze?n=17:2"]17:2[/scripture]; [scripture id="eze?n=18:2~a=1"]18:2, 3[/scripture]; [scripture id="eze?n=20:49"]20:49[/scripture]; [scripture id="eze?n=24:3"]24:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2691, 1, 26, 16, 49, 'e', 'Or ''afflicted;'' see [scripture id="eze?n=18:12"]ch. 18:12[/scripture], [scripture id="eze?n=18:17"]17[/scripture]; [scripture id="ps?n=9:18"]Ps. 9:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2692, 1, 26, 16, 52, 'f', 'Or ''made thyself more abominable.''');
 INSERT INTO `mse_bible_footnote` VALUES (2693, 1, 26, 16, 56, 'a', 'Or ''was not a lesson in.''');
@@ -2751,7 +2734,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2714, 1, 26, 20, 28, 'c', '<I>Corban</I
 INSERT INTO `mse_bible_footnote` VALUES (2715, 1, 26, 20, 29, 'd', 'Meaning, ''High place.''');
 INSERT INTO `mse_bible_footnote` VALUES (2716, 1, 26, 20, 40, 'a', 'Or ''the choicest,'' as [scripture id="1sa?n=15:21"]1Sam. 15:21[/scripture]; [scripture id="1sa?n=2:29"]2:29[/scripture], ''primest.''');
 INSERT INTO `mse_bible_footnote` VALUES (2717, 1, 26, 20, 40, 'b', 'Or ''consecrated things.''');
-INSERT INTO `mse_bible_footnote` VALUES (2718, 1, 26, 20, 45, 'c', 'In the Hebrew, <A HREF="/cgi-bin/br/BDB/eze?n=21">ch. 21</A> commences at this verse.');
+INSERT INTO `mse_bible_footnote` VALUES (2718, 1, 26, 20, 45, 'c', 'In the Hebrew, [scripture id="eze?n=21"]ch. 21[/scripture] commences at this verse.');
 INSERT INTO `mse_bible_footnote` VALUES (2719, 1, 26, 20, 46, 'd', 'Heb. <I>Teman</I>, [scripture id="hab?n=3:3"]Hab. 3:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2720, 1, 26, 20, 46, 'e', 'Heb. <I>Darom</I>: see [scripture id="de?n=33:23"]Deut. 33:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2721, 1, 26, 20, 46, 'f', 'Heb. <I>Negeb</I>: see [scripture id="jos?n=10:40"]Josh. 10:40[/scripture]. Same word at end of verse, and [scripture id="eze?n=21:4"]ch. 21:4[/scripture].');
@@ -2823,7 +2806,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2786, 1, 26, 27, 11, 'm', 'Or ''fightin
 INSERT INTO `mse_bible_footnote` VALUES (2787, 1, 26, 27, 13, 'a', 'Lit. ''furnished thy barter.''');
 INSERT INTO `mse_bible_footnote` VALUES (2788, 1, 26, 27, 16, 'b', 'Or ''pearls,'' see [scripture id="job?n=28:18"]Job 28:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2789, 1, 26, 27, 19, 'c', 'Probably Sanaa, the capital of Yemen, Arabia: see [scripture id="ge?n=10:27"]Gen. 10:27[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2790, 1, 26, 27, 19, 'd', 'Lit. ''barter:'' so [scripture id="eze?n=27:25"]vers. 25[/scripture], <A HREF="/cgi-bin/br/BDB/eze?n=27:33~a=1">33, 34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2790, 1, 26, 27, 19, 'd', 'Lit. ''barter:'' so [scripture id="eze?n=27:25"]vers. 25[/scripture], [scripture id="eze?n=27:33~a=1"]33, 34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2791, 1, 26, 27, 24, 'e', 'Or ''... stuffs, bound firmly with cords.''');
 INSERT INTO `mse_bible_footnote` VALUES (2792, 1, 26, 27, 27, 'f', 'See [footnote id="n_eze?n=27:9a"]Note i, ver. 9[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (2793, 1, 26, 27, 27, 'g', 'See [footnote id="n_eze?n=27:9b"]Note k, ver. 9[/footnote].');
@@ -2866,7 +2849,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2829, 1, 26, 32, 15, 'b', 'Lit. ''of it
 INSERT INTO `mse_bible_footnote` VALUES (2830, 1, 26, 32, 21, 'c', 'Or ''speak of him.'' ''Strong'' in this verse is <I>el</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (2831, 1, 26, 32, 22, 'd', 'Lit. ''her;'' so [scripture id="eze?n=32:23"]ver. 23[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (2832, 1, 26, 32, 22, 'e', 'Alluding to the niches in sepulchral vaults.');
-INSERT INTO `mse_bible_footnote` VALUES (2833, 1, 26, 32, 23, 'f', 'Or ''astonishment:'' so <A HREF="/cgi-bin/br/BDB/eze?n=32:24~a=3">vers. 24, 25, 26, 27</A>, <A HREF="/cgi-bin/br/BDB/eze?n=32:30">30</A>, <A HREF="/cgi-bin/br/BDB/eze?n=32:32">32</A>; <A HREF="/cgi-bin/br/BDB/eze?n=26:17">ch. 26:17</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2833, 1, 26, 32, 23, 'f', 'Or ''astonishment:'' so [scripture id="eze?n=32:24~a=3"]vers. 24, 25, 26, 27[/scripture], [scripture id="eze?n=32:30"]30[/scripture], [scripture id="eze?n=32:32"]32[/scripture]; [scripture id="eze?n=26:17"]ch. 26:17[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2834, 1, 26, 32, 25, 'g', 'Lit. ''her.''');
 INSERT INTO `mse_bible_footnote` VALUES (2835, 1, 26, 32, 30, 'a', 'Lit. ''anointed ones,'' as [scripture id="ps?n=83:11"]Ps. 83:11[/scripture]; [scripture id="mic?n=5:5"]Mic. 5:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2836, 1, 26, 32, 32, 'b', 'Or ''I put his terror.''');
@@ -2876,8 +2859,8 @@ INSERT INTO `mse_bible_footnote` VALUES (2839, 1, 26, 33, 6, 'e', 'Or ''for.''')
 INSERT INTO `mse_bible_footnote` VALUES (2840, 1, 26, 33, 12, 'a', 'Or ''therein.''');
 INSERT INTO `mse_bible_footnote` VALUES (2841, 1, 26, 33, 13, 'b', 'Or ''for.''');
 INSERT INTO `mse_bible_footnote` VALUES (2842, 1, 26, 33, 22, 'c', 'Or ''it,'' referring to ''hand.''');
-INSERT INTO `mse_bible_footnote` VALUES (2843, 1, 26, 33, 22, 'd', 'Or ''until he should come;'' cf. <A HREF="/cgi-bin/br/BDB/eze?n=24:26~a=1">ch. 24:26, 27</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (2844, 1, 26, 33, 24, 'e', 'As <A HREF="/cgi-bin/br/BDB/jer?n=49:1~a=1">Jer. 49:1, 2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2843, 1, 26, 33, 22, 'd', 'Or ''until he should come;'' cf. [scripture id="eze?n=24:26~a=1"]ch. 24:26, 27[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (2844, 1, 26, 33, 24, 'e', 'As [scripture id="jer?n=49:1~a=1"]Jer. 49:1, 2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2845, 1, 26, 34, 13, 'a', 'Or ''soil.''');
 INSERT INTO `mse_bible_footnote` VALUES (2846, 1, 26, 34, 13, 'b', 'Or ''in the ravines.''');
 INSERT INTO `mse_bible_footnote` VALUES (2847, 1, 26, 34, 14, 'c', 'Lit. ''mountains of the height of.''');
@@ -2895,14 +2878,14 @@ INSERT INTO `mse_bible_footnote` VALUES (2858, 1, 26, 36, 6, 'b', 'Or ''ravines,
 INSERT INTO `mse_bible_footnote` VALUES (2859, 1, 26, 36, 8, 'c', 'i.e. ''branches'' and ''fruit.''');
 INSERT INTO `mse_bible_footnote` VALUES (2860, 1, 26, 36, 9, 'd', 'Or ''have respect,'' as [scripture id="2ki?n=13:23"]2Kings 13:23[/scripture], &c');
 INSERT INTO `mse_bible_footnote` VALUES (2861, 1, 26, 36, 12, 'e', 'Some read ''cause them to fall.''');
-INSERT INTO `mse_bible_footnote` VALUES (2862, 1, 26, 36, 13, 'f', 'Some read ''nations,'' and so in <A HREF="/cgi-bin/br/BDB/eze?n=36:14~a=1">vers. 14, 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2862, 1, 26, 36, 13, 'f', 'Some read ''nations,'' and so in [scripture id="eze?n=36:14~a=1"]vers. 14, 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2863, 1, 26, 36, 14, 'g', 'Or ''cause to falter'' or ''fall'' (see [scripture id="eze?n=36:15"]ver. 15[/scripture]).');
 INSERT INTO `mse_bible_footnote` VALUES (2864, 1, 26, 36, 23, 'a', 'Some read ''your.''');
-INSERT INTO `mse_bible_footnote` VALUES (2865, 1, 26, 36, 24, 'b', 'Heb. <I>Adamah</I>, ''soil,'' as [scripture id="eze?n=34:13"]ch. 34:13[/scripture]. In [scripture id="eze?n=36:5"]vers. 5[/scripture], [scripture id="eze?n=36:18"]18[/scripture], [scripture id="eze?n=36:20"]20[/scripture], [scripture id="eze?n=36:28"]28[/scripture], <A HREF="/cgi-bin/br/BDB/eze?n=36:34~a=1">34, 35</A> it is <I>Erets</I>: see <A HREF="/cgi-bin/br/BDB/1sa?n=2:8">1Sam. 2:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2865, 1, 26, 36, 24, 'b', 'Heb. <I>Adamah</I>, ''soil,'' as [scripture id="eze?n=34:13"]ch. 34:13[/scripture]. In [scripture id="eze?n=36:5"]vers. 5[/scripture], [scripture id="eze?n=36:18"]18[/scripture], [scripture id="eze?n=36:20"]20[/scripture], [scripture id="eze?n=36:28"]28[/scripture], [scripture id="eze?n=36:34~a=1"]34, 35[/scripture] it is <I>Erets</I>: see [scripture id="1sa?n=2:8"]1Sam. 2:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2866, 1, 26, 36, 28, 'c', 'See [footnote id="n_eze?n=11:20"]Note, ch. 11:20[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (2867, 1, 26, 36, 37, 'd', 'Lit. ''multiply.''');
 INSERT INTO `mse_bible_footnote` VALUES (2868, 1, 26, 37, 1, 'e', 'See [footnote id="n_eze?n=3:22"]Note, ch. 3:22[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (2869, 1, 26, 37, 5, 'a', '<I>Ruach</I>, ''spirit,'' ''wind,'' [scripture id="eze?n=37:6"]vers. 6[/scripture], <A HREF="/cgi-bin/br/BDB/eze?n=37:8~a=2">8, 9, 10</A>, <A HREF="/cgi-bin/br/BDB/eze?n=37:14">14</A>, and often.');
+INSERT INTO `mse_bible_footnote` VALUES (2869, 1, 26, 37, 5, 'a', '<I>Ruach</I>, ''spirit,'' ''wind,'' [scripture id="eze?n=37:6"]vers. 6[/scripture], [scripture id="eze?n=37:8~a=2"]8, 9, 10[/scripture], [scripture id="eze?n=37:14"]14[/scripture], and often.');
 INSERT INTO `mse_bible_footnote` VALUES (2870, 1, 26, 37, 9, 'b', 'Or ''Spirit, come from the four winds.''');
 INSERT INTO `mse_bible_footnote` VALUES (2871, 1, 26, 37, 12, 'c', 'See [scripture id="da?n=12:2"]Dan. 12:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2872, 1, 26, 37, 12, 'd', 'or ''soil,'' as [scripture id="eze?n=37:21"]ver. 21[/scripture]; [scripture id="eze?n=36:24"]ch. 36:24[/scripture].');
@@ -2961,7 +2944,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2924, 1, 26, 43, 14, 'd', 'Or ''of eart
 INSERT INTO `mse_bible_footnote` VALUES (2925, 1, 26, 43, 14, 'e', 'The entire base of the upper altar (Heb. <I>Harel</I> or ''Mount of ~God,'' see [scripture id="eze?n=43:15"]ver. 15[/scripture]) was in two parts, the upper of which was set back.');
 INSERT INTO `mse_bible_footnote` VALUES (2926, 1, 26, 43, 15, 'f', 'Heb. <I>Harel</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (2927, 1, 26, 43, 15, 'g', 'Heb. <I>Ariel</I>, ''lion of ~God:'' see [scripture id="isa?n=29:1"]Isa. 29:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (2928, 1, 26, 43, 20, 'a', 'Or ''cleanse from sin (<I>chata</I>);'' and so <A HREF="/cgi-bin/br/BDB/eze?n=43:22~a=1">vers. 22, 23</A>; <A HREF="/cgi-bin/br/BDB/eze?n=45:18">ch. 45:18</A>: see <A HREF="/cgi-bin/br/BDB/le?n=8:15">Lev. 8:15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (2928, 1, 26, 43, 20, 'a', 'Or ''cleanse from sin (<I>chata</I>);'' and so [scripture id="eze?n=43:22~a=1"]vers. 22, 23[/scripture]; [scripture id="eze?n=45:18"]ch. 45:18[/scripture]: see [scripture id="le?n=8:15"]Lev. 8:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2929, 1, 26, 43, 22, 'b', 'Heb. ''perfect,'' so everywhere.');
 INSERT INTO `mse_bible_footnote` VALUES (2930, 1, 26, 43, 26, 'c', '''Fill the hand:'' see [footnote id="n_ex?n=28:41"]Note, Ex. 28:41[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (2931, 1, 26, 44, 5, 'd', 'Lit. ''set thine heart to.''');
@@ -3018,7 +3001,7 @@ INSERT INTO `mse_bible_footnote` VALUES (2981, 1, 15, 4, 7, 'e', 'From here to [
 INSERT INTO `mse_bible_footnote` VALUES (2982, 1, 15, 4, 10, 'f', 'Lit. ''city.''');
 INSERT INTO `mse_bible_footnote` VALUES (2983, 1, 15, 4, 10, 'a', 'Strictly, ''beyond the river,'' a technical name for the provinces on the west of the Euphrates. In English the expression has to be varied, in accordance with the position of the persons in question.');
 INSERT INTO `mse_bible_footnote` VALUES (2984, 1, 15, 4, 13, 'b', 'Others, ''and thou wilt endamage the kings'' revenue.''');
-INSERT INTO `mse_bible_footnote` VALUES (2985, 1, 15, 4, 24, 'c', 'Aramaic, <I>Elah</I> (Heb. <I>Eloah</I>: see [scripture id="ge?n=1:1"]Gen. 1:1[/scripture]). The parts of the book written in Aramaic are <A HREF="/cgi-bin/br/BDB/ezr?n=4:8~a=53">chs. 4:8 to 6:18</A>, and <A HREF="/cgi-bin/br/BDB/ezr?n=7:12~a=14">ch. 7:12 to 26</A>; they have always <I>Elah</I>. <I>El</I> does not occur in Ezra.');
+INSERT INTO `mse_bible_footnote` VALUES (2985, 1, 15, 4, 24, 'c', 'Aramaic, <I>Elah</I> (Heb. <I>Eloah</I>: see [scripture id="ge?n=1:1"]Gen. 1:1[/scripture]). The parts of the book written in Aramaic are [scripture id="ezr?n=4:8~a=53"]chs. 4:8 to 6:18[/scripture], and [scripture id="ezr?n=7:12~a=14"]ch. 7:12 to 26[/scripture]; they have always <I>Elah</I>. <I>El</I> does not occur in Ezra.');
 INSERT INTO `mse_bible_footnote` VALUES (2986, 1, 15, 4, 24, 'd', 'Darius Hystaspes, as [scripture id="ezr?n=4:5"]ch. 4:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (2987, 1, 15, 6, 2, 'a', 'Ecbatana, capital of Great Media.');
 INSERT INTO `mse_bible_footnote` VALUES (2988, 1, 15, 6, 2, 'b', 'Or ''capital.''');
@@ -3128,7 +3111,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3091, 1, 1, 1, 26, 'c', 'Or ''men,'' ''
 INSERT INTO `mse_bible_footnote` VALUES (3092, 1, 1, 1, 27, 'd', 'The <I>Adam</I>, Man, as a race. It will be spelled with a capital, to avoid repetition of the note.');
 INSERT INTO `mse_bible_footnote` VALUES (3093, 1, 1, 1, 28, 'e', 'Or ''creepeth;'' and so elsewhere. [scripture id="ge?n=8:17"]Ch. 8:17[/scripture], [scripture id="ge?n=8:19"]19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3094, 1, 1, 2, 3, 'f', 'Lit. ''created to make.''');
-INSERT INTO `mse_bible_footnote` VALUES (3095, 1, 1, 2, 4, 'g', 'Lit. ''generations:'' the word implies ''origin'' and occurs in [scripture id="ge?n=5:1"]chs. 5:1[/scripture]; [scripture id="ge?n=6:9"]6:9[/scripture]; [scripture id="ge?n=10:1"]10:1[/scripture], [scripture id="ge?n=10:32"]32[/scripture]; [scripture id="ge?n=11:10"]11:10[/scripture], [scripture id="ge?n=11:27"]27[/scripture]; <A HREF="/cgi-bin/br/BDB/ge?n=25:12~a=1">25:12, 13</A>, <A HREF="/cgi-bin/br/BDB/ge?n=25:19">19</A>; <A HREF="/cgi-bin/br/BDB/ge?n=36:1">36:1</A>, <A HREF="/cgi-bin/br/BDB/ge?n=36:9">9</A>; <A HREF="/cgi-bin/br/BDB/ge?n=37:2">37:2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3095, 1, 1, 2, 4, 'g', 'Lit. ''generations:'' the word implies ''origin'' and occurs in [scripture id="ge?n=5:1"]chs. 5:1[/scripture]; [scripture id="ge?n=6:9"]6:9[/scripture]; [scripture id="ge?n=10:1"]10:1[/scripture], [scripture id="ge?n=10:32"]32[/scripture]; [scripture id="ge?n=11:10"]11:10[/scripture], [scripture id="ge?n=11:27"]27[/scripture]; [scripture id="ge?n=25:12~a=1"]25:12, 13[/scripture], [scripture id="ge?n=25:19"]19[/scripture]; [scripture id="ge?n=36:1"]36:1[/scripture], [scripture id="ge?n=36:9"]9[/scripture]; [scripture id="ge?n=37:2"]37:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3096, 1, 1, 2, 4, 'h', 'See [scripture id="ge?n=1:1"]ch. 1:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3097, 1, 1, 2, 5, 'i', 'Or ''no shrub ... was yet in the earth and no herb ... had yet grown.''');
 INSERT INTO `mse_bible_footnote` VALUES (3098, 1, 1, 2, 8, 'a', 'Pleasure.');
@@ -3151,7 +3134,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3114, 1, 1, 4, 2, 'b', 'Heb. <I>Hebel</
 INSERT INTO `mse_bible_footnote` VALUES (3115, 1, 1, 4, 2, 'c', 'Lit. ''herdsman of small cattle.''');
 INSERT INTO `mse_bible_footnote` VALUES (3116, 1, 1, 4, 2, 'd', 'Lit. ''worked the ground.''');
 INSERT INTO `mse_bible_footnote` VALUES (3117, 1, 1, 4, 3, 'e', 'Lit. ''at the end of days.''');
-INSERT INTO `mse_bible_footnote` VALUES (3118, 1, 1, 4, 3, 'f', 'Lit. ''gift,'' <I>minchah</I>: so <A HREF="/cgi-bin/br/BDB/ge?n=4:4~a=1">vers. 4, 5</A>; elsewhere translated ''oblation.'' See <A HREF="/cgi-bin/br/BDB/le?n=2:1">Lev. 2:1</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3118, 1, 1, 4, 3, 'f', 'Lit. ''gift,'' <I>minchah</I>: so [scripture id="ge?n=4:4~a=1"]vers. 4, 5[/scripture]; elsewhere translated ''oblation.'' See [scripture id="le?n=2:1"]Lev. 2:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3119, 1, 1, 4, 7, 'g', 'See [scripture id="job?n=11:15"]Job 11:15[/scripture]. Or possibly, ''shalt thou not be accepted.'' But I should question ''accepted,'' the rather as <I>nasa</I> is used for it here. Lit. ''is there not a lifting up?''');
 INSERT INTO `mse_bible_footnote` VALUES (3120, 1, 1, 4, 7, 'h', 'Or ''a sin-offering,'' Heb. <I>chattath</I> the word having both senses: see [footnote id="n_le?n=5:1"]Note b Lev. 5:1[/footnote]. Also ''punishment:'' see [footnote id="n_zec?n=14:19"]Note Zech. 14:19[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3121, 1, 1, 4, 13, 'i', 'Or ''Mine iniquity (Heb.<I>gahvon</I>) is too great to be forgiven.'' See [footnote id="n_la?n=4:6"]Note Lam. 4:6[/footnote].');
@@ -3285,7 +3268,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3248, 1, 1, 22, 5, 'd', 'Lit. ''bow dow
 INSERT INTO `mse_bible_footnote` VALUES (3249, 1, 1, 22, 5, 'e', 'Lit. ''we will come.'' See [scripture id="heb?n=11:19"]Heb. 11:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3250, 1, 1, 22, 8, 'f', 'See [footnote id="n_ex?n=12:3a"]Note, Ex. 12:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3251, 1, 1, 22, 14, 'g', 'Jehovah will provide.');
-INSERT INTO `mse_bible_footnote` VALUES (3252, 1, 1, 22, 16, 'h', 'The Hebrew word introduces an oracular discourse; cf. <A HREF="/cgi-bin/br/BDB/nu?n=24:3~a=1">Num. 24:3, 4</A>, <A HREF="/cgi-bin/br/BDB/nu?n=24:15~a=1">15, 16</A>. As ''He hath said,'' <A HREF="/cgi-bin/br/BDB/jer?n=23:31">Jer. 23:31</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3252, 1, 1, 22, 16, 'h', 'The Hebrew word introduces an oracular discourse; cf. [scripture id="nu?n=24:3~a=1"]Num. 24:3, 4[/scripture], [scripture id="nu?n=24:15~a=1"]15, 16[/scripture]. As ''He hath said,'' [scripture id="jer?n=23:31"]Jer. 23:31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3253, 1, 1, 22, 18, 'i', 'Or ''shall be blessed:'' so [scripture id="ge?n=26:4"]ch. 26:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3254, 1, 1, 23, 4, 'a', 'Or ''settler.''');
 INSERT INTO `mse_bible_footnote` VALUES (3255, 1, 1, 23, 10, 'b', 'Or ''sitting.''');
@@ -3446,11 +3429,11 @@ INSERT INTO `mse_bible_footnote` VALUES (3409, 1, 1, 42, 16, 'a', 'Or ''indeed, 
 INSERT INTO `mse_bible_footnote` VALUES (3410, 1, 1, 42, 17, 'b', 'Lit. ''gathered.''');
 INSERT INTO `mse_bible_footnote` VALUES (3411, 1, 1, 42, 25, 'c', 'Lit. ''sackcloth.''');
 INSERT INTO `mse_bible_footnote` VALUES (3412, 1, 1, 42, 27, 'd', 'Caravanserai: so [scripture id="ex?n=4:24"]Ex. 4:24[/scripture], &c.');
-INSERT INTO `mse_bible_footnote` VALUES (3413, 1, 1, 42, 27, 'e', 'Or ''bag;'' the other occurrences of the word in the chap. represent a different Hebrew word, relating to the material. <A HREF="/cgi-bin/dr/n_ge?n=42:25c">See Note c</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3413, 1, 1, 42, 27, 'e', 'Or ''bag;'' the other occurrences of the word in the chap. represent a different Hebrew word, relating to the material. [footnote id="n_ge?n=42:25c"]See Note c[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3414, 1, 1, 42, 38, 'b', 'See [scripture id="ge?n=37:35"]ch. 37:35[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3415, 1, 1, 43, 11, 'c', 'Lit. ''the celebrity of.''');
 INSERT INTO `mse_bible_footnote` VALUES (3416, 1, 1, 43, 11, 'd', 'See [scripture id="ge?n=37:25"]ch. 37:25[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3417, 1, 1, 43, 12, 'e', '''Bag:'' same as [footnote id="n_ge?n=42:27a"]ch. 42:27, 28, Note e[/footnote]; and so [scripture id="ge?n=43:18"]vers. 18[/scripture], <A HREF="/cgi-bin/br/BDB/ge?n=43:21~a=2">21, 22, 23</A>; and <A HREF="/cgi-bin/br/BDB/ge?n=44:1~a=1">ch. 44:1, 2</A>, <A HREF="/cgi-bin/br/BDB/ge?n=44:8">8</A>, <A HREF="/cgi-bin/br/BDB/ge?n=44:11~a=1">11, 12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3417, 1, 1, 43, 12, 'e', '''Bag:'' same as [footnote id="n_ge?n=42:27a"]ch. 42:27, 28, Note e[/footnote]; and so [scripture id="ge?n=43:18"]vers. 18[/scripture], [scripture id="ge?n=43:21~a=2"]21, 22, 23[/scripture]; and [scripture id="ge?n=44:1~a=1"]ch. 44:1, 2[/scripture], [scripture id="ge?n=44:8"]8[/scripture], [scripture id="ge?n=44:11~a=1"]11, 12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3418, 1, 1, 43, 14, 'f', 'Lit. ''return to you.''');
 INSERT INTO `mse_bible_footnote` VALUES (3419, 1, 1, 43, 16, 'a', 'Lit. ''slaughter a slaughtering.''');
 INSERT INTO `mse_bible_footnote` VALUES (3420, 1, 1, 43, 27, 'b', 'Lit. ''of peace.''');
@@ -3520,7 +3503,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3483, 1, 35, 2, 16, 'k', 'Or ''more tha
 INSERT INTO `mse_bible_footnote` VALUES (3484, 1, 35, 2, 16, 'l', 'Or ''thine uncircumcision.''');
 INSERT INTO `mse_bible_footnote` VALUES (3485, 1, 35, 2, 17, 'm', 'Or ''shall affright thee.''');
 INSERT INTO `mse_bible_footnote` VALUES (3486, 1, 35, 2, 17, 'a', 'Or ''earth.''');
-INSERT INTO `mse_bible_footnote` VALUES (3487, 1, 35, 3, 1, 'b', 'Plural of Shiggaion: see title of <A HREF="/cgi-bin/br/BDB/ps?n=7">Ps. 7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3487, 1, 35, 3, 1, 'b', 'Plural of Shiggaion: see title of [scripture id="ps?n=7"]Ps. 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3488, 1, 35, 3, 2, 'c', '<I>Poal</I>: as [scripture id="hab?n=1:5"]ch. 1:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3489, 1, 35, 3, 3, 'd', 'Or ''was full.''');
 INSERT INTO `mse_bible_footnote` VALUES (3490, 1, 35, 3, 4, 'e', 'Lit. ''horns.''');
@@ -3550,18 +3533,18 @@ INSERT INTO `mse_bible_footnote` VALUES (3513, 1, 58, 1, 3, 'd', 'That is, his o
 INSERT INTO `mse_bible_footnote` VALUES (3514, 1, 58, 1, 3, 'e', 'The form (middle) of the verb here, has a peculiar reflexive force, ''having done it for himself.'' Though we, as alone the sinners, have the profit, yet the work was done within his own person and work, without us, as when a man journeys, and so when he makes a person his friend, his wife.');
 INSERT INTO `mse_bible_footnote` VALUES (3515, 1, 58, 1, 5, 'f', 'See [scripture id="ps?n=2:7"]Ps. 2:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3516, 1, 58, 1, 5, 'g', 'See [scripture id="1ch?n=17:13"]1Chron. 17:13[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3517, 1, 58, 1, 6, 'h', 'The present tense in English gives the sense of the aorist here. The reference is to <A HREF="/cgi-bin/br/BDB/ps?n=97">Ps. 97</A>, where he is just coming in, in his kingdom glory; but, in a certain sense, he must be there to be worshipped. His introduction is antecedent to his worship as firstborn, but it is on introducing him that this follows (hence the aorist), not when his whole introducing is a past thing. The glory of the person of Christ is before the writer, not the time of introducing. I have no doubt that the translation I give is the only right one.');
+INSERT INTO `mse_bible_footnote` VALUES (3517, 1, 58, 1, 6, 'h', 'The present tense in English gives the sense of the aorist here. The reference is to [scripture id="ps?n=97"]Ps. 97[/scripture], where he is just coming in, in his kingdom glory; but, in a certain sense, he must be there to be worshipped. His introduction is antecedent to his worship as firstborn, but it is on introducing him that this follows (hence the aorist), not when his whole introducing is a past thing. The glory of the person of Christ is before the writer, not the time of introducing. I have no doubt that the translation I give is the only right one.');
 INSERT INTO `mse_bible_footnote` VALUES (3518, 1, 58, 1, 6, 'i', 'See [scripture id="ps?n=97:7"]Ps. 97:7[/scripture]: ''worship'' is <I>proskuneo</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (3519, 1, 58, 1, 7, 'k', '<I>Leitourgos</I>. See [footnote id="n_ro?n=15:16a"]Note k, to Rom. 15:16[/footnote]. ''Ministering'' in [scripture id="heb?n=1:14"]ver. 14[/scripture] is from the same root.');
 INSERT INTO `mse_bible_footnote` VALUES (3520, 1, 58, 1, 7, 'l', 'See [scripture id="ps?n=104:4"]Ps. 104:4[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3521, 1, 58, 1, 9, 'm', '<I>Metochos</I>: see [footnote id="n_heb?n=2:14b"]Note q, ch. 2:14[/footnote]: and <A HREF="/cgi-bin/br/BDB/ps?n=45:6~a=1">Ps. 45:6, 7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3521, 1, 58, 1, 9, 'm', '<I>Metochos</I>: see [footnote id="n_heb?n=2:14b"]Note q, ch. 2:14[/footnote]: and [scripture id="ps?n=45:6~a=1"]Ps. 45:6, 7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3522, 1, 58, 1, 12, 'n', '''The existing one who does not change.'' Every creature is changeable. A divine title: see [scripture id="de?n=32:39"]Deut. 32:39[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3523, 1, 58, 1, 12, 'o', 'See [scripture id="ps?n=102:25"]Ps. 102:25[/scripture], [scripture id="ps?n=102:27"]27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3524, 1, 58, 1, 13, 'p', 'See [scripture id="ps?n=110:1"]Ps. 110:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3525, 1, 58, 2, 2, 'q', 'That is, was so when given; all is in the aorist here, or a truth as to the past.');
 INSERT INTO `mse_bible_footnote` VALUES (3526, 1, 58, 2, 3, 'r', 'Not merely neglected when presented, but not cared for when, as here, they were nominally inside making profession. As [scripture id="mt?n=22:5"]Matt. 22:5[/scripture]: ''They made light of'' the invitation to the supper. [scripture id="1ti?n=4:14"]1Tim. 4:14[/scripture]: ''negligent'' of the gift in him: he had it. [scripture id="heb?n=8:9"]Heb. 8:9[/scripture]: Israel was disobedient, and Jehovah ''did not regard them.''');
 INSERT INTO `mse_bible_footnote` VALUES (3527, 1, 58, 2, 5, 'a', 'A known division among the Jews. First, ''this age;'' and then what was to be introduced by the Messiah: see [scripture id="heb?n=6:5"]ch. 6:5[/scripture] and [footnote id="n_heb?n=9:9a"]Note h, ch. 9:9[/footnote]; [scripture id="tit?n=2:12"]Tit. 2:12[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3528, 1, 58, 2, 6, 'b', 'See <A HREF="/cgi-bin/br/BDB/ps?n=8:4~a=2">Ps. 8:4-6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3528, 1, 58, 2, 6, 'b', 'See [scripture id="ps?n=8:4~a=2"]Ps. 8:4-6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3529, 1, 58, 2, 6, 'c', 'An active recollection, because the object is cared for: so [scripture id="heb?n=13:3"]ch. 13:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3530, 1, 58, 2, 9, 'd', 'Or ''him who was made ... angels, <I>even</I> Jesus:'' see [scripture id="ps?n=8:5"]Ps. 8:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3531, 1, 58, 2, 9, 'e', 'The ''so that'' is an appended sentence: ''he was made lower ... so that.'' [scripture id="heb?n=2:10"]Ver. 10[/scripture] justifies his being made lower for suffering death. The crowning is the accomplishment of the Psalm.');
@@ -3577,12 +3560,12 @@ INSERT INTO `mse_bible_footnote` VALUES (3540, 1, 58, 2, 14, 'o', '<I>Koinoneo</
 INSERT INTO `mse_bible_footnote` VALUES (3541, 1, 58, 2, 14, 'p', '''In like manner'' is strictly ''near to,'' as [scripture id="php?n=2:27"]Phil. 2:27[/scripture], ''close to.''');
 INSERT INTO `mse_bible_footnote` VALUES (3542, 1, 58, 2, 14, 'q', 'There is an intended difference here between the words for ''partake'' (<I>koinoneo</I>) and ''took part in'' (<I>metecho</I>), [scripture id="heb?n=2:14"]ver. 14[/scripture]. The first, referring to the children, is a common equal sharing of the nature. The second, referring to Christ, means, he took a part in it; and refers always to something outside myself, but which I take, or take a part in. The first work refers to a joint participation in that which belongs to me or to known fellowship. The second is used in [scripture id="heb?n=5:13"]ch. 5:13[/scripture], ''partakes of milk,'' in [scripture id="1co?n=9:10"]1Cor. 9:10[/scripture], where the reaper gets a share in the sower''s hope, and in [scripture id="1co?n=10:17"]1Cor. 10:17[/scripture], [scripture id="1co?n=10:21"]21[/scripture], [scripture id="1co?n=10:30"]30[/scripture], ''partake,'' where ''partaking'' (<I>metecho</I>) is proof of participation in fellowship (<I>koinonia</I>), [scripture id="heb?n=2:16"]ver. 16[/scripture]. The word does not say how far the taking share went.');
 INSERT INTO `mse_bible_footnote` VALUES (3543, 1, 58, 2, 14, 'r', 'Or ''who had;'' lit. ''having,'' without reference to time. Cf. [scripture id="heb?n=13:20"]ch. 13:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3544, 1, 58, 2, 16, 'a', 'It means ''to take hold of,'' but it is constantly used for ''taking up a person to help him,'' though in other senses as well. We say, ''he took him by the hand,'' but this may be too familiar. It is used in the sense of ''taking hold of,'' literally ''deliver.'' The same word is used in this verse as to ''the seed of Abraham,'' and also in the quotation from <A HREF="/cgi-bin/br/BDB/jer?n=31:31~a=4">Jer. 31</A> in <A HREF="/cgi-bin/br/BDB/heb?n=8:9">ch. 8:9</A>, but there ''hand'' is added in the Greek.');
+INSERT INTO `mse_bible_footnote` VALUES (3544, 1, 58, 2, 16, 'a', 'It means ''to take hold of,'' but it is constantly used for ''taking up a person to help him,'' though in other senses as well. We say, ''he took him by the hand,'' but this may be too familiar. It is used in the sense of ''taking hold of,'' literally ''deliver.'' The same word is used in this verse as to ''the seed of Abraham,'' and also in the quotation from [scripture id="jer?n=31:31~a=4"]Jer. 31[/scripture] in [scripture id="heb?n=8:9"]ch. 8:9[/scripture], but there ''hand'' is added in the Greek.');
 INSERT INTO `mse_bible_footnote` VALUES (3545, 1, 58, 2, 17, 'b', 'He speaks, I apprehend, historically; it was necessary for him to do this by the alleged reason, not his present judgment of divine necessity or purpose. ''Has behoved'' would speak more of continuance. It behoved him when he became a man. It is what he became as man, not what he took on him.');
 INSERT INTO `mse_bible_footnote` VALUES (3546, 1, 58, 3, 1, 'c', 'Here <I>metochos</I>, who have been made, called to be, partakers of it. They had been <I>koinonoi</I> of Israel''s rights. See [scripture id="heb?n=2:14"]ch. 2:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3547, 1, 58, 3, 2, 'd', 'See [scripture id="nu?n=12:7"]Num. 12:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3548, 1, 58, 3, 5, 'e', 'That is, God''s house, in which Moses was faithful as a ministering servant. The contrast is with ''Moses as a servant in,'' and ''Christ as a Son over.'' The Father is not brought in as such at all, but the Son is over the house as Son. The connection with its being God''s house is evident, because he (Christ) has built the house, [scripture id="heb?n=3:3"]ver. 3[/scripture], and he who built all things is God; but he is over it as Son.');
-INSERT INTO `mse_bible_footnote` VALUES (3549, 1, 58, 3, 7, 'f', 'See <A HREF="/cgi-bin/br/BDB/ps?n=95:7~a=4">Ps. 95:7-11</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3549, 1, 58, 3, 7, 'f', 'See [scripture id="ps?n=95:7~a=4"]Ps. 95:7-11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3550, 1, 58, 3, 9, 'g', 'Some translate ''wherewith,'' that is, ''with which temptation.''');
 INSERT INTO `mse_bible_footnote` VALUES (3551, 1, 58, 3, 11, 'h', 'A Hebraism involving a strong negative. Compare [scripture id="nu?n=14:23"]Num. 14:23[/scripture]; [scripture id="mr?n=8:12"]Mark 8:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3552, 1, 58, 3, 14, 'i', '<I>Metochos</I>, as [scripture id="heb?n=1:9"]ch. 1:9[/scripture] (quoting [scripture id="ps?n=45:7"]Ps. 45:7[/scripture]), to which it alludes. It is not ''partakers of Christ.''');
@@ -3618,7 +3601,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3581, 1, 58, 6, 20, 'f', 'As [footnote 
 INSERT INTO `mse_bible_footnote` VALUES (3582, 1, 58, 7, 1, 'g', 'See [footnote id="n_mr?n=5:7"]Note, Mark 5:7[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3583, 1, 58, 7, 3, 'h', 'Melchisedec was in his characteristics assimilated to the Son of God. ''Abides'' is in direct connection with ''this Melchisedec,'' [scripture id="heb?n=7:1"]ver. 1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3584, 1, 58, 7, 3, 'i', '''In perpetuity,'' not as [scripture id="heb?n=6:20"]ch. 6:20[/scripture]: see [scripture id="heb?n=5:6"]ch. 5:6[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3585, 1, 58, 7, 5, 'k', 'Only here and [scripture id="lu?n=1:9"]Luke 1:9[/scripture]. It is the personal office that a man receives. ''Priesthood'' in <A HREF="/cgi-bin/br/BDB/heb?n=7:11~a=1">vers. 11, 12</A>, <A HREF="/cgi-bin/br/BDB/heb?n=7:24">24</A>, is the system itself.');
+INSERT INTO `mse_bible_footnote` VALUES (3585, 1, 58, 7, 5, 'k', 'Only here and [scripture id="lu?n=1:9"]Luke 1:9[/scripture]. It is the personal office that a man receives. ''Priesthood'' in [scripture id="heb?n=7:11~a=1"]vers. 11, 12[/scripture], [scripture id="heb?n=7:24"]24[/scripture], is the system itself.');
 INSERT INTO `mse_bible_footnote` VALUES (3586, 1, 58, 7, 6, 'l', 'Not the mere denial of the fact, but that he way not in a position to have one.');
 INSERT INTO `mse_bible_footnote` VALUES (3587, 1, 58, 7, 11, 'a', 'Or ''based upon it.''');
 INSERT INTO `mse_bible_footnote` VALUES (3588, 1, 58, 7, 13, 'b', '<I>Metecho</I>: ''has taken part in.'' It is the perfect tense, intimating an abiding character: see [footnote id="n_heb?n=2:14b"]Note q, ch. 2:14[/footnote].');
@@ -3628,7 +3611,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3591, 1, 58, 7, 17, 'e', 'Or ''he is te
 INSERT INTO `mse_bible_footnote` VALUES (3592, 1, 58, 7, 17, 'f', 'As [scripture id="heb?n=5:6"]ch. 5:6[/scripture]; so [scripture id="heb?n=7:24"]ver. 24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3593, 1, 58, 7, 21, 'g', 'Or ''to him.'' .');
 INSERT INTO `mse_bible_footnote` VALUES (3594, 1, 58, 7, 24, 'h', 'Or ''intransmissible,'' not transmitted to others.');
-INSERT INTO `mse_bible_footnote` VALUES (3595, 1, 58, 7, 26, 'i', 'There are two Greek words used for ''holy'' in the New Testament -- <I>hagios</I> and <I>hosios</I> (<I>hosios</I> is used in this passage). The word most commonly used is <I>hagios</I> (corresponding to the Hebrew word <I>kadosh</I>). This, when applied to God, designates him as holy, knowing good and evil perfectly, and absolutely willing good and no evil. When applied to men, it designates them as separated, set apart to God from evil and from common use. The corresponding verb is commonly translated ''to sanctify;'' and the word when used as a substantive is the ordinary word for ''saints.'' The word <I>hosios</I>, on the other hand, conveys the thought of pious, that which is not profane. It speaks of God in mercy and grace, and of Christ, in whom all gracious qualities are concentrated, as well as perfect piety. It corresponds to the Hebrew <I>chesed</I>, of which the plural (<I>chasadim</I>) is the word translated ''mercies'' or ''sure mercies'' in the Old Testament. When applied to men, it is in general the sum of qualities which suit and form the divine character in man, as opposed to the human will. It refers to the exercise of gracious suitable affections in the relationships in which we are to God, and (e.g.) to parents. Hence, as suitable affections to God practically constitute holiness, the word is used in this sense for holy. The two Hebrew words are used side by side in <A HREF="/cgi-bin/br/BDB/ps?n=89:18~a=1">Ps. 89:18, 19</A>, ''The Holy One (<I>kadosh</I>) of Israel is our king. ... Then thou spakest in vision to thy Holy One (<I>Chasid</I>).'' The beginning of the Psalm speaks of the mercies or gracious ways (<I>chasadim</I>) of the Lord. (See, for <I>hosios</I>, <A HREF="/cgi-bin/br/BDB/ac?n=2:27">Acts 2:27</A>; <A HREF="/cgi-bin/br/BDB/ac?n=13:34~a=1">13:34, 35</A>; <A HREF="/cgi-bin/br/BDB/1ti?n=2:8">1Tim. 2:8</A>; <A HREF="/cgi-bin/br/BDB/tit?n=1:8">Tit. 1:8</A>; <A HREF="/cgi-bin/br/BDB/re?n=15:4">Rev. 15:4</A>; <A HREF="/cgi-bin/br/BDB/re?n=16:5">16:5');
+INSERT INTO `mse_bible_footnote` VALUES (3595, 1, 58, 7, 26, 'i', 'There are two Greek words used for ''holy'' in the New Testament -- <I>hagios</I> and <I>hosios</I> (<I>hosios</I> is used in this passage). The word most commonly used is <I>hagios</I> (corresponding to the Hebrew word <I>kadosh</I>). This, when applied to God, designates him as holy, knowing good and evil perfectly, and absolutely willing good and no evil. When applied to men, it designates them as separated, set apart to God from evil and from common use. The corresponding verb is commonly translated ''to sanctify;'' and the word when used as a substantive is the ordinary word for ''saints.'' The word <I>hosios</I>, on the other hand, conveys the thought of pious, that which is not profane. It speaks of God in mercy and grace, and of Christ, in whom all gracious qualities are concentrated, as well as perfect piety. It corresponds to the Hebrew <I>chesed</I>, of which the plural (<I>chasadim</I>) is the word translated ''mercies'' or ''sure mercies'' in the Old Testament. When applied to men, it is in general the sum of qualities which suit and form the divine character in man, as opposed to the human will. It refers to the exercise of gracious suitable affections in the relationships in which we are to God, and (e.g.) to parents. Hence, as suitable affections to God practically constitute holiness, the word is used in this sense for holy. The two Hebrew words are used side by side in [scripture id="ps?n=89:18~a=1"]Ps. 89:18, 19[/scripture], ''The Holy One (<I>kadosh</I>) of Israel is our king. ... Then thou spakest in vision to thy Holy One (<I>Chasid</I>).'' The beginning of the Psalm speaks of the mercies or gracious ways (<I>chasadim</I>) of the Lord. (See, for <I>hosios</I>, [scripture id="ac?n=2:27"]Acts 2:27[/scripture]; [scripture id="ac?n=13:34~a=1"]13:34, 35[/scripture]; [scripture id="1ti?n=2:8"]1Tim. 2:8[/scripture]; [scripture id="tit?n=1:8"]Tit. 1:8[/scripture]; [scripture id="re?n=15:4"]Rev. 15:4[/scripture]; [scripture id="re?n=16:5"]16:5[/scripture].)');
 INSERT INTO `mse_bible_footnote` VALUES (3596, 1, 58, 7, 26, 'a', 'Or ''guileless,'' without an evil thought.');
 INSERT INTO `mse_bible_footnote` VALUES (3597, 1, 58, 7, 27, 'b', 'The word ''this'' may refer to the offering for the people, ''this last.'' Otherwise it would be simply ''this offering,'' of course for others, but the emphasis is on ''once for all.''');
 INSERT INTO `mse_bible_footnote` VALUES (3598, 1, 58, 8, 1, 'c', 'Or ''the chief point.'' The difference is small; it expresses what it results in, in the writer''s mind, as the substance of the things of which we are speaking. ''The things of which we are speaking'' is the present subject which occupies him: it heads up in this.');
@@ -3640,7 +3623,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3603, 1, 58, 8, 5, 'h', 'See [scripture
 INSERT INTO `mse_bible_footnote` VALUES (3604, 1, 58, 8, 6, 'i', '<I>Leitourgia</I>: see [scripture id="heb?n=8:2"]ver. 2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3605, 1, 58, 8, 6, 'k', '<I>Hostis</I>: as [scripture id="mt?n=7:24"]Matt. 7:24[/scripture], ''which is such as.''');
 INSERT INTO `mse_bible_footnote` VALUES (3606, 1, 58, 8, 6, 'l', 'That is, formally established as by a law.');
-INSERT INTO `mse_bible_footnote` VALUES (3607, 1, 58, 8, 8, 'm', 'See <A HREF="/cgi-bin/br/BDB/jer?n=31:31~a=3">Jer. 31:31-34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3607, 1, 58, 8, 8, 'm', 'See [scripture id="jer?n=31:31~a=3"]Jer. 31:31-34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3608, 1, 58, 8, 8, 'n', 'The ''and'' here I take to represent the Hebrew word translated ''that'' in [scripture id="jer?n=31:31"]Jer. 31:31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3609, 1, 58, 8, 8, 'o', '<I>Kainos</I>: see [scripture id="heb?n=12:24"]ch. 12:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3610, 1, 58, 8, 8, 'p', '''As regards'' indicates the object in respect of which the covenant was made.');
@@ -3660,28 +3643,28 @@ INSERT INTO `mse_bible_footnote` VALUES (3623, 1, 58, 9, 11, 'a', 'Or ''greater,
 INSERT INTO `mse_bible_footnote` VALUES (3624, 1, 58, 9, 12, 'b', 'See [footnote id="n_heb?n=9:11a"]Note l, ver. 11[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3625, 1, 58, 9, 14, 'c', 'See [footnote id="n_heb?n=9:9b"]Note i, ver. 9[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3626, 1, 58, 9, 15, 'd', 'The absence of the article makes it characteristic of him: he is ''new (<I>kainos</I>) covenant mediator:'' see [scripture id="2co?n=3:6"]2Cor. 3:6[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3627, 1, 58, 9, 16, 'e', 'The word translated ''covenant'' and ''testament'' is the same; ''a disposition.'' ''Covenant,'' in connection with God, is a disposition which he has made, on the ground of which man is to be in relationship with him. But <A HREF="/cgi-bin/br/BDB/heb?n=9:16~a=1">vers. 16, 17</A>, are a parenthesis, alluding, incidentally, to another kind of covenant.');
+INSERT INTO `mse_bible_footnote` VALUES (3627, 1, 58, 9, 16, 'e', 'The word translated ''covenant'' and ''testament'' is the same; ''a disposition.'' ''Covenant,'' in connection with God, is a disposition which he has made, on the ground of which man is to be in relationship with him. But [scripture id="heb?n=9:16~a=1"]vers. 16, 17[/scripture], are a parenthesis, alluding, incidentally, to another kind of covenant.');
 INSERT INTO `mse_bible_footnote` VALUES (3628, 1, 58, 9, 20, 'f', 'See [scripture id="ex?n=24:8"]Ex. 24:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3629, 1, 58, 9, 24, 'g', '<I>Antitupos</I>, meaning the impression made by a die or stamp (<I>tupos</I>). The heavenly things were the original, ''the pattern,'' copied ([scripture id="heb?n=8:5"]ch. 8:5[/scripture]), and so it was, as said to Moses. Hence they were the <I>tupos</I>; the tabernacle <I>antitupos</I>, here rendered ''figure,'' what answered to it.');
 INSERT INTO `mse_bible_footnote` VALUES (3630, 1, 58, 9, 24, 'h', 'Lit. ''to the face.''');
 INSERT INTO `mse_bible_footnote` VALUES (3631, 1, 58, 9, 28, 'i', '''Apart from,'' having nothing more to do with it. The first time He bore our sins, and was made sin (being sinless); but now, having put sins wholly away for them who look for Him, and having made them partakers of the whole fruit of his sacrifice to put sin away, He appears to <I>them</I> without having to say, or need to have anything to say, to it. It is gone, as regards them, by his first coming.');
-INSERT INTO `mse_bible_footnote` VALUES (3632, 1, 58, 10, 5, 'a', '<A HREF="/cgi-bin/br/BDB/ps?n=40:6~a=2">Ps. 40:6-8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3632, 1, 58, 10, 5, 'a', '[scripture id="ps?n=40:6~a=2"]Ps. 40:6-8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3633, 1, 58, 10, 7, 'b', 'Or perhaps ''chapter,'' to which a heading or summary was attached. Some take it as the summary or contents of the chapter or volume, written on the ''head'' of the roll.');
 INSERT INTO `mse_bible_footnote` VALUES (3634, 1, 58, 10, 8, 'c', '''Which are of that kind that are.'' <I>Hostis</I>, as [scripture id="mt?n=7:24"]Matt. 7:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3635, 1, 58, 10, 12, 'd', 'Or ''set himself down,'' as [scripture id="heb?n=1:3"]ch. 1:3[/scripture],');
 INSERT INTO `mse_bible_footnote` VALUES (3636, 1, 58, 10, 12, 'e', 'See [footnote id="n_heb?n=5:6"]Note b, ch. 5:6[/footnote]. Having perfectly completed the work, he could sit down, and abide so, having done all; it is in contrast with the priests. They stood daily; he is set down ''for a continuance.'' Connecting ''in perpetuity'' with sacrifice spoils the whole force of the passage.');
 INSERT INTO `mse_bible_footnote` VALUES (3637, 1, 58, 10, 13, 'f', 'See [scripture id="ps?n=110:1"]Ps. 110:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3638, 1, 58, 10, 14, 'g', 'Not ''being,'' nor ''having been,'' ''sanctified'', but the objects of this operation, those about whom God was doing this. As to date, ''we have been sanctified,'' [scripture id="heb?n=10:10"]ver. 10[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3639, 1, 58, 10, 15, 'h', 'See <A HREF="/cgi-bin/br/BDB/jer?n=31:33~a=1">Jer. 31:33, 34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3639, 1, 58, 10, 15, 'h', 'See [scripture id="jer?n=31:33~a=1"]Jer. 31:33, 34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3640, 1, 58, 10, 16, 'i', 'Or ''minds:'' see [scripture id="heb?n=8:10"]ch. 8:10[/scripture]. The words ''it is said'' could be added before ''and their sins, &c.'', to give the sense.');
 INSERT INTO `mse_bible_footnote` VALUES (3641, 1, 58, 10, 18, 'k', 'Lit. ''offering,'' as [scripture id="heb?n=10:10"]ver. 10[/scripture], [scripture id="heb?n=10:14"]14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3642, 1, 58, 10, 20, 'l', '''Newly'' or ''recently made.''');
 INSERT INTO `mse_bible_footnote` VALUES (3643, 1, 58, 10, 22, 'm', 'It means ''washed all over,'' or ''bathed,'' as in [scripture id="joh?n=13:10"]John 13:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3644, 1, 58, 10, 26, 'a', 'Clear personal knowledge (<I>epignosis</I>), [scripture id="mt?n=11:27"]Matt. 11:27[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3645, 1, 58, 10, 29, 'b', 'Or ''unclean,'' having no holy character.');
-INSERT INTO `mse_bible_footnote` VALUES (3646, 1, 58, 10, 30, 'c', 'See <A HREF="/cgi-bin/br/BDB/de?n=32:35~a=1">Deut. 32:35-36</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3646, 1, 58, 10, 30, 'c', 'See [scripture id="de?n=32:35~a=1"]Deut. 32:35-36[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3647, 1, 58, 10, 38, 'd', 'Or possibly this may read ''my just <I>man</I>.'' i.e. God''s just one, the one he owns as such. There is good authority for it. The sense runs well and is the same.');
-INSERT INTO `mse_bible_footnote` VALUES (3648, 1, 58, 10, 38, 'e', 'Or ''any one.'' The apostle is contrasting two characters; the one who perishes, and the one who saves, preserves, his life (spiritually, of course). The professing Hebrews were in danger of drawing back. It is certain that in what the apostle <I>quotes</I> (<A HREF="/cgi-bin/br/BDB/hab?n=2:3~a=1">Hab. 2:3, 4</A>) there is no reference in the word ''he'' to the just who lives by faith. The Hebrew and the LXX prove this. All through this Epistle the Hebrews who acknowledged Jesus as Messiah are treated as a people; that is, the whole people accepted on condition of believing. So Peter: ''but are now the people of God.'' And here: ''Jesus, that he might sanctify the people with his own blood.'' In this Epistle there is nothing of the sanctification of the Spirit; but the writer urges as a practical truth ''the just shall live by faith:'' and then he says, ''and, if he draw back;'' that is, any one holding this position of a professed believer; but if he was living by faith in him, <I>he</I> was not drawing back. In a word, drawing back is one character, living by faith another.');
+INSERT INTO `mse_bible_footnote` VALUES (3648, 1, 58, 10, 38, 'e', 'Or ''any one.'' The apostle is contrasting two characters; the one who perishes, and the one who saves, preserves, his life (spiritually, of course). The professing Hebrews were in danger of drawing back. It is certain that in what the apostle <I>quotes</I> ([scripture id="hab?n=2:3~a=1"]Hab. 2:3, 4[/scripture]) there is no reference in the word ''he'' to the just who lives by faith. The Hebrew and the LXX prove this. All through this Epistle the Hebrews who acknowledged Jesus as Messiah are treated as a people; that is, the whole people accepted on condition of believing. So Peter: ''but are now the people of God.'' And here: ''Jesus, that he might sanctify the people with his own blood.'' In this Epistle there is nothing of the sanctification of the Spirit; but the writer urges as a practical truth ''the just shall live by faith:'' and then he says, ''and, if he draw back;'' that is, any one holding this position of a professed believer; but if he was living by faith in him, <I>he</I> was not drawing back. In a word, drawing back is one character, living by faith another.');
 INSERT INTO `mse_bible_footnote` VALUES (3649, 1, 58, 11, 1, 'f', 'Or ''assurance,'' ''firm conviction:'' see [scripture id="heb?n=3:14"]ch. 3:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3650, 1, 58, 11, 4, 'a', 'He alludes. I judge, to the voice which called to God from the ground ([scripture id="ge?n=4:10"]Gen. 4:10[/scripture]), but supposes the voice still heard as witnessing to Abel''s faith.');
 INSERT INTO `mse_bible_footnote` VALUES (3651, 1, 58, 11, 5, 'b', 'The LXX so translated into Greek the Hebrew expression ''walked with God'' in [scripture id="ge?n=5:24"]Gen. 5:24[/scripture].');
@@ -3706,7 +3689,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3669, 1, 58, 12, 2, 'e', 'See [footnote
 INSERT INTO `mse_bible_footnote` VALUES (3670, 1, 58, 12, 2, 'f', 'The perfect tense with abiding result.');
 INSERT INTO `mse_bible_footnote` VALUES (3671, 1, 58, 12, 3, 'g', '''Weigh so as to judge its value,'' and sometimes in comparison with other things.');
 INSERT INTO `mse_bible_footnote` VALUES (3672, 1, 58, 12, 5, 'h', 'Or ''And have ye?''');
-INSERT INTO `mse_bible_footnote` VALUES (3673, 1, 58, 12, 5, 'i', 'See <A HREF="/cgi-bin/br/BDB/pr?n=3:11~a=1">Prov. 3:11, 12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3673, 1, 58, 12, 5, 'i', 'See [scripture id="pr?n=3:11~a=1"]Prov. 3:11, 12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3674, 1, 58, 12, 7, 'k', 'Or ''as,'' that is, as chastening, not as wrath. Some authorities have ''if ye endure chastening.''');
 INSERT INTO `mse_bible_footnote` VALUES (3675, 1, 58, 12, 8, 'l', '<I>Metochos</I>, see [footnote id="n_heb?n=2:14b"]Note q at ch. 2:14[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (3676, 1, 58, 12, 10, 'm', '<I>Hagiotes</I>. See [footnote id="n_ro?n=1:4a"]Note i at Rom. 1:4[/footnote].');
@@ -3818,7 +3801,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3781, 1, 28, 11, 8, 'f', 'Or ''What sha
 INSERT INTO `mse_bible_footnote` VALUES (3782, 1, 28, 11, 9, 'g', 'Some translate ''come into the city.''');
 INSERT INTO `mse_bible_footnote` VALUES (3783, 1, 28, 11, 10, 'h', 'Or ''come trembling.''');
 INSERT INTO `mse_bible_footnote` VALUES (3784, 1, 28, 11, 10, 'i', 'Or ''the sea.''');
-INSERT INTO `mse_bible_footnote` VALUES (3785, 1, 28, 11, 12, 'k', '<A HREF="/cgi-bin/br/BDB/ho?n=12">Ch. 12</A> in the Hebrew commences here.');
+INSERT INTO `mse_bible_footnote` VALUES (3785, 1, 28, 11, 12, 'k', '[scripture id="ho?n=12"]Ch. 12[/scripture] in the Hebrew commences here.');
 INSERT INTO `mse_bible_footnote` VALUES (3786, 1, 28, 11, 12, 'l', 'According to others, ''And Judah is yet unsteadfast as regards God and the true Holy One.''');
 INSERT INTO `mse_bible_footnote` VALUES (3787, 1, 28, 12, 5, 'a', 'See [scripture id="ex?n=3:15"]Ex. 3:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3788, 1, 28, 12, 6, 'b', 'Or ''goodness.''');
@@ -3832,7 +3815,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3795, 1, 28, 13, 2, 'i', 'Or ''skilfuln
 INSERT INTO `mse_bible_footnote` VALUES (3796, 1, 28, 13, 7, 'k', 'Or ''fierce lion,'' as [scripture id="ho?n=5:14"]ch. 5:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3797, 1, 28, 13, 14, 'a', 'Or ''I will be ... thy.''');
 INSERT INTO `mse_bible_footnote` VALUES (3798, 1, 28, 13, 14, 'b', 'Others read, ''sting.''');
-INSERT INTO `mse_bible_footnote` VALUES (3799, 1, 28, 13, 16, 'c', '<A HREF="/cgi-bin/br/BDB/ho?n=14">Ch. 14</A> in the Hebrew commences here.');
+INSERT INTO `mse_bible_footnote` VALUES (3799, 1, 28, 13, 16, 'c', '[scripture id="ho?n=14"]Ch. 14[/scripture] in the Hebrew commences here.');
 INSERT INTO `mse_bible_footnote` VALUES (3800, 1, 28, 13, 16, 'd', 'Or ''become desolate.''');
 INSERT INTO `mse_bible_footnote` VALUES (3801, 1, 28, 14, 2, 'e', 'Or ''receive what is good.''');
 INSERT INTO `mse_bible_footnote` VALUES (3802, 1, 28, 14, 2, 'f', 'Or ''young bullocks,'' as [scripture id="le?n=4:3"]Lev. 4:3[/scripture]; [scripture id="nu?n=8:8"]Num. 8:8[/scripture]; [scripture id="ho?n=13:2"]ch. 13:2[/scripture]. ''Calf'' and ''heifer'' in [scripture id="ho?n=10:5"]ch. 10:5[/scripture], [scripture id="ho?n=10:11"]11[/scripture], is a different and feminine word.');
@@ -3851,7 +3834,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3814, 1, 23, 1, 25, 'd', 'Lit. accordin
 INSERT INTO `mse_bible_footnote` VALUES (3815, 1, 23, 1, 25, 'e', 'Or ''lead,'' anything mixed with the silver ore.');
 INSERT INTO `mse_bible_footnote` VALUES (3816, 1, 23, 1, 27, 'f', 'Or ''delivered through.''');
 INSERT INTO `mse_bible_footnote` VALUES (3817, 1, 23, 1, 27, 'g', 'Or ''her penitents.''');
-INSERT INTO `mse_bible_footnote` VALUES (3818, 1, 23, 2, 2, 'h', 'For <A HREF="/cgi-bin/br/BDB/isa?n=2:2~a=2">vers. 2-4</A> see <A HREF="/cgi-bin/br/BDB/mic?n=4:1~a=2">Mic. 4:1-3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3818, 1, 23, 2, 2, 'h', 'For [scripture id="isa?n=2:2~a=2"]vers. 2-4[/scripture] see [scripture id="mic?n=4:1~a=2"]Mic. 4:1-3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3819, 1, 23, 2, 2, 'i', 'See [scripture id="heb?n=1:2"]Heb. 1:2[/scripture]. A Hebrew expression implying the end of the period of law, when Messiah was to be introduced. It introduces the days of Messiah. It occurs [scripture id="ge?n=49:1"]Gen. 49:1[/scripture]; [scripture id="nu?n=24:14"]Num. 24:14[/scripture]; [scripture id="de?n=4:30"]Deut. 4:30[/scripture]; [scripture id="de?n=31:29"]31:29[/scripture]; [scripture id="jer?n=23:20"]Jer. 23:20[/scripture]; [scripture id="jer?n=30:24"]30:24[/scripture]; [scripture id="jer?n=48:47"]48:47[/scripture]; [scripture id="jer?n=49:39"]49:39[/scripture]; [scripture id="eze?n=38:16"]Ezek. 38:16[/scripture]; [scripture id="da?n=2:28"]Dan. 2:28[/scripture]; [scripture id="da?n=10:14"]10:14[/scripture]; [scripture id="ho?n=3:5"]Hos. 3:5[/scripture]; [scripture id="mic?n=4:1"]Mic. 4:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3820, 1, 23, 2, 3, 'k', 'See [scripture id="ps?n=7:8"]Ps. 7:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3821, 1, 23, 2, 6, 'l', 'Lit. ''clasp hands.''');
@@ -3867,7 +3850,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3830, 1, 23, 3, 4, 'g', 'Some take the 
 INSERT INTO `mse_bible_footnote` VALUES (3831, 1, 23, 3, 7, 'h', 'Lit. ''a binder up.''');
 INSERT INTO `mse_bible_footnote` VALUES (3832, 1, 23, 3, 9, 'i', 'Lit. ''rewarded.''');
 INSERT INTO `mse_bible_footnote` VALUES (3833, 1, 23, 3, 11, 'a', 'Lit. ''reward:'' see [scripture id="isa?n=3:9"]ver. 9[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3834, 1, 23, 3, 12, 'b', 'Lit. ''swallow up:'' so [scripture id="isa?n=19:3"]chs. 19:3[/scripture]; <A HREF="/cgi-bin/br/BDB/isa?n=25:7~a=1">25:7, 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3834, 1, 23, 3, 12, 'b', 'Lit. ''swallow up:'' so [scripture id="isa?n=19:3"]chs. 19:3[/scripture]; [scripture id="isa?n=25:7~a=1"]25:7, 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3835, 1, 23, 3, 18, 'c', 'Or ''the networks, and the little moons.''');
 INSERT INTO `mse_bible_footnote` VALUES (3836, 1, 23, 3, 20, 'd', 'Or ''diadems.''');
 INSERT INTO `mse_bible_footnote` VALUES (3837, 1, 23, 3, 23, 'e', 'Or ''thin transparent garments.''');
@@ -3875,7 +3858,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3838, 1, 23, 4, 2, 'f', 'As [scripture 
 INSERT INTO `mse_bible_footnote` VALUES (3839, 1, 23, 4, 6, 'g', 'Lit. ''a booth.''');
 INSERT INTO `mse_bible_footnote` VALUES (3840, 1, 23, 5, 1, 'a', 'Lit. ''horn of a son of fatness.''');
 INSERT INTO `mse_bible_footnote` VALUES (3841, 1, 23, 5, 6, 'b', 'Or ''hoed:'' the word apparently means ''to gather the earth about the roots, while removing weeds:'' see [scripture id="isa?n=7:25"]ch. 7:25[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (3842, 1, 23, 5, 7, 'c', 'There is an assonance in each set of words, which may be represented in both cases by the similarity of ''right'' and ''might.'' What is called paronomasia abounds in this book. See [scripture id="isa?n=7:9"]ch. 7:9[/scripture]; [scripture id="ge?n=49:8"]Gen. 49:8[/scripture], [scripture id="ge?n=49:16"]16[/scripture], [scripture id="ge?n=49:19"]19[/scripture]; [scripture id="jud?n=15:16"]Judg. 15:16[/scripture]; <A HREF="/cgi-bin/br/BDB/mic?n=1:10~a=5">Mic. 1:10 to 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3842, 1, 23, 5, 7, 'c', 'There is an assonance in each set of words, which may be represented in both cases by the similarity of ''right'' and ''might.'' What is called paronomasia abounds in this book. See [scripture id="isa?n=7:9"]ch. 7:9[/scripture]; [scripture id="ge?n=49:8"]Gen. 49:8[/scripture], [scripture id="ge?n=49:16"]16[/scripture], [scripture id="ge?n=49:19"]19[/scripture]; [scripture id="jud?n=15:16"]Judg. 15:16[/scripture]; [scripture id="mic?n=1:10~a=5"]Mic. 1:10 to 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3843, 1, 23, 5, 10, 'd', 'The tenth part of a homer. A homer was ten ephahs and an ephah was ten omers: see [scripture id="eze?n=45:11"]Ezek. 45:11[/scripture]; [scripture id="ex?n=16:36"]Ex. 16:36[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3844, 1, 23, 5, 12, 'e', 'Or ''lute.''');
 INSERT INTO `mse_bible_footnote` VALUES (3845, 1, 23, 5, 12, 'f', '<I>Poal</I>, as [scripture id="isa?n=1:31"]chs. 1:31[/scripture]; [scripture id="isa?n=45:9"]45:9[/scripture], ''a thing done.''');
@@ -4026,7 +4009,7 @@ INSERT INTO `mse_bible_footnote` VALUES (3989, 1, 23, 23, 5, 'f', 'Or ''As at th
 INSERT INTO `mse_bible_footnote` VALUES (3990, 1, 23, 23, 12, 'a', 'Or ''dishonoured.''');
 INSERT INTO `mse_bible_footnote` VALUES (3991, 1, 23, 23, 18, 'b', 'Or ''durable.''');
 INSERT INTO `mse_bible_footnote` VALUES (3992, 1, 23, 24, 1, 'c', '<I>Erets</I>, ''earth:'' see [scripture id="1sa?n=2:8"]1Sam. 2:8[/scripture]. The prophecy begins with the land of Israel, and the scene enlarges, embracing ([scripture id="isa?n=24:4"]ver. 4[/scripture]) the whole world, of which the ''land'' is the centre.');
-INSERT INTO `mse_bible_footnote` VALUES (3993, 1, 23, 24, 6, 'd', 'Or ''are made desolate:'' see <A HREF="/cgi-bin/br/BDB/ps?n=34:21~a=1">Ps. 34:21, 22</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (3993, 1, 23, 24, 6, 'd', 'Or ''are made desolate:'' see [scripture id="ps?n=34:21~a=1"]Ps. 34:21, 22[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (3994, 1, 23, 24, 10, 'e', 'Or ''waste.''');
 INSERT INTO `mse_bible_footnote` VALUES (3995, 1, 23, 24, 11, 'f', 'Or ''because of the wine.''');
 INSERT INTO `mse_bible_footnote` VALUES (3996, 1, 23, 24, 14, 'a', 'Those spared in the dispersion of Israel.');
@@ -4042,7 +4025,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4005, 1, 23, 25, 7, 'k', 'Lit. ''swallo
 INSERT INTO `mse_bible_footnote` VALUES (4006, 1, 23, 25, 8, 'l', 'Or ''for ever,'' as [scripture id="job?n=4:20"]Job 4:20[/scripture]: [scripture id="ps?n=9:6"]Ps. 9:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4007, 1, 23, 25, 10, 'a', 'Or ''dung-pond.''');
 INSERT INTO `mse_bible_footnote` VALUES (4008, 1, 23, 25, 11, 'b', 'Some have ''notwithstanding.''');
-INSERT INTO `mse_bible_footnote` VALUES (4009, 1, 23, 26, 2, 'c', 'See <A HREF="/cgi-bin/br/BDB/ps?n=118:19~a=1">Ps. 118:19, 20</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4009, 1, 23, 26, 2, 'c', 'See [scripture id="ps?n=118:19~a=1"]Ps. 118:19, 20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4010, 1, 23, 26, 3, 'd', 'Lit. ''in peace, peace.''');
 INSERT INTO `mse_bible_footnote` VALUES (4011, 1, 23, 26, 7, 'e', 'Or ''dost weigh the path (see [scripture id="pr?n=2:9"]Prov. 2:9[/scripture]) of the just.''');
 INSERT INTO `mse_bible_footnote` VALUES (4012, 1, 23, 26, 8, 'f', 'Or ''to the remembrance of thee;'' but cf. [scripture id="ex?n=3:15"]Ex. 3:15[/scripture]; [scripture id="ps?n=102:12"]Ps. 102:12[/scripture], &c.');
@@ -4079,7 +4062,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4042, 1, 23, 29, 13, 'c', 'Or ''learnt.
 INSERT INTO `mse_bible_footnote` VALUES (4043, 1, 23, 29, 21, 'd', 'Or ''for nought.''');
 INSERT INTO `mse_bible_footnote` VALUES (4044, 1, 23, 29, 22, 'e', 'Or ''to.''');
 INSERT INTO `mse_bible_footnote` VALUES (4045, 1, 23, 29, 23, 'f', 'Or ''when his children shall see the work.''');
-INSERT INTO `mse_bible_footnote` VALUES (4046, 1, 23, 29, 23, 'g', '''Fear'' with ''dread:'' see <A HREF="/cgi-bin/br/BDB/isa?n=8:12~a=1">ch. 8:12, 13</A>; <A HREF="/cgi-bin/br/BDB/ps?n=89:7">Ps. 89:7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4046, 1, 23, 29, 23, 'g', '''Fear'' with ''dread:'' see [scripture id="isa?n=8:12~a=1"]ch. 8:12, 13[/scripture]; [scripture id="ps?n=89:7"]Ps. 89:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4047, 1, 23, 29, 24, 'h', 'Or ''they that murmur.''');
 INSERT INTO `mse_bible_footnote` VALUES (4048, 1, 23, 30, 1, 'i', 'Or ''cover with a covering.''');
 INSERT INTO `mse_bible_footnote` VALUES (4049, 1, 23, 30, 2, 'k', 'Or ''to strengthen themselves with the strength.''');
@@ -4277,7 +4260,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4240, 1, 23, 53, 4, 'e', 'Sustained: sa
 INSERT INTO `mse_bible_footnote` VALUES (4241, 1, 23, 53, 7, 'f', 'Or ''illtreated.''');
 INSERT INTO `mse_bible_footnote` VALUES (4242, 1, 23, 53, 8, 'g', 'Lit. ''a shutting up,'' the word having also the moral force of detention, constraint.');
 INSERT INTO `mse_bible_footnote` VALUES (4243, 1, 23, 53, 8, 'h', 'According to others, ''and who, of his generation, would have thought that he would be.''');
-INSERT INTO `mse_bible_footnote` VALUES (4244, 1, 23, 53, 10, 'i', 'Or ''put him to grief:'' see <A HREF="/cgi-bin/br/BDB/isa?n=53:3~a=1">vers. 3, 4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4244, 1, 23, 53, 10, 'i', 'Or ''put him to grief:'' see [scripture id="isa?n=53:3~a=1"]vers. 3, 4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4245, 1, 23, 53, 10, 'k', 'Or ''when his soul shall have made.''');
 INSERT INTO `mse_bible_footnote` VALUES (4246, 1, 23, 53, 10, 'l', '<I>Asham</I>, ''trespass-offering:'' see [footnote id="n_le?n=5:1"]Note b, Lev. 5:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (4247, 1, 23, 53, 11, 'a', 'Lit. ''the many,'' i.e. those that are in relationship with him.');
@@ -4312,7 +4295,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4275, 1, 23, 59, 4, 'e', 'Lit. ''faithf
 INSERT INTO `mse_bible_footnote` VALUES (4276, 1, 23, 59, 4, 'f', 'Lit. ''emptiness.''');
 INSERT INTO `mse_bible_footnote` VALUES (4277, 1, 23, 59, 5, 'g', 'Perhaps ''vipers''.'' But the viper''s egg is not laid before it is hatched.');
 INSERT INTO `mse_bible_footnote` VALUES (4278, 1, 23, 59, 8, 'h', 'Or ''rectitude,'' ''justice.''');
-INSERT INTO `mse_bible_footnote` VALUES (4279, 1, 23, 59, 9, 'i', 'Or ''judgment,'' i.e. ''just judgment,'' and so in [scripture id="isa?n=59:11"]vers. 11[/scripture], <A HREF="/cgi-bin/br/BDB/isa?n=59:14~a=1">14, 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4279, 1, 23, 59, 9, 'i', 'Or ''judgment,'' i.e. ''just judgment,'' and so in [scripture id="isa?n=59:11"]vers. 11[/scripture], [scripture id="isa?n=59:14~a=1"]14, 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4280, 1, 23, 59, 10, 'k', 'Or ''at,'' ''along.''');
 INSERT INTO `mse_bible_footnote` VALUES (4281, 1, 23, 59, 10, 'a', 'Others, ''in desolate places.''');
 INSERT INTO `mse_bible_footnote` VALUES (4282, 1, 23, 59, 13, 'b', 'Or ''denying.''');
@@ -4376,7 +4359,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4339, 1, 59, 1, 27, 'h', 'Or ''God the 
 INSERT INTO `mse_bible_footnote` VALUES (4340, 1, 59, 2, 4, 'a', 'Lit. ''of evil thoughts,'' as we say, ''a man of corrupt habits.''');
 INSERT INTO `mse_bible_footnote` VALUES (4341, 1, 59, 2, 8, 'b', 'See [scripture id="le?n=19:18"]Lev. 19:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4342, 1, 59, 2, 16, 'c', 'Or ''warm and fill yourselves.''');
-INSERT INTO `mse_bible_footnote` VALUES (4343, 1, 59, 2, 18, 'd', '<I>Ek</I>, or ''on the principle of,'' as <A HREF="/cgi-bin/br/BDB/jas?n=2:24~a=1">vers. 24, 25</A>: see <A HREF="/cgi-bin/br/BDB/ro?n=4:2">Rom. 4:2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4343, 1, 59, 2, 18, 'd', '<I>Ek</I>, or ''on the principle of,'' as [scripture id="jas?n=2:24~a=1"]vers. 24, 25[/scripture]: see [scripture id="ro?n=4:2"]Rom. 4:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4344, 1, 59, 2, 20, 'e', 'Or as some MSS. ''fruitless and inoperative.''');
 INSERT INTO `mse_bible_footnote` VALUES (4345, 1, 59, 2, 21, 'f', '<I>Ek</I>, as [scripture id="jas?n=2:18"]ver. 18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4346, 1, 59, 2, 23, 'g', 'See [scripture id="ge?n=15:6"]Gen. 15:6[/scripture].');
@@ -4390,12 +4373,12 @@ INSERT INTO `mse_bible_footnote` VALUES (4353, 1, 59, 4, 1, 'g', 'Lit. ''pleasur
 INSERT INTO `mse_bible_footnote` VALUES (4354, 1, 59, 4, 4, 'h', 'Lit. ''the friendship of the world is enmity of God;'' but it is the state as between the parties, in English ''with.'' In what follows, the same construction in Greek, it is taken up as ''our state towards'' God, but this is warning to conscience.');
 INSERT INTO `mse_bible_footnote` VALUES (4355, 1, 59, 4, 5, 'i', 'I have, with some hesitation, translated this passage as above. I cannot find that the Greek word is used in a good or holy sense of jealousy. The application to what precedes is evident.');
 INSERT INTO `mse_bible_footnote` VALUES (4356, 1, 59, 4, 6, 'k', 'See [scripture id="pr?n=3:34"]Prov. 3:34[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4357, 1, 59, 4, 7, 'a', '''Have it done,'' not ''be doing it;'' the aorist tense. All the imperatives (ten) from <A HREF="/cgi-bin/br/BDB/jas?n=4:7~a=3">vers. 7 to 10</A> are in the aorist.');
+INSERT INTO `mse_bible_footnote` VALUES (4357, 1, 59, 4, 7, 'a', '''Have it done,'' not ''be doing it;'' the aorist tense. All the imperatives (ten) from [scripture id="jas?n=4:7~a=3"]vers. 7 to 10[/scripture] are in the aorist.');
 INSERT INTO `mse_bible_footnote` VALUES (4358, 1, 59, 4, 12, 'b', 'Lit. ''the neighbour.''');
 INSERT INTO `mse_bible_footnote` VALUES (4359, 1, 59, 4, 14, 'c', '''Who are such as do not.''');
 INSERT INTO `mse_bible_footnote` VALUES (4360, 1, 59, 5, 4, 'd', 'i.e. Jehovah of hosts as [scripture id="ro?n=9:29"]Rom. 9:29[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4361, 1, 59, 5, 7, 'e', 'Aorist: see [footnote id="n_jas?n=4:7"]Note a[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (4362, 1, 59, 5, 7, 'f', 'Two Greek words are translated ''patience'' in the New Testament. In <A HREF="/cgi-bin/br/BDB/jas?n=5:7~a=1">vers. 7 and 8</A> the verb <I>makrothumeo</I>, and in <A HREF="/cgi-bin/br/BDB/jas?n=5:10">ver. 10</A> the noun <I>makrothumia</I>, as <A HREF="/cgi-bin/br/BDB/heb?n=6:12">Heb. 6:12</A>. In <A HREF="/cgi-bin/br/BDB/ro?n=2:4">Rom. 2:4</A>; <A HREF="/cgi-bin/br/BDB/2ti?n=4:2">2Tim. 4:2</A>; <A HREF="/cgi-bin/br/BDB/1pe?n=3:20">1Pet. 3:20</A>, this reads ''longsuffering'' in this translation. In <A HREF="/cgi-bin/br/BDB/jas?n=5:11">ver. 11</A> and elsewhere ''endurance'' is <I>hupomone</I>, also translated ''patience'' at times, according to the context. In general, <I>makrothumia</I> expresses patience in respect of persons, but <I>hupomone</I> in respect of things. The man who is ''longsuffering'' (<I>makrothumia</I>) does not suffer himself easily to be provoked by injurious persons, or to be angered, <A HREF="/cgi-bin/br/BDB/2ti?n=4:2">2Tim. 4:2</A>. The man who is ''patient'' (<I>hupomone</I>), though under great trials, bears up, and does not lose heart or courage, <A HREF="/cgi-bin/br/BDB/ro?n=5:3">Rom. 5:3</A>; <A HREF="/cgi-bin/br/BDB/2co?n=1:6">2Cor. 1:6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4362, 1, 59, 5, 7, 'f', 'Two Greek words are translated ''patience'' in the New Testament. In [scripture id="jas?n=5:7~a=1"]vers. 7 and 8[/scripture] the verb <I>makrothumeo</I>, and in [scripture id="jas?n=5:10"]ver. 10[/scripture] the noun <I>makrothumia</I>, as [scripture id="heb?n=6:12"]Heb. 6:12[/scripture]. In [scripture id="ro?n=2:4"]Rom. 2:4[/scripture]; [scripture id="2ti?n=4:2"]2Tim. 4:2[/scripture]; [scripture id="1pe?n=3:20"]1Pet. 3:20[/scripture], this reads ''longsuffering'' in this translation. In [scripture id="jas?n=5:11"]ver. 11[/scripture] and elsewhere ''endurance'' is <I>hupomone</I>, also translated ''patience'' at times, according to the context. In general, <I>makrothumia</I> expresses patience in respect of persons, but <I>hupomone</I> in respect of things. The man who is ''longsuffering'' (<I>makrothumia</I>) does not suffer himself easily to be provoked by injurious persons, or to be angered, [scripture id="2ti?n=4:2"]2Tim. 4:2[/scripture]. The man who is ''patient'' (<I>hupomone</I>), though under great trials, bears up, and does not lose heart or courage, [scripture id="ro?n=5:3"]Rom. 5:3[/scripture]; [scripture id="2co?n=1:6"]2Cor. 1:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4363, 1, 59, 5, 9, 'g', 'Lit. ''groan,'' as [scripture id="mr?n=7:34"]Mark 7:34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4364, 1, 59, 5, 10, 'a', 'See [footnote id="n_jas?n=5:7a"]Note f, ver. 7[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (4365, 1, 59, 5, 11, 'b', '<I>Hupomone</I>: see [footnote id="n_jas?n=5:7a"]Note f, ver. 7[/footnote].');
@@ -4413,7 +4396,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4376, 1, 24, 2, 16, 'c', 'See Notes, [f
 INSERT INTO `mse_bible_footnote` VALUES (4377, 1, 24, 2, 16, 'd', 'Others, ''have broken.''');
 INSERT INTO `mse_bible_footnote` VALUES (4378, 1, 24, 2, 18, 'e', 'i.e. the Nile.');
 INSERT INTO `mse_bible_footnote` VALUES (4379, 1, 24, 2, 20, 'f', 'Or ''I had broken.''');
-INSERT INTO `mse_bible_footnote` VALUES (4380, 1, 24, 2, 34, 'a', 'Or ''... innocent poor; I have not found it by violently breaking in <I>i.e. into secret places</I>, but upon all these.'' For sense see <A HREF="/cgi-bin/br/BDB/ex?n=22:2~a=1">Ex. 22:2, 3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4380, 1, 24, 2, 34, 'a', 'Or ''... innocent poor; I have not found it by violently breaking in <I>i.e. into secret places</I>, but upon all these.'' For sense see [scripture id="ex?n=22:2~a=1"]Ex. 22:2, 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4381, 1, 24, 2, 37, 'b', 'Lit. ''thy confidences.''');
 INSERT INTO `mse_bible_footnote` VALUES (4382, 1, 24, 3, 1, 'c', 'Strictly, ''companions,'' ''friends:'' see [scripture id="so?n=5:16"]Cant. 5:16[/scripture], and [footnote id="n_so?n=1:9"]Note, Cant. 1:9[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (4383, 1, 24, 3, 2, 'd', 'Or ''high places,'' strictly, ''bare hills:'' see [scripture id="isa?n=41:18"]Isa. 41:18[/scripture]; [scripture id="isa?n=49:9"]49:9[/scripture]: so [scripture id="jer?n=3:21"]ver. 21[/scripture]; [scripture id="jer?n=4:11"]ch. 4:11[/scripture], &c.');
@@ -4435,7 +4418,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4398, 1, 24, 4, 16, 'a', 'Lit. ''watche
 INSERT INTO `mse_bible_footnote` VALUES (4399, 1, 24, 4, 22, 'b', 'Or ''clever.''');
 INSERT INTO `mse_bible_footnote` VALUES (4400, 1, 24, 4, 23, 'c', 'See [scripture id="isa?n=34:11"]Isa. 34:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4401, 1, 24, 4, 26, 'd', 'Or ''Carmel:'' see [scripture id="jer?n=2:7"]ch. 2:7[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4402, 1, 24, 4, 27, 'e', 'Or ''a consumption,'' as <A HREF="/cgi-bin/br/BDB/isa?n=10:22~a=1">Isa. 10:22, 23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4402, 1, 24, 4, 27, 'e', 'Or ''a consumption,'' as [scripture id="isa?n=10:22~a=1"]Isa. 10:22, 23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4403, 1, 24, 4, 29, 'f', 'Or ''the whole city.''');
 INSERT INTO `mse_bible_footnote` VALUES (4404, 1, 24, 4, 30, 'g', 'By an irony for ''enlargest.''');
 INSERT INTO `mse_bible_footnote` VALUES (4405, 1, 24, 5, 3, 'a', 'As ''writhing,'' [scripture id="ps?n=55:4"]Ps. 55:4[/scripture], and cf. [scripture id="pr?n=23:35"]Prov. 23:35[/scripture].');
@@ -4453,7 +4436,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4416, 1, 24, 5, 31, 'b', 'Lit. ''hands.
 INSERT INTO `mse_bible_footnote` VALUES (4417, 1, 24, 6, 1, 'c', 'Perhaps ''of fire:'' see [scripture id="jud?n=20:38"]Judg. 20:38[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4418, 1, 24, 6, 1, 'd', 'i.e. the vineyard house.');
 INSERT INTO `mse_bible_footnote` VALUES (4419, 1, 24, 6, 1, 'e', 'Or ''breach,'' as [scripture id="jer?n=6:14"]ver. 14[/scripture]; [scripture id="jer?n=8:21"]ch. 8:21[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4420, 1, 24, 6, 4, 'f', 'Lit. ''Hallow:'' see [scripture id="jer?n=22:7"]chs. 22:7[/scripture]; <A HREF="/cgi-bin/br/BDB/jer?n=51:27~a=1">51:27, 28</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4420, 1, 24, 6, 4, 'f', 'Lit. ''Hallow:'' see [scripture id="jer?n=22:7"]chs. 22:7[/scripture]; [scripture id="jer?n=51:27~a=1"]51:27, 28[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4421, 1, 24, 6, 6, 'g', 'Or ''punished.''');
 INSERT INTO `mse_bible_footnote` VALUES (4422, 1, 24, 6, 11, 'a', 'others ''I will pour it out.''');
 INSERT INTO `mse_bible_footnote` VALUES (4423, 1, 24, 6, 14, 'b', 'Or ''wound.''');
@@ -4604,7 +4587,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4567, 1, 24, 30, 13, 'd', 'Or ''there a
 INSERT INTO `mse_bible_footnote` VALUES (4568, 1, 24, 30, 17, 'e', 'Others, ''healing.''');
 INSERT INTO `mse_bible_footnote` VALUES (4569, 1, 24, 30, 18, 'f', 'Or ''tabernacles.''');
 INSERT INTO `mse_bible_footnote` VALUES (4570, 1, 24, 30, 18, 'g', 'Or ''mound:'' see [scripture id="jos?n=8:28"]Josh. 8:28[/scripture]; [scripture id="jos?n=11:13"]11:13[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4571, 1, 24, 30, 21, 'h', 'Translated ''excellent,'' [scripture id="ps?n=8:1"]Ps. 8:1[/scripture], [scripture id="ps?n=8:9"]9[/scripture]; ''mightier,'' [scripture id="ps?n=93:4"]Ps. 93:4[/scripture]; ''noble ones,'' <A HREF="/cgi-bin/br/BDB/jer?n=25:34~a=2">ch. 25:34-36</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4571, 1, 24, 30, 21, 'h', 'Translated ''excellent,'' [scripture id="ps?n=8:1"]Ps. 8:1[/scripture], [scripture id="ps?n=8:9"]9[/scripture]; ''mightier,'' [scripture id="ps?n=93:4"]Ps. 93:4[/scripture]; ''noble ones,'' [scripture id="jer?n=25:34~a=2"]ch. 25:34-36[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4572, 1, 24, 30, 21, 'i', 'Or ''pledgeth,'' as ''surety,'' [scripture id="ge?n=44:32"]Gen. 44:32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4573, 1, 24, 31, 3, 'a', 'Or ''I have prolonged toward thee my goodness.''');
 INSERT INTO `mse_bible_footnote` VALUES (4574, 1, 24, 31, 5, 'b', 'As [scripture id="de?n=20:6"]Deut. 20:6[/scripture], &c.');
@@ -4655,7 +4638,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4618, 1, 24, 38, 7, 'c', 'Heb. ''Cushit
 INSERT INTO `mse_bible_footnote` VALUES (4619, 1, 24, 38, 22, 'a', 'As [scripture id="jer?n=20:10"]ch. 20:10[/scripture], and [scripture id="ps?n=41:9"]Ps. 41:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4620, 1, 24, 38, 22, 'b', 'Or ''<I>thy friends</I> have withdrawn from <I>thee</I>.''');
 INSERT INTO `mse_bible_footnote` VALUES (4621, 1, 24, 38, 23, 'c', 'Lit. ''thou shalt burn.''');
-INSERT INTO `mse_bible_footnote` VALUES (4622, 1, 24, 39, 1, 'd', 'To [scripture id="jer?n=39:10"]ver. 10[/scripture], compare <A HREF="/cgi-bin/br/BDB/jer?n=52:4~a=12">ch. 52:4-16</A>, and <A HREF="/cgi-bin/br/BDB/2ki?n=25:1~a=11">2Kings 25:1-12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4622, 1, 24, 39, 1, 'd', 'To [scripture id="jer?n=39:10"]ver. 10[/scripture], compare [scripture id="jer?n=52:4~a=12"]ch. 52:4-16[/scripture], and [scripture id="2ki?n=25:1~a=11"]2Kings 25:1-12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4623, 1, 24, 39, 3, 'e', 'Or ''chief of the eunuchs.''');
 INSERT INTO `mse_bible_footnote` VALUES (4624, 1, 24, 39, 4, 'a', 'The <I>Arabah</I>: [scripture id="jos?n=3:16"]Josh. 3:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4625, 1, 24, 39, 7, 'b', 'As [scripture id="2ki?n=25:7"]2Kings 25:7[/scripture].');
@@ -4696,7 +4679,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4659, 1, 24, 48, 8, 'a', 'Or ''for Jeho
 INSERT INTO `mse_bible_footnote` VALUES (4660, 1, 24, 48, 17, 'b', 'See [scripture id="eze?n=19:14"]Ezek. 19:14[/scripture]; as [scripture id="ex?n=4:2"]Ex. 4:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4661, 1, 24, 48, 18, 'c', 'Lit. ''in thirst.''');
 INSERT INTO `mse_bible_footnote` VALUES (4662, 1, 24, 48, 20, 'd', 'Or ''dismayed.''');
-INSERT INTO `mse_bible_footnote` VALUES (4663, 1, 24, 48, 28, 'e', 'See <A HREF="/cgi-bin/br/BDB/isa?n=16:6~a=4">Isa. 16:6-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4663, 1, 24, 48, 28, 'e', 'See [scripture id="isa?n=16:6~a=4"]Isa. 16:6-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4664, 1, 24, 48, 34, 'a', 'See [scripture id="isa?n=15:5"]Isa. 15:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4665, 1, 24, 48, 39, 'b', 'Or ''Howl.''');
 INSERT INTO `mse_bible_footnote` VALUES (4666, 1, 24, 48, 41, 'c', 'Or ''The cities are.''');
@@ -4730,7 +4713,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4693, 1, 24, 51, 8, 'a', 'Or ''crushed:
 INSERT INTO `mse_bible_footnote` VALUES (4694, 1, 24, 51, 10, 'b', 'Lit. ''our righteousnesses,'' as [scripture id="isa?n=64:6"]Isa. 64:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4695, 1, 24, 51, 11, 'c', 'Lit. ''fill'' (i.e. with arm, or body); as ''provideth,'' [scripture id="2sa?n=23:7"]2Sam. 23:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4696, 1, 24, 51, 14, 'd', 'Lit. ''by his soul.''');
-INSERT INTO `mse_bible_footnote` VALUES (4697, 1, 24, 51, 15, 'e', 'Cf. <A HREF="/cgi-bin/br/BDB/jer?n=51:15~a=4">vers. 15-19</A> with <A HREF="/cgi-bin/br/BDB/jer?n=10:12~a=4">ch. 10:12-16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4697, 1, 24, 51, 15, 'e', 'Cf. [scripture id="jer?n=51:15~a=4"]vers. 15-19[/scripture] with [scripture id="jer?n=10:12~a=4"]ch. 10:12-16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4698, 1, 24, 51, 18, 'f', 'Or ''mockery:'' see [scripture id="jer?n=10:15"]ch 10:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4699, 1, 24, 51, 19, 'g', 'Or ''tribe.'' See [scripture id="jer?n=10:16"]ch. 10:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4700, 1, 24, 51, 23, 'a', 'As [scripture id="jer?n=51:28"]vers. 28[/scripture], [scripture id="jer?n=51:57"]57[/scripture]: see [scripture id="ezr?n=9:2"]Ezra 9:2[/scripture].');
@@ -4746,8 +4729,8 @@ INSERT INTO `mse_bible_footnote` VALUES (4709, 1, 24, 51, 56, 'd', '<I>El</I>, o
 INSERT INTO `mse_bible_footnote` VALUES (4710, 1, 24, 51, 58, 'e', 'Or ''undermined.''');
 INSERT INTO `mse_bible_footnote` VALUES (4711, 1, 24, 51, 58, 'f', '<I>Leummim</I>, [scripture id="ps?n=2:1"]Ps. 2:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4712, 1, 24, 51, 62, 'a', 'As [scripture id="jer?n=51:26"]ver. 26[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4713, 1, 24, 52, 1, 'b', 'See <A HREF="/cgi-bin/br/BDB/2ki?n=24:18~a=2">2Kings 24:18-20</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (4714, 1, 24, 52, 4, 'c', 'Compare <A HREF="/cgi-bin/br/BDB/jer?n=39:1~a=9">ch. 39:1-10</A> and <A HREF="/cgi-bin/br/BDB/2ki?n=25:1">2Kings 25:1</A>, et seq.');
+INSERT INTO `mse_bible_footnote` VALUES (4713, 1, 24, 52, 1, 'b', 'See [scripture id="2ki?n=24:18~a=2"]2Kings 24:18-20[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (4714, 1, 24, 52, 4, 'c', 'Compare [scripture id="jer?n=39:1~a=9"]ch. 39:1-10[/scripture] and [scripture id="2ki?n=25:1"]2Kings 25:1[/scripture], et seq.');
 INSERT INTO `mse_bible_footnote` VALUES (4715, 1, 24, 52, 4, 'd', 'Or ''watch-towers.''');
 INSERT INTO `mse_bible_footnote` VALUES (4716, 1, 24, 52, 11, 'e', 'Or ''with double chains of bronze:'' see [scripture id="jer?n=39:7"]ch. 39:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4717, 1, 24, 52, 18, 'a', 'Or ''basons,'' see [footnote id="n_1ki?n=7:40a"]Note, 1Kings 7:40[/footnote].');
@@ -4756,7 +4739,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4719, 1, 24, 52, 19, 'c', 'Or ''fire-pa
 INSERT INTO `mse_bible_footnote` VALUES (4720, 1, 24, 52, 20, 'd', 'Or ''that were under the bases.''');
 INSERT INTO `mse_bible_footnote` VALUES (4721, 1, 24, 52, 23, 'e', 'Lit. ''windwards.''');
 INSERT INTO `mse_bible_footnote` VALUES (4722, 1, 24, 52, 25, 'f', 'Or ''scribe-in-chief.''');
-INSERT INTO `mse_bible_footnote` VALUES (4723, 1, 24, 52, 31, 'g', 'Cf. <A HREF="/cgi-bin/br/BDB/2ki?n=25:27~a=3">2Kings 25:27-30</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4723, 1, 24, 52, 31, 'g', 'Cf. [scripture id="2ki?n=25:27~a=3"]2Kings 25:27-30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4724, 1, 18, 1, 1, 'a', 'See [scripture id="la?n=4:21"]Lam. 4:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4725, 1, 18, 1, 1, 'b', 'Complete, lacking nothing; cf. [scripture id="2sa?n=22:24"]2Sam. 22:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4726, 1, 18, 1, 3, 'c', '''Small cattle,'' applying equally to both sheep and goats''');
@@ -5025,7 +5008,7 @@ INSERT INTO `mse_bible_footnote` VALUES (4988, 1, 18, 41, 26, 'b', 'Or ''coat of
 INSERT INTO `mse_bible_footnote` VALUES (4989, 1, 18, 41, 30, 'c', 'Or ''he spreadeth himself <I>on</I> sharp pointed things, as on mire.''');
 INSERT INTO `mse_bible_footnote` VALUES (4990, 1, 18, 41, 33, 'd', 'Lit. ''dust,'' as [scripture id="job?n=30:6"]ch. 30:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4991, 1, 18, 41, 34, 'e', 'As [scripture id="job?n=28:8"]ch. 28:8[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (4992, 1, 18, 42, 3, 'a', 'See <A HREF="/cgi-bin/br/BDB/job?n=38:2~a=1">ch. 38:2, 3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (4992, 1, 18, 42, 3, 'a', 'See [scripture id="job?n=38:2~a=1"]ch. 38:2, 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (4993, 1, 18, 42, 11, 'b', 'Heb. <I>Kesitah</I>: see [footnote id="n_ge?n=33:19a"]Note to Gen. 33:19[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (4994, 1, 18, 42, 14, 'c', '''Beautiful as the day.''');
 INSERT INTO `mse_bible_footnote` VALUES (4995, 1, 18, 42, 14, 'd', '''Cassia.''');
@@ -5050,7 +5033,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5013, 1, 29, 2, 22, 'a', 'Lit. ''streng
 INSERT INTO `mse_bible_footnote` VALUES (5014, 1, 29, 2, 23, 'b', 'Or ''richly.'' Lit. ''in righteousness.''');
 INSERT INTO `mse_bible_footnote` VALUES (5015, 1, 29, 2, 23, 'c', 'See [footnote id="n_ps?n=84:6a"]Note f, Ps. 84:6[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5016, 1, 29, 2, 23, 'd', 'Or ''in the first <I>month</I>.''');
-INSERT INTO `mse_bible_footnote` VALUES (5017, 1, 29, 2, 28, 'e', '<A HREF="/cgi-bin/br/BDB/joe?n=2:28~a=4">Vers. 28-32</A> compose ch. 3 in the Hebrew.');
+INSERT INTO `mse_bible_footnote` VALUES (5017, 1, 29, 2, 28, 'e', '[scripture id="joe?n=2:28~a=4"]Vers. 28-32[/scripture] compose ch. 3 in the Hebrew.');
 INSERT INTO `mse_bible_footnote` VALUES (5018, 1, 29, 2, 30, 'f', 'Lit. ''give.''');
 INSERT INTO `mse_bible_footnote` VALUES (5019, 1, 29, 2, 32, 'g', 'Or ''an escape,'' as [scripture id="jer?n=25:35"]Jer. 25:35[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5020, 1, 29, 3, 2, 'h', 'Meaning, ''Jehovah judgeth.''');
@@ -5096,12 +5079,12 @@ INSERT INTO `mse_bible_footnote` VALUES (5059, 1, 43, 3, 20, 'd', '<I>Elenko</I>
 INSERT INTO `mse_bible_footnote` VALUES (5060, 1, 43, 3, 29, 'e', 'Lit. ''rejoices with joy.''');
 INSERT INTO `mse_bible_footnote` VALUES (5061, 1, 43, 3, 31, 'a', 'Or ''is from the earth.'' The sense is ''having by nature his origin'' here below, he is of and belongs to the earth. ''Of'' (<I>ek</I>) is characteristic.');
 INSERT INTO `mse_bible_footnote` VALUES (5062, 1, 43, 3, 33, 'b', 'Or ''receives:'' it is the aorist, ''has received,'' not referring to time, but to the fact: hence perhaps ''receives'' is as well.');
-INSERT INTO `mse_bible_footnote` VALUES (5063, 1, 43, 3, 35, 'c', '<I>Agapao</I>, as [scripture id="joh?n=10:17"]chs. 10:17[/scripture]; [scripture id="joh?n=13:1"]13:1[/scripture], [scripture id="joh?n=13:23"]23[/scripture]; [scripture id="joh?n=14:21"]14:21[/scripture], [scripture id="joh?n=14:23"]23[/scripture]; [scripture id="joh?n=15:9"]15:9[/scripture]; <A HREF="/cgi-bin/br/BDB/joh?n=17:23~a=1">17:23, 24</A>, <A HREF="/cgi-bin/br/BDB/joh?n=17:26">26</A>: see <A HREF="/cgi-bin/br/BDB/joh?n=5:20">ch. 5:20</A> and <A HREF="/cgi-bin/dr/n_joh?n=21:15">Note at ch. 21:15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5063, 1, 43, 3, 35, 'c', '<I>Agapao</I>, as [scripture id="joh?n=10:17"]chs. 10:17[/scripture]; [scripture id="joh?n=13:1"]13:1[/scripture], [scripture id="joh?n=13:23"]23[/scripture]; [scripture id="joh?n=14:21"]14:21[/scripture], [scripture id="joh?n=14:23"]23[/scripture]; [scripture id="joh?n=15:9"]15:9[/scripture]; [scripture id="joh?n=17:23~a=1"]17:23, 24[/scripture], [scripture id="joh?n=17:26"]26[/scripture]: see [scripture id="joh?n=5:20"]ch. 5:20[/scripture] and [footnote id="n_joh?n=21:15"]Note at ch. 21:15[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5064, 1, 43, 3, 36, 'd', '<I>Eis</I>: see [footnote id="n_2ti?n=1:12"]Note, 2Tim. 1:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5065, 1, 43, 3, 36, 'e', 'Or ''believes not on.'' It is the obedience of submission to his person, not practical obedience to his commands, whatever proof this may be of the other; but it is not exactly the same thing as believing on him as an object revealed in grace: see [footnote id="n_heb?n=3:18"]Note, Heb. 3:18[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5066, 1, 43, 4, 6, 'f', 'Another word is used for the ''well,'' [scripture id="joh?n=4:11"]ver. 11[/scripture], in which the spring was; and this word, translated ''fountain,'' is used for what springs up as life in the renewed man.');
 INSERT INTO `mse_bible_footnote` VALUES (5067, 1, 43, 4, 6, 'g', 'Lit. ''thus:'' see [scripture id="1co?n=7:26"]1Cor. 7:26[/scripture], ''so as he is'' and [footnote id="n_2pe?n=3:4"]Note, 2Pet. 3:4[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (5068, 1, 43, 4, 14, 'h', '''Never thirst for ever'' is a little awkward, but ''never thirst'' is too vague; it may be to our minds much as a present thing for this life. The expression is strong in negation, and expresses lasting for ever: see <A HREF="/cgi-bin/br/BDB/joh?n=8:51~a=1">chs. 8:51, 52</A>; <A HREF="/cgi-bin/br/BDB/joh?n=10:28">10:28</A>; <A HREF="/cgi-bin/br/BDB/joh?n=11:26">11:26</A>; <A HREF="/cgi-bin/br/BDB/joh?n=13:8">13:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5068, 1, 43, 4, 14, 'h', '''Never thirst for ever'' is a little awkward, but ''never thirst'' is too vague; it may be to our minds much as a present thing for this life. The expression is strong in negation, and expresses lasting for ever: see [scripture id="joh?n=8:51~a=1"]chs. 8:51, 52[/scripture]; [scripture id="joh?n=10:28"]10:28[/scripture]; [scripture id="joh?n=11:26"]11:26[/scripture]; [scripture id="joh?n=13:8"]13:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5069, 1, 43, 4, 20, 'a', '<I>Proskuneo</I>, and so to [scripture id="joh?n=4:24"]ver. 24[/scripture]: see [scripture id="mt?n=4:10"]Matt. 4:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5070, 1, 43, 4, 21, 'b', 'Or ''an hour,'' as [scripture id="joh?n=5:25"]ch. 5:25[/scripture], [scripture id="joh?n=5:28"]28[/scripture], and see [footnote id="n_1jo?n=2:18a"]Note, 1John 2:18[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5071, 1, 43, 4, 24, 'c', 'Or ''God <I>is</I> spirit.''');
@@ -5135,10 +5118,10 @@ INSERT INTO `mse_bible_footnote` VALUES (5098, 1, 43, 6, 45, 'h', '[scripture id
 INSERT INTO `mse_bible_footnote` VALUES (5099, 1, 43, 6, 45, 'a', '<I>Para</I> with a genitive (as ''of'' God, [scripture id="joh?n=6:46"]ver. 46[/scripture]). It is what is received directly from the Father. I add ''himself'' that its immediateness may be felt, which is the point of the sentence.');
 INSERT INTO `mse_bible_footnote` VALUES (5100, 1, 43, 6, 46, 'b', '<I>Para</I> with genitive: ''from with.''');
 INSERT INTO `mse_bible_footnote` VALUES (5101, 1, 43, 6, 52, 'c', 'Or ''give us flesh.''');
-INSERT INTO `mse_bible_footnote` VALUES (5102, 1, 43, 6, 54, 'd', 'Present participle: so in <A HREF="/cgi-bin/br/BDB/joh?n=6:56~a=2">vers. 56, 57, 58</A>. It is characteristic: he is the ''eater'' of this divine food.');
+INSERT INTO `mse_bible_footnote` VALUES (5102, 1, 43, 6, 54, 'd', 'Present participle: so in [scripture id="joh?n=6:56~a=2"]vers. 56, 57, 58[/scripture]. It is characteristic: he is the ''eater'' of this divine food.');
 INSERT INTO `mse_bible_footnote` VALUES (5103, 1, 43, 6, 57, 'e', '<I>Dia</I> with the accusative is not simply ''by'' or ''through,'' and here it is evident that it is important to be accurate. The sense is ''by reason of what the Father is and his living;'' ''I live by reason of his being and living.''');
 INSERT INTO `mse_bible_footnote` VALUES (5104, 1, 43, 6, 67, 'f', 'Not simply the act, but the will to do it: ''Is it your will or disposition?'' ''Do ye also wish to go away?''');
-INSERT INTO `mse_bible_footnote` VALUES (5105, 1, 43, 7, 5, 'a', '<I>Eis</I>: so [scripture id="joh?n=7:31"]vers. 31[/scripture], <A HREF="/cgi-bin/br/BDB/joh?n=7:38~a=1">38, 39</A>, <A HREF="/cgi-bin/br/BDB/joh?n=7:48">48</A>: see <A HREF="/cgi-bin/dr/n_2ti?n=1:12">Note, 2Tim. 1:12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5105, 1, 43, 7, 5, 'a', '<I>Eis</I>: so [scripture id="joh?n=7:31"]vers. 31[/scripture], [scripture id="joh?n=7:38~a=1"]38, 39[/scripture], [scripture id="joh?n=7:48"]48[/scripture]: see [footnote id="n_2ti?n=1:12"]Note, 2Tim. 1:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5106, 1, 43, 7, 14, 'b', '<I>Hieron</I>: as [scripture id="mt?n=4:5"]Matt. 4:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5107, 1, 43, 7, 22, 'c', 'Or ''wonder because of this. Moses gave.''');
 INSERT INTO `mse_bible_footnote` VALUES (5108, 1, 43, 7, 22, 'd', 'Or ''because'' and omit ( ).');
@@ -5156,7 +5139,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5119, 1, 43, 8, 23, 'e', '<I>Ek</I>: se
 INSERT INTO `mse_bible_footnote` VALUES (5120, 1, 43, 8, 25, 'f', '''in the principle and universality of what I am;'' i.e. his speech presented himself, being the truth.');
 INSERT INTO `mse_bible_footnote` VALUES (5121, 1, 43, 8, 32, 'g', '<I>Ginosko</I>: see [footnote id="n_1co?n=8:1"]Note, 1Cor. 8:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5122, 1, 43, 8, 37, 'a', '<I>Logos</I>: see [scripture id="heb?n=6:1"]Heb. 6:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5123, 1, 43, 8, 38, 'b', '<I>poieo</I>; usually ''practise'' (see [scripture id="joh?n=5:29"]ch. 5:29[/scripture]), but it hardly suits here or in <A HREF="/cgi-bin/br/BDB/joh?n=8:39~a=1">vers. 39, 40</A>; still it refers to habitually or characteristically doing, not a mere act.');
+INSERT INTO `mse_bible_footnote` VALUES (5123, 1, 43, 8, 38, 'b', '<I>poieo</I>; usually ''practise'' (see [scripture id="joh?n=5:29"]ch. 5:29[/scripture]), but it hardly suits here or in [scripture id="joh?n=8:39~a=1"]vers. 39, 40[/scripture]; still it refers to habitually or characteristically doing, not a mere act.');
 INSERT INTO `mse_bible_footnote` VALUES (5124, 1, 43, 8, 44, 'c', '<I>Ek</I>: see [footnote id="n_joh?n=3:31"]Note, ch. 3:31[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5125, 1, 43, 8, 44, 'd', 'Perfect tense: what has been and continues.');
 INSERT INTO `mse_bible_footnote` VALUES (5126, 1, 43, 8, 51, 'e', 'See [footnote id="n_joh?n=4:14"]Note, ch. 4:14[/footnote].');
@@ -5186,7 +5169,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5149, 1, 43, 12, 20, 'h', '<I>Proskuneo
 INSERT INTO `mse_bible_footnote` VALUES (5150, 1, 43, 12, 35, 'a', 'The sense is ''overtake so as to seize upon,'' as [scripture id="mr?n=9:18"]Mark 9:18[/scripture], [scripture id="1th?n=5:4"]1Thess. 5:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5151, 1, 43, 12, 36, 'b', '<I>Eis</I>: see [scripture id="joh?n=12:11"]ver. 11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5152, 1, 43, 12, 38, 'c', 'See [scripture id="isa?n=53:1"]Isa. 53:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5153, 1, 43, 12, 39, 'd', 'See <A HREF="/cgi-bin/br/BDB/isa?n=6:9~a=1">Isa. 6:9-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5153, 1, 43, 12, 39, 'd', 'See [scripture id="isa?n=6:9~a=1"]Isa. 6:9-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5154, 1, 43, 12, 43, 'e', 'Lit. ''the glory of men ... the glory of God.''');
 INSERT INTO `mse_bible_footnote` VALUES (5155, 1, 43, 12, 45, 'f', 'As [scripture id="joh?n=6:40"]ch. 6:40[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5156, 1, 43, 13, 1, 'a', '''To the end'' does not give the full force, for it makes it refer to time; whereas going through with everything is implied.');
@@ -5205,7 +5188,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5168, 1, 43, 13, 33, 'b', '<I>Teknia</I
 INSERT INTO `mse_bible_footnote` VALUES (5169, 1, 43, 14, 1, 'c', '<I>Eis</I>: see [footnote id="n_2ti?n=1:12"]Note, 2Tim. 1:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5170, 1, 43, 14, 4, 'd', '<I>Oida</I>: as [scripture id="joh?n=7:29"]ch. 7:29[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5171, 1, 43, 14, 7, 'e', 'As ''now,'' [scripture id="joh?n=13:19"]ch. 13:19[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5172, 1, 43, 14, 16, 'a', 'In the latter chapters of John''s Gospel, in order to maintain the distinction, frequently important, between <I>erotao</I> and <I>aiteo</I>, the first is translated ''demand'' <I>except [scripture id="joh?n=14:16"]John 14:16[/scripture] (beg)</I>, the second ''ask.'' There are times when they may be used indiscriminately, at other times each has a sense peculiar to itself: <I>erotao</I> expressing a familiar request to a person where intimacy exists <I>or equality, either assumed or actual</I>; <I>aiteo</I>, the request rather for something by an inferior to his superior. The disciples employ both of these words in their relations with Jesus, but only <I>aiteo</I> with relation to the Father. In his relations with his Father, Jesus employs <I>erotao</I> but not <I>aiteo</I>. Martha uses <I>aiteo</I> in [scripture id="joh?n=11:22"]ch. 11:22[/scripture]. For the difference between the two, compare [scripture id="joh?n=16:23"]John 16:23[/scripture]. In [scripture id="joh?n=14:16"]ch. 14:16[/scripture] the word is <I>erotao</I>; in <A HREF="/cgi-bin/br/BDB/joh?n=14:13~a=1">vers. 13 and 14</A> <I>aiteo</I>.');
+INSERT INTO `mse_bible_footnote` VALUES (5172, 1, 43, 14, 16, 'a', 'In the latter chapters of John''s Gospel, in order to maintain the distinction, frequently important, between <I>erotao</I> and <I>aiteo</I>, the first is translated ''demand'' <I>except [scripture id="joh?n=14:16"]John 14:16[/scripture] (beg)</I>, the second ''ask.'' There are times when they may be used indiscriminately, at other times each has a sense peculiar to itself: <I>erotao</I> expressing a familiar request to a person where intimacy exists <I>or equality, either assumed or actual</I>; <I>aiteo</I>, the request rather for something by an inferior to his superior. The disciples employ both of these words in their relations with Jesus, but only <I>aiteo</I> with relation to the Father. In his relations with his Father, Jesus employs <I>erotao</I> but not <I>aiteo</I>. Martha uses <I>aiteo</I> in [scripture id="joh?n=11:22"]ch. 11:22[/scripture]. For the difference between the two, compare [scripture id="joh?n=16:23"]John 16:23[/scripture]. In [scripture id="joh?n=14:16"]ch. 14:16[/scripture] the word is <I>erotao</I>; in [scripture id="joh?n=14:13~a=1"]vers. 13 and 14[/scripture] <I>aiteo</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (5173, 1, 43, 14, 16, 'b', 'One who carries on the cause of any one and helps him. This Christ did on earth; this ([scripture id="1jo?n=2:1"]1John 2:1[/scripture]) he does now in heaven, and the Holy Spirit on earth ''manages our cause, our affairs, for us.'' If ''solicitor'' were not too common, it just answers the sense.');
 INSERT INTO `mse_bible_footnote` VALUES (5174, 1, 43, 14, 17, 'c', 'Objective knowledge: see [footnote id="n_1co?n=8:1"]Note, 1Cor. 8:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5175, 1, 43, 15, 7, 'a', '<I>Aiteo</I>: see [footnote id="n_joh?n=14:16"]Note a, ch. 14:16[/footnote].');
@@ -5258,12 +5241,12 @@ INSERT INTO `mse_bible_footnote` VALUES (5221, 1, 43, 20, 25, 'b', '''In no wise
 INSERT INTO `mse_bible_footnote` VALUES (5222, 1, 43, 21, 4, 'c', '<I>Oida</I>, see [footnote id="n_1co?n=8:1"]Note at 1Cor. 8:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5223, 1, 43, 21, 5, 'd', '<I>Paidion</I>, the diminutive: as [scripture id="1jo?n=2:13"]1John 2:13[/scripture], [scripture id="1jo?n=2:18"]18[/scripture], ''little children.''');
 INSERT INTO `mse_bible_footnote` VALUES (5224, 1, 43, 21, 12, 'a', '<I>Oida</I>, see [footnote id="n_1co?n=8:1"]Note at 1Cor. 8:1[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (5225, 1, 43, 21, 15, 'b', 'This passage (<A HREF="/cgi-bin/br/BDB/joh?n=21:15~a=2">vers. 15-17</A>) illustrates the force of two Greek words for ''to love,'' <I>phileo</I> and <I>agapao</I>. The former signifies the love of friendship, and is more intimate and intense. It is here translated ''I am attached to,'' and in <A HREF="/cgi-bin/br/BDB/joh?n=16:27">ch. 16:27</A> ''have affection for.'' <I>Agapao</I>, more often used in the New Testament, is more general, and signifies love as the settled disposition of a person rather than as an emotion. It is used for God''s love to man (except in <A HREF="/cgi-bin/br/BDB/tit?n=3:4">Titus 3:4</A>, where a compound word is used which embodies the word <I>phileo</I>) and for the love of men to God. Both words are used for the love of the Father for the Son, <I>phileo</I> once only, <A HREF="/cgi-bin/br/BDB/joh?n=5:20">John 5:20</A>, and <I>agapao</I> in <A HREF="/cgi-bin/br/BDB/joh?n=3:35">John 3:35</A>, &c.: and for the love of Christ for his own, <I>phileo</I> in <A HREF="/cgi-bin/br/BDB/joh?n=11:3">John 11:3</A> and <I>agapao</I> in <A HREF="/cgi-bin/br/BDB/joh?n=11:5">John 11:5</A> and elsewhere. <I>Phileo</I> is used in <A HREF="/cgi-bin/br/BDB/joh?n=16:27">John 16:27</A>, of the love of the Father for the disciples, and of the love of the disciples for Christ.');
+INSERT INTO `mse_bible_footnote` VALUES (5225, 1, 43, 21, 15, 'b', 'This passage ([scripture id="joh?n=21:15~a=2"]vers. 15-17[/scripture]) illustrates the force of two Greek words for ''to love,'' <I>phileo</I> and <I>agapao</I>. The former signifies the love of friendship, and is more intimate and intense. It is here translated ''I am attached to,'' and in [scripture id="joh?n=16:27"]ch. 16:27[/scripture] ''have affection for.'' <I>Agapao</I>, more often used in the New Testament, is more general, and signifies love as the settled disposition of a person rather than as an emotion. It is used for God''s love to man (except in [scripture id="tit?n=3:4"]Titus 3:4[/scripture], where a compound word is used which embodies the word <I>phileo</I>) and for the love of men to God. Both words are used for the love of the Father for the Son, <I>phileo</I> once only, [scripture id="joh?n=5:20"]John 5:20[/scripture], and <I>agapao</I> in [scripture id="joh?n=3:35"]John 3:35[/scripture], &c.: and for the love of Christ for his own, <I>phileo</I> in [scripture id="joh?n=11:3"]John 11:3[/scripture] and <I>agapao</I> in [scripture id="joh?n=11:5"]John 11:5[/scripture] and elsewhere. <I>Phileo</I> is used in [scripture id="joh?n=16:27"]John 16:27[/scripture], of the love of the Father for the disciples, and of the love of the disciples for Christ.');
 INSERT INTO `mse_bible_footnote` VALUES (5226, 1, 43, 21, 17, 'c', 'Objective knowledge.');
 INSERT INTO `mse_bible_footnote` VALUES (5227, 1, 43, 21, 21, 'd', 'Lit. ''this <I>one</I>.''');
 INSERT INTO `mse_bible_footnote` VALUES (5228, 1, 32, 1, 1, 'a', '(The title of this Book, ''Jonah''), Meaning, ''Dove.''');
 INSERT INTO `mse_bible_footnote` VALUES (5229, 1, 32, 1, 1, 'b', 'See [scripture id="2ki?n=14:25"]2Kings 14:25[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5230, 1, 32, 1, 17, 'c', 'In the Hebrew, <A HREF="/cgi-bin/br/BDB/jon?n=2">ch. 2</A> begins here.');
+INSERT INTO `mse_bible_footnote` VALUES (5230, 1, 32, 1, 17, 'c', 'In the Hebrew, [scripture id="jon?n=2"]ch. 2[/scripture] begins here.');
 INSERT INTO `mse_bible_footnote` VALUES (5231, 1, 32, 2, 7, 'a', 'Or ''palace.''');
 INSERT INTO `mse_bible_footnote` VALUES (5232, 1, 32, 2, 8, 'b', 'Or ''vain idols:'' see [scripture id="ps?n=31:6"]Ps. 31:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5233, 1, 32, 2, 8, 'c', '<I>Chesed</I>, ''grace,'' ''favour.''');
@@ -5360,7 +5343,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5323, 1, 6, 15, 25, 'a', 'Others, ''and
 INSERT INTO `mse_bible_footnote` VALUES (5324, 1, 6, 15, 32, 'b', 'See [scripture id="jos?n=13:23"]ch. 13:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5325, 1, 6, 15, 40, 'c', 'Or ''Lahmam''');
 INSERT INTO `mse_bible_footnote` VALUES (5326, 1, 6, 15, 45, 'd', 'Lit. ''daughters:'' see [scripture id="jos?n=17:11"]ch. 17:11[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5327, 1, 6, 15, 46, 'e', 'Or ''toward the sea:'' so [scripture id="jos?n=16:6"]chs. 16:6[/scripture]; <A HREF="/cgi-bin/br/BDB/jos?n=17:9~a=1">17:9, 10</A>; <A HREF="/cgi-bin/br/BDB/jos?n=19:11">19:11</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (5327, 1, 6, 15, 46, 'e', 'Or ''toward the sea:'' so [scripture id="jos?n=16:6"]chs. 16:6[/scripture]; [scripture id="jos?n=17:9~a=1"]17:9, 10[/scripture]; [scripture id="jos?n=19:11"]19:11[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (5328, 1, 6, 15, 62, 'f', 'i.e. City of salt.');
 INSERT INTO `mse_bible_footnote` VALUES (5329, 1, 6, 17, 11, 'a', 'Lit. ''daughters:'' so throughout.');
 INSERT INTO `mse_bible_footnote` VALUES (5330, 1, 6, 17, 14, 'a', 'Or ''numerous;'' and so [scripture id="jos?n=17:15"]vers. 15[/scripture], [scripture id="jos?n=17:17"]17[/scripture].');
@@ -5392,7 +5375,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5355, 1, 6, 22, 10, 'c', 'Or ''borders.
 INSERT INTO `mse_bible_footnote` VALUES (5356, 1, 6, 22, 11, 'a', 'Or ''on the <I>other</I> side of.''');
 INSERT INTO `mse_bible_footnote` VALUES (5357, 1, 6, 22, 16, 'b', 'Or ''trespass;'' as [scripture id="jos?n=22:20"]vers. 20[/scripture], [scripture id="jos?n=22:22"]22[/scripture], [scripture id="jos?n=22:31"]31[/scripture]; ''unfaithfulness,'' [scripture id="le?n=5:15"]Lev. 5:15[/scripture]; [scripture id="nu?n=31:16"]Num. 31:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5358, 1, 6, 22, 17, 'c', 'Or ''when.''');
-INSERT INTO `mse_bible_footnote` VALUES (5359, 1, 6, 22, 24, 'd', 'Lit. ''to-morrow;'' and so <A HREF="/cgi-bin/br/BDB/jos?n=22:27~a=1">vers. 27, 28</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5359, 1, 6, 22, 24, 'd', 'Lit. ''to-morrow;'' and so [scripture id="jos?n=22:27~a=1"]vers. 27, 28[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5360, 1, 6, 22, 33, 'a', 'Or ''intended,'' as [scripture id="ex?n=2:14"]Ex. 2:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5361, 1, 6, 22, 34, 'b', 'Heb. <I>Ed</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (5362, 1, 6, 23, 1, 'c', 'Lit. ''in days;'' and so [scripture id="jos?n=23:2"]ver. 2[/scripture].');
@@ -5420,7 +5403,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5383, 1, 7, 1, 27, 'l', 'Lit. ''daughte
 INSERT INTO `mse_bible_footnote` VALUES (5384, 1, 7, 2, 3, 'a', 'Others, including LXX, read ''they shall be to you for enemies.''');
 INSERT INTO `mse_bible_footnote` VALUES (5385, 1, 7, 2, 5, 'b', 'Meaning, ''weepers.''');
 INSERT INTO `mse_bible_footnote` VALUES (5386, 1, 7, 2, 9, 'c', 'Others read ''Timnath-serah,'' as [scripture id="jos?n=19:50"]Josh. 19:50[/scripture] and [scripture id="jos?n=24:30"]24:30[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5387, 1, 7, 2, 11, 'a', 'Baal and Ashtoreth in the plural are constantly used as generic terms for the male and female divinities of the Canaanitish peoples, and especially of the Phoenicians. Ashtoreth, or Astarte, would seem to have been the moon: compare [scripture id="jer?n=7:18"]Jer. 7:18[/scripture] and [scripture id="jer?n=8:2"]8:2[/scripture], with <A HREF="/cgi-bin/br/BDB/2ki?n=23:13~a=1">2Kings 23:13, 14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5387, 1, 7, 2, 11, 'a', 'Baal and Ashtoreth in the plural are constantly used as generic terms for the male and female divinities of the Canaanitish peoples, and especially of the Phoenicians. Ashtoreth, or Astarte, would seem to have been the moon: compare [scripture id="jer?n=7:18"]Jer. 7:18[/scripture] and [scripture id="jer?n=8:2"]8:2[/scripture], with [scripture id="2ki?n=23:13~a=1"]2Kings 23:13, 14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5388, 1, 7, 2, 18, 'b', 'Or ''Jehovah had pity.''');
 INSERT INTO `mse_bible_footnote` VALUES (5389, 1, 7, 3, 3, 'c', 'See [footnote id="n_jos?n=13:3"]Note, Josh. 13:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5390, 1, 7, 3, 7, 'a', 'See [footnote id="n_jud?n=2:11"]Note a, ch. 2, vers. 11-13[/footnote] and [scripture id="ex?n=34:13"]Ex. 34:13[/scripture].');
@@ -5434,7 +5417,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5397, 1, 7, 3, 26, 'b', 'See [scripture
 INSERT INTO `mse_bible_footnote` VALUES (5398, 1, 7, 4, 2, 'c', 'Or ''Harosheth of the nations:'' see [scripture id="jos?n=12:23"]Josh. 12:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5399, 1, 7, 4, 4, 'd', 'Lit. ''a woman prophetess.''');
 INSERT INTO `mse_bible_footnote` VALUES (5400, 1, 7, 4, 11, 'e', 'See [scripture id="jos?n=19:33"]Josh. 19:33[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5401, 1, 7, 5, 1, 'a', '<A HREF="/cgi-bin/br/BDB/jud?n=5">Ch. 5</A> is poetical in Hebrew.');
+INSERT INTO `mse_bible_footnote` VALUES (5401, 1, 7, 5, 1, 'a', '[scripture id="jud?n=5"]Ch. 5[/scripture] is poetical in Hebrew.');
 INSERT INTO `mse_bible_footnote` VALUES (5402, 1, 7, 5, 6, 'b', 'Or ''ceased.''');
 INSERT INTO `mse_bible_footnote` VALUES (5403, 1, 7, 5, 7, 'c', 'Or ''leaders:'' so [scripture id="jud?n=5:11"]ver. 11[/scripture]; and [scripture id="hab?n=3:14"]Hab. 3:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5404, 1, 7, 5, 9, 'a', 'As ''lawgiver,'' [scripture id="ge?n=49:10"]Gen. 49:10[/scripture]; [scripture id="ps?n=60:7"]Ps. 60:7[/scripture], &c.');
@@ -5561,7 +5544,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5524, 1, 65, 1, 14, 'e', 'Or ''with,'' 
 INSERT INTO `mse_bible_footnote` VALUES (5525, 1, 65, 1, 21, 'f', 'Aorist; be in that state.');
 INSERT INTO `mse_bible_footnote` VALUES (5526, 1, 65, 1, 23, 'g', 'The sense of this passage is much disputed and depends on conflicting manuscripts. I have left it as generally taken (see A.V.), but am disposed to think that the word translated ''have compassion'' should be omitted, in which case the passage would read: ''And some who dispute correct; and some save, snatching them out of the fire with fear, hating,'' &c. Perhaps this is the best reading. He tells them in fact to make a difference. If men contested, he put them to silence; if not, he saved them with fear, snatching them out of the fire, hating every trace of evil.');
 INSERT INTO `mse_bible_footnote` VALUES (5527, 1, 65, 1, 25, 'a', 'Or ''course <I>of time</I>,'' a large expression and of wide use in Greek.');
-INSERT INTO `mse_bible_footnote` VALUES (5528, 1, 25, 1, 1, 'a', 'In <A HREF="/cgi-bin/br/BDB/la?n=1">chs. 1</A> and <A HREF="/cgi-bin/br/BDB/la?n=2">2</A> the initial letter of each verse, consisting of three parts or lines, follows the alphabetical order.');
+INSERT INTO `mse_bible_footnote` VALUES (5528, 1, 25, 1, 1, 'a', 'In [scripture id="la?n=1"]chs. 1[/scripture] and [scripture id="la?n=2"]2[/scripture] the initial letter of each verse, consisting of three parts or lines, follows the alphabetical order.');
 INSERT INTO `mse_bible_footnote` VALUES (5529, 1, 25, 1, 5, 'b', 'Or ''oppressor,'' <I>Tzar</I>; so [scripture id="la?n=1:7"]vers. 7[/scripture], [scripture id="la?n=1:10"]10[/scripture], [scripture id="la?n=1:17"]17[/scripture]: see [footnote id="n_ps?n=8:2a"]Note o, Ps. 8:2[/footnote], and [scripture id="ps?n=78:61"]Ps. 78:61[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5530, 1, 25, 1, 5, 'c', 'See [scripture id="de?n=28:44"]Deut. 28:44[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5531, 1, 25, 1, 7, 'd', 'Or ''miseries:'' see [scripture id="la?n=3:19"]ch. 3:19[/scripture]; [scripture id="isa?n=58:7"]Isa. 58:7[/scripture].');
@@ -5597,7 +5580,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5560, 1, 25, 5, 6, 'c', 'i.e. the Assyr
 INSERT INTO `mse_bible_footnote` VALUES (5561, 1, 25, 5, 8, 'd', 'Lit. ''none that rendeth away:'' see [scripture id="ps?n=136:24"]Ps. 136:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5562, 1, 25, 5, 10, 'e', '* Or ''fiery red,'' as ''burned,'' [scripture id="ge?n=43:30"]Gen. 43:30[/scripture]; ''yearned,'' [scripture id="1ki?n=3:26"]1Kings 3:26[/scripture]; ''kindled,'' [scripture id="ho?n=11:8"]Hos. 11:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5563, 1, 25, 5, 12, 'f', 'Or ''the aged,'' as [scripture id="la?n=4:16"]ch. 4:16[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5564, 1, 25, 5, 14, 'a', '* <I>Neginoth</I>, ''stringed instruments,'' as Title, <A HREF="/cgi-bin/br/BDB/ps?n=4">Ps. 4</A>, <A HREF="/cgi-bin/br/BDB/ps?n=6">6</A>, <A HREF="/cgi-bin/br/BDB/ps?n=54">54</A>, <A HREF="/cgi-bin/br/BDB/ps?n=55">55</A>, <A HREF="/cgi-bin/br/BDB/ps?n=61">61</A> ,<A HREF="/cgi-bin/br/BDB/ps?n=67">67</A>, <A HREF="/cgi-bin/br/BDB/ps?n=76">76</A>. The verb is, ''to strike the strings:'' <A HREF="/cgi-bin/br/BDB/isa?n=38:20">Isa. 38:20</A>; <A HREF="/cgi-bin/br/BDB/la?n=3:14">Lam. 3:14</A>; <A HREF="/cgi-bin/br/BDB/hab?n=3:19">Hab. 3:19</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5564, 1, 25, 5, 14, 'a', '* <I>Neginoth</I>, ''stringed instruments,'' as Title, [scripture id="ps?n=4"]Ps. 4[/scripture], [scripture id="ps?n=6"]6[/scripture], [scripture id="ps?n=54"]54[/scripture], [scripture id="ps?n=55"]55[/scripture], [scripture id="ps?n=61"]61[/scripture] ,[scripture id="ps?n=67"]67[/scripture], [scripture id="ps?n=76"]76[/scripture]. The verb is, ''to strike the strings:'' [scripture id="isa?n=38:20"]Isa. 38:20[/scripture]; [scripture id="la?n=3:14"]Lam. 3:14[/scripture]; [scripture id="hab?n=3:19"]Hab. 3:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5565, 1, 25, 5, 19, 'b', 'Or ''sittest:'' see [scripture id="ps?n=80:1"]Ps. 80:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5566, 1, 3, 1, 2, 'a', '<I>Corban</I>, ''present,'' noun derived from the verb translated ''present.''');
 INSERT INTO `mse_bible_footnote` VALUES (5567, 1, 3, 1, 3, 'b', 'The Hebrew words for the four offerings are: <I>olah</I> -- burnt-offering; <I>minchah</I> -- food-offering; <I>shelem</I> -- peace-offering; <I>chataath</I> -- sin-offering. See [scripture id="ps?n=40:6"]Ps. 40:6[/scripture].');
@@ -5637,7 +5620,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5600, 1, 3, 4, 22, 'b', 'Or ''principal
 INSERT INTO `mse_bible_footnote` VALUES (5601, 1, 3, 4, 23, 'c', '''<I>Corban</I>,'' see [scripture id="le?n=1:2"]ch. 1:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5602, 1, 3, 4, 27, 'd', 'Lit. ''one soul.''');
 INSERT INTO `mse_bible_footnote` VALUES (5603, 1, 3, 4, 32, 'a', '<I>Corban</I>, see [scripture id="le?n=1:2"]ch. 1:2[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5604, 1, 3, 5, 1, 'b', '<I>Chata</I>, ''to sin,'' as in <A HREF="/cgi-bin/br/BDB/le?n=4:2~a=1">ch. 4:2, 3</A>, is departure from the right. First used <A HREF="/cgi-bin/br/BDB/ge?n=4:7">Gen. 4:7</A>. <I>Asham</I>, ''guilty,'' <A HREF="/cgi-bin/br/BDB/le?n=5:2~a=3">vers. 2, 3, 4, 5</A>, <A HREF="/cgi-bin/br/BDB/le?n=5:17">17</A>, is guilty as regards one we are responsible to -- here God of course.');
+INSERT INTO `mse_bible_footnote` VALUES (5604, 1, 3, 5, 1, 'b', '<I>Chata</I>, ''to sin,'' as in [scripture id="le?n=4:2~a=1"]ch. 4:2, 3[/scripture], is departure from the right. First used [scripture id="ge?n=4:7"]Gen. 4:7[/scripture]. <I>Asham</I>, ''guilty,'' [scripture id="le?n=5:2~a=3"]vers. 2, 3, 4, 5[/scripture], [scripture id="le?n=5:17"]17[/scripture], is guilty as regards one we are responsible to -- here God of course.');
 INSERT INTO `mse_bible_footnote` VALUES (5605, 1, 3, 5, 1, 'c', 'See [scripture id="mt?n=26:63"]Matt. 26:63[/scripture]; [scripture id="nu?n=5:21"]Num. 5:21[/scripture]; [scripture id="1ki?n=8:31"]1Kings 8:31[/scripture]; [scripture id="pr?n=29:24"]Prov. 29:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5606, 1, 3, 5, 1, 'd', 'The word has the force of ''because he is a witness,'' practically.');
 INSERT INTO `mse_bible_footnote` VALUES (5607, 1, 3, 5, 2, 'e', 'See [footnote id="n_le?n=5:1"]Note b, ver. 1[/footnote].');
@@ -5675,7 +5658,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5638, 1, 3, 8, 11, 'e', 'As [scripture 
 INSERT INTO `mse_bible_footnote` VALUES (5639, 1, 3, 8, 14, 'f', '''Young bullock,'' everywhere here.');
 INSERT INTO `mse_bible_footnote` VALUES (5640, 1, 3, 8, 15, 'g', 'Or ''upon,'' as [scripture id="ex?n=30:10"]Ex. 30:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5641, 1, 3, 8, 21, 'h', 'Or ''one.''');
-INSERT INTO `mse_bible_footnote` VALUES (5642, 1, 3, 8, 27, 'a', 'My impression is that ''wave-offering'' is more ''consecration;'' see [scripture id="ex?n=29:24"]Ex. 29:24[/scripture]: and ''heave-offering'' more ''offering;'' see <A HREF="/cgi-bin/br/BDB/ex?n=25:2~a=1">Ex. 25:2, 3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5642, 1, 3, 8, 27, 'a', 'My impression is that ''wave-offering'' is more ''consecration;'' see [scripture id="ex?n=29:24"]Ex. 29:24[/scripture]: and ''heave-offering'' more ''offering;'' see [scripture id="ex?n=25:2~a=1"]Ex. 25:2, 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5643, 1, 3, 8, 28, 'b', 'See [scripture id="le?n=1:9"]ch. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5644, 1, 3, 8, 28, 'c', 'Lit. ''filling of hand:'' see [scripture id="le?n=8:33"]ver. 33[/scripture]; [scripture id="ex?n=28:41"]Ex. 28:41[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5645, 1, 3, 8, 33, 'd', 'Lit. ''shall your hands be filled:'' so [scripture id="le?n=16:32"]chs. 16:32[/scripture]; [scripture id="le?n=21:10"]21:10[/scripture]: see [scripture id="le?n=9:17"]9:17[/scripture], ''took a handful.''');
@@ -5712,7 +5695,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5675, 1, 3, 14, 41, 'b', 'Lit. ''dust.'
 INSERT INTO `mse_bible_footnote` VALUES (5676, 1, 3, 14, 49, 'c', 'See [footnote id="n_le?n=14:4"]Note, ver. 4[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5677, 1, 3, 14, 50, 'a', 'Lit. ''living.''');
 INSERT INTO `mse_bible_footnote` VALUES (5678, 1, 3, 14, 57, 'b', 'Lit. ''in the day of.''');
-INSERT INTO `mse_bible_footnote` VALUES (5679, 1, 3, 15, 20, 'a', 'Or ''uncleanness,'' also in <A HREF="/cgi-bin/br/BDB/le?n=15:25~a=1">vers. 25, 26</A>, <A HREF="/cgi-bin/br/BDB/le?n=15:33">33</A>; as <A HREF="/cgi-bin/br/BDB/le?n=12:2">ch. 12:2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5679, 1, 3, 15, 20, 'a', 'Or ''uncleanness,'' also in [scripture id="le?n=15:25~a=1"]vers. 25, 26[/scripture], [scripture id="le?n=15:33"]33[/scripture]; as [scripture id="le?n=12:2"]ch. 12:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5680, 1, 3, 15, 33, 'b', 'Or ''unclean.''');
 INSERT INTO `mse_bible_footnote` VALUES (5681, 1, 3, 16, 8, 'a', 'Lit. ''give.''');
 INSERT INTO `mse_bible_footnote` VALUES (5682, 1, 3, 16, 8, 'b', 'Signifying ''the goat that went away.''');
@@ -5754,7 +5737,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5717, 1, 3, 21, 9, 'e', 'Or ''dishonour
 INSERT INTO `mse_bible_footnote` VALUES (5718, 1, 3, 21, 9, 'f', 'As [scripture id="le?n=4:12"]ch. 4:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5719, 1, 3, 21, 10, 'g', 'Lit. ''the priest who is greater than his brethren.''');
 INSERT INTO `mse_bible_footnote` VALUES (5720, 1, 3, 21, 10, 'h', '[scripture id="ex?n=28:41"]Ex. 28:41[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5721, 1, 3, 21, 12, 'i', 'Lit. ''separation'' or ''consecration,'' as throughout <A HREF="/cgi-bin/br/BDB/nu?n=6">Num. 6</A>: ''diadem,'' <A HREF="/cgi-bin/br/BDB/ex?n=29:6">Ex. 29:6</A>; <A HREF="/cgi-bin/br/BDB/le?n=8:9">Lev. 8:9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5721, 1, 3, 21, 12, 'i', 'Lit. ''separation'' or ''consecration,'' as throughout [scripture id="nu?n=6"]Num. 6[/scripture]: ''diadem,'' [scripture id="ex?n=29:6"]Ex. 29:6[/scripture]; [scripture id="le?n=8:9"]Lev. 8:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5722, 1, 3, 21, 20, 'k', 'Or ''a dwarf.''');
 INSERT INTO `mse_bible_footnote` VALUES (5723, 1, 3, 21, 23, 'a', 'Or ''my holy things.''');
 INSERT INTO `mse_bible_footnote` VALUES (5724, 1, 3, 22, 6, 'b', 'Lit. ''the soul.''');
@@ -5793,11 +5776,11 @@ INSERT INTO `mse_bible_footnote` VALUES (5756, 1, 3, 25, 33, 'a', 'Or ''And that
 INSERT INTO `mse_bible_footnote` VALUES (5757, 1, 3, 25, 42, 'b', 'Or ''servants.''');
 INSERT INTO `mse_bible_footnote` VALUES (5758, 1, 3, 26, 5, 'a', 'Strictly, ''treading out:'' see [scripture id="de?n=25:4"]Deut. 25:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5759, 1, 3, 26, 11, 'b', 'Or ''tabernacle,'' <I>Mishkan</I>, as [scripture id="ex?n=25:9"]Ex. 25:9[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5760, 1, 3, 26, 15, 'a', 'Or ''reject:'' so <A HREF="/cgi-bin/br/BDB/le?n=26:43~a=1">vers. 43, 44</A>. ''Statutes'' as <A HREF="/cgi-bin/br/BDB/ex?n=12:24">Ex. 12:24</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5760, 1, 3, 26, 15, 'a', 'Or ''reject:'' so [scripture id="le?n=26:43~a=1"]vers. 43, 44[/scripture]. ''Statutes'' as [scripture id="ex?n=12:24"]Ex. 12:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5761, 1, 3, 26, 25, 'b', 'Or ''withdrawn.''');
 INSERT INTO `mse_bible_footnote` VALUES (5762, 1, 3, 26, 30, 'c', 'See [scripture id="eze?n=6:4"]Ezek. 6:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5763, 1, 3, 26, 34, 'd', 'Here, rather ''make good,'' in the sense of making up for the sabbaths not kept: see [scripture id="2ch?n=36:21"]2Chron. 36:21[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5764, 1, 3, 26, 42, 'a', 'I take this to be the covenant of <A HREF="/cgi-bin/br/BDB/ex?n=6">Ex. 6</A>, not the law. It connected itself directly with the covenant made with Abraham, Isaac, and Jacob, adding the name of Jehovah, and taking up the people under that name.');
+INSERT INTO `mse_bible_footnote` VALUES (5764, 1, 3, 26, 42, 'a', 'I take this to be the covenant of [scripture id="ex?n=6"]Ex. 6[/scripture], not the law. It connected itself directly with the covenant made with Abraham, Isaac, and Jacob, adding the name of Jehovah, and taking up the people under that name.');
 INSERT INTO `mse_bible_footnote` VALUES (5765, 1, 3, 27, 16, 'a', 'Lit. ''to the seed thereof.''');
 INSERT INTO `mse_bible_footnote` VALUES (5766, 1, 3, 27, 16, 'b', 'i.e. ten ephahs: see [scripture id="eze?n=45:11"]Ezek. 45:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5767, 1, 3, 27, 26, 'c', 'Or ''goat.''');
@@ -5923,7 +5906,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5886, 1, 42, 10, 15, 'a', '<I>Hades</I>
 INSERT INTO `mse_bible_footnote` VALUES (5887, 1, 42, 10, 19, 'b', '<I>Exousia</I>: see [scripture id="mt?n=10:1"]Matt. 10:1[/scripture]. The second ''power'' in this verse is ''dunamis''.');
 INSERT INTO `mse_bible_footnote` VALUES (5888, 1, 42, 10, 27, 'c', '[scripture id="de?n=6:5"]Deut. 6:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5889, 1, 42, 10, 27, 'd', '[scripture id="le?n=19:18"]Lev. 19:18[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5890, 1, 42, 10, 29, 'e', 'Aorist tense; difficult to express in English. It gives the sense that he wanted to make out that he was in that state, not that he was obtaining it: see <A HREF="/cgi-bin/br/BDB/lu?n=9:60~a=1">ch. 9:60, 61</A>, where ''suffer,'' ''allow,'' and ''bid adieu'' are all aorists.');
+INSERT INTO `mse_bible_footnote` VALUES (5890, 1, 42, 10, 29, 'e', 'Aorist tense; difficult to express in English. It gives the sense that he wanted to make out that he was in that state, not that he was obtaining it: see [scripture id="lu?n=9:60~a=1"]ch. 9:60, 61[/scripture], where ''suffer,'' ''allow,'' and ''bid adieu'' are all aorists.');
 INSERT INTO `mse_bible_footnote` VALUES (5891, 1, 42, 10, 39, 'a', 'Many read ''the Lord.''');
 INSERT INTO `mse_bible_footnote` VALUES (5892, 1, 42, 11, 4, 'b', 'Or ''forgive.''');
 INSERT INTO `mse_bible_footnote` VALUES (5893, 1, 42, 11, 8, 'c', 'Or ''even though.''');
@@ -5951,7 +5934,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5914, 1, 42, 12, 58, 'b', 'The ''For'' 
 INSERT INTO `mse_bible_footnote` VALUES (5915, 1, 42, 12, 58, 'c', 'See [footnote id="n_mt?n=5:25"]Notes, Matt. 5:25[/footnote] and [footnote id="n_mr?n=4:12"]Mark 4:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5916, 1, 42, 12, 59, 'a', '* The smallest current coin of that day.');
 INSERT INTO `mse_bible_footnote` VALUES (5917, 1, 42, 13, 11, 'b', 'Lit. ''herself:'' not as [scripture id="lu?n=21:28"]ch. 21:28[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (5918, 1, 42, 13, 23, 'c', 'Spared in the judgment of the nation by Messiah, so as to enter into the kingdom: ''the remnant.'' See <A HREF="/cgi-bin/br/BDB/isa?n=10:21~a=1">Isa. 10:21-22</A>; <A HREF="/cgi-bin/br/BDB/ac?n=2:47">Acts 2:47</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5918, 1, 42, 13, 23, 'c', 'Spared in the judgment of the nation by Messiah, so as to enter into the kingdom: ''the remnant.'' See [scripture id="isa?n=10:21~a=1"]Isa. 10:21-22[/scripture]; [scripture id="ac?n=2:47"]Acts 2:47[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5919, 1, 42, 13, 34, 'a', 'Lit. ''I desired'' -- ''ye desired not:'' see [scripture id="mt?n=23:37"]Matt. 23:37[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5920, 1, 42, 13, 35, 'b', 'A strengthened negative.');
 INSERT INTO `mse_bible_footnote` VALUES (5921, 1, 42, 13, 35, 'c', '''Jehovah:'' see [scripture id="ps?n=118:26"]Ps. 118:26[/scripture].');
@@ -5980,7 +5963,7 @@ INSERT INTO `mse_bible_footnote` VALUES (5943, 1, 42, 17, 22, 'c', 'Or ''will co
 INSERT INTO `mse_bible_footnote` VALUES (5944, 1, 42, 17, 24, 'd', 'As ''shining,'' [scripture id="lu?n=24:4"]ch. 24:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5945, 1, 42, 17, 36, 'a', 'See [scripture id="mt?n=24:40"]Matt. 24:40[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5946, 1, 42, 18, 2, 'b', 'Lit. ''a certain judge in a certain city.''');
-INSERT INTO `mse_bible_footnote` VALUES (5947, 1, 42, 18, 7, 'c', 'As ''patience,'' <A HREF="/cgi-bin/br/BDB/jas?n=5:7~a=1">Jas. 5:7, 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (5947, 1, 42, 18, 7, 'c', 'As ''patience,'' [scripture id="jas?n=5:7~a=1"]Jas. 5:7, 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5948, 1, 42, 18, 10, 'd', '<I>Hieron</I>: as [scripture id="mt?n=4:5"]Matt. 4:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (5949, 1, 42, 18, 12, 'e', 'See [footnote id="n_lu?n=21:19"]Notes at Luke 21:19[/footnote] and [footnote id="n_1th?n=4:4"]1Thess. 4:4[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (5950, 1, 42, 18, 15, 'f', 'As ''babe,'' [scripture id="lu?n=2:12"]ch. 2:12[/scripture], [scripture id="lu?n=2:16"]16[/scripture].');
@@ -6069,7 +6052,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6032, 1, 39, 4, 6, 'c', 'Or ''the land.
 INSERT INTO `mse_bible_footnote` VALUES (6033, 1, 39, 4, 6, 'd', 'Or ''ban,'' as [scripture id="isa?n=34:5"]Isa. 34:5[/scripture]; [scripture id="isa?n=43:28"]43:28[/scripture]; or ''utter destruction,'' as [scripture id="zec?n=14:11"]Zech. 14:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6034, 1, 33, 1, 1, 'b', '(The title of this Book, ''Micah''), Meaning, Who is like Jah? see [scripture id="mic?n=7:18"]ch. 7:18[/scripture]; [scripture id="ps?n=68:4"]Ps. 68:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6035, 1, 33, 1, 8, 'a', 'Or ''barefooted.''');
-INSERT INTO `mse_bible_footnote` VALUES (6036, 1, 33, 1, 10, 'b', 'Or ''in Acco (i.e. ''weeping'') weep not.'' <A HREF="/cgi-bin/br/BDB/mic?n=1:10~a=5">Vers. 10-15</A> are made up of paranomasia, see <A HREF="/cgi-bin/br/BDB/isa?n=5:7">Isa. 5:7</A>');
+INSERT INTO `mse_bible_footnote` VALUES (6036, 1, 33, 1, 10, 'b', 'Or ''in Acco (i.e. ''weeping'') weep not.'' [scripture id="mic?n=1:10~a=5"]Vers. 10-15[/scripture] are made up of paranomasia, see [scripture id="isa?n=5:7"]Isa. 5:7[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (6037, 1, 33, 1, 10, 'c', 'House of dust.');
 INSERT INTO `mse_bible_footnote` VALUES (6038, 1, 33, 1, 11, 'd', 'Beautiful town.');
 INSERT INTO `mse_bible_footnote` VALUES (6039, 1, 33, 1, 11, 'e', 'Coming forth, [scripture id="jos?n=15:37"]Josh. 15:37[/scripture].');
@@ -6089,22 +6072,22 @@ INSERT INTO `mse_bible_footnote` VALUES (6052, 1, 33, 2, 2, 's', 'Or ''defraud,'
 INSERT INTO `mse_bible_footnote` VALUES (6053, 1, 33, 2, 2, 't', '<I>Geber</I>, [scripture id="job?n=3:3"]Job 3:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6054, 1, 33, 2, 2, 'u', '<I>Ish</I>, [scripture id="ge?n=2:23"]Gen. 2:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6055, 1, 33, 2, 6, 'v', 'Lit. ''Drop,'' in this and [scripture id="mic?n=2:11"]ver. 11[/scripture], as [scripture id="am?n=7:16"]Amos 7:16[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6056, 1, 33, 2, 6, 'w', 'i.e. If the true prophets do not prophesy to the unjust rich men (see <A HREF="/cgi-bin/br/BDB/mic?n=2:1~a=1">vers. 1, 2</A>): others translate ''They shall not prophesy of such.''');
+INSERT INTO `mse_bible_footnote` VALUES (6056, 1, 33, 2, 6, 'w', 'i.e. If the true prophets do not prophesy to the unjust rich men (see [scripture id="mic?n=2:1~a=1"]vers. 1, 2[/scripture]): others translate ''They shall not prophesy of such.''');
 INSERT INTO `mse_bible_footnote` VALUES (6057, 1, 33, 2, 7, 'x', 'Or ''Is the Spirit of Jehovah straitened?''');
 INSERT INTO `mse_bible_footnote` VALUES (6058, 1, 33, 2, 7, 'y', 'Lit. ''with.''');
 INSERT INTO `mse_bible_footnote` VALUES (6059, 1, 33, 2, 8, 'a', 'Lit. ''from off.''');
 INSERT INTO `mse_bible_footnote` VALUES (6060, 1, 33, 2, 8, 'b', 'Or ''as coming back.''');
 INSERT INTO `mse_bible_footnote` VALUES (6061, 1, 33, 2, 10, 'c', 'Or ''because it is defiled, it.''');
 INSERT INTO `mse_bible_footnote` VALUES (6062, 1, 33, 2, 12, 'd', 'Or ''in a fold.''');
-INSERT INTO `mse_bible_footnote` VALUES (6063, 1, 33, 3, 5, 'e', 'Lit. ''hallow,'' as [scripture id="jer?n=6:4"]Jer. 6:4[/scripture]; <A HREF="/cgi-bin/br/BDB/jer?n=51:27~a=1">51:27, 28</A>; <A HREF="/cgi-bin/br/BDB/joe?n=3:9">Joel 3:9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6063, 1, 33, 3, 5, 'e', 'Lit. ''hallow,'' as [scripture id="jer?n=6:4"]Jer. 6:4[/scripture]; [scripture id="jer?n=51:27~a=1"]51:27, 28[/scripture]; [scripture id="joe?n=3:9"]Joel 3:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6064, 1, 33, 3, 9, 'f', 'Or ''justice.''');
 INSERT INTO `mse_bible_footnote` VALUES (6065, 1, 33, 3, 12, 'g', 'See [scripture id="jer?n=26:18"]Jer. 26:18[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6066, 1, 33, 4, 1, 'h', 'Or ''And:'' see <A HREF="/cgi-bin/br/BDB/isa?n=2:2~a=2">Isa. 2:2-4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6066, 1, 33, 4, 1, 'h', 'Or ''And:'' see [scripture id="isa?n=2:2~a=2"]Isa. 2:2-4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6067, 1, 33, 4, 3, 'a', 'Or ''great.''');
 INSERT INTO `mse_bible_footnote` VALUES (6068, 1, 33, 4, 6, 'b', 'Or ''limpeth,'' as [scripture id="ge?n=32:31"]Gen. 32:31[/scripture]; [scripture id="zep?n=3:19"]Zeph. 3:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6069, 1, 33, 4, 8, 'c', 'Or ''Migdal-eder,'' [scripture id="ge?n=35:21"]Gen. 35:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6070, 1, 33, 4, 13, 'd', 'Or ''bronze.''');
-INSERT INTO `mse_bible_footnote` VALUES (6071, 1, 33, 5, 2, 'e', 'In the Hebrew, <A HREF="/cgi-bin/br/BDB/mic?n=5">ch. 5</A> begins here.');
+INSERT INTO `mse_bible_footnote` VALUES (6071, 1, 33, 5, 2, 'e', 'In the Hebrew, [scripture id="mic?n=5"]ch. 5[/scripture] begins here.');
 INSERT INTO `mse_bible_footnote` VALUES (6072, 1, 33, 5, 2, 'f', 'Or ''though thou be small.''');
 INSERT INTO `mse_bible_footnote` VALUES (6073, 1, 33, 5, 4, 'a', 'Or ''land.''');
 INSERT INTO `mse_bible_footnote` VALUES (6074, 1, 33, 5, 5, 'b', 'As [scripture id="ps?n=83:11"]Ps. 83:11[/scripture]; [scripture id="eze?n=32:30"]Ezek. 32:30[/scripture]; &c.: cf. also ''chiefs,'' [scripture id="jos?n=13:21"]Josh. 13:21[/scripture].');
@@ -6160,7 +6143,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6123, 1, 41, 3, 22, 'd', 'Lit. ''in the
 INSERT INTO `mse_bible_footnote` VALUES (6124, 1, 41, 3, 28, 'e', 'Lit. ''whatever the.''');
 INSERT INTO `mse_bible_footnote` VALUES (6125, 1, 41, 4, 8, 'a', 'These words agree literally with ''fruit,'' and must be applied by general allusion either to the plant, or directly to its figurative purport.');
 INSERT INTO `mse_bible_footnote` VALUES (6126, 1, 41, 4, 12, 'b', 'Or ''perhaps:'' see [scripture id="mt?n=13:29"]Matt. 13:29[/scripture]; [scripture id="mt?n=15:32"]15:32[/scripture]; [scripture id="mt?n=25:9"]25:9[/scripture]; [scripture id="ac?n=5:39"]Acts 5:39[/scripture]; ''perhaps'' is, I suspect, the sense: see also [scripture id="mt?n=5:25"]Matt. 5:25[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6127, 1, 41, 4, 12, 'c', 'See <A HREF="/cgi-bin/br/BDB/isa?n=6:9~a=1">Isa. 6:9-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6127, 1, 41, 4, 12, 'c', 'See [scripture id="isa?n=6:9~a=1"]Isa. 6:9-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6128, 1, 41, 4, 19, 'd', '<I>Aion</I>: see [footnote id="n_mt?n=13:22"]Note h, Matt. 13:22[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6129, 1, 41, 4, 21, 'e', 'See [scripture id="mt?n=5:15"]Matt. 5:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6130, 1, 41, 5, 2, 'a', 'See [footnote id="n_mr?n=1:23"]Note, ch. 1:23[/footnote].');
@@ -6195,10 +6178,10 @@ INSERT INTO `mse_bible_footnote` VALUES (6158, 1, 41, 7, 11, 'g', 'See [footnote
 INSERT INTO `mse_bible_footnote` VALUES (6159, 1, 41, 7, 22, 'h', 'Lit. ''covetousnesses.'' As ''greedy unsatisfied lust,'' [scripture id="eph?n=4:19"]Eph. 4:19[/scripture]: see [footnote id="n_eph?n=5:3"]Note, Eph. 5:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6160, 1, 41, 7, 22, 'i', 'Lit. ''blasphemy,'' as [scripture id="eph?n=4:31"]Eph. 4:31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6161, 1, 41, 7, 27, 'k', '<I>Teknon</I>: ''children'' in the sense of being born of the family, used by John to signify this relationship in Christians, as born of God; see [scripture id="1jo?n=3:1"]1John 3:1[/scripture]: different from <I>huios</I>, ''sons.''');
-INSERT INTO `mse_bible_footnote` VALUES (6162, 1, 41, 7, 27, 'l', 'See <A HREF="/cgi-bin/br/BDB/mt?n=15:26~a=1">Matt. 15:26, 27</A>');
+INSERT INTO `mse_bible_footnote` VALUES (6162, 1, 41, 7, 27, 'l', 'See [scripture id="mt?n=15:26~a=1"]Matt. 15:26, 27[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (6163, 1, 41, 7, 28, 'm', '<I>Paidion</I>, or ''little children'' (a diminutive), without particular reference to the family they are of: see [scripture id="1jo?n=2:13"]1John 2:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6164, 1, 41, 7, 31, 'a', 'As [scripture id="mr?n=5:20"]ch. 5:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6165, 1, 41, 7, 34, 'b', '<I>Stenazo</I>: as [scripture id="ro?n=8:23"]Rom. 8:23[/scripture]; <A HREF="/cgi-bin/br/BDB/2co?n=5:2~a=2">2Cor. 5:2-4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6165, 1, 41, 7, 34, 'b', '<I>Stenazo</I>: as [scripture id="ro?n=8:23"]Rom. 8:23[/scripture]; [scripture id="2co?n=5:2~a=2"]2Cor. 5:2-4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6166, 1, 41, 7, 37, 'c', 'Or ''has done:'' the perfect tense.');
 INSERT INTO `mse_bible_footnote` VALUES (6167, 1, 41, 8, 10, 'd', 'Or ''the ship,'' as [scripture id="mr?n=6:45"]ch. 6:45[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6168, 1, 41, 8, 12, 'e', 'Or ''groaning deeply.''');
@@ -6212,7 +6195,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6175, 1, 41, 9, 1, 'f', 'Lit. ''having 
 INSERT INTO `mse_bible_footnote` VALUES (6176, 1, 41, 9, 2, 'a', 'As [scripture id="mt?n=17:2"]Matt. 17:2[/scripture]: ''transformed,'' [scripture id="ro?n=12:2"]Rom. 12:2[/scripture]; [scripture id="2co?n=3:18"]2Cor. 3:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6177, 1, 41, 9, 7, 'b', 'See [footnote id="n_mt?n=17:5"]Note, Matt. 17:5[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6178, 1, 41, 9, 10, 'c', 'Or ''the rising.''');
-INSERT INTO `mse_bible_footnote` VALUES (6179, 1, 41, 9, 15, 'd', 'Only here and [scripture id="mr?n=14:33"]chs. 14:33[/scripture]; <A HREF="/cgi-bin/br/BDB/mr?n=16:5~a=1">16:5, 6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6179, 1, 41, 9, 15, 'd', 'Only here and [scripture id="mr?n=14:33"]chs. 14:33[/scripture]; [scripture id="mr?n=16:5~a=1"]16:5, 6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6180, 1, 41, 9, 19, 'e', 'Lit. ''until when.''');
 INSERT INTO `mse_bible_footnote` VALUES (6181, 1, 41, 9, 26, 'a', 'The general mass of people there.');
 INSERT INTO `mse_bible_footnote` VALUES (6182, 1, 41, 9, 34, 'b', 'See [footnote id="n_mt?n=18:1"]Note, Matt. 18:1[/footnote].');
@@ -6232,7 +6215,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6195, 1, 41, 11, 2, 'c', 'Lit. ''no one
 INSERT INTO `mse_bible_footnote` VALUES (6196, 1, 41, 11, 4, 'd', 'Leading round the house, not the main street.');
 INSERT INTO `mse_bible_footnote` VALUES (6197, 1, 41, 11, 6, 'e', 'Or, as some authorities read, ''said.''');
 INSERT INTO `mse_bible_footnote` VALUES (6198, 1, 41, 11, 7, 'f', 'Imperfect: ''were casting;'' but many read the present tense.');
-INSERT INTO `mse_bible_footnote` VALUES (6199, 1, 41, 11, 9, 'g', '''Lord'' here is ''Jehovah.'' See <A HREF="/cgi-bin/br/BDB/ps?n=118:25~a=1">Ps. 118:25-26</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6199, 1, 41, 11, 9, 'g', '''Lord'' here is ''Jehovah.'' See [scripture id="ps?n=118:25~a=1"]Ps. 118:25-26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6200, 1, 41, 11, 11, 'h', '<I>Hieron</I>, the general buildings.');
 INSERT INTO `mse_bible_footnote` VALUES (6201, 1, 41, 11, 16, 'i', 'Or ''vessel.''');
 INSERT INTO `mse_bible_footnote` VALUES (6202, 1, 41, 11, 17, 'k', '[scripture id="isa?n=56:7"]Isa. 56:7[/scripture].');
@@ -6241,7 +6224,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6204, 1, 41, 11, 23, 'a', 'Lit. ''shall
 INSERT INTO `mse_bible_footnote` VALUES (6205, 1, 41, 11, 24, 'b', '<I>Aiteo</I>: see [footnote id="n_joh?n=14:16"]Note b, John 14:16[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6206, 1, 41, 11, 25, 'c', 'Trespasses.');
 INSERT INTO `mse_bible_footnote` VALUES (6207, 1, 41, 11, 27, 'd', 'As [scripture id="mr?n=11:11"]ch. 11:11[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6208, 1, 41, 12, 10, 'e', '<A HREF="/cgi-bin/br/BDB/ps?n=118:22~a=1">Ps. 118:22-23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6208, 1, 41, 12, 10, 'e', '[scripture id="ps?n=118:22~a=1"]Ps. 118:22-23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6209, 1, 41, 12, 10, 'f', 'As [scripture id="mr?n=8:31"]Ch. 8:31[/scripture]: ''cast away as worthless,'' [scripture id="1pe?n=2:4"]1Pet. 2:4[/scripture], [scripture id="1pe?n=2:7"]7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6210, 1, 41, 12, 10, 'a', 'Lit. ''Head of corner.''');
 INSERT INTO `mse_bible_footnote` VALUES (6211, 1, 41, 12, 11, 'b', '''This'' and ''it'' refer to ''corner-stone'' grammatically.');
@@ -6252,7 +6235,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6215, 1, 41, 12, 26, 'f', '[scripture i
 INSERT INTO `mse_bible_footnote` VALUES (6216, 1, 41, 12, 26, 'g', 'See [footnote id="n_mr?n=2:26"]Note at ch. 2:26[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6217, 1, 41, 12, 27, 'h', 'Or, as some authorities read, ''God is not <I>God</I> of the dead, but God of the living.''');
 INSERT INTO `mse_bible_footnote` VALUES (6218, 1, 41, 12, 28, 'i', '<I>Oida</I>: see [scripture id="1co?n=8:1"]1Cor. 8:1[/scripture]. Or ''knowing,'' inward knowledge, as [scripture id="mr?n=12:15"]ver. 15[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6219, 1, 41, 12, 29, 'k', '<A HREF="/cgi-bin/br/BDB/de?n=6:4~a=1">Deut. 6:4-5</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6219, 1, 41, 12, 29, 'k', '[scripture id="de?n=6:4~a=1"]Deut. 6:4-5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6220, 1, 41, 12, 31, 'l', '[scripture id="le?n=19:18"]Lev. 19:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6221, 1, 41, 12, 33, 'a', 'The word is different from that translated ''understanding'' in [scripture id="mr?n=12:30"]v. 30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6222, 1, 41, 12, 35, 'b', 'As [scripture id="mr?n=11:11"]ch. 11:11[/scripture].');
@@ -6278,7 +6261,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6241, 1, 41, 14, 27, 'd', 'Or ''find an
 INSERT INTO `mse_bible_footnote` VALUES (6242, 1, 41, 14, 27, 'e', '[scripture id="zec?n=13:7"]Zech. 13:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6243, 1, 41, 14, 33, 'f', 'Or ''deeply depressed:'' see [scripture id="mt?n=26:37"]Matt. 26:37[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6244, 1, 41, 14, 45, 'g', 'As [scripture id="lu?n=15:20"]Luke 15:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6245, 1, 41, 14, 54, 'a', 'See <A HREF="/cgi-bin/dr/n_mt?n=26:69a">Note, Matt. 26:69</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6245, 1, 41, 14, 54, 'a', 'See [footnote id="n_mt?n=26:69a"]Note, Matt. 26:69[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6246, 1, 41, 14, 58, 'b', '<I>Naos</I>, the house itself. See [footnote id="n_mt?n=4:5"]Note at Matt. 4:5[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6247, 1, 41, 14, 60, 'c', 'Lit. ''in the midst.''');
 INSERT INTO `mse_bible_footnote` VALUES (6248, 1, 41, 14, 61, 'd', '''The Blessed'' was used to designate God.');
@@ -6329,15 +6312,15 @@ INSERT INTO `mse_bible_footnote` VALUES (6292, 1, 40, 3, 14, 'd', 'Imperfect, ''
 INSERT INTO `mse_bible_footnote` VALUES (6293, 1, 40, 3, 14, 'e', 'Aorist tense, ''to be in the state of its having been done:'' see [scripture id="mt?n=3:8"]ch. 3:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6294, 1, 40, 4, 4, 'f', '[scripture id="de?n=8:3"]Deut. 8:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6295, 1, 40, 4, 5, 'g', '<I>Hieron</I>, the general buildings. The house itself, the shrine, is <I>Naos</I>.');
-INSERT INTO `mse_bible_footnote` VALUES (6296, 1, 40, 4, 6, 'h', '<A HREF="/cgi-bin/br/BDB/ps?n=91:11~a=1">Ps. 91:11-12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6296, 1, 40, 4, 6, 'h', '[scripture id="ps?n=91:11~a=1"]Ps. 91:11-12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6297, 1, 40, 4, 7, 'i', '[scripture id="de?n=6:16"]Deut. 6:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6298, 1, 40, 4, 7, 'k', '''Jehovah:'' see [scripture id="mt?n=1:20"]ch. 1:20[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6299, 1, 40, 4, 9, 'l', '<I>Proskuneo</I>: an act of personal reverence and homage. What in modern language is called ''worship'' is <I>Latreuo</I>, as ''serve,'' [scripture id="mt?n=4:10"]ver. 10[/scripture]. The nearest to this in the use of <I>proskuneo</I> is <A HREF="/cgi-bin/br/BDB/joh?n=4:23~a=1">John 4:23, 24</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6299, 1, 40, 4, 9, 'l', '<I>Proskuneo</I>: an act of personal reverence and homage. What in modern language is called ''worship'' is <I>Latreuo</I>, as ''serve,'' [scripture id="mt?n=4:10"]ver. 10[/scripture]. The nearest to this in the use of <I>proskuneo</I> is [scripture id="joh?n=4:23~a=1"]John 4:23, 24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6300, 1, 40, 4, 10, 'm', '[scripture id="de?n=6:13"]Deut. 6:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6301, 1, 40, 4, 11, 'n', '<I>Diakoneo</I>, as [scripture id="mt?n=27:55"]ch. 27:55[/scripture]; and ''serve,'' [scripture id="mt?n=20:28"]ch. 20:28[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6302, 1, 40, 4, 13, 'o', 'The Lake of Tiberias: see [scripture id="joh?n=6:1"]John 6:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6303, 1, 40, 4, 14, 'a', '<A HREF="/cgi-bin/br/BDB/isa?n=9:1~a=1">Isa. 9:1, 2</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (6304, 1, 40, 4, 20, 'b', 'Lit. ''the trawl-nets.'' The word is supposed to derive from the verb ''to cast:'' so [scripture id="mr?n=1:18"]Mark 1:18[/scripture]; <A HREF="/cgi-bin/br/BDB/lu?n=5:2~a=4">Luke 5:2-6</A>; <A HREF="/cgi-bin/br/BDB/joh?n=21:6~a=5">John 21:6-11</A>; ''seine,'' in <A HREF="/cgi-bin/br/BDB/mt?n=13:47">Matt. 13:47</A>, is a net drawn round from the shore.');
+INSERT INTO `mse_bible_footnote` VALUES (6303, 1, 40, 4, 14, 'a', '[scripture id="isa?n=9:1~a=1"]Isa. 9:1, 2[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (6304, 1, 40, 4, 20, 'b', 'Lit. ''the trawl-nets.'' The word is supposed to derive from the verb ''to cast:'' so [scripture id="mr?n=1:18"]Mark 1:18[/scripture]; [scripture id="lu?n=5:2~a=4"]Luke 5:2-6[/scripture]; [scripture id="joh?n=21:6~a=5"]John 21:6-11[/scripture]; ''seine,'' in [scripture id="mt?n=13:47"]Matt. 13:47[/scripture], is a net drawn round from the shore.');
 INSERT INTO `mse_bible_footnote` VALUES (6305, 1, 40, 4, 21, 'c', 'It is well to notice here an habitual use of the article. It is a known rule that contrast, and hence one part of a thing as contradistinguished from another, has the article. This is the case with ''ship'' and ''mountain'' in the gospels: ''he was'' or ''went'' ''on board ship;'' not a particular ship, but ''on board ship,'' as we say, in contrast with ''on shore.'' So ''the mountain;'' not a particular mountain, but in contrast with the plain, where the plain and the mountain are in contrast. Christ had a particular ship which waited on him, but the article is used, as here, where that is not the case. ''In the ship with'' is tantamount to ''the same ship;'' so here I do not change the form, but translate literally.');
 INSERT INTO `mse_bible_footnote` VALUES (6306, 1, 40, 4, 24, 'd', '''Torments,'' or ''tortures.''');
 INSERT INTO `mse_bible_footnote` VALUES (6307, 1, 40, 4, 25, 'e', 'Meaning, ''ten towns'' -- a district with ten towns in NE. Palestine.');
@@ -6348,9 +6331,9 @@ INSERT INTO `mse_bible_footnote` VALUES (6311, 1, 40, 5, 16, 'c', 'I do not put 
 INSERT INTO `mse_bible_footnote` VALUES (6312, 1, 40, 5, 17, 'd', '''Give the fulness of.'' It is not to fulfil a command in the way of obedience, nor to complete another thing by adding to it; but to fill up some system sketched out, or that which is expressed in the thing fulfilled, as a whole. Thus the doctrine of the Church completed the word of God, made full what was expressed by it. Christ does not here fulfil what is said, nor add to what still remained and was perfect itself; but came to make good the whole scope of law and prophets. The passage has nothing to do with obeying the law. Nor is it here accomplishing a particular prophecy. He comes as the revealed completeness of God''s mind, whatever the law and the prophets had pointed out. Verse 18 forbids the sense of obedience as not to be maintained, though 19 proves that he was to be condemned who, being under law, broke the commandments spoken of. But this is a consequence; Christ speaks of their authority. All was to be fulfilled in some way or another, not set aside.');
 INSERT INTO `mse_bible_footnote` VALUES (6313, 1, 40, 5, 20, 'e', 'Or ''excel.'' It includes the idea of being a better righteousness: see [scripture id="mt?n=5:47"]ver. 47[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6314, 1, 40, 5, 22, 'f', 'i.e. stupid, worthless, a term of contempt.');
-INSERT INTO `mse_bible_footnote` VALUES (6315, 1, 40, 5, 22, 'g', 'As [scripture id="mt?n=23:17"]chs. 23:17[/scripture]; <A HREF="/cgi-bin/br/BDB/mt?n=25:2~a=1">25:2, 3</A>, <A HREF="/cgi-bin/br/BDB/mt?n=25:8">8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6315, 1, 40, 5, 22, 'g', 'As [scripture id="mt?n=23:17"]chs. 23:17[/scripture]; [scripture id="mt?n=25:2~a=1"]25:2, 3[/scripture], [scripture id="mt?n=25:8"]8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6316, 1, 40, 5, 22, 'h', '<I>Eis</I>: has the force of ''even to,'' ''as far as,''as in other cases: as [scripture id="ro?n=5:21"]Rom. 5:21[/scripture], ''to eternal life;'' [scripture id="re?n=13:3"]Rev. 13:3[/scripture], ''to death;'' [scripture id="eph?n=3:19"]Eph. 3:19[/scripture], ''to all the fulness.''');
-INSERT INTO `mse_bible_footnote` VALUES (6317, 1, 40, 5, 22, 'i', 'Gehenna: so <A HREF="/cgi-bin/br/BDB/mt?n=5:29~a=1">vers. 29, 30</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6317, 1, 40, 5, 22, 'i', 'Gehenna: so [scripture id="mt?n=5:29~a=1"]vers. 29, 30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6318, 1, 40, 5, 25, 'a', 'Or ''lest it may be.'' Perhaps ''lest'' is sufficient; it suggests something uncertain which otherwise might happen any time: see [scripture id="mr?n=4:12"]Mark 4:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6319, 1, 40, 5, 26, 'b', 'The quarter of an assarion: see [scripture id="mt?n=10:29"]ch. 10:29[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6320, 1, 40, 5, 29, 'c', 'Lit. the ''catch of a trap:'' see [scripture id="mt?n=13:57"]ch. 13:57[/scripture].');
@@ -6406,12 +6389,12 @@ INSERT INTO `mse_bible_footnote` VALUES (6369, 1, 40, 11, 12, 'd', 'As ''forces 
 INSERT INTO `mse_bible_footnote` VALUES (6370, 1, 40, 11, 14, 'e', 'By saying, ''who is to come,'' it is left in the abstract as in Greek -- the one who had this character in their mind.');
 INSERT INTO `mse_bible_footnote` VALUES (6371, 1, 40, 11, 19, 'a', '''Spending his substance in eating and drinking.''');
 INSERT INTO `mse_bible_footnote` VALUES (6372, 1, 40, 11, 20, 'b', '<I>Ginomai</I>, ''taken place,'' or ''happened.'' I do not say ''had been wrought,'' because the emphasis is on the place of their happening rather than on the fact of their being wrought.');
-INSERT INTO `mse_bible_footnote` VALUES (6373, 1, 40, 11, 23, 'c', '''Hades'' like ''Sheol'' in the Old Testament, see [footnote id="n_ps?n=6:5"]Note at Ps. 6:5[/footnote], is a very vague expression used in general to designate the temporary state of departed spirits, the unseen or invisible world of spirits, upon which, till the coming of Christ, darkness and obscurity rested, as may be seen in the Old Testament. It is applied to Christ, who went into paradise, and to the rich man in <A HREF="/cgi-bin/br/BDB/lu?n=16">Luke 16</A>, who found himself in torment. It is distinct from ''Gehenna,'' the place of final and eternal torment, prepared for the devil and his angels.');
+INSERT INTO `mse_bible_footnote` VALUES (6373, 1, 40, 11, 23, 'c', '''Hades'' like ''Sheol'' in the Old Testament, see [footnote id="n_ps?n=6:5"]Note at Ps. 6:5[/footnote], is a very vague expression used in general to designate the temporary state of departed spirits, the unseen or invisible world of spirits, upon which, till the coming of Christ, darkness and obscurity rested, as may be seen in the Old Testament. It is applied to Christ, who went into paradise, and to the rich man in [scripture id="lu?n=16"]Luke 16[/scripture], who found himself in torment. It is distinct from ''Gehenna,'' the place of final and eternal torment, prepared for the devil and his angels.');
 INSERT INTO `mse_bible_footnote` VALUES (6374, 1, 40, 11, 27, 'd', '<I>Epiginosko</I>, as [scripture id="mt?n=7:16"]ch. 7:16[/scripture]. It is real knowledge, not a mere objective acquaintance with a person.');
 INSERT INTO `mse_bible_footnote` VALUES (6375, 1, 40, 12, 7, 'e', 'See [scripture id="mt?n=9:13"]ch. 9:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6376, 1, 40, 12, 9, 'f', 'The Greek always implies a change of place -- leaving one and going to another, as [scripture id="mt?n=15:29"]chs. 15:29[/scripture]; [scripture id="mt?n=17:20"]17:20[/scripture], ''transported.''');
 INSERT INTO `mse_bible_footnote` VALUES (6377, 1, 40, 12, 15, 'a', '<I>Ginosko</I>, [scripture id="mt?n=12:15"]ver. 15[/scripture], objective knowledge. In [scripture id="mt?n=12:25"]ver. 25[/scripture] it is <I>Oida</I>, conscious knowledge. See [footnote id="n_1co?n=8:1"]Note, 1Cor. 8:1[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (6378, 1, 40, 12, 17, 'b', '<A HREF="/cgi-bin/br/BDB/isa?n=42:1~a=3">Isa. 42:1-4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6378, 1, 40, 12, 17, 'b', '[scripture id="isa?n=42:1~a=3"]Isa. 42:1-4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6379, 1, 40, 12, 20, 'c', 'The word is the same here as ''brings forth,'' [scripture id="mt?n=12:35"]ver. 35[/scripture], and ''brings out,'' [scripture id="mt?n=13:52"]ch. 13:52[/scripture]. It signifies ''putting forth'' as much as ''bringing forth.'' It means that judgment was hid, and ''shut up among his treasures'' (see [scripture id="de?n=32:34"]Deut. 32:34[/scripture]), and in due time it will be produced, without saying he brings it with him, or sends it without coming. It is brought out and displayed in its time.');
 INSERT INTO `mse_bible_footnote` VALUES (6380, 1, 40, 12, 20, 'd', '<I>Eis</I>: it directs the mind to the point to be reached.');
 INSERT INTO `mse_bible_footnote` VALUES (6381, 1, 40, 12, 24, 'e', '<I>En</I>, lit. ''in the power of:'' see [footnote id="n_mt?n=3:11a"]Note c, ch. 3:11[/footnote].');
@@ -6422,7 +6405,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6385, 1, 40, 12, 41, 'd', 'Lit. ''heral
 INSERT INTO `mse_bible_footnote` VALUES (6386, 1, 40, 13, 12, 'a', '<I>Hostis</I>: as [scripture id="mt?n=7:24"]ch. 7:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6387, 1, 40, 13, 12, 'b', 'As to the good thing given. It is abstract; the object is not to day what is given, but the <I>manner</I> of God''s dealing. What is given is caused to be in abundance. We may say, also, ''he shall be in abundance,'' a word used of the thing and of the person possessing it');
 INSERT INTO `mse_bible_footnote` VALUES (6388, 1, 40, 13, 14, 'c', 'i.e. what is wanting is supplied and so ''filled up.'' Since Esaias''s time there had been much of this, but the rejection of Christ completed and filled it up. ''In them'' has therefore the sense of ''as to,'' ''in their case.'' ''By'' would cast more on their act and responsibility: <I>epi</I> seems to have been introduced to avoid this sense of it.');
-INSERT INTO `mse_bible_footnote` VALUES (6389, 1, 40, 13, 14, 'd', '<A HREF="/cgi-bin/br/BDB/isa?n=6:9~a=1">Isa. 6:9-10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6389, 1, 40, 13, 14, 'd', '[scripture id="isa?n=6:9~a=1"]Isa. 6:9-10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6390, 1, 40, 13, 14, 'e', 'Emphatic negative.');
 INSERT INTO `mse_bible_footnote` VALUES (6391, 1, 40, 13, 15, 'f', 'See [footnote id="n_mt?n=5:25"]Note, ch. 5:25[/footnote]; [footnote id="n_mr?n=4:12"]Mark 4:12[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6392, 1, 40, 13, 21, 'g', 'Or ''stumbled,'' as [scripture id="mt?n=13:57"]ver. 57[/scripture].');
@@ -6476,11 +6459,11 @@ INSERT INTO `mse_bible_footnote` VALUES (6439, 1, 40, 16, 25, 'k', 'The word sig
 INSERT INTO `mse_bible_footnote` VALUES (6440, 1, 40, 16, 28, 'l', '''Who are such as:'' see [scripture id="mt?n=2:6"]ch. 2:6[/scripture]. Or ''who indeed:'' see [footnote id="n_lu?n=9:30"]Note, Luke 9:30[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6441, 1, 40, 16, 28, 'm', '''Not at all:'' a strengthened negative.');
 INSERT INTO `mse_bible_footnote` VALUES (6442, 1, 40, 17, 4, 'a', 'Some read ''I will make,'' which I suspect to be the true reading, which copyists thought too bold. But many have it as in the text.');
-INSERT INTO `mse_bible_footnote` VALUES (6443, 1, 40, 17, 5, 'b', 'The cloud covered, without darkening them; it was bright -- the excellent glory: [scripture id="2pe?n=1:17"]2Pet. 1:17[/scripture]. The word is used in the LXX for the cloud which took possession of the tabernacle and filled it with glory, <A HREF="/cgi-bin/br/BDB/ex?n=40:34~a=1">Ex. 40:34-35</A>: see <A HREF="/cgi-bin/br/BDB/mr?n=9:7">Mark 9:7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6443, 1, 40, 17, 5, 'b', 'The cloud covered, without darkening them; it was bright -- the excellent glory: [scripture id="2pe?n=1:17"]2Pet. 1:17[/scripture]. The word is used in the LXX for the cloud which took possession of the tabernacle and filled it with glory, [scripture id="ex?n=40:34~a=1"]Ex. 40:34-35[/scripture]: see [scripture id="mr?n=9:7"]Mark 9:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6444, 1, 40, 17, 12, 'c', '<I>hupo</I>, the causative or instrumental power, the Son of man being the passive recipient.');
 INSERT INTO `mse_bible_footnote` VALUES (6445, 1, 40, 17, 17, 'd', 'Lit. ''until when.''');
 INSERT INTO `mse_bible_footnote` VALUES (6446, 1, 40, 17, 20, 'e', 'See [scripture id="mt?n=12:9"]ch. 12:9[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6447, 1, 40, 17, 24, 'a', 'A Jewish personal tribute to the temple. See <A HREF="/cgi-bin/br/BDB/ex?n=30:11~a=5">Ex. 30:11-16</A>, and cf. <A HREF="/cgi-bin/br/BDB/ne?n=10:32~a=1">Neh. 10:32, 33</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6447, 1, 40, 17, 24, 'a', 'A Jewish personal tribute to the temple. See [scripture id="ex?n=30:11~a=5"]Ex. 30:11-16[/scripture], and cf. [scripture id="ne?n=10:32~a=1"]Neh. 10:32, 33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6448, 1, 40, 17, 25, 'b', 'Or ''Surely.''');
 INSERT INTO `mse_bible_footnote` VALUES (6449, 1, 40, 17, 27, 'c', 'A ''stater'' or ''shekel'' equals two didrachmas.');
 INSERT INTO `mse_bible_footnote` VALUES (6450, 1, 40, 18, 1, 'd', 'The Greek word is the comparative, hence ''greater'' than others: it is thus characteristic, not personal. ''Greatest'' answers to it in English.');
@@ -6506,16 +6489,16 @@ INSERT INTO `mse_bible_footnote` VALUES (6469, 1, 40, 19, 19, 'h', '''the father
 INSERT INTO `mse_bible_footnote` VALUES (6470, 1, 40, 19, 28, 'a', 'See [footnote id="n_tit?n=3:5"]Note, Titus 3:5[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6471, 1, 40, 19, 29, 'b', 'As [scripture id="mt?n=7:24"]ch. 7:24[/scripture], ''he who is such as.''');
 INSERT INTO `mse_bible_footnote` VALUES (6472, 1, 40, 20, 1, 'c', 'Lit. ''a man, a householder.''');
-INSERT INTO `mse_bible_footnote` VALUES (6473, 1, 40, 20, 22, 'a', '<A HREF="/cgi-bin/br/BDB/mr?n=10:38~a=1">Mark 10:38-39</A> adds, ''or be baptised with the baptism that I am baptised with?'' and the same in <A HREF="/cgi-bin/br/BDB/mt?n=20:23">ver. 23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6473, 1, 40, 20, 22, 'a', '[scripture id="mr?n=10:38~a=1"]Mark 10:38-39[/scripture] adds, ''or be baptised with the baptism that I am baptised with?'' and the same in [scripture id="mt?n=20:23"]ver. 23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6474, 1, 40, 20, 23, 'b', 'See [footnote id="n_mr?n=10:40"]Note, Mark 10:40[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6475, 1, 40, 20, 34, 'c', 'Some read ''immediately they saw and followed him.''');
 INSERT INTO `mse_bible_footnote` VALUES (6476, 1, 40, 21, 1, 'd', '<I>Eis</I>, the point they were going towards.');
 INSERT INTO `mse_bible_footnote` VALUES (6477, 1, 40, 21, 1, 'e', '<I>Pros</I>, that ''in the presence of,'' ''at which'' they were. (<I>Pros</I> with accusative is ''at,'' if the place is reached.)');
 INSERT INTO `mse_bible_footnote` VALUES (6478, 1, 40, 21, 4, 'f', '[scripture id="zec?n=9:9"]Zech. 9:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6479, 1, 40, 21, 5, 'g', 'Lit. ''son of one under yoke.''');
-INSERT INTO `mse_bible_footnote` VALUES (6480, 1, 40, 21, 9, 'h', '<A HREF="/cgi-bin/br/BDB/ps?n=118:25~a=1">Ps. 118:25-26</A>. Hosanna signifies ''Save now.''');
+INSERT INTO `mse_bible_footnote` VALUES (6480, 1, 40, 21, 9, 'h', '[scripture id="ps?n=118:25~a=1"]Ps. 118:25-26[/scripture]. Hosanna signifies ''Save now.''');
 INSERT INTO `mse_bible_footnote` VALUES (6481, 1, 40, 21, 9, 'i', 'As [scripture id="mt?n=1:22"]ch. 1:22[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6482, 1, 40, 21, 12, 'a', '<I>Hieron</I>, the general buildings, not the shrine; so <A HREF="/cgi-bin/br/BDB/mt?n=21:14~a=1">vers. 14, 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6482, 1, 40, 21, 12, 'a', '<I>Hieron</I>, the general buildings, not the shrine; so [scripture id="mt?n=21:14~a=1"]vers. 14, 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6483, 1, 40, 21, 13, 'b', '[scripture id="isa?n=56:7"]Isa. 56:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6484, 1, 40, 21, 13, 'c', '[scripture id="jer?n=7:11"]Jer. 7:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6485, 1, 40, 21, 16, 'd', '[scripture id="ps?n=8:2"]Ps. 8:2[/scripture].');
@@ -6523,7 +6506,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6486, 1, 40, 21, 17, 'e', 'As [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (6487, 1, 40, 21, 33, 'a', 'Lit. ''a man, a householder.''');
 INSERT INTO `mse_bible_footnote` VALUES (6488, 1, 40, 21, 41, 'b', '<I>Hostis</I>: as [scripture id="mt?n=19:12"]ch. 19:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6489, 1, 40, 21, 41, 'c', 'There is no good English word for this: it means that a part of the fruit or wine is paid in kind according to agreement, instead of a fixed rent. So with all kinds of produce. But we can hardly say ''pay fruits,'' nor ''give,'' nor indeed, ''render,'' but there is nothing better than this last.');
-INSERT INTO `mse_bible_footnote` VALUES (6490, 1, 40, 21, 42, 'd', '<A HREF="/cgi-bin/br/BDB/ps?n=118:22~a=1">Ps. 118:22-23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6490, 1, 40, 21, 42, 'd', '[scripture id="ps?n=118:22~a=1"]Ps. 118:22-23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6491, 1, 40, 21, 42, 'e', 'Lit. ''Head of corner.''');
 INSERT INTO `mse_bible_footnote` VALUES (6492, 1, 40, 21, 42, 'f', '''This'' refers grammatically to ''corner-stone.''');
 INSERT INTO `mse_bible_footnote` VALUES (6493, 1, 40, 21, 45, 'g', 'Lit. ''speaks.''');
@@ -6537,7 +6520,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6500, 1, 40, 22, 37, 'd', '[scripture i
 INSERT INTO `mse_bible_footnote` VALUES (6501, 1, 40, 22, 39, 'e', '[scripture id="le?n=19:18"]Lev. 19:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6502, 1, 40, 22, 43, 'a', '[scripture id="ps?n=110:1"]Ps. 110:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6503, 1, 40, 23, 5, 'b', '* See ''frontlets,'' [scripture id="de?n=6:8"]Deut. 6:8[/scripture] and [scripture id="de?n=11:18"]11:18[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6504, 1, 40, 23, 5, 'c', '* See <A HREF="/cgi-bin/br/BDB/nu?n=15:37~a=2">Num. 15:37-39</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6504, 1, 40, 23, 5, 'c', '* See [scripture id="nu?n=15:37~a=2"]Num. 15:37-39[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6505, 1, 40, 23, 8, 'd', 'Or ''guide,'' ''guides.''');
 INSERT INTO `mse_bible_footnote` VALUES (6506, 1, 40, 23, 11, 'e', 'Lit. ''greater:'' see [footnote id="n_mt?n=18:1"]Note, ch. 18:1[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6507, 1, 40, 23, 14, 'f', 'Verse 14 of A.V. is not in the best MSS.');
@@ -6595,7 +6578,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6558, 1, 40, 27, 1, 'a', 'Or perhaps ''
 INSERT INTO `mse_bible_footnote` VALUES (6559, 1, 40, 27, 5, 'b', '<I>Naos</I>, as [scripture id="mt?n=26:61"]ch. 26:61[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6560, 1, 40, 27, 6, 'c', 'The treasury of the temple: see [scripture id="mr?n=7:11"]Mark 7:11[/scripture]. For ''since'' see [footnote id="n_mt?n=18:32"]Note, ch. 18:32[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6561, 1, 40, 27, 9, 'd', 'Or ''they took.''');
-INSERT INTO `mse_bible_footnote` VALUES (6562, 1, 40, 27, 10, 'e', '<A HREF="/cgi-bin/br/BDB/zec?n=11:12~a=1">Zech. 11:12-13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6562, 1, 40, 27, 10, 'e', '[scripture id="zec?n=11:12~a=1"]Zech. 11:12-13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6563, 1, 40, 27, 27, 'a', 'Headquarters of military Roman Governor, or hall where he judged.');
 INSERT INTO `mse_bible_footnote` VALUES (6564, 1, 40, 27, 27, 'b', 'A maniple, the third part of a cohort of five hundred men or less, or a cohort in a loose sense.');
 INSERT INTO `mse_bible_footnote` VALUES (6565, 1, 40, 27, 28, 'c', 'Lit. ''put round.''');
@@ -6618,7 +6601,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6581, 1, 34, 1, 8, 'c', 'i.e. of Nineve
 INSERT INTO `mse_bible_footnote` VALUES (6582, 1, 34, 1, 11, 'd', 'Lit. ''a counsellor of Belial.''');
 INSERT INTO `mse_bible_footnote` VALUES (6583, 1, 34, 1, 12, 'e', 'i.e. Judah: see [scripture id="na?n=1:15"]ver. 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6584, 1, 34, 1, 14, 'f', 'i.e. the Assyrian, ''the wicked one,'' [scripture id="na?n=1:15"]ch. 1:15[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6585, 1, 34, 1, 15, 'g', 'In the Hebrew, <A HREF="/cgi-bin/br/BDB/na?n=2">ch. 2</A> begins here.');
+INSERT INTO `mse_bible_footnote` VALUES (6585, 1, 34, 1, 15, 'g', 'In the Hebrew, [scripture id="na?n=2"]ch. 2[/scripture] begins here.');
 INSERT INTO `mse_bible_footnote` VALUES (6586, 1, 34, 1, 15, 'h', 'Lit. ''Belial.''');
 INSERT INTO `mse_bible_footnote` VALUES (6587, 1, 34, 2, 1, 'i', 'Or ''The maul.''');
 INSERT INTO `mse_bible_footnote` VALUES (6588, 1, 34, 2, 2, 'k', 'Or ''hath returned to.''');
@@ -6662,7 +6645,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6625, 1, 16, 3, 8, 'd', 'Lit. ''son of 
 INSERT INTO `mse_bible_footnote` VALUES (6626, 1, 16, 3, 8, 'e', 'Others, ''<I>the Chaldeans</I> had left <I>the walls of</I> Jerusalem as far as.''');
 INSERT INTO `mse_bible_footnote` VALUES (6627, 1, 16, 3, 15, 'f', 'Siloam, [scripture id="joh?n=9:7"]John 9:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6628, 1, 16, 3, 15, 'g', 'The part of Jerusalem thus called.');
-INSERT INTO `mse_bible_footnote` VALUES (6629, 1, 16, 3, 19, 'h', 'Or ''turning:'' so [scripture id="ne?n=3:20"]vers. 20[/scripture], <A HREF="/cgi-bin/br/BDB/ne?n=3:24~a=1">24, 25</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6629, 1, 16, 3, 19, 'h', 'Or ''turning:'' so [scripture id="ne?n=3:20"]vers. 20[/scripture], [scripture id="ne?n=3:24~a=1"]24, 25[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6630, 1, 16, 3, 20, 'i', 'Heb. ''a second.''');
 INSERT INTO `mse_bible_footnote` VALUES (6631, 1, 16, 3, 22, 'k', 'See [scripture id="ge?n=13:10"]Gen. 13:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6632, 1, 16, 3, 26, 'a', 'See [footnote id="n_1ch?n=9:2"]Note, 1Chron. 9:2[/footnote].');
@@ -6679,7 +6662,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6642, 1, 16, 4, 11, 'l', '<I>Tzar</I>, 
 INSERT INTO `mse_bible_footnote` VALUES (6643, 1, 16, 4, 12, 'm', 'Heb. ''ye return.''');
 INSERT INTO `mse_bible_footnote` VALUES (6644, 1, 16, 4, 14, 'a', 'As [scripture id="ezr?n=9:2"]Ezra 9:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6645, 1, 16, 4, 16, 'b', 'Small shields.');
-INSERT INTO `mse_bible_footnote` VALUES (6646, 1, 16, 4, 22, 'c', 'Heb. ''young man;'' and so [scripture id="ne?n=4:23"]ver. 23[/scripture] and <A HREF="/cgi-bin/br/BDB/ne?n=5:15~a=1">ch. 5:15, 16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6646, 1, 16, 4, 22, 'c', 'Heb. ''young man;'' and so [scripture id="ne?n=4:23"]ver. 23[/scripture] and [scripture id="ne?n=5:15~a=1"]ch. 5:15, 16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6647, 1, 16, 4, 23, 'd', 'Others. ''... <I>in going to</I> the water;'' probably a corrupt reading.');
 INSERT INTO `mse_bible_footnote` VALUES (6648, 1, 16, 5, 2, 'e', 'Or ''let us procure.''');
 INSERT INTO `mse_bible_footnote` VALUES (6649, 1, 16, 5, 5, 'f', 'As [scripture id="ge?n=31:29"]Gen. 31:29[/scripture].');
@@ -6693,7 +6676,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6656, 1, 16, 6, 10, 'b', 'Or ''to-night
 INSERT INTO `mse_bible_footnote` VALUES (6657, 1, 16, 6, 19, 'c', 'Lit. ''kindnesses;'' cf. [scripture id="ne?n=9:25"]ch. 9:25[/scripture]. Not <I>chasidim</I>, which would be ''pious deeds,'' as [scripture id="ne?n=13:14"]ch. 13:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6658, 1, 16, 6, 19, 'd', 'Or ''matters.''');
 INSERT INTO `mse_bible_footnote` VALUES (6659, 1, 16, 7, 5, 'a', 'See [scripture id="ezr?n=9:2"]Ezra 9:2[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6660, 1, 16, 7, 5, 'b', 'See <A HREF="/cgi-bin/br/BDB/ezr?n=2">Ezra 2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6660, 1, 16, 7, 5, 'b', 'See [scripture id="ezr?n=2"]Ezra 2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6661, 1, 16, 7, 6, 'c', 'Lit. ''sons,'' and so throughout the chapter.');
 INSERT INTO `mse_bible_footnote` VALUES (6662, 1, 16, 7, 26, 'd', '<I>Enosh</I>; and so to [scripture id="ne?n=7:33"]ver. 33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6663, 1, 16, 7, 52, 'a', 'Or ''the Maonites:'' see [scripture id="ezr?n=2:50"]Ezra 2:50[/scripture].');
@@ -6702,7 +6685,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6665, 1, 16, 7, 63, 'c', 'Habaiah, [scr
 INSERT INTO `mse_bible_footnote` VALUES (6666, 1, 16, 7, 65, 'd', 'See [footnote id="n_ezr?n=2:63"]Note a, Ezra 2:63[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6667, 1, 16, 7, 65, 'e', 'See [scripture id="ex?n=28:30"]Ex. 28:30[/scripture]; [scripture id="le?n=8:8"]Lev. 8:8[/scripture]; [scripture id="nu?n=27:21"]Num. 27:21[/scripture]; [scripture id="de?n=33:8"]Deut. 33:8[/scripture]; [scripture id="1sa?n=28:6"]1Sam. 28:6[/scripture]; [scripture id="ezr?n=2:63"]Ezra 2:63[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6668, 1, 16, 7, 71, 'a', 'Heb. <I>maneh</I>, as [scripture id="ezr?n=2:69"]Ezra 2:69[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6669, 1, 16, 7, 73, 'b', '<A HREF="/cgi-bin/br/BDB/ne?n=8">Ch. 8</A> begins here in A.V. See <A HREF="/cgi-bin/br/BDB/ezr?n=3:1">Ezra 3:1</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6669, 1, 16, 7, 73, 'b', '[scripture id="ne?n=8"]Ch. 8[/scripture] begins here in A.V. See [scripture id="ezr?n=3:1"]Ezra 3:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6670, 1, 16, 8, 18, 'a', 'Or ''one read;'' ''there was reading.''');
 INSERT INTO `mse_bible_footnote` VALUES (6671, 1, 16, 9, 5, 'b', 'See [scripture id="1ch?n=16:36"]1Chron. 16:36[/scripture]; [scripture id="ps?n=41:13"]Ps. 41:13[/scripture]; [scripture id="ps?n=106:48"]106:48[/scripture]; [scripture id="da?n=2:20"]Dan. 2:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6672, 1, 16, 9, 6, 'c', 'Or ''Thou art He,'' an expression which is really a name of God: see [scripture id="de?n=32:39"]Deut. 32:39[/scripture].');
@@ -6715,7 +6698,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6678, 1, 16, 9, 17, 'f', '<I>Chesed</I>
 INSERT INTO `mse_bible_footnote` VALUES (6679, 1, 16, 9, 25, 'a', 'See [footnote id="n_ne?n=6:19"]Note c, ch. 6:19[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6680, 1, 16, 9, 34, 'b', 'Or ''in the midst of them.''');
 INSERT INTO `mse_bible_footnote` VALUES (6681, 1, 16, 9, 36, 'c', 'Or ''bondmen.''');
-INSERT INTO `mse_bible_footnote` VALUES (6682, 1, 16, 10, 31, 'a', 'Lit. ''the debt of every hand,'' i.e. for which any had given his hand. <A HREF="/cgi-bin/br/BDB/ex?n=23:10~a=1">Ex. 23:10, 11</A>; <A HREF="/cgi-bin/br/BDB/de?n=15:1~a=1">Deut. 15:1, 2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6682, 1, 16, 10, 31, 'a', 'Lit. ''the debt of every hand,'' i.e. for which any had given his hand. [scripture id="ex?n=23:10~a=1"]Ex. 23:10, 11[/scripture]; [scripture id="de?n=15:1~a=1"]Deut. 15:1, 2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6683, 1, 16, 10, 32, 'b', 'Lit. Lit. ''commandments.''');
 INSERT INTO `mse_bible_footnote` VALUES (6684, 1, 16, 10, 33, 'c', '<I>Kodesh</I>: see [footnote id="n_ex?n=25:8"]Note, Ex. 25:8[/footnote]. It might read ''consecrated things.''');
 INSERT INTO `mse_bible_footnote` VALUES (6685, 1, 16, 10, 37, 'a', 'Or ''dough.'' as [scripture id="nu?n=15:20"]Num. 15:20[/scripture]; [scripture id="eze?n=44:30"]Ezek. 44:30[/scripture].');
@@ -6726,7 +6709,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6689, 1, 16, 11, 11, 'e', 'Or ''oversee
 INSERT INTO `mse_bible_footnote` VALUES (6690, 1, 16, 11, 14, 'a', 'Or ''Haggedolim.''');
 INSERT INTO `mse_bible_footnote` VALUES (6691, 1, 16, 11, 24, 'b', 'i.e. at Shushan.');
 INSERT INTO `mse_bible_footnote` VALUES (6692, 1, 16, 11, 25, 'c', 'Or ''enclosures,'' ''farms;'' [scripture id="ge?n=25:16"]Gen. 25:16[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6693, 1, 16, 11, 25, 'd', 'Lit. ''daughters,'' also in <A HREF="/cgi-bin/br/BDB/ne?n=11:27~a=1">vers. 27, 28</A>, <A HREF="/cgi-bin/br/BDB/ne?n=11:30~a=1">30, 31</A>, and elsewhere often.');
+INSERT INTO `mse_bible_footnote` VALUES (6693, 1, 16, 11, 25, 'd', 'Lit. ''daughters,'' also in [scripture id="ne?n=11:27~a=1"]vers. 27, 28[/scripture], [scripture id="ne?n=11:30~a=1"]30, 31[/scripture], and elsewhere often.');
 INSERT INTO `mse_bible_footnote` VALUES (6694, 1, 16, 12, 9, 'a', 'Or ''in <I>their</I> charges.''');
 INSERT INTO `mse_bible_footnote` VALUES (6695, 1, 16, 12, 12, 'b', 'Or ''for;'' and so all through this passage.');
 INSERT INTO `mse_bible_footnote` VALUES (6696, 1, 16, 12, 17, 'c', 'Maadiah, [scripture id="ne?n=12:5"]ver. 5[/scripture]');
@@ -6753,18 +6736,18 @@ INSERT INTO `mse_bible_footnote` VALUES (6716, 1, 4, 3, 1, 'a', 'As [scripture i
 INSERT INTO `mse_bible_footnote` VALUES (6717, 1, 4, 3, 3, 'b', 'See [scripture id="ex?n=28:41"]Ex. 28:41[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6718, 1, 4, 3, 9, 'c', 'Or ''on behalf of.''');
 INSERT INTO `mse_bible_footnote` VALUES (6719, 1, 4, 3, 16, 'd', 'Lit. ''mouth:'' as very frequently in Numbers.');
-INSERT INTO `mse_bible_footnote` VALUES (6720, 1, 4, 3, 25, 'a', 'Or ''covering,'' so [scripture id="nu?n=3:26"]ver. 26[/scripture], and <A HREF="/cgi-bin/br/BDB/nu?n=4:25~a=1">ch. 4:25, 26</A>; see also <A HREF="/cgi-bin/br/BDB/ex?n=26:36">Ex. 26:36</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6720, 1, 4, 3, 25, 'a', 'Or ''covering,'' so [scripture id="nu?n=3:26"]ver. 26[/scripture], and [scripture id="nu?n=4:25~a=1"]ch. 4:25, 26[/scripture]; see also [scripture id="ex?n=26:36"]Ex. 26:36[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6721, 1, 4, 3, 31, 'b', '<I>Masach</I>, as in [scripture id="nu?n=3:25"]ver. 25[/scripture], but here the ''veil'' as in [scripture id="ex?n=26:31"]Ex. 26:31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6722, 1, 4, 4, 3, 'a', '<I>Tsaba</I>. Service to which one is subjected: elsewhere ''labour,'' ''suffering,'' ''military service,'' and so ''labour'' in [scripture id="nu?n=4:30"]vers. 30[/scripture], [scripture id="nu?n=4:35"]35[/scripture], [scripture id="nu?n=4:39"]39[/scripture], [scripture id="nu?n=4:43"]43[/scripture]: see [scripture id="nu?n=26:2"]ch. 26:2[/scripture]; [scripture id="isa?n=40:2"]Isa. 40:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6723, 1, 4, 4, 5, 'b', '<I>Masach</I>; see [scripture id="ex?n=35:12"]Ex. 35:12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6724, 1, 4, 4, 9, 'a', 'As [scripture id="ex?n=25:6"]Ex. 25:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6725, 1, 4, 4, 12, 'b', '<I>Kodesh</I>; see [scripture id="ex?n=25:8"]Ex. 25:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6726, 1, 4, 4, 13, 'c', 'See [scripture id="le?n=1:16"]Lev. 1:16[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6727, 1, 4, 4, 15, 'd', 'Or ''the sanctuary:'' so in [scripture id="nu?n=4:20"]ver. 20[/scripture]. Same as ''sanctuary'' [scripture id="nu?n=4:12"]vers. 12[/scripture], <A HREF="/cgi-bin/br/BDB/nu?n=4:15~a=1">15, 16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6727, 1, 4, 4, 15, 'd', 'Or ''the sanctuary:'' so in [scripture id="nu?n=4:20"]ver. 20[/scripture]. Same as ''sanctuary'' [scripture id="nu?n=4:12"]vers. 12[/scripture], [scripture id="nu?n=4:15~a=1"]15, 16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6728, 1, 4, 4, 16, 'e', 'See [scripture id="ex?n=30:7"]Ex. 30:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6729, 1, 4, 4, 19, 'f', 'Or ''unto the holy of holies;'' see [scripture id="ex?n=26:33"]Ex. 26:33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6730, 1, 4, 4, 20, 'g', 'Lit. ''like a swallowing (of spittle):'' [scripture id="job?n=7:19"]Job 7:19[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6731, 1, 4, 4, 23, 'h', 'Or ''work,'' as <A HREF="/cgi-bin/br/BDB/nu?n=3:7~a=1">ch. 3:7, 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6731, 1, 4, 4, 23, 'h', 'Or ''work,'' as [scripture id="nu?n=3:7~a=1"]ch. 3:7, 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6732, 1, 4, 4, 27, 'a', 'As ''number,'' [scripture id="nu?n=4:32"]ver. 32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6733, 1, 4, 4, 30, 'b', 'See [footnote id="n_nu?n=4:3"]Note at ver. 3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6734, 1, 4, 4, 32, 'c', 'As ''instruments'' above.');
@@ -6841,7 +6824,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6804, 1, 4, 16, 40, 'c', 'That is, Elea
 INSERT INTO `mse_bible_footnote` VALUES (6805, 1, 4, 18, 2, 'a', 'See [footnote id="n_ge?n=29:34"]Note, Gen. 29:34[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6806, 1, 4, 18, 9, 'b', '<I>Corban</I>, [scripture id="le?n=1:2"]Lev. 1:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6807, 1, 4, 18, 10, 'a', 'Or ''in the most holy place:'' but see [scripture id="ex?n=29:37"]Ex. 29:37[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (6808, 1, 4, 18, 12, 'b', 'Lit. ''fat:'' so <A HREF="/cgi-bin/br/BDB/nu?n=18:29~a=1">vers. 29, 30</A>, <A HREF="/cgi-bin/br/BDB/nu?n=18:32">32</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6808, 1, 4, 18, 12, 'b', 'Lit. ''fat:'' so [scripture id="nu?n=18:29~a=1"]vers. 29, 30[/scripture], [scripture id="nu?n=18:32"]32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6809, 1, 4, 18, 17, 'c', 'See [scripture id="le?n=1:9"]Lev. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6810, 1, 4, 18, 19, 'd', 'Lit. ''heave:'' so all through this passage to [scripture id="nu?n=18:29"]ver. 29[/scripture], as [scripture id="nu?n=15:19"]ch. 15:19[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6811, 1, 4, 18, 21, 'e', 'Lit. ''in exchange for;'' and so [scripture id="nu?n=18:31"]ver. 31[/scripture].');
@@ -6865,7 +6848,7 @@ INSERT INTO `mse_bible_footnote` VALUES (6828, 1, 4, 21, 11, 'f', 'Or ''heaps of
 INSERT INTO `mse_bible_footnote` VALUES (6829, 1, 4, 21, 14, 'g', 'Elsewhere ''torrents.''');
 INSERT INTO `mse_bible_footnote` VALUES (6830, 1, 4, 21, 15, 'h', 'Or ''Shebeth-Ar.''');
 INSERT INTO `mse_bible_footnote` VALUES (6831, 1, 4, 21, 16, 'i', 'Well.');
-INSERT INTO `mse_bible_footnote` VALUES (6832, 1, 4, 21, 17, 'k', 'Or ''answer,'' ''respond,'' as <A HREF="/cgi-bin/br/BDB/ho?n=2:25">Hos. 2:25</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (6832, 1, 4, 21, 17, 'k', 'Or ''answer,'' ''respond,'' as [scripture id="ho?n=2:25"]Hos. 2:25[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6833, 1, 4, 21, 18, 'l', 'Or ''with the ruler''s wand,'' [scripture id="ge?n=49:10"]Gen. 49:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (6834, 1, 4, 21, 25, 'a', 'Lit. ''daughters:'' see [footnote id="n_2sa?n=20:19"]Note at 2Sam. 20:19[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (6835, 1, 4, 21, 29, 'b', 'Or ''his sons to be fugitives.''');
@@ -7075,7 +7058,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7038, 1, 20, 5, 16, 'l', '[scripture id
 INSERT INTO `mse_bible_footnote` VALUES (7039, 1, 20, 5, 21, 'a', '<I>Ish</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (7040, 1, 20, 5, 21, 'b', 'Or ''path:'' see [footnote id="n_pr?n=2:9a"]Note i, ch. 2:9[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7041, 1, 20, 5, 23, 'c', 'Or ''instruction.''');
-INSERT INTO `mse_bible_footnote` VALUES (7042, 1, 20, 5, 23, 'd', '''Shall go astray'' is the same root word as ''be ravished'' in <A HREF="/cgi-bin/br/BDB/pr?n=5:19~a=1">vers. 19, 20</A>. But the passage is surely made plain by <A HREF="/cgi-bin/br/BDB/pr?n=26:11">chap. 26:11</A>: ''he shall go on in a multiplied course of folly.''');
+INSERT INTO `mse_bible_footnote` VALUES (7042, 1, 20, 5, 23, 'd', '''Shall go astray'' is the same root word as ''be ravished'' in [scripture id="pr?n=5:19~a=1"]vers. 19, 20[/scripture]. But the passage is surely made plain by [scripture id="pr?n=26:11"]chap. 26:11[/scripture]: ''he shall go on in a multiplied course of folly.''');
 INSERT INTO `mse_bible_footnote` VALUES (7043, 1, 20, 6, 1, 'e', 'Or ''neighbour:'' so in [scripture id="pr?n=6:3"]ver. 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7044, 1, 20, 6, 3, 'f', 'Or ''submit thyself,'' as [scripture id="ps?n=68:30"]Ps. 68:30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7045, 1, 20, 6, 3, 'g', 'A rare strong word implying fierceness -- to be moved violently. Translated ''encourage,'' [scripture id="ps?n=138:3"]Ps. 138:3[/scripture]; ''overcome,'' [scripture id="so?n=6:5"]Cant. 6:5[/scripture]; ''insolent,'' [scripture id="isa?n=3:5"]Isa. 3:5[/scripture]. The insistence would be to get him to discharge the debt at once.');
@@ -7153,7 +7136,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7116, 1, 20, 11, 18, 'l', 'Or ''a work 
 INSERT INTO `mse_bible_footnote` VALUES (7117, 1, 20, 11, 19, 'm', 'Or ''true righteousness.''');
 INSERT INTO `mse_bible_footnote` VALUES (7118, 1, 20, 11, 21, 'n', 'Or ''Certainly,'' as in [scripture id="pr?n=16:5"]ch. 16:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7119, 1, 20, 11, 25, 'o', 'Lit. ''The blessing soul.''');
-INSERT INTO `mse_bible_footnote` VALUES (7120, 1, 20, 11, 30, 'a', 'Or ''he that winneth souls is wise.'' All the adjectives in <A HREF="/cgi-bin/br/BDB/pr?n=11:29~a=2">vers. 29-31</A> are in the singular. In general this is denoted by the addition of ''<I>man</I>.''');
+INSERT INTO `mse_bible_footnote` VALUES (7120, 1, 20, 11, 30, 'a', 'Or ''he that winneth souls is wise.'' All the adjectives in [scripture id="pr?n=11:29~a=2"]vers. 29-31[/scripture] are in the singular. In general this is denoted by the addition of ''<I>man</I>.''');
 INSERT INTO `mse_bible_footnote` VALUES (7121, 1, 20, 12, 5, 'b', 'Lit. ''<I>just</I> judgment.''');
 INSERT INTO `mse_bible_footnote` VALUES (7122, 1, 20, 12, 8, 'c', '<I>Sachal</I>: see [footnote id="n_pr?n=1:3"]Note k, ch. 1:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7123, 1, 20, 12, 12, 'd', 'Or ''prey,'' ''gain,'' [scripture id="ec?n=7:26"]Eccles. 7:26[/scripture].');
@@ -7210,7 +7193,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7173, 1, 20, 17, 7, 'k', 'Lit. ''lip.''
 INSERT INTO `mse_bible_footnote` VALUES (7174, 1, 20, 17, 7, 'l', 'Or ''a fool,'' <I>Nabal</I>: see [scripture id="pr?n=1:7"]ch 1:7[/scripture]. As [scripture id="ps?n=14:1"]Ps. 14:1[/scripture], and [scripture id="pr?n=30:22"]ch. 30:22[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7175, 1, 20, 17, 8, 'm', 'Lit. ''stone of favour.''');
 INSERT INTO `mse_bible_footnote` VALUES (7176, 1, 20, 17, 9, 'a', 'Or ''repeateth a matter.''');
-INSERT INTO `mse_bible_footnote` VALUES (7177, 1, 20, 17, 10, 'b', '<I>Kesil</I>: so [scripture id="pr?n=17:12"]vers. 12[/scripture], [scripture id="pr?n=17:16"]16[/scripture], [scripture id="pr?n=17:21"]21[/scripture], [scripture id="pr?n=17:24"]24[/scripture]. (In [scripture id="pr?n=17:28"]ver. 28[/scripture] it is <I>Eveel</I>: as [scripture id="pr?n=1:7"]ch. 1:7[/scripture].) Also [scripture id="pr?n=18:2"]chs. 18:2[/scripture], <A HREF="/cgi-bin/br/BDB/pr?n=18:6~a=1">6, 7</A>; <A HREF="/cgi-bin/br/BDB/pr?n=19:1">19:1</A>, <A HREF="/cgi-bin/br/BDB/pr?n=19:10">10</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7177, 1, 20, 17, 10, 'b', '<I>Kesil</I>: so [scripture id="pr?n=17:12"]vers. 12[/scripture], [scripture id="pr?n=17:16"]16[/scripture], [scripture id="pr?n=17:21"]21[/scripture], [scripture id="pr?n=17:24"]24[/scripture]. (In [scripture id="pr?n=17:28"]ver. 28[/scripture] it is <I>Eveel</I>: as [scripture id="pr?n=1:7"]ch. 1:7[/scripture].) Also [scripture id="pr?n=18:2"]chs. 18:2[/scripture], [scripture id="pr?n=18:6~a=1"]6, 7[/scripture]; [scripture id="pr?n=19:1"]19:1[/scripture], [scripture id="pr?n=19:10"]10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7178, 1, 20, 17, 11, 'c', 'Or ''A rebel seeketh only evil.''');
 INSERT INTO `mse_bible_footnote` VALUES (7179, 1, 20, 17, 15, 'd', 'The words are in the singular and characteristic; and so in [scripture id="pr?n=18:5"]ch. 18:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7180, 1, 20, 17, 16, 'e', 'Strictly, ''void of heart,'' as [scripture id="pr?n=15:21"]ch. 15:21[/scripture]: see [scripture id="pr?n=6:32"]ch. 6:32[/scripture], &c.');
@@ -7297,7 +7280,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7260, 1, 20, 25, 14, 'f', 'Or ''falsely
 INSERT INTO `mse_bible_footnote` VALUES (7261, 1, 20, 25, 23, 'a', 'Or ''So doth a backbiting (lit. ''secret'') tongue, an angry countenance.''');
 INSERT INTO `mse_bible_footnote` VALUES (7262, 1, 20, 25, 26, 'b', 'Lit. ''tottereth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7263, 1, 20, 25, 27, 'c', 'Or ''is glory,'' the word having both meanings. Or ''so <I>for men</I> to seek their own glory is <I>not</I> glory.''');
-INSERT INTO `mse_bible_footnote` VALUES (7264, 1, 20, 26, 1, 'd', '<I>Kesil</I>: so in all this passage, <A HREF="/cgi-bin/br/BDB/pr?n=26:1~a=11">vers. 1 to 12</A>: see <A HREF="/cgi-bin/br/BDB/pr?n=1:7">ch. 1:7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7264, 1, 20, 26, 1, 'd', '<I>Kesil</I>: so in all this passage, [scripture id="pr?n=26:1~a=11"]vers. 1 to 12[/scripture]: see [scripture id="pr?n=1:7"]ch. 1:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7265, 1, 20, 26, 6, 'e', 'Lit. ''violence'' or ''wrong.''');
 INSERT INTO `mse_bible_footnote` VALUES (7266, 1, 20, 26, 8, 'f', 'Or ''As the binding of a stone in a sling.''');
 INSERT INTO `mse_bible_footnote` VALUES (7267, 1, 20, 26, 10, 'g', 'Or ''as an archer that woundeth all, so is he that hireth,'' &c.');
@@ -7344,7 +7327,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7307, 1, 20, 31, 10, 'i', 'From [script
 INSERT INTO `mse_bible_footnote` VALUES (7308, 1, 20, 31, 10, 'k', 'As [scripture id="pr?n=3:15"]ch. 3:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7309, 1, 20, 31, 13, 'l', 'Lit. ''palms'' here and in [scripture id="nu?n=5:18"]Num. 5:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7310, 1, 20, 31, 15, 'm', 'Or ''daily provision:'' see [footnote id="n_ex?n=12:24"]Note d, Ex. 12:24[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (7311, 1, 20, 31, 19, 'a', 'Not the same word as that marked b in <A HREF="/cgi-bin/br/BDB/pr?n=31:19~a=1">vers. 19 and 20</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7311, 1, 20, 31, 19, 'a', 'Not the same word as that marked b in [scripture id="pr?n=31:19~a=1"]vers. 19 and 20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7312, 1, 20, 31, 19, 'b', 'Lit. ''palms.'' see [footnote id="n_pr?n=31:13"]Note l, v. 13[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7313, 1, 20, 31, 22, 'c', 'See [scripture id="pr?n=7:16"]ch. 7:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7314, 1, 20, 31, 22, 'd', 'Or ''linen.''');
@@ -7379,7 +7362,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7342, 1, 19, 5, 8, 'c', 'Lit. ''straigh
 INSERT INTO `mse_bible_footnote` VALUES (7343, 1, 19, 5, 9, 'd', '''Corrupt, depraved desires,'' ''wickedness;'' ''mischievous things,'' [scripture id="ps?n=38:12"]Ps. 38:12[/scripture]: the word is plural.');
 INSERT INTO `mse_bible_footnote` VALUES (7344, 1, 19, 5, 9, 'e', 'Lit. ''make smooth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7345, 1, 19, 5, 12, 'f', 'Here the larger shield, one which screened the whole body: ''buckler,'' [scripture id="ps?n=35:2"]Ps. 35:2[/scripture]; [scripture id="ps?n=91:4"]91:4[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7346, 1, 19, 6, 1, 'g', 'Perhaps ''upon the octave,'' or ''with eight strings:'' see <A HREF="/cgi-bin/br/BDB/ps?n=12">Ps. 12</A>; <A HREF="/cgi-bin/br/BDB/1ch?n=15:21">1Chron. 15:21</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7346, 1, 19, 6, 1, 'g', 'Perhaps ''upon the octave,'' or ''with eight strings:'' see [scripture id="ps?n=12"]Ps. 12[/scripture]; [scripture id="1ch?n=15:21"]1Chron. 15:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7347, 1, 19, 6, 5, 'h', 'i.e. ''Hades;'' it vaguely expresses the place or state of the soul separated from the body.');
 INSERT INTO `mse_bible_footnote` VALUES (7348, 1, 19, 6, 5, 'i', 'Or ''celebrate thy praises.''');
 INSERT INTO `mse_bible_footnote` VALUES (7349, 1, 19, 6, 7, 'k', '<I>Tzar</I>, see [scripture id="ps?n=8:2"]Ps. 8:2[/scripture].');
@@ -7395,9 +7378,9 @@ INSERT INTO `mse_bible_footnote` VALUES (7358, 1, 19, 7, 12, 'g', 'Or, ''if he,'
 INSERT INTO `mse_bible_footnote` VALUES (7359, 1, 19, 7, 12, 'h', 'Or ''adjusted it.''');
 INSERT INTO `mse_bible_footnote` VALUES (7360, 1, 19, 7, 13, 'i', 'Or ''pointed at him.''');
 INSERT INTO `mse_bible_footnote` VALUES (7361, 1, 19, 7, 17, 'k', 'Or ''thank;'' and so [scripture id="ps?n=9:1"]Ps. 9:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7362, 1, 19, 8, 1, 'l', '* See also <A HREF="/cgi-bin/br/BDB/ps?n=81">Ps. 81</A> and <A HREF="/cgi-bin/br/BDB/ps?n=84">84</A>. A musical instrument. The word is feminine.');
+INSERT INTO `mse_bible_footnote` VALUES (7362, 1, 19, 8, 1, 'l', '* See also [scripture id="ps?n=81"]Ps. 81[/scripture] and [scripture id="ps?n=84"]84[/scripture]. A musical instrument. The word is feminine.');
 INSERT INTO `mse_bible_footnote` VALUES (7363, 1, 19, 8, 1, 'm', 'Possibly imperative, it would then read, ''... earth! because of which set thou,'' &c.');
-INSERT INTO `mse_bible_footnote` VALUES (7364, 1, 19, 8, 2, 'n', 'Or ''founded strength;'' same word as in [scripture id="ps?n=68:34"]Ps. 68:34[/scripture]; <A HREF="/cgi-bin/br/BDB/ps?n=96:6~a=1">96:6, 7</A>; <A HREF="/cgi-bin/br/BDB/ps?n=132:8">132:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7364, 1, 19, 8, 2, 'n', 'Or ''founded strength;'' same word as in [scripture id="ps?n=68:34"]Ps. 68:34[/scripture]; [scripture id="ps?n=96:6~a=1"]96:6, 7[/scripture]; [scripture id="ps?n=132:8"]132:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7365, 1, 19, 8, 2, 'o', '<I>Tzar</I>, the ''adversary'' of Christ, or ''oppressor'' of the remnant, from within, as [scripture id="ps?n=3:1"]Ps. 3:1[/scripture]; [scripture id="ps?n=27:2"]27:2[/scripture], [scripture id="ps?n=27:12"]12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7366, 1, 19, 8, 2, 'p', '<I>Oyeb</I>, external ''enemy,'' as [scripture id="ex?n=15:9"]Ex. 15:9[/scripture]; [scripture id="ex?n=23:22"]23:22[/scripture]; [scripture id="nu?n=10:35"]Num. 10:35[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7367, 1, 19, 8, 4, 'q', '<I>Enosh</I>, ''feeble,'' ''mortal man,'' man looked at as a race, in contrast with distinguished individuals: see [scripture id="ge?n=4:26"]Gen. 4:26[/scripture]; [scripture id="ps?n=144:3"]Ps. 144:3[/scripture].');
@@ -7430,7 +7413,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7393, 1, 19, 11, 5, 'a', 'See [footnote
 INSERT INTO `mse_bible_footnote` VALUES (7394, 1, 19, 11, 6, 'b', 'Or ''snares: fire and brimstone and a scorching wind shall be.''');
 INSERT INTO `mse_bible_footnote` VALUES (7395, 1, 19, 11, 7, 'c', 'Lit. ''righteousnesses:'' see [footnote id="n_re?n=19:8"]Note, Rev. 19:8[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7396, 1, 19, 11, 7, 'd', 'Or ''the upright shall see his face.''');
-INSERT INTO `mse_bible_footnote` VALUES (7397, 1, 19, 12, 1, 'e', 'See <A HREF="/cgi-bin/br/BDB/ps?n=6~a=9">Ps. 6</A>, title.');
+INSERT INTO `mse_bible_footnote` VALUES (7397, 1, 19, 12, 1, 'e', 'See [scripture id="ps?n=6~a=9"]Ps. 6[/scripture], title.');
 INSERT INTO `mse_bible_footnote` VALUES (7398, 1, 19, 12, 1, 'f', 'Or ''ceaseth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7399, 1, 19, 12, 2, 'g', 'Or ''vanity.''');
 INSERT INTO `mse_bible_footnote` VALUES (7400, 1, 19, 12, 2, 'h', 'Lit. ''a heart and a heart.''');
@@ -7439,11 +7422,11 @@ INSERT INTO `mse_bible_footnote` VALUES (7402, 1, 19, 12, 5, 'k', 'Lit. ''one pu
 INSERT INTO `mse_bible_footnote` VALUES (7403, 1, 19, 12, 6, 'l', '<I>Imrah</I>: see [scripture id="ps?n=119:11"]Ps. 119:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7404, 1, 19, 12, 7, 'm', 'Or ''him:'' see end of [scripture id="ps?n=12:5"]ver. 5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7405, 1, 19, 13, 5, 'n', '<I>Chesed</I>: see [scripture id="ps?n=4:3"]Ps. 4:3[/scripture] and [scripture id="2ch?n=6:42"]2Chron. 6:42[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7406, 1, 19, 14, 1, 'o', 'With this Psalm compare <A HREF="/cgi-bin/br/BDB/ps?n=53">Ps. 53</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7406, 1, 19, 14, 1, 'o', 'With this Psalm compare [scripture id="ps?n=53"]Ps. 53[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7407, 1, 19, 14, 1, 'p', '<I>Nabal</I>: see [scripture id="ps?n=53:1"]Ps. 53:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7408, 1, 19, 14, 7, 'a', 'See [scripture id="ps?n=126:1"]Ps. 126:1[/scripture] and [footnote id="n_ps?n=126:1"]Note[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7409, 1, 19, 15, 5, 'b', 'Or ''a bribe.''');
-INSERT INTO `mse_bible_footnote` VALUES (7410, 1, 19, 16, 1, 'c', 'Meaning doubtful. According to some, ''a golden jewel.'' See <A HREF="/cgi-bin/br/BDB/ps?n=56:1~a=67">Ps. 56-60</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7410, 1, 19, 16, 1, 'c', 'Meaning doubtful. According to some, ''a golden jewel.'' See [scripture id="ps?n=56:1~a=67"]Ps. 56-60[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7411, 1, 19, 16, 3, 'd', 'The preposition is the same as before ''Jehovah'' in [scripture id="ps?n=16:2"]ver. 2[/scripture]: but ''to'' before ''thee,'' at the end of [scripture id="ps?n=16:2"]ver. 2[/scripture], is different.');
 INSERT INTO `mse_bible_footnote` VALUES (7412, 1, 19, 16, 3, 'e', '<I>Kadoshim</I>: plural of <I>Kadosh</I>, which is used of God in [scripture id="ps?n=22:3"]Ps. 22:3[/scripture]; [scripture id="ps?n=71:22"]71:22[/scripture]; [scripture id="ps?n=78:41"]78:41[/scripture]; [scripture id="ps?n=89:18"]89:18[/scripture]; [scripture id="ps?n=99:3"]99:3[/scripture], [scripture id="ps?n=99:5"]5[/scripture]; [scripture id="hab?n=1:12"]Hab. 1:12[/scripture], &c., and is translated ''holy'' -- ''holy one.'' It is used of ''Aaron,'' [scripture id="ps?n=106:16"]Ps. 106:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7413, 1, 19, 16, 5, 'f', 'Or ''mine assigned portion.''');
@@ -7468,7 +7451,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7431, 1, 19, 17, 14, 'm', '<I>Cheled</I
 INSERT INTO `mse_bible_footnote` VALUES (7432, 1, 19, 17, 14, 'n', 'Or <I>their</I> sons are surfeited.''');
 INSERT INTO `mse_bible_footnote` VALUES (7433, 1, 19, 17, 15, 'o', 'Or ''as.''');
 INSERT INTO `mse_bible_footnote` VALUES (7434, 1, 19, 18, 1, 'p', 'As [scripture id="ps?n=8:2"]8:2[/scripture]; so [scripture id="ps?n=18:3"]vers. 3[/scripture], [scripture id="ps?n=18:17"]17[/scripture], [scripture id="ps?n=18:37"]37[/scripture], [scripture id="ps?n=18:40"]40[/scripture], [scripture id="ps?n=18:48"]48[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7435, 1, 19, 18, 1, 'q', 'Compare <A HREF="/cgi-bin/br/BDB/2sa?n=22">2Sam. 22</A> throughout, and Notes there.');
+INSERT INTO `mse_bible_footnote` VALUES (7435, 1, 19, 18, 1, 'q', 'Compare [scripture id="2sa?n=22"]2Sam. 22[/scripture] throughout, and Notes there.');
 INSERT INTO `mse_bible_footnote` VALUES (7436, 1, 19, 18, 2, 'r', '<I>Sela</I>, ''a high rock,'' see [scripture id="isa?n=16:1"]Isa. 16:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7437, 1, 19, 18, 14, 'a', 'Lit. ''and scattered them.''');
 INSERT INTO `mse_bible_footnote` VALUES (7438, 1, 19, 18, 14, 'b', 'Or ''and many lightnings.''');
@@ -7507,7 +7490,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7470, 1, 19, 23, 6, 'f', 'Or ''Only.'''
 INSERT INTO `mse_bible_footnote` VALUES (7471, 1, 19, 24, 1, 'g', '<I>Tebel</I>, ''the habitable earth:'' see [scripture id="ps?n=9:8"]Ps. 9:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7472, 1, 19, 24, 4, 'a', 'Or ''innocent.''');
 INSERT INTO `mse_bible_footnote` VALUES (7473, 1, 19, 24, 6, 'b', 'Or ''thy face <I>in</I> Jacob.''');
-INSERT INTO `mse_bible_footnote` VALUES (7474, 1, 19, 25, 1, 'c', 'An acrostic Psalm; the verses begin with the Hebrew letters in alphabetical succession, as <A HREF="/cgi-bin/br/BDB/ps?n=34">Ps. 34</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7474, 1, 19, 25, 1, 'c', 'An acrostic Psalm; the verses begin with the Hebrew letters in alphabetical succession, as [scripture id="ps?n=34"]Ps. 34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7475, 1, 19, 25, 5, 'd', 'Or ''every day.''');
 INSERT INTO `mse_bible_footnote` VALUES (7476, 1, 19, 25, 7, 'e', 'See [footnote id="n_job?n=7:21"]Note to Job 7:21[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7477, 1, 19, 25, 12, 'f', 'Or ''that he <I>Jehovah</I> chooseth.''');
@@ -7554,7 +7537,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7517, 1, 19, 33, 5, 'd', 'Or ''justice;
 INSERT INTO `mse_bible_footnote` VALUES (7518, 1, 19, 33, 8, 'e', 'Or ''revere.''');
 INSERT INTO `mse_bible_footnote` VALUES (7519, 1, 19, 33, 14, 'f', 'Strictly, ''settled place:'' see [scripture id="ex?n=15:17"]Ex. 15:17[/scripture]; [scripture id="1ki?n=8:13"]1Kings 8:13[/scripture]; &c.');
 INSERT INTO `mse_bible_footnote` VALUES (7520, 1, 19, 34, 1, 'b', 'Meaning, ''Father-king;'' most probably the title of the Philistine kings.');
-INSERT INTO `mse_bible_footnote` VALUES (7521, 1, 19, 34, 1, 'a', 'An acrostic Psalm, arranged as <A HREF="/cgi-bin/br/BDB/ps?n=25">Ps. 25</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7521, 1, 19, 34, 1, 'a', 'An acrostic Psalm, arranged as [scripture id="ps?n=25"]Ps. 25[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7522, 1, 19, 34, 5, 'c', 'Or ''shall not be.''');
 INSERT INTO `mse_bible_footnote` VALUES (7523, 1, 19, 34, 8, 'd', '<I>Geber</I>: so [scripture id="ps?n=40:4"]Ps. 40:4[/scripture]: see [scripture id="job?n=3:3"]Job 3:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7524, 1, 19, 34, 21, 'e', 'Or ''destroyeth utterly:'' it is the intensive form of the verb: see [scripture id="1sa?n=17:51"]1Sam. 17:51[/scripture].');
@@ -7574,7 +7557,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7537, 1, 19, 36, 1, 'a', 'As an oracle:
 INSERT INTO `mse_bible_footnote` VALUES (7538, 1, 19, 36, 3, 'b', 'Or ''vanity,'' ''mischief.''');
 INSERT INTO `mse_bible_footnote` VALUES (7539, 1, 19, 36, 6, 'c', 'Lit. ''mountains of ~God:'' see [scripture id="ps?n=68:15"]Ps. 68:15[/scripture]; [scripture id="ps?n=80:10"]80:10[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (7540, 1, 19, 36, 8, 'd', 'Plural of <I>Eden</I>, [scripture id="ge?n=2:8"]Gen. 2:8[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7541, 1, 19, 37, 1, 'e', 'An acrostic Psalm with double verses: see <A HREF="/cgi-bin/br/BDB/ps?n=25">Ps. 25</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7541, 1, 19, 37, 1, 'e', 'An acrostic Psalm with double verses: see [scripture id="ps?n=25"]Ps. 25[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7542, 1, 19, 37, 3, 'f', 'Or ''give thyself to.''');
 INSERT INTO `mse_bible_footnote` VALUES (7543, 1, 19, 37, 5, 'g', 'Lit. ''Roll thy way upon:'' see [scripture id="ps?n=22:8"]Ps. 22:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7544, 1, 19, 37, 6, 'h', 'Or ''thy right.''');
@@ -7597,8 +7580,8 @@ INSERT INTO `mse_bible_footnote` VALUES (7560, 1, 19, 38, 5, 'f', 'Or ''they run
 INSERT INTO `mse_bible_footnote` VALUES (7561, 1, 19, 38, 7, 'g', 'Or ''a loathsome <I>plague</I>.''');
 INSERT INTO `mse_bible_footnote` VALUES (7562, 1, 19, 38, 11, 'h', 'Or ''plague,'' as [scripture id="ge?n=12:17"]Gen. 12:17[/scripture]; and so in [scripture id="ps?n=39:10"]Ps. 39:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7563, 1, 19, 38, 12, 'i', 'Or ''talk.''');
-INSERT INTO `mse_bible_footnote` VALUES (7564, 1, 19, 38, 20, 'k', 'Heb. plural of <I>Satan</I>, as [scripture id="ps?n=71:13"]Ps. 71:13[/scripture]; [scripture id="ps?n=109:4"]109:4[/scripture], [scripture id="ps?n=109:20"]20[/scripture], [scripture id="ps?n=109:29"]29[/scripture]. Sing. in [scripture id="1ch?n=21:1"]1Chron. 21:1[/scripture]; <A HREF="/cgi-bin/br/BDB/job?n=1">Job 1</A> and <A HREF="/cgi-bin/br/BDB/job?n=2">2</A>; <A HREF="/cgi-bin/br/BDB/ps?n=109:6">Ps. 109:6</A>; <A HREF="/cgi-bin/br/BDB/zec?n=3:1~a=1">Zech. 3:1, 2</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (7565, 1, 19, 39, 1, 'l', 'See <A HREF="/cgi-bin/br/BDB/ps?n=62">Ps. 62</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7564, 1, 19, 38, 20, 'k', 'Heb. plural of <I>Satan</I>, as [scripture id="ps?n=71:13"]Ps. 71:13[/scripture]; [scripture id="ps?n=109:4"]109:4[/scripture], [scripture id="ps?n=109:20"]20[/scripture], [scripture id="ps?n=109:29"]29[/scripture]. Sing. in [scripture id="1ch?n=21:1"]1Chron. 21:1[/scripture]; [scripture id="job?n=1"]Job 1[/scripture] and [scripture id="job?n=2"]2[/scripture]; [scripture id="ps?n=109:6"]Ps. 109:6[/scripture]; [scripture id="zec?n=3:1~a=1"]Zech. 3:1, 2[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (7565, 1, 19, 39, 1, 'l', 'See [scripture id="ps?n=62"]Ps. 62[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7566, 1, 19, 39, 5, 'a', 'Or ''who standeth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7567, 1, 19, 39, 6, 'b', 'Lit. ''in an image (shadow).''');
 INSERT INTO `mse_bible_footnote` VALUES (7568, 1, 19, 39, 6, 'c', 'Or ''for vanity,'' as [scripture id="ps?n=39:5"]vers. 5[/scripture], [scripture id="ps?n=39:11"]11[/scripture]: [scripture id="job?n=7:16"]Job 7:16[/scripture].');
@@ -7611,7 +7594,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7574, 1, 19, 40, 7, 'i', 'Or ''roll.'''
 INSERT INTO `mse_bible_footnote` VALUES (7575, 1, 19, 40, 8, 'k', 'Lit. ''bowels.''');
 INSERT INTO `mse_bible_footnote` VALUES (7576, 1, 19, 40, 12, 'l', 'Or ''my punishments:'' [scripture id="ge?n=19:15"]Gen. 19:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7577, 1, 19, 40, 12, 'm', 'Or ''look at them.''');
-INSERT INTO `mse_bible_footnote` VALUES (7578, 1, 19, 40, 13, 'a', 'With <A HREF="/cgi-bin/br/BDB/ps?n=40:13~a=4">vers. 13-17</A> compare <A HREF="/cgi-bin/br/BDB/ps?n=70">Ps. 70</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7578, 1, 19, 40, 13, 'a', 'With [scripture id="ps?n=40:13~a=4"]vers. 13-17[/scripture] compare [scripture id="ps?n=70"]Ps. 70[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7579, 1, 19, 40, 15, 'b', 'Or ''for a reward of.''');
 INSERT INTO `mse_bible_footnote` VALUES (7580, 1, 19, 41, 1, 'c', 'Or ''attendeth to,'' ''giveth heed to,'' ''owneth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7581, 1, 19, 41, 2, 'd', 'Or ''on the earth.''');
@@ -7620,8 +7603,8 @@ INSERT INTO `mse_bible_footnote` VALUES (7583, 1, 19, 41, 5, 'f', 'Or ''speak ev
 INSERT INTO `mse_bible_footnote` VALUES (7584, 1, 19, 41, 7, 'g', 'Or ''they impute evil to me.''');
 INSERT INTO `mse_bible_footnote` VALUES (7585, 1, 19, 41, 8, 'h', 'Or ''is poured out upon.''');
 INSERT INTO `mse_bible_footnote` VALUES (7586, 1, 19, 41, 9, 'i', 'Lit. ''the man (<I>ish</I>) of my peace.'' See [scripture id="ps?n=55:13"]Ps. 55:13[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7587, 1, 19, 42, 1, 'a', 'Or ''for;'' and so <A HREF="/cgi-bin/br/BDB/ps?n=44">Ps. 44</A>, &c.');
-INSERT INTO `mse_bible_footnote` VALUES (7588, 1, 19, 42, 5, 'b', 'Or ''thank:'' so [scripture id="ps?n=42:11"]ver. 11[/scripture]; <A HREF="/cgi-bin/br/BDB/ps?n=43:4~a=1">Ps. 43:4, 5</A>; <A HREF="/cgi-bin/br/BDB/ps?n=44:8">44:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7587, 1, 19, 42, 1, 'a', 'Or ''for;'' and so [scripture id="ps?n=44"]Ps. 44[/scripture], &c.');
+INSERT INTO `mse_bible_footnote` VALUES (7588, 1, 19, 42, 5, 'b', 'Or ''thank:'' so [scripture id="ps?n=42:11"]ver. 11[/scripture]; [scripture id="ps?n=43:4~a=1"]Ps. 43:4, 5[/scripture]; [scripture id="ps?n=44:8"]44:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7589, 1, 19, 42, 5, 'c', 'Lit. ''salvations;'' and so [scripture id="ps?n=42:11"]ver. 11[/scripture]; [scripture id="ps?n=43:5"]Ps. 43:5[/scripture]; [scripture id="ps?n=53:6"]53:6[/scripture]; [scripture id="ps?n=116:13"]116:13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7590, 1, 19, 42, 6, 'd', 'Or ''because I.''');
 INSERT INTO `mse_bible_footnote` VALUES (7591, 1, 19, 42, 6, 'e', 'Or ''from the little hill.''');
@@ -7674,7 +7657,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7637, 1, 19, 50, 6, 'c', 'Or ''is judge
 INSERT INTO `mse_bible_footnote` VALUES (7638, 1, 19, 50, 11, 'd', 'Or ''before me.''');
 INSERT INTO `mse_bible_footnote` VALUES (7639, 1, 19, 50, 12, 'e', '<I>Tebel</I>, ''habitable earth:'' see [scripture id="ps?n=9:8"]Ps. 9:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7640, 1, 19, 50, 13, 'f', 'Strictly ''the strong ones,'' as [scripture id="ps?n=22:12"]Ps. 22:12[/scripture]; [scripture id="ps?n=68:30"]68:30[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7641, 1, 19, 50, 14, 'g', 'Lit. ''Sacrifice,'' as [scripture id="de?n=12:15"]Deut. 12:15[/scripture]; [scripture id="ps?n=4:5"]Ps. 4:5[/scripture]: see [scripture id="le?n=7:11"]Lev. 7:11[/scripture]; <A HREF="/cgi-bin/br/BDB/le?n=17:5~a=2">17:5-7</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7641, 1, 19, 50, 14, 'g', 'Lit. ''Sacrifice,'' as [scripture id="de?n=12:15"]Deut. 12:15[/scripture]; [scripture id="ps?n=4:5"]Ps. 4:5[/scripture]: see [scripture id="le?n=7:11"]Lev. 7:11[/scripture]; [scripture id="le?n=17:5~a=2"]17:5-7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7642, 1, 19, 50, 17, 'h', 'Or ''instruction.''');
 INSERT INTO `mse_bible_footnote` VALUES (7643, 1, 19, 50, 20, 'i', 'Or ''slanderest.''');
 INSERT INTO `mse_bible_footnote` VALUES (7644, 1, 19, 50, 22, 'k', 'Or ''understand.''');
@@ -7711,7 +7694,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7674, 1, 19, 55, 19, 'g', 'Or ''because
 INSERT INTO `mse_bible_footnote` VALUES (7675, 1, 19, 55, 21, 'h', 'Or ''<I>The words of</I> his mouth were smooth as butter.''');
 INSERT INTO `mse_bible_footnote` VALUES (7676, 1, 19, 55, 22, 'i', 'Or ''the portion assigned to thee.''');
 INSERT INTO `mse_bible_footnote` VALUES (7677, 1, 19, 56, 1, 'k', '''The mute dove in the distance,'' or ''the dove of the distant terebinths.''');
-INSERT INTO `mse_bible_footnote` VALUES (7678, 1, 19, 56, 1, 'l', 'See <A HREF="/cgi-bin/br/BDB/ps?n=16">Ps. 16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7678, 1, 19, 56, 1, 'l', 'See [scripture id="ps?n=16"]Ps. 16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7679, 1, 19, 56, 1, 'm', '<I>Enosh</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (7680, 1, 19, 56, 1, 'n', 'Strictly, ''pant after me,'' like a wild beast thirsting for blood; and so [scripture id="ps?n=57:3"]Ps. 57:3[/scripture]; [scripture id="am?n=8:4"]Amos 8:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7681, 1, 19, 56, 2, 'o', 'Or ''O Most High!'' as [scripture id="ps?n=92:8"]Ps. 92:8[/scripture].');
@@ -7721,7 +7704,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7684, 1, 19, 56, 8, 'b', 'Or ''recounte
 INSERT INTO `mse_bible_footnote` VALUES (7685, 1, 19, 56, 8, 'c', 'There is a paronomasia in this verse with <I>Nod</I>, ''wandering,'' and <I>Nod</I>, ''bottle'' (i.e. a leathern sack).');
 INSERT INTO `mse_bible_footnote` VALUES (7686, 1, 19, 56, 9, 'd', 'As [scripture id="ps?n=8:2"]Ps. 8:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7687, 1, 19, 56, 12, 'e', 'Or ''thank-offerings,'' as [scripture id="le?n=7:12"]Lev. 7:12[/scripture]: see [scripture id="2ch?n=29:31"]2Chron. 29:31[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7688, 1, 19, 57, 1, 'f', 'See <A HREF="/cgi-bin/br/BDB/ps?n=16">Ps. 16</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7688, 1, 19, 57, 1, 'f', 'See [scripture id="ps?n=16"]Ps. 16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7689, 1, 19, 57, 2, 'g', 'Or ''perfecteth:'' see [scripture id="ps?n=138:8"]Ps. 138:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7690, 1, 19, 57, 4, 'h', '<I>Adam</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (7691, 1, 19, 57, 5, 'i', 'Or ''land,'' <I>erets</I>, as also [scripture id="ps?n=58:11"]ver. 11[/scripture], [scripture id="ps?n=58:2"]Ps. 58:2[/scripture]; [scripture id="1sa?n=2:8"]1Sam. 2:8[/scripture]; &c.');
@@ -7729,7 +7712,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7692, 1, 19, 57, 6, 'k', 'Or ''they bow
 INSERT INTO `mse_bible_footnote` VALUES (7693, 1, 19, 57, 8, 'l', 'See [scripture id="ps?n=16:9"]Ps. 16:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7694, 1, 19, 57, 8, 'm', 'Or ''awake with;'' and so [scripture id="ps?n=108:2"]Ps. 108:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7695, 1, 19, 57, 9, 'n', '<I>Leummim</I>: see [scripture id="ps?n=2:1"]Ps. 2:1[/scripture]; and so [scripture id="ps?n=67:4"]Ps. 67:4[/scripture]; [scripture id="ps?n=108:3"]108:3[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7696, 1, 19, 57, 11, 'o', 'See <A HREF="/cgi-bin/br/BDB/ps?n=108:1~a=4">Ps. 108:1</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7696, 1, 19, 57, 11, 'o', 'See [scripture id="ps?n=108:1~a=4"]Ps. 108:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7697, 1, 19, 58, 1, 'p', 'Some would read ''Do ye mighty ones indeed speak righteousness?''');
 INSERT INTO `mse_bible_footnote` VALUES (7698, 1, 19, 58, 2, 'q', 'Or ''ponder.''');
 INSERT INTO `mse_bible_footnote` VALUES (7699, 1, 19, 58, 7, 'a', 'Lit. ''<I>the point</I> cut off.''');
@@ -7739,19 +7722,19 @@ INSERT INTO `mse_bible_footnote` VALUES (7702, 1, 19, 59, 12, 'd', 'Or ''<I>Beca
 INSERT INTO `mse_bible_footnote` VALUES (7703, 1, 19, 59, 15, 'e', 'Or ''murmur.''');
 INSERT INTO `mse_bible_footnote` VALUES (7704, 1, 19, 59, 16, 'a', 'Strictly, ''place of escape,'' as [scripture id="job?n=11:20"]Job 11:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7705, 1, 19, 59, 17, 'b', 'Or ''my gracious (<I>chesed</I>) God.''');
-INSERT INTO `mse_bible_footnote` VALUES (7706, 1, 19, 60, 1, 'c', 'Meaning, ''lily.'' For <I>michtam</I> see <A HREF="/cgi-bin/br/BDB/ps?n=16">Ps. 16</A> and <A HREF="/cgi-bin/br/BDB/ps?n=56:1~a=67">Ps. 56 to 60</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7706, 1, 19, 60, 1, 'c', 'Meaning, ''lily.'' For <I>michtam</I> see [scripture id="ps?n=16"]Ps. 16[/scripture] and [scripture id="ps?n=56:1~a=67"]Ps. 56 to 60[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7707, 1, 19, 60, 2, 'd', 'As [scripture id="ps?n=58:2"]Ps. 58:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7708, 1, 19, 60, 5, 'e', 'Or ''us.''');
 INSERT INTO `mse_bible_footnote` VALUES (7709, 1, 19, 60, 7, 'f', 'Or ''defence.''');
-INSERT INTO `mse_bible_footnote` VALUES (7710, 1, 19, 60, 12, 'g', 'As [scripture id="ps?n=8:2"]Ps. 8:2[/scripture]; or ''oppressors:'' see <A HREF="/cgi-bin/br/BDB/ps?n=108:6~a=7">Ps. 108:6-13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7710, 1, 19, 60, 12, 'g', 'As [scripture id="ps?n=8:2"]Ps. 8:2[/scripture]; or ''oppressors:'' see [scripture id="ps?n=108:6~a=7"]Ps. 108:6-13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7711, 1, 19, 61, 2, 'h', 'Or ''which is higher than I.''');
 INSERT INTO `mse_bible_footnote` VALUES (7712, 1, 19, 61, 4, 'i', 'Or ''Let me sojourn -- let me take refuge:'' cohortatives.');
 INSERT INTO `mse_bible_footnote` VALUES (7713, 1, 19, 61, 6, 'k', 'Lit. ''as generation and generation.''');
 INSERT INTO `mse_bible_footnote` VALUES (7714, 1, 19, 61, 7, 'l', 'Or ''dwell;'' as ''sat,'' [scripture id="2sa?n=7:18"]2Sam. 7:18[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7715, 1, 19, 62, 1, 'a', '* As <A HREF="/cgi-bin/br/BDB/ps?n=39">Ps. 39</A> and <A HREF="/cgi-bin/br/BDB/ps?n=77">77</A>, meaning ''praising'' or ''celebrating.''');
+INSERT INTO `mse_bible_footnote` VALUES (7715, 1, 19, 62, 1, 'a', '* As [scripture id="ps?n=39"]Ps. 39[/scripture] and [scripture id="ps?n=77"]77[/scripture], meaning ''praising'' or ''celebrating.''');
 INSERT INTO `mse_bible_footnote` VALUES (7716, 1, 19, 62, 1, 'b', 'Or ''wait in silence,'' as [scripture id="ps?n=65:1"]Ps. 65:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7717, 1, 19, 62, 9, 'c', 'See [footnote id="n_ps?n=49:2"]Note, Ps. 49:2[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (7718, 1, 19, 62, 9, 'd', 'As [scripture id="job?n=7:16"]Job 7:16[/scripture]; <A HREF="/cgi-bin/br/BDB/ps?n=39:5~a=1">Ps. 39:5, 6</A>, <A HREF="/cgi-bin/br/BDB/ps?n=39:11">11</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7718, 1, 19, 62, 9, 'd', 'As [scripture id="job?n=7:16"]Job 7:16[/scripture]; [scripture id="ps?n=39:5~a=1"]Ps. 39:5, 6[/scripture], [scripture id="ps?n=39:11"]11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7719, 1, 19, 64, 4, 'a', 'Or ''from their hiding-places.''');
 INSERT INTO `mse_bible_footnote` VALUES (7720, 1, 19, 65, 3, 'b', 'Lit. ''make atonement,'' as [scripture id="le?n=16:30"]Lev. 16:30[/scripture]; [scripture id="de?n=21:8"]Deut. 21:8[/scripture]; [scripture id="ps?n=78:38"]Ps. 78:38[/scripture]; [scripture id="ps?n=79:9"]79:9[/scripture]: see [footnote id="n_le?n=5:6a"]Note g, Lev. 5:6[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7721, 1, 19, 65, 4, 'c', 'Or ''of the temple of thy holiness.''');
@@ -7785,14 +7768,14 @@ INSERT INTO `mse_bible_footnote` VALUES (7748, 1, 19, 68, 15, 'o', 'Or ''A mount
 INSERT INTO `mse_bible_footnote` VALUES (7749, 1, 19, 68, 18, 'p', 'i.e. as man (<I>Adam</I>), in connection with mankind.');
 INSERT INTO `mse_bible_footnote` VALUES (7750, 1, 19, 68, 18, 'q', 'See [scripture id="ex?n=25:8"]Ex. 25:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7751, 1, 19, 68, 20, 'r', 'Or ''~God is for us a ~God of salvations.''');
-INSERT INTO `mse_bible_footnote` VALUES (7752, 1, 19, 68, 33, 'a', 'See <A HREF="/cgi-bin/br/BDB/de?n=33:26~a=1">Deut. 33:26, 27</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (7753, 1, 19, 69, 1, 'b', 'As <A HREF="/cgi-bin/br/BDB/ps?n=45">Ps. 45</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7752, 1, 19, 68, 33, 'a', 'See [scripture id="de?n=33:26~a=1"]Deut. 33:26, 27[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (7753, 1, 19, 69, 1, 'b', 'As [scripture id="ps?n=45"]Ps. 45[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7754, 1, 19, 69, 12, 'a', 'Lit. ''drinkers of strong drink.''');
 INSERT INTO `mse_bible_footnote` VALUES (7755, 1, 19, 69, 18, 'b', 'See [footnote id="n_le?n=25:25"]Note, Lev. 25:25[/footnote]; it is rendered also ''avenger,'' [scripture id="nu?n=35:12"]Num. 35:12[/scripture]: see [scripture id="ru?n=3:13"]Ruth 3:13[/scripture]; [scripture id="ru?n=4:8"]4:8[/scripture], [scripture id="ru?n=4:14"]14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7756, 1, 19, 69, 19, 'c', 'Or ''oppressors:'' <I>Tzar</I>, [scripture id="ps?n=8:2"]Ps. 8:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7757, 1, 19, 69, 21, 'd', 'A bitter (poisonous?) plant. see [scripture id="jer?n=8:14"]Jer. 8:14[/scripture]; [scripture id="jer?n=23:15"]23:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7758, 1, 19, 69, 26, 'e', 'Or ''talk of.''');
-INSERT INTO `mse_bible_footnote` VALUES (7759, 1, 19, 70, 1, 'a', 'See <A HREF="/cgi-bin/br/BDB/ps?n=40:13~a=4">Ps. 40:13-17</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7759, 1, 19, 70, 1, 'a', 'See [scripture id="ps?n=40:13~a=4"]Ps. 40:13-17[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7760, 1, 19, 70, 3, 'b', 'Or ''for a reward of.''');
 INSERT INTO `mse_bible_footnote` VALUES (7761, 1, 19, 71, 3, 'c', '<I>Sela</I>, as [scripture id="ps?n=18:2"]Ps. 18:2[/scripture] (first time); [scripture id="ps?n=31:3"]31:3[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (7762, 1, 19, 71, 6, 'd', 'Or ''art my benefactor.''');
@@ -7831,7 +7814,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7794, 1, 19, 74, 7, 'f', '<I>Mishkan</I
 INSERT INTO `mse_bible_footnote` VALUES (7795, 1, 19, 74, 8, 'g', 'Or ''oppress.''');
 INSERT INTO `mse_bible_footnote` VALUES (7796, 1, 19, 74, 14, 'h', 'As [scripture id="job?n=3:8"]Job 3:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7797, 1, 19, 74, 14, 'i', 'i.e. the wild beasts.');
-INSERT INTO `mse_bible_footnote` VALUES (7798, 1, 19, 74, 16, 'k', 'Lit. ''light-bearer,'' i.e. what gives light, as <A HREF="/cgi-bin/br/BDB/ge?n=1:14~a=2">Gen. 1:14-16</A>; <A HREF="/cgi-bin/br/BDB/ex?n=25:6">Ex. 25:6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7798, 1, 19, 74, 16, 'k', 'Lit. ''light-bearer,'' i.e. what gives light, as [scripture id="ge?n=1:14~a=2"]Gen. 1:14-16[/scripture]; [scripture id="ex?n=25:6"]Ex. 25:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7799, 1, 19, 74, 18, 'l', 'Or ''vile,'' ''impious:'' see [scripture id="ps?n=74:22"]ver. 22[/scripture] and [scripture id="ps?n=53:1"]Ps. 53:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7800, 1, 19, 74, 19, 'm', 'Or ''Give not up thy turtle-dove unto the greedy troop'' (or ''herd'').');
 INSERT INTO `mse_bible_footnote` VALUES (7801, 1, 19, 74, 19, 'n', 'Others, ''life,'' as ''flock,'' [scripture id="ps?n=68:10"]Ps. 68:10[/scripture].');
@@ -7841,7 +7824,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7804, 1, 19, 75, 6, 'c', 'Lit. ''the wi
 INSERT INTO `mse_bible_footnote` VALUES (7805, 1, 19, 75, 8, 'd', 'Or ''it is red.''');
 INSERT INTO `mse_bible_footnote` VALUES (7806, 1, 19, 76, 2, 'e', 'Lit. ''booth.''');
 INSERT INTO `mse_bible_footnote` VALUES (7807, 1, 19, 76, 10, 'f', 'Or ''restrain.''');
-INSERT INTO `mse_bible_footnote` VALUES (7808, 1, 19, 77, 1, 'a', 'As <A HREF="/cgi-bin/br/BDB/ps?n=39">Ps. 39</A> and <A HREF="/cgi-bin/br/BDB/ps?n=62">62</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7808, 1, 19, 77, 1, 'a', 'As [scripture id="ps?n=39"]Ps. 39[/scripture] and [scripture id="ps?n=62"]62[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7809, 1, 19, 77, 2, 'b', 'Or ''was poured out,'' or, ''my sore ran.''');
 INSERT INTO `mse_bible_footnote` VALUES (7810, 1, 19, 77, 8, 'c', '<I>Omer</I> see [scripture id="ps?n=119:11"]Ps. 119:11[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7811, 1, 19, 77, 11, 'd', 'Strictly, ''doings,'' ''exploits,'' [scripture id="pr?n=20:11"]Prov. 20:11[/scripture]; [scripture id="mic?n=2:7"]Mic. 2:7[/scripture]; ''doings'' in [scripture id="ps?n=77:12"]ver. 12[/scripture] and [scripture id="ps?n=78:11"]Ps. 78:11[/scripture] is rather ''actions:'' ''work'' in [scripture id="ps?n=77:12"]ver. 12[/scripture] is a ''thing done,'' as [scripture id="isa?n=45:9"]Isa. 45:9[/scripture].');
@@ -7874,7 +7857,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7837, 1, 19, 80, 13, 'f', 'Or ''roaming
 INSERT INTO `mse_bible_footnote` VALUES (7838, 1, 19, 80, 15, 'g', 'Others, ''And protect that which.''');
 INSERT INTO `mse_bible_footnote` VALUES (7839, 1, 19, 80, 15, 'h', 'Lit. ''the son.''');
 INSERT INTO `mse_bible_footnote` VALUES (7840, 1, 19, 80, 17, 'i', 'Or ''Adam''s son,'' as [scripture id="ps?n=8:4"]Ps. 8:4[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7841, 1, 19, 81, 1, 'k', 'See <A HREF="/cgi-bin/br/BDB/ps?n=8">Ps. 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7841, 1, 19, 81, 1, 'k', 'See [scripture id="ps?n=8"]Ps. 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7842, 1, 19, 81, 3, 'l', 'Others, ''at the full moon,'' as [scripture id="pr?n=7:20"]Prov. 7:20[/scripture]; but it more probably refers to special appointment or ''reckoning,'' according to the word in the original.');
 INSERT INTO `mse_bible_footnote` VALUES (7843, 1, 19, 81, 16, 'a', 'Lit. ''the fat of wheat,'' and so [scripture id="ps?n=147:14"]Ps. 147:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7844, 1, 19, 82, 1, 'b', '<I>Elohim</I>, ''the judges:'' see [scripture id="ex?n=21:6"]Ex. 21:6[/scripture].');
@@ -7886,10 +7869,10 @@ INSERT INTO `mse_bible_footnote` VALUES (7849, 1, 19, 83, 8, 'g', 'Assyria.');
 INSERT INTO `mse_bible_footnote` VALUES (7850, 1, 19, 83, 11, 'a', 'Lit. ''anointed ones:'' see [scripture id="eze?n=32:30"]Ezek. 32:30[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7851, 1, 19, 83, 18, 'b', 'Or ''who alone hast the name Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (7852, 1, 19, 83, 18, 'c', 'Heb. <I>Elyon</I>: see [scripture id="ge?n=14:19"]Gen. 14:19[/scripture], and note the omission here of ''possessor of heavens,'' cf. [scripture id="de?n=32:8"]Deut. 32:8[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7853, 1, 19, 84, 1, 'd', 'See <A HREF="/cgi-bin/br/BDB/ps?n=8">Ps. 8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7853, 1, 19, 84, 1, 'd', 'See [scripture id="ps?n=8"]Ps. 8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7854, 1, 19, 84, 6, 'e', 'Or ''of weeping.''');
 INSERT INTO `mse_bible_footnote` VALUES (7855, 1, 19, 84, 6, 'f', 'See [scripture id="de?n=11:14"]Deut. 11:14[/scripture]. The autumn rain: the <I>first</I> with reference to the time of sowing.');
-INSERT INTO `mse_bible_footnote` VALUES (7856, 1, 19, 85, 8, 'a', 'Or ''saints'' (<I>chasid</I>): see [footnote id="n_ps?n=86:2"]Note c[/footnote] and <A HREF="/cgi-bin/br/BDB/2ch?n=6:41~a=1">2Chron. 6:41, 42</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7856, 1, 19, 85, 8, 'a', 'Or ''saints'' (<I>chasid</I>): see [footnote id="n_ps?n=86:2"]Note c[/footnote] and [scripture id="2ch?n=6:41~a=1"]2Chron. 6:41, 42[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7857, 1, 19, 85, 13, 'b', 'Or ''shall set <I>itself</I> in the way of his steps.''');
 INSERT INTO `mse_bible_footnote` VALUES (7858, 1, 19, 86, 2, 'c', 'Or ''pious,'' ''holy,'' <I>chasid</I>, one who is the object of God''s loving-kindness (<I>chesed</I>): see [scripture id="ps?n=86:13"]ver. 13[/scripture] and [scripture id="ps?n=85:7"]Ps. 85:7[/scripture], [scripture id="ps?n=85:10"]10[/scripture], and [footnote id="n_ps?n=4:3"]Note to Ps. 4:3[/footnote]; and, by way of contrast, [scripture id="ps?n=43:1"]Ps. 43:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7859, 1, 19, 86, 5, 'd', 'Lit. ''forgiving.''');
@@ -7899,7 +7882,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7862, 1, 19, 87, 1, 'a', 'i.e. ''What h
 INSERT INTO `mse_bible_footnote` VALUES (7863, 1, 19, 87, 2, 'b', 'Or ''tabernacles.''');
 INSERT INTO `mse_bible_footnote` VALUES (7864, 1, 19, 87, 4, 'c', 'i.e. Egypt.');
 INSERT INTO `mse_bible_footnote` VALUES (7865, 1, 19, 87, 7, 'd', 'Or ''pipers,'' ''players on instruments.''');
-INSERT INTO `mse_bible_footnote` VALUES (7866, 1, 19, 88, 1, 'e', 'The meaning of <I>Mahalath</I> is uncertain, see <A HREF="/cgi-bin/br/BDB/ps?n=53">Ps. 53</A>. <I>Leannoth</I> may mean ''for subdued singing.''');
+INSERT INTO `mse_bible_footnote` VALUES (7866, 1, 19, 88, 1, 'e', 'The meaning of <I>Mahalath</I> is uncertain, see [scripture id="ps?n=53"]Ps. 53[/scripture]. <I>Leannoth</I> may mean ''for subdued singing.''');
 INSERT INTO `mse_bible_footnote` VALUES (7867, 1, 19, 88, 3, 'f', 'See [scripture id="ps?n=6:5"]Ps. 6:5[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7868, 1, 19, 88, 5, 'g', 'Or ''Cast away.''');
 INSERT INTO `mse_bible_footnote` VALUES (7869, 1, 19, 88, 5, 'h', 'i.e. ''from thy leading and helping hand.''');
@@ -7932,7 +7915,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7895, 1, 19, 89, 39, 'f', 'Elsewhere al
 INSERT INTO `mse_bible_footnote` VALUES (7896, 1, 19, 89, 48, 'g', 'Lit. ''hand.''');
 INSERT INTO `mse_bible_footnote` VALUES (7897, 1, 19, 89, 50, 'a', 'Lit. ''many,'' i.e. ''numerous.''');
 INSERT INTO `mse_bible_footnote` VALUES (7898, 1, 19, 90, 2, 'b', 'Or ''given birth to,'' same in Hebrew as ''begot'' in [scripture id="de?n=32:18"]Deut. 32:18[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (7899, 1, 19, 90, 2, 'c', 'Or ''brought forth,'' as [scripture id="de?n=32:18"]Deut. 32:18[/scripture]; <A HREF="/cgi-bin/br/BDB/pr?n=8:24~a=1">Prov. 8:24, 25</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7899, 1, 19, 90, 2, 'c', 'Or ''brought forth,'' as [scripture id="de?n=32:18"]Deut. 32:18[/scripture]; [scripture id="pr?n=8:24~a=1"]Prov. 8:24, 25[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7900, 1, 19, 90, 2, 'd', 'See [scripture id="1sa?n=2:8"]1Sam. 2:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7901, 1, 19, 90, 3, 'e', 'Lit. ''to crumbling.''');
 INSERT INTO `mse_bible_footnote` VALUES (7902, 1, 19, 90, 9, 'f', 'Or ''sigh.''');
@@ -7959,7 +7942,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7922, 1, 19, 93, 3, 'b', 'Or ''rivers:'
 INSERT INTO `mse_bible_footnote` VALUES (7923, 1, 19, 93, 5, 'c', 'Or ''length of days,'' as [scripture id="ps?n=23:6"]Ps. 23:6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7924, 1, 19, 94, 7, 'd', 'See [footnote id="n_ps?n=68:4a"]Note c, Ps. 68:4[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (7925, 1, 19, 94, 10, 'e', 'Or ''chasteneth.''');
-INSERT INTO `mse_bible_footnote` VALUES (7926, 1, 19, 94, 11, 'f', 'Or ''a breath,'' as [scripture id="job?n=7:16"]Job 7:16[/scripture]; <A HREF="/cgi-bin/br/BDB/ps?n=39:5~a=1">Ps. 39:5, 6</A>, <A HREF="/cgi-bin/br/BDB/ps?n=39:11">11</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (7926, 1, 19, 94, 11, 'f', 'Or ''a breath,'' as [scripture id="job?n=7:16"]Job 7:16[/scripture]; [scripture id="ps?n=39:5~a=1"]Ps. 39:5, 6[/scripture], [scripture id="ps?n=39:11"]11[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (7927, 1, 19, 94, 12, 'g', '<I>Geber</I>: see [scripture id="job?n=3:3"]Job 3:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7928, 1, 19, 94, 15, 'h', 'That is, ''judgment.''');
 INSERT INTO `mse_bible_footnote` VALUES (7929, 1, 19, 94, 17, 'i', 'Or ''soon.''');
@@ -7970,7 +7953,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7933, 1, 19, 95, 8, 'd', 'Strife.');
 INSERT INTO `mse_bible_footnote` VALUES (7934, 1, 19, 95, 8, 'e', 'Temptation.');
 INSERT INTO `mse_bible_footnote` VALUES (7935, 1, 19, 95, 10, 'f', 'The word implies loathing.');
 INSERT INTO `mse_bible_footnote` VALUES (7936, 1, 19, 95, 11, 'g', 'Or ''Unto whom I swore.''');
-INSERT INTO `mse_bible_footnote` VALUES (7937, 1, 19, 96, 1, 'h', 'With <A HREF="/cgi-bin/br/BDB/ps?n=96">Ps. 96</A> compare <A HREF="/cgi-bin/br/BDB/1ch?n=16:23~a=10">1Chron. 16:23-33</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7937, 1, 19, 96, 1, 'h', 'With [scripture id="ps?n=96"]Ps. 96[/scripture] compare [scripture id="1ch?n=16:23~a=10"]1Chron. 16:23-33[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7938, 1, 19, 96, 5, 'i', 'Or ''nonentities;'' and so [scripture id="ps?n=97:7"]Ps. 97:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7939, 1, 19, 96, 10, 'k', '<I>Tebel</I>, ''habitable earth:'' see [footnote id="n_1sa?n=2:8a"]Note f, 1Sam. 2:8[/footnote]; [scripture id="ps?n=9:8"]Ps. 9:8[/scripture]; [scripture id="ps?n=24:1"]24:1[/scripture]; [scripture id="ps?n=89:11"]89:11[/scripture]; [footnote id="n_ps?n=90:2b"]Note d, 90:2[/footnote]; [scripture id="ps?n=93:1"]93:1[/scripture]; [scripture id="ps?n=97:4"]97:4[/scripture]; [scripture id="ps?n=98:7"]98:7[/scripture], [scripture id="ps?n=98:9"]9[/scripture]; [scripture id="pr?n=8:31"]Prov. 8:31[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7940, 1, 19, 96, 13, 'a', 'See [footnote id="n_ps?n=96:10"]Ps. 96:10, Note k[/footnote].');
@@ -8015,7 +7998,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7978, 1, 19, 104, 30, 'g', 'Or ''ground
 INSERT INTO `mse_bible_footnote` VALUES (7979, 1, 19, 104, 34, 'a', 'Or ''My meditation of him shall be pleasant.''');
 INSERT INTO `mse_bible_footnote` VALUES (7980, 1, 19, 104, 35, 'b', 'Or ''May sinners be. ...''');
 INSERT INTO `mse_bible_footnote` VALUES (7981, 1, 19, 104, 35, 'c', 'i.e. ''Praise ye Jah.''');
-INSERT INTO `mse_bible_footnote` VALUES (7982, 1, 19, 105, 1, 'd', 'With <A HREF="/cgi-bin/br/BDB/ps?n=105:1~a=14">vers. 1-15</A> compare <A HREF="/cgi-bin/br/BDB/1ch?n=16:8~a=14">1Chron. 16:8-22</A>');
+INSERT INTO `mse_bible_footnote` VALUES (7982, 1, 19, 105, 1, 'd', 'With [scripture id="ps?n=105:1~a=14"]vers. 1-15[/scripture] compare [scripture id="1ch?n=16:8~a=14"]1Chron. 16:8-22[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (7983, 1, 19, 105, 2, 'e', 'Or ''talk of.''');
 INSERT INTO `mse_bible_footnote` VALUES (7984, 1, 19, 105, 5, 'f', 'Or ''ordinances.''');
 INSERT INTO `mse_bible_footnote` VALUES (7985, 1, 19, 105, 12, 'g', 'As [scripture id="de?n=4:27"]Deut. 4:27[/scripture].');
@@ -8026,7 +8009,7 @@ INSERT INTO `mse_bible_footnote` VALUES (7989, 1, 19, 105, 43, 'c', 'As ''elect,
 INSERT INTO `mse_bible_footnote` VALUES (7990, 1, 19, 105, 43, 'd', 'Or ''songs of triumph.''');
 INSERT INTO `mse_bible_footnote` VALUES (7991, 1, 19, 105, 44, 'e', '<I>Leummim</I>: see [scripture id="ps?n=2:1"]Ps. 2:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7992, 1, 19, 105, 45, 'f', 'See [footnote id="n_ps?n=104:35a"]Note, Ps. 104:35[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (7993, 1, 19, 106, 1, 'g', 'With [scripture id="ps?n=106:1"]vers. 1[/scripture], <A HREF="/cgi-bin/br/BDB/ps?n=106:1~a=1">47, 48</A> compare <A HREF="/cgi-bin/br/BDB/1ch?n=16:34~a=2">1Chron. 16:34-36</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (7993, 1, 19, 106, 1, 'g', 'With [scripture id="ps?n=106:1"]vers. 1[/scripture], [scripture id="ps?n=106:1~a=1"]47, 48[/scripture] compare [scripture id="1ch?n=16:34~a=2"]1Chron. 16:34-36[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7994, 1, 19, 106, 1, 'h', 'Or ''it;'' and so in [scripture id="ps?n=107:1"]Ps. 107:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7995, 1, 19, 106, 7, 'i', 'Or ''provoked <I>him</I>,'' as [scripture id="ps?n=106:43"]ver. 43[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (7996, 1, 19, 106, 9, 'k', 'Or ''the wilderness;'' but see [scripture id="eze?n=34:25"]Ezek. 34:25[/scripture].');
@@ -8040,7 +8023,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8003, 1, 19, 107, 22, 'c', 'See [script
 INSERT INTO `mse_bible_footnote` VALUES (8004, 1, 19, 107, 22, 'd', 'Or ''with rejoicing.''');
 INSERT INTO `mse_bible_footnote` VALUES (8005, 1, 19, 107, 43, 'e', 'Or ''Whoso is wise and observeth these things, even <I>they</I> shall.''');
 INSERT INTO `mse_bible_footnote` VALUES (8006, 1, 19, 107, 43, 'f', '<I>Chesed</I>, as in [scripture id="ps?n=107:1"]vers. 1[/scripture], [scripture id="ps?n=107:8"]8[/scripture], [scripture id="ps?n=107:15"]15[/scripture], [scripture id="ps?n=107:21"]21[/scripture], [scripture id="ps?n=107:31"]31[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8007, 1, 19, 108, 1, 'g', 'Compare with this, <A HREF="/cgi-bin/br/BDB/ps?n=57:7~a=4">Ps. 57:7-11</A>; <A HREF="/cgi-bin/br/BDB/ps?n=60:5~a=7">60:5-12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8007, 1, 19, 108, 1, 'g', 'Compare with this, [scripture id="ps?n=57:7~a=4"]Ps. 57:7-11[/scripture]; [scripture id="ps?n=60:5~a=7"]60:5-12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8008, 1, 19, 108, 2, 'h', 'Or ''awake with the dawn.''');
 INSERT INTO `mse_bible_footnote` VALUES (8009, 1, 19, 108, 3, 'i', 'As [scripture id="ps?n=7:8"]Ps. 7:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8010, 1, 19, 108, 3, 'k', '<I>Leummim</I>, as [scripture id="ps?n=67:4"]Ps. 67:4[/scripture].');
@@ -8070,7 +8053,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8033, 1, 19, 112, 5, 'g', 'Or ''he will
 INSERT INTO `mse_bible_footnote` VALUES (8034, 1, 19, 113, 2, 'h', 'See [scripture id="da?n=2:20"]Dan. 2:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8035, 1, 19, 115, 17, 'a', 'See [scripture id="ps?n=68:4"]Ps. 68:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8036, 1, 19, 115, 18, 'b', 'See [scripture id="ps?n=113:2"]Ps. 113:2[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8037, 1, 19, 116, 3, 'c', 'As <A HREF="/cgi-bin/br/BDB/ps?n=18:4~a=1">Ps. 18:4, 5</A>, according to others ''pangs.''');
+INSERT INTO `mse_bible_footnote` VALUES (8037, 1, 19, 116, 3, 'c', 'As [scripture id="ps?n=18:4~a=1"]Ps. 18:4, 5[/scripture], according to others ''pangs.''');
 INSERT INTO `mse_bible_footnote` VALUES (8038, 1, 19, 116, 3, 'd', 'Lit. ''anguishes,'' ''distresses.''');
 INSERT INTO `mse_bible_footnote` VALUES (8039, 1, 19, 116, 3, 'e', 'Or ''found.''');
 INSERT INTO `mse_bible_footnote` VALUES (8040, 1, 19, 116, 9, 'a', 'Lit. ''lands.''');
@@ -8080,15 +8063,15 @@ INSERT INTO `mse_bible_footnote` VALUES (8043, 1, 19, 116, 13, 'd', 'Lit. ''salv
 INSERT INTO `mse_bible_footnote` VALUES (8044, 1, 19, 116, 15, 'e', '<I>Chasid</I>: see [scripture id="ps?n=30:4"]Ps. 30:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8045, 1, 19, 116, 17, 'f', 'Lit. ''sacrifice,'' as [scripture id="ps?n=50:14"]Ps. 50:14[/scripture]; [scripture id="ps?n=107:22"]107:22[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (8046, 1, 19, 117, 2, 'g', 'Or ''is powerful,'' lit. ''it has prevailed:'' see [scripture id="ps?n=103:11"]Ps. 103:11[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8047, 1, 19, 118, 1, 'h', 'See <A HREF="/cgi-bin/br/BDB/ps?n=115:9~a=4">Ps. 115:9-13</A> and <A HREF="/cgi-bin/br/BDB/1ch?n=16:41">1Chron. 16:41</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8047, 1, 19, 118, 1, 'h', 'See [scripture id="ps?n=115:9~a=4"]Ps. 115:9-13[/scripture] and [scripture id="1ch?n=16:41"]1Chron. 16:41[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8048, 1, 19, 118, 10, 'i', 'Or ''mowed them down.''');
 INSERT INTO `mse_bible_footnote` VALUES (8049, 1, 19, 118, 14, 'k', 'See [scripture id="ex?n=15:2"]Ex. 15:2[/scripture]; [scripture id="isa?n=12:2"]Isa. 12:2[/scripture]. For ''Jah'' see [scripture id="ps?n=68:4"]Ps. 68:4[/scripture]; [scripture id="ps?n=89:8"]89:8[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8050, 1, 19, 118, 19, 'a', 'Or ''give thanks,'' as [scripture id="ps?n=118:21"]vers. 21[/scripture], <A HREF="/cgi-bin/br/BDB/ps?n=118:28~a=1">28, 29</A>; and so <A HREF="/cgi-bin/br/BDB/ps?n=139:14">Ps. 139:14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8050, 1, 19, 118, 19, 'a', 'Or ''give thanks,'' as [scripture id="ps?n=118:21"]vers. 21[/scripture], [scripture id="ps?n=118:28~a=1"]28, 29[/scripture]; and so [scripture id="ps?n=139:14"]Ps. 139:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8051, 1, 19, 118, 22, 'b', 'i.e. the corner-stone.');
 INSERT INTO `mse_bible_footnote` VALUES (8052, 1, 19, 118, 26, 'c', 'Or ''We bless.''');
 INSERT INTO `mse_bible_footnote` VALUES (8053, 1, 19, 118, 27, 'd', 'Strictly, ''feast:'' see [scripture id="mal?n=2:3"]Mal. 2:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8054, 1, 19, 119, 1, 'e', 'An alphabetical Psalm in periods of eight verses, each of which begins with the same Hebrew letter. The sections follow the alphabetical order.');
-INSERT INTO `mse_bible_footnote` VALUES (8055, 1, 19, 119, 5, 'f', 'As <A HREF="/cgi-bin/br/BDB/ex?n=12:24:">Ex. 12:24</A>: 22 times in this Psalm.');
+INSERT INTO `mse_bible_footnote` VALUES (8055, 1, 19, 119, 5, 'f', 'As [scripture id="ex?n=12:24:"]Ex. 12:24[/scripture]: 22 times in this Psalm.');
 INSERT INTO `mse_bible_footnote` VALUES (8056, 1, 19, 119, 7, 'g', 'Or ''I will praise thee.''');
 INSERT INTO `mse_bible_footnote` VALUES (8057, 1, 19, 119, 7, 'h', 'Or ''ordinances:'' so throughout.');
 INSERT INTO `mse_bible_footnote` VALUES (8058, 1, 19, 119, 10, 'i', 'Or ''do I seek.''');
@@ -8159,7 +8142,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8122, 1, 19, 132, 6, 'g', 'i.e. the ark
 INSERT INTO `mse_bible_footnote` VALUES (8123, 1, 19, 132, 6, 'h', 'Bethlehem-Judah.');
 INSERT INTO `mse_bible_footnote` VALUES (8124, 1, 19, 132, 6, 'i', 'Or ''of Jaar,'' used here poetically for Kirjath-jearim.');
 INSERT INTO `mse_bible_footnote` VALUES (8125, 1, 19, 132, 9, 'k', '<I>Chasid</I>: see [scripture id="ps?n=30:4"]Ps. 30:4[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8126, 1, 19, 132, 10, 'l', 'See <A HREF="/cgi-bin/br/BDB/2ch?n=6:41~a=1">2Chron. 6:41, 42</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8126, 1, 19, 132, 10, 'l', 'See [scripture id="2ch?n=6:41~a=1"]2Chron. 6:41, 42[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8127, 1, 19, 132, 17, 'a', 'Lit. ''a horn for.''');
 INSERT INTO `mse_bible_footnote` VALUES (8128, 1, 19, 132, 17, 'b', 'Or ''sprout;'' as [scripture id="isa?n=4:2"]Isa. 4:2[/scripture]; [scripture id="jer?n=33:15"]Jer. 33:15[/scripture]; [scripture id="eze?n=29:21"]Ezek. 29:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8129, 1, 19, 132, 17, 'c', 'Others read ''I will ordain.''');
@@ -8217,7 +8200,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8180, 1, 19, 144, 4, 'b', 'Or ''a breat
 INSERT INTO `mse_bible_footnote` VALUES (8181, 1, 19, 144, 10, 'c', 'Or ''victory.''');
 INSERT INTO `mse_bible_footnote` VALUES (8182, 1, 19, 144, 13, 'd', 'Or ''streets.''');
 INSERT INTO `mse_bible_footnote` VALUES (8183, 1, 19, 144, 14, 'e', 'Or ''oxen well laden.''');
-INSERT INTO `mse_bible_footnote` VALUES (8184, 1, 19, 145, 1, 'f', 'An alphabetical Psalm, as <A HREF="/cgi-bin/br/BDB/ps?n=25">Ps. 25</A>, the 14th letter being, omitted.');
+INSERT INTO `mse_bible_footnote` VALUES (8184, 1, 19, 145, 1, 'f', 'An alphabetical Psalm, as [scripture id="ps?n=25"]Ps. 25[/scripture], the 14th letter being, omitted.');
 INSERT INTO `mse_bible_footnote` VALUES (8185, 1, 19, 145, 7, 'g', 'As [scripture id="ps?n=19:2"]Ps. 19:2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8186, 1, 19, 145, 10, 'h', 'Or ''godly ones:'' see [scripture id="ps?n=30:4"]Ps. 30:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8187, 1, 19, 145, 12, 'i', 'Or ''the glory of the majesty.''');
@@ -8257,27 +8240,27 @@ INSERT INTO `mse_bible_footnote` VALUES (8220, 1, 66, 1, 6, 'g', 'Lit. ''he has 
 INSERT INTO `mse_bible_footnote` VALUES (8221, 1, 66, 1, 7, 'h', '<I>Hostis</I>: as [scripture id="mt?n=7:24"]Matt. 7:24[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8222, 1, 66, 1, 7, 'i', 'Or ''earth.'' See [footnote id="n_mt?n=5:5"]Note at Matt. 5:5[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8223, 1, 66, 1, 8, 'k', 'Alpha and Omega are the first and last letters of the Greek alphabet.');
-INSERT INTO `mse_bible_footnote` VALUES (8224, 1, 66, 1, 8, 'l', '''Jehovah Elohim,'' as [scripture id="lu?n=1:32"]Luke 1:32[/scripture]; see [scripture id="re?n=4:8"]chs. 4:8[/scripture]; [scripture id="re?n=15:3"]15:3[/scripture]; [scripture id="re?n=18:8"]18:8[/scripture]; [scripture id="re?n=21:22"]21:22[/scripture]; <A HREF="/cgi-bin/br/BDB/re?n=22:5~a=1">22:5, 6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8224, 1, 66, 1, 8, 'l', '''Jehovah Elohim,'' as [scripture id="lu?n=1:32"]Luke 1:32[/scripture]; see [scripture id="re?n=4:8"]chs. 4:8[/scripture]; [scripture id="re?n=15:3"]15:3[/scripture]; [scripture id="re?n=18:8"]18:8[/scripture]; [scripture id="re?n=21:22"]21:22[/scripture]; [scripture id="re?n=22:5~a=1"]22:5, 6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8225, 1, 66, 1, 8, 'm', '''The Almighty'' always has the article in Greek in the Revelation.');
-INSERT INTO `mse_bible_footnote` VALUES (8226, 1, 66, 1, 9, 'n', '<I>Hupomone</I>, ''endurance:'' see [scripture id="jas?n=5:7"]Jas. 5:7[/scripture]; so <A HREF="/cgi-bin/br/BDB/re?n=2:2~a=1">chs. 2:2, 3</A>, <A HREF="/cgi-bin/br/BDB/re?n=2:19">19</A>; <A HREF="/cgi-bin/br/BDB/re?n=13:10">13:10</A>; <A HREF="/cgi-bin/br/BDB/re?n=14:12">14:12</A>. The words ''tribulation,'' ''kingdom,'' ''patience'' are intimately connected, being brought together under one head by one article in the Greek.');
+INSERT INTO `mse_bible_footnote` VALUES (8226, 1, 66, 1, 9, 'n', '<I>Hupomone</I>, ''endurance:'' see [scripture id="jas?n=5:7"]Jas. 5:7[/scripture]; so [scripture id="re?n=2:2~a=1"]chs. 2:2, 3[/scripture], [scripture id="re?n=2:19"]19[/scripture]; [scripture id="re?n=13:10"]13:10[/scripture]; [scripture id="re?n=14:12"]14:12[/scripture]. The words ''tribulation,'' ''kingdom,'' ''patience'' are intimately connected, being brought together under one head by one article in the Greek.');
 INSERT INTO `mse_bible_footnote` VALUES (8227, 1, 66, 1, 9, 'o', '<I>Ginomai</I>: see [scripture id="joh?n=1:17"]John 1:17[/scripture]. His being there was an event which happened on account of the word of God. So ''became,'' [scripture id="re?n=1:10"]ver. 10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8228, 1, 66, 1, 10, 'p', '''In <I>the</I> Spirit'' is a <I>state</I> into which he entered. See [footnote id="n_mt?n=3:11a"]Note c, Matt. 3:11[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8229, 1, 66, 1, 10, 'a', 'The ''dominical'' or ''lordly'' day -- characterized by belonging to the Lord, as ''Lord''s,'' [scripture id="1co?n=11:20"]1Cor. 11:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8230, 1, 66, 1, 11, 'b', 'Aorist, ''have it written and sent:'' it is to be a complete thing done.');
 INSERT INTO `mse_bible_footnote` VALUES (8231, 1, 66, 1, 12, 'c', 'Or ''lampstands'' (<I>luchnia</I>) but simply here, I think, ''lamps'' as compared with [scripture id="heb?n=9:2"]Heb. 9:2[/scripture], where it is clearly the ''candlestick'' or ''lampstand.'' If <I>luchnos</I> and <I>luchnia</I> are distinguished, <I>luchnia</I> is the stand. The words are so distinguished in [scripture id="mt?n=5:15"]Matt. 5:15[/scripture], [scripture id="lu?n=8:16"]Luke 8:16[/scripture]; [scripture id="lu?n=11:33"]11:33[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8232, 1, 66, 1, 13, 'd', 'Or ''a Son of man.'' See [scripture id="da?n=7:13"]Dan. 7:13[/scripture], also without the article. It is not likeness to a person John knew, but to the character known by this title in scripture. To have seen angels in heaven would have been no wonder, but to see one as ''Son of man'' was. This chapter corresponds to <A HREF="/cgi-bin/br/BDB/da?n=7">Dan. 7</A>: only now he was seen on earth. It was the title the Lord habitually took. This made it personal; but in Daniel, though surely the same person, it was characteristic. Here, too, it is characteristic. Still the person designated is now known, and it is difficult to say ''a Son of man,'' because of excluding this. ''Son-of-man-like'' is feeble, it might only mean a manner: see <A HREF="/cgi-bin/br/BDB/re?n=14:14">ch. 14:14</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8232, 1, 66, 1, 13, 'd', 'Or ''a Son of man.'' See [scripture id="da?n=7:13"]Dan. 7:13[/scripture], also without the article. It is not likeness to a person John knew, but to the character known by this title in scripture. To have seen angels in heaven would have been no wonder, but to see one as ''Son of man'' was. This chapter corresponds to [scripture id="da?n=7"]Dan. 7[/scripture]: only now he was seen on earth. It was the title the Lord habitually took. This made it personal; but in Daniel, though surely the same person, it was characteristic. Here, too, it is characteristic. Still the person designated is now known, and it is difficult to say ''a Son of man,'' because of excluding this. ''Son-of-man-like'' is feeble, it might only mean a manner: see [scripture id="re?n=14:14"]ch. 14:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8233, 1, 66, 1, 15, 'e', 'Or ''shining.''');
 INSERT INTO `mse_bible_footnote` VALUES (8234, 1, 66, 1, 18, 'f', '<I>Ginomai</I>: see [scripture id="joh?n=1:17"]John 1:17[/scripture]. Became what he was not before.');
 INSERT INTO `mse_bible_footnote` VALUES (8235, 1, 66, 1, 18, 'g', 'Hades: see [footnote id="n_mt?n=11:23"]Note, Matt. 11:23[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8236, 1, 66, 1, 19, 'h', 'The first ''are'' is plural; ''are about to'' is singular.');
 INSERT INTO `mse_bible_footnote` VALUES (8237, 1, 66, 1, 20, 'i', 'The word has also the sense of ''messengers:'' see [footnote id="n_re?n=2:20"]Note e, ch. 2:20[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8238, 1, 66, 2, 8, 'a', 'See [footnote id="n_re?n=1:18"]Note f, ch. 1:18[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (8239, 1, 66, 2, 8, 'b', 'That is, after having died: see <A HREF="/cgi-bin/br/BDB/re?n=1:17~a=1">chs. 1:17, 18</A>; <A HREF="/cgi-bin/br/BDB/re?n=13:14">13:14</A>; <A HREF="/cgi-bin/br/BDB/mt?n=9:18">Matt. 9:18</A>; <A HREF="/cgi-bin/br/BDB/ro?n=14:9">Rom. 14:9</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8239, 1, 66, 2, 8, 'b', 'That is, after having died: see [scripture id="re?n=1:17~a=1"]chs. 1:17, 18[/scripture]; [scripture id="re?n=13:14"]13:14[/scripture]; [scripture id="mt?n=9:18"]Matt. 9:18[/scripture]; [scripture id="ro?n=14:9"]Rom. 14:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8240, 1, 66, 2, 11, 'c', 'A strong negative.');
 INSERT INTO `mse_bible_footnote` VALUES (8241, 1, 66, 2, 18, 'd', 'Or ''shining.''');
 INSERT INTO `mse_bible_footnote` VALUES (8242, 1, 66, 2, 20, 'e', 'Some read ''thy wife,'' alluding doubtless to Jezebel''s connexion with responsible Ahab. And that is the meaning I believe of ''angel;'' the symbolical representative of the assembly seen in those responsible in it, which indeed all really are. Hence ''thee,'' and ''to you,'' ''to you each,'' and ''the rest.''');
 INSERT INTO `mse_bible_footnote` VALUES (8243, 1, 66, 2, 20, 'f', 'Or ''bondmen,'' as [scripture id="re?n=1:1"]ch. 1:1[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8244, 1, 66, 2, 23, 'g', '<I>Ginosko</I>: <A HREF="/cgi-bin/br/BDB/re?n=2:23~a=1">chs. 2:23, 24</A>; <A HREF="/cgi-bin/br/BDB/re?n=3:3">3:3</A>, <A HREF="/cgi-bin/br/BDB/re?n=3:9">9</A>; elsewhere <I>Oida</I> in this book: see <A HREF="/cgi-bin/br/BDB/1co?n=8:1">1Cor. 8:1</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8244, 1, 66, 2, 23, 'g', '<I>Ginosko</I>: [scripture id="re?n=2:23~a=1"]chs. 2:23, 24[/scripture]; [scripture id="re?n=3:3"]3:3[/scripture], [scripture id="re?n=3:9"]9[/scripture]; elsewhere <I>Oida</I> in this book: see [scripture id="1co?n=8:1"]1Cor. 8:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8245, 1, 66, 2, 24, 'a', '''Such as.''');
 INSERT INTO `mse_bible_footnote` VALUES (8246, 1, 66, 2, 24, 'b', 'See [footnote id="n_re?n=2:23"]Note, ver. 23[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8247, 1, 66, 3, 2, 'c', '<I>Ginomai</I>. Lit. ''become so.''');
@@ -8293,7 +8276,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8256, 1, 66, 3, 19, 'c', '<I>Phileo</I>
 INSERT INTO `mse_bible_footnote` VALUES (8257, 1, 66, 3, 20, 'd', 'Meaning ''I have placed myself there and am standing:'' see [scripture id="joh?n=1:26"]John 1:26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8258, 1, 66, 4, 3, 'e', 'I use ''round'' for what is connected with anything (not necessarily united to it) as a centre, as the tire of a wheel, but ''around'' is used for detached objects encircling.');
 INSERT INTO `mse_bible_footnote` VALUES (8259, 1, 66, 4, 5, 'f', '<I>Lampas</I>: only here and [scripture id="re?n=8:10"]ch. 8:10[/scripture] where the word is translated ''torch.'' Not the lamp as a utensil (<I>luchnia</I>, [scripture id="re?n=1:13"]ch. 1:13[/scripture]), but what furnished the light itself');
-INSERT INTO `mse_bible_footnote` VALUES (8260, 1, 66, 4, 8, 'a', 'See <A HREF="/cgi-bin/br/BDB/isa?n=6:2~a=1">Isa. 6:2, 3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8260, 1, 66, 4, 8, 'a', 'See [scripture id="isa?n=6:2~a=1"]Isa. 6:2, 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8261, 1, 66, 4, 8, 'b', 'I judge that [scripture id="eze?n=10:12"]Ezek. 10:12[/scripture] shows that ''round'' belongs to the eyes.');
 INSERT INTO `mse_bible_footnote` VALUES (8262, 1, 66, 4, 8, 'c', 'I prefer ''cease not'' to ''have no rest,'' because in English ''having no rest'' means constant fatigue. The Greek here means ''no intermission of action.''');
 INSERT INTO `mse_bible_footnote` VALUES (8263, 1, 66, 4, 8, 'd', 'See [footnote id="n_re?n=1:8a"]Note l, ch. 1:8[/footnote].');
@@ -8302,7 +8285,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8265, 1, 66, 4, 10, 'f', 'See [footnote
 INSERT INTO `mse_bible_footnote` VALUES (8266, 1, 66, 5, 1, 'g', 'Or ''that sits.'' It is the present tense, and is really a title, ''the sitter on the throne.''');
 INSERT INTO `mse_bible_footnote` VALUES (8267, 1, 66, 5, 6, 'h', '<I>Arnion</I>: a diminutive, used throughout Revelation: as [scripture id="joh?n=21:15"]John 21:15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8268, 1, 66, 5, 8, 'i', '''Having'' refers strictly only to ''elders.''');
-INSERT INTO `mse_bible_footnote` VALUES (8269, 1, 66, 5, 9, 'k', 'Or ''bought,'' as <A HREF="/cgi-bin/br/BDB/re?n=14:3~a=1">ch. 14:3, 4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8269, 1, 66, 5, 9, 'k', 'Or ''bought,'' as [scripture id="re?n=14:3~a=1"]ch. 14:3, 4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8270, 1, 66, 5, 10, 'l', 'Some authorities here read ''a kingdom,'' as in [scripture id="re?n=1:6"]ch. 1:6[/scripture], but it is rather here a title or name.');
 INSERT INTO `mse_bible_footnote` VALUES (8271, 1, 66, 5, 11, 'm', 'See [footnote id="n_re?n=4:3"]Note, ch. 4:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8272, 1, 66, 5, 14, 'a', 'See [footnote id="n_re?n=3:9"]Note h, ch. 3:9[/footnote].');
@@ -8370,7 +8353,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8333, 1, 66, 14, 14, 'c', 'As [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (8334, 1, 66, 14, 15, 'd', 'As [scripture id="mt?n=13:6"]Matt. 13:6[/scripture]; [scripture id="jas?n=1:11"]Jas. 1:11[/scripture], ''wither.'' It is more than ''become ripe.'' A different word is used at the end of [scripture id="re?n=14:18"]ver. 18[/scripture], meaning ''in full harvest.''');
 INSERT INTO `mse_bible_footnote` VALUES (8335, 1, 66, 15, 1, 'e', 'Aorist.');
 INSERT INTO `mse_bible_footnote` VALUES (8336, 1, 66, 15, 3, 'a', 'See [footnote id="n_re?n=1:8a"]Note l, ch. 1:8[/footnote].');
-INSERT INTO `mse_bible_footnote` VALUES (8337, 1, 66, 15, 4, 'b', '<I>Hosios</I>, not <I>hagios</I>. It is used for mercy, grace, and of Christ, as the One in whom all gracious qualities are concentrated. (<A HREF="/cgi-bin/br/BDB/ps?n=89:1~a=1">Ps. 89:1, 2</A>, <A HREF="/cgi-bin/br/BDB/ps?n=89:19">19</A>.) In men it means piety and uprightness. <I>Chesed</I> is so translated in the Old Testament. It is in general the sum of qualities which suit and form the divine character in man, as opposed to the human will: what God gives as consistent with himself, his character, and promise. The ''sure <I>mercies</I>'' of David is expressed by this word in the LXX, <A HREF="/cgi-bin/br/BDB/isa?n=55:3">Isa. 55:3</A>; <A HREF="/cgi-bin/br/BDB/ac?n=13:34">Acts 13:34</A>. God alone possesses the qualities which entitle him to worship as a pious man would understand it. <I>Hosios</I> is used in this general way for ''holy:'' see <A HREF="/cgi-bin/dr/n_heb?n=7:26">Note i, Heb. 7:26</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8337, 1, 66, 15, 4, 'b', '<I>Hosios</I>, not <I>hagios</I>. It is used for mercy, grace, and of Christ, as the One in whom all gracious qualities are concentrated. ([scripture id="ps?n=89:1~a=1"]Ps. 89:1, 2[/scripture], [scripture id="ps?n=89:19"]19[/scripture].) In men it means piety and uprightness. <I>Chesed</I> is so translated in the Old Testament. It is in general the sum of qualities which suit and form the divine character in man, as opposed to the human will: what God gives as consistent with himself, his character, and promise. The ''sure <I>mercies</I>'' of David is expressed by this word in the LXX, [scripture id="isa?n=55:3"]Isa. 55:3[/scripture]; [scripture id="ac?n=13:34"]Acts 13:34[/scripture]. God alone possesses the qualities which entitle him to worship as a pious man would understand it. <I>Hosios</I> is used in this general way for ''holy:'' see [footnote id="n_heb?n=7:26"]Note i, Heb. 7:26[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8338, 1, 66, 15, 4, 'c', 'See [footnote id="n_re?n=3:9"]Note h, ch. 3:9[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8339, 1, 66, 15, 4, 'd', 'See [footnote id="n_re?n=19:8"]Note, ch. 19:8[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8340, 1, 66, 15, 5, 'e', '<I>Naos</I>: see [scripture id="re?n=3:12"]ch. 3:12[/scripture].');
@@ -8459,7 +8442,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8422, 1, 45, 2, 7, 'b', 'Not ''immortal
 INSERT INTO `mse_bible_footnote` VALUES (8423, 1, 45, 2, 15, 'c', 'As [scripture id="ro?n=1:32"]ch. 1:32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8424, 1, 45, 2, 15, 'd', 'It is not the law, but the work which is written.');
 INSERT INTO `mse_bible_footnote` VALUES (8425, 1, 45, 2, 22, 'e', 'See [scripture id="ac?n=19:37"]Acts 19:37[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8426, 1, 45, 2, 24, 'f', 'See [scripture id="isa?n=52:5"]Isa. 52:5[/scripture]; <A HREF="/cgi-bin/br/BDB/eze?n=36:20~a=3">Ezek. 36:20-23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8426, 1, 45, 2, 24, 'f', 'See [scripture id="isa?n=52:5"]Isa. 52:5[/scripture]; [scripture id="eze?n=36:20~a=3"]Ezek. 36:20-23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8427, 1, 45, 2, 26, 'g', '<I>Dikaioma</I>, as ''righteous judgment,'' [scripture id="ro?n=1:32"]ch. 1:32[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8428, 1, 45, 2, 26, 'h', 'Often translated ''imputed'' in A.V.');
 INSERT INTO `mse_bible_footnote` VALUES (8429, 1, 45, 2, 27, 'i', '<I>Dia</I>. The expression has the sense of ''in a given state or condition,'' as well as ''by means of.'' Their having or possessing the letter of the law and circumcision practically puts the Jews in that condition.');
@@ -8469,11 +8452,11 @@ INSERT INTO `mse_bible_footnote` VALUES (8432, 1, 45, 3, 3, 'a', 'Or ''faithfuln
 INSERT INTO `mse_bible_footnote` VALUES (8433, 1, 45, 3, 4, 'b', 'See [scripture id="ps?n=51:4"]Ps. 51:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8434, 1, 45, 3, 5, 'c', '''Inflicts wrath'' is hardly English, as wrath is a sentiment of the mind; and it is what reaches another which is inflicted, as punishment or pain. But ''executes'' is not the sense, nor is ''takes vengeance.'' The form of expression in Greek, as in the use of ''inflict'' in English, is a figure of the effect for the cause, so I have ventured to use it.');
 INSERT INTO `mse_bible_footnote` VALUES (8435, 1, 45, 3, 7, 'd', 'Or ''has more abounded by my lie.'' In the translation in the text the thought is ''he remained true in spite of my failure.''');
-INSERT INTO `mse_bible_footnote` VALUES (8436, 1, 45, 3, 12, 'e', '<A HREF="/cgi-bin/br/BDB/ps?n=14:1~a=2">Ps. 14:1-3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8436, 1, 45, 3, 12, 'e', '[scripture id="ps?n=14:1~a=2"]Ps. 14:1-3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8437, 1, 45, 3, 13, 'f', '[scripture id="ps?n=5:9"]Ps. 5:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8438, 1, 45, 3, 13, 'g', '[scripture id="ps?n=140:3"]Ps. 140:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8439, 1, 45, 3, 14, 'h', '[scripture id="ps?n=10:7"]Ps. 10:7[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8440, 1, 45, 3, 17, 'i', '<A HREF="/cgi-bin/br/BDB/isa?n=59:7~a=1">Isa. 59:7-8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8440, 1, 45, 3, 17, 'i', '[scripture id="isa?n=59:7~a=1"]Isa. 59:7-8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8441, 1, 45, 3, 18, 'k', '[scripture id="ps?n=36:1"]Ps. 36:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8442, 1, 45, 3, 19, 'l', 'Lit. ''in'' <I>en</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (8443, 1, 45, 3, 19, 'm', 'i.e. ''become in that state,'' not future, but the existing consequence.');
@@ -8486,7 +8469,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8449, 1, 45, 4, 3, 'b', 'See [scripture
 INSERT INTO `mse_bible_footnote` VALUES (8450, 1, 45, 4, 3, 'c', 'I am not quite satisfied with ''as;'' but it is the nearest approach to the sense in English. ''For,'' I object to; because then faith is made of positive worth, having the value of righteousness; whereas the sense is that he was holden for righteous in virtue of faith. ''For'' does not go far enough as righteousness; too far as to a positive value of faith. Faith might be reckoned for righteousness, and yet the righteousness come short of what was required; whereas if it be reckoned as righteousness, then the full value of righteousness, as such, is seen: ''the man was held to have righteousness.'' It is a Hebrew form. See [scripture id="ps?n=106:31"]Ps. 106:31[/scripture]. [scripture id="ge?n=15:6"]Gen. 15:6[/scripture], where there is no preposition, makes the force of the expression plain.');
 INSERT INTO `mse_bible_footnote` VALUES (8451, 1, 45, 4, 5, 'd', 'See [footnote id="n_ac?n=9:42"]Note, Acts 9:42[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8452, 1, 45, 4, 6, 'e', 'As [scripture id="ro?n=3:21"]ch. 3:21[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8453, 1, 45, 4, 6, 'f', 'See <A HREF="/cgi-bin/br/BDB/ps?n=32:1~a=1">Ps. 32:1-2</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8453, 1, 45, 4, 6, 'f', 'See [scripture id="ps?n=32:1~a=1"]Ps. 32:1-2[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8454, 1, 45, 4, 8, 'g', 'That is, ''not account of him as having any.''');
 INSERT INTO `mse_bible_footnote` VALUES (8455, 1, 45, 4, 11, 'h', '''In order to his being.'' It is necessary perhaps to say, ''that he might be'' in English; but that is an expression of purpose which goes rather too far. See [footnote id="n_ro?n=1:20a"]Note i, ch. 1:20[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8456, 1, 45, 4, 12, 'a', '''Father of circumcision'' means, he in whom real separation to God was first publicly established. Perhaps ''of the faith, during <I>his</I> uncircumcision, of our father Abraham'' may be clearer.');
@@ -8501,7 +8484,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8464, 1, 45, 5, 2, 'i', 'Perfect tense:
 INSERT INTO `mse_bible_footnote` VALUES (8465, 1, 45, 5, 6, 'k', 'Or ''died:'' so [scripture id="ro?n=5:8"]ver. 8[/scripture]. The aorist; but ''has died'' is used in English for the fact, which is the force of the aorist. That is, it is so used where the moral import is an abiding one, and time is not in question, even if no abiding effect is meant. ''He has taken a journey.'' The simple preterite, ''died,'' is not an aorist in English; it is historical, and the fact is viewed as past and done with.');
 INSERT INTO `mse_bible_footnote` VALUES (8466, 1, 45, 5, 9, 'a', 'Or ''by his blood,'' ''by his life:'' when <I>en</I> is used morally it has the force of ''in the power of,'' ''in the intrinsic character of;'' thus ''in flesh,'' ''in spirit.'' The article and pronoun here give it a somewhat more instrumental character. ''Through'' in [scripture id="ro?n=5:10"]ver. 10[/scripture] is <I>dia</I>.');
 INSERT INTO `mse_bible_footnote` VALUES (8467, 1, 45, 5, 12, 'b', 'The epistle divides itself here, as to doctrine, into two distinct parts, which a new paragraph hardly shows. Up to [scripture id="ro?n=5:11"]ch. 5:11[/scripture] ''sins'' had been treated of; from this point ''sin'' is in view.');
-INSERT INTO `mse_bible_footnote` VALUES (8468, 1, 45, 5, 13, 'c', 'This is a different word from that translated ''reckoned'' in <A HREF="/cgi-bin/br/BDB/ro?n=4:22~a=1">ch. 4:22, 23</A> (both ''imputed'' in A.V.). There, a man is judicially estimated such or such: here, a particular fault is put to a person''s account. The former is found in <A HREF="/cgi-bin/br/BDB/ga?n=3:6">Gal. 3:6</A> and <A HREF="/cgi-bin/br/BDB/2co?n=5:19">2Cor. 5:19</A>; this only in <A HREF="/cgi-bin/br/BDB/phm?n=1:18">Philem. 18</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8468, 1, 45, 5, 13, 'c', 'This is a different word from that translated ''reckoned'' in [scripture id="ro?n=4:22~a=1"]ch. 4:22, 23[/scripture] (both ''imputed'' in A.V.). There, a man is judicially estimated such or such: here, a particular fault is put to a person''s account. The former is found in [scripture id="ga?n=3:6"]Gal. 3:6[/scripture] and [scripture id="2co?n=5:19"]2Cor. 5:19[/scripture]; this only in [scripture id="phm?n=1:18"]Philem. 18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8469, 1, 45, 5, 14, 'd', 'Or ''has reigned,'' aorist.');
 INSERT INTO `mse_bible_footnote` VALUES (8470, 1, 45, 5, 14, 'e', 'Or ''according to.'' ''Sinned after'' is not the sense here. It refers to [scripture id="ho?n=6:7"]Hos. 6:7[/scripture], ''They, like Adam, have transgressed the covenant:'' this of Israel. But they who had no law did not. The point here is the form or character in or with which anything happens; that which gives it its character.');
 INSERT INTO `mse_bible_footnote` VALUES (8471, 1, 45, 5, 15, 'f', 'Or ''not as the offence <I>is</I> the act of favour.''');
@@ -8509,7 +8492,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8472, 1, 45, 5, 15, 'g', 'Lit. ''the on
 INSERT INTO `mse_bible_footnote` VALUES (8473, 1, 45, 5, 16, 'h', 'Or ''And not as by one that sinned <I>is</I> the gift.'' I would add that I have translated the Greek words, <I>dorema</I> as ''gift,'' <I>charisma</I> as ''act of favour,'' and <I>dorea</I> as ''free gift.'' This will distinguish them.');
 INSERT INTO `mse_bible_footnote` VALUES (8474, 1, 45, 5, 16, 'i', 'That is, had its foundation in, was grounded on, one single thing or act.');
 INSERT INTO `mse_bible_footnote` VALUES (8475, 1, 45, 5, 16, 'k', '<I>Dikaioma</I>; or ''judicial righteousness.'' Here the Greek is more exact than English perhaps allows. It is the state of accomplished subsisting righteousness before God, in which justification places us. The word <I>dikaiosis</I>, ''justification,'' in [scripture id="ro?n=5:18"]ver. 18[/scripture] and [scripture id="ro?n=4:25"]ch. 4:25[/scripture] is the act of justifying. In English we must use justification for both. I cannot say ''righteousness;'' that might be practical. In [scripture id="ro?n=4:25"]ch. 4:25[/scripture] the doing of it was in view, ''for our justifying;'' not, as some read, ''because we are justified,'' which could only be said in connection with faith, whereas ''for our justifying'' is the effect future to the rising again.');
-INSERT INTO `mse_bible_footnote` VALUES (8476, 1, 45, 5, 17, 'l', '<A HREF="/cgi-bin/br/BDB/ro?n=5:13~a=4">Vers. 13-17</A> are a parenthesis.');
+INSERT INTO `mse_bible_footnote` VALUES (8476, 1, 45, 5, 17, 'l', '[scripture id="ro?n=5:13~a=4"]Vers. 13-17[/scripture] are a parenthesis.');
 INSERT INTO `mse_bible_footnote` VALUES (8477, 1, 45, 5, 18, 'm', 'Here <I>dikaioma</I>; the same word as translated ''justification,'' [scripture id="ro?n=5:16"]ver. 16[/scripture], but it cannot be so translated here. It is the accomplished subsisting righteousness answering to the one offence.');
 INSERT INTO `mse_bible_footnote` VALUES (8478, 1, 45, 5, 20, 'a', 'Came in as an extra thing, or by the by.');
 INSERT INTO `mse_bible_footnote` VALUES (8479, 1, 45, 5, 21, 'b', 'i.e. on that principle of righteousness, <I>dikaiosune</I>: i.e. the quality itself, as [scripture id="ro?n=3:21"]ch. 3:21[/scripture].');
@@ -8547,7 +8530,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8510, 1, 45, 8, 17, 'a', 'Lit. ''If we 
 INSERT INTO `mse_bible_footnote` VALUES (8511, 1, 45, 8, 18, 'b', 'Or ''the glory about to be revealed:'' but the sense is most nearly given in the text. See [scripture id="ga?n=3:23"]Gal. 3:23[/scripture] and [scripture id="1co?n=3:22"]1Cor. 3:22[/scripture]. The emphasis is on ''coming,'' in contrast with ''this present time.''');
 INSERT INTO `mse_bible_footnote` VALUES (8512, 1, 45, 8, 19, 'c', 'Or ''constant,'' as [scripture id="php?n=1:20"]Phil. 1:20[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8513, 1, 45, 8, 21, 'd', '''Glorious liberty,'' as in A.V., does not give the sense. The creature has no part in the liberty of grace; but it will have in that which glory gives.');
-INSERT INTO `mse_bible_footnote` VALUES (8514, 1, 45, 8, 22, 'e', '''Creation'' is the same in Greek as ''creature'' in <A HREF="/cgi-bin/br/BDB/ro?n=8:19~a=2">vers. 19-21</A>; but the Greek for ''whole'' gives it a concrete and not an abstract character, i.e. ''creation.''');
+INSERT INTO `mse_bible_footnote` VALUES (8514, 1, 45, 8, 22, 'e', '''Creation'' is the same in Greek as ''creature'' in [scripture id="ro?n=8:19~a=2"]vers. 19-21[/scripture]; but the Greek for ''whole'' gives it a concrete and not an abstract character, i.e. ''creation.''');
 INSERT INTO `mse_bible_footnote` VALUES (8515, 1, 45, 8, 23, 'f', 'As [scripture id="mr?n=7:34"]Mark 7:34[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8516, 1, 45, 8, 23, 'g', 'See [footnote id="n_ro?n=8:15"]Note, ver. 15[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8517, 1, 45, 8, 26, 'h', 'It means ''to take up a person''s cause, so as to help him.'' The ''with,'' added in Greek, is rendered ''join.'' Only occurs here and [scripture id="lu?n=10:40"]Luke 10:40[/scripture].');
@@ -8571,7 +8554,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8534, 1, 45, 9, 17, 'm', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (8535, 1, 45, 9, 17, 'n', 'I have said ''that I might <I>thus</I>'' because the word translated ''that'' does not signify the ultimate end, but the means or way of doing it. The same word is translated ''so that'' in the next clause.');
 INSERT INTO `mse_bible_footnote` VALUES (8536, 1, 45, 9, 25, 'a', 'See [scripture id="ho?n=2:23"]Hos. 2:23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8537, 1, 45, 9, 26, 'b', 'See [scripture id="ho?n=1:10"]Hos. 1:10[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8538, 1, 45, 9, 27, 'c', 'See <A HREF="/cgi-bin/br/BDB/isa?n=10:22~a=1">Isa. 10:22, 23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8538, 1, 45, 9, 27, 'c', 'See [scripture id="isa?n=10:22~a=1"]Isa. 10:22, 23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8539, 1, 45, 9, 29, 'd', 'See [scripture id="isa?n=1:9"]Isa. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8540, 1, 45, 9, 30, 'e', 'As [scripture id="ro?n=5:21"]ch. 5:21[/scripture], <I>dikaiosune</I>, and so to [scripture id="ro?n=10:10"]ch. 10:10[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8541, 1, 45, 9, 32, 'f', '''As of works.'' <I>Ek</I>, here translated ''of,'' is translated ''on the principle of'' in [scripture id="ro?n=1:17"]chs. 1:17[/scripture]; [scripture id="ro?n=5:1"]5:1[/scripture]; [scripture id="ro?n=9:32"]9:32[/scripture]. But this sense is clearer here in having simply ''of'' after the ''as,'' and the sentence less encumbered.');
@@ -8580,8 +8563,8 @@ INSERT INTO `mse_bible_footnote` VALUES (8543, 1, 45, 9, 33, 'h', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (8544, 1, 45, 10, 1, 'i', 'i.e. his good pleasure, the thought that delighted him. The order of the words gives the force of ''own,'' or an emphatic ''<I>my</I>.'' The connection of the beginning of the phrase with ''<I>for</I> salvation'' is not very grammatical; but this abruptness of style is usual with Paul. See [footnote id="n_ro?n=9:3"]Note, ch. 9:3[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8545, 1, 45, 10, 1, 'k', 'Some authorities have ''for Israel,'' but ''for them'' is the more correct reading, and, occupied as the apostle is with his subject, is far more beautiful. ''For salvation'' is perhaps a little obscure; but what he says is, what would satisfy his heart was that; and his prayers tended that way, not to their judgment, evil as they were, and rejecters of Christ. But the judgment was not yet revealed.');
 INSERT INTO `mse_bible_footnote` VALUES (8546, 1, 45, 10, 5, 'a', 'See [scripture id="le?n=18:5"]Lev. 18:5[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8547, 1, 45, 10, 6, 'b', 'See <A HREF="/cgi-bin/br/BDB/de?n=30:12~a=2">Deut. 30:12-14</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (8548, 1, 45, 10, 8, 'c', 'Lit. ''herald,'' as <A HREF="/cgi-bin/br/BDB/ro?n=10:14~a=1">vers. 14, 15</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8547, 1, 45, 10, 6, 'b', 'See [scripture id="de?n=30:12~a=2"]Deut. 30:12-14[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (8548, 1, 45, 10, 8, 'c', 'Lit. ''herald,'' as [scripture id="ro?n=10:14~a=1"]vers. 14, 15[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8549, 1, 45, 10, 9, 'd', 'Or ''<I>the</I> Lord Jesus.''');
 INSERT INTO `mse_bible_footnote` VALUES (8550, 1, 45, 10, 10, 'e', 'Or ''man believes.'' ''Is believed'' is literal, and sufficiently intelligible.');
 INSERT INTO `mse_bible_footnote` VALUES (8551, 1, 45, 10, 11, 'f', 'See [scripture id="isa?n=28:16"]Isa. 28:16[/scripture].');
@@ -8594,17 +8577,17 @@ INSERT INTO `mse_bible_footnote` VALUES (8557, 1, 45, 10, 19, 'm', 'See [scriptu
 INSERT INTO `mse_bible_footnote` VALUES (8558, 1, 45, 10, 19, 'n', '<I>Epi</I>, ''through,'' signifies the occasion or condition under which a thing happens, not the means of, as an instrument: ''through'' expresses this more nearly than ''by.'' See [footnote id="n_ro?n=5:14a"]Note, ch. 5:14[/footnote], ''in.''');
 INSERT INTO `mse_bible_footnote` VALUES (8559, 1, 45, 10, 20, 'o', 'See [scripture id="isa?n=65:1"]Isa. 65:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8560, 1, 45, 10, 21, 'p', 'See [scripture id="isa?n=65:2"]Isa. 65:2[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8561, 1, 45, 10, 21, 'q', 'Or ''contradicting.'' ''Disobeying'' or ''not believing'' is <I>apeitheo</I>, as [scripture id="ro?n=2:8"]chs. 2:8[/scripture]; <A HREF="/cgi-bin/br/BDB/ro?n=11:30~a=1">11:30, 31</A>; <A HREF="/cgi-bin/br/BDB/ro?n=15:31">15:31</A>: see <A HREF="/cgi-bin/dr/n_joh?n=3:36a">Note e, John 3:36</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (8562, 1, 45, 11, 2, 'r', 'See <A HREF="/cgi-bin/br/BDB/1ki?n=19:14~a=4">1Kings 19:14-18</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8561, 1, 45, 10, 21, 'q', 'Or ''contradicting.'' ''Disobeying'' or ''not believing'' is <I>apeitheo</I>, as [scripture id="ro?n=2:8"]chs. 2:8[/scripture]; [scripture id="ro?n=11:30~a=1"]11:30, 31[/scripture]; [scripture id="ro?n=15:31"]15:31[/scripture]: see [footnote id="n_joh?n=3:36a"]Note e, John 3:36[/footnote].');
+INSERT INTO `mse_bible_footnote` VALUES (8562, 1, 45, 11, 2, 'r', 'See [scripture id="1ki?n=19:14~a=4"]1Kings 19:14-18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8563, 1, 45, 11, 4, 'a', '''Baal'' has the feminine article. It was adored in Syria in masculine and feminine characters.');
 INSERT INTO `mse_bible_footnote` VALUES (8564, 1, 45, 11, 6, 'b', 'See [footnote id="n_mt?n=18:32"]Note, Matt. 18:32[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8565, 1, 45, 11, 7, 'c', 'Or ''hardened,'' ''made obdurate in heart.''');
-INSERT INTO `mse_bible_footnote` VALUES (8566, 1, 45, 11, 8, 'd', 'See [scripture id="de?n=29:4"]Deut. 29:4[/scripture]; <A HREF="/cgi-bin/br/BDB/isa?n=6:9~a=1">Isa. 6:9, 10</A>; <A HREF="/cgi-bin/br/BDB/isa?n=29:10">29:10</A>.');
-INSERT INTO `mse_bible_footnote` VALUES (8567, 1, 45, 11, 9, 'e', 'See <A HREF="/cgi-bin/br/BDB/ps?n=69:22~a=1">Ps. 69:22-23</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8566, 1, 45, 11, 8, 'd', 'See [scripture id="de?n=29:4"]Deut. 29:4[/scripture]; [scripture id="isa?n=6:9~a=1"]Isa. 6:9, 10[/scripture]; [scripture id="isa?n=29:10"]29:10[/scripture].');
+INSERT INTO `mse_bible_footnote` VALUES (8567, 1, 45, 11, 9, 'e', 'See [scripture id="ps?n=69:22~a=1"]Ps. 69:22-23[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8568, 1, 45, 11, 21, 'f', 'This is another case where the grammatical structure is not complete. It may well be taken, ''fear ... lest he spare not thee;'' the beginning of [scripture id="ro?n=11:21"]ver. 21[/scripture] adding a supplementary thought, of which the apostle''s mind was full; still it is a broken phrase.');
 INSERT INTO `mse_bible_footnote` VALUES (8569, 1, 45, 11, 22, 'g', 'The subjunctive, ''if thou shouldest abide,'' or ''abidest.'' There are three degrees of condition in Greek: indicative, if the fact arrives; subjunctive, doubtful if it will; and conditional, of uncertain probability.');
 INSERT INTO `mse_bible_footnote` VALUES (8570, 1, 45, 11, 25, 'a', 'Or ''obdurateness,'' as [scripture id="ro?n=11:7"]ver. 7[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8571, 1, 45, 11, 26, 'b', 'See <A HREF="/cgi-bin/br/BDB/isa?n=59:20~a=1">Isa. 59:20-21</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8571, 1, 45, 11, 26, 'b', 'See [scripture id="isa?n=59:20~a=1"]Isa. 59:20-21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8572, 1, 45, 11, 29, 'c', 'i.e. ''irrevocable.'' The Greek only occurs here and [scripture id="2co?n=7:10"]2Cor. 7:10[/scripture], ''never to be regretted.''');
 INSERT INTO `mse_bible_footnote` VALUES (8573, 1, 45, 11, 30, 'd', 'See [footnote id="n_ro?n=10:21a"]Note q, ch. 10:21[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8574, 1, 45, 11, 31, 'e', 'This means that the Jews would not believe in the mercy shown to the Gentiles, and thus lost the glad tidings of the grace of God for themselves; and thus, their right to the promises being gone, they come in at the end as objects of mere mercy, as any poor Gentile might be, though, by that mercy, God accomplishes his promises, to which, as to their present responsibility, they had lost all title. It is this which gives rise to the apostle''s expressions of admiration as to the wisdom of God.');
@@ -8621,11 +8604,11 @@ INSERT INTO `mse_bible_footnote` VALUES (8584, 1, 45, 12, 11, 'c', 'The word mea
 INSERT INTO `mse_bible_footnote` VALUES (8585, 1, 45, 12, 16, 'd', 'Or ''with what is lowly.''');
 INSERT INTO `mse_bible_footnote` VALUES (8586, 1, 45, 12, 17, 'e', 'Taking care by forethought that there should be what is comely and seemly. See ''forethought,'' [scripture id="ro?n=13:14"]ch. 13:14[/scripture]; [scripture id="2co?n=8:21"]2Cor. 8:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8587, 1, 45, 12, 19, 'f', 'See [scripture id="de?n=32:35"]Deut. 32:35[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8588, 1, 45, 12, 20, 'g', 'See <A HREF="/cgi-bin/br/BDB/pr?n=25:21~a=1">Prov. 25:21-22</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8588, 1, 45, 12, 20, 'g', 'See [scripture id="pr?n=25:21~a=1"]Prov. 25:21-22[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8589, 1, 45, 13, 1, 'h', 'Or ''let every soul subject itself:'' it is reflexive; see [footnote id="n_heb?n=1:3c"]Note e, Heb. 1:3[/footnote]. ''Sets himself in opposition,'' [scripture id="ro?n=13:2"]ver. 2[/scripture], is in direct contrast.');
 INSERT INTO `mse_bible_footnote` VALUES (8590, 1, 45, 13, 2, 'i', 'Lit. ''shall receive.''');
 INSERT INTO `mse_bible_footnote` VALUES (8591, 1, 45, 13, 8, 'k', 'Perfect tense. By the conduct which flows from love, the law is already fulfilled before its requirement is applied.');
-INSERT INTO `mse_bible_footnote` VALUES (8592, 1, 45, 13, 9, 'l', 'See <A HREF="/cgi-bin/br/BDB/ex?n=20:13~a=4">Ex. 20:13-17</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8592, 1, 45, 13, 9, 'l', 'See [scripture id="ex?n=20:13~a=4"]Ex. 20:13-17[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8593, 1, 45, 13, 9, 'm', 'See [scripture id="le?n=19:18"]Lev. 19:18[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8594, 1, 45, 13, 10, 'a', 'Lit. ''fulness of law.''');
 INSERT INTO `mse_bible_footnote` VALUES (8595, 1, 45, 13, 11, 'b', '''This also;'' assigning another and additional reason for what he says.');
@@ -8656,7 +8639,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8619, 1, 45, 16, 18, 'a', '<I>Douleuo</
 INSERT INTO `mse_bible_footnote` VALUES (8620, 1, 45, 16, 18, 'b', 'A strong form of the word, as in [scripture id="1ti?n=2:14"]1Tim. 2:14[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8621, 1, 45, 16, 19, 'c', 'i.e. ''come to the knowledge of.''');
 INSERT INTO `mse_bible_footnote` VALUES (8622, 1, 45, 16, 20, 'd', 'As [scripture id="lu?n=9:39"]Luke 9:39[/scripture], ''crushing;'' [scripture id="re?n=2:27"]Rev. 2:27[/scripture]; ''broken in pieces.''');
-INSERT INTO `mse_bible_footnote` VALUES (8623, 1, 45, 16, 25, 'e', 'It formed no part of what was unfolded in the ages of time, in which God developed his plans in creation; it was a purpose before, and eternally hidden; it was not in reckoned time. See <A HREF="/cgi-bin/br/BDB/1co?n=2:7~3">1Cor. 2:7-10</A>; <A HREF="/cgi-bin/br/BDB/eph?n=3:2~a=9">Eph. 3:2-11</A>; <A HREF="/cgi-bin/br/BDB/eph?n=5:32">5:32</A>; <A HREF="/cgi-bin/br/BDB/col?n=1:25~a=2">Col. 1:25-27</A>; <A HREF="/cgi-bin/br/BDB/col?n=2:2~a=1">2:2, 3</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8623, 1, 45, 16, 25, 'e', 'It formed no part of what was unfolded in the ages of time, in which God developed his plans in creation; it was a purpose before, and eternally hidden; it was not in reckoned time. See [scripture id="1co?n=2:7~3"]1Cor. 2:7-10[/scripture]; [scripture id="eph?n=3:2~a=9"]Eph. 3:2-11[/scripture]; [scripture id="eph?n=5:32"]5:32[/scripture]; [scripture id="col?n=1:25~a=2"]Col. 1:25-27[/scripture]; [scripture id="col?n=2:2~a=1"]2:2, 3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8624, 1, 45, 16, 27, 'f', 'The natural construction would be ''to him.'' These breaks, through long parentheses, are common with Paul.');
 INSERT INTO `mse_bible_footnote` VALUES (8625, 1, 8, 1, 1, 'a', '<I>Shaphat</I>, lit. ''judged.''');
 INSERT INTO `mse_bible_footnote` VALUES (8626, 1, 8, 1, 1, 'b', 'Lit. ''fields,'' ''farmlands,'' as [scripture id="ru?n=1:6"]ver. 6[/scripture], and elsewhere. As [scripture id="2ki?n=8:3"]2Kings 8:3[/scripture], [scripture id="2ki?n=8:5"]5[/scripture].');
@@ -8677,7 +8660,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8640, 1, 8, 3, 3, 'd', 'Or ''bathe,'' a
 INSERT INTO `mse_bible_footnote` VALUES (8641, 1, 8, 3, 9, 'e', 'Lit. ''wing,'' as [scripture id="ex?n=19:4"]Ex. 19:4[/scripture]; [scripture id="ps?n=36:7"]Ps. 36:7[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8642, 1, 8, 3, 15, 'a', 'Some read ''she went.''');
 INSERT INTO `mse_bible_footnote` VALUES (8643, 1, 8, 4, 4, 'b', 'Lit. ''said.''');
-INSERT INTO `mse_bible_footnote` VALUES (8644, 1, 8, 4, 4, 'c', 'Lit. ''uncover thine ear:'' so in [scripture id="1sa?n=9:15"]1Sam. 9:15[/scripture]; [scripture id="1sa?n=20:2"]20:2[/scripture], <A HREF="/cgi-bin/br/BDB/1sa?n=20:12~a=1">12, 13</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8644, 1, 8, 4, 4, 'c', 'Lit. ''uncover thine ear:'' so in [scripture id="1sa?n=9:15"]1Sam. 9:15[/scripture]; [scripture id="1sa?n=20:2"]20:2[/scripture], [scripture id="1sa?n=20:12~a=1"]12, 13[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8645, 1, 8, 4, 4, 'd', 'Or ''before those that sit here.''');
 INSERT INTO `mse_bible_footnote` VALUES (8646, 1, 8, 4, 5, 'e', 'As ''country,'' [scripture id="ru?n=1:1"]ch. 1:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8647, 1, 8, 4, 14, 'a', 'Or ''without a redeemer;'' it refers to the son born, i.e. Obed.');
@@ -8689,11 +8672,11 @@ INSERT INTO `mse_bible_footnote` VALUES (8652, 1, 22, 1, 2, 'b', 'Heb. ''loves:'
 INSERT INTO `mse_bible_footnote` VALUES (8653, 1, 22, 1, 4, 'c', 'Or ''celebrate.''');
 INSERT INTO `mse_bible_footnote` VALUES (8654, 1, 22, 1, 6, 'd', 'Or ''hath burned me.''');
 INSERT INTO `mse_bible_footnote` VALUES (8655, 1, 22, 1, 7, 'e', 'Others, ''roving.''');
-INSERT INTO `mse_bible_footnote` VALUES (8656, 1, 22, 1, 9, 'f', 'Or ''friend:'' it is feminine and occurs in [scripture id="so?n=1:15"]ver. 15[/scripture]; [scripture id="so?n=2:2"]chs. 2:2[/scripture], [scripture id="so?n=2:10"]10[/scripture], [scripture id="so?n=2:13"]13[/scripture]; [scripture id="so?n=4:1"]4:1[/scripture], [scripture id="so?n=4:7"]7[/scripture]; [scripture id="so?n=5:2"]5:2[/scripture]; [scripture id="so?n=6:4"]6:4[/scripture]. (It is not the same as [scripture id="so?n=2:7"]chs. 2:7[/scripture]; [scripture id="so?n=3:5"]3:5[/scripture]; [scripture id="so?n=7:6"]7:6[/scripture]; [scripture id="so?n=8:4"]8:4[/scripture].) This feminine form of the word is only found in this Book and <A HREF="/cgi-bin/br/BDB/jud?n=11:37~a=1">Judg. 11:37, 38</A>, and <A HREF="/cgi-bin/br/BDB/ps?n=45:14">Ps. 45:14</A>. The masculine form ''friend'' occurs in <A HREF="/cgi-bin/br/BDB/so?n=5:1">ch. 5:1</A>, <A HREF="/cgi-bin/br/BDB/so?n=5:16">16</A>; <A HREF="/cgi-bin/br/BDB/2sa?n=15:37">2Sam. 15:37</A>; <A HREF="/cgi-bin/br/BDB/2sa?n=16:16">16:16</A>, &c.');
+INSERT INTO `mse_bible_footnote` VALUES (8656, 1, 22, 1, 9, 'f', 'Or ''friend:'' it is feminine and occurs in [scripture id="so?n=1:15"]ver. 15[/scripture]; [scripture id="so?n=2:2"]chs. 2:2[/scripture], [scripture id="so?n=2:10"]10[/scripture], [scripture id="so?n=2:13"]13[/scripture]; [scripture id="so?n=4:1"]4:1[/scripture], [scripture id="so?n=4:7"]7[/scripture]; [scripture id="so?n=5:2"]5:2[/scripture]; [scripture id="so?n=6:4"]6:4[/scripture]. (It is not the same as [scripture id="so?n=2:7"]chs. 2:7[/scripture]; [scripture id="so?n=3:5"]3:5[/scripture]; [scripture id="so?n=7:6"]7:6[/scripture]; [scripture id="so?n=8:4"]8:4[/scripture].) This feminine form of the word is only found in this Book and [scripture id="jud?n=11:37~a=1"]Judg. 11:37, 38[/scripture], and [scripture id="ps?n=45:14"]Ps. 45:14[/scripture]. The masculine form ''friend'' occurs in [scripture id="so?n=5:1"]ch. 5:1[/scripture], [scripture id="so?n=5:16"]16[/scripture]; [scripture id="2sa?n=15:37"]2Sam. 15:37[/scripture]; [scripture id="2sa?n=16:16"]16:16[/scripture], &c.');
 INSERT INTO `mse_bible_footnote` VALUES (8657, 1, 22, 1, 13, 'g', 'Or ''That passeth the night,'' or ''abideth.''');
 INSERT INTO `mse_bible_footnote` VALUES (8658, 1, 22, 2, 1, 'a', 'Feminine, as [scripture id="isa?n=35:1"]Isa. 35:1[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8659, 1, 22, 2, 1, 'b', 'See [scripture id="1ch?n=27:29"]1Chron. 27:29[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8660, 1, 22, 2, 7, 'c', 'Or ''adjure,'' and so [scripture id="so?n=3:5"]chs. 3:5[/scripture]; <A HREF="/cgi-bin/br/BDB/so?n=5:8~a=1">5:8, 9</A>; <A HREF="/cgi-bin/br/BDB/so?n=8:4">8:4</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8660, 1, 22, 2, 7, 'c', 'Or ''adjure,'' and so [scripture id="so?n=3:5"]chs. 3:5[/scripture]; [scripture id="so?n=5:8~a=1"]5:8, 9[/scripture]; [scripture id="so?n=8:4"]8:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8661, 1, 22, 2, 7, 'd', 'Lit. ''nor awaken love till it please:'' so [scripture id="so?n=3:5"]chs. 3:5[/scripture] and [scripture id="so?n=8:4"]8:4[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8662, 1, 22, 2, 9, 'e', 'Or ''showing himself.''');
 INSERT INTO `mse_bible_footnote` VALUES (8663, 1, 22, 2, 17, 'f', 'Or ''Return.''');
@@ -8719,11 +8702,11 @@ INSERT INTO `mse_bible_footnote` VALUES (8682, 1, 22, 8, 14, 'c', 'Lit. ''Break 
 INSERT INTO `mse_bible_footnote` VALUES (8683, 1, 56, 1, 1, 'b', 'In Greek <I>de</I>, a particular additional circumstance, more marked as a distinct relationship, giving occasion to consequences.');
 INSERT INTO `mse_bible_footnote` VALUES (8684, 1, 56, 1, 1, 'c', '<I>Epignosis</I>, as [scripture id="col?n=1:9"]Col. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8685, 1, 56, 1, 2, 'd', '<I>Epi</I>: the condition under which the apostolic mission exists.');
-INSERT INTO `mse_bible_footnote` VALUES (8686, 1, 56, 1, 8, 'e', 'i.e. ''sober,'' or of ''sound mind,'' as [scripture id="tit?n=2:2"]ch. 2:2[/scripture], <A HREF="/cgi-bin/br/BDB/tit?n=2:5~a=1">5, 6</A>, <A HREF="/cgi-bin/br/BDB/tit?n=2:12">12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8686, 1, 56, 1, 8, 'e', 'i.e. ''sober,'' or of ''sound mind,'' as [scripture id="tit?n=2:2"]ch. 2:2[/scripture], [scripture id="tit?n=2:5~a=1"]5, 6[/scripture], [scripture id="tit?n=2:12"]12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8687, 1, 56, 1, 8, 'f', '<I>Hosios</I>, as ''holy,'' [scripture id="heb?n=7:26"]Heb. 7:26[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8688, 1, 56, 1, 9, 'g', '<I>Elenko</I>, as [scripture id="tit?n=2:15"]ch. 2:15[/scripture], ''rebuke,'' see [footnote id="n_joh?n=3:20"]Note, John 3:20[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8689, 1, 56, 1, 13, 'a', '<I>Elenko</I>, as [scripture id="tit?n=1:9"]ver. 9[/scripture], and [scripture id="tit?n=2:15"]ch. 2:15[/scripture].');
-INSERT INTO `mse_bible_footnote` VALUES (8690, 1, 56, 2, 2, 'b', 'i e. ''sober'' or of ''sound mind,'' as [scripture id="tit?n=1:8"]ch. 1:8[/scripture]; <A HREF="/cgi-bin/br/BDB/tit?n=2:5~a=1">2:5, 6</A>, <A HREF="/cgi-bin/br/BDB/tit?n=2:12">12</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8690, 1, 56, 2, 2, 'b', 'i e. ''sober'' or of ''sound mind,'' as [scripture id="tit?n=1:8"]ch. 1:8[/scripture]; [scripture id="tit?n=2:5~a=1"]2:5, 6[/scripture], [scripture id="tit?n=2:12"]12[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8691, 1, 56, 2, 2, 'c', 'Or ''endurance,'' as [scripture id="jas?n=5:11"]Jas. 5:11[/scripture]; but see [scripture id="2th?n=3:5"]2Thess. 3:5[/scripture]; [scripture id="re?n=1:9"]Rev. 1:9[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8692, 1, 56, 2, 4, 'd', 'To impart and enforce by will, counsel, and rebuke, rules of conduct, &c.');
 INSERT INTO `mse_bible_footnote` VALUES (8693, 1, 56, 2, 9, 'e', '<I>Despotes</I>, as [scripture id="2ti?n=2:21"]2Tim. 2:21[/scripture].');
@@ -8744,7 +8727,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8707, 1, 38, 1, 3, 'f', 'This name is i
 INSERT INTO `mse_bible_footnote` VALUES (8708, 1, 38, 1, 6, 'a', 'Or ''devised,'' ''purposed,'' as [scripture id="jer?n=4:28"]Jer. 4:28[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8709, 1, 38, 1, 8, 'b', 'Or ''that night.''');
 INSERT INTO `mse_bible_footnote` VALUES (8710, 1, 38, 1, 17, 'c', 'Or ''spread out because of.''');
-INSERT INTO `mse_bible_footnote` VALUES (8711, 1, 38, 1, 18, 'd', 'In the Hebrew, <A HREF="/cgi-bin/br/BDB/zec?n=2">ch. 2</A> begins here.');
+INSERT INTO `mse_bible_footnote` VALUES (8711, 1, 38, 1, 18, 'd', 'In the Hebrew, [scripture id="zec?n=2"]ch. 2[/scripture] begins here.');
 INSERT INTO `mse_bible_footnote` VALUES (8712, 1, 38, 1, 20, 'e', 'Or ''smiths,'' ''carpenters.''');
 INSERT INTO `mse_bible_footnote` VALUES (8713, 1, 38, 2, 4, 'a', 'Or ''be inhabited as the open country.''');
 INSERT INTO `mse_bible_footnote` VALUES (8714, 1, 38, 2, 11, 'b', 'Or ''great,'' as [scripture id="eze?n=17:8"]Ezek. 17:8[/scripture].');
@@ -8777,7 +8760,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8740, 1, 38, 8, 21, 'd', 'Or ''diligent
 INSERT INTO `mse_bible_footnote` VALUES (8741, 1, 38, 9, 1, 'e', 'Or ''and Damascus shall be its resting-place.''');
 INSERT INTO `mse_bible_footnote` VALUES (8742, 1, 38, 9, 1, 'f', 'Or ''when the eyes of men and of all the tribes of Israel are upon Jehovah.''');
 INSERT INTO `mse_bible_footnote` VALUES (8743, 1, 38, 9, 6, 'a', 'Or ''a foreign race.''');
-INSERT INTO `mse_bible_footnote` VALUES (8744, 1, 38, 9, 7, 'b', 'Or ''governor;'' and so <A HREF="/cgi-bin/br/BDB/zec?n=12:5~a=1">ch. 12:5, 6</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8744, 1, 38, 9, 7, 'b', 'Or ''governor;'' and so [scripture id="zec?n=12:5~a=1"]ch. 12:5, 6[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8745, 1, 38, 9, 9, 'c', 'The Hebrew verb has a reflexive force here -- ''having'' or ''bringing salvation by himself:'' see [scripture id="heb?n=1:3"]Heb. 1:3[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8746, 1, 38, 9, 10, 'd', 'The Euphrates.');
 INSERT INTO `mse_bible_footnote` VALUES (8747, 1, 38, 9, 10, 'e', 'Or ''land;'' but cf. [scripture id="ps?n=2:8"]Ps. 2:8[/scripture].');
@@ -8790,7 +8773,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8753, 1, 38, 10, 2, 'l', 'Or ''are affl
 INSERT INTO `mse_bible_footnote` VALUES (8754, 1, 38, 10, 4, 'a', 'Or ''ruler.''');
 INSERT INTO `mse_bible_footnote` VALUES (8755, 1, 38, 10, 6, 'b', 'Or ''cause them to dwell.''');
 INSERT INTO `mse_bible_footnote` VALUES (8756, 1, 38, 10, 11, 'c', 'Or ''with.''');
-INSERT INTO `mse_bible_footnote` VALUES (8757, 1, 38, 11, 2, 'd', 'See <A HREF="/cgi-bin/br/BDB/jer?n=25:34~a=2">Jer. 25:34-36</A>; <A HREF="/cgi-bin/dr/n_jer?n=30:21">30:21, Note</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8757, 1, 38, 11, 2, 'd', 'See [scripture id="jer?n=25:34~a=2"]Jer. 25:34-36[/scripture]; [footnote id="n_jer?n=30:21"]30:21, Note[/footnote].');
 INSERT INTO `mse_bible_footnote` VALUES (8758, 1, 38, 11, 2, 'e', 'Or ''inaccessible.''');
 INSERT INTO `mse_bible_footnote` VALUES (8759, 1, 38, 11, 5, 'f', 'Or ''and do not suffer <I>punishment</I> for it.''');
 INSERT INTO `mse_bible_footnote` VALUES (8760, 1, 38, 11, 6, 'g', '<I>Adam</I>, mankind.');
@@ -8829,7 +8812,7 @@ INSERT INTO `mse_bible_footnote` VALUES (8792, 1, 36, 1, 10, 'b', 'See [scriptur
 INSERT INTO `mse_bible_footnote` VALUES (8793, 1, 36, 1, 11, 'c', 'Meaning, ''Mortar:'' name of the lower, basin-like, part of Jerusalem.');
 INSERT INTO `mse_bible_footnote` VALUES (8794, 1, 36, 1, 11, 'd', 'Or ''merchant people:'' see [scripture id="zec?n=14:21"]Zech. 14:21[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8795, 1, 36, 1, 17, 'e', '<I>Adam</I> -- mankind.');
-INSERT INTO `mse_bible_footnote` VALUES (8796, 1, 36, 1, 18, 'f', 'Or ''consumption:'' see <A HREF="/cgi-bin/br/BDB/isa?n=10:22~a=1">Isa. 10:22, 23</A>; <A HREF="/cgi-bin/br/BDB/jer?n=4:27">Jer. 4:27</A>, &c.; <A HREF="/cgi-bin/br/BDB/eze?n=11:13">Ezek. 11:13</A>; <A HREF="/cgi-bin/br/BDB/na?n=1:8">Nah. 1:8</A>.');
+INSERT INTO `mse_bible_footnote` VALUES (8796, 1, 36, 1, 18, 'f', 'Or ''consumption:'' see [scripture id="isa?n=10:22~a=1"]Isa. 10:22, 23[/scripture]; [scripture id="jer?n=4:27"]Jer. 4:27[/scripture], &c.; [scripture id="eze?n=11:13"]Ezek. 11:13[/scripture]; [scripture id="na?n=1:8"]Nah. 1:8[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8797, 1, 36, 2, 1, 'g', 'Or ''longing.''');
 INSERT INTO `mse_bible_footnote` VALUES (8798, 1, 36, 2, 5, 'h', '[scripture id="eze?n=25:16"]Ezek. 25:16[/scripture].');
 INSERT INTO `mse_bible_footnote` VALUES (8799, 1, 36, 2, 6, 'i', 'Or, ''shall be meadows, shepherds'' cisterns.''');
@@ -8851,23 +8834,6 @@ INSERT INTO `mse_bible_footnote` VALUES (8814, 1, 36, 3, 11, 'b', 'See [footnote
 INSERT INTO `mse_bible_footnote` VALUES (8815, 1, 36, 3, 18, 'c', 'Or ''set feast.''');
 INSERT INTO `mse_bible_footnote` VALUES (8816, 1, 36, 3, 19, 'd', 'See [scripture id="mic?n=4:6"]Mic. 4:6[/scripture]');
 INSERT INTO `mse_bible_footnote` VALUES (8817, 1, 36, 3, 19, 'e', 'Lit. ''in every land of their shame.''');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mse_bible_footnote_ref`
---
-
-CREATE TABLE `mse_bible_footnote_ref` (
-  `footnoteid` int(10) unsigned NOT NULL,
-  `verid` int(10) unsigned NOT NULL,
-  `bookid` int(10) unsigned NOT NULL,
-  `chapter` int(10) unsigned NOT NULL,
-  `verse` int(10) unsigned NOT NULL,
-  `refid` int(10) unsigned NOT NULL default '0',
-  `phrase` varchar(200) default NULL,
-  PRIMARY KEY  (`footnoteid`,`verid`,`bookid`,`chapter`,`verse`,`refid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Bible Footnote References';
 
 --
 -- Dumping data for table `mse_bible_footnote_ref`
@@ -18354,25 +18320,6 @@ INSERT INTO `mse_bible_footnote_ref` VALUES (8815, 1, 36, 3, 18, 1, 'assemblies'
 INSERT INTO `mse_bible_footnote_ref` VALUES (8816, 1, 36, 3, 19, 1, 'halted');
 INSERT INTO `mse_bible_footnote_ref` VALUES (8817, 1, 36, 3, 19, 1, 'shame');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `mse_bible_footnote_xref`
---
-
-CREATE TABLE `mse_bible_footnote_xref` (
-  `footnoteid` int(10) unsigned NOT NULL,
-  `verid` int(10) unsigned NOT NULL,
-  `bookid` int(10) unsigned NOT NULL,
-  `chapter` int(10) unsigned NOT NULL,
-  `verse` int(10) unsigned NOT NULL,
-  `xrefid` int(10) unsigned NOT NULL,
-  `from_footnoteid` int(10) unsigned default NULL,
-  `phrase` varchar(200) default NULL,
-  PRIMARY KEY  (`footnoteid`,`verid`,`bookid`,`chapter`,`verse`,`xrefid`),
-  KEY `tofootnote` (`from_footnoteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Bible Footnote Cross-references';
-
 --
 -- Dumping data for table `mse_bible_footnote_xref`
 --
@@ -20025,11 +19972,12 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 1, 12, 3, 5036, 'Note
 INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 2, 11, 4, 5049, 'Note, 2Tim. 1:12');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 3, 36, 5, 5064, 'Note, 2Tim. 1:12');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 6, 29, 6, 5091, 'Note, 2Tim. 1:12');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 12, 11, 7, 5145, 'Note, 2Tim. 1:12');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 14, 1, 8, 5169, 'Note, 2Tim. 1:12');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 16, 9, 9, 5187, 'Note, 2Tim. 1:12');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 17, 20, 10, 5207, 'Note, 2Tim. 1:12');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 45, 4, 18, 11, 8459, 'Note at 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 7, 5, 7, 5105, 'Note, 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 12, 11, 8, 5145, 'Note, 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 14, 1, 9, 5169, 'Note, 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 16, 9, 10, 5187, 'Note, 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 43, 17, 20, 11, 5207, 'Note, 2Tim. 1:12');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1428, 1, 45, 4, 18, 12, 8459, 'Note at 2Tim. 1:12');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1429, 1, 55, 1, 13, 1, NULL, 'Have');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1430, 1, 55, 2, 2, 1, NULL, 'of');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1431, 1, 55, 2, 3, 1, NULL, 'suffering');
@@ -20643,7 +20591,8 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (1948, 1, 5, 2, 36, 5, 1950, 'Note,
 INSERT INTO `mse_bible_footnote_xref` VALUES (1949, 1, 5, 2, 32, 1, NULL, 'Jahaz');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1950, 1, 5, 2, 36, 1, NULL, 'river');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1950, 1, 5, 2, 36, 2, NULL, 'ravine');
-INSERT INTO `mse_bible_footnote_xref` VALUES (1950, 1, 6, 12, 2, 3, 5299, 'Note, Deut. 2:36');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1950, 1, 5, 2, 13, 3, 1948, 'Note, ver. 36');
+INSERT INTO `mse_bible_footnote_xref` VALUES (1950, 1, 6, 12, 2, 4, 5299, 'Note, Deut. 2:36');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1951, 1, 5, 2, 37, 1, NULL, 'mountain');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1952, 1, 5, 2, 37, 1, NULL, 'forbidden');
 INSERT INTO `mse_bible_footnote_xref` VALUES (1953, 1, 5, 3, 9, 1, NULL, 'Senir)');
@@ -22531,6 +22480,7 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (3593, 1, 58, 7, 21, 1, NULL, 'him'
 INSERT INTO `mse_bible_footnote_xref` VALUES (3594, 1, 58, 7, 24, 1, NULL, 'unchangeable');
 INSERT INTO `mse_bible_footnote_xref` VALUES (3595, 1, 60, 1, 16, 1, 485, 'Note i, Heb. 7:26');
 INSERT INTO `mse_bible_footnote_xref` VALUES (3595, 1, 58, 7, 26, 2, NULL, 'holy');
+INSERT INTO `mse_bible_footnote_xref` VALUES (3595, 1, 66, 15, 4, 3, 8337, 'Note i, Heb. 7:26');
 INSERT INTO `mse_bible_footnote_xref` VALUES (3596, 1, 58, 7, 26, 1, NULL, 'harmless');
 INSERT INTO `mse_bible_footnote_xref` VALUES (3597, 1, 58, 7, 27, 1, NULL, 'all');
 INSERT INTO `mse_bible_footnote_xref` VALUES (3598, 1, 58, 8, 1, 1, NULL, 'summary');
@@ -23615,6 +23565,7 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (4568, 1, 24, 30, 17, 1, NULL, 'ban
 INSERT INTO `mse_bible_footnote_xref` VALUES (4569, 1, 24, 30, 18, 1, NULL, 'habitations');
 INSERT INTO `mse_bible_footnote_xref` VALUES (4570, 1, 24, 30, 18, 1, NULL, 'heap');
 INSERT INTO `mse_bible_footnote_xref` VALUES (4571, 1, 24, 30, 21, 1, NULL, 'prince');
+INSERT INTO `mse_bible_footnote_xref` VALUES (4571, 1, 38, 11, 2, 2, 8757, '30:21, Note');
 INSERT INTO `mse_bible_footnote_xref` VALUES (4572, 1, 24, 30, 21, 1, NULL, 'engageth');
 INSERT INTO `mse_bible_footnote_xref` VALUES (4573, 1, 24, 31, 3, 1, NULL, 'thee');
 INSERT INTO `mse_bible_footnote_xref` VALUES (4574, 1, 24, 31, 5, 1, NULL, 'fruit');
@@ -24170,6 +24121,7 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (5063, 1, 43, 3, 35, 1, NULL, 'love
 INSERT INTO `mse_bible_footnote_xref` VALUES (5064, 1, 43, 3, 36, 1, NULL, 'on');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5065, 1, 58, 3, 18, 1, 3556, 'Note e, John 3:36');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5065, 1, 43, 3, 36, 2, NULL, 'subject');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5065, 1, 45, 10, 21, 3, 8561, 'Note e, John 3:36');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5066, 1, 43, 4, 6, 1, NULL, 'fountain');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5067, 1, 43, 4, 6, 1, NULL, 'was');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5068, 1, 43, 4, 14, 1, NULL, 'ever');
@@ -24401,11 +24353,12 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (5224, 1, 43, 21, 17, 4, NULL, 'kno
 INSERT INTO `mse_bible_footnote_xref` VALUES (5224, 1, 43, 21, 24, 5, NULL, 'know');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 21, 15, 1, NULL, 'lovest');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 21, 15, 2, NULL, 'to');
-INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 5, 20, 3, 5078, 'chs. 21:15');
-INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 11, 3, 4, 5133, 'Note, ch. 21:15');
-INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 16, 27, 5, 5196, 'chs. 21:15');
-INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 66, 3, 19, 6, 8256, 'Note b, John 21:15');
-INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 56, 3, 15, 7, 8704, 'Note b, John 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 3, 35, 3, 5063, 'Note at ch. 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 5, 20, 4, 5078, 'chs. 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 11, 3, 5, 5133, 'Note, ch. 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 43, 16, 27, 6, 5196, 'chs. 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 66, 3, 19, 7, 8256, 'Note b, John 21:15');
+INSERT INTO `mse_bible_footnote_xref` VALUES (5225, 1, 56, 3, 15, 8, 8704, 'Note b, John 21:15');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5226, 1, 43, 21, 17, 1, NULL, 'knowest');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5227, 1, 43, 21, 21, 1, NULL, 'him');
 INSERT INTO `mse_bible_footnote_xref` VALUES (5228, 1, 32, 1, 1, 1, NULL, '*');
@@ -28688,24 +28641,3 @@ INSERT INTO `mse_bible_footnote_xref` VALUES (8814, 1, 36, 3, 11, 1, NULL, 'moun
 INSERT INTO `mse_bible_footnote_xref` VALUES (8815, 1, 36, 3, 18, 1, NULL, 'assemblies');
 INSERT INTO `mse_bible_footnote_xref` VALUES (8816, 1, 36, 3, 19, 1, NULL, 'halted');
 INSERT INTO `mse_bible_footnote_xref` VALUES (8817, 1, 36, 3, 19, 1, NULL, 'shame');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mse_bible_version`
---
-
-CREATE TABLE `mse_bible_version` (
-  `verid` int(10) unsigned NOT NULL,
-  `vercode` varchar(3) NOT NULL,
-  `versionname` varchar(45) default NULL,
-  PRIMARY KEY  (`verid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Bible Versions';
-
---
--- Dumping data for table `mse_bible_version`
---
-
-INSERT INTO `mse_bible_version` VALUES (1, 'JND', 'Darby Translation');
-INSERT INTO `mse_bible_version` VALUES (2, 'KJV', 'King James Version');
-

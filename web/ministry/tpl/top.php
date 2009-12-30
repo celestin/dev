@@ -15,6 +15,7 @@
  * CAM  29-Sep-2008  10302 : Added root.
  * CAM  12-Apr-2009  10419 : Added more flexibility to tabs.
  * CAM  29-Dec-2009  10515 : Added Bible.
+ * CAM  30-Dec-2009  10523 : Added Favicon.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 if (empty($root)) {
@@ -42,6 +43,7 @@ if (empty($title)) {
   <? if (!empty($pageCss)) { ?><link href="<? echo $pageCss;?>" rel="stylesheet" type="text/css" /><? } ?>
   <script language="Javascript" src="<? echo $root;?>date.js"></script>
   <script language="Javascript" src="<? echo $root;?>form.js"></script>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="<? echo $cfg['Site']['URL']; ?>/favicon.ico">
 </head>
 
 <body topmargin=2 leftmargin=0 id="<? echo $pageName;?>">

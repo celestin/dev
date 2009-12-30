@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2008 Front Burner
+ * Copyright (c) 2008,2009 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -9,6 +9,7 @@
  * CAM  15-Jun-2008  10409 : File created.
  * CAM  04-Apr-2009  10414 : Moved CrossReference here.
  * CAM  29-Dec-2009  10516 : Remove Hrefs with basic MseLinks (until #10517 is defined and completed).
+ * CAM  29-Dec-2009  10521 : Don't abort if an Xref cannot be found.  Needs to be fixed - #10517.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -177,7 +178,11 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         if (newLine.Length > 0)
         {
           xref = new BibleXref(verse, xrefType, rf, word);
-          if (!xref.AddXref(Book.Version)) return false;
+          if (!xref.AddXref(Book.Version))
+          {
+            // TODO [#10517] Determine what ~a=1 means after ref - this is causing a failure to find the xref
+            //return false;
+          }
           verse.Text = newLine + text;
         }
       }

@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Dec-2009  10515 : File created.
  * CAM  30-Dec-2009  10520 : Ensure keywords are formatted correctly for SQL.
+ * CAM  30-Dec-2009  10522 : Added remove_mselinks - needs to be improved once links are clickable.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Bible Search";
@@ -28,6 +29,37 @@ $keywords = trim(str_replace("\'", " ", $keywords));
 $keywords = trim(str_replace("\"", " ", $keywords));
 $keywords = trim(str_replace("\\", " ", $keywords));
 $keywords = trim(str_replace("  ", " ", $keywords));
+
+function remove_mselinks($text) {
+  //$text = preg_replace("/\[(.*)\](.*)\[\/(.*)\]/is", "<span class=\"footnote\">$2</span>", $text, $count);
+
+  $record=true;
+  $newText="";
+
+  for ($i=0; $i<strlen($text); $i++) {
+
+    $ch = substr($text, $i, 1);
+
+    if ($ch == "[") {
+      $record = false;
+
+      if (substr($text, $i+1, 1) == "/") {
+        $newText .= "</span>";
+      } else {
+        $newText .= "<span class=\"footnote\">";
+      }
+
+    } else if ($ch == "]") {
+      $record = true;
+    } else {
+      if ($record) {
+        $newText .= $ch;
+      }
+    }
+  }
+
+  return $newText;
+}
 
 ?>
   <script language="Javascript" src="ajax.js"></script>
@@ -118,7 +150,7 @@ $keywords = trim(str_replace("  ", " ", $keywords));
       $$key = stripslashes($val);
     }
 
-    $text = preg_replace("/\[(.*)\](.*?)\[\/(.*)\]/is", "<span class=\"footnote\">$2</span>", $text);
+    $text = remove_mselinks($text);
 
     if (!empty($refs)) $refs .= ", ";
     $refs .= "<span class=\"phrase\">$phrase</span>";

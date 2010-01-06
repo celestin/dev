@@ -160,7 +160,7 @@
       <ext name="VS Workspace" value="dsw" />
     </filetype>
     <filetype name="Textfile">
-      <ext name="CSV" value="cvs" />
+      <ext name="CSV" value="csv" />
       <ext name="Install" value="install" />
       <ext name="Readme" value="readme" />
       <ext name="Text" value="tsv" />

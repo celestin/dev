@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -33,7 +34,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       text.AddNewline();
       text.AddNewline();
       text.AddNewline();
-      text.AddTitle(doc.Volume.Author);
+      text.AddTitle(doc.Volume.Author.Name);
       AppendChild(text);
       text.GenerateBbeb();
 

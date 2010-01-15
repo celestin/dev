@@ -18,6 +18,7 @@
  * CAM  04-Apr-2009  10413 : Save Footnote Refs.
  * CAM  04-Apr-2009  10414 : Truncate rather than Delete Xrefs.
  * CAM  15-Jan-2010  10528 : Added GetAuthors (renamed existing to GetAuthorDataset).
+ * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -195,7 +196,9 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       MySqlDataReader dr;
       Volume vol;
+      string inits;
       VolumeCollection rval = new VolumeCollection();
+      AuthorCollection authors = BusinessLayer.Instance.Authors;
 
       lock (_semaphore)
       {
@@ -214,13 +217,17 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           while (dr.Read())
           {
-            vol = new Volume(dr.GetString(0), dr.GetInt32(1));
+            inits = dr.GetString(0);
+            if (authors.Contains(inits))
+            {
+              vol = new Volume(authors[inits], dr.GetInt32(1));
 
-            if (!dr.IsDBNull(2)) vol.Title = dr.GetString(2);
-            if (!dr.IsDBNull(3)) vol.Added = dr.GetDateTime(3);
-            if (!dr.IsDBNull(4)) vol.LocalFile = dr.GetString(4);
+              if (!dr.IsDBNull(2)) vol.Title = dr.GetString(2);
+              if (!dr.IsDBNull(3)) vol.Added = dr.GetDateTime(3);
+              if (!dr.IsDBNull(4)) vol.LocalFile = dr.GetString(4);
 
-            rval.Add(vol);
+              rval.Add(vol);
+            }
           }
         } while (dr.NextResult());
 

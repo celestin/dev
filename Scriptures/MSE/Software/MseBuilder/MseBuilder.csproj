@@ -156,6 +156,11 @@
   <ItemGroup>
     <None Include="Resources\copy.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\eministry.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  12-May-2008  10265 : Added IsFullMarkup.
  * CAM  15-Jan-2010  10528 : Added Series and Title options.
+ * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,7 +22,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class Volume
   {
-    private string _author;
+    private Author _author;
     private int _vol;
     private string _title;
     private string _series;
@@ -32,10 +33,10 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        return GetId(_author, _vol);
+        return GetId(_author.Inits, _vol);
       }
     }
-    public string Author
+    public Author Author
     {
       get
       {
@@ -128,7 +129,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
-    public Volume(string author, int vol)
+    public Volume(Author author, int vol)
     {
       _author = author;
       _vol = vol;

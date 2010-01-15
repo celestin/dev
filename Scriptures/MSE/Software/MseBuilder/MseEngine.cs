@@ -14,16 +14,18 @@
  * CAM  17-May-2008  10266 : Check for Errors during Build.
  * CAM  08-Jun-2008  10269 : Don't just do an update on the export script: the volume may not exist - do a REPLACE including Title.
  * CAM  15-Jan-2010  10528 : Added CreateBbebFiles.
+ * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
-using System.IO;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.GZip;
 
@@ -125,7 +127,7 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
           {
-            sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("000")));
+            sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
 
             using (StreamWriter sw = new StreamWriter(sqlFile.FullName))
             {
@@ -246,54 +248,63 @@ namespace FrontBurner.Ministry.MseBuilder
       Process p = new Process();
       p.StartInfo.WorkingDirectory = root.FullName;
       p.StartInfo.FileName = @"C:\Program Files\Calibre2\lrs2lrf.exe";
-      p.StartInfo.CreateNoWindow = false;
+      p.StartInfo.CreateNoWindow = true;
 
-      if (root.Exists) root.Delete(true);
-      root.Create();
+      if (root.Exists)
+      {
+        foreach (FileInfo file in root.GetFiles())
+        {
+          file.Delete();
+        }
+      }
+      else
+      {
+        root.Create();
+      }
+
+      FileInfo exe = new FileInfo(Application.ExecutablePath);
+      FileInfo thumbnail = new FileInfo(String.Format(@"{0}\img\eministry.gif", exe.DirectoryName));
+      thumbnail.CopyTo(String.Format(@"{0}\{1}", root.FullName, thumbnail.Name), true);
+
       _current = 0;
 
-      using (StreamWriter script = new StreamWriter(root.FullName + @"\aaa.cmd"))
+      foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
       {
-        foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
+        if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
         {
-          if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
+          lrsFile = new FileInfo(String.Format(@"{0}\{1}_{2}.lrs", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
+
+          if (vol.Author.Equals("JT"))
           {
-            lrsFile = new FileInfo(String.Format(@"{0}\{1}_{2}.lrs", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("000")));
-
-            if (vol.Author.Equals("JT"))
-            {
-              vol.Series = "New Series";
-            }
-
-            Reader.Bbeb.BbebDocument doc = new Reader.Bbeb.BbebDocument(lrsFile, vol);
-
-            doc.BookInformation.Title = vol.FullTitle;
-            doc.BookInformation.Author = vol.Author;
-            doc.BookInformation.BookId = BbebUtil.Instance.NextBookId();
-            doc.BookInformation.Category = "Ministry";
-            doc.BookInformation.Creator = "Craig McKay/GoodTeaching.org";
-
-            script.WriteLine(String.Format(@"""C:\Program Files\Calibre2\lrs2lrf.exe"" {0}", lrsFile.Name));
-
-            foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
-            {
-              string text = dr["text"].ToString();
-              string inits = dr["inits"].ToString();
-              string newPages = dr["newpages"].ToString();
-
-            }
-
-            doc.GenerateBbeb();
-
-            p.StartInfo.Arguments = lrsFile.Name;
-            p.Start();
-            p.WaitForExit();
-
-            Thread.Sleep(100);
+            vol.Series = "New Series";
           }
 
-          _current++;
+          Reader.Bbeb.BbebDocument doc = new Reader.Bbeb.BbebDocument(lrsFile, vol);
+
+          doc.BookInformation.Title = vol.FullTitle;
+          doc.BookInformation.Author = vol.Author.Name;
+          doc.BookInformation.BookId = BbebUtil.Instance.NextBookId();
+          doc.BookInformation.Category = "Ministry";
+          doc.BookInformation.Creator = "Craig McKay/GoodTeaching.org";
+
+          foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
+          {
+            string text = dr["text"].ToString();
+            string inits = dr["inits"].ToString();
+            string newPages = dr["newpages"].ToString();
+            //TODO: Actually add article text!
+          }
+
+          doc.GenerateBbeb();
+
+          p.StartInfo.Arguments = lrsFile.Name;
+          p.Start();
+          p.WaitForExit();
+
+          Thread.Sleep(100);
         }
+
+        _current++;
       }
     }
   }

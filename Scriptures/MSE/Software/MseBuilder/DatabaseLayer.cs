@@ -19,6 +19,7 @@
  * CAM  04-Apr-2009  10414 : Truncate rather than Delete Xrefs.
  * CAM  15-Jan-2010  10528 : Added GetAuthors (renamed existing to GetAuthorDataset).
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
+ * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -339,7 +340,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdText.Parameters.Add("?vol", MySqlDbType.Int32);
       }
 
-      _cmdText.Parameters["?author"].Value = vol.Author;
+      _cmdText.Parameters["?author"].Value = vol.Author.Inits;
       _cmdText.Parameters["?vol"].Value = vol.Vol;
 
       DataTable dt = new DataTable("mse_text");

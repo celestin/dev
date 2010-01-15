@@ -10,6 +10,7 @@
  * CAM  12-May-2008  10265 : Added IsFullMarkup.
  * CAM  15-Jan-2010  10528 : Added Series and Title options.
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
+ * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -75,10 +76,10 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       {
         if (Title.Length > 0)
         {
-          return String.Format("{0} - {1} (#{2})", Author, Title, Vol);
+          return String.Format("{0} - {1} (#{2})", Author.Inits, Title, Vol);
         }
 
-        return String.Format("{0} Volume {1}", Author, Vol);
+        return String.Format("{0} Volume {1}", Author.Inits, Vol);
       }
     }
     public string VolumeTitle

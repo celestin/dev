@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Expose the main block publically.
+ * CAM  15-Jan-2010  10533 : Added ImageStream.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -29,6 +30,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     private BbebPageStyle _pageStyle;
     private BbebBlockStyle _blockStyle;
     private BbebTextStyleCollection _textStyleCollection;
+    private BbebImageStream _imageStreamAuthor;
     private XmlElement _main;
 
     public Volume Volume
@@ -56,11 +58,15 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     {
       get { return _textStyleCollection; }
     }
+    public BbebImageStream ImageStreamAuthor
+    {
+      get { return _imageStreamAuthor; }
+      set { _imageStreamAuthor = value; }
+    }
     public XmlElement MainBlock
     {
       get { return _main; }
     }
-
 
     public BbebDocument(FileInfo lrsFile, Volume vol)
       : base()
@@ -77,12 +83,14 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       _pageStyle = new BbebPageStyle(this);
       _blockStyle = new BbebBlockStyle(this);
       _textStyleCollection = new BbebTextStyleCollection(this);
+      _imageStreamAuthor = new BbebImageStream(this, vol.Author.ImageFilename);
 
       _generators.Add(_bookInformation);
       _generators.Add(_bookStyle);
       _generators.Add(_pageStyle);
       _generators.Add(_blockStyle);
       _generators.Add(_textStyleCollection);
+      _generators.Add(_imageStreamAuthor);
     }
 
     public void GenerateBbeb()
@@ -126,6 +134,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
 
       objects = CreateElement("", "Objects", "");
       _root.AppendChild(objects);
+      objects.AppendChild(ImageStreamAuthor);
     }
 
     public void SaveFile()

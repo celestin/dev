@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10533 : Added ImageFilename.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -31,6 +32,13 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get { return _name; }
       set { _name = value; }
+    }
+    public string ImageFilename
+    {
+      get
+      {
+        return String.Format(@"{0}.png", Inits.ToLower());
+      }
     }
 
     public Author(string inits, string name)

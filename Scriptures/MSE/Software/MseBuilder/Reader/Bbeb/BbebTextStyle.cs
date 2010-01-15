@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Added ArticleScriptures and BbebFont/s.
+ * CAM  15-Jan-2010  10533 : Increased size of the medium title slightly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -136,7 +137,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       : base()
     {
       Add(new BbebTextStyle(doc, TextPurpose.CoverTitleLarge, 140, TextPosition.Centred, BbebFont.Swiss));
-      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleMedium, 80, TextPosition.Centred, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleMedium, 100, TextPosition.Centred, BbebFont.Swiss));
       Add(new BbebTextStyle(doc, TextPurpose.CoverTitleSmall, 60, TextPosition.Centred, BbebFont.Swiss));
       Add(new BbebTextStyle(doc, TextPurpose.ArticleTitle, 140, TextPosition.LeftAligned, BbebFont.Swiss));
       Add(new BbebTextStyle(doc, TextPurpose.ArticleScriptures, 100, TextPosition.LeftAligned, BbebFont.Swiss));

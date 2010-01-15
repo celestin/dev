@@ -135,6 +135,7 @@
     <Compile Include="Reader\Bbeb\BbebBookInformation.cs" />
     <Compile Include="Reader\Bbeb\BbebBookStyle.cs" />
     <Compile Include="Reader\Bbeb\BbebElement.cs" />
+    <Compile Include="Reader\Bbeb\BbebImageStream.cs" />
     <Compile Include="Reader\Bbeb\BbebPage.cs" />
     <Compile Include="Reader\Bbeb\BbebPageStyle.cs" />
     <Compile Include="Reader\Bbeb\BbebStyle.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Reader\Bbeb\BbebTocLabel.cs" />
     <Compile Include="Reader\Bbeb\BbebUtil.cs" />
     <Compile Include="Reader\Bbeb\IBbebGenerator.cs" />
+    <Compile Include="Reader\Bbeb\BbebImageBlock.cs" />
     <Compile Include="VolumeThread.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +160,21 @@
     <None Include="Resources\copy.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\author\cac.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\author\fer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\author\jbs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\author\jnd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\author\jt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="img\eministry.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

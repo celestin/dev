@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10533 : Moved AppendAttribute method to BbebElement.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,16 +29,6 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       : base(doc, name)
     {
       ObjId = BbebUtil.Instance.NextObjId();
-    }
-
-    protected void AppendAttribute(string name, BbebObjElement objElement)
-    {
-      AppendAttribute(this, name, objElement.ObjId);
-    }
-
-    protected void AppendAttribute(XmlElement element, string name, BbebObjElement objElement)
-    {
-      AppendAttribute(element, name, objElement.ObjId);
     }
 
     public override void GenerateBbeb()

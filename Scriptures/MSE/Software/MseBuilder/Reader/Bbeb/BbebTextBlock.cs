@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Added BoldTitle and removed redundant spaces from Scripture refs.
+ * CAM  15-Jan-2010  10533 : Ensure AddNewline is inside a paragraph.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -105,7 +106,17 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
 
     public void AddNewline()
     {
-      AppendChild(CreateNewline());
+      AddNewline(1);
+    }
+
+    public void AddNewline(int count)
+    {
+      XmlElement para = CreateParagraph();
+      for (int i = 0; i < count; i++)
+      {
+        para.AppendChild(CreateNewline());
+      }
+      AppendChild(para);
     }
 
     protected XmlText CreateText(string text)

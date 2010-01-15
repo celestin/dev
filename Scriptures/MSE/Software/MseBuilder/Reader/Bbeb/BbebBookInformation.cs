@@ -9,6 +9,7 @@
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Remove any periods which Calibre doesn't copy with.
  * CAM  15-Jan-2010  10532 : Added TOC, exposed it publically, and added GenerateToc which must be called after everything else.
+ * CAM  15-Jan-2010  10533 : Tidy author names for Calibre/Sony.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -41,7 +42,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       get { return _author; }
       set
       {
-        _author = value.Replace(".", ""); // Calibre doesn't cope with periods in names
+        _author = value.Replace(".", "").Replace(",", ""); // Calibre doesn't cope with periods in names and commas confuse it too
       }
     }
     public string BookId
@@ -52,7 +53,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     public string Category
     {
       get { return _category; }
-      set { _category = value; }
+      set
+      {
+        _category = value.Replace(",", "");
+      }
     }
     public FileInfo Thumbnail
     {

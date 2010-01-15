@@ -10,6 +10,7 @@
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10531 : Title in bold.
  * CAM  15-Jan-2010  10532 : Use VolumeTitle as intended.
+ * CAM  15-Jan-2010  10533 : Added ImageBlock.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -33,35 +34,32 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       BbebDocument doc = (BbebDocument)OwnerDocument;
 
       BbebTextBlock text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleLarge]);
-      text.AddNewline();
-      text.AddNewline();
-      text.AddNewline();
+      text.AddNewline(2);
       text.AddBoldTitle(doc.Volume.Author.Name);
       AppendChild(text);
       text.GenerateBbeb();
 
-      text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleLarge]);
+      text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleMedium]);
       AppendChild(text);
       text.AddTitle(doc.Volume.VolumeTitle);
       text.GenerateBbeb();
 
+      text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleMedium]);
       if (doc.Volume.Series.Length > 0)
       {
-        text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleMedium]);
-        text.AddTitle(doc.Volume.Series);
-        AppendChild(text);
-        text.GenerateBbeb();
+        text.AddBoldTitle(doc.Volume.Series);
       }
+      text.AddNewline();
+      AppendChild(text);
+      text.GenerateBbeb();
+
+      BbebImageBlock imageBlockAuthor = new BbebImageBlock(doc, doc.BlockStyle, doc.ImageStreamAuthor);
+      imageBlockAuthor.GenerateBbeb();
+      AppendChild(imageBlockAuthor);
 
       text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleSmall]);
       text.AddNewline();
-      text.AddNewline();
-      text.AddNewline();
-      text.AddNewline();
-      text.AddNewline();
-      text.AddNewline();
-      text.AddParagraph("Produced from GoodTeaching.org", false);
-      text.AddNewline();
+      text.AddParagraph("Produced from GoodTeaching.org", true);
       text.AddParagraph(String.Format("by Craig McKay {0:d-MMM-yyyy}", DateTime.Now), false);
       AppendChild(text);
       text.GenerateBbeb();

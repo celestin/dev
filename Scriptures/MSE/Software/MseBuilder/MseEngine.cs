@@ -17,6 +17,7 @@
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10531 : Added ArticleStage.
  * CAM  15-Jan-2010  10532 : Add Articles to the TOC.
+ * CAM  15-Jan-2010  10533 : Copy image files to target directory.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -269,9 +270,17 @@ namespace FrontBurner.Ministry.MseBuilder
         root.Create();
       }
 
+      // Copy Icon
       FileInfo exe = new FileInfo(Application.ExecutablePath);
       FileInfo thumbnail = new FileInfo(String.Format(@"{0}\img\eministry.gif", exe.DirectoryName));
       thumbnail.CopyTo(String.Format(@"{0}\{1}", root.FullName, thumbnail.Name), true);
+
+      // Copy each of the Author photos
+      foreach (Author auth in BusinessLayer.Instance.Authors)
+      {
+        FileInfo image = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, auth.ImageFilename));
+        image.CopyTo(String.Format(@"{0}\{1}", root.FullName, image.Name), true);
+      }
 
       _current = 0;
 
@@ -289,10 +298,10 @@ namespace FrontBurner.Ministry.MseBuilder
           BbebDocument doc = new BbebDocument(lrsFile, vol);
 
           doc.BookInformation.Title = vol.FullTitle;
-          doc.BookInformation.Author = vol.Author.Inits;
+          doc.BookInformation.Author = vol.Author.Name;
           doc.BookInformation.BookId = BbebUtil.Instance.NextBookId();
-          doc.BookInformation.Category = "Ministry";
-          doc.BookInformation.Creator = "Craig McKay/GoodTeaching.org";
+          doc.BookInformation.Category = vol.Author.Name;
+          doc.BookInformation.Creator = "GoodTeaching.org (Craig McKay)";
           doc.GenerateBbeb();
 
           int currentArticle = 0;

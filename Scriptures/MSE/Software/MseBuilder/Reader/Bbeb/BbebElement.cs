@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10532 : Added AppendAttribute by Obj.
+ * CAM  15-Jan-2010  10533 : Moved AppendAttribute method from BbebObjElement.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -35,6 +36,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     protected void AppendAttribute(string name, string value)
     {
       AppendAttribute(this, name, value);
+    }
+
+    protected void AppendAttribute(XmlElement element, string name, BbebObjElement objElement)
+    {
+      AppendAttribute(element, name, objElement.ObjId);
     }
 
     protected void AppendAttribute(XmlElement element, string name, int value)

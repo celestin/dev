@@ -9,6 +9,7 @@
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10531 : Title in bold.
+ * CAM  15-Jan-2010  10532 : Use VolumeTitle as intended.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -41,15 +42,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
 
       text = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.CoverTitleLarge]);
       AppendChild(text);
-
-      if (doc.Volume.Title.Length > 0)
-      {
-        text.AddTitle(doc.Volume.Title);
-      }
-      else
-      {
-        text.AddTitle(String.Format("Volume {0}", doc.Volume.Vol));
-      }
+      text.AddTitle(doc.Volume.VolumeTitle);
       text.GenerateBbeb();
 
       if (doc.Volume.Series.Length > 0)

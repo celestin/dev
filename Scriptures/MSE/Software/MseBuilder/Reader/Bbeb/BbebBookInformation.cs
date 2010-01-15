@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Remove any periods which Calibre doesn't copy with.
+ * CAM  15-Jan-2010  10532 : Added TOC, exposed it publically, and added GenerateToc which must be called after everything else.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -24,6 +25,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     private string _category;
     private FileInfo _thumbnail;
     private string _creator;
+    private XmlElement _tocNode;
+    private BbebToc _toc;
 
     public string Title
     {
@@ -61,17 +64,21 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       get { return _creator; }
       set { _creator = value; }
     }
+    public BbebToc Toc
+    {
+      get { return _toc; }
+    }
 
     public BbebBookInformation(BbebDocument doc)
       : base(doc, "BookInformation")
     {
       Thumbnail = new FileInfo(@"C:\Program Files\Calibre2\eministry.gif");
+      _toc = new BbebToc();
     }
 
     public override void GenerateBbeb()
     {
       XmlElement info;
-      XmlElement toc;
       XmlElement bookInfo;
       XmlElement docInfo;
       XmlAttribute attribute;
@@ -88,8 +95,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       docInfo = OwnerDocument.CreateElement("", "DocInfo", "");
       info.AppendChild(docInfo);
 
-      toc = OwnerDocument.CreateElement("", "TOC", "");
-      AppendChild(toc);
+      _tocNode = OwnerDocument.CreateElement("", "TOC", "");
+      AppendChild(_tocNode);
 
       XmlElement title = OwnerDocument.CreateElement("", "Title", "");
       bookInfo.AppendChild(title);
@@ -120,6 +127,15 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       bookInfo.AppendChild(creator);
       creator.Attributes.Append(OwnerDocument.CreateAttribute("reading"));
       creator.AppendChild(OwnerDocument.CreateTextNode(Creator));
+    }
+
+    public void GenerateToc()
+    {
+      foreach (BbebTocLabel label in Toc)
+      {
+        _tocNode.AppendChild(label);
+        label.GenerateBbeb();
+      }
     }
   }
 }

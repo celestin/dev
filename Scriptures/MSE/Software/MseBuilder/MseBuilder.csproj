@@ -143,6 +143,7 @@
     <Compile Include="Reader\Bbeb\BbebTextBlock.cs" />
     <Compile Include="Reader\Bbeb\BbebTextStyle.cs" />
     <Compile Include="Reader\Bbeb\BbebTitlePage.cs" />
+    <Compile Include="Reader\Bbeb\BbebTocLabel.cs" />
     <Compile Include="Reader\Bbeb\BbebUtil.cs" />
     <Compile Include="Reader\Bbeb\IBbebGenerator.cs" />
     <Compile Include="VolumeThread.cs" />

@@ -16,6 +16,7 @@
  * CAM  15-Jan-2010  10528 : Added CreateBbebFiles.
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10531 : Added ArticleStage.
+ * CAM  15-Jan-2010  10532 : Add Articles to the TOC.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -327,6 +328,7 @@ namespace FrontBurner.Ministry.MseBuilder
                 textBlock.AddTitle(text);
                 textBlock.GenerateBbeb();
                 page.AppendChild(textBlock);
+                doc.BookInformation.Toc.Add(new BbebTocLabel(doc, page, textBlock, text));
 
                 stage = ArticleStage.Scriptures;
               }
@@ -357,6 +359,8 @@ namespace FrontBurner.Ministry.MseBuilder
               page.AppendChild(textBlock);
             }
           }
+
+          doc.BookInformation.GenerateToc();
 
           doc.SaveFile();
 

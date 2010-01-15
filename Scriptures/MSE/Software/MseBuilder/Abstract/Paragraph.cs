@@ -15,6 +15,7 @@
  * CAM  08-Jun-2008  10269 : Only include a new page marker if the abruptly ending paragraph was on a different physical page.
  * CAM  15-Jun-2008  10271 : Added Footnotes.
  * CAM  15-Jun-2008  10271 : Consider '"' to be an acceptable end paragraph character (end quote).
+ * CAM  15-Jan-2010  10531 : Created a static version of IsTitle.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -258,6 +259,11 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
     public bool IsTitle()
     {
+      return IsTitle(_text);
+    }
+
+    public static bool IsTitle(string text)
+    {
       int upper;
       int lower;
       int html;
@@ -265,7 +271,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       int c;
 
       upper = lower = html = other = 0;
-      char[] buffa = _text.ToCharArray();
+      char[] buffa = text.ToCharArray();
       for (int i = 0; i < buffa.Length; i++)
       {
         c = (int)buffa[i];
@@ -295,7 +301,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         }
       }
 
-      if (((upper + lower) > 0) && (html == 0) && (!_text.Equals("PREFATORY NOTE")) && (!_text.Equals("*NOTE*")))
+      if (((upper + lower) > 0) && (html == 0) && (!text.Equals("PREFATORY NOTE")) && (!text.Equals("*NOTE*")))
       {
         if (((float)upper / (float)(upper + lower + other)) > 0.7f)
         {

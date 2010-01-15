@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10531 : Added BoldTitle and removed redundant spaces from Scripture refs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -43,13 +44,42 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       AddParagraph(text, false);
     }
 
+    public void AddBoldTitle(string text)
+    {
+      XmlElement para = CreateParagraph();
+      XmlElement bold = CreateBold();
+      para.AppendChild(bold);
+      bold.AppendChild(CreateText(text));
+      AppendChild(para);
+    }
+
     public void AddScriptures(string text)
     {
       XmlElement para = CreateParagraph();
       XmlElement italics = CreateItalics();
       para.AppendChild(italics);
-      italics.AppendChild(CreateText(text));
+
+      string scriptures = text.Replace(" - ", "-");
+      for (int i = 0; i < 6; i++)
+      {
+        scriptures = scriptures.Replace("- ", "-");
+        scriptures = scriptures.Replace(" -", "-");
+      }
+
+      italics.AppendChild(CreateText(scriptures));
       para.AppendChild(CreateNewline());
+
+      AppendChild(para);
+    }
+
+    public void AddParagraph(string inits, string text)
+    {
+      XmlElement para = CreateParagraph();
+      XmlElement bold = CreateBold();
+      para.AppendChild(bold);
+      bold.AppendChild(CreateText(inits + " "));
+      para.AppendChild(CreateText(text));
+
       para.AppendChild(CreateNewline());
 
       AppendChild(para);
@@ -62,13 +92,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
 
     public void AddParagraph(string text, bool newline)
     {
-      // TODO: Replace ** with Italics, etc
       XmlElement para = CreateParagraph();
       para.AppendChild(CreateText(text));
 
       if (newline)
       {
-        para.AppendChild(CreateNewline());
         para.AppendChild(CreateNewline());
       }
 
@@ -90,6 +118,12 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     protected XmlElement CreateParagraph()
     {
       return OwnerDocument.CreateElement("", "P", "");
+    }
+    protected XmlElement CreateBold()
+    {
+      XmlElement bold = OwnerDocument.CreateElement("", "Span", "");
+      AppendAttribute(bold, "fontweight", 900);
+      return bold;
     }
     protected XmlElement CreateItalics()
     {

@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10531 : Added ArticleScriptures and BbebFont/s.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,6 +22,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     CoverTitleMedium,
     CoverTitleSmall,
     ArticleTitle,
+    ArticleScriptures,
     ArticleText
   }
 
@@ -30,11 +32,34 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     Centred
   }
 
+  public enum BbebFont
+  {
+    Roman,
+    Swiss,
+    Courier
+  }
+
+  public class BbebFonts
+  {
+    public static string GetFont(BbebFont font)
+    {
+      switch (font)
+      {
+        case BbebFont.Courier:
+          return "Courier10 BT Roman";
+        case BbebFont.Swiss:
+          return "Swis721 BT Roman";
+      }
+      return "Dutch801 Rm BT Roman";
+    }
+  }
+
   public class BbebTextStyle : BbebStyle
   {
     private TextPurpose _textPurpose;
     private int _fontSize;
     private TextPosition _textPosition;
+    private BbebFont _font;
 
     public TextPurpose TextPurpose
     {
@@ -51,13 +76,19 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       get { return _textPosition; }
       set { _textPosition = value; }
     }
+    public BbebFont Font
+    {
+      get { return _font; }
+      set { _font = value; }
+    }
 
-    public BbebTextStyle(BbebDocument doc, TextPurpose textPurpose, int fontSize, TextPosition textPosition)
+    public BbebTextStyle(BbebDocument doc, TextPurpose textPurpose, int fontSize, TextPosition textPosition, BbebFont font)
       : base(doc, "TextStyle")
     {
       TextPurpose = textPurpose;
       FontSize = fontSize;
       TextPosition = textPosition;
+      Font = font;
     }
 
     public override void GenerateBbeb()
@@ -69,7 +100,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       AppendAttribute("fontescapement", 0);
       AppendAttribute("fontorientation", 0);
       AppendAttribute("fontweight", 400);
-      AppendAttribute("fontfacename", "IWA?-??N-eb");
+      AppendAttribute("fontfacename", BbebFonts.GetFont(Font));
       AppendAttribute("textcolor", "0x00000000");
       AppendAttribute("textbgcolor", "0xff000000");
       AppendAttribute("wordspace", 25);
@@ -104,11 +135,12 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     public BbebTextStyleCollection(BbebDocument doc)
       : base()
     {
-      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleLarge, 140, TextPosition.Centred));
-      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleMedium, 80, TextPosition.Centred));
-      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleSmall, 60, TextPosition.Centred));
-      Add(new BbebTextStyle(doc, TextPurpose.ArticleTitle, 140, TextPosition.LeftAligned));
-      Add(new BbebTextStyle(doc, TextPurpose.ArticleText, 100, TextPosition.LeftAligned));
+      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleLarge, 140, TextPosition.Centred, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleMedium, 80, TextPosition.Centred, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.CoverTitleSmall, 60, TextPosition.Centred, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.ArticleTitle, 140, TextPosition.LeftAligned, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.ArticleScriptures, 100, TextPosition.LeftAligned, BbebFont.Swiss));
+      Add(new BbebTextStyle(doc, TextPurpose.ArticleText, 100, TextPosition.LeftAligned, BbebFont.Roman));
     }
 
     public void GenerateBbeb()

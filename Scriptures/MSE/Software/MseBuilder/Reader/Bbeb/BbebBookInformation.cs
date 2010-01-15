@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
+ * CAM  15-Jan-2010  10531 : Remove any periods which Calibre doesn't copy with.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,12 +28,18 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     public string Title
     {
       get { return _title; }
-      set { _title = value; }
+      set
+      {
+        _title = value.Replace(".", ""); // Calibre doesn't cope with periods in names;
+      }
     }
     public string Author
     {
       get { return _author; }
-      set { _author = value; }
+      set
+      {
+        _author = value.Replace(".", ""); // Calibre doesn't cope with periods in names
+      }
     }
     public string BookId
     {

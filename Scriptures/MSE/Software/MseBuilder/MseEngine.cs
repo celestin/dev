@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine Data Builder
- * Copyright (c) 2007,2008 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -15,6 +15,7 @@
  * CAM  08-Jun-2008  10269 : Don't just do an update on the export script: the volume may not exist - do a REPLACE including Title.
  * CAM  15-Jan-2010  10528 : Added CreateBbebFiles.
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
+ * CAM  15-Jan-2010  10531 : Added ArticleStage.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,6 +37,13 @@ namespace FrontBurner.Ministry.MseBuilder
 {
   public class MseEngine
   {
+    private enum ArticleStage
+    {
+      Title,
+      Scriptures,
+      Body
+    }
+
     protected int _current;
     protected bool _anyErrors;
 
@@ -240,8 +248,6 @@ namespace FrontBurner.Ministry.MseBuilder
     public void CreateBbebFiles(string author, int volume)
     {
       byte[] dataBuffer = new byte[4096];
-      string sql = "";
-      string colSql = "";
       DirectoryInfo root = new DirectoryInfo(@"C:\tmp\bbeb");
       FileInfo lrsFile = null;
 
@@ -270,32 +276,89 @@ namespace FrontBurner.Ministry.MseBuilder
 
       foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
       {
-        if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
+        if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
         {
           lrsFile = new FileInfo(String.Format(@"{0}\{1}_{2}.lrs", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
 
-          if (vol.Author.Equals("JT"))
+          if (vol.Author.Inits.Equals("JT"))
           {
             vol.Series = "New Series";
           }
 
-          Reader.Bbeb.BbebDocument doc = new Reader.Bbeb.BbebDocument(lrsFile, vol);
+          BbebDocument doc = new BbebDocument(lrsFile, vol);
 
           doc.BookInformation.Title = vol.FullTitle;
-          doc.BookInformation.Author = vol.Author.Name;
+          doc.BookInformation.Author = vol.Author.Inits;
           doc.BookInformation.BookId = BbebUtil.Instance.NextBookId();
           doc.BookInformation.Category = "Ministry";
           doc.BookInformation.Creator = "Craig McKay/GoodTeaching.org";
+          doc.GenerateBbeb();
+
+          int currentArticle = 0;
+          BbebPage page = null;
+          BbebTextBlock textBlock = null;
+          ArticleStage stage = ArticleStage.Title;
+
+          // Need to put an outer loop by article, for ease of outputting title and scripture
 
           foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
           {
             string text = dr["text"].ToString();
             string inits = dr["inits"].ToString();
             string newPages = dr["newpages"].ToString();
-            //TODO: Actually add article text!
+            int articlePage = int.Parse(dr["article_page"].ToString());
+
+            if (articlePage != currentArticle)
+            {
+              // New article, start a new page
+              page = new BbebPage(doc, doc.PageStyle);
+              doc.MainBlock.AppendChild(page);
+              page.GenerateBbeb();
+
+              currentArticle = articlePage;
+              stage = ArticleStage.Title;
+            }
+
+            if (stage == ArticleStage.Title)
+            {
+              if (Paragraph.IsTitle(text))
+              {
+                textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleTitle]);
+                textBlock.AddTitle(text);
+                textBlock.GenerateBbeb();
+                page.AppendChild(textBlock);
+
+                stage = ArticleStage.Scriptures;
+              }
+            }
+            else
+            {
+
+              if (stage == ArticleStage.Scriptures && text.Trim().StartsWith("@"))
+              {
+                textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleScriptures]);
+                textBlock.AddScriptures(text);
+                stage = ArticleStage.Body;
+              }
+              else
+              {
+                textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleText]);
+                if (inits.Length > 0)
+                {
+                  textBlock.AddParagraph(inits, text);
+                }
+                else
+                {
+                  textBlock.AddParagraph(text);
+                }
+              }
+
+              textBlock.GenerateBbeb();
+              page.AppendChild(textBlock);
+            }
           }
 
-          doc.GenerateBbeb();
+          doc.SaveFile();
 
           p.StartInfo.Arguments = lrsFile.Name;
           p.Start();

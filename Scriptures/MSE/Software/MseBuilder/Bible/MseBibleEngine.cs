@@ -9,6 +9,7 @@
  * CAM  22-Jun-2008  10409 : File created.
  * CAM  04-Apr-2009  10413 : Parse Footnote refs and record ALL of them, and the phrases that they are connected to.
  * CAM  04-Apr-2009  10414 : Moved CrossReference to BibleVerse.
+ * CAM  15-Jan-2010  10528 : Use Properties rather than methods.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -56,7 +57,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
 
     public void Build()
     {
-      BibleVersionCollection versions = BusinessLayer.Instance.GetVersions();
+      BibleVersionCollection versions = BusinessLayer.Instance.Versions;
 
       foreach (BibleVersion version in versions)
       {
@@ -94,7 +95,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
       string bookName;
       string shortCode;
       string text;
-      BibleBookCollection books = BusinessLayer.Instance.GetBooks();
+      BibleBookCollection books = BusinessLayer.Instance.Books;
       BibleBook book = null;
 
       foreach (FileInfo file in files)
@@ -144,7 +145,7 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
       string shortCode;
       char symbol = 'z';
       string text;
-      BibleBookCollection books = BusinessLayer.Instance.GetBooks();
+      BibleBookCollection books = BusinessLayer.Instance.Books;
       BibleBook book = null;
       BibleFootnote footnote = null;
 
@@ -192,11 +193,11 @@ namespace FrontBurner.Ministry.MseBuilder.Bible
     }
 
     /// <summary>
-    /// Parse multiple refs to the same footnote, usually on the one page.  
+    /// Parse multiple refs to the same footnote, usually on the one page.
     /// Not to be confused with Xrefs which is a reference to one footnote from another.
     /// </summary>
     /// <remarks>
-    /// Unfortunately we can't use a comma as the separator, because the same verse may have several refs to the same footnote, e.g. 
+    /// Unfortunately we can't use a comma as the separator, because the same verse may have several refs to the same footnote, e.g.
     /// Acts "16:6c through, forbidden, 16:7c down"
     /// Is really three refs:
     ///   16:6c through

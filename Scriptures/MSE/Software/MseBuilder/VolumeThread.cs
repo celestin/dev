@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine Data Builder
- * Copyright (c) 2008 Front Burner
+ * Copyright (c) 2008,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  11-May-2008  10265 : File created (for clarity).
  * CAM  17-May-2008  10266 : Return Errors found during Build.
+ * CAM  15-Jan-2010  10528 : Added BbebThread.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -102,6 +103,31 @@ namespace FrontBurner.Ministry.MseBuilder
       else
       {
         _engine.Zip();
+      }
+    }
+  }
+
+  public class BbebThread : VolumeThread
+  {
+    public BbebThread(string author, int vol, bool specificVolume)
+      : base(author, vol, specificVolume)
+    {
+      _process = new Thread(new ThreadStart(CreateBbebFiles));
+      _process.IsBackground = true;
+      _process.Start();
+    }
+
+    private void CreateBbebFiles()
+    {
+      _engine = new MseEngine();
+
+      if (_specificVolume)
+      {
+        _engine.CreateBbebFiles(_author, _vol);
+      }
+      else
+      {
+        _engine.CreateBbebFiles();
       }
     }
   }

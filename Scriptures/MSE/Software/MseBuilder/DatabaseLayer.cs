@@ -17,6 +17,7 @@
  * CAM  28-Mar-2009  10409 : Added Footnote support.
  * CAM  04-Apr-2009  10413 : Save Footnote Refs.
  * CAM  04-Apr-2009  10414 : Truncate rather than Delete Xrefs.
+ * CAM  15-Jan-2010  10528 : Added GetAuthors (renamed existing to GetAuthorDataset).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -42,6 +43,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected MySqlConnection _conn;
 
     protected MySqlCommand _cmdVolume;
+    protected MySqlCommand _cmdAuthor;
     protected MySqlCommand _cmdVersions;
     protected MySqlCommand _cmdBooks;
     protected MySqlCommand _cmdArticles;
@@ -228,7 +230,42 @@ namespace FrontBurner.Ministry.MseBuilder
       return rval;
     }
 
-    public DataSet GetAuthors()
+    public AuthorCollection GetAuthors()
+    {
+      MySqlDataReader dr;
+      Author author;
+      AuthorCollection rval = new AuthorCollection();
+
+      lock (_semaphore)
+      {
+        if (_cmdVolume == null)
+        {
+          string sql =
+            "SELECT author,name " +
+            "FROM mse_author " +
+            "WHERE author <> 'GRC' ";
+
+          _cmdAuthor = new MySqlCommand(sql, _conn);
+        }
+        dr = _cmdAuthor.ExecuteReader();
+
+        do
+        {
+          while (dr.Read())
+          {
+            author = new Author(dr.GetString(0), dr.GetString(1));
+
+            rval.Add(author);
+          }
+        } while (dr.NextResult());
+
+        dr.Close();
+      }
+
+      return rval;
+    }
+
+    public DataSet GetAuthorDataset()
     {
       DataSet ds = new DataSet();
 
@@ -599,7 +636,7 @@ namespace FrontBurner.Ministry.MseBuilder
                         "AND bookid = ?bookid " +
                         "AND footnoteid = mse_bible_footnote_xref.from_footnoteid) " +
          "AND from_footnoteid IS NOT NULL";
-         
+
         _cmdDeleteFootnoteXref2 = new MySqlCommand(sql, _conn);
         _cmdDeleteFootnoteXref2.Prepare();
 

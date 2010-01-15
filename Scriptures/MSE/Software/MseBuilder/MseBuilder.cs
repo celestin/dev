@@ -14,6 +14,7 @@
  * CAM  18-May-2008  10267 : Moved buttons to new toolbar, created CopyToMySQL.
  * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
  * CAM  28-Mar-2009  10412 : Call new Bugzilla table adapter.
+ * CAM  15-Jan-2010  10528 : Added CreateBbebReaderFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -39,6 +41,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected bool _specificVolume;
     protected BuilderThread _builder;
     protected ZipperThread _zipper;
+    protected BbebThread _bbeb;
 
     public MseBuilder()
     {
@@ -100,11 +103,27 @@ namespace FrontBurner.Ministry.MseBuilder
           _tspMain.Enabled = true;
         }
       }
+      else if (_bbeb != null)
+      {
+        if (_bbeb.Process.IsAlive)
+        {
+          if (_bbeb.Engine != null) pgbVol.Value = _bbeb.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          tmrRefresh.Enabled = false;
+          _bbeb = null;
+
+          _tspMain.Enabled = true;
+        }
+      }
     }
 
     private void MseBuilder_Load(object sender, EventArgs e)
     {
-      DataSet ds = DatabaseLayer.Instance.GetAuthors();
+      DataSet ds = DatabaseLayer.Instance.GetAuthorDataset();
       cmbAuthor.DataSource = ds;
       cmbAuthor.DisplayMember = "Author.name";
       cmbAuthor.ValueMember = "Author.author";
@@ -160,7 +179,7 @@ namespace FrontBurner.Ministry.MseBuilder
       SpecificVolume();
 
       pgbVol.Minimum = 0;
-      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+      pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
 
       _builder = new BuilderThread(_author, _vol, _specificVolume);
       Thread.Sleep(1000);
@@ -168,12 +187,12 @@ namespace FrontBurner.Ministry.MseBuilder
       tmrRefresh.Enabled = true;
     }
 
-    private void _tsbZip_Click(object sender, EventArgs e)
+    private void CreateZippedDataFile(object sender, EventArgs e)
     {
       _tspMain.Enabled = false;
 
       pgbVol.Minimum = 0;
-      pgbVol.Maximum = BusinessLayer.Instance.GetVolumes().Count;
+      pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
 
       SpecificVolume();
 
@@ -183,12 +202,12 @@ namespace FrontBurner.Ministry.MseBuilder
       tmrRefresh.Enabled = true;
     }
 
-    private void _tsbVersionHistory_Click(object sender, EventArgs e)
+    private void CopyBugzillaVersionHistoryToMySQL(object sender, EventArgs e)
     {
       _bugsTableAdapter.CopyToMySQL();
     }
 
-    private void toolStripButton1_Click(object sender, EventArgs e)
+    private void BuildBibleDatabase(object sender, EventArgs e)
     {
       _tspMain.Enabled = false;
 
@@ -196,6 +215,21 @@ namespace FrontBurner.Ministry.MseBuilder
       bible.Build();
 
       _tspMain.Enabled = true;
+    }
+
+    private void CreateBbebReaderFiles(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
+
+      SpecificVolume();
+
+      _bbeb = new BbebThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
     }
   }
 }

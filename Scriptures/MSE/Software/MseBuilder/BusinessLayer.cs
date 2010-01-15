@@ -9,6 +9,7 @@
  * CAM  22-Sep-2007  File added to source control.
  * CAM  26-Sep-2007  Early working version.
  * CAM  28-Mar-2009  10409 : Added Footnote support.
+ * CAM  15-Jan-2010  10528 : Added Authors and converted methods to properties.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -34,6 +35,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected BibleBookCollection _books;
     protected BibleVersionCollection _versions;
     protected ArticleCollection _articles;
+    protected AuthorCollection _authors;
     protected VolumeCollection _volumes;
     protected int _nextFootnoteId;
 
@@ -43,7 +45,7 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         return _articles;
       }
-    }   
+    }
 
     private BusinessLayer()
     {
@@ -66,33 +68,55 @@ namespace FrontBurner.Ministry.MseBuilder
       }
     }
 
-    public BibleBookCollection GetBooks()
+    public BibleBookCollection Books
     {
-      if (_books == null)
+      get
       {
-        _books = DatabaseLayer.Instance.GetBooks();
-      }
+        if (_books == null)
+        {
+          _books = DatabaseLayer.Instance.GetBooks();
+        }
 
-      return _books;
+        return _books;
+      }
     }
 
-    public BibleVersionCollection GetVersions()
+    public BibleVersionCollection Versions
     {
-      if (_versions == null)
+      get
       {
-        _versions = DatabaseLayer.Instance.GetBibleVersions();
+        if (_versions == null)
+        {
+          _versions = DatabaseLayer.Instance.GetBibleVersions();
+        }
+        return _versions;
       }
-      return _versions;
     }
 
-    public VolumeCollection GetVolumes()
+    public VolumeCollection Volumes
     {
-      if (_volumes == null)
+      get
       {
-        _volumes = DatabaseLayer.Instance.GetVolumes();
-      }
+        if (_volumes == null)
+        {
+          _volumes = DatabaseLayer.Instance.GetVolumes();
+        }
 
-      return _volumes;
+        return _volumes;
+      }
+    }
+
+    public AuthorCollection Authors
+    {
+      get
+      {
+        if (_authors == null)
+        {
+          _authors = DatabaseLayer.Instance.GetAuthors();
+        }
+
+        return _authors;
+      }
     }
 
     public int GetNextFootnoteId()

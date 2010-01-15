@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  12-May-2008  10265 : Added IsFullMarkup.
+ * CAM  15-Jan-2010  10528 : Added Series and Title options.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -20,11 +21,12 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class Volume
   {
-    protected string _author;
-    protected int _vol;
-    protected string _title;
-    protected DateTime _added;
-    protected string _localFile;
+    private string _author;
+    private int _vol;
+    private string _title;
+    private string _series;
+    private DateTime _added;
+    private string _localFile;
 
     public string Id
     {
@@ -66,6 +68,35 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _title = value;
       }
     }
+    public string FullTitle
+    {
+      get
+      {
+        if (Title.Length > 0)
+        {
+          return String.Format("{0} - {1} (#{2})", Author, Title, Vol);
+        }
+
+        return String.Format("{0} Volume {1}", Author, Vol);
+      }
+    }
+    public string VolumeTitle
+    {
+      get
+      {
+        if (Title.Length > 0)
+        {
+          return String.Format("{0} (#{1})", Title, Vol);
+        }
+
+        return String.Format("Volume {0}", Vol);
+      }
+    }
+    public string Series
+    {
+      get { return _series; }
+      set { _series = value; }
+    }
     public DateTime Added
     {
       get
@@ -101,6 +132,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       _author = author;
       _vol = vol;
+      _series = "";
     }
 
     public FileInfo GetFile()

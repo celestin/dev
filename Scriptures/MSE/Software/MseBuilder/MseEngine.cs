@@ -13,6 +13,7 @@
  * CAM  11-May-2008  10265 : Allow Zipping of single Volume.
  * CAM  17-May-2008  10266 : Check for Errors during Build.
  * CAM  08-Jun-2008  10269 : Don't just do an update on the export script: the volume may not exist - do a REPLACE including Title.
+ * CAM  15-Jan-2010  10528 : Added CreateBbebFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,10 +23,12 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using System.Data;
+using System.Diagnostics;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.GZip;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Reader.Bbeb;
 
 namespace FrontBurner.Ministry.MseBuilder
 {
@@ -56,7 +59,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public void Build(string author, int vol)
     {
-      VolumeCollection vols = BusinessLayer.Instance.GetVolumes();
+      VolumeCollection vols = BusinessLayer.Instance.Volumes;
       Volume vol1 = null;
       _anyErrors = false;
 
@@ -218,6 +221,73 @@ namespace FrontBurner.Ministry.MseBuilder
             script.WriteLine(String.Format("mysql -u goodteaching -ppsalm45 -D goodteaching_org_min < {0}", sqlFile.Name));
             script.WriteLine(String.Format("rm {0}", sqlFile.Name));
             script.Flush();
+
+            Thread.Sleep(100);
+          }
+
+          _current++;
+        }
+      }
+    }
+
+    public void CreateBbebFiles()
+    {
+      CreateBbebFiles(null, 0);
+    }
+
+    public void CreateBbebFiles(string author, int volume)
+    {
+      byte[] dataBuffer = new byte[4096];
+      string sql = "";
+      string colSql = "";
+      DirectoryInfo root = new DirectoryInfo(@"C:\tmp\bbeb");
+      FileInfo lrsFile = null;
+
+      Process p = new Process();
+      p.StartInfo.WorkingDirectory = root.FullName;
+      p.StartInfo.FileName = @"C:\Program Files\Calibre2\lrs2lrf.exe";
+      p.StartInfo.CreateNoWindow = false;
+
+      if (root.Exists) root.Delete(true);
+      root.Create();
+      _current = 0;
+
+      using (StreamWriter script = new StreamWriter(root.FullName + @"\aaa.cmd"))
+      {
+        foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
+        {
+          if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
+          {
+            lrsFile = new FileInfo(String.Format(@"{0}\{1}_{2}.lrs", root.FullName, vol.Author.ToLower(), vol.Vol.ToString("000")));
+
+            if (vol.Author.Equals("JT"))
+            {
+              vol.Series = "New Series";
+            }
+
+            Reader.Bbeb.BbebDocument doc = new Reader.Bbeb.BbebDocument(lrsFile, vol);
+
+            doc.BookInformation.Title = vol.FullTitle;
+            doc.BookInformation.Author = vol.Author;
+            doc.BookInformation.BookId = BbebUtil.Instance.NextBookId();
+            doc.BookInformation.Category = "Ministry";
+            doc.BookInformation.Creator = "Craig McKay/GoodTeaching.org";
+
+            script.WriteLine(String.Format(@"""C:\Program Files\Calibre2\lrs2lrf.exe"" {0}", lrsFile.Name));
+
+            foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
+            {
+              string text = dr["text"].ToString();
+              string inits = dr["inits"].ToString();
+              string newPages = dr["newpages"].ToString();
+
+            }
+
+            doc.GenerateBbeb();
+
+            p.StartInfo.Arguments = lrsFile.Name;
+            p.Start();
+            p.WaitForExit();
 
             Thread.Sleep(100);
           }

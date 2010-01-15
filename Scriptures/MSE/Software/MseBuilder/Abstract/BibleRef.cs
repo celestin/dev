@@ -1,12 +1,13 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
+ * CAM  15-Jan-2010  10528 : Use Properties rather than methods.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -72,7 +73,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
-    public BibleRef(string scripture) 
+    public BibleRef(string scripture)
     {
       _chapter = "";
       _vStart = "";
@@ -87,7 +88,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       char[] buffa = text.ToCharArray();
       int ouc;
 
-      for (int i=buffa.Length-1; i>=0; i--) 
+      for (int i=buffa.Length-1; i>=0; i--)
       {
         ouc = (int)buffa[i];
         if (ouc >= 48 && ouc <= 57) {
@@ -115,11 +116,11 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
-    protected void Parse(string scripture) 
-    {      
+    protected void Parse(string scripture)
+    {
       string start = scripture;
       string rem = "";
-      BibleBookCollection books = BusinessLayer.Instance.GetBooks();
+      BibleBookCollection books = BusinessLayer.Instance.Books;
       int ap=0;
       int j = 0;
       bool colon;
@@ -128,9 +129,9 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       int chp;
       string cv;
 
-      for (j=1; j<=books.Count; j++) 
+      for (j=1; j<=books.Count; j++)
       {
-        if (books[j].Matches(start)) 
+        if (books[j].Matches(start))
         {
           _book = books[j];
 
@@ -139,27 +140,27 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
           rem = start.Substring(_book.BookName.Length, len - _book.BookName.Length).Trim();
 
-          if (rem.StartsWith(".")) 
+          if (rem.StartsWith("."))
           {
             rem = rem.Substring(1).Trim();
           }
-          if ((ap = rem.IndexOf(".")) >= 0) 
+          if ((ap = rem.IndexOf(".")) >= 0)
           {
             rem = rem.Substring(0, ap);
           }
-          if ((ap = rem.IndexOf(")")) >= 0) 
+          if ((ap = rem.IndexOf(")")) >= 0)
           {
             rem = rem.Substring(0, ap);
           }
-          if ((ap = rem.IndexOf("(")) >= 0) 
+          if ((ap = rem.IndexOf("(")) >= 0)
           {
             rem = rem.Substring(0, ap);
           }
-          if ((ap = rem.IndexOf("\"")) >= 0) 
+          if ((ap = rem.IndexOf("\"")) >= 0)
           {
             rem = rem.Substring(0, ap);
           }
-          if ((ap = rem.IndexOf(";")) >= 0) 
+          if ((ap = rem.IndexOf(";")) >= 0)
           {
             rem = rem.Substring(0, ap);
           }
@@ -169,12 +170,12 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
 
       colon = match = false;
-      if (rem.Length > 0) 
+      if (rem.Length > 0)
       {
         char[] buffa = rem.ToUpper().ToCharArray();
         int k = 0;
 
-        for (k=0; k<buffa.Length; k++) 
+        for (k=0; k<buffa.Length; k++)
         {
           ouc = buffa[k];
 
@@ -191,16 +192,16 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           }
         }
 
-        if (match) 
+        if (match)
         {
           cv = rem.Substring(0, k).Trim();
-        } 
-        else 
+        }
+        else
         {
           cv = rem.Trim();
         }
-                
-        if (cv.Length == 0) {          
+
+        if (cv.Length == 0) {
           _refValid = false;
           return;
         }
@@ -212,21 +213,21 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           return;
         }
 
-        if (_book.SingleChap) 
+        if (_book.SingleChap)
         {
           // No chapter reference - look straight at the verses
-          if ((chp = cv.IndexOf("-")) >= 0) 
+          if ((chp = cv.IndexOf("-")) >= 0)
           {
             _vStart = cv.Substring(0, chp).Trim();
             _vEnd   = cv.Substring(chp+1);
-          } 
-          else if ((chp = cv.IndexOf(",")) >= 0) 
+          }
+          else if ((chp = cv.IndexOf(",")) >= 0)
           {
             _vStart = cv.Substring(0, chp).Trim();
             _vEnd   = cv.Substring(chp+1);
 
-          } 
-          else 
+          }
+          else
           {
             _vStart = cv;
           }
@@ -243,10 +244,10 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           return;
         }
 
-        if ((chp = cv.IndexOf(":")) >= 0) 
+        if ((chp = cv.IndexOf(":")) >= 0)
         {
           _chapter = cv.Substring(0, chp).Trim();
-          if (_chapter.IndexOf("-") >= 0) 
+          if (_chapter.IndexOf("-") >= 0)
           {
             // Range before colon is invalid
             _errCode = 'L';
@@ -256,26 +257,26 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
 
           string vs = cv.Substring(chp+1).Trim();
 
-          if ((chp = vs.IndexOf("-")) >= 0) 
+          if ((chp = vs.IndexOf("-")) >= 0)
           {
             _vStart = vs.Substring(0, chp).Trim();
             _vEnd   = vs.Substring(chp+1);
 
-          } 
-          else if ((chp = vs.IndexOf(",")) >= 0) 
+          }
+          else if ((chp = vs.IndexOf(",")) >= 0)
           {
             _vStart = vs.Substring(0, chp).Trim();
             _vEnd   = vs.Substring(chp+1);
-          } 
-          else 
+          }
+          else
           {
             _vStart = vs;
           }
 
-        } 
-        else 
+        }
+        else
         {
-          if ((chp = cv.IndexOf("-")) >= 0) 
+          if ((chp = cv.IndexOf("-")) >= 0)
           {
             // Chapter range is invalid
             _errCode = 'C';
@@ -286,7 +287,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
           _chapter = RemoveNonNumeric(cv.Trim());
         }
 
-        if ((_chapter.Length == 0) || !DatabaseLayer.IsInteger(_chapter) || !DatabaseLayer.IsInteger(_vStart) || !DatabaseLayer.IsInteger(_vEnd)) 
+        if ((_chapter.Length == 0) || !DatabaseLayer.IsInteger(_chapter) || !DatabaseLayer.IsInteger(_vStart) || !DatabaseLayer.IsInteger(_vEnd))
         {
           // Non-numerics
           _errCode = 'N';

@@ -1,12 +1,13 @@
 -- --------------------------------------------------------
 -- Good Teaching Search Engine
--- Copyright (c) 2009 Frontburner
+-- Copyright (c) 2007,2010 Front Burner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$
 --
 -- Who  When         Why
 -- CAM  29-Dec-2009  10514 : File created.
+-- CAM  16-Jan-2010  10534 : Added volume titles where missing.
 -- --------------------------------------------------------
 
 --
@@ -39,48 +40,48 @@ INSERT INTO mse_author VALUES ('JT', 'J. Taylor, Snr');
 -- Dumping data for table mse_volume
 --
 
-INSERT INTO mse_volume VALUES ('CAC', 1, 'Volume 1 - An Outline of Genesis', '2008-06-08 14:04:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac1.doc');
-INSERT INTO mse_volume VALUES ('CAC', 2, 'Volume 2 - An Outline of Exodus\r\n', '2007-10-22 17:11:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac2.doc');
-INSERT INTO mse_volume VALUES ('CAC', 3, 'Volume 3 - An Outline of Leviticus\r\n', '2007-10-22 17:11:28', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac3.doc');
-INSERT INTO mse_volume VALUES ('CAC', 4, 'Volume 4 - An Outline of the Book of Numbers\r\n', '2007-10-22 17:11:30', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac4.doc');
-INSERT INTO mse_volume VALUES ('CAC', 5, 'Volume 5 - An Outline of the Book of Deuteronomy\r\n', '2007-10-22 17:11:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac5.doc');
-INSERT INTO mse_volume VALUES ('CAC', 6, 'Volume 6 - An Outline of Joshua, Judges and Ruth\r\n', '2007-10-22 17:11:36', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac6.doc');
-INSERT INTO mse_volume VALUES ('CAC', 7, 'Volume 7 - An Outline of The Song of Songs\r\n', '2007-10-22 17:11:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac7.doc');
-INSERT INTO mse_volume VALUES ('CAC', 8, 'Volume 8 - Outline of the Minor Prophets\r\n', '2007-10-22 17:11:40', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac8.doc');
-INSERT INTO mse_volume VALUES ('CAC', 9, '', '2007-10-22 17:11:41', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac9.doc');
-INSERT INTO mse_volume VALUES ('CAC', 10, '', '2007-10-22 17:11:46', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac10.doc');
-INSERT INTO mse_volume VALUES ('CAC', 11, 'Volume 11 - An Outline of Romans\r\n', '2008-06-08 14:03:06', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac11.doc');
-INSERT INTO mse_volume VALUES ('CAC', 12, 'Volume 12 - An Outline of the Epistle of James\r\n', '2007-10-22 17:11:51', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac12.doc');
-INSERT INTO mse_volume VALUES ('CAC', 13, 'Volume 13 - An Outline of "The Revelation"\r\n', '2007-10-22 17:11:54', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac13.doc');
-INSERT INTO mse_volume VALUES ('CAC', 14, 'Volume 14 - The True Grace of God\r\n', '2007-10-22 17:11:56', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac14.doc');
-INSERT INTO mse_volume VALUES ('CAC', 15, 'Volume 15 - The Believer Established\r\n', '2007-10-22 17:11:59', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac15.doc');
-INSERT INTO mse_volume VALUES ('CAC', 16, 'Volume 16 - Favour and Freedom\r\n', '2007-10-22 17:12:02', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac16.doc');
-INSERT INTO mse_volume VALUES ('CAC', 17, 'Volume 17 - The Food of Life\r\n', '2007-10-22 17:12:03', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac17.doc');
-INSERT INTO mse_volume VALUES ('CAC', 18, 'Volume 18 - The House of God\r\n', '2007-10-22 17:12:04', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac18.doc');
-INSERT INTO mse_volume VALUES ('CAC', 19, 'Volume 19 - The Paths of Life\r\n', '2007-10-22 17:12:05', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac19.doc');
-INSERT INTO mse_volume VALUES ('CAC', 20, 'Volume 20 - Spiritual Blessings\r\n', '2007-10-22 17:12:06', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac20.doc');
-INSERT INTO mse_volume VALUES ('CAC', 21, 'Volume 21 - A Sure Foundation\r\n', '2007-10-22 17:12:09', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac21.doc');
-INSERT INTO mse_volume VALUES ('CAC', 22, 'Volume 22 - Letters of C.A. Coates\r\n', '2007-10-22 17:12:10', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac22.doc');
-INSERT INTO mse_volume VALUES ('CAC', 23, 'Volume 23 - An Outline of the Epistle to the Hebrews\r\n', '2007-10-22 17:12:14', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac23.doc');
-INSERT INTO mse_volume VALUES ('CAC', 24, '', '2007-10-22 17:12:16', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac24.doc');
-INSERT INTO mse_volume VALUES ('CAC', 25, 'Volume 25 - Outlines of the Epistles of Paul to the Corinthians\r\n', '2007-10-22 17:12:16', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac25.doc');
-INSERT INTO mse_volume VALUES ('CAC', 26, 'Volume 26 - Outline of Ephesians\r\n', '2007-10-22 17:12:19', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac26.doc');
-INSERT INTO mse_volume VALUES ('CAC', 27, 'Volume 27 - Outlines of Samuel, Kings and the Chronicles\r\n', '2007-10-22 17:12:20', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac27.doc');
-INSERT INTO mse_volume VALUES ('CAC', 28, '', '2007-10-22 17:12:22', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac28.doc');
-INSERT INTO mse_volume VALUES ('CAC', 29, '', '2007-10-22 17:12:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac29.doc');
-INSERT INTO mse_volume VALUES ('CAC', 30, 'Volume 30 - Miscellaneous Ministry on the Old Testament\r\n', '2007-10-22 17:12:26', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac30.doc');
-INSERT INTO mse_volume VALUES ('CAC', 31, 'Volume 31 - Miscellaneous Ministry on the New Testament Matthew-Romans\r\n', '2007-10-22 17:12:30', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac31.doc');
-INSERT INTO mse_volume VALUES ('CAC', 32, 'Volume 32 - Miscellaneous Ministry on the New Testament Corinthians-Colossians\r\n', '2007-10-22 17:12:34', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac32.doc');
-INSERT INTO mse_volume VALUES ('CAC', 33, 'Volume 33 - Miscellaneous Ministry on the New Testament Thessalonians-Revelation\r\n', '2007-10-22 17:12:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac33.doc');
-INSERT INTO mse_volume VALUES ('CAC', 34, 'Volume 34 - Words in Season\r\n', '2007-10-22 17:12:43', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac34.doc');
-INSERT INTO mse_volume VALUES ('CAC', 35, 'Volume 27a - Outlines of the Books of the Chronicles\r\n', '2007-10-22 17:12:46', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac35.doc');
-INSERT INTO mse_volume VALUES ('CAC', 36, 'Remarks on a pamphlet by A. J. Pollock entitled "The Eternal Son"\r\n', '2007-10-22 17:12:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac36.doc');
-INSERT INTO mse_volume VALUES ('CAC', 37, 'A Message for You\r\n', '2007-10-22 17:12:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac37.doc');
+INSERT INTO mse_volume VALUES ('CAC', 1, 'An Outline of Genesis', '2008-06-08 14:04:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac1.doc');
+INSERT INTO mse_volume VALUES ('CAC', 2, 'An Outline of Exodus', '2007-10-22 17:11:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac2.doc');
+INSERT INTO mse_volume VALUES ('CAC', 3, 'An Outline of Leviticus', '2007-10-22 17:11:28', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac3.doc');
+INSERT INTO mse_volume VALUES ('CAC', 4, 'An Outline of the Book of Numbers', '2007-10-22 17:11:30', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac4.doc');
+INSERT INTO mse_volume VALUES ('CAC', 5, 'An Outline of the Book of Deuteronomy', '2007-10-22 17:11:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac5.doc');
+INSERT INTO mse_volume VALUES ('CAC', 6, 'An Outline of Joshua, Judges and Ruth', '2007-10-22 17:11:36', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac6.doc');
+INSERT INTO mse_volume VALUES ('CAC', 7, 'An Outline of The Song of Songs', '2007-10-22 17:11:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac7.doc');
+INSERT INTO mse_volume VALUES ('CAC', 8, 'An Outline of the Minor Prophets', '2007-10-22 17:11:40', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac8.doc');
+INSERT INTO mse_volume VALUES ('CAC', 9, 'An Outline of Mark''s Gospel and Other Ministry', '2007-10-22 17:11:41', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac9.doc');
+INSERT INTO mse_volume VALUES ('CAC', 10, 'An Outline of Luke''s Gospel', '2007-10-22 17:11:46', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac10.doc');
+INSERT INTO mse_volume VALUES ('CAC', 11, 'An Outline of Romans', '2008-06-08 14:03:06', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac11.doc');
+INSERT INTO mse_volume VALUES ('CAC', 12, 'An Outline of the Epistle of James', '2007-10-22 17:11:51', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac12.doc');
+INSERT INTO mse_volume VALUES ('CAC', 13, 'An Outline of "The Revelation"', '2007-10-22 17:11:54', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac13.doc');
+INSERT INTO mse_volume VALUES ('CAC', 14, 'The True Grace of God', '2007-10-22 17:11:56', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac14.doc');
+INSERT INTO mse_volume VALUES ('CAC', 15, 'The Believer Established', '2007-10-22 17:11:59', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac15.doc');
+INSERT INTO mse_volume VALUES ('CAC', 16, 'Favour and Freedom', '2007-10-22 17:12:02', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac16.doc');
+INSERT INTO mse_volume VALUES ('CAC', 17, 'The Food of Life', '2007-10-22 17:12:03', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac17.doc');
+INSERT INTO mse_volume VALUES ('CAC', 18, 'The House of God', '2007-10-22 17:12:04', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac18.doc');
+INSERT INTO mse_volume VALUES ('CAC', 19, 'The Paths of Life', '2007-10-22 17:12:05', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac19.doc');
+INSERT INTO mse_volume VALUES ('CAC', 20, 'Spiritual Blessings', '2007-10-22 17:12:06', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac20.doc');
+INSERT INTO mse_volume VALUES ('CAC', 21, 'A Sure Foundation', '2007-10-22 17:12:09', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac21.doc');
+INSERT INTO mse_volume VALUES ('CAC', 22, 'Letters of C.A. Coates', '2007-10-22 17:12:10', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac22.doc');
+INSERT INTO mse_volume VALUES ('CAC', 23, 'An Outline of the Epistle to the Hebrews', '2007-10-22 17:12:14', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac23.doc');
+INSERT INTO mse_volume VALUES ('CAC', 24, 'Notes of Readings on the Lord''s Supper', '2007-10-22 17:12:16', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac24.doc');
+INSERT INTO mse_volume VALUES ('CAC', 25, 'Outlines of the Epistles of Paul to the Corinthians', '2007-10-22 17:12:16', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac25.doc');
+INSERT INTO mse_volume VALUES ('CAC', 26, 'Outline of Ephesians', '2007-10-22 17:12:19', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac26.doc');
+INSERT INTO mse_volume VALUES ('CAC', 27, 'Outlines of Samuel, Kings and the Chronicles', '2007-10-22 17:12:20', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac27.doc');
+INSERT INTO mse_volume VALUES ('CAC', 28, 'Notes of Readings on Matthew''s Gospel', '2007-10-22 17:12:22', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac28.doc');
+INSERT INTO mse_volume VALUES ('CAC', 29, 'An Outline of John''s Gospel', '2007-10-22 17:12:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac29.doc');
+INSERT INTO mse_volume VALUES ('CAC', 30, 'Miscellaneous Ministry on the Old Testament', '2007-10-22 17:12:26', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac30.doc');
+INSERT INTO mse_volume VALUES ('CAC', 31, 'Miscellaneous Ministry on the New Testament Matthew-Romans', '2007-10-22 17:12:30', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac31.doc');
+INSERT INTO mse_volume VALUES ('CAC', 32, 'Miscellaneous Ministry on the New Testament Corinthians-Colossians', '2007-10-22 17:12:34', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac32.doc');
+INSERT INTO mse_volume VALUES ('CAC', 33, 'Miscellaneous Ministry on the New Testament Thessalonians-Revelation', '2007-10-22 17:12:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac33.doc');
+INSERT INTO mse_volume VALUES ('CAC', 34, 'Words in Season', '2007-10-22 17:12:43', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac34.doc');
+INSERT INTO mse_volume VALUES ('CAC', 35, 'Outlines of the Books of the Chronicles', '2007-10-22 17:12:46', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac35.doc');
+INSERT INTO mse_volume VALUES ('CAC', 36, 'Remarks on a pamphlet by A. J. Pollock entitled "The Eternal Son"', '2007-10-22 17:12:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac36.doc');
+INSERT INTO mse_volume VALUES ('CAC', 37, 'A Message for You', '2007-10-22 17:12:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\cac\\\\cac37.doc');
 INSERT INTO mse_volume VALUES ('FER', 1, '', '2007-10-22 17:12:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer1.doc');
 INSERT INTO mse_volume VALUES ('FER', 2, '', '2007-10-22 17:12:51', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer2.doc');
 INSERT INTO mse_volume VALUES ('FER', 3, '', '2007-10-22 17:12:55', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer3.doc');
 INSERT INTO mse_volume VALUES ('FER', 4, '', '2007-10-22 17:12:58', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer4.doc');
-INSERT INTO mse_volume VALUES ('FER', 5, '', '2007-10-22 17:13:01', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer5.doc');
+INSERT INTO mse_volume VALUES ('FER', 5, 'Notes of readings on the Gospel of John', '2007-10-22 17:13:01', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer5.doc');
 INSERT INTO mse_volume VALUES ('FER', 6, '', '2007-10-22 17:13:04', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer6.doc');
 INSERT INTO mse_volume VALUES ('FER', 7, '', '2007-10-22 17:13:07', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer7.doc');
 INSERT INTO mse_volume VALUES ('FER', 8, '', '2007-10-22 17:13:10', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer8.doc');
@@ -96,7 +97,7 @@ INSERT INTO mse_volume VALUES ('FER', 17, '', '2007-10-22 17:13:38', 'C:\\\\Dev\
 INSERT INTO mse_volume VALUES ('FER', 18, '', '2007-10-22 17:13:40', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer18.doc');
 INSERT INTO mse_volume VALUES ('FER', 19, '', '2007-10-22 17:13:40', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer19.doc');
 INSERT INTO mse_volume VALUES ('FER', 20, '', '2007-10-22 17:13:44', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer20.doc');
-INSERT INTO mse_volume VALUES ('FER', 21, 'Letters\r\n', '2007-10-22 17:13:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer21.doc');
+INSERT INTO mse_volume VALUES ('FER', 21, 'Letters', '2007-10-22 17:13:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\fer\\\\fer21.doc');
 INSERT INTO mse_volume VALUES ('JBS', 1, '', '2007-10-22 17:13:49', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs1.doc');
 INSERT INTO mse_volume VALUES ('JBS', 2, '', '2007-10-22 17:13:52', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs2.doc');
 INSERT INTO mse_volume VALUES ('JBS', 3, '', '2007-10-22 17:13:56', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs3.doc');
@@ -110,10 +111,10 @@ INSERT INTO mse_volume VALUES ('JBS', 10, '', '2007-10-22 17:14:15', 'C:\\\\Dev\
 INSERT INTO mse_volume VALUES ('JBS', 11, '', '2007-10-22 17:14:17', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs11.doc');
 INSERT INTO mse_volume VALUES ('JBS', 12, '', '2007-10-22 17:14:21', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs12.doc');
 INSERT INTO mse_volume VALUES ('JBS', 13, '', '2007-10-22 17:14:24', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs13.doc');
-INSERT INTO mse_volume VALUES ('JBS', 14, 'Letters 1\r\n', '2007-10-22 17:14:27', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs14.doc');
-INSERT INTO mse_volume VALUES ('JBS', 15, 'Letters 2\r\n', '2007-10-22 17:14:29', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs15.doc');
-INSERT INTO mse_volume VALUES ('JBS', 16, 'Letters 3\r\n', '2007-10-22 17:14:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs16.doc');
-INSERT INTO mse_volume VALUES ('JBS', 17, 'From Glory to Glory\r\n', '2007-10-22 17:14:36', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs17.doc');
+INSERT INTO mse_volume VALUES ('JBS', 14, 'Letters 1', '2007-10-22 17:14:27', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs14.doc');
+INSERT INTO mse_volume VALUES ('JBS', 15, 'Letters 2', '2007-10-22 17:14:29', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs15.doc');
+INSERT INTO mse_volume VALUES ('JBS', 16, 'Letters 3', '2007-10-22 17:14:33', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs16.doc');
+INSERT INTO mse_volume VALUES ('JBS', 17, 'From Glory to Glory', '2007-10-22 17:14:36', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jbs\\\\jbs17.doc');
 INSERT INTO mse_volume VALUES ('JT', 1, '', '2007-10-22 17:14:37', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt1.doc');
 INSERT INTO mse_volume VALUES ('JT', 2, '', '2007-10-22 17:14:40', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt2.doc');
 INSERT INTO mse_volume VALUES ('JT', 3, '', '2007-10-22 17:14:46', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt3.doc');
@@ -163,7 +164,7 @@ INSERT INTO mse_volume VALUES ('JT', 46, '', '2007-10-22 17:17:12', 'C:\\\\Dev\\
 INSERT INTO mse_volume VALUES ('JT', 47, '', '2007-10-22 17:17:15', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt47.doc');
 INSERT INTO mse_volume VALUES ('JT', 48, '', '2007-10-22 17:17:19', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt48.doc');
 INSERT INTO mse_volume VALUES ('JT', 49, '', '2007-10-22 17:17:22', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt49.doc');
-INSERT INTO mse_volume VALUES ('JT', 50, '', '2007-10-22 17:17:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt50.doc');
+INSERT INTO mse_volume VALUES ('JT', 50, 'Divine Names', '2007-10-22 17:17:25', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt50.doc');
 INSERT INTO mse_volume VALUES ('JT', 51, '', '2007-10-22 17:17:29', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt51.doc');
 INSERT INTO mse_volume VALUES ('JT', 52, '', '2007-10-22 17:17:32', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt52.doc');
 INSERT INTO mse_volume VALUES ('JT', 53, '', '2007-10-22 17:17:36', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt53.doc');
@@ -214,8 +215,8 @@ INSERT INTO mse_volume VALUES ('JT', 97, '', '2007-10-22 17:21:21', 'C:\\\\Dev\\
 INSERT INTO mse_volume VALUES ('JT', 98, '', '2007-10-22 17:21:24', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt98.doc');
 INSERT INTO mse_volume VALUES ('JT', 99, '', '2007-10-22 17:21:29', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt99.doc');
 INSERT INTO mse_volume VALUES ('JT', 100, '', '2007-10-22 17:19:34', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt100.doc');
-INSERT INTO mse_volume VALUES ('JT', 101, 'Volume 100a\r\n', '2007-10-22 17:19:38', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt101.doc');
-INSERT INTO mse_volume VALUES ('JT', 102, 'Letters - Volume 1\r\n', '2007-10-22 17:19:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt102.doc');
-INSERT INTO mse_volume VALUES ('JT', 103, 'Letters - Volume 2\r\n', '2007-10-22 17:19:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt103.doc');
+INSERT INTO mse_volume VALUES ('JT', 101, 'Volume 100a', '2007-10-22 17:19:38', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt101.doc');
+INSERT INTO mse_volume VALUES ('JT', 102, 'Letters - Volume 1', '2007-10-22 17:19:39', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt102.doc');
+INSERT INTO mse_volume VALUES ('JT', 103, 'Letters - Volume 2', '2007-10-22 17:19:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt103.doc');
 INSERT INTO mse_volume VALUES ('JND', 1, 'Ecclesiastical No. 1 - Vol 1', '2008-06-03 18:28:01', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jnd\\\\jnd_001.doc');
 INSERT INTO mse_volume VALUES ('JND', 2, 'Prophetic No. 1 - Vol 2', '2008-09-14 12:56:14', 'C:\\Dev\\Scriptures\\MSE\\jnd\\jnd_002.doc');

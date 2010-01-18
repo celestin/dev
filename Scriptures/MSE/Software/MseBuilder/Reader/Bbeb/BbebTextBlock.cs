@@ -9,6 +9,7 @@
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10531 : Added BoldTitle and removed redundant spaces from Scripture refs.
  * CAM  15-Jan-2010  10533 : Ensure AddNewline is inside a paragraph.
+ * CAM  18-Jan-2010  10537 : Corrected apostrophe code characters and long dashes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -123,6 +124,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
     {
       text = text.Replace("@", "");
       text = text.Replace("*", ""); // TODO: make italics work
+      text = text.Replace("¬", "'"); // Apostrophes
+      text = text.Replace("--", "\u2014");
       return OwnerDocument.CreateTextNode(text);
     }
 

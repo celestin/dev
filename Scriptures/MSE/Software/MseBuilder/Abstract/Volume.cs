@@ -11,6 +11,7 @@
  * CAM  15-Jan-2010  10528 : Added Series and Title options.
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
+ * CAM  18-Jan-2010  10539 : Include volume number prefix in title (for sorting in Calibre).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -76,10 +77,10 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       {
         if (Title.Length > 0)
         {
-          return String.Format("{0} - {1} (#{2})", Author.Inits, Title, Vol);
+          return String.Format("{0:000} {1}", Vol, Title);
         }
 
-        return String.Format("{0} Volume {1}", Author.Inits, Vol);
+        return String.Format("{0:000} Volume {0}", Vol);
       }
     }
     public string VolumeTitle

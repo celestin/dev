@@ -19,6 +19,7 @@
  * CAM  15-Jan-2010  10532 : Add Articles to the TOC.
  * CAM  15-Jan-2010  10533 : Copy image files to target directory.
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
+ * CAM  18-Jan-2010  10538 : Ensure newline occurs after title when there are no scriptures, and after finding the first paragraph, stop looking for scriptures.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -345,7 +346,6 @@ namespace FrontBurner.Ministry.MseBuilder
             }
             else
             {
-
               if (stage == ArticleStage.Scriptures && text.Trim().StartsWith("@"))
               {
                 textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleScriptures]);
@@ -354,7 +354,17 @@ namespace FrontBurner.Ministry.MseBuilder
               }
               else
               {
+                if (stage == ArticleStage.Scriptures)
+                {
+                  // No scriptures were found, therefore we need a newline
+                  textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleText]);
+                  textBlock.AddParagraph("", false);
+                  textBlock.GenerateBbeb();
+                  page.AppendChild(textBlock);
+                }
+
                 textBlock = new BbebTextBlock(doc, doc.BlockStyle, doc.TextStyleCollection[TextPurpose.ArticleText]);
+
                 if (inits.Length > 0)
                 {
                   textBlock.AddParagraph(inits, text);
@@ -363,6 +373,7 @@ namespace FrontBurner.Ministry.MseBuilder
                 {
                   textBlock.AddParagraph(text);
                 }
+                stage = ArticleStage.Body;
               }
 
               textBlock.GenerateBbeb();

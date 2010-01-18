@@ -20,6 +20,7 @@
  * CAM  15-Jan-2010  10528 : Added GetAuthors (renamed existing to GetAuthorDataset).
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
+ * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -313,7 +314,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdArticles.Parameters.Add("?vol", MySqlDbType.Int32);
       }
 
-      _cmdArticles.Parameters["?author"].Value = vol.Author;
+      _cmdArticles.Parameters["?author"].Value = vol.Author.Inits;
       _cmdArticles.Parameters["?vol"].Value = vol.Vol;
 
       DataTable dt = new DataTable("mse_article");
@@ -367,7 +368,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdBibleRef.Parameters.Add("?vol", MySqlDbType.Int32);
       }
 
-      _cmdBibleRef.Parameters["?author"].Value = vol.Author;
+      _cmdBibleRef.Parameters["?author"].Value = vol.Author.Inits;
       _cmdBibleRef.Parameters["?vol"].Value = vol.Vol;
 
       DataTable dt = new DataTable("mse_bible_ref");
@@ -401,7 +402,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertText.Parameters.Add("?newPages", MySqlDbType.String);
       }
 
-      _cmdInsertText.Parameters["?author"].Value = para.Volume.Author;
+      _cmdInsertText.Parameters["?author"].Value = para.Volume.Author.Inits;
       _cmdInsertText.Parameters["?vol"].Value = para.Volume.Vol;
       _cmdInsertText.Parameters["?pageNo"].Value = para.PageNo;
       _cmdInsertText.Parameters["?para"].Value = para.Para;
@@ -449,7 +450,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertBibleRef.Parameters.Add("?vEnd", MySqlDbType.Int32);
       }
 
-      _cmdInsertBibleRef.Parameters["?author"].Value = paragraph.Volume.Author;
+      _cmdInsertBibleRef.Parameters["?author"].Value = paragraph.Volume.Author.Inits;
       _cmdInsertBibleRef.Parameters["?vol"].Value = paragraph.Volume.Vol;
       _cmdInsertBibleRef.Parameters["?pageNo"].Value = paragraph.PageNo;
       _cmdInsertBibleRef.Parameters["?para"].Value = paragraph.Para;
@@ -487,7 +488,7 @@ namespace FrontBurner.Ministry.MseBuilder
         _cmdInsertBadBibleRef.Parameters.Add("?text", MySqlDbType.String);
       }
 
-      _cmdInsertBadBibleRef.Parameters["?author"].Value = vol.Author;
+      _cmdInsertBadBibleRef.Parameters["?author"].Value = vol.Author.Inits;
       _cmdInsertBadBibleRef.Parameters["?vol"].Value = vol.Vol;
       _cmdInsertBadBibleRef.Parameters["?pageNo"].Value = pageNo;
       _cmdInsertBadBibleRef.Parameters["?para"].Value = para;
@@ -523,7 +524,7 @@ namespace FrontBurner.Ministry.MseBuilder
             "author, vol, article, localrow, page " +
           ") VALUES (" +
             "'{0}', '{1}', '{2}', '{3}', '{4}')",
-          art.Volume.Author, art.Volume.Vol, DatabaseLayer.SqlText(art.Title), art.LocalRow, art.PageNo);
+          art.Volume.Author.Inits, art.Volume.Vol, DatabaseLayer.SqlText(art.Title), art.LocalRow, art.PageNo);
       }
       else
       {
@@ -533,7 +534,7 @@ namespace FrontBurner.Ministry.MseBuilder
           "WHERE author = '{1}' " +
           "AND vol = '{2}' " +
           "AND localrow = '{3}'",
-          DatabaseLayer.SqlText(art.Scriptures), art.Volume.Author, art.Volume.Vol, art.LocalRow);
+          DatabaseLayer.SqlText(art.Scriptures), art.Volume.Author.Inits, art.Volume.Vol, art.LocalRow);
       }
 
       ExecuteSql(sql);
@@ -548,11 +549,11 @@ namespace FrontBurner.Ministry.MseBuilder
 
     public void DeleteVolume(Volume vol)
     {
-      this.ExecuteSql(String.Format("UPDATE mse_volume SET added=NOW() WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
-      this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
-      this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
-      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
-      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref_error WHERE author = '{0}' and vol = {1}", vol.Author, vol.Vol), true);
+      this.ExecuteSql(String.Format("UPDATE mse_volume SET added=NOW() WHERE author = '{0}' and vol = {1}", vol.Author.Inits, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_article WHERE author = '{0}' and vol = {1}", vol.Author.Inits, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_text WHERE author = '{0}' and vol = {1}", vol.Author.Inits, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref WHERE author = '{0}' and vol = {1}", vol.Author.Inits, vol.Vol), true);
+      this.ExecuteSql(String.Format("DELETE FROM mse_bible_ref_error WHERE author = '{0}' and vol = {1}", vol.Author.Inits, vol.Vol), true);
     }
 
     public void SaveBibleBook(BibleBook book)

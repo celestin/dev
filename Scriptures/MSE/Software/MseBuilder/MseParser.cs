@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -11,6 +11,7 @@
  * CAM  24-Nov-2007  10188 : Remember the current Article and assign to each new paragraph within.
  * CAM  17-May-2008  10266 : Check for Errors during Parse.
  * CAM  15-Jun-2008  10271 : Handle Footnotes.
+ * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -161,7 +162,7 @@ namespace FrontBurner.Ministry.MseBuilder
           if (buffer.Substring(0, 2).Equals("{*"))
           {
             MessageBox.Show(String.Format("You have not corrected a footnote: {0} Vol {1} page {2}\n\n{3}",
-              _vol.Author, _vol.Vol, pageNo, buffer), "Bad Footnote");
+              _vol.Author.Inits, _vol.Vol, pageNo, buffer), "Bad Footnote");
           }
           else
           {

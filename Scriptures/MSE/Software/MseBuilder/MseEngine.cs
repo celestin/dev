@@ -18,6 +18,7 @@
  * CAM  15-Jan-2010  10531 : Added ArticleStage.
  * CAM  15-Jan-2010  10532 : Add Articles to the TOC.
  * CAM  15-Jan-2010  10533 : Copy image files to target directory.
+ * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -135,7 +136,7 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
         {
-          if ((volume == 0) || ((volume > 0) && (vol.Author.Equals(author)) && (vol.Vol == volume)))
+          if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
           {
             sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
 
@@ -143,15 +144,15 @@ namespace FrontBurner.Ministry.MseBuilder
             {
               sw.NewLine = "\n";
 
-              sw.WriteLine(String.Format("-- {0} {1}\n", vol.Author, vol.Vol));
+              sw.WriteLine(String.Format("-- {0} {1}\n", vol.Author.Inits, vol.Vol));
 
               sw.WriteLine("\n-- REMOVE EXISTING VOLUME\n");
 
               // Empty existing data
-              sw.WriteLine(String.Format("REPLACE INTO mse_volume (author,vol,title,added) VALUES ('{0}', '{1}', '{2}', NOW());\n", vol.Author, vol.Vol, vol.Title));
-              sw.WriteLine(String.Format("DELETE FROM mse_article WHERE author='{0}' AND vol={1};", vol.Author, vol.Vol));
-              sw.WriteLine(String.Format("DELETE FROM mse_text WHERE author='{0}' AND vol={1};", vol.Author, vol.Vol));
-              sw.WriteLine(String.Format("DELETE FROM mse_bible_ref WHERE author='{0}' AND vol={1};\n", vol.Author, vol.Vol));
+              sw.WriteLine(String.Format("REPLACE INTO mse_volume (author,vol,title,added) VALUES ('{0}', '{1}', '{2}', NOW());\n", vol.Author.Inits, vol.Vol, vol.Title));
+              sw.WriteLine(String.Format("DELETE FROM mse_article WHERE author='{0}' AND vol={1};", vol.Author.Inits, vol.Vol));
+              sw.WriteLine(String.Format("DELETE FROM mse_text WHERE author='{0}' AND vol={1};", vol.Author.Inits, vol.Vol));
+              sw.WriteLine(String.Format("DELETE FROM mse_bible_ref WHERE author='{0}' AND vol={1};\n", vol.Author.Inits, vol.Vol));
 
               sw.WriteLine("\n-- ADD ARTICLES\n");
 
@@ -161,7 +162,7 @@ namespace FrontBurner.Ministry.MseBuilder
                 sql = String.Format(
                   "INSERT INTO mse_article (author,vol,page,article,scriptures) VALUES " +
                   "('{0}',{1},{2},'{3}','{4}');",
-                  vol.Author, vol.Vol, dr["page"],
+                  vol.Author.Inits, vol.Vol, dr["page"],
                   DatabaseLayer.SqlText(dr["article"]),
                   DatabaseLayer.SqlText(dr["scriptures"]));
 
@@ -182,7 +183,7 @@ namespace FrontBurner.Ministry.MseBuilder
                   colSql = "INSERT INTO mse_text (author,vol,page,para,article_page,text";
                   sql = String.Format(
                     "'{0}',{1},{2},{3},{4},'{5}'",
-                    vol.Author, vol.Vol,
+                    vol.Author.Inits, vol.Vol,
                     dr["page"], dr["para"], dr["article_page"], DatabaseLayer.SqlText(text));
 
                   // Add each nullable column
@@ -209,7 +210,7 @@ namespace FrontBurner.Ministry.MseBuilder
                 sql = String.Format(
                   "INSERT INTO mse_bible_ref (author,vol,page,para,ref,bookid,chapter,vstart,vend) VALUES " +
                   "('{0}',{1},{2},{3},{4},{5},{6},{7},{8});",
-                  vol.Author, vol.Vol,
+                  vol.Author.Inits, vol.Vol,
                   dr["page"], dr["para"], dr["ref"],
                   dr["bookid"], dr["chapter"], dr["vstart"], dr["vend"]);
 

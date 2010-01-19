@@ -10,7 +10,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-//using System.Text;
 using System.Xml;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb

@@ -12,6 +12,7 @@
  * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
  * CAM  28-Mar-2009  10412 : Use new Bugzilla table adapter.
  * CAM  15-Jan-2010  10528 : Added button for CreateBbebReaderFiles.
+ * CAM  19-Jan-2010  10540 : Added button for CreateEpubFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace FrontBurner.Ministry.MseBuilder
@@ -60,10 +61,11 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tsbZip = new System.Windows.Forms.ToolStripButton();
       this._tsbVersionHistory = new System.Windows.Forms.ToolStripButton();
       this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+      this._tsbCreateSonyReader = new System.Windows.Forms.ToolStripButton();
       this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
       this._bdsBugs = new System.Windows.Forms.BindingSource(this.components);
       this._bugsTableAdapter = new FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter();
-      this._tsbCreateSonyReader = new System.Windows.Forms.ToolStripButton();
+      this._tsbCreateEpub = new System.Windows.Forms.ToolStripButton();
       ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).BeginInit();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -184,10 +186,11 @@ namespace FrontBurner.Ministry.MseBuilder
             this._tsbZip,
             this._tsbVersionHistory,
             this.toolStripButton1,
-            this._tsbCreateSonyReader});
+            this._tsbCreateSonyReader,
+            this._tsbCreateEpub});
       this._tspMain.Location = new System.Drawing.Point(3, 0);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(303, 55);
+      this._tspMain.Size = new System.Drawing.Size(418, 55);
       this._tspMain.TabIndex = 0;
       //
       // _tsbBuild
@@ -234,6 +237,15 @@ namespace FrontBurner.Ministry.MseBuilder
       this.toolStripButton1.ToolTipText = "Parse Bible";
       this.toolStripButton1.Click += new System.EventHandler(this.BuildBibleDatabase);
       //
+      // _tsbCreateSonyReader
+      //
+      this._tsbCreateSonyReader.Image = ((System.Drawing.Image)(resources.GetObject("_tsbCreateSonyReader.Image")));
+      this._tsbCreateSonyReader.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbCreateSonyReader.Name = "_tsbCreateSonyReader";
+      this._tsbCreateSonyReader.Size = new System.Drawing.Size(83, 52);
+      this._tsbCreateSonyReader.Text = "BBeb";
+      this._tsbCreateSonyReader.Click += new System.EventHandler(this.CreateBbebReaderFiles);
+      //
       // mseData
       //
       this.mseData.DataSetName = "MseData";
@@ -248,15 +260,14 @@ namespace FrontBurner.Ministry.MseBuilder
       //
       this._bugsTableAdapter.ClearBeforeFill = true;
       //
-      // _tsbCreateSonyReader
+      // _tsbCreateEpub
       //
-      this._tsbCreateSonyReader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbCreateSonyReader.Image = ((System.Drawing.Image)(resources.GetObject("_tsbCreateSonyReader.Image")));
-      this._tsbCreateSonyReader.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbCreateSonyReader.Name = "_tsbCreateSonyReader";
-      this._tsbCreateSonyReader.Size = new System.Drawing.Size(52, 52);
-      this._tsbCreateSonyReader.Text = "toolStripButton2";
-      this._tsbCreateSonyReader.Click += new System.EventHandler(this.CreateBbebReaderFiles);
+      this._tsbCreateEpub.Image = ((System.Drawing.Image)(resources.GetObject("_tsbCreateEpub.Image")));
+      this._tsbCreateEpub.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbCreateEpub.Name = "_tsbCreateEpub";
+      this._tsbCreateEpub.Size = new System.Drawing.Size(84, 52);
+      this._tsbCreateEpub.Text = "EPUB";
+      this._tsbCreateEpub.Click += new System.EventHandler(this.CreateEpubFiles);
       //
       // MseBuilder
       //
@@ -303,6 +314,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.BindingSource _bdsBugs;
     private FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter _bugsTableAdapter;
     private System.Windows.Forms.ToolStripButton _tsbCreateSonyReader;
+    private System.Windows.Forms.ToolStripButton _tsbCreateEpub;
   }
 }
 

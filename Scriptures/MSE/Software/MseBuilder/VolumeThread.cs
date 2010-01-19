@@ -9,6 +9,7 @@
  * CAM  11-May-2008  10265 : File created (for clarity).
  * CAM  17-May-2008  10266 : Return Errors found during Build.
  * CAM  15-Jan-2010  10528 : Added BbebThread.
+ * CAM  19-Jan-2010  10540 : Added EpubThread.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -128,6 +129,31 @@ namespace FrontBurner.Ministry.MseBuilder
       else
       {
         _engine.CreateBbebFiles();
+      }
+    }
+  }
+
+  public class EpubThread : VolumeThread
+  {
+    public EpubThread(string author, int vol, bool specificVolume)
+      : base(author, vol, specificVolume)
+    {
+      _process = new Thread(new ThreadStart(CreateEpubFiles));
+      _process.IsBackground = true;
+      _process.Start();
+    }
+
+    private void CreateEpubFiles()
+    {
+      _engine = new MseEngine();
+
+      if (_specificVolume)
+      {
+        _engine.CreateEpubFiles(_author, _vol);
+      }
+      else
+      {
+        _engine.CreateEpubFiles();
       }
     }
   }

@@ -15,6 +15,7 @@
  * CAM  28-Mar-2009  10409 : Added call to Footnote parser.
  * CAM  28-Mar-2009  10412 : Call new Bugzilla table adapter.
  * CAM  15-Jan-2010  10528 : Added CreateBbebReaderFiles.
+ * CAM  19-Jan-2010  10540 : Added Epub process, and ensure progress is reset after all processes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,12 +37,13 @@ namespace FrontBurner.Ministry.MseBuilder
 {
   public partial class MseBuilder : Form
   {
-    protected string _author;
-    protected int _vol;
-    protected bool _specificVolume;
-    protected BuilderThread _builder;
-    protected ZipperThread _zipper;
-    protected BbebThread _bbeb;
+    private string _author;
+    private int _vol;
+    private bool _specificVolume;
+    private BuilderThread _builder;
+    private ZipperThread _zipper;
+    private BbebThread _bbeb;
+    private EpubThread _epub;
 
     public MseBuilder()
     {
@@ -82,9 +84,8 @@ namespace FrontBurner.Ministry.MseBuilder
             formErrors.ShowDialog();
           }
 
+          ProcessComplete();
           _builder = null;
-
-          _tspMain.Enabled = true;
         }
       }
       else if (_zipper != null)
@@ -97,10 +98,8 @@ namespace FrontBurner.Ministry.MseBuilder
         }
         else
         {
-          tmrRefresh.Enabled = false;
+          ProcessComplete();
           _zipper = null;
-
-          _tspMain.Enabled = true;
         }
       }
       else if (_bbeb != null)
@@ -113,12 +112,31 @@ namespace FrontBurner.Ministry.MseBuilder
         }
         else
         {
-          tmrRefresh.Enabled = false;
+          ProcessComplete();
           _bbeb = null;
-
-          _tspMain.Enabled = true;
         }
       }
+      else if (_epub != null)
+      {
+        if (_epub.Process.IsAlive)
+        {
+          if (_epub.Engine != null) pgbVol.Value = _epub.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          ProcessComplete();
+          _epub = null;
+        }
+      }
+    }
+
+    protected void ProcessComplete()
+    {
+      pgbVol.Maximum = pgbVol.Value = 0;
+      tmrRefresh.Enabled = false;
+      _tspMain.Enabled = true;
     }
 
     private void MseBuilder_Load(object sender, EventArgs e)
@@ -227,6 +245,21 @@ namespace FrontBurner.Ministry.MseBuilder
       SpecificVolume();
 
       _bbeb = new BbebThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
+    private void CreateEpubFiles(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
+
+      SpecificVolume();
+
+      _epub = new EpubThread(_author, _vol, _specificVolume);
       Thread.Sleep(1000);
 
       tmrRefresh.Enabled = true;

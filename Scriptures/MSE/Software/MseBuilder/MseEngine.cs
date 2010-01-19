@@ -20,6 +20,7 @@
  * CAM  15-Jan-2010  10533 : Copy image files to target directory.
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * CAM  18-Jan-2010  10538 : Ensure newline occurs after title when there are no scriptures, and after finding the first paragraph, stop looking for scriptures.
+ * CAM  19-Jan-2010  10540 : Added CreateEpubFiles logic.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,6 +37,8 @@ using ICSharpCode.SharpZipLib.GZip;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
 using FrontBurner.Ministry.MseBuilder.Reader.Bbeb;
+using FrontBurner.Ministry.MseBuilder.Reader.Epub;
+using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
 
 namespace FrontBurner.Ministry.MseBuilder
 {
@@ -139,7 +142,7 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
           {
-            sqlFile = new FileInfo(String.Format(@"{0}\{1}_{2}.sql", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
+            sqlFile = new FileInfo(String.Format(@"{0}\{1}.sql", root.FullName, vol.Filename));
 
             using (StreamWriter sw = new StreamWriter(sqlFile.FullName))
             {
@@ -290,12 +293,7 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
         {
-          lrsFile = new FileInfo(String.Format(@"{0}\{1}_{2}.lrs", root.FullName, vol.Author.Inits.ToLower(), vol.Vol.ToString("000")));
-
-          if (vol.Author.Inits.Equals("JT"))
-          {
-            vol.Series = "New Series";
-          }
+          lrsFile = new FileInfo(String.Format(@"{0}\{1}.lrs", root.FullName, vol.Filename));
 
           BbebDocument doc = new BbebDocument(lrsFile, vol);
 
@@ -310,8 +308,6 @@ namespace FrontBurner.Ministry.MseBuilder
           BbebPage page = null;
           BbebTextBlock textBlock = null;
           ArticleStage stage = ArticleStage.Title;
-
-          // Need to put an outer loop by article, for ease of outputting title and scripture
 
           foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
           {
@@ -388,6 +384,104 @@ namespace FrontBurner.Ministry.MseBuilder
           p.StartInfo.Arguments = lrsFile.Name;
           p.Start();
           p.WaitForExit();
+
+          Thread.Sleep(100);
+        }
+
+        _current++;
+      }
+    }
+
+    public void CreateEpubFiles()
+    {
+      CreateEpubFiles(null, 0);
+    }
+
+    public void CreateEpubFiles(string author, int volume)
+    {
+      byte[] dataBuffer = new byte[4096];
+      DirectoryInfo root = new DirectoryInfo(@"C:\tmp\epub");
+      DirectoryInfo files = new DirectoryInfo(@"C:\tmp\epub\files");
+
+      try
+      {
+        if (files.Exists)
+        {
+          foreach (FileInfo file in files.GetFiles())
+          {
+            file.Delete();
+          }
+          foreach (DirectoryInfo dir in files.GetDirectories())
+          {
+            dir.Delete(true);
+          }
+        }
+        else
+        {
+          files.Create();
+        }
+      }
+      catch
+      {
+      }
+
+      FileInfo exe = new FileInfo(Application.ExecutablePath);
+      FileInfo cssFile = new FileInfo(String.Format(@"{0}\Reader\Epub\resources\css\epub-ministry.css", exe.DirectoryName));
+
+      _current = 0;
+
+      foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
+      {
+        if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
+        {
+          FileInfo authorImageFile = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, vol.Author.ImageFilename));
+
+          EpubDocument epub = new EpubDocument(files, vol, cssFile, authorImageFile);
+
+          int currentArticle = 0;
+          EpubArticle article = null;
+          ArticleStage stage = ArticleStage.Title;
+
+          foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
+          {
+            string text = dr["text"].ToString();
+            string inits = dr["inits"].ToString();
+            string newPages = dr["newpages"].ToString();
+            int articlePage = int.Parse(dr["article_page"].ToString());
+
+            if (articlePage != currentArticle)
+            {
+              article = epub.Articles.CreateArticle();
+
+              currentArticle = articlePage;
+              stage = ArticleStage.Title;
+            }
+
+            if (stage == ArticleStage.Title)
+            {
+              if (Paragraph.IsTitle(text))
+              {
+                article.Title = text;
+                stage = ArticleStage.Scriptures;
+              }
+            }
+            else
+            {
+              if (stage == ArticleStage.Scriptures && text.Trim().StartsWith("@"))
+              {
+                article.Scriptures = text;
+                stage = ArticleStage.Body;
+              }
+              else
+              {
+                article.Items.Add(new EpubParagraph(inits, text));
+                stage = ArticleStage.Body;
+              }
+            }
+          }
+
+          epub.GenerateToc();
+          epub.SaveFile();
 
           Thread.Sleep(100);
         }

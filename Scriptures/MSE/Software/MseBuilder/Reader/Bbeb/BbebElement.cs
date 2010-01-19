@@ -9,6 +9,7 @@
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10532 : Added AppendAttribute by Obj.
  * CAM  15-Jan-2010  10533 : Moved AppendAttribute method from BbebObjElement.
+ * CAM  19-Jan-2010  10540 : Correct OO - GenerateBbeb is abstract here.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -55,6 +56,6 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Bbeb
       element.Attributes.Append(attribute);
     }
 
-    public virtual void GenerateBbeb() { }
+    public abstract void GenerateBbeb();
   }
 }

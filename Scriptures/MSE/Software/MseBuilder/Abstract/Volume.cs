@@ -12,6 +12,7 @@
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * CAM  18-Jan-2010  10539 : Include volume number prefix in title (for sorting in Calibre).
+ * CAM  19-Jan-2010  10540 : Series is no longer require - based on logic.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,7 +28,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     private Author _author;
     private int _vol;
     private string _title;
-    private string _series;
     private DateTime _added;
     private string _localFile;
 
@@ -95,10 +95,25 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         return String.Format("Volume {0}", Vol);
       }
     }
+    public string Filename
+    {
+      get
+      {
+        return String.Format("{0}_{1:000}", Author.Inits.ToLower(), Vol);
+
+      }
+    }
     public string Series
     {
-      get { return _series; }
-      set { _series = value; }
+      get
+      {
+        if (Author.Inits.Equals("JT"))
+        {
+          return "New Series";
+        }
+
+        return "";
+      }
     }
     public DateTime Added
     {
@@ -135,7 +150,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       _author = author;
       _vol = vol;
-      _series = "";
     }
 
     public FileInfo GetFile()

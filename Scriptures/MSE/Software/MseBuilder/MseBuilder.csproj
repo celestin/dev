@@ -148,6 +148,9 @@
     <Compile Include="Reader\Bbeb\BbebUtil.cs" />
     <Compile Include="Reader\Bbeb\IBbebGenerator.cs" />
     <Compile Include="Reader\Bbeb\BbebImageBlock.cs" />
+    <Compile Include="Reader\Epub\Article\EpubArticleCollection.cs" />
+    <Compile Include="Reader\Epub\Article\EpubImage.cs" />
+    <Compile Include="Reader\Epub\Article\EpubTitlePage.cs" />
     <Compile Include="Reader\Epub\EpubContainer.cs" />
     <Compile Include="Reader\Epub\EpubDocument.cs" />
     <Compile Include="Reader\Epub\Article\EpubHeading.cs" />

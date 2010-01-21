@@ -6,33 +6,23 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  19-Jan-2010  10540 : File created.
- * CAM  21-Jan-2010  10546 : Added ClassName.
+ * CAM  21-Jan-2010  10546 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 {
-  public class EpubHeading : EpubItem
+  public class EpubImage : EpubItem
   {
-    private string _className;
-
-    public EpubHeading(string text)
-      : base(text)
+    public EpubImage(string src)
+      : base(src)
     {
-      _className = "title";
-    }
-
-    public EpubHeading(string text, string className)
-      : base(text)
-    {
-      _className = className;
     }
 
     public override string RenderToXhtml()
     {
-      return String.Format("    <p class=\"{0}\">{1}</p>", _className, Text);
+      return String.Format("    <img src=\"img/{0}\" />", Text);
     }
   }
 }

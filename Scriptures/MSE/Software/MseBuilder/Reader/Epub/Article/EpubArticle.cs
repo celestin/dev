@@ -7,10 +7,10 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  21-Jan-2010  10546 : Moved Header/Footer elements to WriteHeader/WriteFooter.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-using System.Collections.ObjectModel;
 using System.Text;
 using System.IO;
 
@@ -70,28 +70,18 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
       _items = new EpubItemCollection();
     }
 
-    public void GenerateEpub()
+    public virtual void GenerateEpub()
     {
     }
 
-    public void SaveFile()
+    public virtual void SaveFile()
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
         EpubHeading heading = new EpubHeading(Title);
-          EpubScriptures scriptures = new EpubScriptures(Scriptures);
+        EpubScriptures scriptures = new EpubScriptures(Scriptures);
 
-        writer.WriteLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
-        writer.WriteLine(@"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.1//EN"" ""http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"">");
-        writer.WriteLine(@"<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""en"">");
-        writer.WriteLine(@"  <head>");
-        writer.WriteLine(@"    <title>" + heading.Text + "</title>");
-        writer.WriteLine(@"    <link rel=""stylesheet"" href=""css/epub-ministry.css"" type=""text/css""/>");
-        writer.WriteLine(@"    <meta http-equiv=""Content-Type"" content=""application/xhtml+xml; charset=utf-8""/>");
-        writer.WriteLine(@"    <meta name=""EPB-UUID"" content=""" + Document.Opf.BookId + @"""/>");
-        writer.WriteLine(@"  </head>");
-        writer.WriteLine(@"  <body>");
-
+        WriteHeader(writer, heading.Text);
         writer.WriteLine(heading.RenderToXhtml());
         writer.WriteLine(scriptures.RenderToXhtml());
 
@@ -100,39 +90,28 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
           writer.WriteLine(item.RenderToXhtml());
         }
 
-        writer.WriteLine(@"  </body>");
-        writer.WriteLine(@"</html>");
+        WriteFooter(writer);
       }
     }
-  }
 
-  public class EpubArticleCollection : KeyedCollection<long, EpubArticle>
-  {
-    private EpubDocument _doc;
-    private long _nextId;
-
-    public EpubArticleCollection(EpubDocument doc)
-      : base()
+    public void WriteHeader(StreamWriter writer, string title)
     {
-      _doc = doc;
-      _nextId = 1;
+      writer.WriteLine(@"<?xml version=""1.0"" encoding=""UTF-8""?>");
+      writer.WriteLine(@"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.1//EN"" ""http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"">");
+      writer.WriteLine(@"<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""en"">");
+      writer.WriteLine(@"  <head>");
+      writer.WriteLine(@"    <title>" + title + "</title>");
+      writer.WriteLine(@"    <link rel=""stylesheet"" href=""css/epub-ministry.css"" type=""text/css""/>");
+      writer.WriteLine(@"    <meta http-equiv=""Content-Type"" content=""application/xhtml+xml; charset=utf-8""/>");
+      writer.WriteLine(@"    <meta name=""EPB-UUID"" content=""" + Document.Opf.BookId + @"""/>");
+      writer.WriteLine(@"  </head>");
+      writer.WriteLine(@"  <body>");
     }
 
-    protected long GetNextId()
+    public void WriteFooter(StreamWriter writer)
     {
-      return _nextId++;
-    }
-
-    protected override long GetKeyForItem(EpubArticle item)
-    {
-      return item.Id;
-    }
-
-    public EpubArticle CreateArticle()
-    {
-      EpubArticle article = new EpubArticle(GetNextId(), _doc);
-      this.Add(article);
-      return article;
+      writer.WriteLine(@"  </body>");
+      writer.WriteLine(@"</html>");
     }
   }
 }

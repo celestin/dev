@@ -28,7 +28,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
         _text = _text.Replace("&", "&amp;");
         _text = _text.Replace("@", "");
         _text = _text.Replace("*", ""); // TODO: make italics work
-        _text = _text.Replace("¬", "&rsquo;"); // Apostrophes
+        _text = _text.Replace("~", "&rsquo;"); // Apostrophes
         _text = _text.Replace("--", "&mdash;");
         _text = _text.Replace("\"", "&quot;");
       }

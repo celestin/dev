@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10543 : Added dc:Subject (Tags).
+ * CAM  21-Jan-2010  10549 : Use Volume.FullTitle for book title.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -103,7 +104,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
     protected void AddMetaData()
     {
-      XmlElement element = AppendElement(MetaData, "dc:title", XmlnsDc, Volume.VolumeTitle);
+      XmlElement element = AppendElement(MetaData, "dc:title", XmlnsDc, Volume.FullTitle);
 
       element = AppendElement(MetaData, "dc:creator", XmlnsDc, Volume.Author.Name);
       AppendAttribute(element, "opf:role", XmlnsOpf, "aut");

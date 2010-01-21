@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  21-Jan-2010  10544 : Create the EPUB zipfile.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -14,12 +15,14 @@ using System.IO;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
+using FrontBurner.Ministry.MseBuilder.Util;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 {
   public class EpubDocument : IEpubGenerator, IEpubTocGenerator
   {
     private DirectoryInfo _rootDir;
+    private DirectoryInfo _outputDir;
     private Volume _volume;
     private DirectoryInfo _epubDir;
     private DirectoryInfo _metaDir;
@@ -41,6 +44,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       get { return _rootDir; }
       set { _rootDir = value; }
+    }
+    public DirectoryInfo OutputDir
+    {
+      get { return _outputDir; }
+      set { _outputDir = value; }
     }
     public DirectoryInfo OpsDir
     {
@@ -73,9 +81,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       get { return _articles; }
     }
 
-    public EpubDocument(DirectoryInfo root, Volume volume, FileInfo cssFile, FileInfo authorImage)
+    public EpubDocument(DirectoryInfo root, DirectoryInfo output, Volume volume, FileInfo cssFile, FileInfo authorImage)
     {
       RootDir = root;
+      OutputDir = output;
       Volume = volume;
       _cssFile = cssFile;
       _authorImage = authorImage;
@@ -87,7 +96,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
     public void GenerateEpub()
     {
-      _epubDir = new DirectoryInfo(String.Format(@"{0}\{1}", _rootDir.FullName, _volume.Filename));
+      _epubDir = new DirectoryInfo(String.Format(@"{0}\{1}", RootDir.FullName, _volume.Filename));
 
       _metaDir = new DirectoryInfo(String.Format(@"{0}\META-INF", _epubDir.FullName));
       _opsDir = new DirectoryInfo(String.Format(@"{0}\OPS", _epubDir.FullName));
@@ -95,7 +104,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       _cssDir = new DirectoryInfo(String.Format(@"{0}\css", _opsDir.FullName));
       _imgDir = new DirectoryInfo(String.Format(@"{0}\img", _opsDir.FullName));
 
-      _epubFile = new FileInfo(String.Format(@"{0}.epub", _epubDir.FullName));
+      _epubFile = new FileInfo(String.Format(@"{0}\{1}.epub", OutputDir.FullName, _volume.Filename));
 
       Container = new EpubContainer(_metaDir, Volume);
       Opf = new EpubOpf(this, _opsDir, Volume);
@@ -123,6 +132,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
       CreateMimeType();
       CopyResources();
+
+      Zipper.Instance.ZipDirectory(_epubDir, _epubFile);
     }
 
     protected void CreateDirectoryStructure()

@@ -21,6 +21,7 @@
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * CAM  18-Jan-2010  10538 : Ensure newline occurs after title when there are no scriptures, and after finding the first paragraph, stop looking for scriptures.
  * CAM  19-Jan-2010  10540 : Added CreateEpubFiles logic.
+ * CAM  21-Jan-2010  10544 : Create a separate directory for the EPUB files.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -401,25 +402,15 @@ namespace FrontBurner.Ministry.MseBuilder
     {
       byte[] dataBuffer = new byte[4096];
       DirectoryInfo root = new DirectoryInfo(@"C:\tmp\epub");
-      DirectoryInfo files = new DirectoryInfo(@"C:\tmp\epub\files");
+      DirectoryInfo files = new DirectoryInfo(@"C:\tmp\epub\dirs");
+      DirectoryInfo epubs = new DirectoryInfo(@"C:\tmp\epub\epubs");
 
       try
       {
-        if (files.Exists)
-        {
-          foreach (FileInfo file in files.GetFiles())
-          {
-            file.Delete();
-          }
-          foreach (DirectoryInfo dir in files.GetDirectories())
-          {
-            dir.Delete(true);
-          }
-        }
-        else
-        {
-          files.Create();
-        }
+        if (files.Exists) files.Delete(true);
+        files.Create();
+        if (epubs.Exists) epubs.Delete(true);
+        epubs.Create();
       }
       catch
       {
@@ -436,7 +427,7 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           FileInfo authorImageFile = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, vol.Author.ImageFilename));
 
-          EpubDocument epub = new EpubDocument(files, vol, cssFile, authorImageFile);
+          EpubDocument epub = new EpubDocument(files, epubs, vol, cssFile, authorImageFile);
 
           int currentArticle = 0;
           EpubArticle article = null;
@@ -483,7 +474,7 @@ namespace FrontBurner.Ministry.MseBuilder
           epub.GenerateToc();
           epub.SaveFile();
 
-          Thread.Sleep(100);
+          Thread.Sleep(50);
         }
 
         _current++;

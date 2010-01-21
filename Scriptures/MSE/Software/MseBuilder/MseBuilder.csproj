@@ -160,6 +160,7 @@
     <Compile Include="Reader\Epub\Article\EpubParagraph.cs" />
     <Compile Include="Reader\Epub\Article\EpubScriptures.cs" />
     <Compile Include="Reader\Epub\MimeType.cs" />
+    <Compile Include="Util\Zipper.cs" />
     <Compile Include="VolumeThread.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  21-Jan-2010  10543 : Added dc:Subject (Tags).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -95,6 +96,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       }
     }
 
+    protected string TagSafe(string type)
+    {
+      return type.Replace(",", "");
+    }
+
     protected void AddMetaData()
     {
       XmlElement element = AppendElement(MetaData, "dc:title", XmlnsDc, Volume.VolumeTitle);
@@ -103,6 +109,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       AppendAttribute(element, "opf:role", XmlnsOpf, "aut");
       AppendAttribute(element, "opf:file-as", XmlnsOpf, Volume.Author.Name);
 
+      element = AppendElement(MetaData, "dc:subject", XmlnsDc, TagSafe(Volume.Author.Name));
       element = AppendElement(MetaData, "dc:publisher", XmlnsDc, "GoodTeaching.org/Craig McKay");
 
       element = AppendElement(MetaData, "dc:date", XmlnsDc, DateTime.Now.ToString("YYYY-MM-DD"));

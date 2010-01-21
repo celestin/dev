@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  21-Jan-2010  10542 : Corrected metadata.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -58,7 +59,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       base.GenerateEpub();
 
-      AppendAttribute(Root, "xmlns:dtb", XmlnsNcx);
+      AppendAttribute(Root, "xmlns", XmlnsNcx);
       AppendAttribute(Root, "version", "2005-1");
 
       _head = AppendElement(Root, "head");
@@ -95,19 +96,24 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
     protected void AddMetaData()
     {
-      XmlElement element = AppendElement(Head, "dtb:uid", XmlnsNcx, "");
+      XmlElement element = AppendElement(Head, "meta");
+      AppendAttribute(element, "name", "dtb:uid");
       AppendAttribute(element, "content", _doc.Opf.BookId);
 
-      element = AppendElement(Head, "epub-creator");
+      element = AppendElement(Head, "meta");
+      AppendAttribute(element, "name", "epub-creator");
       AppendAttribute(element, "content", "GoodTeaching.org/Craig McKay");
 
-      element = AppendElement(Head, "dtb:depth", XmlnsNcx, "");
+      element = AppendElement(Head, "meta");
+      AppendAttribute(element, "name", "dtb:depth");
       AppendAttribute(element, "content", "1");
 
-      element = AppendElement(Head, "dtb:totalPageCount", XmlnsNcx, "");
+      element = AppendElement(Head, "meta");
+      AppendAttribute(element, "name", "dtb:totalPageCount");
       AppendAttribute(element, "content", "0");
 
-      element = AppendElement(Head, "dtb:maxPageNumber", XmlnsNcx, "");
+      element = AppendElement(Head, "meta");
+      AppendAttribute(element, "name", "dtb:maxPageNumber");
       AppendAttribute(element, "content", "0");
     }
   }

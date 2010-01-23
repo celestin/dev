@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007,2009 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -10,6 +10,7 @@
  * CAM  26-Sep-2007  Early working version.
  * CAM  28-Mar-2009  10409 : Added Footnote support.
  * CAM  15-Jan-2010  10528 : Added Authors and converted methods to properties.
+ * CAM  23-Jan-2010  10551 : Added JndHtmlVolumes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -37,6 +38,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected ArticleCollection _articles;
     protected AuthorCollection _authors;
     protected VolumeCollection _volumes;
+    protected VolumeCollection _jndHtml;
     protected int _nextFootnoteId;
 
     public ArticleCollection Articles
@@ -103,6 +105,19 @@ namespace FrontBurner.Ministry.MseBuilder
         }
 
         return _volumes;
+      }
+    }
+
+    public VolumeCollection JndHtmlVolumes
+    {
+      get
+      {
+        if (_jndHtml == null)
+        {
+          _jndHtml = DatabaseLayer.Instance.GetJndHtmlVolumes();
+        }
+
+        return _jndHtml;
       }
     }
 

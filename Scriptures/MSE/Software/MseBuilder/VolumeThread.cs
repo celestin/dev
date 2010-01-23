@@ -10,6 +10,7 @@
  * CAM  17-May-2008  10266 : Return Errors found during Build.
  * CAM  15-Jan-2010  10528 : Added BbebThread.
  * CAM  19-Jan-2010  10540 : Added EpubThread.
+ * CAM  23-Jan-2010  10551 : Added ParseJndThread.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -154,6 +155,31 @@ namespace FrontBurner.Ministry.MseBuilder
       else
       {
         _engine.CreateEpubFiles();
+      }
+    }
+  }
+
+  public class ParseJndThread : VolumeThread
+  {
+    public ParseJndThread(string author, int vol, bool specificVolume)
+      : base(author, vol, specificVolume)
+    {
+      _process = new Thread(new ThreadStart(CreateJndFiles));
+      _process.IsBackground = true;
+      _process.Start();
+    }
+
+    private void CreateJndFiles()
+    {
+      _engine = new MseEngine();
+
+      if (_specificVolume)
+      {
+        _engine.CreateJndFiles(_author, _vol);
+      }
+      else
+      {
+        _engine.CreateJndFiles();
       }
     }
   }

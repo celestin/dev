@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Good Teaching Search Engine Data Builder
- * Copyright (c) 2007,2009 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -21,6 +21,7 @@
  * CAM  15-Jan-2010  10529 : Converted Volume.Author from string to Author class.
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
+ * CAM  23-Jan-2010  10551 : Added GetJndHtmlVolumes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -46,6 +47,7 @@ namespace FrontBurner.Ministry.MseBuilder
     protected MySqlConnection _conn;
 
     protected MySqlCommand _cmdVolume;
+    protected MySqlCommand _cmdVolumeJndHtml;
     protected MySqlCommand _cmdAuthor;
     protected MySqlCommand _cmdVersions;
     protected MySqlCommand _cmdBooks;
@@ -214,6 +216,50 @@ namespace FrontBurner.Ministry.MseBuilder
           _cmdVolume = new MySqlCommand(sql, _conn);
         }
         dr = _cmdVolume.ExecuteReader();
+
+        do
+        {
+          while (dr.Read())
+          {
+            inits = dr.GetString(0);
+            if (authors.Contains(inits))
+            {
+              vol = new Volume(authors[inits], dr.GetInt32(1));
+
+              if (!dr.IsDBNull(2)) vol.Title = dr.GetString(2);
+              if (!dr.IsDBNull(3)) vol.Added = dr.GetDateTime(3);
+              if (!dr.IsDBNull(4)) vol.LocalFile = dr.GetString(4);
+
+              rval.Add(vol);
+            }
+          }
+        } while (dr.NextResult());
+
+        dr.Close();
+      }
+
+      return rval;
+    }
+
+    public VolumeCollection GetJndHtmlVolumes()
+    {
+      MySqlDataReader dr;
+      Volume vol;
+      string inits;
+      VolumeCollection rval = new VolumeCollection();
+      AuthorCollection authors = BusinessLayer.Instance.Authors;
+
+      lock (_semaphore)
+      {
+        if (_cmdVolumeJndHtml == null)
+        {
+          string sql =
+            "SELECT author,vol,title,added,localfile " +
+            "FROM mse_volume_jndhtml ";
+
+          _cmdVolumeJndHtml = new MySqlCommand(sql, _conn);
+        }
+        dr = _cmdVolumeJndHtml.ExecuteReader();
 
         do
         {

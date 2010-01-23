@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007,2009 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -16,6 +16,7 @@
  * CAM  28-Mar-2009  10412 : Call new Bugzilla table adapter.
  * CAM  15-Jan-2010  10528 : Added CreateBbebReaderFiles.
  * CAM  19-Jan-2010  10540 : Added Epub process, and ensure progress is reset after all processes.
+ * CAM  23-Jan-2010  10551 : Added ParseJndHthmlFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -44,6 +45,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private ZipperThread _zipper;
     private BbebThread _bbeb;
     private EpubThread _epub;
+    private ParseJndThread _jnd;
 
     public MseBuilder()
     {
@@ -128,6 +130,20 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           ProcessComplete();
           _epub = null;
+        }
+      }
+      else if (_jnd != null)
+      {
+        if (_jnd.Process.IsAlive)
+        {
+          if (_jnd.Engine != null) pgbVol.Value = _jnd.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          ProcessComplete();
+          _jnd = null;
         }
       }
     }
@@ -260,6 +276,21 @@ namespace FrontBurner.Ministry.MseBuilder
       SpecificVolume();
 
       _epub = new EpubThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
+    private void ParseJndHthmlFiles(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = BusinessLayer.Instance.JndHtmlVolumes.Count;
+
+      SpecificVolume();
+
+      _jnd = new ParseJndThread(_author, _vol, _specificVolume);
       Thread.Sleep(1000);
 
       tmrRefresh.Enabled = true;

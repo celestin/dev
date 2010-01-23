@@ -22,6 +22,7 @@
  * CAM  18-Jan-2010  10538 : Ensure newline occurs after title when there are no scriptures, and after finding the first paragraph, stop looking for scriptures.
  * CAM  19-Jan-2010  10540 : Added CreateEpubFiles logic.
  * CAM  21-Jan-2010  10544 : Create a separate directory for the EPUB files.
+ * CAM  23-Jan-2010  10551 : Added CreateJndFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -479,6 +480,127 @@ namespace FrontBurner.Ministry.MseBuilder
 
         _current++;
       }
+    }
+
+    public void CreateJndFiles()
+    {
+      CreateJndFiles(null, 0);
+    }
+
+    public void CreateJndFiles(string author, int volume)
+    {
+      byte[] dataBuffer = new byte[4096];
+      DirectoryInfo target = new DirectoryInfo(@"C:\Dev\Scriptures\MSE\jnd");
+
+      try
+      {
+        foreach (FileInfo file in target.GetFiles("*.txt"))
+        {
+          file.Delete();
+        }
+      }
+      catch
+      {
+      }
+
+      _current = 0;
+      string line;
+
+      foreach (Volume vol in BusinessLayer.Instance.JndHtmlVolumes)
+      {
+        if ((volume == 0) || ((volume > 0) && (vol.Vol == volume)))
+        {
+          FileInfo txtFile = new FileInfo(String.Format(@"{0}\{1}{2}.txt", target.FullName, vol.Author.Inits.ToLower(), vol.Vol));
+
+          using (StreamReader reader = new StreamReader(vol.LocalFile))
+          {
+            using (StreamWriter writer = new StreamWriter(txtFile.FullName))
+            {
+              line = reader.ReadLine();
+              line = reader.ReadLine();
+              line = reader.ReadLine();
+
+              while ((line = reader.ReadLine()) != null)
+              {
+                line = RemoveTags(line, "h2");
+                line = RemoveTags(line, "h3");
+                line = RemoveTags(line, "p");
+                line = RemoveTags(line, "a");
+                line = line.Replace("<font size=\"-1\" color=\"#00A000\">", "");
+                line = RemoveTags(line, "font");
+                line = RemoveTags(line, "body");
+                line = RemoveTags(line, "html");
+
+                line = PageNo(line);
+                line = RemoveATag(line);
+                line = line.Trim();
+
+                if (line.Length > 0)
+                {
+                  writer.WriteLine(line);
+                }
+              }
+            }
+          }
+
+          Thread.Sleep(50);
+        }
+
+        _current++;
+      }
+    }
+
+    protected string RemoveTags(string line, string tag)
+    {
+      line = line.Replace(String.Format("<{0}>", tag), "");
+      line = line.Replace(String.Format("</{0}>", tag), "");
+      return line;
+    }
+
+    protected string PageNo(string line)
+    {
+      const string PageNo = "[Page";
+      int p = line.IndexOf(PageNo);
+      if (p < 0) return line;
+
+      line = line.Substring(p + PageNo.Length).Trim();
+      p = line.IndexOf("]");
+      line = line.Substring(0, p ).Trim();
+      return String.Format("{{{0}}}", line);
+    }
+
+    protected string RemoveATag(string line)
+    {
+      const string ATag = "<a";
+      int p = line.IndexOf(ATag);
+
+      while (p >= 0)
+      {
+        line = RemoveATag(line, ATag);
+        p = line.IndexOf(ATag);
+      }
+
+      return line;
+    }
+
+    protected string RemoveATag(string line, string tag)
+    {
+      int p = line.IndexOf(tag);
+      if (p < 0) return line;
+
+      string rval = line.Substring(0, p);
+      int e = line.IndexOf(">", p);
+
+      string href = line.Substring(p, e - p);
+
+      if (href.IndexOf("/bible/") > 0)
+      {
+        rval += "@";
+      }
+
+      rval += line.Substring(e + 1);
+
+      return rval;
     }
   }
 }

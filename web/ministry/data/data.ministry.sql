@@ -8,6 +8,7 @@
 -- Who  When         Why
 -- CAM  29-Dec-2009  10514 : File created.
 -- CAM  16-Jan-2010  10534 : Added volume titles where missing.
+-- CAM  23-Jan-2010  10551 : Added mse_volume_jndhtml.
 -- --------------------------------------------------------
 
 --
@@ -220,3 +221,57 @@ INSERT INTO mse_volume VALUES ('JT', 102, 'Letters - Volume 1', '2007-10-22 17:1
 INSERT INTO mse_volume VALUES ('JT', 103, 'Letters - Volume 2', '2007-10-22 17:19:45', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jt\\\\jt103.txt');
 INSERT INTO mse_volume VALUES ('JND', 1, 'Ecclesiastical No. 1 - Vol 1', '2008-06-03 18:28:01', 'C:\\\\Dev\\\\Scriptures\\\\MSE\\\\jnd\\\\jnd_001.txt');
 INSERT INTO mse_volume VALUES ('JND', 2, 'Prophetic No. 1 - Vol 2', '2008-09-14 12:56:14', 'C:\\Dev\\Scriptures\\MSE\\jnd\\jnd_002.txt');
+
+
+INSERT INTO mse_volume_jndhtml VALUES ('JND',1, 'CW Vol 1 - Ecclesiastical 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd1.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',2, 'CW Vol 2 - Prophetic 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd2.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',3, 'CW Vol 3 - Doctrinal 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd3.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',4, 'CW Vol 4 - Ecclesiastical 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd4.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',5, 'CW Vol 5 - Prophetic 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd5.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',6, 'CW Vol 6 - Apologetic 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd6.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',7, 'CW Vol 7 - Doctrinal 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd7.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',8, 'CW Vol 8 - Prophetic 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd8.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',9, 'CW Vol 9 - Apologetic 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd9.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',10, 'CW Vol 10 - Doctrinal 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd10.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',11, 'CW Vol 11 - Prophetic 4', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd11.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',12, 'CW Vol 12 - Evangelical 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd12.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',13, 'CW Vol 13 - Critical 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd13.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',14, 'CW Vol 14 - Ecclesiastical 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd14.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',15, 'CW Vol 15 - Doctrinal 4', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd15.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',16, 'CW Vol 16 - Practical 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd16.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',17, 'CW Vol 17 - Practical 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd17.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',18, 'CW Vol 18 - Doctrinal 5', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd18.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',19, 'CW Vol 19 - Expository 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd19.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',20, 'CW Vol 20 - Ecclesiastical 4', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd20.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',21, 'CW Vol 21 - Evangelical 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd21.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',22, 'CW Vol 22 - Doctrinal 6', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd22.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',23, 'CW Vol 23 - Doctrinal 7', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd23.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',24, 'CW Vol 24 - Expository 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd24.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',25, 'CW Vol 25 - Expository 4', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd25.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',26, 'CW Vol 26 - Expository 5', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd26.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',27, 'CW Vol 27 - Expository 6', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd27.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',28, 'CW Vol 28 - Expository 7', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd28.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',29, 'CW Vol 29 - Doctrinal 8', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd29.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',30, 'CW Vol 30 - Expository 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd30.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',31, 'CW Vol 31 - Doctrinal 9', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd31.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',32, 'CW Vol 32 - Miscellaneous 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd32.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',33, 'CW Vol 33 - Miscellaneous 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd33.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',34, 'CW Vol 34 - Miscellaneous 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd34.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',35, 'N&C Vol 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd35.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',36, 'N&C Vol 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd36.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',37, 'N&C Vol 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd37.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',38, 'N&C Vol 4', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd38.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',39, 'N&C Vol 5', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd39.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',40, 'N&C Vol 6', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd40.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',41, 'N&C Vol 7', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd41.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',42, 'N&C Notes and Jottings', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd42.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',43, 'Synopsis: Genesis - 2 Chronicles', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd43.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',44, 'Synopsis: Ezra - Malachi', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd44.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',45, 'Synopsis: Matthew - John', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd45.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',46, 'Synopsis: Acts - Philippians', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd46.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',47, 'Synopsis: Colossians - Revelation', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd47.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',48, 'Misc: The World or Christ?', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd48.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',49, 'Misc: What the World is and how a Christian can live in it', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd49.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',50, 'Letters Vol 1', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd50.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',51, 'Letters Vol 2', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd51.htm');
+INSERT INTO mse_volume_jndhtml VALUES ('JND',52, 'Letters Vol 3', '2010-01-23 08:30:00', 'C:\\\\Program Files\\\\mse\\\\jnd\\\\jnd52.htm');

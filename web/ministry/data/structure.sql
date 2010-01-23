@@ -12,6 +12,7 @@
 -- CAM  28-Mar-2009  10407 : Added member and member_type.
 -- CAM  29-Dec-2009  10514 : Structure only.
 -- CAM  29-Dec-2009  10515 : UTF16 charsets where required.
+-- CAM  23-Jan-2010  10551 : Added mse_volume_jndhtml.
 -- --------------------------------------------------------
 
 --
@@ -423,6 +424,19 @@ CREATE TABLE mse_text (
 --
 
 CREATE TABLE mse_volume (
+  author varchar(10) NOT NULL default '',
+  vol int(3) NOT NULL default '0',
+  title varchar(255) default NULL,
+  added datetime default NULL,
+  localfile varchar(255) NOT NULL default '',
+  PRIMARY KEY  (author,vol)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table mse_volume_jndhtml
+--
+
+CREATE TABLE mse_volume_jndhtml (
   author varchar(10) NOT NULL default '',
   vol int(3) NOT NULL default '0',
   title varchar(255) default NULL,

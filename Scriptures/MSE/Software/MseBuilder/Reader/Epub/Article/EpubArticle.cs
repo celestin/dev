@@ -8,11 +8,14 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10546 : Moved Header/Footer elements to WriteHeader/WriteFooter.
+ * CAM  23-Jan-2010  10553 : Added PlainTitle for use in TOCs etc.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Text;
 using System.IO;
+
+using FrontBurner.Ministry.MseBuilder.Abstract;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 {
@@ -51,7 +54,17 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
         if (_title == null) return String.Empty;
         return _title;
       }
-      set { _title = value; }
+      set
+      {
+        _title = value;
+      }
+    }
+    public string PlainTitle
+    {
+      get
+      {
+        return FrontBurner.Ministry.MseBuilder.Abstract.Article.GetTitle(Title);
+      }
     }
     public string Scriptures
     {
@@ -81,7 +94,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
         EpubHeading heading = new EpubHeading(Title);
         EpubScriptures scriptures = new EpubScriptures(Scriptures);
 
-        WriteHeader(writer, heading.Text);
+        WriteHeader(writer, PlainTitle);
         writer.WriteLine(heading.RenderToXhtml());
         writer.WriteLine(scriptures.RenderToXhtml());
 

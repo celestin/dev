@@ -12,6 +12,7 @@
  * CAM  17-May-2008  10266 : Check for Errors during Parse.
  * CAM  15-Jun-2008  10271 : Handle Footnotes.
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
+ * CAM  23-Jan-2010  10553 : Handle JND's footnotes correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -80,19 +81,23 @@ namespace FrontBurner.Ministry.MseBuilder
       {
         c = (int)buffa[i];
 
-        if (c == 46) {
+        if (c == 46)
+        {
           dotCount++;
 
-        } else if (c == 32) {
+        }
+        else if (c == 32)
+        {
           halt = true;
 
-          if (dotCount > 1) {
+          if (dotCount > 1)
+          {
             inits = true;
           }
         }
       }
 
-      if (inits && (i>0))
+      if (inits && (i > 0))
       {
         text = text.Substring(0, i).Trim();
 
@@ -135,7 +140,7 @@ namespace FrontBurner.Ministry.MseBuilder
       bool anyErrors = false;
       Paragraph paraPrevious = null;
       Paragraph paraCurrent = null;
-      Paragraph paraFootnotes = null;
+      //Paragraph paraFootnotes = null;
       Article art = null;
 
       while ((buffer = sr.ReadLine()) != null)
@@ -147,7 +152,7 @@ namespace FrontBurner.Ministry.MseBuilder
         scriptures = false;
         if ((buffer.StartsWith("@")) && prevTitle)
         {
-          art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows-1))];
+          art = BusinessLayer.Instance.Articles[Article.GetId(_vol, (rows - 1))];
           art.Scriptures = buffer;
           DatabaseLayer.Instance.UpdateArticle(art);
           scriptures = true;
@@ -159,20 +164,20 @@ namespace FrontBurner.Ministry.MseBuilder
         }
         else if ((buffer.Length > 0) && (buffer.StartsWith("{")) && (!buffer.Substring(0, 2).Equals("{#")))
         {
-          if (buffer.Substring(0, 2).Equals("{*"))
-          {
-            MessageBox.Show(String.Format("You have not corrected a footnote: {0} Vol {1} page {2}\n\n{3}",
-              _vol.Author.Inits, _vol.Vol, pageNo, buffer), "Bad Footnote");
-          }
-          else
-          {
+          //if (buffer.Substring(0, 2).Equals("{*"))
+          //{
+          //  MessageBox.Show(String.Format("You have not corrected a footnote: {0} Vol {1} page {2}\n\n{3}",
+          //    _vol.Author.Inits, _vol.Vol, pageNo, buffer), "Bad Footnote");
+          //}
+          //else
+          //{
             if ((cb = buffer.IndexOf("}")) >= 0)
             {
               pageNo = int.Parse(buffer.Substring(1, cb - 1));
             }
 
             para = 0;
-          }
+          //}
         }
         else if ((buffer.Length > 1) && buffer.Substring(0, 2).Equals("{#"))
         {
@@ -183,27 +188,28 @@ namespace FrontBurner.Ministry.MseBuilder
           para++;
           calcPageNo = pageNo;
 
-          if ((buffer.Length >= 5) && buffer.Substring(0, 5).Equals("<span"))
-          {
-            // Footnote, add to the previous paragraph
-            // (which is paraCurrent because its not reset until below)
-            if ((paraFootnotes == null) && (paraCurrent != null))
-            {
-              paraFootnotes = paraCurrent;
-            }
-            paraFootnotes.Footnotes.Add(buffer);
-            calcPageNo = paraFootnotes.PageNo;
-            para = paraFootnotes.NextParaNo;
-          }
-          else
-          {
-            // Not a footnote - close off the previous paragraph and reset paragraph counter
-            if (paraFootnotes != null)
-            {
-              if (pageNo != paraFootnotes.PageNo) para = 1; // reset paragraph counter if we have changed page
-              paraFootnotes = null;
-            }
-          }
+          //if ((buffer.Length >= 4) && buffer.Substring(0, 4).Equals("<sup"))
+          //{
+          //  // Footnote, add to the previous paragraph
+          //  // (which is paraCurrent because its not reset until below)
+          //  if ((paraFootnotes == null) && (paraCurrent != null))
+          //  {
+          //    paraFootnotes = paraCurrent;
+          //  }
+          //  paraFootnotes.Footnotes.Add(buffer);
+          //  calcPageNo = paraFootnotes.PageNo;
+          //  para = paraFootnotes.NextParaNo;
+          //  footnote = true;
+          //}
+          //else
+          //{
+          //  // Not a footnote - close off the previous paragraph and reset paragraph counter
+          //  if (paraFootnotes != null)
+          //  {
+          //    if (pageNo != paraFootnotes.PageNo) para = 1; // reset paragraph counter if we have changed page
+          //    paraFootnotes = null;
+          //  }
+          //}
 
           inits = null;
 
@@ -231,14 +237,24 @@ namespace FrontBurner.Ministry.MseBuilder
           {
             // Set the Article
             if (art != null) paraCurrent.Article = art;
+            bool footnote = buffer.StartsWith("<sup>");
 
             if (paraPrevious != null)
             {
-              // If the previous paragraph was not written out, add to it
-              paraCurrent.Augment(paraPrevious);
+              if (footnote)
+              {
+                // Write out the previous paragraph
+                paraPrevious.SaveToDatabase();
+                paraPrevious = null;
+              }
+              else
+              {
+                // If the previous paragraph was not written out, add to it
+                paraCurrent.Augment(paraPrevious);
+              }
             }
 
-            if (paraCurrent.EndsAbruptly(scriptures))
+            if (paraCurrent.EndsAbruptly(scriptures) && !footnote)
             {
               // The paragraph is not complete, so remember it for next iteration
               paraPrevious = paraCurrent;

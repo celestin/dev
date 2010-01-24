@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  23-Jan-2010  10553 : Format footnotes differently.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -37,13 +38,19 @@ public string Inits
     public override string RenderToXhtml()
     {
       string initials = "";
+      string classId = "";
 
       if (Inits.Length > 0)
       {
         initials= String.Format("<span class=\"init\">{0}</span>&nbsp;", Inits);
       }
+      else if (Text.StartsWith("<sup>"))
+      {
+        // Footnote
+        classId = " class=\"footnote\"";
+      }
 
-      return String.Format("    <p>{0}{1} </p>{2}", initials, Text, Newline());
+      return String.Format("    <p{3}>{0}{1} </p>{2}", initials, Text, Newline(), classId);
     }
   }
 }

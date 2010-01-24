@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  23-Jan-2010  10553 : Ensure valid XHTML.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -31,6 +32,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
         _text = _text.Replace("~", "&rsquo;"); // Apostrophes
         _text = _text.Replace("--", "&mdash;");
         _text = _text.Replace("\"", "&quot;");
+        _text = _text.Replace("<br>", "<br />"); // XHTML
       }
     }
 

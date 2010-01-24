@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10542 : Corrected metadata.
+ * CAM  23-Jan-2010  10553 : Use PlainText for TOC entries.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -87,7 +88,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
         AppendAttribute(navPoint, "playOrder", String.Format("{0}", id));
 
         XmlElement navLabel = AppendElement(navPoint, "navLabel");
-        AppendElement(navLabel, "text", article.Title);
+        AppendElement(navLabel, "text", article.PlainTitle);
 
         XmlElement content = AppendElement(navPoint, "content");
         AppendAttribute(content, "src", article.XmlFile.Name);

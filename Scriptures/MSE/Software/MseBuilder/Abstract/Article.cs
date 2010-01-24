@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  22-Sep-2007  File added to source control.
  * CAM  26-Sep-2007  Early working version.
+ * CAM  23-Jan-2010  10553 : Created GetTitle to remove extraneous formatting for display in TOC etc.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -51,6 +52,11 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _pageNo = value;
       }
     }
+    public int Para
+    {
+      get { return _para; }
+      set { _para = value; }
+    }
     public int LocalRow
     {
       get
@@ -70,7 +76,7 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
       set
       {
-        _title = value;
+        _title = GetTitle(value);
       }
     }
     public string Scriptures
@@ -85,13 +91,30 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
+    public static string GetTitle(string title)
+    {
+      const string SuperscriptStart = "<sup>";
+      const string SuperscriptEnd = "</sup>";
+
+      int p = title.IndexOf(SuperscriptStart);
+      while (p >= 0)
+      {
+        int e = title.IndexOf(SuperscriptEnd, p);
+        if (e > 0) title = title.Substring(0, p) + title.Substring(e + SuperscriptEnd.Length);
+
+        p = title.IndexOf(SuperscriptStart);
+      }
+
+      return title;
+    }
+
     public Article(Volume vol, int pageNo, int para, int localRow, string title)
     {
       _vol = vol;
-      _pageNo = pageNo;
-      _para = para;
-      _localRow = localRow;
-      _title = title;
+      PageNo = pageNo;
+      Para = para;
+      LocalRow = localRow;
+      Title = title;
     }
 
     public override string ToString()

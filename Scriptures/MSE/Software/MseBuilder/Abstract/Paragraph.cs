@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
- * Copyright (c) 2007,2008 Front Burner
+ * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -16,6 +16,7 @@
  * CAM  15-Jun-2008  10271 : Added Footnotes.
  * CAM  15-Jun-2008  10271 : Consider '"' to be an acceptable end paragraph character (end quote).
  * CAM  15-Jan-2010  10531 : Created a static version of IsTitle.
+ * CAM  23-Jan-2010  10553 : Use GetTitle to remove extraneous formatting before checking whether a Paragraph is a Title.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -269,6 +270,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       int html;
       int other;
       int c;
+
+      text = Article.GetTitle(text);
 
       upper = lower = html = other = 0;
       char[] buffa = text.ToCharArray();

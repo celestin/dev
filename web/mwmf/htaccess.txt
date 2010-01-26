@@ -1,0 +1,16 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} !^www\.mwmf\.co\.uk$ [NC]
+RewriteRule ^(.*)$ http://www.mwmf.co.uk/$1 [R=301,L]
+
+RewriteCond %{HTTP_USER_AGENT} ^.*robot.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*spider.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*[tT]wiceler.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*Slurp.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*MSNBot.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*Teoma.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*gigabot.*$ 
+RewriteRule .* - [F] 
+

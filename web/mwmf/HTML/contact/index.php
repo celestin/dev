@@ -7,6 +7,7 @@
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
 
   <link href="../style.css" rel=stylesheet type="text/css">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="../favicon.ico">
   <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 1 Jun 2006 11:00:00 GMT">
   <Script Language="JavaScript">
   <!-- hide
@@ -462,7 +463,7 @@ if ($b_real_submit) {
 </td></tr></table>
 </form>
           </td></tr>
-          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2009 Mid West Market Force Ltd. All rights reserved.<br />
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2010 Mid West Market Force Ltd. All rights reserved.<br />
           Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
           </table>
         </td>

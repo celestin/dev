@@ -18,6 +18,7 @@
  * CAM  12-May-2009  10445 : Quotes around text/filenames to prevent commas disrupting the CSV format.
  * CAM  20-Aug-2009  10456 : Output values as floats.
  * CAM  27-Aug-2009  10483 : Removed event output to main program.
+ * CAM  04-Feb-2010  10556 : Ensure CRN_SLOC, CRN_LLOC and CRN_FILE values are correct for DELETED files.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <fstream>
@@ -90,15 +91,33 @@ void CSVReport::csvLine(ofstream &current, ReportItem &currItem) {
           nline = 1;
           oline = 0;
         }
+        if ((currItem.getItemStatus() == STATUS_DELETED) &&
+           ((i == MET(XLOC)) || (i == MET(XLLOC)) || (i == MET(XFILE)))) {
+          int j=0;
+          switch (i) {
+            case MET(XLOC):
+              j=MET(DLOC);
+              break;
+            case MET(XLLOC):
+              j=MET(DLLOC);
+              break;
+            case MET(XFILE):
+              j=MET(DFILE);
+              break;
 
-        sprintf_s(metValue, 256, ",%f", m.get(i,nline));
-        strcat_s(newLine, MAX_CSVLINE, metValue);
+          }
+          sprintf_s(metValue, 256, ",%f", m.get(j,nline));
+          strcat_s(oldLine, MAX_CSVLINE, metValue);
+        } else {
+          sprintf_s(metValue, 256, ",%f", m.get(i,nline));
+          strcat_s(newLine, MAX_CSVLINE, metValue);
 
-        sprintf_s(metValue, 256, ",%f", m.get(i,oline));
-        strcat_s(oldLine, MAX_CSVLINE, metValue);
+          sprintf_s(metValue, 256, ",%f", m.get(i,oline));
+          strcat_s(oldLine, MAX_CSVLINE, metValue);
 
-        sprintf_s(metValue, 256, ",%f", diff);
-        strcat_s(diffLine, MAX_CSVLINE, metValue);
+          sprintf_s(metValue, 256, ",%f", diff);
+          strcat_s(diffLine, MAX_CSVLINE, metValue);
+        }
       } else {
         strcpy_s(metValue, 256, ",");
         strcat_s(newLine, MAX_CSVLINE, metValue);

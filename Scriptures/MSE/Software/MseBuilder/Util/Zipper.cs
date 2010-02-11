@@ -7,13 +7,17 @@
  *
  * Who  When         Why
  * CAM  21-Jan-2010  10544 : File created.
+ * CAM  11-Feb-2010  10560 : Moved to using zip.exe as something is wrong with the way we are building zipfiles using SharpZipLib.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using ICSharpCode.SharpZipLib.Zip;
+using System.Text;
 
+using ICSharpCode.SharpZipLib.Checksums;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace FrontBurner.Ministry.MseBuilder.Util
 {
@@ -54,34 +58,79 @@ namespace FrontBurner.Ministry.MseBuilder.Util
       }
     }
 
-    public void ZipDirectory(DirectoryInfo sourceFolder, FileInfo zipfile)
+    public void ZipDirectory2(DirectoryInfo sourceFolder, FileInfo zipfile)
     {
       Ziplist.Clear();
 
       GenerateFileList(sourceFolder);
 
-      FileStream fileStream;
+      FileStream fs;
       byte[] buffer;
-      ZipEntry zipEntry;
+      ZipEntry entry;
+      Crc32 crc = new Crc32();
       ZipOutputStream zipStream = new ZipOutputStream(zipfile.Create());
       zipStream.SetLevel(9); // maximum compression
-      int baseDirectory = sourceFolder.FullName.Length + 1; // remove up to and including the '\'
+      int baseDirectoryLength = sourceFolder.FullName.Length + 1; // remove up to and including the '\'
 
       foreach (FileInfo file in _ziplist)
       {
-        // Generate an entry in the zipfile
-        zipEntry = new ZipEntry(file.FullName.Remove(0, baseDirectory));
-        zipStream.PutNextEntry(zipEntry);
+        // Read the file contents
+        fs = File.OpenRead(file.FullName);
+        buffer = new byte[fs.Length];
+        fs.Read(buffer, 0, buffer.Length);
+        entry = new ZipEntry(file.FullName.Remove(0, baseDirectoryLength));
+        entry.DateTime = DateTime.Now;
+        entry.Size = fs.Length;
+        fs.Close();
 
+        // Calculate CRC
+        crc.Reset();
+        crc.Update(buffer);
+        entry.Crc = crc.Value;
+
+        // Generate an entry in the zipfile
+        zipStream.PutNextEntry(entry);
         // Add the contents of the file itself
-        fileStream = File.OpenRead(file.FullName);
-        buffer = new byte[fileStream.Length];
-        fileStream.Read(buffer, 0, buffer.Length);
         zipStream.Write(buffer, 0, buffer.Length);
       }
 
       zipStream.Finish();
       zipStream.Close();
+    }
+
+    public void ZipDirectory(DirectoryInfo sourceFolder, FileInfo zipfile)
+    {
+      Process zip = new Process();
+
+      zip.StartInfo.FileName = "zip.exe";
+      zip.StartInfo.Arguments = String.Format("-9 -r \"{0}\" {1}", zipfile.FullName, GenerateFlatFileList(sourceFolder));
+      zip.StartInfo.WorkingDirectory = sourceFolder.FullName;
+      zip.Start();
+      zip.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+      zip.WaitForExit();
+    }
+
+    private string GenerateFlatFileList(DirectoryInfo dir)
+    {
+      StringBuilder sb = new StringBuilder();
+
+      foreach (FileInfo file in dir.GetFiles())
+      {
+        // Add each file in directory
+        sb.Append("\"");
+        sb.Append(file.Name);
+        sb.Append("\" ");
+      }
+
+      foreach (DirectoryInfo subdir in dir.GetDirectories())
+      {
+        // Recursively add subdirectories
+        sb.Append("\"");
+        sb.Append(subdir.Name);
+        sb.Append("\" ");
+      }
+
+      return sb.ToString().Trim();
     }
 
     private void GenerateFileList(DirectoryInfo dir)

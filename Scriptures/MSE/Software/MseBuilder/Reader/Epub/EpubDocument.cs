@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10544 : Create the EPUB zipfile.
+ * CAM  11-Feb-2010  10559 : Mimetype without newline (needed?).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -155,7 +156,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
       using (StreamWriter writer = new StreamWriter(mimetypeFile.FullName))
       {
-        writer.WriteLine(MimeTypes.GetMimeType(MimeType.EpubZip));
+        writer.Write(MimeTypes.GetMimeType(MimeType.EpubZip));
       }
     }
 

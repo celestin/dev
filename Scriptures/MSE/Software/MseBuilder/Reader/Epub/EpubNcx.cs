@@ -9,6 +9,7 @@
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10542 : Corrected metadata.
  * CAM  23-Jan-2010  10553 : Use PlainText for TOC entries.
+ * CAM  11-Feb-2010  10559 : Increment TOC entry id.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -92,6 +93,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
         XmlElement content = AppendElement(navPoint, "content");
         AppendAttribute(content, "src", article.XmlFile.Name);
+
+        id++;
       }
     }
 

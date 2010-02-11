@@ -203,9 +203,9 @@ namespace FrontBurner.Ministry.MseBuilder
         this._tsbBuild.ImageTransparentColor = System.Drawing.Color.Magenta;
         this._tsbBuild.Name = "_tsbBuild";
         this._tsbBuild.Size = new System.Drawing.Size(52, 52);
-        this._tsbBuild.Text = "toolStripButton1";
+        this._tsbBuild.Text = "Build Database from source files";
         this._tsbBuild.ToolTipText = "Build";
-        this._tsbBuild.Click += new System.EventHandler(this._tsbBuild_Click);
+        this._tsbBuild.Click += new System.EventHandler(this.BuildDatabaseFromSourceFiles);
         //
         // _tsbZip
         //

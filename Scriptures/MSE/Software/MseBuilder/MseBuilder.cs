@@ -202,7 +202,7 @@ namespace FrontBurner.Ministry.MseBuilder
       row.Cells[3].Value = art.Scriptures;
     }
 
-    private void _tsbBuild_Click(object sender, EventArgs e)
+    private void BuildDatabaseFromSourceFiles(object sender, EventArgs e)
     {
       _tspMain.Enabled = false;
 

@@ -9,6 +9,7 @@
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10543 : Added dc:Subject (Tags).
  * CAM  21-Jan-2010  10549 : Use Volume.FullTitle for book title.
+ * CAM  11-Feb-2010  10559 : Added Namespace etc to Package tag.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -69,6 +70,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       base.GenerateEpub();
 
+      AppendAttribute(Root, "xmlns", XmlnsOpf);
+      AppendAttribute(Root, "unique-identifier", "EPB-UUID");
+      AppendAttribute(Root, "version", "2.0");
+
       _metaData = AppendElement(Root, "metadata");
       AppendAttribute(MetaData, "xmlns:opf", XmlnsOpf);
       AppendAttribute(MetaData, "xmlns:dc", XmlnsDc);
@@ -127,7 +132,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     protected void AddSupportFiles()
     {
       AddManifestFile("main-css", "css/epub-ministry.css", MimeType.Css);
-      AddManifestFile("author-photo", String.Format("images/{0}", Volume.Author.ImageFilename), MimeType.ImagePng);
+      AddManifestFile("author-photo", String.Format("img/{0}", Volume.Author.ImageFilename), MimeType.ImagePng);
       AddManifestFile("ncx", "ministry.ncx", MimeType.Ncx);
     }
 

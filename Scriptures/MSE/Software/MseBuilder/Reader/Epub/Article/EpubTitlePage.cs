@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  21-Jan-2010  10546 : File created.
+ * CAM  11-Feb-2010  10559 : Passed author name as alt tag.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -31,7 +32,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
         EpubHeading title = new EpubHeading(Title, "fronttitle");
         EpubHeading source = new EpubHeading(
           String.Format("Produced from GoodTeaching.org<br />by Craig McKay {0:d-MMM-yyyy}", DateTime.Now), "frontpublisher");
-        EpubImage image = new EpubImage(Document.Volume.Author.ImageFilename);
+        EpubImage image = new EpubImage(Document.Volume.Author.ImageFilename, Document.Volume.Author.Name);
 
         WriteHeader(writer, Title);
 

@@ -20,6 +20,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Engine;
 
 namespace FrontBurner.Ministry.MseBuilder.Bible
 {

@@ -16,6 +16,8 @@
  * CAM  23-Jan-2010  10551 : Added button for ParseJndHthmlFiles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
+using FrontBurner.Ministry.MseBuilder.Data;
+
 namespace FrontBurner.Ministry.MseBuilder
 {
   partial class MseBuilder
@@ -64,9 +66,9 @@ namespace FrontBurner.Ministry.MseBuilder
         this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
         this._tsbCreateSonyReader = new System.Windows.Forms.ToolStripButton();
         this._tsbCreateEpub = new System.Windows.Forms.ToolStripButton();
-        this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
+        this.mseData = new FrontBurner.Ministry.MseBuilder.Data.MseData();
         this._bdsBugs = new System.Windows.Forms.BindingSource(this.components);
-        this._bugsTableAdapter = new FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter();
+        this._bugsTableAdapter = new FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters.CompletedBugsTableAdapter();
         this._tsbParseJND = new System.Windows.Forms.ToolStripButton();
         ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).BeginInit();
         this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -324,7 +326,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private MseData mseData;
     private System.Windows.Forms.ToolStripButton toolStripButton1;
     private System.Windows.Forms.BindingSource _bdsBugs;
-    private FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.CompletedBugsTableAdapter _bugsTableAdapter;
+    private FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters.CompletedBugsTableAdapter _bugsTableAdapter;
     private System.Windows.Forms.ToolStripButton _tsbCreateSonyReader;
     private System.Windows.Forms.ToolStripButton _tsbCreateEpub;
     private System.Windows.Forms.ToolStripButton _tsbParseJND;

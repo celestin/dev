@@ -65,38 +65,38 @@
     <Compile Include="Abstract\Volume.cs" />
     <Compile Include="Abstract\BibleXref.cs" />
     <Compile Include="Bible\MseBibleEngine.cs" />
-    <Compile Include="BuildErrors.cs">
+    <Compile Include="Forms\BuildErrors.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BuildErrors.Designer.cs">
+    <Compile Include="Forms\BuildErrors.Designer.cs">
       <DependentUpon>BuildErrors.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessLayer.cs" />
-    <Compile Include="DatabaseLayer.cs" />
-    <Compile Include="MseData.cs">
+    <Compile Include="Engine\BusinessLayer.cs" />
+    <Compile Include="Data\DatabaseLayer.cs" />
+    <Compile Include="Data\MseData.cs">
       <DependentUpon>MseData.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MseData.Designer.cs">
+    <Compile Include="Data\MseData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MseData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="MseEngine.cs" />
-    <Compile Include="MseParser.cs" />
-    <Compile Include="MseBuilder.cs">
+    <Compile Include="Engine\MseEngine.cs" />
+    <Compile Include="Engine\MseParser.cs" />
+    <Compile Include="Forms\MseBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MseBuilder.Designer.cs">
+    <Compile Include="Forms\MseBuilder.Designer.cs">
       <DependentUpon>MseBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BuildErrors.resx">
+    <EmbeddedResource Include="Forms\BuildErrors.resx">
       <DependentUpon>BuildErrors.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MseBuilder.resx">
+    <EmbeddedResource Include="Forms\MseBuilder.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MseBuilder.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,15 +111,15 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="MseData.xsc">
+    <None Include="Data\MseData.xsc">
       <DependentUpon>MseData.xsd</DependentUpon>
     </None>
-    <None Include="MseData.xsd">
+    <None Include="Data\MseData.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>MseData.Designer.cs</LastGenOutput>
     </None>
-    <None Include="MseData.xss">
+    <None Include="Data\MseData.xss">
       <DependentUpon>MseData.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -164,7 +164,7 @@
     <Compile Include="Reader\Epub\Article\EpubScriptures.cs" />
     <Compile Include="Reader\Epub\MimeType.cs" />
     <Compile Include="Util\Zipper.cs" />
-    <Compile Include="VolumeThread.cs" />
+    <Compile Include="Engine\VolumeThread.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\war_into.png" />
@@ -173,6 +173,7 @@
     <None Include="Resources\brickwall.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\create_tables.sql" />
     <None Include="Resources\copy.png" />
   </ItemGroup>
   <ItemGroup>

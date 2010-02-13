@@ -23,7 +23,7 @@ using MySql.Data.MySqlClient;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
 
-namespace FrontBurner.Ministry.MseBuilder
+namespace FrontBurner.Ministry.MseBuilder.Engine
 {
   /// <summary>
   /// All Business data and processes

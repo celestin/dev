@@ -42,7 +42,7 @@ using FrontBurner.Ministry.MseBuilder.Reader.Bbeb;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
 
-namespace FrontBurner.Ministry.MseBuilder
+namespace FrontBurner.Ministry.MseBuilder.Engine
 {
   public class MseEngine
   {

@@ -9,6 +9,8 @@
  * CAM  17-May-2008  10266 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
+using FrontBurner.Ministry.MseBuilder.Data;
+
 namespace FrontBurner.Ministry.MseBuilder
 {
   partial class BuildErrors
@@ -43,9 +45,9 @@ namespace FrontBurner.Ministry.MseBuilder
       this._tbpBadBibleRef = new System.Windows.Forms.TabPage();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.badBibleRefBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.mseData = new FrontBurner.Ministry.MseBuilder.MseData();
+      this.mseData = new FrontBurner.Ministry.MseBuilder.Data.MseData();
       this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.badBibleRefTableAdapter = new FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.BadBibleRefTableAdapter();
+      this.badBibleRefTableAdapter = new FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters.BadBibleRefTableAdapter();
       this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.volDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -192,7 +194,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.TabControl tabControl1;
     private MseData mseData;
     private System.Windows.Forms.BindingSource badBibleRefBindingSource;
-    private FrontBurner.Ministry.MseBuilder.MseDataTableAdapters.BadBibleRefTableAdapter badBibleRefTableAdapter;
+    private FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters.BadBibleRefTableAdapter badBibleRefTableAdapter;
     private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn volDataGridViewTextBoxColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn pageDataGridViewTextBoxColumn;

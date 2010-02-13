@@ -18,7 +18,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace FrontBurner.Ministry.MseBuilder
+using FrontBurner.Ministry.MseBuilder.Engine;
+
+namespace FrontBurner.Ministry.MseBuilder.Engine
 {
   public class VolumeThread
   {

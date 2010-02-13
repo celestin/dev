@@ -20,9 +20,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using FrontBurner.Ministry.MseBuilder.Abstract;
 
-namespace FrontBurner.Ministry.MseBuilder
+using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Engine;
+
+namespace FrontBurner.Ministry.MseBuilder.Engine
 {
   class MseParser
   {

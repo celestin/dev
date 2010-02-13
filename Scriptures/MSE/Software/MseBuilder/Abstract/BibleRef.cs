@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
+using FrontBurner.Ministry.MseBuilder.Engine;
+
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class BibleRef

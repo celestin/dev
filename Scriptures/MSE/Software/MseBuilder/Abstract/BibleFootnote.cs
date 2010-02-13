@@ -14,6 +14,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Text;
 
+using FrontBurner.Ministry.MseBuilder.Engine;
+
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class BibleFootnote : BibleVerse

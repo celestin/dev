@@ -273,6 +273,10 @@ namespace FrontBurner.Ministry.MseBuilder
       pgbVol.Minimum = 0;
       pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
 
+      EngineSettings.Instance.Mode = BuildMode.Standard;
+      if (_radSony.Checked) EngineSettings.Instance.Mode = BuildMode.SonyEpub;
+      else if (_radStanza.Checked) EngineSettings.Instance.Mode = BuildMode.StanzaEpub;
+
       SpecificVolume();
 
       _epub = new EpubThread(_author, _vol, _specificVolume);

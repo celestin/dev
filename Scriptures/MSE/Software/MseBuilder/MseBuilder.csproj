@@ -65,6 +65,7 @@
     <Compile Include="Abstract\Volume.cs" />
     <Compile Include="Abstract\BibleXref.cs" />
     <Compile Include="Bible\MseBibleEngine.cs" />
+    <Compile Include="Engine\EngineSettings.cs" />
     <Compile Include="Forms\BuildErrors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,9 +193,12 @@
     <Content Include="img\author\jt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="img\book_open2.png" />
+    <None Include="img\books.png" />
     <Content Include="img\eministry.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="img\holmes.png" />
     <Content Include="Reader\Epub\resources\css\epub-ministry.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -14,6 +14,8 @@ using System;
 using System.Text;
 using System.IO;
 
+using FrontBurner.Ministry.MseBuilder.Engine;
+
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 {
   public class EpubTitlePage : EpubArticle
@@ -21,7 +23,14 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
     public EpubTitlePage(long id, EpubDocument doc)
       : base(id, doc)
     {
-      Title = doc.Volume.VolumeTitle;
+      if (EngineSettings.Instance.Mode == BuildMode.SonyEpub)
+      {
+        Title = doc.Volume.VolumeTitle;
+      }
+      else
+      {
+        Title = doc.Volume.FullTitle;
+      }
     }
 
     public override void SaveFile()

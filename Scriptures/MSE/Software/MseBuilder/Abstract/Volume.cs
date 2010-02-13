@@ -21,6 +21,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.IO;
 
+using FrontBurner.Ministry.MseBuilder.Engine;
+
 namespace FrontBurner.Ministry.MseBuilder.Abstract
 {
   public class Volume
@@ -75,12 +77,27 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
     {
       get
       {
-        if (Title.Length > 0)
+        string fullTitle = String.Empty;
+
+        if (EngineSettings.Instance.Mode == BuildMode.SonyEpub)
         {
-          return String.Format("{0:000} {1}", Vol, Title);
+          fullTitle = String.Format("{0:000}", Vol);
+        }
+        else
+        {
+          fullTitle = Author.Inits;
         }
 
-        return String.Format("{0:000} Volume {0}", Vol);
+        if (Title.Length > 0)
+        {
+          fullTitle = String.Format("{0} {1}", fullTitle, Title);
+        }
+        else
+        {
+          fullTitle = String.Format("{0} Volume {1}", fullTitle, Vol);
+        }
+
+        return fullTitle;
       }
     }
     public string VolumeTitle

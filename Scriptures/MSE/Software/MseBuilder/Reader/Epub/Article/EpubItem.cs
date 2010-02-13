@@ -13,6 +13,8 @@
 using System;
 using System.Collections.Generic;
 
+using FrontBurner.Ministry.MseBuilder.Engine;
+
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 {
   public abstract class EpubItem
@@ -45,7 +47,12 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 
     public string Newline()
     {
-      return "<p>&nbsp;</p>";
+      if (EngineSettings.Instance.Mode == BuildMode.SonyEpub)
+      {
+        return "<p>&nbsp;</p>";
+      }
+
+      return String.Empty;
     }
   }
 

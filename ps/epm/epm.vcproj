@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/Zm512 "
 				Optimization="0"
-				AdditionalIncludeDirectories="..\lic;C:\Dev\MySQL\5.1\include;..\xerces\include"
+				AdditionalIncludeDirectories="..\lic;C:\Dev\MySQL\5.1\include;..\xerces\Build\Win32\VC9\Debug;..\xerces\src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -72,11 +72,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xerces-c_2d.lib mysqlclient.lib libmySQL.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="xerces-c_3d.lib mysqlclient.lib libmySQL.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\Debug/epm.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="C:\Dev\MySQL\5.1\lib\debug;..\xerces\lib"
+				AdditionalLibraryDirectories="C:\Dev\MySQL\5.1\lib\debug;..\xerces\Build\Win32\VC9\Debug"
 				IgnoreDefaultLibraryNames="libcd,libcpd"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Debug/epm.pdb"
@@ -108,6 +108,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy &quot;C:\Dev\PS\epm\Debug\epm.exe&quot; &quot;C:\Program Files\Power Software\Krakatau EPM&quot;"
+				ExcludedFromBuild="true"
 			/>
 		</Configuration>
 		<Configuration
@@ -202,6 +203,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy &quot;C:\Dev\PS\epm\Release\epm.exe&quot; &quot;C:\Program Files\Power Software\Krakatau EPM&quot;"
+				ExcludedFromBuild="true"
 			/>
 		</Configuration>
 	</Configurations>

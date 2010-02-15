@@ -143,4 +143,3 @@
 #define SYM_OR                     385
 #define SYM_LT                     386
 #define SYM_GT                     387
-#define SYM_NOT                    388

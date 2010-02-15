@@ -15,6 +15,7 @@
  * CAM  29-May-08    364 : Added defaulting of MySQL options.
  * CAM  30-May-08    366 : Set UseSystemPasswordChar to true.
  * CAM  14-Sep-2009  10484 : Ensure logging is based on chkLog.
+ * CAM  15-Feb-2010  10565 : Use KrakatauSettings for InstallDir.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -250,11 +251,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private void BuildAnalysisFile()
     {
       // Create a Project Command file
-      Prefs pf = Prefs.Preferences;
       TextWriter tw = new StreamWriter(_newProject.ProjectAnalysisFile.FullName, false);
       tw.WriteLine("@echo off");
-      tw.WriteLine(pf.InstallDrive);
-      tw.WriteLine("cd \"" + pf.InstallDir.FullName + "\"");
+      tw.WriteLine(KrakatauSettings.Settings.InstallDrive);
+      tw.WriteLine("cd \"" + KrakatauSettings.Settings.InstallDir.FullName + "\"");
 
       tw.Write("epm");
 
@@ -372,7 +372,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       if (chkH2.Checked)
       {
         FileInfo h2Html = new FileInfo(txtH2.Text + @"\index.html");
-        DirectoryInfo installedHtml = new DirectoryInfo(Prefs.Preferences.InstallDir + @"\html");
+        DirectoryInfo installedHtml = new DirectoryInfo(String.Format(@"{0}\html", KrakatauSettings.Settings.InstallDir));
         FileInfo styleCss = new FileInfo(installedHtml.FullName + @"\style.css");
         FileInfo metricsJs = new FileInfo(installedHtml.FullName + @"\metrics.js");
 

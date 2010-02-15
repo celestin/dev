@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004,2009 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -11,6 +11,7 @@
  * CAM  12-Jul-06    282 : Ensure renames to Sets are reflected in the _sets hashtable.
  * CAM  02-Nov-06    117 : No real change.
  * CAM  11-Nov-2009  10502 : Corrected obselete calls.
+ * CAM  15-Feb-2010  10565 : Added ConfigFile and utilise KrakatauSettings.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -35,6 +36,14 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
     private SortedList _list;
     private XmlDocument _doc;
     private Hashtable _sets;
+
+    public FileInfo ConfigFile
+    {
+      get
+      {
+        return new FileInfo(String.Format(@"{0}\{1}", KrakatauSettings.Settings.InstallDir.FullName, EpmConfig));
+      }
+    }
 
     private XmlConfig()
     {
@@ -65,7 +74,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
       try
       {
         // Load the reader with the data file and ignore all whitespace nodes.
-        txtreader = new XmlTextReader(Prefs.Preferences.InstallDir.FullName + EpmConfig);
+        txtreader = new XmlTextReader(ConfigFile.FullName);
         txtreader.WhitespaceHandling = WhitespaceHandling.None;
         reader = XmlReader.Create(txtreader.GetRemainder());
 
@@ -244,7 +253,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
       try
       {
-        tw = new StreamWriter(Prefs.Preferences.InstallDir.FullName + "epm.xml", false);
+        tw = new StreamWriter(ConfigFile.FullName, false);
         txtwriter = new XmlTextWriter(tw);
         txtwriter.Formatting = Formatting.Indented;
         if (upd != null)

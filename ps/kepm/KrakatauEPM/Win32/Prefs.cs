@@ -13,6 +13,7 @@
  * CAM  29-May-08    363 : Completed toolbar buttons.
  * CAM  29-May-08    364 : Added MySql default options.
  * CAM  18-Jun-2009  10447 : Added MySql default options.
+ * CAM  15-Feb-2010  10565 : Remove InstallDir and related properties.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -41,35 +42,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
     private const string KeyMySqlUse = "Use as default";
     private const int MAX_PROJECTS = 50;
     private ArrayList _projects = null;
-    private DirectoryInfo _installDir;
     private string _mySqlServer;
     private string _mySqlUsername;
     private string _mySqlPassword;
     private bool _mySqlUse;
 
-    public DirectoryInfo InstallDir
-    {
-      get
-      {
-        return this._installDir;
-      }
-    }
-    protected void SetInstallDir(string path)
-    {
-      string p = path;
-      if (!p.EndsWith("\\"))
-      {
-        p += "\\";
-      }
-      this._installDir = new DirectoryInfo(p);
-    }
-    public string InstallDrive
-    {
-      get
-      {
-        return InstallDir.FullName.Substring(0, 2);
-      }
-    }
     public string MySqlServer
     {
       set
@@ -278,21 +255,6 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
       _mySqlUsername = getStringValue(key, KeyMySqlUsername, "root");
       _mySqlPassword = getStringValue(key, KeyMySqlPassword, "");
       _mySqlUse = getStringValue(key, KeyMySqlUse, "0").ToString().Equals("1");
-
-      // Now retrieve general Software settings
-      rk = Registry.LocalMachine;
-      rk = rk.OpenSubKey("SOFTWARE", true);
-      key = getKey(rk, "Power Software");
-      key = getKey(key, KrakatauEPM.AssemblyProduct);
-
-      if (key.GetValue("InstallDir") == null)
-      {
-        SetInstallDir("C:\\Program Files\\Power Software\\Krakatau EPM\\");
-      }
-      else
-      {
-        SetInstallDir(key.GetValue("InstallDir").ToString());
-      }
     }
 
     private RegistryKey getKey(RegistryKey rk, string name)

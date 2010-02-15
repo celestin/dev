@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2008 PowerSoftware.com
+ * Copyright (c) 2008,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -9,6 +9,7 @@
  * CAM  24-May-08   362 : File created (replicating frmMain).
  * CAM  29-May-08   363 : Completed toolbar buttons.
  * CAM  29-May-08   364 : Added Preferences event.
+ * CAM  15-Feb-2010  10565 : Initialise KrakatauSettings with "InstallDir".
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,10 +28,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     public FormKrakatauEPM()
     {
       InitializeComponent();
-      XmlConfig.Config.ParseFile();
 
-      Prefs p = Prefs.Preferences;
-      p.GetSettings(_lsvProjects);
+      KrakatauSettings.Create(Application.StartupPath);
+      XmlConfig.Config.ParseFile();
+      Prefs.Preferences.GetSettings(_lsvProjects);
     }
 
     private void FileNew()
@@ -205,6 +206,5 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       (new FormPreferences()).ShowDialog(this);
       Prefs.Preferences.SaveSettings(_lsvProjects);
     }
-
   }
 }

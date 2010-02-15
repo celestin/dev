@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  24-May-08   362 : File created (replicating frmMain).
+ * CAM  15-Feb-2010  10565 : Use KrakatauSettings for InstallDir.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -35,7 +36,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm
       p.StartInfo.RedirectStandardOutput = false;
       p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
       p.StartInfo.UseShellExecute = true;
-      p.StartInfo.FileName = Prefs.Preferences.InstallDir + "lic.exe";
+      p.StartInfo.FileName = String.Format(@"{0}\lic.exe", KrakatauSettings.Settings.InstallDir);
       p.Start();
       p.WaitForExit();
 
@@ -70,7 +71,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm
         if (attributes.Length == 0) return "";
         return ((AssemblyDescriptionAttribute)attributes[0]).Description;
       }
-    }    
+    }
     static public string AssemblyEpmConfiguration
     {
       get

@@ -5,7 +5,7 @@
  *
  * MetricHelp Data and Functions for HTML Reporting
  *
- * $Id: metrics.js 1056 2009-09-08 23:07:22Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File created.

@@ -91,6 +91,7 @@
  * CAM  09-Sep-2009  10479 : Add PLOC for C/C++ and Assembler.
  * CAM  17-Nov-2009  10503 : Changed to PowerSoftware.com.
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
+ f* CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1333,8 +1334,6 @@ int main(int argc, char* argv[]) {
     initFileSource(i);
   }
 
-  if (bLocalDb) startDatabase(true);
-
   // Now connect to the current DB
   if (!createDatabase(servername, musername, mpassword, projname, nProjects))
   {
@@ -1550,7 +1549,6 @@ int main(int argc, char* argv[]) {
   }
 
   closeDatabase();
-  if (bLocalDb) stopDatabase();
   return 0;
 }
 

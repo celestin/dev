@@ -7,15 +7,16 @@
  *
  * $Id$
  *
- * Who  When        Why
- * CAM  20-Dec-04   File added.
- * CAM  24-Nov-05   160 : Use Windows Services rather standalone mode.
- * CAM  11-May-06   241 : Allow EPM to be run from any location.
- * CAM  30-May-06   244 : Ensure trailing slash is present on InstallDir.
- *                        Remove old service of the same name before installing.
- *                        Wait for Service Remove/Install to complete before starting.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
- * CAM  30-May-08   365 : Only start the MySQL process if required.
+ * Who  When         Why
+ * CAM  20-Dec-04    File added.
+ * CAM  24-Nov-05    160 : Use Windows Services rather standalone mode.
+ * CAM  11-May-06    241 : Allow EPM to be run from any location.
+ * CAM  30-May-06    244 : Ensure trailing slash is present on InstallDir.
+ *                         Remove old service of the same name before installing.
+ *                         Wait for Service Remove/Install to complete before starting.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-May-08    365 : Only start the MySQL process if required.
+ * CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef DB_HEADER
@@ -52,42 +53,5 @@ string getInstallDir() {
 
   return rval;
 }
-
-void startDatabase(bool start) {
-  HANDLE pid;
-  const int MAX_CMD = 4096;
-  char cmdLine[MAX_CMD];
-  string dir = getInstallDir();
-
-  // Remove any old database service of the same name
-  strcpy_s(cmdLine, MAX_CMD, dir.c_str());
-  strcat_s(cmdLine, MAX_CMD, "db\\bin\\mysqld-nt --remove EPMdb");
-  pid = createProcess(cmdLine, true);
-  WaitForSingleObject(pid, TIME_TO_WAIT);
-
-  // Install the database service
-  strcpy_s(cmdLine, MAX_CMD, dir.c_str());
-  strcat_s(cmdLine, MAX_CMD, "db\\bin\\mysqld-nt --install EPMdb --basedir=\"");
-  strcat_s(cmdLine, MAX_CMD, dir.c_str());
-  strcat_s(cmdLine, MAX_CMD, "db\"");
-  pid = createProcess(cmdLine, true);
-  WaitForSingleObject(pid, TIME_TO_WAIT);
-
-  if (start)
-  {
-    // Start the Service
-    pid = createProcess("net start EPMdb");
-    WaitForSingleObject(pid, TIME_TO_WAIT);
-  }
-}
-
-void stopDatabase() {
-  HANDLE pid;
-  // Stop database Service
-  cout << endl;
-  pid = createProcess("net stop EPMdb");
-  WaitForSingleObject(pid, TIME_TO_WAIT);
-}
-
 
 #endif

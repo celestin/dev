@@ -1,0 +1,222 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Method Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">Method Metrics</h1>
+
+<h3>NP - Number of Parameters</h3>
+
+<p>NP is simply a measure of the number of parameters that a method accepts.&nbsp; High
+values for NP can mean that a metric will require extensive testing (since the range of
+possible inputs may be greater).&nbsp; As a rule of thumb, methods with many parameters
+also tend to be more specialised and so are less likely to be reusable. </p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+
+<p>Cyclomatic Complexity measures the number of possible paths through an algorithm by
+counting the number of distinct regions on a flowgraph. This represents the cognitive
+complexity of the method. </p>
+
+<h3>V'(G) - Enhanced Cyclomatic Complexity</h3>
+
+<p>V'(G) brings together the notions of cyclomatic and operational complexity (by dividing
+OC by V(G)).&nbsp; This provides the average operational complexity for decision points in
+a method and is a strong indicator of the overall cognitive complexity of the method. </p>
+
+<h3>eV(G) - Essential Complexity</h3>
+
+<p>eV(G) is a measure of the structure of testable paths in a component.&nbsp; Values
+exceeding the threshold (7) usually signal an unstructured implementation of control
+logic.&nbsp; To calculate, we develop a directed graph to represent the control structure
+of the logical unit.&nbsp; This graph should contain only the four basic and simple
+structured constructs: sequence, selection, iteration and case.&nbsp; We only keep
+structures which contain occurences of unstructured constructs (break, continue, goto) and
+recalculate complexity on this graph.&nbsp; This measures the difficulty and feasibility
+of the testing as the presence of unstructured constructs increases effort of testing as
+well as future code modifications. </p>
+
+<h3>LOC - Method Lines Of Code</h3>
+
+<p>LOC is a primitive metric to measure the size of a method.&nbsp; It is included for
+traditional reasons. </p>
+
+<h3>OC - Operational Complexity</h3>
+
+<p>This metric assigns weights to operations which can occur in expressions.&nbsp; The
+values of weights for all the expressions in a method are summed to provide a value for
+OC.&nbsp; This is&nbsp; complementary to V(G) since it looks at the complexity of the
+expressions which are being evaluated rather than the number of decision points in the
+method. </p>
+
+<h3>RLOC - Relative Lines Of Code</h3>
+
+<p>This metric measures the lines of code in a method relative to the containing
+class.&nbsp; This is a primitive means to measure the proportional significance of a
+method. </p>
+
+<h3>NEST - Maximum Number of Levels</h3>
+
+<p>Since the 1950's, cognitive sciences studies have shown that groups that contain more
+than seven pieces of information are increasingly harder for people to understand in
+problem solving.&nbsp; To measure this, we count the number of If...Then or
+If...Then...Elses in a nest.&nbsp; Logical units with a large number of nested levels may
+need implementation simplification and process improvement. </p>
+
+<h3>N1 - Total Number of Operators</h3>
+
+<p>N1 is the total number of operators used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>N2 - Total Number of Operands</h3>
+
+<p>N2 is the total number of operands used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>n1 - Number of Unique Operators</h3>
+
+<p>n1 is the number of unique operators used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>n2 - Number of Unique Operands</h3>
+
+<p>n2 is the number of unique operands used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>N - Halstead Program Length</h3>
+
+<p>N is calculated as N1+N2 and is a general measure of program length for a given file. </p>
+
+<h3>n - Halstead Program Vocabulary</h3>
+
+<p>n is calculated as n1+n2 and is a measure of the number of unique operands and
+operators used in a particular file.&nbsp; This can provide an impression <br>
+of comprehensibility/complexity for that file. </p>
+
+<h3>V - Halstead Program Volume</h3>
+
+<p>V is the program volume metric from the Halstead Software Science metrics.&nbsp; This
+is calculated as V=N*(LOG2 n). </p>
+
+<h3>D - Halstead Difficulty</h3>
+
+<p>D is the difficulty metric from the Halstead Software Science metrics.&nbsp; This is
+calculated as D=(n1/n2)*(N2/n2). </p>
+
+<h3>E - Halstead Effort</h3>
+
+<p>E is the effort metric from the Halstead Software Science metrics.&nbsp; This is
+calculated as E=D*V. </p>
+
+<h3>CALLS - Number of Calls</h3>
+
+<p>CALLS is the number of calls from a method/function to subordinate logical units
+(methods/functions).&nbsp; This is a measure of the degree of FAN-OUT. </p>
+
+<h3>BRANCH - Number of Branching Nodes</h3>
+
+<p>Higher values indicate possible use of &quot;gotos&quot; and/or abnormal exits from
+control structures such as loops.&nbsp; This problem is an indicator of unstructured
+design and increases the testing difficulty.&nbsp; For components written in C, a higher
+value may be permitted due to the legitimate use of C &quot;breaks&quot; in a
+&quot;switch&quot; statement. </p>
+
+<h3>OAC - Operation Argument Complexity</h3>
+
+<p>OAC is defined as the sum of P(i) where P(i) is the value of each argument i in each
+operation in the class evaluated from the table below. <br>
+&nbsp; </p>
+<div align="center"><center>
+
+<table BORDER="1" COLS="2" NOSAVE width="300">
+  <tr>
+    <td align="center" bgcolor="#C0C0C0"><strong>Type</strong></td>
+    <td align="center" bgcolor="#C0C0C0"><strong>Value</strong></td>
+  </tr>
+  <tr>
+    <td align="center">Boolean/Integer</td>
+    <td align="center">1</td>
+  </tr>
+  <tr>
+    <td align="center">Char</td>
+    <td align="center">1</td>
+  </tr>
+  <tr>
+    <td align="center">Real</td>
+    <td align="center">2</td>
+  </tr>
+  <tr>
+    <td align="center">Array</td>
+    <td align="center">3-4</td>
+  </tr>
+  <tr>
+    <td align="center">Pointer</td>
+    <td align="center">5</td>
+  </tr>
+  <tr>
+    <td align="center">Record, Struct or Object</td>
+    <td align="center">6-9</td>
+  </tr>
+  <tr>
+    <td align="center">File</td>
+    <td align="center">10</td>
+  </tr>
+</table>
+</center></div>
+
+<h3>ANION - Adjusted Number of Input/Output Nodes</h3>
+
+<p>ANION is an adjusted measure of the number of input/output nodes in a given
+method/function.&nbsp; Programming practices today state that there should be one way into
+a module and one way out.&nbsp; This measures the difficulty of testing the control logic
+of the software.&nbsp; Logical units with a large number of input/output nodes may need
+implementation simplification and process imrovement.&nbsp;&nbsp; ANION is adjusted to
+behave intelligently where redundant &quot;return&quot; statements exist. </p>
+
+<h3>NION - Number of Input/Output Nodes</h3>
+
+<p>NION is a measure of the number of input/output nodes in a given method/function.&nbsp;
+Programming practices today state that there should be one way into a module and one way
+out.&nbsp; This measures the difficulty of testing the control logic of the
+software.&nbsp; Logical units with a large number of input/output nodes may need
+implementation simplification and process imrovement.&nbsp;&nbsp; ANION is adjusted to
+behave intelligently where redundant &quot;return&quot; statements exist. </p>
+
+<h3>CONTROL - Number of control statements</h3>
+
+<p>This is a measure of the number of control statements (selection, iteration) in a
+method/function. </p>
+
+<h3>EXEC - Number of executable statement</h3>
+
+<p>This is a measure of the number of executable statements in a method/function. </p>
+
+<h3>NSTAT - Number of statements</h3>
+
+<p>NSTAT is a measure of the total number of statements in a method/function.&nbsp; This
+is calculated as CONTROL+EXEC. </p>
+
+<h3>CDENS - Control Density</h3>
+
+<p>This is a measure of the &quot;richness&quot; of decision nodes in a module.&nbsp; A
+high density module will be more difficult to maintain than a less dense one.&nbsp; We
+count the number of control statements and the number of complex executable
+statements.&nbsp; Control density is the ratio of control statements to the total number
+of statements. </p>
+
+<h3>QCP_MAINT - Quality Criteria Profile (Maintainability)</h3>
+
+<p>MAINTAINABILITY=3 * Halstead Length + Number of statements + Maximum levels + 2 *
+Cyclomatic Number + Number of Branching Nodes </p>
+
+<h3>QCP_CRCT - Quality Criteria Profile (Correctness)</h3>
+
+<p>CORRECTNESS=Halstead Difficulty + Number of statements + 2 * Cyclomatic Number </p>
+</body>
+</html>

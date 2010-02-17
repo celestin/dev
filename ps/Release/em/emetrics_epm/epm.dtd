@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+-- # Essential Project Manager (EPM)
+-- # Copyright (c) 2005,2009 PowerSoftware.com
+-- # Author Craig McKay <craig.mckay@powersoftware.com>
+-- # 
+-- # EPM XML Specification
+-- # 
+-- # $Id: epm.dtd 1083 2009-11-17 22:41:31Z craig $
+-- # 
+-- # Who  When         Why
+-- # CAM  29-Mar-2005  85 : File created.
+-->
+<!ENTITY % Datetime "CDATA">
+<!ENTITY % Text     "CDATA">
+<!ENTITY % LongText "CDATA">
+<!ENTITY % Integer  "CDATA">
+<!ENTITY % Decimal  "CDATA">
+<!ENTITY % Boolean  "(true|false)">
+
+<!ELEMENT epm (Project, Metrics)>
+
+<!ELEMENT Project (Items, Metrics)>
+<!ATTLIST Project
+  name                  %Text;          #REQUIRED
+  snapshotDate          %Datetime;      #REQUIRED
+>
+
+<!ELEMENT Items (File*)>
+
+<!ELEMENT File (Metrics)>
+<!ATTLIST File
+  id                    %Text;          #REQUIRED
+  name                  %Text;          #REQUIRED
+  status                %Text;          #IMPLIED
+>
+
+<!ELEMENT Metrics (Met*)>
+
+<!ELEMENT Met>
+<!ATTLIST Met
+  id                    %Text;          #REQUIRED
+  val                   %Decimal;       #REQUIRED
+  oldVal                %Decimal;       #IMPLIED
+  diffVal               %Decimal;       #IMPLIED
+  code                  %Text;          #IMPLIED
+  description           %Text;          #IMPLIED
+>

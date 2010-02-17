@@ -1,0 +1,173 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Class Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">Class Metrics</h1>
+
+<h3>CSA - Class Size in Attributes</h3>
+
+<p>CSA measures class size by counting the number of attributes of a class (not including
+inherited attributes).&nbsp; If a class has a high number of attributes, it may be wise to
+consider whether it would be appropriate to divide the class into subclasses. </p>
+
+<h3>CSO - Class Size in Operations</h3>
+
+<p>CSO measures class size by counting the number of operations (methods) in a class (not
+including inherited methods).&nbsp; If a class has a high number of methods, it may be
+wise to consider whether it would be appropriate to divide the class into subclasses. </p>
+
+<h3>CSAO - Class Size in Attributes and Operations</h3>
+
+<p>CSAO is the sum of CSA and CSO.&nbsp; Results should be interpreted as for the
+individual CSA and CSO metrics. </p>
+
+<h3>PPPC - Percentage of Package, Public and Protected members in a Class</h3>
+
+<p>Members which have package level protection are visible to other classes in the same
+package.&nbsp; Public members are available to classes in all packages and protected
+members are available to subclasses.&nbsp; Therefore,&nbsp; extensive use of such members
+violates the encapsulation principle.&nbsp; This metric allows us to see the proportion of
+'vulnerable' members in a class.&nbsp; A large proportion of such members means that the
+class has high potential to be affected by external classes and means that increased
+effort will be needed to test such a class thoroughly. </p>
+
+<h3>NOCC - Number Of Child Classes</h3>
+
+<p>This metric counts the number of classes which inherit from a particular class (i.e.
+the number of classes in the inheritance tree down from a class).&nbsp; As this value
+increases, it is obvious that the particlar class is being re-used well.&nbsp; However, it
+is also important to consider that where there are many child classes, are they all
+genuinely appropriate members of the parent class?&nbsp; In this case, the abstraction of
+the class may be poor.&nbsp; It is also true that as NOCC increases, the amount of testing
+required for each child class will increase. </p>
+
+<h3>DIT - Depth in Class Inheritance Tree</h3>
+
+<p>This metric reports how deeply a class resides in the class inheritance tree.&nbsp;
+High values imply that a class is quite specialised. </p>
+
+<h3>RFC - Response For a Class</h3>
+
+<p>This metric measures the number of methods that can be invoked in response to a message
+to an object of a class.&nbsp; For larger values of RFC, it is obvious that required
+testing effort becomes greater as does the overall design complexity of the class. </p>
+
+<h3>CBO - Coupling Between Object classes</h3>
+
+<p>The value for CBO is the number of classes which a particular class refers to.&nbsp;
+This is a measure of how cohesive (and therefore reusable) a particular class is likely to
+be.&nbsp; References can be uses of classes as member types, parameter types, method local
+variable types or casts. </p>
+
+<h3>LOCM - Lack Of Cohesion of Methods</h3>
+
+<p>LOCM measures the percentage of methods that do not access a specific attribute
+averaged over all attributes in the class.&nbsp; A low percentage indicates high coupling
+between methods which indicates high testing effort (since many methods can affect the
+same attributes) and potentially low reusability. </p>
+
+<h3>NOOC - Number of Operations Overridden by a Class</h3>
+
+<p>NOOC measures the number of inherited operations which a class overrides.&nbsp; High
+values for NOOC tend to indicate design problems; subclasses 'should' generally add to and
+extend the functionality of the parent classes rather than overriding them. </p>
+
+<h3>NOAC - Number of Operations Added by a Class</h3>
+
+<p>This metric measures the number of operations added by a class (inherited operations
+are not counted).&nbsp; As this value becomes larger for a class, the functionality of
+that class becomes increasingly distinct from that of the parent classes.&nbsp; In this
+case, it should be considered whether this class should genuinely be inheriting from the
+parent or if it could be broken down into several, smaller classes. </p>
+
+<h3>WMC - Weighted Methods per Class</h3>
+
+<p>WMC is a count of the methods in a class (weighted according to complexity).&nbsp; The
+value of WMC can indicate whether this class is likely to be suitable for re-use. </p>
+
+<h3>CSI - Class Specialisation Index</h3>
+
+<p>CSI provides a measure of specialisation for a class.&nbsp; The higher value for CSI,
+the more likely that a particular class does not conform to the abstraction of it's
+superclasses. </p>
+
+<h3>OSavg - Average Operation Size</h3>
+
+<p>This metric provides a measure of the average size of the operations (methods) for a
+particular class.&nbsp; Any conventional functional metric can be used to determine
+operation `size' but the standard cyclomatic complexity metric (and variations of this)
+will yield `realistic' results.&nbsp; In OO development, it is desirable to have small,
+fine-grained methods, so high&nbsp; values for OSavg are a warning that it may help
+improve code quality if some methods in the class were broken down. </p>
+
+<h3>NPavgC - Average Number of Parameters for methods in a Class </h3>
+
+<p>Methods with a high number of parameters generally require considerable testing (as
+their input can be highly varied).&nbsp; Also,&nbsp; large numbers of parameters lead to
+more complex, less maintainable code.&nbsp; This metric provides an average number of
+parameters for methods in a class (not including inherited methods). </p>
+
+<h3>AC - Attribute Complexity</h3>
+
+<p>Attribute Complexity is defined as the sum of R(i) where R(i) is the value of each
+attribute in the class evaluated from the table below.&nbsp; Summing R(i)&nbsp;for a class
+gives this metric value.&nbsp; AC is from the work of Chen &amp;&nbsp;Lu. <br>
+&nbsp; </p>
+<div align="center"><center>
+
+<table BORDER="1" COLS="2" NOSAVE width="300">
+  <tr>
+    <td align="center" bgcolor="#C0C0C0"><strong>Type</strong></td>
+    <td align="center" bgcolor="#C0C0C0"><strong>Value</strong></td>
+  </tr>
+  <tr>
+    <td align="center">Boolean/Integer</td>
+    <td align="center">1</td>
+  </tr>
+  <tr>
+    <td align="center">Char</td>
+    <td align="center">1</td>
+  </tr>
+  <tr>
+    <td align="center">Real</td>
+    <td align="center">2</td>
+  </tr>
+  <tr>
+    <td align="center">Array</td>
+    <td align="center">3-4</td>
+  </tr>
+  <tr>
+    <td align="center">Pointer</td>
+    <td align="center">5</td>
+  </tr>
+  <tr>
+    <td align="center">Record, Struct or Object</td>
+    <td align="center">6-9</td>
+  </tr>
+  <tr>
+    <td align="center">File</td>
+    <td align="center">10</td>
+  </tr>
+</table>
+</center></div>
+
+<h3>OpCom - Operation Complexity</h3>
+
+<p>The definition for operation complexity is the sum of O(i) where O(i) is operation i's
+complex value as McCabe complexity&nbsp;V(g).&nbsp; Summing the O(i) for each operation in
+the class gives this metric value. </p>
+
+<h3>LOC - Lines Of Code comprising a Class</h3>
+
+<p>LOC is a primitive metric to measure the size of a class.&nbsp; It is included for
+traditional reasons. <br>
+&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Project Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">Project Metrics</h1>
+
+<h3>DPIT - Depth of Project class Inheritance Tree</h3>
+
+<p>This metric measures the maximum depth of the class inheritance tree for the whole
+project.&nbsp; Large values for DPIT tend to indicate that leaf classes will be inheriting
+many methods and members from parent classes making their behaviour difficult to
+predict.&nbsp; Of course, deep inheritance also indicates that classes are less
+specialised and so increases possibilities for reuse. </p>
+
+<h3>NORC - Number Of Root Classes</h3>
+
+<p>This measures the number of discrete class hierarchies present in the project.&nbsp; A
+large value for NORC will suggest that a large amount of effort for testing will be
+required (since test cases for each hierarchy will need to be developed).&nbsp; This
+metric must be interpreted carefully where (for example) all classes inherit from the
+`Object' class; technically there is only one class hierarchy but notionally and
+practically there could be more. </p>
+
+<h3>LOC - Lines Of Code</h3>
+
+<p>Lines Of Code is the traditional measure of size for a project.&nbsp; LOC includes
+source code lines, whitespace lines and comment lines and so is a more primitive measure
+than SLOC. </p>
+
+<h3>SLOC - Source Lines Of Code</h3>
+
+<p>SLOC measures the number of lines containing actual program source code.&nbsp; SLOC is
+LOC minus whitespace lines and comment lines.&nbsp; Because SLOC measures only source code
+lines, some consider it a better guide to actual project size than LOC. </p>
+
+<h3>NFILES - Number of Files</h3>
+
+<p>NFILES&nbsp;measures the number of files in a project.&nbsp; This metric is a primitive
+measure of project size. </p>
+
+<h3>MHF - Method Hiding Factor</h3>
+
+<p><img SRC="MHF.gif" HEIGHT="230" WIDTH="447"> </p>
+
+<p>MHF is a metric from the MOOD (Metrics for Object-Oriented Development) suite.&nbsp;
+MHF is calculated as a fraction.&nbsp; The numerator is the sum of the invisibilities of
+all methods defined in all classes.&nbsp; The invisibility of a method is the percentage
+of the total classes from which this method is not visible.&nbsp; The MHF denominator is
+the total number of methods defined in the project. </p>
+
+<h3>AHF - Attribute Hiding Factor</h3>
+
+<p><img SRC="AHF.gif" HEIGHT="222" WIDTH="480"> </p>
+
+<p>AHF is a metric from the MOOD (Metrics for Object-Oriented Development) suite.&nbsp;
+AHF is calculated as a fraction.&nbsp; The numerator is the sum of the invisibilities of
+all attributes defined in all classes.&nbsp; The invisibility of an attribute is the
+percentage of the total classes from which this method is not visible.&nbsp; The AHF
+denominator is the total number of attributes defined in the project. </p>
+
+<h3>MIF - Method Inheritance Factor</h3>
+
+<p><img SRC="MIF.gif" HEIGHT="136" WIDTH="215"> </p>
+
+<p>MIF is a metric from the MOOD (Metrics for Object-Oriented Development) suite and is
+calculated as a fraction.&nbsp; The MIF denominator is the sum of inherited methods in all
+classes in the project.&nbsp; The MIF denominator is the total number of available methods
+(locally defined plus inherited) for all classes. </p>
+
+<h3>AIF - Attribute Inheritance Factor</h3>
+
+<p><img SRC="AIF.gif" HEIGHT="144" WIDTH="223"> </p>
+
+<p>AIF is a metric from the MOOD (Metrics for Object-Oriented Development) suite and is
+calculated as a fraction.&nbsp; The AIF numerator is the sum of inherited attributes in
+all classes in the project.&nbsp; The AIF denominator is the total number of available
+attributes (locally defined plus inherited) for all classes. </p>
+
+<h3>POF - Polymorphism Factor</h3>
+
+<p><img SRC="POF.gif" HEIGHT="154" WIDTH="571"> </p>
+
+<p>POF is a metric from the MOOD (Metrics for Object-Oriented Development) suite and is
+calculated as a fraction.&nbsp; The POF numerator is the sum of overriding methods in all
+classes.&nbsp; This is the actual number of possible different polymorphic
+situations.&nbsp; Indeed, a given message sent to a class can be bound, statically or
+dynamically, to a named method implementation.&nbsp; The latter can have as many shapes
+(morphos) as the number of times this same method is overridden (in that class's
+descendants).&nbsp; The POF denominator represents the maximum number of possible distinct
+polymorphic situations for that class as the sum for each class of the number of new
+methods multiplied by the number of descendants.&nbsp; This maximum would be the case
+where all new methods defined in each class would be overridden in all of their derived
+classes. </p>
+
+<h3>COF - Coupling Factor</h3>
+
+<p><img SRC="COF.gif" HEIGHT="119" WIDTH="408"> </p>
+
+<p>COF is a metric from the MOOD (Metrics for Object-Oriented Development) suite and is
+calculated as a fraction.&nbsp; The COF denominator stands for the maximum possible number
+of couplings in a system with TC classes.&nbsp; The client-supplier relation (represented
+by C<sub>c </sub>=&gt; C<sub>s</sub>) means that C<sub>c</sub>(client class) contains at
+least one non-inheritance reference to a feature (method or attribute) of class C<sub>s</sub>
+(supplier class).&nbsp; The COF numerator then represents the actual number of couplings
+not imputable to inheritance. </p>
+
+<h3>AVCALLS - Average number of calls</h3>
+
+<p>The metric measures the average number of calls made by methods and functions in the
+call tree. </p>
+
+<h3>AVPATHS - Average Paths</h3>
+
+<p>The average number of paths in the call tree.&nbsp; As the value of this metric
+increases, the testing and debugging becomes more difficult.&nbsp; This measures the
+difficulty of testing.&nbsp; Applications with large values of component levels may
+contain a large number of untested paths that tend to be unexpectedly executed.&nbsp; This
+problem can plague client/server applications. </p>
+
+<h3>COM_LOC - Comment Lines of Code</h3>
+
+<p>This metric measures the total number of lines of code in the project which contain
+comments. </p>
+
+<h3>COM_RAT - Comment Ratio</h3>
+
+<p>This metric measures the ratio of comment lines of code (COM_LOC) to total lines of
+code including whitespace and comments (LOC). </p>
+
+<h3>TCOM_RAT - True Comment Ratio</h3>
+
+<p>This metric measures the ratio of comment lines of code (COM_LOC) to source lines of
+code (excluding whitespace and comments (SLOC). </p>
+</body>
+</html>

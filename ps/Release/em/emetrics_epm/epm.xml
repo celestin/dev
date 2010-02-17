@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epm>
+  <lang name="C++" parser="CP">
+    <filetype name="Source">
+      <ext name="Class" value="cpp" />
+      <ext name="C File" value="c" />
+    </filetype>
+    <filetype name="Header">
+      <ext name="C++ Header" value="hpp" />
+      <ext name="C Header" value="h" />
+    </filetype>
+  </lang>
+  <lang name="C#" parser="CS">
+    <filetype name="Source">
+      <ext name="Class" value="cs" />
+    </filetype>
+  </lang>
+  <lang name="Java" parser="JV">
+    <filetype name="Source">
+      <ext name="Class" value="java" />
+    </filetype>
+  </lang>
+  <lang name="Oracle PL/SQL" parser="S1">
+    <filetype name="Source">
+      <ext name="Package Header" value="pkh" />
+      <ext name="Package Body" value="pkb" />
+      <ext name="General Source" value="sql" />
+      <ext name="General Source" value="ora" />
+    </filetype>
+  </lang>
+  <lang name="VB6" parser="VB">
+    <filetype name="Module">
+      <ext name="Module" value="bas" />
+      <ext name="Class Module" value="cls" />
+    </filetype>
+    <filetype name="UI">
+      <ext name="Form" value="frm" />
+    </filetype>
+  </lang>
+  <lang name="VB.net" parser="VB">
+    <filetype name="Source">
+      <ext name="General Source" value="vb" />
+    </filetype>
+  </lang>
+  <lang name="VBScript" parser="VB">
+    <filetype name="Source">
+      <ext name="Script" value="vbs" />
+    </filetype>
+  </lang>
+  <lang name="Perl" parser="PL">
+    <filetype name="Source">
+      <ext name="Perl Script" value="pl" />
+    </filetype>
+  </lang>
+  <lang name="ADA" parser="AD">
+    <filetype name="Source">
+      <ext name="General Source" value="a" />
+      <ext name="General Source" value="ada" />
+      <ext name="General Source" value="adb" />
+      <ext name="General Source" value="ads" />
+    </filetype>
+  </lang>
+  <lang name="ASP" parser="AS">
+    <filetype name="Source">
+      <ext name="General Source" value="asp" />
+      <ext name="General Source" value="aspx" />
+    </filetype>
+  </lang>
+  <lang name="PHP" parser="PH">
+    <filetype name="Source">
+      <ext name="General Source" value="php" />
+    </filetype>
+  </lang>
+  <lang name="IDL" parser="ID">
+    <filetype name="Source">
+      <ext name="General Source" value="idl" />
+    </filetype>
+  </lang>
+  <lang name="VHDL" parser="VH">
+    <filetype name="Source">
+      <ext name="General Source" value="vhd" />
+    </filetype>
+  </lang>
+  <lang name="JSP" parser="JS">
+    <filetype name="Source">
+      <ext name="General Source" value="jsp" />
+    </filetype>
+  </lang>
+  <lang name="XML" parser="XM">
+    <filetype name="Source">
+      <ext name="General Source" value="xml" />
+      <ext name="Schema Definition" value="xsd" />
+      <ext name="Web Services" value="wsml" />
+    </filetype>
+    <filetype name="Style Sheet">
+      <ext name="Style Sheet" value="xsl" />
+      <ext name="Style Sheet Translation" value="xslt" />
+    </filetype>
+    <filetype name=".NET Config">
+      <ext name="Config" value="config" />
+    </filetype>
+    <filetype name=".NET Project">
+      <ext name="C# Project" value="csproj" />
+      <ext name="VS Solution" value="sln" />
+      <ext name="User" value="user" />
+      <ext name="VB Project" value="vbproj" />
+      <ext name="C/C++ Project" value="vcproj" />
+      <ext name="Deployment Project" value="vdproj" />
+      <ext name="Dynamic Discovery" value="vsdisco" />
+      <ext name="VS Project" value="vsproj" />
+      <ext name="Webinfo" value="webinfo" />
+    </filetype>
+    <filetype name=".NET Resource">
+      <ext name="License" value="licx" />
+      <ext name="Resources" value="resources" />
+      <ext name="Resource" value="resx" />
+    </filetype>   
+  </lang>
+  <lang name="Assembler" parser="AY">
+    <filetype name="Source">
+      <ext name="Assembly" value="asm" />
+    </filetype>
+  </lang>
+  <lang name="JavaScript" parser="JT">
+    <filetype name="Source">
+      <ext name="Script" value="js" />
+    </filetype>
+  </lang>
+  <lang name="HTML" parser="HT">
+    <filetype name="Source">
+      <ext name="Html" value="htm" />
+      <ext name="Html" value="html" />
+      <ext name="Html" value="htp" />
+    </filetype>
+  </lang>
+  <lang name="Python" parser="PY">
+    <filetype name="Source">
+      <ext name="Script" value="py" />
+    </filetype>
+  </lang>
+  <lang name="Fortran" parser="FT">
+    <filetype name="Source">
+      <ext name="General Source" value="f" />
+      <ext name="General Source" value="f90" />
+    </filetype>
+  </lang>
+  <lang name="Textfile" parser="TX">
+    <filetype name="Source">
+      <ext name="General Source" value="def" />
+      <ext name="General Source" value="in" />
+      <ext name="General Source" value="ref" />
+    </filetype>
+    <filetype name="Makefile">
+      <ext name="Makefile" value="mak" />
+      <ext name="Makefile" value="makefile" />
+      <ext name="Makefile" value="mk" />
+    </filetype>
+    <filetype name="Legacy VS Projects">
+      <ext name="VS Project" value="dsp" />
+      <ext name="VS Workspace" value="dsw" />
+    </filetype>
+    <filetype name="Textfile">
+      <ext name="CSV" value="cvs" />
+      <ext name="Install" value="install" />
+      <ext name="Readme" value="readme" />
+      <ext name="Text" value="tsv" />
+      <ext name="Text" value="txt" />
+    </filetype>
+  </lang>
+  <lang name="Ruby" parser="RB">
+    <filetype name="Source">
+      <ext name="General Source" value="rb" />
+    </filetype>
+  </lang>
+  <lang name="Shell Script" parser="SH">
+    <filetype name="Script">
+      <ext name="Script" value="ash" />
+      <ext name="Script" value="bash" />
+      <ext name="Script" value="bsh" />
+      <ext name="Script" value="csh" />
+      <ext name="Script" value="sh" />
+      <ext name="Script" value="tcsh" />
+      <ext name="Script" value="tsh" />
+      <ext name="Script" value="zsh" />
+    </filetype>
+  </lang>
+  <lang name="Stylesheet" parser="SS">
+    <filetype name="Source">
+      <ext name="Stylesheet" value="css" />
+    </filetype>
+  </lang>
+  <lang name="Windows Batch File" parser="WB">
+    <filetype name="Source">
+      <ext name="Windows Batch File" value="bat" />
+      <ext name="Windows Batch File" value="cmd" />
+    </filetype>
+  </lang>
+  <lang name="PowerBuilder" parser="PB">
+    <filetype name="Source">
+      <ext name="Window" value="srw" />
+      <ext name="Datawindow" value="srd" />
+      <ext name="Function" value="srf" />
+      <ext name="Structure" value="srs" />
+      <ext name="User object" value="sru" />
+    </filetype>
+  </lang>
+</epm>

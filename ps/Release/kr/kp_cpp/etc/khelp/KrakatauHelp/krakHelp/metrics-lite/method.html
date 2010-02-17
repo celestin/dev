@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Method Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">Method Metrics</h1>
+
+<h3>LOC - Lines of code</h3>
+Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.
+
+<h3>SLOC - Source lines of code</h3>
+Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; "Testing"<br>  &lt;&lt; " Hello"<br>  &lt;&lt; " there." ;  // This is 3 SLOCs</font>
+
+<h3>NION - Number of I/O nodes</h3>
+
+
+<h3>ANION - Adjusted number of I/O nodes</h3>
+
+
+<h3>CONTROL - Number of control statements</h3>
+A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.
+
+<h3>EXEC - Number of executable statements</h3>
+A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+Cyclomatic Complexity (v(G)) is a measure of the complexity of a module's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.
+
+</body></html>
+
+</body>
+</html>

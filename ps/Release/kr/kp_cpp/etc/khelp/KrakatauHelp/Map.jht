@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/map_1_0.dtd">
+
+<map version="1.0">
+	<mapID target="toplevelfolder" url="images/toplevel.gif" />
+
+	<mapID target="top" url="krakHelp/krakatau.html" />
+	<mapID target="krakatau.intro" url="krakHelp/krakatau.html" />
+
+	<mapID target="tut.intro" url="krakHelp/tut/index.html" />
+	<mapID target="tut.create" url="krakHelp/tut/create.html" />
+	<mapID target="tut.apply" url="krakHelp/tut/apply.html" />
+	<mapID target="tut.results" url="krakHelp/tut/results.html" />
+	<mapID target="tut.results.values" url="krakHelp/tut/values.html" />
+	<mapID target="tut.results.histo" url="krakHelp/tut/histo.html" />
+	<mapID target="tut.report" url="krakHelp/tut/report.html" />
+
+	<mapID target="creation.intro" url="krakHelp/create/index.html" />
+	<mapID target="creation.name" url="krakHelp/create/name.html" />
+	<mapID target="creation.type" url="krakHelp/create/type.html" />
+	<mapID target="creation.type.dir" url="krakHelp/create/dir.html" />
+	<mapID target="creation.type.files" url="krakHelp/create/files.html" />
+	<mapID target="creation.type.import" url="krakHelp/create/import.html" />
+
+	<mapID target="translation.intro" url="krakHelp/translation/index.html" />
+	<mapID target="translation.lang" url="krakHelp/translation/lang.html" />
+	<mapID target="translation.pref" url="krakHelp/translation/gui.html" />
+
+	<mapID target="results.intro" url="krakHelp/results/index.html" />
+	<mapID target="results.general" url="krakHelp/results/general.html" />
+	<mapID target="results.list" url="krakHelp/results/list.html" />
+	<mapID target="results.list.select" url="krakHelp/results/select.html" />
+	<mapID target="results.list.sort" url="krakHelp/results/sort.html" />
+	<mapID target="results.values" url="krakHelp/results/values-lite.html" />
+	<mapID target="results.histo" url="krakHelp/results/histo.html" />
+	<mapID target="results.kiviat" url="krakHelp/results/kiviat.html" />
+
+	<mapID target="metrics.intro" url="krakHelp/metrics/index.html" />
+	<mapID target="metrics.project" url="krakHelp/metrics/project.html" />
+	<mapID target="metrics.package" url="krakHelp/metrics/package.html" />
+	<mapID target="metrics.file" url="krakHelp/metrics/file.html" />
+	<mapID target="metrics.class" url="krakHelp/metrics/class.html" />
+	<mapID target="metrics.method" url="krakHelp/metrics/method.html" />
+
+	<mapID target="reports.intro" url="krakHelp/reports/index.html" />
+	<mapID target="reports.html" url="krakHelp/reports/html.html" />
+	<mapID target="reports.viol" url="krakHelp/reports/viol.html" />
+	<mapID target="reports.cdf" url="krakHelp/reports/cdf.html" />
+
+	<mapID target="choose.intro" url="krakHelp/choose/index.html" />
+	<mapID target="choose.editor" url="krakHelp/choose/editor.html" />
+	<mapID target="choose.chooser" url="krakHelp/choose/chooser.html" />
+
+	<mapID target="trouble.intro" url="krakHelp/trouble/index.html" />

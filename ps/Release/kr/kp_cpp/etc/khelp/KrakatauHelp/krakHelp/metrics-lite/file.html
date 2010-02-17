@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>File Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">File Metrics</h1>
+
+<h3>LOC - Lines of code</h3>
+Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.
+
+<h3>SLOC - Source lines of code</h3>
+Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; "Testing"<br>  &lt;&lt; " Hello"<br>  &lt;&lt; " there." ;  // This is 3 SLOCs</font>
+
+<h3>NSC - Number of Semicolons</h3>
+A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &lt;&lt; "Hello" &lt;&lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &lt;&lt; "Hello ; World" &lt;&lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.
+
+<h3>COM_LOC - Comment lines of code</h3>
+The total number of comment lines in the file, i.e. <b>C_COM</b> + <b>CPP_COM</b>.
+
+<h3>C_COM - C style comments</h3>
+The number of C style comment lines in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.  E.g.:<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font><br><br>C_COM = 3.
+
+<h3>CPP_COM - C++ sytle comments</h3>
+The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line. E.g.:<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font><br><br>CPP_COM = 2.
+
+<h3>COM_RAT - Comments Ratio</h3>
+The ratio, for this filel, of comment lines to lines of code, i.e. <b>COM_LOC</b> / <b>LOC</b>.
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+The ratio, for this filel, of comment lines to <b>source</b> lines of code, i.e. <b>COM_LOC</b> / <b>SLOC</b>.
+
+</body>
+</html>

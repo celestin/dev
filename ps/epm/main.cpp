@@ -91,7 +91,7 @@
  * CAM  09-Sep-2009  10479 : Add PLOC for C/C++ and Assembler.
  * CAM  17-Nov-2009  10503 : Changed to PowerSoftware.com.
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
- f* CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
+ * CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1551,4 +1551,3 @@ int main(int argc, char* argv[]) {
   closeDatabase();
   return 0;
 }
-

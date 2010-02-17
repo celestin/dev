@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  27-Aug-2009  10484 : File created.
+ * CAM  17-Feb-2010  10569 : Changed Project textboxes to lighter grey (and from Disabled to Readonly).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -289,19 +290,19 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       // txtNewProj
       //
-      this.txtNewProj.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-      this.txtNewProj.Enabled = false;
+      this.txtNewProj.BackColor = System.Drawing.SystemColors.InactiveCaption;
       this.txtNewProj.Location = new System.Drawing.Point(128, 32);
       this.txtNewProj.Name = "txtNewProj";
+      this.txtNewProj.ReadOnly = true;
       this.txtNewProj.Size = new System.Drawing.Size(264, 20);
       this.txtNewProj.TabIndex = 20;
       //
       // txtOldProj
       //
-      this.txtOldProj.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-      this.txtOldProj.Enabled = false;
+      this.txtOldProj.BackColor = System.Drawing.SystemColors.InactiveCaption;
       this.txtOldProj.Location = new System.Drawing.Point(128, 64);
       this.txtOldProj.Name = "txtOldProj";
+      this.txtOldProj.ReadOnly = true;
       this.txtOldProj.Size = new System.Drawing.Size(264, 20);
       this.txtOldProj.TabIndex = 21;
       //

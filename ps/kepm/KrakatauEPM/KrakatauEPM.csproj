@@ -182,7 +182,6 @@
     </Content>
     <Content Include="img\ico\About.ico" />
     <Content Include="img\ico\Prefs.ico" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="img\menu\prefs.png" />
     <None Include="img\menu\jar_new.png" />
     <None Include="img\menu\jar_into.png" />

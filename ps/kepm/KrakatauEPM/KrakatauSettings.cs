@@ -3,10 +3,11 @@
  * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  15-Feb-2010  10565 : File created.
+ * CAM  18-Feb-2010  10574 : Added InstallDirPath.get.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -31,6 +32,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm
 
     public string InstallDirPath
     {
+      get { return _installDir.FullName; }
       set
       {
         string p = value;

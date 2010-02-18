@@ -5,11 +5,12 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  24-May-08   362 : File created (replicating frmMain).
- * CAM  29-May-08   363 : Completed toolbar buttons.
- * CAM  29-May-08   364 : Added Preferences event.
+ * Who  When         Why
+ * CAM  24-May-08    362 : File created (replicating frmMain).
+ * CAM  29-May-08    363 : Completed toolbar buttons.
+ * CAM  29-May-08    364 : Added Preferences event.
  * CAM  15-Feb-2010  10565 : Initialise KrakatauSettings with "InstallDir".
+ * CAM  18-Feb-2010  10574 : Added MySQL Diagnostics methods.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -34,7 +35,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       Prefs.Preferences.GetSettings(_lsvProjects);
     }
 
-    private void FileNew()
+    private void NewProject(object sender, EventArgs e)
     {
       NewProject wizard = new NewProject();
 
@@ -46,7 +47,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       }
     }
 
-    private void FileOpen()
+    private void OpenProject(object sender, EventArgs e)
     {
       if (_ofdProj.ShowDialog(this) == DialogResult.OK)
       {
@@ -65,7 +66,12 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       }
     }
 
-    private void AnalyseSelected()
+    private void CloseProject(object sender, EventArgs e)
+    {
+      _lsvProjects.CloseProject();
+    }
+
+    private void AnalyseProject(object sender, EventArgs e)
     {
       ProjectItem newProject = null;
       ProjectItem oldProject = null;
@@ -107,42 +113,22 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       }
     }
 
-    private void _tsbNewProject_Click(object sender, EventArgs e)
-    {
-      FileNew();
-    }
-
-    private void _tsbOpenProject_Click(object sender, EventArgs e)
-    {
-      FileOpen();
-    }
-
-    private void _tsbCloseProject_Click(object sender, EventArgs e)
-    {
-      _lsvProjects.CloseProject();
-    }
-
-    private void _tsbMetricSets_Click(object sender, EventArgs e)
+    private void ShowMetricSets(object sender, EventArgs e)
     {
       (new FormMetricSets(XmlConfig.Config.GetMetricSets())).ShowDialog(this);
     }
 
-    private void _tsbSetAsOldProject_Click(object sender, EventArgs e)
+    private void SetAsOldProject(object sender, EventArgs e)
     {
       _lsvProjects.SetAsOld();
     }
 
-    private void _tsbSetAsNewProject_Click(object sender, EventArgs e)
+    private void SetAsNewProject(object sender, EventArgs e)
     {
       _lsvProjects.SetAsNew();
     }
 
-    private void _tsbAnalyseProject_Click(object sender, EventArgs e)
-    {
-      this.AnalyseSelected();
-    }
-
-    private void _lsvProjects_ItemActivate(object sender, EventArgs e)
+    private void EditProject(object sender, EventArgs e)
     {
       ProjectItem pi = (ProjectItem)this._lsvProjects.FocusedItem;
       NewProject wizard = new NewProject(pi.Project);
@@ -150,38 +136,12 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       pi.RefreshProject();
     }
 
-    private void mniNewProject_Click(object sender, EventArgs e)
+    private void ExitKepm(object sender, EventArgs e)
     {
-      FileNew();
+      Dispose();
     }
 
-    private void mniOpenProject_Click(object sender, EventArgs e)
-    {
-      FileOpen();
-    }
-
-    private void mniCloseProject_Click(object sender, EventArgs e)
-    {
-      _lsvProjects.CloseProject();
-    }
-
-    private void _mnuExit_Click(object sender, EventArgs e)
-    {
-      this.Dispose();
-    }
-
-    private void mniProjectAnalyse_Click(object sender, EventArgs e)
-    {
-      AnalyseSelected();
-    }
-
-    private void mniMetricsSets_Click(object sender, EventArgs e)
-    {
-      FormMetricSets sets = new FormMetricSets(XmlConfig.Config.GetMetricSets());
-      sets.ShowDialog(this);
-    }
-
-    private void mniMetricsDefs_Click(object sender, EventArgs e)
+    private void ViewMetricsDefinitions(object sender, EventArgs e)
     {
       string fname = "MetricsDefinitions.pdf";
       FileInfo pdf = new FileInfo(fname);
@@ -196,15 +156,90 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       System.Diagnostics.Process.Start(fname);
     }
 
-    private void mniHelpAbout_Click(object sender, EventArgs e)
+    private void HelpAbout(object sender, EventArgs e)
     {
       (new HelpAbout()).ShowDialog(this);
     }
 
-    private void mniProjectPrefs_Click(object sender, EventArgs e)
+    private void ShowProjectPreferences(object sender, EventArgs e)
     {
       (new FormPreferences()).ShowDialog(this);
       Prefs.Preferences.SaveSettings(_lsvProjects);
+    }
+
+    private void InstallMySqlService(object sender, EventArgs e)
+    {
+      MysqlWindowsService service = new MysqlWindowsService();
+
+      string error = String.Empty;
+      try
+      {
+        if (!service.InstallService()) error = "Could not install the service.  Please contact support@powersoftware.com.";
+      }
+      catch (Exception ex)
+      {
+        error = ex.Message;
+      }
+
+      if (error.Length > 0) ShowDiagnosticsDialog(error, "Installing MySQL Service");
+    }
+
+    private void RemoveMySqlService(object sender, EventArgs e)
+    {
+      MysqlWindowsService service = new MysqlWindowsService();
+
+      string error = String.Empty;
+      try
+      {
+        if (!service.RemoveService()) error = "Could not remove the service.  Check to see that it is still installed using Windows Services.";
+      }
+      catch (Exception ex)
+      {
+        error = ex.Message;
+      }
+
+      if (error.Length > 0) ShowDiagnosticsDialog(error, "Removing MySQL Service");
+    }
+
+    private void StartMySqlService(object sender, EventArgs e)
+    {
+      MysqlWindowsService service = new MysqlWindowsService();
+
+      string error = String.Empty;
+      try
+      {
+        if (!service.StartService()) error = "The service cannot be started.  Is it installed?\n\n" +
+          "Try installing using Diagnotics > MySQL > Install Service.";
+      }
+      catch (Exception ex)
+      {
+        error = ex.Message;
+      }
+
+      if (error.Length > 0) ShowDiagnosticsDialog(error, "Starting MySQL Service");
+
+    }
+
+    private void StopMySqlService(object sender, EventArgs e)
+    {
+      MysqlWindowsService service = new MysqlWindowsService();
+
+      string error = String.Empty;
+      try
+      {
+        if (!service.StopService()) error = "Could not stop the service.  Try restarting your computer and then running Krakatau EPM again.";
+      }
+      catch (Exception ex)
+      {
+        error = ex.Message;
+      }
+
+      if (error.Length > 0) ShowDiagnosticsDialog(error, "Stopping MySQL Service");
+    }
+
+    private void ShowDiagnosticsDialog(string message, string title)
+    {
+      MessageBox.Show(message, String.Format("Error {0}", title), MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
   }
 }

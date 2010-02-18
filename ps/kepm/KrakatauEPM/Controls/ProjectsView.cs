@@ -1,19 +1,20 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2008 PowerSoftware.com
+ * Copyright (c) 2004-2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * A ListView for displaying ProjectItems
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  29-Nov-05   160 : Class created.
- * CAM  20-Dec-05   170 : Added Remove Project to the right-click menu.
- * CAM  09-Feb-06   185 : Added addProject.
- * CAM  18-Mar-06   210 : Added Deselect to the right-click menu.
- * CAM  24-May-08   362 : Updated for VS2008.
- * CAM  29-May-08   363 : Completed toolbar buttons.
+ * Who  When         Why
+ * CAM  29-Nov-05    160 : Class created.
+ * CAM  20-Dec-05    170 : Added Remove Project to the right-click menu.
+ * CAM  09-Feb-06    185 : Added addProject.
+ * CAM  18-Mar-06    210 : Added Deselect to the right-click menu.
+ * CAM  24-May-08    362 : Updated for VS2008.
+ * CAM  29-May-08    363 : Completed toolbar buttons.
+ * CAM  18-Feb-2010  10574 : Renamed event handlers for consistency.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -39,10 +40,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
       : base()
     {
       popUpMenu = new ContextMenu();
-      popUpMenu.MenuItems.Add("Set as &Old", new EventHandler(popUpMenu_Old_clicked));
-      popUpMenu.MenuItems.Add("Set as &New", new EventHandler(popUpMenu_New_clicked));
-      popUpMenu.MenuItems.Add("&Deselect", new EventHandler(popUpMenu_Deselect_clicked));
-      popUpMenu.MenuItems.Add("&Remove", new EventHandler(popUpMenu_Remove_clicked));
+      popUpMenu.MenuItems.Add("Set as &Old", new EventHandler(PopUpMenuSetAsOld));
+      popUpMenu.MenuItems.Add("Set as &New", new EventHandler(PopUpMenuSetAsNew));
+      popUpMenu.MenuItems.Add("&Deselect", new EventHandler(PopUpMenuDeselect));
+      popUpMenu.MenuItems.Add("&Remove", new EventHandler(PopUpMenuRemove));
       this.ContextMenu = popUpMenu;
 
       this.hoverTip = new ToolTip();
@@ -102,19 +103,19 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
       if (pi != null) this.Items.Remove(pi);
     }
 
-    private void popUpMenu_Old_clicked(object sender, EventArgs e)
+    private void PopUpMenuSetAsOld(object sender, EventArgs e)
     {
       SetAsOld();
     }
-    private void popUpMenu_New_clicked(object sender, EventArgs e)
+    private void PopUpMenuSetAsNew(object sender, EventArgs e)
     {
       SetAsNew();
     }
-    private void popUpMenu_Deselect_clicked(object sender, EventArgs e)
+    private void PopUpMenuDeselect(object sender, EventArgs e)
     {
       SetAsDeselected();
     }
-    private void popUpMenu_Remove_clicked(object sender, EventArgs e)
+    private void PopUpMenuRemove(object sender, EventArgs e)
     {
       CloseProject();
     }

@@ -37,6 +37,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -89,6 +90,7 @@
     <Compile Include="Config\MetricDef.cs" />
     <Compile Include="Config\MetricSet.cs" />
     <Compile Include="Config\MetricSetItem.cs" />
+    <Compile Include="Win32\MysqlWindowsService.cs" />
     <Compile Include="Win32\Prefs.cs" />
     <Compile Include="Threading\ProcessCaller.cs" />
     <Compile Include="KrakatauEPM.cs" />
@@ -186,6 +188,8 @@
     <None Include="img\menu\jar_new.png" />
     <None Include="img\menu\jar_into.png" />
     <None Include="img\menu\jar_delete.png" />
+    <None Include="img\menu\pdf.png" />
+    <None Include="img\menu\data_gear.png" />
     <Content Include="img\ms\delete.bmp" />
     <Content Include="img\ms\edit.bmp" />
     <Content Include="img\ms\jar.bmp" />

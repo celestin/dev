@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmcrypt.c,v 1.24 2000/09/06 17:53:11 daniel Exp $
+ *	Module: $Id$
  *
  *	Description:	Reads an existing license file and fills in the
  *			encryption codes in the FEATURE and FEATURESET lines.

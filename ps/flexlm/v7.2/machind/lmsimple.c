@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmsimple.c,v 1.11 2000/08/16 22:27:26 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	Simple API example
  *

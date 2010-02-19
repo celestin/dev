@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lcontext.h,v 1.8 2000/04/13 00:09:13 daniel Exp $
+ *	Module: $Id$
  *
  *	Function:	l_context array -- English context strings
  *

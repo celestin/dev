@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*
- *	Module: $Id: lmclient.h,v 1.89.2.12 2001/02/20 17:49:45 daniel Exp $
+ *	Module: $Id$
  *
  *	Description:	FLEXlm definitions.
  *

@@ -16,7 +16,7 @@
  *
  *      Function:       main() - main routine for installing FLEXlm Service
  *
- *      $Id: installs.c,v 1.5.2.1 2000/11/02 23:45:02 jwong Exp $
+ *      $Id$
  *
  *      Description:    Example program for installing FLEXlm Service.
  *

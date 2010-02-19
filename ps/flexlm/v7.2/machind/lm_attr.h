@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lm_attr.h,v 1.18 2000/07/28 22:35:17 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	Attribute tags for FLEXlm setup parameters.
  *

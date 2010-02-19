@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: ls_attr.h,v 1.1 1999/02/03 20:20:10 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	Vendor daemon attribute tags.
  *

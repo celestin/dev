@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmstrip.c,v 1.10.2.1 2001/01/16 01:23:49 sandras Exp $
+ *	Module: $Id$
  *
  *	Function:	Strip names from a binary
  *

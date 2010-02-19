@@ -1,6 +1,6 @@
 /******************************************************************************
 
-        Module: $Id: blank_lm_code.h,v 1.2.2.1 2000/12/19 19:13:17 jwong Exp $
+        Module: $Id$
 
             COPYRIGHT (c) 1990, 2000 by Globetrotter Software Inc.
         This software has been provided pursuant to a License Agreement

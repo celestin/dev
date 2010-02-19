@@ -15,7 +15,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lsmaster.h,v 1.4 1999/06/28 16:06:17 charliem Exp $
+ *	Module: $Id$
  *
  *	Description: Local definitions for master daemon
  *

@@ -12,7 +12,7 @@
 
 *****************************************************************************/
 /*
- *	Module: $Id: lsfeatur.h,v 1.6 1999/10/05 00:39:31 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: Definitions of feature in-memory data
  *

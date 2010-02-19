@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmpolicy.h,v 1.9 2000/06/13 20:19:21 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	lmpolicy.h -- for Simple and Trivial API
  *

@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmflex.c,v 1.24.2.2 2000/12/16 00:50:44 jwong Exp $
+ *	Module: $Id$
  *
  *	Description:	This is a sample application program, to illustrate 
  *			the use of the Flexible License Manager.

@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmclient.c,v 1.22 2000/08/16 22:27:26 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	 Trivial API example: CHECKOUT, CHECKIN and ERRSTRING
  *

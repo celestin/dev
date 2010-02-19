@@ -10,7 +10,7 @@ provided for in said License Agreement except with the prior
 written authorization from Globetrotter Software Inc.
 *****************************************************************************/
 /*
-*	Module: $Id: lsvendor.c,v 1.16 2000/07/28 22:35:17 daniel Exp $
+*	Module: $Id$
 *
 *	Function:  None
 *

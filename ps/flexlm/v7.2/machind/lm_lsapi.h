@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lm_lsapi.h,v 1.2 1999/04/08 18:15:47 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	LSAPI v1.1 prototypes, definitions and constants.
  *

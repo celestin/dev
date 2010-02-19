@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: makepkg.c,v 1.5 2000/02/09 02:22:57 daniel Exp $
+ *	Module: $Id$
  *
  *	Function:	create a PACKAGE line
  *

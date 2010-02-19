@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*
- *	Module: $Id: lmhtype.h,v 1.1 1999/02/03 20:20:09 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: Definitions for the various license manager platforms.
  *

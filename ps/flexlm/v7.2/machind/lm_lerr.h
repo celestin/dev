@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lm_lerr.h,v 1.14.2.1 2000/10/19 00:45:17 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: FLEXlm long error strings
  *

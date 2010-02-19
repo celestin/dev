@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmwin.c,v 1.5.2.3 2000/12/20 22:10:14 jwong Exp $
+ *	Module: $Id$
  *
  *	Description: 	 Trivial API example: CHECKOUT, CHECKIN and PERROR
  *

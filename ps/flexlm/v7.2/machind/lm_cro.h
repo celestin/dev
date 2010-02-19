@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lm_cro.h,v 1.1 2000/04/11 18:18:59 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: 	header file required by lm_code.h
  *			Used for CRO (Counterfeit Resistant Option)

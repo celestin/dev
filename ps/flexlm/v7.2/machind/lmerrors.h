@@ -12,7 +12,7 @@
 
  *****************************************************************************/
 /*	
- *	Module: $Id: lmerrors.h,v 1.14 2000/07/10 22:57:30 daniel Exp $
+ *	Module: $Id$
  *
  *	Description: FLEXlm error strings
  *

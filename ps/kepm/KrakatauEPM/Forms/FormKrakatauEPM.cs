@@ -12,6 +12,7 @@
  * CAM  15-Feb-2010  10565 : Initialise KrakatauSettings with "InstallDir".
  * CAM  18-Feb-2010  10574 : Added MySQL Diagnostics methods.
  * CAM  19-Feb-2010  10558 : Added MetricSet chooser (filter) for Results Browser.
+ * CAM  19-Feb-2010  10558 : Added RefreshController.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -23,11 +24,14 @@ using SourceCodeMetrics.Krakatau.Kepm.Config;
 using SourceCodeMetrics.Krakatau.Kepm.Controls;
 using SourceCodeMetrics.Krakatau.Kepm.Projects;
 using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using SourceCodeMetrics.Krakatau.Kepm.Results;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   public partial class FormKrakatauEPM : Form
   {
+    private RefreshController _refreshController;
+
     public FormKrakatauEPM()
     {
       InitializeComponent();
@@ -37,6 +41,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       Prefs.Preferences.GetSettings(_lsvProjects);
 
       PopulateMetricSetsList(true);
+
+      _refreshController = new RefreshController(dataGridView1);
+
+      _lsvProjects.RefreshView += new RefreshViewRequested(_refreshController.RefreshView);
     }
 
     private void NewProject(object sender, EventArgs e)

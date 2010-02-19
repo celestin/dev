@@ -16,6 +16,7 @@
  * CAM  29-May-08    363 : Completed toolbar buttons.
  * CAM  18-Feb-2010  10574 : Renamed event handlers for consistency.
  * CAM  19-Feb-2010  10558 : Added RefreshResults, general tidy including separting Designer code.
+ * CAM  19-Feb-2010  10558 : Added Event plumbing.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -23,7 +24,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 
+using SourceCodeMetrics.Krakatau.Kepm.Forms;
 using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using SourceCodeMetrics.Krakatau.Kepm.Results;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Controls
 {
@@ -33,6 +36,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
   public partial class ProjectsView : ListView
   {
     private ContextMenu _popUpMenu;
+
+    public event RefreshViewRequested RefreshView;
 
     public ProjectsView()
       : base()
@@ -52,6 +57,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
       ContextMenu = _popUpMenu;
 
       ShowItemToolTips = true;
+    }
+
+    protected virtual void OnRefreshView(RefreshViewArgs e)
+    {
+      RefreshView(this, e);
     }
 
     public void AddProject(Project p)
@@ -106,11 +116,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
       ProjectItem pi = FindNew();
       if (pi != null)
       {
-        MessageBox.Show("Hello - " + pi.Project.Databasename);
-      }
-      else
-      {
-        MessageBox.Show("Other");
+        RefreshViewArgs e = new RefreshViewArgs(pi.Project);
+        OnRefreshView(e);
       }
     }
 

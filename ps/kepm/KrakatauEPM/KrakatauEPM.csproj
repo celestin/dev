@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -46,6 +50,7 @@
     <Compile Include="Controls\ProjectsView.Designer.cs">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Database\DatabaseLayer.cs" />
     <Compile Include="Forms\FormAnalyse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +66,12 @@
     <Compile Include="Forms\FormMetricSets.Designer.cs">
       <DependentUpon>FormMetricSets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Results\RefreshController.cs" />
     <Compile Include="KrakatauSettings.cs" />
     <Compile Include="Projects\Arguments.cs" />
     <Compile Include="Projects\ProjectOptions.cs" />
+    <Compile Include="Results\RefreshEvent.cs">
+    </Compile>
     <Compile Include="Threading\AsyncOperation.cs" />
     <Compile Include="Config\Ext.cs" />
     <Compile Include="Forms\FormKrakatauEPM.cs">

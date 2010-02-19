@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: HexBin.hpp 832764 2009-11-04 14:55:19Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_HEXBIN_HPP)

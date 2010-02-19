@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DOMDocumentImpl.hpp 679340 2008-07-24 10:28:29Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMDOCUMENTIMPL_HPP)

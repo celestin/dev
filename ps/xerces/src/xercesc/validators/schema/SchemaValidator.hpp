@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: SchemaValidator.hpp 806238 2009-08-20 16:19:44Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_SCHEMAVALIDATOR_HPP)

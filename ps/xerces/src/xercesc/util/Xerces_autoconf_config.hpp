@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: Xerces_autoconf_config.msvc.hpp 883299 2009-11-23 10:34:54Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XERCES_AUTOCONFIG_CONFIG_HPP)

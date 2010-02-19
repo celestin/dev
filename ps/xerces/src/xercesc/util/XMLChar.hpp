@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLChar.hpp 558817 2007-07-23 18:12:54Z cargilld $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLCHAR_HPP)

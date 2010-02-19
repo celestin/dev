@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: SchemaInfo.hpp 883307 2009-11-23 11:35:28Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_SCHEMAINFO_HPP)

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: UnixHTTPURLInputStream.cpp 778863 2009-05-26 19:59:25Z borisk $
+ * $Id$
  */
 
 #if HAVE_CONFIG_H

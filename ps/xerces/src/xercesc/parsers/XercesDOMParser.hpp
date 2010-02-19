@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XercesDOMParser.hpp 903123 2010-01-26 08:23:46Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XERCESDOMPARSER_HPP)

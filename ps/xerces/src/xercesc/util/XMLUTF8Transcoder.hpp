@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLUTF8Transcoder.hpp 635560 2008-03-10 14:10:09Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLUTF8TRANSCODER_HPP)

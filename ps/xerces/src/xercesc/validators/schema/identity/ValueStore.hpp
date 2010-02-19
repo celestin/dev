@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: ValueStore.hpp 798456 2009-07-28 09:08:05Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_VALUESTORE_HPP)

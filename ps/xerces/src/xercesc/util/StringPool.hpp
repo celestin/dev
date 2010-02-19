@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: StringPool.hpp 649259 2008-04-17 20:14:20Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_STRINGPOOL_HPP)

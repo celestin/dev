@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLBuffer.hpp 695422 2008-09-15 11:04:06Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLBUFFER_HPP)

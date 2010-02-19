@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: MemBufInputSource.hpp 553941 2007-07-06 16:14:22Z amassari $
+ * $Id$
  */
 
 

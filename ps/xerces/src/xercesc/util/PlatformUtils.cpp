@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: PlatformUtils.cpp 808881 2009-08-28 13:21:24Z amassari $
+ * $Id$
  *
  */
 

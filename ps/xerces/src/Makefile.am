@@ -16,7 +16,7 @@
 #
 
 #
-# $Id: Makefile.am 883272 2009-11-23 08:17:49Z borisk $
+# $Id$
 #
 
 include ${top_srcdir}/version.incl

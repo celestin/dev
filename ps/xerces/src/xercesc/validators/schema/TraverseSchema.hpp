@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: TraverseSchema.hpp 882501 2009-11-20 11:06:01Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_TRAVERSESCHEMA_HPP)

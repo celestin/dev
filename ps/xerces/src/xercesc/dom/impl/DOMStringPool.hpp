@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DOMStringPool.hpp 678766 2008-07-22 14:00:16Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMSTRINGPOOL_HPP)

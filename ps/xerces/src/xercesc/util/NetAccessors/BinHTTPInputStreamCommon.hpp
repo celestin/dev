@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: BinFileInputStream.hpp 553903 2007-07-06 14:43:42Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_BINHTTPINPUTSTREAMCOMMON_HPP)

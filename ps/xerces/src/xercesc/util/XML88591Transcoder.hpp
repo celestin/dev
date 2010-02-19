@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XML88591Transcoder.hpp 635560 2008-03-10 14:10:09Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XML88591TRANSCODER_HPP)

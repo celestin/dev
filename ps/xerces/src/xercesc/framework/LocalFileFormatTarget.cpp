@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: LocalFileFormatTarget.cpp 882597 2009-11-20 15:10:13Z borisk $
+ * $Id$
  */
 
 #include <xercesc/framework/LocalFileFormatTarget.hpp>

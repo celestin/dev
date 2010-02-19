@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: CurlURLInputStream.cpp 789693 2009-06-30 12:32:24Z amassari $
+ * $Id$
  */
 
 #if HAVE_CONFIG_H

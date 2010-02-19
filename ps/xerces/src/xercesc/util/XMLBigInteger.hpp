@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLBigInteger.hpp 557254 2007-07-18 13:28:54Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XML_BIGINTEGER_HPP)

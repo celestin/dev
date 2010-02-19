@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DatatypeValidatorFactory.cpp 678409 2008-07-21 13:08:10Z borisk $
+ * $Id$
  */
 
 

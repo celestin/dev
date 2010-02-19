@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DOMCharacterDataImpl.cpp 678766 2008-07-22 14:00:16Z borisk $
+ * $Id$
  */
 
 #include "DOMCharacterDataImpl.hpp"

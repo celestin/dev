@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: MemBufFormatTarget.hpp 553937 2007-07-06 16:02:19Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_MEMBUFFORMATTARGET_HPP)

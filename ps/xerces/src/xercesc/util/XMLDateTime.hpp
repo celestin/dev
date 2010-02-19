@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLDateTime.hpp 881733 2009-11-18 11:44:47Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XML_DATETIME_HPP)

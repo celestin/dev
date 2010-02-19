@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: Mutexes.hpp 734985 2009-01-16 12:21:14Z johns $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_MUTEXES_HPP)

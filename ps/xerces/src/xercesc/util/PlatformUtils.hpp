@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: PlatformUtils.hpp 808072 2009-08-26 16:01:20Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_PLATFORMUTILS_HPP)

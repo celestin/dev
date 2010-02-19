@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: BinInputStream.hpp 670359 2008-06-22 13:43:45Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_BININPUTSTREAM_HPP)

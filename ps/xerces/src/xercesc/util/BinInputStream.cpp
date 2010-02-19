@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: BinInputStream.cpp 670359 2008-06-22 13:43:45Z borisk $
+ * $Id$
  */
 
 

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DOMLSSerializerImpl.hpp 695856 2008-09-16 12:52:32Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMLSSERIALIZERMPL_HPP)

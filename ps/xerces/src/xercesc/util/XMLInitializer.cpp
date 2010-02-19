@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLInitializer.cpp 635560 2008-03-10 14:10:09Z borisk $
+ * $Id$
  */
 
 

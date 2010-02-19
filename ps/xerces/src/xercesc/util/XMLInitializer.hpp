@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLInitializer.hpp 695427 2008-09-15 11:05:36Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLINITIALIZER_HPP)

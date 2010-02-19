@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DOMCharacterDataImpl.hpp 678709 2008-07-22 10:56:56Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMCHARACTERDATAIMPL_HPP)

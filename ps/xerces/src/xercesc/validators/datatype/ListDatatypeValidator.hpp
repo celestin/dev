@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: ListDatatypeValidator.hpp 695949 2008-09-16 15:57:44Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_LIST_DATATYPEVALIDATOR_HPP)

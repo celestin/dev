@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: IdentityConstraintHandler.hpp 803869 2009-08-13 12:56:21Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_IDENTITYCONSTRAINT_HANDLER_HPP)

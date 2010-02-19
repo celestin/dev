@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: MacOSUnicodeConverter.hpp 738905 2009-01-29 16:02:26Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_MACOSUNICODECONVERTER_HPP)

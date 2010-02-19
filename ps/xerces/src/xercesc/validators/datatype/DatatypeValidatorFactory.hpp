@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: DatatypeValidatorFactory.hpp 678409 2008-07-21 13:08:10Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DATATYPEVALIDATORFACTORY_HPP)

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLStringTokenizer.hpp 555320 2007-07-11 16:05:13Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLSTRINGTOKENIZER_HPP)

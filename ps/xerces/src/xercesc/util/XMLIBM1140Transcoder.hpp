@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: XMLIBM1140Transcoder.hpp 570552 2007-08-28 19:57:36Z amassari $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLIBM1140TRANSCODER_HPP)

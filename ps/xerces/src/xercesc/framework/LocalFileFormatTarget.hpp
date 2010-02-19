@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: LocalFileFormatTarget.hpp 882540 2009-11-20 13:02:07Z borisk $
+ * $Id$
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_LOCALFILEFORMATTARGET_HPP)

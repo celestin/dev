@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\DirectoryMap.cs" />
+    <Compile Include="Controls\ProjectsView.Designer.cs">
+      <DependentUpon>ProjectsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAnalyse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +57,9 @@
     </Compile>
     <Compile Include="Forms\FormDirectoryTreeSelector.Designer.cs">
       <DependentUpon>FormDirectoryTreeSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMetricSets.Designer.cs">
+      <DependentUpon>FormMetricSets.cs</DependentUpon>
     </Compile>
     <Compile Include="KrakatauSettings.cs" />
     <Compile Include="Projects\Arguments.cs" />

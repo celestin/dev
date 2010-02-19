@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004,2009 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -16,6 +16,7 @@
  * CAM  22-Aug-2009  10461 : Added Check/Uncheck All box.
  * CAM  11-Nov-2009  10502 : Removed use of CMD file to create filelist (if the file still exists, we read it for smooth migration).
  * CAM  17-Nov-2009  10502 : Modified to support new Project Options (.kepm) file.
+ * CAM  19-Feb-2010  10558 : Tidied Databasename.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -164,11 +165,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 
         for (int i = 0; i < name.Length && i < MaxProjectDbName; i++)
         {
-          if ((name[i] >= 'a') && (name[i] <= 'z'))
-          {
-            rval += name[i];
-          }
-          else if ((name[i] >= '0') && (name[i] <= '9'))
+          if (((name[i] >= 'a') && (name[i] <= 'z')) ||((name[i] >= '0') && (name[i] <= '9')))
           {
             rval += name[i];
           }

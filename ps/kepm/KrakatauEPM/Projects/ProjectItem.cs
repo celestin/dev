@@ -1,15 +1,16 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2004-2006 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * KEPM Visual ListViewItem component
  *
  * $Id$
- * 
+ *
  * Who  When       Why
  * CAM  11-Oct-05   152 : Added to Source Safe.
  * CAM  24-Jan-06   185 : Added New/Old awareness for saving/restoring projects.
+ * CAM  19-Feb-2010  10558 : Added Tooltips.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,11 +18,11 @@ using System.Windows.Forms;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Projects
 {
-	/// <summary>
-	/// UI Project Item.
-	/// </summary>
-	public class ProjectItem : System.Windows.Forms.ListViewItem
-	{
+  /// <summary>
+  /// UI Project Item.
+  /// </summary>
+  public class ProjectItem : ListViewItem
+  {
     private Project _project = null;
 
     public ProjectItem(): base()
@@ -32,21 +33,21 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
     {
       _project = project;
 
-      if (_project.NewProject) 
+      if (_project.NewProject)
       {
-        this.setNew();
-      } 
-      else if (_project.OldProject) 
-      {
-        this.setOld();
+        this.SetNew();
       }
-      else 
+      else if (_project.OldProject)
       {
-        this.clearStatus();
+        this.SetOld();
+      }
+      else
+      {
+        this.ClearStatus();
       }
     }
 
-    public void RefreshProject() 
+    public void RefreshProject()
     {
       base.Text = _project.Title;
     }
@@ -63,10 +64,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       }
     }
 
-    public void clearStatus() 
+    public void ClearStatus()
     {
       _project.NewProject = false;
       _project.OldProject = false;
+      ToolTipText = String.Empty;
 
       if (this.ImageIndex != 1)
       {
@@ -74,9 +76,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       }
     }
 
-    public void setNew() 
+    public void SetNew()
     {
       _project.NewProject = true;
+      ToolTipText = "New Project";
 
       if (this.ImageIndex != 3)
       {
@@ -84,9 +87,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Projects
       }
     }
 
-    public void setOld() 
+    public void SetOld()
     {
       _project.OldProject = true;
+      ToolTipText = "Old Project";
 
       if (this.ImageIndex != 2)
       {

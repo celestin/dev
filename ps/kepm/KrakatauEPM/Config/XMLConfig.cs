@@ -12,6 +12,7 @@
  * CAM  02-Nov-06    117 : No real change.
  * CAM  11-Nov-2009  10502 : Corrected obselete calls.
  * CAM  15-Feb-2010  10565 : Added ConfigFile and utilise KrakatauSettings.
+ * CAM  19-Feb-2010  10558 : Changed MetricSets to property.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -42,6 +43,14 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
       get
       {
         return new FileInfo(String.Format(@"{0}\{1}", KrakatauSettings.Settings.InstallDir.FullName, EpmConfig));
+      }
+    }
+
+    public IEnumerator MetricSets
+    {
+      get
+      {
+        return _sets.Values.GetEnumerator();
       }
     }
 
@@ -277,11 +286,6 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
         list[i++] = e.Current;
       }
       return list;
-    }
-
-    public IEnumerator GetMetricSets()
-    {
-      return _sets.Values.GetEnumerator();
     }
 
     public void AddMetricSet(MetricSet ms)

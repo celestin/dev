@@ -11,9 +11,11 @@
  * CAM  29-May-08    364 : Added Preferences event.
  * CAM  15-Feb-2010  10565 : Initialise KrakatauSettings with "InstallDir".
  * CAM  18-Feb-2010  10574 : Added MySQL Diagnostics methods.
+ * CAM  19-Feb-2010  10558 : Added MetricSet chooser (filter) for Results Browser.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
+using System.Collections;
 using System.Windows.Forms;
 using System.IO;
 
@@ -33,6 +35,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       KrakatauSettings.Create(Application.StartupPath);
       XmlConfig.Config.ParseFile();
       Prefs.Preferences.GetSettings(_lsvProjects);
+
+      PopulateMetricSetsList(true);
     }
 
     private void NewProject(object sender, EventArgs e)
@@ -115,7 +119,23 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
     private void ShowMetricSets(object sender, EventArgs e)
     {
-      (new FormMetricSets(XmlConfig.Config.GetMetricSets())).ShowDialog(this);
+      FormMetricSets metricSets = new FormMetricSets(XmlConfig.Config.MetricSets);
+      metricSets.ShowDialog(this);
+
+      PopulateMetricSetsList(metricSets.ItemsDeleted);
+    }
+
+    private void PopulateMetricSetsList(bool itemsDeleted)
+    {
+      if (itemsDeleted)
+      {
+        _cmbMetricSets.SelectedItem = -1;
+        _cmbMetricSets.SelectedText = "";
+      }
+      _cmbMetricSets.Items.Clear();
+
+      IEnumerator metricSets = XmlConfig.Config.MetricSets;
+      while (metricSets.MoveNext()) _cmbMetricSets.Items.Add(metricSets.Current);
     }
 
     private void SetAsOldProject(object sender, EventArgs e)
@@ -241,5 +261,6 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     {
       MessageBox.Show(message, String.Format("Error {0}", title), MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
+
   }
 }

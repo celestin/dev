@@ -16,6 +16,7 @@
  * CAM  30-May-08    366 : Set UseSystemPasswordChar to true.
  * CAM  14-Sep-2009  10484 : Ensure logging is based on chkLog.
  * CAM  15-Feb-2010  10565 : Use KrakatauSettings for InstallDir.
+ * CAM  19-Feb-2010  10558 : Use MetricSets property (rather than method).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -49,7 +50,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
         this.txtOldProj.Text = this._oldProject.Title + " (" + this._oldProject.ProjectFile.FullName + ")";
       }
 
-      IEnumerator sets = XmlConfig.Config.GetMetricSets();
+      IEnumerator sets = XmlConfig.Config.MetricSets;
       while (sets.MoveNext())
       {
         this.cmbMetSet.Items.Add(sets.Current);

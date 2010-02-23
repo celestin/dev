@@ -92,6 +92,7 @@
  * CAM  17-Nov-2009  10503 : Changed to PowerSoftware.com.
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
  * CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
+ * CAM  23-Feb-2010  10576 : Added update to set Unchanged files.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -729,6 +730,7 @@ void setMetrics(int sfid, string filename) {
   if (met.get(MET(N1)) + met.get(MET(N2)) > 0) met.calculateHalstead();
 
   met.set(MET(BYTES), Utilities::getFileSize(filename));  // Filesize
+
   saveDb(sfid, met, MET(LOC), MET(BYTES));
 }
 
@@ -1445,6 +1447,37 @@ int main(int argc, char* argv[]) {
         }
         projDb.clearResults();
       }
+
+      // Set 'Changed' files which have identical metric values in both projects to Unchanged
+      strcpy_s(sql, QUERY_MAX, "UPDATE comparefile cf ");
+      strcat_s(sql, QUERY_MAX, "SET status = 'U' ");
+      strcat_s(sql, QUERY_MAX, "WHERE status = 'C' ");
+      strcat_s(sql, QUERY_MAX, "AND sfid NOT IN ( ");
+      strcat_s(sql, QUERY_MAX, "SELECT DISTINCT sfid FROM ( ");
+      strcat_s(sql, QUERY_MAX, "SELECT sfid, mid, SUM(value1) - SUM(value2) ");
+      strcat_s(sql, QUERY_MAX, "FROM ( ");
+      strcat_s(sql, QUERY_MAX, "SELECT cf1.sfid, sm1.mid, sm1.mvalue value1, 0 value2 ");
+      strcat_s(sql, QUERY_MAX, "FROM sourcemetric sm1, comparefile cf1 ");
+      strcat_s(sql, QUERY_MAX, "WHERE cf1.sfid = sm1.sfid ");
+      strcat_s(sql, QUERY_MAX, "AND cf1.status = 'C' ");
+      strcat_s(sql, QUERY_MAX, "UNION  ");
+      strcat_s(sql, QUERY_MAX, "SELECT cf2.sfid, sm2.mid, 0 value1, sm2.mvalue value2 ");
+      strcat_s(sql, QUERY_MAX, "FROM sourcemetric sm2, comparefile cf2 ");
+      strcat_s(sql, QUERY_MAX, "WHERE cf2.sfid2 = sm2.sfid ");
+      strcat_s(sql, QUERY_MAX, "AND cf2.status = 'C' ");
+      strcat_s(sql, QUERY_MAX, ") t1 ");
+      strcat_s(sql, QUERY_MAX, "GROUP BY sfid,mid ");
+      strcat_s(sql, QUERY_MAX, "HAVING SUM(value1) - SUM(value2) <> 0) t3) ");
+
+      sprintf_s(eventMsg, "Updating status of Unchanged files... ");
+      cout << eventMsg << flush;
+      logEvent(eventMsg);
+
+      projDb.executeResultlessQuery(string(sql));
+
+      sprintf_s(eventMsg, "Done.");
+      cout << eventMsg << endl;
+      logEvent(eventMsg);
 
       strcpy_s(sql, QUERY_MAX, "SELECT cf.sfid, cf.status, sm.mvalue, sf1.sf_type, sm.mid ");
       strcat_s(sql, QUERY_MAX, "FROM sourcefile sf1, comparefile cf, sourcemetric sm ");

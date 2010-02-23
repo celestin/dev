@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2009 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Stores information about items (Projects, Packages, Files) used in reporting
@@ -17,6 +17,7 @@
  * CAM  28-Jan-06    168 : Added getLastMetric.
  * CAM  18-Jul-06    272 : Added getLang.
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
+ * CAM  23-Feb-2010  10576 : Name report files using leading zeroes.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_REPORTITEM
@@ -69,7 +70,9 @@ namespace metrics
           prefix = "project_metrics";
           break;
         case ITEM_FILE:
-          prefix = "f" + id;
+          char buff[QUERY_MAX];
+          sprintf_s(buff, QUERY_MAX, "f%06d", theUniqueID);
+          prefix = buff;
           break;
       }
 
@@ -118,9 +121,7 @@ namespace metrics
 
     void setLanguage(string lang)     { theLang.setLanguage(lang); }
     Lang getLang()                    { return theLang; }
-    //Langs getLanguage()               { return theLang.getLanguage(); }
     string getLangDesc()              { return theLang.getDescription(); }
-
 
     void setText1(string text1)       { theText1 = text1; }
 
@@ -131,4 +132,3 @@ namespace metrics
 };
 
 #endif
-

@@ -22,6 +22,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Added Churn metrics.
  * CAM  20-Aug-2009  10456 : Corrected Halstead Bug Prediction and tidied other Halsteads.
+ * CAM  23-Feb-2010  10576 : Removed checking for Unchanged files - now handled in core EPM.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_METRICS
@@ -148,17 +149,7 @@ namespace metrics
       }
     }
 
-
     void calculateChange(ReportItem &currItem) {
-      bool itemChanged = false;
-      for (int i=MET(CLOC); i<METFILE && !itemChanged; i++) {
-        itemChanged = (this->get(i,0)!=0);
-      }
-
-      if ((currItem.getItemStatus() == STATUS_CHANGED) && (!itemChanged)) {
-        currItem.setStatus("");
-      }
-
       int metID = 0;
       switch (currItem.getItemStatus()) {
         case STATUS_CHANGED:
@@ -185,7 +176,6 @@ namespace metrics
       this->set(MET(XLLOC), calculateChurn(CLLOC, ALLOC));
       //this->set(MET(XFILE), calculateChurn(CFILE, AFILE));    // Not sure why this isn't working but added increment in calculateChange
     }
-
   };
 };
 

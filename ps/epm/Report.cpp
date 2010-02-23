@@ -25,6 +25,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  17-Apr-2009  10430 : Extended last metrics to include Churn.
  * CAM  20-Aug-2009  10456 : Return metrics as doubles.  Added isPrecisionRequired for Reports that wish to use.
+ * CAM  23-Feb-2010  10576 : Removed commented out code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
@@ -222,10 +223,7 @@ bool Report::isPrecisionRequired(long mid)
 }
 
 void Report::calculateProjectMetrics() {
-  //projMet.calculateHalstead();
-
   char sql[QUERY_MAX];
-  //char mid[256];
   long f;
 
   // Retrieve Min/Max/Avg
@@ -249,4 +247,3 @@ void Report::calculateProjectMetrics() {
     theDb.clearResults();
   }
 }
-

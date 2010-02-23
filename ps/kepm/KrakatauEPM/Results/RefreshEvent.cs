@@ -27,7 +27,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Results
 
     public RefreshViewArgs(Project project)
     {
-      _project = project;
+      Project = project;
     }
   }
 

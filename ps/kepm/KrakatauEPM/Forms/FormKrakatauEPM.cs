@@ -13,6 +13,7 @@
  * CAM  18-Feb-2010  10574 : Added MySQL Diagnostics methods.
  * CAM  19-Feb-2010  10558 : Added MetricSet chooser (filter) for Results Browser.
  * CAM  19-Feb-2010  10558 : Added RefreshController.
+ * CAM  23-Feb-2010  10558 : Enable MetricSet chooser to be cleared.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -42,7 +43,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
       PopulateMetricSetsList(true);
 
-      _refreshController = new RefreshController(dataGridView1);
+      _refreshController = new RefreshController(_dgvResults);
 
       _lsvProjects.RefreshView += new RefreshViewRequested(_refreshController.RefreshView);
     }
@@ -270,5 +271,18 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       MessageBox.Show(message, String.Format("Error {0}", title), MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
+    private void MetricSetChanged(object sender, EventArgs e)
+    {
+      ToolStripComboBox combo = (ToolStripComboBox)sender;
+      _refreshController.MetricSet = (MetricSet)combo.SelectedItem;
+    }
+
+    private void MetricSetTextChanged(object sender, EventArgs e)
+    {
+      if (_cmbMetricSets.Text.Length == 0)
+      {
+        _refreshController.MetricSet = null;
+      }
+    }
   }
 }

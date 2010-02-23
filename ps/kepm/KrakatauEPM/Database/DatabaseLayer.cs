@@ -7,15 +7,14 @@
  *
  * Who  When         Why
  * CAM  19-Feb-2010  10558 : File created.
+ * CAM  23-Feb-2010  10558 : Added Get Results.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Data;
-using MySql.Data;
 using MySql.Data.MySqlClient;
+
+using SourceCodeMetrics.Krakatau.Kepm.Config;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Database
 {
@@ -27,11 +26,15 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Database
     private static DatabaseLayer _dbLayer;
     protected static readonly object _semaphore = new object();
 
-    protected MySqlConnection _conn;
+    private MySqlConnection _conn;
+    protected MySqlCommand _cmdResults;
+    protected MySqlDataAdapter _dadResults;
 
-    protected MySqlCommand _cmdVolume;
-
-    protected MySqlDataAdapter _dadAuthor;
+    protected MySqlConnection Connection
+    {
+      get { return _conn; }
+      set { _conn = value; }
+    }
 
     private DatabaseLayer()
     {
@@ -52,17 +55,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Database
       }
     }
 
-    public bool Open(string datasource, string database, string userid, string password)
+    public bool Open(string datasource, string database, string username, string password)
     {
-      string DataSource = "localhost";
-      string Database = "goodteaching_org_min";
-      string UserID = "goodteaching";
-      string Password = "psalm45";
-
-      string MyConString = "Data Source=" + DataSource +
-          ";Database=" + Database +
-          ";User ID=" + UserID +
-          ";Password=" + Password;
+      string connectionString = String.Format("Data Source={0};Database={1};User ID={2};Password={3}",
+        datasource, database, username, password);
 
       lock (_semaphore)
       {
@@ -70,8 +66,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Database
         {
           Close();
 
-          _conn = new MySqlConnection(MyConString);
-          _conn.Open();
+          Connection = new MySqlConnection(connectionString);
+          Connection.Open();
         }
         catch (Exception)
         {
@@ -85,42 +81,53 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Database
     {
       lock (_semaphore)
       {
-        if (_conn != null && _conn.State == ConnectionState.Open)
+        if (Connection != null && Connection.State == ConnectionState.Open)
         {
-          _conn.Close();
+          Connection.Close();
         }
       }
     }
 
-    public void GetBibleVersions()
+    public void BuildTable(DataSet set, string tableName, MetricSet metricSet)
     {
-      //String sql;
-      //MySqlDataReader dr;
-      //BibleVersionCollection versions = new BibleVersionCollection();
 
-      //sql = "SELECT verid, vercode, versionname " +
-      //      "FROM mse_bible_version ";
+    }
 
-      //lock (_semaphore)
-      //{
-      //  if (_cmdVersions == null)
-      //  {
-      //    _cmdVersions = new MySqlCommand(sql, _conn);
-      //  }
-      //  dr = _cmdVersions.ExecuteReader();
-      //}
+    public void GetResults(DataSet set, string tableName, MetricSet metricSet)
+    {
+      lock (_semaphore)
+      {
+        if ((_cmdResults == null) || (_cmdResults.Connection != Connection))
+        {
+          string sql =
+            "select p.pr_name as Project, sf.sf_shortname as Filename, sf.sf_type as Lang, cf.status as Status " +
+            "from sourcefile sf, comparefile cf, project p " +
+            "where cf.sfid = sf.sfid " +
+            "and p.projid = sf.projid ";
 
-      //do
-      //{
-      //  while (dr.Read())
-      //  {
-      //    versions.Add(new BibleVersion(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
-      //  }
-      //} while (dr.NextResult());
+          _cmdResults = new MySqlCommand(sql, Connection);
+          _cmdResults.Prepare();
 
-      //dr.Close();
+          _dadResults = new MySqlDataAdapter();
+          _dadResults.SelectCommand = _cmdResults;
+        }
+      }
 
-      //return versions;
+      if (set.Tables.Contains(tableName))
+      {
+        set.Tables.Remove(tableName);
+      }
+
+      _dadResults.Fill(set, tableName);
+
+      if (set.Tables.Contains(tableName))
+      {
+        DataTable table = set.Tables[tableName];
+        if (table.PrimaryKey == null)
+        {
+          table.PrimaryKey = new DataColumn[] { table.Columns["Filename"] };
+        }
+      }
     }
   }
 }

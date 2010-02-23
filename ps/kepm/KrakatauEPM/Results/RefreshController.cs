@@ -7,6 +7,7 @@
  *
  * Who  When       Why
  * CAM  19-Feb-2010  10558 : File created.
+ * CAM  23-Feb-2010  10558 : Refresh the view correctly, and ensure the database is opened with relevant credentials.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -14,37 +15,73 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
+using SourceCodeMetrics.Krakatau.Kepm.Config;
+using SourceCodeMetrics.Krakatau.Kepm.Database;
 using SourceCodeMetrics.Krakatau.Kepm.Projects;
 using SourceCodeMetrics.Krakatau.Kepm.Results;
+using SourceCodeMetrics.Krakatau.Kepm.Win32;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
   public class RefreshController
   {
-    private DataTable _table;
+    protected static readonly string ResultsTable = "MetricsResults";
+    private DataGridView _view;
+    private DataSet _set;
+    private MetricSet _metricSet;
+
+    public MetricSet MetricSet
+    {
+      get { return _metricSet; }
+      set { _metricSet = value; }
+    }
 
     public RefreshController(DataGridView view)
     {
-      DataSet set = new DataSet();
-      _table = new DataTable("MetricsResults");
-      set.Tables.Add(_table);
+      _view = view;
 
-      view.DataSource = set;
-      view.DataMember = _table.TableName;
+      _set = new DataSet();
 
-      DataColumn filename = new DataColumn("File");
-      _table.Columns.Clear();
-      _table.Columns.Add(filename);
+      view.DataSource = _set;
     }
 
     public void RefreshView(object sender, RefreshViewArgs e)
     {
-      _table.Rows.Clear();
+      if (OpenDatabase(e.Project))
+      {
+        DatabaseLayer.Instance.GetResults(_set, ResultsTable, _metricSet);
+        _view.DataSource = new BindingSource(_set, ResultsTable);
+      }
+    }
 
-      DataRow row = _table.NewRow();
-      row[_table.Columns[0]] = "bing bong";
+    protected bool OpenDatabase(Project project)
+    {
+      string server = "localhost";
+      string username = "root";
+      string password = String.Empty;
 
-      _table.Rows.Add(row);
+      Prefs p = Prefs.Preferences;
+      if (p.MySqlUse)
+      {
+        server = p.MySqlServer;
+        username = p.MySqlUsername;
+        password = p.MySqlPassword;
+      }
+
+      Arguments a = project.GetAnalysisOptions();
+      if (a != null)
+      {
+        if (a["s"] != null) server = a["s"];
+        if (a["u"] != null) username = a["u"];
+        if (a["p"] != null) password = a["p"];
+      }
+
+      if (server.Length > 0 && username.Length > 0)
+      {
+        return DatabaseLayer.Instance.Open(server, project.Databasename, username, password);
+      }
+
+      return false;
     }
   }
 }

@@ -54,13 +54,14 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKrakatauEPM));
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this._stsMain = new System.Windows.Forms.StatusStrip();
       this._statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.mainSplit = new System.Windows.Forms.SplitContainer();
       this._lsvProjects = new SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView();
       this._imlProjects = new System.Windows.Forms.ImageList(this.components);
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this._dgvResults = new System.Windows.Forms.DataGridView();
       this._mnsMain = new System.Windows.Forms.MenuStrip();
       this.mniFile = new System.Windows.Forms.ToolStripMenuItem();
       this.mniNewProject = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +104,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.mainSplit.Panel1.SuspendLayout();
       this.mainSplit.Panel2.SuspendLayout();
       this.mainSplit.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dgvResults)).BeginInit();
       this._mnsMain.SuspendLayout();
       this._tspMain.SuspendLayout();
       this.SuspendLayout();
@@ -160,7 +161,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mainSplit.Panel2
       // 
-      this.mainSplit.Panel2.Controls.Add(this.dataGridView1);
+      this.mainSplit.Panel2.Controls.Add(this._dgvResults);
       this.mainSplit.Size = new System.Drawing.Size(957, 418);
       this.mainSplit.SplitterDistance = 143;
       this.mainSplit.TabIndex = 1;
@@ -187,10 +188,10 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._imlProjects.Images.SetKeyName(2, "ProjectOld");
       this._imlProjects.Images.SetKeyName(3, "ProjectNew");
       // 
-      // dataGridView1
+      // _dgvResults
       // 
-      this.dataGridView1.AllowUserToAddRows = false;
-      this.dataGridView1.AllowUserToDeleteRows = false;
+      this._dgvResults.AllowUserToAddRows = false;
+      this._dgvResults.AllowUserToDeleteRows = false;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F);
@@ -198,14 +199,22 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.ReadOnly = true;
-      this.dataGridView1.Size = new System.Drawing.Size(957, 271);
-      this.dataGridView1.TabIndex = 0;
+      this._dgvResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      this._dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 8.25F);
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this._dgvResults.DefaultCellStyle = dataGridViewCellStyle2;
+      this._dgvResults.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._dgvResults.Location = new System.Drawing.Point(0, 0);
+      this._dgvResults.Name = "_dgvResults";
+      this._dgvResults.ReadOnly = true;
+      this._dgvResults.Size = new System.Drawing.Size(957, 271);
+      this._dgvResults.TabIndex = 0;
       // 
       // _mnsMain
       // 
@@ -409,7 +418,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
             this._tsbAnalyseProject});
       this._tspMain.Location = new System.Drawing.Point(3, 24);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(399, 39);
+      this._tspMain.Size = new System.Drawing.Size(430, 39);
       this._tspMain.TabIndex = 0;
       // 
       // _tsbNewProject
@@ -465,6 +474,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       this._cmbMetricSets.Name = "_cmbMetricSets";
       this._cmbMetricSets.Size = new System.Drawing.Size(121, 39);
+      this._cmbMetricSets.SelectedIndexChanged += new System.EventHandler(this.MetricSetChanged);
+      this._cmbMetricSets.TextChanged += new System.EventHandler(this.MetricSetTextChanged);
       // 
       // toolStripSeparator2
       // 
@@ -530,7 +541,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.mainSplit.Panel1.ResumeLayout(false);
       this.mainSplit.Panel2.ResumeLayout(false);
       this.mainSplit.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._dgvResults)).EndInit();
       this._mnsMain.ResumeLayout(false);
       this._mnsMain.PerformLayout();
       this._tspMain.ResumeLayout(false);
@@ -580,7 +591,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.ToolStripMenuItem mniStopService;
     private System.Windows.Forms.SplitContainer mainSplit;
     private System.Windows.Forms.ToolStripStatusLabel _statusLabel;
-    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.DataGridView _dgvResults;
     private System.Windows.Forms.ToolStripComboBox _cmbMetricSets;
   }
 }

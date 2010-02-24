@@ -13,6 +13,7 @@
  * CAM  11-Nov-2009  10502 : Corrected obselete calls.
  * CAM  15-Feb-2010  10565 : Added ConfigFile and utilise KrakatauSettings.
  * CAM  19-Feb-2010  10558 : Changed MetricSets to property.
+ * CAM  19-Feb-2010  10558 : Create MetricDefs using Metric objects.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,6 +22,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Collections;
 
+using SourceCodeMetrics.Krakatau.Kepm.Metrics;
 using SourceCodeMetrics.Krakatau.Kepm.Win32;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Config
@@ -97,6 +99,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
         Hashtable ftypes;
         Hashtable exts;
         string sLang,sFiletype;
+        MetricCollection metrics = KrakatauSettings.Settings.Metrics;
 
         el = root.ChildNodes.GetEnumerator();
         while (el.MoveNext())
@@ -166,7 +169,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
                     if (a != null && !"".Equals(a.Value))
                     {
-                      MetricDef md = new MetricDef(int.Parse(a.Value));
+                      MetricDef md = new MetricDef(metrics[long.Parse(a.Value)]);
                       if (au != null && !"".Equals(au.Value))
                       {
                         md.Upper(long.Parse(au.Value));

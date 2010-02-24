@@ -8,6 +8,7 @@
  * Who  When       Why
  * CAM  19-Feb-2010  10558 : File created.
  * CAM  23-Feb-2010  10558 : Refresh the view correctly, and ensure the database is opened with relevant credentials.
+ * CAM  23-Feb-2010  10558 : Refresh the view only if changes require it, including defining the width and alignment of columns.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -29,6 +30,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private DataGridView _view;
     private DataSet _set;
     private MetricSet _metricSet;
+    private MetricSet _lastRefreshedMetricSet;
 
     public MetricSet MetricSet
     {
@@ -49,8 +51,46 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     {
       if (OpenDatabase(e.Project))
       {
+        bool fullRefresh = false;
+        if ((_view.Columns.Count == 0) ||
+          (_lastRefreshedMetricSet == null && _metricSet != null) ||
+          (_lastRefreshedMetricSet != null && _metricSet == null) ||
+          (_lastRefreshedMetricSet != _metricSet))
+        {
+          fullRefresh = true;
+          _view.DataSource = null;
+          _view.Columns.Clear();
+        }
+
         DatabaseLayer.Instance.GetResults(_set, ResultsTable, _metricSet);
         _view.DataSource = new BindingSource(_set, ResultsTable);
+
+        if (fullRefresh)
+        {
+          foreach (DataGridViewColumn col in _view.Columns)
+          {
+            if (col.Index == 0)
+            {
+              col.Width = 50;
+            }
+            if (col.Index == 1)
+            {
+              col.Width = 200;
+            }
+            else if (col.Index == 2 || col.Index ==3)
+            {
+              col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+              col.Width = 40;
+            }
+            else if (col.Index > 3)
+            {
+              col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+              col.Width = 42;
+            }
+          }
+        }
+
+        _lastRefreshedMetricSet = _metricSet;
       }
     }
 

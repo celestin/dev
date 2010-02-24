@@ -63,9 +63,15 @@
     <Compile Include="Forms\FormDirectoryTreeSelector.Designer.cs">
       <DependentUpon>FormDirectoryTreeSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormMetricSet.Designer.cs">
+      <DependentUpon>FormMetricSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMetricSets.Designer.cs">
       <DependentUpon>FormMetricSets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Metrics\Metric.cs" />
+    <Compile Include="Metrics\MetricLevel.cs" />
+    <Compile Include="Metrics\MetricType.cs" />
     <Compile Include="Results\RefreshController.cs" />
     <Compile Include="KrakatauSettings.cs" />
     <Compile Include="Projects\Arguments.cs" />

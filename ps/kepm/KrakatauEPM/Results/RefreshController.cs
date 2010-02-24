@@ -9,6 +9,7 @@
  * CAM  19-Feb-2010  10558 : File created.
  * CAM  23-Feb-2010  10558 : Refresh the view correctly, and ensure the database is opened with relevant credentials.
  * CAM  23-Feb-2010  10558 : Refresh the view only if changes require it, including defining the width and alignment of columns.
+ * CAM  24-Feb-2010  10580 : Ensure the last column is autosized to fit contents to prevent the user resizing.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -81,6 +82,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
             {
               col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
               col.Width = 40;
+            }
+            else if (col.Index == (_view.Columns.Count - 1))
+            {
+              col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+              col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             else if (col.Index > 3)
             {

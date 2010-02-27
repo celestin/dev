@@ -12,6 +12,7 @@
  * CAM  11-Dec-07    327 : Reference Project.MaxProjectDbName.
  * CAM  22-Aug-2009  10461 : Added Check/Uncheck All box.
  * CAM  17-Nov-2009  10502 : Modified to support new Project Options (.kepm) file.
+ * CAM  27-Feb-2010  10582 : Set default directory for saving projects.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -111,6 +112,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
     private void ProjectFileSaveAs(object sender, System.EventArgs e)
     {
+      sfdProj.InitialDirectory = KrakatauSettings.Settings.DefaultDirectory;
+
       if (sfdProj.ShowDialog() == DialogResult.OK)
       {
         txtProj.Text = sfdProj.FileName;

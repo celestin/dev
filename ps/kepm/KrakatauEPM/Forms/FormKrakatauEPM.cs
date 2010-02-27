@@ -15,6 +15,7 @@
  * CAM  19-Feb-2010  10558 : Added RefreshController.
  * CAM  23-Feb-2010  10558 : Enable MetricSet chooser to be cleared.
  * CAM  27-Feb-2010  10583 : Add event to handle formatting.
+ * CAM  27-Feb-2010  10582 : Set default directory for opening projects.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -64,6 +65,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
     private void OpenProject(object sender, EventArgs e)
     {
+      _ofdProj.InitialDirectory = KrakatauSettings.Settings.DefaultDirectory;
+
       if (_ofdProj.ShowDialog(this) == DialogResult.OK)
       {
         Project proj = new Project(_ofdProj.FileName);

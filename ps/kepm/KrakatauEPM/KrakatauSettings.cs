@@ -9,6 +9,7 @@
  * CAM  15-Feb-2010  10565 : File created.
  * CAM  18-Feb-2010  10574 : Added InstallDirPath.get.
  * CAM  24-Feb-2010  10558 : Added MetricCollection and NewMetricSetName.
+ * CAM  27-Feb-2010  10582 : Added DefaultDirectory.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,6 +29,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm
     private DirectoryInfo _installDir;
     private MetricCollection _metrics;
     private int _nextMetricSetId;
+    private string _defaultDirectory;
 
     public DirectoryInfo InstallDir
     {
@@ -59,6 +61,17 @@ namespace SourceCodeMetrics.Krakatau.Kepm
     {
       get { return _metrics; }
       set { _metrics = value; }
+    }
+    public string DefaultDirectory
+    {
+      get
+      {
+        if (_defaultDirectory == null)
+        {
+          _defaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        }
+        return _defaultDirectory;
+      }
     }
 
     private KrakatauSettings(DirectoryInfo appPath)

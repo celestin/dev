@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  17-Nov-2009  10502 : File created.
  * CAM  24-Nov-2009  10506 : Ensure Excluded Directories button is disabled on launch of the New Project form..
+ * CAM  27-Feb-2010  10582 : Amended filter for saving projects to match the Open.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Windows.Forms;
@@ -197,7 +198,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // sfdProj
       //
       this.sfdProj.DefaultExt = "txt";
-      this.sfdProj.Filter = "KEPM Project files|*.txt";
+      this.sfdProj.Filter = "KEPM Projects|*.txt";
       this.sfdProj.Title = "Save Project File As...";
       //
       // label6
@@ -254,7 +255,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.CancelButton = this.cmdCancel;
-      this.ClientSize = new System.Drawing.Size(448, 566);
+      this.ClientSize = new System.Drawing.Size(440, 562);
       this.Controls.Add(this.cmdSelect);
       this.Controls.Add(this.lbxExcludedDirectories);
       this.Controls.Add(this.label4);

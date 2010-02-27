@@ -9,6 +9,7 @@
  * CAM  19-Feb-2010  10558 : File created.
  * CAM  23-Feb-2010  10558 : Added Get Results.
  * CAM  24-Feb-2010  10558 : Implemented BuildTable with relevant columns (according to MetricSet if any).
+ * CAM  27-Feb-2010  10583 : Set Churn Status using short code.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,6 +18,7 @@ using MySql.Data.MySqlClient;
 
 using SourceCodeMetrics.Krakatau.Kepm.Config;
 using SourceCodeMetrics.Krakatau.Kepm.Metrics;
+using SourceCodeMetrics.Krakatau.Kepm.Results;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Database
 {
@@ -241,7 +243,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Database
           row["Project"] = dr["pr_name"].ToString();
           row["Filename"] = dr["sf_shortname"].ToString();
           row["Lang"] = dr["sf_type"].ToString();
-          row["Status"] = dr["status"].ToString();
+          row["Status"] = ChurnStatuses.GetShortCode(dr["status"].ToString());
         }
 
         mid = long.Parse(dr["mid"].ToString());

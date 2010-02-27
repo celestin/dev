@@ -72,6 +72,7 @@
     <Compile Include="Metrics\Metric.cs" />
     <Compile Include="Metrics\MetricLevel.cs" />
     <Compile Include="Metrics\MetricType.cs" />
+    <Compile Include="Results\ChurnStatus.cs" />
     <Compile Include="Results\RefreshController.cs" />
     <Compile Include="KrakatauSettings.cs" />
     <Compile Include="Projects\Arguments.cs" />

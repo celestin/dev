@@ -14,6 +14,7 @@
  * CAM  19-Feb-2010  10558 : Added MetricSet chooser (filter) for Results Browser.
  * CAM  19-Feb-2010  10558 : Added RefreshController.
  * CAM  23-Feb-2010  10558 : Enable MetricSet chooser to be cleared.
+ * CAM  27-Feb-2010  10583 : Add event to handle formatting.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -46,6 +47,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       _refreshController = new RefreshController(_dgvResults);
 
       _lsvProjects.RefreshView += new RefreshViewRequested(_refreshController.RefreshView);
+      _dgvResults.CellFormatting += new DataGridViewCellFormattingEventHandler(_refreshController.ResultsCellFormatting);
     }
 
     private void NewProject(object sender, EventArgs e)

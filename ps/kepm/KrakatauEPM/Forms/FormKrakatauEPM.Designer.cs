@@ -418,7 +418,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
             this._tsbAnalyseProject});
       this._tspMain.Location = new System.Drawing.Point(3, 24);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(430, 39);
+      this._tspMain.Size = new System.Drawing.Size(399, 39);
       this._tspMain.TabIndex = 0;
       // 
       // _tsbNewProject

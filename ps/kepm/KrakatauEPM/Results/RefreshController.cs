@@ -10,6 +10,7 @@
  * CAM  23-Feb-2010  10558 : Refresh the view correctly, and ensure the database is opened with relevant credentials.
  * CAM  23-Feb-2010  10558 : Refresh the view only if changes require it, including defining the width and alignment of columns.
  * CAM  24-Feb-2010  10580 : Ensure the last column is autosized to fit contents to prevent the user resizing.
+ * CAM  27-Feb-2010  10583 : Added ResultsCellFormatting.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -44,8 +45,6 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       _view = view;
 
       _set = new DataSet();
-
-      view.DataSource = _set;
     }
 
     public void RefreshView(object sender, RefreshViewArgs e)
@@ -98,6 +97,31 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
         _lastRefreshedMetricSet = _metricSet;
       }
+    }
+
+    public void ResultsCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+      // Set the background to red for negative values in the Balance column.
+      ChurnStatus status = ChurnStatuses.GetStatus(_view.Rows[e.RowIndex].Cells["Status"].Value);
+
+      switch (status)
+      {
+        case ChurnStatus.Added:
+          e.CellStyle.BackColor = ChurnStatuses.Added;
+          break;
+        case ChurnStatus.Deleted:
+          e.CellStyle.BackColor = ChurnStatuses.Deleted;
+          break;
+        case ChurnStatus.Changed:
+          e.CellStyle.BackColor = ChurnStatuses.Changed;
+          break;
+      }
+
+      //if ((e.ColumnIndex == 3) && e.Value != null)
+      //{
+      //  DataGridViewCell cell = _view.Rows[e.RowIndex].Cells[e.ColumnIndex];
+      //  cell.ToolTipText = ChurnStatuses.GetToolTipText(status);
+      //}
     }
 
     protected bool OpenDatabase(Project project)

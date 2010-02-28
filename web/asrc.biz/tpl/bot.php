@@ -34,11 +34,11 @@
 <div id="sponsors">
   <h3>CLUB SPONSORS</h3>
   <div class="sponsor-box"><img src="img/ad/oriongroup.jpg" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/twma.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/monitor.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/twma2.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/monitor2.gif" width="168" height="118" alt=""></div>
   <div class="sponsor-box"><img src="img/ad/lawrencemilne.jpg" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/MrChips.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/solutions.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/mrchips2.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/solutions2.gif" width="168" height="118" alt=""></div>
   <div class="sponsor-box"><img src="img/ad/atp_international.jpg" width="168" height="118" alt=""></div>
 </div>
 </td>

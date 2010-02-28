@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
- * Copyright (c) 2006-2008 Frontburner
+ * Copyright (c) 2006,2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -17,6 +17,7 @@
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * CAM  25-Nov-2008  10314 : CSS file renamed to ensure proper reload.
+ * CAM  27-Feb-2010  10577 : Added new sponsorship logos.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -50,7 +51,7 @@ function ToolbarOption($action, $label, $last=false, $class="") {
 ?>
 <head>
   <title><?php print $title;?></title>
-  <link href="asrc2.css" rel=stylesheet type="text/css" />
+  <link href="asrc3.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="dhtml.js"></script>
   <script language="Javascript" src="date.js"></script>
 </head>

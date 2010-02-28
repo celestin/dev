@@ -113,6 +113,48 @@ td.topnav {
   background-color: #e9e5c8;
 }
 
+#main {
+ padding: 5px 10px 10px 10px;
+}
+
+#header {
+  width:984px;
+  position:relative;
+  padding:73px 0 0;
+}
+.header-left {
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+.header-right {
+  position:absolute;
+  top:11px;
+  right:0px;
+}
+#asrc-logo {
+  margin-top:8px;
+}
+
+#sponsors {
+  float: right;
+  width:170px;
+  margin:1px 0 0;
+}
+#sponsors h3 {
+  margin:0;
+  background-color:#908852;
+  color:#fff;
+  padding:6px 0 7px 28px;
+  font: bold 13px Tahoma Arial, Helvetica, sans-serif;
+}
+div.sponsor-box {
+  margin-top:2px;
+  border:1px solid #ccc;
+  min-height:118px;
+}
+* html .box-2 {height:118px;}
+
 .outerBox {
   background-color: #FFFFFF;
 }

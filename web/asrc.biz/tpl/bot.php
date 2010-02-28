@@ -25,42 +25,22 @@
  * CAM  12-Feb-2008  10230 : Added TWMA logo, shuffled others.
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * CAM  25-Nov-2008  10314 : Version 1.12 - New colours/layout (Event edit to follow).
+ * CAM  27-Feb-2010  10577 : Version 1.13 - Add new sponsorship.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
 </table></td>
 <td valign=top>
-<table id="Table_01" width="155" height="465" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td colspan="3"><img src="img/ad/Sponsors.gif" width="155" height="47" alt=""></td>
-  </tr>
-  <tr>
-    <td rowspan="8"><img src="img/ad/Untitled-3_02.gif" width="38" height="418" alt=""></td>
-    <td><img src="img/ad/twma.gif" width="112" height="67" alt=""></td>
-    <td rowspan="8"><img src="img/ad/Untitled-3_04.gif" width="5" height="418" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/Untitled-3_05.gif" width="112" height="64" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/monitor.gif" width="112" height="24" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/Untitled-3_07.gif" width="112" height="60" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/MrChips.gif" width="112" height="77" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/Untitled-3_09.gif" width="112" height="31" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/solutions.gif" width="112" height="80" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/ad/Untitled-3_11.gif" width="112" height="15" alt=""></td>
-  </tr>
-</table>
+<div id="sponsors">
+  <h3>CLUB SPONSORS</h3>
+  <div class="sponsor-box"><img src="img/ad/oriongroup.jpg" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/twma.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/monitor.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/lawrencemilne.jpg" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/MrChips.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/solutions.gif" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><img src="img/ad/atp_international.jpg" width="168" height="118" alt=""></div>
+</div>
 </td>
 <tr>
   <td colspan=2><table width="100%" border=0 cellpadding=0 cellspacing=0>
@@ -94,7 +74,7 @@
 <tr><td colspan=3><table class="cpyrght" border=0 cellpadding=10 cellspacing=0 width="100%">
   <tr>
     <td width="25%" align="left"><img src="img/logo/asrc_small.gif"></td>
-    <td class="cpyrght" width="50%"><b>V1.12</b> System designed and maintained by <a class="cpyrght" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
+    <td class="cpyrght" width="50%"><b>V1.13</b> System designed and maintained by <a class="cpyrght" href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td>
     <td class="cpyrght" width="25%"></td>
   </tr>
 </table></td></tr>

@@ -59,10 +59,36 @@ function ToolbarOption($action, $label, $last=false, $class="") {
 
 <table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr><td align="center"><table border=0 cellpadding=0 cellspacing=0>
-<tr><td><table border=0 cellpadding=2 cellspacing=10 bgcolor="white">
-
+<tr><td><table id="main" border=0 cellpadding=2 cellspacing=0 bgcolor="white">
 <tr><td colspan=3>
-<table id="Table_01" bgcolor="black" width="984" height="159" border="0" cellpadding="0" cellspacing="0">
+<div id="header">
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="574" height="74" class="header-left" id="FlashID">
+              <param name="movie" value="img/ad/orion_574x74.swf" />
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="8.0.35.0" />
+              <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+              <!--[if !IE]>-->
+              <object type="application/x-shockwave-flash" data="img/ad/orion_574x74.swf" width="574" height="74">
+                <!--<![endif]-->
+                <param name="quality" value="high" />
+                <param name="wmode" value="opaque" />
+                <param name="swfversion" value="8.0.35.0" />
+                <param name="expressinstall" value="Scripts/expressInstall.swf" />
+                <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+                <div>
+                  <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                  <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+                  </div>
+                <!--[if !IE]>-->
+                </object>
+              <!--<![endif]-->
+          </object>
+      <img class="header-right" alt="" src="img/ad/league.gif">
+</div>
+<table id="asrc-logo" bgcolor="black" width="984" height="159" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td colspan="5"><img src="img/logo/spacer.gif" width="717" height="57" alt=""></td>
     <td rowspan="5"><img src="img/logo/Racquet.gif" width="24" height="158" alt=""></td>

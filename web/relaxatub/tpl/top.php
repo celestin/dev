@@ -19,6 +19,7 @@
  * CAM  08-Nov-2008  10236 : Added QuickShip and BarrelSauna.
  * CAM  11-Aug-2009  10470 : Added email icon and link.
  * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
+ * CAM  01-Mar-2010  10586 : Remove AECC banner.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 <html>
@@ -59,8 +60,6 @@
       <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
       <tr><td align=center><table border="0">
       <tr>
-        <td colspan=2 align=center><a href="http://www.renovateandselfbuild.co.uk/comp-relaxa.html"><img border=0 src="img/promo/renovateandselfbuild_2009_button.gif"></a></td>
-      </tr><tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>
         <td><a href="http://www.beachcomberhottubs.com/"><img width=123 height=118 src="img/bc4.gif" border=0 alt="Beachcomber Hot Tubs"></a></td>
       </tr>

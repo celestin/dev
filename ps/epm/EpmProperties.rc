@@ -71,12 +71,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Power Software"
             VALUE "FileDescription", "Essential Project Manager (EPM)"
-            VALUE "FileVersion", "1, 21, 0, 0"
+            VALUE "FileVersion", "1, 21, 1, 0"
             VALUE "InternalName", "epm"
             VALUE "LegalCopyright", "Copyright (c) 2010 PowerSoftware.com"
             VALUE "OriginalFilename", "epm.exe"
             VALUE "ProductName", "Power Software Essential Project Manager (EPM)"
-            VALUE "ProductVersion", "1, 21, 0, 0"
+            VALUE "ProductVersion", "1, 21, 1, 0"
         END
     END
     BLOCK "VarFileInfo"

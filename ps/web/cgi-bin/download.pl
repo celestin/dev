@@ -17,7 +17,6 @@ $onLoadSeparator = '<!--onLoad-->' ;
 $onLoadText = '' ;
 $scriptSeparator = '<!--Javascript-->' ;
 
-
 # Print out a content-type for HTTP/1.0 compatibility
 print "Content-type: text/html\n\n" ;
 
@@ -262,14 +261,9 @@ print MAIL "------------------------------------------------------------\n";
     { $actpage.="<a href=/download/em/emetrics_java_100_003.zip>Essential Metrics Java (Windows NT/2000/XP/2003) <b>Version 1.00.003</b></a><br>\n";
       $products.= "Essential Metrics Java (Windows NT/2000/XP/2003) Version 1.00.003\n"; }
 
-    if ($FORM{'emwinepm'} eq 'y') {
-      $actpage.="<a href=/download/em/epm_120_0000.zip>Essential Metrics PM Edition ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.20.0.0</b></a><br>\n";
-      $products.= "Essential Metrics PM Edition ADA Assembly ASP C# C/C++ Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.20.0.0\n";
-    }
-
     if ($FORM{'emwinkepm'} eq 'y') {
-      $actpage.="<a href=/download/em/kepm_113_0000.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.13.0.0</b></a><br>\n";
-      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.13.0.0\n";
+      $actpage.="<a href=/download/em/kepm_115_0100.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 1.15.1.0</b></a><br>\n";
+      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 1.15.1.0\n";
     }
 
     if ($FORM{'emwincpppmv1'} eq 'y')
@@ -316,6 +310,14 @@ print MAIL "User's browser: $ENV{'HTTP_USER_AGENT'}\n";
 print MAIL "Remote host: $ENV{'REMOTE_HOST'}\n";
 print MAIL "Remote IP address: $ENV{'REMOTE_ADDR'}\n";
 close (MAIL);
+
+# Vista / Windows 7 message
+
+$actpage .= "<h2 class=\"narr\">Installing on Vista or Windows 7?</h2>\n";
+$actpage .= "<p class=\"narr\">Please read the <a href=\"http://www.powersoftware.com/kepm/QuickStartGuideKEPM.pdf\">Quick Start Guide</a>.</p>\n";
+$actpage .= "<p class=\"narr\">Be sure that you right-click on the KrakatauEpmSetup.exe and choose <b>Run as administrator</b>.</p>\n";
+$actpage .= "<p class=\"narr\">Why?  If you don't, MySQL won't be properly registered and the service won't be started.</p>\n";
+$actpage .= "<img src=\"../img/Vista-Win7-RunAsAdministrator.jpg\">\n";
 
 $page=&get_file_contents($newfile) ;
 $page=~s/$separator\s*/$actpage/ ;

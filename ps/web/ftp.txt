@@ -66,6 +66,6 @@ put MetricsDefinitions.pdf
 lcd W:\Powersoftware.com\HTML\kepm
 cd /var/www/html/kepm
 put UserGuideKEPM.pdf
-put KEPM_Vista_MySQL.pdf
+put QuickStartGuideKEPM.pdf
 
 quit

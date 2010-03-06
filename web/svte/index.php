@@ -90,8 +90,8 @@ a:hover {
 -->
 
 <tr>
-  <td>20 Hiplands Road,<br>Halesowen<br>West Midlands, B62 0AE.</td>
-  <td rowspan=2 valign=top align=right><img border=0 src="trada_member_logo.png" width=120 height=72></td>
+  <td>Basepoint Business Centre,<br>Isidore Road,<br>Bromsgrove, Worcs.<br>B60 3ET</td>
+  <td valign=top align=right><img border=0 src="trada_member_logo.png" width=120 height=72></td>
 </tr>
 
 <tr>
@@ -106,6 +106,8 @@ a:hover {
     </table>
     </div>
   </td>
+
+  <td valign=top align=right><img border=0 src="iso9001.png" width=120 height=72></td>
 
   <!--
   <td colspan=2 align=right>

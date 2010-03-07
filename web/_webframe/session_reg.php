@@ -9,25 +9,19 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  07-Mar-2010  10601 : Store Person object in session (rather than simply id).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 
-session_register('memberid');
 $_SESSION['memberid'] = $memberid;
-session_register('first_name');
 $_SESSION['first_name'] = $first_name;
-session_register('last_name');
 $_SESSION['last_name'] = $last_name;
-session_register('email_address');
 $_SESSION['email_address'] = $email_address;
-session_register('special_user');
-$_SESSION['user_level'] = $user_level;
-session_register('WEBSITE_NAME');
 $_SESSION['WEBSITE_NAME'] = "WEBSITE_NAME";
 
-session_register('member_person');
-$_SESSION['member_person'] = Person::getPerson($memberid);
+$p = Person::getPerson($memberid);
+$_SESSION['member_person'] = $p;
 
 mysql_query("UPDATE member SET last_login=now() WHERE memberid='$memberid'");
 

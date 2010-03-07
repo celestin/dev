@@ -1,3 +1,13 @@
+--* * * * * * * * * * * * * * * * * * * * * * * *
+--* WEBSITE_NAME
+--* Copyright (c) 2006,2010 Frontburner
+--* Author Craig McKay <craig@frontburner.co.uk>
+--*
+--* $Id$
+--*
+--* Who  When         Why
+--* CAM  07-Mar-2010  10601 : Corrected default data.
+--* * * * * * * * * * * * * * * * * * * * * * * *
 
 ----------------------------------------------------------
 --
@@ -25,7 +35,7 @@ CREATE TABLE member (
 -- Data for table member
 --
 
-INSERT INTO member VALUES ('CRAIG', '', '', '', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2005-11-26 10:20:00');
+INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2005-11-26 10:20:00');
 
 ----------------------------------------------------------
 --

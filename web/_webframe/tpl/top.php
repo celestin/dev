@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  07-Mar-2010  10601 : Reference the correct default stylesheet.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -25,7 +26,7 @@ if (empty($title)) {
 ?>
 <head>
   <title><? echo $title;?></title>
-  <link href="cc.css" rel=stylesheet type="text/css" />
+  <link href="web.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
 </head>
 

@@ -1,4 +1,4 @@
-<?
+<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
  * Copyright (c) 2006,2008 Frontburner
@@ -13,9 +13,9 @@
  * CAM  23-Feb-2008  10235 : Added RandomImage.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'cls/Tuple.php';
-include_once 'cls/Tub.php';
-include_once 'cls/Photo.php';
-include_once 'cls/RandomImage.php';
+include_once 'WEB-INF/Tuple.php';
+include_once 'WEB-INF/Tub.php';
+include_once 'WEB-INF/Photo.php';
+include_once 'WEB-INF/RandomImage.php';
 
 ?>

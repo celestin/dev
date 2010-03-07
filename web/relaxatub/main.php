@@ -12,7 +12,7 @@
  * CAM  18-Jul-2006  File added to source control.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once 'cls/inc.php';
+include_once './WEB-INF/inc.php';
 include_once 'db.php';
 include_once 'util.php';
 ?>

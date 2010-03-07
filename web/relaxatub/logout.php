@@ -26,7 +26,6 @@ if(!isset($_REQUEST['logmeout'])){
 } else {
   if(!session_is_registered('memberid')){
     Msg::error("You are now logged out!");
-    include 'tpl/home.php';
   }
 }
 include 'tpl/bot.php';

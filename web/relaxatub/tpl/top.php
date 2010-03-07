@@ -24,18 +24,18 @@
 
 include_once 'main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('WEBSITE_NAME'));
+$loggedin = (session_is_registered('memberid') && session_is_registered('Relaxatub'));
 
-if (empty($title)) {
-  $title = $cfg['Site']['Name'];
+if (empty($pageTitle)) {
+  $pageTitle = $cfg['Site']['Name'];
 } else {
-  $title = $cfg['Site']['Name'] . " - $title";
+  $pageTitle = $cfg['Site']['Name'] . " - $pageTitle";
 }
 
 ?>
 <html>
 <head>
-  <title>Relaxatub (Aberdeen, Scotland, UK) - <? print $pageTitle; ?></title>
+  <title><? print $pageTitle; ?></title>
   <meta name="Description" content="Hot Tubs Aberdeen, Scotland, UK, Spas.  Check out - <? print $pageTitle; ?>">
   <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh">
 

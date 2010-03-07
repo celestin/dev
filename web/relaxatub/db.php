@@ -4,21 +4,15 @@
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Database login
+ * Database connection
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  18-Jul-2006  File added to source control.
+ * CAM  08-Feb-2007  10097 : Moved parameters to config.php.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$dbhost = 'localhost';
-$dbusername = 'relaxatub';$dbpasswd = 'hazel44';
-$database_name = 'relaxatub_com_-_prod';
-
-$connection = mysql_pconnect("$dbhost","$dbusername","$dbpasswd")
-  or die ("Couldn't connect to server.");
-
-$db = mysql_select_db("$database_name", $connection)
-  or die("Couldn't select database.");
+$connection = mysql_pconnect($cfg['Site']['Db']['Hostname'],$cfg['Site']['Db']['Username'],$cfg['Site']['Db']['Password'], MYSQL_CLIENT_INTERACTIVE) or die ("Couldn't connect to server.");
+$db = mysql_select_db($cfg['Site']['Db']['Database'], $connection) or die("Couldn't select database.");
 ?>

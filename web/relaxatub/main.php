@@ -12,7 +12,11 @@
  * CAM  18-Jul-2006  File added to source control.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-include_once './WEB-INF/inc.php';
-include_once 'db.php';
-include_once 'util.php';
+include_once dirname(__FILE__).'/config.php';
+include_once dirname(__FILE__).'/db.php';
+include_once dirname(__FILE__).'/WEB-INF/inc.php';
+include_once dirname(__FILE__).'/util.php';
+
+session_start();
+
 ?>

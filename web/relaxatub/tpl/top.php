@@ -21,6 +21,17 @@
  * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
  * CAM  01-Mar-2010  10586 : Remove AECC banner.
  * * * * * * * * * * * * * * * * * * * * * * * */
+
+include_once 'main.php';
+$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
+$loggedin = (session_is_registered('memberid') && session_is_registered('WEBSITE_NAME'));
+
+if (empty($title)) {
+  $title = $cfg['Site']['Name'];
+} else {
+  $title = $cfg['Site']['Name'] . " - $title";
+}
+
 ?>
 <html>
 <head>

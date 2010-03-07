@@ -14,6 +14,12 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'WEB-INF/Tuple.php';
+include_once 'WEB-INF/Util.php';
+include_once 'WEB-INF/Person.php';
+include_once 'WEB-INF/Msg.php';
+include_once 'WEB-INF/ActionUtil.php';
+include_once 'WEB-INF/EmailMsg.php';
+
 include_once 'WEB-INF/Tub.php';
 include_once 'WEB-INF/Photo.php';
 include_once 'WEB-INF/RandomImage.php';

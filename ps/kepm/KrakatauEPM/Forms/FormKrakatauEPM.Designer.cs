@@ -71,7 +71,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._mnuExit = new System.Windows.Forms.ToolStripMenuItem();
       this.mniProject = new System.Windows.Forms.ToolStripMenuItem();
       this.mniProjectPrefs = new System.Windows.Forms.ToolStripMenuItem();
-      this.mniProjectAnalyse = new System.Windows.Forms.ToolStripMenuItem();
+      this.mniProjectAnalyze = new System.Windows.Forms.ToolStripMenuItem();
       this.mniMetrics = new System.Windows.Forms.ToolStripMenuItem();
       this.mniMetricsSets = new System.Windows.Forms.ToolStripMenuItem();
       this.diagnosticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +94,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this._tsbSetAsOldProject = new System.Windows.Forms.ToolStripButton();
       this._tsbSetAsNewProject = new System.Windows.Forms.ToolStripButton();
-      this._tsbAnalyseProject = new System.Windows.Forms.ToolStripButton();
+      this._tsbAnalyzeProject = new System.Windows.Forms.ToolStripButton();
       this._ofdProj = new System.Windows.Forms.OpenFileDialog();
       this._lsvProjects = new SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
@@ -272,7 +272,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       this.mniProject.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mniProjectPrefs,
-            this.mniProjectAnalyse});
+            this.mniProjectAnalyze});
       this.mniProject.Name = "mniProject";
       this.mniProject.Size = new System.Drawing.Size(56, 20);
       this.mniProject.Text = "&Project";
@@ -285,13 +285,13 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.mniProjectPrefs.Text = "&Preferences...";
       this.mniProjectPrefs.Click += new System.EventHandler(this.ShowProjectPreferences);
       //
-      // mniProjectAnalyse
+      // mniProjectAnalyze
       //
-      this.mniProjectAnalyse.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyseProjectMenu;
-      this.mniProjectAnalyse.Name = "mniProjectAnalyse";
-      this.mniProjectAnalyse.Size = new System.Drawing.Size(144, 22);
-      this.mniProjectAnalyse.Text = "&Analyse";
-      this.mniProjectAnalyse.Click += new System.EventHandler(this.AnalyseProject);
+      this.mniProjectAnalyze.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyzeProjectMenu;
+      this.mniProjectAnalyze.Name = "mniProjectAnalyze";
+      this.mniProjectAnalyze.Size = new System.Drawing.Size(144, 22);
+      this.mniProjectAnalyze.Text = "&Analyze";
+      this.mniProjectAnalyze.Click += new System.EventHandler(this.AnalyzeProject);
       //
       // mniMetrics
       //
@@ -403,7 +403,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
             this.toolStripSeparator2,
             this._tsbSetAsOldProject,
             this._tsbSetAsNewProject,
-            this._tsbAnalyseProject});
+            this._tsbAnalyzeProject});
       this._tspMain.Location = new System.Drawing.Point(3, 24);
       this._tspMain.Name = "_tspMain";
       this._tspMain.Size = new System.Drawing.Size(399, 39);
@@ -492,16 +492,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._tsbSetAsNewProject.Text = "Set as New Project";
       this._tsbSetAsNewProject.Click += new System.EventHandler(this.SetAsNewProject);
       //
-      // _tsbAnalyseProject
+      // _tsbAnalyzeProject
       //
-      this._tsbAnalyseProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbAnalyseProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyseProjectToolbar;
-      this._tsbAnalyseProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this._tsbAnalyseProject.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbAnalyseProject.Name = "_tsbAnalyseProject";
-      this._tsbAnalyseProject.Size = new System.Drawing.Size(36, 36);
-      this._tsbAnalyseProject.Text = "Analyse Project(s)";
-      this._tsbAnalyseProject.Click += new System.EventHandler(this.AnalyseProject);
+      this._tsbAnalyzeProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this._tsbAnalyzeProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyzeProjectToolbar;
+      this._tsbAnalyzeProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this._tsbAnalyzeProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbAnalyzeProject.Name = "_tsbAnalyseProject";
+      this._tsbAnalyzeProject.Size = new System.Drawing.Size(36, 36);
+      this._tsbAnalyzeProject.Text = "Analyze Project(s)";
+      this._tsbAnalyzeProject.Click += new System.EventHandler(this.AnalyzeProject);
       //
       // _ofdProj
       //
@@ -567,7 +567,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     private System.Windows.Forms.ToolStripButton _tsbSetAsOldProject;
     private System.Windows.Forms.ToolStripButton _tsbSetAsNewProject;
-    private System.Windows.Forms.ToolStripButton _tsbAnalyseProject;
+    private System.Windows.Forms.ToolStripButton _tsbAnalyzeProject;
     private System.Windows.Forms.ImageList _imlProjects;
     private SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView _lsvProjects;
     private System.Windows.Forms.OpenFileDialog _ofdProj;
@@ -576,7 +576,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.ToolStripMenuItem mniCloseProject;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     private System.Windows.Forms.ToolStripMenuItem mniProject;
-    private System.Windows.Forms.ToolStripMenuItem mniProjectAnalyse;
+    private System.Windows.Forms.ToolStripMenuItem mniProjectAnalyze;
     private System.Windows.Forms.ToolStripMenuItem mniMetrics;
     private System.Windows.Forms.ToolStripMenuItem mniMetricsSets;
     private System.Windows.Forms.ToolStripMenuItem mniHelp;

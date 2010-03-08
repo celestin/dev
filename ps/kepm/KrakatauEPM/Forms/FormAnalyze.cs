@@ -3,8 +3,6 @@
  * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Analyse Dialog and Action
- *
  * $Id$
  *
  * Who  When         Why
@@ -34,10 +32,12 @@ using SourceCodeMetrics.Krakatau.Kepm.Win32;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
-  public partial class FormAnalyse : Form
+  /// <summary>
+  /// Analyze Dialog and Action.
+  /// </summary>
+  public partial class FormAnalyze : Form
   {
-
-    public FormAnalyse(Project newProject, Project oldProject)
+    public FormAnalyze(Project newProject, Project oldProject)
     {
       this._newProject = newProject;
       this._oldProject = oldProject;
@@ -102,7 +102,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       tt.SetToolTip(cmdXMLBrowse, "Use this button to specify the filename for the XML report.");
     }
 
-    public FormAnalyse(Project newProject)
+    public FormAnalyze(Project newProject)
       : this(newProject, null)
     {
     }
@@ -232,7 +232,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private void cmdParse_Click(object sender, System.EventArgs e)
     {
       BuildAnalysisFile();
-      EpmAnalyse();
+      EpmAnalyze();
     }
 
     private void cmdOK_Click(object sender, System.EventArgs e)
@@ -310,7 +310,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       tw.Close();
     }
 
-    private void EpmAnalyse()
+    private void EpmAnalyze()
     {
       this.Cursor = Cursors.AppStarting;
       this.cmdOK.Enabled = this.cmdParse.Enabled = false;

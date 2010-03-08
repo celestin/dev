@@ -89,7 +89,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       _lsvProjects.CloseProject();
     }
 
-    private void AnalyseProject(object sender, EventArgs e)
+    private void AnalyzeProject(object sender, EventArgs e)
     {
       ProjectItem newProject = null;
       ProjectItem oldProject = null;
@@ -106,21 +106,21 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
         }
       }
 
-      FormAnalyse an = null;
+      FormAnalyze an = null;
 
       if (newProject != null && oldProject != null)
       {
-        an = new FormAnalyse(newProject.Project, oldProject.Project);
+        an = new FormAnalyze(newProject.Project, oldProject.Project);
       }
       else if (newProject != null)
       {
-        an = new FormAnalyse(newProject.Project);
+        an = new FormAnalyze(newProject.Project);
       }
       else
       {
         MessageBox.Show("Please set at least a New Project (by right-clicking on your " +
           "project and choosing 'Set as New')" + System.Environment.NewLine +
-          "before attempting to Analyse." + System.Environment.NewLine + System.Environment.NewLine +
+          "before attempting to Analyze." + System.Environment.NewLine + System.Environment.NewLine +
           "If you wish to compare two projects, also set an Old Project.",
           KrakatauEPM.AssemblyProduct + " Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }

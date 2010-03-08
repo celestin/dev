@@ -60,16 +60,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap AnalyseProjectMenu {
+        internal static System.Drawing.Bitmap AnalyzeProjectMenu {
             get {
-                object obj = ResourceManager.GetObject("AnalyseProjectMenu", resourceCulture);
+                object obj = ResourceManager.GetObject("AnalyzeProjectMenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap AnalyseProjectToolbar {
+        internal static System.Drawing.Bitmap AnalyzeProjectToolbar {
             get {
-                object obj = ResourceManager.GetObject("AnalyseProjectToolbar", resourceCulture);
+                object obj = ResourceManager.GetObject("AnalyzeProjectToolbar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

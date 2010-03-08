@@ -29,7 +29,7 @@ using SourceCodeMetrics.Krakatau.Kepm.Win32;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 {
-  partial class FormAnalyse
+  partial class FormAnalyze
   {
     /// <summary>
     /// Required designer variable.
@@ -57,7 +57,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAnalyse));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAnalyze));
       this.chkH2 = new System.Windows.Forms.CheckBox();
       this.txtH2 = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
@@ -404,7 +404,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.chkLog.Text = "Logfile";
       this.chkLog.CheckedChanged += new System.EventHandler(this.chkLog_CheckedChanged);
       // 
-      // FormAnalyse
+      // FormAnalyze
       // 
       this.AcceptButton = this.cmdParse;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,9 +447,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.MinimizeBox = false;
-      this.Name = "FormAnalyse";
+      this.Name = "FormAnalyze";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-      this.Text = "Analyse";
+      this.Text = "Analyze";
       this.ResumeLayout(false);
       this.PerformLayout();
 

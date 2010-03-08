@@ -136,8 +136,8 @@
   <data name="ProjectPrefs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\prefs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnalyseProjectToolbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\app\analyse.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnalyzeProjectToolbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\app\analyze.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloseProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\close.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +190,8 @@
   <data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnalyseProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\menu\analyse.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnalyzeProjectMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\analyze.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DiagnosticsMysql" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\data_gear.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

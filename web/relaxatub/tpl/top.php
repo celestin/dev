@@ -20,11 +20,12 @@
  * CAM  11-Aug-2009  10470 : Added email icon and link.
  * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
  * CAM  01-Mar-2010  10586 : Remove AECC banner.
+ * CAM  08-Mar-2010  10602 : Test for correct session variable.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('Relaxatub'));
+$loggedin = (session_is_registered('member_person') && session_is_registered('Relaxatub'));
 
 if (empty($pageTitle)) {
   $pageTitle = $cfg['Site']['Name'];
@@ -50,25 +51,32 @@ if (empty($pageTitle)) {
   <tr height="100%"><td valign="top" align="center"><table cellspacing=5 cellpadding=0 border=0>
 
   <tr>
-    <td valign=top><table cellspacing=0 cellpadding=5 border=0 width=250>
+    <td valign=top><table cellspacing=10 cellpadding=0 border=0 width=250>
       <tr><td align=center><a href="index.php"><img width=240 height=90 src="img/relaxatub2.png" border=0 alt="Beachcomber Hot Tubs"></a></td></tr>
-      <tr><td align=center><a id="linkcontact" class="nav" href="contact.php">contact us</a></td></tr>
+<?
+if ($loggedin) {
+?>      <tr><td align=center><a class="nav" href="logout.php">logout</a></td></tr><?
+} else {
+?>      <tr><td align=center><a class="nav" href="login.php">login</a></td></tr><?
+}
+?>
       <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linktub300" class="nav" href="tub.php?series=300">300 series</a></td></tr>
-      <tr><td align=center><a id="linktub500" class="nav" href="tub.php?series=500">500 series</a></td></tr>
-      <tr><td align=center><a id="linktub700" class="nav" href="tub.php?series=700">700 series</a></td></tr>
+      <tr><td align=center><a id="linktub300" class="nav" href="tub.php?series=300">300</a>
+        <a id="linktub500" class="nav" href="tub.php?series=500">500</a>
+        <a id="linktub700" class="nav" href="tub.php?series=700">700</a></td></tr>
       <tr><td align=center><a id="linkquickship" class="nav" href="quickship.php">quick ship!</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
+      <tr><td align=center><a id="linkphoto" class="nav" href="photo.php">photo album</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
       <tr><td align=center><a id="linkgarden" class="nav" href="garden.php">decking ideas</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkphoto" class="nav" href="photo.php">photo album</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkprotec" class="nav" href="protec.php">protec</a></td></tr>
       <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
+      <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center><a id="linkcontact" class="nav" href="contact.php">contact us</a></td></tr>
       <tr><td align=center><table border="0">
       <tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>

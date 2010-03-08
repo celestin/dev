@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2010 frontburner.co.uk
  *
  * Login form
  *
@@ -9,15 +9,16 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  08-Mar-2010  10588 : More appropriate 'first time' message.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
 
 $retry = NULL;        if (!empty($_POST['retry'])) $retry = $_POST['retry'];
-//$memberid = NULL;     if (!empty($_POST['memberid'])) $retry = $_POST['memberid'];
+$memberid = NULL;     if (!empty($_POST['memberid'])) $retry = $_POST['memberid'];
 
 if ($retry == NULL && !isset($_REQUEST['logmeout'])) {
-  Msg::error("New user?  Please register.");
+  Msg::error("Please enter your Username and Password.");
 } else if ($memberid == NULL && !isset($_REQUEST['logmeout'])) {
   Msg::error("Please enter your Username!");
 }

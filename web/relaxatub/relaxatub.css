@@ -19,6 +19,7 @@
  * CAM  08-Nov-2008  10237 : Added classes for QuickShip.
  * CAM  08-Nov-2008  10239 : Added classes for BarrelSauna.
  * CAM  11-Aug-2009  10471 : Added tubtype (for Hybrid/Portable).
+ * CAM  08-Mar-2010  10588 : Added Message formats and tidied inputs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -241,11 +242,11 @@ p.legal {
   padding-top: 15px;
 }
 
-img.centerheader 
+img.centerheader
 {
   display: block;
   margin-left: auto;
-  margin-right: auto 
+  margin-right: auto
 }
 
 #rxfeature ul
@@ -256,8 +257,8 @@ img.centerheader
   text-align: center;
 }
 
-#rxfeature ul li { 
-  display: inline; 
+#rxfeature ul li {
+  display: inline;
 }
 
 #rxfeature ul li a
@@ -269,22 +270,49 @@ img.centerheader
   background-color: #233f91;
 }
 
+td.fld {
+  color: #4d492f;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+
+/** Message formats. */
+
+p.err {
+  color: #285292;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+p.quest {
+  color: #4d492f;
+  font-size: 11pt;
+}
+
+p.statement {
+  color: #285292;
+  font-size: 11pt;
+}
+
+
+
 body#pagewater a#linkwater,
 body#pagehealth a#linkhealth,
 body#pagerelaxation a#linkrelaxation,
 body#pagequality a#linkquality,
 body#pagecomfort a#linkcomfort,
 body#pagefaq a#linkfaq,
-body#pagecontact a#linkcontact, 
-body#pagetub300 a#linktub300, 
-body#pagetub500 a#linktub500, 
-body#pagetub700 a#linktub700, 
-body#pagegarden a#linkgarden, 
-body#pageaccessories a#linkaccessories, 
-body#pagephoto a#linkphoto, 
-body#pageprotec a#linkprotec, 
-body#pagequickship a#linkquickship, 
-body#pagebarrelsauna a#linkbarrelsauna, 
+body#pagecontact a#linkcontact,
+body#pagetub300 a#linktub300,
+body#pagetub500 a#linktub500,
+body#pagetub700 a#linktub700,
+body#pagegarden a#linkgarden,
+body#pageaccessories a#linkaccessories,
+body#pagephoto a#linkphoto,
+body#pageprotec a#linkprotec,
+body#pagequickship a#linkquickship,
+body#pagebarrelsauna a#linkbarrelsauna,
 body#pageevolution a#linkevolution {
 color: #fff;
 background: #6b7b71;
@@ -420,13 +448,28 @@ A.cpyrght:hover {
   background-color: transparent;
 }
 
-INPUT {
-  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana, Arial, Helvetica; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
+input, textarea, select {
+  border: #9999CC 1px solid;
+  color: #000000;
+  font-family: Arial, Helvetica;
+  font-size: 11pt;
+  padding: 4px;
 }
-TEXTAREA {
-  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
+
+input:hover {
+  border: #9999CC 2px solid;
+  padding: 3px;
 }
-SELECT {
-  border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 1px solid; border-top: #000000 1px solid; color: #000000; font-family: Verdana; font-size: 10pt; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
+
+input.button {
+  border: #3333CC 2px solid;
+  background-color: #9999CC;
+}
+
+input.button:hover {
+  border: #9999CC 2px solid;
+  background-color: #3333CC;
+  color: white;
+  padding: 4px;
 }
 

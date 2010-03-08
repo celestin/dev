@@ -10,11 +10,12 @@
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
  * CAM  07-Mar-2010  10601 : Reference the correct default stylesheet.
+ * CAM  08-Mar-2010  10602 : Test for correct session variable.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('WEBSITE_NAME'));
+$loggedin = (session_is_registered('member_person') && session_is_registered('WEBSITE_NAME'));
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];

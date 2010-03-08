@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  08-Mar-2010  10602 : Fixed typos/form name change.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -16,7 +17,7 @@ include 'tpl/top.php';
 
 function retry_login($error='') {
   if (!empty($error)) Msg::error($error);
-  include 'frm/login_form.php';
+  include 'frm/user.login.php';
   include 'tpl/bot.php';
   exit();
 }
@@ -61,7 +62,7 @@ if(!$memberid){
 
       $sql = mysql_query("UPDATE member SET password='$pwd' WHERE memberid='$memberid'");
 
-      em$ = new EmailMsg("F", $memberid);
+      $em = new EmailMsg("F", $memberid);
       $em->sendForgot($new_pwd);
 
       Msg::statement("Your password has been sent.  Please check your email!");

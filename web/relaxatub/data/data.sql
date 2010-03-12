@@ -13,59 +13,12 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Aug 11, 2009 at 11:26 PM
+-- Generation Time: Mar 12, 2010 at 01:36 PM
 -- Server version: 5.0.27
 -- PHP Version: 4.4.5
 -- 
 -- Database: relaxatub_com_-_prod
 -- --------------------------------------------------------
-
--- --------------------------------------------------------
---
--- User Information
---
-
-CREATE TABLE member (
-  memberid varchar(20) NOT NULL,
-  first_name varchar(25) NOT NULL,
-  last_name varchar(25) NOT NULL,
-  email_address varchar(255) default NULL,
-  password varchar(50) NOT NULL,
-  admin int(1) default '0',
-  member_type char(2) NOT NULL default 'N',
-  verify_code varchar(100) NOT NULL,
-  active int(1) NOT NULL default '0',
-  dob date NOT NULL default '0000-00-00',
-  signup_date datetime NOT NULL default '0000-00-00 00:00:00',
-  last_login datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (memberid),
-  KEY i_email_address (email_address)
-) COMMENT='User Information';
-
---
--- Data for table member
---
-
-INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2005-11-26 10:20:00');
-
--- --------------------------------------------------------
---
--- User Types
---
-
-CREATE TABLE member_type (
-  member_type char(2) NOT NULL,
-  type_name varchar(50) default NULL,
-  comments varchar(255) default NULL,
-  disp_order int(11) NOT NULL default '0',
-  PRIMARY KEY  (member_type)
-) COMMENT='User Types';
-
--- Data for table member_type
-
-INSERT INTO member_type VALUES ('U', 'User', 'Ability to View all details on the site', 1);
-INSERT INTO member_type VALUES ('N', 'New User', 'No permissions yet - waiting verification', 3);
-INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capabilities', 2);
 
 -- 
 -- Table structure for table acc
@@ -125,6 +78,57 @@ INSERT INTO faq VALUES (6, 'power', 'I''m confused.  What does Max Rating a Pump
 INSERT INTO faq VALUES (7, 'construction', 'Is installing permanent pillows or moulding them directly into the hot tub a good method of manufacturing?', 'Beachcomber''s past experience shows that permenant pillows absorb odour from the bathers as well as the Hot Tub water itself.  Over-exposure to Hot Tub water means that permanent pillows will become unsightly and tarnished very quickly.  Beachcomber have developed comfortable, contoured neck recesses without pillows that give exceptional comfort and the option of adding a portable pillow if required.');
 INSERT INTO faq VALUES (8, 'water', 'What is recommended for treating and cleaning Hot Tub water?', 'Water quality and cleanliness are important aspects of caring for your Hot Tub and hence we are highly experienced when it comes to educating and advising on which products to enhance and make the Hot Tub experience enjoyable and safe.');
 INSERT INTO faq VALUES (9, 'comfort', 'How important is the depth of the Hot Tub?', 'Extra depth gives more comfort, especially for the feet, knees and abdomen.  One of the only reasons for a low-profile tub would be for indoor use.');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table member
+-- 
+
+CREATE TABLE member (
+  memberid varchar(20) NOT NULL,
+  first_name varchar(25) NOT NULL,
+  last_name varchar(25) NOT NULL,
+  email_address varchar(255) default NULL,
+  password varchar(50) NOT NULL,
+  admin int(1) default '0',
+  member_type char(2) NOT NULL default 'N',
+  verify_code varchar(100) NOT NULL,
+  active int(1) NOT NULL default '0',
+  dob date NOT NULL default '0000-00-00',
+  signup_date datetime NOT NULL default '0000-00-00 00:00:00',
+  last_login datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (memberid),
+  KEY i_email_address (email_address)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Information';
+
+-- 
+-- Dumping data for table member
+-- 
+
+INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2010-03-08 10:07:51');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table member_type
+-- 
+
+CREATE TABLE member_type (
+  member_type char(2) NOT NULL,
+  type_name varchar(50) default NULL,
+  comments varchar(255) default NULL,
+  disp_order int(11) NOT NULL default '0',
+  PRIMARY KEY  (member_type)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Types';
+
+-- 
+-- Dumping data for table member_type
+-- 
+
+INSERT INTO member_type VALUES ('U', 'User', 'Ability to View all details on the site', 1);
+INSERT INTO member_type VALUES ('N', 'New User', 'No permissions yet - waiting verification', 3);
+INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capabilities', 2);
 
 -- --------------------------------------------------------
 
@@ -233,16 +237,16 @@ CREATE TABLE tub (
 -- Dumping data for table tub
 -- 
 
-INSERT INTO tub VALUES (300, '321', 0, 'Shown in Beachwood', 'beachwood.jpg', 'natural_enviroskirt.jpg', 'Medium', '4-5', '198 x 86', '916', '193', '1109', '10', '10-46', '2.5', '5 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 320m from a minimum of 5-35 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Adjustable heating and cleaning cycles', 'Tight thermos bottle seal to save energy and money', 'Economical 1 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'Over the past year, our Beachcomber Hot Tub has been in constant use... When I wake up stiff and sore, sitting in my hot tub eases all stiffness and I''m ready to go again.', 'Brenda & Brian Kalyn', 'Purchasing our Beachcomber Hot Tub was one of the best moves we''ve made!  We actually look forward to those cold, snowy nights when we submerge ourselves and enjoy therapeutic qualities of water in our Beachcomber Hot Tub.', 'Janic & Brad Chalmers');
-INSERT INTO tub VALUES (300, '350', 0, 'Shown in Rainforest', 'midnight.jpg', 'natural_enviroskirt.jpg', 'Large', '6', '203 x 224 x 97', '1419', '295', '1714', '23', '24-86', '3.5', '13 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 350 from a minimum of 13-64 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'I cannot think of any better way of treating a physically and mentally stressed body except with heat, water and the massage action of my Beachcomber Hot Tub.', 'Bill Stephenson', 'We just purchased a Beachcomber - what a fantastic way to relax!  My wife and I work every day and look forward to an evening of total relaxation and a good night''s sleep.  We have a family night twice a week.  The kids love it, and so does my mother, dad, sister, brother, etc.  Keep up the good work.  I tell everyone I can.', 'Terry & Joan Belleau');
-INSERT INTO tub VALUES (300, '310', 0, 'Shown in Sterling', 'quartzite.jpg', 'twilight_enviroskirt.jpg', 'Small', '2+', '145 x 191 x 76', '662', '193', '855', '13', '14-48', '2.5', '14 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 520 from a minimum of 18-42 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (500, '540', 0, 'Shown in Tropical Mist', 'quartzite.jpg', 'walnut_enviroskirt.jpg', 'Medium', '5-6', '178 x 218 x 97', '1139', '272', '1408', '25', '26-84', '3.5 plus blower', '15 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 530 from a minimum of 15-70 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (500, '550', 0, 'Shown in Azure', 'glacier.jpg', 'twilight_enviroskirt.jpg', 'Large', '6-8', '203 x 224 x 97', '1438', '295', '1733', '27', '28-88', '3.5 plus blower', '20 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 550x from a minimum of 24-90 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 3.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (300, '380', 0, 'Shown in Garnet', 'carbon.jpg', 'ebony_enviroskirt.jpg', 'Large', '7-8', '226 x 226 x 97', '1582', '329', '1911', '23', '24-84', '3.5', '25 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 580 from a minimum of 29-100 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 4.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (700, '720', 0, 'Shown in Azure', 'sandstone.jpg', 'walnut_enviroskirt.jpg', 'Medium', '7-9', '203 x 224 x 97', '1370', '306', '1676', '32', '33-123', '2.5 + 3.5 plus blower', '19 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 720 from a minimum of 21-98 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful twin 1.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (700, '725', 0, 'Shown in Denim', 'beachwood.jpg', 'twilight_enviroskirt.jpg', 'Medium', '6-7', '203 x 224 x 97', '1268', '306', '1574', '33', '34-126', '2.5 + 3.5 plus blower', '27 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 720x from a minimum of 32-139 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 and 3.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (700, '740', 0, 'Shown in Tropical Mist', 'glacier.jpg', 'twilight_enviroskirt.jpg', 'Large', '6-7', '226 x 226 x 97', '1525', '363', '1888', '45', '46-155', 'Twin 3.5 plus blower', '37 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 740 from a minimum of 48-155 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful twin 3.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (700, '750', 0, 'Shown in Seamist', 'oyster-pearl.jpg', 'ebony_enviroskirt.jpg', 'Large', '8-9', '226 x 226 x 97', '1654', '363', '2017', '45', '47-168', 'Twin 3.5 plus blower', '38 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 750 from a minimum of 41-147 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 3.5 and 4.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'The whole family absolutely loves to spend time in our Beachcomber Hot Tub.  It is great to get in and relax.  It relieves tension, aches and pains.', 'The Deerie Family', 'One Saturday we decided to stop and visit some hot tub companies.  Beachcomber welcomed us and put us at ease.  Within an hour we decided on the hot tub, colour and size.  Thank you Beachcomber, for a suberb job in building a quality hot tub for us.', 'Doug Heath');
-INSERT INTO tub VALUES (500, '578', 0, 'Many special features available including the unique Acqucoustic surround sound', 'cobalt.jpg', 'ebony_enviroskirt.jpg', 'Medium', '7-8', '203 x 224 x 97', '1370', '295', '1665', '28', '30-94', '3.5 plus blower', '23 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 578 from a minimum of 22-71 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (300, '340', 0, NULL, 'opal.jpg', 'natural_enviroskirt.jpg', 'Small', '5', '178 x 218 x 86', '1136', '290', '1426', '20', '21-81', '2.5', '13 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 350 from a minimum of 13-25 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
-INSERT INTO tub VALUES (300, '360', 0, NULL, 'alabaster.jpg', 'ebony_enviroskirt.jpg', NULL, '6-7', '203 x 224 x 97', '1306', '295', '1601', '23', '24-82', '3.5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (300, '321', 0, 'Shown in Beachwood', 'beachwood', 'natural_enviro', 'Medium', '4-5', '198 x 86', '916', '193', '1109', '10', '10-46', '2.5', '5 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 320m from a minimum of 5-35 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Adjustable heating and cleaning cycles', 'Tight thermos bottle seal to save energy and money', 'Economical 1 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'Over the past year, our Beachcomber Hot Tub has been in constant use... When I wake up stiff and sore, sitting in my hot tub eases all stiffness and I''m ready to go again.', 'Brenda & Brian Kalyn', 'Purchasing our Beachcomber Hot Tub was one of the best moves we''ve made!  We actually look forward to those cold, snowy nights when we submerge ourselves and enjoy therapeutic qualities of water in our Beachcomber Hot Tub.', 'Janic & Brad Chalmers');
+INSERT INTO tub VALUES (300, '350', 0, 'Shown in Rainforest', 'midnight', 'natural_enviro', 'Large', '6', '203 x 224 x 97', '1419', '295', '1714', '23', '24-86', '3.5', '13 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 350 from a minimum of 13-64 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'I cannot think of any better way of treating a physically and mentally stressed body except with heat, water and the massage action of my Beachcomber Hot Tub.', 'Bill Stephenson', 'We just purchased a Beachcomber - what a fantastic way to relax!  My wife and I work every day and look forward to an evening of total relaxation and a good night''s sleep.  We have a family night twice a week.  The kids love it, and so does my mother, dad, sister, brother, etc.  Keep up the good work.  I tell everyone I can.', 'Terry & Joan Belleau');
+INSERT INTO tub VALUES (300, '310', 0, 'Shown in Sterling', 'quartzite', 'twilight_enviro', 'Small', '2+', '145 x 191 x 76', '662', '193', '855', '13', '14-48', '2.5', '14 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 520 from a minimum of 18-42 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (500, '540', 0, 'Shown in Tropical Mist', 'quartzite', 'walnut_enviro', 'Medium', '5-6', '178 x 218 x 97', '1139', '272', '1408', '25', '26-84', '3.5 plus blower', '15 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 530 from a minimum of 15-70 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (500, '550', 0, 'Shown in Azure', 'glacier', 'twilight_enviro', 'Large', '6-8', '203 x 224 x 97', '1438', '295', '1733', '27', '28-88', '3.5 plus blower', '20 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 550x from a minimum of 24-90 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 3.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (300, '380', 0, 'Shown in Garnet', 'carbon', 'ebony_enviro', 'Large', '7-8', '226 x 226 x 97', '1582', '329', '1911', '23', '24-84', '3.5', '25 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 580 from a minimum of 29-100 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 4.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (700, '720', 0, 'Shown in Azure', 'sandstone', 'walnut_enviro', 'Medium', '7-9', '203 x 224 x 97', '1370', '306', '1676', '32', '33-123', '2.5 + 3.5 plus blower', '19 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 720 from a minimum of 21-98 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful twin 1.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (700, '725', 0, 'Shown in Denim', 'beachwood', 'twilight_enviro', 'Medium', '6-7', '203 x 224 x 97', '1268', '306', '1574', '33', '34-126', '2.5 + 3.5 plus blower', '27 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 720x from a minimum of 32-139 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 and 3.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (700, '740', 0, 'Shown in Tropical Mist', 'glacier', 'twilight_enviro', 'Large', '6-7', '226 x 226 x 97', '1525', '363', '1888', '45', '46-155', 'Twin 3.5 plus blower', '37 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 740 from a minimum of 48-155 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful twin 3.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (700, '750', 0, 'Shown in Seamist', 'oyster-pearl', 'ebony_enviro', 'Large', '8-9', '226 x 226 x 97', '1654', '363', '2017', '45', '47-168', 'Twin 3.5 plus blower', '38 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 750 from a minimum of 41-147 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 3.5 and 4.5 hp pumps with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'The whole family absolutely loves to spend time in our Beachcomber Hot Tub.  It is great to get in and relax.  It relieves tension, aches and pains.', 'The Deerie Family', 'One Saturday we decided to stop and visit some hot tub companies.  Beachcomber welcomed us and put us at ease.  Within an hour we decided on the hot tub, colour and size.  Thank you Beachcomber, for a suberb job in building a quality hot tub for us.', 'Doug Heath');
+INSERT INTO tub VALUES (500, '578', 0, 'Many special features available including the unique Acqucoustic surround sound', 'cobalt', 'ebony_enviro', 'Medium', '7-8', '203 x 224 x 97', '1370', '295', '1665', '28', '30-94', '3.5 plus blower', '23 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 578 from a minimum of 22-71 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (300, '340', 0, NULL, 'opal', 'natural_enviro', 'Small', '5', '178 x 218 x 86', '1136', '290', '1426', '20', '21-81', '2.5', '13 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 350 from a minimum of 13-25 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 1.5 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', NULL, NULL, NULL, NULL);
+INSERT INTO tub VALUES (300, '360', 0, NULL, 'alabaster', 'ebony_enviro', NULL, '6-7', '203 x 224 x 97', '1306', '295', '1601', '23', '24-82', '3.5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

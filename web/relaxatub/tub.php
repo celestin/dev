@@ -14,6 +14,7 @@
  * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
  * CAM  22-Mar-2008  10258 : Added no_people and corrected dimen.
  * CAM  12-Apr-2008  10241 : Changed to short, bold details.
+ * CAM  12-Mar-2010  10605 : Reference use Tub accessors for Colour/Wood.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   include_once 'main.php';
@@ -72,15 +73,15 @@
     <tr>
       <td colspan=2 class="tubvalue" align=center><? print $_t->dimen ?><span class="tubunits">cm</span></td>
       <td width=270 class="tubname"><? print $_t->id; ?></td>
-   	</tr>
+    </tr>
     <tr>
       <td class="fldlbl" width="120">No. of People</td><td class="tubvalue" width="110"><? print $_t->no_people ?></td>
-      <td rowspan=7 align=right><table 
-      	border=0 width=270 cellspacing=0 cellpadding=0>
+      <td rowspan=7 align=right><table
+        border=0 width=270 cellspacing=0 cellpadding=0>
         <tr><td colspan=2 align=center><img height=200 src="<? print $_t->imgFile("fa"); ?>" alt="Isometric view of <? echo $_t->id; ?>"></td></tr>
         <tr>
-          <td align=center><img src="img/col/<? print $_t->colour; ?>"></td>
-          <td align=center><img src="img/col/<? print $_t->wood; ?>"></td>
+          <td align=center><img src="img/col/<? print $_t->getColourFile(); ?>"></td>
+          <td align=center><img src="img/col/<? print $_t->getWoodFile(); ?>"></td>
         </tr>
         </table>
       </td>

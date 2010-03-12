@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2008 Frontburner
+ * Copyright (c) 2006,2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Hot Tub wrapper class
@@ -14,6 +14,7 @@
  * CAM  24-Sep-2006  10030 : Ensure Tub IDs are uppercase.
  * CAM  22-Mar-2008  10258 : Added no_people and dimen attributes.
  * CAM  12-Apr-2008  10241 : Use new short fields.
+ * CAM  12-Mar-2010  10605 : Added accessors for Colour/Wood.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Tub extends Tuple {
@@ -285,6 +286,14 @@ class Tub extends Tuple {
     }
 
     return "&nbsp;";
+  }
+
+  function getColourFile() {
+    return $this->colour . ".png";
+  }
+
+  function getWoodFile() {
+    return $this->wood . ".png";
   }
 }
 ?>

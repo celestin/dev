@@ -1,16 +1,17 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * PParse - XML Configuration File Parser
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  16-Aug-05  File added.
- * CAM  28-Jan-06   168 : Set global MetricSet (metSet).
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  16-Aug-05    File added.
+ * CAM  28-Jan-06    168 : Set global MetricSet (metSet).
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  13-Mar-2010  10581 : Refer to Home dir for EPM.XML (to ensure Vista/7 compatibility).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <xercesc/util/PlatformUtils.hpp>
@@ -27,7 +28,7 @@ static SAXParser::ValSchemes valScheme = SAXParser::Val_Auto;
 Extension *ext;
 MetricSet *metSet;
 
-extern char szAppDirectory[];
+extern char szHomeDir[];
 
 void xmlConfigParse() {
   try {
@@ -38,7 +39,7 @@ void xmlConfigParse() {
   }
 
   char xmlFullpath[STRING_MAX];
-  strcpy_s(xmlFullpath, STRING_MAX, szAppDirectory);
+  strcpy_s(xmlFullpath, STRING_MAX, szHomeDir);
   strcat_s(xmlFullpath, STRING_MAX, "epm.xml");
   xmlFile = xmlFullpath;
 

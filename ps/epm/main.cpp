@@ -93,6 +93,7 @@
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
  * CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
  * CAM  23-Feb-2010  10576 : Added update to set Unchanged files.
+ * CAM  13-Mar-2010  10581 : Added CreateUserCopyEpmConfig.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -132,6 +133,9 @@ using namespace metrics;
 #include <vector>
 #include <windows.h>
 #pragma comment(lib, "wsock32.lib")
+
+#include <userenv.h>
+#pragma comment(lib, "userenv.lib")
 
 using namespace std;
 
@@ -296,7 +300,8 @@ extern int xmlConfig();
 extern Extension *ext;
 
 // Global Variables
-char szAppDirectory[MAX_PATH];
+char szAppDirectory[MAX_PATH] = { 0 };
+char szHomeDir[MAX_PATH] = { 0 };
 
 int OPTION_MASK = 0;      // mask for options given at the command line
 int METRIC_MASK = 0;      // mask for metrics chosen at the command line
@@ -345,6 +350,49 @@ char currentFile[QUERY_MAX];
 #include "Project.h"
 
 Metrics met;
+
+void GetApplicationDir()
+{
+  char szAppPath[MAX_PATH];
+  GetModuleFileName(NULL, szAppPath, MAX_PATH);
+  strncpy_s(szAppDirectory, MAX_PATH, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
+  szAppDirectory[strlen(szAppDirectory)] = '\0';
+}
+
+void GetUserHomeDir()
+{
+   HANDLE hToken = 0;
+   OpenProcessToken( GetCurrentProcess(), TOKEN_QUERY, &hToken );
+
+   DWORD BufSize = MAX_PATH;
+   GetUserProfileDirectory(hToken, szHomeDir, &BufSize);
+
+   int i = strlen(szHomeDir)-1;
+   if (szHomeDir[i] != '\\')
+   {
+     szHomeDir[i+1] = '\\';
+     szHomeDir[i+2] = '\0';
+   }
+
+   CloseHandle(hToken);
+}
+
+void CreateUserCopyEpmConfig()
+{
+  GetApplicationDir();
+  GetUserHomeDir();
+
+  std::string homeDirEpmXml = szHomeDir;
+  homeDirEpmXml.append("epm.xml");
+
+  if (!Utilities::getLastModTime(homeDirEpmXml))
+  {
+    std::string appDirEpmXml = szAppDirectory;
+    appDirEpmXml.append("epm.xml");
+
+    CopyFile(appDirEpmXml.c_str(), homeDirEpmXml.c_str(), false);
+  }
+}
 
 void setMetrics(int sfid, string filename) {
   int i;
@@ -1306,10 +1354,7 @@ int main(int argc, char* argv[]) {
        << "Copyright (c) 2004,2009 PowerSoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
-  char szAppPath[MAX_PATH];
-  GetModuleFileName(NULL, szAppPath, MAX_PATH);
-  strncpy_s(szAppDirectory, MAX_PATH, szAppPath, strrchr(szAppPath, '\\') - (szAppPath-1));
-  szAppDirectory[strlen(szAppDirectory)] = '\0';
+  CreateUserCopyEpmConfig();
 
   parseCmdLineOptions(argc,argv);
 

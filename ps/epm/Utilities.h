@@ -1,14 +1,15 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Essential Project Manager (EPM)
- * Copyright (c) 2004,2008 PowerSoftware.com
+ * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Various Utilities
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  29-Dec-04  File added.
+ * Who  When         Why
+ * CAM  29-Dec-04    File added.
+ * CAM  13-Mar-2010  10581 : Optmised getLastModTime and getFileSize.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef METRICS_UTILITIES
@@ -61,43 +62,29 @@ namespace metrics
 
     static long getLastModTime(std::string filename)
     {
-      struct stat buf ;
-      int result ;
-      long timestamp = 0 ;
+      struct stat buf;
+      int result = stat(filename.c_str(), &buf);  // Get file data
 
-      result = stat(filename.c_str(), &buf);  // Get file data
-
-      if( result != 0 ) // Check for valid results
+      if (!result) // Check for valid results
       {
-        //MasterData::theLog << "Error: Utilities::getLastModTime() [" << filename << "]" << std::endl ;
-      }
-      else
-      {
-        timestamp = (long) buf.st_mtime ;
+        return (long) buf.st_mtime ;
       }
 
-      return timestamp ;
+      return 0;
     }
 
 
     static long getFileSize(std::string filename)
     {
-      struct stat buf ;
-      int result ;
-      long filesize = 0 ;
+      struct stat buf;
+      int result = stat(filename.c_str(), &buf);  // Get file data
 
-      result = stat( filename.c_str(), &buf );  // Get file data
-
-      if( result != 0 ) // Check for valid results
+      if (!result) // Check for valid results
       {
-        //MasterData::theLog << "Error: Utilities::getFileSize() [" << filename << "]" << std::endl ;
-      }
-      else
-      {
-        filesize = (long) buf.st_size ;
+        return (long) buf.st_size ;
       }
 
-      return filesize ;
+      return 0;
     }
   } ;
 } ;

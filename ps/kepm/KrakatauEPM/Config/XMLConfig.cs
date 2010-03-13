@@ -14,6 +14,7 @@
  * CAM  15-Feb-2010  10565 : Added ConfigFile and utilise KrakatauSettings.
  * CAM  19-Feb-2010  10558 : Changed MetricSets to property.
  * CAM  19-Feb-2010  10558 : Create MetricDefs using Metric objects.
+ * CAM  13-Mar-2010  10581 : Renamed ConfigFile to ApplicationConfigFile and added UserConfigFile.  Refer to User Home dir for EPM.XML (to ensure Vista/7 compatibility).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -39,12 +40,33 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
     private SortedList _list;
     private XmlDocument _doc;
     private Hashtable _sets;
+    private FileInfo _appConfigFile;
+    private FileInfo _userConfigFile;
 
-    public FileInfo ConfigFile
+    protected FileInfo ApplicationConfigFile
     {
       get
       {
-        return new FileInfo(String.Format(@"{0}\{1}", KrakatauSettings.Settings.InstallDir.FullName, EpmConfig));
+        if (_appConfigFile == null)
+        {
+          _appConfigFile = new FileInfo(String.Format(@"{0}\{1}", KrakatauSettings.Settings.InstallDir.FullName, EpmConfig));
+        }
+        return _appConfigFile;
+      }
+    }
+
+    protected FileInfo UserConfigFile
+    {
+      get
+      {
+        if (_userConfigFile == null)
+        {
+          _userConfigFile = new FileInfo(String.Format(@"{0}\{1}", KrakatauSettings.Settings.UserHomeDir.FullName, EpmConfig));
+
+          if (!_userConfigFile.Exists) ApplicationConfigFile.CopyTo(_userConfigFile.FullName);
+        }
+
+        return _userConfigFile;
       }
     }
 
@@ -85,7 +107,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
       try
       {
         // Load the reader with the data file and ignore all whitespace nodes.
-        txtreader = new XmlTextReader(ConfigFile.FullName);
+        txtreader = new XmlTextReader(UserConfigFile.FullName);
         txtreader.WhitespaceHandling = WhitespaceHandling.None;
         reader = XmlReader.Create(txtreader.GetRemainder());
 
@@ -95,16 +117,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
         XmlNode lang;
         XmlNode ftype;
         XmlNode ext;
-        XmlNode a,a2,au,al;
+        XmlNode a, a2, au, al;
         Hashtable ftypes;
         Hashtable exts;
-        string sLang,sFiletype;
+        string sLang, sFiletype;
         MetricCollection metrics = KrakatauSettings.Settings.Metrics;
 
         el = root.ChildNodes.GetEnumerator();
         while (el.MoveNext())
         {
-          lang = (XmlNode) el.Current;
+          lang = (XmlNode)el.Current;
           if (lang.Name.Equals("lang"))
           {
             a = lang.Attributes.GetNamedItem("name");
@@ -117,7 +139,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
               ef = lang.ChildNodes.GetEnumerator();
               while (ef.MoveNext())
               {
-                ftype = (XmlNode) ef.Current;
+                ftype = (XmlNode)ef.Current;
                 if (ftype.Name.Equals("filetype"))
                 {
                   a = ftype.Attributes.GetNamedItem("name");
@@ -130,7 +152,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
                     ee = ftype.ChildNodes.GetEnumerator();
                     while (ee.MoveNext())
                     {
-                      ext = (XmlNode) ee.Current;
+                      ext = (XmlNode)ee.Current;
                       a = ext.Attributes.GetNamedItem("name");
                       a2 = ext.Attributes.GetNamedItem("value");
 
@@ -151,7 +173,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
             ef = lang.ChildNodes.GetEnumerator();
             while (ef.MoveNext())
             {
-              ftype = (XmlNode) ef.Current;
+              ftype = (XmlNode)ef.Current;
               if (ftype.Name.Equals("set"))
               {
                 a = ftype.Attributes.GetNamedItem("name");
@@ -162,7 +184,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
                   ee = ftype.ChildNodes.GetEnumerator();
                   while (ee.MoveNext())
                   {
-                    ext = (XmlNode) ee.Current;
+                    ext = (XmlNode)ee.Current;
                     a = ext.Attributes.GetNamedItem("id");
                     au = ext.Attributes.GetNamedItem("upper");
                     al = ext.Attributes.GetNamedItem("lower");
@@ -192,17 +214,17 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
       finally
       {
-        if (reader!=null) reader.Close();
+        if (reader != null) reader.Close();
       }
     }
 
     private XmlDocument AppendMetricSets()
     {
-      XmlNode setsNode=null;
-      XmlNode setNode=null;
-      XmlNode metNode=null;
+      XmlNode setsNode = null;
+      XmlNode setNode = null;
+      XmlNode metNode = null;
       XmlAttribute setName, metId, metBound;
-      XmlDocument upd = (XmlDocument) _doc.Clone();
+      XmlDocument upd = (XmlDocument)_doc.Clone();
       Hashtable renamed = new Hashtable();
 
       if (_sets.Count > 0)
@@ -216,7 +238,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
       IEnumerator e = _sets.Values.GetEnumerator();
       while (e.MoveNext())
       {
-        MetricSet ms = (MetricSet) e.Current;
+        MetricSet ms = (MetricSet)e.Current;
         renamed[ms.Name] = ms;
         setNode = upd.CreateElement("set");
         setName = upd.CreateAttribute("name");
@@ -226,7 +248,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
         IEnumerator ed = ms.GetEnumerator();
         while (ed.MoveNext())
         {
-          MetricDef md = (MetricDef) ed.Current;
+          MetricDef md = (MetricDef)ed.Current;
           metNode = upd.CreateElement("met");
           metId = upd.CreateAttribute("id");
           metId.Value = md.Id.ToString();
@@ -265,7 +287,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
       try
       {
-        tw = new StreamWriter(ConfigFile.FullName, false);
+        tw = new StreamWriter(UserConfigFile.FullName, false);
         txtwriter = new XmlTextWriter(tw);
         txtwriter.Formatting = Formatting.Indented;
         if (upd != null)
@@ -275,14 +297,14 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
       }
       finally
       {
-        if (tw!=null) tw.Close();
+        if (tw != null) tw.Close();
       }
     }
 
     public object[] Extensions()
     {
       object[] list = new object[_list.Count];
-      int i=0;
+      int i = 0;
       IEnumerator e = _list.Values.GetEnumerator();
       while (e.MoveNext())
       {
@@ -303,7 +325,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
     public MetricSet GetMetricSet(string name)
     {
-      return (MetricSet) _sets[name];
+      return (MetricSet)_sets[name];
     }
   }
 }

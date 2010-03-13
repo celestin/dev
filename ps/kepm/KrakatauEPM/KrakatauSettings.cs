@@ -10,6 +10,7 @@
  * CAM  18-Feb-2010  10574 : Added InstallDirPath.get.
  * CAM  24-Feb-2010  10558 : Added MetricCollection and NewMetricSetName.
  * CAM  27-Feb-2010  10582 : Added DefaultDirectory.
+ * CAM  13-Mar-2010  10581 : Added UserHomeDir.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,6 +28,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm
   {
     private static KrakatauSettings _settings = null;
     private DirectoryInfo _installDir;
+    private DirectoryInfo _userHomeDir;
     private MetricCollection _metrics;
     private int _nextMetricSetId;
     private string _defaultDirectory;
@@ -36,7 +38,6 @@ namespace SourceCodeMetrics.Krakatau.Kepm
       get { return _installDir; }
       set { _installDir = value; }
     }
-
     public string InstallDirPath
     {
       get { return _installDir.FullName; }
@@ -56,6 +57,11 @@ namespace SourceCodeMetrics.Krakatau.Kepm
       {
         return InstallDir.FullName.Substring(0, 2);
       }
+    }
+    public DirectoryInfo UserHomeDir
+    {
+      get { return _userHomeDir; }
+      set { _userHomeDir = value; }
     }
     public MetricCollection Metrics
     {
@@ -77,6 +83,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm
     private KrakatauSettings(DirectoryInfo appPath)
     {
       InstallDir = appPath;
+      UserHomeDir = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE"));
+
       _nextMetricSetId = 1;
       PopulateMetrics();
     }

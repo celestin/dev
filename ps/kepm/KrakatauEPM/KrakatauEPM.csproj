@@ -112,6 +112,7 @@
     <Compile Include="Config\MetricSet.cs" />
     <Compile Include="Config\MetricSetItem.cs" />
     <Compile Include="Win32\MysqlWindowsService.cs" />
+    <Compile Include="Win32\PopupTip.cs" />
     <Compile Include="Win32\Prefs.cs" />
     <Compile Include="Threading\ProcessCaller.cs" />
     <Compile Include="KrakatauEPM.cs" />

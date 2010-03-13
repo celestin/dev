@@ -14,6 +14,7 @@
  * CAM  29-May-08    364 : Added MySql default options.
  * CAM  18-Jun-2009  10447 : Added MySql default options.
  * CAM  15-Feb-2010  10565 : Remove InstallDir and related properties.
+ * CAM  13-Mar-2010  10597 : Added setting/getting of PopupTips.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -36,6 +37,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
     private const string PROJECT_LIST = "project";
     private const string PROJECT_NEW = "project_new";
     private const string PROJECT_OLD = "project_old";
+
+    private const string KeyPopupTips = "Popup Tips";
+
     private const string KeyMySqlServer = "Server";
     private const string KeyMySqlUsername = "Username";
     private const string KeyMySqlPassword = "Password";
@@ -46,6 +50,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
     private string _mySqlUsername;
     private string _mySqlPassword;
     private bool _mySqlUse;
+    private PopupTipList _popupTipList;
 
     public string MySqlServer
     {
@@ -91,6 +96,18 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
         return _mySqlUse;
       }
     }
+    public PopupTipList PopupTipList
+    {
+      get
+      {
+        if (_popupTipList == null)
+        {
+          _popupTipList = new PopupTipList();
+        }
+        return _popupTipList;
+      }
+    }
+
 
     private Prefs()
     {
@@ -119,49 +136,61 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
     {
       RegistryKey rk = Registry.CurrentUser;
       rk = rk.OpenSubKey("Software", true);
-      RegistryKey key = getKey(rk, "Power Software");
-      key = getKey(key, "KEPM");
+      RegistryKey keyKepm = getKey(rk, "Power Software");
+      keyKepm = getKey(keyKepm, "KEPM");
       bool noNew = true;
       bool noOld = true;
 
       if (pv != null)
       {
         IEnumerator eproj = pv.Items.GetEnumerator();
-        int i=0;
+        int i = 0;
         while (eproj.MoveNext())
         {
-          ProjectItem proj = (ProjectItem) eproj.Current;
-          key.SetValue(PROJECT_LIST + i, proj.Project.ProjectFile.FullName);
+          ProjectItem proj = (ProjectItem)eproj.Current;
+          keyKepm.SetValue(PROJECT_LIST + i, proj.Project.ProjectFile.FullName);
 
           if (proj.Project.NewProject)
           {
-            key.SetValue(PROJECT_NEW, i);
+            keyKepm.SetValue(PROJECT_NEW, i);
             noNew = false;
           }
           else if (proj.Project.OldProject)
           {
-            key.SetValue(PROJECT_OLD, i);
+            keyKepm.SetValue(PROJECT_OLD, i);
             noOld = false;
           }
 
           i++;
         }
-        while (i<MAX_PROJECTS)
+        while (i < MAX_PROJECTS)
         {
           // Remove unrequired keys
-          if (key.GetValue(PROJECT_LIST+i) != null) key.DeleteValue(PROJECT_LIST+i);
+          if (keyKepm.GetValue(PROJECT_LIST + i) != null) keyKepm.DeleteValue(PROJECT_LIST + i);
           i++;
         }
-        if (key.GetValue(PROJECT_NEW) != null && noNew) key.DeleteValue(PROJECT_NEW);
-        if (key.GetValue(PROJECT_OLD) != null && noOld) key.DeleteValue(PROJECT_OLD);
+        if (keyKepm.GetValue(PROJECT_NEW) != null && noNew) keyKepm.DeleteValue(PROJECT_NEW);
+        if (keyKepm.GetValue(PROJECT_OLD) != null && noOld) keyKepm.DeleteValue(PROJECT_OLD);
       }
 
       // MySQL Settings
-      key = getKey(key, "MySQL");
-      key.SetValue(KeyMySqlServer, _mySqlServer);
-      key.SetValue(KeyMySqlUsername, _mySqlUsername);
-      key.SetValue(KeyMySqlPassword, _mySqlPassword);
-      key.SetValue(KeyMySqlUse, (_mySqlUse) ? 1 : 0);
+      RegistryKey keyMySql = getKey(keyKepm, "MySQL");
+      keyMySql.SetValue(KeyMySqlServer, _mySqlServer);
+      keyMySql.SetValue(KeyMySqlUsername, _mySqlUsername);
+      keyMySql.SetValue(KeyMySqlPassword, _mySqlPassword);
+      keyMySql.SetValue(KeyMySqlUse, (_mySqlUse) ? 1 : 0);
+
+      // Popup Tips
+      RegistryKey popupTips = getKey(keyKepm, KeyPopupTips);
+      foreach (string valuename in popupTips.GetValueNames())
+      {
+        popupTips.DeleteValue(valuename);
+      }
+
+      foreach (PopupTip tip in PopupTipList.Keys)
+      {
+        popupTips.SetValue(tip.ToString(), "hide");
+      }
     }
 
     private bool getBoolValue(RegistryKey key, string name)
@@ -208,7 +237,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
       pv.Items.Clear();
       while (eproj.MoveNext())
       {
-        Project proj = (Project) eproj.Current;
+        Project proj = (Project)eproj.Current;
         if (proj.ProjectFile.Exists)
         {
           if (proj.ReadFile()) pv.AddProject(proj);
@@ -221,18 +250,18 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
       // User Preferences
       RegistryKey rk = Registry.CurrentUser;
       rk = rk.OpenSubKey("Software", true);
-      RegistryKey key = getKey(rk, "Power Software");
-      key = getKey(key, "KEPM");
+      RegistryKey keyKepm = getKey(rk, "Power Software");
+      keyKepm = getKey(keyKepm, "KEPM");
 
-      long lNew = getLongValue(key, PROJECT_NEW);
-      long lOld = getLongValue(key, PROJECT_OLD);
+      long lNew = getLongValue(keyKepm, PROJECT_NEW);
+      long lOld = getLongValue(keyKepm, PROJECT_OLD);
 
       _projects = new System.Collections.ArrayList();
-      for (int i=0; i<MAX_PROJECTS; i++)
+      for (int i = 0; i < MAX_PROJECTS; i++)
       {
-        if (key.GetValue(PROJECT_LIST + i) != null)
+        if (keyKepm.GetValue(PROJECT_LIST + i) != null)
         {
-          Project proj = new Project(key.GetValue(PROJECT_LIST + i).ToString());
+          Project proj = new Project(keyKepm.GetValue(PROJECT_LIST + i).ToString());
           if (proj.ProjectFile.Exists)
           {
             if (i == lNew)
@@ -250,11 +279,25 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Win32
       }
 
       // MySQL Settings
-      key = getKey(key, "MySQL");
-      _mySqlServer = getStringValue(key, KeyMySqlServer, "localhost");
-      _mySqlUsername = getStringValue(key, KeyMySqlUsername, "root");
-      _mySqlPassword = getStringValue(key, KeyMySqlPassword, "");
-      _mySqlUse = getStringValue(key, KeyMySqlUse, "0").ToString().Equals("1");
+      RegistryKey keyMySql = getKey(keyKepm, "MySQL");
+      _mySqlServer = getStringValue(keyMySql, KeyMySqlServer, "localhost");
+      _mySqlUsername = getStringValue(keyMySql, KeyMySqlUsername, "root");
+      _mySqlPassword = getStringValue(keyMySql, KeyMySqlPassword, "");
+      _mySqlUse = getStringValue(keyMySql, KeyMySqlUse, "0").ToString().Equals("1");
+
+      // Popup Tips
+      RegistryKey popupTips = getKey(keyKepm, KeyPopupTips);
+      AddPopupTip(popupTips, PopupTip.NeverShow);
+      AddPopupTip(popupTips, PopupTip.ResultsBrowserAfterParse);
+      AddPopupTip(popupTips, PopupTip.FilterResultsBrowserUsingMetricSet);
+    }
+
+    private void AddPopupTip(RegistryKey key, PopupTip tip)
+    {
+      if (key.GetValue(tip.ToString()) != null)
+      {
+        PopupTipList.IgnorePopupTip(tip);
+      }
     }
 
     private RegistryKey getKey(RegistryKey rk, string name)

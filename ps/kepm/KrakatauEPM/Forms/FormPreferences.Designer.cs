@@ -5,9 +5,10 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  29-May-08   364 : Added Preferences.
- * CAM  30-May-08   366 : Resized window.
+ * Who  When         Why
+ * CAM  29-May-08    364 : Added Preferences.
+ * CAM  30-May-08    366 : Resized window.
+ * CAM  13-Mar-2010  10597 : Added General section & Never Show PopupTips.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Forms
@@ -53,6 +54,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._txtUsername = new System.Windows.Forms.TextBox();
       this._txtPassword = new System.Windows.Forms.TextBox();
       this._chkUse = new System.Windows.Forms.CheckBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.label2 = new System.Windows.Forms.Label();
+      this._chkNeverShowPopupTips = new System.Windows.Forms.CheckBox();
       this._tlpPrefs.SuspendLayout();
       this._flpButtons.SuspendLayout();
       this.SuspendLayout();
@@ -66,16 +70,22 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._tlpPrefs.Controls.Add(this._lblServer, 0, 1);
       this._tlpPrefs.Controls.Add(this._lblUsername, 0, 2);
       this._tlpPrefs.Controls.Add(this._lblPassword, 0, 3);
-      this._tlpPrefs.Controls.Add(this._flpButtons, 1, 6);
+      this._tlpPrefs.Controls.Add(this._flpButtons, 1, 9);
       this._tlpPrefs.Controls.Add(this._txtServer, 1, 1);
       this._tlpPrefs.Controls.Add(this._txtUsername, 1, 2);
       this._tlpPrefs.Controls.Add(this._txtPassword, 1, 3);
       this._tlpPrefs.Controls.Add(this._chkUse, 1, 4);
+      this._tlpPrefs.Controls.Add(this.label1, 0, 6);
+      this._tlpPrefs.Controls.Add(this.label2, 0, 7);
+      this._tlpPrefs.Controls.Add(this._chkNeverShowPopupTips, 1, 7);
       this._tlpPrefs.Dock = System.Windows.Forms.DockStyle.Fill;
       this._tlpPrefs.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this._tlpPrefs.Location = new System.Drawing.Point(0, 0);
       this._tlpPrefs.Name = "_tlpPrefs";
-      this._tlpPrefs.RowCount = 7;
+      this._tlpPrefs.RowCount = 10;
+      this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+      this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+      this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -83,7 +93,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this._tlpPrefs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-      this._tlpPrefs.Size = new System.Drawing.Size(444, 239);
+      this._tlpPrefs.Size = new System.Drawing.Size(444, 333);
       this._tlpPrefs.TabIndex = 0;
       //
       // _lblHeadingMySQL
@@ -136,7 +146,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._flpButtons.Controls.Add(this._btnOK);
       this._flpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
       this._flpButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-      this._flpButtons.Location = new System.Drawing.Point(83, 209);
+      this._flpButtons.Location = new System.Drawing.Point(83, 303);
       this._flpButtons.Name = "_flpButtons";
       this._flpButtons.Size = new System.Drawing.Size(358, 27);
       this._flpButtons.TabIndex = 4;
@@ -206,13 +216,47 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._chkUse.Text = "Use these as defaults for new projects?";
       this._chkUse.UseVisualStyleBackColor = true;
       //
+      // label1
+      //
+      this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(3, 187);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(57, 16);
+      this.label1.TabIndex = 10;
+      this.label1.Text = "General";
+      //
+      // label2
+      //
+      this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label2.AutoSize = true;
+      this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.Location = new System.Drawing.Point(3, 218);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(68, 13);
+      this.label2.TabIndex = 11;
+      this.label2.Text = "Popup Tips";
+      //
+      // _chkNeverShowPopupTips
+      //
+      this._chkNeverShowPopupTips.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this._chkNeverShowPopupTips.AutoSize = true;
+      this._chkNeverShowPopupTips.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._chkNeverShowPopupTips.Location = new System.Drawing.Point(83, 216);
+      this._chkNeverShowPopupTips.Name = "_chkNeverShowPopupTips";
+      this._chkNeverShowPopupTips.Size = new System.Drawing.Size(138, 17);
+      this._chkNeverShowPopupTips.TabIndex = 12;
+      this._chkNeverShowPopupTips.Text = "Never show Popup Tips";
+      this._chkNeverShowPopupTips.UseVisualStyleBackColor = true;
+      //
       // FormPreferences
       //
       this.AcceptButton = this._btnOK;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this._btnCancel;
-      this.ClientSize = new System.Drawing.Size(444, 239);
+      this.ClientSize = new System.Drawing.Size(444, 333);
       this.Controls.Add(this._tlpPrefs);
       this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -243,5 +287,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.TextBox _txtUsername;
     private System.Windows.Forms.TextBox _txtPassword;
     private System.Windows.Forms.CheckBox _chkUse;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.CheckBox _chkNeverShowPopupTips;
   }
 }

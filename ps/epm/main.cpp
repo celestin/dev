@@ -94,6 +94,7 @@
  * CAM  17-Feb-2010  10567 : Remove Start/Stop database - handled by Automatic Service.
  * CAM  23-Feb-2010  10576 : Added update to set Unchanged files.
  * CAM  13-Mar-2010  10581 : Added CreateUserCopyEpmConfig.
+ * CAM  16-Mar-2010  10609 : Call GetEpmVersion.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1349,8 +1350,11 @@ bool analyse(string &filename) {
 int main(int argc, char* argv[]) {
   int i,e;
   char eventMsg[4096];
+  char epmVersion[1024];
 
-  cout << "\nEssential Project Manager (EPM) Version " << EPM_VERSION << "\n"
+  GetEpmVersion(epmVersion, 1024);
+
+  cout << "\nEssential Project Manager (EPM) Version " << epmVersion << "\n"
        << "Copyright (c) 2004,2009 PowerSoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 

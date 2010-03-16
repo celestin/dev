@@ -3,7 +3,7 @@
  * Copyright (c) 2004,2010 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  16-Mar-2010  10597 : File created.

@@ -370,6 +370,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       Cursor = Cursors.Default;
       cmdOK.Enabled = cmdParse.Enabled = true;
 
+      new FormPopupTip(PopupTip.ResultsBrowserAfterParse);
+
       if (chkH2.Checked)
       {
         FileInfo h2Html = new FileInfo(txtH2.Text + @"\index.html");
@@ -391,7 +393,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
           System.Diagnostics.Process.Start(h2Html.FullName);
         }
-      }
+      }      
     }
   }
 }

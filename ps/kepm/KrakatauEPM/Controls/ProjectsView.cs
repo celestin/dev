@@ -27,6 +27,7 @@ using System.Drawing;
 using SourceCodeMetrics.Krakatau.Kepm.Forms;
 using SourceCodeMetrics.Krakatau.Kepm.Projects;
 using SourceCodeMetrics.Krakatau.Kepm.Results;
+using SourceCodeMetrics.Krakatau.Kepm.Win32;
 
 namespace SourceCodeMetrics.Krakatau.Kepm.Controls
 {
@@ -119,6 +120,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Controls
         RefreshViewArgs e = new RefreshViewArgs(pi.Project);
         OnRefreshView(e);
       }
+
+      new FormPopupTip(PopupTip.FilterResultsBrowserUsingMetricSet);
     }
 
     public void SetAsDeselected()

@@ -1,13 +1,14 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Dunc Smith Glasscraft
- * Copyright (c) 2009 Dunc Smith
+ * Copyright (c) 2009,2010 Dunc Smith
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  13-Jul-2009  10459 : Added new images and file headers.
+ * CAM  19-Mar-2010  10610 : Added shortcut icon.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include "db.php"
@@ -45,6 +46,7 @@ include "db.php"
   </script>
   <Script Language="JavaScript" src="menu.js"></script>
   <Script Language="JavaScript" src="date.js"></script>
+  <link rel="shortcut icon" href="dsg.ico" type="image/x-icon" />
 </head>
 
 <body onLoad="activateMenu(false);" onClick="hideMenu();" background="./img/mb1.gif" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>

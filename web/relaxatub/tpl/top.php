@@ -21,6 +21,7 @@
  * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
  * CAM  01-Mar-2010  10586 : Remove AECC banner.
  * CAM  08-Mar-2010  10602 : Test for correct session variable.
+ * CAM  24-Mar-2007  10603 : Added links for castlewood.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -70,6 +71,7 @@ if ($loggedin) {
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
       <tr><td align=center><a id="linkgarden" class="nav" href="garden.php">decking ideas</a></td></tr>
+      <tr><td align=center><a id="linkcastlewood" class="nav" href="castlewood.php">short break with a hot tub</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>

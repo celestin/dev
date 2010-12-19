@@ -95,6 +95,7 @@
  * CAM  23-Feb-2010  10576 : Added update to set Unchanged files.
  * CAM  13-Mar-2010  10581 : Added CreateUserCopyEpmConfig.
  * CAM  16-Mar-2010  10609 : Call GetEpmVersion.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -194,105 +195,105 @@ extern int yylex_pb();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
-extern vector<char*> operands_cs[255];
+extern set<unsigned int> operands_cs;
 
 extern int j_comments_c,c_comments_c,cpp_comments_c,com_loc_c,nsemi_c,noperands_c,noperators_c,ploc_count_c;
 extern set<int> sloc_c,operators_c;
-extern vector<char*> operands_c[255];
+extern set<unsigned int> operands_c;
 
 extern int j_comments_j,c_comments_j,cpp_comments_j,com_loc_j,nsemi_j,noperands_j,noperators_j;
 extern set<int> sloc_j,operators_j;
-extern vector<char*> operands_j[255];
+extern set<unsigned int> operands_j;
 
 extern int c_comments_jsp,cpp_comments_jsp,com_loc_jsp,nsemi_jsp,noperands_jsp,noperators_jsp;
 extern set<int> sloc_jsp,operators_jsp;
 extern set<int> slnat_jsp,sltag_jsp,slhtm_jsp,slscr_jsp;
-extern vector<char*> operands_jsp[255];
+extern set<unsigned int> operands_jsp;
 
 extern int cpp_comments_vb,com_loc_vb,noperands_vb,noperators_vb;
 extern set<int> sloc_vb,operators_vb;
-extern vector<char*> operands_vb[255];
+extern set<unsigned int> operands_vb;
 
 extern int c_comments_s1,cpp_comments_s1,com_loc_s1,nsemi_s1,noperands_s1,noperators_s1;
 extern set<int> sloc_s1,operators_s1;
-extern vector<char*> operands_s1[255];
+extern set<unsigned int> operands_s1;
 
 extern int c_comments_ada,cpp_comments_ada,com_loc_ada,nsemi_ada,noperands_ada,noperators_ada;
 extern set<int> sloc_ada,operators_ada;
-extern vector<char*> operands_ada[255];
+extern set<unsigned int> operands_ada;
 
 extern int c_comments_pl,cpp_comments_pl,com_loc_pl,nsemi_pl,noperands_pl,noperators_pl;
 extern set<int> sloc_pl,operators_pl;
-extern vector<char*> operands_pl[255];
+extern set<unsigned int> operands_pl;
 
 extern int c_comments_asp,cpp_comments_asp,com_loc_asp,nsemi_asp,noperands_asp,noperators_asp;
 extern set<int> sloc_asp,operators_asp;
 extern set<int> slnat_asp,sltag_asp,slhtm_asp,slscr_asp;
-extern vector<char*> operands_asp[255];
+extern set<unsigned int> operands_asp;
 
 extern int c_comments_php,cpp_comments_php,com_loc_php,nsemi_php,noperands_php,noperators_php;
 extern set<int> sloc_php,operators_php;
 extern set<int> slnat_php,slhtm_php,slscr_php;
-extern vector<char*> operands_php[255];
+extern set<unsigned int> operands_php;
 
 extern int j_comments_idl,c_comments_idl,cpp_comments_idl,com_loc_idl,nsemi_idl,noperands_idl,noperators_idl;
 extern set<int> sloc_idl,operators_idl;
-extern vector<char*> operands_idl[255];
+extern set<unsigned int> operands_idl;
 
 extern int j_comments_vhdl,c_comments_vhdl,cpp_comments_vhdl,com_loc_vhdl,nsemi_vhdl,noperands_vhdl,noperators_vhdl;
 extern set<int> sloc_vhdl,operators_vhdl;
-extern vector<char*> operands_vhdl[255];
+extern set<unsigned int> operands_vhdl;
 
 extern int c_comments_xml,cpp_comments_xml,com_loc_xml,nsemi_xml,noperands_xml,noperators_xml;
 extern set<int> sloc_xml,operators_xml;
 extern set<int> sltag_xml;
-extern vector<char*> operands_xml[255];
+extern set<unsigned int> operands_xml;
 
 extern int c_comments_jt,cpp_comments_jt,com_loc_jt,nsemi_jt,noperands_jt,noperators_jt;
 extern set<int> sloc_jt,operators_jt;
 extern set<int> sltag_jt;
-extern vector<char*> operands_jt[255];
+extern set<unsigned int> operands_jt;
 
 extern int c_comments_ht,cpp_comments_ht,com_loc_ht,nsemi_ht,noperands_ht,noperators_ht;
 extern set<int> sloc_ht,operators_ht;
 extern set<int> slnat_ht,slhtm_ht,slscr_ht;
-extern vector<char*> operands_ht[255];
+extern set<unsigned int> operands_ht;
 
 extern int c_comments_py,cpp_comments_py,com_loc_py,nsemi_py,noperands_py,noperators_py;
 extern set<int> sloc_py,operators_py;
-extern vector<char*> operands_py[255];
+extern set<unsigned int> operands_py;
 
 extern int c_comments_ay,cpp_comments_ay,com_loc_ay,nsemi_ay,noperands_ay,noperators_ay,ploc_count_ay;
 extern set<int> sloc_ay,operators_ay;
-extern vector<char*> operands_ay[255];
+extern set<unsigned int> operands_ay;
 
 extern int c_comments_sh,cpp_comments_sh,com_loc_sh,nsemi_sh,noperands_sh,noperators_sh;
 extern set<int> sloc_sh,operators_sh;
-extern vector<char*> operands_sh[255];
+extern set<unsigned int> operands_sh;
 
 extern int c_comments_tx,cpp_comments_tx,com_loc_tx,nsemi_tx,noperands_tx,noperators_tx;
 extern set<int> sloc_tx,operators_tx;
-extern vector<char*> operands_tx[255];
+extern set<unsigned int> operands_tx;
 
 extern int c_comments_ft,cpp_comments_ft,com_loc_ft,nsemi_ft,noperands_ft,noperators_ft;
 extern set<int> sloc_ft,operators_ft;
-extern vector<char*> operands_ft[255];
+extern set<unsigned int> operands_ft;
 
 extern int j_comments_ss,c_comments_ss,cpp_comments_ss,com_loc_ss,nsemi_ss,noperands_ss,noperators_ss;
 extern set<int> sloc_ss,operators_ss;
-extern vector<char*> operands_ss[255];
+extern set<unsigned int> operands_ss;
 
 extern int j_comments_rb,c_comments_rb,cpp_comments_rb,com_loc_rb,nsemi_rb,noperands_rb,noperators_rb;
 extern set<int> sloc_rb,operators_rb;
-extern vector<char*> operands_rb[255];
+extern set<unsigned int> operands_rb;
 
 extern int j_comments_wb,c_comments_wb,cpp_comments_wb,com_loc_wb,nsemi_wb,noperands_wb,noperators_wb;
 extern set<int> sloc_wb,operators_wb;
-extern vector<char*> operands_wb[255];
+extern set<unsigned int> operands_wb;
 
 extern int j_comments_pb,c_comments_pb,cpp_comments_pb,com_loc_pb,nsemi_pb,noperands_pb,noperators_pb;
 extern set<int> sloc_pb,operators_pb;
-extern vector<char*> operands_pb[255];
+extern set<unsigned int> operands_pb;
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -396,7 +397,6 @@ void CreateUserCopyEpmConfig()
 }
 
 void setMetrics(int sfid, string filename) {
-  int i;
   long sloc,j_com,c_com,cpp_com,com_loc;
   sloc=j_com=c_com=cpp_com=com_loc=0;
 
@@ -411,9 +411,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_c);
     met.set(MET(N1S), operators_c.size());
     met.set(MET(N2), noperands_c);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_c[i].size());
-    }
+    met.set(MET(N2S), operands_c.size());
 
     j_com = j_comments_c;                   // Comments
     c_com = c_comments_c;
@@ -427,9 +425,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_cs);
     met.set(MET(N1S), operators_cs.size());
     met.set(MET(N2), noperands_cs);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_cs[i].size());
-    }
+    met.set(MET(N2S), operands_cs.size());
 
     j_com = j_comments_cs;                  // Comments
     c_com = c_comments_cs;
@@ -443,9 +439,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_j);
     met.set(MET(N1S), operators_j.size());
     met.set(MET(N2), noperands_j);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_j[i].size());
-    }
+    met.set(MET(N2S), operands_j.size());
 
     j_com = j_comments_j;                   // Comments
     c_com = c_comments_j;
@@ -464,9 +458,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_jsp);
     met.set(MET(N1S), operators_jsp.size());
     met.set(MET(N2), noperands_jsp);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_jsp[i].size());
-    }
+    met.set(MET(N2S), operands_jsp.size());
 
     c_com = c_comments_jsp;                   // Comments
     cpp_com = cpp_comments_jsp;
@@ -479,9 +471,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_vb);
     met.set(MET(N1S), operators_vb.size());
     met.set(MET(N2), noperands_vb);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_vb[i].size());
-    }
+    met.set(MET(N2S), operands_vb.size());
 
     cpp_com = cpp_comments_vb;              // Comments
     com_loc = com_loc_vb;
@@ -493,9 +483,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_s1);
     met.set(MET(N1S), operators_s1.size());
     met.set(MET(N2), noperands_s1);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_s1[i].size());
-    }
+    met.set(MET(N2S), operands_s1.size());
 
     c_com = c_comments_s1;                   // Comments
     cpp_com = cpp_comments_s1;
@@ -508,9 +496,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_ada);
     met.set(MET(N1S), operators_ada.size());
     met.set(MET(N2), noperands_ada);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_ada[i].size());
-    }
+    met.set(MET(N2S), operands_ada.size());
 
     c_com = c_comments_ada;                   // Comments
     cpp_com = cpp_comments_ada;
@@ -523,9 +509,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_pl);
     met.set(MET(N1S), operators_pl.size());
     met.set(MET(N2), noperands_pl);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_pl[i].size());
-    }
+    met.set(MET(N2S), operands_pl.size());
 
     c_com = c_comments_pl;                   // Comments
     cpp_com = cpp_comments_pl;
@@ -543,9 +527,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_asp);
     met.set(MET(N1S), operators_asp.size());
     met.set(MET(N2), noperands_asp);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_asp[i].size());
-    }
+    met.set(MET(N2S), operands_asp.size());
 
     c_com = c_comments_asp;                   // Comments
     cpp_com = cpp_comments_asp;
@@ -562,9 +544,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_php);
     met.set(MET(N1S), operators_php.size());
     met.set(MET(N2), noperands_php);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_php[i].size());
-    }
+    met.set(MET(N2S), operands_php.size());
 
     c_com = c_comments_php;                   // Comments
     cpp_com = cpp_comments_php;
@@ -577,9 +557,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_idl);
     met.set(MET(N1S), operators_idl.size());
     met.set(MET(N2), noperands_idl);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_idl[i].size());
-    }
+    met.set(MET(N2S), operands_idl.size());
 
     c_com = c_comments_idl;                   // Comments
     cpp_com = cpp_comments_idl;
@@ -592,9 +570,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_vhdl);
     met.set(MET(N1S), operators_vhdl.size());
     met.set(MET(N2), noperands_vhdl);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_vhdl[i].size());
-    }
+    met.set(MET(N2S), operands_vhdl.size());
 
     c_com = c_comments_vhdl;                   // Comments
     cpp_com = cpp_comments_vhdl;
@@ -608,9 +584,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_xml);
     met.set(MET(N1S), operators_xml.size());
     met.set(MET(N2), noperands_xml);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_xml[i].size());
-    }
+    met.set(MET(N2S), operands_xml.size());
 
     c_com = c_comments_xml;                   // Comments
     cpp_com = cpp_comments_xml;
@@ -624,9 +598,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_jt);
     met.set(MET(N1S), operators_jt.size());
     met.set(MET(N2), noperands_jt);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_jt[i].size());
-    }
+    met.set(MET(N2S), operands_jt.size());
 
     c_com = c_comments_jt;                   // Comments
     cpp_com = cpp_comments_jt;
@@ -641,9 +613,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_ht);
     met.set(MET(N1S), operators_ht.size());
     met.set(MET(N2), noperands_ht);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_ht[i].size());
-    }
+    met.set(MET(N2S), operands_ht.size());
 
     c_com = c_comments_ht;                   // Comments
     cpp_com = cpp_comments_ht;
@@ -656,9 +626,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_py);
     met.set(MET(N1S), operators_py.size());
     met.set(MET(N2), noperands_py);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_py[i].size());
-    }
+    met.set(MET(N2S), operands_py.size());
 
     c_com = c_comments_py;                   // Comments
     cpp_com = cpp_comments_py;
@@ -673,9 +641,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_ay);
     met.set(MET(N1S), operators_ay.size());
     met.set(MET(N2), noperands_ay);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_ay[i].size());
-    }
+    met.set(MET(N2S), operands_ay.size());
 
     c_com = c_comments_ay;                   // Comments
     cpp_com = cpp_comments_ay;
@@ -688,9 +654,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_sh);
     met.set(MET(N1S), operators_sh.size());
     met.set(MET(N2), noperands_sh);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_sh[i].size());
-    }
+    met.set(MET(N2S), operands_sh.size());
 
     c_com = c_comments_sh;                   // Comments
     cpp_com = cpp_comments_sh;
@@ -714,9 +678,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_ss);
     met.set(MET(N1S), operators_ss.size());
     met.set(MET(N2), noperands_ss);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_ss[i].size());
-    }
+    met.set(MET(N2S), operands_ss.size());
 
     c_com = c_comments_ss;                   // Comments
     cpp_com = cpp_comments_ss;
@@ -729,9 +691,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_rb);
     met.set(MET(N1S), operators_rb.size());
     met.set(MET(N2), noperands_rb);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_rb[i].size());
-    }
+    met.set(MET(N2S), operands_rb.size());
 
     c_com = c_comments_rb;                   // Comments
     cpp_com = cpp_comments_rb;
@@ -744,9 +704,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_wb);
     met.set(MET(N1S), operators_wb.size());
     met.set(MET(N2), noperands_wb);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_wb[i].size());
-    }
+    met.set(MET(N2S), operands_wb.size());
 
     c_com = c_comments_wb;                   // Comments
     cpp_com = cpp_comments_wb;
@@ -759,9 +717,7 @@ void setMetrics(int sfid, string filename) {
     met.set(MET(N1), noperators_pb);
     met.set(MET(N1S), operators_pb.size());
     met.set(MET(N2), noperands_pb);
-    for (i=0;i<255;i++) {
-      met.add(MET(N2S), operands_pb[i].size());
-    }
+    met.set(MET(N2S), operands_pb.size());
 
     c_com = c_comments_pb;                   // Comments
     cpp_com = cpp_comments_pb;
@@ -1177,6 +1133,9 @@ bool setupDir(const char *dir) {
     }
   }
 
+  free(dir1);
+  free(dir2);
+
   return true;
 }
 
@@ -1346,6 +1305,45 @@ bool analyse(string &filename) {
   return true;
 }
 
+void cleanup() {
+
+  lexclear_c();
+  lexclear_cs();
+  lexclear_j();
+  lexclear_jsp();
+  lexclear_vb();
+  lexclear_s1();
+  lexclear_ada();
+  lexclear_pl();
+  lexclear_asp();
+  lexclear_php();
+  lexclear_idl();
+  lexclear_vhdl();
+  lexclear_xml();
+  lexclear_jt();
+  lexclear_ht();
+  lexclear_py();
+  lexclear_ay();
+  lexclear_sh();
+  lexclear_tx();
+  lexclear_ft();
+  lexclear_ss();
+  lexclear_rb();
+  lexclear_wb();
+  lexclear_pb();
+ 
+  free(projname);
+  free(servername);
+  free(musername);
+  free(mpassword);
+  free(metricsset);
+  free(csvfile);
+  free(xmlfile);
+  free(symb_dir);
+  free(grid_dir);
+  free(symb_file);
+  free(grid_file);
+}
 
 int main(int argc, char* argv[]) {
   int i,e;
@@ -1631,5 +1629,7 @@ int main(int argc, char* argv[]) {
   }
 
   closeDatabase();
+  cleanup();
+
   return 0;
 }

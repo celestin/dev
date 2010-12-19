@@ -9,18 +9,19 @@
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10400 : File created.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
 #include <stdio.h>
 #include <string.h>
 #include "y.jt.h"
+#include "PowerHash.h"
 
 int yylex();
 
 #ifdef WIN32
   #include <io.h>
-  #include <vector>
   #include <set>
   using namespace std;
 #else
@@ -37,42 +38,19 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0;           // Number of semi-colons
 int noperators=0;      // Total number of operators
 int noperands=0;       // Total number of operands
 
-#define STORE_OPERATOR(X) operators.insert(X); noperators++;
-#define SEMI() nsemi++;
-#define COUNT() sloc.insert(jt_lineno)
+#define NOTE_SLOC()       sloc.insert(jt_lineno)
 
-void lexclear() {
-  BEGIN 0;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  jt_lineno=nsemi=noperators=0;
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-}
+void lexclear();
 
 %}
 
@@ -114,107 +92,107 @@ SPTAB                                   [ \t]
 
 \n                                      {jt_lineno++;}
 
-"="                                     {STORE_OPERATOR(SYM_ASSIGN);COUNT();}
-">"                                     {STORE_OPERATOR(SYM_GT);COUNT();}
-"<"                                     {STORE_OPERATOR(SYM_LT);COUNT();}
-"!"                                     {STORE_OPERATOR(SYM_NOT);COUNT();}
-"~"                                     {STORE_OPERATOR(SYM_TILDE);COUNT();}
-"?"                                     {STORE_OPERATOR(SYM_QUESTION);COUNT();}
-":"                                     {STORE_OPERATOR(SYM_COLON);COUNT();}
-"+"                                     {STORE_OPERATOR(SYM_PLUS);COUNT();}
-"-"                                     {STORE_OPERATOR(SYM_MINUS);COUNT();}
-"*"                                     {STORE_OPERATOR(SYM_ASTERISK);COUNT();}
-"/"                                     {STORE_OPERATOR(SYM_SLASH);COUNT();}
-"&"                                     {STORE_OPERATOR(SYM_BITAND);COUNT();}
-"|"                                     {STORE_OPERATOR(SYM_BITOR);COUNT();}
-"^"                                     {STORE_OPERATOR(SYM_EXPONENT);COUNT();}
-"%"                                     {STORE_OPERATOR(SYM_PERCENT);COUNT();}
-"("                                     {STORE_OPERATOR(SYM_PARENO);COUNT();}
-")"                                     {STORE_OPERATOR(SYM_PARENC);COUNT();}
-"{"                                     {STORE_OPERATOR(SYM_BRACEO);COUNT();}
-"}"                                     {STORE_OPERATOR(SYM_BRACEC);COUNT();}
-"["                                     {STORE_OPERATOR(SYM_BRACKETO);COUNT();}
-"]"                                     {STORE_OPERATOR(SYM_BRACKETC);COUNT();}
-";"                                     {COUNT();SEMI();}
-","                                     {STORE_OPERATOR(SYM_COMMA);COUNT();}
-"."                                     {STORE_OPERATOR(SYM_PERIOD);COUNT();}
+"="                                     {STORE_OPERATOR(SYM_ASSIGN);}
+">"                                     {STORE_OPERATOR(SYM_GT);}
+"<"                                     {STORE_OPERATOR(SYM_LT);}
+"!"                                     {STORE_OPERATOR(SYM_NOT);}
+"~"                                     {STORE_OPERATOR(SYM_TILDE);}
+"?"                                     {STORE_OPERATOR(SYM_QUESTION);}
+":"                                     {STORE_OPERATOR(SYM_COLON);}
+"+"                                     {STORE_OPERATOR(SYM_PLUS);}
+"-"                                     {STORE_OPERATOR(SYM_MINUS);}
+"*"                                     {STORE_OPERATOR(SYM_ASTERISK);}
+"/"                                     {STORE_OPERATOR(SYM_SLASH);}
+"&"                                     {STORE_OPERATOR(SYM_BITAND);}
+"|"                                     {STORE_OPERATOR(SYM_BITOR);}
+"^"                                     {STORE_OPERATOR(SYM_EXPONENT);}
+"%"                                     {STORE_OPERATOR(SYM_PERCENT);}
+"("                                     {STORE_OPERATOR(SYM_PARENO);}
+")"                                     {STORE_OPERATOR(SYM_PARENC);}
+"{"                                     {STORE_OPERATOR(SYM_BRACEO);}
+"}"                                     {STORE_OPERATOR(SYM_BRACEC);}
+"["                                     {STORE_OPERATOR(SYM_BRACKETO);}
+"]"                                     {STORE_OPERATOR(SYM_BRACKETC);}
+";"                                     {SEMI();}
+","                                     {STORE_OPERATOR(SYM_COMMA);}
+"."                                     {STORE_OPERATOR(SYM_PERIOD);}
 
-"=="                                    {STORE_OPERATOR(SYM_EQUALS);COUNT();}
-"<="                                    {STORE_OPERATOR(SYM_LTEQUAL);COUNT();}
-">="                                    {STORE_OPERATOR(SYM_GTEQUAL);COUNT();}
-"!="                                    {STORE_OPERATOR(SYM_NOTEQUAL);COUNT();}
-"&&"                                    {STORE_OPERATOR(SYM_LOGAND);COUNT();}
-"||"                                    {STORE_OPERATOR(SYM_LOGOR);COUNT();}
-"++"                                    {STORE_OPERATOR(SYM_INCREMENT);COUNT();}
-"--"                                    {STORE_OPERATOR(SYM_DECREMENT);COUNT();}
-"<<"                                    {STORE_OPERATOR(SYM_SHIFTLT);COUNT();}
-">>"                                    {STORE_OPERATOR(SYM_SHIFTRT);COUNT();}
-">>>"                                   {STORE_OPERATOR(SYM_SHIFTRTUNS);COUNT();}
-"+="                                    {STORE_OPERATOR(SYM_ASSIGNPLUS);COUNT();}
-"-="                                    {STORE_OPERATOR(SYM_ASSIGNMINUS);COUNT();}
-"*="                                    {STORE_OPERATOR(SYM_ASSIGNMULTIPLY);COUNT();}
-"/="                                    {STORE_OPERATOR(SYM_ASSIGNDIVIDE);COUNT();}
-"&="                                    {STORE_OPERATOR(SYM_ASSIGNBITAND);COUNT();}
-"|="                                    {STORE_OPERATOR(SYM_ASSIGNBITOR);COUNT();}
-"^="                                    {STORE_OPERATOR(SYM_ASSIGNEXPONENT);COUNT();}
-"%="                                    {STORE_OPERATOR(SYM_ASSIGNMOD);COUNT();}
-"<<="                                   {STORE_OPERATOR(SYM_ASSIGNSHIFTLT);COUNT();}
-">>="                                   {STORE_OPERATOR(SYM_ASSIGNSHIFTRT);COUNT();}
-">>>="                                  {STORE_OPERATOR(SYM_ASSIGNSHIFTRTUNS);COUNT();}
+"=="                                    {STORE_OPERATOR(SYM_EQUALS);}
+"<="                                    {STORE_OPERATOR(SYM_LTEQUAL);}
+">="                                    {STORE_OPERATOR(SYM_GTEQUAL);}
+"!="                                    {STORE_OPERATOR(SYM_NOTEQUAL);}
+"&&"                                    {STORE_OPERATOR(SYM_LOGAND);}
+"||"                                    {STORE_OPERATOR(SYM_LOGOR);}
+"++"                                    {STORE_OPERATOR(SYM_INCREMENT);}
+"--"                                    {STORE_OPERATOR(SYM_DECREMENT);}
+"<<"                                    {STORE_OPERATOR(SYM_SHIFTLT);}
+">>"                                    {STORE_OPERATOR(SYM_SHIFTRT);}
+">>>"                                   {STORE_OPERATOR(SYM_SHIFTRTUNS);}
+"+="                                    {STORE_OPERATOR(SYM_ASSIGNPLUS);}
+"-="                                    {STORE_OPERATOR(SYM_ASSIGNMINUS);}
+"*="                                    {STORE_OPERATOR(SYM_ASSIGNMULTIPLY);}
+"/="                                    {STORE_OPERATOR(SYM_ASSIGNDIVIDE);}
+"&="                                    {STORE_OPERATOR(SYM_ASSIGNBITAND);}
+"|="                                    {STORE_OPERATOR(SYM_ASSIGNBITOR);}
+"^="                                    {STORE_OPERATOR(SYM_ASSIGNEXPONENT);}
+"%="                                    {STORE_OPERATOR(SYM_ASSIGNMOD);}
+"<<="                                   {STORE_OPERATOR(SYM_ASSIGNSHIFTLT);}
+">>="                                   {STORE_OPERATOR(SYM_ASSIGNSHIFTRT);}
+">>>="                                  {STORE_OPERATOR(SYM_ASSIGNSHIFTRTUNS);}
 
-"abstract"                              {STORE_OPERATOR(KEY_ABSTRACT);COUNT();}
-"boolean"                               {STORE_OPERATOR(KEY_BOOLEAN);COUNT();}
-"break"                                 {STORE_OPERATOR(KEY_BREAK);COUNT();}
-"byte"                                  {STORE_OPERATOR(KEY_BYTE);COUNT();}
-"case"                                  {STORE_OPERATOR(KEY_CASE);COUNT();}
-"catch"                                 {STORE_OPERATOR(KEY_CATCH);COUNT();}
-"char"                                  {STORE_OPERATOR(KEY_CHAR);COUNT();}
-"class"                                 {STORE_OPERATOR(KEY_CLASS);COUNT();}
-"const"                                 {STORE_OPERATOR(KEY_CONST);COUNT();}
-"continue"                              {STORE_OPERATOR(KEY_CONTINUE);COUNT();}
-"default"                               {STORE_OPERATOR(KEY_DEFAULT);COUNT();}
-"delete"                                {STORE_OPERATOR(KEY_DELETE);COUNT();}
-"do"                                    {STORE_OPERATOR(KEY_DO);COUNT();}
-"double"                                {STORE_OPERATOR(KEY_DOUBLE);COUNT();}
-"else"                                  {STORE_OPERATOR(KEY_ELSE);COUNT();}
-"extends"                               {STORE_OPERATOR(KEY_EXTENDS);COUNT();}
-"final"                                 {STORE_OPERATOR(KEY_FINAL);COUNT();}
-"finally"                               {STORE_OPERATOR(KEY_FINALLY);COUNT();}
-"float"                                 {STORE_OPERATOR(KEY_FLOAT);COUNT();}
-"for"                                   {STORE_OPERATOR(KEY_FOR);COUNT();}
-"function"                              {STORE_OPERATOR(KEY_FUNCTION);COUNT();}
-"goto"                                  {STORE_OPERATOR(KEY_GOTO);COUNT();}
-"if"                                    {STORE_OPERATOR(KEY_IF);COUNT();}
-"implements"                            {STORE_OPERATOR(KEY_IMPLEMENTS);COUNT();}
-"import"                                {STORE_OPERATOR(KEY_IMPORT);COUNT();}
-"in"                                    {STORE_OPERATOR(KEY_IN);COUNT();}
-"instanceof"                            {STORE_OPERATOR(KEY_INSTANCEOF);COUNT();}
-"int"                                   {STORE_OPERATOR(KEY_INT );COUNT();}
-"interface"                             {STORE_OPERATOR(KEY_INTERFACE);COUNT();}
-"long"                                  {STORE_OPERATOR(KEY_LONG);COUNT();}
-"native"                                {STORE_OPERATOR(KEY_NATIVE);COUNT();}
-"new"                                   {STORE_OPERATOR(KEY_NEW);COUNT();}
-"package"                               {STORE_OPERATOR(KEY_PACKAGE);COUNT();}
-"private"                               {STORE_OPERATOR(KEY_PRIVATE);COUNT();}
-"protected"                             {STORE_OPERATOR(KEY_PROTECTED);COUNT();}
-"public"                                {STORE_OPERATOR(KEY_PUBLIC);COUNT();}
-"return"                                {STORE_OPERATOR(KEY_RETURN);COUNT();}
-"short"                                 {STORE_OPERATOR(KEY_SHORT);COUNT();}
-"static"                                {STORE_OPERATOR(KEY_STATIC);COUNT();}
-"super"                                 {STORE_OPERATOR(KEY_SUPER);COUNT();}
-"switch"                                {STORE_OPERATOR(KEY_SWITCH);COUNT();}
-"synchronized"                          {STORE_OPERATOR(KEY_SYNCHRONIZED );COUNT();}
-"this"                                  {STORE_OPERATOR(KEY_THIS);COUNT();}
-"throw"                                 {STORE_OPERATOR(KEY_THROW);COUNT();}
-"throws"                                {STORE_OPERATOR(KEY_THROWS);COUNT();}
-"transient"                             {STORE_OPERATOR(KEY_TRANSIENT);COUNT();}
-"try"                                   {STORE_OPERATOR(KEY_TRY);COUNT();}
-"typeof"                                {STORE_OPERATOR(KEY_TYPEOF);COUNT();}
-"var"                                   {STORE_OPERATOR(KEY_VAR);COUNT();}
-"void"                                  {STORE_OPERATOR(KEY_VOID);COUNT();}
-"volatile"                              {STORE_OPERATOR(KEY_VOLATILE);COUNT();}
-"while"                                 {STORE_OPERATOR(KEY_WHILE);COUNT();}
-"with"                                  {STORE_OPERATOR(KEY_WITH);COUNT();}
+"abstract"                              {STORE_OPERATOR(KEY_ABSTRACT);}
+"boolean"                               {STORE_OPERATOR(KEY_BOOLEAN);}
+"break"                                 {STORE_OPERATOR(KEY_BREAK);}
+"byte"                                  {STORE_OPERATOR(KEY_BYTE);}
+"case"                                  {STORE_OPERATOR(KEY_CASE);}
+"catch"                                 {STORE_OPERATOR(KEY_CATCH);}
+"char"                                  {STORE_OPERATOR(KEY_CHAR);}
+"class"                                 {STORE_OPERATOR(KEY_CLASS);}
+"const"                                 {STORE_OPERATOR(KEY_CONST);}
+"continue"                              {STORE_OPERATOR(KEY_CONTINUE);}
+"default"                               {STORE_OPERATOR(KEY_DEFAULT);}
+"delete"                                {STORE_OPERATOR(KEY_DELETE);}
+"do"                                    {STORE_OPERATOR(KEY_DO);}
+"double"                                {STORE_OPERATOR(KEY_DOUBLE);}
+"else"                                  {STORE_OPERATOR(KEY_ELSE);}
+"extends"                               {STORE_OPERATOR(KEY_EXTENDS);}
+"final"                                 {STORE_OPERATOR(KEY_FINAL);}
+"finally"                               {STORE_OPERATOR(KEY_FINALLY);}
+"float"                                 {STORE_OPERATOR(KEY_FLOAT);}
+"for"                                   {STORE_OPERATOR(KEY_FOR);}
+"function"                              {STORE_OPERATOR(KEY_FUNCTION);}
+"goto"                                  {STORE_OPERATOR(KEY_GOTO);}
+"if"                                    {STORE_OPERATOR(KEY_IF);}
+"implements"                            {STORE_OPERATOR(KEY_IMPLEMENTS);}
+"import"                                {STORE_OPERATOR(KEY_IMPORT);}
+"in"                                    {STORE_OPERATOR(KEY_IN);}
+"instanceof"                            {STORE_OPERATOR(KEY_INSTANCEOF);}
+"int"                                   {STORE_OPERATOR(KEY_INT );}
+"interface"                             {STORE_OPERATOR(KEY_INTERFACE);}
+"long"                                  {STORE_OPERATOR(KEY_LONG);}
+"native"                                {STORE_OPERATOR(KEY_NATIVE);}
+"new"                                   {STORE_OPERATOR(KEY_NEW);}
+"package"                               {STORE_OPERATOR(KEY_PACKAGE);}
+"private"                               {STORE_OPERATOR(KEY_PRIVATE);}
+"protected"                             {STORE_OPERATOR(KEY_PROTECTED);}
+"public"                                {STORE_OPERATOR(KEY_PUBLIC);}
+"return"                                {STORE_OPERATOR(KEY_RETURN);}
+"short"                                 {STORE_OPERATOR(KEY_SHORT);}
+"static"                                {STORE_OPERATOR(KEY_STATIC);}
+"super"                                 {STORE_OPERATOR(KEY_SUPER);}
+"switch"                                {STORE_OPERATOR(KEY_SWITCH);}
+"synchronized"                          {STORE_OPERATOR(KEY_SYNCHRONIZED);}
+"this"                                  {STORE_OPERATOR(KEY_THIS);}
+"throw"                                 {STORE_OPERATOR(KEY_THROW);}
+"throws"                                {STORE_OPERATOR(KEY_THROWS);}
+"transient"                             {STORE_OPERATOR(KEY_TRANSIENT);}
+"try"                                   {STORE_OPERATOR(KEY_TRY);}
+"typeof"                                {STORE_OPERATOR(KEY_TYPEOF);}
+"var"                                   {STORE_OPERATOR(KEY_VAR);}
+"void"                                  {STORE_OPERATOR(KEY_VOID);}
+"volatile"                              {STORE_OPERATOR(KEY_VOLATILE);}
+"while"                                 {STORE_OPERATOR(KEY_WHILE);}
+"with"                                  {STORE_OPERATOR(KEY_WITH);}
 
 {LETTER}{ALNUM}*                                            |
 [1-9][0-9]*{INT_SUFFIX}?                                    |
@@ -226,7 +204,7 @@ SPTAB                                   [ \t]
 "."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 {DIGITS}"."?[eE]{SIGN}?                                     |
-"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));COUNT();}
+"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);}
 
 "//"{NOTNL}*{NL}                        {++cpp_comments;++com_loc;++jt_lineno;}
 
@@ -239,3 +217,14 @@ int yywrap() {
         return(1);
 }
 
+void lexclear() {
+  BEGIN 0;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  jt_lineno=nsemi=noperators=0;
+
+  sloc.clear();
+  operators.clear();
+  operands.clear();
+}

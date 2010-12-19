@@ -7,28 +7,22 @@
  *
  * $Id$
  *
- * Who  When       Why
+ * Who  When         Why
  * CAM  17-May-05    97 : File created.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  30-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-D                       [0-9]
-L                       [a-zA-Z_]
-H                       [a-fA-F0-9]
-E                       [Ee][+-]?{D}+
-FS                      (f|F|l|L)
-IS                      (u|U|l|L)*
 
 %{
 
 #include <stdio.h>
 #include <string.h>
 #include "y.s1.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -52,14 +46,284 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define SEMI() nsemi++;
-#define COUNT() sloc.insert(s1_lineno)
+#define NOTE_SLOC()       sloc.insert(s1_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
+
+void lexclear();
+void comment_skip();
+void string_literal();
+
+%}
+
+%p 3500
+%x DEFINE
+
+NL                                "\n"
+NOTNL                             .
+D                       [0-9]
+L                       [a-zA-Z_]
+H                       [a-fA-F0-9]
+E                       [Ee][+-]?{D}+
+FS                      (f|F|l|L)
+IS                      (u|U|l|L)*
+
+%%
+
+"/*"                    {comment_skip();c_comments++;}
+
+"ALL"                   {STORE_OPERATOR(ALL);}
+"ALTER"                 {STORE_OPERATOR(ALTER);}
+"AND"                   {STORE_OPERATOR(AND);}
+"ANY"                   {STORE_OPERATOR(ANY);}
+"ARRAY"                 {STORE_OPERATOR(ARRAY);}
+"AS"                    {STORE_OPERATOR(AS);}
+"ASC"                   {STORE_OPERATOR(ASC);}
+"AT"                    {STORE_OPERATOR(AT);}
+"AUTHID"                {STORE_OPERATOR(AUTHID);}
+"AVG"                   {STORE_OPERATOR(AVG);}
+"BEGIN"                 {STORE_OPERATOR(BEGIN_BLOCK);}
+"BETWEEN"               {STORE_OPERATOR(BETWEEN);}
+"BINARY_INTEGER"        {STORE_OPERATOR(BINARY_INTEGER);}
+"BODY"                  {STORE_OPERATOR(BODY);}
+"BOOLEAN"               {STORE_OPERATOR(BOOLEAN);}
+"BULK"                  {STORE_OPERATOR(BULK);}
+"BY"                    {STORE_OPERATOR(BY);}
+"CASE"                  {STORE_OPERATOR(CASE);}
+"CHAR"                  {STORE_OPERATOR(CHAR);}
+"CHAR_BASE"             {STORE_OPERATOR(CHAR_BASE);}
+"CHECK"                 {STORE_OPERATOR(CHECK);}
+"CLOSE"                 {STORE_OPERATOR(CLOSE);}
+"CLUSTER"               {STORE_OPERATOR(CLUSTER);}
+"COALESCE"              {STORE_OPERATOR(COALESCE);}
+"COLLECT"               {STORE_OPERATOR(COLLECT);}
+"COMMENT"               {STORE_OPERATOR(COMMENT);}
+"COMMIT"                {STORE_OPERATOR(COMMIT);}
+"COMPRESS"              {STORE_OPERATOR(COMPRESS);}
+"CONNECT"               {STORE_OPERATOR(CONNECT);}
+"CONSTANT"              {STORE_OPERATOR(CONSTANT);}
+"CREATE"                {STORE_OPERATOR(CREATE);}
+"CURRENT"               {STORE_OPERATOR(CURRENT);}
+"CURRVAL"               {STORE_OPERATOR(CURRVAL);}
+"CURSOR"                {STORE_OPERATOR(CURSOR);}
+"DATE"                  {STORE_OPERATOR(DATE);}
+"DAY"                   {STORE_OPERATOR(DAY);}
+"DECIMAL"               {STORE_OPERATOR(DECIMAL);}
+"DECLARE"               {STORE_OPERATOR(DECLARE);}
+"DEFAULT"               {STORE_OPERATOR(DEFAULT);}
+"DELETE"                {STORE_OPERATOR(DELETE);}
+"DESC"                  {STORE_OPERATOR(DESC);}
+"DISTINCT"              {STORE_OPERATOR(DISTINCT);}
+"DO"                    {STORE_OPERATOR(DO);}
+"DROP"                  {STORE_OPERATOR(DROP);}
+"ELSE"                  {STORE_OPERATOR(ELSE);}
+"ELSIF"                 {STORE_OPERATOR(ELSIF);}
+"END"                   {STORE_OPERATOR(END_BLOCK);}
+"EXCEPTION"             {STORE_OPERATOR(EXCEPTION);}
+"EXCLUSIVE"             {STORE_OPERATOR(EXCLUSIVE);}
+"EXECUTE"               {STORE_OPERATOR(EXECUTE);}
+"EXISTS"                {STORE_OPERATOR(EXISTS);}
+"EXIT"                  {STORE_OPERATOR(EXIT);}
+"EXTENDS"               {STORE_OPERATOR(EXTENDS);}
+"EXTRACT"               {STORE_OPERATOR(EXTRACT);}
+"FALSE"                 {STORE_OPERATOR(FALSE);}
+"FETCH"                 {STORE_OPERATOR(FETCH);}
+"FLOAT"                 {STORE_OPERATOR(FLOAT);}
+"FOR"                   {STORE_OPERATOR(FOR);}
+"FORALL"                {STORE_OPERATOR(FORALL);}
+"FROM"                  {STORE_OPERATOR(FROM);}
+"FUNCTION"              {STORE_OPERATOR(FUNCTION);}
+"GOTO"                  {STORE_OPERATOR(GOTO);}
+"GROUP"                 {STORE_OPERATOR(GROUP);}
+"HAVING"                {STORE_OPERATOR(HAVING);}
+"HEAP"                  {STORE_OPERATOR(HEAP);}
+"HOUR"                  {STORE_OPERATOR(HOUR);}
+"IF"                    {STORE_OPERATOR(IF);}
+"IMMEDIATE"             {STORE_OPERATOR(IMMEDIATE);}
+"IN"                    {STORE_OPERATOR(IN);}
+"INDEX"                 {STORE_OPERATOR(INDEX);}
+"INDICATOR"             {STORE_OPERATOR(INDICATOR);}
+"INSERT"                {STORE_OPERATOR(INSERT);}
+"INTEGER"               {STORE_OPERATOR(INTEGER);}
+"INTERFACE"             {STORE_OPERATOR(INTERFACE);}
+"INTERSECT"             {STORE_OPERATOR(INTERSECT);}
+"INTERVAL"              {STORE_OPERATOR(INTERVAL);}
+"INTO"                  {STORE_OPERATOR(INTO);}
+"IS"                    {STORE_OPERATOR(IS);}
+"ISOLATION"             {STORE_OPERATOR(ISOLATION);}
+"JAVA"                  {STORE_OPERATOR(JAVA);}
+"LEVEL"                 {STORE_OPERATOR(LEVEL);}
+"LIKE"                  {STORE_OPERATOR(LIKE);}
+"LIMITED"               {STORE_OPERATOR(LIMITED);}
+"LOCK"                  {STORE_OPERATOR(LOCK);}
+"LONG"                  {STORE_OPERATOR(LONG);}
+"LOOP"                  {STORE_OPERATOR(LOOP);}
+"MAX"                   {STORE_OPERATOR(MAX);}
+"MIN"                   {STORE_OPERATOR(MIN);}
+"MINUS"                 {STORE_OPERATOR(MINUS_WORD);}
+"MINUTE"                {STORE_OPERATOR(MINUTE);}
+"MLSLABEL"              {STORE_OPERATOR(MLSLABEL);}
+"MOD"                   {STORE_OPERATOR(MOD);}
+"MODE"                  {STORE_OPERATOR(MODE);}
+"MONTH"                 {STORE_OPERATOR(MONTH);}
+"NATURAL"               {STORE_OPERATOR(NATURAL);}
+"NATURALN"              {STORE_OPERATOR(NATURALN);}
+"NEW"                   {STORE_OPERATOR(NEW);}
+"NEXTVAL"               {STORE_OPERATOR(NEXTVAL);}
+"NOCOPY"                {STORE_OPERATOR(NOCOPY);}
+"NOT"                   {STORE_OPERATOR(NOT);}
+"NOWAIT"                {STORE_OPERATOR(NOWAIT);}
+"NULL"                  {STORE_OPERATOR(NULL_WORD);}
+"NULLIF"                {STORE_OPERATOR(NULLIF);}
+"NUMBER"                {STORE_OPERATOR(NUMBER);}
+"NUMBER_BASE"           {STORE_OPERATOR(NUMBER_BASE);}
+"OCIROWID"              {STORE_OPERATOR(OCIROWID);}
+"OF"                    {STORE_OPERATOR(OF);}
+"ON"                    {STORE_OPERATOR(ON);}
+"OPAQUE"                {STORE_OPERATOR(OPAQUE);}
+"OPEN"                  {STORE_OPERATOR(OPEN);}
+"OPERATOR"              {STORE_OPERATOR(OPERATOR);}
+"OPTION"                {STORE_OPERATOR(OPTION);}
+"OR"                    {STORE_OPERATOR(OR);}
+"ORDER"                 {STORE_OPERATOR(ORDER);}
+"ORGANIZATION"          {STORE_OPERATOR(ORGANIZATION);}
+"OTHERS"                {STORE_OPERATOR(OTHERS);}
+"OUT"                   {STORE_OPERATOR(OUT);}
+"PACKAGE"               {STORE_OPERATOR(PACKAGE);}
+"PARTITION"             {STORE_OPERATOR(PARTITION);}
+"PCTFREE"               {STORE_OPERATOR(PCTFREE);}
+"PLS_INTEGER"           {STORE_OPERATOR(PLS_INTEGER);}
+"POSITIVE"              {STORE_OPERATOR(POSITIVE);}
+"POSITIVEN"             {STORE_OPERATOR(POSITIVEN);}
+"PRAGMA"                {STORE_OPERATOR(PRAGMA);}
+"PRIOR"                 {STORE_OPERATOR(PRIOR);}
+"PRIVATE"               {STORE_OPERATOR(PRIVATE);}
+"PROCEDURE"             {STORE_OPERATOR(PROCEDURE);}
+"PUBLIC"                {STORE_OPERATOR(PUBLIC);}
+"RAISE"                 {STORE_OPERATOR(RAISE);}
+"RANGE"                 {STORE_OPERATOR(RANGE_WORD);}
+"RAW"                   {STORE_OPERATOR(RAW);}
+"REAL"                  {STORE_OPERATOR(REAL);}
+"RECORD"                {STORE_OPERATOR(RECORD);}
+"REF"                   {STORE_OPERATOR(REF);}
+"RELEASE"               {STORE_OPERATOR(RELEASE);}
+"RETURN"                {STORE_OPERATOR(RETURN);}
+"REVERSE"               {STORE_OPERATOR(REVERSE);}
+"ROLLBACK"              {STORE_OPERATOR(ROLLBACK);}
+"ROW"                   {STORE_OPERATOR(ROW);}
+"ROWID"                 {STORE_OPERATOR(ROWID);}
+"ROWNUM"                {STORE_OPERATOR(ROWNUM);}
+"ROWTYPE"               {STORE_OPERATOR(ROWTYPE);}
+"SAVEPOINT"             {STORE_OPERATOR(SAVEPOINT);}
+"SECOND"                {STORE_OPERATOR(SECOND);}
+"SELECT"                {STORE_OPERATOR(SELECT);}
+"SEPARATE"              {STORE_OPERATOR(SEPARATE);}
+"SET"                   {STORE_OPERATOR(SET);}
+"SHARE"                 {STORE_OPERATOR(SHARE);}
+"SMALLINT"              {STORE_OPERATOR(SMALLINT);}
+"SPACE"                 {STORE_OPERATOR(SPACE);}
+"SQL"                   {STORE_OPERATOR(SQL);}
+"SQLCODE"               {STORE_OPERATOR(SQLCODE);}
+"SQLERRM"               {STORE_OPERATOR(SQLERRM);}
+"START"                 {STORE_OPERATOR(START);}
+"STDDEV"                {STORE_OPERATOR(STDDEV);}
+"SUBTYPE"               {STORE_OPERATOR(SUBTYPE);}
+"SUCCESSFUL"            {STORE_OPERATOR(SUCCESSFUL);}
+"SUM"                   {STORE_OPERATOR(SUM);}
+"SYNONYM"               {STORE_OPERATOR(SYNONYM);}
+"SYSDATE"               {STORE_OPERATOR(SYSDATE);}
+"TABLE"                 {STORE_OPERATOR(TABLE);}
+"THEN"                  {STORE_OPERATOR(THEN);}
+"TIME"                  {STORE_OPERATOR(TIME);}
+"TIMESTAMP"             {STORE_OPERATOR(TIMESTAMP);}
+"TIMEZONE_ABBR"         {STORE_OPERATOR(TIMEZONE_ABBR);}
+"TIMEZONE_HOUR"         {STORE_OPERATOR(TIMEZONE_HOUR);}
+"TIMEZONE_MINUTE"       {STORE_OPERATOR(TIMEZONE_MINUTE);}
+"TIMEZONE_REGION"       {STORE_OPERATOR(TIMEZONE_REGION);}
+"TO"                    {STORE_OPERATOR(TO);}
+"TRIGGER"               {STORE_OPERATOR(TRIGGER);}
+"TRUE"                  {STORE_OPERATOR(TRUE);}
+"TYPE"                  {STORE_OPERATOR(TYPE);}
+"UID"                   {STORE_OPERATOR(UID);}
+"UNION"                 {STORE_OPERATOR(UNION);}
+"UNIQUE"                {STORE_OPERATOR(UNIQUE);}
+"UPDATE"                {STORE_OPERATOR(UPDATE);}
+"USE"                   {STORE_OPERATOR(USE);}
+"USER"                  {STORE_OPERATOR(USER);}
+"VALIDATE"              {STORE_OPERATOR(VALIDATE);}
+"VALUES"                {STORE_OPERATOR(VALUES);}
+"VARCHAR"               {STORE_OPERATOR(VARCHAR);}
+"VARCHAR2"              {STORE_OPERATOR(VARCHAR2);}
+"VARIANCE"              {STORE_OPERATOR(VARIANCE);}
+"VIEW"                  {STORE_OPERATOR(VIEW);}
+"WHEN"                  {STORE_OPERATOR(WHEN);}
+"WHENEVER"              {STORE_OPERATOR(WHENEVER);}
+"WHERE"                 {STORE_OPERATOR(WHERE);}
+"WHILE"                 {STORE_OPERATOR(WHILE);}
+"WITH"                  {STORE_OPERATOR(WITH);}
+"WORK"                  {STORE_OPERATOR(WORK);}
+"WRITE"                 {STORE_OPERATOR(WRITE);}
+"YEAR"                  {STORE_OPERATOR(YEAR);}
+"ZONE"                  {STORE_OPERATOR(ZONE);}
+
+{L}({L}|{D})*           {STORE_OPERAND(yytext);}
+0[xX]{H}+{IS}?          {STORE_OPERAND(yytext);}
+0{D}+{IS}?              {STORE_OPERAND(yytext);}
+{D}+{IS}?               {STORE_OPERAND(yytext);}
+'(\\.|[^\\'])+'         {STORE_OPERAND(yytext);}
+{D}+{E}{FS}?            {STORE_OPERAND(yytext);}
+{D}*"."{D}+({E})?{FS}?  {STORE_OPERAND(yytext);}
+{D}+"."{D}*({E})?{FS}?  {STORE_OPERAND(yytext);}
+
+\'                      {string_literal();}
+\"                      {string_literal();}
+
+"!="                    {STORE_OPERATOR(NOT_EQUAL);}
+"%"                     {STORE_OPERATOR(ATTRIBUTE);}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
+"*"                     {STORE_OPERATOR(MULTIPLY);}
+"**"                    {STORE_OPERATOR(EXPONENT);}
+","                     {NOTE_SLOC();}
+".."                    {STORE_OPERATOR(RANGE);}
+"/"                     {STORE_OPERATOR(DIVIDE);}
+":="                    {STORE_OPERATOR(ASSIGNMENT);}
+"@"                     {STORE_OPERATOR(REMOTE_ACCESS);}  // Special? Metric?
+"^="                    {STORE_OPERATOR(CARAT_EQUAL);}
+"||"                    {STORE_OPERATOR(CONCATENATE);}
+"~="                    {STORE_OPERATOR(TILDE_EQUAL);}
+"<<"                    {STORE_OPERATOR(LABEL_BEGIN);}
+"<="                    {STORE_OPERATOR(LESS_EQUAL);}
+"<>"                    {STORE_OPERATOR(LESS_GREATER);}
+"="                     {STORE_OPERATOR(EQUAL);}
+"=>"                    {STORE_OPERATOR(ASSOCIATION);}
+">="                    {STORE_OPERATOR(GREATER_EQUAL);}
+">>"                    {STORE_OPERATOR(LABEL_END);}
+"+"                     {STORE_OPERATOR(PLUS);}
+"-"                     {STORE_OPERATOR(MINUS);}
+":"                     {STORE_OPERATOR(HOST_VAR);}
+"<"                     {STORE_OPERATOR(LESS_THAN);}
+">"                     {STORE_OPERATOR(GREATER_THAN);}
+"."                     {STORE_OPERATOR(COMPONENT);}
+";"                     {SEMI();}
+
+[ \t\v\f]               {;}
+"\n"                    {s1_lineno++;}
+
+"--"{NOTNL}*{NL}        {cpp_comments++;com_loc++;s1_lineno++;BEGIN(INITIAL);}
+
+.                       { /* ignore bad characters */ }
+%%
+int yywrap() {
+  return(1);
+}
 
 void lexclear() {
   BEGIN 0 ;
@@ -70,286 +334,7 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-  sloc.insert(s1_lineno);
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  sloc.insert(s1_lineno);
-}
-
-void comment_skip();
-void string_literal();
-void eol_comment_skip();
-
-%}
-
-%p 3500
-%x DEFINE
-
-%%
-
-"/*"                    {comment_skip();c_comments++;}
-"--"                    {eol_comment_skip(); }
-
-"ALL"                   {store_operator(ALL);}
-"ALTER"                 {store_operator(ALTER);}
-"AND"                   {store_operator(AND);}
-"ANY"                   {store_operator(ANY);}
-"ARRAY"                 {store_operator(ARRAY);}
-"AS"                    {store_operator(AS);}
-"ASC"                   {store_operator(ASC);}
-"AT"                    {store_operator(AT);}
-"AUTHID"                {store_operator(AUTHID);}
-"AVG"                   {store_operator(AVG);}
-"BEGIN"                 {store_operator(BEGIN_BLOCK);}
-"BETWEEN"               {store_operator(BETWEEN);}
-"BINARY_INTEGER"        {store_operator(BINARY_INTEGER);}
-"BODY"                  {store_operator(BODY);}
-"BOOLEAN"               {store_operator(BOOLEAN);}
-"BULK"                  {store_operator(BULK);}
-"BY"                    {store_operator(BY);}
-"CASE"                  {store_operator(CASE);}
-"CHAR"                  {store_operator(CHAR);}
-"CHAR_BASE"             {store_operator(CHAR_BASE);}
-"CHECK"                 {store_operator(CHECK);}
-"CLOSE"                 {store_operator(CLOSE);}
-"CLUSTER"               {store_operator(CLUSTER);}
-"COALESCE"              {store_operator(COALESCE);}
-"COLLECT"               {store_operator(COLLECT);}
-"COMMENT"               {store_operator(COMMENT);}
-"COMMIT"                {store_operator(COMMIT);}
-"COMPRESS"              {store_operator(COMPRESS);}
-"CONNECT"               {store_operator(CONNECT);}
-"CONSTANT"              {store_operator(CONSTANT);}
-"CREATE"                {store_operator(CREATE);}
-"CURRENT"               {store_operator(CURRENT);}
-"CURRVAL"               {store_operator(CURRVAL);}
-"CURSOR"                {store_operator(CURSOR);}
-"DATE"                  {store_operator(DATE);}
-"DAY"                   {store_operator(DAY);}
-"DECIMAL"               {store_operator(DECIMAL);}
-"DECLARE"               {store_operator(DECLARE);}
-"DEFAULT"               {store_operator(DEFAULT);}
-"DELETE"                {store_operator(DELETE);}
-"DESC"                  {store_operator(DESC);}
-"DISTINCT"              {store_operator(DISTINCT);}
-"DO"                    {store_operator(DO);}
-"DROP"                  {store_operator(DROP);}
-"ELSE"                  {store_operator(ELSE);}
-"ELSIF"                 {store_operator(ELSIF);}
-"END"                   {store_operator(END_BLOCK);}
-"EXCEPTION"             {store_operator(EXCEPTION);}
-"EXCLUSIVE"             {store_operator(EXCLUSIVE);}
-"EXECUTE"               {store_operator(EXECUTE);}
-"EXISTS"                {store_operator(EXISTS);}
-"EXIT"                  {store_operator(EXIT);}
-"EXTENDS"               {store_operator(EXTENDS);}
-"EXTRACT"               {store_operator(EXTRACT);}
-"FALSE"                 {store_operator(FALSE);}
-"FETCH"                 {store_operator(FETCH);}
-"FLOAT"                 {store_operator(FLOAT);}
-"FOR"                   {store_operator(FOR);}
-"FORALL"                {store_operator(FORALL);}
-"FROM"                  {store_operator(FROM);}
-"FUNCTION"              {store_operator(FUNCTION);}
-"GOTO"                  {store_operator(GOTO);}
-"GROUP"                 {store_operator(GROUP);}
-"HAVING"                {store_operator(HAVING);}
-"HEAP"                  {store_operator(HEAP);}
-"HOUR"                  {store_operator(HOUR);}
-"IF"                    {store_operator(IF);}
-"IMMEDIATE"             {store_operator(IMMEDIATE);}
-"IN"                    {store_operator(IN);}
-"INDEX"                 {store_operator(INDEX);}
-"INDICATOR"             {store_operator(INDICATOR);}
-"INSERT"                {store_operator(INSERT);}
-"INTEGER"               {store_operator(INTEGER);}
-"INTERFACE"             {store_operator(INTERFACE);}
-"INTERSECT"             {store_operator(INTERSECT);}
-"INTERVAL"              {store_operator(INTERVAL);}
-"INTO"                  {store_operator(INTO);}
-"IS"                    {store_operator(IS);}
-"ISOLATION"             {store_operator(ISOLATION);}
-"JAVA"                  {store_operator(JAVA);}
-"LEVEL"                 {store_operator(LEVEL);}
-"LIKE"                  {store_operator(LIKE);}
-"LIMITED"               {store_operator(LIMITED);}
-"LOCK"                  {store_operator(LOCK);}
-"LONG"                  {store_operator(LONG);}
-"LOOP"                  {store_operator(LOOP);}
-"MAX"                   {store_operator(MAX);}
-"MIN"                   {store_operator(MIN);}
-"MINUS"                 {store_operator(MINUS_WORD);}
-"MINUTE"                {store_operator(MINUTE);}
-"MLSLABEL"              {store_operator(MLSLABEL);}
-"MOD"                   {store_operator(MOD);}
-"MODE"                  {store_operator(MODE);}
-"MONTH"                 {store_operator(MONTH);}
-"NATURAL"               {store_operator(NATURAL);}
-"NATURALN"              {store_operator(NATURALN);}
-"NEW"                   {store_operator(NEW);}
-"NEXTVAL"               {store_operator(NEXTVAL);}
-"NOCOPY"                {store_operator(NOCOPY);}
-"NOT"                   {store_operator(NOT);}
-"NOWAIT"                {store_operator(NOWAIT);}
-"NULL"                  {store_operator(NULL_WORD);}
-"NULLIF"                {store_operator(NULLIF);}
-"NUMBER"                {store_operator(NUMBER);}
-"NUMBER_BASE"           {store_operator(NUMBER_BASE);}
-"OCIROWID"              {store_operator(OCIROWID);}
-"OF"                    {store_operator(OF);}
-"ON"                    {store_operator(ON);}
-"OPAQUE"                {store_operator(OPAQUE);}
-"OPEN"                  {store_operator(OPEN);}
-"OPERATOR"              {store_operator(OPERATOR);}
-"OPTION"                {store_operator(OPTION);}
-"OR"                    {store_operator(OR);}
-"ORDER"                 {store_operator(ORDER);}
-"ORGANIZATION"          {store_operator(ORGANIZATION);}
-"OTHERS"                {store_operator(OTHERS);}
-"OUT"                   {store_operator(OUT);}
-"PACKAGE"               {store_operator(PACKAGE);}
-"PARTITION"             {store_operator(PARTITION);}
-"PCTFREE"               {store_operator(PCTFREE);}
-"PLS_INTEGER"           {store_operator(PLS_INTEGER);}
-"POSITIVE"              {store_operator(POSITIVE);}
-"POSITIVEN"             {store_operator(POSITIVEN);}
-"PRAGMA"                {store_operator(PRAGMA);}
-"PRIOR"                 {store_operator(PRIOR);}
-"PRIVATE"               {store_operator(PRIVATE);}
-"PROCEDURE"             {store_operator(PROCEDURE);}
-"PUBLIC"                {store_operator(PUBLIC);}
-"RAISE"                 {store_operator(RAISE);}
-"RANGE"                 {store_operator(RANGE_WORD);}
-"RAW"                   {store_operator(RAW);}
-"REAL"                  {store_operator(REAL);}
-"RECORD"                {store_operator(RECORD);}
-"REF"                   {store_operator(REF);}
-"RELEASE"               {store_operator(RELEASE);}
-"RETURN"                {store_operator(RETURN);}
-"REVERSE"               {store_operator(REVERSE);}
-"ROLLBACK"              {store_operator(ROLLBACK);}
-"ROW"                   {store_operator(ROW);}
-"ROWID"                 {store_operator(ROWID);}
-"ROWNUM"                {store_operator(ROWNUM);}
-"ROWTYPE"               {store_operator(ROWTYPE);}
-"SAVEPOINT"             {store_operator(SAVEPOINT);}
-"SECOND"                {store_operator(SECOND);}
-"SELECT"                {store_operator(SELECT);}
-"SEPARATE"              {store_operator(SEPARATE);}
-"SET"                   {store_operator(SET);}
-"SHARE"                 {store_operator(SHARE);}
-"SMALLINT"              {store_operator(SMALLINT);}
-"SPACE"                 {store_operator(SPACE);}
-"SQL"                   {store_operator(SQL);}
-"SQLCODE"               {store_operator(SQLCODE);}
-"SQLERRM"               {store_operator(SQLERRM);}
-"START"                 {store_operator(START);}
-"STDDEV"                {store_operator(STDDEV);}
-"SUBTYPE"               {store_operator(SUBTYPE);}
-"SUCCESSFUL"            {store_operator(SUCCESSFUL);}
-"SUM"                   {store_operator(SUM);}
-"SYNONYM"               {store_operator(SYNONYM);}
-"SYSDATE"               {store_operator(SYSDATE);}
-"TABLE"                 {store_operator(TABLE);}
-"THEN"                  {store_operator(THEN);}
-"TIME"                  {store_operator(TIME);}
-"TIMESTAMP"             {store_operator(TIMESTAMP);}
-"TIMEZONE_ABBR"         {store_operator(TIMEZONE_ABBR);}
-"TIMEZONE_HOUR"         {store_operator(TIMEZONE_HOUR);}
-"TIMEZONE_MINUTE"       {store_operator(TIMEZONE_MINUTE);}
-"TIMEZONE_REGION"       {store_operator(TIMEZONE_REGION);}
-"TO"                    {store_operator(TO);}
-"TRIGGER"               {store_operator(TRIGGER);}
-"TRUE"                  {store_operator(TRUE);}
-"TYPE"                  {store_operator(TYPE);}
-"UID"                   {store_operator(UID);}
-"UNION"                 {store_operator(UNION);}
-"UNIQUE"                {store_operator(UNIQUE);}
-"UPDATE"                {store_operator(UPDATE);}
-"USE"                   {store_operator(USE);}
-"USER"                  {store_operator(USER);}
-"VALIDATE"              {store_operator(VALIDATE);}
-"VALUES"                {store_operator(VALUES);}
-"VARCHAR"               {store_operator(VARCHAR);}
-"VARCHAR2"              {store_operator(VARCHAR2);}
-"VARIANCE"              {store_operator(VARIANCE);}
-"VIEW"                  {store_operator(VIEW);}
-"WHEN"                  {store_operator(WHEN);}
-"WHENEVER"              {store_operator(WHENEVER);}
-"WHERE"                 {store_operator(WHERE);}
-"WHILE"                 {store_operator(WHILE);}
-"WITH"                  {store_operator(WITH);}
-"WORK"                  {store_operator(WORK);}
-"WRITE"                 {store_operator(WRITE);}
-"YEAR"                  {store_operator(YEAR);}
-"ZONE"                  {store_operator(ZONE);}
-
-{L}({L}|{D})*           {store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
-0{D}+{IS}?              {store_operand(_strdup(yytext));}
-{D}+{IS}?               {store_operand(_strdup(yytext));}
-'(\\.|[^\\'])+'         {store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
-
-\'                      {COUNT(); string_literal();}
-\"                      {COUNT(); string_literal();}
-
-"!="                    {store_operator(NOT_EQUAL);}
-"%"                     {store_operator(ATTRIBUTE);}
-"("                     {COUNT();}
-")"                     {COUNT();}
-"*"                     {store_operator(MULTIPLY);}
-"**"                    {store_operator(EXPONENT);}
-","                     {COUNT();}
-".."                    {store_operator(RANGE);}
-"/"                     {store_operator(DIVIDE);}
-":="                    {store_operator(ASSIGNMENT);}
-"@"                     {store_operator(REMOTE_ACCESS);}  // Special? Metric?
-"^="                    {store_operator(CARAT_EQUAL);}
-"||"                    {store_operator(CONCATENATE);}
-"~="                    {store_operator(TILDE_EQUAL);}
-"<<"                    {store_operator(LABEL_BEGIN);}
-"<="                    {store_operator(LESS_EQUAL);}
-"<>"                    {store_operator(LESS_GREATER);}
-"="                     {store_operator(EQUAL);}
-"=>"                    {store_operator(ASSOCIATION);}
-">="                    {store_operator(GREATER_EQUAL);}
-">>"                    {store_operator(LABEL_END);}
-"+"                     {store_operator(PLUS);}
-"-"                     {store_operator(MINUS);}
-":"                     {store_operator(HOST_VAR);}
-"<"                     {store_operator(LESS_THAN);}
-">"                     {store_operator(GREATER_THAN);}
-"."                     {store_operator(COMPONENT);}
-";"                     {COUNT(); SEMI();}
-
-[ \t\v\f]               {;}
-"\n"                    {s1_lineno++;}
-.                       { /* ignore bad characters */ }
-%%
-int yywrap() {
-  return(1);
+  operands.clear();
 }
 
 void comment_skip() {
@@ -410,26 +395,11 @@ void comment_skip() {
 void string_literal() {
   char c=0;
 
+  NOTE_SLOC();
+
   while ((c!='\"') && (c!=EOF))
      if ((c=yyinput())=='\\')
         if ((c=yyinput())=='\"')
            c=yyinput() ;
 }
-
-
-void eol_comment_skip() {
-  char c;
-
-  while (((c=yyinput()) !='\n') && (c!=0) && (c!=EOF)) ;
-
-  cpp_comments++;
-
-  if (s1_lineno!=prev_com_line)
-    com_loc++;
-
-  prev_com_line=s1_lineno;
-  if (c=='\n') s1_lineno++;
-}
-
-/* ************************************* */
 

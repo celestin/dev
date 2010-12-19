@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  20-Aug-2009  10452 : File created.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -16,11 +17,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.rb.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 #include <iostream>
 using namespace std;
@@ -41,17 +42,18 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define COUNT() sloc.insert(ruby_lineno)
+#define NOTE_SLOC()       sloc.insert(ruby_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
 void lexclear();
-void store_operator(int op);
-void store_operand(char* txt);
 
 %}
 
@@ -87,118 +89,118 @@ SPTAB         [ \t]
 
 \n                      {ruby_lineno++;}
 
-"("                     {COUNT();}
-")"                     {COUNT();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
-"["                     {COUNT();}
-"]"                     {COUNT();}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
+"{"                     {NOTE_SLOC();}
+"}"                     {NOTE_SLOC();}
+"["                     {NOTE_SLOC();}
+"]"                     {NOTE_SLOC();}
 
 \".*\\\"*\"             |
-\".*\"                  {store_operand(_strdup(yytext));COUNT();}
-"'"."'"                 {store_operand(_strdup(yytext));COUNT();}
+\".*\"                  {STORE_OPERAND(yytext);}
+"'"."'"                 {STORE_OPERAND(yytext);}
 
-"-"                     {store_operator(SYM_MINUS);}
-"%"                     {store_operator(SYM_PCT);}
-"&"                     {store_operator(SYM_AND);}
-"^"                     {store_operator(SYM_CARAT);}
-"~"                     {store_operator(SYM_TILDE);}
-"+"                     {store_operator(SYM_PLUS);}
-"="                     {store_operator(SYM_EQ);}
-"!"                     {store_operator(SYM_NOT);}
-"*"                     {store_operator(SYM_AST);}
-"/"                     {store_operator(SYM_DIV);}
-"|"                     {store_operator(SYM_OR);}
-"<"                     {store_operator(SYM_LT);}
-">"                     {store_operator(SYM_GT);}
+"-"                     {STORE_OPERATOR(SYM_MINUS);}
+"%"                     {STORE_OPERATOR(SYM_PCT);}
+"&"                     {STORE_OPERATOR(SYM_AND);}
+"^"                     {STORE_OPERATOR(SYM_CARAT);}
+"~"                     {STORE_OPERATOR(SYM_TILDE);}
+"+"                     {STORE_OPERATOR(SYM_PLUS);}
+"="                     {STORE_OPERATOR(SYM_EQ);}
+"!"                     {STORE_OPERATOR(SYM_NOT);}
+"*"                     {STORE_OPERATOR(SYM_AST);}
+"/"                     {STORE_OPERATOR(SYM_DIV);}
+"|"                     {STORE_OPERATOR(SYM_OR);}
+"<"                     {STORE_OPERATOR(SYM_LT);}
+">"                     {STORE_OPERATOR(SYM_GT);}
 
-"!~"                    {store_operator(SYM_NOTTILDE);}
-"%="                    {store_operator(SYM_PCTEQ);}
-"&&"                    {store_operator(SYM_ORAND);}
-"&="                    {store_operator(SYM_AMPEQ);}
-"**"                    {store_operator(SYM_ASTAST);}
-"*="                    {store_operator(SYM_ASTEQ);}
-"/="                    {store_operator(SYM_DIVEQ);}
-"::"                    {store_operator(SYM_SCOPE);}
-"^="                    {store_operator(SYM_TILDEEQ);}
-"||"                    {store_operator(SYM_LOGOR);}
-"|="                    {store_operator(SYM_OREQ);}
-"+="                    {store_operator(SYM_PLUSEQ);}
-"<="                    {store_operator(SYM_LTEQ);}
-"-="                    {store_operator(SYM_MINUSEQ);}
-">>"                    {store_operator(SYM_GTGT);}
-".."                    {store_operator(SYM_DOTDOT);}
-"!="                    {store_operator(SYM_NOTEQ);}
-"<<"                    {store_operator(SYM_LTLT);}
-"=~"                    {store_operator(SYM_EQTILDE);}
-"=="                    {store_operator(SYM_EQEQ);}
-">="                    {store_operator(SYM_GTEQ);}
+"!~"                    {STORE_OPERATOR(SYM_NOTTILDE);}
+"%="                    {STORE_OPERATOR(SYM_PCTEQ);}
+"&&"                    {STORE_OPERATOR(SYM_ORAND);}
+"&="                    {STORE_OPERATOR(SYM_AMPEQ);}
+"**"                    {STORE_OPERATOR(SYM_ASTAST);}
+"*="                    {STORE_OPERATOR(SYM_ASTEQ);}
+"/="                    {STORE_OPERATOR(SYM_DIVEQ);}
+"::"                    {STORE_OPERATOR(SYM_SCOPE);}
+"^="                    {STORE_OPERATOR(SYM_TILDEEQ);}
+"||"                    {STORE_OPERATOR(SYM_LOGOR);}
+"|="                    {STORE_OPERATOR(SYM_OREQ);}
+"+="                    {STORE_OPERATOR(SYM_PLUSEQ);}
+"<="                    {STORE_OPERATOR(SYM_LTEQ);}
+"-="                    {STORE_OPERATOR(SYM_MINUSEQ);}
+">>"                    {STORE_OPERATOR(SYM_GTGT);}
+".."                    {STORE_OPERATOR(SYM_DOTDOT);}
+"!="                    {STORE_OPERATOR(SYM_NOTEQ);}
+"<<"                    {STORE_OPERATOR(SYM_LTLT);}
+"=~"                    {STORE_OPERATOR(SYM_EQTILDE);}
+"=="                    {STORE_OPERATOR(SYM_EQEQ);}
+">="                    {STORE_OPERATOR(SYM_GTEQ);}
 
-"&&="                   {store_operator(SYM_LOGANDEQ);}
-"**="                   {store_operator(SYM_ASTASTEQ);}
-"||="                   {store_operator(SYM_LOGOREQ);}
-"<<="                   {store_operator(SYM_LTLTEQ);}
-">>="                   {store_operator(SYM_GTGTEQ);}
-"<=>"                   {store_operator(SYM_LTEQGT);}
-"==="                   {store_operator(SYM_EQEQEQ);}
-"..."                   {store_operator(SYM_ELLIPSIS);}
+"&&="                   {STORE_OPERATOR(SYM_LOGANDEQ);}
+"**="                   {STORE_OPERATOR(SYM_ASTASTEQ);}
+"||="                   {STORE_OPERATOR(SYM_LOGOREQ);}
+"<<="                   {STORE_OPERATOR(SYM_LTLTEQ);}
+">>="                   {STORE_OPERATOR(SYM_GTGTEQ);}
+"<=>"                   {STORE_OPERATOR(SYM_LTEQGT);}
+"==="                   {STORE_OPERATOR(SYM_EQEQEQ);}
+"..."                   {STORE_OPERATOR(SYM_ELLIPSIS);}
 
 [ \t\v\f]               {;}
 
-"alias"                 {store_operator(KEY_ALIAS);}
-"and"                   {store_operator(KEY_AND);}
-"begin"                 {store_operator(KEY_BEGIN);}
-"break"                 {store_operator(KEY_BREAK);}
-"case"                  {store_operator(KEY_CASE);}
-"class"                 {store_operator(KEY_CLASS);}
-"def"                   {store_operator(KEY_DEF);}
-"defined"               {store_operator(KEY_DEFINED);}
-"do"                    {store_operator(KEY_DO);}
-"else"                  {store_operator(KEY_ELSE);}
-"elsif"                 {store_operator(KEY_ELSIF);}
-"end"                   {store_operator(KEY_END);}
-"ensure"                {store_operator(KEY_ENSURE);}
-"false"                 {store_operator(KEY_FALSE);}
-"for"                   {store_operator(KEY_FOR);}
-"high"                  {store_operator(KEY_HIGH);}
-"if"                    {store_operator(KEY_IF);}
-"in"                    {store_operator(KEY_IN);}
-"low"                   {store_operator(KEY_LOW);}
-"module"                {store_operator(KEY_MODULE);}
-"next"                  {store_operator(KEY_NEXT);}
-"nil"                   {store_operator(KEY_NIL);}
-"not"                   {store_operator(KEY_NOT);}
-"or"                    {store_operator(KEY_OR);}
-"redo"                  {store_operator(KEY_REDO);}
-"rescue"                {store_operator(KEY_RESCUE);}
-"retry"                 {store_operator(KEY_RETRY);}
-"return"                {store_operator(KEY_RETURN);}
-"self"                  {store_operator(KEY_SELF);}
-"super"                 {store_operator(KEY_SUPER);}
-"then"                  {store_operator(KEY_THEN);}
-"true"                  {store_operator(KEY_TRUE);}
-"undef"                 {store_operator(KEY_UNDEF);}
-"unless"                {store_operator(KEY_UNLESS);}
-"until"                 {store_operator(KEY_UNTIL);}
-"when"                  {store_operator(KEY_WHEN);}
-"while"                 {store_operator(KEY_WHILE);}
-"yield"                 {store_operator(KEY_YIELD);}
+"alias"                 {STORE_OPERATOR(KEY_ALIAS);}
+"and"                   {STORE_OPERATOR(KEY_AND);}
+"begin"                 {STORE_OPERATOR(KEY_BEGIN);}
+"break"                 {STORE_OPERATOR(KEY_BREAK);}
+"case"                  {STORE_OPERATOR(KEY_CASE);}
+"class"                 {STORE_OPERATOR(KEY_CLASS);}
+"def"                   {STORE_OPERATOR(KEY_DEF);}
+"defined"               {STORE_OPERATOR(KEY_DEFINED);}
+"do"                    {STORE_OPERATOR(KEY_DO);}
+"else"                  {STORE_OPERATOR(KEY_ELSE);}
+"elsif"                 {STORE_OPERATOR(KEY_ELSIF);}
+"end"                   {STORE_OPERATOR(KEY_END);}
+"ensure"                {STORE_OPERATOR(KEY_ENSURE);}
+"false"                 {STORE_OPERATOR(KEY_FALSE);}
+"for"                   {STORE_OPERATOR(KEY_FOR);}
+"high"                  {STORE_OPERATOR(KEY_HIGH);}
+"if"                    {STORE_OPERATOR(KEY_IF);}
+"in"                    {STORE_OPERATOR(KEY_IN);}
+"low"                   {STORE_OPERATOR(KEY_LOW);}
+"module"                {STORE_OPERATOR(KEY_MODULE);}
+"next"                  {STORE_OPERATOR(KEY_NEXT);}
+"nil"                   {STORE_OPERATOR(KEY_NIL);}
+"not"                   {STORE_OPERATOR(KEY_NOT);}
+"or"                    {STORE_OPERATOR(KEY_OR);}
+"redo"                  {STORE_OPERATOR(KEY_REDO);}
+"rescue"                {STORE_OPERATOR(KEY_RESCUE);}
+"retry"                 {STORE_OPERATOR(KEY_RETRY);}
+"return"                {STORE_OPERATOR(KEY_RETURN);}
+"self"                  {STORE_OPERATOR(KEY_SELF);}
+"super"                 {STORE_OPERATOR(KEY_SUPER);}
+"then"                  {STORE_OPERATOR(KEY_THEN);}
+"true"                  {STORE_OPERATOR(KEY_TRUE);}
+"undef"                 {STORE_OPERATOR(KEY_UNDEF);}
+"unless"                {STORE_OPERATOR(KEY_UNLESS);}
+"until"                 {STORE_OPERATOR(KEY_UNTIL);}
+"when"                  {STORE_OPERATOR(KEY_WHEN);}
+"while"                 {STORE_OPERATOR(KEY_WHILE);}
+"yield"                 {STORE_OPERATOR(KEY_YIELD);}
 
-{LETTER}{ALNUM}*            {store_operand(_strdup(yytext));}
+{LETTER}{ALNUM}*            {STORE_OPERAND(yytext);}
 
 [1-9][0-9]*{INT_SUFFIX}?           |
 [0][0-7]*{INT_SUFFIX}?             |
-[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {store_operand(_strdup(yytext));}
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {STORE_OPERAND(yytext);}
 
-[0][xX]               {store_operand(_strdup(yytext));}
+[0][xX]               {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
 {DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?     |
-"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {store_operand(_strdup(yytext));}
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?   |
 {DIGITS}"."?[eE]{SIGN}?           |
-"."{DIGITS}[eE]{SIGN}?                    {store_operand(_strdup(yytext));}
+"."{DIGITS}[eE]{SIGN}?                    {STORE_OPERAND(yytext);}
 
 "#"{NOTNL}*{NL}         {cpp_comments++;com_loc++;ruby_lineno++;BEGIN(INITIAL);}
 
@@ -219,27 +221,5 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  COUNT();
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-  COUNT();
+  operands.clear();
 }

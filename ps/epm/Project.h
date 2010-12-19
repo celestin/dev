@@ -98,13 +98,13 @@ bool getFileType(char *srcf, char *ftype) {
   if (lastperiod == NULL)
   {
     // If there is no period, look for an extension with only a space, and return this language
-    for (int i=0; i<ext->nLang; i++) 
+    for (int i=0; i<ext->nLang; i++)
     {
-      for (int j=0; j<ext->nType[i]; j++) 
+      for (int j=0; j<ext->nType[i]; j++)
       {
-        for (int k=0; k<ext->nExt[i][j]; k++) 
+        for (int k=0; k<ext->nExt[i][j]; k++)
         {
-          if (ext->sExt[i][j][k].fDesc[0] == ' ') 
+          if (ext->sExt[i][j][k].fDesc[0] == ' ')
           {
             strcpy_s(ftype, MAX_PATH, ext->sLang[i].fDesc);
             return true;
@@ -118,13 +118,13 @@ bool getFileType(char *srcf, char *ftype) {
     // Period was found, skip past the period itself and look for a matching extension
     lastperiod++;
 
-    for (int i=0; i<ext->nLang; i++) 
+    for (int i=0; i<ext->nLang; i++)
     {
-      for (int j=0; j<ext->nType[i]; j++) 
+      for (int j=0; j<ext->nType[i]; j++)
       {
-        for (int k=0; k<ext->nExt[i][j]; k++) 
+        for (int k=0; k<ext->nExt[i][j]; k++)
         {
-          if (!_stricmp(lastperiod, ext->sExt[i][j][k].fDesc)) 
+          if (!_stricmp(lastperiod, ext->sExt[i][j][k].fDesc))
           {
             strcpy_s(ftype, MAX_PATH, ext->sLang[i].fDesc);
             return true;
@@ -133,7 +133,7 @@ bool getFileType(char *srcf, char *ftype) {
       }
     }
   }
-  
+
   return false;  // Otherwise, it's an unknown type
 }
 
@@ -149,7 +149,7 @@ bool getNextFiles(char *buff, char *currentFile, int bsize, int index=0) {
     if (strlen(tmp_file)) {
       size = (strlen(tmp_file)*2)-chop;
 
-      if (getFileType(fn_res+chop, ftype)) 
+      if (getFileType(fn_res+chop, ftype))
       {
         _itoa_s((index+1), sindex, 100, 10);
 
@@ -171,7 +171,7 @@ bool getNextFiles(char *buff, char *currentFile, int bsize, int index=0) {
         size += (strlen(fn_res)*2)-chop;
         size += 15;
 
-        if (size<bsize) 
+        if (size<bsize)
         {
           if (getFileType(fn_res+chop, ftype))
           {
@@ -186,8 +186,8 @@ bool getNextFiles(char *buff, char *currentFile, int bsize, int index=0) {
           }
 
           ret = filelist[index].getline(fn_buff,PATH_MAX);
-        } 
-        else 
+        }
+        else
         {
           ret = NULL;
         }
@@ -362,14 +362,14 @@ bool createDatabase(string serverName, string userName, string password,
           strcpy_s(ltype, 100, buffer);
           ltype[7]='\0';
 
-          if (!strcmp(ltype, "SOURCE=")) 
+          if (!strcmp(ltype, "SOURCE="))
           {
             strcpy_s(tmp, PATH_MAX, relpath[i]);
             strcat_s(tmp, PATH_MAX, buffer+7);
             realpath(tmp, fn_res);
             strcpy_s(sql, QUERY_MAX, qry);
 
-            if (getFileType(fn_res, ftype)) 
+            if (getFileType(fn_res, ftype))
             {
               sprintf_s(current, PATH_MAX, "('%s','%s','%s',%d)", fn_res, fn_res, ftype, (i+1));
               validateSQL(current);

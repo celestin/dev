@@ -507,6 +507,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\PowerHash.cpp"
+				>
+			</File>
+			<File
 				RelativePath="PParse.cpp"
 				>
 				<FileConfiguration
@@ -701,6 +705,10 @@
 			</File>
 			<File
 				RelativePath="OurSQL.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PowerHash.h"
 				>
 			</File>
 			<File

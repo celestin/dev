@@ -21,6 +21,10 @@ class Tuple {
   public:
     char *fId, *fDesc;
     Tuple() {}
+    ~Tuple() {
+      free(fId);
+      free(fDesc);
+    }
 
     void set(const char *id, const char *desc) {
       fId = _strdup(id);

@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  12-Aug-2009  10450 : File created.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -16,11 +17,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.ss.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -40,18 +41,18 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0;            // Number of semi-colons
 int noperators=0;       // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define STORE_OPERATOR(X) operators.insert(X); noperators++; COUNT()
-#define SEMI() nsemi++; COUNT()
-#define COUNT() sloc.insert(css_lineno)
+#define NOTE_SLOC()       sloc.insert(css_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
 void lexclear();
-void store_operand(char* txt);
 
 %}
 
@@ -98,16 +99,16 @@ SPTAB                   [ \t]
 \n                      {css_lineno++;}
 
 \".*\\\"*\"             |
-\".*\"                  {store_operand(_strdup(yytext));COUNT();}
-"'"."'"                 {store_operand(_strdup(yytext));COUNT();}
+\".*\"                  {STORE_OPERAND(yytext);}
+"'"."'"                 {STORE_OPERAND(yytext);}
 
 ";"                     {SEMI();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
+"{"                     {NOTE_SLOC();}
+"}"                     {NOTE_SLOC();}
 ","                     {STORE_OPERATOR(',');}
-":"                     {COUNT();}
-"("                     {COUNT();}
-")"                     {COUNT();}
+":"                     {NOTE_SLOC();}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
 "."                     {STORE_OPERATOR('.');}
 
 "azimuth"               {STORE_OPERATOR(CSS_AZIMUTH);}
@@ -300,11 +301,11 @@ SPTAB                   [ \t]
 "."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 {DIGITS}"."?[eE]{SIGN}?                                     |
-"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));COUNT();}
+"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);}
 
 <STRD>\n                                                    { /* Double-quoted string literals */ css_lineno++;}
 <STRD>\"                                                    {BEGIN 0;}
-<STRD>.                                                     {COUNT();}
+<STRD>.                                                     {NOTE_SLOC();}
 
 .                       { /* ignore bad characters */ }
 
@@ -322,21 +323,5 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
+  operands.clear();
 }
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-}
-

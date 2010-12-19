@@ -12,6 +12,7 @@
  * CAM  04-Dec-07    324 : Corrected issues prior to creating JSP parser.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  18-Apr-2009  10421 : Re-wrote to consider Native (CS&VB), Script (JS) and HTML symbols.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -19,11 +20,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.asp.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -46,7 +47,7 @@ set<int> sltag;
 set<int> slhtm;
 set<int> slscr;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
@@ -57,8 +58,10 @@ int noperands=0;        // Total number of operands
 #define NOTE_SLOC_SCR()   NOTE_SLOC(); slscr.insert(asp_lineno)
 #define NOTE_SLOC_HTM()   NOTE_SLOC(); slhtm.insert(asp_lineno)
 
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
+
 void lexclear();
-void store_operand(char* txt);
 void store_operator(int op, int typ);
 
 %}
@@ -117,7 +120,7 @@ SPTAB                                                                 [ \t]
 <SLOC_NAT>"'"                                                         |
 <SLOC_NAT>"//"                                                        {BEGIN SLOC_NAT_ECOM; cpp_comments++;}
 
-<SLOC_NAT>"'"."'"                                                     {store_operand(_strdup(yytext));NOTE_SLOC_NAT();}
+<SLOC_NAT>"'"."'"                                                     {STORE_OPERAND(yytext);NOTE_SLOC_NAT();}
 
 <SLOC_NAT>"abstract"                                                  {store_operator(KEY_CS_ABSTRACT,1);}
 <SLOC_NAT>"as"                                                        {store_operator(KEY_CS_AS,1);}
@@ -345,7 +348,7 @@ SPTAB                                                                 [ \t]
 <SLOC_NAT>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 <SLOC_NAT>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 <SLOC_NAT>{DIGITS}"."?[eE]{SIGN}?                                     |
-<SLOC_NAT>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_NAT();}
+<SLOC_NAT>"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);NOTE_SLOC_NAT();}
 
 <SLOC_NAT>[ \t\v\f]                                                   {;}
 <SLOC_NAT>.                                                           {;}
@@ -476,7 +479,7 @@ SPTAB                                                                 [ \t]
 <SLOC_SCR>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 <SLOC_SCR>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 <SLOC_SCR>{DIGITS}"."?[eE]{SIGN}?                                     |
-<SLOC_SCR>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_SCR();}
+<SLOC_SCR>"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);NOTE_SLOC_SCR();}
 
 <SLOC_SCR>[ \t\v\f]                                                   {;}
 <SLOC_SCR>.                                                           {NOTE_SLOC_SCR(); }
@@ -679,29 +682,12 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
+  operands.clear();
 
   slnat.clear();
   sltag.clear();
   slhtm.clear();
   slscr.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  NOTE_SLOC();
 }
 
 void store_operator(int op, int typ) {

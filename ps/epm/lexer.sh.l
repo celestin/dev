@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  25-Jun-2009  10453 : File created.
+ * CAM  01-Oct-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -16,11 +17,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.sh.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -39,16 +40,16 @@ int com_loc=0;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC() sloc.insert(sh_lineno)
+#define NOTE_SLOC()       sloc.insert(sh_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
 
 void lexclear();
-void store_operand(char* txt);
-void store_operator(int op);
 
 %}
 
@@ -78,57 +79,57 @@ SPTAB                             [ \t]
 
 %%
 
-"\$#"                             {store_operand(_strdup(yytext));}
+"\$#"                             {STORE_OPERAND(yytext);}
 "#"{NOTNL}*{NL}                   {cpp_comments++;com_loc++;sh_lineno++;}
 
 \n                                {sh_lineno++;}
 
-"alias"                           {store_operator(KEY_ALIAS);}
-"bg"                              {store_operator(KEY_BG);}
-"case"                            {store_operator(KEY_CASE);}
-"cat"                             {store_operator(KEY_CAT);}
-"cd"                              {store_operator(KEY_CD);}
-"command"                         {store_operator(KEY_COMMAND);}
-"do"                              {store_operator(KEY_DO);}
-"done"                            {store_operator(KEY_DONE);}
-"echo"                            {store_operator(KEY_ECHO);}
-"elif"                            {store_operator(KEY_ELIF);}
-"else"                            {store_operator(KEY_ELSE);}
-"eof"                             {store_operator(KEY_EOF);}
-"esac"                            {store_operator(KEY_ESAC);}
-"exit"                            {store_operator(KEY_EXIT);}
-"export"                          {store_operator(KEY_EXPORT);}
-"false"                           {store_operator(KEY_FALSE);}
-"fc"                              {store_operator(KEY_FC);}
-"fg"                              {store_operator(KEY_FG);}
-"fi"                              {store_operator(KEY_FI);}
-"for"                             {store_operator(KEY_FOR);}
-"function"                        {store_operator(KEY_FUNCTION);}
-"getopts"                         {store_operator(KEY_GETOPTS);}
-"if"                              {store_operator(KEY_IF);}
-"in"                              {store_operator(KEY_IN);}
-"jobs"                            {store_operator(KEY_JOBS);}
-"kill"                            {store_operator(KEY_KILL);}
-"ls"                              {store_operator(KEY_LS);}
-"mkdir"                           {store_operator(KEY_MKDIR);}
-"newgrp"                          {store_operator(KEY_NEWGRP);}
-"read"                            {store_operator(KEY_READ);}
-"readonly"                        {store_operator(KEY_READONLY);}
-"rm"                              {store_operator(KEY_RM);}
-"rmdir"                           {store_operator(KEY_RMDIR);}
-"select"                          {store_operator(KEY_SELECT);}
-"set"                             {store_operator(KEY_SET);}
-"shift"                           {store_operator(KEY_SHIFT);}
-"then"                            {store_operator(KEY_THEN);}
-"touch"                           {store_operator(KEY_TOUCH);}
-"trap"                            {store_operator(KEY_TRAP);}
-"true"                            {store_operator(KEY_TRUE);}
-"umask"                           {store_operator(KEY_UMASK);}
-"unalias"                         {store_operator(KEY_UNALIAS);}
-"unset"                           {store_operator(KEY_UNSET);}
-"until"                           {store_operator(KEY_UNTIL);}
-"wait"                            {store_operator(KEY_WAIT);}
-"while"                           {store_operator(KEY_WHILE);}
+"alias"                           {STORE_OPERATOR(KEY_ALIAS);}
+"bg"                              {STORE_OPERATOR(KEY_BG);}
+"case"                            {STORE_OPERATOR(KEY_CASE);}
+"cat"                             {STORE_OPERATOR(KEY_CAT);}
+"cd"                              {STORE_OPERATOR(KEY_CD);}
+"command"                         {STORE_OPERATOR(KEY_COMMAND);}
+"do"                              {STORE_OPERATOR(KEY_DO);}
+"done"                            {STORE_OPERATOR(KEY_DONE);}
+"echo"                            {STORE_OPERATOR(KEY_ECHO);}
+"elif"                            {STORE_OPERATOR(KEY_ELIF);}
+"else"                            {STORE_OPERATOR(KEY_ELSE);}
+"eof"                             {STORE_OPERATOR(KEY_EOF);}
+"esac"                            {STORE_OPERATOR(KEY_ESAC);}
+"exit"                            {STORE_OPERATOR(KEY_EXIT);}
+"export"                          {STORE_OPERATOR(KEY_EXPORT);}
+"false"                           {STORE_OPERATOR(KEY_FALSE);}
+"fc"                              {STORE_OPERATOR(KEY_FC);}
+"fg"                              {STORE_OPERATOR(KEY_FG);}
+"fi"                              {STORE_OPERATOR(KEY_FI);}
+"for"                             {STORE_OPERATOR(KEY_FOR);}
+"function"                        {STORE_OPERATOR(KEY_FUNCTION);}
+"getopts"                         {STORE_OPERATOR(KEY_GETOPTS);}
+"if"                              {STORE_OPERATOR(KEY_IF);}
+"in"                              {STORE_OPERATOR(KEY_IN);}
+"jobs"                            {STORE_OPERATOR(KEY_JOBS);}
+"kill"                            {STORE_OPERATOR(KEY_KILL);}
+"ls"                              {STORE_OPERATOR(KEY_LS);}
+"mkdir"                           {STORE_OPERATOR(KEY_MKDIR);}
+"newgrp"                          {STORE_OPERATOR(KEY_NEWGRP);}
+"read"                            {STORE_OPERATOR(KEY_READ);}
+"readonly"                        {STORE_OPERATOR(KEY_READONLY);}
+"rm"                              {STORE_OPERATOR(KEY_RM);}
+"rmdir"                           {STORE_OPERATOR(KEY_RMDIR);}
+"select"                          {STORE_OPERATOR(KEY_SELECT);}
+"set"                             {STORE_OPERATOR(KEY_SET);}
+"shift"                           {STORE_OPERATOR(KEY_SHIFT);}
+"then"                            {STORE_OPERATOR(KEY_THEN);}
+"touch"                           {STORE_OPERATOR(KEY_TOUCH);}
+"trap"                            {STORE_OPERATOR(KEY_TRAP);}
+"true"                            {STORE_OPERATOR(KEY_TRUE);}
+"umask"                           {STORE_OPERATOR(KEY_UMASK);}
+"unalias"                         {STORE_OPERATOR(KEY_UNALIAS);}
+"unset"                           {STORE_OPERATOR(KEY_UNSET);}
+"until"                           {STORE_OPERATOR(KEY_UNTIL);}
+"wait"                            {STORE_OPERATOR(KEY_WAIT);}
+"while"                           {STORE_OPERATOR(KEY_WHILE);}
 
 {LETTER}{ALNUM}*                                            |
 [1-9][0-9]*{INT_SUFFIX}?                                    |
@@ -140,26 +141,26 @@ SPTAB                             [ \t]
 "."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 {DIGITS}"."?[eE]{SIGN}?                                     |
-"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));}
+"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);}
 
-"&&"                              {store_operator(SYM_ANDLIST);}
-"||"                              {store_operator(SYM_ORLIST);}
-"&"                               {store_operator(SYM_AND);}
-"*"                               {store_operator(SYM_ASTERISK);}
-"`"                               {store_operator(SYM_BACKAPOS);}
-"}"                               {store_operator(SYM_CLOSEBRACE);}
-"]"                               {store_operator(SYM_CLOSEBRACKET);}
-")"                               {store_operator(SYM_CLOSEPAREN);}
-":"                               {store_operator(SYM_COLON);}
-">"                               {store_operator(SYM_GT);}
-"<"                               {store_operator(SYM_LT);}
-"-"                               {store_operator(SYM_MINUS);}
-"{"                               {store_operator(SYM_OPENBRACE);}
-"["                               {store_operator(SYM_OPENBRACKET);}
-"("                               {store_operator(SYM_OPENPAREN);}
-"!"                               {store_operator(SYM_PLING);}
-"\""                              {store_operator(SYM_QUOTE);}
-";"                               {store_operator(SYM_SEMICOLON);}
+"&&"                              {STORE_OPERATOR(SYM_ANDLIST);}
+"||"                              {STORE_OPERATOR(SYM_ORLIST);}
+"&"                               {STORE_OPERATOR(SYM_AND);}
+"*"                               {STORE_OPERATOR(SYM_ASTERISK);}
+"`"                               {STORE_OPERATOR(SYM_BACKAPOS);}
+"}"                               {STORE_OPERATOR(SYM_CLOSEBRACE);}
+"]"                               {STORE_OPERATOR(SYM_CLOSEBRACKET);}
+")"                               {STORE_OPERATOR(SYM_CLOSEPAREN);}
+":"                               {STORE_OPERATOR(SYM_COLON);}
+">"                               {STORE_OPERATOR(SYM_GT);}
+"<"                               {STORE_OPERATOR(SYM_LT);}
+"-"                               {STORE_OPERATOR(SYM_MINUS);}
+"{"                               {STORE_OPERATOR(SYM_OPENBRACE);}
+"["                               {STORE_OPERATOR(SYM_OPENBRACKET);}
+"("                               {STORE_OPERATOR(SYM_OPENPAREN);}
+"!"                               {STORE_OPERATOR(SYM_PLING);}
+"\""                              {STORE_OPERATOR(SYM_QUOTE);}
+";"                               {STORE_OPERATOR(SYM_SEMICOLON);}
 
 [ \t\v\f]                         {;}
 .                                 { /* ignore bad characters */ }
@@ -177,30 +178,5 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  NOTE_SLOC();
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  NOTE_SLOC();
-
-  sloc.insert(sh_lineno);
+  operands.clear();
 }

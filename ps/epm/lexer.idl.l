@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  28-Jun-07   314 : File created.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -24,11 +25,11 @@ IS                      (u|U|l|L)*
 #include <stdio.h>
 #include <string.h>
 #include "y.idl.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -56,42 +57,18 @@ void eol_comment_skip();
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define STORE_OPERATOR(X) operators.insert(X); noperators++;
-#define SEMI() nsemi++;
-#define COUNT() sloc.insert(idl_lineno)
+#define NOTE_SLOC()       sloc.insert(idl_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
-void lexclear() {
-  BEGIN 0 ;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  idl_lineno=nsemi=noperators=0;
-
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-}
+void lexclear();
 
 %}
 
@@ -157,70 +134,82 @@ void store_operand(char* txt) {
 "void"                       {STORE_OPERATOR(VOID);}
 
 
-{L}({L}|{D})*           {COUNT(); store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {COUNT(); store_operand(_strdup(yytext));}
-0{D}+{IS}?              {COUNT(); store_operand(_strdup(yytext));}
-{D}+{IS}?               {COUNT(); store_operand(_strdup(yytext));}
-'(\\.|[^\\'])+'         {COUNT(); store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {COUNT(); store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {COUNT(); store_operand(_strdup(yytext));}
-\"                      {COUNT(); string_literal();}
-"::"                    {COUNT(); STORE_OPERATOR(COLONCOLON);}
-"..."                   {COUNT(); }
-">>="                   {COUNT(); STORE_OPERATOR(GREATGREATEQUALS);}
-"<<="                   {COUNT(); STORE_OPERATOR(LESSLESSEQUALS);}
-"+="                    {COUNT(); STORE_OPERATOR(PLUSEQUALS);}
-"-="                    {COUNT(); STORE_OPERATOR(MINUSEQUALS);}
-"*="                    {COUNT(); STORE_OPERATOR(TIMESEQUALS);}
-"/="                    {COUNT(); STORE_OPERATOR(DIVEQUALS);}
-"%="                    {COUNT(); STORE_OPERATOR(MODEQUALS);}
-"&="                    {COUNT(); STORE_OPERATOR(ANDEQUALS);}
-"^="                    {COUNT(); STORE_OPERATOR(CARETEQUALS);}
-"|="                    {COUNT(); STORE_OPERATOR(BAREQUALS);}
-">>"                    {COUNT(); STORE_OPERATOR(GREATERGREATER);}
-"<<"                    {COUNT(); STORE_OPERATOR(LESSLESS);}
-"++"                    {COUNT(); STORE_OPERATOR(INC_OP);}
-"--"                    {COUNT(); STORE_OPERATOR(DEC_OP);}
-".*"                    {COUNT(); STORE_OPERATOR(DOT_STAR);}
-"->*"                   {COUNT(); STORE_OPERATOR(PTR_OP_STAR);}
-"->"                    {COUNT(); STORE_OPERATOR(PTR_OP);}
-"&&"                    {COUNT(); STORE_OPERATOR(AND_OP);}
-"||"                    {COUNT(); STORE_OPERATOR(OR_OP);}
-"<="                    {COUNT(); STORE_OPERATOR(LESSEQUALS);}
-">="                    {COUNT(); STORE_OPERATOR(GREATEREQUALS);}
-"=="                    {COUNT(); STORE_OPERATOR(EQUALS);}
-"!="                    {COUNT(); STORE_OPERATOR(NOTEQUALS);}
-";"                     {COUNT(); SEMI();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
-","                     {COUNT();}
-":"                     {COUNT();}
-"="                     {COUNT(); STORE_OPERATOR('=');}
-"("                     {COUNT();}
-")"                     {COUNT();}
-"["                     {COUNT(); STORE_OPERATOR('[');}
-"]"                     {COUNT();}
-"."                     {COUNT(); STORE_OPERATOR('.');}
-"&"                     {COUNT(); STORE_OPERATOR('&');}
-"!"                     {COUNT(); STORE_OPERATOR('!');}
-"~"                     {COUNT(); STORE_OPERATOR('~');}
-"-"                     {COUNT(); STORE_OPERATOR('-');}
-"+"                     {COUNT(); STORE_OPERATOR('+');}
-"*"                     {COUNT(); STORE_OPERATOR('*');}
-"/"                     {COUNT(); STORE_OPERATOR('/');}
-"%"                     {COUNT(); STORE_OPERATOR('%');}
-"<"                     {COUNT(); STORE_OPERATOR(LT);}
-">"                     {COUNT(); STORE_OPERATOR(GT);}
-"^"                     {COUNT(); STORE_OPERATOR('^');}
-"|"                     {COUNT(); STORE_OPERATOR('|');}
-"?"                     {COUNT(); STORE_OPERATOR('?');}
+{L}({L}|{D})*           {STORE_OPERAND(yytext);}
+0[xX]{H}+{IS}?          {STORE_OPERAND(yytext);}
+0{D}+{IS}?              {STORE_OPERAND(yytext);}
+{D}+{IS}?               {STORE_OPERAND(yytext);}
+'(\\.|[^\\'])+'         {STORE_OPERAND(yytext);}
+{D}+{E}{FS}?            {STORE_OPERAND(yytext);}
+{D}*"."{D}+({E})?{FS}?  {STORE_OPERAND(yytext);}
+{D}+"."{D}*({E})?{FS}?  {STORE_OPERAND(yytext);}
+\"                      {string_literal();}
+"::"                    {STORE_OPERATOR(COLONCOLON);}
+"..."                   {NOTE_SLOC();}
+">>="                   {STORE_OPERATOR(GREATGREATEQUALS);}
+"<<="                   {STORE_OPERATOR(LESSLESSEQUALS);}
+"+="                    {STORE_OPERATOR(PLUSEQUALS);}
+"-="                    {STORE_OPERATOR(MINUSEQUALS);}
+"*="                    {STORE_OPERATOR(TIMESEQUALS);}
+"/="                    {STORE_OPERATOR(DIVEQUALS);}
+"%="                    {STORE_OPERATOR(MODEQUALS);}
+"&="                    {STORE_OPERATOR(ANDEQUALS);}
+"^="                    {STORE_OPERATOR(CARETEQUALS);}
+"|="                    {STORE_OPERATOR(BAREQUALS);}
+">>"                    {STORE_OPERATOR(GREATERGREATER);}
+"<<"                    {STORE_OPERATOR(LESSLESS);}
+"++"                    {STORE_OPERATOR(INC_OP);}
+"--"                    {STORE_OPERATOR(DEC_OP);}
+".*"                    {STORE_OPERATOR(DOT_STAR);}
+"->*"                   {STORE_OPERATOR(PTR_OP_STAR);}
+"->"                    {STORE_OPERATOR(PTR_OP);}
+"&&"                    {STORE_OPERATOR(AND_OP);}
+"||"                    {STORE_OPERATOR(OR_OP);}
+"<="                    {STORE_OPERATOR(LESSEQUALS);}
+">="                    {STORE_OPERATOR(GREATEREQUALS);}
+"=="                    {STORE_OPERATOR(EQUALS);}
+"!="                    {STORE_OPERATOR(NOTEQUALS);}
+";"                     {SEMI();}
+"{"                     {NOTE_SLOC();}
+"}"                     {NOTE_SLOC();}
+","                     {NOTE_SLOC();}
+":"                     {NOTE_SLOC();}
+"="                     {STORE_OPERATOR('=');}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
+"["                     {STORE_OPERATOR('[');}
+"]"                     {NOTE_SLOC();}
+"."                     {STORE_OPERATOR('.');}
+"&"                     {STORE_OPERATOR('&');}
+"!"                     {STORE_OPERATOR('!');}
+"~"                     {STORE_OPERATOR('~');}
+"-"                     {STORE_OPERATOR('-');}
+"+"                     {STORE_OPERATOR('+');}
+"*"                     {STORE_OPERATOR('*');}
+"/"                     {STORE_OPERATOR('/');}
+"%"                     {STORE_OPERATOR('%');}
+"<"                     {STORE_OPERATOR(LT);}
+">"                     {STORE_OPERATOR(GT);}
+"^"                     {STORE_OPERATOR('^');}
+"|"                     {STORE_OPERATOR('|');}
+"?"                     {STORE_OPERATOR('?');}
 [ \t\v\f]               {;}
 "\n"                    {idl_lineno++;}
 .                       { /* ignore bad characters */ }
 %%
 int yywrap() {
   return(1);
+}
+
+void lexclear() {
+  BEGIN 0 ;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  idl_lineno=nsemi=noperators=0;
+
+  sloc.clear();
+  operators.clear();
+  operands.clear();
 }
 
 void comment_skip() {
@@ -280,6 +269,8 @@ void comment_skip() {
 
 void string_literal() {
   char c=0;
+
+  NOTE_SLOC();
 
   while ((c!='\"') && (c!=EOF))
      if ((c=yyinput())=='\\')

@@ -10,6 +10,7 @@
  * Who  When       Why
  * CAM  04-Dec-07   324 : File created.
  * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -24,11 +25,11 @@ IS                      (u|U|l|L)*
 #include <stdio.h>
 #include <string.h>
 #include "y.jsp.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -51,17 +52,19 @@ set<int> sltag;
 set<int> slhtm;
 set<int> slscr;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC() sloc.insert(jsp_lineno)
+#define NOTE_SLOC()       sloc.insert(jsp_lineno)
 #define NOTE_SLOC_TAG() NOTE_SLOC(); sltag.insert(jsp_lineno)
 #define NOTE_SLOC_NAT() NOTE_SLOC(); slnat.insert(jsp_lineno)
 
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
+
 void lexclear();
-void store_operand(char* txt);
 void store_operator(int op, int typ);
 
 %}
@@ -202,7 +205,7 @@ void store_operator(int op, int typ);
 <SLOC_NAT>'(\\.|[^\\'])+'         |
 <SLOC_NAT>{D}+{E}{FS}?            |
 <SLOC_NAT>{D}*"."{D}+({E})?{FS}?  |
-<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); store_operand(_strdup(yytext));}
+<SLOC_NAT>{D}+"."{D}*({E})?{FS}?  {NOTE_SLOC_NAT(); STORE_OPERAND(yytext);}
 <SLOC_NAT>.                       {NOTE_SLOC_NAT();}
 
 <SLOC_NAT_STRD>"\n"               {jsp_lineno++; /* Double-quoted string literals */}
@@ -345,29 +348,12 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
+  operands.clear();
 
   slnat.clear();
   sltag.clear();
   slhtm.clear();
   slscr.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  NOTE_SLOC();
 }
 
 void store_operator(int op, int typ) {

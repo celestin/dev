@@ -7,10 +7,11 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  16-Aug-05  File added.
- * CAM  06-Jan-06  168 : Added Metrics Sets.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  16-Aug-05    File added.
+ * CAM  06-Jan-06    168 : Added Metrics Sets.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  22-Sep-2010  10648 : Removed unnecessary strdups.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <xercesc/util/XMLUniDefs.hpp>
@@ -24,7 +25,9 @@ PParseHandlers::PParseHandlers() {
   fMet = new MetricSet();
 }
 
-PParseHandlers::~PParseHandlers() {}
+PParseHandlers::~PParseHandlers() {
+
+}
 
 
 void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attributes) {
@@ -39,9 +42,9 @@ void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attrib
     for (i=0; i<attributes.getLength(); i++) {
       fLocalForm = XMLString::transcode(attributes.getName(i));
       if (!strcmp(fLocalForm, "name")) {
-        fLang = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fLang = XMLString::transcode(attributes.getValue(i));
       } else if (!strcmp(fLocalForm, "parser")) {
-        fParser = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fParser = XMLString::transcode(attributes.getValue(i));
       }
     }
 
@@ -56,7 +59,7 @@ void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attrib
     for (i=0; i<attributes.getLength(); i++) {
       fLocalForm = XMLString::transcode(attributes.getName(i));
       if (!strcmp(fLocalForm, "name")) {
-        fFileName = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fFileName = XMLString::transcode(attributes.getValue(i));
       }
     }
 
@@ -72,9 +75,9 @@ void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attrib
     for (i=0; i<attributes.getLength(); i++) {
       fLocalForm = XMLString::transcode(attributes.getName(i));
       if (!strcmp(fLocalForm, "name")) {
-        fExtName = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fExtName = XMLString::transcode(attributes.getValue(i));
       } else if (!strcmp(fLocalForm, "value")) {
-        fExtension = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fExtension = XMLString::transcode(attributes.getValue(i));
       }
     }
 
@@ -92,7 +95,7 @@ void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attrib
     for (i=0; i<attributes.getLength(); i++) {
       fLocalForm = XMLString::transcode(attributes.getName(i));
       if (!strcmp(fLocalForm, "name")) {
-        fSetName = _strdup(XMLString::transcode(attributes.getValue(i)));
+        fSetName = XMLString::transcode(attributes.getValue(i));
       }
     }
 
@@ -110,11 +113,11 @@ void PParseHandlers::startElement(const XMLCh* const name, AttributeList& attrib
     for (i=0; i<attributes.getLength(); i++) {
       fLocalForm = XMLString::transcode(attributes.getName(i));
       if (!strcmp(fLocalForm, "id")) {
-        mc.fId = atoi(_strdup(XMLString::transcode(attributes.getValue(i))));
+        mc.fId = atoi(XMLString::transcode(attributes.getValue(i)));
       } else if (!strcmp(fLocalForm, "lower")) {
-        mc.lower(atoi(_strdup(XMLString::transcode(attributes.getValue(i)))));
+        mc.lower(atoi(XMLString::transcode(attributes.getValue(i))));
       } else if (!strcmp(fLocalForm, "upper")) {
-        mc.upper(atoi(_strdup(XMLString::transcode(attributes.getValue(i)))));
+        mc.upper(atoi(XMLString::transcode(attributes.getValue(i))));
       }
     }
 

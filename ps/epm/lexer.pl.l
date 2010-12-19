@@ -12,6 +12,7 @@
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  07-Apr-2009  10415 : Rewrote parser to handle all Perl eventualities correctly.
  * CAM  14-Apr-2009  10416 : Corrected multi-line comments (in line with lexer.cs.l).
+ * CAM  30-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -19,11 +20,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.pl.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 #include <iostream>
 using namespace std;
@@ -44,48 +45,18 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define SEMI() nsemi++;
-#define COUNT() sloc.insert(perl_lineno)
+#define NOTE_SLOC()       sloc.insert(perl_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
-void lexclear() {
-  BEGIN 0 ;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  perl_lineno=nsemi=noperators=0;
-
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  COUNT();
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-  COUNT();
-}
+void lexclear();
 
 %}
 
@@ -121,136 +92,136 @@ SPTAB         [ \t]
 
 \n                      {perl_lineno++;}
 
-"!"                     {store_operator('!');}
-"*"                     {store_operator('*');}
-"+"                     {store_operator('+');}
-","                     {store_operator(',');}
-"-"                     {store_operator('-');}
-"."                     {store_operator('.');}
-":"                     {store_operator(':');}
-"<"                     {store_operator('<');}
-"="                     {store_operator('=');}
-">"                     {store_operator('>');}
-"?"                     {store_operator('?');}
-"\\"                    {store_operator('\\');}
-"^"                     {store_operator('^');}
-"|"                     {store_operator('|');}
-"~"                     {store_operator('~');}
-"$"                     {store_operator('$');}
+"!"                     {STORE_OPERATOR('!');}
+"*"                     {STORE_OPERATOR('*');}
+"+"                     {STORE_OPERATOR('+');}
+","                     {STORE_OPERATOR(',');}
+"-"                     {STORE_OPERATOR('-');}
+"."                     {STORE_OPERATOR('.');}
+":"                     {STORE_OPERATOR(':');}
+"<"                     {STORE_OPERATOR('<');}
+"="                     {STORE_OPERATOR('=');}
+">"                     {STORE_OPERATOR('>');}
+"?"                     {STORE_OPERATOR('?');}
+"\\"                    {STORE_OPERATOR('\\');}
+"^"                     {STORE_OPERATOR('^');}
+"|"                     {STORE_OPERATOR('|');}
+"~"                     {STORE_OPERATOR('~');}
+"$"                     {STORE_OPERATOR('$');}
 
-"^="                    {store_operator(CARAT_EQUALS);}
-"||"                    {store_operator(BAR_BAR);}
-"||="                   {store_operator(BAR_BAR_EQUALS);}
-"|="                    {store_operator(BAR_EQUALS);}
-"<="                    {store_operator(LEFT_EQUALS);}
-"<=>"                   {store_operator(LEFT_EQUALS_RIGHT);}
-"<<"                    {store_operator(LEFT_LEFT);}
-"<<="                   {store_operator(LEFT_LEFT_EQUALS);}
-"%"                     {store_operator(PERCENT);}
-"%="                    {store_operator(PERCENT_EQUALS);}
-">="                    {store_operator(RIGHT_EQUALS);}
-">>"                    {store_operator(RIGHT_RIGHT);}
-">>="                   {store_operator(RIGHT_RIGHT_EQUALS);}
-"-="                    {store_operator(MINUS_EQUALS);}
-"--"                    {store_operator(MINUS_MINUS);}
-"->"                    {store_operator(MINUS_RIGHT);}
-"/"                     {store_operator(SLASH);}
-"/="                    {store_operator(SLASH_EQUALS);}
-"!="                    {store_operator(PLING_EQUALS);}
-"!~"                    {store_operator(PLING_TILDE);}
-"+="                    {store_operator(PLUS_EQUALS);}
-"++"                    {store_operator(PLUS_PLUS);}
-"&"                     {store_operator(AMP);}
-"&&"                    {store_operator(AMP_AMP);}
-"&&="                   {store_operator(AMP_AMP_EQUALS);}
-"&="                    {store_operator(AMP_EQUALS);}
-"*="                    {store_operator(AMP_EQUALS);}
-".."                    {store_operator(DOT_DOT);}
-".="                    {store_operator(DOT_EQUALS);}
-"=="                    {store_operator(EQUALS_EQUALS);}
-"=>"                    {store_operator(EQUALS_RIGHT);}
-"=~"                    {store_operator(EQUALS_TILDE);}
-"**"                    {store_operator(AST_AST);}
-"**="                   {store_operator(AST_AST_EQUALS);}
-"x="                    {store_operator(X_EQUALS);}
+"^="                    {STORE_OPERATOR(CARAT_EQUALS);}
+"||"                    {STORE_OPERATOR(BAR_BAR);}
+"||="                   {STORE_OPERATOR(BAR_BAR_EQUALS);}
+"|="                    {STORE_OPERATOR(BAR_EQUALS);}
+"<="                    {STORE_OPERATOR(LEFT_EQUALS);}
+"<=>"                   {STORE_OPERATOR(LEFT_EQUALS_RIGHT);}
+"<<"                    {STORE_OPERATOR(LEFT_LEFT);}
+"<<="                   {STORE_OPERATOR(LEFT_LEFT_EQUALS);}
+"%"                     {STORE_OPERATOR(PERCENT);}
+"%="                    {STORE_OPERATOR(PERCENT_EQUALS);}
+">="                    {STORE_OPERATOR(RIGHT_EQUALS);}
+">>"                    {STORE_OPERATOR(RIGHT_RIGHT);}
+">>="                   {STORE_OPERATOR(RIGHT_RIGHT_EQUALS);}
+"-="                    {STORE_OPERATOR(MINUS_EQUALS);}
+"--"                    {STORE_OPERATOR(MINUS_MINUS);}
+"->"                    {STORE_OPERATOR(MINUS_RIGHT);}
+"/"                     {STORE_OPERATOR(SLASH);}
+"/="                    {STORE_OPERATOR(SLASH_EQUALS);}
+"!="                    {STORE_OPERATOR(PLING_EQUALS);}
+"!~"                    {STORE_OPERATOR(PLING_TILDE);}
+"+="                    {STORE_OPERATOR(PLUS_EQUALS);}
+"++"                    {STORE_OPERATOR(PLUS_PLUS);}
+"&"                     {STORE_OPERATOR(AMP);}
+"&&"                    {STORE_OPERATOR(AMP_AMP);}
+"&&="                   {STORE_OPERATOR(AMP_AMP_EQUALS);}
+"&="                    {STORE_OPERATOR(AMP_EQUALS);}
+"*="                    {STORE_OPERATOR(AMP_EQUALS);}
+".."                    {STORE_OPERATOR(DOT_DOT);}
+".="                    {STORE_OPERATOR(DOT_EQUALS);}
+"=="                    {STORE_OPERATOR(EQUALS_EQUALS);}
+"=>"                    {STORE_OPERATOR(EQUALS_RIGHT);}
+"=~"                    {STORE_OPERATOR(EQUALS_TILDE);}
+"**"                    {STORE_OPERATOR(AST_AST);}
+"**="                   {STORE_OPERATOR(AST_AST_EQUALS);}
+"x="                    {STORE_OPERATOR(X_EQUALS);}
 
-";"                     {COUNT(); SEMI();}
+";"                     {SEMI();}
 [ \t\v\f]               {;}
 
-"("                     {COUNT();}
-")"                     {COUNT();}
-"{"                     {COUNT();}
-"}"                     {COUNT();}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
+"{"                     {NOTE_SLOC();}
+"}"                     {NOTE_SLOC();}
 
-"and"                   {store_operator(OP_AND);}
-"bless"                 {store_operator(BLESS);}
-"caller"                {store_operator(CALLER);}
-"cmp"                   {store_operator(OP_CMP);}
-"continue"              {store_operator(CONTINUE);}
-"dbmclose"              {store_operator(DBMCLOSE);}
-"dbmopen"               {store_operator(DBMOPEN);}
-"die"                   {store_operator(DIE);}
-"do"                    {store_operator(DO);}
-"dump"                  {store_operator(DUMP);}
-"else"                  {store_operator(ELSE);}
-"elsif"                 {store_operator(ELSIF);}
-"eq"                    {store_operator(OP_EQ);}
-"eval"                  {store_operator(EVAL);}
-"exit"                  {store_operator(EXIT);}
-"for"                   {store_operator(FOR);}
-"foreach"               {store_operator(FOREACH);}
-"ge"                    {store_operator(OP_GE);}
-"goto"                  {store_operator(GOTO);}
-"gt"                    {store_operator(OP_GT);}
-"if"                    {store_operator(IF);}
-"import"                {store_operator(IMPORT);}
-"last"                  {store_operator(LAST);}
-"le"                    {store_operator(OP_LE);}
-"local"                 {store_operator(LOCAL);}
-"lt"                    {store_operator(OP_LT);}
-"my"                    {store_operator(MY);}
-"ne"                    {store_operator(OP_NE);}
-"next"                  {store_operator(NEXT);}
-"no"                    {store_operator(NO);}
-"not"                   {store_operator(OP_NOT);}
-"or"                    {store_operator(OP_OR);}
-"our"                   {store_operator(OUR);}
-"package"               {store_operator(PACKAGE);}
-"redo"                  {store_operator(REDO);}
-"ref"                   {store_operator(REF);}
-"require"               {store_operator(REQUIRE);}
-"return"                {store_operator(RETURN);}
-"sub"                   {store_operator(SUB);}
-"tie"                   {store_operator(TIE);}
-"tied"                  {store_operator(TIED);}
-"unary"                 {store_operator(OP_UNARY);}
-"unless"                {store_operator(UNLESS);}
-"untie"                 {store_operator(UNTIE);}
-"until"                 {store_operator(UNTIL);}
-"use"                   {store_operator(USE);}
-"wantarray"             {store_operator(WANTARRAY);}
-"x"                     {store_operator(OP_X);}
-"xor"                   {store_operator(OP_XOR);}
+"and"                   {STORE_OPERATOR(OP_AND);}
+"bless"                 {STORE_OPERATOR(BLESS);}
+"caller"                {STORE_OPERATOR(CALLER);}
+"cmp"                   {STORE_OPERATOR(OP_CMP);}
+"continue"              {STORE_OPERATOR(CONTINUE);}
+"dbmclose"              {STORE_OPERATOR(DBMCLOSE);}
+"dbmopen"               {STORE_OPERATOR(DBMOPEN);}
+"die"                   {STORE_OPERATOR(DIE);}
+"do"                    {STORE_OPERATOR(DO);}
+"dump"                  {STORE_OPERATOR(DUMP);}
+"else"                  {STORE_OPERATOR(ELSE);}
+"elsif"                 {STORE_OPERATOR(ELSIF);}
+"eq"                    {STORE_OPERATOR(OP_EQ);}
+"eval"                  {STORE_OPERATOR(EVAL);}
+"exit"                  {STORE_OPERATOR(EXIT);}
+"for"                   {STORE_OPERATOR(FOR);}
+"foreach"               {STORE_OPERATOR(FOREACH);}
+"ge"                    {STORE_OPERATOR(OP_GE);}
+"goto"                  {STORE_OPERATOR(GOTO);}
+"gt"                    {STORE_OPERATOR(OP_GT);}
+"if"                    {STORE_OPERATOR(IF);}
+"import"                {STORE_OPERATOR(IMPORT);}
+"last"                  {STORE_OPERATOR(LAST);}
+"le"                    {STORE_OPERATOR(OP_LE);}
+"local"                 {STORE_OPERATOR(LOCAL);}
+"lt"                    {STORE_OPERATOR(OP_LT);}
+"my"                    {STORE_OPERATOR(MY);}
+"ne"                    {STORE_OPERATOR(OP_NE);}
+"next"                  {STORE_OPERATOR(NEXT);}
+"no"                    {STORE_OPERATOR(NO);}
+"not"                   {STORE_OPERATOR(OP_NOT);}
+"or"                    {STORE_OPERATOR(OP_OR);}
+"our"                   {STORE_OPERATOR(OUR);}
+"package"               {STORE_OPERATOR(PACKAGE);}
+"redo"                  {STORE_OPERATOR(REDO);}
+"ref"                   {STORE_OPERATOR(REF);}
+"require"               {STORE_OPERATOR(REQUIRE);}
+"return"                {STORE_OPERATOR(RETURN);}
+"sub"                   {STORE_OPERATOR(SUB);}
+"tie"                   {STORE_OPERATOR(TIE);}
+"tied"                  {STORE_OPERATOR(TIED);}
+"unary"                 {STORE_OPERATOR(OP_UNARY);}
+"unless"                {STORE_OPERATOR(UNLESS);}
+"untie"                 {STORE_OPERATOR(UNTIE);}
+"until"                 {STORE_OPERATOR(UNTIL);}
+"use"                   {STORE_OPERATOR(USE);}
+"wantarray"             {STORE_OPERATOR(WANTARRAY);}
+"x"                     {STORE_OPERATOR(OP_X);}
+"xor"                   {STORE_OPERATOR(OP_XOR);}
 
-{LETTER}{ALNUM}*            {store_operand(_strdup(yytext));}
+{LETTER}{ALNUM}*        {STORE_OPERAND(yytext);}
 
 [1-9][0-9]*{INT_SUFFIX}?           |
 [0][0-7]*{INT_SUFFIX}?             |
-[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {store_operand(_strdup(yytext));}
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {STORE_OPERAND(yytext);}
 
-[0][xX]               {store_operand(_strdup(yytext));}
+[0][xX]               {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
 {DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?     |
-"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {store_operand(_strdup(yytext));}
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?   |
 {DIGITS}"."?[eE]{SIGN}?           |
-"."{DIGITS}[eE]{SIGN}?                    {store_operand(_strdup(yytext));}
+"."{DIGITS}[eE]{SIGN}?                    {STORE_OPERAND(yytext);}
 
 "#"{NOTNL}*{NL}         {++cpp_comments;++com_loc;++perl_lineno;BEGIN(INITIAL);}
 
-"L"?{QUOTE}({STRCHAR}|{ESCAPE})*{QUOTE} {COUNT();}
+"L"?{QUOTE}({STRCHAR}|{ESCAPE})*{QUOTE} {NOTE_SLOC();}
 
 .                       {;}
 
@@ -260,3 +231,14 @@ int yywrap()
   return(1);
 }
 
+void lexclear() {
+  BEGIN 0 ;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  perl_lineno=nsemi=noperators=0;
+
+  sloc.clear();
+  operators.clear();
+  operands.clear();
+}

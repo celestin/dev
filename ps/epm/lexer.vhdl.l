@@ -7,9 +7,10 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  26-Jul-07   316 : File created.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  26-Jul-07    316 : File created.
+ * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  29-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 D                       [0-9]
@@ -24,11 +25,11 @@ IS                      (u|U|l|L)*
 #include <stdio.h>
 #include <string.h>
 #include "y.vhdl.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -48,48 +49,17 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC() sloc.insert(vhdl_lineno)
+#define NOTE_SLOC()       sloc.insert(vhdl_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
-void lexclear() {
-  BEGIN 0;
-  noperands=0;
-  j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
-  vhdl_lineno=nsemi=noperators=0;
-
-  sloc.clear();
-  operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  NOTE_SLOC();
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  NOTE_SLOC();
-}
-
+void lexclear();
 void string_literal();
 void eol_comment_skip();
 
@@ -107,132 +77,132 @@ void eol_comment_skip();
 <DEFINE>"\n"            {NOTE_SLOC(); vhdl_lineno++;}
 <DEFINE>.               {;}
 
-"abs"                   {store_operator(ABS_KEYWRD);}
-"access"                {store_operator(ACCESS_KEYWRD);}
-"after"                 {store_operator(AFTER_KEYWRD);}
-"alias"                 {store_operator(ALIAS_KEYWRD);}
-"all"                   {store_operator(ALL_KEYWRD);}
-"and"                   {store_operator(AND_KEYWRD);}
-"architecture"          {store_operator(ARCHITECTURE_KEYWRD);}
-"array"                 {store_operator(ARRAY_KEYWRD);}
-"assert"                {store_operator(ASSERT_KEYWRD);}
-"attribute"             {store_operator(ATTRIBUTE_KEYWRD);}
-"begin"                 {store_operator(BEGIN_KEYWRD);}
-"block"                 {store_operator(BLOCK_KEYWRD);}
-"body"                  {store_operator(BODY_KEYWRD);}
-"buffer"                {store_operator(BUFFER_KEYWRD);}
-"bus"                   {store_operator(BUS_KEYWRD);}
-"case"                  {store_operator(CASE_KEYWRD);}
-"component"             {store_operator(COMPONENT_KEYWRD);}
-"configuration"         {store_operator(CONFIGURATION_KEYWRD);}
-"constant"              {store_operator(CONSTANT_KEYWRD);}
-"disconnect"            {store_operator(DISCONNECT_KEYWRD);}
-"downto"                {store_operator(DOWNTO_KEYWRD);}
-"else"                  {store_operator(ELSE_KEYWRD);}
-"elsif"                 {store_operator(ELSIF_KEYWRD);}
-"end"                   {store_operator(END_KEYWRD);}
-"entity"                {store_operator(ENTITY_KEYWRD);}
-"exit"                  {store_operator(EXIT_KEYWRD);}
-"file"                  {store_operator(FILE_KEYWRD);}
-"for"                   {store_operator(FOR_KEYWRD);}
-"function"              {store_operator(FUNCTION_KEYWRD);}
-"generate"              {store_operator(GENERATE_KEYWRD);}
-"generic"               {store_operator(GENERIC_KEYWRD);}
-"group"                 {store_operator(GROUP_KEYWRD);}
-"guarded"               {store_operator(GUARDED_KEYWRD);}
-"if"                    {store_operator(IF_KEYWRD);}
-"impure"                {store_operator(IMPURE_KEYWRD);}
-"in"                    {store_operator(IN_KEYWRD);}
-"inertial"              {store_operator(INERTIAL_KEYWRD);}
-"inout"                 {store_operator(INOUT_KEYWRD);}
-"is"                    {store_operator(IS_KEYWRD);}
-"label"                 {store_operator(LABEL_KEYWRD);}
-"library"               {store_operator(LIBRARY_KEYWRD);}
-"linkage"               {store_operator(LINKAGE_KEYWRD);}
-"literal"               {store_operator(LITERAL_KEYWRD);}
-"loop"                  {store_operator(LOOP_KEYWRD);}
-"map"                   {store_operator(MAP_KEYWRD);}
-"mod"                   {store_operator(MOD_KEYWRD);}
-"nand"                  {store_operator(NAND_KEYWRD);}
-"new"                   {store_operator(NEW_KEYWRD);}
-"next"                  {store_operator(NEXT_KEYWRD);}
-"nor"                   {store_operator(NOR_KEYWRD);}
-"not"                   {store_operator(NOT_KEYWRD);}
-"null"                  {store_operator(NULL_KEYWRD);}
-"of"                    {store_operator(OF_KEYWRD);}
-"on"                    {store_operator(ON_KEYWRD);}
-"open"                  {store_operator(OPEN_KEYWRD);}
-"or"                    {store_operator(OR_KEYWRD);}
-"others"                {store_operator(OTHERS_KEYWRD);}
-"out"                   {store_operator(OUT_KEYWRD);}
-"package"               {store_operator(PACKAGE_KEYWRD);}
-"port"                  {store_operator(PORT_KEYWRD);}
-"postponed"             {store_operator(POSTPONED_KEYWRD);}
-"procedural"            {store_operator(PROCEDURAL_KEYWRD);}
-"procedure"             {store_operator(PROCEDURE_KEYWRD);}
-"process"               {store_operator(PROCESS_KEYWRD);}
-"protected"             {store_operator(PROTECTED_KEYWRD);}
-"pure"                  {store_operator(PURE_KEYWRD);}
-"range"                 {store_operator(RANGE_KEYWRD);}
-"record"                {store_operator(RECORD_KEYWRD);}
-"reference"             {store_operator(REFERENCE_KEYWRD);}
-"register"              {store_operator(REGISTER_KEYWRD);}
-"reject"                {store_operator(REJECT_KEYWRD);}
-"rem"                   {store_operator(REM_KEYWRD);}
-"report"                {store_operator(REPORT_KEYWRD);}
-"return"                {store_operator(RETURN_KEYWRD);}
-"rol"                   {store_operator(ROL_KEYWRD);}
-"ror"                   {store_operator(ROR_KEYWRD);}
-"select"                {store_operator(SELECT_KEYWRD);}
-"severity"              {store_operator(SEVERITY_KEYWRD);}
-"shared"                {store_operator(SHARED_KEYWRD);}
-"signal"                {store_operator(SIGNAL_KEYWRD);}
-"sla"                   {store_operator(SLA_KEYWRD);}
-"sll"                   {store_operator(SLL_KEYWRD);}
-"sra"                   {store_operator(SRA_KEYWRD);}
-"srl"                   {store_operator(SRL_KEYWRD);}
-"subtype"               {store_operator(SUBTYPE_KEYWRD);}
-"then"                  {store_operator(THEN_KEYWRD);}
-"to"                    {store_operator(TO_KEYWRD);}
-"transport"             {store_operator(TRANSPORT_KEYWRD);}
-"type"                  {store_operator(TYPE_KEYWRD);}
-"unaffected"            {store_operator(UNAFFECTED_KEYWRD);}
-"units"                 {store_operator(UNITS_KEYWRD);}
-"until"                 {store_operator(UNTIL_KEYWRD);}
-"use"                   {store_operator(USE_KEYWRD);}
-"variable"              {store_operator(VARIABLE_KEYWRD);}
-"wait"                  {store_operator(WAIT_KEYWRD);}
-"when"                  {store_operator(WHEN_KEYWRD);}
-"while"                 {store_operator(WHILE_KEYWRD);}
-"with"                  {store_operator(WITH_KEYWRD);}
-"xnor"                  {store_operator(XNOR_KEYWRD);}
-"xor"                   {store_operator(XOR_KEYWRD);}
+"abs"                   {STORE_OPERATOR(ABS_KEYWRD);}
+"access"                {STORE_OPERATOR(ACCESS_KEYWRD);}
+"after"                 {STORE_OPERATOR(AFTER_KEYWRD);}
+"alias"                 {STORE_OPERATOR(ALIAS_KEYWRD);}
+"all"                   {STORE_OPERATOR(ALL_KEYWRD);}
+"and"                   {STORE_OPERATOR(AND_KEYWRD);}
+"architecture"          {STORE_OPERATOR(ARCHITECTURE_KEYWRD);}
+"array"                 {STORE_OPERATOR(ARRAY_KEYWRD);}
+"assert"                {STORE_OPERATOR(ASSERT_KEYWRD);}
+"attribute"             {STORE_OPERATOR(ATTRIBUTE_KEYWRD);}
+"begin"                 {STORE_OPERATOR(BEGIN_KEYWRD);}
+"block"                 {STORE_OPERATOR(BLOCK_KEYWRD);}
+"body"                  {STORE_OPERATOR(BODY_KEYWRD);}
+"buffer"                {STORE_OPERATOR(BUFFER_KEYWRD);}
+"bus"                   {STORE_OPERATOR(BUS_KEYWRD);}
+"case"                  {STORE_OPERATOR(CASE_KEYWRD);}
+"component"             {STORE_OPERATOR(COMPONENT_KEYWRD);}
+"configuration"         {STORE_OPERATOR(CONFIGURATION_KEYWRD);}
+"constant"              {STORE_OPERATOR(CONSTANT_KEYWRD);}
+"disconnect"            {STORE_OPERATOR(DISCONNECT_KEYWRD);}
+"downto"                {STORE_OPERATOR(DOWNTO_KEYWRD);}
+"else"                  {STORE_OPERATOR(ELSE_KEYWRD);}
+"elsif"                 {STORE_OPERATOR(ELSIF_KEYWRD);}
+"end"                   {STORE_OPERATOR(END_KEYWRD);}
+"entity"                {STORE_OPERATOR(ENTITY_KEYWRD);}
+"exit"                  {STORE_OPERATOR(EXIT_KEYWRD);}
+"file"                  {STORE_OPERATOR(FILE_KEYWRD);}
+"for"                   {STORE_OPERATOR(FOR_KEYWRD);}
+"function"              {STORE_OPERATOR(FUNCTION_KEYWRD);}
+"generate"              {STORE_OPERATOR(GENERATE_KEYWRD);}
+"generic"               {STORE_OPERATOR(GENERIC_KEYWRD);}
+"group"                 {STORE_OPERATOR(GROUP_KEYWRD);}
+"guarded"               {STORE_OPERATOR(GUARDED_KEYWRD);}
+"if"                    {STORE_OPERATOR(IF_KEYWRD);}
+"impure"                {STORE_OPERATOR(IMPURE_KEYWRD);}
+"in"                    {STORE_OPERATOR(IN_KEYWRD);}
+"inertial"              {STORE_OPERATOR(INERTIAL_KEYWRD);}
+"inout"                 {STORE_OPERATOR(INOUT_KEYWRD);}
+"is"                    {STORE_OPERATOR(IS_KEYWRD);}
+"label"                 {STORE_OPERATOR(LABEL_KEYWRD);}
+"library"               {STORE_OPERATOR(LIBRARY_KEYWRD);}
+"linkage"               {STORE_OPERATOR(LINKAGE_KEYWRD);}
+"literal"               {STORE_OPERATOR(LITERAL_KEYWRD);}
+"loop"                  {STORE_OPERATOR(LOOP_KEYWRD);}
+"map"                   {STORE_OPERATOR(MAP_KEYWRD);}
+"mod"                   {STORE_OPERATOR(MOD_KEYWRD);}
+"nand"                  {STORE_OPERATOR(NAND_KEYWRD);}
+"new"                   {STORE_OPERATOR(NEW_KEYWRD);}
+"next"                  {STORE_OPERATOR(NEXT_KEYWRD);}
+"nor"                   {STORE_OPERATOR(NOR_KEYWRD);}
+"not"                   {STORE_OPERATOR(NOT_KEYWRD);}
+"null"                  {STORE_OPERATOR(NULL_KEYWRD);}
+"of"                    {STORE_OPERATOR(OF_KEYWRD);}
+"on"                    {STORE_OPERATOR(ON_KEYWRD);}
+"open"                  {STORE_OPERATOR(OPEN_KEYWRD);}
+"or"                    {STORE_OPERATOR(OR_KEYWRD);}
+"others"                {STORE_OPERATOR(OTHERS_KEYWRD);}
+"out"                   {STORE_OPERATOR(OUT_KEYWRD);}
+"package"               {STORE_OPERATOR(PACKAGE_KEYWRD);}
+"port"                  {STORE_OPERATOR(PORT_KEYWRD);}
+"postponed"             {STORE_OPERATOR(POSTPONED_KEYWRD);}
+"procedural"            {STORE_OPERATOR(PROCEDURAL_KEYWRD);}
+"procedure"             {STORE_OPERATOR(PROCEDURE_KEYWRD);}
+"process"               {STORE_OPERATOR(PROCESS_KEYWRD);}
+"protected"             {STORE_OPERATOR(PROTECTED_KEYWRD);}
+"pure"                  {STORE_OPERATOR(PURE_KEYWRD);}
+"range"                 {STORE_OPERATOR(RANGE_KEYWRD);}
+"record"                {STORE_OPERATOR(RECORD_KEYWRD);}
+"reference"             {STORE_OPERATOR(REFERENCE_KEYWRD);}
+"register"              {STORE_OPERATOR(REGISTER_KEYWRD);}
+"reject"                {STORE_OPERATOR(REJECT_KEYWRD);}
+"rem"                   {STORE_OPERATOR(REM_KEYWRD);}
+"report"                {STORE_OPERATOR(REPORT_KEYWRD);}
+"return"                {STORE_OPERATOR(RETURN_KEYWRD);}
+"rol"                   {STORE_OPERATOR(ROL_KEYWRD);}
+"ror"                   {STORE_OPERATOR(ROR_KEYWRD);}
+"select"                {STORE_OPERATOR(SELECT_KEYWRD);}
+"severity"              {STORE_OPERATOR(SEVERITY_KEYWRD);}
+"shared"                {STORE_OPERATOR(SHARED_KEYWRD);}
+"signal"                {STORE_OPERATOR(SIGNAL_KEYWRD);}
+"sla"                   {STORE_OPERATOR(SLA_KEYWRD);}
+"sll"                   {STORE_OPERATOR(SLL_KEYWRD);}
+"sra"                   {STORE_OPERATOR(SRA_KEYWRD);}
+"srl"                   {STORE_OPERATOR(SRL_KEYWRD);}
+"subtype"               {STORE_OPERATOR(SUBTYPE_KEYWRD);}
+"then"                  {STORE_OPERATOR(THEN_KEYWRD);}
+"to"                    {STORE_OPERATOR(TO_KEYWRD);}
+"transport"             {STORE_OPERATOR(TRANSPORT_KEYWRD);}
+"type"                  {STORE_OPERATOR(TYPE_KEYWRD);}
+"unaffected"            {STORE_OPERATOR(UNAFFECTED_KEYWRD);}
+"units"                 {STORE_OPERATOR(UNITS_KEYWRD);}
+"until"                 {STORE_OPERATOR(UNTIL_KEYWRD);}
+"use"                   {STORE_OPERATOR(USE_KEYWRD);}
+"variable"              {STORE_OPERATOR(VARIABLE_KEYWRD);}
+"wait"                  {STORE_OPERATOR(WAIT_KEYWRD);}
+"when"                  {STORE_OPERATOR(WHEN_KEYWRD);}
+"while"                 {STORE_OPERATOR(WHILE_KEYWRD);}
+"with"                  {STORE_OPERATOR(WITH_KEYWRD);}
+"xnor"                  {STORE_OPERATOR(XNOR_KEYWRD);}
+"xor"                   {STORE_OPERATOR(XOR_KEYWRD);}
 
-{L}({L}|{D})*           {store_operand(_strdup(yytext));}
-0[xX]{H}+{IS}?          {store_operand(_strdup(yytext));}
-0{D}+{IS}?              {store_operand(_strdup(yytext));}
-{D}+{IS}?               {store_operand(_strdup(yytext));}
-{D}+{E}{FS}?            {store_operand(_strdup(yytext));}
-{D}*"."{D}+({E})?{FS}?  {store_operand(_strdup(yytext));}
-{D}+"."{D}*({E})?{FS}?  {store_operand(_strdup(yytext));}
-\"                      {sloc.insert(vhdl_lineno); string_literal();}
+{L}({L}|{D})*           {STORE_OPERAND(yytext);}
+0[xX]{H}+{IS}?          {STORE_OPERAND(yytext);}
+0{D}+{IS}?              {STORE_OPERAND(yytext);}
+{D}+{IS}?               {STORE_OPERAND(yytext);}
+{D}+{E}{FS}?            {STORE_OPERAND(yytext);}
+{D}*"."{D}+({E})?{FS}?  {STORE_OPERAND(yytext);}
+{D}+"."{D}*({E})?{FS}?  {STORE_OPERAND(yytext);}
+\"                      {NOTE_SLOC(); string_literal();}
 
-";"                     {NOTE_SLOC(); nsemi++;}
+";"                     {SEMI();}
 
-"&"                     {store_operator(OP_BITAND);}
-"*"                     {store_operator(OP_MULTIPLY);}
-"**"                    {store_operator(OP_EXPONENT);}
-"+"                     {store_operator(OP_ADD);}
-"-"                     {store_operator(OP_SUBTRACT);}
-"/"                     {store_operator(OP_DIVIDE);}
+"&"                     {STORE_OPERATOR(OP_BITAND);}
+"*"                     {STORE_OPERATOR(OP_MULTIPLY);}
+"**"                    {STORE_OPERATOR(OP_EXPONENT);}
+"+"                     {STORE_OPERATOR(OP_ADD);}
+"-"                     {STORE_OPERATOR(OP_SUBTRACT);}
+"/"                     {STORE_OPERATOR(OP_DIVIDE);}
 
-"="                     {store_operator(OP_EQUAL);}
-"/="                    {store_operator(OP_NOTEQUAL);}
+"="                     {STORE_OPERATOR(OP_EQUAL);}
+"/="                    {STORE_OPERATOR(OP_NOTEQUAL);}
 
-"<"                     {store_operator(OP_LESSTHAN);}
-"<="                    {store_operator(OP_LESSEQUAL);}
-">"                     {store_operator(OP_GREATERTHAN);}
-">="                    {store_operator(OP_GREATEREQUAL);}
+"<"                     {STORE_OPERATOR(OP_LESSTHAN);}
+"<="                    {STORE_OPERATOR(OP_LESSEQUAL);}
+">"                     {STORE_OPERATOR(OP_GREATERTHAN);}
+">="                    {STORE_OPERATOR(OP_GREATEREQUAL);}
 
 ","                     {NOTE_SLOC();}
 ":"                     {NOTE_SLOC();}
@@ -252,6 +222,18 @@ int yywrap() {
   return(1);
 }
 
+void lexclear() {
+  BEGIN 0;
+  noperands=0;
+  j_comments=c_comments=cpp_comments=com_loc=0;
+  prev_com_line=-1;
+  vhdl_lineno=nsemi=noperators=0;
+
+  sloc.clear();
+  operators.clear();
+  operands.clear();
+}
+
 void string_literal() {
   char c=0;
 
@@ -260,7 +242,7 @@ void string_literal() {
         if ((c=yyinput())=='\"')
            c=yyinput();
 
-  sloc.insert(vhdl_lineno);
+  NOTE_SLOC();
 }
 
 

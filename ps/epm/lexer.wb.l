@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  22-Aug-2009  10455 : File created.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -16,11 +17,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.wb.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 #include <iostream>
 using namespace std;
@@ -41,17 +42,18 @@ int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define COUNT() sloc.insert(batch_lineno)
+#define NOTE_SLOC()       sloc.insert(batch_lineno)
+#define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
 
 void lexclear();
-void store_operator(int op);
-void store_operand(char* txt);
 
 %}
 
@@ -82,86 +84,86 @@ SPTAB         [ \t]
 
 \n                      {batch_lineno++;}
 
-"("                     {COUNT();}
-")"                     {COUNT();}
+"("                     {NOTE_SLOC();}
+")"                     {NOTE_SLOC();}
 
 \".*\\\"*\"             |
-\".*\"                  {store_operand(_strdup(yytext));COUNT();}
-"'"."'"                 {store_operand(_strdup(yytext));COUNT();}
+\".*\"                  {STORE_OPERAND(yytext);}
+"'"."'"                 {STORE_OPERAND(yytext);}
 
-"-"                     {store_operator(SYM_MINUS);}
-"%"                     {store_operator(SYM_PCT);}
-"="                     {store_operator(SYM_EQ);}
-"!"                     {store_operator(SYM_NOT);}
-"/"                     {store_operator(SYM_SLASH);}
-"|"                     {store_operator(SYM_PIPE);}
-"<"                     {store_operator(SYM_LT);}
-">"                     {store_operator(SYM_OUT);}
-"*"                     {store_operator(SYM_WILDANY);}
-"?"                     {store_operator(SYM_WILDONE);}
-"@"                     {store_operator(SYM_NOECHO);}
-":"                     {store_operator(SYM_LABEL);}
-"%%"                    {store_operator(SYM_DIVEQ);}
-"&&"                    {store_operator(SYM_SCOPE);}
-"=="                    {store_operator(SYM_EQUALITY);}
-">>"                    {store_operator(SYM_APPEND);}
+"-"                     {STORE_OPERATOR(SYM_MINUS);}
+"%"                     {STORE_OPERATOR(SYM_PCT);}
+"="                     {STORE_OPERATOR(SYM_EQ);}
+"!"                     {STORE_OPERATOR(SYM_NOT);}
+"/"                     {STORE_OPERATOR(SYM_SLASH);}
+"|"                     {STORE_OPERATOR(SYM_PIPE);}
+"<"                     {STORE_OPERATOR(SYM_LT);}
+">"                     {STORE_OPERATOR(SYM_OUT);}
+"*"                     {STORE_OPERATOR(SYM_WILDANY);}
+"?"                     {STORE_OPERATOR(SYM_WILDONE);}
+"@"                     {STORE_OPERATOR(SYM_NOECHO);}
+":"                     {STORE_OPERATOR(SYM_LABEL);}
+"%%"                    {STORE_OPERATOR(SYM_DIVEQ);}
+"&&"                    {STORE_OPERATOR(SYM_SCOPE);}
+"=="                    {STORE_OPERATOR(SYM_EQUALITY);}
+">>"                    {STORE_OPERATOR(SYM_APPEND);}
 
 [ \t\v\f]               {;}
 
-"append"                {store_operator(KEY_APPEND);}
-"assoc"                 {store_operator(KEY_ASSOC);}
-"attrib"                {store_operator(KEY_ATTRIB);}
-"call"                  {store_operator(KEY_CALL);}
-"cd"                    {store_operator(KEY_CD);}
-"chdir"                 {store_operator(KEY_CHDIR);}
-"cmd"                   {store_operator(KEY_CMD);}
-"col"                   {store_operator(KEY_COL);}
-"copy"                  {store_operator(KEY_COPY);}
-"del"                   {store_operator(KEY_DEL);}
-"dir"                   {store_operator(KEY_DIR);}
-"do"                    {store_operator(KEY_DO);}
-"echo"                  {store_operator(KEY_ECHO);}
-"else"                  {store_operator(KEY_ELSE);}
-"endlocal"              {store_operator(KEY_ENDLOCAL);}
-"erase"                 {store_operator(KEY_ERASE);}
-"find"                  {store_operator(KEY_FIND);}
-"for"                   {store_operator(KEY_FOR);}
-"ftype"                 {store_operator(KEY_FTYPE);}
-"goto"                  {store_operator(KEY_GOTO);}
-"if"                    {store_operator(KEY_IF);}
-"in"                    {store_operator(KEY_IN);}
-"md"                    {store_operator(KEY_MD);}
-"mkdir"                 {store_operator(KEY_MKDIR);}
-"move"                  {store_operator(KEY_MOVE);}
-"net"                   {store_operator(KEY_NET);}
-"nul"                   {store_operator(KEY_NUL);}
-"off"                   {store_operator(KEY_OFF);}
-"popd"                  {store_operator(KEY_POPD);}
-"prompt"                {store_operator(KEY_PROMPT);}
-"pushd"                 {store_operator(KEY_PUSHD);}
-"rmdir"                 {store_operator(KEY_RMDIR);}
-"set"                   {store_operator(KEY_SET);}
-"setlocal"              {store_operator(KEY_SETLOCAL);}
-"shift"                 {store_operator(KEY_SHIFT);}
-"sort"                  {store_operator(KEY_SORT);}
-"start"                 {store_operator(KEY_START);}
-"xcopy"                 {store_operator(KEY_XCOPY);}
+"append"                {STORE_OPERATOR(KEY_APPEND);}
+"assoc"                 {STORE_OPERATOR(KEY_ASSOC);}
+"attrib"                {STORE_OPERATOR(KEY_ATTRIB);}
+"call"                  {STORE_OPERATOR(KEY_CALL);}
+"cd"                    {STORE_OPERATOR(KEY_CD);}
+"chdir"                 {STORE_OPERATOR(KEY_CHDIR);}
+"cmd"                   {STORE_OPERATOR(KEY_CMD);}
+"col"                   {STORE_OPERATOR(KEY_COL);}
+"copy"                  {STORE_OPERATOR(KEY_COPY);}
+"del"                   {STORE_OPERATOR(KEY_DEL);}
+"dir"                   {STORE_OPERATOR(KEY_DIR);}
+"do"                    {STORE_OPERATOR(KEY_DO);}
+"echo"                  {STORE_OPERATOR(KEY_ECHO);}
+"else"                  {STORE_OPERATOR(KEY_ELSE);}
+"endlocal"              {STORE_OPERATOR(KEY_ENDLOCAL);}
+"erase"                 {STORE_OPERATOR(KEY_ERASE);}
+"find"                  {STORE_OPERATOR(KEY_FIND);}
+"for"                   {STORE_OPERATOR(KEY_FOR);}
+"ftype"                 {STORE_OPERATOR(KEY_FTYPE);}
+"goto"                  {STORE_OPERATOR(KEY_GOTO);}
+"if"                    {STORE_OPERATOR(KEY_IF);}
+"in"                    {STORE_OPERATOR(KEY_IN);}
+"md"                    {STORE_OPERATOR(KEY_MD);}
+"mkdir"                 {STORE_OPERATOR(KEY_MKDIR);}
+"move"                  {STORE_OPERATOR(KEY_MOVE);}
+"net"                   {STORE_OPERATOR(KEY_NET);}
+"nul"                   {STORE_OPERATOR(KEY_NUL);}
+"off"                   {STORE_OPERATOR(KEY_OFF);}
+"popd"                  {STORE_OPERATOR(KEY_POPD);}
+"prompt"                {STORE_OPERATOR(KEY_PROMPT);}
+"pushd"                 {STORE_OPERATOR(KEY_PUSHD);}
+"rmdir"                 {STORE_OPERATOR(KEY_RMDIR);}
+"set"                   {STORE_OPERATOR(KEY_SET);}
+"setlocal"              {STORE_OPERATOR(KEY_SETLOCAL);}
+"shift"                 {STORE_OPERATOR(KEY_SHIFT);}
+"sort"                  {STORE_OPERATOR(KEY_SORT);}
+"start"                 {STORE_OPERATOR(KEY_START);}
+"xcopy"                 {STORE_OPERATOR(KEY_XCOPY);}
 
-{LETTER}{ALNUM}*        {store_operand(_strdup(yytext));}
+{LETTER}{ALNUM}*        {STORE_OPERAND(yytext);}
 
 [1-9][0-9]*{INT_SUFFIX}?           |
 [0][0-7]*{INT_SUFFIX}?             |
-[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {store_operand(_strdup(yytext));}
+[0][xX][0-9A-Fa-f]+{INT_SUFFIX}?          {STORE_OPERAND(yytext);}
 
-[0][xX]               {store_operand(_strdup(yytext));}
+[0][xX]               {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?   |
 {DIGITS}"."?([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?     |
-"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {store_operand(_strdup(yytext));}
+"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?    {STORE_OPERAND(yytext);}
 
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?   |
 {DIGITS}"."?[eE]{SIGN}?           |
-"."{DIGITS}[eE]{SIGN}?                    {store_operand(_strdup(yytext));}
+"."{DIGITS}[eE]{SIGN}?                    {STORE_OPERAND(yytext);}
 
 "rem"{NL}           |
 "rem "{NOTNL}*{NL}      {cpp_comments++;com_loc++;batch_lineno++;BEGIN(INITIAL);}
@@ -183,27 +185,5 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operator(int op) {
-  operators.insert(op);
-  noperators++;
-  COUNT();
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt) ;
-  COUNT();
+  operands.clear();
 }

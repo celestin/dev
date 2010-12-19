@@ -3,13 +3,14 @@
  * Copyright (c) 2004,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * PHP Parser
+ * HTML Parser
  *
  * $Id$
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10401 : File created.
  * CAM  05-May-2009  10441 : Added HTML operands and operators.
+ * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
@@ -17,11 +18,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "y.ht.h"
+#include "PowerHash.h"
 
 #ifdef WIN32
 
 #include <io.h>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -42,7 +43,7 @@ set<int> sloc;
 set<int> slhtm;
 set<int> slscr;
 set<int> operators;
-vector<char*> operands[255];
+set<unsigned int> operands;
 int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
@@ -51,8 +52,10 @@ int noperands=0;        // Total number of operands
 #define NOTE_SLOC_SCR() NOTE_SLOC(); slscr.insert(html_lineno)
 #define NOTE_SLOC_HTM() NOTE_SLOC(); slhtm.insert(html_lineno)
 
+#define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
+#define SEMI()            nsemi++; NOTE_SLOC();
+
 void lexclear();
-void store_operand(char* txt);
 void store_operator(int op, int typ);
 
 %}
@@ -115,7 +118,7 @@ SPTAB                             [ \t]
 <SLOC_SCR>"."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 <SLOC_SCR>{DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 <SLOC_SCR>{DIGITS}"."?[eE]{SIGN}?                                     |
-<SLOC_SCR>"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_SCR();}
+<SLOC_SCR>"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);NOTE_SLOC_SCR();}
 
 <SLOC_SCR>.                       {;}
 
@@ -232,7 +235,7 @@ SPTAB                             [ \t]
 "."{DIGITS}([eE]{SIGN}?{DIGITS})?{FLOAT_SUFFIX}?            |
 {DIGITS}"."{DIGITS}?[eE]{SIGN}?                             |
 {DIGITS}"."?[eE]{SIGN}?                                     |
-"."{DIGITS}[eE]{SIGN}?                                      {store_operand(_strdup(yytext));NOTE_SLOC_HTM();}
+"."{DIGITS}[eE]{SIGN}?                                      {STORE_OPERAND(yytext);NOTE_SLOC_HTM();}
 
 "<"                               {store_operator(HTM_LT,3);}
 ">"                               {store_operator(HTM_GT,3);}
@@ -254,27 +257,10 @@ void lexclear() {
 
   sloc.clear();
   operators.clear();
+  operands.clear();
 
   slhtm.clear();
   slscr.clear();
-
-  for (int i=0; i<255; i++) {
-    if (operands[i].size() > 0) operands[i].clear();
-  }
-}
-
-void store_operand(char* txt) {
-  char c;
-  unsigned int i;
-  noperands++;
-
-  c=txt[0];
-  for (i=0;i<operands[c].size();i++) {
-    if (!strcmp(txt,operands[c][i])) return;
-  }
-  operands[c].push_back(txt);
-
-  NOTE_SLOC();
 }
 
 void store_operator(int op, int typ) {

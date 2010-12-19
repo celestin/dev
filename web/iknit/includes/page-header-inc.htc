@@ -1,0 +1,29 @@
+<!-- page-header-inc.htc by Sam 12/20099 -->
+<style type="text/css">
+<!--
+span.ttip, span.ttip a, span.ttip.img { 
+	position:relative;       
+  z-index:1;
+	}
+span.ttip a .large {display: none;}
+
+span.ttip a:hover img.large
+{
+	 z-index:30; position:absolute; display: inline;  border:0px; margin:0px; margin-top:-10px; margin-left:-<?php echo (int)(IMAGE_TTIP_WIDTH/8) ?>px;
+}
+// -->
+</style>
+<!--[if lte IE 7]>
+<style type="text/css" media="screen">
+span.ttip a:hover img.large {
+margin-left:-<?php echo (int)(IMAGE_TTIP_WIDTH*0.9) ?>px; display: block;
+}
+</style>
+<![endif]-->
+<script language="JavaScript" type="text/javascript" src="DD_roundies.js"></script>
+<script language="JavaScript" type="text/javascript" defer="true">
+
+  /* IE only */
+  onLoad=DD_roundies.addRule('.infoBoxProducts', '20px');
+
+</script>

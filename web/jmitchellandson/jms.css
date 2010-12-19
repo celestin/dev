@@ -1,0 +1,638 @@
+  /* * * * * * * * * * * * * * * * * * * * * * * *
+ * J.Mitchell & Son (jmitchellandson.co.uk)
+ *
+ * osCommerce, Open Source E-Commerce Solutions
+ * http://www.oscommerce.com
+ * Copyright (c) 2007 osCommerce
+ * Released under the GNU General Public License
+ *
+ * Customised by Front Burner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  28-Apr-2010  10639 : Added Product Extra Fields (http://www.oscommerce.com/community/contributions,2202)
+ * CAM  29-May-2010  10647 : Changed from Product List to Grid
+ * CAM  29-May-2010  10670 : Improved colours on background and pagination buttons.
+ * CAM  29-May-2010  10700 : Added background image.
+ * CAM  10-Jun-2010  10688 : Fix for IE to show pageResults without chopping borders.
+ * CAM  10-Jun-2010  10706 : Resized Product Title, Description.
+ * CAM  12-Jun-2010  10709 : Added classes to support Associated Products.
+ * CAM  22-Jun-2010  10714 : Change class for drop down on product screen (larger, like other text).
+ * CAM  01-Jul-2010  10726 : Added classes to support Delivery and Shipping.
+ * CAM  02-Jun-2010  10729 : Added classes to support Birthstones.
+ * CAM  13-Jul-2010  10740 : Added classes to support RBS WorldPay logo and Credit Card logos.
+ * CAM  17-Jul-2010  10741 : Added classes to support home page text.
+ * CAM  19-Jul-2010  10744 : Added home img class to support small banner images of all children of top-level parents.
+ * CAM  29-Jul-2010  10763 : Modified RRP and OurPrice classes.
+ * CAM  07-Aug-2010  10767 : Added classes for social networking links.
+ * CAM  21-Aug-2010  10775 : Added diamond bullets to product display.
+ * CAM  23-Oct-2010  10784 : Changed background colour, deepend the RRP red, and created class for product grid RRP.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+p, body, td, a, h1, h2, h3, h4, input, select {
+  font-family: Arial, sans-serif;
+}
+
+.boxText { font-size: 11px; }
+.errorBox { font-family : Arial, sans-serif; font-size : 10px; background: #ffb3b5; font-weight: bold; }
+.stockWarning { font-family : Arial, sans-serif; font-size : 10px; color: #cc0033; }
+.productsNotifications { background: #f2fff7; }
+.orderEdit { font-family : Arial, sans-serif; font-size : 10px; color: #70d250; text-decoration: underline; }
+
+BODY {
+  background: #662323;
+  color: #000000;
+  margin: 0px;
+  behavior:url("csshover.htc");
+}
+
+#mainTable {
+  background: white;
+}
+
+A {
+  color: #9e8420;
+  text-decoration: none;
+}
+
+A:hover {
+  color: #7db6d7;
+  text-decoration: underline;
+}
+
+FORM {
+  display: inline;
+}
+
+TR.header {
+  background: #ffffff;
+}
+
+TR.headerNavigation {
+  background: #c6c0ae;
+}
+
+TD.headerNavigation {
+  font-size: 10px;
+  background: #d4c476;
+  color: #6e6e6e;
+  font-weight : bold;
+  height: 20px;
+}
+
+A.headerNavigation {
+  color: #333333;
+}
+
+A.headerNavigation:hover {
+  color: #eeeeee;
+}
+
+TR.headerError {
+  background: #ff0000;
+}
+
+TD.headerError {
+  font-size: 12px;
+  background: #ff0000;
+  color: #ffffff;
+  font-weight : bold;
+  text-align : center;
+}
+
+TR.headerInfo {
+  background: #00ff00;
+}
+
+TD.headerInfo {
+  font-size: 12px;
+  background: #00ff00;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+TR.footer {
+  background: #bbc3d3;
+  height: 20px;
+}
+
+TD.footer {
+  font-size: 10px;
+  background: #d4c476;
+  color: black;
+  font-weight: bold;
+}
+
+.infoBox {
+  background: #b6b7cb;
+}
+
+.infoBoxContents {
+  background: #f8f8f9;
+  font-size: 11px;
+  border-spacing: 2px;
+  border-collapse: separate;
+  *border-collapse: expression('separate', cellSpacing = '2px');
+}
+
+.infoBoxNotice {
+  background: #FF8E90;
+}
+
+.infoBoxNoticeContents {
+  background: #FFE6E6;
+  font-size: 10px;
+}
+
+TD.infoBoxHeading {
+  font-size: 11px;
+  font-weight: bold;
+  background: #b9ae7a;
+  color: #ffffff;
+}
+
+TD.infoBox, SPAN.infoBox {
+  font-size: 10px;
+}
+
+TR.accountHistory-odd, TR.addressBook-odd, TR.alsoPurchased-odd, TR.payment-odd, TR.productListing-odd, TR.productReviews-odd, TR.upcomingProducts-odd, TR.shippingOptions-odd {
+  background: #f8f8f9;
+}
+
+TR.accountHistory-even, TR.addressBook-even, TR.alsoPurchased-even, TR.payment-even, TR.productListing-even, TR.productReviews-even, TR.upcomingProducts-even, TR.shippingOptions-even {
+  background: #f8f8f9;
+}
+
+TABLE.productListing {
+  border: 1px;
+  border-style: solid;
+  border-color: #b6b7cb;
+  border-spacing: 1px;
+}
+
+.productListing-heading {
+  font-size: 10px;
+  background: #b6b7cb;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+TD.productListing-data {
+  font-size: 10px;
+}
+
+.pageResultsCurrent {
+  color: black;
+  padding: 2px 8px 2px 8px;
+  margin: 0px;
+  text-decoration: none;
+  border: 1px solid #eeeeee;
+  background: #f9f9f9;
+  height: 20px;
+}
+
+A.pageResults {
+  text-decoration: none;
+  color: black;
+  padding: 2px 8px 2px 8px;
+  margin: 0px;
+  border: 1px solid #d4c476;
+  background: #f7eaaa;
+  height: 20px;
+}
+
+A.pageResults:hover {
+  color: #330000;
+  background: #d4c476;
+  text-decoration: none;
+}
+
+TD.pageHeading, DIV.pageHeading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9a9a9a;
+}
+
+TR.subBar {
+  background: #f4f7fd;
+}
+
+TD.subBar {
+  font-size: 10px;
+  color: #000000;
+}
+
+TD.main, P.main {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+TD.smallText, SPAN.smallText, P.smallText {
+  font-size: 10px;
+}
+
+TD.accountCategory {
+  font-size: 13px;
+  color: #aabbdd;
+}
+
+TD.fieldKey {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+TD.fieldValue {
+  font-size: 12px;
+}
+
+TD.tableHeading {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+SPAN.newItemInCart {
+  font-size: 10px;
+  color: #ff0000;
+}
+
+CHECKBOX, INPUT, RADIO, SELECT {
+  font-size: 11px;
+}
+
+TEXTAREA {
+  width: 100%;
+  font-size: 11px;
+}
+
+SPAN.greetUser {
+  font-size: 12px;
+  color: #f0a480;
+  font-weight: bold;
+}
+
+TABLE.formArea {
+  background: #f1f9fe;
+  border-color: #7b9ebd;
+  border-style: solid;
+  border-width: 1px;
+}
+
+TD.formAreaTitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+SPAN.markProductOutOfStock {
+  font-size: 12px;
+  color: #c76170;
+  font-weight: bold;
+}
+
+SPAN.productSpecialPrice {
+  color: #ff0000;
+}
+
+SPAN.errorText {
+  color: #ff0000;
+}
+
+.moduleRow { }
+.moduleRowOver { background-color: #D7E9F7; cursor: pointer; cursor: hand; }
+.moduleRowSelected { background-color: #E9F4FC; }
+
+.checkoutBarFrom, .checkoutBarTo { font-size: 10px; color: #8c8c8c; }
+.checkoutBarCurrent { font-size: 10px; color: #000000; }
+
+/* message box */
+
+.messageBox { font-size: 10px; }
+.messageStackError, .messageStackWarning { font-size: 10px; background-color: #ffb3b5; }
+.messageStackSuccess { font-size: 10px; background-color: #99ff00; }
+
+/* input requirement */
+
+.inputRequirement { font-size: 10px; color: #ff0000; }
+
+#home h2 {
+  margin: 0px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
+  font-size: 13pt;
+}
+
+#home p,li {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 10px 0px;
+  font-size: 11pt;
+}
+
+#home img {
+  margin: 0px 4px 5px 0px;
+  padding: 0px 0px 10px 0px;
+}
+
+#legal h2 {
+  margin: 0px 0px 0px 0px;
+  padding: 15px 0px 0px 0px;
+}
+
+#legal p,li {
+  font-size: 11pt;
+}
+
+#worldpay img {
+  float: left;
+  padding: 0px 10px 0px 0px;
+}
+
+#rbs {
+  color: #013975;
+  font-weight: bold;
+}
+
+#birthstones h2 {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+#birthstones p,li {
+  font-size: 11pt;
+}
+
+#birthstones img {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  float: left;
+}
+
+#contact td {
+  font-size: 11pt;
+}
+
+#contact .lbl {
+  font-weight: bold;
+  color: #ddb208;
+}
+
+#productInfo #productImage {
+  float: right;
+}
+
+#productInfo #productImage h1 {
+  color: #ddb208;
+  padding: 0px;
+  margin: 0px 0px 5px 0px;
+  font-size: 10pt;
+}
+
+#productInfo #productImage h2 {
+  color: #333;
+  padding: 0px;
+  margin: 0px 10px 6px 10px;
+  font-size: 8pt;
+  font-weight: normal;
+}
+
+#productInfo #productName {
+  color: #333333;
+  font-weight: normal;
+  font-size: 22px;
+}
+
+#productInfo #productPrice {
+  color: #3e5e89;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#productInfo .productOptionLabel {
+  font-size: 11pt;
+  color: #666666;
+  font-weight: bold;
+}
+
+#productInfo .productOptionValue {
+  font-size: 11pt;
+  color: #333333;
+}
+
+#productInfo .productOptionValueRRP {
+  font-size: 11pt;
+  font-weight: normal;
+  text-decoration: line-through;
+  color: #cd0e29;
+}
+
+#productInfo .productOptionValueOurPrice {
+  font-size: 11pt;
+  font-weight: bold;
+  color: #3e5e89;
+}
+
+#productInfo select {
+  font-size: 11pt;
+  color: #333333;
+}
+
+#productInfo #productDesc p {
+  font-size: 12pt;
+  padding: 5px 0px 20px 0px;
+  margin: 0px;
+}
+
+#productInfo #productDesc ul {
+  list-style-type: none;
+  padding-left: 15;
+  margin-left: 0;
+}
+
+#productInfo #productDesc li {
+  padding: 0px 0px 5px 20px;
+  margin: 0px;
+  background: url(images/bullet1.png) left top no-repeat;
+}
+
+#sociallinks td {
+  padding: 0px 20px 0px 0px;
+  margin: 0px;
+}
+
+/* BOF Product Listing Enhancements, Thumbnails & Manufacturer Headings [#10647] */
+
+.infoBoxProducts {
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  font-weight: normal;
+  background-color: #F9F9F9;
+  color: #333333;
+  vertical-align: bottom;
+}
+
+.infoBoxProducts a {
+  color: #333333;
+}
+TD.infoBoxGrid {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  border: solid 1px #999999;
+}
+TD.infoBoxGrid:hover {
+    background-color: #d3d3d3;
+}
+/* set pos buy/details button on list */
+img.buy_now {
+  margin-bottom:10px;
+}
+/* set pos buy/details button on thumbnail */
+img.thm_buy_now {
+  margin-bottom:-3px;
+}
+/* set style buy/details seperator thumbnail */
+.buy_now {
+  font-weight: bold;
+  font-size: 18px;
+  color: #999999;
+}
+.infoBoxList {
+ /*border: ridge 4px #faf0e6;
+ border-collapse: collapse;*/
+ background-color: #fff;
+ }
+.thumbcontent {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  color:#666666;
+  text-align:center;
+}
+TD.noborderbox {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+}
+TD.separator {border-bottom: 1px solid #ccc;}
+
+.productListing-grid-image {
+  margin-top:10px;
+}
+
+.productListing-list-price {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #7a6b21;
+}
+
+.productListing-rrp {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  text-decoration: line-through;
+  color: #cd0e29;
+}
+
+.productListing-title a, .productListing-title {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  padding-left:18px;
+  padding-bottom:10px;
+}
+.productListing-name a, .productListing-name {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+  padding: 0px;
+}
+.productListing-short {
+   font-family: Verdana, Arial, sans-serif;
+   font-size: 10px;
+   color: #333;
+}
+
+TABLE.buytable {
+   width: 100%;
+   height: 80px;
+   vertical-align: bottom;
+         text-align:right;
+}
+DIV.multi_buy_now {
+width: 99%;
+text-align : right;
+position:relative;
+}
+
+DIV#gbutton1 {
+margin-bottom:-25px;
+z-index:30;
+}
+DIV#gbutton2 {
+margin-top:-25px;
+z-index:30;
+}
+
+.quantity {
+font-family:Verdana,Arial,sans-serif;
+font-size:10px;
+text-align : center;
+}
+
+.quantity input {
+font-family:Verdana,Arial,sans-serif;
+font-size:11px;
+text-align : center;
+background: #c0c0c0;
+font-weight: bold;
+border:2px solid #666666;
+color:#333;
+}
+TD.attributes {
+font-family:Verdana,Arial,sans-serif;
+font-size:11px;
+text-align : right;
+}
+TABLE.attributes select {
+font-family:Verdana,Arial,sans-serif;
+font-size:11px;
+background: #c0c0c0;
+font-weight: bold;
+color:#333;
+}
+TABLE.drop select {
+font-family:Verdana,Arial,sans-serif;
+font-size:11px;
+background: #c0c0c0;
+font-weight: bold;
+color:#333;
+}
+TR.list-block {
+}
+SPAN.list_info {
+font-family: Verdana, Arial, sans-serif;
+font-size: 16px;
+color: #333;
+cursor:pointer;
+}
+SPAN.list_info span {
+display:none;
+position:relative;
+}
+SPAN.list_info:hover span  {
+display:block;
+cursor:pointer;
+margin-top:-20px;
+margin-left:-100px;
+position:absolute;
+padding: 5px;
+font-family:Verdana,Arial,sans-serif;
+font-size:12px;
+color:#333;
+background: #c0c0c0;
+border:2px solid #666666;
+text-align : center;
+}
+
+/* EOF Product Listing Enhancements, Thumbnails & Manufacturer Headings [#10647] */

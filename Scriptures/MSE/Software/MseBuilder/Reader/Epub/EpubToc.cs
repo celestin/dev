@@ -6,80 +6,44 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  19-Jan-2010  10540 : File created.
- * CAM  21-Jan-2010  10546 : Moved Header/Footer elements to WriteHeader/WriteFooter.
- * CAM  23-Jan-2010  10553 : Added PlainTitle for use in TOCs etc.
  * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
-using System.Text;
 using System.IO;
+using System.Xml;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
 
-namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
+namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 {
-  public class EpubArticle : EpubFile, IEpubGenerator
+  public class EpubToc : EpubFile, IEpubTocGenerator
   {
-    private long _id;
-    private EpubItemCollection _items;
-    private string _title;
-    private string _scriptures;
+    private DirectoryInfo _dir;
 
-    public long Id
+    public DirectoryInfo Dir
     {
-      get { return _id; }
+      get { return _dir; }
+      set { _dir = value; }
     }
+
     public string QualifiedId
     {
-      get { return String.Format("{0}-{1:000}-{2:0000}", Document.Volume.Author.Inits.ToLower(), Document.Volume.Vol, Id); }
+      get { return String.Format("{0}-{1:000}-toc", Document.Volume.Author.Inits.ToLower(), Document.Volume.Vol); }
     }
     public FileInfo XmlFile
     {
       get { return new FileInfo(String.Format(@"{0}\{1}.html", Document.OpsDir.FullName, QualifiedId)); }
     }
-    public EpubItemCollection Items
-    {
-      get { return _items; }
-    }
-    public string Title
-    {
-      get
-      {
-        if (_title == null) return String.Empty;
-        return _title;
-      }
-      set
-      {
-        _title = value;
-      }
-    }
-    public string PlainTitle
-    {
-      get
-      {
-        return FrontBurner.Ministry.MseBuilder.Abstract.Article.GetTitle(Title);
-      }
-    }
-    public string Scriptures
-    {
-      get
-      {
-        if (_scriptures == null) return String.Empty;
-        return _scriptures;
-      }
-      set { _scriptures = value; }
-    }
 
-    public EpubArticle(long id, EpubDocument doc)
+    public EpubToc(EpubDocument doc, DirectoryInfo dir)
       : base(doc)
     {
-      _id = id;
-      _items = new EpubItemCollection();
+      Dir = dir;
     }
 
-    public virtual void GenerateEpub()
+    public void GenerateToc()
     {
     }
 
@@ -87,17 +51,24 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
-        EpubHeading heading = new EpubHeading(Title);
-        EpubScriptures scriptures = new EpubScriptures(Scriptures);
+        EpubHeading heading = new EpubHeading("Table of Contents");
+        string li;
 
-        WriteHeader(writer, PlainTitle);
+        WriteHeader(writer, heading.Text);
         writer.WriteLine(heading.RenderToXhtml());
-        writer.WriteLine(scriptures.RenderToXhtml());
 
-        foreach (EpubItem item in Items)
+        writer.WriteLine(@"    <ul>");
+
+        foreach (EpubArticle article in Document.Articles)
         {
-          writer.WriteLine(item.RenderToXhtml());
+          if (!(article is EpubTitlePage))
+          {
+            li = "      <li><a href=\"" + article.XmlFile.Name + "\">" + article.PlainTitle + "</a></li>";
+            writer.WriteLine(li);
+          }
         }
+
+        writer.WriteLine(@"    </ul>");
 
         WriteFooter(writer);
       }
@@ -112,7 +83,6 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
       writer.WriteLine(@"    <title>" + title + "</title>");
       writer.WriteLine(@"    <link rel=""stylesheet"" href=""css/epub-ministry.css"" type=""text/css""/>");
       writer.WriteLine(@"    <meta http-equiv=""Content-Type"" content=""application/xhtml+xml; charset=utf-8""/>");
-      writer.WriteLine(@"    <meta name=""EPB-UUID"" content=""" + Document.BookId + @"""/>");
       writer.WriteLine(@"  </head>");
       writer.WriteLine(@"  <body>");
     }

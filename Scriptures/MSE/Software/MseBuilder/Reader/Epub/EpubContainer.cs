@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,8 +23,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     public override string XmlFilename { get { return "container.xml"; } }
     public override string RootName { get { return "container"; } }
 
-    public EpubContainer(DirectoryInfo dir, Volume volume)
-      : base(dir, volume)
+    public EpubContainer(EpubDocument doc, DirectoryInfo dir)
+      : base(doc, dir)
     {
       GenerateEpub();
     }
@@ -44,7 +45,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       rootfile = this.CreateElement("", "rootfile", "");
       rootfiles.AppendChild(rootfile);
 
-      AppendAttribute(rootfile, "full-path", "OPS/ministry.opf");
+      AppendAttribute(rootfile, "full-path", "OPS/" + Doc.Opf.XmlFilename);
       AppendAttribute(rootfile, "media-type", MimeTypes.GetMimeType(MimeType.EpubContainer));
     }
 

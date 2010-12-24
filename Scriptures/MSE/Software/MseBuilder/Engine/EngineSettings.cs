@@ -1,4 +1,4 @@
-﻿/* * * * * * * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * Ministry Search Engine Data Builder
  * Copyright (c) 2007,2010 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  13-Jan-2010  10551 : Added JndHtmlVolumes.
+ * CAM  24-Dec-2010  10902 : Added BuildModes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -16,9 +17,10 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
 {
   public enum BuildMode
   {
-    Standard,
+    StandardEpub,
     SonyEpub,
-    StanzaEpub
+    StanzaEpub,
+    KindleMobiEpub
   }
 
   /// <summary>
@@ -50,6 +52,7 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
           if (_settings == null)
           {
             _settings = new EngineSettings();
+            _settings.Mode = BuildMode.StandardEpub;
           }
           return _settings;
         }

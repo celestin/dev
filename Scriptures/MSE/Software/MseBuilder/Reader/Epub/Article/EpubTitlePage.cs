@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  21-Jan-2010  10546 : File created.
  * CAM  11-Feb-2010  10559 : Passed author name as alt tag.
+ * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -37,7 +38,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
-        EpubHeading author = new EpubHeading(Document.Volume.Author.Name, "frontauthor");
+        EpubHeading author = new EpubHeading(Document.Volume.Author.FullName, "frontauthor");
         EpubHeading title = new EpubHeading(Title, "fronttitle");
         EpubHeading source = new EpubHeading(
           String.Format("Produced from GoodTeaching.org<br />by Craig McKay {0:d-MMM-yyyy}", DateTime.Now), "frontpublisher");

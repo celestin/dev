@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
+ * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -19,11 +20,17 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 {
   public abstract class EpubXmlFile : XmlDocument, IEpubGenerator
   {
+    private EpubDocument _doc;
     private DirectoryInfo _dir;
     private FileInfo _file;
     private XmlElement _root;
     private Volume _volume;
 
+    public EpubDocument Doc
+    {
+      get { return _doc; }
+      set { _doc = value; }
+    }
     public abstract string XmlFilename
     {
       get;
@@ -56,15 +63,17 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       set { _root = value; }
     }
 
-    public EpubXmlFile(DirectoryInfo dir, Volume volume)
+    public EpubXmlFile(EpubDocument doc, DirectoryInfo dir)
       : base()
     {
+      Doc = doc;
       Dir = dir;
-      Volume = volume;
+      Volume = Doc.Volume;
     }
 
     public virtual void GenerateEpub()
     {
+      RemoveAll();
       AppendChild(CreateNode(XmlNodeType.XmlDeclaration, "", ""));
 
       AddDocumentType();

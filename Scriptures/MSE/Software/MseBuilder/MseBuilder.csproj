@@ -156,14 +156,19 @@
     <Compile Include="Reader\Epub\EpubDocument.cs" />
     <Compile Include="Reader\Epub\Article\EpubHeading.cs" />
     <Compile Include="Reader\Epub\Article\EpubItem.cs" />
+    <Compile Include="Reader\Epub\EpubFile.cs" />
     <Compile Include="Reader\Epub\EpubNcx.cs" />
-    <Compile Include="Reader\Epub\EpubOpf.cs" />
     <Compile Include="Reader\Epub\Article\EpubArticle.cs" />
+    <Compile Include="Reader\Epub\EpubOpf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reader\Epub\EpubToc.cs" />
     <Compile Include="Reader\Epub\EpubXmlFile.cs" />
     <Compile Include="Reader\Epub\IEpubGenerator.cs" />
     <Compile Include="Reader\Epub\Article\EpubParagraph.cs" />
     <Compile Include="Reader\Epub\Article\EpubScriptures.cs" />
     <Compile Include="Reader\Epub\MimeType.cs" />
+    <Compile Include="Util\KindleGen.cs" />
     <Compile Include="Util\Zipper.cs" />
     <Compile Include="Engine\VolumeThread.cs" />
   </ItemGroup>
@@ -195,9 +200,29 @@
     </Content>
     <None Include="img\book_open2.png" />
     <None Include="img\books.png" />
+    <Content Include="img\cover\cac.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\cover\fer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\cover\jbs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\cover\jnd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\cover\jt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="img\eministry.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="img\cover\cac.psd" />
+    <None Include="img\cover\FER.psd" />
+    <None Include="img\cover\JBS.psd" />
+    <None Include="img\cover\JND.psd" />
+    <None Include="img\cover\jt.psd" />
     <None Include="img\holmes.png" />
     <Content Include="Reader\Epub\resources\css\epub-ministry.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

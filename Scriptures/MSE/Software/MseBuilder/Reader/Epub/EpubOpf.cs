@@ -10,6 +10,7 @@
  * CAM  21-Jan-2010  10543 : Added dc:Subject (Tags).
  * CAM  21-Jan-2010  10549 : Use Volume.FullTitle for book title.
  * CAM  11-Feb-2010  10559 : Added Namespace etc to Package tag.
+ * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,23 +18,22 @@ using System.IO;
 using System.Xml;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Engine;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 {
   public class EpubOpf : EpubXmlFile, IEpubTocGenerator
   {
-    private EpubDocument _doc;
-
     protected static readonly string XmlnsOpf = "http://www.idpf.org/2007/opf";
     protected static readonly string XmlnsDc = "http://purl.org/dc/elements/1.1/";
 
     private XmlElement _metaData;
     private XmlElement _manifest;
     private XmlElement _spine;
-    private Guid _bookId;
+    private XmlElement _guide;
 
-    public override string XmlFilename { get { return "ministry.opf"; } }
+    public override string XmlFilename { get { return String.Format("{0}-{1:000}.opf", Doc.Volume.Author.Inits.ToLower(), Doc.Volume.Vol); } }
     public override string RootName { get { return "package"; } }
 
     public XmlElement MetaData
@@ -48,20 +48,15 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       get { return _spine; }
     }
-    public string BookId
+    protected string CoverId
     {
-      get { return _bookId.ToString().ToUpper(); }
-    }
-    public string QualifiedBookId
-    {
-      get { return String.Format("urn:uuid:{0}", BookId); }
+      get { return string.Format("{0}-{1:000}-cover", Doc.Volume.Author.Inits.ToLower(), Doc.Volume.Vol); }
     }
 
-    public EpubOpf(EpubDocument doc, DirectoryInfo dir, Volume volume)
-      : base(dir, volume)
+    public EpubOpf(EpubDocument doc, DirectoryInfo dir)
+      : base(doc, dir)
     {
-      _doc = doc;
-      _bookId = Guid.NewGuid();
+      Doc = doc;
 
       GenerateEpub();
     }
@@ -83,23 +78,46 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       _spine = AppendElement(Root, "spine");
       AppendAttribute(Spine, "toc", "ncx");
 
+      if (EngineSettings.Instance.Mode == BuildMode.KindleMobiEpub)
+      {
+        _guide = AppendElement(Root, "guide"); // Kindle TOC support
+        XmlElement reference = AppendElement(_guide, "reference");
+        AppendAttribute(reference, "type", "toc");
+        AppendAttribute(reference, "title", "Table of Contents");
+        AppendAttribute(reference, "href", Doc.Toc.XmlFile.Name);
+      }
+
       AddMetaData();
       AddSupportFiles();
     }
 
     public void GenerateToc()
     {
-      foreach (EpubArticle article in _doc.Articles)
+      foreach (EpubArticle article in Doc.Articles)
       {
-        XmlElement element = AppendElement(Manifest, "item");
-        AppendAttribute(element, "id", article.QualifiedId);
-        AppendAttribute(element, "href", article.XmlFile.Name);
-        AppendAttribute(element, "media-type", MimeTypes.GetMimeType(MimeType.Xhtml));
+        AppendSpineItem(article.QualifiedId, article.XmlFile.Name);
 
-        element = AppendElement(Spine, "itemref");
-        AppendAttribute(element, "idref", article.QualifiedId);
-        AppendAttribute(element, "linear", "yes");
+        if (article is EpubTitlePage)
+        {
+          if (EngineSettings.Instance.Mode == BuildMode.KindleMobiEpub)
+          {
+            // Only add the 'dummy' HTML TOC for Kindle generations
+            AppendSpineItem(Doc.Toc.QualifiedId, Doc.Toc.XmlFile.Name);
+          }
+        }
       }
+    }
+
+    protected void AppendSpineItem(string id, string filename)
+    {
+      XmlElement element = AppendElement(Manifest, "item");
+      AppendAttribute(element, "id", id);
+      AppendAttribute(element, "href", filename);
+      AppendAttribute(element, "media-type", MimeTypes.GetMimeType(MimeType.Xhtml));
+
+      element = AppendElement(Spine, "itemref");
+      AppendAttribute(element, "idref", id);
+      AppendAttribute(element, "linear", "yes");
     }
 
     protected string TagSafe(string type)
@@ -111,29 +129,35 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       XmlElement element = AppendElement(MetaData, "dc:title", XmlnsDc, Volume.FullTitle);
 
-      element = AppendElement(MetaData, "dc:creator", XmlnsDc, Volume.Author.Name);
+      element = AppendElement(MetaData, "dc:creator", XmlnsDc, Volume.Author.OrgName);
       AppendAttribute(element, "opf:role", XmlnsOpf, "aut");
-      AppendAttribute(element, "opf:file-as", XmlnsOpf, Volume.Author.Name);
+      AppendAttribute(element, "opf:file-as", XmlnsOpf, Volume.Author.OrgName);
 
-      element = AppendElement(MetaData, "dc:subject", XmlnsDc, TagSafe(Volume.Author.Name));
+      element = AppendElement(MetaData, "dc:subject", XmlnsDc, TagSafe(Volume.Author.OrgName));
       element = AppendElement(MetaData, "dc:publisher", XmlnsDc, "GoodTeaching.org/Craig McKay");
 
-      element = AppendElement(MetaData, "dc:date", XmlnsDc, DateTime.Now.ToString("YYYY-MM-DD"));
+      element = AppendElement(MetaData, "dc:date", XmlnsDc, DateTime.Now.ToString("yyyy-MM-dd"));
       AppendAttribute(element, "opf:event", XmlnsOpf, "epub-publication");
 
       element = AppendElement(MetaData, "dc:source", XmlnsDc, "GoodTeaching.org");
 
-      element = AppendElement(MetaData, "dc:identifier", XmlnsDc, QualifiedBookId);
+      element = AppendElement(MetaData, "dc:identifier", XmlnsDc, Doc.QualifiedBookId);
       AppendAttribute(element, "id", "EPB-UUID");
 
       element = AppendElement(MetaData, "dc:language", XmlnsDc, "en-gb");
+
+      element = AppendElement(MetaData, "meta");
+      AppendAttribute(element, "name", "cover");
+      AppendAttribute(element, "content", CoverId);
     }
 
     protected void AddSupportFiles()
     {
       AddManifestFile("main-css", "css/epub-ministry.css", MimeType.Css);
       AddManifestFile("author-photo", String.Format("img/{0}", Volume.Author.ImageFilename), MimeType.ImagePng);
-      AddManifestFile("ncx", "ministry.ncx", MimeType.Ncx);
+      AddManifestFile("ncx", Doc.Ncx.XmlFilename, MimeType.Ncx);
+      AddManifestFile("toc", Doc.Toc.XmlFile.Name, MimeType.Xhtml);
+      AddManifestFile(CoverId, String.Format("img/cover-{0}", Volume.Author.ImageFilename), MimeType.ImagePng);
     }
 
     protected void AddManifestFile(string id, string fileName, MimeType mimeType)

@@ -10,6 +10,7 @@
  * CAM  21-Jan-2010  10542 : Corrected metadata.
  * CAM  23-Jan-2010  10553 : Use PlainText for TOC entries.
  * CAM  11-Feb-2010  10559 : Increment TOC entry id.
+ * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -23,8 +24,6 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 {
   public class EpubNcx : EpubXmlFile, IEpubTocGenerator
   {
-    private EpubDocument _doc;
-
     protected static readonly string XmlnsNcx = "http://www.daisy.org/z3986/2005/ncx/";
 
     private XmlElement _head;
@@ -43,11 +42,9 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       get { return _navMap; }
     }
 
-    public EpubNcx(EpubDocument doc, DirectoryInfo dir, Volume volume)
-      : base(dir, volume)
+    public EpubNcx(EpubDocument doc, DirectoryInfo dir)
+      : base(doc, dir)
     {
-      _doc = doc;
-
       GenerateEpub();
     }
 
@@ -74,7 +71,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
       XmlElement docAuthor = AppendElement(Root, "docAuthor");
       text = AppendElement(docAuthor, "text");
-      text.AppendChild(CreateTextNode(Volume.Author.Name));
+      text.AppendChild(CreateTextNode(Volume.Author.OrgName));
 
       _navMap = AppendElement(Root, "navMap");
     }
@@ -82,7 +79,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     public void GenerateToc()
     {
       int id = 1;
-      foreach (EpubArticle article in _doc.Articles)
+      foreach (EpubArticle article in Doc.Articles)
       {
         XmlElement navPoint = AppendElement(NavMap, "navPoint");
         AppendAttribute(navPoint, "id", String.Format("navpoint-{0}", id));
@@ -102,7 +99,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
     {
       XmlElement element = AppendElement(Head, "meta");
       AppendAttribute(element, "name", "dtb:uid");
-      AppendAttribute(element, "content", _doc.Opf.BookId);
+      AppendAttribute(element, "content", Doc.BookId);
 
       element = AppendElement(Head, "meta");
       AppendAttribute(element, "name", "epub-creator");

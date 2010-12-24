@@ -23,6 +23,7 @@
  * CAM  19-Jan-2010  10540 : Added CreateEpubFiles logic.
  * CAM  21-Jan-2010  10544 : Create a separate directory for the EPUB files.
  * CAM  23-Jan-2010  10551 : Added CreateJndFiles.
+ * CAM  24-Dec-2010  10902 : Added directories for Epub and Mobi.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -404,14 +405,17 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
       byte[] dataBuffer = new byte[4096];
       DirectoryInfo root = new DirectoryInfo(@"C:\tmp\epub");
       DirectoryInfo files = new DirectoryInfo(@"C:\tmp\epub\dirs");
-      DirectoryInfo epubs = new DirectoryInfo(@"C:\tmp\epub\epubs");
+      DirectoryInfo epubDir = new DirectoryInfo(@"C:\tmp\epub\epub");
+      DirectoryInfo mobiDir = new DirectoryInfo(@"C:\tmp\epub\mobi");
 
       try
       {
         if (files.Exists) files.Delete(true);
         files.Create();
-        if (epubs.Exists) epubs.Delete(true);
-        epubs.Create();
+        if (epubDir.Exists) epubDir.Delete(true);
+        epubDir.Create();
+        if (mobiDir.Exists) mobiDir.Delete(true);
+        mobiDir.Create();
       }
       catch
       {
@@ -427,8 +431,9 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
         if ((volume == 0) || ((volume > 0) && (vol.Author.Inits.Equals(author)) && (vol.Vol == volume)))
         {
           FileInfo authorImageFile = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, vol.Author.ImageFilename));
+          FileInfo coverImageFile = new FileInfo(String.Format(@"{0}\img\cover\{1}", exe.DirectoryName, vol.Author.ImageFilename));
 
-          EpubDocument epub = new EpubDocument(files, epubs, vol, cssFile, authorImageFile);
+          EpubDocument epub = new EpubDocument(files, epubDir, mobiDir, vol, cssFile, authorImageFile, coverImageFile);
 
           int currentArticle = 0;
           EpubArticle article = null;

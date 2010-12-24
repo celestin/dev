@@ -13,6 +13,7 @@
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * CAM  18-Jan-2010  10539 : Include volume number prefix in title (for sorting in Calibre).
  * CAM  19-Jan-2010  10540 : Series is no longer require - based on logic.
+ * CAM  24-Dec-2010  10902 : Smarter volume titles.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -73,19 +74,36 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         _title = value;
       }
     }
+    public string VolumeTitle
+    {
+      get
+      {
+        if (Title.Length > 0)
+        {
+          return String.Format("{0} (#{1})", Title, Vol);
+        }
+
+        return String.Format("Volume {0}", Vol);
+      }
+    }
     public string FullTitle
     {
       get
       {
         string fullTitle = String.Empty;
 
-        if (EngineSettings.Instance.Mode == BuildMode.SonyEpub)
+        switch (EngineSettings.Instance.Mode)
         {
-          fullTitle = String.Format("{0:000}", Vol);
-        }
-        else
-        {
-          fullTitle = Author.Inits;
+          case BuildMode.SonyEpub:
+            fullTitle = String.Format("{0:000}", Vol);
+            break;
+          case BuildMode.StandardEpub:
+            // Include a Volume number with leading zeroes to force sort order in iBooks
+            fullTitle = String.Format("{1} {0:000}", Vol, Author.Inits);
+            break;
+          default:
+            fullTitle = Author.Inits;
+            break;
         }
 
         if (Title.Length > 0)
@@ -98,18 +116,6 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
         }
 
         return fullTitle;
-      }
-    }
-    public string VolumeTitle
-    {
-      get
-      {
-        if (Title.Length > 0)
-        {
-          return String.Format("{0} (#{1})", Title, Vol);
-        }
-
-        return String.Format("Volume {0}", Vol);
       }
     }
     public string Filename

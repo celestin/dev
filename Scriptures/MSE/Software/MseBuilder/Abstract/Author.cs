@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  15-Jan-2010  10528 : File created.
  * CAM  15-Jan-2010  10533 : Added ImageFilename.
+ * CAM  24-Dec-2010  10902 : Added Fullname and Orgname.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,6 +23,8 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
   {
     private string _inits;
     private string _name;
+    private string _fullName;
+    private string _orgName;
 
     public string Inits
     {
@@ -33,6 +36,16 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       get { return _name; }
       set { _name = value; }
     }
+    public string FullName
+    {
+      get { return _fullName; }
+      set { _fullName = value; }
+    }
+    public string OrgName
+    {
+      get { return _orgName; }
+      set { _orgName = value; }
+    }
     public string ImageFilename
     {
       get
@@ -41,10 +54,12 @@ namespace FrontBurner.Ministry.MseBuilder.Abstract
       }
     }
 
-    public Author(string inits, string name)
+    public Author(string inits, string name, string fullName, string orgName)
     {
       Inits = inits;
       Name = name;
+      FullName = fullName;
+      OrgName = orgName;
     }
   }
 

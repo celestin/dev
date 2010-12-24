@@ -22,6 +22,7 @@
  * CAM  15-Jan-2010  10529 : Missed a reference to Author.
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * CAM  23-Jan-2010  10551 : Added GetJndHtmlVolumes.
+ * CAM  24-Dec-2010  10902 : Added Fullname and Orgname.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -294,10 +295,10 @@ namespace FrontBurner.Ministry.MseBuilder
 
       lock (_semaphore)
       {
-        if (_cmdVolume == null)
+        if (_cmdAuthor == null)
         {
           string sql =
-            "SELECT author,name " +
+            "SELECT author,name,fullname,orgname " +
             "FROM mse_author " +
             "WHERE author <> 'GRC' ";
 
@@ -309,7 +310,7 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           while (dr.Read())
           {
-            author = new Author(dr.GetString(0), dr.GetString(1));
+            author = new Author(dr.GetString(0), dr.GetString(1), dr.GetString(2), dr.GetString(3));
 
             rval.Add(author);
           }

@@ -17,6 +17,7 @@
  * CAM  15-Jan-2010  10528 : Added CreateBbebReaderFiles.
  * CAM  19-Jan-2010  10540 : Added Epub process, and ensure progress is reset after all processes.
  * CAM  23-Jan-2010  10551 : Added ParseJndHthmlFiles.
+ * CAM  24-Dec-2010  10902 : Removed plumbing to radios for types.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -272,10 +273,6 @@ namespace FrontBurner.Ministry.MseBuilder
 
       pgbVol.Minimum = 0;
       pgbVol.Maximum = BusinessLayer.Instance.Volumes.Count;
-
-      EngineSettings.Instance.Mode = BuildMode.Standard;
-      if (_radSony.Checked) EngineSettings.Instance.Mode = BuildMode.SonyEpub;
-      else if (_radStanza.Checked) EngineSettings.Instance.Mode = BuildMode.StanzaEpub;
 
       SpecificVolume();
 

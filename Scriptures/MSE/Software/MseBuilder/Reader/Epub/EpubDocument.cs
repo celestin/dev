@@ -10,6 +10,7 @@
  * CAM  21-Jan-2010  10544 : Create the EPUB zipfile.
  * CAM  11-Feb-2010  10559 : Mimetype without newline (needed?).
  * CAM  24-Dec-2010  10902 : Improved OO design to allow better extendability.
+ * CAM  24-Dec-2010  10904 : More sensible, tidier title on cover image.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -210,6 +211,18 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
       _cssFile.CopyTo(String.Format(@"{0}\{1}", _cssDir.FullName, _cssFile.Name), true);
       _authorImage.CopyTo(String.Format(@"{0}\{1}", _imgDir.FullName, _authorImage.Name), true);
 
+      // Determine the text and therefore size/position of the title 
+      string title = String.Format("Volume {0}", Volume.Vol);
+      int fontSize = 48;
+      float vertical = 0.25f;
+
+      if (Volume.Title.Length > 0)
+      {
+        title = Volume.Title;
+        fontSize = 36;
+        vertical = 0.4f;
+      }
+
       // Copy the plain volume cover and add the specific title
       Bitmap coverBitmap = new Bitmap(_coverImage.FullName);
       Graphics g = Graphics.FromImage(coverBitmap);
@@ -217,9 +230,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub
 
       StringFormat strFormat = new StringFormat();
       strFormat.Alignment = StringAlignment.Center;
-      int h = coverBitmap.Height / 3;
-      g.DrawString(Volume.VolumeTitle, new Font("Tahoma", 40), new SolidBrush(Color.FromArgb(255, 243, 186)),
-          new RectangleF(0, coverBitmap.Height-h, coverBitmap.Width, h), strFormat);
+      int h = (int)(((float)coverBitmap.Height) * vertical);
+      int w = (int)(((float)coverBitmap.Width) * 0.9f);
+      g.DrawString(title, new Font("Tahoma", fontSize), new SolidBrush(Color.FromArgb(255, 243, 186)),
+          new RectangleF((coverBitmap.Width-w)/2, coverBitmap.Height-h, w, h), strFormat);
       coverBitmap.Save(String.Format(@"{0}\cover-{1}", _imgDir.FullName, _coverImage.Name));
     }
   }

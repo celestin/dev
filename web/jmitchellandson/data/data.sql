@@ -11,7 +11,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2010 at 09:05 PM
+-- Generation Time: Dec 27, 2010 at 04:36 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -43,7 +43,7 @@ CREATE TABLE `address_book` (
   `entry_zone_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`address_book_id`),
   KEY `idx_address_book_customers_id` (`customers_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `address_book`
@@ -58,6 +58,10 @@ INSERT INTO `address_book` VALUES (11, 11, 'm', '', 'Craig', 'Singh', '1 Pakista
 INSERT INTO `address_book` VALUES (12, 12, 'm', '', 'Simon', 'Henley-Castleden', '115 Poverest Road', '', 'BR5 2DZ', 'Orpington', '', 222, 372);
 INSERT INTO `address_book` VALUES (13, 13, 'f', '', 'Shelagh', 'Borden', '11 lyndworth close', '', 'Ox39er', 'Oxford', '', 222, 399);
 INSERT INTO `address_book` VALUES (14, 14, 'm', '', 'Anthony', 'Horan', '3 Redburn Court', 'Cumbernauld', 'G67 3NL', 'Glasgow', '', 222, 376);
+INSERT INTO `address_book` VALUES (15, 15, 'm', '', 'Neil', 'Sutherland', '37 Moor Lane', 'Guiseley', 'LS20 9EA', 'Leeds', '', 222, 431);
+INSERT INTO `address_book` VALUES (16, 16, 'f', '', 'Kay', 'Robertson', '26 North Latch Road', '', 'DD9 6LE', 'Brechin', '', 222, 281);
+INSERT INTO `address_book` VALUES (19, 19, 'f', '', 'Sharon', 'Emery', '33 Westfield Ave', 'Audley', 'ST7 8EQ', 'Stoke on Trent', '', 222, 416);
+INSERT INTO `address_book` VALUES (18, 18, 'm', '', 'david', 'law', '40 prince street', '', 'ol16 5ll', 'rochdale', '', 222, 377);
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,7 @@ CREATE TABLE `administrators` (
   `user_name` varchar(32) character set latin1 collate latin1_bin NOT NULL,
   `user_password` varchar(40) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `administrators`
@@ -101,6 +105,9 @@ CREATE TABLE `administrators` (
 
 INSERT INTO `administrators` VALUES (1, 0x6a6c61696e67, '3c4a123e0931facd42944d54043218ee:14');
 INSERT INTO `administrators` VALUES (2, 0x636d636b6179, 'f59179ad6a3c50f95f213ba566953f72:4f');
+INSERT INTO `administrators` VALUES (9, 0x61646d696e32343739, '2b7f95abc121652afad32233013c8474:09');
+INSERT INTO `administrators` VALUES (8, 0x64646f6f676766, '55501ff0e838b408261dada20fc27cb3:f3');
+INSERT INTO `administrators` VALUES (7, 0x4162636465666731, 'c307719a8cc50d21c16108f603e314dd:49');
 
 -- --------------------------------------------------------
 
@@ -123,7 +130,7 @@ CREATE TABLE `banners` (
   `status` int(1) NOT NULL default '1',
   PRIMARY KEY  (`banners_id`),
   KEY `idx_banners_group` (`banners_group`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `banners`
@@ -168,7 +175,7 @@ CREATE TABLE `categories` (
   `last_modified` datetime default NULL,
   PRIMARY KEY  (`categories_id`),
   KEY `idx_categories_parent_id` (`parent_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `categories`
@@ -517,7 +524,7 @@ CREATE TABLE `counter` (
 -- Dumping data for table `counter`
 --
 
-INSERT INTO `counter` VALUES ('20100426', 34627);
+INSERT INTO `counter` VALUES ('20100426', 39151);
 
 -- --------------------------------------------------------
 
@@ -842,7 +849,7 @@ CREATE TABLE `customers` (
   `customers_newsletter` char(1) default NULL,
   PRIMARY KEY  (`customers_id`),
   KEY `idx_customers_email_address` (`customers_email_address`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `customers`
@@ -857,6 +864,10 @@ INSERT INTO `customers` VALUES (11, 'm', 'Craig', 'Singh', '1975-09-13 00:00:00'
 INSERT INTO `customers` VALUES (12, 'm', 'Simon', 'Henley-Castleden', '1969-10-05 00:00:00', 'thehenleycastledens@o2.co.uk', 12, '07845250008', '', '04c5c7fd59a3299d73c8e38c7f7f3f88:9c', '');
 INSERT INTO `customers` VALUES (13, 'f', 'Shelagh', 'Borden', '1939-10-28 00:00:00', 'shelaghborden@btinternet.com', 13, '01865766291', '', 'ed028516dde283844f8f7d9d40c3400a:f3', '1');
 INSERT INTO `customers` VALUES (14, 'm', 'Anthony', 'Horan', '1979-01-18 00:00:00', 'anthony_horan@hotmail.co.uk', 14, '07738008938', '', '87570cedab0f851db2784dbdaa335fbe:97', '');
+INSERT INTO `customers` VALUES (15, 'm', 'Neil', 'Sutherland', '1979-09-02 00:00:00', 'neil-sutherland@hotmail.co.uk', 15, '07734405730', '', 'e5d9f7d64c1de787bfa90468f1bcf7f9:7d', '');
+INSERT INTO `customers` VALUES (16, 'f', 'Kay', 'Robertson', '1989-07-17 00:00:00', 'kayzwayz35@hotmail.com', 16, '01356624814', '', '01a9e04b23cdefaa4c9df43f59cc567c:af', '');
+INSERT INTO `customers` VALUES (19, 'f', 'Sharon', 'Emery', '1970-02-20 00:00:00', 'shazemery@aol.com', 19, '01782723087', '', 'ffa7d67d7da6722f85235f4be3ff9f4d:2f', '1');
+INSERT INTO `customers` VALUES (18, 'm', 'david', 'law', '1970-10-24 00:00:00', 'davidlaw187@gmail.com', 18, '01706 507782', '', '89b3c78de542d52f19a64d7fae1055a3:0d', '');
 
 -- --------------------------------------------------------
 
@@ -873,7 +884,7 @@ CREATE TABLE `customers_basket` (
   `customers_basket_date_added` char(8) default NULL,
   PRIMARY KEY  (`customers_basket_id`),
   KEY `idx_customers_basket_customers_id` (`customers_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
 
 --
 -- Dumping data for table `customers_basket`
@@ -882,6 +893,10 @@ CREATE TABLE `customers_basket` (
 INSERT INTO `customers_basket` VALUES (44, 2, '155', 1, NULL, '20100720');
 INSERT INTO `customers_basket` VALUES (58, 11, '694', 1, NULL, '20101121');
 INSERT INTO `customers_basket` VALUES (47, 2, '387', 1, NULL, '20100729');
+INSERT INTO `customers_basket` VALUES (63, 16, '261', 1, NULL, '20101213');
+INSERT INTO `customers_basket` VALUES (65, 18, '30', 1, NULL, '20101217');
+INSERT INTO `customers_basket` VALUES (66, 18, '659', 1, NULL, '20101217');
+INSERT INTO `customers_basket` VALUES (67, 18, '621', 1, NULL, '20101217');
 
 -- --------------------------------------------------------
 
@@ -933,6 +948,10 @@ INSERT INTO `customers_info` VALUES (11, NULL, 0, '2010-11-21 21:44:00', NULL, 0
 INSERT INTO `customers_info` VALUES (12, '2010-12-01 17:40:20', 1, '2010-11-28 17:52:18', NULL, 0);
 INSERT INTO `customers_info` VALUES (13, '2010-11-30 12:10:53', 1, '2010-11-30 11:43:11', NULL, 0);
 INSERT INTO `customers_info` VALUES (14, NULL, 0, '2010-12-01 23:24:17', NULL, 0);
+INSERT INTO `customers_info` VALUES (15, NULL, 0, '2010-12-12 17:25:26', NULL, 0);
+INSERT INTO `customers_info` VALUES (16, NULL, 0, '2010-12-13 18:34:10', NULL, 0);
+INSERT INTO `customers_info` VALUES (19, NULL, 0, '2010-12-27 09:31:17', NULL, 0);
+INSERT INTO `customers_info` VALUES (18, NULL, 0, '2010-12-17 14:43:37', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1036,10 +1055,10 @@ CREATE TABLE `manufacturers_info` (
 -- Dumping data for table `manufacturers_info`
 --
 
-INSERT INTO `manufacturers_info` VALUES (12, 1, 'http://www.citizenwatch.com/', 15, '2010-12-07 17:49:09', NULL);
+INSERT INTO `manufacturers_info` VALUES (12, 1, 'http://www.citizenwatch.com/', 16, '2010-12-16 18:46:59', NULL);
 INSERT INTO `manufacturers_info` VALUES (13, 1, 'http://www.accurist.co.uk/', 3, '2010-10-24 16:28:32', NULL);
 INSERT INTO `manufacturers_info` VALUES (14, 1, 'http://www.sekonda.co.uk/', 3, '2010-11-13 06:28:41', NULL);
-INSERT INTO `manufacturers_info` VALUES (16, 1, 'http://www.geckojewellery.com/', 8, '2010-12-05 02:48:13', NULL);
+INSERT INTO `manufacturers_info` VALUES (16, 1, 'http://www.geckojewellery.com/', 10, '2010-12-11 11:28:53', NULL);
 INSERT INTO `manufacturers_info` VALUES (17, 1, 'http://www.fluidjewellery.co.uk/', 4, '2010-10-24 16:22:08', NULL);
 INSERT INTO `manufacturers_info` VALUES (18, 1, '', 0, NULL, NULL);
 INSERT INTO `manufacturers_info` VALUES (19, 1, '', 0, NULL, NULL);
@@ -1127,7 +1146,7 @@ CREATE TABLE `orders` (
   `currency_value` decimal(14,6) default NULL,
   PRIMARY KEY  (`orders_id`),
   KEY `idx_orders_customers_id` (`customers_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `orders`
@@ -1141,9 +1160,11 @@ INSERT INTO `orders` VALUES (55, 3, 'John Laing', '', '5 nether caldhame', '', '
 INSERT INTO `orders` VALUES (57, 10, 'asdas ddsa', '', 'dsadsda', '', 'dasd', '32432', 'dasdas', 'Pakistan', '23432423', 'dasda@yahoo.com', 1, 'asdas ddsa', '', 'dsadsda', '', 'dasd', '32432', 'dasdas', 'Pakistan', 1, 'asdas ddsa', '', 'dsadsda', '', 'dasd', '32432', 'dasdas', 'Pakistan', 1, 'Credit Card', '', '', '', '', '2010-11-19 10:19:59', '2010-11-19 06:49:50', 5, NULL, 'GBP', 1.000000);
 INSERT INTO `orders` VALUES (58, 11, 'Craig Singh', '', '1 Pakistan land', '', 'Isalamabad', 'PAK1', 'Isalamabadshire', 'Pakistan', '+44 1307 818 774', 'cmckay@southesk.com', 1, 'Craig Singh', '', '1 Pakistan land', '', 'Isalamabad', 'PAK1', 'Isalamabadshire', 'Pakistan', 1, 'Craig Singh', '', '1 Pakistan land', '', 'Isalamabad', 'PAK1', 'Isalamabadshire', 'Pakistan', 1, 'Credit Card', '', '', '', '', NULL, '2010-11-21 21:44:32', 4, NULL, 'GBP', 1.000000);
 INSERT INTO `orders` VALUES (59, 12, 'Simon Henley-Castleden', '', '115 Poverest Road', '', 'Orpington', 'BR5 2DZ', 'Kent, England', 'United Kingdom', '07845250008', 'thehenleycastledens@o2.co.uk', 1, 'Simon Henley-Castleden', '', '115 Poverest Road', '', 'Orpington', 'BR5 2DZ', 'Kent, England', 'United Kingdom', 1, 'Simon Henley-Castleden', '', '115 Poverest Road', '', 'Orpington', 'BR5 2DZ', 'Kent, England', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-04 16:22:28', '2010-11-28 17:52:57', 3, NULL, 'GBP', 1.000000);
-INSERT INTO `orders` VALUES (60, 13, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', '01865766291', 'shelaghborden@btinternet.com', 1, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', 1, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', 1, 'Credit Card', '', '', '', '', NULL, '2010-11-30 11:44:44', 4, NULL, 'GBP', 1.000000);
+INSERT INTO `orders` VALUES (65, 17, 'Victor Dharmawan', '', '2950 NE 32 Ave', 'A-1721', 'FT Lauderdale', '33308', 'Florida', 'United States', '9456329465', 'superman8877@myself.com', 2, 'Victor Dharmawan', '', '2950 NE 32 Ave', 'A-1721', 'FT Lauderdale', '33308', 'Florida', 'United States', 2, 'Victor Dharmawan', '', '2950 NE 32 Ave', 'A-1721', 'FT Lauderdale', '33308', 'Florida', 'United States', 2, 'Credit Card', '', '', '', '', '2010-12-15 11:37:43', '2010-12-14 22:40:59', 5, NULL, 'GBP', 1.000000);
 INSERT INTO `orders` VALUES (61, 13, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', '01865766291', 'shelaghborden@btinternet.com', 1, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', 1, 'Shelagh Borden', '', '11 lyndworth close', '', 'Oxford', 'Ox39er', 'Oxfordshire, England', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-04 16:23:02', '2010-11-30 12:11:26', 3, NULL, 'GBP', 1.000000);
-INSERT INTO `orders` VALUES (62, 14, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', '07738008938', 'anthony_horan@hotmail.co.uk', 1, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', 1, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-02 13:06:05', '2010-12-01 23:24:58', 2, NULL, 'GBP', 1.000000);
+INSERT INTO `orders` VALUES (62, 14, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', '07738008938', 'anthony_horan@hotmail.co.uk', 1, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', 1, 'Anthony Horan', '', '3 Redburn Court', 'Cumbernauld', 'Glasgow', 'G67 3NL', 'Lanarkshire, Scotland', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-12 18:32:08', '2010-12-01 23:24:58', 3, NULL, 'GBP', 1.000000);
+INSERT INTO `orders` VALUES (64, 15, 'Neil Sutherland', '', '37 Moor Lane', 'Guiseley', 'Leeds', 'LS20 9EA', 'West Yorkshire, England', 'United Kingdom', '07734405730', 'neil-sutherland@hotmail.co.uk', 1, 'Neil Sutherland', '', '37 Moor Lane', 'Guiseley', 'Leeds', 'LS20 9EA', 'West Yorkshire, England', 'United Kingdom', 1, 'Neil Sutherland', '', '37 Moor Lane', 'Guiseley', 'Leeds', 'LS20 9EA', 'West Yorkshire, England', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-13 13:50:10', '2010-12-12 17:27:37', 2, NULL, 'GBP', 1.000000);
+INSERT INTO `orders` VALUES (67, 19, 'Sharon Emery', '', '33 Westfield Ave', 'Audley', 'Stoke on Trent', 'ST7 8EQ', 'Staffordshire, England', 'United Kingdom', '01782723087', 'shazemery@aol.com', 1, 'Sharon Emery', '', '33 Westfield Ave', 'Audley', 'Stoke on Trent', 'ST7 8EQ', 'Staffordshire, England', 'United Kingdom', 1, 'Sharon Emery', '', '33 Westfield Ave', 'Audley', 'Stoke on Trent', 'ST7 8EQ', 'Staffordshire, England', 'United Kingdom', 1, 'Credit Card', '', '', '', '', '2010-12-27 09:55:10', '2010-12-27 09:32:17', 1, NULL, 'GBP', 1.000000);
 
 -- --------------------------------------------------------
 
@@ -1164,7 +1185,7 @@ CREATE TABLE `orders_products` (
   PRIMARY KEY  (`orders_products_id`),
   KEY `idx_orders_products_orders_id` (`orders_id`),
   KEY `idx_orders_products_products_id` (`products_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
 
 --
 -- Dumping data for table `orders_products`
@@ -1179,9 +1200,11 @@ INSERT INTO `orders_products` VALUES (88, 57, 694, '62543b01', '9ct White Gold 6
 INSERT INTO `orders_products` VALUES (86, 55, 287, 'P2599', 'Elements Sterling Silver Figure of 8 Pendant', 10.2128, 17.0213, 17.5000, 1);
 INSERT INTO `orders_products` VALUES (89, 58, 694, '62543b01', '9ct White Gold 6mm Flat Court Bevelled edge wedding Ring Size R', 276.5957, 276.5957, 0.0000, 1);
 INSERT INTO `orders_products` VALUES (90, 59, 201, 'LB1198', 'Ladies Accurist Stainless Steel Quartz Watch', 54.4681, 54.4681, 17.5000, 1);
-INSERT INTO `orders_products` VALUES (91, 60, 38, 'BM8242-16A', 'Gents Citizen Leather Strap Watch', 72.3404, 72.3404, 17.5000, 1);
+INSERT INTO `orders_products` VALUES (96, 65, 44, 'BY0000-56E', 'Gents Citizen Stainless Steel Radio Controlled Watch', 322.5532, 322.5532, 0.0000, 2);
 INSERT INTO `orders_products` VALUES (92, 61, 38, 'BM8242-16A', 'Gents Citizen Leather Strap Watch', 72.3404, 72.3404, 17.5000, 1);
 INSERT INTO `orders_products` VALUES (93, 62, 267, 'E3525', 'Sterling Silver Butterfly Drop Earrings', 15.3191, 15.3191, 17.5000, 1);
+INSERT INTO `orders_products` VALUES (95, 64, 374, '3212606', 'Fluid Sterling Silver Oasis Collection Pippin Pendant', 24.6809, 24.6809, 17.5000, 1);
+INSERT INTO `orders_products` VALUES (100, 67, 477, 'LB1404', 'Ladies Silver Plated Charmed by Accurist (Starlight) Watch', 70.2128, 70.2128, 17.5000, 1);
 
 -- --------------------------------------------------------
 
@@ -1271,7 +1294,7 @@ CREATE TABLE `orders_status_history` (
   `comments` text,
   PRIMARY KEY  (`orders_status_history_id`),
   KEY `idx_orders_status_history_orders_id` (`orders_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data for table `orders_status_history`
@@ -1305,6 +1328,15 @@ INSERT INTO `orders_status_history` VALUES (92, 59, 1, '2010-12-03 09:41:28', 1,
 INSERT INTO `orders_status_history` VALUES (93, 61, 2, '2010-12-03 12:37:36', 1, 'Hi Shelagh\r\n\r\nThank you very for your phone call. \r\nYou can track your parcel through the Royal Mail track and trace service, the reference number is SC 5207 2371 8GB.\r\n\r\nI have checked this and you should receive your parcel today.\r\n\r\nI am a bit concerned you cannot access my website when you try to log in, I will get my IT consultant to look at this.\r\n\r\nIf you have another query please do not hesitate to contact me.\r\n\r\nRegards\r\nJohn Laing');
 INSERT INTO `orders_status_history` VALUES (94, 59, 3, '2010-12-04 16:22:28', 0, '');
 INSERT INTO `orders_status_history` VALUES (95, 61, 3, '2010-12-04 16:23:02', 0, '');
+INSERT INTO `orders_status_history` VALUES (96, 64, 1, '2010-12-12 17:29:49', 0, 'WorldPay: Transaction Verified');
+INSERT INTO `orders_status_history` VALUES (97, 64, 1, '2010-12-12 17:29:54', 1, 'Required for Christmas.\r\nPlease include gift reciept as a present.');
+INSERT INTO `orders_status_history` VALUES (98, 62, 3, '2010-12-12 18:32:08', 0, '');
+INSERT INTO `orders_status_history` VALUES (99, 64, 1, '2010-12-13 10:31:28', 1, 'Thank you very much for your order.\r\n\r\nYour order has now been despatched by Royal Mail recorded delivery, which can be tracked on the Royal Mail website (Track and Trace). The reference number is AH 3050 9312 1GB.\r\n\r\n All orders placed on or after 1st December 2010 will have an extended returns policy to 7th January 2011.\r\n\r\nRegards\r\nJ.Mitchell & Son');
+INSERT INTO `orders_status_history` VALUES (100, 64, 2, '2010-12-13 13:50:10', 0, '');
+INSERT INTO `orders_status_history` VALUES (101, 65, 5, '2010-12-15 11:37:44', 1, 'Hi Victor\r\n\r\nUnfortunately we only deliver to addresses in the United Kingdom where the credit card statements are received, so we cannot complete this order.\r\nPlease accept our apologies.\r\n\r\nRegards\r\nJ.Mitchell & Son');
+INSERT INTO `orders_status_history` VALUES (102, 67, 1, '2010-12-27 09:34:29', 0, 'WorldPay: Transaction Verified');
+INSERT INTO `orders_status_history` VALUES (103, 67, 1, '2010-12-27 09:34:37', 1, '');
+INSERT INTO `orders_status_history` VALUES (104, 67, 1, '2010-12-27 09:55:10', 1, 'Thank you very much for your order.\r\n\r\nYour watch will be despatched on Wednesday 29th December, this is when the Post Office re-opens. \r\n\r\nI will send you an update and a Royal Mail tracking number on Wednesday when I despatch your order.\r\n\r\nBest regards\r\nJ.Mitchell & Son');
 
 -- --------------------------------------------------------
 
@@ -1322,7 +1354,7 @@ CREATE TABLE `orders_total` (
   `sort_order` int(11) NOT NULL,
   PRIMARY KEY  (`orders_total_id`),
   KEY `idx_orders_total_orders_id` (`orders_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=226 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=245 ;
 
 --
 -- Dumping data for table `orders_total`
@@ -1354,10 +1386,9 @@ INSERT INTO `orders_total` VALUES (210, 59, 'Sub-Total:', '&pound;64.00', 64.000
 INSERT INTO `orders_total` VALUES (211, 59, 'P&amp;P (Royal Mail):', '&pound;5.95', 5.9500, 'ot_shipping', 2);
 INSERT INTO `orders_total` VALUES (212, 59, 'VAT (17.5%):', '&pound;9.53', 9.5319, 'ot_tax', 3);
 INSERT INTO `orders_total` VALUES (213, 59, 'Total:', '<b>&pound;69.95</b>', 69.9500, 'ot_total', 4);
-INSERT INTO `orders_total` VALUES (214, 60, 'Sub-Total:', '&pound;85.00', 85.0000, 'ot_subtotal', 1);
-INSERT INTO `orders_total` VALUES (215, 60, 'P&amp;P (Royal Mail):', '&pound;5.95', 5.9500, 'ot_shipping', 2);
-INSERT INTO `orders_total` VALUES (216, 60, 'VAT (17.5%):', '&pound;12.66', 12.6596, 'ot_tax', 3);
-INSERT INTO `orders_total` VALUES (217, 60, 'Total:', '<b>&pound;90.95</b>', 90.9500, 'ot_total', 4);
+INSERT INTO `orders_total` VALUES (236, 65, 'Total:', '<b>&pound;645.10</b>', 645.1000, 'ot_total', 4);
+INSERT INTO `orders_total` VALUES (235, 65, 'P&amp;P (Royal Mail):', '&pound;0.00', 0.0000, 'ot_shipping', 2);
+INSERT INTO `orders_total` VALUES (234, 65, 'Sub-Total:', '&pound;645.10', 645.1000, 'ot_subtotal', 1);
 INSERT INTO `orders_total` VALUES (218, 61, 'Sub-Total:', '&pound;85.00', 85.0000, 'ot_subtotal', 1);
 INSERT INTO `orders_total` VALUES (219, 61, 'P&amp;P (Royal Mail):', '&pound;5.95', 5.9500, 'ot_shipping', 2);
 INSERT INTO `orders_total` VALUES (220, 61, 'VAT (17.5%):', '&pound;12.66', 12.6596, 'ot_tax', 3);
@@ -1366,6 +1397,14 @@ INSERT INTO `orders_total` VALUES (222, 62, 'Sub-Total:', '&pound;18.00', 18.000
 INSERT INTO `orders_total` VALUES (223, 62, 'P&amp;P (Royal Mail):', '&pound;2.95', 2.9500, 'ot_shipping', 2);
 INSERT INTO `orders_total` VALUES (224, 62, 'VAT (17.5%):', '&pound;2.68', 2.6809, 'ot_tax', 3);
 INSERT INTO `orders_total` VALUES (225, 62, 'Total:', '<b>&pound;20.95</b>', 20.9500, 'ot_total', 4);
+INSERT INTO `orders_total` VALUES (232, 64, 'VAT (17.5%):', '&pound;4.32', 4.3191, 'ot_tax', 3);
+INSERT INTO `orders_total` VALUES (231, 64, 'P&amp;P (Royal Mail):', '&pound;2.95', 2.9500, 'ot_shipping', 2);
+INSERT INTO `orders_total` VALUES (230, 64, 'Sub-Total:', '&pound;29.00', 29.0000, 'ot_subtotal', 1);
+INSERT INTO `orders_total` VALUES (233, 64, 'Total:', '<b>&pound;31.95</b>', 31.9500, 'ot_total', 4);
+INSERT INTO `orders_total` VALUES (243, 67, 'VAT (17.5%):', '&pound;12.29', 12.2872, 'ot_tax', 3);
+INSERT INTO `orders_total` VALUES (242, 67, 'P&amp;P (Royal Mail):', '&pound;5.95', 5.9500, 'ot_shipping', 2);
+INSERT INTO `orders_total` VALUES (241, 67, 'Sub-Total:', '&pound;82.50', 82.5000, 'ot_subtotal', 1);
+INSERT INTO `orders_total` VALUES (244, 67, 'Total:', '<b>&pound;88.45</b>', 88.4500, 'ot_total', 4);
 
 -- --------------------------------------------------------
 
@@ -1393,7 +1432,7 @@ CREATE TABLE `products` (
   PRIMARY KEY  (`products_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=763 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=779 ;
 
 --
 -- Dumping data for table `products`
@@ -1401,34 +1440,34 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` VALUES (81, 0, 1, '3012', 'wsek_3012.jpg', 22.9702, '0000-00-00 00:00:00', '2010-06-08 12:44:57', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (80, 0, 1, '3011', 'wsek_3011.jpg', 19.1404, '0000-00-00 00:00:00', '2010-06-08 12:44:34', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (5, 0, 1, 'AR0014-52A', 'wcit_ar0014-52a.jpg', 165.9574, '2010-05-25 21:00:00', '2010-06-04 14:58:59', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (6, 0, 1, 'AR1002-05A', 'wcit_ar1002-05a.jpg', 136.1702, '2010-05-25 21:00:00', '2010-06-07 23:09:15', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (7, 0, 1, 'AR1002-56B', 'wcit_ar1002-56b.jpg', 194.8936, '2010-05-25 21:00:00', '2010-06-03 18:49:35', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (8, 0, 1, 'AR1004-51E', 'wcit_ar1004-51e.jpg', 194.8936, '2010-05-25 21:00:00', '2010-06-04 15:05:34', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (9, 0, 1, 'AR1062-03P', 'wcit_ar1062-03p.jpg', 136.1702, '2010-05-25 21:00:00', '2010-06-07 23:09:05', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (10, 0, 1, 'AR3004-50A', 'wcit_ar3004-50a.jpg', 194.8936, '2010-05-25 21:00:00', '2010-06-04 15:07:29', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (11, 0, 1, 'AR3010-57E', 'wcit_ar3010-57e.jpg', 201.7021, '2010-05-25 21:00:00', '2010-08-26 16:02:34', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (5, 0, 1, 'AR0014-52A', 'wcit_ar0014-52a.jpg', 182.9787, '2010-05-25 21:00:00', '2010-12-27 16:04:40', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (6, 0, 1, 'AR1002-05A', 'wcit_ar1002-05a.jpg', 144.6809, '2010-05-25 21:00:00', '2010-12-27 16:03:17', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (7, 0, 1, 'AR1002-56B', 'wcit_ar1002-56b.jpg', 205.9574, '2010-05-25 21:00:00', '2010-12-27 16:02:50', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (8, 0, 1, 'AR1004-51E', 'wcit_ar1004-51e.jpg', 205.9574, '2010-05-25 21:00:00', '2010-12-27 16:05:13', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (9, 0, 1, 'AR1062-03P', 'wcit_ar1062-03p.jpg', 144.6809, '2010-05-25 21:00:00', '2010-12-27 16:03:39', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (10, 0, 1, 'AR3004-50A', 'wcit_ar3004-50a.jpg', 205.9574, '2010-05-25 21:00:00', '2010-12-27 16:05:35', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (11, 0, 1, 'AR3010-57E', 'wcit_ar3010-57e.jpg', 213.6170, '2010-05-25 21:00:00', '2010-12-27 16:04:03', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (12, 0, 1, 'AT0810-55X', 'wcit_at0810-55x.jpg', 143.8298, '2010-05-25 21:00:00', '2010-09-07 16:54:32', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (13, 0, 0, 'AT0884-59E', 'wcit_at0884-59e.jpg', 158.2979, '2010-05-25 21:00:00', '2010-06-04 15:02:22', NULL, 0.00, 1, 1, 12, 1, NULL, NULL);
-INSERT INTO `products` VALUES (14, 0, 1, 'AT0910-51E', 'wcit_at0910-51e.jpg', 172.7660, '2010-05-25 21:00:00', '2010-06-03 19:38:50', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (14, 0, 1, 'AT0910-51E', 'wcit_at0910-51e.jpg', 190.6383, '2010-05-25 21:00:00', '2010-12-27 15:58:33', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (15, 0, 1, 'AU1012-54A', 'wcit_au1012-54a.jpg', 108.0851, '2010-05-25 21:00:00', '2010-06-03 19:47:39', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (16, 0, 1, 'AU1022-51A', 'wcit_au1022-51a.jpg', 108.0851, '2010-05-25 21:00:00', '2010-06-03 19:49:39', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (17, 0, 1, 'AU1024-55A', 'wcit_au1024-55a.jpg', 108.0851, '2010-05-25 21:00:00', '2010-06-04 15:15:53', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (18, 0, 1, 'BL5250-02L', 'wcit_bl5250-02l.jpg', 177.0213, '2010-05-25 21:00:00', '2010-06-03 20:04:25', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (19, 0, 1, 'BL5376-55A', 'wcit_bl5376-55a.jpg', 216.1702, '2010-05-25 21:00:00', '2010-06-03 20:09:38', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (18, 0, 1, 'BL5250-02L', 'wcit_bl5250-02l.jpg', 211.9149, '2010-05-25 21:00:00', '2010-12-27 11:35:02', NULL, 0.00, 0, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (19, 0, 1, 'BL5376-55A', 'wcit_bl5376-55a.jpg', 228.9362, '2010-05-25 21:00:00', '2010-12-27 16:06:42', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (20, 0, 1, 'BL5380-58E', 'wcit_bl5380-58e.jpg', 194.8936, '2010-05-25 21:00:00', '2010-06-03 20:12:58', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (21, 0, 1, '', 'wcit_bl6005-01e.jpg', 72.3404, '2010-05-25 21:00:00', '2010-07-19 09:37:36', NULL, 0.00, 1, 1, 12, 1, NULL, NULL);
-INSERT INTO `products` VALUES (22, 0, 1, 'BL8000-54L', 'wcit_bl8000-54l.jpg', 208.5106, '2010-05-25 21:00:00', '2010-06-03 20:27:31', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (21, 0, 1, '', 'wcit_bl6005-01e.jpg', 75.7447, '2010-05-25 21:00:00', '2010-12-27 15:56:50', NULL, 0.00, 1, 1, 12, 1, NULL, NULL);
+INSERT INTO `products` VALUES (22, 0, 1, 'BL8000-54L', 'wcit_bl8000-54l.jpg', 221.2766, '2010-05-25 21:00:00', '2010-12-27 15:59:28', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (23, 0, 1, 'BM0900-51L', 'wcit_bm0900-51l.jpg', 129.3617, '2010-05-25 21:00:00', '2010-06-03 20:32:06', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (24, 0, 1, 'BM5000-54A', 'wcit_bm5000-54a.jpg', 129.3617, '2010-05-25 21:00:00', '2010-06-04 15:24:11', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (459, 0, 2, 'MB864', 'MB864_opt-1.jpg', 34.0426, '2010-10-01 09:05:22', '2010-10-13 16:39:04', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (26, 0, 1, 'BM6010-55A', 'wcit_bm6010-55a.jpg', 80.8511, '2010-05-25 21:00:00', '2010-09-16 14:41:17', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (27, 0, 1, 'BM6010-55E', 'wcit_bm6010-55e.jpg', 80.8511, '2010-05-25 21:00:00', '2010-06-03 20:46:58', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (28, 0, 1, 'BM6014-54A', 'wcit_bm6014-54a.jpg', 93.6170, '2010-05-25 21:00:00', '2010-06-03 20:52:41', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (28, 0, 1, 'BM6014-54A', 'wcit_bm6014-54a.jpg', 93.6170, '2010-05-25 21:00:00', '2010-12-14 13:15:38', NULL, 1.00, 0, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (29, 0, 1, 'BM6550-58E', 'wcit_bm6550-58e.jpg', 101.2766, '2010-05-25 21:00:00', '2010-06-03 20:56:42', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (30, 0, 1, 'BM6552-52E', 'wcit_bm6552-52e.jpg', 108.0851, '2010-05-25 21:00:00', '2010-08-19 17:02:51', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (31, 0, 1, 'BM6560-54H', 'wcit_bm6560-54h.jpg', 129.3617, '2010-05-25 21:00:00', '2010-12-02 14:12:36', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (32, 0, 1, 'BM6575-06E', 'wcit_bm6575-06e.jpg', 80.8511, '2010-05-25 21:00:00', '2010-11-06 12:21:39', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (31, 0, 1, 'BM6560-54H', 'wcit_bm6560-54h.jpg', 129.3617, '2010-05-25 21:00:00', '2010-12-18 15:31:11', NULL, 0.00, 0, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (32, 0, 1, 'BM6575-06E', 'wcit_bm6575-06e.jpg', 89.3617, '2010-05-25 21:00:00', '2010-12-26 09:57:01', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (33, 0, 1, 'BM8220-51L', 'wcit_bm8220-51l.jpg', 72.3404, '2010-05-25 21:00:00', '2010-07-23 09:26:18', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (34, 0, 1, 'BM8224-51E', 'wcit_bm8224-51e.jpg', 80.0000, '2010-05-25 21:00:00', '2010-09-16 14:45:08', NULL, 1.00, 0, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (35, 0, 1, 'BM8240-11A', 'wcit_bm8240-11a.jpg', 65.5319, '2010-05-25 21:00:00', '2010-10-29 15:36:15', NULL, 1.00, 0, 1, 12, 1, NULL, NULL);
@@ -1440,18 +1479,18 @@ INSERT INTO `products` VALUES (40, 0, 1, 'BM8452-99A', 'wcit_bm8452-99a.jpg', 72
 INSERT INTO `products` VALUES (41, 0, 1, 'BM8454-93A', 'wcit_bm8454-93a.jpg', 72.3404, '2010-05-25 21:00:00', '2010-09-14 10:42:54', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (42, 0, 1, 'BV1030-08A', 'wcit_bv1030-08a.jpg', 108.0851, '2010-05-25 21:00:00', '2010-06-07 23:03:50', NULL, 0.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (43, 0, 1, 'BW0172-02P', 'wcit_bw0172-02p.jpg', 72.3404, '2010-05-25 21:00:00', '2010-06-07 23:04:20', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (44, 0, 1, 'BY0000-56E', 'wcit_by0000-56e.jpg', 322.5532, '2010-05-25 21:00:00', '2010-07-02 09:17:47', NULL, 0.00, 1, 1, 12, 1, NULL, NULL);
-INSERT INTO `products` VALUES (45, 0, 1, 'EG2152-51D', 'wcit_eg2152-51d.jpg', 129.3617, '2010-05-25 21:00:00', '2010-09-04 09:09:31', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (44, 0, 1, 'BY0000-56E', 'wcit_by0000-56e.jpg', 343.8298, '2010-05-25 21:00:00', '2010-12-27 16:00:25', NULL, 0.00, 1, 1, 12, 1, NULL, NULL);
+INSERT INTO `products` VALUES (45, 0, 1, 'EG2152-51D', 'wcit_eg2152-51d.jpg', 137.0213, '2010-05-25 21:00:00', '2010-12-27 16:09:37', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (46, 0, 1, 'EG2664-50D', 'wcit_eg2664-50d.jpg', 123.4043, '2010-05-25 21:00:00', '2010-09-04 09:22:30', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (47, 0, -1, 'EG2680-53D', 'wcit_eg2680-53d.jpg', 237.4468, '2010-05-25 21:00:00', '2010-09-04 09:03:21', NULL, 1.00, 1, 1, 12, 2, NULL, NULL);
-INSERT INTO `products` VALUES (48, 0, 1, 'EG2682-58D', 'wcit_eg2682-58d.jpg', 251.0638, '2010-05-25 21:00:00', '2010-09-04 08:59:50', NULL, 1.00, 1, 1, 12, 1, NULL, NULL);
+INSERT INTO `products` VALUES (47, 0, -1, 'EG2680-53D', 'wcit_eg2680-53d.jpg', 251.9149, '2010-05-25 21:00:00', '2010-12-27 16:07:41', NULL, 1.00, 1, 1, 12, 2, NULL, NULL);
+INSERT INTO `products` VALUES (48, 0, 1, 'EG2682-58D', 'wcit_eg2682-58d.jpg', 267.2340, '2010-05-25 21:00:00', '2010-12-27 16:07:18', NULL, 1.00, 1, 1, 12, 1, NULL, NULL);
 INSERT INTO `products` VALUES (49, 0, 1, 'EG2690-50E', 'wcit_eg2690-50e.jpg', 122.5532, '2010-05-25 21:00:00', '2010-09-04 09:16:56', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (50, 0, 1, 'EG2692-54D', 'wcit_eg2692-54d.jpg', 136.1702, '2010-05-25 21:00:00', '2010-09-04 09:11:18', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (51, 0, 1, 'EG2694-59D', 'wcit_eg2694-59d.jpg', 136.1702, '2010-05-25 21:00:00', '2010-09-04 09:19:18', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (51, 0, 1, 'EG2694-59D', 'wcit_eg2694-59d.jpg', 136.1702, '2010-05-25 21:00:00', '2010-12-23 16:46:22', NULL, 1.00, 0, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (52, 0, 1, 'EG2704-57E', 'wcit_eg2704-57e.jpg', 114.8936, '2010-05-25 21:00:00', '2010-06-04 12:41:35', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (53, 0, 1, 'EG3022-51D', 'wcit_eg3022-51d.jpg', 288.5106, '2010-05-25 21:00:00', '2010-06-04 12:47:06', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (53, 0, 1, 'EG3022-51D', 'wcit_eg3022-51d.jpg', 305.5319, '2010-05-25 21:00:00', '2010-12-27 16:10:14', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (54, 0, 1, 'EG3042-54A', 'wcit_eg3042-54a.jpg', 172.7660, '2010-05-25 21:00:00', '2010-06-04 12:49:35', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (55, 0, 1, 'EG3060-52D', 'wcit_eg3060-52d.jpg', 280.8511, '2010-05-25 21:00:00', '2010-10-14 16:54:21', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (55, 0, 1, 'EG3060-52D', 'wcit_eg3060-52d.jpg', 331.0638, '2010-05-25 21:00:00', '2010-12-27 10:56:22', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (56, 0, 1, 'EW0894-57D', 'wcit_ew0894-57d.jpg', 178.7234, '2010-05-25 21:00:00', '2010-06-04 12:57:04', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (57, 0, 1, 'EW1254-53A', 'wcit_ew1254-53a.jpg', 93.6170, '2010-05-25 21:00:00', '2010-06-04 12:59:50', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (58, 0, 1, 'EW1264-50A', 'wcit_ew1264-50a.jpg', 101.2766, '2010-05-25 21:00:00', '2010-06-04 13:01:28', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
@@ -1467,8 +1506,8 @@ INSERT INTO `products` VALUES (67, 0, 1, 'EW9330-53A', 'wcit_ew9330-53a.jpg', 93
 INSERT INTO `products` VALUES (68, 0, 1, 'EW9682-56D', 'wcit_ew9682-56d.jpg', 108.0851, '2010-05-25 21:00:00', '2010-09-04 09:13:45', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (69, 0, 1, 'EW9690-58E', 'wcit_ew9690-58e.jpg', 93.6170, '2010-05-25 21:00:00', '2010-09-04 09:15:12', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (70, 0, 1, 'EW9700-56E', 'wcit_ew9700-56e.jpg', 101.2766, '2010-05-25 21:00:00', '2010-09-04 09:18:09', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (71, 0, 1, 'EW9720-59E', 'wcit_ew9720-59e.jpg', 237.4468, '2010-05-25 21:00:00', '2010-09-04 09:05:06', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
-INSERT INTO `products` VALUES (72, 0, 1, 'EW9734-54A', 'wcit_ew9734-54a.jpg', 251.0638, '2010-05-25 21:00:00', '2010-10-14 16:52:30', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (71, 0, 1, 'EW9720-59E', 'wcit_ew9720-59e.jpg', 251.9149, '2010-05-25 21:00:00', '2010-12-27 16:08:20', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
+INSERT INTO `products` VALUES (72, 0, 1, 'EW9734-54A', 'wcit_ew9734-54a.jpg', 267.2340, '2010-05-25 21:00:00', '2010-12-27 16:08:00', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (73, 0, 1, 'EW9780-57E', 'wcit_ew9780-57e.jpg', 136.1702, '2010-05-25 21:00:00', '2010-10-14 16:51:50', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (74, 0, 1, 'EW9810-58D', 'wcit_ew9810-58d.jpg', 114.8936, '2010-05-25 21:00:00', '2010-09-04 09:16:20', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
 INSERT INTO `products` VALUES (75, 0, 1, 'EW9834-50A', 'wcit_ew9834-50a.jpg', 108.0851, '2010-05-25 21:00:00', '2010-09-04 09:20:54', NULL, 1.00, 1, 1, 12, 0, NULL, NULL);
@@ -1483,7 +1522,7 @@ INSERT INTO `products` VALUES (85, 0, 1, '3037', 'wsek_3037.jpg', 34.0340, '0000
 INSERT INTO `products` VALUES (86, 0, 1, '3074', 'wsek_3074.jpg', 51.0553, '0000-00-00 00:00:00', '2010-06-08 12:57:49', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (87, 0, 1, '3076', 'wsek_3076.jpg', 59.5660, '0000-00-00 00:00:00', '2010-06-08 13:02:05', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (88, 0, 1, '3081', 'wsek_3081.jpg', 27.2255, '0000-00-00 00:00:00', '2010-10-29 16:13:27', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (89, 0, 1, '3086', 'wsek_3086.jpg', 27.2255, '0000-00-00 00:00:00', '2010-06-08 13:09:18', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (89, 0, 1, '3086', 'wsek_3086.jpg', 28.0766, '0000-00-00 00:00:00', '2010-12-20 16:02:02', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (90, 0, 1, '3101', 'wsek_3101.jpg', 51.0553, '0000-00-00 00:00:00', '2010-06-08 13:12:20', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (91, 0, 1, '3102', 'wsek_3102.jpg', 27.2255, '0000-00-00 00:00:00', '2010-06-08 13:16:24', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (92, 0, 1, '3104', 'wsek_3104.jpg', 38.2894, '0000-00-00 00:00:00', '2010-06-08 14:27:58', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
@@ -1516,13 +1555,13 @@ INSERT INTO `products` VALUES (118, 0, 1, '4063', 'wsek_4063.jpg', 39.1404, '000
 INSERT INTO `products` VALUES (119, 0, 1, '4073', 'wsek_4073.jpg', 15.3106, '0000-00-00 00:00:00', '2010-12-01 09:17:10', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (120, 0, 1, '4103', 'wsek_4103.jpg', 22.9702, '0000-00-00 00:00:00', '2010-06-08 15:41:24', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (122, 0, 1, '4113', 'wsek_4113.jpg', 34.0340, '0000-00-00 00:00:00', '2010-06-08 15:47:43', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (123, 0, 1, '4119', 'wsek_4119.jpg', 30.6298, '0000-00-00 00:00:00', '2010-06-08 15:51:15', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (123, 0, 1, '4119', 'wsek_4119.jpg', 31.4809, '0000-00-00 00:00:00', '2010-12-11 10:32:00', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (124, 0, 1, '4174', 'wsek_4174.jpg', 36.5872, '0000-00-00 00:00:00', '2010-06-08 15:53:57', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (125, 0, 1, '4191', 'wsek_4191.jpg', 31.4809, '0000-00-00 00:00:00', '2010-12-01 09:28:08', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (126, 0, 1, '4218', 'wsek_4218.jpg', 21.2681, '0000-00-00 00:00:00', '2010-06-08 16:55:10', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (127, 0, 1, '4230', 'wsek_4230.jpg', 30.6298, '0000-00-00 00:00:00', '2010-06-08 16:27:25', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (128, 0, 1, '4245', 'wsek_4245.jpg', 38.2894, '0000-00-00 00:00:00', '2010-06-08 16:30:07', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (129, 0, 1, '4246', 'wsek_4246.jpg', 23.8213, '0000-00-00 00:00:00', '2010-12-01 09:18:39', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (129, 0, 1, '4246', 'wsek_4246.jpg', 23.8213, '0000-00-00 00:00:00', '2010-12-22 13:35:15', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (130, 0, 1, '4258', 'wsek_4258.jpg', 29.7787, '0000-00-00 00:00:00', '2010-06-08 16:40:26', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (131, 0, 1, '4260', 'wsek_4260.jpg', 31.4809, '0000-00-00 00:00:00', '2010-12-01 09:21:39', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (132, 0, 1, '4261', 'wsek_4261.jpg', 34.0340, '0000-00-00 00:00:00', '2010-12-01 09:14:37', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
@@ -1534,7 +1573,7 @@ INSERT INTO `products` VALUES (137, 0, 1, '4562', 'wsek_4562.jpg', 22.9702, '000
 INSERT INTO `products` VALUES (138, 0, 1, '4587', 'wsek_4587.jpg', 19.5660, '0000-00-00 00:00:00', '2010-12-01 09:30:23', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (139, 0, 2, '4601', 'wsek_4601.jpg', 17.8638, '0000-00-00 00:00:00', '2010-12-01 09:26:20', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (140, 0, 2, '4602', 'wsek_4602.jpg', 22.1191, '0000-00-00 00:00:00', '2010-12-01 09:32:33', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (141, 0, 2, '4677', 'wsek_4677.jpg', 22.1191, '0000-00-00 00:00:00', '2010-08-10 09:14:08', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (141, 0, 1, '4677', 'wsek_4677.jpg', 22.1191, '0000-00-00 00:00:00', '2010-12-13 13:49:48', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (142, 0, 1, '4683', 'wsek_4683.jpg', 29.7787, '0000-00-00 00:00:00', '2010-06-08 18:33:22', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (143, 0, 1, '4787', 'wsek_4787.jpg', 25.5234, '0000-00-00 00:00:00', '2010-06-08 18:36:38', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (144, 0, 1, '4844', 'wsek_4844.jpg', 29.7787, '0000-00-00 00:00:00', '2010-06-08 18:40:07', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
@@ -1543,31 +1582,31 @@ INSERT INTO `products` VALUES (146, 0, 1, '4874', 'wsek_4874.jpg', 22.1191, '000
 INSERT INTO `products` VALUES (147, 0, 1, '4918', 'wsek_4918.jpg', 30.6298, '0000-00-00 00:00:00', '2010-06-08 18:47:43', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (148, 0, 1, '4934', 'wsek_4934.jpg', 23.8213, '0000-00-00 00:00:00', '2010-12-01 09:53:49', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (727, 0, 2, 'XGBB4', 'gecu_xgbb4 copy.jpg', 16.1702, '2010-11-19 11:02:25', '2010-11-19 11:35:04', NULL, 0.00, 1, 1, 28, 0, NULL, NULL);
-INSERT INTO `products` VALUES (150, 0, 1, '4942', 'wsek_4942.jpg', 23.8213, '0000-00-00 00:00:00', '2010-12-01 09:22:21', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (150, 0, 1, '4942', 'wsek_4942.jpg', 23.8213, '0000-00-00 00:00:00', '2010-12-20 14:03:47', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (151, 0, 1, '4971', 'wsek_4971.jpg', 19.5660, '0000-00-00 00:00:00', '2010-08-26 17:00:38', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (153, 0, 1, '4074B', 'wsek_4074b.jpg', 18.7149, '0000-00-00 00:00:00', '2010-06-11 17:05:28', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (154, 0, 1, '4159', 'wsey_4159.jpg', 53.6085, '0000-00-00 00:00:00', '2010-06-09 10:18:03', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (155, 0, 2, '4199', 'wsey_4199.jpg', 53.6085, '0000-00-00 00:00:00', '2010-07-06 16:25:15', NULL, 1.00, 1, 1, 14, -1, NULL, NULL);
-INSERT INTO `products` VALUES (156, 0, 1, '4272', 'wsey_4272.jpg', 53.6085, '0000-00-00 00:00:00', '2010-07-02 09:37:53', NULL, 1.00, 1, 1, 14, 1, NULL, NULL);
+INSERT INTO `products` VALUES (155, 0, 1, '4199', 'wsey_4199.jpg', 53.6085, '0000-00-00 00:00:00', '2010-12-24 17:13:32', NULL, 1.00, 0, 1, 14, -1, NULL, NULL);
+INSERT INTO `products` VALUES (156, 0, 1, '4272', 'wsey_4272.jpg', 53.6085, '0000-00-00 00:00:00', '2010-12-11 10:44:40', NULL, 1.00, 0, 1, 14, 1, NULL, NULL);
 INSERT INTO `products` VALUES (157, 0, 1, '4275', 'wsey_4275.jpg', 53.6085, '0000-00-00 00:00:00', '2010-06-09 11:02:23', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (158, 0, 1, '4276', 'wsey_4276.jpg', 53.6085, '0000-00-00 00:00:00', '2010-08-26 15:36:21', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (159, 0, 1, '4281', 'wsey_4281.jpg', 53.6085, '0000-00-00 00:00:00', '2010-06-09 11:21:20', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (159, 0, 1, '4281', 'wsey_4281.jpg', 53.6085, '0000-00-00 00:00:00', '2010-12-22 14:54:29', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (160, 0, 1, '4287', 'wsey_4287.jpg', 53.6085, '0000-00-00 00:00:00', '2010-06-09 11:33:22', NULL, 1.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (161, 0, 1, '4773', 'wsey_4773.jpg', 38.2894, '0000-00-00 00:00:00', '2010-12-06 11:35:07', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (161, 0, 1, '4773', 'wsey_4773.jpg', 38.2894, '0000-00-00 00:00:00', '2010-12-21 09:01:37', NULL, 1.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (162, 0, 1, 'B2842', 'jgdd_b2842.jpg', 23.8298, '2010-06-08 23:00:00', '2010-10-17 19:33:26', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (163, 0, 1, '', 'jgdd_b307.jpg', 34.0000, '2010-06-08 23:00:00', '2010-10-17 19:32:25', NULL, 1.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (164, 0, 1, 'B3095', 'jgdd_b3095.jpg', 23.8298, '2010-06-08 23:00:00', '2010-10-17 19:33:13', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (165, 0, 1, 'B3561', 'jgdd_b3561.jpg', 30.6383, '2010-06-08 23:00:00', '2010-10-17 19:33:59', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (166, 0, 1, 'B772', 'jgdd_b772.jpg', 34.0000, '2010-06-08 23:00:00', '2010-10-17 19:32:49', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (167, 0, 0, 'B773', 'jgdd_b773.jpg', 34.0000, '2010-06-08 23:00:00', '2010-10-17 19:32:36', NULL, 1.00, 1, 1, 16, 1, NULL, NULL);
-INSERT INTO `products` VALUES (168, 0, 1, 'P2157', 'jgdd_p2157.jpg', 25.5319, '2010-06-08 23:00:00', '2010-10-17 19:36:47', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (169, 0, 3, 'P2486', 'jgdd_p2486.jpg', 17.0213, '2010-06-08 23:00:00', '2010-10-17 19:34:23', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (170, 0, 1, 'P2548', 'jgdd_p2548.jpg', 28.0426, '2010-06-08 23:00:00', '2010-10-17 19:36:17', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (171, 0, 1, 'P2549', 'jgdd_p2549.jpg', 21.2340, '2010-06-08 23:00:00', '2010-10-17 19:35:33', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (172, 0, 1, 'P2966', 'jgdd_p2966.jpg', 23.8298, '2010-06-08 23:00:00', '2010-10-17 19:34:43', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (173, 547, 3, 'P616', 'jgdd_p616_e573.jpg', 16.1702, '2010-06-08 23:00:00', '2010-10-17 19:37:19', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (174, 546, 2, 'P620', 'jgdd_p620_e572.jpg', 16.1702, '2010-06-08 23:00:00', '2010-10-17 19:38:42', NULL, 0.00, 1, 1, 16, 1, NULL, NULL);
-INSERT INTO `products` VALUES (175, 0, 1, 'P800', 'jgdd_p800.jpg', 18.7234, '2010-06-08 23:00:00', '2010-12-08 09:36:36', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (168, 0, 1, 'P2157', 'jgdd_p2157.jpg', 25.5319, '2010-06-08 23:00:00', '2010-12-15 13:14:09', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (169, 0, 3, 'P2486', 'jgdd_p2486.jpg', 17.0213, '2010-06-08 23:00:00', '2010-12-15 13:17:42', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (170, 0, 1, 'P2548', 'jgdd_p2548.jpg', 28.0426, '2010-06-08 23:00:00', '2010-12-15 13:03:51', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (171, 0, 1, 'P2549', 'jgdd_p2549.jpg', 21.2340, '2010-06-08 23:00:00', '2010-12-15 13:01:46', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (172, 0, 1, 'P2966', 'jgdd_p2966.jpg', 23.8298, '2010-06-08 23:00:00', '2010-12-15 13:16:01', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (173, 547, 3, 'P616', 'jgdd_p616.jpg', 16.1702, '2010-06-08 23:00:00', '2010-12-15 13:31:47', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (174, 546, 2, 'P620', 'jgdd_p620.jpg', 16.1702, '2010-06-08 23:00:00', '2010-12-15 13:33:55', NULL, 0.00, 1, 1, 16, 1, NULL, NULL);
+INSERT INTO `products` VALUES (175, 0, 1, 'P800', 'jgdd_p800.jpg', 18.7234, '2010-06-08 23:00:00', '2010-12-15 13:36:24', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (176, 0, 1, 'MB323S', 'wacc_mb323s.jpg', 79.1489, '2010-06-10 20:00:00', '2010-06-11 13:51:33', NULL, 0.00, 1, 1, 13, 0, 'Gents', 110);
 INSERT INTO `products` VALUES (177, 0, 1, 'MB754B', 'wacc_mb754b.jpg', 93.6170, '2010-06-10 20:00:00', '2010-06-11 14:27:07', NULL, 0.00, 1, 1, 13, 0, 'Gents', 125);
 INSERT INTO `products` VALUES (178, 0, 1, 'MB754N', 'wacc_mb754n.jpg', 93.6170, '2010-06-10 20:00:00', '2010-06-11 14:26:36', NULL, 0.00, 1, 1, 13, 0, 'Gents', 125);
@@ -1618,41 +1657,41 @@ INSERT INTO `products` VALUES (222, 500, 1, 'P3082H', 'jges_p3082h.jpg', 13.6170
 INSERT INTO `products` VALUES (223, 501, 3, 'B2947W', 'jges_b2947w.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-20 12:39:18', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (224, 501, 2, 'E3065W', 'jges_e3065w.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-20 19:30:30', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (225, 501, 1, 'N2507W', 'jges_n2507w.jpg', 15.3191, '2010-06-12 15:00:00', '2010-06-21 11:30:15', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
-INSERT INTO `products` VALUES (226, 502, 4, 'E3511C', 'jges_e3511c.jpg', 11.9149, '2010-06-12 15:00:00', '2010-11-25 12:17:06', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (227, 502, 1, 'P2975C', 'jges_p2975c.jpg', 14.4681, '2010-06-12 15:00:00', '2010-10-26 19:20:29', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (226, 502, 2, 'E3511C', 'jges_e3511c.jpg', 13.6170, '2010-06-12 15:00:00', '2010-12-20 09:30:07', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (227, 502, 1, 'P2975C', 'jges_p2975c.jpg', 15.3191, '2010-06-12 15:00:00', '2010-12-20 09:37:21', NULL, 0.00, 0, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (228, 503, 2, 'E3321C', 'jges_e3321c.jpg', 13.6170, '2010-06-12 15:00:00', '2010-11-02 15:31:56', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (229, 503, 2, 'P2794C', 'jges_p2794c.jpg', 11.9149, '2010-06-12 15:00:00', '2010-10-26 19:20:44', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (230, 504, 1, 'E3646C', 'jges_e3646c.jpg', 24.6809, '2010-06-12 15:00:00', '2010-10-20 19:34:33', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (231, 504, 1, 'P3067C', 'jges_p3067c.jpg', 23.8298, '2010-06-12 15:00:00', '2010-10-17 18:29:39', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
-INSERT INTO `products` VALUES (232, 505, 1, 'B3171C', 'jges_b3171c.jpg', 58.7234, '2010-06-12 15:00:00', '2010-11-02 09:24:08', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
+INSERT INTO `products` VALUES (231, 504, 1, 'P3067C', 'jges_p3067c.jpg', 23.8298, '2010-06-12 15:00:00', '2010-12-21 11:44:21', NULL, 0.00, 0, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (232, 505, 1, 'B3171C', 'jges_b3171c.jpg', 58.7234, '2010-06-12 15:00:00', '2010-12-22 14:03:16', NULL, 0.00, 0, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (233, 505, 1, 'E3342C', 'jges_e3342c.jpg', 14.4681, '2010-06-12 15:00:00', '2010-10-20 18:39:50', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (234, 505, 1, 'P2810C', 'jges_p2810c.jpg', 15.3191, '2010-06-12 15:00:00', '2010-10-17 18:28:46', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (235, 506, 1, 'E3320C', 'jges_e3320c.jpg', 22.1277, '2010-06-12 15:00:00', '2010-11-02 15:25:59', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (728, 0, 2, 'XGBB5', 'gecu_xgbb5 copy.jpg', 18.7234, '2010-11-19 11:58:59', '2010-11-19 12:00:12', NULL, 0.00, 1, 1, 28, 0, NULL, NULL);
 INSERT INTO `products` VALUES (237, 507, 1, 'B3454C', 'jges_b3454c.jpg', 36.5957, '2010-06-12 15:00:00', '2010-10-20 12:39:46', NULL, 0.00, 1, 1, 16, 1, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (238, 507, 1, 'E3614C', 'jges_e3614c.jpg', 23.8298, '2010-06-12 15:00:00', '2010-10-20 19:26:49', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (238, 507, 1, 'E3614C', 'jges_e3614c.jpg', 23.8298, '2010-06-12 15:00:00', '2010-12-18 09:39:22', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (239, 507, 2, 'P3029C', 'jges_p3029c.jpg', 18.7234, '2010-06-12 15:00:00', '2010-10-17 18:31:31', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (240, 508, 1, 'B3456C', 'jges_b3456c.jpg', 58.7234, '2010-06-12 15:00:00', '2010-10-20 12:24:00', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (241, 508, 1, 'E3615C', 'jges_e3615c.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-20 18:38:29', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (242, 508, 6, 'P3031C', 'jges_p3031c.jpg', 11.0638, '2010-06-12 15:00:00', '2010-10-17 18:33:44', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (242, 508, 2, 'P3031C', 'jges_p3031c.jpg', 11.9149, '2010-06-12 15:00:00', '2010-12-20 10:03:09', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (243, 509, 1, 'B2954C', 'jges_b2954c.jpg', 0.0000, '2010-06-12 15:00:00', '2010-06-15 09:50:19', NULL, 0.00, 0, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (244, 509, 1, 'E3057C', 'jges_e3057c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-20 19:25:50', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (245, 509, 3, 'P2621C', 'jges_p2621c.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-17 18:27:14', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (246, 510, 3, 'E2321C', 'jges_e2321c.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-26 18:46:53', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (247, 510, 3, 'P2211C', 'jges_p2211c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-17 18:25:25', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
-INSERT INTO `products` VALUES (248, 511, 3, 'E3033C', 'jges_e3033c.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-26 18:46:23', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (248, 511, 1, 'E3033C', 'jges_e3033c.jpg', 17.0213, '2010-06-12 15:00:00', '2010-12-24 15:32:29', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (249, 511, 1, 'P2600C', 'jges_p2600c.jpg', 23.8298, '2010-06-12 15:00:00', '2010-11-25 10:34:24', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (250, 512, 1, 'B3093C', 'jges_b3093c.jpg', 39.1489, '2010-06-12 15:00:00', '2010-10-20 12:24:13', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (251, 512, 4, 'E3665C', 'jges_e3665c.jpg', 12.7660, '2010-06-12 15:00:00', '2010-10-20 18:39:26', NULL, 0.00, 1, 1, 16, 1, 'Earrings', NULL);
+INSERT INTO `products` VALUES (251, 512, 2, 'E3665C', 'jges_e3665c.jpg', 14.4681, '2010-06-12 15:00:00', '2010-12-20 11:16:03', NULL, 0.00, 1, 1, 16, 1, 'Earrings', NULL);
 INSERT INTO `products` VALUES (252, 512, 1, 'P3084C', 'jges_p3084c.jpg', 28.9362, '2010-06-12 15:00:00', '2010-10-17 18:32:26', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
-INSERT INTO `products` VALUES (253, 513, 3, 'E2295C', 'jges_e2295c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-20 18:41:08', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (254, 513, 3, 'P2199C', 'jges_p2199c.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-17 18:33:13', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (253, 513, 2, 'E2295C', 'jges_e2295c.jpg', 11.0638, '2010-06-12 15:00:00', '2010-12-20 11:02:21', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (254, 513, 3, 'P2199C', 'jges_p2199c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-12-20 10:08:59', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (255, 514, 1, 'E2165B', 'jges_e2165b.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-20 18:37:03', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (256, 515, 4, 'B3469T', 'jges_b3469t.jpg', 29.7872, '2010-06-12 15:00:00', '2010-10-19 09:42:48', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (257, 515, 1, 'P3069T', 'jges_p3069t.jpg', 11.0638, '2010-06-12 15:00:00', '2010-11-30 11:36:19', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (258, 516, 0, '', 'jges_b3199l.jpg', 42.5532, '2010-06-12 15:00:00', '2010-06-15 11:30:14', NULL, 0.00, 0, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (259, 516, 1, 'E3382L', 'jges_e3382l.jpg', 14.4681, '2010-06-12 15:00:00', '2010-10-20 18:37:19', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (261, 517, 3, 'E3057T', 'jges_e3057t.jpg', 13.6170, '2010-06-12 15:00:00', '2010-10-26 18:48:21', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (261, 517, 1, 'E3057T', 'jges_e3057t.jpg', 14.4681, '2010-06-12 15:00:00', '2010-12-20 11:21:06', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (262, 517, 3, 'P2621T', 'jges_p2621t.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-17 18:23:55', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (263, 518, 3, 'E3643T', 'jges_e3643t.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-20 18:37:33', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (264, 518, 1, 'P3063T', 'jges_p3063t.jpg', 14.4681, '2010-06-12 15:00:00', '2010-10-17 18:25:06', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
@@ -1660,27 +1699,27 @@ INSERT INTO `products` VALUES (265, 519, 1, 'E3608', 'jges_e3608.jpg', 21.2766, 
 INSERT INTO `products` VALUES (266, 519, 1, 'N2918', 'jges_n2918.jpg', 29.7872, '2010-06-12 15:00:00', '2010-10-20 12:20:04', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (267, 520, 0, 'E3525', 'jges_e3525.jpg', 15.3191, '2010-06-12 15:00:00', '2010-12-02 09:39:58', NULL, 0.00, 0, 1, 16, 1, 'Earrings', NULL);
 INSERT INTO `products` VALUES (268, 520, 1, 'N2818', 'jges_n2818.jpg', 55.3191, '2010-06-12 15:00:00', '2010-10-20 12:20:51', NULL, 0.00, 1, 1, 16, 1, 'Necklace', NULL);
-INSERT INTO `products` VALUES (269, 521, 6, 'B3466', 'jges_b3466.jpg', 25.5319, '2010-06-12 15:00:00', '2010-10-26 14:21:42', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (270, 521, 1, 'E3635', 'jges_e3635.jpg', 12.7660, '2010-06-12 15:00:00', '2010-12-02 13:16:02', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (271, 521, 4, 'N2931', 'jges_n2931.jpg', 24.6809, '2010-06-12 15:00:00', '2010-11-19 14:33:43', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
-INSERT INTO `products` VALUES (272, 522, 1, 'E3627', 'jges_e3627.jpg', 28.0851, '2010-06-12 15:00:00', '2010-10-20 19:28:01', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (269, 521, 1, 'B3466', 'jges_b3466.jpg', 27.2340, '2010-06-12 15:00:00', '2010-12-23 10:11:17', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
+INSERT INTO `products` VALUES (270, 521, 2, 'E3635', 'jges_e3635.jpg', 12.7660, '2010-06-12 15:00:00', '2010-12-14 16:09:19', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (271, 521, 1, 'N2931', 'jges_n2931.jpg', 24.6809, '2010-06-12 15:00:00', '2010-12-18 12:47:09', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
+INSERT INTO `products` VALUES (272, 522, 1, 'E3627', 'jges_e3627.jpg', 28.0851, '2010-06-12 15:00:00', '2010-12-23 12:48:55', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (273, 522, 1, 'P3045', 'jges_p3045.jpg', 24.6809, '2010-06-12 15:00:00', '2010-10-17 18:27:36', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (274, 523, 1, 'E3531', 'jges_e3531.jpg', 18.7234, '2010-06-12 15:00:00', '2010-11-02 14:57:39', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (275, 523, 1, 'N2822', 'jges_n2822.jpg', 33.1915, '2010-06-12 15:00:00', '2010-06-21 11:25:49', NULL, 0.00, 0, 1, 16, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (276, 524, 1, 'E3613', 'jges_e3613.jpg', 18.7234, '2010-06-12 15:00:00', '2010-10-20 19:29:10', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (277, 524, 1, 'N2923', 'jges_n2923.jpg', 34.0426, '2010-06-12 15:00:00', '2010-10-20 12:22:56', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (278, 525, 1, 'E3624', 'jges_e3624.jpg', 29.7872, '2010-06-12 15:00:00', '2010-10-20 19:29:54', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (279, 525, 1, 'P3047', 'jges_p3047.jpg', 25.5319, '2010-06-12 15:00:00', '2010-10-17 18:32:56', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (279, 525, 1, 'P3047', 'jges_p3047.jpg', 25.5319, '2010-06-12 15:00:00', '2010-12-11 14:50:22', NULL, 0.00, 0, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (280, 526, 4, 'E3337', 'jges_e3337.jpg', 18.7234, '2010-06-12 15:00:00', '2010-10-20 19:31:32', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (281, 526, 1, 'P2730', 'jges_p2730.jpg', 13.6170, '2010-06-12 15:00:00', '2010-10-17 18:33:27', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (282, 527, 3, 'B3086', 'jges_b3086.jpg', 35.7447, '2010-06-12 15:00:00', '2010-10-20 12:39:59', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (283, 527, 1, 'E3263', 'jges_e3263.jpg', 16.1702, '2010-06-12 15:00:00', '2010-10-20 19:26:32', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (284, 527, 1, 'P2735', 'jges_p2735.jpg', 11.9149, '2010-06-12 15:00:00', '2010-10-17 18:31:11', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (283, 527, 1, 'E3263', 'jges_e3263.jpg', 17.0213, '2010-06-12 15:00:00', '2010-12-20 09:33:21', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (284, 527, 1, 'P2735', 'jges_p2735.jpg', 11.9149, '2010-06-12 15:00:00', '2010-12-20 09:32:06', NULL, 0.00, 0, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (285, 528, 1, 'B2943', 'jges_b2943.jpg', 46.8085, '2010-06-12 15:00:00', '2010-10-20 12:24:44', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (286, 528, 2, 'E3032', 'jges_e3032.jpg', 12.7660, '2010-06-12 15:00:00', '2010-10-20 19:28:52', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (287, 528, 7, 'P2599', 'jges_p2599.jpg', 15.3191, '2010-06-12 15:00:00', '2010-11-18 13:38:12', NULL, 0.00, 1, 1, 16, 1, 'Pendant', NULL);
-INSERT INTO `products` VALUES (288, 529, 4, 'E3639', 'jges_e3639.jpg', 12.7660, '2010-06-12 15:00:00', '2010-10-20 19:35:54', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (289, 529, 1, 'P3058', 'jges_p3058.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-17 18:32:03', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (286, 528, 2, 'E3032', 'jges_e3032.jpg', 12.7660, '2010-06-12 15:00:00', '2010-12-11 14:36:45', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (287, 528, 7, 'P2599', 'jges_p2599.jpg', 15.3191, '2010-06-12 15:00:00', '2010-12-11 14:37:19', NULL, 0.00, 0, 1, 16, 1, 'Pendant', NULL);
+INSERT INTO `products` VALUES (288, 529, 3, 'E3639', 'jges_e3639.jpg', 12.7660, '2010-06-12 15:00:00', '2010-12-21 11:19:06', NULL, 0.00, 0, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (289, 529, 1, 'P3058', 'jges_p3058.jpg', 17.0213, '2010-06-12 15:00:00', '2010-12-21 11:46:21', NULL, 0.00, 0, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (290, 530, 1, '', 'jges_e3261.jpg', 11.9149, '2010-06-12 15:00:00', '2010-10-20 19:35:36', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (291, 530, 1, 'P2738', 'jges_p2738.jpg', 17.0213, '2010-06-12 15:00:00', '2010-10-17 18:34:19', NULL, 25.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (292, 531, 2, 'E3535', 'jges_e3535.jpg', 22.1277, '2010-06-12 15:00:00', '2010-10-20 19:28:18', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
@@ -1690,7 +1729,7 @@ INSERT INTO `products` VALUES (295, 532, 3, 'P2747', 'jges_p2747.jpg', 22.1277, 
 INSERT INTO `products` VALUES (296, 533, 2, 'E3345', 'jges_e3345.jpg', 12.7660, '2010-06-12 15:00:00', '2010-12-03 16:01:05', NULL, 0.00, 1, 1, 16, 2, 'Earrings', NULL);
 INSERT INTO `products` VALUES (297, 533, 4, 'N2707', 'jges_n2707.jpg', 27.2340, '2010-06-12 15:00:00', '2010-11-18 13:43:52', NULL, 0.00, 1, 1, 16, 1, 'Necklace', NULL);
 INSERT INTO `products` VALUES (298, 534, 1, 'E3333', 'jges_e3333.jpg', 19.5745, '2010-06-12 15:00:00', '2010-11-02 15:11:23', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (299, 534, 1, 'P2806', 'jges_p2806.jpg', 13.6170, '2010-06-12 15:00:00', '2010-10-17 18:28:10', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
+INSERT INTO `products` VALUES (299, 534, 1, 'P2806', 'jges_p2806.jpg', 17.0213, '2010-06-12 15:00:00', '2010-12-24 15:28:18', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (300, 535, 3, 'E777', 'jges_e777.jpg', 11.9149, '2010-06-12 15:00:00', '2010-11-25 12:19:26', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (301, 535, 1, 'P701', 'jges_p701.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-17 18:27:48', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (302, 536, 1, 'B3167', 'jges_b3167.jpg', 47.6596, '2010-06-12 15:00:00', '2010-10-17 19:14:50', NULL, 0.00, 0, 1, 16, 0, 'Bracelet', NULL);
@@ -1698,19 +1737,19 @@ INSERT INTO `products` VALUES (303, 536, 3, 'E3334', 'jges_e3334.jpg', 15.3191, 
 INSERT INTO `products` VALUES (304, 536, 1, 'P2807', 'jges_p2807.jpg', 15.3191, '2010-06-12 15:00:00', '2010-10-17 18:31:46', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (305, 537, 6, 'E2928C', 'jges_e2928c.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-20 19:26:05', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (306, 537, 5, 'P2533C', 'jges_p2533c.jpg', 6.8085, '2010-06-12 15:00:00', '2010-10-17 18:32:42', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
-INSERT INTO `products` VALUES (730, 0, 3, 'P3224C', 'jges_p3224c.jpg', 24.6809, '2010-11-19 15:59:14', '2010-11-19 15:59:49', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (730, 0, 1, 'P3224C', 'jges_p3224c.jpg', 24.6809, '2010-11-19 15:59:14', '2010-12-24 15:29:53', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (308, 538, 1, 'B3168C', 'jges_b3168c.jpg', 0.0000, '2010-06-12 15:00:00', '2010-06-15 12:51:11', NULL, 0.00, 0, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (310, 539, 3, 'B2958C', 'jges_b2958c.jpg', 45.1064, '2010-06-12 15:00:00', '2010-10-26 14:20:16', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (311, 540, 1, 'B3453', 'jges_b3453.jpg', 38.2979, '2010-06-12 15:00:00', '2010-10-28 12:25:18', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (312, 540, 1, 'N2924', 'jges_n2924.jpg', 41.7021, '2010-06-12 15:00:00', '2010-10-20 12:18:58', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (313, 541, 1, 'B3170', 'jges_b3170.jpg', 36.5957, '2010-06-12 15:00:00', '2010-10-20 12:23:38', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (314, 542, 1, 'B731C', 'jges_b731c.jpg', 36.5957, '2010-06-12 15:00:00', '2010-10-20 12:40:48', NULL, 0.00, 1, 1, 16, 0, 'Bracelet', NULL);
-INSERT INTO `products` VALUES (315, 543, 14, 'E188C', 'jges_e188c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-26 18:41:59', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (315, 543, 14, 'E188C', 'jges_e188c.jpg', 11.0638, '2010-06-12 15:00:00', '2010-12-17 14:53:46', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (316, 543, 3, 'P590C', 'jges_p590c.jpg', 6.8085, '2010-06-12 15:00:00', '2010-10-26 19:32:13', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
-INSERT INTO `products` VALUES (317, 544, 11, 'E544C', 'jges_e544c.jpg', 8.5106, '2010-06-12 15:00:00', '2010-10-20 18:40:24', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
+INSERT INTO `products` VALUES (317, 544, 8, 'E544C', 'jges_e544c.jpg', 11.0638, '2010-06-12 15:00:00', '2010-12-10 11:18:11', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
 INSERT INTO `products` VALUES (318, 544, 12, 'P298C', 'jges_p298c.jpg', 6.8085, '2010-06-12 15:00:00', '2010-10-17 18:26:40', NULL, 0.00, 1, 1, 16, 1, 'Pendant', NULL);
 INSERT INTO `products` VALUES (319, 545, 6, 'E792C', 'jges_e792c.jpg', 10.2128, '2010-06-12 15:00:00', '2010-10-26 18:36:09', NULL, 0.00, 1, 1, 16, 0, 'Earrings', NULL);
-INSERT INTO `products` VALUES (320, 0, 1, 'B2903', 'jgfb_b2903.jpg', 25.4894, '2010-06-19 22:00:00', '2010-10-17 20:06:17', NULL, 0.00, 1, 1, 16, 0, 'Bangle', NULL);
+INSERT INTO `products` VALUES (320, 0, 1, 'B2903', 'jgfb_b2903.jpg', 25.4894, '2010-06-19 22:00:00', '2010-12-22 10:52:54', NULL, 0.00, 0, 1, 16, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (321, 0, 3, 'B2906', 'jgfb_b2906.jpg', 25.4894, '2010-06-19 22:00:00', '2010-10-17 20:06:35', NULL, 0.00, 1, 1, 16, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (322, 0, 1, 'B3130', 'jgfb_b3130.jpg', 0.0000, '2010-06-19 22:00:00', '2010-10-17 20:01:30', NULL, 0.00, 0, 1, 16, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (323, 0, 1, 'B3394', 'jgfb_b3394.jpg', 21.2340, '2010-06-19 22:00:00', '2010-10-17 20:05:17', NULL, 0.00, 1, 1, 16, 0, 'Bangle', NULL);
@@ -1718,7 +1757,7 @@ INSERT INTO `products` VALUES (324, 0, 1, 'B3398', 'jgfb_b3398.jpg', 25.4894, '2
 INSERT INTO `products` VALUES (325, 0, 4, 'B3400', 'jgfb_b3400.jpg', 21.2340, '2010-06-19 22:00:00', '2010-10-28 15:13:11', NULL, 0.00, 1, 1, 16, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (326, 0, 1, 'B750', 'jgfb_b750.jpg', 63.8298, '2010-06-19 22:00:00', '2010-10-17 20:07:29', NULL, 0.00, 1, 1, 16, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (327, 0, 1, 'N2686', 'jgfb_n2686.jpg', 22.0851, '2010-06-19 22:00:00', '2010-10-17 20:13:35', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
-INSERT INTO `products` VALUES (328, 0, 1, 'N2875', 'jgfb_n2875.jpg', 19.5319, '2010-06-19 22:00:00', '2010-10-17 20:12:52', NULL, 0.00, 1, 1, 16, 0, 'Necklace', NULL);
+INSERT INTO `products` VALUES (328, 0, 1, 'N2875', 'jgfb_n2875.jpg', 19.5319, '2010-06-19 22:00:00', '2010-12-24 08:47:04', NULL, 0.00, 0, 1, 16, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (329, 0, 1, 'P1212', 'jgfb_p1212.jpg', 37.4043, '2010-06-19 22:00:00', '2010-10-17 20:14:33', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
 INSERT INTO `products` VALUES (330, 0, 1, 'P2542', 'jgfb_p2542.jpg', 18.6809, '2010-06-19 22:00:00', '2010-10-17 20:11:32', NULL, 0.00, 1, 1, 16, 1, 'Pendant', NULL);
 INSERT INTO `products` VALUES (331, 0, 1, 'P2776', 'jgfb_p2776.jpg', 40.8085, '2010-06-19 22:00:00', '2010-10-17 20:11:06', NULL, 0.00, 1, 1, 16, 0, 'Pendant', NULL);
@@ -1743,7 +1782,7 @@ INSERT INTO `products` VALUES (349, 0, 0, 'LB1526P', 'wacc_lb1526p.jpg', 0.0000,
 INSERT INTO `products` VALUES (350, 0, 1, 'LB1071', 'wacc_lb1071.jpg', 36.5957, '2010-06-22 21:40:12', '2010-11-12 10:57:36', NULL, 0.00, 0, 1, 13, 1, NULL, NULL);
 INSERT INTO `products` VALUES (351, 0, 2, 'LB1196S', 'wacc_lb1196s.jpg', 51.0638, '2010-06-22 21:41:59', '2010-11-09 10:44:28', NULL, 0.00, 1, 1, 13, 1, NULL, NULL);
 INSERT INTO `products` VALUES (352, 546, 3, 'E572', 'jgdd_e572.jpg', 17.8723, '2010-06-22 21:59:21', '2010-10-17 19:38:17', NULL, 0.00, 1, 1, 16, 1, NULL, NULL);
-INSERT INTO `products` VALUES (353, 547, 1, 'E573', 'jgdd_e573.jpg', 17.8723, '2010-06-22 21:59:52', '2010-10-17 19:39:05', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (353, 547, 1, 'E573', 'jgdd_e573.jpg', 17.8723, '2010-06-22 21:59:52', '2010-12-14 16:18:18', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (354, 548, 1, '3211123', 'jfld_3211123.jpg', 22.1277, '2010-06-30 22:00:00', '2010-10-19 12:02:58', NULL, 0.00, 0, 1, 17, 1, 'Pendant', NULL);
 INSERT INTO `products` VALUES (355, 548, 3, '3211263', 'jfld_3211263.jpg', 18.7234, '2010-06-30 22:00:00', '2010-10-17 19:50:02', NULL, 0.00, 1, 1, 17, 1, 'Earrings', NULL);
 INSERT INTO `products` VALUES (356, 548, 1, '3212593', 'jfld_3212593.jpg', 28.0851, '2010-06-30 22:00:00', '2010-10-17 19:44:00', NULL, 0.00, 1, 1, 17, 0, 'Bracelet', NULL);
@@ -1764,7 +1803,7 @@ INSERT INTO `products` VALUES (370, 554, 1, '3211899', 'jfld_3211899.jpg', 29.78
 INSERT INTO `products` VALUES (371, 554, 1, '3211904', 'jfld_3211904.jpg', 75.7447, '2010-06-30 22:00:00', '2010-10-17 19:44:23', NULL, 0.00, 1, 1, 17, 0, 'Bangle', NULL);
 INSERT INTO `products` VALUES (372, 554, 1, '3211931', 'jfld_3211931.jpg', 35.7447, '2010-06-30 22:00:00', '2010-10-17 19:51:43', NULL, 0.00, 1, 1, 17, 0, 'Necklace', NULL);
 INSERT INTO `products` VALUES (373, 555, 1, '3212605', 'jfld_3212605.jpg', 25.5319, '2010-06-30 22:00:00', '2010-10-17 19:47:23', NULL, 0.00, 1, 1, 17, 1, 'Earrings', NULL);
-INSERT INTO `products` VALUES (374, 555, 3, '3212606', 'jfld_3212606.jpg', 24.6809, '2010-06-30 22:00:00', '2010-10-17 19:53:54', NULL, 0.00, 1, 1, 17, 1, 'Pendant', NULL);
+INSERT INTO `products` VALUES (374, 555, 1, '3212606', 'jfld_3212606.jpg', 24.6809, '2010-06-30 22:00:00', '2010-12-13 08:56:45', NULL, 0.00, 1, 1, 17, 2, 'Pendant', NULL);
 INSERT INTO `products` VALUES (375, 555, 0, '3212608', 'jfld_3212608.jpg', 38.2979, '2010-06-30 22:00:00', '2010-10-17 19:43:36', NULL, 0.00, 0, 1, 17, 0, 'Bracelet', NULL);
 INSERT INTO `products` VALUES (376, 0, 3, '4304', 'wsek_4304.jpg', 22.9702, '2010-07-13 23:00:00', '2010-08-31 10:30:15', NULL, 0.00, 1, 1, 14, 1, 'Ladies', NULL);
 INSERT INTO `products` VALUES (377, 0, 3, '4305', 'wsek_4305.jpg', 22.9702, '2010-07-13 23:00:00', '2010-08-31 10:30:33', NULL, 0.00, 1, 1, 14, 0, 'Ladies', NULL);
@@ -1782,9 +1821,9 @@ INSERT INTO `products` VALUES (494, 0, 1, 'R34358', 'R34358copy.jpg', 84.2553, '
 INSERT INTO `products` VALUES (460, 0, 2, 'MB866S', 'MB866S_opt.jpg', 25.5319, '2010-10-01 09:30:09', '2010-10-14 16:47:40', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (591, 0, 2, 'B3336', 'B3336_B3337_B3338copy.jpg', 29.7872, '2010-10-21 16:30:52', '2010-10-28 14:30:13', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (673, 0, 1, '4424', 'wsey_4424.jpg', 53.6085, '2010-10-28 16:07:54', '2010-10-28 16:26:25', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (386, 0, 3, 'LB1401', 'wacc_lb1401.jpg', 57.0213, '2010-07-29 20:44:05', '2010-11-09 10:39:32', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
-INSERT INTO `products` VALUES (387, 0, 2, 'LB1402', 'wacc_lb1402.jpg', 68.9362, '2010-07-29 20:45:50', '2010-12-07 13:52:12', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
-INSERT INTO `products` VALUES (647, 0, 3, 'P3075C', 'jges_p3075C_n2573.jpg', 31.4894, '2010-10-27 12:01:23', '2010-11-19 15:44:20', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (386, 0, 7, 'LB1401', 'wacc_lb1401.jpg', 63.8298, '2010-07-29 20:44:05', '2010-12-26 09:37:56', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (387, 0, 4, 'LB1402', 'wacc_lb1402.jpg', 76.5957, '2010-07-29 20:45:50', '2010-12-26 09:39:54', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (647, 0, 1, 'P3075C', 'jges_p3075C_n2573.jpg', 31.4894, '2010-10-27 12:01:23', '2010-12-21 11:43:52', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (389, 0, 2, '43LB', 'pqc_43lb.jpg', 34.0426, '2010-06-30 22:00:00', '2010-11-19 16:54:16', NULL, 0.00, 1, 1, 18, 0, 'Quaich', NULL);
 INSERT INTO `products` VALUES (390, 0, 1, '43LC', 'pqc_43lc.jpg', 33.1915, '2010-06-30 22:00:00', '2010-11-08 19:35:37', NULL, 0.00, 1, 1, 18, 0, 'Quaich', NULL);
 INSERT INTO `products` VALUES (391, 0, 2, '43LGHDL', 'pqc_43l-gemhdl.jpg', 33.1915, '2010-06-30 22:00:00', '2010-11-08 19:36:55', NULL, 0.00, 1, 1, 18, 0, 'Quaich', NULL);
@@ -1815,7 +1854,7 @@ INSERT INTO `products` VALUES (415, 0, 2, 'CEL940', 'pep_cel940.jpg', 13.6170, '
 INSERT INTO `products` VALUES (416, 0, 2, 'CEL941', 'pep_cel941.jpg', 13.6170, '2010-08-13 20:00:00', '2010-08-17 15:38:31', NULL, 0.00, 1, 1, 19, 0, 'Letter Opener', NULL);
 INSERT INTO `products` VALUES (417, 0, 2, 'CEL943', 'pep_cel943.jpg', 13.6170, '2010-08-13 20:00:00', '2010-08-17 15:40:09', NULL, 0.00, 1, 1, 19, 0, 'Letter Opener', NULL);
 INSERT INTO `products` VALUES (418, 0, 2, 'CEL946', 'pep_cel946.jpg', 13.6170, '2010-08-13 20:00:00', '2010-08-17 15:42:40', NULL, 0.00, 1, 1, 19, 0, 'Letter Opener', NULL);
-INSERT INTO `products` VALUES (419, 0, 2, 'CEL947', 'pep_cel947.jpg', 13.6170, '2010-08-13 20:00:00', '2010-08-17 15:44:02', NULL, 0.00, 1, 1, 19, 0, 'Letter Opener', NULL);
+INSERT INTO `products` VALUES (419, 0, 1, 'CEL947', 'pep_cel947.jpg', 13.6170, '2010-08-13 20:00:00', '2010-12-16 10:59:20', NULL, 0.00, 1, 1, 19, 0, 'Letter Opener', NULL);
 INSERT INTO `products` VALUES (420, 0, 2, 'CEL530', 'pep_cel530.jpg', 15.0000, '2010-08-13 20:00:00', '2010-08-17 13:58:50', NULL, 0.00, 1, 0, 19, 0, 'Compact Mirror', NULL);
 INSERT INTO `products` VALUES (421, 0, 2, 'CEL531', 'pep_cel531.jpg', 15.0000, '2010-08-13 20:00:00', '2010-08-17 14:03:51', NULL, 0.00, 1, 0, 19, 0, 'Compact Mirror', NULL);
 INSERT INTO `products` VALUES (422, 0, 2, 'CEL532', 'pep_cel532.jpg', 15.0000, '2010-08-13 20:00:00', '2010-08-17 14:06:28', NULL, 0.00, 1, 0, 19, 0, 'Compact Mirror', NULL);
@@ -1844,14 +1883,14 @@ INSERT INTO `products` VALUES (444, 0, 2, 'SF297', 'pep_sf297.jpg', 21.2766, '20
 INSERT INTO `products` VALUES (445, 0, 1, 'CEL487', 'pep_cel487.jpg', 29.0000, '2010-08-13 20:00:00', '2010-08-13 22:21:33', NULL, 0.00, 0, 0, 19, 0, 'Hip Flask', NULL);
 INSERT INTO `products` VALUES (446, 0, 1, 'CEL488', 'pep_cel488.jpg', 31.0000, '2010-08-13 20:00:00', '2010-08-13 22:21:51', NULL, 0.00, 0, 0, 19, 0, 'Hip Flask', NULL);
 INSERT INTO `products` VALUES (447, 0, 1, 'CEL489', 'pep_cel489.jpg', 33.0000, '2010-08-13 20:00:00', '2010-08-13 22:22:33', NULL, 0.00, 0, 0, 19, 0, 'Hip Flask', NULL);
-INSERT INTO `products` VALUES (462, 0, 2, 'MS670G', 'MS670G_opt.jpg', 21.2766, '2010-10-01 09:43:52', '2010-10-13 16:25:59', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (462, 0, 1, 'MS670G', 'MS670G_opt.jpg', 21.2766, '2010-10-01 09:43:52', '2010-12-15 11:39:05', NULL, 0.00, 0, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (463, 0, 2, 'LB1864', 'LB1864_opt.jpg', 24.6809, '2010-10-01 09:54:25', '2010-10-13 15:42:31', NULL, 0.00, 1, 1, 0, 0, NULL, NULL);
 INSERT INTO `products` VALUES (464, 0, 2, 'LB1866', 'LB1866_opt.jpg', 22.1277, '2010-10-01 10:14:50', '2010-12-07 13:32:27', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (465, 0, 2, 'LS670W', 'LS670W_opt-5.jpg', 21.2766, '2010-10-01 10:33:19', '2010-10-14 14:47:11', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (466, 0, 2, 'LS670G', 'LS670G_opt.jpg', 21.2766, '2010-10-01 10:58:10', '2010-10-13 15:46:54', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (467, 0, 1, 'LB1036P', '779274022_lb1036p_opt.jpg', 38.2979, '2010-10-01 13:04:30', '2010-11-09 10:42:10', NULL, 0.00, 1, 1, 0, 0, NULL, NULL);
 INSERT INTO `products` VALUES (468, 0, 1, 'LB1038P', '779274027_lb1038p copy_opt-1.jpg', 38.2979, '2010-10-01 13:21:55', '2010-12-07 13:30:36', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
-INSERT INTO `products` VALUES (469, 0, 1, 'LB1038B', '902199793_lb1038b_opt.jpg', 36.5957, '2010-10-01 13:43:19', '2010-10-13 15:22:21', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (469, 0, 1, 'LB1038B', '902199793_lb1038b_opt.jpg', 36.5957, '2010-10-01 13:43:19', '2010-12-13 10:44:29', NULL, 0.00, 0, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (470, 0, 1, 'LB1380', '939772448_lb1380_opt-1.jpg', 46.8085, '2010-10-01 13:47:20', '2010-10-13 15:39:26', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (471, 0, 1, 'LB1382', '1017955365_lb1382_opt-1.jpg', 44.2553, '2010-10-01 14:16:55', '2010-10-23 16:33:35', NULL, 0.00, 0, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (472, 0, 0, 'LB706W', '605036970_lb706w_opt-2.jpg', 29.7872, '2010-10-01 14:23:59', '2010-10-13 16:01:07', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
@@ -1859,11 +1898,11 @@ INSERT INTO `products` VALUES (473, 0, 1, 'LB708W', '605036992_lb708w_opt-1.jpg'
 INSERT INTO `products` VALUES (474, 0, 1, 'LB1741', '664936213_lb1741_opt-1.jpg', 0.0000, '2010-10-01 14:43:40', '2010-10-01 17:31:25', NULL, 0.00, 0, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (475, 0, 1, 'LB1388P', '779273999_lb1388p_opt.jpg', 44.2553, '2010-10-01 14:51:01', '2010-10-13 15:52:34', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (476, 0, 1, 'LB1390P', '779274007_lb1390p_opt.jpg', 44.2553, '2010-10-01 14:55:05', '2010-10-13 15:59:40', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
-INSERT INTO `products` VALUES (477, 0, 2, 'LB1404', 'wacc_lb1404.jpg', 83.4043, '2010-10-01 15:00:29', '2010-12-07 14:04:29', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (477, 0, 1, 'LB1404', 'wacc_lb1404.jpg', 93.6170, '2010-10-01 15:00:29', '2010-12-26 09:41:04', NULL, 0.00, 1, 1, 13, 1, NULL, NULL);
 INSERT INTO `products` VALUES (478, 0, 1, 'MB832S', '779273089copy_mb832s-1.jpg', 76.5957, '2010-10-01 15:24:29', '2010-10-18 17:20:13', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (479, 0, 1, 'MS832Y', '819126962_ms832y_opt-1.jpg', 74.0426, '2010-10-01 15:37:26', '2010-12-07 14:29:54', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (480, 0, 1, 'MB837B', '773922756_mb837b_opt.jpg', 66.3830, '2010-10-01 15:46:17', '2010-10-13 16:23:04', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
-INSERT INTO `products` VALUES (490, 0, 3, 'N2922', 'N2922.jpg', 29.7872, '2010-10-14 12:24:58', '2010-10-22 12:03:53', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (490, 0, 3, 'N2922', 'N2922.jpg', 31.4894, '2010-10-14 12:24:58', '2010-12-24 15:29:01', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (482, 0, 1, 'MB890dia', '773923054_mb890dia_opt.jpg', 57.0213, '2010-10-01 16:14:45', '2010-10-13 16:46:08', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (492, 0, 1, 'R35603', 'R35603copy.jpg', 48.5106, '2010-10-15 12:29:07', '2010-10-22 12:30:06', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (484, 0, 1, 'MB840N', '773922787_mb840n_opt.jpg', 36.5957, '2010-10-01 16:23:10', '2010-10-13 16:44:16', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
@@ -1875,11 +1914,11 @@ INSERT INTO `products` VALUES (488, 0, 2, 'LB1399P', 'LB1399P_opt.jpg', 34.0426,
 INSERT INTO `products` VALUES (495, 0, 1, 'R35665', NULL, 44.2553, '2010-10-15 15:37:23', '2010-10-18 14:59:29', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (496, 0, 1, 'R34931', 'R34931copy.jpg', 50.2128, '2010-10-15 15:46:20', '2010-10-22 12:47:50', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (497, 0, 1, 'R35503', 'R35503copy.jpg', 58.7234, '2010-10-15 15:56:46', '2010-10-19 16:21:21', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
-INSERT INTO `products` VALUES (498, 0, 1, 'R35615', 'geem_r35615.jpg', 84.2553, '2010-10-15 16:33:32', '2010-11-26 12:31:18', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
+INSERT INTO `products` VALUES (498, 0, 1, 'R35615', 'geem_r35615.jpg', 93.6170, '2010-10-15 16:33:32', '2010-12-10 13:38:11', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (499, 0, 1, 'R35151', 'R35151copy.jpg', 42.5532, '2010-10-15 16:49:00', '2010-11-15 17:21:16', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (500, 0, 1, 'R35024', 'geem_r35024.jpg', 40.8511, '2010-10-15 16:55:03', '2010-11-17 18:27:02', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (501, 0, 1, 'R35621', 'geem_r35621.jpg', 46.8085, '2010-10-15 17:06:13', '2010-11-17 18:13:05', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
-INSERT INTO `products` VALUES (502, 0, 1, 'R35596', 'R35596copy.jpg', 32.3404, '2010-10-15 17:16:37', '2010-11-15 11:12:27', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
+INSERT INTO `products` VALUES (502, 0, 1, 'R35596', 'R35596copy.jpg', 36.5957, '2010-10-15 17:16:37', '2010-12-10 12:58:42', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (503, 0, 1, 'R45312', 'R45312copy.jpg', 84.2553, '2010-10-16 09:19:38', '2010-10-18 13:20:12', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (504, 0, 1, 'R45428', 'R45428copy.JPG', 118.2979, '2010-10-16 10:42:07', '2010-10-18 13:08:49', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (505, 0, 1, 'R45377', 'R45377copy.JPG', 217.0213, '2010-10-16 11:07:22', '2010-10-18 13:17:23', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
@@ -1887,10 +1926,10 @@ INSERT INTO `products` VALUES (506, 0, 1, 'R45384', 'R45384copy.JPG', 97.8723, '
 INSERT INTO `products` VALUES (507, 0, 1, 'R45335', 'R45335copy.jpg', 74.0426, '2010-10-16 11:46:50', '2010-10-22 13:42:08', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (508, 0, 1, 'R45427', 'R45427copy.JPG', 182.9787, '2010-10-16 12:20:19', '2010-10-18 13:12:10', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (509, 0, 1, 'R45339', 'R45339copy.jpg', 93.6170, '2010-10-16 12:34:46', '2010-10-22 13:38:00', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
-INSERT INTO `products` VALUES (510, 0, 1, 'R44810', 'R44810copy.jpg', 57.8723, '2010-10-16 12:42:40', '2010-11-27 13:37:36', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
+INSERT INTO `products` VALUES (510, 0, 2, 'R44810', 'R44810copy.jpg', 75.7447, '2010-10-16 12:42:40', '2010-12-20 15:54:29', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (511, 0, 1, 'R45336', 'R45336copy.jpg', 93.6170, '2010-10-16 12:52:39', '2010-10-22 13:40:05', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (512, 0, 1, 'R43338', 'R43338copy.jpg', 58.7234, '2010-10-16 12:54:53', '2010-10-18 13:24:31', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
-INSERT INTO `products` VALUES (513, 0, 1, 'R45316', 'R45316copy.jpg', 89.3617, '2010-10-16 13:55:18', '2010-10-22 13:50:58', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
+INSERT INTO `products` VALUES (513, 0, 1, 'R45316', 'R45316copy.jpg', 89.3617, '2010-10-16 13:55:18', '2010-12-23 13:01:42', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (514, 0, 1, 'R44927', 'R44927copy.jpg', 63.8298, '2010-10-16 14:05:55', '2010-10-22 13:48:48', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (515, 0, 1, 'R43560', 'R43560copy.jpg', 63.8298, '2010-10-16 14:15:09', '2010-12-04 12:03:06', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (516, 0, 1, 'R44985', 'R44985copy.jpg', 93.6170, '2010-10-16 14:22:48', '2010-10-22 13:56:14', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
@@ -1910,7 +1949,7 @@ INSERT INTO `products` VALUES (529, 0, 5, 'Y2379', 'Y2379copy.jpg', 6.8085, '201
 INSERT INTO `products` VALUES (530, 0, 5, 'Y2378', 'Y2378copy.jpg', 6.8085, '2010-10-16 23:22:11', '2010-10-19 14:45:15', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (531, 0, 0, '', 'B3467copy.jpg', 0.0000, '2010-10-17 15:43:50', '2010-10-17 16:44:23', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (532, 0, 3, 'B254', 'B254_opt.jpg', 25.5319, '2010-10-17 16:59:01', '2010-10-19 09:54:31', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (533, 0, 3, 'B2942', 'B2942_opt.jpg', 23.8298, '2010-10-17 17:04:22', '2010-10-20 12:40:13', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (533, 0, 1, 'B2942', 'B2942_opt.jpg', 27.2340, '2010-10-17 17:04:22', '2010-12-20 11:59:29', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (534, 0, 3, 'N2932', 'N2932copy_E3637.jpg', 28.9362, '2010-10-17 17:32:02', '2010-10-17 17:54:52', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (535, 0, 2, 'Y2374', 'Y2374copy.jpg', 12.7660, '2010-10-18 09:07:09', '2010-10-18 09:12:50', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (536, 0, 2, 'Y2191', 'Y2191copy.jpg', 10.2128, '2010-10-18 09:17:43', '2010-10-18 09:22:59', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
@@ -1972,38 +2011,38 @@ INSERT INTO `products` VALUES (592, 0, 1, 'B3339', 'B3339_B3340_B3341copy.jpg', 
 INSERT INTO `products` VALUES (593, 0, 4, 'B3340', 'B3339_B3340_B3341copy.jpg', 33.1915, '2010-10-21 16:50:15', '2010-10-28 13:01:54', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (594, 0, 2, '9931', '9931copy.jpg', 11.9149, '2010-10-22 14:17:46', '2010-12-08 13:40:36', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (595, 0, 1, '9930', '9930copy.jpg', 11.9149, '2010-10-22 15:09:29', '2010-12-08 13:40:08', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
-INSERT INTO `products` VALUES (596, 0, 2, '9945', '9945copy.jpg', 14.4681, '2010-10-22 15:49:58', '2010-12-04 09:12:49', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
+INSERT INTO `products` VALUES (596, 0, 2, '9945', '9945copy.jpg', 14.4681, '2010-10-22 15:49:58', '2010-12-20 14:54:24', NULL, 0.00, 0, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (597, 0, 2, 'HM140', 'HM140copy.jpg', 28.0851, '2010-10-22 16:04:40', '2010-10-22 16:08:00', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (598, 0, 2, '9859BKGF', '9859BKGFcopy.jpg', 18.7234, '2010-10-22 16:13:08', '2010-10-22 16:16:00', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (599, 0, 2, '9935/3GF', '9935~3GFcopy.jpg', 21.2766, '2010-10-22 16:20:16', '2010-10-22 16:30:15', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (600, 0, 1, 'GN144', 'GN144copy.jpg', 106.3830, '2010-10-23 16:13:01', '2010-10-23 16:31:59', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (601, 0, 1, 'GP620R', 'GP620Rcopy.jpg', 182.9787, '2010-10-23 16:41:01', '2010-10-23 17:56:50', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (602, 0, 1, 'GP639', 'GP639copy.jpg', 102.1277, '2010-10-23 18:03:40', '2010-10-23 18:26:19', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (603, 0, 1, 'GP522T', 'GP522Tcopy.jpg', 131.9149, '2010-10-23 18:10:57', '2010-10-23 18:17:24', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (603, 0, 1, 'GP522T', 'GP522Tcopy.jpg', 131.9149, '2010-10-23 18:10:57', '2010-12-20 15:54:55', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (604, 0, 1, 'GP541', 'gp541copy1.jpg', 143.8298, '2010-10-23 18:19:36', '2010-10-23 18:25:22', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (605, 0, 1, 'GP559G', 'gp559Gcopy1.jpg', 140.4255, '2010-10-23 18:27:46', '2010-10-23 18:33:30', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (606, 0, 1, 'GE541', 'ge541copy1.jpg', 71.4894, '2010-10-23 18:49:53', '2010-10-23 18:55:19', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (607, 0, 1, 'GE653', 'GE653copy.jpg', 102.1277, '2010-10-23 18:57:20', '2010-10-23 19:00:05', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (608, 0, 1, 'GE548T', 'ge548Tcopy1.jpg', 109.7872, '2010-10-23 19:02:10', '2010-10-23 19:07:31', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (608, 0, 1, 'GE548T', 'ge548Tcopy1.jpg', 109.7872, '2010-10-23 19:02:10', '2010-12-20 15:55:36', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (609, 0, 1, 'GE565W', 'GE565Wcopy.jpg', 123.4043, '2010-10-23 19:10:51', '2010-10-23 19:20:49', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (610, 0, 1, 'GE599', 'GE599copy.jpg', 178.7234, '2010-10-23 19:23:11', '2010-10-23 19:29:09', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (610, 0, 1, 'GE599', 'GE599copy.jpg', 178.7234, '2010-10-23 19:23:11', '2010-12-23 14:53:58', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (611, 0, 1, 'GE631W', 'ge631Wcopy1.jpg', 75.7447, '2010-10-23 19:32:47', '2010-10-23 19:44:37', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (612, 0, 1, 'GE658T', 'GE658Tcopy.jpg', 157.4468, '2010-10-23 19:49:16', '2010-10-23 19:56:49', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (613, 0, 1, 'GP542W', 'gp542Wcopy1.jpg', 118.2979, '2010-10-23 20:00:08', '2010-10-23 20:17:23', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (614, 0, 1, 'GP571', 'GP571copy.jpg', 212.7660, '2010-10-23 20:19:36', '2010-10-23 20:27:36', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (615, 0, 1, 'GP602', 'gp602copy1.jpg', 127.6596, '2010-10-23 20:32:20', '2010-10-23 20:35:22', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (616, 0, 1, 'GP627L', 'GP627Lcopy.jpg', 161.7021, '2010-10-23 20:38:43', '2010-10-23 20:44:43', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (617, 0, 3, 'B3179C', 'jgesb3179C.jpg', 44.2553, '2010-10-26 16:06:04', '2010-10-26 16:10:58', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (618, 0, 3, 'B3467', 'jgesb3467.jpg', 28.0851, '2010-10-26 16:19:58', '2010-10-26 16:31:24', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (617, 0, 2, 'B3179C', 'jgesb3179C.jpg', 44.2553, '2010-10-26 16:06:04', '2010-12-22 09:07:28', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (618, 0, 3, 'B3467', 'jgesb3467.jpg', 28.0851, '2010-10-26 16:19:58', '2010-12-20 16:46:28', NULL, 0.00, 0, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (619, 0, 3, 'B3715T', 'jgesb3715T.jpg', 33.1915, '2010-10-26 16:40:37', '2010-10-26 16:46:16', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (620, 0, 3, 'B3463C', 'jgesb3463c.jpg', 32.3404, '2010-10-26 16:53:07', '2010-10-26 16:57:41', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (621, 0, 1, 'B3448', 'jgesb3448.jpg', 72.3404, '2010-10-26 17:02:47', '2010-10-26 17:07:23', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (622, 0, 3, 'E3855T', 'jgese3855T.jpg', 13.6170, '2010-10-26 18:54:45', '2010-10-26 18:55:42', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (623, 0, 3, 'E3804', 'jgese3804.jpg', 17.0213, '2010-10-26 19:01:15', '2010-10-28 12:01:20', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (623, 0, 1, 'E3804', 'jgese3804.jpg', 17.0213, '2010-10-26 19:01:15', '2010-12-11 14:51:16', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (624, 0, 1, 'E3851C', 'jges_e3851C.jpg', 17.0213, '2010-10-26 19:06:49', '2010-10-26 19:07:36', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (625, 0, 1, 'E3852', 'jges_e3852.jpg', 27.2340, '2010-10-26 19:11:32', '2010-10-28 12:07:19', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (626, 0, 1, 'E3831C', 'jges_e3831C.jpg', 20.4255, '2010-10-26 19:14:07', '2010-10-28 12:04:12', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (627, 0, 3, 'P3199', 'jges_p3199_N723.jpg', 28.0851, '2010-10-26 19:28:39', '2010-11-19 15:45:44', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (627, 0, 1, 'P3199', 'jges_p3199_N723.jpg', 28.0851, '2010-10-26 19:28:39', '2010-12-11 14:50:53', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (628, 0, 1, 'N3071', 'jges_n3071.jpg', 50.2128, '2010-10-26 19:42:20', '2010-10-26 19:43:15', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (629, 0, 1, '31065001', 'gest_31065001.jpg', 40.8511, '2010-10-26 20:47:43', '2010-10-26 20:51:56', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (630, 0, 1, '31064001', 'gest_31064001.jpg', 58.7234, '2010-10-26 20:56:50', '2010-10-26 21:04:05', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
@@ -2013,7 +2052,7 @@ INSERT INTO `products` VALUES (633, 0, 1, '31019001', 'gest_31019001.jpg', 30.63
 INSERT INTO `products` VALUES (634, 0, 1, '31083001', 'gest_31083001.jpg', 84.2553, '2010-10-26 21:46:53', '2010-10-26 21:51:39', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (635, 0, 1, '31396001', 'gest_31396001.jpg', 39.1489, '2010-10-26 22:13:27', '2010-10-26 22:16:55', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (636, 0, 1, '31604001', 'gest_31604001.jpg', 75.7447, '2010-10-26 22:23:03', '2010-10-26 22:26:04', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
-INSERT INTO `products` VALUES (637, 0, 1, '31632001', 'gest_31632001.jpg', 45.1064, '2010-10-26 22:32:00', '2010-11-12 14:45:26', NULL, 0.00, 0, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (637, 0, 1, '31632001', 'gest_31632001.jpg', 45.1064, '2010-10-26 22:32:00', '2010-12-23 14:27:15', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (638, 0, 1, '31771001', 'gest_31771001.jpg', 38.2979, '2010-10-26 22:39:51', '2010-10-26 22:44:14', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (639, 0, 1, '31522001', 'gest_31522001.jpg', 38.2979, '2010-10-26 22:52:17', '2010-10-26 22:55:23', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (640, 0, 1, '31391001', 'gest_31391001.jpg', 34.0426, '2010-10-26 23:00:23', '2010-10-26 23:06:16', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
@@ -2037,8 +2076,8 @@ INSERT INTO `products` VALUES (658, 0, 1, '35018001', 'gest_35018001.jpg', 67.23
 INSERT INTO `products` VALUES (659, 0, 1, '35436001', 'gest_35436001.jpg', 84.2553, '2010-10-27 18:40:59', '2010-10-27 18:41:52', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (660, 0, 1, '35454001', 'gest_35454001.jpg', 37.4468, '2010-10-27 18:48:10', '2010-10-27 18:48:52', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (661, 0, 1, '36105001', 'gest_36105001.jpg', 22.1277, '2010-10-27 18:57:35', '2010-11-17 18:32:34', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
-INSERT INTO `products` VALUES (662, 0, 1, '36208001', 'gest_36208001.jpg', 20.4255, '2010-10-27 19:08:05', '2010-10-27 19:08:42', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
-INSERT INTO `products` VALUES (663, 0, 1, '36915001', 'gest_36915001.jpg', 24.6809, '2010-10-27 19:15:20', '2010-10-27 19:15:59', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (662, 0, 1, '36208001', 'gest_36208001.jpg', 20.4255, '2010-10-27 19:08:05', '2010-12-20 14:57:15', NULL, 0.00, 0, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (663, 0, 1, '36915001', 'gest_36915001.jpg', 29.7872, '2010-10-27 19:15:20', '2010-12-23 14:24:03', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (664, 0, 1, '36207001', 'gest_36207001.jpg', 16.1702, '2010-10-27 19:21:02', '2010-10-27 19:21:36', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (665, 0, 1, '36104001', 'gest_36104001.jpg', 20.4255, '2010-10-27 19:28:38', '2010-10-27 19:29:09', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (666, 0, 1, '36916001', 'gest_36916001.jpg', 27.2340, '2010-10-27 19:36:32', '2010-10-27 19:37:06', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
@@ -2050,10 +2089,10 @@ INSERT INTO `products` VALUES (671, 0, 1, 'E3637', 'jges_e3637.jpg', 21.2766, '2
 INSERT INTO `products` VALUES (672, 0, 5, 'B3335', 'jges_b3335.jpg', 32.3404, '2010-10-28 14:27:57', '2010-11-19 14:38:20', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (674, 0, 1, '4425', 'wsey_4425.jpg', 53.6085, '2010-10-28 16:21:33', '2010-10-28 16:25:25', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (675, 0, 1, '4421', 'wsey_4421.jpg', 38.2894, '2010-10-28 16:40:45', '2010-10-28 16:49:56', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (676, 0, 1, '4429', 'wsey_4429.jpg', 53.6085, '2010-10-28 16:54:45', '2010-10-28 17:00:18', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (676, 0, 1, '4429', 'wsey_4429.jpg', 53.6085, '2010-10-28 16:54:45', '2010-12-24 17:12:57', NULL, 0.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (677, 0, 1, '31056001', 'gest_31056001.jpg', 35.7447, '2010-10-28 17:57:57', '2010-10-29 09:00:22', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (678, 0, 3, 'Y2489', 'jgsb_y2489.jpg', 11.0638, '2010-10-30 16:01:28', '2010-10-30 16:02:02', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
-INSERT INTO `products` VALUES (679, 0, 2, 'SL1405', 'wacc_sl1405(2).jpg', 210.0000, '2010-11-03 17:00:48', '2010-11-03 17:13:45', NULL, 0.00, 1, 0, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (679, 0, 1, 'SL1405', 'wacc_sl1405(2).jpg', 225.0000, '2010-11-03 17:00:48', '2010-12-26 09:41:47', NULL, 0.00, 1, 0, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (680, 0, 3, 'Y2458', 'jgsb_y2458.jpg', 6.8085, '2010-11-06 09:35:26', '2010-11-06 09:37:00', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (681, 0, 3, 'N2712C', 'jges_n2712c.jpg', 24.6809, '2010-11-06 09:50:19', '2010-11-06 09:51:24', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (682, 0, 1, 'LB1196P', 'wacc_lb1196 copy.jpg', 55.3191, '2010-11-09 14:31:46', '2010-11-09 14:37:28', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
@@ -2095,7 +2134,7 @@ INSERT INTO `products` VALUES (717, 0, 1, 'R35633', 'geem_r35633.jpg', 84.2553, 
 INSERT INTO `products` VALUES (718, 0, 1, 'R35252', 'geem_r35252.jpg', 84.2553, '2010-11-17 17:25:56', '2010-12-02 15:45:00', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (719, 0, 1, 'R35493', 'geem_r35493.JPG', 63.8298, '2010-11-17 17:31:18', '2010-11-17 17:32:16', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (720, 0, 1, 'R35531', 'geem_r35531.jpg', 42.5532, '2010-11-17 17:36:36', '2010-11-17 17:37:26', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
-INSERT INTO `products` VALUES (721, 0, 1, 'R35495', 'geem_r35495.jpg', 84.2553, '2010-11-17 17:40:44', '2010-11-17 17:46:48', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
+INSERT INTO `products` VALUES (721, 0, 1, 'R35495', 'geem_r35495.jpg', 84.2553, '2010-11-17 17:40:44', '2010-12-10 12:54:27', NULL, 0.00, 0, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (722, 0, 1, 'R35607', 'geem_r35607.jpg', 55.3191, '2010-11-17 17:50:57', '2010-11-17 17:53:28', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (723, 0, 1, 'R35637', 'geem_r35637.JPG', 72.3404, '2010-11-17 17:56:38', '2010-11-17 17:57:46', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (724, 0, 1, 'R35280', 'geem_r35280.jpg', 97.8723, '2010-11-17 18:02:33', '2010-11-17 18:04:06', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
@@ -2103,7 +2142,7 @@ INSERT INTO `products` VALUES (725, 0, 2, 'R35610', 'geem_r35610.jpg', 46.8085, 
 INSERT INTO `products` VALUES (726, 0, 1, 'R30226', 'geem_r30226copy.jpg', 27.2340, '2010-11-18 09:20:21', '2010-11-18 09:25:29', NULL, 0.00, 1, 1, 27, 0, NULL, NULL);
 INSERT INTO `products` VALUES (729, 0, 3, 'N3082T', 'jges_n3082t.jpg', 30.6383, '2010-11-19 15:07:47', '2010-11-19 15:08:23', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 INSERT INTO `products` VALUES (731, 0, 1, '3560501', 'gest_35605001.jpg', 28.9362, '2010-11-24 18:05:41', '2010-11-24 18:06:08', NULL, 0.00, 0, 1, 26, 0, NULL, NULL);
-INSERT INTO `products` VALUES (732, 0, 1, '3561501', 'gest_35615001.jpg', 31.4894, '2010-11-24 18:07:30', '2010-12-08 15:36:35', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (732, 0, 1, '3561501', 'gest_35615001.jpg', 31.4894, '2010-11-24 18:07:30', '2010-12-17 14:24:11', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (733, 0, 1, '35639001', 'gest_35639001.jpg', 37.4468, '2010-11-24 18:10:28', '2010-12-08 15:43:51', NULL, 0.00, 1, 1, 0, 0, NULL, NULL);
 INSERT INTO `products` VALUES (734, 0, 1, '3564301', 'gest_35643001.jpg', 37.4468, '2010-11-24 18:13:01', '2010-12-08 15:40:35', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
 INSERT INTO `products` VALUES (735, 0, 1, '3017', 'wsek_3017.jpg', 23.8213, '2010-12-01 14:17:38', '2010-12-01 14:18:39', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
@@ -2117,22 +2156,31 @@ INSERT INTO `products` VALUES (743, 0, 1, '4352', 'wsek_4352.jpg', 27.2255, '201
 INSERT INTO `products` VALUES (744, 0, 1, '4355', 'wsek_4355.jpg', 31.4809, '2010-12-04 13:28:45', '2010-12-04 13:31:06', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (745, 0, 1, '4385', 'wsek_4385.jpg', 39.1404, '2010-12-04 13:32:52', '2010-12-04 13:34:45', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (746, 0, 1, '4391', 'wsek_4391.jpg', 39.1404, '2010-12-04 13:36:12', '2010-12-04 13:38:26', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (747, 0, 1, '4392', 'wsek_4392.jpg', 39.1404, '2010-12-04 13:39:50', '2010-12-04 13:40:24', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (747, 0, 1, '4392', 'wsek_4392.jpg', 39.1404, '2010-12-04 13:39:50', '2010-12-22 14:33:46', NULL, 0.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (748, 0, 1, '4415', 'wsek_4415.jpg', 35.7362, '2010-12-04 13:41:24', '2010-12-04 13:45:12', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (749, 0, 1, '4416', 'wsek_4416.jpg', 19.5660, '2010-12-04 13:46:52', '2010-12-04 13:48:08', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (750, 0, 1, '4441', 'wsek_4441.jpg', 27.2255, '2010-12-04 13:49:32', '2010-12-04 13:49:58', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (751, 0, 1, '4442', 'wsek_4442.jpg', 27.2255, '2010-12-04 13:51:14', '2010-12-04 13:51:46', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (752, 0, 3, '4453', 'wsek_4453.jpg', 31.4809, '2010-12-04 14:05:09', '2010-12-07 14:20:07', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (753, 0, 1, '3281', 'wsek_3281.jpg', 22.1191, '2010-12-04 14:15:17', '2010-12-04 14:21:40', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (754, 0, 1, '3329', 'wsek_3329.jpg', 31.4809, '2010-12-04 14:23:00', '2010-12-04 14:24:23', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (754, 0, 1, '3329', 'wsek_3329.jpg', 31.4809, '2010-12-04 14:23:00', '2010-12-22 15:26:28', NULL, 0.00, 0, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (755, 0, 1, '3330', 'wsek_3330.jpg', 36.9900, '2010-12-04 14:25:46', '2010-12-04 15:54:15', NULL, 0.00, 1, 0, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (756, 0, 1, '3335', 'wsek_3335.jpg', 35.7362, '2010-12-04 15:20:02', '2010-12-04 15:20:54', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
 INSERT INTO `products` VALUES (757, 0, 1, '3341', 'wsek_3341.jpg', 25.5234, '2010-12-04 15:25:04', '2010-12-04 15:27:16', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (758, 0, 1, '3342', 'wsek_3342.jpg', 31.4809, '2010-12-04 15:51:07', '2010-12-04 15:51:39', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
-INSERT INTO `products` VALUES (759, 0, 2, 'LB1403P', 'wacc_lb1403round.jpg', 84.2553, '2010-12-07 13:44:23', '2010-12-07 13:50:59', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (758, 0, 1, '3342', 'wsek_3342.jpg', 31.4809, '2010-12-04 15:51:07', '2010-12-13 16:23:35', NULL, 0.00, 0, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (759, 0, 2, 'LB1403P', 'wacc_lb1403round.jpg', 93.6170, '2010-12-07 13:44:23', '2010-12-26 09:40:23', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
 INSERT INTO `products` VALUES (760, 0, 3, '9924', 'pwb_9924.jpg', 11.9149, '2010-12-08 13:21:37', '2010-12-08 13:41:06', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (761, 0, 2, '9949', 'pwb_9949~6gf.jpg', 19.5745, '2010-12-08 13:31:56', '2010-12-08 13:38:51', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
 INSERT INTO `products` VALUES (762, 0, 2, '9925', 'pwb_9925~4gf.jpg', 17.0213, '2010-12-08 13:42:55', '2010-12-08 13:48:43', NULL, 0.00, 1, 1, 21, 0, NULL, NULL);
+INSERT INTO `products` VALUES (775, 0, 1, '62323001', 'grst_62323001.jpg', 306.3830, '2010-12-21 17:07:55', '2010-12-21 17:08:30', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (773, 0, 1, 'P2952', 'jgdd_p2952.jpg', 31.4894, '2010-12-15 13:54:34', '2010-12-15 14:22:20', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
+INSERT INTO `products` VALUES (772, 0, 4, 'lb1702b', 'wacc_lb1702b.jpg', 97.8723, '2010-12-13 12:12:00', '2010-12-26 09:40:44', NULL, 0.00, 1, 1, 13, 0, NULL, NULL);
+INSERT INTO `products` VALUES (771, 0, 2, '4048', 'wsey_4048.jpg', 38.2894, '2010-12-11 10:26:49', '2010-12-11 10:27:15', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (774, 0, 1, '62322001', 'grst_62322001.jpg', 306.3830, '2010-12-21 16:57:48', '2010-12-21 17:08:52', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (770, 0, 2, '4418', 'wsey_4418.jpg', 53.6085, '2010-12-11 09:36:16', '2010-12-11 09:41:48', NULL, 0.00, 1, 1, 14, 0, NULL, NULL);
+INSERT INTO `products` VALUES (776, 0, 1, '62324001', 'grst_62324001.jpg', 404.2553, '2010-12-21 17:13:35', '2010-12-21 17:14:10', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (777, 0, 1, '62325001', 'grst_62325001.jpg', 404.2553, '2010-12-21 17:18:13', '2010-12-21 17:19:55', NULL, 0.00, 1, 1, 26, 0, NULL, NULL);
+INSERT INTO `products` VALUES (778, 0, 2, 'Y2202', 'jgsc_y2202.jpg', 10.2128, '2010-12-22 09:13:11', '2010-12-22 09:17:59', NULL, 0.00, 1, 1, 16, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2149,7 +2197,7 @@ CREATE TABLE `products_attributes` (
   `price_prefix` char(1) NOT NULL,
   PRIMARY KEY  (`products_attributes_id`),
   KEY `idx_products_attributes_products_id` (`products_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4384 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4480 ;
 
 --
 -- Dumping data for table `products_attributes`
@@ -4020,7 +4068,7 @@ INSERT INTO `products_attributes` VALUES (2311, 468, 1, 2, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2312, 468, 5, 12, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2313, 468, 3, 6, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2314, 468, 6, 9, 0.0000, '');
-INSERT INTO `products_attributes` VALUES (2315, 469, 4, 8, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (2315, 469, 4, 22, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2316, 469, 2, 3, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2317, 469, 1, 2, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (2318, 469, 5, 12, 0.0000, '');
@@ -6013,6 +6061,56 @@ INSERT INTO `products_attributes` VALUES (4380, 762, 39, 138, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (4381, 762, 38, 139, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (4382, 762, 36, 132, 0.0000, '');
 INSERT INTO `products_attributes` VALUES (4383, 762, 11, 58, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4467, 776, 29, 130, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4466, 776, 8, 128, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4465, 776, 32, 116, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4464, 775, 9, 172, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4463, 775, 30, 118, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4462, 775, 41, 154, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4461, 775, 29, 130, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4460, 775, 8, 127, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4459, 775, 32, 116, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4458, 774, 9, 172, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4457, 774, 30, 118, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4456, 774, 41, 154, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4455, 774, 29, 130, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4454, 774, 8, 128, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4453, 774, 32, 116, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4452, 773, 30, 146, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4451, 773, 9, 36, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4446, 772, 6, 9, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4445, 772, 3, 6, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4450, 773, 29, 114, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4449, 773, 8, 33, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4444, 772, 1, 2, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4443, 772, 2, 3, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4448, 773, 32, 115, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4447, 772, 5, 171, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4442, 772, 4, 7, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4441, 771, 6, 9, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4440, 771, 3, 6, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4439, 771, 5, 26, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4438, 771, 1, 2, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4437, 771, 2, 21, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4436, 771, 4, 7, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4435, 770, 6, 9, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4434, 770, 3, 6, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4433, 770, 5, 27, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4432, 770, 1, 2, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4431, 770, 2, 21, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4430, 770, 4, 7, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4468, 776, 41, 154, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4469, 776, 30, 118, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4470, 776, 9, 172, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4471, 777, 32, 116, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4472, 777, 8, 127, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4473, 777, 29, 130, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4474, 777, 41, 154, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4475, 777, 30, 118, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4476, 777, 9, 172, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4477, 778, 32, 116, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4478, 778, 8, 33, 0.0000, '');
+INSERT INTO `products_attributes` VALUES (4479, 778, 9, 173, 0.0000, '');
 
 -- --------------------------------------------------------
 
@@ -6077,7 +6175,7 @@ CREATE TABLE `products_description` (
   `products_viewed` int(5) default '0',
   PRIMARY KEY  (`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=763 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=779 ;
 
 --
 -- Dumping data for table `products_description`
@@ -6085,88 +6183,88 @@ CREATE TABLE `products_description` (
 
 INSERT INTO `products_description` VALUES (1, 1, 'BM8240-11A', '', '', 144);
 INSERT INTO `products_description` VALUES (3, 1, 'BM8242-08P', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-08P', 37);
-INSERT INTO `products_description` VALUES (5, 1, 'Gents Citizen Stiletto Two Tone bracelet watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR0014-52A', 58);
+INSERT INTO `products_description` VALUES (5, 1, 'Gents Citizen Stiletto Two Tone bracelet watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR0014-52A', 63);
 INSERT INTO `products_description` VALUES (6, 1, 'Gents Citizen Stiletto Gold Tone Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1002-05A', 14);
-INSERT INTO `products_description` VALUES (7, 1, 'Gents Citizen Stiletto Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1002-56B', 11);
+INSERT INTO `products_description` VALUES (7, 1, 'Gents Citizen Stiletto Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1002-56B', 12);
 INSERT INTO `products_description` VALUES (8, 1, 'Gents Citizen Stiletto Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1004-51E', 16);
-INSERT INTO `products_description` VALUES (9, 1, 'Gents Citizen Stiletto Gold Tone Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1062-03P', 16);
-INSERT INTO `products_description` VALUES (10, 1, 'Gents Citizen Stiletto Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR3004-50A', 24);
+INSERT INTO `products_description` VALUES (9, 1, 'Gents Citizen Stiletto Gold Tone Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR1062-03P', 17);
+INSERT INTO `products_description` VALUES (10, 1, 'Gents Citizen Stiletto Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR3004-50A', 25);
 INSERT INTO `products_description` VALUES (11, 1, 'Gents Citizen Stiletto Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AR3010-57E', 16);
-INSERT INTO `products_description` VALUES (12, 1, 'Gents Citizen Stainless Steel Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0810-55X', 27);
-INSERT INTO `products_description` VALUES (13, 1, 'Gents Citizen Two Tone Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0884-59E', 42);
-INSERT INTO `products_description` VALUES (14, 1, 'Gents Citizen Largo Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0910-51E', 14);
-INSERT INTO `products_description` VALUES (15, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AU1012-54A', 16);
-INSERT INTO `products_description` VALUES (16, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AU1022-51A', 11);
+INSERT INTO `products_description` VALUES (12, 1, 'Gents Citizen Stainless Steel Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0810-55X', 29);
+INSERT INTO `products_description` VALUES (13, 1, 'Gents Citizen Two Tone Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0884-59E', 43);
+INSERT INTO `products_description` VALUES (14, 1, 'Gents Citizen Largo Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AT0910-51E', 18);
+INSERT INTO `products_description` VALUES (15, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AU1012-54A', 17);
+INSERT INTO `products_description` VALUES (16, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AU1022-51A', 13);
 INSERT INTO `products_description` VALUES (17, 1, 'Gents Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=AU1024-55A', 9);
-INSERT INTO `products_description` VALUES (18, 1, 'Gents Citizen Titanium Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5250-02L', 48);
-INSERT INTO `products_description` VALUES (19, 1, 'Gents Citizen Two Tone Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5376-55A', 19);
-INSERT INTO `products_description` VALUES (20, 1, 'Gents Citizen Stainless Steel Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5380-58E', 22);
-INSERT INTO `products_description` VALUES (21, 1, 'Gents Citizen Black Leather Strap Watch', '', '', 29);
-INSERT INTO `products_description` VALUES (22, 1, 'Gents Citizen Stainless Steel Perpetual Calendar Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL8000-54L', 22);
+INSERT INTO `products_description` VALUES (18, 1, 'Gents Citizen Titanium Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5250-02L', 50);
+INSERT INTO `products_description` VALUES (19, 1, 'Gents Citizen Two Tone Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5376-55A', 21);
+INSERT INTO `products_description` VALUES (20, 1, 'Gents Citizen Stainless Steel Chronograph Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL5380-58E', 29);
+INSERT INTO `products_description` VALUES (21, 1, 'Gents Citizen Black Leather Strap Watch', '', '', 33);
+INSERT INTO `products_description` VALUES (22, 1, 'Gents Citizen Stainless Steel Perpetual Calendar', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BL8000-54L', 24);
 INSERT INTO `products_description` VALUES (23, 1, 'Gents Citizen Titanium Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM0900-51L', 16);
 INSERT INTO `products_description` VALUES (24, 1, 'Gents Citizen Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM5000-54A', 19);
-INSERT INTO `products_description` VALUES (459, 1, 'Gents Accurist Gold Plated Quartz Watch', '', '', 10);
-INSERT INTO `products_description` VALUES (460, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 7);
-INSERT INTO `products_description` VALUES (26, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6010-55A', 8);
-INSERT INTO `products_description` VALUES (27, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6010-55E', 19);
-INSERT INTO `products_description` VALUES (28, 1, 'Gents Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6014-54A', 13);
-INSERT INTO `products_description` VALUES (29, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6550-58E', 16);
-INSERT INTO `products_description` VALUES (30, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6552-52E', 47);
-INSERT INTO `products_description` VALUES (31, 1, 'Gents Citizen Titanium Watch', '', '', 16);
+INSERT INTO `products_description` VALUES (459, 1, 'Gents Accurist Gold Plated Quartz Watch', '', '', 12);
+INSERT INTO `products_description` VALUES (460, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 8);
+INSERT INTO `products_description` VALUES (26, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6010-55A', 11);
+INSERT INTO `products_description` VALUES (27, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6010-55E', 21);
+INSERT INTO `products_description` VALUES (28, 1, 'Gents Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6014-54A', 15);
+INSERT INTO `products_description` VALUES (29, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6550-58E', 17);
+INSERT INTO `products_description` VALUES (30, 1, 'Gents Citizen Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6552-52E', 49);
+INSERT INTO `products_description` VALUES (31, 1, 'Gents Citizen Titanium Watch', '', '', 21);
 INSERT INTO `products_description` VALUES (32, 1, 'Gents Citizen Black Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM6575-06E', 20);
 INSERT INTO `products_description` VALUES (33, 1, 'Gents Citizen Stainless Steel Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8220-51L', 10);
 INSERT INTO `products_description` VALUES (34, 1, 'Gents Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8224-51E', 4);
 INSERT INTO `products_description` VALUES (35, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8240-11A', 22);
-INSERT INTO `products_description` VALUES (36, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-08A', 27);
-INSERT INTO `products_description` VALUES (37, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-08P', 38);
+INSERT INTO `products_description` VALUES (36, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-08A', 28);
+INSERT INTO `products_description` VALUES (37, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-08P', 39);
 INSERT INTO `products_description` VALUES (38, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8242-16A', 20);
-INSERT INTO `products_description` VALUES (39, 1, 'Gents Citizen Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8450-94B', 16);
-INSERT INTO `products_description` VALUES (40, 1, 'Gents Citizen Gold Tone Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8452-99A', 11);
-INSERT INTO `products_description` VALUES (41, 1, 'Gents Citizen Two Tone Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8454-93A', 11);
-INSERT INTO `products_description` VALUES (42, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BV1030-08A', 11);
-INSERT INTO `products_description` VALUES (43, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BW0172-02P', 13);
-INSERT INTO `products_description` VALUES (44, 1, 'Gents Citizen Stainless Steel Radio Controlled Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BY0000-56E', 51);
-INSERT INTO `products_description` VALUES (45, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2152-51D', 20);
-INSERT INTO `products_description` VALUES (46, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2664-50D', 18);
-INSERT INTO `products_description` VALUES (47, 1, 'Ladies Citizen Silhouette 34 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2680-53D', 64);
-INSERT INTO `products_description` VALUES (48, 1, 'Ladies Citizen Silhouette 34 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2682-58D', 25);
-INSERT INTO `products_description` VALUES (49, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2690-50E', 11);
-INSERT INTO `products_description` VALUES (50, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2692-54D', 8);
-INSERT INTO `products_description` VALUES (51, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2694-59D', 8);
+INSERT INTO `products_description` VALUES (39, 1, 'Gents Citizen Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8450-94B', 18);
+INSERT INTO `products_description` VALUES (40, 1, 'Gents Citizen Gold Tone Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8452-99A', 12);
+INSERT INTO `products_description` VALUES (41, 1, 'Gents Citizen Two Tone Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BM8454-93A', 13);
+INSERT INTO `products_description` VALUES (42, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BV1030-08A', 13);
+INSERT INTO `products_description` VALUES (43, 1, 'Gents Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BW0172-02P', 14);
+INSERT INTO `products_description` VALUES (44, 1, 'Gents Citizen Stainless Steel Radio Controlled Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=BY0000-56E', 58);
+INSERT INTO `products_description` VALUES (45, 1, 'Ladies Citizen Silhouette Gold Tone Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2152-51D', 22);
+INSERT INTO `products_description` VALUES (46, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2664-50D', 21);
+INSERT INTO `products_description` VALUES (47, 1, 'Ladies Citizen Silhouette 34 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2680-53D', 77);
+INSERT INTO `products_description` VALUES (48, 1, 'Ladies Citizen Silhouette 34 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2682-58D', 26);
+INSERT INTO `products_description` VALUES (49, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2690-50E', 13);
+INSERT INTO `products_description` VALUES (50, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2692-54D', 9);
+INSERT INTO `products_description` VALUES (51, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2694-59D', 10);
 INSERT INTO `products_description` VALUES (52, 1, 'Ladies Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG2704-57E', 14);
-INSERT INTO `products_description` VALUES (53, 1, 'Ladies Citizen Stiletto 36 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG3022-51D', 10);
+INSERT INTO `products_description` VALUES (53, 1, 'Ladies Citizen Stiletto 36 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG3022-51D', 11);
 INSERT INTO `products_description` VALUES (54, 1, 'Ladies Citizen Stiletto Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG3042-54A', 16);
-INSERT INTO `products_description` VALUES (55, 1, 'Ladies Citizen Stiletto Stainless Steel 42 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG3060-52D', 15);
-INSERT INTO `products_description` VALUES (56, 1, 'Ladies Citizen Riva 24 Diamond Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW0894-57D', 15);
-INSERT INTO `products_description` VALUES (57, 1, 'Ladies Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1254-53A', 9);
-INSERT INTO `products_description` VALUES (58, 1, 'Ladies Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1264-50A', 11);
-INSERT INTO `products_description` VALUES (59, 1, 'Ladies Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1270-06A', 15);
+INSERT INTO `products_description` VALUES (55, 1, 'Ladies Citizen Stiletto Stainless Steel 42 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EG3060-52D', 17);
+INSERT INTO `products_description` VALUES (56, 1, 'Ladies Citizen Riva 24 Diamond Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW0894-57D', 17);
+INSERT INTO `products_description` VALUES (57, 1, 'Ladies Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1254-53A', 10);
+INSERT INTO `products_description` VALUES (58, 1, 'Ladies Citizen Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1264-50A', 15);
+INSERT INTO `products_description` VALUES (59, 1, 'Ladies Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1270-06A', 16);
 INSERT INTO `products_description` VALUES (60, 1, 'Ladies Citizen Leather Strap Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1272-01B', 19);
 INSERT INTO `products_description` VALUES (61, 1, 'Ladies Citizen Titanium Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1400-53H', 10);
 INSERT INTO `products_description` VALUES (62, 1, 'Ladies Citizen Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW1520-51E', 12);
-INSERT INTO `products_description` VALUES (63, 1, 'Ladies Citizen 100m Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW3034-59A', 23);
+INSERT INTO `products_description` VALUES (63, 1, 'Ladies Citizen 100m Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW3034-59A', 26);
 INSERT INTO `products_description` VALUES (64, 1, 'Ladies Citizen Gold Tone Expanding Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW3152-95A', 11);
-INSERT INTO `products_description` VALUES (65, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW8692-58A', 10);
-INSERT INTO `products_description` VALUES (66, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW8694-52D', 6);
-INSERT INTO `products_description` VALUES (67, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9330-53A', 9);
+INSERT INTO `products_description` VALUES (65, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW8692-58A', 11);
+INSERT INTO `products_description` VALUES (66, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW8694-52D', 9);
+INSERT INTO `products_description` VALUES (67, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9330-53A', 11);
 INSERT INTO `products_description` VALUES (68, 1, 'Ladies Citizen Silhouette Gold Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9682-56D', 11);
 INSERT INTO `products_description` VALUES (69, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9690-58E', 12);
 INSERT INTO `products_description` VALUES (70, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9700-56E', 17);
-INSERT INTO `products_description` VALUES (71, 1, 'Ladies Citizen Silhouette 40 Diamond Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9720-59E', 26);
-INSERT INTO `products_description` VALUES (72, 1, 'Ladies Citizen Silhouette 40 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9734-54A', 20);
-INSERT INTO `products_description` VALUES (73, 1, 'Ladies Citizen Normandie Stainless Steel and Black Bracelet Watc', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9780-57E', 19);
-INSERT INTO `products_description` VALUES (74, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9810-58D', 18);
-INSERT INTO `products_description` VALUES (75, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9834-50A', 14);
-INSERT INTO `products_description` VALUES (76, 1, 'Ladies Citizen Stainless Steel Riva Chronograph Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=FB1020-52D', 18);
+INSERT INTO `products_description` VALUES (71, 1, 'Ladies Citizen Silhouette 40 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9720-59E', 28);
+INSERT INTO `products_description` VALUES (72, 1, 'Ladies Citizen Silhouette 40 Diamond Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9734-54A', 24);
+INSERT INTO `products_description` VALUES (73, 1, 'Ladies Citizen Normandie Stainless Steel and Black Bracelet Watc', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9780-57E', 22);
+INSERT INTO `products_description` VALUES (74, 1, 'Ladies Citizen Silhouette Stainless Steel Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9810-58D', 20);
+INSERT INTO `products_description` VALUES (75, 1, 'Ladies Citizen Silhouette Two Tone Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=EW9834-50A', 15);
+INSERT INTO `products_description` VALUES (76, 1, 'Ladies Citizen Stainless Steel Riva Chronograph Bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=FB1020-52D', 21);
 INSERT INTO `products_description` VALUES (77, 1, 'Ladies Citizen Two Tone bracelet Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=GA1024-51A', 24);
-INSERT INTO `products_description` VALUES (78, 1, 'Gents Citizen Stainless Steel SkyHawk Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=JY0000-53E', 31);
+INSERT INTO `products_description` VALUES (78, 1, 'Gents Citizen Stainless Steel SkyHawk Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=JY0000-53E', 32);
 INSERT INTO `products_description` VALUES (79, 1, 'Gents Citizen Stainless Steel SkyHawk Watch', '', 'www.citizenwatch.com/CUK/English/detail.asp?Country=CUK&Language=English&ModelNumber=JY0005-50E', 14);
 INSERT INTO `products_description` VALUES (81, 1, 'Youths Sekonda Stainless Steel Quartz Sports Watch', '', '', 8);
 INSERT INTO `products_description` VALUES (80, 1, 'Youths Sekonda Black Strap Quartz Sport Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (82, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (83, 1, 'Gents Sekonda Chrome Plated Bracelet Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (84, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (85, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (82, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (83, 1, 'Gents Sekonda Chrome Plated Bracelet Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (84, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (85, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 7);
 INSERT INTO `products_description` VALUES (86, 1, 'Gents Sekonda Stainless Steel Quartz Chronograph Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (87, 1, 'Gents Sekonda Stainless Steel Quartz Chronograph Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (88, 1, 'Gents Sekonda Stainless Steel Quartz Watch', '', '', 5);
@@ -6174,48 +6272,48 @@ INSERT INTO `products_description` VALUES (89, 1, 'Gents Sekonda Stainless Steel
 INSERT INTO `products_description` VALUES (90, 1, 'Gents Sekonda Resin Strap Quartz Chronograph Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (91, 1, 'Gents Sekonda Stainless Steel Quartz Watch', '', '', 1);
 INSERT INTO `products_description` VALUES (92, 1, 'Gents Sekonda Stainless Steel Quartz Watch', '', '', 1);
-INSERT INTO `products_description` VALUES (93, 1, 'Gents Sekonda Blue Leather Strap Chronograph Quartz Watch', '', '', 3);
+INSERT INTO `products_description` VALUES (93, 1, 'Gents Sekonda Blue Leather Strap Chronograph Quartz Watch', '', '', 5);
 INSERT INTO `products_description` VALUES (94, 1, 'Gents Sekonda Stainless Steel Quartz Pocket Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (95, 1, 'Gents Sekonda Quartz Bracelet Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (96, 1, 'Gents Sekonda Gold Plated Stone Set Quartz Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (97, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (98, 1, 'Gents Sekonda Chrome Coloured Quartz Pocket Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (738, 1, 'Gents Sekonda Gold Plated Quartz Pocket Watch', '', '', 3);
+INSERT INTO `products_description` VALUES (97, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (98, 1, 'Gents Sekonda Chrome Coloured Quartz Pocket Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (738, 1, 'Gents Sekonda Gold Plated Quartz Pocket Watch', '', '', 5);
 INSERT INTO `products_description` VALUES (100, 1, 'Gents Sekonda Gold Plated Quartz Watch', '', '', 8);
-INSERT INTO `products_description` VALUES (101, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (101, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 8);
 INSERT INTO `products_description` VALUES (102, 1, 'Gents Sekonda Gold Plated Leather Strap Watch', '', '', 10);
-INSERT INTO `products_description` VALUES (103, 1, 'Gents Sekonda Gold Plated Quartz Bracelet Watch', '', '', 10);
+INSERT INTO `products_description` VALUES (103, 1, 'Gents Sekonda Gold Plated Quartz Bracelet Watch', '', '', 13);
 INSERT INTO `products_description` VALUES (104, 1, 'Gents Sekonda Stainless Steel Bracelet Watch', '', '', 1);
-INSERT INTO `products_description` VALUES (105, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 9);
+INSERT INTO `products_description` VALUES (105, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 10);
 INSERT INTO `products_description` VALUES (106, 1, 'Gents Sekonda Quartz Expanding Bracelet Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (107, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (107, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 7);
 INSERT INTO `products_description` VALUES (108, 1, 'Gents Sekonda Leather Strap Chronograph Quartz Watch', '', '', 15);
 INSERT INTO `products_description` VALUES (109, 1, 'Gents Sekonda Titanium Quartz Watch', '', '', 1);
 INSERT INTO `products_description` VALUES (110, 1, 'Gents Sekonda Two Tone Bracelet Quartz Watch', '', '', 1);
 INSERT INTO `products_description` VALUES (111, 1, 'Gents Sekonda Stainless Steel Quartz Chronograph Watch', '', '', 4);
 INSERT INTO `products_description` VALUES (112, 1, 'Gents Sekonda Stainless Steel Bracelet Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (113, 1, 'Gents Sekonda Stainless Steel Bracelet Quartz Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (114, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (114, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 9);
 INSERT INTO `products_description` VALUES (115, 1, 'Ladies Sekonda Stainless Steel Bracelet Watch', '', '', 7);
-INSERT INTO `products_description` VALUES (116, 1, 'Ladies Sekonda Fashion Watch', '', '', 12);
-INSERT INTO `products_description` VALUES (117, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 11);
-INSERT INTO `products_description` VALUES (118, 1, 'Ladies Sekonda Gold Plated Quartz Bracelet Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (119, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (120, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 8);
-INSERT INTO `products_description` VALUES (122, 1, 'Ladies Sekonda Gold Plated Quartz Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (123, 1, 'Ladies Sekonda Quartz bracelet Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (116, 1, 'Ladies Sekonda Fashion Watch', '', '', 13);
+INSERT INTO `products_description` VALUES (117, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 13);
+INSERT INTO `products_description` VALUES (118, 1, 'Ladies Sekonda Gold Plated Quartz Bracelet Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (119, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (120, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 9);
+INSERT INTO `products_description` VALUES (122, 1, 'Ladies Sekonda Gold Plated Quartz Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (123, 1, 'Ladies Sekonda Quartz bracelet Watch', '', '', 9);
 INSERT INTO `products_description` VALUES (124, 1, 'Ladies Sekonda Two Tone Bracelet Quartz Watch', '', '', 4);
 INSERT INTO `products_description` VALUES (125, 1, 'Ladies Sekonda Stone Set Quartz Watch', '', '', 4);
 INSERT INTO `products_description` VALUES (126, 1, 'Ladies Sekonda Quartz Stainless Steel Fob Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (127, 1, 'Ladies Sekonda Quartz Two Tone Bracelet Watch', '', '', 1);
 INSERT INTO `products_description` VALUES (128, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (129, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 3);
+INSERT INTO `products_description` VALUES (129, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 5);
 INSERT INTO `products_description` VALUES (130, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (131, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (132, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (133, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 9);
+INSERT INTO `products_description` VALUES (132, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (133, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 10);
 INSERT INTO `products_description` VALUES (134, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (135, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 3);
+INSERT INTO `products_description` VALUES (135, 1, 'Ladies Sekonda Leather Strap Quartz Watch', '', '', 5);
 INSERT INTO `products_description` VALUES (136, 1, 'Ladies Sekonda Quartz Gold Plated Nurses Fob Watch', '', '', 8);
 INSERT INTO `products_description` VALUES (137, 1, 'Ladies Sekonda Two Tone Quartz Bracelet Watch', '', '', 3);
 INSERT INTO `products_description` VALUES (138, 1, 'Ladies Sekonda Quartz Stainless Steel fob Watch', '', '', 2);
@@ -6228,348 +6326,348 @@ INSERT INTO `products_description` VALUES (144, 1, 'Ladies Sekonda Quartz Stone 
 INSERT INTO `products_description` VALUES (145, 1, 'Ladies Sekonda Quartz Gold Plated Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (146, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (147, 1, 'Ladies Sekonda Quartz Gold Plated Bracelet Watch', '', '', 1);
-INSERT INTO `products_description` VALUES (148, 1, 'Ladies Sekonda Quartz Nurses Fob Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (727, 1, '9ct Yellow Gold Bouton Ball 4mm Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these yellow gold stud earrings are a must.  Weight 0.3 grams', '', 10);
-INSERT INTO `products_description` VALUES (150, 1, 'Ladies Sekonda Quartz Leather Strap Watch', '', '', 1);
+INSERT INTO `products_description` VALUES (148, 1, 'Ladies Sekonda Quartz Nurses Fob Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (727, 1, '9ct Yellow Gold Bouton Ball 4mm Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these yellow gold stud earrings are a must.  Weight 0.3 grams', '', 13);
+INSERT INTO `products_description` VALUES (150, 1, 'Ladies Sekonda Quartz Leather Strap Watch', '', '', 2);
 INSERT INTO `products_description` VALUES (151, 1, 'Ladies Sekonda Quartz Leather Strap Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (153, 1, 'Ladies Gold Plated Expanding Bracelet Quartz Watch', 'This Ladies Sekonda watch has a gold plated case and expanding bracelet, round white dial with numbers, quartz analogue movement, water resistant and comes with a 2 year sekonda guarantee and presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (154, 1, 'Ladies Seksy Hidden Hearts Quartz Watch', '', '', 16);
-INSERT INTO `products_description` VALUES (155, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Seksy watch has a fully adjustable bracelet made with Swarovski Crystals,Quartz analogue movement, white mother of pearl dial and comes with a 2 year guarantee and is supplied in a presentation box.', '', 28);
+INSERT INTO `products_description` VALUES (153, 1, 'Ladies Gold Plated Expanding Bracelet Quartz Watch', 'This Ladies Sekonda watch has a gold plated case and expanding bracelet, round white dial with numbers, quartz analogue movement, water resistant and comes with a 2 year sekonda guarantee and presentation box.', '', 9);
+INSERT INTO `products_description` VALUES (154, 1, 'Ladies Seksy Hidden Hearts Quartz Watch', '', '', 17);
+INSERT INTO `products_description` VALUES (155, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Seksy watch has a fully adjustable bracelet made with Swarovski Crystals,Quartz analogue movement, white mother of pearl dial and comes with a 2 year guarantee and is supplied in a presentation box.', '', 31);
 INSERT INTO `products_description` VALUES (156, 1, 'Ladies Seksy Wave Stainless Steel Quartz Watch', 'This Ladies Seksy fashion watch has a fully adjustable bracelet, chrome coloured case with Swarovski Crystals, black dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 18);
-INSERT INTO `products_description` VALUES (157, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has a chrome coloured case made with Swarovski Crystals, a fully adjustable bracelet, silver-white dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box', '', 27);
+INSERT INTO `products_description` VALUES (157, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has a chrome coloured case made with Swarovski Crystals, a fully adjustable bracelet, silver-white dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box', '', 29);
 INSERT INTO `products_description` VALUES (158, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has a chrome coloured case made with Swarovski Crystals, a fully adjustable bracelet, black dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 9);
-INSERT INTO `products_description` VALUES (159, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has an oval chrome coloured case with Swarovski Crystals, pink mother of pearl dial, fully adjustable bracelet, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 10);
-INSERT INTO `products_description` VALUES (160, 1, 'Ladies Seksy Wave Stainless Steel Quartz Watch', 'This Ladie Seksy fashion watch has a chrome coloured case with Swarovski Crystals, silver-white dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 14);
-INSERT INTO `products_description` VALUES (161, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has a chrome coloured case with Swarovski Crystals, fully adjustable bracelet, pink mother of pearl dial with stone set at 12, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 10);
-INSERT INTO `products_description` VALUES (162, 1, 'Girls Bracelet with Heart & T-bar', 'Girls D for Diamond sterling silver wth diamond set plain heart and t bar feature. Length 14cm/5.5".', '', 17);
+INSERT INTO `products_description` VALUES (159, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has an oval chrome coloured case with Swarovski Crystals, pink mother of pearl dial, fully adjustable bracelet, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 13);
+INSERT INTO `products_description` VALUES (160, 1, 'Ladies Seksy Wave Stainless Steel Quartz Watch', 'This Ladie Seksy fashion watch has a chrome coloured case with Swarovski Crystals, silver-white dial with sparkle effect, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 18);
+INSERT INTO `products_description` VALUES (161, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This Ladies Seksy fashion watch has a chrome coloured case with Swarovski Crystals, fully adjustable bracelet, pink mother of pearl dial with stone set at 12, Quartz analogue movement and comes with a 2 year guarantee and presentation box.', '', 17);
+INSERT INTO `products_description` VALUES (162, 1, 'Girls Bracelet with Heart & T-bar', 'Girls D for Diamond sterling silver wth diamond set plain heart and t bar feature. Length 14cm/5.5".', '', 18);
 INSERT INTO `products_description` VALUES (163, 1, 'Childs D for Diamond Angel Expanding Bangle', 'Silver D for Diamond childs silver expanding bangle. This bangle has Angel engraved on the top with a small diamond, approx dimensions width - 4.5mm diameter - 45mm extending to 50mm, weight 4.7g', '', 31);
-INSERT INTO `products_description` VALUES (164, 1, 'Girls Bracelet with 4 Charms', 'Girls D for Diamond sterling silver bracelet with 4 charms, adjustable length 14-16cm/5.5-6.25".', '', 18);
-INSERT INTO `products_description` VALUES (165, 1, 'Girls Bracelet with Heart Charm', '', '', 15);
-INSERT INTO `products_description` VALUES (535, 1, 'Sterling Silver Happy Birthday Charm Bead', 'This silver happy birthday harm is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 11);
-INSERT INTO `products_description` VALUES (166, 1, 'Childs D for Diamond Star expanding Bangle', 'Sterling Silver D for Diamond Star expanding bangle. This bangle has a star on the top and a small diamond in the middle, approx dimensions width - 4.5mm diameter - 45mm extending to 50mm, weight approx 4.7g.', '', 12);
-INSERT INTO `products_description` VALUES (167, 1, 'Childs D for Diamond Heart expanding Bangle', 'Sterling Silver D for Diamond heart expanding bangle. This bangle has a heart with a small diamond on the top. Approx dimensions width - 4.5mm, diameter - 45mm extending to 50mm, weight approx 4.7g.', '', 67);
-INSERT INTO `products_description` VALUES (168, 1, 'Girls D for Diamond Heart Locket (Pink)', 'Childrens D for Diamond sterling silver heart locket with small diamond and pink inlay, this locket measures  length 16.1mm including bale, width 11mm and sits on a 35cm/14" silver box chain.', '', 17);
-INSERT INTO `products_description` VALUES (169, 1, 'Girls D for Diamond Butterfly Pendant', 'Girls D for Diamond sterling silver butterfly pendant with small diamond, it sits on a sterling silver 35cm/14" box chain.', '', 14);
-INSERT INTO `products_description` VALUES (170, 1, 'Girls D for Diamond Heart Locket', 'Girls D for Diamond heart locket has a small diamond, this locket measures length 22.3mm including bale, width 16.7mm and sits on a sterling silver 35cm/14" box chain.', '', 15);
-INSERT INTO `products_description` VALUES (171, 1, 'Girls D for Diamond Heart Locket', 'Childrens D for Diamond sterling silver heart locket with small diamond, this locket measures length 15.4mm including bale, width 10.9mm and sits on a sterling silver 35cm/14" box chain.', '', 12);
-INSERT INTO `products_description` VALUES (172, 1, 'Girls D for Diamond Fairy Pendant', 'Girls D for Diamond sterling silver fairy pendant with diamond and sits on a sterling silver 35cm/14" box chain.', '', 19);
-INSERT INTO `products_description` VALUES (173, 1, 'Girls D for Diamond Star Pendant', 'Girls D for Diamond star pendant with small diamond and sits on a 35cm/14" box chain. Dimensions length including bale 11.6mm, width 6.6mm. Shown with matching earings E573.', '', 18);
-INSERT INTO `products_description` VALUES (174, 1, 'Girls D for Diamond Sterling Silver Heart Pendant', 'Girls D for Diamond sterling silver heart pendant with small diamond and sits on a 35cm/14" silver box chain. Dimensions length including bale 12.5mm, width 5.7mm. Shown with matching earrings E572.', '', 20);
-INSERT INTO `products_description` VALUES (175, 1, 'Girls D for Diamond Sterling Silver Cross Pendant', 'D for Diamond sterling silver cross pendant has a diamond in the middle of the cross and is supplied with a 35cm/14" chain. Approx dimensions of cross - lenghth 10.8mm width 7mm depth 1.1mm. Total weight 2.2g.', '', 17);
+INSERT INTO `products_description` VALUES (164, 1, 'Girls Bracelet with 4 Charms', 'Girls D for Diamond sterling silver bracelet with 4 charms, adjustable length 14-16cm/5.5-6.25".', '', 20);
+INSERT INTO `products_description` VALUES (165, 1, 'Girls Bracelet with Heart Charm', '', '', 19);
+INSERT INTO `products_description` VALUES (535, 1, 'Sterling Silver Happy Birthday Charm Bead', 'This silver happy birthday harm is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 12);
+INSERT INTO `products_description` VALUES (166, 1, 'Childs D for Diamond Star expanding Bangle', 'Sterling Silver D for Diamond Star expanding bangle. This bangle has a star on the top and a small diamond in the middle, approx dimensions width - 4.5mm diameter - 45mm extending to 50mm, weight approx 4.7g.', '', 15);
+INSERT INTO `products_description` VALUES (167, 1, 'Childs D for Diamond Heart expanding Bangle', 'Sterling Silver D for Diamond heart expanding bangle. This bangle has a heart with a small diamond on the top. Approx dimensions width - 4.5mm, diameter - 45mm extending to 50mm, weight approx 4.7g.', '', 79);
+INSERT INTO `products_description` VALUES (168, 1, 'Girls D for Diamond Heart Locket (Pink)', 'Childrens D for Diamond sterling silver heart locket with small diamond and pink inlay, this locket measures  length 16.1mm including bale, width 11mm and sits on a 35cm/14" silver box chain.', '', 19);
+INSERT INTO `products_description` VALUES (169, 1, 'Girls D for Diamond Butterfly Pendant', 'Girls D for Diamond sterling silver butterfly pendant with small diamond, it sits on a sterling silver 35cm/14" box chain.', '', 19);
+INSERT INTO `products_description` VALUES (170, 1, 'Girls D for Diamond Heart Locket', 'Girls D for Diamond heart locket has a small diamond, this locket measures length 22.3mm including bale, width 16.7mm and sits on a sterling silver 35cm/14" box chain.', '', 19);
+INSERT INTO `products_description` VALUES (171, 1, 'Girls D for Diamond Heart Locket', 'Childrens D for Diamond sterling silver heart locket with small diamond, this locket measures length 15.4mm including bale, width 10.9mm and sits on a sterling silver 35cm/14" box chain.', '', 17);
+INSERT INTO `products_description` VALUES (172, 1, 'Girls D for Diamond Fairy Pendant', 'Girls D for Diamond sterling silver fairy pendant with diamond and sits on a sterling silver 35cm/14" box chain.', '', 25);
+INSERT INTO `products_description` VALUES (173, 1, 'Girls D for Diamond Star Pendant', 'Girls D for Diamond star pendant with small diamond and sits on a 35cm/14" box chain. Dimensions length including bale 11.6mm, width 6.6mm. Shown with matching earings E573.', '', 23);
+INSERT INTO `products_description` VALUES (174, 1, 'Girls D for Diamond Sterling Silver Heart Pendant', 'Girls D for Diamond sterling silver heart pendant with small diamond and sits on a 35cm/14" silver box chain. Dimensions length including bale 12.5mm, width 5.7mm. Shown with matching earrings E572.', '', 30);
+INSERT INTO `products_description` VALUES (175, 1, 'Girls D for Diamond Sterling Silver Cross Pendant', 'D for Diamond sterling silver cross pendant has a diamond in the middle of the cross and is supplied with a 35cm/14" chain. Approx dimensions of cross - lenghth 10.8mm width 7mm depth 1.1mm. Total weight 2.2g.', '', 23);
 INSERT INTO `products_description` VALUES (176, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a stainless steel case and bracelet which is fully adjustable, round silver dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 14);
-INSERT INTO `products_description` VALUES (177, 1, 'Gents Accurist Stainless Steel Skymaster Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 50m. Case diameter 47mm including crown, case depth 12mm. It comes with a 3 year manufacturers guarantee, instructions and a presentation box.', '', 15);
+INSERT INTO `products_description` VALUES (177, 1, 'Gents Accurist Stainless Steel Skymaster Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 50m. Case diameter 47mm including crown, case depth 12mm. It comes with a 3 year manufacturers guarantee, instructions and a presentation box.', '', 17);
 INSERT INTO `products_description` VALUES (178, 1, 'Gents Accurist Stainless Steel Skymaster Chronograph Watch', 'This Gents Accurist watcg has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 50m. Case diameter 47mm including crown, case depth 12mm. It comes with a 3 year manufacturers guarantee, instructions and a presentation box.', '', 19);
-INSERT INTO `products_description` VALUES (179, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m. It comes with a 3 year manufacturers guarantee, instructions and a presentation box.', '', 19);
-INSERT INTO `products_description` VALUES (180, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 10);
-INSERT INTO `products_description` VALUES (181, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, it has a black dial with a day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and presentation box.', '', 22);
-INSERT INTO `products_description` VALUES (182, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, it has a silver dial with a day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (183, 1, 'Gents Accurist Two Tone Quartz Watch', 'This Gents Accurist watch has a two tone case and bracelet, which can be adjusted, round black dial with day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and a presentation box.', '', 45);
-INSERT INTO `products_description` VALUES (184, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturers guarantee, instructions and presentation box.', '', 17);
-INSERT INTO `products_description` VALUES (185, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturers guarantee, instructions and presentation box.', '', 13);
+INSERT INTO `products_description` VALUES (179, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m. It comes with a 3 year manufacturers guarantee, instructions and a presentation box.', '', 21);
+INSERT INTO `products_description` VALUES (180, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (181, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, it has a black dial with a day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and presentation box.', '', 24);
+INSERT INTO `products_description` VALUES (182, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, it has a silver dial with a day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (183, 1, 'Gents Accurist Two Tone Quartz Watch', 'This Gents Accurist watch has a two tone case and bracelet, which can be adjusted, round black dial with day and date display, quartz analogue movement, water resistant to 50m and comes with a 3 year manufacturers guarantee and a presentation box.', '', 52);
+INSERT INTO `products_description` VALUES (184, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturers guarantee, instructions and presentation box.', '', 19);
+INSERT INTO `products_description` VALUES (185, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which is adjustable, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturers guarantee, instructions and presentation box.', '', 14);
 INSERT INTO `products_description` VALUES (186, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which can be adjusted, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year guarantee, instructions and a presentation box.', '', 9);
-INSERT INTO `products_description` VALUES (187, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which can be adjusted, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year guarantee, instructions and a presentation box.', '', 9);
+INSERT INTO `products_description` VALUES (187, 1, 'Gents Accurist Stainless Steel Chronograph Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which can be adjusted, chronograph feature, quartz analogue movement, water resistant to 100m and comes with a 3 year guarantee, instructions and a presentation box.', '', 11);
 INSERT INTO `products_description` VALUES (188, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which can be adjusted, blue dial with date display, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturing guarantee and presentation box.', '', 6);
 INSERT INTO `products_description` VALUES (189, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a stainless steel case and bracelet, which can be adjusted, round silver dial with date display, quartz analogue movement, water resistant to 100m and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (190, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, rectangular silver dial with date display, quartz analogue movement, water resistant to 30m and comes with a 3 year manufacturers guarantee and presentation box.', '', 10);
+INSERT INTO `products_description` VALUES (190, 1, 'Gents Accurist Gold Plated Quartz Watch', 'This Gents Accurist watch has a gold plated case and bracelet, which is adjustable, rectangular silver dial with date display, quartz analogue movement, water resistant to 30m and comes with a 3 year manufacturers guarantee and presentation box.', '', 13);
 INSERT INTO `products_description` VALUES (191, 1, 'Gents Accurist Stainless Steel Quartz Watch', 'This Gents Accurist watch has a Stainless Steel case and bracelet, which is adjustable, rectangular silver dial with date display, quartz analogue movement, water resistant to 30m and comes with a 3 year manufacturers guarantee and a presentation box.', '', 9);
 INSERT INTO `products_description` VALUES (192, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', 'This Gents Accurist watch has a gold plated case and leather strap, rectangular silver dial with date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and a presentation box.', '', 14);
-INSERT INTO `products_description` VALUES (193, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case and leather strap, round black dial with date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (194, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case with a leather strap, round silver dial with a date display, quartz analogue movement, water resistant and comes with a 3 year guarantee and a presentation box.', '', 10);
-INSERT INTO `products_description` VALUES (195, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', 'This Gents Accurist watch has a gold plated case with a leather strap, round white dial and date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (196, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case with leather strap, rectangular silver dial with a date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 24);
-INSERT INTO `products_description` VALUES (197, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold tone stainless steel case and fully adjustable bracelet, white round stone set dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 17);
-INSERT INTO `products_description` VALUES (198, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, oval champagne dial with diamond at 12, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 17);
+INSERT INTO `products_description` VALUES (193, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case and leather strap, round black dial with date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 9);
+INSERT INTO `products_description` VALUES (194, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case with a leather strap, round silver dial with a date display, quartz analogue movement, water resistant and comes with a 3 year guarantee and a presentation box.', '', 11);
+INSERT INTO `products_description` VALUES (195, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', 'This Gents Accurist watch has a gold plated case with a leather strap, round white dial and date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (196, 1, 'Gents Accurist Stainless Steel Leather Strap Quartz Watch', 'This Gents Accurist watch has a stainless steel case with leather strap, rectangular silver dial with a date display, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 25);
+INSERT INTO `products_description` VALUES (197, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold tone stainless steel case and fully adjustable bracelet, white round stone set dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 18);
+INSERT INTO `products_description` VALUES (198, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, oval champagne dial with diamond at 12, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 19);
 INSERT INTO `products_description` VALUES (199, 1, 'LB1127G', '', '', 1);
 INSERT INTO `products_description` VALUES (200, 1, 'LB1129W', '', '', 1);
 INSERT INTO `products_description` VALUES (201, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and adjustable bracelet, silver tonneau shaped dial, quartz analogue movement, water resistant and comes with a manufacturers 3 year warranty and presentation box.', '', 9);
-INSERT INTO `products_description` VALUES (202, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped mother of pearl dial, quartz analogue movement, water resistant and comes with a manufacturers 3 year guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (203, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and fully adjustable bracelet, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 15);
-INSERT INTO `products_description` VALUES (204, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 9);
-INSERT INTO `products_description` VALUES (205, 1, 'Ladies Accurist Two Tone Quartz Watch', 'This Ladies Accurist ladies watch has a two tone case and fully adjustable bracelet, tonneau shaped silver dial, water resistant and comes with a 3 year guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (206, 1, 'Ladies Accurist Stainless Steel Watch', 'This Ladies Accurist watch has a stainless steel case and bracelet which is adjustable, tonneau shaped pink dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (202, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped mother of pearl dial, quartz analogue movement, water resistant and comes with a manufacturers 3 year guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (203, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and fully adjustable bracelet, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 16);
+INSERT INTO `products_description` VALUES (204, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 10);
+INSERT INTO `products_description` VALUES (205, 1, 'Ladies Accurist Two Tone Quartz Watch', 'This Ladies Accurist ladies watch has a two tone case and fully adjustable bracelet, tonneau shaped silver dial, water resistant and comes with a 3 year guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (206, 1, 'Ladies Accurist Stainless Steel Watch', 'This Ladies Accurist watch has a stainless steel case and bracelet which is adjustable, tonneau shaped pink dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 13);
 INSERT INTO `products_description` VALUES (207, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and crystal set bracelet which is fully adjustable, tonneau shaped white dial with crystals at 12 and 6, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (208, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and crystal set bracelet which is fully adjustable, tonneau shaped white dial with crystals set at 12 and 6, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 12);
+INSERT INTO `products_description` VALUES (208, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and crystal set bracelet which is fully adjustable, tonneau shaped white dial with crystals set at 12 and 6, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 13);
 INSERT INTO `products_description` VALUES (209, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and bracelet which is fully adjustable, tonneau shaped black dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 10);
 INSERT INTO `products_description` VALUES (210, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, tonneau shaped brown dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (211, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year guarantee and a presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (212, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a crystal set stainless steel case and bracelet which is fully adjustable, rectangular shaped mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (213, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, oval mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 6);
-INSERT INTO `products_description` VALUES (214, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and bracelet which is fully adjustable, oval black dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (215, 1, 'Ladies Accurist Two Tone Quartz Watch', 'This Ladies Accurist watch has a two tone crystal set case and bracelet which is fully adjustable, round mother of pear dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.l', '', 13);
-INSERT INTO `products_description` VALUES (216, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel stone set case and fully adjustable bracelet, round mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 13);
+INSERT INTO `products_description` VALUES (211, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, tonneau shaped silver dial, quartz analogue movement, water resistant and comes with a 3 year guarantee and a presentation box.', '', 10);
+INSERT INTO `products_description` VALUES (212, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a crystal set stainless steel case and bracelet which is fully adjustable, rectangular shaped mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 11);
+INSERT INTO `products_description` VALUES (213, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This Ladies Accurist watch has a gold plated case and bracelet which is fully adjustable, oval mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 9);
+INSERT INTO `products_description` VALUES (214, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel case and bracelet which is fully adjustable, oval black dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 14);
+INSERT INTO `products_description` VALUES (215, 1, 'Ladies Accurist Two Tone Quartz Watch', 'This Ladies Accurist watch has a two tone crystal set case and bracelet which is fully adjustable, round mother of pear dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.l', '', 15);
+INSERT INTO `products_description` VALUES (216, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist watch has a stainless steel stone set case and fully adjustable bracelet, round mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 16);
 INSERT INTO `products_description` VALUES (217, 1, 'Ladies Stainless Steel Leather Strap Quartz Watch', 'This Ladies Accurist watch has a stainless steel crystal set case with white leather strap, round mother of pearl dial, quartz analogue movement, water resistant and comes with a 3 year guarantee and presentation box.', '', 13);
-INSERT INTO `products_description` VALUES (218, 1, 'Ladies Accurist Quartz Leather Strap Watch', 'This Ladies Accurist watch has a gold plated case, brown leather strap, round white dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and a presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (219, 1, 'Ladies Accurist Stainless Steel Leather Strap Quartz Watch', 'This Ladies Accurist watch has a round stainless steel case, black leather strap, quartz analogue movement, water resistant and comes with a 3 year guarantee and presentation box.', '', 67);
-INSERT INTO `products_description` VALUES (220, 1, 'Sterling Silver Freshwater Pearl Stud Earring', 'This sterling silver 8mm black freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears.', '', 15);
-INSERT INTO `products_description` VALUES (221, 1, 'Sterling Silver Grey Freshwater Pearl Stud Earring', 'This Elements sterling silver 8mm grey freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears.', '', 10);
-INSERT INTO `products_description` VALUES (222, 1, 'Elements Sterling Silver Grey Freshwater Pearl Pendant', 'Pendant measures, length including bale 19.1mm, width 11mm and weighs 2.3 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 8);
-INSERT INTO `products_description` VALUES (223, 1, 'Sterling Silver Freshwater Pearl Bracelet', 'Elements freshwater pearl bracelet with sterling silver fittings, length 19-22cm/7.5-8.75".', '', 10);
-INSERT INTO `products_description` VALUES (224, 1, 'Sterling Silver Freshwater Pearl Stud Earring', 'This Elements sterling silver 6mm freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears. It comes with an elements presentation box.', '', 8);
-INSERT INTO `products_description` VALUES (225, 1, 'Freshwater Pearl Necklet', 'Elements white freshwater pearl necklet with sterling silver lobster claw and adjustable chain. The length of this pearl necklet is 41-46cm/16-18", pearls are approx 7mm wide and comes in an elements presentation box.', '', 12);
-INSERT INTO `products_description` VALUES (226, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This sterling silver heart shaped cubic zirconia stud earring has a post and butterfly fitting for pierced ears. Dimensions - length 11.1mm, width 12.7mm and weighs a total of 2 grams.', '', 8);
-INSERT INTO `products_description` VALUES (536, 1, 'Sterling Silver Dangling Cut Out Star Bead', 'This silver dangling cut out star bead is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
-INSERT INTO `products_description` VALUES (227, 1, 'Elements Sterling Silver Heart shape Pendant With Cubic Zirconia', 'Pendant measures, length including bale 24.4mm, width 19.9mm and weighs 2.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 17);
-INSERT INTO `products_description` VALUES (228, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver heart shaped cubic zirconia drop earring has hook fittings and is for pierced ears. Dimensions - length including hook 28mm, width 14.3mm, total weight 2.6 grams.', '', 16);
+INSERT INTO `products_description` VALUES (218, 1, 'Ladies Accurist Quartz Leather Strap Watch', 'This Ladies Accurist watch has a gold plated case, brown leather strap, round white dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and a presentation box.', '', 13);
+INSERT INTO `products_description` VALUES (219, 1, 'Ladies Accurist Stainless Steel Leather Strap Quartz Watch', 'This Ladies Accurist watch has a round stainless steel case, black leather strap, quartz analogue movement, water resistant and comes with a 3 year guarantee and presentation box.', '', 76);
+INSERT INTO `products_description` VALUES (220, 1, 'Sterling Silver Freshwater Pearl Stud Earring', 'This sterling silver 8mm black freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears.', '', 16);
+INSERT INTO `products_description` VALUES (221, 1, 'Sterling Silver Grey Freshwater Pearl Stud Earring', 'This Elements sterling silver 8mm grey freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears.', '', 12);
+INSERT INTO `products_description` VALUES (222, 1, 'Elements Sterling Silver Grey Freshwater Pearl Pendant', 'Pendant measures, length including bale 19.1mm, width 11mm and weighs 2.3 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 12);
+INSERT INTO `products_description` VALUES (223, 1, 'Sterling Silver Freshwater Pearl Bracelet', 'Elements freshwater pearl bracelet with sterling silver fittings, length 19-22cm/7.5-8.75".', '', 13);
+INSERT INTO `products_description` VALUES (224, 1, 'Sterling Silver Freshwater Pearl Stud Earring', 'This Elements sterling silver 6mm freshwater pearl stud earring has a post and butterfly fitting and is for pierced ears. It comes with an elements presentation box.', '', 9);
+INSERT INTO `products_description` VALUES (225, 1, 'Freshwater Pearl Necklet', 'Elements white freshwater pearl necklet with sterling silver lobster claw and adjustable chain. The length of this pearl necklet is 41-46cm/16-18", pearls are approx 7mm wide and comes in an elements presentation box.', '', 14);
+INSERT INTO `products_description` VALUES (226, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This sterling silver heart shaped cubic zirconia stud earring has a post and butterfly fitting for pierced ears. Dimensions - length 11.1mm, width 12.7mm and weighs a total of 2 grams.', '', 10);
+INSERT INTO `products_description` VALUES (536, 1, 'Sterling Silver Dangling Cut Out Star Bead', 'This silver dangling cut out star bead is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 11);
+INSERT INTO `products_description` VALUES (227, 1, 'Elements Sterling Silver Heart shape Pendant With Cubic Zirconia', 'Pendant measures, length including bale 24.4mm, width 19.9mm and weighs 2.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 18);
+INSERT INTO `products_description` VALUES (228, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver heart shaped cubic zirconia drop earring has hook fittings and is for pierced ears. Dimensions - length including hook 28mm, width 14.3mm, total weight 2.6 grams.', '', 17);
 INSERT INTO `products_description` VALUES (229, 1, 'Elements Sterling Silver Heart Shaped Pendant With CubicZirconia', 'Pendant measures, length including bale 26.8mm, width 20.1mm and weighs 2.4 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 11);
-INSERT INTO `products_description` VALUES (230, 1, 'Sterling Silver Heart Shaped Cubic Zirconia Earrings', 'This sterling silver heart shape cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 14.2mm, width 15.6mm and weighs a total of 3 grams.', '', 6);
+INSERT INTO `products_description` VALUES (230, 1, 'Sterling Silver Heart Shaped Cubic Zirconia Earrings', 'This sterling silver heart shape cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 14.2mm, width 15.6mm and weighs a total of 3 grams.', '', 8);
 INSERT INTO `products_description` VALUES (231, 1, 'Elements Sterling Silver Heart Shaped Pendant With CubicZirconia', 'Pendant measures, length 23.7mm, width 27.8mm and weighs 3.7 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 8);
-INSERT INTO `products_description` VALUES (232, 1, 'Sterling Silver Figure of 8 Cubic Zirconia Bracelet', 'Elements sterling silver figure of 8 bracelet with cubic zirconia encrusted on one side. Dimensions - length 19-22cm/7.5-8.75".', '', 15);
-INSERT INTO `products_description` VALUES (233, 1, 'Sterling Silver Cubic Zirconia Figure of 8 Stud Earrings', 'this Elements sterling silver pave set cubic zirconia stud earring has a post and butterfly (the post is at the top of the earring) fitting and is for pierced ears. Dimensions - length 24.4mm, width 8.3mm and weighs at total of 2.8 grams.', '', 15);
+INSERT INTO `products_description` VALUES (232, 1, 'Sterling Silver Figure of 8 Cubic Zirconia Bracelet', 'Elements sterling silver figure of 8 bracelet with cubic zirconia encrusted on one side. Dimensions - length 19-22cm/7.5-8.75".', '', 17);
+INSERT INTO `products_description` VALUES (233, 1, 'Sterling Silver Cubic Zirconia Figure of 8 Stud Earrings', 'this Elements sterling silver pave set cubic zirconia stud earring has a post and butterfly (the post is at the top of the earring) fitting and is for pierced ears. Dimensions - length 24.4mm, width 8.3mm and weighs at total of 2.8 grams.', '', 17);
 INSERT INTO `products_description` VALUES (234, 1, 'Elements Sterling Silver Figure of 8 Pendant With Cubic Zirconia', 'Pendant measures, length 28.5mm, width 11.1mm and weighs 2.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 13);
 INSERT INTO `products_description` VALUES (235, 1, 'Sterling Silver Spiral Cubic Zirconia Drop Earring', 'This sterling silver spiral pave set cubic zirconia drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 31.6mm, width 14.6mm and weighs a total of 4.6 grams.', '', 13);
-INSERT INTO `products_description` VALUES (728, 1, '9ct Yellow Gold Bouton Ball 5mm Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these yellow gold earrings are a must. Weight 0.32 grams', '', 9);
-INSERT INTO `products_description` VALUES (237, 1, 'Sterling Silver Marquise Shaped Cubic Zirconia Bracelet', 'Elements sterling silver marquise shaped open link with cubic zirconia detail. Dimensions - length 18-21cm/7-8.25", width 6.6mm at widest, weight 5.1 grams.', '', 15);
+INSERT INTO `products_description` VALUES (728, 1, '9ct Yellow Gold Bouton Ball 5mm Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these yellow gold earrings are a must. Weight 0.32 grams', '', 13);
+INSERT INTO `products_description` VALUES (237, 1, 'Sterling Silver Marquise Shaped Cubic Zirconia Bracelet', 'Elements sterling silver marquise shaped open link with cubic zirconia detail. Dimensions - length 18-21cm/7-8.25", width 6.6mm at widest, weight 5.1 grams.', '', 17);
 INSERT INTO `products_description` VALUES (238, 1, 'Sterling Silver Drop Earrings', 'This sterling silver pave set cubic zirconia drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 39.5mm, width 11.5mm and weighs a total of 3.2 grams.', '', 9);
-INSERT INTO `products_description` VALUES (239, 1, 'Elements Sterling Silver Pave Set Cubic Zirconia Pendant', 'Pendant measures, length including bale 36.5mm, width 16.6mm and weighs 2.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 8);
-INSERT INTO `products_description` VALUES (240, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'Elements sterling silver open teardrop links with 5 cubic zirconia stones. Dimensions - length 18-21cm/7-8.25", width 9.8mm at widest, weight 11.6 grams.', '', 11);
-INSERT INTO `products_description` VALUES (241, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver cubic zirconia teardrop earring has a hook fitting and is for pierced ears.\r\nDimensions - length including hook 31.3mm, width 10.2mm and weighs a total of 2.8 grams.', '', 15);
-INSERT INTO `products_description` VALUES (242, 1, 'Elements Sterling Silver Teardrop Pendant With Cubic Zirconia', 'Pendant measures, length 25.8mm, width 12.8mm and weighs 2.1 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 6);
+INSERT INTO `products_description` VALUES (239, 1, 'Elements Sterling Silver Pave Set Cubic Zirconia Pendant', 'Pendant measures, length including bale 36.5mm, width 16.6mm and weighs 2.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 10);
+INSERT INTO `products_description` VALUES (240, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'Elements sterling silver open teardrop links with 5 cubic zirconia stones. Dimensions - length 18-21cm/7-8.25", width 9.8mm at widest, weight 11.6 grams.', '', 12);
+INSERT INTO `products_description` VALUES (241, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver cubic zirconia teardrop earring has a hook fitting and is for pierced ears.\r\nDimensions - length including hook 31.3mm, width 10.2mm and weighs a total of 2.8 grams.', '', 16);
+INSERT INTO `products_description` VALUES (242, 1, 'Elements Sterling Silver Teardrop Pendant With Cubic Zirconia', 'Pendant measures, length 25.8mm, width 12.8mm and weighs 2.1 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 8);
 INSERT INTO `products_description` VALUES (243, 1, 'B2954C', '', '', 1);
 INSERT INTO `products_description` VALUES (244, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This Sterling Silver cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears.', '', 3);
-INSERT INTO `products_description` VALUES (245, 1, 'Elements Sterling Silver Cubic Zirconia Teardrop Pendant', 'Pendant measures, length 15.3mm, width 8.1mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 19);
+INSERT INTO `products_description` VALUES (245, 1, 'Elements Sterling Silver Cubic Zirconia Teardrop Pendant', 'Pendant measures, length 15.3mm, width 8.1mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 20);
 INSERT INTO `products_description` VALUES (246, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This Elements sterling silver cubic zirconia drop earrings has a post and butterfly fitting, is for pierced ears and has a top round 6mm cz with a pear shape 10.3mm x 6.9mm cz and a total drop of 21mm, total weight of 4 grams.', '', 16);
 INSERT INTO `products_description` VALUES (247, 1, 'Elements Sterling Silver Cubic Zirconia Pendant', 'Elements sterling silver cubic zirconia pendant has a top round cubic zirconia stone measuring 6mm and below a 10.3mm x 7mm teardrop with a total length of 26mm, weight 2.1 grams. This pendant does not come with a chain please select your chain from the drop down box. Elements presentation box included.', '', 19);
 INSERT INTO `products_description` VALUES (248, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This Elements sterling silver cubic zirconia drop earrings has a hook fitting for pierced ears and measures, length including hook 40.1mm, width of largest cz 9.1mm and smallest cz 5.3mm, total weight 5.8 grams.', '', 12);
 INSERT INTO `products_description` VALUES (249, 1, 'Elements Sterling Silver Three Cubic Zirconia Drop Pendant', 'Stones measure, top 8mm, middle 10mm, bottom 15mm with a total length including bale 47.1mm, weight 10.3 grams. This pendant does not come with a chain, please select chain from the drop down box. Elements presentation box included.', '', 13);
-INSERT INTO `products_description` VALUES (250, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'Elements sterling silver round and marquise cubic zirconia bracelet. Length 18-20cm/7-8" and weighs 11.2 grams.', '', 19);
-INSERT INTO `products_description` VALUES (251, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver cubic zirconia drop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 17.2mm, width 5.7mm and weighs a total of 2.2 grams.', '', 21);
+INSERT INTO `products_description` VALUES (250, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'Elements sterling silver round and marquise cubic zirconia bracelet. Length 18-20cm/7-8" and weighs 11.2 grams.', '', 21);
+INSERT INTO `products_description` VALUES (251, 1, 'Sterling Silver Cubic Zirconia Drop Earring', 'This sterling silver cubic zirconia drop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 17.2mm, width 5.7mm and weighs a total of 2.2 grams.', '', 23);
 INSERT INTO `products_description` VALUES (252, 1, 'Elements Sterling Silver Round Cubic Zirconia Pendant', 'Pendant measures, length including bale 40.5mm, width 33.3mm and weighs 6.8 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 37);
 INSERT INTO `products_description` VALUES (253, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This Sterling Silver cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 6.3mm, width 6.3mm, total weight 2.2 grams.', '', 13);
 INSERT INTO `products_description` VALUES (254, 1, 'Elements Sterling Silver Square Cubic Zirconia Pendant', 'Pendant measures, length including loop 15.2mm, width 10.2mm and weighs 3.5 grams. This pendant does not come with a chain please select your chain from the drop down box. Elements presentation box included.', '', 29);
 INSERT INTO `products_description` VALUES (255, 1, 'Sterling Silver Black Cubic Zirconia Stud Earrings', 'This sterling silver black cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 7.6mm, width 5.7mm, total weight 2.2grams.', '', 20);
-INSERT INTO `products_description` VALUES (256, 1, 'Sterling Silver Blue Cubic Zirconia Bracelet', 'Elements sterling silver marquise shape blue crystal bracelet. Dimensions - length 18-21cm/7-8.25", width 5.6mm, weight 6.1 grams.', '', 18);
-INSERT INTO `products_description` VALUES (257, 1, 'Elements Sterling Silver Blue Cubic Zirconia Pendant', 'Pendant measures, length including bale 50mm, width5.6mm and weighs 2 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 14);
+INSERT INTO `products_description` VALUES (256, 1, 'Sterling Silver Blue Cubic Zirconia Bracelet', 'Elements sterling silver marquise shape blue crystal bracelet. Dimensions - length 18-21cm/7-8.25", width 5.6mm, weight 6.1 grams.', '', 19);
+INSERT INTO `products_description` VALUES (257, 1, 'Elements Sterling Silver Blue Cubic Zirconia Pendant', 'Pendant measures, length including bale 50mm, width5.6mm and weighs 2 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 16);
 INSERT INTO `products_description` VALUES (258, 1, 'Sterling Silver Blue Crystal Bracelet', 'Elements sterling silver three shades of blue crystal bracelet. Dimensions - length 18-21cmm/7-8.25", width 7.2mm at widest, weight 12.2 grams and comes in an elements presentation box.', '', 2);
 INSERT INTO `products_description` VALUES (259, 1, 'Sterling Silver Blue Crystal Drop Earrings', 'This sterling silver dark blue crystal drop earring has a post and butterfly fitting for pierced ears. Dimensions - length 22.6mm, width 7.2mm and weighs a total of 3.6 grams.', '', 19);
-INSERT INTO `products_description` VALUES (261, 1, 'Sterling Silver Blue Topaz Stud Earring', 'This Sterling Silver blue topaz stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 12.1mm, width 7mm, total weight 2.4 grams.', '', 12);
-INSERT INTO `products_description` VALUES (262, 1, 'Elements Blue Topaz Teardrop Pendant', 'Pendant measures - length 15.3mm, width 8.1mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 29);
+INSERT INTO `products_description` VALUES (261, 1, 'Sterling Silver Blue Crystal Stud Earring', 'This Sterling Silver blue topaz stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 12.1mm, width 7mm, total weight 2.4 grams.', '', 14);
+INSERT INTO `products_description` VALUES (262, 1, 'Elements Blue Topaz Teardrop Pendant', 'Pendant measures - length 15.3mm, width 8.1mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 31);
 INSERT INTO `products_description` VALUES (263, 1, 'Sterling Silver Blue Topaz Stud Earring', 'This sterling silver 5mm blue topaz stud earring has a post and butterfly fitting and is for pierced ears.', '', 16);
 INSERT INTO `products_description` VALUES (264, 1, 'Elements Sterling Silver Blue Topaz Pendant', 'Pendant measures, length including bale 12.8mm, width 7mm and weighs 1.7 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 20);
-INSERT INTO `products_description` VALUES (265, 1, 'Sterling Silver Filigree Drop Earrings', 'This sterling silver round filigree drop earring has hook fittings and is for pierced ears. Dimensions - length including hook 30mm, width 17.1mm and weighs a total of 5.4 grams.', '', 7);
-INSERT INTO `products_description` VALUES (266, 1, 'Sterling Silver Round Filigree Necklet', 'Elements sterling silver round filigree necklet which has an adjustable chain 45-50cm/17.75-19.5". Pendant length including bale 34.3mm, width 24.8mm and weighs 6.5 grams including chain. It comes in an elements presentation box.', '', 17);
+INSERT INTO `products_description` VALUES (265, 1, 'Sterling Silver Filigree Drop Earrings', 'This sterling silver round filigree drop earring has hook fittings and is for pierced ears. Dimensions - length including hook 30mm, width 17.1mm and weighs a total of 5.4 grams.', '', 9);
+INSERT INTO `products_description` VALUES (266, 1, 'Sterling Silver Round Filigree Necklet', 'Elements sterling silver round filigree necklet which has an adjustable chain 45-50cm/17.75-19.5". Pendant length including bale 34.3mm, width 24.8mm and weighs 6.5 grams including chain. It comes in an elements presentation box.', '', 21);
 INSERT INTO `products_description` VALUES (267, 1, 'Sterling Silver Butterfly Drop Earrings', 'This sterling silver open butterfly drop earring has a hook fitting and is for pierced ears.\r\nDimensions - length 49.8mm including hook, width 13.4mm and total weight is 3.6 grams.', '', 11);
-INSERT INTO `products_description` VALUES (268, 1, 'Sterling Silver Butterfly Necklet', 'Elements sterling silver open linked butterfly necklet with lobster claw catch and adjustable chain to increase length from 41cm/16" to 46cm/18".', '', 30);
-INSERT INTO `products_description` VALUES (269, 1, 'Sterling Silver Leaf Shaped Bracelet', 'Elements sterling silver 6 leave bracelet. Dimensions - length 18-21cm/7-8.25", weight 5.1 grams.', '', 25);
-INSERT INTO `products_description` VALUES (270, 1, 'Sterling Silver Leaf Drop Earrings', 'This sterling silver open leaf drop earring has a hook fitting and is for pierced ears.', '', 16);
-INSERT INTO `products_description` VALUES (271, 1, 'Sterling Silver Double Leaf Necklet', 'Elements sterling silver double leaf necklet has an adjustable chain 41-46cm/16-18" it comes in an elements presentation box.', '', 17);
-INSERT INTO `products_description` VALUES (272, 1, 'Sterling Silver Drop Earrings', 'This sterling silver cut out drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 39.4mm, width 21.8mm and weighs a total of 6 grams.', '', 11);
-INSERT INTO `products_description` VALUES (273, 1, 'Elements Sterling Silver Cut Out Pendant', 'Pendant measures, length including bale 42.4mm, width 27.7mm and weighs 5.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 7);
-INSERT INTO `products_description` VALUES (274, 1, 'Sterling Silver Drop Earrings', 'This sterling silver drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 31mm, width 20.7mm and weighs a total of 3.6 grams.', '', 8);
+INSERT INTO `products_description` VALUES (268, 1, 'Sterling Silver Butterfly Necklet', 'Elements sterling silver open linked butterfly necklet with lobster claw catch and adjustable chain to increase length from 41cm/16" to 46cm/18".', '', 41);
+INSERT INTO `products_description` VALUES (269, 1, 'Sterling Silver Leaf Shaped Bracelet', 'Elements sterling silver 6 leave bracelet. Dimensions - length 18-21cm/7-8.25", weight 5.1 grams.', '', 26);
+INSERT INTO `products_description` VALUES (270, 1, 'Sterling Silver Leaf Drop Earrings', 'This sterling silver open leaf drop earring has a hook fitting and is for pierced ears.', '', 20);
+INSERT INTO `products_description` VALUES (271, 1, 'Sterling Silver Double Leaf Necklet', 'Elements sterling silver double leaf necklet has an adjustable chain 41-46cm/16-18" it comes in an elements presentation box.', '', 21);
+INSERT INTO `products_description` VALUES (272, 1, 'Sterling Silver Drop Earrings', 'This sterling silver cut out drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 39.4mm, width 21.8mm and weighs a total of 6 grams.', '', 13);
+INSERT INTO `products_description` VALUES (273, 1, 'Elements Sterling Silver Cut Out Pendant', 'Pendant measures, length including bale 42.4mm, width 27.7mm and weighs 5.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 10);
+INSERT INTO `products_description` VALUES (274, 1, 'Sterling Silver Drop Earrings', 'This sterling silver drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 31mm, width 20.7mm and weighs a total of 3.6 grams.', '', 10);
 INSERT INTO `products_description` VALUES (275, 1, 'Sterling Silver Open Work Necklet', 'Elements sterling silver open work necklet, it measures 41cm/16" and extends to 46cm/18" and comes with an elements presentation box.', '', 2);
-INSERT INTO `products_description` VALUES (276, 1, 'Sterling Silver Filigree Drop Earrings', 'This Elements sterling silver oval filigree drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 31.5mm, width 20.5mm and weighs a total of 4.4 grams.', '', 7);
-INSERT INTO `products_description` VALUES (277, 1, 'Sterling Silver Filigree Necklet', 'Elements sterling silver oval swirl necklet, this necklet has an adjustable chain 45-50cm/17.75-19.5", length of pendant 31mm width 30.2mm and weighs 7.9 grams. It omes in an elements presentation box.', '', 13);
-INSERT INTO `products_description` VALUES (278, 1, 'Sterling Silver Filigree Hoop Earring', 'This sterling silver open filigree hoop earring has a creole fitting and is for pierced ears. Dimensions - length 30.6mm, width 29.9mm and weighs a total of 6.8 grams.', '', 27);
-INSERT INTO `products_description` VALUES (279, 1, 'Elements Sterling Silver Round Filigree Pendant', 'Pendant measures, length including bale 42mm, width 37mm and weighs 7.1 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 10);
-INSERT INTO `products_description` VALUES (280, 1, 'Sterling Silver Half Hoop Earring', 'This sterling silver ridged effect half hoop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 21.7mm width 7.8mm and weighs a total of 5.6 grams.', '', 10);
-INSERT INTO `products_description` VALUES (281, 1, 'Elements Sterling Silver Teardrop Pendant', 'Pendant measures, length 34.4mm, width 17.5mm and weighs 5.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 11);
-INSERT INTO `products_description` VALUES (282, 1, 'Sterling Silver Open Link Bracelet', 'Elements sterling silver bracelet. Dimensions - length 19-20.5cm/7.25-8", width 15.1mm at widest, weight 14.5 grams.', '', 8);
-INSERT INTO `products_description` VALUES (283, 1, 'Sterling Silver Drop Earring', 'This Sterling Silver drop earring has a hook fitting for pierced ears. Dimensions - length including hook 45mm, width 15.3mm and total weight 5.8 grams.', '', 7);
-INSERT INTO `products_description` VALUES (284, 1, 'Elements Sterling Silver Oval Pendant', 'pendant measures, length 36.5mm, width 18.3mm and weighs 3.9 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 21);
-INSERT INTO `products_description` VALUES (285, 1, 'Sterling Silver Figure of 8 Bracelet', 'Elements sterling silver figure of 8 bracelet. Dimensions length 7.25 to 8 inches (19-20.5cm), width 9.8mm, weight 18.5 grams.', '', 24);
+INSERT INTO `products_description` VALUES (276, 1, 'Sterling Silver Filigree Drop Earrings', 'This Elements sterling silver oval filigree drop earring has a hook fitting and is for pierced ears. Dimensions - length including hook 31.5mm, width 20.5mm and weighs a total of 4.4 grams.', '', 8);
+INSERT INTO `products_description` VALUES (277, 1, 'Sterling Silver Filigree Necklet', 'Elements sterling silver oval swirl necklet, this necklet has an adjustable chain 45-50cm/17.75-19.5", length of pendant 31mm width 30.2mm and weighs 7.9 grams. It omes in an elements presentation box.', '', 14);
+INSERT INTO `products_description` VALUES (278, 1, 'Sterling Silver Filigree Hoop Earring', 'This sterling silver open filigree hoop earring has a creole fitting and is for pierced ears. Dimensions - length 30.6mm, width 29.9mm and weighs a total of 6.8 grams.', '', 29);
+INSERT INTO `products_description` VALUES (279, 1, 'Elements Sterling Silver Round Filigree Pendant', 'Pendant measures, length including bale 42mm, width 37mm and weighs 7.1 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 11);
+INSERT INTO `products_description` VALUES (280, 1, 'Sterling Silver Half Hoop Earring', 'This sterling silver ridged effect half hoop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 21.7mm width 7.8mm and weighs a total of 5.6 grams.', '', 12);
+INSERT INTO `products_description` VALUES (281, 1, 'Elements Sterling Silver Teardrop Pendant', 'Pendant measures, length 34.4mm, width 17.5mm and weighs 5.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 14);
+INSERT INTO `products_description` VALUES (282, 1, 'Sterling Silver Open Link Bracelet', 'Elements sterling silver bracelet. Dimensions - length 19-20.5cm/7.25-8", width 15.1mm at widest, weight 14.5 grams.', '', 10);
+INSERT INTO `products_description` VALUES (283, 1, 'Sterling Silver Drop Earring', 'This Sterling Silver drop earring has a hook fitting for pierced ears. Dimensions - length including hook 45mm, width 15.3mm and total weight 5.8 grams.', '', 9);
+INSERT INTO `products_description` VALUES (284, 1, 'Elements Sterling Silver Oval Pendant', 'pendant measures, length 36.5mm, width 18.3mm and weighs 3.9 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 23);
+INSERT INTO `products_description` VALUES (285, 1, 'Sterling Silver Figure of 8 Bracelet', 'Elements sterling silver figure of 8 bracelet. Dimensions length 7.25 to 8 inches (19-20.5cm), width 9.8mm, weight 18.5 grams.', '', 27);
 INSERT INTO `products_description` VALUES (286, 1, 'Sterling Silver Figure of 8 Stud Earring', 'This Sterling Silver figure of eight stud earring has a post and butterfly fitting for pierced ears. dimensions length 24.5mm, width 8.2mm and total weight of 4.4 grams.', '', 9);
 INSERT INTO `products_description` VALUES (287, 1, 'Elements Sterling Silver Figure of 8 Pendant', 'Pendant measures, length 29.4mm, width 11.6mm and weighs 3 grams. This pendant does not come with a chain, please select a chain from the drop down box. Elements presentation box included.', '', 49);
-INSERT INTO `products_description` VALUES (288, 1, 'Sterling Silver Ridged Stud Earring', 'This sterling silver ridged stud earring has a post and butterfly fitting and suitable for pierced ears. Dimensions - length 13.5mm, width 9.5mm and weighs a total of 3 grams.', '', 12);
-INSERT INTO `products_description` VALUES (289, 1, 'Elements Sterling Silver Ridged Pendant', 'Pendant measures, length 22mm, width 11.3mm and weighs 3.6 grams. this pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 6);
+INSERT INTO `products_description` VALUES (288, 1, 'Sterling Silver Ridged Stud Earring', 'This sterling silver ridged stud earring has a post and butterfly fitting and suitable for pierced ears. Dimensions - length 13.5mm, width 9.5mm and weighs a total of 3 grams.', '', 15);
+INSERT INTO `products_description` VALUES (289, 1, 'Elements Sterling Silver Ridged Pendant', 'Pendant measures, length 22mm, width 11.3mm and weighs 3.6 grams. this pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 8);
 INSERT INTO `products_description` VALUES (290, 1, 'Sterling Silver Leaf Drop Earrings', 'This Elements sterling silver leaf drop earrings has a hook fitting and is for pierced ears. Dimensions - length including hook 39.8mm, width 8mm and weighs a total of 2.6 grams.', '', 9);
 INSERT INTO `products_description` VALUES (291, 1, 'Elements Sterling Silver Twist Leaf Pendant', 'Pendant measures, length 46.9mm, width 11.2mm and weighs 4.2 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box inluded.', '', 11);
-INSERT INTO `products_description` VALUES (292, 1, 'Sterling Silver Drop Earrings', 'This sterling silver oval and teardrop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 45.6mm, width 19.8mm and weighs a total of 8.8 grams.', '', 9);
+INSERT INTO `products_description` VALUES (292, 1, 'Sterling Silver Drop Earrings', 'This sterling silver oval and teardrop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 45.6mm, width 19.8mm and weighs a total of 8.8 grams.', '', 12);
 INSERT INTO `products_description` VALUES (293, 1, 'Elements Sterling Silver Oval and Tear Drop Pendant', 'Pendant measures, length 42.3mm, width 19.5mm and weighs 4.4 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 9);
 INSERT INTO `products_description` VALUES (294, 1, 'Sterling Silver Open Squared Drop Earrings', 'This Sterling Silver drop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 33.5mm, width 15mm and total weight of 6 grams.', '', 24);
 INSERT INTO `products_description` VALUES (295, 1, 'Elements Sterling Silver Open Squared Pendant', 'Pendant measures, length 46mm, width 20mm and weighs 6.1 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included', '', 22);
-INSERT INTO `products_description` VALUES (296, 1, 'Sterling Silver Kiss Stud Earring', 'This sterling silver kiss stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 14.3mm, width 9mm and total weight 2 grams.', '', 60);
-INSERT INTO `products_description` VALUES (297, 1, 'Sterling Silver Kiss Pendant', 'Elements sterling silver kiss pendant with 46cm/18" box chain. Dimensions of pendant length 17.2 mm, width 13mm at widest and comes in an elements presentation box.', '', 19);
-INSERT INTO `products_description` VALUES (298, 1, 'Sterling Silver Drop Earrings', 'This sterling silver diamond cut and polished finish drop earring has a post and butterfly fitting and is for pierced ears.  Dimensions - length 36.8mm, width 11.3mm and weighs a total of 4.4 grams.', '', 7);
-INSERT INTO `products_description` VALUES (299, 1, 'Elements Sterling Silver Diamond Cut and Polished Finish Pendant', 'pendant measures, length including bale 47.1mm, width 14.6mm and weighs 4 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 9);
-INSERT INTO `products_description` VALUES (300, 1, 'Sterling Silver Half Hoop Crossover Earring', 'This sterling silver diamond cut and polished finished crossover half hoop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 11.5mm, width 6.2mm and weighs a total of 2 grams.', '', 9);
+INSERT INTO `products_description` VALUES (296, 1, 'Sterling Silver Kiss Stud Earring', 'This sterling silver kiss stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 14.3mm, width 9mm and total weight 2 grams.', '', 71);
+INSERT INTO `products_description` VALUES (297, 1, 'Sterling Silver Kiss Pendant', 'Elements sterling silver kiss pendant with 46cm/18" box chain. Dimensions of pendant length 17.2 mm, width 13mm at widest and comes in an elements presentation box.', '', 22);
+INSERT INTO `products_description` VALUES (298, 1, 'Sterling Silver Drop Earrings', 'This sterling silver diamond cut and polished finish drop earring has a post and butterfly fitting and is for pierced ears.  Dimensions - length 36.8mm, width 11.3mm and weighs a total of 4.4 grams.', '', 10);
+INSERT INTO `products_description` VALUES (299, 1, 'Elements Sterling Silver Diamond Cut and Polished Finish Pendant', 'pendant measures, length including bale 47.1mm, width 14.6mm and weighs 4 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 11);
+INSERT INTO `products_description` VALUES (300, 1, 'Sterling Silver Half Hoop Crossover Earring', 'This sterling silver diamond cut and polished finished crossover half hoop earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 11.5mm, width 6.2mm and weighs a total of 2 grams.', '', 11);
 INSERT INTO `products_description` VALUES (301, 1, 'Elements Sterling Silver Diamond Cut and Polished Finish Pendant', 'Pendant measures, length 15.5mm, width 8.2mm and weighs 1.3 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 11);
 INSERT INTO `products_description` VALUES (302, 1, 'Sterling Silver Heart Bracelet', 'Elements sterling silver polished hearts bracelet. Dimensions - length 18-21cm/7-8.25".', '', 2);
 INSERT INTO `products_description` VALUES (303, 1, 'Sterling Silver Heart Drop Earrings', 'This Elements sterling silver plain heart drop earring has a hook fitting for pierced ears. Dimensions - length including hook 25.2mm, width 9.7mm and weighs a total of 1.8 grams.', '', 9);
-INSERT INTO `products_description` VALUES (304, 1, 'Elements Sterling Silver Polished Heart Pendant', 'Pendant measures, length including bale 32.9mm, width 21mm and weighs 3.2 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 5);
-INSERT INTO `products_description` VALUES (305, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This Sterling Silver round cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - diameter 7.4mm and weighs a total of 3 grams.', '', 24);
-INSERT INTO `products_description` VALUES (306, 1, 'Elements Sterling Silver Round Cubic Zirconia Pendant', 'Pendant measures, length 17.4mm including bale, width 8.6mm and weighs 1.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 14);
-INSERT INTO `products_description` VALUES (730, 1, 'Sterling Silver Cubic Zirconia Cherry Blossom Pendant', 'This beautiful pendant has a cubic zirconia in the centre which is held in by 4 claws.\r\n26mm x 23mm. It sits on an 18"/45cm diamond cut curb chain.', '', 12);
+INSERT INTO `products_description` VALUES (304, 1, 'Elements Sterling Silver Polished Heart Pendant', 'Pendant measures, length including bale 32.9mm, width 21mm and weighs 3.2 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 7);
+INSERT INTO `products_description` VALUES (305, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This Sterling Silver round cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - diameter 7.4mm and weighs a total of 3 grams.', '', 26);
+INSERT INTO `products_description` VALUES (306, 1, 'Elements Sterling Silver Round Cubic Zirconia Pendant', 'Pendant measures, length 17.4mm including bale, width 8.6mm and weighs 1.5 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 15);
+INSERT INTO `products_description` VALUES (730, 1, 'Sterling Silver Cubic Zirconia Cherry Blossom Pendant', 'This beautiful pendant has a cubic zirconia in the centre which is held in by 4 claws.\r\n26mm x 23mm. It sits on an 18"/45cm diamond cut curb chain.', '', 25);
 INSERT INTO `products_description` VALUES (308, 1, 'B3168C', '', '', 3);
-INSERT INTO `products_description` VALUES (310, 1, 'Sterling Silver Cubic Zirconia Tennis Bracelet', 'Elements sterling silver cubic zirconia tennis bracelet. Dimensions - length 19cm/7.25 inches, width 5.1mm, weight 15 grams.', '', 21);
+INSERT INTO `products_description` VALUES (310, 1, 'Sterling Silver Cubic Zirconia Tennis Bracelet', 'Elements sterling silver cubic zirconia tennis bracelet. Dimensions - length 19cm/7.25 inches, width 5.1mm, weight 15 grams.', '', 23);
 INSERT INTO `products_description` VALUES (311, 1, 'Sterling Silver Oval Link Bracelet', 'Elements sterling silver oval open link bracelet. Dimensions - length 18-21cm/7-8.25", width 9.8mm at widest, weight 9.2 grams.', '', 20);
-INSERT INTO `products_description` VALUES (312, 1, 'Sterling Silver Oval Open Link Necklet', 'Elements sterling silver oval open link 45cm/17.75" necklet with lobster claw catch, weight 11.6 grams and it comes with an elements presentation box.', '', 18);
-INSERT INTO `products_description` VALUES (313, 1, 'Sterling Silver Charm Bracelet With 8 Heart Charms', 'Elements sterling silver charm bracelet with 8 heart charms, length 19cm/7.5", weight 10.5 grams.', '', 24);
-INSERT INTO `products_description` VALUES (314, 1, 'Sterling Silver T.Bar Bracelet', 'Elements sterling silver t bar bracelet with crystal heart charm. Dimensions - length 19cm7.5",weight 19 grams.', '', 7);
-INSERT INTO `products_description` VALUES (315, 1, 'Sterling Silver Cubic Zirconia Earrings', 'This sterling silver hoop style earrings with 6 cubic zirconia stones has a post and butterfly fitting and is for pierced ears. Dimensions are, length 12mm, width at widest 5mm and a total weight of 2 grams.', '', 13);
-INSERT INTO `products_description` VALUES (316, 1, 'Elements Sterling Silver Cubic Zirconia Pendant', 'Pendant measures, length 20.3mm, width 4.4mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box.', '', 12);
-INSERT INTO `products_description` VALUES (317, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This sterling silver cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 8mm, width 4.5mm and weighs a total of 0.8 grams.', '', 17);
-INSERT INTO `products_description` VALUES (318, 1, 'Elements Sterling Silver Cubic Zirconia Pendant', 'Pendant measures, length 11.6mm, width 5.4mm and weighs 0.7 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 60);
+INSERT INTO `products_description` VALUES (312, 1, 'Sterling Silver Oval Open Link Necklet', 'Elements sterling silver oval open link 45cm/17.75" necklet with lobster claw catch, weight 11.6 grams and it comes with an elements presentation box.', '', 19);
+INSERT INTO `products_description` VALUES (313, 1, 'Sterling Silver Charm Bracelet With 8 Heart Charms', 'Elements sterling silver charm bracelet with 8 heart charms, length 19cm/7.5", weight 10.5 grams.', '', 25);
+INSERT INTO `products_description` VALUES (314, 1, 'Sterling Silver T.Bar Bracelet', 'Elements sterling silver t bar bracelet with crystal heart charm. Dimensions - length 19cm7.5",weight 19 grams.', '', 8);
+INSERT INTO `products_description` VALUES (315, 1, 'Sterling Silver Cubic Zirconia Earrings', 'This sterling silver hoop style earrings with 6 cubic zirconia stones has a post and butterfly fitting and is for pierced ears. Dimensions are, length 12mm, width at widest 5mm and a total weight of 2 grams.', '', 15);
+INSERT INTO `products_description` VALUES (316, 1, 'Elements Sterling Silver Cubic Zirconia Pendant', 'Pendant measures, length 20.3mm, width 4.4mm and weighs 1.6 grams. This pendant does not come with a chain, please select your chain from the drop down box.', '', 14);
+INSERT INTO `products_description` VALUES (317, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This sterling silver cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 8mm, width 4.5mm and weighs a total of 0.8 grams.', '', 18);
+INSERT INTO `products_description` VALUES (318, 1, 'Elements Sterling Silver Cubic Zirconia Pendant', 'Pendant measures, length 11.6mm, width 5.4mm and weighs 0.7 grams. This pendant does not come with a chain, please select your chain from the drop down box. Elements presentation box included.', '', 77);
 INSERT INTO `products_description` VALUES (319, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This sterling silver channel set cubic zirconia stud earring has a post and butterfly fitting and is for pierced ears. Dimensions - length 6.7mm, width 4.3mm and weighs a total of 1.4 grams.', '', 11);
-INSERT INTO `products_description` VALUES (320, 1, 'Fred Bennett Stainless Steel Bracelet', 'Bracelet measures, length 23cm/9", width 15.4mm at the middle plate and weighs 62.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 7);
-INSERT INTO `products_description` VALUES (321, 1, 'Fred Bennett Stainless Steel Bracelet', 'Bracelet measures, length 23cm/9", width 8.4mm and weighs 34.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 11);
+INSERT INTO `products_description` VALUES (320, 1, 'Fred Bennett Stainless Steel Bracelet', 'Bracelet measures, length 23cm/9", width 15.4mm at the middle plate and weighs 62.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 9);
+INSERT INTO `products_description` VALUES (321, 1, 'Fred Bennett Stainless Steel Bracelet', 'Bracelet measures, length 23cm/9", width 8.4mm and weighs 34.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 13);
 INSERT INTO `products_description` VALUES (322, 1, 'B3130', '', '', 1);
-INSERT INTO `products_description` VALUES (323, 1, 'Fred Bennett Stainless Steel Bangle', 'Bangle measures, length 74.8mm, width 10.1mm and weighs 32.7 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 11);
+INSERT INTO `products_description` VALUES (323, 1, 'Fred Bennett Stainless Steel Bangle', 'Bangle measures, length 74.8mm, width 10.1mm and weighs 32.7 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 13);
 INSERT INTO `products_description` VALUES (324, 1, 'Fred Bennett Stainless Steel Bracelet', 'Bracelet measures, length 23cm/9", width 6.5mm and weighs 20.9 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 2);
-INSERT INTO `products_description` VALUES (325, 1, 'Fred Bennett Stainless Steel Curb Identity Bracelet', 'Bracelet measures, length 23.5cm/9", width 9.2mm, engraving plate 49mm x 10.1mm and weighs 29.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 13);
-INSERT INTO `products_description` VALUES (326, 1, 'Fred Bennett Sterling Silver Scratched Finish Bangle', 'Bracelet measures, length 69.6mm, width 9.7mm and weighs 30.4 grams. All Fred Bennett products come with a Fred Bennett gift box.', '', 12);
-INSERT INTO `products_description` VALUES (327, 1, 'Fred Bennett Stainless Steel Oval Dogtags Necklace', 'Dog tags measure, length 37.5mm, width 18.8mm each and sits on a 56cm/22" ball chain. Total weight 24.1 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 8);
-INSERT INTO `products_description` VALUES (328, 1, 'Fred Bennett Stainless Steel Dogtag Necklace', 'Dogtags measure, length 40mm, width 17mm each and sit on a56cm/22" ball chain. Total weight 16.7 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 13);
-INSERT INTO `products_description` VALUES (329, 1, 'Fred Bennett Sterling Silver Plain Cross Pendant', 'Cross measures, length 35.8mm, width 20mm and sits on a silver 51cm/20" ball chain. Total weight 15 grams. All Fred Bennett produts come in a Fred Bennett gift box.', '', 21);
-INSERT INTO `products_description` VALUES (330, 1, 'Fred Bennett Stainless Steel Brushed and Polished Cross Pendant', 'Cross measures, length 29.9mm, width 20.1mm and sits on a 51cm/20" curb chain. Total weight 13.3 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 23);
-INSERT INTO `products_description` VALUES (331, 1, 'Fred Bennet Sterling Silver Cross Pendant', 'Cross Measures, length 34.6mm, width 21.6mm and sits on a 51cm/20" silver box chain. Total weight 17.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 17);
-INSERT INTO `products_description` VALUES (332, 1, 'Fred Bennett Sterling Silver Dogtag with Black Resin Stripe Pend', 'Dogtag measures, length including bale 43.5mm, width 21.7mm and sits on a 51cm/20" silver box chain. Total weight 27.1 grams. All fred Bennett products come in a Fred Bennett gift box.', '', 10);
-INSERT INTO `products_description` VALUES (333, 1, 'Fred Bennett Stainless Steel Brushed and Polished Dogtag Pendant', 'Dogtag measures, length including bale 35mm, width 14.8mm and sits on a 51cm/20" ball chain. Total weight 11.5 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 11);
-INSERT INTO `products_description` VALUES (334, 1, 'Fred Bennett Stainless Steel Cross Pendant', 'Cross measures, length including bale 43.4mm, width 25.5mm and sits on a 51cm/20" curb chain. Total weight 17 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 10);
+INSERT INTO `products_description` VALUES (325, 1, 'Fred Bennett Stainless Steel Curb Identity Bracelet', 'Bracelet measures, length 23.5cm/9", width 9.2mm, engraving plate 49mm x 10.1mm and weighs 29.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 14);
+INSERT INTO `products_description` VALUES (326, 1, 'Fred Bennett Sterling Silver Scratched Finish Bangle', 'Bracelet measures, length 69.6mm, width 9.7mm and weighs 30.4 grams. All Fred Bennett products come with a Fred Bennett gift box.', '', 14);
+INSERT INTO `products_description` VALUES (327, 1, 'Fred Bennett Stainless Steel Oval Dogtags Necklace', 'Dog tags measure, length 37.5mm, width 18.8mm each and sits on a 56cm/22" ball chain. Total weight 24.1 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 9);
+INSERT INTO `products_description` VALUES (328, 1, 'Fred Bennett Stainless Steel Dogtag Necklace', 'Dogtags measure, length 40mm, width 17mm each and sit on a56cm/22" ball chain. Total weight 16.7 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 15);
+INSERT INTO `products_description` VALUES (329, 1, 'Fred Bennett Sterling Silver Plain Cross Pendant', 'Cross measures, length 35.8mm, width 20mm and sits on a silver 51cm/20" ball chain. Total weight 15 grams. All Fred Bennett produts come in a Fred Bennett gift box.', '', 22);
+INSERT INTO `products_description` VALUES (330, 1, 'Fred Bennett Stainless Steel Brushed and Polished Cross Pendant', 'Cross measures, length 29.9mm, width 20.1mm and sits on a 51cm/20" curb chain. Total weight 13.3 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 31);
+INSERT INTO `products_description` VALUES (331, 1, 'Fred Bennet Sterling Silver Cross Pendant', 'Cross Measures, length 34.6mm, width 21.6mm and sits on a 51cm/20" silver box chain. Total weight 17.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 21);
+INSERT INTO `products_description` VALUES (332, 1, 'Fred Bennett Sterling Silver Dogtag with Black Resin Stripe Pend', 'Dogtag measures, length including bale 43.5mm, width 21.7mm and sits on a 51cm/20" silver box chain. Total weight 27.1 grams. All fred Bennett products come in a Fred Bennett gift box.', '', 12);
+INSERT INTO `products_description` VALUES (333, 1, 'Fred Bennett Stainless Steel Brushed and Polished Dogtag Pendant', 'Dogtag measures, length including bale 35mm, width 14.8mm and sits on a 51cm/20" ball chain. Total weight 11.5 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 12);
+INSERT INTO `products_description` VALUES (334, 1, 'Fred Bennett Stainless Steel Cross Pendant', 'Cross measures, length including bale 43.4mm, width 25.5mm and sits on a 51cm/20" curb chain. Total weight 17 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 13);
 INSERT INTO `products_description` VALUES (335, 1, 'Fred Bennett Sterling Silver Scratch Finish Cufflinks', 'Gents sterling silver scratched finished Fred Bennett cufflinks. Dimensions - 13.2mm x 13.2mm and weights 6.3 grams each. All Fred Bennett products are sold in Fred Bennett gift boxes.', '', 8);
-INSERT INTO `products_description` VALUES (336, 1, 'Fred Bennett Stainless Steel Carbon Fibre Cufflinks', 'Gents round 15mm stainless steel carbon fibre Fred Bennett cufflinks,  weight 5.5 grams each. All Fred Bennett products are sold in Fred Bennett gift boxes.', '', 13);
+INSERT INTO `products_description` VALUES (336, 1, 'Fred Bennett Stainless Steel Carbon Fibre Cufflinks', 'Gents round 15mm stainless steel carbon fibre Fred Bennett cufflinks,  weight 5.5 grams each. All Fred Bennett products are sold in Fred Bennett gift boxes.', '', 14);
 INSERT INTO `products_description` VALUES (337, 1, 'Fred Bennett Stainless Steel Cufflinks', 'Gents Fred Bennett stainless steel brushed and polished square cufflinks, these cufflinks measures 12.9mm x 12.9mm and weighs 4 grams each. All Fred Bennett products are sold in Fred Bennett gift boxes.', '', 14);
-INSERT INTO `products_description` VALUES (338, 1, 'Fred Bennett Sterling Silver Scratched and Polished Cufflinks', 'Gents sterling silver Fred Bennett scratched and polished cufflinks, these cufflinks measure 17.5mm x 10.2mm and weighs 4.6 grams each. All Fred Bennett products are sold in a Fred Bennett gift boxes.', '', 15);
-INSERT INTO `products_description` VALUES (339, 1, 'Fred Bennett Stainless Steel Cufflinks', 'Gents stainless steel Fred Bennett polished cufflinks, measure 13.6mm x 13.6mm and weighs 6.3 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 9);
-INSERT INTO `products_description` VALUES (340, 1, 'Fred Bennett Stainless Steel Cufflinks', 'Gents stainless steel Fred Bennett ribbed design cufflinks, measures 17.8mm x 12.3mm and weighs 5 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 9);
-INSERT INTO `products_description` VALUES (341, 1, 'Fred Bennett Sterling Silver Scooped Edged Cufflinks', 'Gents sterling silver scooped edge Fred Bennett cfflinks, measure 13.7mm x 13.7mm and weighs 5.7 grams each. All Fred Bennett are sold in a Fred Bennett gift box.', '', 9);
-INSERT INTO `products_description` VALUES (342, 1, 'Fred Bennett Sterling Silver Scratched and Polished Cufflinks', 'Gents sterling silver Fred Bennett scratched and polished cufflinks, these cufflinks measure 23mm x 7mm and weigh 5.9 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 12);
+INSERT INTO `products_description` VALUES (338, 1, 'Fred Bennett Sterling Silver Scratched and Polished Cufflinks', 'Gents sterling silver Fred Bennett scratched and polished cufflinks, these cufflinks measure 17.5mm x 10.2mm and weighs 4.6 grams each. All Fred Bennett products are sold in a Fred Bennett gift boxes.', '', 16);
+INSERT INTO `products_description` VALUES (339, 1, 'Fred Bennett Stainless Steel Cufflinks', 'Gents stainless steel Fred Bennett polished cufflinks, measure 13.6mm x 13.6mm and weighs 6.3 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 11);
+INSERT INTO `products_description` VALUES (340, 1, 'Fred Bennett Stainless Steel Cufflinks', 'Gents stainless steel Fred Bennett ribbed design cufflinks, measures 17.8mm x 12.3mm and weighs 5 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 12);
+INSERT INTO `products_description` VALUES (341, 1, 'Fred Bennett Sterling Silver Scooped Edged Cufflinks', 'Gents sterling silver scooped edge Fred Bennett cfflinks, measure 13.7mm x 13.7mm and weighs 5.7 grams each. All Fred Bennett are sold in a Fred Bennett gift box.', '', 11);
+INSERT INTO `products_description` VALUES (342, 1, 'Fred Bennett Sterling Silver Scratched and Polished Cufflinks', 'Gents sterling silver Fred Bennett scratched and polished cufflinks, these cufflinks measure 23mm x 7mm and weigh 5.9 grams each. All Fred Bennett products are sold in a Fred Bennett gift box.', '', 14);
 INSERT INTO `products_description` VALUES (343, 1, 'Fred Bennet Sterling Silver Scratched and Polished Bangle', 'Bangle measures, length 72.2mm, width 12mm and weighs 47.4 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 8);
-INSERT INTO `products_description` VALUES (344, 1, 'Fred Bennett Stainless Steel Bangle With Black PVD Strip', 'Bangle measures, length 73mm, width 10.2mm and weighs 30.4 grams. All fred Bennett products come in a Fred Bennett gift box.', '', 11);
-INSERT INTO `products_description` VALUES (345, 1, 'Fred Bennett Sterling Silver Scratched and PolishedCross Pendant', 'Cross measures, length 30.1mm, width 18.2mm and sits on a 51cm/20" silver box chain. Total weight 13.9 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 7);
-INSERT INTO `products_description` VALUES (346, 1, 'Fred Bennett Stainless Steel Dogtag Necklace', 'Dogtag measures, length 39mm, width 18mm and sits on a 51cm/20" curb chain. Total weight 21.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 19);
-INSERT INTO `products_description` VALUES (347, 1, 'Fred Bennett Stainless Steel Dogtag Necklace with Cubic Zirconia', 'Dogtag measures, length including bale 33.7mm, width 12.2mm and sits on a 51cm/20" curb chain. Total weight 10.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 11);
+INSERT INTO `products_description` VALUES (344, 1, 'Fred Bennett Stainless Steel Bangle With Black PVD Strip', 'Bangle measures, length 73mm, width 10.2mm and weighs 30.4 grams. All fred Bennett products come in a Fred Bennett gift box.', '', 14);
+INSERT INTO `products_description` VALUES (345, 1, 'Fred Bennett Sterling Silver Scratched and PolishedCross Pendant', 'Cross measures, length 30.1mm, width 18.2mm and sits on a 51cm/20" silver box chain. Total weight 13.9 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 10);
+INSERT INTO `products_description` VALUES (346, 1, 'Fred Bennett Stainless Steel Dogtag Necklace', 'Dogtag measures, length 39mm, width 18mm and sits on a 51cm/20" curb chain. Total weight 21.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 20);
+INSERT INTO `products_description` VALUES (347, 1, 'Fred Bennett Stainless Steel Dogtag Necklace with Cubic Zirconia', 'Dogtag measures, length including bale 33.7mm, width 12.2mm and sits on a 51cm/20" curb chain. Total weight 10.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 14);
 INSERT INTO `products_description` VALUES (348, 1, 'Fred Bennett Sterling Silver Dogtag Pendant with Scooped Edge', 'Dogtag measures, length including bale 41.7mm, width 17.1 - 19.7mm and sits on a silver 51cm/20" box chain. Total Weight 17.8 grams. All Fred Bennett products come in a Fred Bennett gift box.', '', 15);
 INSERT INTO `products_description` VALUES (349, 1, 'LB1526P', '', '', 4);
 INSERT INTO `products_description` VALUES (350, 1, 'Ladies Accurist Stainless Steel Quartz Watch', 'This Ladies Accurist has a stainless steel case and bracelet which is fully adjustable, quartz analogue movement and comes with a 3 year manufacturers guarantee and presentation box.', '', 30);
-INSERT INTO `products_description` VALUES (351, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped silver coloured dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 22);
-INSERT INTO `products_description` VALUES (352, 1, 'Girls D for Diamond Sterling Silver Heart Earrings', 'Heart earrings with diamond measures 5.5mm x 5.5mm and has a post and butterfly fitting for pierced ears.', '', 13);
+INSERT INTO `products_description` VALUES (351, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This ladies Accurist watch has a gold plated case and fully adjustable bracelet, tonneau shaped silver coloured dial, quartz analogue movement, water resistant and comes with a 3 year manufacturers guarantee and presentation box.', '', 26);
+INSERT INTO `products_description` VALUES (352, 1, 'Girls D for Diamond Sterling Silver Heart Earrings', 'Heart earrings with diamond measures 5.5mm x 5.5mm and has a post and butterfly fitting for pierced ears.', '', 16);
 INSERT INTO `products_description` VALUES (353, 1, 'Girls D for Diamond Sterling Silver Star Earrings', 'Star earrings with diamond measures 5.5mm x 5.5mm and has a post and butterfly fitting for pierced ears.', '', 17);
 INSERT INTO `products_description` VALUES (354, 1, 'Fluid Sterling Silver Ripple collection Open Heart Pendant', 'Pendant measures 17mm x 11.7mm and is attached to a 43cm chain, total weight 4.1 grams.', '', 25);
-INSERT INTO `products_description` VALUES (355, 1, 'Fluid Sterling Silver Ripple Collection Drop Earrings', 'Earrings measure, length 23mm, width 8.6mm and each earring weighs 1.1 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 70);
-INSERT INTO `products_description` VALUES (356, 1, 'Fluid Sterling Silver Ripple Collection Open Heart T.Bar Bracele', 'Bracelet measures 19cm in length and has 4 open hearts, one of which houses the T.Bar fitting. The weight of the bracelet is 4 grams.', '', 15);
+INSERT INTO `products_description` VALUES (355, 1, 'Fluid Sterling Silver Ripple Collection Drop Earrings', 'Earrings measure, length 23mm, width 8.6mm and each earring weighs 1.1 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 76);
+INSERT INTO `products_description` VALUES (356, 1, 'Fluid Sterling Silver Ripple Collection Open Heart T.Bar Bracele', 'Bracelet measures 19cm in length and has 4 open hearts, one of which houses the T.Bar fitting. The weight of the bracelet is 4 grams.', '', 18);
 INSERT INTO `products_description` VALUES (357, 1, 'Fluid Sterling Silver Puddle Collection Drop Earrings', 'Earrings measure, length 23mm, width 7.6mm and each earring weighs 0.8 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 9);
-INSERT INTO `products_description` VALUES (358, 1, 'Fluid Sterling Silver Puddle Collection 3 Link Pendant', 'Pendant measures 42mm x 10mm and sits on a 43cm chain, Total weight 6.3 grams.', '', 12);
-INSERT INTO `products_description` VALUES (359, 1, 'Fluid Sterling Silver Lagoon Collection Drop Earrings', 'Earrings measure, length 20mm, width 6.3mm and each earring weighs 1.3 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 11);
-INSERT INTO `products_description` VALUES (360, 1, 'Fluid Sterling Silver Lagoon Collection Bracelet with Figure of', 'Bracelet measures 19cm in length and is joined in the middle with a figure of 8 charm which is 19mm long and 6.5mm wide. The weight of the bracelet is 3.1 grams.', '', 77);
-INSERT INTO `products_description` VALUES (361, 1, 'Fluid Sterling Silver Lagoon Collection Figure of 8 Pendant', 'Pendant measures including loop 27.7mm x 8.6mm and sits on a 43cm chain. Total weight 4.2 grams.', '', 17);
-INSERT INTO `products_description` VALUES (362, 1, 'Fluid Sterling Silver Raindrop Collection Stud Earrings', 'Earring measures, length 12.2mm, width 6.6mm and each earring weighs 1.3 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 14);
-INSERT INTO `products_description` VALUES (363, 1, 'Fluid Sterling Silver Raindrop Collection Tear Drop Pendant', 'Pendant measures 16.8mm x 9.6mm and sits on a 43cm chain. Total weight 6.3 grams.', '', 17);
-INSERT INTO `products_description` VALUES (364, 1, 'Fluid Sterling Silver Bubble Collection Drop Earrings', 'Earring measures, length 22mm, width 14mm and each earring weighs 2.2 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 18);
+INSERT INTO `products_description` VALUES (358, 1, 'Fluid Sterling Silver Puddle Collection 3 Link Pendant', 'Pendant measures 42mm x 10mm and sits on a 43cm chain, Total weight 6.3 grams.', '', 13);
+INSERT INTO `products_description` VALUES (359, 1, 'Fluid Sterling Silver Lagoon Collection Drop Earrings', 'Earrings measure, length 20mm, width 6.3mm and each earring weighs 1.3 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 13);
+INSERT INTO `products_description` VALUES (360, 1, 'Fluid Sterling Silver Lagoon Collection Bracelet with Figure of', 'Bracelet measures 19cm in length and is joined in the middle with a figure of 8 charm which is 19mm long and 6.5mm wide. The weight of the bracelet is 3.1 grams.', '', 86);
+INSERT INTO `products_description` VALUES (361, 1, 'Fluid Sterling Silver Lagoon Collection Figure of 8 Pendant', 'Pendant measures including loop 27.7mm x 8.6mm and sits on a 43cm chain. Total weight 4.2 grams.', '', 21);
+INSERT INTO `products_description` VALUES (362, 1, 'Fluid Sterling Silver Raindrop Collection Stud Earrings', 'Earring measures, length 12.2mm, width 6.6mm and each earring weighs 1.3 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 20);
+INSERT INTO `products_description` VALUES (363, 1, 'Fluid Sterling Silver Raindrop Collection Tear Drop Pendant', 'Pendant measures 16.8mm x 9.6mm and sits on a 43cm chain. Total weight 6.3 grams.', '', 21);
+INSERT INTO `products_description` VALUES (364, 1, 'Fluid Sterling Silver Bubble Collection Drop Earrings', 'Earring measures, length 22mm, width 14mm and each earring weighs 2.2 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 20);
 INSERT INTO `products_description` VALUES (365, 1, 'Fluid Sterling Silver Bubble Collection Heart Pendant', 'Pendant measures, 19mm x 18mm and is attached to a 43cm chain, total weight 8.5 grams.', '', 31);
 INSERT INTO `products_description` VALUES (366, 1, 'Fluid Sterling Silver Droplet Collection Earrings', 'Earrings measure, length 24mm, width 6.4mm and each earring weighs 1.3 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 15);
-INSERT INTO `products_description` VALUES (367, 1, 'Fluid Sterling Silver Droplet Collection Tear Drop Necklace', 'Necklace measures 43cm in length, the cluster drop measures 67mm and weighs a total of 5.5 grams.', '', 15);
-INSERT INTO `products_description` VALUES (368, 1, 'Fluid Sterling Silver Droplet Collection T.Bar Bracelet', 'Bracelet measures 19cm and comes with a T.Bar fitting with a tear drop charm on the end ring. The weight of this bracelet is 9.9 grams.', '', 14);
-INSERT INTO `products_description` VALUES (369, 1, 'Fluid Sterling Silver Droplet Collection Tear Drop Pendant', 'Pendant measures 17.4mm x 9.2mm and sits on a 43cn chain. Total weight 4.4 grams.', '', 14);
-INSERT INTO `products_description` VALUES (370, 1, 'Fluid Sterling Silver Tide Collection Drop Earrings', 'Earring measures, length 37mm, width 6.7mm and each earring weighs 1.8 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 17);
-INSERT INTO `products_description` VALUES (371, 1, 'Fluid Sterling Silver Tide Collection Twist Torque Bangle', 'Bangle measures 65mm X 10mm at the widest and weighs 21.9 grams.', '', 16);
-INSERT INTO `products_description` VALUES (372, 1, 'Fluid Sterling Silver Tide Collection Twist Necklace', 'Necklace measures including loop, 50mm x 9mm and sits on a 43cm chain. Total weight 7.3 grams.', '', 25);
-INSERT INTO `products_description` VALUES (373, 1, 'Fluid Sterling Silver Oasis Collection Drop Earrings', 'Earring measures, length including hook 31mm, width 7.1mm and each earring weighs 2.1 grams. This earring has a hook fitting for pierced ears.', '', 59);
-INSERT INTO `products_description` VALUES (374, 1, 'Fluid Sterling Silver Oasis Collection Pippin Pendant', 'Pendant measures including loop, 28mm x 8.5mm and is attached to a 43cm chain, total weight 4.9 grams.', '', 59);
+INSERT INTO `products_description` VALUES (367, 1, 'Fluid Sterling Silver Droplet Collection Tear Drop Necklace', 'Necklace measures 43cm in length, the cluster drop measures 67mm and weighs a total of 5.5 grams.', '', 17);
+INSERT INTO `products_description` VALUES (368, 1, 'Fluid Sterling Silver Droplet Collection T.Bar Bracelet', 'Bracelet measures 19cm and comes with a T.Bar fitting with a tear drop charm on the end ring. The weight of this bracelet is 9.9 grams.', '', 15);
+INSERT INTO `products_description` VALUES (369, 1, 'Fluid Sterling Silver Droplet Collection Tear Drop Pendant', 'Pendant measures 17.4mm x 9.2mm and sits on a 43cn chain. Total weight 4.4 grams.', '', 15);
+INSERT INTO `products_description` VALUES (370, 1, 'Fluid Sterling Silver Tide Collection Drop Earrings', 'Earring measures, length 37mm, width 6.7mm and each earring weighs 1.8 grams. This earring has a post and butterfly fitting and is for pierced ears.', '', 19);
+INSERT INTO `products_description` VALUES (371, 1, 'Fluid Sterling Silver Tide Collection Twist Torque Bangle', 'Bangle measures 65mm X 10mm at the widest and weighs 21.9 grams.', '', 19);
+INSERT INTO `products_description` VALUES (372, 1, 'Fluid Sterling Silver Tide Collection Twist Necklace', 'Necklace measures including loop, 50mm x 9mm and sits on a 43cm chain. Total weight 7.3 grams.', '', 29);
+INSERT INTO `products_description` VALUES (373, 1, 'Fluid Sterling Silver Oasis Collection Drop Earrings', 'Earring measures, length including hook 31mm, width 7.1mm and each earring weighs 2.1 grams. This earring has a hook fitting for pierced ears.', '', 67);
+INSERT INTO `products_description` VALUES (374, 1, 'Fluid Sterling Silver Oasis Collection Pippin Pendant', 'Pendant measures including loop, 28mm x 8.5mm and is attached to a 43cm chain, total weight 4.9 grams.', '', 81);
 INSERT INTO `products_description` VALUES (375, 1, 'Fluid Sterling Silver Oasis Collection 3 Charm Bracelet', 'Bracelet measures 19cm in length and has three charms with a total weight of 8.2 grams.', '', 10);
-INSERT INTO `products_description` VALUES (376, 1, 'Ladies Sekonda Party Time Cloud White Watch', 'This Sekonda fashion watch has a round chrome stone set case, white dial, white silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 18);
-INSERT INTO `products_description` VALUES (377, 1, 'Ladies Sekonda Party Time Moonlight Black Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, black dial, black silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 15);
-INSERT INTO `products_description` VALUES (378, 1, 'Ladies Sekonda Party Time Blossom Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, fuschia coloured dial, fuschia silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 11);
-INSERT INTO `products_description` VALUES (379, 1, 'Ladies Sekonda Party Time Aqua Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, light blue dial, light blue silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 24);
-INSERT INTO `products_description` VALUES (380, 1, 'Ladies Sekonda Party Time Palm Green Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, green dial, green silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 18);
-INSERT INTO `products_description` VALUES (381, 1, 'Ladies Sekonda Party Time Riviera Blue Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, blue dial, blue silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 20);
-INSERT INTO `products_description` VALUES (382, 1, 'Ladies Sekonda Party Time Orange Watch', 'This Sekonda fashion watch has a chrome colour stone set case, orange dial, orange silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 14);
+INSERT INTO `products_description` VALUES (376, 1, 'Ladies Sekonda Party Time Cloud White Watch', 'This Sekonda fashion watch has a round chrome stone set case, white dial, white silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 23);
+INSERT INTO `products_description` VALUES (377, 1, 'Ladies Sekonda Party Time Moonlight Black Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, black dial, black silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 22);
+INSERT INTO `products_description` VALUES (378, 1, 'Ladies Sekonda Party Time Blossom Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, fuschia coloured dial, fuschia silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 14);
+INSERT INTO `products_description` VALUES (379, 1, 'Ladies Sekonda Party Time Aqua Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, light blue dial, light blue silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 26);
+INSERT INTO `products_description` VALUES (380, 1, 'Ladies Sekonda Party Time Palm Green Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, green dial, green silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 21);
+INSERT INTO `products_description` VALUES (381, 1, 'Ladies Sekonda Party Time Riviera Blue Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, blue dial, blue silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 24);
+INSERT INTO `products_description` VALUES (382, 1, 'Ladies Sekonda Party Time Orange Watch', 'This Sekonda fashion watch has a chrome colour stone set case, orange dial, orange silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 15);
 INSERT INTO `products_description` VALUES (383, 1, 'Ladies Sekonda Party Time Purple Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, purple dial, purple silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 13);
-INSERT INTO `products_description` VALUES (384, 1, 'Ladies Sekonda Party Time Yellow Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, yellow dial, yellow silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 20);
-INSERT INTO `products_description` VALUES (388, 1, 'Large Pewter Quaich  (43L)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and case box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
-INSERT INTO `products_description` VALUES (389, 1, 'Large Brass Rim Pewter Quaich', '<ul>\r\n<li> Bright Polished finish</li>\r\n<li> Celtic detail on handles</li>\r\n<li> supplied in lid and base box</li>\r\n<li> "The quaich" story card included</li>\r\n<li> Bowl diameter - 115mm/4.25"</li>\r\n<li> Height - 55mm/2"</li>\r\n<li> Handle to handle - 190mm/7.25"</li>\r\n<li> Suitable for engraving</li>\r\n</ul>', '', 34);
-INSERT INTO `products_description` VALUES (390, 1, 'Large Celtic Band Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 20);
-INSERT INTO `products_description` VALUES (391, 1, 'Large Pewter Gem Handle Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 18);
-INSERT INTO `products_description` VALUES (392, 1, 'Medium Pewter Quaich (43M)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 13);
-INSERT INTO `products_description` VALUES (393, 1, 'Medium Brass Rim Pewter Quaich (43MB)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 14);
-INSERT INTO `products_description` VALUES (394, 1, 'Medium Celtic Band Pewter Quaich (43MC)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplid in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 13);
-INSERT INTO `products_description` VALUES (395, 1, 'Medium Pewter Gem Handle Quaich (43MGHDL)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 9);
+INSERT INTO `products_description` VALUES (384, 1, 'Ladies Sekonda Party Time Yellow Watch', 'This Sekonda fashion watch has a round chrome colour stone set case, yellow dial, yellow silicone strap, quartz analogue movement and comes with a 2 year manufacturers guarantee and presentation box.', '', 23);
+INSERT INTO `products_description` VALUES (388, 1, 'Large Pewter Quaich  (43L)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and case box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 13);
+INSERT INTO `products_description` VALUES (389, 1, 'Large Brass Rim Pewter Quaich', '<ul>\r\n<li> Bright Polished finish</li>\r\n<li> Celtic detail on handles</li>\r\n<li> supplied in lid and base box</li>\r\n<li> "The quaich" story card included</li>\r\n<li> Bowl diameter - 115mm/4.25"</li>\r\n<li> Height - 55mm/2"</li>\r\n<li> Handle to handle - 190mm/7.25"</li>\r\n<li> Suitable for engraving</li>\r\n</ul>', '', 35);
+INSERT INTO `products_description` VALUES (390, 1, 'Large Celtic Band Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 24);
+INSERT INTO `products_description` VALUES (391, 1, 'Large Pewter Gem Handle Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 115mm/4.25&quot;</li>\r\n  <li>Height - 55mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.25&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 20);
+INSERT INTO `products_description` VALUES (392, 1, 'Medium Pewter Quaich (43M)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 17);
+INSERT INTO `products_description` VALUES (393, 1, 'Medium Brass Rim Pewter Quaich (43MB)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 17);
+INSERT INTO `products_description` VALUES (394, 1, 'Medium Celtic Band Pewter Quaich (43MC)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplid in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 16);
+INSERT INTO `products_description` VALUES (395, 1, 'Medium Pewter Gem Handle Quaich (43MGHDL)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 50mm/1.5&quot;</li>\r\n  <li>Handle to handle - 160mm/6&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
 INSERT INTO `products_description` VALUES (396, 1, 'Small Pewter Quaich (43S)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 12);
-INSERT INTO `products_description` VALUES (397, 1, 'Small Brass Rim Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied on lid and base box</li>\r\n  <li>&quot;The quaich &quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
-INSERT INTO `products_description` VALUES (398, 1, 'Small Pewter Celtic Band Quaich (43SC)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 16);
-INSERT INTO `products_description` VALUES (399, 1, 'Small Gem Handle Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 11);
-INSERT INTO `products_description` VALUES (400, 1, 'Standard Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5mm&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 8);
-INSERT INTO `products_description` VALUES (401, 1, 'Standard Brass Rim Pewter Quaich (43STB)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 12);
-INSERT INTO `products_description` VALUES (402, 1, 'Standard Celtic Band Quaich', '<ul>\r\n  <li>Bright Polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 15);
-INSERT INTO `products_description` VALUES (403, 1, 'Standard Gem Handle Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;the quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
-INSERT INTO `products_description` VALUES (404, 1, 'Pewter Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Pewter flask with brass badge</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Embossed celtic gold badge on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base presentation box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 14);
-INSERT INTO `products_description` VALUES (405, 1, 'Pewter Scotland Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Lion of Scotland design embossed on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 17);
-INSERT INTO `products_description` VALUES (406, 1, 'Pewter Thistle Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle design embossed on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Suitable to engrave on back</li>\r\n</ul>', '', 16);
-INSERT INTO `products_description` VALUES (407, 1, 'Round Pewter Gemset Flask 4oz', '<ul>\r\n  <li>4oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Cast celtic cross with semi-precious stones set into front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:95mm</li>\r\n  <li>Width:80mm</li>\r\n  <li>Depth:20mm</li>\r\n  <li>plain back, suitable for engraving</li>\r\n</ul>', '', 19);
-INSERT INTO `products_description` VALUES (408, 1, 'Pewter Scotland Hip Flask 4oz', '<ul>\r\n  <li>4oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Embossed with Lion of Scotland design on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:95mm</li>\r\n  <li>Width:80mm</li>\r\n  <li>Depth:20mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 8);
-INSERT INTO `products_description` VALUES (409, 1, 'Cake Knife', '<ul>\r\n  <li>Silver Plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 320mm/12.5&quot;</li>\r\n  <li>Width - 20mm/0.75&quot;</li>\r\n</ul>', '', 26);
-INSERT INTO `products_description` VALUES (410, 1, 'Silver Plated Cake Knife', '<ul>\r\n  <li>Silver Plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 340mm/13.5&quot;</li>\r\n  <li>Width - 25mm/1&quot;</li>\r\n</ul>', '', 19);
-INSERT INTO `products_description` VALUES (411, 1, 'Silver Plated Cake Knife', '<ul>\r\n  <li>Silver plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 320mm/13&quot;</li>\r\n  <li>Width - 21mm/0.75&quot;</li>\r\n</ul>', '', 13);
+INSERT INTO `products_description` VALUES (397, 1, 'Small Brass Rim Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied on lid and base box</li>\r\n  <li>&quot;The quaich &quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 12);
+INSERT INTO `products_description` VALUES (398, 1, 'Small Pewter Celtic Band Quaich (43SC)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 18);
+INSERT INTO `products_description` VALUES (399, 1, 'Small Gem Handle Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 70mm/2.75&quot;</li>\r\n  <li>Height - 40mm/1.25&quot;</li>\r\n  <li>Handle to handle - 125mm/4.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 13);
+INSERT INTO `products_description` VALUES (400, 1, 'Standard Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5mm&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
+INSERT INTO `products_description` VALUES (401, 1, 'Standard Brass Rim Pewter Quaich (43STB)', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 14);
+INSERT INTO `products_description` VALUES (402, 1, 'Standard Celtic Band Quaich', '<ul>\r\n  <li>Bright Polished finish</li>\r\n  <li>Celtic band detail on outside of bowl</li>\r\n  <li>Celtic detail on handles</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;The quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 17);
+INSERT INTO `products_description` VALUES (403, 1, 'Standard Gem Handle Pewter Quaich', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Handles set with blue agate semi-precious cabachons</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>&quot;the quaich&quot; story card included</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.5&quot;</li>\r\n  <li>Handle to handle - 150mm/5.5&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 11);
+INSERT INTO `products_description` VALUES (404, 1, 'Pewter Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Pewter flask with brass badge</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Embossed celtic gold badge on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base presentation box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 16);
+INSERT INTO `products_description` VALUES (405, 1, 'Pewter Scotland Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Lion of Scotland design embossed on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 20);
+INSERT INTO `products_description` VALUES (406, 1, 'Pewter Thistle Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle design embossed on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:100mm</li>\r\n  <li>Width:100mm</li>\r\n  <li>Depth:25mm</li>\r\n  <li>Suitable to engrave on back</li>\r\n</ul>', '', 18);
+INSERT INTO `products_description` VALUES (407, 1, 'Round Pewter Gemset Flask 4oz', '<ul>\r\n  <li>4oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Cast celtic cross with semi-precious stones set into front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:95mm</li>\r\n  <li>Width:80mm</li>\r\n  <li>Depth:20mm</li>\r\n  <li>plain back, suitable for engraving</li>\r\n</ul>', '', 20);
+INSERT INTO `products_description` VALUES (408, 1, 'Pewter Scotland Hip Flask 4oz', '<ul>\r\n  <li>4oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Embossed with Lion of Scotland design on front</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in lid and base box</li>\r\n  <li>Height:95mm</li>\r\n  <li>Width:80mm</li>\r\n  <li>Depth:20mm</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n</ul>', '', 11);
+INSERT INTO `products_description` VALUES (409, 1, 'Cake Knife', '<ul>\r\n  <li>Silver Plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 320mm/12.5&quot;</li>\r\n  <li>Width - 20mm/0.75&quot;</li>\r\n</ul>', '', 28);
+INSERT INTO `products_description` VALUES (410, 1, 'Silver Plated Cake Knife', '<ul>\r\n  <li>Silver Plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 340mm/13.5&quot;</li>\r\n  <li>Width - 25mm/1&quot;</li>\r\n</ul>', '', 21);
+INSERT INTO `products_description` VALUES (411, 1, 'Silver Plated Cake Knife', '<ul>\r\n  <li>Silver plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 320mm/13&quot;</li>\r\n  <li>Width - 21mm/0.75&quot;</li>\r\n</ul>', '', 14);
 INSERT INTO `products_description` VALUES (412, 1, 'Cake Knife and Slice Set (WD400)', '', '', 2);
-INSERT INTO `products_description` VALUES (413, 1, 'Silver Plated Cake Knife and Slice Set', '<ul>\r\n  <li>Silver plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - knife 340mm/13.5&quot;  slice 260mm/10.25&quot;</li>\r\n  <li>Width - knife 25mm/1&quot; slice 60mm/2.5&quot;</li>\r\n</ul>', '', 37);
+INSERT INTO `products_description` VALUES (413, 1, 'Silver Plated Cake Knife and Slice Set', '<ul>\r\n  <li>Silver plated</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - knife 340mm/13.5&quot;  slice 260mm/10.25&quot;</li>\r\n  <li>Width - knife 25mm/1&quot; slice 60mm/2.5&quot;</li>\r\n</ul>', '', 39);
 INSERT INTO `products_description` VALUES (414, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 19);
-INSERT INTO `products_description` VALUES (415, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 30);
+INSERT INTO `products_description` VALUES (415, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 34);
 INSERT INTO `products_description` VALUES (416, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 35);
-INSERT INTO `products_description` VALUES (417, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 9);
-INSERT INTO `products_description` VALUES (418, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 24);
-INSERT INTO `products_description` VALUES (419, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 18);
-INSERT INTO `products_description` VALUES (420, 1, 'Compact Mirror with Pewter Disc (CEL530)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 15);
-INSERT INTO `products_description` VALUES (421, 1, 'Compact Mirror with Pewter Disc (CEL531)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 32);
+INSERT INTO `products_description` VALUES (417, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
+INSERT INTO `products_description` VALUES (418, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 27);
+INSERT INTO `products_description` VALUES (419, 1, 'Celtic Pewter Letter Opener', '<ul>\r\n  <li>Handle features cast celtic design</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Length - 220mm/8.75&quot;</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 19);
+INSERT INTO `products_description` VALUES (420, 1, 'Compact Mirror with Pewter Disc (CEL530)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 17);
+INSERT INTO `products_description` VALUES (421, 1, 'Compact Mirror with Pewter Disc (CEL531)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 36);
 INSERT INTO `products_description` VALUES (422, 1, 'Compact Mirror with Pewter Disc (CEL532)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 17);
-INSERT INTO `products_description` VALUES (423, 1, 'Compact Mirror with Pewter Disc (CEL533)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height 14mm/0.5&quot;</li>\r\n</ul>', '', 29);
+INSERT INTO `products_description` VALUES (423, 1, 'Compact Mirror with Pewter Disc (CEL533)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height 14mm/0.5&quot;</li>\r\n</ul>', '', 30);
 INSERT INTO `products_description` VALUES (424, 1, 'Compact Mirror with Pewter Disc (CEL535)', '<ul>\r\n  <li>Chrome plated</li>\r\n  <li>Celtic pewter disc on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Supplied in satin lined presentation box</li>\r\n  <li>Diameter - 60mm/2.25&quot;</li>\r\n  <li>Height - 14mm/0.5&quot;</li>\r\n</ul>', '', 29);
-INSERT INTO `products_description` VALUES (425, 1, '2.5" Pewter Quaich with Celtic Handle', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 63mm/2.5&quot;</li>\r\n  <li>Height - 38mm/1.5&quot;</li>\r\n  <li>Handle to handle - 120mm/4.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 13);
-INSERT INTO `products_description` VALUES (426, 1, '3.5" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 50mm/2&quot;</li>\r\n  <li>Handle to handle - 140mm/5.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 26);
-INSERT INTO `products_description` VALUES (427, 1, '4" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 175mm/7&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 18);
-INSERT INTO `products_description` VALUES (428, 1, '4.5" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 115mm/4.5&quot;</li>\r\n  <li>Height - 50mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 10);
-INSERT INTO `products_description` VALUES (429, 1, '2.5" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright Polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 63mm/2.5&quot;</li>\r\n  <li>Height - 38mm/1.5&quot;</li>\r\n  <li>Handle to handle - 125mm/4.75&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 51);
-INSERT INTO `products_description` VALUES (430, 1, '3" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 75mm/3&quot;</li>\r\n  <li>Height - 40mm/1.5&quot;</li>\r\n  <li>Handle to handle - 140mm/5.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 17);
-INSERT INTO `products_description` VALUES (431, 1, '3.5" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 88mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 150mm/6&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 31);
-INSERT INTO `products_description` VALUES (432, 1, '4" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 180mm/7&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 38);
+INSERT INTO `products_description` VALUES (425, 1, '2.5" Pewter Quaich with Celtic Handle', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 63mm/2.5&quot;</li>\r\n  <li>Height - 38mm/1.5&quot;</li>\r\n  <li>Handle to handle - 120mm/4.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 14);
+INSERT INTO `products_description` VALUES (426, 1, '3.5" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 90mm/3.5&quot;</li>\r\n  <li>Height - 50mm/2&quot;</li>\r\n  <li>Handle to handle - 140mm/5.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 28);
+INSERT INTO `products_description` VALUES (427, 1, '4" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 175mm/7&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 19);
+INSERT INTO `products_description` VALUES (428, 1, '4.5" Pewter Quaich with Celtic Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Celtic handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 115mm/4.5&quot;</li>\r\n  <li>Height - 50mm/2&quot;</li>\r\n  <li>Handle to handle - 190mm/7.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 11);
+INSERT INTO `products_description` VALUES (429, 1, '2.5" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright Polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 63mm/2.5&quot;</li>\r\n  <li>Height - 38mm/1.5&quot;</li>\r\n  <li>Handle to handle - 125mm/4.75&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 56);
+INSERT INTO `products_description` VALUES (430, 1, '3" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 75mm/3&quot;</li>\r\n  <li>Height - 40mm/1.5&quot;</li>\r\n  <li>Handle to handle - 140mm/5.5&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 18);
+INSERT INTO `products_description` VALUES (431, 1, '3.5" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 88mm/3.5&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 150mm/6&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 33);
+INSERT INTO `products_description` VALUES (432, 1, '4" Pewter Quaich with Thistle Handles', '<ul>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle handles</li>\r\n  <li>Celtic band on outside of bowl</li>\r\n  <li>Quaich story information</li>\r\n  <li>Bowl diameter - 100mm/4&quot;</li>\r\n  <li>Height - 45mm/1.75&quot;</li>\r\n  <li>Handle to handle - 180mm/7&quot;</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Suitable for engraving</li>\r\n</ul>', '', 43);
 INSERT INTO `products_description` VALUES (433, 1, '2.5" Quaich', '', '', 3);
 INSERT INTO `products_description` VALUES (434, 1, '3.5"  Quaich (PQ302)', '', '', 1);
 INSERT INTO `products_description` VALUES (435, 1, '4.5"  Quaich (PQ303)', '', '', 1);
 INSERT INTO `products_description` VALUES (436, 1, 'Pewter Golf Hip Flask 6oz (TSF602)', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Golfing design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 21);
-INSERT INTO `products_description` VALUES (437, 1, 'Pewter Thistle Hip Flask 6oz (TSF603)', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 32);
-INSERT INTO `products_description` VALUES (438, 1, 'Pewter Scottish Piper Hip Flask 6oz (TSF604)', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Scottish piper design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 30);
-INSERT INTO `products_description` VALUES (439, 1, 'Pewter shooting Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Shooting scene design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 17);
-INSERT INTO `products_description` VALUES (440, 1, 'Pewter fishing Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Fishing scene on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 39);
-INSERT INTO `products_description` VALUES (441, 1, 'Pewter Scotland Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Scottish lion and text</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 28);
-INSERT INTO `products_description` VALUES (442, 1, 'Pewter fishing Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>bright polished finish</li>\r\n  <li>Fishing design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 100mm/4&quot;</li>\r\n  <li>Width - 80mm/3.25&quot;</li>\r\n  <li>Depth - 25mm/1&quot;</li>\r\n</ul>', '', 30);
-INSERT INTO `products_description` VALUES (443, 1, 'Pewter Rugby Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright Polished finish</li>\r\n  <li>Rugby design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 100mm/4&quot;</li>\r\n  <li>Width - 80mm/3.25&quot;</li>\r\n  <li>Depth - 25mm/1&quot;</li>\r\n</ul>', '', 41);
+INSERT INTO `products_description` VALUES (437, 1, 'Pewter Thistle Hip Flask 6oz (TSF603)', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Thistle design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 33);
+INSERT INTO `products_description` VALUES (438, 1, 'Pewter Scottish Piper Hip Flask 6oz (TSF604)', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Scottish piper design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 34);
+INSERT INTO `products_description` VALUES (439, 1, 'Pewter shooting Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Shooting scene design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 18);
+INSERT INTO `products_description` VALUES (440, 1, 'Pewter fishing Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Fishing scene on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 44);
+INSERT INTO `products_description` VALUES (441, 1, 'Pewter Scotland Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Bright polished finish</li>\r\n  <li>Scottish lion and text</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 110mm/4.25&quot;</li>\r\n  <li>Width - 90mm/3.5&quot;</li>\r\n  <li>Depth - 20mm/0.75&quot;</li>\r\n</ul>', '', 32);
+INSERT INTO `products_description` VALUES (442, 1, 'Pewter fishing Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>bright polished finish</li>\r\n  <li>Fishing design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 100mm/4&quot;</li>\r\n  <li>Width - 80mm/3.25&quot;</li>\r\n  <li>Depth - 25mm/1&quot;</li>\r\n</ul>', '', 32);
+INSERT INTO `products_description` VALUES (443, 1, 'Pewter Rugby Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright Polished finish</li>\r\n  <li>Rugby design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 100mm/4&quot;</li>\r\n  <li>Width - 80mm/3.25&quot;</li>\r\n  <li>Depth - 25mm/1&quot;</li>\r\n</ul>', '', 50);
 INSERT INTO `products_description` VALUES (444, 1, 'Pewter Football Hip Flask 6oz', '<ul>\r\n  <li>6oz capacity</li>\r\n  <li>Kidney shaped</li>\r\n  <li>Bright Polished finish</li>\r\n  <li>Football design on front</li>\r\n  <li>Plain back, suitable for engraving</li>\r\n  <li>Screw top</li>\r\n  <li>Supplied in presentation box</li>\r\n  <li>Height - 100mm/4&quot;</li>\r\n  <li>Width - 80mm/3.25&quot;</li>\r\n  <li>Depth - 25mm/1&quot;</li>\r\n</ul>', '', 18);
 INSERT INTO `products_description` VALUES (445, 1, 'Hip Flask (CEL487)', '', '', 1);
 INSERT INTO `products_description` VALUES (446, 1, 'Hip Flask (CEL488)', '', '', 1);
 INSERT INTO `products_description` VALUES (447, 1, 'Hip Flask (CEL489)', '', '', 1);
-INSERT INTO `products_description` VALUES (386, 1, 'Ladies Silver Plated Charmed by Accurist watch - Daisy', 'Ladies silver plated charmed watch with elegant mother of pearl dial and decorative stoppers, with bezel featuring simple petal motif.  Add beads or charms from any of the leading brands and create your own unique timepiece. Four stopper beads included.', '', 26);
-INSERT INTO `products_description` VALUES (387, 1, 'Ladies Silver Plated Charmed by Accurist Watch (Crystal Row)', 'Ladies silver plated charmed watch with elegant mother of pearl dial and decorative Swarovski crystal set bezel and stoppers.\r\nAdd beads or charms from any of the leading brands and create your own timepiece. Four stopper beads included.', '', 48);
-INSERT INTO `products_description` VALUES (461, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 7);
-INSERT INTO `products_description` VALUES (462, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 12);
-INSERT INTO `products_description` VALUES (463, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 15);
-INSERT INTO `products_description` VALUES (464, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (465, 1, 'Ladies Accurist Gold Plated Quartz Leather Strap Watch', '', '', 17);
-INSERT INTO `products_description` VALUES (466, 1, 'Ladies Accurist Gold Plated Quartz Leather Strap Watch', '', '', 9);
-INSERT INTO `products_description` VALUES (467, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 6);
-INSERT INTO `products_description` VALUES (468, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (386, 1, 'Ladies Silver Plated Charmed by Accurist watch - Daisy', 'Ladies silver plated charmed watch with elegant mother of pearl dial and decorative stoppers, with bezel featuring simple petal motif.  Add beads or charms from any of the leading brands and create your own unique timepiece. Four stopper beads included.', '', 32);
+INSERT INTO `products_description` VALUES (387, 1, 'Ladies Silver Plated Charmed by Accurist Watch (Crystal Row)', 'Ladies silver plated charmed watch with elegant mother of pearl dial and decorative Swarovski crystal set bezel and stoppers.\r\nAdd beads or charms from any of the leading brands and create your own timepiece. Four stopper beads included.', '', 50);
+INSERT INTO `products_description` VALUES (461, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 8);
+INSERT INTO `products_description` VALUES (462, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 13);
+INSERT INTO `products_description` VALUES (463, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 17);
+INSERT INTO `products_description` VALUES (464, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 8);
+INSERT INTO `products_description` VALUES (465, 1, 'Ladies Accurist Gold Plated Quartz Leather Strap Watch', '', '', 19);
+INSERT INTO `products_description` VALUES (466, 1, 'Ladies Accurist Gold Plated Quartz Leather Strap Watch', '', '', 10);
+INSERT INTO `products_description` VALUES (467, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (468, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 7);
 INSERT INTO `products_description` VALUES (469, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 13);
-INSERT INTO `products_description` VALUES (470, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 13);
+INSERT INTO `products_description` VALUES (470, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 16);
 INSERT INTO `products_description` VALUES (471, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 9);
-INSERT INTO `products_description` VALUES (472, 1, 'Ladies Accurist Gold Plated Expanding Bracelet Quartz  Watch', '', '', 19);
-INSERT INTO `products_description` VALUES (473, 1, 'Ladies Accurist Stainless Steel Expanding Bracelet Quartz  Watch', '', '', 14);
+INSERT INTO `products_description` VALUES (472, 1, 'Ladies Accurist Gold Plated Expanding Bracelet Quartz  Watch', '', '', 20);
+INSERT INTO `products_description` VALUES (473, 1, 'Ladies Accurist Stainless Steel Expanding Bracelet Quartz  Watch', '', '', 18);
 INSERT INTO `products_description` VALUES (474, 1, 'Ladies Accurist Two Tone Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (475, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 12);
-INSERT INTO `products_description` VALUES (476, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 15);
-INSERT INTO `products_description` VALUES (477, 1, 'Ladies Silver Plated Charmed by Accurist (Starlight) Watch', 'Ladies silver plated charmed watch with ''Pave'' dial set with Swarovski elements.  \r\nCreate your unique timepiece  by adding charms or beads from any of the leading brands. Four stopper beads included.', '', 25);
-INSERT INTO `products_description` VALUES (478, 1, 'Gents Accurist Stainless Steel Chronograph Watch', '', '', 27);
-INSERT INTO `products_description` VALUES (479, 1, 'Gents Accurist Stainless Steel Chronograph Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (480, 1, 'Gents Accurist Black Stainless Steel Chronograph Watch', '', '', 18);
+INSERT INTO `products_description` VALUES (475, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 14);
+INSERT INTO `products_description` VALUES (476, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 17);
+INSERT INTO `products_description` VALUES (477, 1, 'Ladies Silver Plated Charmed by Accurist (Starlight) Watch', 'Ladies silver plated charmed watch with ''Pave'' dial set with Swarovski elements.  \r\nCreate your unique timepiece  by adding charms or beads from any of the leading brands. Four stopper beads included.', '', 35);
+INSERT INTO `products_description` VALUES (478, 1, 'Gents Accurist Stainless Steel Chronograph Watch', '', '', 31);
+INSERT INTO `products_description` VALUES (479, 1, 'Gents Accurist Stainless Steel Chronograph Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (480, 1, 'Gents Accurist Black Stainless Steel Chronograph Watch', '', '', 20);
 INSERT INTO `products_description` VALUES (492, 1, '9ct White and Yellow Gold Fancy Cubic Zirconia Earring', 'These cubic zirconia set stud earrings are for pierced ears with a post and butterfly fitting. There are 4 round cubic zirconia stones in each earring which is set in white and yellow gold.\r\nLength - 12.6mm\r\nWidth - 5.6mm', '', 11);
-INSERT INTO `products_description` VALUES (490, 1, 'Sterling Silver Abstract Double Heart Pendant', 'This heart pendant a small polished heart and a brushed effect larger heart and sits on a 45cm/18" chain with a 5cm extender', '', 15);
-INSERT INTO `products_description` VALUES (482, 1, 'Gents Accurist Stainless Steel Diamond Quartz Watch', '', '', 14);
-INSERT INTO `products_description` VALUES (484, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 24);
-INSERT INTO `products_description` VALUES (485, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 20);
-INSERT INTO `products_description` VALUES (486, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 11);
-INSERT INTO `products_description` VALUES (487, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (488, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 2);
+INSERT INTO `products_description` VALUES (490, 1, 'Sterling Silver Abstract Double Heart Pendant', 'This heart pendant a small polished heart and a brushed effect larger heart and sits on a 45cm/18" chain with a 5cm extender', '', 16);
+INSERT INTO `products_description` VALUES (482, 1, 'Gents Accurist Stainless Steel Diamond Quartz Watch', '', '', 16);
+INSERT INTO `products_description` VALUES (484, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 26);
+INSERT INTO `products_description` VALUES (485, 1, 'Gents Accurist Stainless Steel Quartz Watch', '', '', 22);
+INSERT INTO `products_description` VALUES (486, 1, 'Gents Accurist Gold Plated Leather Strap Quartz Watch', '', '', 14);
+INSERT INTO `products_description` VALUES (487, 1, 'Ladies Accurist Gold Plated Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (488, 1, 'Ladies Accurist Stainless Steel Quartz Watch', '', '', 6);
 INSERT INTO `products_description` VALUES (493, 1, '9ct White and Yellow Gold Fancy Stud Earring', 'This round open design white and yellow gold stud earring are for pierced ears with a post and butterfly fitting. \r\nDiameter - 7.8mm', '', 7);
-INSERT INTO `products_description` VALUES (494, 1, '9ct Yellow Gold Opal Stud Earring', 'This beautiful marquise cut opal stud earring has a post and butterfly fitting which is for pierced ears.\r\nLength - 12.85mm\r\nWidth - 6.3mm', '', 7);
+INSERT INTO `products_description` VALUES (494, 1, '9ct Yellow Gold Opal Stud Earring', 'This beautiful marquise cut opal stud earring has a post and butterfly fitting which is for pierced ears.\r\nLength - 12.85mm\r\nWidth - 6.3mm', '', 8);
 INSERT INTO `products_description` VALUES (495, 1, '9ct White and Yellow Gold Fancy Cubic Zirconia Earring', 'This 9ct white and yellow gold flower design stud earring has two small round cubic zirconia stones and comes with a post and butterfly fitting.\r\nLength - 10.45mm\r\nWidth - 10.23mm', '', 0);
 INSERT INTO `products_description` VALUES (496, 1, '9ct White and Yellow Gold Fancy Stud Earring', 'This two colour round stud earring has a post and butterfly fitting suitable for pierced ears.\r\nDiameter - 9.5mm', '', 3);
-INSERT INTO `products_description` VALUES (497, 1, '9ct White and Yellow Gold Fancy Diamond Stud Earring', 'This 9ct gold diamond stud earring has one diamond in each earring which is set in white gold and is suitable for pierced ears.\r\nLength - 11mm\r\nWidth - 5.9mm', '', 19);
+INSERT INTO `products_description` VALUES (497, 1, '9ct White and Yellow Gold Fancy Diamond Stud Earring', 'This 9ct gold diamond stud earring has one diamond in each earring which is set in white gold and is suitable for pierced ears.\r\nLength - 11mm\r\nWidth - 5.9mm', '', 20);
 INSERT INTO `products_description` VALUES (498, 1, '9ct White and Yellow Gold Oval Stud Earring', 'A stylish and elegant stud earring set with open oval two colour gold design, suitable for pierced ears.\r\nLength - 11.3mm\r\nWidth - 8.8mm', '', 4);
 INSERT INTO `products_description` VALUES (499, 1, '9ct Gold Fancy Stud Earring', 'This oval open design stud earring is suitable for pierced ears.\r\nLength - 11.2mm\r\nWidth - 10mm', '', 7);
-INSERT INTO `products_description` VALUES (500, 1, '9ct White and Yellow Gold Knot Stud Earring', 'A beautiful knot style two colour earring which is suitable for pierced ears.\r\nDiameter - 8.25mm', '', 22);
+INSERT INTO `products_description` VALUES (500, 1, '9ct White and Yellow Gold Knot Stud Earring', 'A beautiful knot style two colour earring which is suitable for pierced ears.\r\nDiameter - 8.25mm', '', 23);
 INSERT INTO `products_description` VALUES (501, 1, '9ct White and Yellow Gold Fancy Stud Earring', 'A classy oval two colour stud earring suitable for pierced ears.\r\nLength - 8mm\r\nwidth - 5.7mm', '', 3);
-INSERT INTO `products_description` VALUES (502, 1, '9ct White and Yellow Gold Knot Stud Earring', 'An elagant two colour knot design stud earring, suitable for pierced ears.\r\nDiameter - 6.1mm', '', 7);
+INSERT INTO `products_description` VALUES (502, 1, '9ct White and Yellow Gold Knot Stud Earring', 'An elagant two colour knot design stud earring, suitable for pierced ears.\r\nDiameter - 6.1mm', '', 8);
 INSERT INTO `products_description` VALUES (503, 1, '9ct White Gold Cubic Zirconia Pendant', 'A beautiful 9ct white gold swirl design pendant with one cubic zirconia set at the bottom of the pendant.\r\nPendant Length - 16mm \r\nWidth - 8mm', '', 1);
-INSERT INTO `products_description` VALUES (504, 1, '9ct White Gold Round Pendant with Diamonds', 'This beautiful round swirl design pendant has 10 small diamonds in a pave style setting. Diameter of pendant - 12.2mm', '', 4);
-INSERT INTO `products_description` VALUES (505, 1, '9ct White Gold Sapphire and Diamond Heart Pendant', 'This beautiful heart pendant has 3 round sapphires surrounded by 26 round diamonds. \r\n Pendant measures 8.9mm long (excluding loop) 9.8mm wide.', '', 5);
-INSERT INTO `products_description` VALUES (506, 1, '9ct White Gold Cubic Zirconia Figure of Eight Pendant', 'This classy white gold pendant has 29 cubic zirconia stones and measures, length - 26.8mm and 9mm wide.', '', 6);
-INSERT INTO `products_description` VALUES (507, 1, '9ct White Gold Cubic Zirconia Pendant', 'This stunning white gold pendant has 11 cubic zirconia stones and measures 22.8mm long including the loop and 6.7mm wide.', '', 2);
-INSERT INTO `products_description` VALUES (508, 1, '9ct White Gold Diamond Tear Drop Pendant', 'A small but beautiful white gold tear drop pendant with 9 round diamonds in a pave setting. Pendant measures 13mm including loop and 5.5mm wide.', '', 5);
+INSERT INTO `products_description` VALUES (504, 1, '9ct White Gold Round Pendant with Diamonds', 'This beautiful round swirl design pendant has 10 small diamonds in a pave style setting. Diameter of pendant - 12.2mm', '', 6);
+INSERT INTO `products_description` VALUES (505, 1, '9ct White Gold Sapphire and Diamond Heart Pendant', 'This beautiful heart pendant has 3 round sapphires surrounded by 26 round diamonds. \r\n Pendant measures 8.9mm long (excluding loop) 9.8mm wide.', '', 8);
+INSERT INTO `products_description` VALUES (506, 1, '9ct White Gold Cubic Zirconia Figure of Eight Pendant', 'This classy white gold pendant has 29 cubic zirconia stones and measures, length - 26.8mm and 9mm wide.', '', 8);
+INSERT INTO `products_description` VALUES (507, 1, '9ct White Gold Cubic Zirconia Pendant', 'This stunning white gold pendant has 11 cubic zirconia stones and measures 22.8mm long including the loop and 6.7mm wide.', '', 3);
+INSERT INTO `products_description` VALUES (508, 1, '9ct White Gold Diamond Tear Drop Pendant', 'A small but beautiful white gold tear drop pendant with 9 round diamonds in a pave setting. Pendant measures 13mm including loop and 5.5mm wide.', '', 6);
 INSERT INTO `products_description` VALUES (509, 1, '9ct White Gold Cubic Zirconia Pendant', 'A stunning twisted white gold pendant with 17 cubic zirconia stones. The pendant measures 20mm long and 6.2mm wide.', '', 4);
 INSERT INTO `products_description` VALUES (510, 1, '9ct White Gold Heart Shaped Pendant', 'This fashionable offset white gold heart shaped pendant has 16 cubic zirconia stones cleverly set on one side. Pendant measures 19.5mm including loop and 13.5mm wide', '', 3);
 INSERT INTO `products_description` VALUES (511, 1, '9ct White Gold Cubic Zirconia Pendant', 'A beautifully designed white gold pendant which has cubic zirconia stones in a pave setting at the bottom of an open pendant. Pendant measures 25.8mm including loop and 9.5mm wide.', '', 3);
@@ -6579,245 +6677,254 @@ INSERT INTO `products_description` VALUES (514, 1, '9ct Yellow Gold Cubic Zircon
 INSERT INTO `products_description` VALUES (515, 1, '9ct Yellow Gold Opal Pendant', 'Beautiful designed yellow gold pendant with a 9mm x 4mm marquise opal. Pendant measures 18.2mm long and 6.1mm wide.', '', 6);
 INSERT INTO `products_description` VALUES (516, 1, '9ct Yellow Gold Pave set Cubic Zirconia Pendant', 'This enticing oval swirl pendant has 15 cubic zirconia stones in a pave setting and is 14.4mm in length and 10.4mm wide.', '', 6);
 INSERT INTO `products_description` VALUES (517, 1, '9ct White Gold Diamond Heart Shaped Pendant', 'This modern offset heart shaped white gold pendant has 5 diamonds in a pave setting. Pendant measures 24.7mm long and 13.2mm wide.', '', 1);
-INSERT INTO `products_description` VALUES (518, 1, 'Lime Green Foil Glass Bead', 'Compatible with Pandora, Chamilia and trollbeads. Lime green glass bead with solid sterling silver core.', '', 14);
-INSERT INTO `products_description` VALUES (519, 1, 'Tortoise Shell Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Tortoise glass bead with sterling silver core.', '', 15);
-INSERT INTO `products_description` VALUES (520, 1, 'Sterling Silver Friends Charm Bead', 'This silver Friend charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and trollbeads.', '', 15);
-INSERT INTO `products_description` VALUES (521, 1, 'Sterling Silver I Love To Shop Charm Bead', 'This silver I love To Shop charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads', '', 19);
-INSERT INTO `products_description` VALUES (522, 1, 'Sterling Silver Cocktail Glass Charm Bead', 'This silver cocktail glass charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 21);
-INSERT INTO `products_description` VALUES (523, 1, 'Sterling Silver Handbag Charm Bead', 'This silver handbag charm is suitable for use with all the major charm bracelets including Pandora Chamilia and Trollbeads.', '', 11);
+INSERT INTO `products_description` VALUES (518, 1, 'Lime Green Foil Glass Bead', 'Compatible with Pandora, Chamilia and trollbeads. Lime green glass bead with solid sterling silver core.', '', 15);
+INSERT INTO `products_description` VALUES (519, 1, 'Tortoise Shell Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Tortoise glass bead with sterling silver core.', '', 16);
+INSERT INTO `products_description` VALUES (520, 1, 'Sterling Silver Friends Charm Bead', 'This silver Friend charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and trollbeads.', '', 16);
+INSERT INTO `products_description` VALUES (521, 1, 'Sterling Silver I Love To Shop Charm Bead', 'This silver I love To Shop charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads', '', 20);
+INSERT INTO `products_description` VALUES (522, 1, 'Sterling Silver Cocktail Glass Charm Bead', 'This silver cocktail glass charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 22);
+INSERT INTO `products_description` VALUES (523, 1, 'Sterling Silver Handbag Charm Bead', 'This silver handbag charm is suitable for use with all the major charm bracelets including Pandora Chamilia and Trollbeads.', '', 13);
 INSERT INTO `products_description` VALUES (524, 1, 'Sterling Silver Clear Stones Charm Bead', 'This silver clear stone charm is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 19);
-INSERT INTO `products_description` VALUES (525, 1, 'Sterling Silver Dice Charm Bead', 'This silver dice charm is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
-INSERT INTO `products_description` VALUES (526, 1, 'Coral Striped Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Red glass bead with solid sterling silver core.', '', 18);
-INSERT INTO `products_description` VALUES (527, 1, 'Lilac and White Glass Bead', 'Compatible with all major charm bracelets inluding Pandora, Chamilia and Trollbeads. Sterling silver core.', '', 6);
-INSERT INTO `products_description` VALUES (528, 1, 'Light Blue and White Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core.', '', 11);
-INSERT INTO `products_description` VALUES (529, 1, 'Multi coloured Foil Glass Bead', 'Compatible with all the major charm bracelets including Pandora, Chamilia and Trollbeads.  A mixture of colours run through this glass bead, there is a sterling silver core that runs through the centre.', '', 19);
-INSERT INTO `products_description` VALUES (530, 1, 'White and Pink Flower Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.White and pink flower glass beadwith solid sterling silver core.', '', 17);
+INSERT INTO `products_description` VALUES (525, 1, 'Sterling Silver Dice Charm Bead', 'This silver dice charm is suitable for use with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 12);
+INSERT INTO `products_description` VALUES (526, 1, 'Coral Striped Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Red glass bead with solid sterling silver core.', '', 20);
+INSERT INTO `products_description` VALUES (527, 1, 'Lilac and White Glass Bead', 'Compatible with all major charm bracelets inluding Pandora, Chamilia and Trollbeads. Sterling silver core.', '', 7);
+INSERT INTO `products_description` VALUES (528, 1, 'Light Blue and White Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core.', '', 14);
+INSERT INTO `products_description` VALUES (529, 1, 'Multi coloured Foil Glass Bead', 'Compatible with all the major charm bracelets including Pandora, Chamilia and Trollbeads.  A mixture of colours run through this glass bead, there is a sterling silver core that runs through the centre.', '', 21);
+INSERT INTO `products_description` VALUES (530, 1, 'White and Pink Flower Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.White and pink flower glass beadwith solid sterling silver core.', '', 19);
 INSERT INTO `products_description` VALUES (531, 1, '', '', '', 4);
-INSERT INTO `products_description` VALUES (532, 1, 'Sterling Silver CRM Bangle', 'This silver ladies Charles Rennie Mackintosh bangle is 67.5mm wide and 6.2mm in depth, it weighs 12.6 grams', '', 6);
-INSERT INTO `products_description` VALUES (533, 1, 'Sterling Silver Open Link Heart Charm Bracelet', 'This open link silver bracelet measures 17.5cm long and has a 2.5cm extender. Total Weight 7.2 grams.', '', 6);
-INSERT INTO `products_description` VALUES (534, 1, 'Sterling Silver Open Disc Cluster Necklet', 'This silver necklet measures 41cm with a 5cm extender and weighs 5.7 grams.', '', 15);
-INSERT INTO `products_description` VALUES (537, 1, 'Sterling Silver Cross Over Heart Drop Charm Bead', 'This silver cross over heart drop bead is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 6);
-INSERT INTO `products_description` VALUES (538, 1, 'Sterling Silver Heart & Swirl Rubber Stopper Charm Bead', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 15);
-INSERT INTO `products_description` VALUES (539, 1, 'Sterling Silver Silicone Stopper', 'This plain silver silicone stopper has an internal silicone ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 6);
-INSERT INTO `products_description` VALUES (540, 1, 'Sterling Silver Rubber Stopper With Ridges', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 15);
-INSERT INTO `products_description` VALUES (541, 1, 'Sterling Silver Raised Pattern Rubber Stopper Charm', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 6);
+INSERT INTO `products_description` VALUES (532, 1, 'Sterling Silver CRM Bangle', 'This silver ladies Charles Rennie Mackintosh bangle is 67.5mm wide and 6.2mm in depth, it weighs 12.6 grams', '', 8);
+INSERT INTO `products_description` VALUES (533, 1, 'Sterling Silver Open Link Heart Charm Bracelet', 'This open link silver bracelet measures 17.5cm long and has a 2.5cm extender. Total Weight 7.2 grams.', '', 8);
+INSERT INTO `products_description` VALUES (534, 1, 'Sterling Silver Open Disc Cluster Necklet', 'This silver necklet measures 41cm with a 5cm extender and weighs 5.7 grams.', '', 19);
+INSERT INTO `products_description` VALUES (537, 1, 'Sterling Silver Cross Over Heart Drop Charm Bead', 'This silver cross over heart drop bead is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
+INSERT INTO `products_description` VALUES (538, 1, 'Sterling Silver Heart & Swirl Rubber Stopper Charm Bead', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 16);
+INSERT INTO `products_description` VALUES (539, 1, 'Sterling Silver Silicone Stopper', 'This plain silver silicone stopper has an internal silicone ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 8);
+INSERT INTO `products_description` VALUES (540, 1, 'Sterling Silver Rubber Stopper With Ridges', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 16);
+INSERT INTO `products_description` VALUES (541, 1, 'Sterling Silver Raised Pattern Rubber Stopper Charm', 'This silver stopper has an internal rubber ring that grips the bracelet to position the beads, not suitable for bracelets with bar sections.', '', 8);
 INSERT INTO `products_description` VALUES (542, 1, 'Sterling Silver Gingerbread Man Charm Bead', 'This silver gingerbread man charm is suitable for use with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 5);
-INSERT INTO `products_description` VALUES (543, 1, 'Sterling Silver 21st Birthday Charm Bead', 'This 21st birthday charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 7);
+INSERT INTO `products_description` VALUES (543, 1, 'Sterling Silver 21st Birthday Charm Bead', 'This 21st birthday charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 10);
 INSERT INTO `products_description` VALUES (544, 1, 'Sterling Silver 16th Birthday Charm Bead', 'This silver 16th birthday charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 8);
 INSERT INTO `products_description` VALUES (545, 1, 'Sterling Silver Rocking Horse Charm Bead', 'This silver rocking horse charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 4);
 INSERT INTO `products_description` VALUES (546, 1, 'Sterling Silver Oxidised Star Pattern Charm Bead', 'This oxidised star patterened charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 4);
 INSERT INTO `products_description` VALUES (547, 1, 'Sterling Silver Oxidised Swirl Charm Bead', 'This silver oxidised swirl charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 4);
-INSERT INTO `products_description` VALUES (548, 1, 'Sterling Silver Ethnic Style Charm Bead', 'This silver ethnic style charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 5);
-INSERT INTO `products_description` VALUES (549, 1, '9ct Yellow Gold Pearl and Cubic Zirconia Pendant', 'A yellow gold pearl pendant with a modern design, the pearl measures 7mm and the pendant measures 17.5mm long and 7mm wide.', '', 4);
-INSERT INTO `products_description` VALUES (550, 1, '9ct White Gold Pearl and Cubic Zirconia Stud Earring', 'A beautiful white gold stud earring, frehwater pearl measures 6.6mm and the earring measures 9.1mm.', '', 14);
-INSERT INTO `products_description` VALUES (551, 1, 'Mint Green Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core runs through the centre.', '', 4);
-INSERT INTO `products_description` VALUES (552, 1, 'Pink Flower Glass Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core runs through the centre.', '', 3);
-INSERT INTO `products_description` VALUES (553, 1, 'Montana Crystal Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the centre.', '', 4);
+INSERT INTO `products_description` VALUES (548, 1, 'Sterling Silver Ethnic Style Charm Bead', 'This silver ethnic style charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 6);
+INSERT INTO `products_description` VALUES (549, 1, '9ct Yellow Gold Pearl and Cubic Zirconia Pendant', 'A yellow gold pearl pendant with a modern design, the pearl measures 7mm and the pendant measures 17.5mm long and 7mm wide.', '', 6);
+INSERT INTO `products_description` VALUES (550, 1, '9ct White Gold Pearl and Cubic Zirconia Stud Earring', 'A beautiful white gold stud earring, frehwater pearl measures 6.6mm and the earring measures 9.1mm.', '', 22);
+INSERT INTO `products_description` VALUES (551, 1, 'Mint Green Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core runs through the centre.', '', 5);
+INSERT INTO `products_description` VALUES (552, 1, 'Pink Flower Glass Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Sterling silver core runs through the centre.', '', 4);
+INSERT INTO `products_description` VALUES (553, 1, 'Montana Crystal Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the centre.', '', 5);
 INSERT INTO `products_description` VALUES (554, 1, 'Aqua Striped Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Ther is a sterling silver core which runs throgh the middle.', '', 3);
 INSERT INTO `products_description` VALUES (555, 1, 'Hot Pink Striped Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs though the middle.', '', 4);
-INSERT INTO `products_description` VALUES (556, 1, 'Black and White Swirl Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Ther is a sterling silver core which runs through the middle.', '', 5);
-INSERT INTO `products_description` VALUES (557, 1, 'Pink Rose Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 3);
+INSERT INTO `products_description` VALUES (556, 1, 'Black and White Swirl Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Ther is a sterling silver core which runs through the middle.', '', 6);
+INSERT INTO `products_description` VALUES (557, 1, 'Pink Rose Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
 INSERT INTO `products_description` VALUES (558, 1, 'White and Pink Polka Dot Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
-INSERT INTO `products_description` VALUES (559, 1, 'Pink Floral Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 3);
-INSERT INTO `products_description` VALUES (560, 1, 'Metalic Crystal Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 3);
-INSERT INTO `products_description` VALUES (561, 1, 'Blue with White Spots Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
+INSERT INTO `products_description` VALUES (559, 1, 'Pink Floral Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
+INSERT INTO `products_description` VALUES (560, 1, 'Metalic Crystal Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
+INSERT INTO `products_description` VALUES (561, 1, 'Blue with White Spots Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 5);
 INSERT INTO `products_description` VALUES (562, 1, 'Dusty Pink Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
-INSERT INTO `products_description` VALUES (563, 1, 'Light Pink Crystal Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 2);
+INSERT INTO `products_description` VALUES (563, 1, 'Light Pink Crystal Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 3);
 INSERT INTO `products_description` VALUES (564, 1, 'Lavender Crystal Faceted Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. Ther is a sterling silver core which runs through the middle.', '', 4);
-INSERT INTO `products_description` VALUES (565, 1, 'Red/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
-INSERT INTO `products_description` VALUES (566, 1, 'Black/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 5);
+INSERT INTO `products_description` VALUES (565, 1, 'Red/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 5);
+INSERT INTO `products_description` VALUES (566, 1, 'Black/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 6);
 INSERT INTO `products_description` VALUES (567, 1, 'Green/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and trollbeads. There is a sterling silver core which runs through the middle.', '', 6);
-INSERT INTO `products_description` VALUES (568, 1, 'Blue/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver Core which runs through the middle.', '', 6);
-INSERT INTO `products_description` VALUES (569, 1, 'Red and Pink Rose Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 2);
-INSERT INTO `products_description` VALUES (570, 1, 'Pink Crystal Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 4);
+INSERT INTO `products_description` VALUES (568, 1, 'Blue/Silver Foil Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver Core which runs through the middle.', '', 7);
+INSERT INTO `products_description` VALUES (569, 1, 'Red and Pink Rose Glass Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 3);
+INSERT INTO `products_description` VALUES (570, 1, 'Pink Crystal Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 5);
 INSERT INTO `products_description` VALUES (571, 1, 'Aqua Crystal Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 14);
 INSERT INTO `products_description` VALUES (572, 1, 'Sterling Silver Cubic Zirconia Stud Earrings', 'This silver cubic zirconia is for pierced ears and measures 5.2mm in diameter. Total weight 0.8 grams.', '', 2);
-INSERT INTO `products_description` VALUES (573, 1, '9ct Yellow Gold Flat knot Style Stud Earring', 'This traditional gold earring has a flat wool mark appearance and measures 7.7mm.', '', 15);
+INSERT INTO `products_description` VALUES (573, 1, '9ct Yellow Gold Flat knot Style Stud Earring', 'This traditional gold earring has a flat wool mark appearance and measures 7.7mm.', '', 18);
 INSERT INTO `products_description` VALUES (574, 1, '9ct Yellow Gold Plain Stud Earring', 'This plain gold stud earring has a curved profile and measures 7.9mm long and 5.1mm wide. Weight 0.62 grams', '', 6);
-INSERT INTO `products_description` VALUES (575, 1, '9ct Yellow Gold Star Stud Earrings', 'This gold polished star earring measures 8.6mm and a total weight of 0.49 grams.', '', 19);
+INSERT INTO `products_description` VALUES (575, 1, '9ct Yellow Gold Star Stud Earrings', 'This gold polished star earring measures 8.6mm and a total weight of 0.49 grams.', '', 24);
 INSERT INTO `products_description` VALUES (576, 1, '9ct Yellow Gold Open Ridge Stud Earring', 'A stylish 9ct gold open ridged polished stud earring. Dimensions - Length 13mm, Width 5.5mm and weighs a total of 0.77 grams', '', 11);
 INSERT INTO `products_description` VALUES (577, 1, '9ct Yellow Gold Polished and Satin Stud Earring', 'This elegant 9ct gold polished and satin stud earring measures 8.5mm long and 4.2mm wide. Total weight 0.71 grams', '', 11);
 INSERT INTO `products_description` VALUES (578, 1, '9ct Yellow Gold Stud Earring', 'This 9ct gold 4 point diamond cut star earring measures 6.8mm and has a total weight of 0.38 grams', '', 10);
-INSERT INTO `products_description` VALUES (579, 1, 'Sterling Silver Organic Curved Link Bracelet', 'This polished silver curved link bracelet measures 18.5cm long, 5.8mm wide and weighs 10 grams.', '', 13);
-INSERT INTO `products_description` VALUES (580, 1, 'Sterling Silver CRM Bracelet', 'A stylish silver Charles Rennie Mackintosh style bracelet which measures 18cm long and 5.3mm wide. total weight 5.7 grams.', '', 15);
-INSERT INTO `products_description` VALUES (581, 1, 'Emerald Green Foil Glass Bead', 'Compatible with all major charm bead bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 18);
+INSERT INTO `products_description` VALUES (579, 1, 'Sterling Silver Organic Curved Link Bracelet', 'This polished silver curved link bracelet measures 18.5cm long, 5.8mm wide and weighs 10 grams.', '', 19);
+INSERT INTO `products_description` VALUES (580, 1, 'Sterling Silver CRM Bracelet', 'A stylish silver Charles Rennie Mackintosh style bracelet which measures 18cm long and 5.3mm wide. total weight 5.7 grams.', '', 16);
+INSERT INTO `products_description` VALUES (581, 1, 'Emerald Green Foil Glass Bead', 'Compatible with all major charm bead bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 19);
 INSERT INTO `products_description` VALUES (582, 1, 'Sterling Silver Elephant Charm Bead', 'This sterling silver elephant charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 10);
 INSERT INTO `products_description` VALUES (583, 1, 'Sterling Silver Cubic Zirconia Design Charm Bead', 'This silve cubic zirconia charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
-INSERT INTO `products_description` VALUES (584, 1, 'sterling Silver Plain Heart Charm Bead', 'This silver plain heart charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 14);
+INSERT INTO `products_description` VALUES (584, 1, 'sterling Silver Plain Heart Charm Bead', 'This silver plain heart charm is suitable for all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 18);
 INSERT INTO `products_description` VALUES (585, 1, 'Sterling Silver Multi Flower Pattern Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
-INSERT INTO `products_description` VALUES (586, 1, 'Sterling Silver Daughter Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and trollbeads.', '', 17);
-INSERT INTO `products_description` VALUES (587, 1, 'Sterling Silver Sister Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 11);
+INSERT INTO `products_description` VALUES (586, 1, 'Sterling Silver Daughter Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and trollbeads.', '', 21);
+INSERT INTO `products_description` VALUES (587, 1, 'Sterling Silver Sister Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 12);
 INSERT INTO `products_description` VALUES (588, 1, 'Sterling Silver I love You Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 9);
 INSERT INTO `products_description` VALUES (589, 1, 'sterling Silver Horse Head Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 11);
-INSERT INTO `products_description` VALUES (590, 1, 'Sterling Silver Stiletto Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 7);
-INSERT INTO `products_description` VALUES (591, 1, 'Sterling Silver 19cm Charm Bead Bracelet', 'This silver pandora style bracelet measures 19cm/7.5" it can carry any of the glass and silver charm beads on this website but is not compatible with rubber stoppers.', '', 23);
-INSERT INTO `products_description` VALUES (592, 1, 'Sterling Silver 19cm Magnetic Charm Bead Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, chamilia and Trollbeads.', '', 9);
-INSERT INTO `products_description` VALUES (593, 1, 'Sterling Silver 21cm Magnetic Catch Charm Bead Bracelet', 'This Pandora style charm bracelet can carry silver and glass charm beads from all the major charms sellers including Pandora, Chamilia and Trollbeads.', '', 11);
-INSERT INTO `products_description` VALUES (594, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Dragonfly', 'This beautiful pink ladies hip flask is perfect for a night out or special event. Not suitable to be engraved.', '', 20);
-INSERT INTO `products_description` VALUES (595, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Butterfly', 'This beautiful pink ladies hip flask is ideal for nights out or special occasions, it has a captive top. Not suitable to be engraved on flask.', '', 19);
-INSERT INTO `products_description` VALUES (596, 1, 'Stainless Steel 3oz Hip Flask with Top and Bottom Diamonte Band', '', '', 6);
-INSERT INTO `products_description` VALUES (597, 1, 'Stainless Steel Round Hip Flask with Cups and Funnel', 'This stainless steel plain hip flask is on the plain back and front, so is suitable for engraving. It comes with 2 cups and a handy funnel which will prevent spills.', '', 13);
-INSERT INTO `products_description` VALUES (598, 1, 'Stainless Steel 6oz Hip Flask with Black Leather Finish', 'This 6oz hip flask has a black leather finish with an engraving plate on the front, it has a captive top and a handy funnel.', '', 14);
-INSERT INTO `products_description` VALUES (599, 1, 'Stainless Steel 3oz Hip Flask and Business Card Holder in Black', 'This hip flask has a captive top and is also black on the back, the card holder has a plain back.', '', 5);
-INSERT INTO `products_description` VALUES (600, 1, '9ct Yellow Gold Triple Tear Drop Pendant', 'This pendant has 3 diamonds which totals 0.03ct and measures 32.6mm long, 8mm wide and weighs a total of 2.7 grams including the 9ct gold trace chain.', '', 8);
-INSERT INTO `products_description` VALUES (601, 1, '9ct White Gold Ruby and Diamond Pendant', 'This beautiful white gold pendant has a 5mm x 4mm ruby and 6 diamonds in a claw setting. The pendant measures 17mm long and 7mm wide, it sits on a white gold curb chain.', '', 17);
-INSERT INTO `products_description` VALUES (602, 1, '9ct Yellow Gold Open Tear Drop Diamond Pendant', 'The pendant measures 21mm long, 8mm wide and total weight including yellow gold trace chain (different chain from image) is 2 grams. Diamonds 0.06ct', '', 14);
+INSERT INTO `products_description` VALUES (590, 1, 'Sterling Silver Stiletto Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 8);
+INSERT INTO `products_description` VALUES (591, 1, 'Sterling Silver 19cm Charm Bead Bracelet', 'This silver pandora style bracelet measures 19cm/7.5" it can carry any of the glass and silver charm beads on this website but is not compatible with rubber stoppers.', '', 27);
+INSERT INTO `products_description` VALUES (592, 1, 'Sterling Silver 19cm Magnetic Charm Bead Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, chamilia and Trollbeads.', '', 12);
+INSERT INTO `products_description` VALUES (593, 1, 'Sterling Silver 21cm Magnetic Catch Charm Bead Bracelet', 'This Pandora style charm bracelet can carry silver and glass charm beads from all the major charms sellers including Pandora, Chamilia and Trollbeads.', '', 12);
+INSERT INTO `products_description` VALUES (594, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Dragonfly', 'This beautiful pink ladies hip flask is perfect for a night out or special event. Not suitable to be engraved.', '', 27);
+INSERT INTO `products_description` VALUES (595, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Butterfly', 'This beautiful pink ladies hip flask is ideal for nights out or special occasions, it has a captive top. Not suitable to be engraved on flask.', '', 26);
+INSERT INTO `products_description` VALUES (596, 1, 'Stainless Steel 3oz Hip Flask with Top and Bottom Diamonte Band', '', '', 8);
+INSERT INTO `products_description` VALUES (597, 1, 'Stainless Steel Round Hip Flask with Cups and Funnel', 'This stainless steel plain hip flask is on the plain back and front, so is suitable for engraving. It comes with 2 cups and a handy funnel which will prevent spills.', '', 16);
+INSERT INTO `products_description` VALUES (598, 1, 'Stainless Steel 6oz Hip Flask with Black Leather Finish', 'This 6oz hip flask has a black leather finish with an engraving plate on the front, it has a captive top and a handy funnel.', '', 16);
+INSERT INTO `products_description` VALUES (599, 1, 'Stainless Steel 3oz Hip Flask and Business Card Holder in Black', 'This hip flask has a captive top and is also black on the back, the card holder has a plain back.', '', 7);
+INSERT INTO `products_description` VALUES (600, 1, '9ct Yellow Gold Triple Tear Drop Pendant', 'This pendant has 3 diamonds which totals 0.03ct and measures 32.6mm long, 8mm wide and weighs a total of 2.7 grams including the 9ct gold trace chain.', '', 10);
+INSERT INTO `products_description` VALUES (601, 1, '9ct White Gold Ruby and Diamond Pendant', 'This beautiful white gold pendant has a 5mm x 4mm ruby and 6 diamonds in a claw setting. The pendant measures 17mm long and 7mm wide, it sits on a white gold curb chain.', '', 19);
+INSERT INTO `products_description` VALUES (602, 1, '9ct Yellow Gold Open Tear Drop Diamond Pendant', 'The pendant measures 21mm long, 8mm wide and total weight including yellow gold trace chain (different chain from image) is 2 grams. Diamonds 0.06ct', '', 15);
 INSERT INTO `products_description` VALUES (603, 1, '9ct White Gold Blue Topaz Pendant', 'This beautiful pendant has a 10mm x 8mm blue topaz set in a 4 claw setting. The pendant measures 23mm long, 11.2mm wide and sits on a white gold mini belcher chain.', '', 16);
-INSERT INTO `products_description` VALUES (604, 1, '9ct White Gold Oval pendant with Diamonds', 'A stylish white gold oval pendant which has pave set diamonds and total 0.10ct. The pendant measures 22.4mm long and 16mm wide. It sits on a white gold mini belcher chain (different chain from image).', '', 12);
+INSERT INTO `products_description` VALUES (604, 1, '9ct White Gold Oval pendant with Diamonds', 'A stylish white gold oval pendant which has pave set diamonds and total 0.10ct. The pendant measures 22.4mm long and 16mm wide. It sits on a white gold mini belcher chain (different chain from image).', '', 14);
 INSERT INTO `products_description` VALUES (605, 1, '9ct Yellow Gold Peridot Pendant', 'This elegant 3 peridot pendant measures 27mm long including loop and 7.3mm wide. It sits on a yellow gold trace chain ( different chain from image).', '', 11);
 INSERT INTO `products_description` VALUES (606, 1, '9ct Yellow Gold Triple Tear Drop Earring', 'This lovely yellow gold earring has a 0.02ct diamond on the bottom of the tear drop which measures 27.3mm, 8mm wide and weghs a total of 1.6 grams.', '', 16);
-INSERT INTO `products_description` VALUES (607, 1, '9ct Yellow Gold Open Tear Drop Loop Design Earring', 'This earring measures 18.6mm long, 7.5mm wide and weighs a total of 1.8 grams. Diamond content 0.11ct', '', 15);
-INSERT INTO `products_description` VALUES (608, 1, '9ct White Gold Blue Topaz Earring', 'This stunning white gold earring has a 8mm x 6mm blue topaz set in a 4 claw setting. The earring measures 26mm long and 8mm wide.', '', 18);
-INSERT INTO `products_description` VALUES (609, 1, '9ct Yellow Gold Pearl and Diamond Earring', 'This modern pearl and diamond earring measures 12.5mm long 9mm wide. Diamond weight 0.07ct.', '', 16);
-INSERT INTO `products_description` VALUES (610, 1, '9ct Yellow Gold Diamond Drop Earring', 'This elegant drop earring has 7 diamonds on each earring and totals 0.154ct.', '', 12);
+INSERT INTO `products_description` VALUES (607, 1, '9ct Yellow Gold Open Tear Drop Loop Design Earring', 'This earring measures 18.6mm long, 7.5mm wide and weighs a total of 1.8 grams. Diamond content 0.11ct', '', 16);
+INSERT INTO `products_description` VALUES (608, 1, '9ct White Gold Blue Topaz Earring', 'This stunning white gold earring has a 8mm x 6mm blue topaz set in a 4 claw setting. The earring measures 26mm long and 8mm wide.', '', 19);
+INSERT INTO `products_description` VALUES (609, 1, '9ct Yellow Gold Pearl and Diamond Earring', 'This modern pearl and diamond earring measures 12.5mm long 9mm wide. Diamond weight 0.07ct.', '', 17);
+INSERT INTO `products_description` VALUES (610, 1, '9ct Yellow Gold Diamond Drop Earring', 'This elegant drop earring has 7 diamonds on each earring and totals 0.154ct.', '', 13);
 INSERT INTO `products_description` VALUES (611, 1, '9ct Yellow Gold Pearl and Diamond Drop Earring', '', '', 16);
-INSERT INTO `products_description` VALUES (612, 1, '9ct White Gold Aquamarine and Diamond Earring', 'A stunningly beautiful white gold stud earring which measures 11.5mm and 8.7mm wide', '', 14);
+INSERT INTO `products_description` VALUES (612, 1, '9ct White Gold Aquamarine and Diamond Earring', 'A stunningly beautiful white gold stud earring which measures 11.5mm and 8.7mm wide', '', 15);
 INSERT INTO `products_description` VALUES (613, 1, '9ct Yellow Gold Pearl and Diamond Pendant', 'This modern pearl and diamond pendant has a beautiful freshwater pearl and 10 diamonds which total 0.06ct. It sits on a yellow gold curb chain.', '', 18);
-INSERT INTO `products_description` VALUES (614, 1, '9ct Yellow Gold Diamond Pendant', 'This stylish tear drop style pendant has 7 graduated diamonds down one side with a total of 0.255ct and sits on a yellow gold curb chain (different chain from image).', '', 12);
+INSERT INTO `products_description` VALUES (614, 1, '9ct Yellow Gold Diamond Pendant', 'This stylish tear drop style pendant has 7 graduated diamonds down one side with a total of 0.255ct and sits on a yellow gold curb chain (different chain from image).', '', 14);
 INSERT INTO `products_description` VALUES (615, 1, '9ct Yellow Gold Open Tear Drop Loop Design Pendant', '', '', 3);
 INSERT INTO `products_description` VALUES (616, 1, '9ct White Gold Sapphire and Diamond Open Heart Pendant', 'A modern heart shaped sapphire and diamond pendant with curb chain (different chain from image)', '', 11);
-INSERT INTO `products_description` VALUES (617, 1, 'Sterling Silver Cubic Zirconia Open Circles Bracelets', 'This beautiful bracelet measures 19cm/7.25" long, 9.5mm at widest and weighs 12.3 grams.', '', 6);
-INSERT INTO `products_description` VALUES (618, 1, 'Sterling Silver Open Disc Cluster Bracelet', 'Dimensions - 18cm/7" long with 3cm extender and weighs 6.7 grams.', '', 5);
-INSERT INTO `products_description` VALUES (619, 1, 'Sterling Silver Blue Crystal Bracelet', 'This stylish bracelet measures 18cm/7" long with a 3cm extender and weighs 8.1 grams.', '', 6);
-INSERT INTO `products_description` VALUES (620, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'this bracelet measures 18cm/7" long, 3.5mm wide and weighs 6.2 grams.', '', 3);
-INSERT INTO `products_description` VALUES (621, 1, 'Sterling Silver Snake Bracelet with Rings', 'This bracelet measures 19cm/7.5" long and weighs 20.2 grams', '', 13);
-INSERT INTO `products_description` VALUES (622, 1, 'Sterling Silver Blue Crystal Drop Earring', '', '', 7);
-INSERT INTO `products_description` VALUES (623, 1, 'Sterling Silver Open Lantern Drop Earring', 'These modern earrings measure 33mm long, 13.6mm wide and weigh a total of 3 grams.', '', 9);
-INSERT INTO `products_description` VALUES (624, 1, 'Sterling Silver Cubic Zirconia Cherry Blossom Earring', '', '', 6);
-INSERT INTO `products_description` VALUES (625, 1, 'Sterling Silver Triple Layer Drop Earring', 'This stunning drop earring measures 55mm long, 11mm wide and weighs a total of 6.2 grams.', '', 7);
-INSERT INTO `products_description` VALUES (626, 1, 'Sterling Silver Cubic Zirconia Open Tear Drop Earring', 'This elegant drop earring measures 19.5mm long, 8mm wide and weighs a total of 2.2 grams.', '', 4);
-INSERT INTO `products_description` VALUES (627, 1, 'Sterling Silver Open Lantern Pendant', 'This beautiful pendant measures 29mm long, 22.3mm wide and weighs 3.8 grams. It sits on an 18"/45cm diamond cut curb chain.', '', 6);
-INSERT INTO `products_description` VALUES (628, 1, 'Sterling Silver 5 Twist Drop Necklace', '', '', 10);
-INSERT INTO `products_description` VALUES (629, 1, '9ct Yellow Gold Inter-woven Stud Earrings', 'Theses studs are designed with inter-woven textured tubings, a discreet touch of femininity which will blend in with all styles. Approximately 10x10mm and weighs 1.0 grams.', '', 6);
-INSERT INTO `products_description` VALUES (630, 1, '9ct Yellow Gold Rose-Shaped Stud Earrings', 'These studs are liked freshly blossomed roses, a discreet touch of femininity which will blend with all styles. Approximately 10x10mm and weighs 1.6 grams.', '', 3);
-INSERT INTO `products_description` VALUES (631, 1, '9ct Yellow Gold Bamboo Creole Earrings', 'Inspired from bamboo shoots, these creoles achive a striking balance between the classic and the exotic. Fitted with a  hinged bar closure. Approximately 18x19mm and weighs 1.4 grams. Made in Italy.', '', 9);
-INSERT INTO `products_description` VALUES (632, 1, '9ct yellow GoldFaceted Creole Earrings', 'These hoops catch the light with their multi-faceted surfaces, creating a dazzling effect. Fitted with hinged bar closure.. Approximately 13x15mm and weighs 0.6 grams.', '', 7);
-INSERT INTO `products_description` VALUES (633, 1, '9ct Yellow Gold Creole Earrings', 'These classic creoles feature a triangular tubing and attractive designs on the sides. Fitted with a hinged bar closure. Approximately 15x16mm and weighs 0.8 grams.', '', 5);
-INSERT INTO `products_description` VALUES (634, 1, '9ct White, Yellow and Rose Gold Hoop Earring', 'These modern three coloured hoops are made of white, rose and yellow gold tubings integrated together to form a very simple but stylish piece. Fitted with hinged bar closure. Approximately 20x22mm and weighs 2.6 grams.', '', 7);
-INSERT INTO `products_description` VALUES (635, 1, '9ct White Gold Twisted Hoop Earrings', 'Precise twisting with sharper angles reflect the light and create a fancy effect to this stricking white gold hoops. Approximately 25x26mm and weighs 1.1 grams.', '', 9);
-INSERT INTO `products_description` VALUES (636, 1, '9ct White Gold Twisted Double Hoop Earrings', 'The main theme of these stylish twisted white gold is the double hoop. Fitted with a hinged bar closure. Approximately 21x24mm and weighs 2.1 grams.', '', 6);
-INSERT INTO `products_description` VALUES (637, 1, '9ct White Gold Engraved Square Hoop Earrings', 'These attractive square hoop earrings feature a square tubing. They are enhanced by an engraved design on the sides. Fitted by a hinged bar closure. Approximately 23x25mm and weighs 1.3 grams.', '', 3);
-INSERT INTO `products_description` VALUES (638, 1, '9ct Yellow Gold Flat Knot Earrings', 'Stylish knot earrings formed of four highly polished tubes. approximately 10x10mm and weighs 1.0 grams', '', 11);
-INSERT INTO `products_description` VALUES (639, 1, '9ct Yellow Gold Engraved Square hoop Earrings', 'These square hoop earrings feature a square tubing, enhanced by a design on the sides. Fitted with a hinged bar closure. Approximately 20x23x2mm and weighs 1.4 grams.', '', 6);
+INSERT INTO `products_description` VALUES (617, 1, 'Sterling Silver Cubic Zirconia Open Circles Bracelets', 'This beautiful bracelet measures 19cm/7.25" long, 9.5mm at widest and weighs 12.3 grams.', '', 8);
+INSERT INTO `products_description` VALUES (618, 1, 'Sterling Silver Open Disc Cluster Bracelet', 'Dimensions - 18cm/7" long with 3cm extender and weighs 6.7 grams.', '', 6);
+INSERT INTO `products_description` VALUES (619, 1, 'Sterling Silver Blue Crystal Bracelet', 'This stylish bracelet measures 18cm/7" long with a 3cm extender and weighs 8.1 grams.', '', 8);
+INSERT INTO `products_description` VALUES (620, 1, 'Sterling Silver Cubic Zirconia Bracelet', 'this bracelet measures 18cm/7" long, 3.5mm wide and weighs 6.2 grams.', '', 4);
+INSERT INTO `products_description` VALUES (621, 1, 'Sterling Silver Snake Bracelet with Rings', 'This bracelet measures 19cm/7.5" long and weighs 20.2 grams', '', 20);
+INSERT INTO `products_description` VALUES (622, 1, 'Sterling Silver Blue Crystal Drop Earring', '', '', 11);
+INSERT INTO `products_description` VALUES (623, 1, 'Sterling Silver Open Lantern Drop Earring', 'These modern earrings measure 33mm long, 13.6mm wide and weigh a total of 3 grams.', '', 11);
+INSERT INTO `products_description` VALUES (624, 1, 'Sterling Silver Cubic Zirconia Cherry Blossom Earring', '', '', 8);
+INSERT INTO `products_description` VALUES (625, 1, 'Sterling Silver Triple Layer Drop Earring', 'This stunning drop earring measures 55mm long, 11mm wide and weighs a total of 6.2 grams.', '', 10);
+INSERT INTO `products_description` VALUES (626, 1, 'Sterling Silver Cubic Zirconia Open Tear Drop Earring', 'This elegant drop earring measures 19.5mm long, 8mm wide and weighs a total of 2.2 grams.', '', 7);
+INSERT INTO `products_description` VALUES (627, 1, 'Sterling Silver Open Lantern Pendant', 'This beautiful pendant measures 29mm long, 22.3mm wide and weighs 3.8 grams. It sits on an 18"/45cm diamond cut curb chain.', '', 9);
+INSERT INTO `products_description` VALUES (628, 1, 'Sterling Silver 5 Twist Drop Necklace', '', '', 12);
+INSERT INTO `products_description` VALUES (629, 1, '9ct Yellow Gold Inter-woven Stud Earrings', 'Theses studs are designed with inter-woven textured tubings, a discreet touch of femininity which will blend in with all styles. Approximately 10x10mm and weighs 1.0 grams.', '', 7);
+INSERT INTO `products_description` VALUES (630, 1, '9ct Yellow Gold Rose-Shaped Stud Earrings', 'These studs are liked freshly blossomed roses, a discreet touch of femininity which will blend with all styles. Approximately 10x10mm and weighs 1.6 grams.', '', 4);
+INSERT INTO `products_description` VALUES (631, 1, '9ct Yellow Gold Bamboo Creole Earrings', 'Inspired from bamboo shoots, these creoles achive a striking balance between the classic and the exotic. Fitted with a  hinged bar closure. Approximately 18x19mm and weighs 1.4 grams. Made in Italy.', '', 10);
+INSERT INTO `products_description` VALUES (632, 1, '9ct yellow GoldFaceted Creole Earrings', 'These hoops catch the light with their multi-faceted surfaces, creating a dazzling effect. Fitted with hinged bar closure.. Approximately 13x15mm and weighs 0.6 grams.', '', 8);
+INSERT INTO `products_description` VALUES (633, 1, '9ct Yellow Gold Creole Earrings', 'These classic creoles feature a triangular tubing and attractive designs on the sides. Fitted with a hinged bar closure. Approximately 15x16mm and weighs 0.8 grams.', '', 6);
+INSERT INTO `products_description` VALUES (634, 1, '9ct White, Yellow and Rose Gold Hoop Earring', 'These modern three coloured hoops are made of white, rose and yellow gold tubings integrated together to form a very simple but stylish piece. Fitted with hinged bar closure. Approximately 20x22mm and weighs 2.6 grams.', '', 12);
+INSERT INTO `products_description` VALUES (635, 1, '9ct White Gold Twisted Hoop Earrings', 'Precise twisting with sharper angles reflect the light and create a fancy effect to this stricking white gold hoops. Approximately 25x26mm and weighs 1.1 grams.', '', 10);
+INSERT INTO `products_description` VALUES (636, 1, '9ct White Gold Twisted Double Hoop Earrings', 'The main theme of these stylish twisted white gold is the double hoop. Fitted with a hinged bar closure. Approximately 21x24mm and weighs 2.1 grams.', '', 9);
+INSERT INTO `products_description` VALUES (637, 1, '9ct White Gold Engraved Square Hoop Earrings', 'These attractive square hoop earrings feature a square tubing. They are enhanced by an engraved design on the sides. Fitted by a hinged bar closure. Approximately 23x25mm and weighs 1.3 grams.', '', 4);
+INSERT INTO `products_description` VALUES (638, 1, '9ct Yellow Gold Flat Knot Earrings', 'Stylish knot earrings formed of four highly polished tubes. approximately 10x10mm and weighs 1.0 grams', '', 12);
+INSERT INTO `products_description` VALUES (639, 1, '9ct Yellow Gold Engraved Square hoop Earrings', 'These square hoop earrings feature a square tubing, enhanced by a design on the sides. Fitted with a hinged bar closure. Approximately 20x23x2mm and weighs 1.4 grams.', '', 7);
 INSERT INTO `products_description` VALUES (640, 1, '9ct White Gold Twisted Hoop Earrings', 'Precise twisting with sharp angles reflect the light and give a striking look to these hoop earrings. Fitted with a hinged bar closure. Approximately 20x21mm and weighs 1.1 grams.', '', 11);
-INSERT INTO `products_description` VALUES (641, 1, '9ct White and Yellow Gold Hoop Earring', 'Angular shapes and clear lines are combined with alternating white and yellow gold, and highlighted by white gold accents. Approximately 20x21mm and weighs 3.4 grams.', '', 12);
-INSERT INTO `products_description` VALUES (642, 1, '9ct White Gold Twisted Hoop Earrings', 'Precise twisting with sharp angles reflect the light and give a striking look to these white god earrings, Approximately 15x16nn and weighs 0.8 grams.', '', 8);
-INSERT INTO `products_description` VALUES (643, 1, '9ct White Gold Square Tube Hoop Earrings', 'These minimalist white gold hoops have been fashioned from narrow square tubing. Their discreet and understated elagance will compliment all styles. Approximately 22x23x2mm and weighs 1.8 grams.', '', 9);
-INSERT INTO `products_description` VALUES (644, 1, '9ct Yellow Gold Engraved Oval Hoop Earrings', 'These oval hoop earrings feature a square tubing, enhanced by a design on the sides. Fitted with a hinged bar closure. Approximately 28x25x2mm and weighs1.3 grams.', '', 8);
-INSERT INTO `products_description` VALUES (645, 1, '9ct Yellow Gold Classic Twisted Earrings.', 'These classic hoop earrings are made from round tubing twisted into a neat spiral for a dazzling effect. Fitted with a hinged bar closure. Approximately 22x23mm and weighs 1.7 grams.', '', 8);
-INSERT INTO `products_description` VALUES (646, 1, '9ct Yellow Gold Classic Hoop Earrings', 'These classic hoops are made of polished round tubing and brace the minimalist trend. Ideal for formal and informal occasions. Fitted with a hinged bar closure. Approximately 23x25x2mm and weighs 1.7 grams.', '', 6);
-INSERT INTO `products_description` VALUES (647, 1, 'Sterling Silver Cubic Zirconia Pave Disc & Heart Pendant', 'This pendant measures 30mm and sits on a 18"/45cm diamond cut curb chain', '', 6);
-INSERT INTO `products_description` VALUES (648, 1, '9ct White Gold Engraved Hoop Earrings', 'These lightweight round hoop earrings feature a square tubing. They are enhanced by an engraved design on the sides. Fitted by a hinged bar closure. Approximately 19x19mm and weighs 1.2 grams.', '', 9);
-INSERT INTO `products_description` VALUES (649, 1, '9ct White Gold Square Tube Round Hoops', 'These minamilist white gold hoops have been fashioned from narrow square tubing. Their discreet and understated elagance will complement all styles. Fitted with a hinged bar closure. Approximately 20x20x2mm and weighs 1.8 grams.', '', 5);
-INSERT INTO `products_description` VALUES (650, 1, '9ct Yellow Gold Earrings', 'These stylish knots are formed of fancy tubing comprising of four highly polished and four mesh textured tubes.  Approximately 11x11mm and weighs 1.0 grams.', '', 7);
-INSERT INTO `products_description` VALUES (651, 1, '9ct Yellow Gold Knot Earrings', 'Thesestylish knots are formed of fancy tubing comprising of four highly polished and four mesh textured tubes. Approximately 12x12mm and weighs 1.9 grams.', '', 5);
-INSERT INTO `products_description` VALUES (652, 1, '9ct White Gold Classic Hoop Earrings', 'These classic polished white gold hoop earrings provide a discreet touch of femininity and modernity and are ideal for formal and informal occasions. Fitted with a hinged bar closure. Approximately 24x26x3mm and weighs 1.5 grams.', '', 8);
-INSERT INTO `products_description` VALUES (653, 1, '9ct Yellow Gold Knot Earring', 'These stylish discreet knot earrings are made with contrasting polished and textured tubings. Approximately 9x9mm and weighs 1.1 grams.', '', 13);
-INSERT INTO `products_description` VALUES (654, 1, '9ct White Gold Knot Earrings', 'These stylish white gold knot earrings are formed with polished rectangular tubing. Approximately 9x9mm and weighs 1.4 grams.', '', 14);
+INSERT INTO `products_description` VALUES (641, 1, '9ct White and Yellow Gold Hoop Earring', 'Angular shapes and clear lines are combined with alternating white and yellow gold, and highlighted by white gold accents. Approximately 20x21mm and weighs 3.4 grams.', '', 14);
+INSERT INTO `products_description` VALUES (642, 1, '9ct White Gold Twisted Hoop Earrings', 'Precise twisting with sharp angles reflect the light and give a striking look to these white god earrings, Approximately 15x16nn and weighs 0.8 grams.', '', 10);
+INSERT INTO `products_description` VALUES (643, 1, '9ct White Gold Square Tube Hoop Earrings', 'These minimalist white gold hoops have been fashioned from narrow square tubing. Their discreet and understated elagance will compliment all styles. Approximately 22x23x2mm and weighs 1.8 grams.', '', 10);
+INSERT INTO `products_description` VALUES (644, 1, '9ct Yellow Gold Engraved Oval Hoop Earrings', 'These oval hoop earrings feature a square tubing, enhanced by a design on the sides. Fitted with a hinged bar closure. Approximately 28x25x2mm and weighs1.3 grams.', '', 9);
+INSERT INTO `products_description` VALUES (645, 1, '9ct Yellow Gold Classic Twisted Earrings.', 'These classic hoop earrings are made from round tubing twisted into a neat spiral for a dazzling effect. Fitted with a hinged bar closure. Approximately 22x23mm and weighs 1.7 grams.', '', 9);
+INSERT INTO `products_description` VALUES (646, 1, '9ct Yellow Gold Classic Hoop Earrings', 'These classic hoops are made of polished round tubing and brace the minimalist trend. Ideal for formal and informal occasions. Fitted with a hinged bar closure. Approximately 23x25x2mm and weighs 1.7 grams.', '', 7);
+INSERT INTO `products_description` VALUES (647, 1, 'Sterling Silver Cubic Zirconia Pave Disc & Heart Pendant', 'This pendant measures 30mm and sits on a 18"/45cm diamond cut curb chain', '', 8);
+INSERT INTO `products_description` VALUES (648, 1, '9ct White Gold Engraved Hoop Earrings', 'These lightweight round hoop earrings feature a square tubing. They are enhanced by an engraved design on the sides. Fitted by a hinged bar closure. Approximately 19x19mm and weighs 1.2 grams.', '', 10);
+INSERT INTO `products_description` VALUES (649, 1, '9ct White Gold Square Tube Round Hoops', 'These minamilist white gold hoops have been fashioned from narrow square tubing. Their discreet and understated elagance will complement all styles. Fitted with a hinged bar closure. Approximately 20x20x2mm and weighs 1.8 grams.', '', 6);
+INSERT INTO `products_description` VALUES (650, 1, '9ct Yellow Gold Earrings', 'These stylish knots are formed of fancy tubing comprising of four highly polished and four mesh textured tubes.  Approximately 11x11mm and weighs 1.0 grams.', '', 9);
+INSERT INTO `products_description` VALUES (651, 1, '9ct Yellow Gold Knot Earrings', 'Thesestylish knots are formed of fancy tubing comprising of four highly polished and four mesh textured tubes. Approximately 12x12mm and weighs 1.9 grams.', '', 6);
+INSERT INTO `products_description` VALUES (652, 1, '9ct White Gold Classic Hoop Earrings', 'These classic polished white gold hoop earrings provide a discreet touch of femininity and modernity and are ideal for formal and informal occasions. Fitted with a hinged bar closure. Approximately 24x26x3mm and weighs 1.5 grams.', '', 9);
+INSERT INTO `products_description` VALUES (653, 1, '9ct Yellow Gold Knot Earring', 'These stylish discreet knot earrings are made with contrasting polished and textured tubings. Approximately 9x9mm and weighs 1.1 grams.', '', 14);
+INSERT INTO `products_description` VALUES (654, 1, '9ct White Gold Knot Earrings', 'These stylish white gold knot earrings are formed with polished rectangular tubing. Approximately 9x9mm and weighs 1.4 grams.', '', 15);
 INSERT INTO `products_description` VALUES (655, 1, '9ct White Gold Twisted Hoop Earrings', 'These white gold twist hoops are made from twisted round tubing. Approximately 22x26mm and weighs 2.0 grams.', '', 9);
-INSERT INTO `products_description` VALUES (656, 1, '9ct Yellow Gold Knot Earrings', 'These unusual knot earrings feature double elements. Weighs 0.9 grams.', '', 11);
+INSERT INTO `products_description` VALUES (656, 1, '9ct Yellow Gold Knot Earrings', 'These unusual knot earrings feature double elements. Weighs 0.9 grams.', '', 12);
 INSERT INTO `products_description` VALUES (657, 1, '9ct White Gold Oval Hoop Earrings', 'Subtle diamond cut edging is the engaging theme of these simple yet stylish white gold oval hoop earrings. Fitted with a hinged bar closure. Approximately 26x44mm and weighs 1.8 grams.', '', 9);
-INSERT INTO `products_description` VALUES (658, 1, '9ct White Gold Oval Wave Hoop Earring', 'With their fluid wave styling, these oval earrings create a stunning visual effect both from the front and from the side. Fitted with a hinged bar closure. Approximately 18x27mm and weighs 2.2 grams', '', 11);
-INSERT INTO `products_description` VALUES (659, 1, '9ct Yellow Gold Ribbed Hoop Earrings', 'Cylindrical in shape, ribbed in design and versitile to wear. Fitted with a hinged bar closure. Approximately 21x20mm and weighs 2.9 grams.', '', 7);
-INSERT INTO `products_description` VALUES (660, 1, '9ct White Gold Stud Earrings', 'Subtle movement is created by these simple curved white gold earrings. Approximately 3x12mm and weigh 1.2 grams.', '', 9);
-INSERT INTO `products_description` VALUES (661, 1, '9ct White Gold 5mm Ball Stud Earring', 'Easy to wear for all occasions, discreet yet elegant, these white gold studs are a must. Polished and spherical, they will just blend in with any style.', '', 13);
-INSERT INTO `products_description` VALUES (662, 1, '9ct Yellow Gold 6mm Frosted Ball Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these studs are a must. With their stardust finish and round shape, they will just blend in with any style.', '', 8);
-INSERT INTO `products_description` VALUES (663, 1, '9ct White Gold Cubic Zirconia Stud Earrings', 'White gold and cubic zirconia stud earrings. Approximately 5x7mm.', '', 14);
+INSERT INTO `products_description` VALUES (658, 1, '9ct White Gold Oval Wave Hoop Earring', 'With their fluid wave styling, these oval earrings create a stunning visual effect both from the front and from the side. Fitted with a hinged bar closure. Approximately 18x27mm and weighs 2.2 grams', '', 12);
+INSERT INTO `products_description` VALUES (659, 1, '9ct Yellow Gold Ribbed Hoop Earrings', 'Cylindrical in shape, ribbed in design and versitile to wear. Fitted with a hinged bar closure. Approximately 21x20mm and weighs 2.9 grams.', '', 9);
+INSERT INTO `products_description` VALUES (660, 1, '9ct White Gold Stud Earrings', 'Subtle movement is created by these simple curved white gold earrings. Approximately 3x12mm and weigh 1.2 grams.', '', 10);
+INSERT INTO `products_description` VALUES (661, 1, '9ct White Gold 5mm Ball Stud Earring', 'Easy to wear for all occasions, discreet yet elegant, these white gold studs are a must. Polished and spherical, they will just blend in with any style.', '', 14);
+INSERT INTO `products_description` VALUES (662, 1, '9ct Yellow Gold 6mm Frosted Ball Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these studs are a must. With their stardust finish and round shape, they will just blend in with any style.', '', 9);
+INSERT INTO `products_description` VALUES (663, 1, '9ct White Gold Cubic Zirconia Stud Earrings', 'White gold and cubic zirconia stud earrings. Approximately 5x7mm.', '', 15);
 INSERT INTO `products_description` VALUES (664, 1, '9ct Yellow Gold 5mm Frosted Ball Stud Earring', '9ct gold frosted ball stud earrings', '', 17);
-INSERT INTO `products_description` VALUES (665, 1, '9ct White Gold 4mm Ball Stud Earring', 'Easy to wear for all occasions, discreet yet elegant, these white gold studs are a must. Polished and spherical, they will just blend in with any style.', '', 9);
-INSERT INTO `products_description` VALUES (666, 1, '9ct White Gold Cubic Zirconia Stud Earring', 'White gold and cubic zirconia ellipse studs. Approximately 4x9mm.', '', 13);
-INSERT INTO `products_description` VALUES (667, 1, '9ct Yellow Gold Simulated Pearl Stud Earrings', 'A classic pair of simulated pearl stud earrings, diamond-cut on the edges for increased brilliance. Approximately 8x8mm.', '', 16);
-INSERT INTO `products_description` VALUES (668, 1, '9ct Yellow Gold 3mm Ball Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these are a must, Polished and spherical, they will just blend in with any style.', '', 13);
-INSERT INTO `products_description` VALUES (669, 1, 'Sterling Silver 19cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm beads from all the major charm companies including Pandora. Chamilia and Trollbeads.', '', 17);
-INSERT INTO `products_description` VALUES (670, 1, 'Sterling Silver 21cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, Chamilia and Trollbeads.', '', 14);
-INSERT INTO `products_description` VALUES (671, 1, 'Sterling Silver Open Multi Disc Drop Earring', 'This elegant drop earring is 45mm long, 11mm wide and weighs a total of 3.4 grams.', '', 14);
-INSERT INTO `products_description` VALUES (672, 1, 'Sterling Silver 23cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, Chamilia and Trollbeads.', '', 27);
-INSERT INTO `products_description` VALUES (673, 1, 'Ladies Seksy Black Stone Set Half Moon Watch', 'This ladies Seksy watch features a crystal set case and shoulders, it has a black mother of pearl dial. It has a three catch bracelet for adjustment.', '', 20);
-INSERT INTO `products_description` VALUES (674, 1, 'Ladies Seksy Pink Stone Set Half Moon Watch', 'This ladies seksy watch features a crystal set case and shoulders, it has a pink mother of pearl dial and has a three catch bracelet for adjustment.', '', 19);
-INSERT INTO `products_description` VALUES (675, 1, 'Ladies Seksy Purple Dial Watch', 'Ladies purple mother of pearl dial tear drop shaped dial which has a four catch bracelet to allow you to shorten.', '', 20);
-INSERT INTO `products_description` VALUES (676, 1, 'Ladies Seksy Mother of Pearl Dial Watch', 'Ladies mother of pearl triangular shaped dial which features a crystal set case and shoulders and has a three catch bracelet to allow you to shorten.', '', 17);
-INSERT INTO `products_description` VALUES (677, 1, '9ct Yellow Gold Bamboo Creole Earrings', 'Inspired from bamboo shoots, these creoles achive a striking balance between the classic and the exotic. Fitted with a hinged bar closure. Approximately 15x16mm and weighs 1.0 grams', '', 16);
-INSERT INTO `products_description` VALUES (678, 1, 'Sterling Silver 18th Birthday Charm Bead', 'This silver 18th birthday charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 14);
-INSERT INTO `products_description` VALUES (679, 1, 'Ladies Sterling Silver Charmed Watch (Precious)', 'Ladies sterling silver charmed by Accurist watch with sterling silver stoppers and heart shaped mother of pearl charms.\r\nCreate your own unique timepiece by adding charms from any of the leading charms, four stopper beads included.', '', 22);
-INSERT INTO `products_description` VALUES (680, 1, 'Blue and White Swirl Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 9);
-INSERT INTO `products_description` VALUES (681, 1, 'Sterling Silver Cubic Zirconia and Open Circle Necklet', 'This open circle cubic zirconia necklet measures 28mm fom top of the open circle to the bottom of the cubic zirconia and sits on a 16"/40cm silver trace chain which has a 2"/5cm extender. Total weight of pendant is 6.3 grams.', '', 9);
+INSERT INTO `products_description` VALUES (665, 1, '9ct White Gold 4mm Ball Stud Earring', 'Easy to wear for all occasions, discreet yet elegant, these white gold studs are a must. Polished and spherical, they will just blend in with any style.', '', 10);
+INSERT INTO `products_description` VALUES (666, 1, '9ct White Gold Cubic Zirconia Stud Earring', 'White gold and cubic zirconia ellipse studs. Approximately 4x9mm.', '', 15);
+INSERT INTO `products_description` VALUES (667, 1, '9ct Yellow Gold Simulated Pearl Stud Earrings', 'A classic pair of simulated pearl stud earrings, diamond-cut on the edges for increased brilliance. Approximately 8x8mm.', '', 18);
+INSERT INTO `products_description` VALUES (668, 1, '9ct Yellow Gold 3mm Ball Stud Earrings', 'Easy to wear for all occasions, discreet yet elegant, these are a must, Polished and spherical, they will just blend in with any style.', '', 15);
+INSERT INTO `products_description` VALUES (669, 1, 'Sterling Silver 19cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm beads from all the major charm companies including Pandora. Chamilia and Trollbeads.', '', 19);
+INSERT INTO `products_description` VALUES (670, 1, 'Sterling Silver 21cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, Chamilia and Trollbeads.', '', 15);
+INSERT INTO `products_description` VALUES (671, 1, 'Sterling Silver Open Multi Disc Drop Earring', 'This elegant drop earring is 45mm long, 11mm wide and weighs a total of 3.4 grams.', '', 16);
+INSERT INTO `products_description` VALUES (672, 1, 'Sterling Silver 23cm Pandora Style Charm Bracelet', 'This Pandora style charm bracelet can carry any glass and silver charm bead from all the major charm companies including Pandora, Chamilia and Trollbeads.', '', 33);
+INSERT INTO `products_description` VALUES (673, 1, 'Ladies Seksy Black Stone Set Half Moon Watch', 'This ladies Seksy watch features a crystal set case and shoulders, it has a black mother of pearl dial. It has a three catch bracelet for adjustment.', '', 31);
+INSERT INTO `products_description` VALUES (674, 1, 'Ladies Seksy Pink Stone Set Half Moon Watch', 'This ladies seksy watch features a crystal set case and shoulders, it has a pink mother of pearl dial and has a three catch bracelet for adjustment.', '', 26);
+INSERT INTO `products_description` VALUES (675, 1, 'Ladies Seksy Purple Dial Watch', 'Ladies purple mother of pearl dial tear drop shaped dial which has a four catch bracelet to allow you to shorten.', '', 23);
+INSERT INTO `products_description` VALUES (676, 1, 'Ladies Seksy Mother of Pearl Dial Watch', 'Ladies mother of pearl triangular shaped dial which features a crystal set case and shoulders and has a three catch bracelet to allow you to shorten.', '', 22);
+INSERT INTO `products_description` VALUES (677, 1, '9ct Yellow Gold Bamboo Creole Earrings', 'Inspired from bamboo shoots, these creoles achive a striking balance between the classic and the exotic. Fitted with a hinged bar closure. Approximately 15x16mm and weighs 1.0 grams', '', 17);
+INSERT INTO `products_description` VALUES (678, 1, 'Sterling Silver 18th Birthday Charm Bead', 'This silver 18th birthday charm is suitable for all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 16);
+INSERT INTO `products_description` VALUES (679, 1, 'Ladies Sterling Silver Charmed Watch (Precious)', 'Ladies sterling silver charmed by Accurist watch with sterling silver stoppers and heart shaped mother of pearl charms.\r\nCreate your own unique timepiece by adding charms from any of the leading charms, four stopper beads included.', '', 30);
+INSERT INTO `products_description` VALUES (680, 1, 'Blue and White Swirl Charm Bead', 'Compatible with all major charm bracelets including Pandora, Chamilia and Trollbeads. There is a sterling silver core which runs through the middle.', '', 10);
+INSERT INTO `products_description` VALUES (681, 1, 'Sterling Silver Cubic Zirconia and Open Circle Necklet', 'This open circle cubic zirconia necklet measures 28mm fom top of the open circle to the bottom of the cubic zirconia and sits on a 16"/40cm silver trace chain which has a 2"/5cm extender. Total weight of pendant is 6.3 grams.', '', 13);
 INSERT INTO `products_description` VALUES (682, 1, 'Ladies Accurist Gold Plated Quartz Watch', 'This beautiful ladies Accurist watch has a gold plated case and bracelet which is adjustable, quartz analogue movement and comes in an Accurist presentation box.', '', 9);
-INSERT INTO `products_description` VALUES (683, 1, '9ct White Gold 3mm D Shaped Wedding Ring Size M', 'With it''s tapered edges, the D  shape profile of this white gold ring is the most classical and timeless. Weight 2.2 grams <br/>Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days', '', 12);
-INSERT INTO `products_description` VALUES (684, 1, '9ct white Gold 4mm D Shape Wedding Ring Size P', 'With it''s tapered edges, the D saped profile ot this white gold ring is the most classical nand timeless. Weight 3.4 grams.<br/>Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days', '', 7);
-INSERT INTO `products_description` VALUES (685, 1, '9ct White Gold 5mm D Shape Wedding Ring Size R', 'With it''s tapered edges, the D shape profile of this white gold ring is the most classical and timeless. weight 5.0 grams<br/>Made in England<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 5);
-INSERT INTO `products_description` VALUES (686, 1, '9ct White Gold 6mm D Shape Wedding Ring Size V', 'With it''s tapered edges, the D shape profile of this white gold ring is the most classical and timeless. Weight 7.1 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days', '', 5);
-INSERT INTO `products_description` VALUES (687, 1, '9ct White Gold 3mm D Shaped Mill Grain Edge Wedding Ring Size M', 'With it''s tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days.', '', 4);
-INSERT INTO `products_description` VALUES (688, 1, '9ct White Gold 4mm D Shaped Mill Grain Edge Wedding Ring Size O', 'With it''s tapered edges, this white gold ring is the most classical and timeless. mill grain edge band. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 2);
-INSERT INTO `products_description` VALUES (689, 1, '9ct White Gold 5mm D Shaped Mill Grain Edge Wedding Ring Size P', 'With its tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 Days.', '', 6);
-INSERT INTO `products_description` VALUES (690, 1, '9ct White Gold 6mm D Shaped Mill Grain Edge Wedding Ring Size S', 'With it''s tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 2);
-INSERT INTO `products_description` VALUES (691, 1, '9ct White Gold 3mm Flat Court Bevelled Edge Wedding Ring Size M', 'With it''s clean lines, tradition is reworked for a more contempory look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days.', '', 3);
-INSERT INTO `products_description` VALUES (692, 1, '9ct White Gold 4mm Flat Court Bevelled edge wedding Ring Size O', 'With it''s clean lines, tradition is reworked for a more contempory look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 5);
-INSERT INTO `products_description` VALUES (693, 1, '9ct White Gold 5mm Flat Court Bevelled edge wedding Ring Size S', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 2);
-INSERT INTO `products_description` VALUES (694, 1, '9ct White Gold 6mm Flat Court Bevelled edge wedding Ring Size R', 'With it''s clean lines,tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 8);
+INSERT INTO `products_description` VALUES (683, 1, '9ct White Gold 3mm D Shaped Wedding Ring Size M', 'With it''s tapered edges, the D  shape profile of this white gold ring is the most classical and timeless. Weight 2.2 grams <br/>Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days', '', 13);
+INSERT INTO `products_description` VALUES (684, 1, '9ct white Gold 4mm D Shape Wedding Ring Size P', 'With it''s tapered edges, the D saped profile ot this white gold ring is the most classical nand timeless. Weight 3.4 grams.<br/>Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days', '', 13);
+INSERT INTO `products_description` VALUES (685, 1, '9ct White Gold 5mm D Shape Wedding Ring Size R', 'With it''s tapered edges, the D shape profile of this white gold ring is the most classical and timeless. weight 5.0 grams<br/>Made in England<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 8);
+INSERT INTO `products_description` VALUES (686, 1, '9ct White Gold 6mm D Shape Wedding Ring Size V', 'With it''s tapered edges, the D shape profile of this white gold ring is the most classical and timeless. Weight 7.1 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days', '', 7);
+INSERT INTO `products_description` VALUES (687, 1, '9ct White Gold 3mm D Shaped Mill Grain Edge Wedding Ring Size M', 'With it''s tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days.', '', 6);
+INSERT INTO `products_description` VALUES (688, 1, '9ct White Gold 4mm D Shaped Mill Grain Edge Wedding Ring Size O', 'With it''s tapered edges, this white gold ring is the most classical and timeless. mill grain edge band. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 4);
+INSERT INTO `products_description` VALUES (689, 1, '9ct White Gold 5mm D Shaped Mill Grain Edge Wedding Ring Size P', 'With its tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 Days.', '', 7);
+INSERT INTO `products_description` VALUES (690, 1, '9ct White Gold 6mm D Shaped Mill Grain Edge Wedding Ring Size S', 'With it''s tapered edges, the D shaped profile of this white gold ring is the most classical and timeless. Mill grain edge band. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 3);
+INSERT INTO `products_description` VALUES (691, 1, '9ct White Gold 3mm Flat Court Bevelled Edge Wedding Ring Size M', 'With it''s clean lines, tradition is reworked for a more contempory look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days.', '', 4);
+INSERT INTO `products_description` VALUES (692, 1, '9ct White Gold 4mm Flat Court Bevelled edge wedding Ring Size O', 'With it''s clean lines, tradition is reworked for a more contempory look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 6);
+INSERT INTO `products_description` VALUES (693, 1, '9ct White Gold 5mm Flat Court Bevelled edge wedding Ring Size S', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 3);
+INSERT INTO `products_description` VALUES (694, 1, '9ct White Gold 6mm Flat Court Bevelled edge wedding Ring Size R', 'With it''s clean lines,tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 10);
 INSERT INTO `products_description` VALUES (695, 1, '9ct Yellow Gold 3mm Flat court Bevelled Edge Wedding Ring Size L', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes J-Q, Delivery 3 to 5 days.', '', 8);
 INSERT INTO `products_description` VALUES (696, 1, '9ct Y Gold 4mm Flat Court Bevelled Edge Wedding Ring Size N', 'With it''s clean lines, tradition is reworked for a far more contemporary look while the internal barrelling of the interior assures a comfortable fit. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 9);
-INSERT INTO `products_description` VALUES (710, 1, '9ct Y Gold 4mm Flat Court Ribbed Wedding Band Size N', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit.Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 4);
-INSERT INTO `products_description` VALUES (697, 1, '9ct Y Gold 5mm Flat Court Bevelled Edge Wedding Ring Size S', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 11);
+INSERT INTO `products_description` VALUES (710, 1, '9ct Y Gold 4mm Flat Court Ribbed Wedding Band Size N', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit.Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 11);
+INSERT INTO `products_description` VALUES (697, 1, '9ct Y Gold 5mm Flat Court Bevelled Edge Wedding Ring Size S', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 13);
 INSERT INTO `products_description` VALUES (698, 1, '9ct Y Gold 6mm Flat Court Bevelled Edge Wedding Ring Size T', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes P-Z, Delivery 3 to 5 days.', '', 14);
-INSERT INTO `products_description` VALUES (699, 1, '9ct Yellow Gold 3mm Court Shaped Wedding Ring Size M', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 3.1 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 9);
-INSERT INTO `products_description` VALUES (700, 1, '9ct Yellow Gold 4mm Court Shaped Wedding Ring Size P', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 3.5 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 10);
-INSERT INTO `products_description` VALUES (701, 1, '9ct Yellow Gold 5mm Court Shaped Wedding Ring Size T', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 4.6 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 9);
-INSERT INTO `products_description` VALUES (702, 1, '9ct Yellow Gold 6mm Court Shaped Wedding Ring Size W', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 6.9 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 7);
-INSERT INTO `products_description` VALUES (703, 1, '9ct Yellow Gold 3mm D Shaped wedding Ring Size L', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 2.0 grams. Made in England.<br/>Also available in sizes J-U. Delivery 3 to 5 days.', '', 13);
-INSERT INTO `products_description` VALUES (704, 1, '9ct Yellow Gold 4mm D Shaped wedding ring Size N', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 2.9 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 10);
-INSERT INTO `products_description` VALUES (705, 1, '9ct Yellow Gold 5mm D Shaped Wedding Ring Size S', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 4.7 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 12);
-INSERT INTO `products_description` VALUES (706, 1, '9ct Yellow Gold 6mm D Shaped Wedding Ring Size V', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 6.5 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 12);
-INSERT INTO `products_description` VALUES (707, 1, '9ct Yellow Gold 3mm D Shape mill Grain Edge Wedding Ring size L', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 11);
-INSERT INTO `products_description` VALUES (708, 1, '9ct Y Gold 4mm D Shaped Mill Grain Edge Wedding Ring size O', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 15);
-INSERT INTO `products_description` VALUES (709, 1, '9ct Y Gold 5mm D Shaped Mill Grain Edge Wedding Ring Size Q', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 10);
-INSERT INTO `products_description` VALUES (711, 1, '9ct Y Gold 6mm Flat Court Ribbed Wedding Ring Size U', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes P-Z, Delivery 3 to 5 days.', '', 3);
-INSERT INTO `products_description` VALUES (712, 1, '9ct Y Gold 5mm Flat Court Striped Wedding Ring Size T', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of the ring assures a comfortable fit. Striped with polished centre with satin edges. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 2);
-INSERT INTO `products_description` VALUES (713, 1, '9ct Y Gold 4mm Flat Court Striped Wedding Ring Size N', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 3);
-INSERT INTO `products_description` VALUES (714, 1, '9ct W Gold 4mm Flat Court Striped Wedding Ring Size M', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 4);
-INSERT INTO `products_description` VALUES (715, 1, '9ct W Gold 5mm Flat Court Striped Wedding Ring Size R', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes K-Z, Delivery 3 bto 5 days.', '', 4);
-INSERT INTO `products_description` VALUES (716, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This beautiful Seksy watch has an adjustable bracelet with Swarovski crystals, a silver dial with sparkle effect and comes in a presentation box.', '', 20);
-INSERT INTO `products_description` VALUES (717, 1, '9ct Yellow Gold Emerald and Cubic Zirconia Stud Earring', 'These beautiful earrings have 4 marquise cut emeralds and 5 round cubic zirconia stones. 9.7mm x 9.2mm. Total weight 1.8 grams', '', 10);
-INSERT INTO `products_description` VALUES (718, 1, '9ct White and Yellow Gold Cubic Zirconia Drop Earring', 'This stylish drop earring has 3 round cubic zirconia stones in a channel setting between white and yellow gold. It measures 33.9mm long and 5mm at it''s widest. Total weight 1.5 grams.', '', 7);
-INSERT INTO `products_description` VALUES (719, 1, '9ct White and Yellow Gold Cubic Zirconia Stud Earring', 'A beautiful blend of intertwining white and yellow gold with a small cubic zirconia set in the yellow gold. 8.2mm x 8.5mm. Total weight 1.2 grams.', '', 12);
-INSERT INTO `products_description` VALUES (720, 1, '9ct White and Yellow Gold Stud Earring', 'A classy intertwining white and yellow gold earring. 7.5mm x 7.6mm. Total weight 1.0 grams', '', 9);
+INSERT INTO `products_description` VALUES (699, 1, '9ct Yellow Gold 3mm Court Shaped Wedding Ring Size M', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 3.1 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 11);
+INSERT INTO `products_description` VALUES (700, 1, '9ct Yellow Gold 4mm Court Shaped Wedding Ring Size P', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 3.5 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 14);
+INSERT INTO `products_description` VALUES (701, 1, '9ct Yellow Gold 5mm Court Shaped Wedding Ring Size T', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 4.6 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 14);
+INSERT INTO `products_description` VALUES (702, 1, '9ct Yellow Gold 6mm Court Shaped Wedding Ring Size W', 'The court shaped profile is also known as the comfort-fit. The internal barrelling of this ring ensures outstanding wearability. Weight 6.9 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 11);
+INSERT INTO `products_description` VALUES (703, 1, '9ct Yellow Gold 3mm D Shaped wedding Ring Size L', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 2.0 grams. Made in England.<br/>Also available in sizes J-U. Delivery 3 to 5 days.', '', 14);
+INSERT INTO `products_description` VALUES (704, 1, '9ct Yellow Gold 4mm D Shaped wedding ring Size N', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 2.9 grams. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 12);
+INSERT INTO `products_description` VALUES (705, 1, '9ct Yellow Gold 5mm D Shaped Wedding Ring Size S', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 4.7 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 14);
+INSERT INTO `products_description` VALUES (706, 1, '9ct Yellow Gold 6mm D Shaped Wedding Ring Size V', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Weight 6.5 grams. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 16);
+INSERT INTO `products_description` VALUES (707, 1, '9ct Yellow Gold 3mm D Shape mill Grain Edge Wedding Ring size L', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 15);
+INSERT INTO `products_description` VALUES (708, 1, '9ct Y Gold 4mm D Shaped Mill Grain Edge Wedding Ring size O', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 16);
+INSERT INTO `products_description` VALUES (709, 1, '9ct Y Gold 5mm D Shaped Mill Grain Edge Wedding Ring Size Q', 'With it''s tapered edges, the D shaped profile of this ring is the most classical and timeless. Mill grain edge. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 14);
+INSERT INTO `products_description` VALUES (711, 1, '9ct Y Gold 6mm Flat Court Ribbed Wedding Ring Size U', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Made in England.<br/>Also available in sizes P-Z, Delivery 3 to 5 days.', '', 8);
+INSERT INTO `products_description` VALUES (712, 1, '9ct Y Gold 5mm Flat Court Striped Wedding Ring Size T', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of the ring assures a comfortable fit. Striped with polished centre with satin edges. Made in England.<br/>Also available in sizes K-Z, Delivery 3 to 5 days.', '', 7);
+INSERT INTO `products_description` VALUES (713, 1, '9ct Y Gold 4mm Flat Court Striped Wedding Ring Size N', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 10);
+INSERT INTO `products_description` VALUES (714, 1, '9ct W Gold 4mm Flat Court Striped Wedding Ring Size M', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this white gold ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes J-U, Delivery 3 to 5 days.', '', 10);
+INSERT INTO `products_description` VALUES (715, 1, '9ct W Gold 5mm Flat Court Striped Wedding Ring Size R', 'With it''s clean lines, tradition is reworked for a more contemporary look while the internal barrelling of the interior of this ring assures a comfortable fit. Striped with polished centre and satin edges. Made in England.<br/>Also available in sizes K-Z, Delivery 3 bto 5 days.', '', 9);
+INSERT INTO `products_description` VALUES (716, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This beautiful Seksy watch has an adjustable bracelet with Swarovski crystals, a silver dial with sparkle effect and comes in a presentation box.', '', 24);
+INSERT INTO `products_description` VALUES (717, 1, '9ct Yellow Gold Emerald and Cubic Zirconia Stud Earring', 'These beautiful earrings have 4 marquise cut emeralds and 5 round cubic zirconia stones. 9.7mm x 9.2mm. Total weight 1.8 grams', '', 11);
+INSERT INTO `products_description` VALUES (718, 1, '9ct White and Yellow Gold Cubic Zirconia Drop Earring', 'This stylish drop earring has 3 round cubic zirconia stones in a channel setting between white and yellow gold. It measures 33.9mm long and 5mm at it''s widest. Total weight 1.5 grams.', '', 8);
+INSERT INTO `products_description` VALUES (719, 1, '9ct White and Yellow Gold Cubic Zirconia Stud Earring', 'A beautiful blend of intertwining white and yellow gold with a small cubic zirconia set in the yellow gold. 8.2mm x 8.5mm. Total weight 1.2 grams.', '', 15);
+INSERT INTO `products_description` VALUES (720, 1, '9ct White and Yellow Gold Stud Earring', 'A classy intertwining white and yellow gold earring. 7.5mm x 7.6mm. Total weight 1.0 grams', '', 12);
 INSERT INTO `products_description` VALUES (721, 1, '9ct White and Yellow Gold Diamond Stud Earring', 'A classic white and yellow gold knot earring with one small diamond on each earring. 9.4mm x 9.2mm. Total weight 1.6 grams.', '', 14);
-INSERT INTO `products_description` VALUES (722, 1, '9ct Yellow Gold Pearl and Cubic Zirconia Stud Earring', 'This round swirl style earring has a small cubic zirconia and pearl in the middle and measures 7.8mm, it weighs a total of 0.8 grams.', '', 12);
-INSERT INTO `products_description` VALUES (723, 1, '9ct Yellow Gold Cubic Zirconia Stud Earring', 'Elagant open leaf style gold earring with 3 round cubic zirconia stones. 14.6mm x 7.8mm. Total weight 1.4 grams', '', 10);
+INSERT INTO `products_description` VALUES (722, 1, '9ct Yellow Gold Pearl and Cubic Zirconia Stud Earring', 'This round swirl style earring has a small cubic zirconia and pearl in the middle and measures 7.8mm, it weighs a total of 0.8 grams.', '', 16);
+INSERT INTO `products_description` VALUES (723, 1, '9ct Yellow Gold Cubic Zirconia Stud Earring', 'Elagant open leaf style gold earring with 3 round cubic zirconia stones. 14.6mm x 7.8mm. Total weight 1.4 grams', '', 12);
 INSERT INTO `products_description` VALUES (724, 1, '9ct Yellow Gold Round Diamond Set Stud Earring', 'This round gold earring has a heart set in the inside with 3 small diamonds on each earring. 10.2mm x 10.3mm. Total weight 1.6 grams.', '', 14);
-INSERT INTO `products_description` VALUES (725, 1, '9ct Yellow Gold Tear Drop Stud Earring', 'This classic open tear drop earring meassures 9.4mm x 5.8mm and weighs a total of 0.6 grams', '', 14);
-INSERT INTO `products_description` VALUES (726, 1, '9ct Yellow Gold 5mm Cubic Zirconia Stud Earring', 'This gold stud earring has a 5mm cubic zirconia stone which is set in a four claw setting. Total weight 1.0 gram', '', 15);
-INSERT INTO `products_description` VALUES (729, 1, 'Sterling Silver Blue Crystal Necklace', 'This stunning pendant has a marquise shaped blue crystal which sits in the middle of the three part pendant. Measures 40mm long and 12.7mm at it''s widest. It sits on a 40cm/16" silver box chain and has a 5cm extender. Total weight including chain 6.1 grams.', '', 11);
+INSERT INTO `products_description` VALUES (725, 1, '9ct Yellow Gold Tear Drop Stud Earring', 'This classic open tear drop earring meassures 9.4mm x 5.8mm and weighs a total of 0.6 grams', '', 22);
+INSERT INTO `products_description` VALUES (726, 1, '9ct Yellow Gold 5mm Cubic Zirconia Stud Earring', 'This gold stud earring has a 5mm cubic zirconia stone which is set in a four claw setting. Total weight 1.0 gram', '', 18);
+INSERT INTO `products_description` VALUES (729, 1, 'Sterling Silver Blue Crystal Necklace', 'This stunning pendant has a marquise shaped blue crystal which sits in the middle of the three part pendant. Measures 40mm long and 12.7mm at it''s widest. It sits on a 40cm/16" silver box chain and has a 5cm extender. Total weight including chain 6.1 grams.', '', 15);
 INSERT INTO `products_description` VALUES (731, 1, '9ct Yellow Gold Hoop Earring', '', '', 0);
-INSERT INTO `products_description` VALUES (732, 1, '9ct Yellow Gold Twisted Hoop Earring', 'This beautiful creole style earring has a hinge and bar closure and measures 22mm x 19mm and weighs 0.8 grams', '', 3);
-INSERT INTO `products_description` VALUES (733, 1, '9ct Yellow Gold Hoop Earring', 'This beautiful hoop earring is fitted with a hinged bar closure. Measures 26mm x 24mm and weighs 1.0 gram.', '', 4);
-INSERT INTO `products_description` VALUES (734, 1, '9ct Yellow Gold Hoop Earring', 'A stylish hoop earring which has a hinge and bar closure and measures 23mm x 20mm and weighs 1.0 gram.', '', 3);
-INSERT INTO `products_description` VALUES (735, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (736, 1, 'Gents Sekonda Gold Plated Leather Strap Watch', '', '', 5);
-INSERT INTO `products_description` VALUES (737, 1, 'Gents Sekonda Gold Plated Quartz Pocket Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (739, 1, 'Gents Sekonda Gold Plated Leather Strap Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (740, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (741, 1, 'Gents Sekonda Steel Expanding Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (742, 1, 'Gents Sekonda Gold Plated Leather Strap Quartz Watch', '', '', 4);
-INSERT INTO `products_description` VALUES (743, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (744, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (745, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (746, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (747, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (748, 1, 'Ladies Sekonda Two Tone Bracelet Quartz Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (749, 1, 'Ladies Sekonda Quartz Leather Strap Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (750, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (751, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (752, 1, 'Ladies Sekonda "Just Bead It" Bracelet Watch', 'This is a beautiful watch by Sekonda which has a mother of pearl dial and is suitable to add beads or charms from any of the leading brands including Pandora, Chamilia and Trollbeads.', '', 7);
-INSERT INTO `products_description` VALUES (753, 1, 'Gents Sekonda Steel Expanding Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (754, 1, 'Gents Sekonda Stainless Steel Quartz Watch', '', '', 3);
-INSERT INTO `products_description` VALUES (755, 1, 'Gents Sekonda Gold Plated Quartz Bracelet Watch', '', '', 6);
-INSERT INTO `products_description` VALUES (756, 1, 'Gents Sekonda Two Tone Bracelet Quartz Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (757, 1, 'Gents Sekonda Green Fabric Strap Watch', '', '', 7);
-INSERT INTO `products_description` VALUES (758, 1, 'Gents Sekonda Stainless Steel Bracelet Watch', '', '', 2);
-INSERT INTO `products_description` VALUES (759, 1, 'Ladies Silver and Gold Plated Charmed Watch (Sunflower)', 'Ladies two tone silver and gold plated charmed watch with elegant mother of pearl dial. Create your own unique timepiece by adding beads or charms from any of the leading brands. Four stopper beads included.', '', 9);
-INSERT INTO `products_description` VALUES (760, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Heart', 'This pink hip flask is ideal for nights out or special occasions, it has a captive top. Not suitable to engrave on flask.', '', 3);
-INSERT INTO `products_description` VALUES (761, 1, 'Stainless Steel 6oz Hip Flask with Golfer', 'Ideal gift for the golfer in your life. It has a captive top and can be engraved on the front or back.', '', 3);
-INSERT INTO `products_description` VALUES (762, 1, 'Stainless Steel 4oz Hip Flask with Thistle', 'This 6oz flask has a lazer engraved Scottish thistle on the front and a plain back which is suitable to be engraved.', '', 4);
+INSERT INTO `products_description` VALUES (732, 1, '9ct Yellow Gold Twisted Hoop Earring', 'This beautiful creole style earring has a hinge and bar closure and measures 22mm x 19mm and weighs 0.8 grams', '', 4);
+INSERT INTO `products_description` VALUES (733, 1, '9ct Yellow Gold Hoop Earring', 'This beautiful hoop earring is fitted with a hinged bar closure. Measures 26mm x 24mm and weighs 1.0 gram.', '', 5);
+INSERT INTO `products_description` VALUES (734, 1, '9ct Yellow Gold Hoop Earring', 'A stylish hoop earring which has a hinge and bar closure and measures 23mm x 20mm and weighs 1.0 gram.', '', 4);
+INSERT INTO `products_description` VALUES (735, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (736, 1, 'Gents Sekonda Gold Plated Leather Strap Watch', '', '', 6);
+INSERT INTO `products_description` VALUES (737, 1, 'Gents Sekonda Gold Plated Quartz Pocket Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (739, 1, 'Gents Sekonda Gold Plated Leather Strap Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (740, 1, 'Gents Sekonda Leather Strap Quartz Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (741, 1, 'Gents Sekonda Steel Expanding Bracelet Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (742, 1, 'Gents Sekonda Gold Plated Leather Strap Quartz Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (743, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (744, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (745, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (746, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (747, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 4);
+INSERT INTO `products_description` VALUES (748, 1, 'Ladies Sekonda Two Tone Bracelet Quartz Watch', '', '', 3);
+INSERT INTO `products_description` VALUES (749, 1, 'Ladies Sekonda Quartz Leather Strap Watch', '', '', 7);
+INSERT INTO `products_description` VALUES (750, 1, 'Ladies Sekonda Gold Plated Bracelet Quartz Watch', '', '', 11);
+INSERT INTO `products_description` VALUES (751, 1, 'Ladies Sekonda Quartz Bracelet Watch', '', '', 10);
+INSERT INTO `products_description` VALUES (752, 1, 'Ladies Sekonda "Just Bead It" Bracelet Watch', 'This is a beautiful watch by Sekonda which has a mother of pearl dial and is suitable to add beads or charms from any of the leading brands including Pandora, Chamilia and Trollbeads.', '', 25);
+INSERT INTO `products_description` VALUES (753, 1, 'Gents Sekonda Steel Expanding Bracelet Watch', '', '', 11);
+INSERT INTO `products_description` VALUES (754, 1, 'Gents Sekonda Stainless Steel Quartz Watch', '', '', 13);
+INSERT INTO `products_description` VALUES (755, 1, 'Gents Sekonda Gold Plated Quartz Bracelet Watch', '', '', 14);
+INSERT INTO `products_description` VALUES (756, 1, 'Gents Sekonda Two Tone Bracelet Quartz Watch', '', '', 11);
+INSERT INTO `products_description` VALUES (757, 1, 'Gents Sekonda Green Fabric Strap Watch', '', '', 16);
+INSERT INTO `products_description` VALUES (758, 1, 'Gents Sekonda Stainless Steel Bracelet Watch', '', '', 5);
+INSERT INTO `products_description` VALUES (759, 1, 'Ladies Silver and Gold Plated Charmed Watch (Sunflower)', 'Ladies two tone silver and gold plated charmed watch with elegant mother of pearl dial. Create your own unique timepiece by adding beads or charms from any of the leading brands. Four stopper beads included.', '', 28);
+INSERT INTO `products_description` VALUES (760, 1, 'Stainless Steel 3oz Hip Flask with Diamonte Heart', 'This pink hip flask is ideal for nights out or special occasions, it has a captive top. Not suitable to engrave on flask.', '', 13);
+INSERT INTO `products_description` VALUES (761, 1, 'Stainless Steel 6oz Hip Flask with Golfer', 'Ideal gift for the golfer in your life. It has a captive top and can be engraved on the front or back.', '', 12);
+INSERT INTO `products_description` VALUES (762, 1, 'Stainless Steel 4oz Hip Flask with Thistle', 'This 6oz flask has a lazer engraved Scottish thistle on the front and a plain back which is suitable to be engraved.', '', 15);
+INSERT INTO `products_description` VALUES (774, 1, '9ct Yellow Gold Diamond Eternity Ring Size L', 'This beautifully finished half eternity band features stunning channel-set round brilliant cut diamonds, 0.14ct. Also available to order in sizes I to R.', '', 7);
+INSERT INTO `products_description` VALUES (773, 1, 'Girls D for Diamond Sterling Silver Double Heart Pendant', 'This D for Diamond pendant has a double heart drop, the top heart has a diamond and the larger bottom heart has an aquamarine stone. The pendant sits on a 14" silver box chain and measures 19mm long including bale and 8.5mm at it''s widest.', '', 12);
+INSERT INTO `products_description` VALUES (772, 1, 'Ladies Silver Plated Charmed by Accurist (Midnight) Watch', 'Ladies silver plated Charmed watch with elegant black mother of pearl dial and decorative Swarovski crystal set bezel. This watch includes all beads and stoppers as shown.', '', 19);
+INSERT INTO `products_description` VALUES (771, 1, 'Ladies Seksy Stainless Steel Swarovski Crystal Quartz Watch', 'This ladies Seksy fashion watch has a chrome coloured case with Swarovski crystals, fully adjustable bracelet, black mother of pearl dial and a quartz analogue movement.', '', 15);
+INSERT INTO `products_description` VALUES (770, 1, 'Ladies Seksy Gold Plated Fashion Watch', 'This watch has a beautiful mother of pearl dial and is compilmented with a gold plated bracelet and case.', '', 19);
+INSERT INTO `products_description` VALUES (775, 1, '9ct white Gold Diamond Eternity Ring Size M', 'This beautifully finished half eternity white gold band features stunning channel-set round brilliant cut diamonds, 0.14ct. Also available to order in sizes I to R', '', 5);
+INSERT INTO `products_description` VALUES (776, 1, '9ct Yellow Gold Eternity Ring Size N', 'This beautifully finished half eternity band features stunning channel-set round brilliant cut diamonds, 0.22ct. Also available to order in sizes I to T.', '', 3);
+INSERT INTO `products_description` VALUES (777, 1, '9ct White Gold Eternity Ring Size O', 'This beautifully finishe white gold band features stunning channel-set round brilliant cut diamonds, 0.22ct. Also available to order in sizes I to T.', '', 5);
+INSERT INTO `products_description` VALUES (778, 1, 'Sterling Silver Mother Charm Bead', 'Compatible with all the major charm bracelets including Pandora, Chamilia and Trollbeads.', '', 4);
 
 -- --------------------------------------------------------
 
@@ -6841,7 +6948,7 @@ CREATE TABLE `products_extra_fields` (
 -- Dumping data for table `products_extra_fields`
 --
 
-INSERT INTO `products_extra_fields` VALUES (1, 'RRP', 0, 1, 0, '4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43,', '0', 3);
+INSERT INTO `products_extra_fields` VALUES (1, 'RRP', 0, 1, 0, '4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44,', '0', 3);
 
 -- --------------------------------------------------------
 
@@ -7102,6 +7209,10 @@ INSERT INTO `products_options_values` VALUES (166, 1, 'Pearl and Cubic Zirconia'
 INSERT INTO `products_options_values` VALUES (167, 1, 'Luminous');
 INSERT INTO `products_options_values` VALUES (168, 1, 'Green');
 INSERT INTO `products_options_values` VALUES (169, 1, 'Tiger Eye');
+INSERT INTO `products_options_values` VALUES (170, 1, '18ct Gold');
+INSERT INTO `products_options_values` VALUES (171, 1, 'Silver Plated');
+INSERT INTO `products_options_values` VALUES (172, 1, 'Eternity Ring');
+INSERT INTO `products_options_values` VALUES (173, 1, 'Silver Charm Beads');
 
 -- --------------------------------------------------------
 
@@ -7114,7 +7225,7 @@ CREATE TABLE `products_options_values_to_products_options` (
   `products_options_id` int(11) NOT NULL,
   `products_options_values_id` int(11) NOT NULL,
   PRIMARY KEY  (`products_options_values_to_products_options_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=228 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=236 ;
 
 --
 -- Dumping data for table `products_options_values_to_products_options`
@@ -7281,6 +7392,10 @@ INSERT INTO `products_options_values_to_products_options` VALUES (224, 30, 166);
 INSERT INTO `products_options_values_to_products_options` VALUES (225, 2, 167);
 INSERT INTO `products_options_values_to_products_options` VALUES (226, 7, 168);
 INSERT INTO `products_options_values_to_products_options` VALUES (227, 2, 169);
+INSERT INTO `products_options_values_to_products_options` VALUES (230, 8, 170);
+INSERT INTO `products_options_values_to_products_options` VALUES (233, 5, 171);
+INSERT INTO `products_options_values_to_products_options` VALUES (234, 9, 172);
+INSERT INTO `products_options_values_to_products_options` VALUES (235, 9, 173);
 
 -- --------------------------------------------------------
 
@@ -8095,6 +8210,15 @@ INSERT INTO `products_to_categories` VALUES (759, 25);
 INSERT INTO `products_to_categories` VALUES (760, 39);
 INSERT INTO `products_to_categories` VALUES (761, 39);
 INSERT INTO `products_to_categories` VALUES (762, 39);
+INSERT INTO `products_to_categories` VALUES (770, 6);
+INSERT INTO `products_to_categories` VALUES (771, 6);
+INSERT INTO `products_to_categories` VALUES (772, 25);
+INSERT INTO `products_to_categories` VALUES (773, 8);
+INSERT INTO `products_to_categories` VALUES (774, 43);
+INSERT INTO `products_to_categories` VALUES (775, 43);
+INSERT INTO `products_to_categories` VALUES (776, 43);
+INSERT INTO `products_to_categories` VALUES (777, 43);
+INSERT INTO `products_to_categories` VALUES (778, 38);
 
 -- --------------------------------------------------------
 
@@ -8126,7 +8250,7 @@ INSERT INTO `products_to_products_extra_fields` VALUES (14, 1, '249.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (15, 1, '149.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (16, 1, '149.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (17, 1, '149.00');
-INSERT INTO `products_to_products_extra_fields` VALUES (18, 1, '245.00');
+INSERT INTO `products_to_products_extra_fields` VALUES (18, 1, '249.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (19, 1, '299.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (20, 1, '269.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (21, 1, '99.95');
@@ -8231,7 +8355,7 @@ INSERT INTO `products_to_products_extra_fields` VALUES (119, 1, '19.9900');
 INSERT INTO `products_to_products_extra_fields` VALUES (120, 1, '29.9900');
 INSERT INTO `products_to_products_extra_fields` VALUES (385, 1, '169');
 INSERT INTO `products_to_products_extra_fields` VALUES (122, 1, '44.9900');
-INSERT INTO `products_to_products_extra_fields` VALUES (123, 1, '0.0000');
+INSERT INTO `products_to_products_extra_fields` VALUES (123, 1, '39.99');
 INSERT INTO `products_to_products_extra_fields` VALUES (124, 1, '49.9900');
 INSERT INTO `products_to_products_extra_fields` VALUES (125, 1, '39.9900');
 INSERT INTO `products_to_products_extra_fields` VALUES (126, 1, '27.9900');
@@ -8334,7 +8458,7 @@ INSERT INTO `products_to_products_extra_fields` VALUES (222, 1, '18');
 INSERT INTO `products_to_products_extra_fields` VALUES (223, 1, '13');
 INSERT INTO `products_to_products_extra_fields` VALUES (224, 1, '10');
 INSERT INTO `products_to_products_extra_fields` VALUES (225, 1, '20');
-INSERT INTO `products_to_products_extra_fields` VALUES (226, 1, '16');
+INSERT INTO `products_to_products_extra_fields` VALUES (226, 1, '17');
 INSERT INTO `products_to_products_extra_fields` VALUES (227, 1, '21');
 INSERT INTO `products_to_products_extra_fields` VALUES (228, 1, '18');
 INSERT INTO `products_to_products_extra_fields` VALUES (229, 1, '17');
@@ -8359,10 +8483,10 @@ INSERT INTO `products_to_products_extra_fields` VALUES (247, 1, '15.00');
 INSERT INTO `products_to_products_extra_fields` VALUES (248, 1, '23');
 INSERT INTO `products_to_products_extra_fields` VALUES (249, 1, '35');
 INSERT INTO `products_to_products_extra_fields` VALUES (250, 1, '65');
-INSERT INTO `products_to_products_extra_fields` VALUES (251, 1, '18');
+INSERT INTO `products_to_products_extra_fields` VALUES (251, 1, '19');
 INSERT INTO `products_to_products_extra_fields` VALUES (252, 1, '40');
-INSERT INTO `products_to_products_extra_fields` VALUES (253, 1, '12');
-INSERT INTO `products_to_products_extra_fields` VALUES (254, 1, '12');
+INSERT INTO `products_to_products_extra_fields` VALUES (253, 1, '14');
+INSERT INTO `products_to_products_extra_fields` VALUES (254, 1, '14');
 INSERT INTO `products_to_products_extra_fields` VALUES (255, 1, '12');
 INSERT INTO `products_to_products_extra_fields` VALUES (256, 1, '40');
 INSERT INTO `products_to_products_extra_fields` VALUES (257, 1, '15.00');
@@ -8424,7 +8548,7 @@ INSERT INTO `products_to_products_extra_fields` VALUES (313, 1, '60');
 INSERT INTO `products_to_products_extra_fields` VALUES (314, 1, '60');
 INSERT INTO `products_to_products_extra_fields` VALUES (315, 1, '14');
 INSERT INTO `products_to_products_extra_fields` VALUES (316, 1, '10');
-INSERT INTO `products_to_products_extra_fields` VALUES (317, 1, '13');
+INSERT INTO `products_to_products_extra_fields` VALUES (317, 1, '15');
 INSERT INTO `products_to_products_extra_fields` VALUES (318, 1, '10');
 INSERT INTO `products_to_products_extra_fields` VALUES (319, 1, '14');
 INSERT INTO `products_to_products_extra_fields` VALUES (320, 1, '34.95');
@@ -8518,7 +8642,7 @@ INSERT INTO `products_to_products_extra_fields` VALUES (514, 1, '84');
 INSERT INTO `products_to_products_extra_fields` VALUES (513, 1, '115');
 INSERT INTO `products_to_products_extra_fields` VALUES (512, 1, '79');
 INSERT INTO `products_to_products_extra_fields` VALUES (511, 1, '120');
-INSERT INTO `products_to_products_extra_fields` VALUES (510, 1, '75');
+INSERT INTO `products_to_products_extra_fields` VALUES (510, 1, '99');
 INSERT INTO `products_to_products_extra_fields` VALUES (509, 1, '120');
 INSERT INTO `products_to_products_extra_fields` VALUES (508, 1, '240');
 INSERT INTO `products_to_products_extra_fields` VALUES (507, 1, '95');
@@ -8527,8 +8651,8 @@ INSERT INTO `products_to_products_extra_fields` VALUES (505, 1, '295');
 INSERT INTO `products_to_products_extra_fields` VALUES (504, 1, '155');
 INSERT INTO `products_to_products_extra_fields` VALUES (503, 1, '115');
 INSERT INTO `products_to_products_extra_fields` VALUES (494, 1, '110');
-INSERT INTO `products_to_products_extra_fields` VALUES (498, 1, '115');
-INSERT INTO `products_to_products_extra_fields` VALUES (502, 1, '43');
+INSERT INTO `products_to_products_extra_fields` VALUES (498, 1, '120');
+INSERT INTO `products_to_products_extra_fields` VALUES (502, 1, '48');
 INSERT INTO `products_to_products_extra_fields` VALUES (500, 1, '54');
 INSERT INTO `products_to_products_extra_fields` VALUES (496, 1, '69');
 INSERT INTO `products_to_products_extra_fields` VALUES (493, 1, '57');
@@ -8784,6 +8908,15 @@ INSERT INTO `products_to_products_extra_fields` VALUES (479, 1, '175');
 INSERT INTO `products_to_products_extra_fields` VALUES (760, 1, '18');
 INSERT INTO `products_to_products_extra_fields` VALUES (761, 1, '26');
 INSERT INTO `products_to_products_extra_fields` VALUES (762, 1, '23');
+INSERT INTO `products_to_products_extra_fields` VALUES (776, 1, '595');
+INSERT INTO `products_to_products_extra_fields` VALUES (775, 1, '460');
+INSERT INTO `products_to_products_extra_fields` VALUES (774, 1, '460');
+INSERT INTO `products_to_products_extra_fields` VALUES (773, 1, '42.95');
+INSERT INTO `products_to_products_extra_fields` VALUES (772, 1, '115');
+INSERT INTO `products_to_products_extra_fields` VALUES (771, 1, '49.99');
+INSERT INTO `products_to_products_extra_fields` VALUES (770, 1, '69.99');
+INSERT INTO `products_to_products_extra_fields` VALUES (777, 1, '595');
+INSERT INTO `products_to_products_extra_fields` VALUES (778, 1, '14');
 
 -- --------------------------------------------------------
 
@@ -8845,20 +8978,30 @@ CREATE TABLE `sessions` (
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` VALUES ('4811afls97hi4bnganjip8pkb2', 1291928958, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('9seluoh1renmnbm2gm84f4h4d6', 1291929061, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:1:"2";s:6:"osCsid";s:26:"9seluoh1renmnbm2gm84f4h4d6";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('104f20tegc18hdn6hau5jn1si6', 1291925677, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('23bmpi4rfrhc00mpag439rjgi0', 1291927692, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:1:"8";s:6:"osCsid";s:26:"23bmpi4rfrhc00mpag439rjgi0";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('8uilrj5pvccmpd2nl4u2vef161', 1291922263, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:3:"1_3";s:4:"page";s:1:"3";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('6k4voksvvu955sfp2ujhf220t5', 1291921873, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:4:"page";s:1:"2";s:6:"osCsid";s:26:"6k4voksvvu955sfp2ujhf220t5";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:1:"6";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:26:"advanced_search_result.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:3:{s:8:"keywords";s:15:"elephant brooch";s:1:"x";s:1:"9";s:1:"y";s:1:"6";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('1qlnur5kqd2oinn58bpdqlkmu6', 1291920795, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:2:"39";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('0katcvoguntei5f7nfqa1tgv46', 1291920689, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:3:"595";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('3om6ubk968m7tjs5fimt93s8n4', 1291920222, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:4:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:1:"2";s:6:"osCsid";s:26:"3om6ubk968m7tjs5fimt93s8n4";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:4:"2_10";}s:4:"post";a:0:{}}i:3;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:7:"2_10_18";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('nngrkej2mh0mqcl24u0ihaopk2', 1291916890, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:2:"35";s:6:"osCsid";s:26:"nngrkej2mh0mqcl24u0ihaopk2";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:5:"35_41";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('gj4midtvtba0cd211ev7l5lb47', 1291916241, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:5:"tools";admin|a:2:{s:2:"id";s:1:"1";s:8:"username";s:6:"jlaing";}');
-INSERT INTO `sessions` VALUES ('bfdc31b523c78482bdb6395c3eadd8b9', 1291929900, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('d8702daa6ecc1f3dca6379db32ae85c3', 1291929976, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
-INSERT INTO `sessions` VALUES ('f33f30cbdd0ad5d2de2384d7726ff8e7', 1291930098, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:11:"products_id";s:3:"759";s:6:"osCsid";s:32:"f33f30cbdd0ad5d2de2384d7726ff8e7";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:1:"1";s:6:"osCsid";s:32:"f33f30cbdd0ad5d2de2384d7726ff8e7";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('qpqe8p4a0alcmup1vrcahn1b02', 1293467806, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:12:"specials.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:4:"sort";s:2:"0d";s:4:"page";s:1:"2";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('nm7p1u2pnfvr89o44ns596ujp0', 1293467826, 'language|s:7:"english";languages_id|s:1:"1";redirect_origin|a:2:{s:4:"page";s:9:"index.php";s:3:"get";a:0:{}}selected_box|s:13:"configuration";');
+INSERT INTO `sessions` VALUES ('e6j044sk6bllh5qhqahufps1n3', 1293468379, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:4:"page";s:2:"35";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:2:"10";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('4h5u03a0d0ps29p2llk2nqua02', 1293465041, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:7:"catalog";admin|a:2:{s:2:"id";s:1:"2";s:8:"username";s:6:"cmckay";}');
+INSERT INTO `sessions` VALUES ('cc6p7p9kq8958uvtel9vccsjb1', 1293452490, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('dig3ov2qnu9qu2dspnobs79aa5', 1293453680, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('t9nvukm52va8nk7v4gb3rgomj1', 1293453681, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('o0tbgen2kaqlhld3ifir5fvqs3', 1293453888, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('n5ogdagtt2jssoslmp3k3noal4', 1293456002, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('g0qs4teidub8798c6i0p24k5o2', 1293456332, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:6:"1_5_24";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:3:"187";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('7a5t553q56jflmk867f7q8vri1', 1293465412, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:1:{i:772;a:1:{s:3:"qty";i:1;}}s:5:"total";d:86.25;s:6:"weight";d:0;s:6:"cartID";s:5:"93507";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:2:"53";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('3snu3kambnu8ds03hcsdounbb4', 1293456956, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:4:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:6:"1_3_13";s:6:"osCsid";s:26:"3snu3kambnu8ds03hcsdounbb4";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:2:"73";}s:4:"post";a:0:{}}i:3;a:4:{s:4:"page";s:12:"shipping.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('f9jvjch3lpq3chtoktgagnnrq7', 1293457369, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('cclcn09p7lhrl2smf8hjr9qsf6', 1293457803, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('mdo79ks3cprncnh8re7t1eo576', 1293458617, 'cart|N;language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|N;');
+INSERT INTO `sessions` VALUES ('e2jpnt3qtki8sqacj39dljj9s0', 1293458710, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:6:"1_3_12";s:6:"osCsid";s:26:"e2jpnt3qtki8sqacj39dljj9s0";}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:2:"20";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('fltntcq05g4a07brde69oqmht3', 1293459151, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('e93j3kut7r9m1bm56vjboa76a4', 1293459639, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('54ruas821oe8drl1m92uj0olr0', 1293459971, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:6:"1_3_12";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('jpnt0f9kfp0evnjisct9j6kh96', 1293459927, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_3";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:5:"cPath";s:6:"1_3_12";s:6:"osCsid";s:26:"jpnt0f9kfp0evnjisct9j6kh96";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('3rcl6eu463ma4kf3ndoijie8t7', 1293461493, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:3:"673";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('47uhut0d8bmppnsm503fphqtr5', 1293462549, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('iptthuktujb9ai7hqca0mae5c1', 1293462835, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+INSERT INTO `sessions` VALUES ('et7ipe07bug43kr9tm7ek1qkc6', 1293468162, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"GBP";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:3:"1_5";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -8877,12 +9020,37 @@ CREATE TABLE `specials` (
   `status` int(1) NOT NULL default '1',
   PRIMARY KEY  (`specials_id`),
   KEY `idx_specials_products_id` (`products_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `specials`
 --
 
+INSERT INTO `specials` VALUES (11, 386, 51.0638, '2010-12-26 09:36:32', '2010-12-26 13:36:50', '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (12, 759, 70.2128, '2010-12-26 09:42:37', NULL, '0000-00-00 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (13, 477, 70.2128, '2010-12-26 09:43:09', NULL, '0000-00-00 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (14, 772, 73.4042, '2010-12-26 09:43:42', '2010-12-26 09:44:35', '0000-00-00 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (15, 387, 57.4468, '2010-12-26 09:44:14', NULL, '0000-00-00 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (16, 679, 180.0000, '2010-12-26 09:45:06', NULL, '0000-00-00 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (17, 21, 64.6809, '2010-12-26 09:57:37', '2010-12-26 10:01:11', '2011-02-28 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (18, 44, 305.7022, '2010-12-27 10:14:47', '2010-12-27 16:01:28', '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (19, 19, 203.5745, '2010-12-27 10:15:21', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (20, 22, 196.7659, '2010-12-27 10:17:36', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (21, 14, 169.5319, '2010-12-27 10:30:50', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (22, 7, 183.1490, '2010-12-27 10:43:36', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (23, 6, 128.6809, '2010-12-27 10:44:16', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (24, 9, 128.6809, '2010-12-27 10:44:40', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (25, 11, 189.9574, '2010-12-27 10:45:10', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (26, 10, 183.1490, '2010-12-27 10:45:35', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (27, 8, 183.1490, '2010-12-27 10:45:58', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (28, 5, 162.7234, '2010-12-27 10:46:26', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (29, 48, 237.6170, '2010-12-27 10:52:01', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (30, 47, 224.0000, '2010-12-27 10:52:31', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (31, 71, 224.0000, '2010-12-27 10:52:57', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (32, 72, 237.6170, '2010-12-27 10:53:25', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (33, 53, 274.9787, '2010-12-27 10:55:10', '2010-12-27 16:12:21', '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (34, 55, 264.8510, '2010-12-27 10:56:58', NULL, '2011-01-31 00:00:00', NULL, 1);
+INSERT INTO `specials` VALUES (35, 45, 121.8723, '2010-12-27 10:59:29', NULL, '2011-01-31 00:00:00', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -8949,6 +9117,9 @@ CREATE TABLE `whos_online` (
 -- Dumping data for table `whos_online`
 --
 
+INSERT INTO `whos_online` VALUES (0, 'Guest', 'e6j044sk6bllh5qhqahufps1n3', '86.156.46.93', '1293466053', '1293466938', '/index.php?cPath=10&page=4');
+INSERT INTO `whos_online` VALUES (0, 'Guest', 'et7ipe07bug43kr9tm7ek1qkc6', '86.139.182.207', '1293466699', '1293466722', '/index.php?cPath=1_5');
+INSERT INTO `whos_online` VALUES (0, 'Guest', 'qpqe8p4a0alcmup1vrcahn1b02', '85.211.133.242', '1293465286', '1293466366', '/specials.php?sort=0d&page=2');
 
 -- --------------------------------------------------------
 

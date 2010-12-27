@@ -7,11 +7,13 @@
 -- --------------------------------------------------------
 
 
--- CAM  13-Nov-2010  10821 : Update banners.
+-- CAM  27-Dec-2010  10907 : Update VAT to 20%.
 
-UPDATE categories SET categories_image='category_goldear.png' WHERE categories.categories_id=35;
-UPDATE categories SET categories_image='category_goldpend.png' WHERE categories.categories_id=36;
-UPDATE categories SET categories_image='category_goldweddingrings.png' WHERE categories.categories_id=43;
+UPDATE tax_rates SET tax_rate = '20.0', tax_description = 'VAT (20%)' WHERE tax_rates.tax_rates_id = 1;
 
--- EOF #10821
+UPDATE products set products_tax_class_id = 1 WHERE products_tax_class_id = 0;
+
+UPDATE products set products_price = products_price * 1.175 / 1.200 WHERE products_tax_class_id = 1;
+
+-- EOF #10907
 

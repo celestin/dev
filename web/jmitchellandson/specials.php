@@ -17,6 +17,7 @@
  * CAM  29-May-2010  10647 : Changed from Product List to Grid
  * CAM  29-May-2010  10670 : Call table_header.
  * CAM  22-Oct-2010  10791 : Added Google Analytics.
+ * CAM  27-Dec-2010  10906 : Added correct stylesheet calls.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -31,8 +32,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
 <title><?php echo TITLE; ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
-<?php include (DIR_WS_INCLUDES . 'page-header-inc.htc'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo CONFIG_STYLESHEET; ?>">
+<link rel="shortcut icon" href="<?php echo CONFIG_FAVICON; ?>" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="<?php echo CONFIG_FAVICON; ?>" type="image/vnd.microsoft.icon" />
 <?php include(FILENAME_ANALYTICS); ?>
 </head>
 

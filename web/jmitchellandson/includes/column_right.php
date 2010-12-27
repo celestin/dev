@@ -14,6 +14,7 @@
  *
  * Who  When         Why
  * CAM  29-May-2010  10669 : Removed Reviews
+ * CAM  27-Dec-2010  10906 : Moved Specials box to prominant left column, and WhatsNew to right.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require(DIR_WS_BOXES . 'search.php');
@@ -34,16 +35,15 @@
         include(DIR_WS_BOXES . 'product_notifications.php');
       }
     } else {
-      include(DIR_WS_BOXES . 'product_notifications.php');
+      //include(DIR_WS_BOXES . 'product_notifications.php');
     }
   } else {
+    require(DIR_WS_BOXES . 'whats_new.php');
     include(DIR_WS_BOXES . 'best_sellers.php');
   }
 
   if (isset($HTTP_GET_VARS['products_id'])) {
     if (basename($PHP_SELF) != FILENAME_TELL_A_FRIEND) include(DIR_WS_BOXES . 'tell_a_friend.php');
-  } else {
-    include(DIR_WS_BOXES . 'specials.php');
   }
 
   //require(DIR_WS_BOXES . 'reviews.php');

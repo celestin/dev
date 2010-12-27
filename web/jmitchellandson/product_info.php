@@ -23,6 +23,7 @@
  * CAM  29-Jul-2010  10763 : Moved Guarantee up so RRP and Our Price are together.
  * CAM  07-Aug-2010  10767 : Added social networking links and left join to manufacturer.
  * CAM  22-Oct-2010  10791 : Added Google Analytics.
+ * CAM  27-Dec-2010  10906 : Display Our Price (and Special Price) correctly when there is a Special Price.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -110,7 +111,7 @@ function popupWindow(url) {
     tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
 
     if ($new_price = tep_get_products_special_price($product_info['products_id'])) {
-      $products_price = '<s>' . $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) . '</s> <span class="productSpecialPrice">' . $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id'])) . '</span>';
+      $products_price = $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id']));
     } else {
       $products_price = $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id']));
     }
@@ -298,13 +299,26 @@ function popupWindow(url) {
       }
       // EOF Product Extra Fields [#10639]
 
-      // Our price
+      // Our Price & Special Price
 ?>
           <tr>
             <td class="productOptionLabel">Our Price</td>
+<?php
+      if ($new_price == 0) {
+?>
             <td class="productOptionValueOurPrice"><?php echo $products_price; ?></td>
           </tr>
-
+<?php
+      } else {
+?>
+            <td class="productOptionValueRRP"><?php echo $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])); ?></td>
+          <tr>
+            <td class="productOptionLabel">Special Price</td>
+            <td class="productOptionValueOurPrice"><?php echo $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id'])); ?></td>
+          </tr>
+<?php
+      }
+?>
           </table>
 <?php
     }

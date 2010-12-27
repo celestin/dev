@@ -29,6 +29,7 @@
  * CAM  07-Aug-2010  10767 : Added classes for social networking links.
  * CAM  21-Aug-2010  10775 : Added diamond bullets to product display.
  * CAM  23-Oct-2010  10784 : Changed background colour, deepend the RRP red, and created class for product grid RRP.
+ * CAM  27-Dec-2010  10906 : Removed productSpecialPrice.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 p, body, td, a, h1, h2, h3, h4, input, select {
@@ -289,10 +290,6 @@ SPAN.markProductOutOfStock {
   font-size: 12px;
   color: #c76170;
   font-weight: bold;
-}
-
-SPAN.productSpecialPrice {
-  color: #ff0000;
 }
 
 SPAN.errorText {

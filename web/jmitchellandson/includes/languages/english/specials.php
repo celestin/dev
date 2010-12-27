@@ -1,17 +1,23 @@
 <?php
-/*
-  $Id$
-
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-
-  Copyright (c) 2002 osCommerce
-
-  Released under the GNU General Public License
-*/
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * J.Mitchell & Son (jmitchellandson.co.uk)
+ *
+ * osCommerce, Open Source E-Commerce Solutions
+ * http://www.oscommerce.com
+ * Copyright (c) 2007 osCommerce
+ * Released under the GNU General Public License
+ *
+ * Customised by Front Burner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  27-Dec-2010  10906 : Improved the title.
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 define('NAVBAR_TITLE', 'Specials');
-define('HEADING_TITLE', 'Get them while they\'re hot!');
+define('HEADING_TITLE', 'Special offers, for a limited time only!');
 
 define('TABLE_HEADING_IMAGE', '');
 define('TABLE_HEADING_MODEL', 'Model');

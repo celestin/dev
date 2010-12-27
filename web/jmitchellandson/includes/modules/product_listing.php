@@ -19,6 +19,7 @@
  * CAM  10-Jun-2010  10688 : Resized Grid to allow image and text to fit in properly.
  * CAM  23-Oct-2010  10784 : Added RRP to results grid.
  * CAM  23-Oct-2010  10784 : Added 'RRP' and 'Our price' to results grid.
+ * CAM  27-Dec-2010  10906 : Display Our Price (and Special Price) correctly when there is a Special Price.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $graphic_bord = 'no'; //  set to 'yes' if you have older 'graphic borders' and not 'easy graphic borders'.
@@ -152,21 +153,18 @@ function product_description($product_id,$link,$thumb=false) {
     }
   }
 
-function product_price($listing, $source,$last=false) {
+function product_price($listing, $source) {
     global $sale;
     $currencies = new currencies();
     $p_price = $listing['products_price'];
     $price = (function_exists(display_short_price)) ? $currencies->display_short_price($p_price, tep_get_tax_rate($listing['products_tax_class_id'])) : $currencies->display_price($p_price, tep_get_tax_rate($listing['products_tax_class_id']));
-         if ($sale && $new_price = tep_get_products_special_price($listing['products_id'])) {
-                    $price = '<s>' .  $price . '</s>' . ($last ? '<br />' : '&nbsp;&nbsp;') . '<span class="productSpecialPrice">' . $currencies->display_price($new_price, tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
-          } elseif (tep_not_null($listing['specials_new_products_price'])) {
-              $price = '<s>' .  $price . '</s>' . ($last ? '<br />' : '&nbsp;&nbsp;') . '<span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
-          }
     $price = ($p_price > 0 ? '' . $price . '' : '' . TEXT_POA);
+    $priceClass = "productListing-list-price";
+
     if (function_exists(tep_get_att_price)) $price .= (tep_get_att_price($listing['products_id']) > 0 ? '+' : '');
 
-
     $rrp = "";
+    $special = "";
     $sql =
       "SELECT products_extra_fields_value ".
       "FROM products_to_products_extra_fields ".
@@ -180,7 +178,14 @@ function product_price($listing, $source,$last=false) {
       }
     }
 
-    return $rrp . '<span class="productListing-list-price">' . $price . '</span>';
+    if (tep_not_null($listing['specials_new_products_price'])) {
+      $price = '<s>' .  $price . '</s>';
+      $priceClass = "productListing-rrp";
+      $special = '<br />Special price&nbsp;<span class="productListing-list-price">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
+    }
+
+
+    return "$rrp<span class=\"$priceClass\">$price</span>$special";
   }
 
 

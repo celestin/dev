@@ -14,6 +14,7 @@
  *
  * Who  When         Why
  * CAM  15-Jul-2010  10751 : Changed logo, added store address and document title and number.
+ * CAM  28-Dec-2010  10909 : Added Order Date as Invoice Date under logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -42,7 +43,8 @@
     <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td class="storeAddress"><?php echo nl2br(STORE_NAME_ADDRESS); ?></td>
-        <td class="pageHeading" align="right"><?php echo tep_image(DIR_WS_CATALOG_IMAGES . 'jmitchellandson2.png', STORE_NAME, 300); ?></td>
+        <td class="pageHeading" align="right"><?php echo tep_image(DIR_WS_CATALOG_IMAGES . 'jmitchellandson2.png', STORE_NAME, 300); ?><br />
+        <?php echo "Date: " . date("j-M-Y", strtotime($order->info['date_purchased'])); ?></td>
       </tr>
     </table></td>
   </tr>

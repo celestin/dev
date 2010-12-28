@@ -10,7 +10,7 @@
  * Customised by Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  28-Dec-2010  10910 : File added (http://www.oscommerce.com/community/contributions,598).

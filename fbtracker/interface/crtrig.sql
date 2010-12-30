@@ -1,3 +1,15 @@
+-- ----------------------------------------------------------------------------
+-- FBtracker Interface
+-- Copyright (c) 2010 Front Burner
+-- Author Craig McKay <craig@frontburner.co.uk>
+--
+-- $Id$
+-- ----------------------------------------------------------------------------
+
+
+-- ----------------------------------------------------------------------------
+-- fbtracker_bugs_insert copies new bugs from Bugzilla to Kimai
+-- ----------------------------------------------------------------------------
 
 DROP TRIGGER IF EXISTS bugs.fbtracker_bugs_insert;
 
@@ -63,6 +75,9 @@ delimiter ;
 
 
 
+-- ----------------------------------------------------------------------------
+-- fbtracker_bugs_update updates changed bugs from Bugzilla to Kimai
+-- ----------------------------------------------------------------------------
 
 DROP TRIGGER IF EXISTS bugs.fbtracker_bugs_update;
 
@@ -94,6 +109,10 @@ delimiter ;
 
 
 
+-- ----------------------------------------------------------------------------
+-- fbtracker_kimaiclient_insert copies new clients from Kimai to Bamboo
+-- ----------------------------------------------------------------------------
+
 DROP TRIGGER IF EXISTS kimai.fbtracker_kimaiclient_insert;
 
 delimiter |
@@ -119,6 +138,10 @@ delimiter ;
 
 
 
+
+-- ----------------------------------------------------------------------------
+-- fbtracker_kimaiclient_udate copies changed clients from Kimai to Bamboo
+-- ----------------------------------------------------------------------------
 
 DROP TRIGGER IF EXISTS kimai.fbtracker_kimaiclient_udate;
 

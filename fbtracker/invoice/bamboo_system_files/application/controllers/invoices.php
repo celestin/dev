@@ -568,6 +568,11 @@ class Invoices extends MY_Controller {
 
   // --------------------------------------------------------------------
 
+  function invoiceFilename($invoice_number)
+  {
+    return ucwords(strtolower($this->lang->line('invoice_invoice'))) . substr('000000' . $invoice_number, -6);
+  }
+
   function email($id)
   {
     $this->lang->load('date');
@@ -617,9 +622,8 @@ class Invoices extends MY_Controller {
 
     // create and save invoice to temp
     $html = $this->load->view('invoices/pdf', $data, TRUE);
-    $invoice_localized = url_title(strtolower($this->lang->line('invoice_invoice')));
 
-    if (pdf_create($html, $invoice_localized.'_'.$data['row']->invoice_number, FALSE))
+    if (pdf_create($html, $this->invoiceFilename($data['row']->invoice_number), FALSE))
     {
       show_error($this->lang->line('error_problem_saving'));
     }
@@ -755,9 +759,8 @@ class Invoices extends MY_Controller {
     }
 
     $html = $this->load->view('invoices/pdf', $data, TRUE);
-    $invoice_localized = url_title(strtolower($this->lang->line('invoice_invoice')));
 
-    if (pdf_create($html, $invoice_localized.'_'.$data['row']->invoice_number, $output))
+    if (pdf_create($html, $this->invoiceFilename($data['row']->invoice_number), $output))
     {
       show_error($this->lang->line('error_problem_saving'));
     }

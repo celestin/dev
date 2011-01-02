@@ -39,9 +39,12 @@ using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.GZip;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
+using FrontBurner.Ministry.MseBuilder.Abstract.Hymnbook;
+
 using FrontBurner.Ministry.MseBuilder.Reader.Bbeb;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub.Article;
+using FrontBurner.Ministry.MseBuilder.Reader.Hymnbook;
 
 namespace FrontBurner.Ministry.MseBuilder.Engine
 {
@@ -487,6 +490,68 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
       }
     }
 
+    public void CreateEpubHymnFiles()
+    {
+      byte[] dataBuffer = new byte[4096];
+      DirectoryInfo root = new DirectoryInfo(@"C:\tmp\epub");
+      DirectoryInfo files = new DirectoryInfo(@"C:\tmp\epub\dirs");
+      DirectoryInfo epubDir = new DirectoryInfo(@"C:\tmp\epub\epub");
+      DirectoryInfo mobiDir = new DirectoryInfo(@"C:\tmp\epub\mobi");
+
+      try
+      {
+        if (files.Exists) files.Delete(true);
+        files.Create();
+        if (epubDir.Exists) epubDir.Delete(true);
+        epubDir.Create();
+        if (mobiDir.Exists) mobiDir.Delete(true);
+        mobiDir.Create();
+      }
+      catch
+      {
+      }
+
+      FileInfo exe = new FileInfo(Application.ExecutablePath);
+      FileInfo cssFile = new FileInfo(String.Format(@"{0}\Reader\Epub\resources\css\epub-hymn.css", exe.DirectoryName));
+
+      _current = 0;
+
+      foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
+      {
+        FileInfo authorImageFile = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, vol.Author.ImageFilename));
+        FileInfo coverImageFile = new FileInfo(String.Format(@"{0}\img\cover\{1}", exe.DirectoryName, vol.Author.ImageFilename));
+
+        EpubHymnDocument hymnDoc = new EpubHymnDocument(Language.English, files, epubDir, mobiDir, cssFile, coverImageFile);
+
+        int currentArticle = 0;
+        EpubHymn article = null;
+
+        foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
+        {
+          string text = dr["text"].ToString();
+          string inits = dr["inits"].ToString();
+          string newPages = dr["newpages"].ToString();
+          int articlePage = int.Parse(dr["article_page"].ToString());
+
+          if (articlePage != currentArticle)
+          {
+            article = new EpubHymn(new Hymn(1), hymnDoc);
+
+            currentArticle = articlePage;
+          }
+
+          article.Items.Add(new EpubParagraph(inits, text));
+        }
+
+        hymnDoc.GenerateToc();
+        hymnDoc.SaveFile();
+
+        Thread.Sleep(50);
+      }
+
+      _current++;
+    }
+
     public void CreateJndFiles()
     {
       CreateJndFiles(null, 0);
@@ -570,7 +635,7 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
 
       line = line.Substring(p + PageNo.Length).Trim();
       p = line.IndexOf("]");
-      line = line.Substring(0, p ).Trim();
+      line = line.Substring(0, p).Trim();
       return String.Format("{{{0}}}", line);
     }
 

@@ -19,6 +19,7 @@
  * CAM  23-Jan-2010  10551 : Added ParseJndHthmlFiles.
  * CAM  24-Dec-2010  10902 : Removed plumbing to radios for types.
  * CAM  03-Jan-2011  10917 : Added checks for completion of EpubHymnThread.
+ * CAM  03-Jan-2011  10918 : Added radio buttons to set entire session for EPUB or MOBI (because of LI/P issue)
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -53,6 +54,9 @@ namespace FrontBurner.Ministry.MseBuilder
     public MseBuilder()
     {
       InitializeComponent();
+
+      _radEpub.Checked = true;
+
       DatabaseLayer.Instance.Open();
     }
 
@@ -324,6 +328,16 @@ namespace FrontBurner.Ministry.MseBuilder
       Thread.Sleep(1000);
 
       tmrRefresh.Enabled = true;
+    }
+
+    private void EpubChecked(object sender, EventArgs e)
+    {
+      EngineSettings.Instance.Mode = BuildMode.StandardEpub;
+    }
+
+    private void MobiChecked(object sender, EventArgs e)
+    {
+      EngineSettings.Instance.Mode = BuildMode.KindleMobiEpub;
     }
   }
 }

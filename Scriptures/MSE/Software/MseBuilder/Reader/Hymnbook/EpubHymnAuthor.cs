@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  03-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10918 : XHTML correction (picked up from iBooks error checking).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -29,7 +30,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     {
       string author = Text;
       if (_life != String.Empty) author = String.Format("{0}&nbsp;<span class=\"authorlife\">{1}</span>", author, _life);
-      return String.Format("    <p class=\"author\">{0}</h3>{1}", author, Newline());
+      return String.Format("    <p class=\"author\">{0}</p>{1}", author, Newline());
     }
   }
 }

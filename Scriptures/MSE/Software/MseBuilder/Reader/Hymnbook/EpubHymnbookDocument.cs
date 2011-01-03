@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Changed rendering for Hymnbook EPUB.
+ * CAM  03-Jan-2011  10918 : Use EngineSettings to determine global build for EPUB or MOBI.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -145,9 +146,6 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
       _articles = new EpubHymnCollection(this);
 
-      // Build based on the Epub for Mobi, alter for Standard later (as this has less functionality)
-      EngineSettings.Instance.Mode = BuildMode.KindleMobiEpub;
-
       GenerateEpub();
     }
 
@@ -193,15 +191,15 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
       CreateMimeType();
       CopyResources();
 
-      // MOBI generated with Kindle TOC
-      KindleGen.Instance.GenerateMobi(_opf.File, _mobiFile);
-
-      // Regenerate without any Kindle settings for EPUB (iPad etc)
-      EngineSettings.Instance.Mode = BuildMode.StandardEpub;
-      Opf.GenerateEpub();
-      Opf.GenerateToc();
-      Opf.SaveFile();
-      Zipper.Instance.ZipDirectory(_epubDir, _epubFile);
+      if (EngineSettings.Instance.Mode == BuildMode.KindleMobiEpub)
+      {
+        // MOBI generated with Kindle TOC
+        KindleGen.Instance.GenerateMobi(_opf.File, _mobiFile);
+      }
+      else if (EngineSettings.Instance.Mode == BuildMode.StandardEpub)
+      {
+        Zipper.Instance.ZipDirectory(_epubDir, _epubFile);
+      }
     }
 
     protected void CreateDirectoryStructure()

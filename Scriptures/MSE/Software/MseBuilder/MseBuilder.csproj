@@ -155,6 +155,7 @@
     <Compile Include="Reader\Hymnbook\EpubContainer.cs" />
     <Compile Include="Reader\Hymnbook\EpubHymnbookDocument.cs" />
     <Compile Include="Reader\Hymnbook\EpubFile.cs" />
+    <Compile Include="Reader\Hymnbook\EpubHymnHeader.cs" />
     <Compile Include="Reader\Hymnbook\EpubHymnVerse.cs" />
     <Compile Include="Reader\Hymnbook\EpubNcx.cs" />
     <Compile Include="Reader\Hymnbook\EpubOpf.cs" />

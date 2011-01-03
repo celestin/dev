@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Added all hymn attributes.
+ * CAM  03-Jan-2011  10918 : Use new classes to format hymn page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -101,23 +102,21 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
-        EpubHeading hymnNo = new EpubHeading(HymnNo.ToString(), "hymnno");
-        EpubHeading meter = new EpubHeading(Meter, "meter");
+        EpubHymnHeader header = new EpubHymnHeader(HymnNo, Meter);
         EpubHymnAuthor author = new EpubHymnAuthor(Author, AuthorLife);
 
         WriteHeader(writer);
 
-        writer.WriteLine(hymnNo.RenderToXhtml());
-        writer.WriteLine(meter.RenderToXhtml());
+        writer.WriteLine(header.RenderToXhtml());
 
-        writer.WriteLine("<ol>");
+        writer.WriteLine("    <ol>");
 
         foreach (EpubItem item in Items)
         {
           writer.WriteLine(item.RenderToXhtml());
         }
 
-        writer.WriteLine("</ol>");
+        writer.WriteLine("    </ol>");
 
         writer.WriteLine(author.RenderToXhtml());
 

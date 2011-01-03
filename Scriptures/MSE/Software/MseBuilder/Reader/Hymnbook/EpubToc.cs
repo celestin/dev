@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.
+ * CAM  03-Jan-2011  10918 : Build index by Hymn Number.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -52,7 +53,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
-        EpubHeading heading = new EpubHeading("Table of Contents");
+        EpubHeading heading = new EpubHeading("Hymns by Number", "tocheading");
         string li;
 
         WriteHeader(writer, heading.Text);
@@ -60,11 +61,22 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
         writer.WriteLine(@"    <ul>");
 
+        string line = String.Empty;
+        int counter = 0;
+
         foreach (EpubHymn article in Document.Hymns)
         {
-          li = "      <li><a href=\"" + article.XmlFile.Name + "\">" + article.ShortHymnNo + "</a></li>";
-          writer.WriteLine(li);
+          if ((counter % 5) == 0 && line != String.Empty)
+          {
+            writer.WriteLine("      <li class=\"toc\">" + line + "</li>");
+            line = String.Empty;
+          }
+
+          line += "<a href=\"" + article.XmlFile.Name + "\">" + article.ShortHymnNo + "</a>&nbsp;";
+          counter++;
         }
+
+        writer.WriteLine("      <li class=\"toc\">" + line + "</li>");
 
         writer.WriteLine(@"    </ul>");
 

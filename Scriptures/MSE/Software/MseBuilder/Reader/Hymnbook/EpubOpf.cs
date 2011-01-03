@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -47,10 +48,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     }
     protected string CoverId
     {
-      get { return string.Format("{0}-cover", Doc.LanguageCode); }
+      get { return string.Format("cover_{0}", Doc.LanguageCode); }
     }
 
-    public EpubOpf(EpubHymnDocument doc, DirectoryInfo dir)
+    public EpubOpf(EpubHymnbookDocument doc, DirectoryInfo dir)
       : base(doc, dir)
     {
       Doc = doc;
@@ -90,15 +91,9 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
     public void GenerateToc()
     {
-      //if (EngineSettings.Instance.Mode == BuildMode.KindleMobiEpub)
-      //{
-        // Only add the 'dummy' HTML TOC for Kindle generations
-        // Add the 'dummy' for all generations because it has more than the TOC, 
-        // it has the indexes too
-        AppendSpineItem(Doc.Toc.QualifiedId, Doc.Toc.XmlFile.Name);
-      //}
+      AppendSpineItem(Doc.Toc.QualifiedId, Doc.Toc.XmlFile.Name);
 
-      foreach (EpubHymn article in Doc.Articles)
+      foreach (EpubHymn article in Doc.Hymns)
       {
         AppendSpineItem(article.QualifiedId, article.XmlFile.Name);
       }
@@ -149,10 +144,10 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
     protected void AddSupportFiles()
     {
-      AddManifestFile("main-css", "css/epub-hymn.css", MimeType.Css);
+      AddManifestFile("main-css", String.Format("css/{0}", Doc.CssFile), MimeType.Css);
       AddManifestFile("ncx", Doc.Ncx.XmlFilename, MimeType.Ncx);
       AddManifestFile("toc", Doc.Toc.XmlFile.Name, MimeType.Xhtml);
-      AddManifestFile(CoverId, "img/cover-hymn", MimeType.ImagePng);
+      AddManifestFile(CoverId, String.Format("img/{0}", Doc.CoverImage.Name), MimeType.ImagePng);
     }
 
     protected void AddManifestFile(string id, string fileName, MimeType mimeType)

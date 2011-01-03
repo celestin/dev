@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -15,11 +16,11 @@ using System.Text;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 {
-  public class EpubArticleCollection : KeyedCollection<long, EpubHymn>
+  public class EpubHymnCollection : KeyedCollection<long, EpubHymn>
   {
-    private EpubHymnDocument _doc;
+    private EpubHymnbookDocument _doc;
 
-    public EpubArticleCollection(EpubHymnDocument doc)
+    public EpubHymnCollection(EpubHymnbookDocument doc)
       : base()
     {
       _doc = doc;
@@ -30,10 +31,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
       return item.HymnNo;
     }
 
-    protected EpubHymn CreateArticle(EpubHymn article)
+    public EpubHymn CreateHymn(long hymnNo)
     {
-      Add(article);
-      return article;
+      EpubHymn hymn = new EpubHymn(_doc, hymnNo);
+      Add(hymn);
+      return hymn;
     }
   }
 }

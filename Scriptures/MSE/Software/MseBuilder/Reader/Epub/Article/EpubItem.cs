@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  23-Jan-2010  10553 : Ensure valid XHTML.
+ * CAM  03-Jan-2011  10917 : Enable repeated setting/concatenation of _text using PlainText and do all conversion on Text.get.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -23,18 +24,33 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
 
     public string Text
     {
-      get { return _text; }
+      get {
+        string rval = _text;
+
+        rval = rval.Replace("&", "&amp;");
+        rval = rval.Replace("@", "");
+        rval = rval.Replace("*", ""); // TODO: make italics work
+        rval = rval.Replace("~", "&rsquo;"); // Apostrophes
+        rval = rval.Replace("--", "&mdash;");
+        rval = rval.Replace("\"", "&quot;");
+        rval = rval.Replace("<br>", "<br />"); // XHTML
+
+        return rval;
+      }
       set
       {
         _text = value;
-
-        _text = _text.Replace("&", "&amp;");
-        _text = _text.Replace("@", "");
-        _text = _text.Replace("*", ""); // TODO: make italics work
-        _text = _text.Replace("~", "&rsquo;"); // Apostrophes
-        _text = _text.Replace("--", "&mdash;");
-        _text = _text.Replace("\"", "&quot;");
-        _text = _text.Replace("<br>", "<br />"); // XHTML
+      }
+    }
+    public string PlainText
+    {
+      get
+      {
+        return _text;
+      }
+      set
+      {
+        _text = value;
       }
     }
 

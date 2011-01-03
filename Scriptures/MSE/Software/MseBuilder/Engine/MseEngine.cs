@@ -24,6 +24,7 @@
  * CAM  21-Jan-2010  10544 : Create a separate directory for the EPUB files.
  * CAM  23-Jan-2010  10551 : Added CreateJndFiles.
  * CAM  24-Dec-2010  10902 : Added directories for Epub and Mobi.
+ * CAM  03-Jan-2011  10917 : Replaced stub CreateEpubHymnFiles with actual data.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -39,7 +40,6 @@ using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.GZip;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
-using FrontBurner.Ministry.MseBuilder.Abstract.Hymnbook;
 
 using FrontBurner.Ministry.MseBuilder.Reader.Bbeb;
 using FrontBurner.Ministry.MseBuilder.Reader.Epub;
@@ -507,40 +507,51 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
         if (mobiDir.Exists) mobiDir.Delete(true);
         mobiDir.Create();
       }
-      catch
+      catch (IOException ioe)
       {
+        MessageBox.Show(ioe.Message + "\n\n" + ioe.StackTrace,
+          "Error wiping output directories", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
       }
 
       FileInfo exe = new FileInfo(Application.ExecutablePath);
-      FileInfo cssFile = new FileInfo(String.Format(@"{0}\Reader\Epub\resources\css\epub-hymn.css", exe.DirectoryName));
+      FileInfo cssFile = new FileInfo(String.Format(@"{0}\Reader\Hymnbook\resources\css\epub-hymn.css", exe.DirectoryName));
 
-      _current = 0;
-
-      foreach (Volume vol in DatabaseLayer.Instance.GetVolumes())
+      foreach (Language lang in Languages.List)
       {
-        FileInfo authorImageFile = new FileInfo(String.Format(@"{0}\img\author\{1}", exe.DirectoryName, vol.Author.ImageFilename));
-        FileInfo coverImageFile = new FileInfo(String.Format(@"{0}\img\cover\{1}", exe.DirectoryName, vol.Author.ImageFilename));
+        FileInfo coverImageFile = new FileInfo(String.Format(@"{0}\img\hymnbook\hymnbook_{1}.png",
+          exe.DirectoryName, Languages.LanguageCode(lang)));
+        EpubHymnbookDocument hymnDoc = new EpubHymnbookDocument(lang, files, epubDir, mobiDir, cssFile, coverImageFile);
 
-        EpubHymnDocument hymnDoc = new EpubHymnDocument(Language.English, files, epubDir, mobiDir, cssFile, coverImageFile);
-
-        int currentArticle = 0;
-        EpubHymn article = null;
-
-        foreach (DataRow dr in DatabaseLayer.Instance.GetText(vol).Rows)
+        foreach (DataRow hr in DatabaseLayer.Instance.GetHymns(lang).Rows)
         {
-          string text = dr["text"].ToString();
-          string inits = dr["inits"].ToString();
-          string newPages = dr["newpages"].ToString();
-          int articlePage = int.Parse(dr["article_page"].ToString());
+          EpubHymn hymn = hymnDoc.Hymns.CreateHymn(long.Parse(hr["hymn_no"].ToString()));
+          hymn.MeterId = long.Parse(hr["meter_id"].ToString());
+          hymn.Meter = hr["meter"].ToString();
+          hymn.AuthorId = long.Parse(hr["author_id"].ToString());
+          hymn.Author = hr["fullname"].ToString();
+          if (!hr.IsNull("author_life")) hymn.AuthorLife = hr["author_life"].ToString();
 
-          if (articlePage != currentArticle)
+          long prevVers = 0;
+          long currVers = 0;
+          string versText = String.Empty;
+          string text = String.Empty;
+          EpubHymnVerse verse = null;
+
+          foreach (DataRow tr in DatabaseLayer.Instance.GetHymnText(lang, hymn.HymnNo).Rows)
           {
-            article = new EpubHymn(new Hymn(1), hymnDoc);
+            currVers = long.Parse(tr["vers_no"].ToString());
+            if (currVers != prevVers)
+            {
+              verse = new EpubHymnVerse(currVers);
+              hymn.Items.Add(verse);
+            }
 
-            currentArticle = articlePage;
+            if (verse.PlainText != String.Empty) verse.PlainText += "<br />";
+            verse.PlainText += tr["line_text"].ToString();
+
+            prevVers = currVers;
           }
-
-          article.Items.Add(new EpubParagraph(inits, text));
         }
 
         hymnDoc.GenerateToc();
@@ -548,8 +559,6 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
 
         Thread.Sleep(50);
       }
-
-      _current++;
     }
 
     public void CreateJndFiles()

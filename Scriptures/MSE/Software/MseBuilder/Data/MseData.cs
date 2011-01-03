@@ -9,6 +9,7 @@
  * CAM  17-May-2008  10266 : File created.
  * CAM  18-May-2008  10267 : Added MpowerCompletedJobsTableAdapter.
  * CAM  28-Mar-2009  10412 : Moved mpower code to Bugzilla table adapter.
+ * CAM  03-Jan-2011  10917 : Correct compilation errors.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -16,14 +17,28 @@ using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters
+using FrontBurner.Ministry.MseBuilder.Data;
+
+namespace FrontBurner.Ministry.MseBuilder.Data
+{
+  public partial class MseData
+  {
+    partial class HymnMeterDataTable
+    {
+    }
+  }
+}
+
+
+namespace FrontBurner.Ministry.MseBuilder.MseDataTableAdapters
 {
   public partial class CompletedBugsTableAdapter
   {
+    // TODO: Remove this and all associated code.
     public void CopyToMySQL()
     {
       MseData.CompletedBugsDataTable release = new MseData.CompletedBugsDataTable();
-      this.Fill(release);
+      //this.Fill(release);
 
       string tableName = "mse_release_history";
       DataSet ds = new DataSet();
@@ -61,10 +76,3 @@ namespace FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters
   }
 }
 
-namespace FrontBurner.Ministry.MseBuilder.Data
-{
-    
-    
-    public partial class MseData {
-    }
-}

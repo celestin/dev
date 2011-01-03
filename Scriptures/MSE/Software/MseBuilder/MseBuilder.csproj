@@ -58,7 +58,6 @@
     <Compile Include="Abstract\BibleFootnote.cs" />
     <Compile Include="Abstract\BibleFootnoteRef.cs" />
     <Compile Include="Abstract\BibleRef.cs" />
-    <Compile Include="Abstract\Hymnbook\Hymn.cs" />
     <Compile Include="Abstract\Footnotes.cs" />
     <Compile Include="Abstract\Paragraph.cs" />
     <Compile Include="Abstract\BibleVersion.cs" />
@@ -151,10 +150,12 @@
     <Compile Include="Reader\Bbeb\IBbebGenerator.cs" />
     <Compile Include="Reader\Bbeb\BbebImageBlock.cs" />
     <Compile Include="Reader\Hymnbook\EpubHymn.cs" />
+    <Compile Include="Reader\Hymnbook\EpubHymnAuthor.cs" />
     <Compile Include="Reader\Hymnbook\EpubHymnCollection.cs" />
     <Compile Include="Reader\Hymnbook\EpubContainer.cs" />
-    <Compile Include="Reader\Hymnbook\EpubHymnDocument.cs" />
+    <Compile Include="Reader\Hymnbook\EpubHymnbookDocument.cs" />
     <Compile Include="Reader\Hymnbook\EpubFile.cs" />
+    <Compile Include="Reader\Hymnbook\EpubHymnVerse.cs" />
     <Compile Include="Reader\Hymnbook\EpubNcx.cs" />
     <Compile Include="Reader\Hymnbook\EpubOpf.cs" />
     <Compile Include="Reader\Hymnbook\EpubToc.cs" />
@@ -236,8 +237,18 @@
     <None Include="img\cover\JND.psd" />
     <None Include="img\cover\jt.psd" />
     <None Include="img\holmes.png" />
-    <Content Include="Reader\Hymnbook\resources\css\epub-hymn.css">
+    <None Include="img\hymnbook\hymnbook.psd" />
+    <Content Include="img\hymnbook\hymnbook_de.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\hymnbook\hymnbook_en-gb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\hymnbook\hymnbook_nl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reader\Hymnbook\resources\css\epub-hymn.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reader\Epub\resources\css\epub-ministry.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

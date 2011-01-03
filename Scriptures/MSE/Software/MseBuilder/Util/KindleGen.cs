@@ -40,7 +40,6 @@ namespace FrontBurner.Ministry.MseBuilder.Util
       Process zip = new Process();
 
       zip.StartInfo.FileName = @"c:\dev\bin\kindlegen\kindlegen.exe";
-      //zip.StartInfo.Arguments = String.Format("-9 -r \"{0}\" {1}", zipfile.FullName, GenerateFlatFileList(sourceFolder));
       zip.StartInfo.Arguments = String.Format("\"{0}\"", opfFile.FullName);
       zip.StartInfo.WorkingDirectory = opfFile.Directory.FullName;
       zip.Start();

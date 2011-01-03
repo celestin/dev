@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.  Ensure Indices file is included in NCX.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -25,7 +26,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     private XmlElement _head;
     private XmlElement _navMap;
 
-    public override string XmlFilename { get { return "ministry.ncx"; } }
+    public override string XmlFilename { get { return "hymns.ncx"; } }
     public override string RootName { get { return "ncx"; } }
 
     public XmlElement Head
@@ -38,7 +39,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
       get { return _navMap; }
     }
 
-    public EpubNcx(EpubHymnDocument doc, DirectoryInfo dir)
+    public EpubNcx(EpubHymnbookDocument doc, DirectoryInfo dir)
       : base(doc, dir)
     {
       GenerateEpub();
@@ -75,16 +76,32 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     public void GenerateToc()
     {
       int id = 1;
-      foreach (EpubHymn article in Doc.Articles)
+      XmlElement navPoint = null;
+      XmlElement navLabel = null;
+      XmlElement content = null;
+
+      // Always includes the TOC (indices) document at the beginning of the NCX
+      navPoint = AppendElement(NavMap, "navPoint");
+      AppendAttribute(navPoint, "id", String.Format("navpoint-{0}", id));
+      AppendAttribute(navPoint, "playOrder", String.Format("{0}", id));
+
+      navLabel = AppendElement(navPoint, "navLabel");
+      AppendElement(navLabel, "text", "Indices");
+
+      content = AppendElement(navPoint, "content");
+      AppendAttribute(content, "src", Doc.Toc.XmlFile.Name);
+
+
+      foreach (EpubHymn article in Doc.Hymns)
       {
-        XmlElement navPoint = AppendElement(NavMap, "navPoint");
+        navPoint = AppendElement(NavMap, "navPoint");
         AppendAttribute(navPoint, "id", String.Format("navpoint-{0}", id));
         AppendAttribute(navPoint, "playOrder", String.Format("{0}", id));
 
-        XmlElement navLabel = AppendElement(navPoint, "navLabel");
-        AppendElement(navLabel, "text", article.PlainTitle);
+        navLabel = AppendElement(navPoint, "navLabel");
+        AppendElement(navLabel, "text", article.ShortHymnNo);
 
-        XmlElement content = AppendElement(navPoint, "content");
+        content = AppendElement(navPoint, "content");
         AppendAttribute(content, "src", article.XmlFile.Name);
 
         id++;

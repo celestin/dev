@@ -2,22 +2,30 @@
 @page { margin: 5pt  0pt  5pt  0pt; } 
 body { margin: 0 auto; padding: 0.75em 3%; } 
 
-p { margin: 0em 0; padding: 0; line-height: 1.25em; text-align: left; text-indent:0em; margin: 0 0 .5em 0; } 
+p { font-family: Serif; padding: 0; line-height: 1.25em; text-align: left; text-indent:0em; margin: 0 0 0.5em 0; } 
 
-.title { font-family: sans-serif; font-size: 1.3em; font-weight: bold; margin: 0 0 0.25em 0; }
-.scriptures { font-family: sans-serif; font-size: 1em; font-style: italic; }
-.init { font-weight: bold; }
-.footnote { font-family: serif; font-size: 0.8em; padding: 0em 3%; }
+p.hymnno { font-family: sans-serif; font-size: 1.5em; font-weight: bold; margin: 0px; padding: 0px; }
+p.meter { font-size: 1em; text-align: right; margin: 0px; padding: 0px;}
+p.author { font-family: sans-serif; font-size: 0.8em; font-weight: bold; }
+p.authorlife { font-family: sans-serif; font-size: 0.8em; font-style: italic; }
 
-.frontauthor { font-family: sans-serif; font-size: 1.3em; font-weight: bold; text-align: center; margin: 2.0em 0 0 0; }
-.fronttitle { font-family: sans-serif; font-size: 1.1em; font-weight: normal; text-align: center; margin: 0.5em 0 0 0; }
-.frontseries { font-family: sans-serif; font-size: 0.8em; font-weight: normal; text-align: center; }
-.frontpublisher { font-family: sans-serif; font-size: 0.6em; font-weight: normal; text-align: center;}
+ol {
+  margin:0px;
+}
 
-img { margin-top: 0.5em; margin-bottom: 2em; border: 0; display:block; margin-left:auto; margin-right:auto; } 
+li 
+{
+  margin-left: 5px;
+  font-size: 1.2em;
+}
 
-ol { margin-bottom: 1em; font-size: 100%; font-style: normal; font-weight: normal; } 
-pre { margin: 0; padding: 0; font-size: 90%; } 
+.verse 
+{
+  font-size: 0.8em;
+}
 
-li { font-family: sans-serif; font-size: 1.1em;  }
+p.chorus 
+{  
+  font-style: italic;
+}
 

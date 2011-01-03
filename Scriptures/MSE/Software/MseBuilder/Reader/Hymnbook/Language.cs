@@ -7,9 +7,11 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10917 : Added LanguageList and LanguageName.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
+using System.Collections.Generic;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 {
@@ -20,8 +22,28 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     German
   }
 
+  public class LanguageList : List<Language>
+  {
+    public LanguageList()
+      : base()
+    {
+    }
+  }
+
   public static class Languages
   {
+    public static LanguageList List
+    {
+      get
+      {
+        LanguageList list = new LanguageList();
+        list.Add(Language.English);
+        list.Add(Language.German);
+        list.Add(Language.Dutch);
+        return list;
+      }
+    }
+
     public static string LanguageCode(Language language)
     {
       switch (language)
@@ -35,6 +57,21 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
       }
 
       return "en-gb";
+    }
+
+    public static string LanguageName(Language language)
+    {
+      switch (language)
+      {
+        case Language.Dutch:
+          return "Dutch";
+        case Language.German:
+          return "Deutsche";
+        default:
+          break;
+      }
+
+      return "English";
     }
 
     /// <summary>

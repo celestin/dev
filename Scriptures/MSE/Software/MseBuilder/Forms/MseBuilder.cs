@@ -18,6 +18,7 @@
  * CAM  19-Jan-2010  10540 : Added Epub process, and ensure progress is reset after all processes.
  * CAM  23-Jan-2010  10551 : Added ParseJndHthmlFiles.
  * CAM  24-Dec-2010  10902 : Removed plumbing to radios for types.
+ * CAM  03-Jan-2011  10917 : Added checks for completion of EpubHymnThread.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -46,6 +47,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private ZipperThread _zipper;
     private BbebThread _bbeb;
     private EpubThread _epub;
+    private EpubHymnThread _epubHymn;
     private ParseJndThread _jnd;
 
     public MseBuilder()
@@ -131,6 +133,20 @@ namespace FrontBurner.Ministry.MseBuilder
         {
           ProcessComplete();
           _epub = null;
+        }
+      }
+      else if (_epubHymn != null)
+      {
+        if (_epubHymn.Process.IsAlive)
+        {
+          if (_epubHymn.Engine != null) pgbVol.Value = _epubHymn.Engine.Current;
+          this.Refresh();
+          this.Update();
+        }
+        else
+        {
+          ProcessComplete();
+          _epubHymn = null;
         }
       }
       else if (_jnd != null)
@@ -239,7 +255,7 @@ namespace FrontBurner.Ministry.MseBuilder
 
     private void CopyBugzillaVersionHistoryToMySQL(object sender, EventArgs e)
     {
-      _bugsTableAdapter.CopyToMySQL();
+      //_bugsTableAdapter.CopyToMySQL();
     }
 
     private void BuildBibleDatabase(object sender, EventArgs e)
@@ -292,6 +308,19 @@ namespace FrontBurner.Ministry.MseBuilder
       SpecificVolume();
 
       _jnd = new ParseJndThread(_author, _vol, _specificVolume);
+      Thread.Sleep(1000);
+
+      tmrRefresh.Enabled = true;
+    }
+
+    private void CreateEpubHymnFiles(object sender, EventArgs e)
+    {
+      _tspMain.Enabled = false;
+
+      pgbVol.Minimum = 0;
+      pgbVol.Maximum = 5;
+
+      _epubHymn = new EpubHymnThread();
       Thread.Sleep(1000);
 
       tmrRefresh.Enabled = true;

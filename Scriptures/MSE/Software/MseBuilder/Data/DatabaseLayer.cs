@@ -23,6 +23,7 @@
  * CAM  18-Jan-2010  10529 : Missed several references to Author!
  * CAM  23-Jan-2010  10551 : Added GetJndHtmlVolumes.
  * CAM  24-Dec-2010  10902 : Added Fullname and Orgname.
+ * CAM  03-Jan-2011  10917 : Retrieve hymns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -35,6 +36,7 @@ using MySql.Data.MySqlClient;
 
 using FrontBurner.Ministry.MseBuilder.Abstract;
 using FrontBurner.Ministry.MseBuilder.Engine;
+using FrontBurner.Ministry.MseBuilder.Reader.Hymnbook;
 
 namespace FrontBurner.Ministry.MseBuilder
 {
@@ -926,6 +928,38 @@ namespace FrontBurner.Ministry.MseBuilder
       }
 
       return true;
+    }
+
+    public DataTable GetHymns(Language language)
+    {
+      string sql =
+        "SELECT h.hymn_no, h.author_id, a.fullname, a.author_life, " +
+          "h.meter, " +
+          "h.meter_id " +
+        "FROM hymn" + Languages.LanguageSuffix(language) + " h, authors a " +
+        "WHERE h.author_id = a.id " +
+        "ORDER BY 1";
+
+      MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);
+      DataTable rval = new DataTable();
+      dad.Fill(rval);
+
+      return rval;
+    }
+
+    public DataTable GetHymnText(Language language, long hymnNo)
+    {
+      string sql =
+        "select vers_no, line_no, line_text " +
+        "from hymn_line" + Languages.LanguageSuffix(language) + " " +
+        "where hymn_no=" + hymnNo + " " +
+        "order by if(vers_no=99,11,vers_no*10),line_no";
+
+      MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);
+      DataTable rval = new DataTable();
+      dad.Fill(rval);
+
+      return rval;
     }
   }
 }

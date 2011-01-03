@@ -58,6 +58,9 @@ namespace FrontBurner.Ministry.MseBuilder
       this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this._grbOptions = new System.Windows.Forms.GroupBox();
+      this._radStanza = new System.Windows.Forms.RadioButton();
+      this._radSony = new System.Windows.Forms.RadioButton();
       this._tspMain = new System.Windows.Forms.ToolStrip();
       this._tsbBuild = new System.Windows.Forms.ToolStripButton();
       this._tsbZip = new System.Windows.Forms.ToolStripButton();
@@ -69,18 +72,16 @@ namespace FrontBurner.Ministry.MseBuilder
       this.mseData = new FrontBurner.Ministry.MseBuilder.Data.MseData();
       this._bdsBugs = new System.Windows.Forms.BindingSource(this.components);
       this._bugsTableAdapter = new FrontBurner.Ministry.MseBuilder.Data.MseDataTableAdapters.CompletedBugsTableAdapter();
-      this._grbOptions = new System.Windows.Forms.GroupBox();
-      this._radSony = new System.Windows.Forms.RadioButton();
-      this._radStanza = new System.Windows.Forms.RadioButton();
+      this._tsbEpubHymn = new System.Windows.Forms.ToolStripButton();
       ((System.ComponentModel.ISupportInitialize)(this.grdArticle)).BeginInit();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
+      this._grbOptions.SuspendLayout();
       this._tspMain.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mseData)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsBugs)).BeginInit();
-      this._grbOptions.SuspendLayout();
       this.SuspendLayout();
       // 
       // cmbAuthor
@@ -186,6 +187,44 @@ namespace FrontBurner.Ministry.MseBuilder
       this.tableLayoutPanel1.Size = new System.Drawing.Size(858, 566);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
+      // _grbOptions
+      // 
+      this._grbOptions.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this._grbOptions.Controls.Add(this._radStanza);
+      this._grbOptions.Controls.Add(this._radSony);
+      this._grbOptions.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._grbOptions.Location = new System.Drawing.Point(526, 3);
+      this._grbOptions.Name = "_grbOptions";
+      this.tableLayoutPanel1.SetRowSpan(this._grbOptions, 2);
+      this._grbOptions.Size = new System.Drawing.Size(128, 54);
+      this._grbOptions.TabIndex = 7;
+      this._grbOptions.TabStop = false;
+      this._grbOptions.Text = "Options";
+      // 
+      // _radStanza
+      // 
+      this._radStanza.AutoSize = true;
+      this._radStanza.Checked = true;
+      this._radStanza.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._radStanza.Location = new System.Drawing.Point(61, 19);
+      this._radStanza.Name = "_radStanza";
+      this._radStanza.Size = new System.Drawing.Size(58, 17);
+      this._radStanza.TabIndex = 1;
+      this._radStanza.TabStop = true;
+      this._radStanza.Text = "Stanza";
+      this._radStanza.UseVisualStyleBackColor = true;
+      // 
+      // _radSony
+      // 
+      this._radSony.AutoSize = true;
+      this._radSony.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._radSony.Location = new System.Drawing.Point(6, 19);
+      this._radSony.Name = "_radSony";
+      this._radSony.Size = new System.Drawing.Size(49, 17);
+      this._radSony.TabIndex = 0;
+      this._radSony.Text = "Sony";
+      this._radSony.UseVisualStyleBackColor = true;
+      // 
       // _tspMain
       // 
       this._tspMain.Dock = System.Windows.Forms.DockStyle.None;
@@ -197,10 +236,11 @@ namespace FrontBurner.Ministry.MseBuilder
             this._tsbBible,
             this._tsbParseJND,
             this._tsbCreateSonyReader,
-            this._tsbCreateEpub});
+            this._tsbCreateEpub,
+            this._tsbEpubHymn});
       this._tspMain.Location = new System.Drawing.Point(3, 0);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(614, 55);
+      this._tspMain.Size = new System.Drawing.Size(728, 55);
       this._tspMain.TabIndex = 0;
       // 
       // _tsbBuild
@@ -290,43 +330,14 @@ namespace FrontBurner.Ministry.MseBuilder
       // 
       this._bugsTableAdapter.ClearBeforeFill = true;
       // 
-      // _grbOptions
+      // _tsbEpubHymn
       // 
-      this._grbOptions.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this._grbOptions.Controls.Add(this._radStanza);
-      this._grbOptions.Controls.Add(this._radSony);
-      this._grbOptions.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._grbOptions.Location = new System.Drawing.Point(526, 3);
-      this._grbOptions.Name = "_grbOptions";
-      this.tableLayoutPanel1.SetRowSpan(this._grbOptions, 2);
-      this._grbOptions.Size = new System.Drawing.Size(128, 54);
-      this._grbOptions.TabIndex = 7;
-      this._grbOptions.TabStop = false;
-      this._grbOptions.Text = "Options";
-      // 
-      // _radSony
-      // 
-      this._radSony.AutoSize = true;
-      this._radSony.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._radSony.Location = new System.Drawing.Point(6, 19);
-      this._radSony.Name = "_radSony";
-      this._radSony.Size = new System.Drawing.Size(49, 17);
-      this._radSony.TabIndex = 0;
-      this._radSony.Text = "Sony";
-      this._radSony.UseVisualStyleBackColor = true;
-      // 
-      // _radStanza
-      // 
-      this._radStanza.AutoSize = true;
-      this._radStanza.Checked = true;
-      this._radStanza.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._radStanza.Location = new System.Drawing.Point(61, 19);
-      this._radStanza.Name = "_radStanza";
-      this._radStanza.Size = new System.Drawing.Size(58, 17);
-      this._radStanza.TabIndex = 1;
-      this._radStanza.TabStop = true;
-      this._radStanza.Text = "Stanza";
-      this._radStanza.UseVisualStyleBackColor = true;
+      this._tsbEpubHymn.Image = global::FrontBurner.Ministry.MseBuilder.Properties.Resources.Books;
+      this._tsbEpubHymn.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this._tsbEpubHymn.Name = "_tsbEpubHymn";
+      this._tsbEpubHymn.Size = new System.Drawing.Size(114, 52);
+      this._tsbEpubHymn.Text = "Hymnbooks";
+      this._tsbEpubHymn.Click += new System.EventHandler(this.CreateEpubHymnFiles);
       // 
       // MseBuilder
       // 
@@ -345,12 +356,12 @@ namespace FrontBurner.Ministry.MseBuilder
       this.toolStripContainer1.PerformLayout();
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
+      this._grbOptions.ResumeLayout(false);
+      this._grbOptions.PerformLayout();
       this._tspMain.ResumeLayout(false);
       this._tspMain.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mseData)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsBugs)).EndInit();
-      this._grbOptions.ResumeLayout(false);
-      this._grbOptions.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -380,6 +391,7 @@ namespace FrontBurner.Ministry.MseBuilder
     private System.Windows.Forms.GroupBox _grbOptions;
     private System.Windows.Forms.RadioButton _radStanza;
     private System.Windows.Forms.RadioButton _radSony;
+    private System.Windows.Forms.ToolStripButton _tsbEpubHymn;
   }
 }
 

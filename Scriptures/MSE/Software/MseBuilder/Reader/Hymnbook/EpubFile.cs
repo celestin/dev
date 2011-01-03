@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
+ * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,17 +18,17 @@ using FrontBurner.Ministry.MseBuilder.Abstract;
 
 namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 {
-  public class EpubFile 
+  public class EpubFile
   {
-    private EpubHymnDocument _doc;
+    private EpubHymnbookDocument _doc;
 
-    public EpubHymnDocument Document
+    public EpubHymnbookDocument Document
     {
       get { return _doc; }
       set { _doc = value; }
     }
 
-    public EpubFile(EpubHymnDocument doc)
+    public EpubFile(EpubHymnbookDocument doc)
     {
       Document = doc;
     }

@@ -9,6 +9,7 @@
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Changed rendering for Hymnbook EPUB.
  * CAM  03-Jan-2011  10918 : Use EngineSettings to determine global build for EPUB or MOBI.
+ * CAM  03-Jan-2011  10920 : Rename of 'articles' to 'hymns' for consistency.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -47,7 +48,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     private EpubNcx _ncx;
     private EpubToc _toc;
 
-    private EpubHymnCollection _articles;
+    private EpubHymnCollection _hymns;
 
     public string BookId
     {
@@ -130,7 +131,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
     public EpubHymnCollection Hymns
     {
-      get { return _articles; }
+      get { return _hymns; }
     }
 
     public EpubHymnbookDocument(Language language, DirectoryInfo root, DirectoryInfo outputEpub, DirectoryInfo outputMobi, FileInfo cssFile, FileInfo coverImage)
@@ -144,7 +145,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
 
       _bookId = Guid.NewGuid();
 
-      _articles = new EpubHymnCollection(this);
+      _hymns = new EpubHymnCollection(this);
 
       GenerateEpub();
     }

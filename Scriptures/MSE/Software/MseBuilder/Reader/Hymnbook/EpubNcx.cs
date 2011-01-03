@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Class renames to make Hymn EPUB more obviously separate.  Ensure Indices file is included in NCX.
+ * CAM  03-Jan-2011  10920 : Use new TocText when creating index.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -86,23 +87,22 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
       AppendAttribute(navPoint, "playOrder", String.Format("{0}", id));
 
       navLabel = AppendElement(navPoint, "navLabel");
-      AppendElement(navLabel, "text", "Indices");
+      AppendElement(navLabel, "text", "INDICES by Hymn, Author, Meter and Category");
 
       content = AppendElement(navPoint, "content");
       AppendAttribute(content, "src", Doc.Toc.XmlFile.Name);
 
-
-      foreach (EpubHymn article in Doc.Hymns)
+      foreach (EpubHymn hymn in Doc.Hymns)
       {
         navPoint = AppendElement(NavMap, "navPoint");
         AppendAttribute(navPoint, "id", String.Format("navpoint-{0}", id));
         AppendAttribute(navPoint, "playOrder", String.Format("{0}", id));
 
         navLabel = AppendElement(navPoint, "navLabel");
-        AppendElement(navLabel, "text", article.ShortHymnNo);
+        AppendElement(navLabel, "text", hymn.TocText);
 
         content = AppendElement(navPoint, "content");
-        AppendAttribute(content, "src", article.XmlFile.Name);
+        AppendAttribute(content, "src", hymn.XmlFile.Name);
 
         id++;
       }

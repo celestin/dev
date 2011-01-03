@@ -24,6 +24,7 @@
  * CAM  23-Jan-2010  10551 : Added GetJndHtmlVolumes.
  * CAM  24-Dec-2010  10902 : Added Fullname and Orgname.
  * CAM  03-Jan-2011  10917 : Retrieve hymns.
+ * CAM  03-Jan-2011  10920 : Retrieve first line of each hymn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -935,9 +936,12 @@ namespace FrontBurner.Ministry.MseBuilder
       string sql =
         "SELECT h.hymn_no, h.author_id, a.fullname, a.author_life, " +
           "h.meter, " +
-          "h.meter_id " +
-        "FROM hymn" + Languages.LanguageSuffix(language) + " h, authors a " +
+          "h.meter_id, " +
+          "hl.line_text AS first_line_text " +
+        "FROM hymn" + Languages.LanguageSuffix(language) + " h, authors a, " +
+        "hymn_line" + Languages.LanguageSuffix(language) + " hl " +
         "WHERE h.author_id = a.id " +
+        "AND hl.hymn_no = h.hymn_no AND hl.vers_no = 1 AND hl.line_no = 1 " +
         "ORDER BY 1";
 
       MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);

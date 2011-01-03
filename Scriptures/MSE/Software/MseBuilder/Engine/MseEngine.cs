@@ -25,6 +25,7 @@
  * CAM  23-Jan-2010  10551 : Added CreateJndFiles.
  * CAM  24-Dec-2010  10902 : Added directories for Epub and Mobi.
  * CAM  03-Jan-2011  10917 : Replaced stub CreateEpubHymnFiles with actual data.
+ * CAM  03-Jan-2011  10920 : Retrieve first line of each hymn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -531,6 +532,7 @@ namespace FrontBurner.Ministry.MseBuilder.Engine
           hymn.AuthorId = long.Parse(hr["author_id"].ToString());
           hymn.Author = hr["fullname"].ToString();
           if (!hr.IsNull("author_life")) hymn.AuthorLife = hr["author_life"].ToString();
+          hymn.FirstLine = hr["first_line_text"].ToString();
 
           long prevVers = 0;
           long currVers = 0;

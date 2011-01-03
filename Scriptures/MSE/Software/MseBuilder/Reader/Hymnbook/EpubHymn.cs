@@ -9,6 +9,7 @@
  * CAM  02-Jan-2011  10917 : File created.
  * CAM  03-Jan-2011  10917 : Added all hymn attributes.
  * CAM  03-Jan-2011  10918 : Use new classes to format hymn page.
+ * CAM  03-Jan-2011  10920 : Property for the first line of each hymn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -28,6 +29,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     private long _authorId;
     private string _author;
     private string _authorLife;
+    private string _firstLine;
     private EpubItemCollection _items;
 
     public long HymnNo
@@ -38,6 +40,19 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     public string ShortHymnNo
     {
       get { return String.Format("#{0}", HymnNo); }
+    }
+    public string TocText
+    {
+      get
+      {
+        string rval = String.Format("{0} - {1}", HymnNo, FirstLine);
+
+        if (rval.EndsWith(".")) rval = rval.Substring(0, rval.Length - 1);
+        if (rval.EndsWith(",")) rval = rval.Substring(0, rval.Length - 1);
+        if (rval.EndsWith(";")) rval = rval.Substring(0, rval.Length - 1);
+
+        return rval;
+      }
     }
     public long MeterId
     {
@@ -63,6 +78,11 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     {
       get { return _authorLife; }
       set { _authorLife = value; }
+    }
+    public string FirstLine
+    {
+      get { return _firstLine; }
+      set { _firstLine = value; }
     }
 
     public string QualifiedId

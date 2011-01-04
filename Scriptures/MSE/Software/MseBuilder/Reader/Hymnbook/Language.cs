@@ -3,7 +3,7 @@
  * Copyright (c) 2007,2011 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * $Id: IEpubGenerator.cs 1128 2010-01-19 21:51:08Z craig $
+ * $Id$
  *
  * Who  When         Why
  * CAM  02-Jan-2011  10917 : File created.

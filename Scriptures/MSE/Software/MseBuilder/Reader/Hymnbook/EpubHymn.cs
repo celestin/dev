@@ -10,6 +10,7 @@
  * CAM  03-Jan-2011  10917 : Added all hymn attributes.
  * CAM  03-Jan-2011  10918 : Use new classes to format hymn page.
  * CAM  03-Jan-2011  10920 : Property for the first line of each hymn.
+ * CAM  04-Jan-2011  10919 : Pass all properties to authors and meters to enable links back to TOC.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -122,8 +123,8 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Hymnbook
     {
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
-        EpubHymnHeader header = new EpubHymnHeader(HymnNo, Meter);
-        EpubHymnAuthor author = new EpubHymnAuthor(Author, AuthorLife);
+        EpubHymnHeader header = new EpubHymnHeader(Document, HymnNo, MeterId, Meter);
+        EpubHymnAuthor author = new EpubHymnAuthor(Document, AuthorId, Author, AuthorLife);
 
         WriteHeader(writer);
 

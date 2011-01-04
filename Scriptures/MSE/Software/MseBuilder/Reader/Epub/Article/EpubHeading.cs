@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  19-Jan-2010  10540 : File created.
  * CAM  21-Jan-2010  10546 : Added ClassName.
+ * CAM  04-Jan-2011  10919 : Added Anchor.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -17,22 +18,33 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
   public class EpubHeading : EpubItem
   {
     private string _className;
+    private string _anchorName;
 
     public EpubHeading(string text)
-      : base(text)
+      : this(text, "title", String.Empty)
     {
-      _className = "title";
     }
 
     public EpubHeading(string text, string className)
+      : this(text, className, String.Empty)
+    {
+    }
+
+    public EpubHeading(string text, string className, string anchorName)
       : base(text)
     {
       _className = className;
+      _anchorName = anchorName;
     }
 
     public override string RenderToXhtml()
     {
-      return String.Format("    <p class=\"{0}\">{1}</p>", _className, Text);
+      string text = Text;
+      if (_anchorName.Length > 0)
+      {
+        text = String.Format("<a name=\"{0}\" />{1}", _anchorName, text);
+      }
+      return String.Format("    <p class=\"{0}\">{1}</p>", _className, text);
     }
   }
 }

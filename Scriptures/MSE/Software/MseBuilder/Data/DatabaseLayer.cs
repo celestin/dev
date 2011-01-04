@@ -25,6 +25,7 @@
  * CAM  24-Dec-2010  10902 : Added Fullname and Orgname.
  * CAM  03-Jan-2011  10917 : Retrieve hymns.
  * CAM  03-Jan-2011  10920 : Retrieve first line of each hymn.
+ * CAM  04-Jan-2011  10919 : Retrieve hymns by authors and meters.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -958,6 +959,36 @@ namespace FrontBurner.Ministry.MseBuilder
         "from hymn_line" + Languages.LanguageSuffix(language) + " " +
         "where hymn_no=" + hymnNo + " " +
         "order by if(vers_no=99,11,vers_no*10),line_no";
+
+      MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);
+      DataTable rval = new DataTable();
+      dad.Fill(rval);
+
+      return rval;
+    }
+
+    public DataTable GetHymnAuthors(Language language)
+    {
+      string sql =
+        "SELECT ha.id, ha.fullname, ha.surname, ha.firstnames, ha.author_life, h.hymn_no "+
+        "FROM authors ha, hymn" + Languages.LanguageSuffix(language) + " h " +
+        "WHERE h.author_id = ha.id "+
+        "ORDER BY 3,4,2,6 ";
+
+      MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);
+      DataTable rval = new DataTable();
+      dad.Fill(rval);
+
+      return rval;
+    }
+
+    public DataTable GetHymnMeters(Language language)
+    {
+      string sql =
+        "SELECT hm.id, hm.meter, hm.rhythm, hm.chorus, hm.disp_order, h.hymn_no " +
+        "FROM hymn_meter hm, hymn" + Languages.LanguageSuffix(language) + " h " +
+        "WHERE h.meter_id = hm.id " +
+        "ORDER BY 5,2,3,4,1,6 ";
 
       MySqlDataAdapter dad = new MySqlDataAdapter(sql, _conn);
       DataTable rval = new DataTable();

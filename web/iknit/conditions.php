@@ -16,6 +16,7 @@
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  07-Nov-2010  10818 : Removed jmitchell reference.
+ * CAM  10-Jan-2011  10929 : Added VAT number.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -76,7 +77,7 @@
             from us.  If you do not accept these terms, do not use this website.</p>
             <p>The <strong>www.iknit.biz</strong> website is operated by Bill Lovie trading as iKnit.biz.
 
-            <p>Our VAT registration number is XXX XXXX XX.</p>
+            <p>Our VAT registration number is 266 0622 66.</p>
             <p>Our contact details are as follows:<br>
             Trading address:
               36, West High Street,<br />

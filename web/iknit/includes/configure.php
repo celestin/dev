@@ -14,16 +14,21 @@
  *
  * Who  When         Why
  * CAM  28-Apr-2010  10639 : Added Product Extra Fields (http://www.oscommerce.com/community/contributions,2202)
+ * CAM  10-Jan-2011  10928 : Better config options for development environments.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-  if (strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) {
-    define('HTTP_SERVER', 'http://emperor/iknit');
-    define('HTTPS_SERVER', 'http://emperor/iknit');
-    define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
-  } else {
+  if (strpos(strtolower($_SERVER['SERVER_NAME']), "www.iknit.biz") !== FALSE) {
     define('HTTP_SERVER', 'http://www.iknit.biz');
     define('HTTPS_SERVER', 'http://www.iknit.biz');
     define('DIR_FS_CATALOG', '/var/www/html/');
+  } else {
+    $url = 'http://localhost';
+    if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
+    $url .= '/iknit';
+
+    define('HTTP_SERVER', $url);
+    define('HTTPS_SERVER', $url);
+    define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
   }
 
   define('ENABLE_SSL', false);

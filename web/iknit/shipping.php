@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  10-Jan-2011  10928 : Reworded postage.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -64,25 +65,27 @@
 
                 <h2>Delivery Information</h2>
 
-                <p>We only deliver to addresses in the United Kingdom. Goods can only be delivered to the home address where your credit card statements are received.</p>
-                <p>Orders are usually despatched same day or day after your order has been received (in stock items only), so please allow 3 to 4 working days, depending on the speed of Royal Mail.</p>
-                <p>All orders under £50 will be sent by <a href="http://www.royalmail.com/portal/rm/jump2?catId=400028&mediaId=500201">Royal Mail Recorded Delivery</a>,
-                  and all orders over £50 will be sent <a href="http://www.royalmail.com/portal/rm/jump2?catId=400028&mediaId=400026">Royal Mail Special Delivery</a>,
-                  a signature will be required for both delivery methods.</p>
-                <p>Royal Mail Special Delivery has a <a href="http://www.royalmail.com/portal/rm/personal?pageId=tab_track_rm&catId=500185&mediaId=83900761">Track and Trace system</a>,
-                  we will email this tracking number on despatch of your goods.</p>
+                <p>We only deliver to addresses in the United Kingdom. Goods can only be delivered to the
+                home address where your credit card statements are received.</p>
+
+                <p>Orders are usually despatched same day or day after your order has been received
+                (in stock items only), so please allow 3 to 4 working days, depending on the speed of Royal Mail.</p>
+
+                <p>All orders under £50 will be sent by <b>Royal Mail Second Class</b>.</p>
+
+                <p>Orders over £50 will be sent <b>Royal Mail First Class</b>, using the <a href="http://www.royalmail.com/portal/rm/personal?pageId=tab_track_rm&catId=500185&mediaId=83900761">Track and Trace system</a>, and we will email this tracking number on despatch of your goods.</p>
 
                 <h2>Delivery Costs</h2>
                 <ul>
-                <li>Royal Mail Recorded Delivery up to £50 &mdash; Cost <b>&pound;2.95</b></li>
-                <li>Royal Mail Special Delivery under £100 &mdash; Cost <b>&pound;5.95</b></li>
-                <li>Royal Mail Special Delivery over £100 &mdash; <b>Free Delivery</b></li>
+                <li>Orders up to £10 &mdash; <b>&pound;2.50</b></li>
+                <li>Orders over £10 &mdash; <b>free of charge</b></li>
                 </ul>
 
                 <h2>Return Policy</h2>
 
                 <p>If for any reason you are unhappy with your purchase or you have a change of mind, we offer a 7 day money back guarantee. The cooling off period begins the day you receive the goods.</p>
-                <p>Goods must be returned in their original condition along with all the packaging and paperwork.</p>
+                <p>Goods must be returned in their original condition along with all the packaging and paperwork.
+                Please note that pattern leaflets cannot be returned unless they are damaged or defective.</p>
                 <p>A full refund will be given including any postal charges included in the original price, and returned to the same form of payment.</p>
 
                </div>

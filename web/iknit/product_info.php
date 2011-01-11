@@ -16,6 +16,7 @@
  * CAM  30-Oct-2010  10800 : Changed to 'Product Code'.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  09-Dec-2010  10830 : Added Related Products.
+ * CAM  10-Jan-2011  10930 : Ensured that Shades with no Patterns show no Patterns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -334,6 +335,7 @@ function popupWindow(url) {
     "AND pl.products_model = sls.leaflet_code " .
     "AND pds.products_id = ps.products_id " .
     "AND pdl.products_id = pl.products_id " .
+    "AND LENGTH(ps.products_model)>0 " .
     "AND ps.products_id=". (int)$HTTP_GET_VARS['products_id'];
   add_related_products($sql, "Leaflets where this Shade is explicitly mentioned");
 

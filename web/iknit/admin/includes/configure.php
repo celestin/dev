@@ -1,20 +1,21 @@
 <?php
-  if (strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) {
-    define('HTTP_SERVER', 'http://emperor/iknit');
-    define('HTTPS_SERVER', 'http://emperor/iknit');
-    define('HTTP_CATALOG_SERVER', 'http://emperor/iknit');
-    define('HTTPS_CATALOG_SERVER', 'http://emperor/iknit');
-    define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
-    define('DIR_FS_ADMIN', 'c:/appserv/www/iknit/admin/');
-    define('DIR_WS_CATALOG', '../');
-  } else {
+
+  if (strpos(strtolower($_SERVER['SERVER_NAME']), "www.iknit.biz") !== FALSE) {
     define('HTTP_SERVER', 'http://www.iknit.biz');
     define('HTTPS_SERVER', 'http://www.iknit.biz');
-    define('HTTP_CATALOG_SERVER', 'http://www.iknit.biz');
-    define('HTTPS_CATALOG_SERVER', 'http://www.iknit.biz');
     define('DIR_FS_CATALOG', '/var/www/html/');
     define('DIR_FS_ADMIN', '/var/www/html/admin/');
     define('DIR_WS_CATALOG', '/');
+  } else {
+    $url = 'http://localhost';
+    if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
+    $url .= '/iknit';
+
+    define('HTTP_SERVER', $url);
+    define('HTTPS_SERVER', $url);
+    define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
+    define('DIR_FS_ADMIN', 'c:/appserv/www/iknit/admin/');
+    define('DIR_WS_CATALOG', '../');
   }
 
   define('ENABLE_SSL_CATALOG', 'false');

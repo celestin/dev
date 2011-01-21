@@ -17,6 +17,7 @@
  * CAM  30-Oct-2010  10800 : Display subcategory images based on HEIGHT.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  11-Dec-2010  10828 : Added display_categories function to separate the main product groups.
+ * CAM  21-Jan-2011  10933 : Added Bill's home page text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -351,8 +352,17 @@
         <td>
               <div id="home">
 <?php
-                display_categories("'105','32'", "Yarns", "Welcome to iKnit.biz!  We are based in Scotland, UK, shipping the finest yarns all over the United Kingdom.");
-                display_categories("'79'", "Leaflets", "We stock a large variety of leaflets with patterns to complement our yarns.");
+  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz: a new, online store with over almost 60 years experience ".
+    "of selling knitting yarn. Stockists of Sirdar, Rico, Patons and Stylecraft ".
+    "yarns. We are committed to providing our customers with the lowest possible ".
+    "prices with a clear and simple postage policy &mdash; <i>Orders over &pound;10 qualify for free, second-class post</i>.</p>".
+    "<p>Browse through our online catalogue where you will recognise favourites such as ".
+    "Sirdar Snuggly baby yarns, Sirdar Crofter and Escape and also new winners like ".
+    "Indie, Squiggle and Connemara. We do of course stock this seasons most sought ".
+    "after scarf yarn by German company Rico &mdash; Can Can.");
+  display_categories("'79'", "Leaflets", "Our Sirdar leaflets and yarn are laid out (we hope) in a way that is easy to ".
+    "follow and see quantities and colours all at once. We intend to add products ".
+    "from other suppliers and knitting accessories on an ongoing basis.");
 ?>
               </div>
          </td>

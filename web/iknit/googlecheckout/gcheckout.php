@@ -20,15 +20,15 @@
 /**
  * Google Checkout v1.5.0
  * $Id$
- * 
+ *
  * Script invoked when the Google Checkout payment option has been enabled.
  * It uses phpGCheckout library so it can work with PHP4 and PHP5.
- * 
+ *
  * Generates the cart xml, shipping and tax options and adds them as hidden fields
  * along with the Google Checkout button.
 
  * A disabled button is displayed in the following cases:
- * 
+ *
  *   1. If merchant id or merchant key is not set.
  *   2. If there are multiple shipping options selected and they use different shipping tax tables
  *      or some dont use tax tables.
@@ -304,7 +304,7 @@ $Gcart->SetMerchantPrivateData(new MerchantPrivateData(array(
     'oscommerce-version' => PROJECT_VERSION,
     'google-checkout-module-version' => GOOGLECHECKOUT_FILES_VERSION,
     )));
-    
+
 $rounding_mode = gc_get_configuration_value($config->roundingMode());
 $rounding_rule = gc_get_configuration_value($config->roundingRule());
 $Gcart->AddRoundingPolicy($rounding_mode, $rounding_rule);
@@ -397,18 +397,18 @@ if(DOWNLOAD_ENABLED != 'true' || $cart->get_content_type() != 'virtual') {
         'status' => $module->check());
     }
   }
-  
+
   // TODO(eddavisson): ???
   // check if there is a shipping module activated that is not flat rate
   // to enable Merchan Calculations
   // if there are flat and MC, both will be MC
-  $carrier_calculated_shipping_enabled = 
+  $carrier_calculated_shipping_enabled =
       (gc_get_configuration_value($config->enableCarrierCalculatedShipping()) == 'True');
-      
+
   // TODO(eddavisson): Really?
-  $ship_calculation_mode = 
+  $ship_calculation_mode =
       ($carrier_calculated_shipping_enabled) ? false: (count(array_keys($module_info_enabled))
-      > 
+      >
       count(array_intersect($googlepayment->shipping_support, array_keys($module_info_enabled)))) ? true : false;
 
   $key_values = explode(", ", MODULE_PAYMENT_GOOGLECHECKOUT_SHIPPING);
@@ -469,7 +469,7 @@ if(DOWNLOAD_ENABLED != 'true' || $cart->get_content_type() != 'virtual') {
 
     // Disable any merchant-calculation module if Carrier calculated is enabled
     // This will allow only flat-rate shippings
-    if ($carrier_calculated_shipping_enabled 
+    if ($carrier_calculated_shipping_enabled
         && !in_array($module_name, $googlepayment->shipping_support)) {
       $enable = 'False';
       unset($module_info_enabled['freeshipper']);
@@ -594,7 +594,7 @@ if(DOWNLOAD_ENABLED != 'true' || $cart->get_content_type() != 'virtual') {
                                     $zone_name);
     $GSPackage = new GoogleShippingPackage($ship_from,1,1,1,'IN');
     $Gshipping->addShippingPackage($GSPackage);
-    $carrier_calculated_shipping_configuration = 
+    $carrier_calculated_shipping_configuration =
         gc_get_configuration_value($config->carrierCalculatedShipping());
     $carriers_config = explode(', ', $carrier_calculated_shipping_configuration);
 //    print_r($googlepayment->cc_shipping_methods);die;
@@ -614,7 +614,7 @@ if(DOWNLOAD_ENABLED != 'true' || $cart->get_content_type() != 'virtual') {
 }
 
 if ($ship_calculation_mode == 'True') {
-  $sandbox_merchant_callback_protocol = 
+  $sandbox_merchant_callback_protocol =
       gc_get_configuration_value($config->sandboxMerchantCallbackProtocol());
   if (MODULE_PAYMENT_GOOGLECHECKOUT_MODE == 'https://sandbox.google.com/checkout/'
       && $sandbox_merchant_callback_protocol == 'http') {
@@ -729,16 +729,11 @@ foreach ($tax_array as $tax_table) {
 }
 
 $google_analytics_id = gc_get_configuration_value($config->googleAnalyticsId());
-if ($google_analytics_id != $config->nullValue()) {  
+if ($google_analytics_id != $config->nullValue()) {
   $Gcart->AddGoogleAnalyticsTracking($google_analytics_id);
 }
 
 ?>
-<div align="right">
-<?php
-  echo '<div style="width: 180px; text-align: center;"><b>' . MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_OPTION . '</b></div>';
-?>
-</div>
 <div align="right">
     <?php
     echo $Gcart->CheckoutButtonCode();

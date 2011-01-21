@@ -23,22 +23,23 @@ define('GOOGLECHECKOUT_FILES_VERSION', 'v1.5.0');
 /**
  * Google Checkout v1.5.0
  * $Id$
- * 
+ *
  * This class is the actual payment module for Google Checkout.
- * 
+ *
  * Member variables refer to currently set parameter values from the database.
  */
+
 class googlecheckout {
   // Table names.
   var $table_name = "google_checkout";
-  var $table_order = "google_orders";  
-  
+  var $table_order = "google_orders";
+
   var $code, $title, $description, $merchantid, $merchantkey, $mode,
       $enabled, $shipping_support, $variant;
-  var $schema_url, $base_url, $checkout_url, $checkout_diagnose_url, 
+  var $schema_url, $base_url, $checkout_url, $checkout_diagnose_url,
       $request_url, $request_diagnose_url;
   var $ignore_order_total;
-  var $mc_shipping_methods, $mc_shipping_methods_names; 
+  var $mc_shipping_methods, $mc_shipping_methods_names;
   var $cc_shipping_methods, $cc_shipping_methods_names;
   var $gc_order_states;
 
@@ -46,16 +47,16 @@ class googlecheckout {
   function googlecheckout() {
     global $order, $messageStack;
     global $language;
-    
+
     require_once(DIR_FS_CATALOG .'/includes/languages/' . $language . '/modules/payment/googlecheckout.php');
-    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/merchant_calculated_methods.php');
-    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/carrier_calculated_methods.php');
+    require_once(DIR_FS_CATALOG . '/googlecheckout/library/shipping/merchant_calculated_methods.php');
+    require_once(DIR_FS_CATALOG . '/googlecheckout/library/shipping/carrier_calculated_methods.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration_keys.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_options.php');
-    
+
     $config = new GoogleConfigurationKeys();
-    
+
     $this->code = 'googlecheckout';
     $this->title = MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_TITLE;
     $this->description = MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_DESCRIPTION;
@@ -75,7 +76,7 @@ class googlecheckout {
     } else {
     	// TODO(eddavisson)
     }
-    	
+
     // These are the flat shipping methods. Add any other that is not merchant calculated.
     $this->shipping_support = array("flat", "item", "itemint", "table");
 
@@ -86,9 +87,9 @@ class googlecheckout {
     $this->request_url = $this->base_url . "/request";
     $this->request_diagnose_url = $this->base_url . "/request/diagnose";
     $this->variant = 'text';
- 	  
+
     // TODO(eddavisson): Revise this comment.
-    // These are all the available methods for each shipping provider, 
+    // These are all the available methods for each shipping provider,
     // see that you must set flat methods too!}
     // CONSTRAINT: Method's names MUST be UNIQUE
   	// Script to create new shipping methods
@@ -96,7 +97,7 @@ class googlecheckout {
     // to manually edit, /googlecheckout/shipping/merchant_calculated_methods.php
     $this->mc_shipping_methods = $mc_shipping_methods;
     $this->mc_shipping_methods_names = $mc_shipping_methods_names;
-    
+
     // Carrier Calculated shipping methods.
     $this->cc_shipping_methods = $cc_shipping_methods;
     $this->cc_shipping_methods_names = $cc_shipping_methods_names;
@@ -110,8 +111,8 @@ class googlecheckout {
         'ot_total',
     );
     $this->hash = NULL;
-    
-    $this->gc_order_states = array( 
+
+    $this->gc_order_states = array(
         '100' => GOOGLECHECKOUT_CUSTOM_ORDER_STATE_NEW,
         '101' => GOOGLECHECKOUT_CUSTOM_ORDER_STATE_PROCESSING,
         '102' => GOOGLECHECKOUT_CUSTOM_ORDER_STATE_SHIPPED,
@@ -119,14 +120,14 @@ class googlecheckout {
         '104' => GOOGLECHECKOUT_CUSTOM_ORDER_STATE_SHIPPED_REFUNDED,
         '105' => GOOGLECHECKOUT_CUSTOM_ORDER_STATE_CANCELED
     );
-  
+
     // TODO(eddavisson): Factor out into function.
     $is_sandbox = (MODULE_PAYMENT_GOOGLECHECKOUT_MODE == 'https://sandbox.google.com/checkout/');
     if (isset($messageStack) && $is_sandbox) {
       $messageStack->add_session(GOOGLECHECKOUT_STRING_WARN_USING_SANDBOX, 'warning');
     }
   }
-  
+
   function getMethods() {
   	if ($this->hash == NULL) {
       $rta = array();
@@ -157,12 +158,12 @@ class googlecheckout {
     $key = str_pad($key, $blocksize, chr(0x00));
     $ipad = str_repeat(chr(0x36), $blocksize);
     $opad = str_repeat(chr(0x5c), $blocksize);
-    $hmac = pack('H*', 
-                 $hashfunc(($key^$opad).pack('H*', 
+    $hmac = pack('H*',
+                 $hashfunc(($key^$opad).pack('H*',
                                              $hashfunc(($key^$ipad).$data))));
-    return $hmac; 
+    return $hmac;
   }
-		
+
   function update_status() {
   }
 
@@ -202,13 +203,13 @@ class googlecheckout {
   function check() {
     if (!isset($this->_check)) {
       $check_query = tep_db_query(
-          "select configuration_value from ". TABLE_CONFIGURATION 
+          "select configuration_value from ". TABLE_CONFIGURATION
           . " where configuration_key = 'MODULE_PAYMENT_GOOGLECHECKOUT_STATUS'");
       $this->_check = tep_db_num_rows($check_query);
     }
     return $this->_check;
   }
-  
+
   // With custom set function.
   function insertConfiguration($title,
                                $key,
@@ -222,7 +223,7 @@ class googlecheckout {
     	$column_list .= ", set_function";
     }
     $column_list .= ")";
-    
+
     // List of values.
     // Group ID for all module options.
     $group_id = '6';
@@ -231,13 +232,13 @@ class googlecheckout {
       $value_array[] = $set_function;
     }
     $value_list = "('" . join("', '", $value_array) . "')";
-    
+
     // Create and run query.
     $query = "insert into " . TABLE_CONFIGURATION . " " . $column_list . " values " . $value_list;
     //echo $query;
     tep_db_query($query);
   }
-  
+
   function getLink($text, $url, $new_window) {
     $a = '<a';
     $a .= ' style="color:blue;text-decoration:underline"';
@@ -246,13 +247,13 @@ class googlecheckout {
     	$a .= ' target="_blank"';
     }
     $a .= '>' . $text . '</a>';
-    return $a;  	
+    return $a;
   }
 
   function getOscLink($text, $path) {
     return $this->getLink($text, tep_href_link($path), false);
   }
-  
+
   function getWarning($message) {
   	$warning = '<span style="color:red">';
     $warning .= $message;
@@ -264,7 +265,7 @@ class googlecheckout {
     global $language;
     require_once(DIR_FS_CATALOG . 'includes/languages/' . $language . '/modules/payment/googlecheckout.php');
     tep_db_query(
-        "ALTER TABLE ". TABLE_CONFIGURATION 
+        "ALTER TABLE ". TABLE_CONFIGURATION
         . " CHANGE `configuration_value` `configuration_value` TEXT NOT NULL");
 
     // Options will appear in the same order as we insert them in the code
@@ -281,75 +282,75 @@ class googlecheckout {
         "For more options, see the " . $this->getOscLink("Advanced Configuration Dashboard", "gc_dashboard.php"),
         'MODULE_PAYMENT_GOOGLECHECKOUT_LINK',
         '',
-        '',        
+        '',
         $sort_order++,
         'tep_cfg_select_option(array(),');
 
     // Version #.
     $this->insertConfiguration(
-        'Google Checkout Module Version', 
+        'Google Checkout Module Version',
         'MODULE_PAYMENT_GOOGLECHECKOUT_VERSION',
         GOOGLECHECKOUT_FILES_VERSION,
         'Version of the installed Module',
-        $sort_order++, 
+        $sort_order++,
         'tep_cfg_select_option(array(\\\'' . GOOGLECHECKOUT_FILES_VERSION . '\\\'),');
-        
+
     // Enable/Disable.
     $this->insertConfiguration(
-        'Enable the Google Checkout Module', 
-        'MODULE_PAYMENT_GOOGLECHECKOUT_STATUS', 
-        'True', 
-        'Select "True" to accept payments through Google Checkout on your site.', 
+        'Enable the Google Checkout Module',
+        'MODULE_PAYMENT_GOOGLECHECKOUT_STATUS',
+        'True',
+        'Select "True" to accept payments through Google Checkout on your site.',
         $sort_order++,
         'tep_cfg_select_option(array(\\\'True\\\', \\\'False\\\'),');
-        
+
     // Mode.
     $this->insertConfiguration(
-         'Mode of Operation', 
-         'MODULE_PAYMENT_GOOGLECHECKOUT_MODE', 
-         'https://sandbox.google.com/checkout/', 
+         'Mode of Operation',
+         'MODULE_PAYMENT_GOOGLECHECKOUT_MODE',
+         'https://sandbox.google.com/checkout/',
          'Select <b>sandbox.google.com</b> (for testing) or <b>checkout.google.com</b> (live).'
              . ' Make sure you have entered the corresponding ID/Key pair below.'
-             . ' When you are done testing, switch this option to <b>checkout.google.com</b>.', 
-         $sort_order++, 
+             . ' When you are done testing, switch this option to <b>checkout.google.com</b>.',
+         $sort_order++,
          'tep_cfg_select_option(array(\\\'https://sandbox.google.com/checkout/\\\', \\\'https://checkout.google.com/\\\'),');
-         
+
     // Production Merchant ID.
-    // TODO(eddavisson): Add link to Google Checkout Merchant Console.    
+    // TODO(eddavisson): Add link to Google Checkout Merchant Console.
     $this->insertConfiguration(
-        'Google Checkout Production Merchant ID', 
-        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTID', 
-        '', 
+        'Google Checkout Production Merchant ID',
+        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTID',
+        '',
         'Your Merchant ID can be found in the Google Checkout Merchant Console'
-            . ' under ' . $this->getLink('"Integration->Settings"', 
-                                         'https://checkout.google.com/sell/settings?section=Integration', 
+            . ' under ' . $this->getLink('"Integration->Settings"',
+                                         'https://checkout.google.com/sell/settings?section=Integration',
                                          true)
             . '.',
         $sort_order++);
-        
+
     // Production Merchant Key.
-    // TODO(eddavisson): Add link to Google Checkout Merchant Console.    
+    // TODO(eddavisson): Add link to Google Checkout Merchant Console.
     $this->insertConfiguration(
         'Google Checkout Production Merchant Key'
-            . '<br/>' . $this->getWarning('Note: We strongly recommend that you do not share your Merchant Key with anyone.'), 
-        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTKEY', 
-        '', 
+            . '<br/>' . $this->getWarning('Note: We strongly recommend that you do not share your Merchant Key with anyone.'),
+        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTKEY',
+        '',
         'Your Merchant Key can also be found in the Google Checkout Merchant Console'
-            . ' under ' . $this->getLink('"Integration->Settings"', 
-                                         'https://checkout.google.com/sell/settings?section=Integration', 
+            . ' under ' . $this->getLink('"Integration->Settings"',
+                                         'https://checkout.google.com/sell/settings?section=Integration',
                                          true)
             . '.',
         $sort_order++);
-        
+
     // Sandbox Merchant ID.
-    // TODO(eddavisson): Add link to Google Checkout Merchant Console.    
+    // TODO(eddavisson): Add link to Google Checkout Merchant Console.
     $this->insertConfiguration(
-        'Google Checkout Sandbox Merchant ID', 
-        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTID_SNDBOX', 
-        '', 
+        'Google Checkout Sandbox Merchant ID',
+        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTID_SNDBOX',
+        '',
         'Your Merchant ID can be found in the Google Checkout Merchant Console'
-            . ' under ' . $this->getLink('"Integration->Settings"', 
-                                         'https://sandbox.google.com/checkout/sell/settings?section=Integration', 
+            . ' under ' . $this->getLink('"Integration->Settings"',
+                                         'https://sandbox.google.com/checkout/sell/settings?section=Integration',
                                          true)
             . '.',
         $sort_order++);
@@ -359,11 +360,11 @@ class googlecheckout {
     $this->insertConfiguration(
         'Google Checkout Sandbox Merchant Key'
             . '<br/>' . $this->getWarning('Note: We strongly recommend that you do not share your Merchant Key with anyone.'),
-        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTKEY_SNDBOX', 
-        '', 
+        'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTKEY_SNDBOX',
+        '',
         'Your Merchant ID can be found in the Google Checkout Merchant Console'
-            . ' under ' . $this->getLink('"Integration->Settings"', 
-                                         'https://sandbox.google.com/checkout/sell/settings?section=Integration', 
+            . ' under ' . $this->getLink('"Integration->Settings"',
+                                         'https://sandbox.google.com/checkout/sell/settings?section=Integration',
                                          true)
             . '.',
         $sort_order++);
@@ -380,7 +381,7 @@ class googlecheckout {
             "select orders_status_id from " . TABLE_ORDERS_STATUS
             . " where orders_status_id = '" . (int) $orders_status_id
             . "' and language_id = '" . (int) $language_id . "'"));
-        
+
         $sql_data_array = array(
             'orders_status_name' => tep_db_prepare_input($orders_status_name),
             'orders_status_id' => $orders_status_id,
@@ -390,33 +391,33 @@ class googlecheckout {
         if ($order_status_id['orders_status_id'] == '') {
           tep_db_perform(TABLE_ORDERS_STATUS, $sql_data_array);
         } else {
-          tep_db_perform(TABLE_ORDERS_STATUS, $sql_data_array, 'update', 
+          tep_db_perform(TABLE_ORDERS_STATUS, $sql_data_array, 'update',
               "orders_status_id = '" . (int) $orders_status_id
               . "' and language_id = '" . (int) $language_id . "'");
         }
       }
     }
-    
+
     // Custom Google configuration.
     $google_configuration = new GoogleConfiguration();
     $google_configuration->install();
-    
+
     // Set defaults.
     // TODO(eddavisson): It's awkward to have to construct one of these
     // in addition to the GoogleConfiguration above.
     $google_options = new GoogleOptions();
-    
+
   }
 
   function remove() {
     tep_db_query(
-        "delete from ". TABLE_CONFIGURATION 
+        "delete from ". TABLE_CONFIGURATION
         . " where configuration_key in ('". implode("', '", $this->keys()) ."')");
     // Remove Google Checkout's additional tables.
     // TODO(eddavisson): Should we do this? Should we not?
   //tep_db_query("drop table " . $this->table_name);
   //tep_db_query("drop table " . $this->table_order);
-  
+
     // Custom Google removal.
     $google_configuration = new GoogleConfiguration();
     $google_configuration->remove();
@@ -426,7 +427,7 @@ class googlecheckout {
     return array(
       'MODULE_PAYMENT_GOOGLECHECKOUT_LINK',
       'MODULE_PAYMENT_GOOGLECHECKOUT_VERSION',
-      'MODULE_PAYMENT_GOOGLECHECKOUT_STATUS', 
+      'MODULE_PAYMENT_GOOGLECHECKOUT_STATUS',
       'MODULE_PAYMENT_GOOGLECHECKOUT_MODE',
       'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTID',
       'MODULE_PAYMENT_GOOGLECHECKOUT_MERCHANTKEY',

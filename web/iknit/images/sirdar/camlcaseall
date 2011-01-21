@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for filename in /var/www/html/images/sirdar/*
+do
+  ./camlcase $filename
+done;
+

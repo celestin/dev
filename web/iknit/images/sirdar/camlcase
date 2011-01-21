@@ -1,0 +1,34 @@
+#!/bin/bash
+# Write a shell script that changes the name of the file passed as argument
+# to lowercase.
+# -------------------------------------------------------------------------
+# Copyright (c) 2003 nixCraft project <http://cyberciti.biz/fb/>
+# This script is licensed under GNU GPL version 2.0 or above
+# -------------------------------------------------------------------------
+# This script is part of nixCraft shell script collection (NSSC)
+# Visit http://bash.cyberciti.biz/ for more information.
+# -------------------------------------------------------------------------
+ 
+file="$1"
+if [ $# -eq 0 ]
+then
+	echo "$(basename $0) file"
+	exit 1
+fi
+ 
+if [ ! $file ]
+then
+	echo "$file not a file"
+	exit 2
+fi
+ 
+lowercase=$(echo $file | tr '[A-Z]' '[a-z]'])
+ 
+if [ -f $lowercase ]
+then
+	echo "Error - File already exists!"
+	exit 3
+fi
+ 
+# change file name
+mv $file $lowercase

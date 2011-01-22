@@ -28,7 +28,6 @@ define('GOOGLECHECKOUT_FILES_VERSION', 'v1.5.0');
  *
  * Member variables refer to currently set parameter values from the database.
  */
-
 class googlecheckout {
   // Table names.
   var $table_name = "google_checkout";
@@ -49,8 +48,8 @@ class googlecheckout {
     global $language;
 
     require_once(DIR_FS_CATALOG .'/includes/languages/' . $language . '/modules/payment/googlecheckout.php');
-    require_once(DIR_FS_CATALOG . '/googlecheckout/library/shipping/merchant_calculated_methods.php');
-    require_once(DIR_FS_CATALOG . '/googlecheckout/library/shipping/carrier_calculated_methods.php');
+    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/merchant_calculated_methods.php');
+    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/carrier_calculated_methods.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration_keys.php');
     require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_options.php');
@@ -74,7 +73,7 @@ class googlecheckout {
     if (gc_configuration_table_ready()) {
       $this->continue_url = gc_get_configuration_value($config->continueShoppingUrl());
     } else {
-    	// TODO(eddavisson)
+      // TODO(eddavisson)
     }
 
     // These are the flat shipping methods. Add any other that is not merchant calculated.
@@ -92,8 +91,8 @@ class googlecheckout {
     // These are all the available methods for each shipping provider,
     // see that you must set flat methods too!}
     // CONSTRAINT: Method's names MUST be UNIQUE
-  	// Script to create new shipping methods
-  	// http://ur-site/googlecheckot/shipping_generator/
+    // Script to create new shipping methods
+    // http://ur-site/googlecheckot/shipping_generator/
     // to manually edit, /googlecheckout/shipping/merchant_calculated_methods.php
     $this->mc_shipping_methods = $mc_shipping_methods;
     $this->mc_shipping_methods_names = $mc_shipping_methods_names;
@@ -102,7 +101,7 @@ class googlecheckout {
     $this->cc_shipping_methods = $cc_shipping_methods;
     $this->cc_shipping_methods_names = $cc_shipping_methods_names;
 
-	  $this->ignore_order_total = array(
+    $this->ignore_order_total = array(
         'ot_subtotal',
         'ot_shipping',
         'ot_coupon',
@@ -129,11 +128,11 @@ class googlecheckout {
   }
 
   function getMethods() {
-  	if ($this->hash == NULL) {
+    if ($this->hash == NULL) {
       $rta = array();
-  		$this->_gethash($this->mc_shipping_methods, $rta);
-  		$this->hash = $rta;
-  	}
+      $this->_gethash($this->mc_shipping_methods, $rta);
+      $this->hash = $rta;
+    }
     return $this->hash;
   }
 
@@ -142,7 +141,7 @@ class googlecheckout {
       foreach ($arr as $key => $val) {
         $this->_gethash($arr[$key], $rta, array_merge(array($key), $path));
       }
-  	} else {
+    } else {
       $rta[$arr] = $path;
     }
   }
@@ -220,7 +219,7 @@ class googlecheckout {
     // List of columns.
     $column_list = "(configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added";
     if (!is_null($set_function)) {
-    	$column_list .= ", set_function";
+      $column_list .= ", set_function";
     }
     $column_list .= ")";
 
@@ -244,7 +243,7 @@ class googlecheckout {
     $a .= ' style="color:blue;text-decoration:underline"';
     $a .= ' href="' . $url . '"';
     if ($new_window) {
-    	$a .= ' target="_blank"';
+      $a .= ' target="_blank"';
     }
     $a .= '>' . $text . '</a>';
     return $a;
@@ -255,7 +254,7 @@ class googlecheckout {
   }
 
   function getWarning($message) {
-  	$warning = '<span style="color:red">';
+    $warning = '<span style="color:red">';
     $warning .= $message;
     $warning .= '</span>';
     return $warning;

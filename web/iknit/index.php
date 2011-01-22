@@ -352,7 +352,7 @@
         <td>
               <div id="home">
 <?php
-  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz: a new, online store with over almost 60 years experience ".
+  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz: a new, online store with almost 60 years experience ".
     "of selling knitting yarn. Stockists of Sirdar, Rico, Patons and Stylecraft ".
     "yarns. We are committed to providing our customers with the lowest possible ".
     "prices with a clear and simple postage policy &mdash; <i>Orders over &pound;10 qualify for free, second-class post</i>.</p>".

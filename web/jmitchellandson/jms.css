@@ -30,6 +30,7 @@
  * CAM  21-Aug-2010  10775 : Added diamond bullets to product display.
  * CAM  23-Oct-2010  10784 : Changed background colour, deepend the RRP red, and created class for product grid RRP.
  * CAM  27-Dec-2010  10906 : Removed productSpecialPrice.
+ * CAM  05-Feb-2011  10937 : Added Specials.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 p, body, td, a, h1, h2, h3, h4, input, select {
@@ -319,7 +320,7 @@ SPAN.errorText {
   font-size: 13pt;
 }
 
-#home p,li {
+#home p, #home li {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 10px 0px;
   font-size: 11pt;
@@ -330,12 +331,18 @@ SPAN.errorText {
   padding: 0px 0px 10px 0px;
 }
 
+#home img.specials {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 4px 0px;
+}
+
+
 #legal h2 {
   margin: 0px 0px 0px 0px;
   padding: 15px 0px 0px 0px;
 }
 
-#legal p,li {
+#legal p, #legal li {
   font-size: 11pt;
 }
 
@@ -354,7 +361,7 @@ SPAN.errorText {
   padding: 0px 0px 0px 0px;
 }
 
-#birthstones p,li {
+#birthstones p, #birthstones li {
   font-size: 11pt;
 }
 

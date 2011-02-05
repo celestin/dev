@@ -24,6 +24,7 @@
  * CAM  04-Sep-2010  10779 : Update links from Summer Time to Party Time.  Added link to Charmed.
  * CAM  22-Oct-2010  10791 : Added Google Analytics.
  * CAM  23-Oct-2010  10796 : Retrieve and apply category subcat_per_row and subcat_image_width if they exist (otherwise default).
+ * CAM  05-Feb-2011  10937 : Added Specials.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -336,6 +337,11 @@ We have some of the very keenest prices available.  Although our customers have 
 Montrose, Forfar, Arbroath, Dundee and Aberdeen we now ship watches and jewellery all over the United Kingdom.</p>
 
 <table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan=4><?='<a href="specials.php">' .
+      tep_image(DIR_WS_IMAGES . "specials.png",$alt = 'Specials', $width = '', $height = '', $parameters = 'class="specials"') .
+      '</a>'?></td>
+  </tr>
   <tr>
 <?php
 

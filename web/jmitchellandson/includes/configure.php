@@ -14,11 +14,16 @@
  *
  * Who  When         Why
  * CAM  28-Apr-2010  10639 : Added Product Extra Fields (http://www.oscommerce.com/community/contributions,2202)
+ * CAM  05-Feb-2011  10937 : Added config for SMITH laptop.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   if (strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) {
     define('HTTP_SERVER', 'http://emperor/jmitchellandson');
     define('HTTPS_SERVER', 'http://emperor/jmitchellandson');
+    define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
+  } else if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
+    define('HTTP_SERVER', 'http://localhost:90/jmitchellandson');
+    define('HTTPS_SERVER', 'http://localhost:90/jmitchellandson');
     define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
   } else {
     define('HTTP_SERVER', 'http://www.jmitchellandson.co.uk');

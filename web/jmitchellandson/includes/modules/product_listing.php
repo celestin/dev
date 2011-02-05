@@ -20,6 +20,7 @@
  * CAM  23-Oct-2010  10784 : Added RRP to results grid.
  * CAM  23-Oct-2010  10784 : Added 'RRP' and 'Our price' to results grid.
  * CAM  27-Dec-2010  10906 : Display Our Price (and Special Price) correctly when there is a Special Price.
+ * CAM  05-Feb-2011  10938 : If displaying Watch products (under category 1) display them larger.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $graphic_bord = 'no'; //  set to 'yes' if you have older 'graphic borders' and not 'easy graphic borders'.
@@ -464,7 +465,22 @@ if (tep_not_null($_GET['categories_id']) && $current_category_id == 0) $current_
  if ($thumbnail_view) {  //thumbnail
   $row = 0;
   $col = 0;
-  $border = (!$grid ? '<div class="infoBoxProducts" style="width:'.PRODUCT_LIST_WIDTH.'px; height:'.PRODUCT_LIST_HEIGHT.'px;" >' : '<br />');
+
+  $smallImageHeight = SMALL_IMAGE_HEIGHT;
+  $productListHeight = PRODUCT_LIST_HEIGHT;
+  $productListWidth = PRODUCT_LIST_WIDTH;
+  if (isset($_GET['cPath'])) {
+
+    $pathList = tep_parse_category_path($_GET['cPath']);
+    if ($pathList[0] == 1) {
+      // Watches
+      $smallImageHeight = 200;
+      $productListHeight = 300;
+      $productListWidth = 180;
+    }
+  }
+
+  $border = (!$grid ? '<div class="infoBoxProducts" style="width:'.$productListWidth.'px; height:'.$productListHeight.'px;" >' : '<br />');
   $borderend = (!$grid ? '</div>' : '');
   $style = (!$grid ? 'class="smallText"' : 'class="infoBoxGrid"');
 
@@ -497,7 +513,8 @@ if (tep_not_null($_GET['categories_id']) && $current_category_id == 0) $current_
     $image = ($selected_image['medium_images'] ? $selected_image['medium_images'] : ($selected_image['products_image_med'] ? $selected_image['products_image_med'] : ($selected_image['popup_images'] ? $selected_image['popup_images'] : $products['products_image'])));
                     }
     $alt_text = ($addimages ? (tep_not_null($selected_image['images_description']) ? $selected_image['images_description'] : (tep_not_null($selected_image['products_image_description']) ? $selected_image['products_image_description'] : $products['products_name'])) : $products['products_name']);
-    $image = ' <span class="ttip">' . $link . tep_image(DIR_WS_IMAGES . $image, $alt_text, 0, SMALL_IMAGE_HEIGHT, ' class="productListing-grid-image" ')  . ($ttip ? tep_image(DIR_WS_IMAGES . $image, $alt_text, IMAGE_TTIP_WIDTH, '', ' class="large"') : '' ) . '</a></span>' . '<br />';
+
+    $image = ' <span class="ttip">' . $link . tep_image(DIR_WS_IMAGES . $image, $alt_text, 0, $smallImageHeight, ' class="productListing-grid-image" ')  . ($ttip ? tep_image(DIR_WS_IMAGES . $image, $alt_text, IMAGE_TTIP_WIDTH, '', ' class="large"') : '' ) . '</a></span>' . '<br />';
     if (LISTING_BUTTON != 'none' && PRODUCT_LIST_BUY_NOW) {
     $buypic = (LISTING_BUTTON == 'buy now' ? 'button_in_cart.gif' : 'button_buy_now.gif');
     $detail = $link . tep_image_button((strstr(LISTING_BUTTON, '&') || (strstr(LISTING_BUTTON, 'small')) ? 'button_details_small.gif' : 'button_details.gif'), IMAGE_BUTTON_DETAILS, 'class="thm_buy_now"') . '</a>';

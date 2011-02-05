@@ -31,6 +31,7 @@ RewriteRule ^widdop$ http://www.jmitchellandson.co.uk/index.php?cPath=32_39 [L]
 RewriteRule ^watches$ http://www.jmitchellandson.co.uk/index.php?cPath=1 [L]
 RewriteRule ^jewellery$ http://www.jmitchellandson.co.uk/index.php?cPath=2 [L]
 RewriteRule ^pewter$ http://www.jmitchellandson.co.uk/index.php?cPath=32 [L]
+RewriteRule ^specials$ http://www.jmitchellandson.co.uk/specials.php [L]
 
 RewriteBase /
 # filter for most common exploits

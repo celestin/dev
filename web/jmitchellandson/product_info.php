@@ -342,15 +342,13 @@ function popupWindow(url) {
 <?php
     }
 
-    if (tep_not_null($product_info['products_url'])) {
+    if ($new_price != 0) {
 ?>
       <tr>
-        <td class="main"><?php echo sprintf(TEXT_MORE_INFORMATION, tep_href_link(FILENAME_REDIRECT, 'action=url&goto=' . urlencode($product_info['products_url']), 'NONSSL', true, false)); ?></td>
-      </tr>
-      <tr>
-        <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
+        <td>This product is available at a special price &mdash; why not check out all our <a href="/specials.php">special offers</a>?</td>
       </tr>
 <?php
+
     }
 
     if ($product_info['products_date_available'] > date('Y-m-d H:i:s')) {

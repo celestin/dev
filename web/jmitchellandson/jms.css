@@ -31,6 +31,7 @@
  * CAM  23-Oct-2010  10784 : Changed background colour, deepend the RRP red, and created class for product grid RRP.
  * CAM  27-Dec-2010  10906 : Removed productSpecialPrice.
  * CAM  05-Feb-2011  10937 : Added Specials.
+ * CAM  05-Feb-2011  10939 : Changed to burgundy bullet.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 p, body, td, a, h1, h2, h3, h4, input, select {
@@ -455,7 +456,7 @@ SPAN.errorText {
 #productInfo #productDesc li {
   padding: 0px 0px 5px 20px;
   margin: 0px;
-  background: url(images/bullet1.png) left top no-repeat;
+  background: url(images/bullet2.png) left top no-repeat;
 }
 
 #sociallinks td {

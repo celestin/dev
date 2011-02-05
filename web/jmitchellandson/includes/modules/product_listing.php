@@ -472,11 +472,20 @@ if (tep_not_null($_GET['categories_id']) && $current_category_id == 0) $current_
   if (isset($_GET['cPath'])) {
 
     $pathList = tep_parse_category_path($_GET['cPath']);
-    if ($pathList[0] == 1) {
-      // Watches
+    switch ($pathList[0]) {
+
+      case 1:  // Watches
+      case 3:  // Citizen
+      case 4:  // Sekonda
+      case 5:  // Accurist
+      case 6:  // Seksy
       $smallImageHeight = 200;
       $productListHeight = 300;
       $productListWidth = 180;
+      break;
+
+      default:
+      break;
     }
   }
 

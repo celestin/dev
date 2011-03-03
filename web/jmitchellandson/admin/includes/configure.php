@@ -12,13 +12,13 @@
     define('HTTPS_SERVER', 'http://www.jmitchellandson.co.uk');
     define('HTTP_CATALOG_SERVER', 'http://www.jmitchellandson.co.uk');
     define('HTTPS_CATALOG_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('DIR_FS_CATALOG', '/var/www/html/');
-    define('DIR_FS_ADMIN', '/var/www/html/admin/');
+    define('DIR_FS_CATALOG', '/home/jmitch/public_html/');
+    define('DIR_FS_ADMIN', '/home/jmitch/public_html/admin/');
     define('DIR_WS_CATALOG', '/');
   }
 
   define('ENABLE_SSL_CATALOG', 'false');
-  define('DIR_FS_DOCUMENT_ROOT', '/var/www/html/');
+  define('DIR_FS_DOCUMENT_ROOT', '/home/jmitch/public_html/');
   define('DIR_WS_ADMIN', '/admin/');
   define('DIR_WS_IMAGES', 'images/');
   define('DIR_WS_ICONS', DIR_WS_IMAGES . 'icons/');

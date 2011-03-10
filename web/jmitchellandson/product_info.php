@@ -24,6 +24,7 @@
  * CAM  07-Aug-2010  10767 : Added social networking links and left join to manufacturer.
  * CAM  22-Oct-2010  10791 : Added Google Analytics.
  * CAM  27-Dec-2010  10906 : Display Our Price (and Special Price) correctly when there is a Special Price.
+ * CAM  10-Mar-2011  10945 : Added MagicMagnifyZoom.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -42,6 +43,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo CONFIG_STYLESHEET; ?>">
 <link rel="shortcut icon" href="<?php echo CONFIG_FAVICON; ?>" type="image/vnd.microsoft.icon" />
 <link rel="icon" href="<?php echo CONFIG_FAVICON; ?>" type="image/vnd.microsoft.icon" />
+
+<link type="text/css" rel="stylesheet" href="includes/magicmagnifyplus/magicmagnifyplus.css"/>
+<script type="text/javascript" src="includes/magicmagnifyplus/magicmagnifyplus.js"></script>
+
 <script language="javascript"><!--
 function popupWindow(url) {
   window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
@@ -137,11 +142,11 @@ function popupWindow(url) {
 <div id="productImage">
   <table border=0 cellpadding="0" cellspacing="0">
     <tr>
-      <td>
+      <td><a href="<?= DIR_WS_IMAGES . "/large/" . $product_info['products_image'] ?>" class="MagicMagnifyPlus">
 <?
       echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], $product_info['products_name'], $width = '', $height = '') ;
 ?>
-      </td>
+      </a></td>
     </tr>
 <?
     if ($product_info['groupid'] > 0) {

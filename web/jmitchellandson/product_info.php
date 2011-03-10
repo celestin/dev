@@ -142,11 +142,20 @@ function popupWindow(url) {
 <div id="productImage">
   <table border=0 cellpadding="0" cellspacing="0">
     <tr>
-      <td><a href="<?= DIR_WS_IMAGES . "/large/" . $product_info['products_image'] ?>" class="MagicMagnifyPlus">
+      <td>
 <?
-      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], $product_info['products_name'], $width = '', $height = '') ;
+    $largeFile = DIR_WS_IMAGES . "large/" . $product_info['products_image'];
+    if (file_exists($largeFile)) {
+      echo "<a href=\"" . $largeFile . "\" class=\"MagicMagnifyPlus\">";
+    }
+
+    echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], $product_info['products_name'], $width = '', $height = '') ;
+
+    if (file_exists($largeFile)) {
+      echo "</a>";
+    }
 ?>
-      </a></td>
+      </td>
     </tr>
 <?
     if ($product_info['groupid'] > 0) {

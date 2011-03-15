@@ -99,7 +99,9 @@ function popupWindow(url) {
       "SELECT p.products_id, p.groupid, pd.products_name, pd.products_description, p.products_model, ".
       "p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, ".
       "p.products_date_added, p.products_date_available, p.manufacturers_id, ".
-      "m.manufacturers_name, m.guarantee_years ".
+      "m.manufacturers_name, m.guarantee_years, (SELECT MAX(c.box_image) FROM categories c, products_to_categories pc ".
+                                                "WHERE pc.categories_id = c.categories_id ".
+                                                "AND pc.products_id = p.products_id) box_image ".
       "FROM " . TABLE_PRODUCTS . " p " .
       "INNER JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd " .
       "ON pd.products_id = p.products_id ".
@@ -140,7 +142,7 @@ function popupWindow(url) {
     if (tep_not_null($product_info['products_image'])) {
 ?>
 <div id="productImage">
-  <table border=0 cellpadding="0" cellspacing="0">
+  <table border="0" cellpadding="0" cellspacing="0">
     <tr>
       <td>
 <?
@@ -206,6 +208,10 @@ function popupWindow(url) {
 ?>
        <div id="productDesc"><p><?php echo stripslashes($product_info['products_description']); ?></p></div>
 
+       <div id="productOptions">
+<? if (!empty($product_info['box_image'])) { ?>
+       <img style="float:right;" src="<?=DIR_WS_IMAGES . "box/" . $product_info['box_image']?>" alt="boxes">
+<? } ?>
        <table border="0" cellspacing="2" cellpadding="2">
 <?php
     if (tep_not_null($product_info['products_model'])) {
@@ -274,7 +280,7 @@ function popupWindow(url) {
       if ($product_info['guarantee_years'] > 0) {
 ?>
           <tr>
-            <td class="productOptionLabel"><?php echo $product_info['manufacturers_name']; ?><br />Guarantee</td>
+            <td class="productOptionLabel"><?php echo $product_info['manufacturers_name']; ?>&nbsp;Guarantee</td>
             <td class="productOptionValue"><?php echo $product_info['guarantee_years']; ?> years</td>
           </tr>
 <?php
@@ -337,6 +343,7 @@ function popupWindow(url) {
 <?php
     }
 ?>
+          <p><?php include(DIR_WS_LANGUAGES . $language . '/' . 'why_buy_from_us.php'); ?></p>
         </td>
       </tr>
       <tr>
@@ -396,7 +403,7 @@ function popupWindow(url) {
                       <tr>
                         <td>
                           <a href="http://delicious.com/save" onclick="window.open('http://delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"><img
-                            border=0 src="http://static.delicious.com/img/delicious.small.gif" height="12" width="12" alt="Delicious" /></a>
+                            border="0" src="http://static.delicious.com/img/delicious.small.gif" height="12" width="12" alt="Delicious" /></a>
                           <a href="http://delicious.com/save" onclick="window.open('http://delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">Bookmark <?php echo $modelNo; ?></a>
                         </td>
 

@@ -464,6 +464,18 @@ SPAN.errorText {
   margin: 0px;
 }
 
+#whybuy h2 {
+  margin: 0px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
+  font-size: 10pt;
+  color: #662323;
+}
+
+#whybuy p, #whybuy li {
+  font-size: 9pt;
+}
+
+
 /* BOF Product Listing Enhancements, Thumbnails & Manufacturer Headings [#10647] */
 
 .infoBoxProducts {

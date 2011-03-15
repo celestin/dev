@@ -7,13 +7,13 @@
 -- --------------------------------------------------------
 
 
--- CAM  27-Dec-2010  10907 : Update VAT to 20%.
+-- CAM  15-Mar-2011  10935 : Added box image.
 
-UPDATE tax_rates SET tax_rate = '20.0', tax_description = 'VAT (20%)' WHERE tax_rates.tax_rates_id = 1;
+ALTER TABLE categories ADD box_image VARCHAR(64) NULL AFTER categories_image;
 
-UPDATE products set products_tax_class_id = 1 WHERE products_tax_class_id = 0;
+UPDATE categories SET box_image = 'citizen2.jpg' WHERE categories.categories_id=12;
+UPDATE categories SET box_image = 'accurist1.jpg' WHERE categories.categories_id=24;
+UPDATE categories SET box_image = 'accurist2.jpg' WHERE categories.categories_id=25;
 
-UPDATE products set products_price = products_price * 1.175 / 1.200 WHERE products_tax_class_id = 1;
-
--- EOF #10907
+-- EOF #10935
 

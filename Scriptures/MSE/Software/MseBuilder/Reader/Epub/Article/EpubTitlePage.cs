@@ -39,7 +39,7 @@ namespace FrontBurner.Ministry.MseBuilder.Reader.Epub.Article
       using (StreamWriter writer = new StreamWriter(XmlFile.FullName))
       {
         EpubHeading author = new EpubHeading(Document.Volume.Author.FullName, "frontauthor");
-        EpubHeading title = new EpubHeading(Title, "fronttitle");
+        EpubHeading title = new EpubHeading(Document.Volume.VolumeTitle, "fronttitle");
         EpubHeading source = new EpubHeading(
           String.Format("Produced from GoodTeaching.org<br />by Craig McKay {0:d-MMM-yyyy}", DateTime.Now), "frontpublisher");
         EpubImage image = new EpubImage(Document.Volume.Author.ImageFilename, Document.Volume.Author.Name);

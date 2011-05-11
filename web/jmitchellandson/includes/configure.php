@@ -17,23 +17,25 @@
  * CAM  05-Feb-2011  10937 : Added config for SMITH laptop.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-  if (strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) {
-    define('HTTP_SERVER', 'http://emperor/jmitchellandson');
-    define('HTTPS_SERVER', 'http://emperor/jmitchellandson');
+  if ((strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) ||
+      (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE)) {
+    define('HTTP_SERVER', 'http://' . strtolower($_SERVER['SERVER_NAME']) . '/jmitchellandson');
     define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
-  } else if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
-    define('HTTP_SERVER', 'http://localhost:90/jmitchellandson');
-    define('HTTPS_SERVER', 'http://localhost:90/jmitchellandson');
-    define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
+    define('DIR_WS_CATALOG', '../');
   } else {
     define('HTTP_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('HTTPS_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('DIR_FS_CATALOG', '/var/www/html/');
+    define('DIR_FS_CATALOG', '/home/jmitch/public_html/');
+    define('DIR_WS_CATALOG', '/');
   }
+
+  define('HTTPS_SERVER', HTTP_SERVER);
+  define('HTTP_CATALOG_SERVER', HTTP_SERVER);
+  define('HTTPS_CATALOG_SERVER', HTTP_SERVER);
+  define('DIR_FS_ADMIN', DIR_FS_CATALOG . 'nosila/');
 
   define('ENABLE_SSL', false);
   define('HTTP_COOKIE_DOMAIN', 'www.jmitchellandson.co.uk');
-  define('HTTPS_COOKIE_DOMAIN', 'www.jmitchellandson.co.uk');
+  define('HTTPS_COOKIE_DOMAIN', HTTP_COOKIE_DOMAIN);
   define('HTTP_COOKIE_PATH', '/');
   define('HTTPS_COOKIE_PATH', '/');
   define('DIR_WS_HTTP_CATALOG', '/');

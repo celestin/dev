@@ -1,7 +1,7 @@
 <?php
-  if ((strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) || 
+  if ((strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) ||
       (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE)) {
-    define('HTTP_SERVER', 'http://' . strtolower($_SERVER['SERVER_NAME']) ' /jmitchellandson');
+    define('HTTP_SERVER', 'http://' . strtolower($_SERVER['SERVER_NAME']) . '/jmitchellandson');
     define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
     define('DIR_WS_CATALOG', '../');
   } else {

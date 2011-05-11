@@ -1,25 +1,23 @@
 <?php
-  if (strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) {
-    define('HTTP_SERVER', 'http://emperor/jmitchellandson');
-    define('HTTPS_SERVER', 'http://emperor/jmitchellandson');
-    define('HTTP_CATALOG_SERVER', 'http://emperor/jmitchellandson');
-    define('HTTPS_CATALOG_SERVER', 'http://emperor/jmitchellandson');
+  if ((strpos(strtolower($_SERVER['SERVER_NAME']), "emperor") !== FALSE) || 
+      (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE)) {
+    define('HTTP_SERVER', 'http://' . strtolower($_SERVER['SERVER_NAME']) ' /jmitchellandson');
     define('DIR_FS_CATALOG', 'c:/appserv/www/jmitchellandson/');
-    define('DIR_FS_ADMIN', 'c:/appserv/www/jmitchellandson/admin/');
     define('DIR_WS_CATALOG', '../');
   } else {
     define('HTTP_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('HTTPS_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('HTTP_CATALOG_SERVER', 'http://www.jmitchellandson.co.uk');
-    define('HTTPS_CATALOG_SERVER', 'http://www.jmitchellandson.co.uk');
     define('DIR_FS_CATALOG', '/home/jmitch/public_html/');
-    define('DIR_FS_ADMIN', '/home/jmitch/public_html/admin/');
     define('DIR_WS_CATALOG', '/');
   }
 
+  define('HTTPS_SERVER', HTTP_SERVER);
+  define('HTTP_CATALOG_SERVER', HTTP_SERVER);
+  define('HTTPS_CATALOG_SERVER', HTTP_SERVER);
+  define('DIR_FS_ADMIN', DIR_FS_CATALOG . 'nosila/');
+
   define('ENABLE_SSL_CATALOG', 'false');
-  define('DIR_FS_DOCUMENT_ROOT', '/home/jmitch/public_html/');
-  define('DIR_WS_ADMIN', '/admin/');
+  define('DIR_FS_DOCUMENT_ROOT', DIR_FS_CATALOG);
+  define('DIR_WS_ADMIN', '/nosila/');
   define('DIR_WS_IMAGES', 'images/');
   define('DIR_WS_ICONS', DIR_WS_IMAGES . 'icons/');
   define('DIR_WS_CATALOG_IMAGES', DIR_WS_CATALOG . 'images/');

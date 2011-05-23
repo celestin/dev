@@ -2,9 +2,7 @@
 
   if (strpos(strtolower($_SERVER['SERVER_NAME']), "www.iknit.biz") !== FALSE) {
     define('HTTP_SERVER', 'http://www.iknit.biz');
-    define('HTTPS_SERVER', 'http://www.iknit.biz');
-    define('DIR_FS_CATALOG', '/var/www/html/');
-    define('DIR_FS_ADMIN', '/var/www/html/admin/');
+    define('DIR_FS_CATALOG', '/home/iknit/public_html/');
     define('DIR_WS_CATALOG', '/');
   } else {
     $url = 'http://localhost';
@@ -12,15 +10,16 @@
     $url .= '/iknit';
 
     define('HTTP_SERVER', $url);
-    define('HTTPS_SERVER', $url);
     define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
-    define('DIR_FS_ADMIN', 'c:/appserv/www/iknit/admin/');
     define('DIR_WS_CATALOG', '../');
   }
 
+  define('DIR_FS_ADMIN', DIR_FS_CATALOG . 'lezah/');
+  define('HTTPS_SERVER', HTTP_SERVER);
+
   define('ENABLE_SSL_CATALOG', 'false');
-  define('DIR_FS_DOCUMENT_ROOT', '/var/www/html/');
-  define('DIR_WS_ADMIN', '/admin/');
+  define('DIR_FS_DOCUMENT_ROOT', DIR_FS_CATALOG);
+  define('DIR_WS_ADMIN', 'lezah/');
   define('DIR_WS_IMAGES', 'images/');
   define('DIR_WS_ICONS', DIR_WS_IMAGES . 'icons/');
   define('DIR_WS_CATALOG_IMAGES', DIR_WS_CATALOG . 'images/');

@@ -47,12 +47,12 @@ class googlecheckout {
     global $order, $messageStack;
     global $language;
 
-    require_once(DIR_FS_CATALOG .'/includes/languages/' . $language . '/modules/payment/googlecheckout.php');
-    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/merchant_calculated_methods.php');
-    require(DIR_FS_CATALOG . '/googlecheckout/library/shipping/carrier_calculated_methods.php');
-    require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration.php');
-    require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration_keys.php');
-    require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_options.php');
+    require_once(DIR_FS_CATALOG .'includes/languages/' . $language . '/modules/payment/googlecheckout.php');
+    require(DIR_FS_CATALOG . 'googlecheckout/library/shipping/merchant_calculated_methods.php');
+    require(DIR_FS_CATALOG . 'googlecheckout/library/shipping/carrier_calculated_methods.php');
+    require_once(DIR_FS_CATALOG . 'googlecheckout/library/configuration/google_configuration.php');
+    require_once(DIR_FS_CATALOG . 'googlecheckout/library/configuration/google_configuration_keys.php');
+    require_once(DIR_FS_CATALOG . 'googlecheckout/library/configuration/google_options.php');
 
     $config = new GoogleConfigurationKeys();
 

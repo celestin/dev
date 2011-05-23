@@ -33,9 +33,7 @@
  *   2. If there are multiple shipping options selected and they use different shipping tax tables
  *      or some dont use tax tables.
  */
-//error_reporting(E_ALL);
-//require_once('admin/includes/configure.php');
-//require_once('includes/configure.php');
+
 require_once('includes/languages/'. $language .'/modules/payment/googlecheckout.php');
 require_once('includes/modules/payment/googlecheckout.php');
 
@@ -619,8 +617,7 @@ if ($ship_calculation_mode == 'True') {
   if (MODULE_PAYMENT_GOOGLECHECKOUT_MODE == 'https://sandbox.google.com/checkout/'
       && $sandbox_merchant_callback_protocol == 'http') {
     $url = HTTP_SERVER . DIR_WS_CATALOG .'googlecheckout/responsehandler.php';
-  }
-  else {
+  } else {
     $url = HTTPS_SERVER . DIR_WS_CATALOG .'googlecheckout/responsehandler.php';
   }
   $Gcart->SetMerchantCalculations($url, 'false', 'false', 'false');
@@ -668,18 +665,15 @@ if (sizeof($tax_class_unique) == 1 && sizeof($module_info_enabled) == sizeof($ta
     if($tax_result['countries_iso_code_2'] == 'US') {
       if($tax_result['zone_code'] == 'All Areas') {
         $GDtaxRule->SetCountryArea('ALL');
-      }
-      else {
+      } else {
         $GDtaxRule->SetStateAreas($tax_result['zone_code']);
       }
-    }
-    else {
+    } else {
       $GDtaxRule->AddPostalArea($tax_result['countries_iso_code_2']);
     }
     $Gcart->AddDefaultTaxRules($GDtaxRule);
   }
-}
-else {
+} else {
   $GDtaxRule = new GoogleDefaultTaxRule(0, 'false');
   $GDtaxRule->SetWorldArea(true);
   $Gcart->AddDefaultTaxRules($GDtaxRule);
@@ -713,12 +707,10 @@ foreach ($tax_array as $tax_table) {
 
       if($tax_result['zone_code'] == 'All Areas') {
         $GAtaxRule->SetCountryArea('ALL');
-      }
-      else {
+      } else {
         $GAtaxRule->SetStateAreas($tax_result['zone_code']);
       }
-    }
-    else {
+    } else {
       // TODO here should go the non use area
       $GAtaxRule->AddPostalArea($tax_result['countries_iso_code_2']);
     }
@@ -734,6 +726,7 @@ if ($google_analytics_id != $config->nullValue()) {
 }
 
 ?>
+<!-- ** BEGIN GOOGLE CHECKOUT ** -->
 <div align="right">
     <?php
     echo $Gcart->CheckoutButtonCode();
@@ -749,8 +742,4 @@ if ($google_analytics_id != $config->nullValue()) {
       }
     ?>
 </div>
-<?php
-//echo $Gcart->CheckoutHTMLButtonCode();
-//echo "<xmp>".$Gcart->GetXML()."</xmp>";
-?>
 <!-- ** END GOOGLE CHECKOUT ** -->

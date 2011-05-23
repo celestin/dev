@@ -19,7 +19,7 @@
 
   define('ENABLE_SSL_CATALOG', 'false');
   define('DIR_FS_DOCUMENT_ROOT', DIR_FS_CATALOG);
-  define('DIR_WS_ADMIN', 'lezah/');
+  define('DIR_WS_ADMIN', '/lezah/');
   define('DIR_WS_IMAGES', 'images/');
   define('DIR_WS_ICONS', DIR_WS_IMAGES . 'icons/');
   define('DIR_WS_CATALOG_IMAGES', DIR_WS_CATALOG . 'images/');

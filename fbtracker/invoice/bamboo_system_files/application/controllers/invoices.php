@@ -777,6 +777,53 @@ class Invoices extends MY_Controller {
     }
   }
 
+
+
+  function previewpdf($id, $output = TRUE)
+  {
+    $this->lang->load('date');
+    $this->load->plugin('to_pdf');
+    $this->load->helper('file');
+
+    $data['page_title'] = $this->lang->line('menu_invoices');
+
+    $invoiceInfo = $this->invoices_model->getSingleInvoice($id);
+
+    if ($invoiceInfo->num_rows() == 0) {redirect('invoices/');}
+
+    $data['row'] = $invoiceInfo->row();
+
+    $data['client_note'] = $this->clients_model->get_client_info($data['row']->client_id)->client_notes;
+
+    $data['date_invoice_issued'] = formatted_invoice_date($data['row']->dateIssued);
+    $data['date_invoice_due'] = formatted_invoice_date($data['row']->dateIssued, $this->settings_model->get_setting('days_payment_due'));
+
+    $data['companyInfo'] = $this->settings_model->getCompanyInfo()->row();
+    $data['company_logo'] = $this->_get_logo('_pdf', 'pdf');
+
+    $data['items'] = $this->invoices_model->getInvoiceItems($id);
+
+    $data['total_no_tax'] = $this->settings_model->get_setting('currency_symbol').number_format($data['row']->total_notax, 2, $this->config->item('currency_decimal'), '')."<br />\n";
+
+    // taxes
+    $data['tax_info'] = $this->_tax_info($data['row']);
+
+    $data['total_with_tax'] = $this->settings_model->get_setting('currency_symbol').number_format($data['row']->total_with_tax, 2, $this->config->item('currency_decimal'), '')."<br />\n";;
+
+    if ($data['row']->amount_paid > 0)
+    {
+      $data['total_paid'] = $this->lang->line('invoice_amount_paid').': '.$this->settings_model->get_setting('currency_symbol').number_format($data['row']->amount_paid, 2, $this->config->item('currency_decimal'), '')."<br />\n";;
+      $data['total_outstanding'] = $this->lang->line('invoice_amount_outstanding').': '.$this->settings_model->get_setting('currency_symbol').number_format($data['row']->total_with_tax - $data['row']->amount_paid, 2, $this->config->item('currency_decimal'), '');
+    }
+    else
+    {
+      $data['total_paid'] = '';
+      $data['total_outstanding'] = '';
+    }
+
+    $this->load->view('invoices/pdf', $data);
+  }
+
   // --------------------------------------------------------------------
 
   /**

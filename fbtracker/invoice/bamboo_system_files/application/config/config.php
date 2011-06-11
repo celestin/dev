@@ -357,7 +357,7 @@ $config['short_description_characters'] = 50;
 // this controls how dates display throughout BambooInvoice
 // 'day_month_year' gives 1 January 2009
 // 'default' gives January 1, 2009
-$config['invoice_date_format'] = 'default';
+$config['invoice_date_format'] = 'day_month_year';
 
 /* End of file config.php */
 /* Location: ./system/application/config/config.php */

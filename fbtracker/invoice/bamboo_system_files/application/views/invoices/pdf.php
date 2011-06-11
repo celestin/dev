@@ -104,46 +104,47 @@ table.stripe td.totals {
 
   <table border="0">
     <tr>
-      <td>
-		  <table border="0">
-		    <tr><td colspan="2"><img src="<?php echo base_url();?>img/logo/fb4.png"></td></tr>
-      		<tr><td class="fld" width="10"><?php echo $this->lang->line('invoice_invoice');?></td><td><b><?php echo $row->invoice_number;?></b></td></tr>
-      		<tr><td class="fld">Date</td><td><?php echo $date_invoice_issued;?></td></tr>
-      		<tr><td class="fld" valign="top">Client</td><td><b><?php echo $row->client_id;?></b>&nbsp;<?php echo $row->name;?><br />
-
-    <?php if ($row->address1 != '') {echo $row->address1;}?>
-    <?php if ($row->address2 != '') {echo ', ' . $row->address2;}?>
-    <?php if ($row->address1 != '' || $row->address2 != '') {echo '<br />';}?>
-    <?php if ($row->city != '') {echo $row->city;}?>
-    <?php if ($row->province != '') {if ($row->city != '') {echo ', ';} echo $row->province;}?>
-    <?php if ($row->country != '') {if ($row->province != '' || ($row->province == '' && $row->city != '')){echo ', ';} echo $row->country;}?>
-    <?php if ($row->postal_code != '') {echo ' ' . $row->postal_code;}?>
-    <?php if ($row->city != '' || $row->province != '' || $row->country != '' || $row->postal_code != '') {echo '<br />';}?>
-    <?php echo auto_link(prep_url($row->website));?>
-    <?php if ($row->tax_code != '') {echo '<br />'.$this->lang->line('settings_tax_code').': '.$row->tax_code;}?>
-			  </td></tr>
-			</table>
-      </td>
-      <td>
-
-      	<table border="0" cellpadding=0 cellspacing=0>
-      		<tr><td class="fld" width="100">Tel</td><td>+44 775 669 88 66</td></tr>
-      		<tr><td class="fld">Email</td><td><?php echo $companyInfo->primary_contact_email;?></td></tr>
-      		<tr><td class="fld">Web</td><td><?php echo auto_link(prep_url($companyInfo->website));?></td></tr>
-      		<tr><td class="fld">Registered Address</td><td>
-      		  <?php echo $companyInfo->company_name;?><br />
-          <?php echo $companyInfo->address1;?><br />
-          <?php if ($companyInfo->address2 != '') {echo $companyInfo->address2.'<br />';}?>
-          <?php echo $companyInfo->city;?>,
-          <?php if ($companyInfo->province != '') {echo $companyInfo->province.'<br />';}?>
-          <?php if ($companyInfo->country != '') {echo $companyInfo->country.'<br />';}?>
-          <?php echo $companyInfo->postal_code;?>
-      		</td></tr>
-      		<tr><td class="fld">Company No.</td><td><?php echo $companyInfo->company_no;?></td></tr>
-      		<tr><td class="fld">VAT Reg. No.</td><td><?php echo $companyInfo->vat_reg_no;?></td></tr>
-		</table>
-      </td>
+			<td colspan="2" rowspan="3"><img src="<?php echo base_url();?>img/logo/fb4.png"></td>
+      <td class="fld">Tel</td><td>+44 775 669 88 66</td>
     </tr>
+ 		<tr><td class="fld">Email</td><td><?php echo $companyInfo->primary_contact_email;?></td></tr>
+ 		<tr><td class="fld">Web</td><td><?php echo auto_link(prep_url($companyInfo->website));?></td></tr>
+
+ 		<tr><td class="fld" width="10"><?php echo $this->lang->line('invoice_invoice');?></td><td colspan="3"><b><?php echo $row->invoice_number;?></b>&nbsp;<?php echo $row->invoice_note;?></td></tr>
+
+ 		<tr>
+			<td class="fld" valign="top">Client</td><td><b><?php echo $row->client_id;?></b>&nbsp;<?php echo $row->name;?><br />
+		    <?php if ($row->address1 != '') {echo $row->address1;}?>
+		    <?php if ($row->address2 != '') {echo ', ' . $row->address2;}?>
+		    <?php if ($row->address1 != '' || $row->address2 != '') {echo '<br />';}?>
+		    <?php if ($row->city != '') {echo $row->city;}?>
+		    <?php if ($row->province != '') {if ($row->city != '') {echo ', ';} echo $row->province;}?>
+		    <?php if ($row->country != '') {if ($row->province != '' || ($row->province == '' && $row->city != '')){echo ', ';} echo $row->country;}?>
+		    <?php if ($row->postal_code != '') {echo ' ' . $row->postal_code;}?>
+		    <?php if ($row->city != '' || $row->province != '' || $row->country != '' || $row->postal_code != '') {echo '<br />';}?>
+		    <?php echo auto_link(prep_url($row->website));?>
+		    <?php if ($row->tax_code != '') {echo '<br />'.$this->lang->line('settings_tax_code').': '.$row->tax_code;}?>
+	  	</td>
+      <td class="fld">Registered Address</td><td>
+				<?php echo $companyInfo->company_name;?><br />
+				<?php echo $companyInfo->address1;?><br />
+				<?php if ($companyInfo->address2 != '') {echo $companyInfo->address2.'<br />';}?>
+				<?php echo $companyInfo->city;?>,
+				<?php if ($companyInfo->province != '') {echo $companyInfo->province.'<br />';}?>
+				<?php if ($companyInfo->country != '') {echo $companyInfo->country.'<br />';}?>
+				<?php echo $companyInfo->postal_code;?>
+   		</td>
+   </tr>
+
+	 <tr>
+	   <td class="fld">Date</td><td><?php echo $date_invoice_issued;?></td>
+  	 <td class="fld">Company No.</td><td><?php echo $companyInfo->company_no;?></td>
+	 </tr>
+
+ 	 <tr>
+ 	 	 <td colspan="2">&nbsp;</td>
+ 	 	 <td class="fld">VAT Reg. No.</td><td><?php echo $companyInfo->vat_reg_no;?></td>
+ 	 </tr>
   </table>
 
   <br /><br />

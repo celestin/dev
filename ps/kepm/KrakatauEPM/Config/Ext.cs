@@ -9,6 +9,7 @@
  * CAM  11-Oct-05    152 : Added to Source Safe.
  * CAM  11-Nov-2009  10502 : Added ExtList.
  * CAM  17-Nov-2009  10502 : Enable searching of ExtList by string.
+ * CAM  16-Jun-2011  10967 : Ignore case when checking for Extension match.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -106,7 +107,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Config
 
       foreach (Ext e in this)
       {
-        if (e.Extension.Equals(ext)) return true;
+        if (e.Extension.ToLower().Equals(ext.ToLower())) return true;
       }
       return false;
     }

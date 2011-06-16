@@ -26,6 +26,7 @@
  * CAM  05-Mar-2010  10593 : Version 1.15.1.0.  EPM 1.21.1.0.
  * CAM  16-Mar-2010  10608 : Version 1.16.0.0.  EPM 1.22.0.0.
  * CAM  08-Oct-2010  10793 : Version 2.0.0.0.   EPM 2.0.0.0.
+ * CAM  16-Jun-2011  10967 : Version 2.0.0.1.   EPM 2.0.0.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Reflection;
@@ -53,5 +54,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("470af938-2923-4514-9092-ca07a46b5215")]
 
 // Version information for an assembly consists of the following four values:
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.1")]
+[assembly: AssemblyFileVersion("2.0.0.1")]

@@ -1,5 +1,5 @@
 
-echo $Id: $
+echo $Id$
 
 @echo off
 

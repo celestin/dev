@@ -21,6 +21,7 @@
  * CAM  26-Mar-09    10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
+ * CAM  18-Jun-2011  10963 : Added Intel languages UC (UC) and MMP (MP).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"
@@ -50,6 +51,8 @@
 #define LIC_TX   "epmtx"
 #define LIC_WB   "epmwb"
 #define LIC_PB   "epmpb"
+#define LIC_UC   "epmuc"
+#define LIC_MP   "epmmp"
 
 #define EPM_CS   1
 #define EPM_CP   2
@@ -76,3 +79,5 @@
 #define EPM_TX   4194304
 #define EPM_WB   8388608
 #define EPM_PB   16777216
+#define EPM_UC   33554432
+#define EPM_MP   67108864

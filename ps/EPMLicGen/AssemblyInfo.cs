@@ -17,11 +17,11 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PowerSoftware.com")]
 [assembly: AssemblyProduct("PowerSoftware.com License Generator")]
-[assembly: AssemblyCopyright("Copyright (c) 2009 PowerSoftware.com")]
+[assembly: AssemblyCopyright("Copyright (c) 2011 PowerSoftware.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("3.2.0.0")]
+[assembly: AssemblyVersion("3.3.0.0")]
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]

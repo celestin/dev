@@ -16,6 +16,7 @@
  * CAM  24-Jun-2009  10448 : Added CSS Stylesheet (CS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  27-Jun-2009  10448 : Renamed CSS Stylesheet CS to SS.
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
+ * CAM  18-Jun-2011  10963 : Added Intel languages UC (UC) and MMP (MP).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -132,7 +133,9 @@ namespace PowerSoftware.Tools.LicGen
       AddProduct("epmsh", "Shell Script");
       AddProduct("epmtx", "Text");
       AddProduct("epmwb", "Windows Batch File");
-      AddProduct("epmpb", "Windows Batch File");
+      AddProduct("epmpb", "PowerBuilder");
+      AddProduct("epmuc", "Intel UC");
+      AddProduct("epmmp", "Intel MMC");
 
       AddProduct("krakatau", "Krakatau GUI", true);
       AddProduct("cpppm", "Krakatau PM C++", true);
@@ -400,8 +403,8 @@ namespace PowerSoftware.Tools.LicGen
       MessageBox.Show(this,
         String.Format("PowerSoftware.com License Generator\n" +
         "Version {0}\n\n" +
-        "by Craig McKay <craig.mckay@powersoftware.com> 10-Dec-2009\n\n" +
-        "Copyright (c) 2009 PowerSoftware.com", Application.ProductVersion), "About PowerSoftware.com License Generator",
+        "by Craig McKay <craig.mckay@powersoftware.com> 18-Jun-2011\n\n" +
+        "Copyright (c) 2011 PowerSoftware.com", Application.ProductVersion), "About PowerSoftware.com License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
   }

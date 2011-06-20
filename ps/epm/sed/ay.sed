@@ -2,7 +2,6 @@ s/j_comments/j_comments_ay/g
 s/c_comments/c_comments_ay/g
 s/cpp_comments/cpp_comments_ay/g
 s/com_loc/com_loc_ay/g
-s/prev_com_line/prev_com_line_ay/g
 s/comment_skip/comment_skip_ay/g
 s/lexclear/lexclear_ay/g
 s/eat_eol/eat_eol_ay/g

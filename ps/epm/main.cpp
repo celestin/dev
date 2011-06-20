@@ -96,6 +96,7 @@
  * CAM  13-Mar-2010  10581 : Added CreateUserCopyEpmConfig.
  * CAM  16-Mar-2010  10609 : Call GetEpmVersion.
  * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
+ * CAM  20-Jun-2011  10963 : Added UC (UC) [and MMP (MP) commented out] language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -109,6 +110,7 @@
 #include "DiffText.h"
 #include "DiffVB.h"
 #include "DiffWB.h"
+#include "DiffUc.h"
 #include "DiffPowerBuilder.h"
 #include "OurSQL.h"
 #include "Utilities.h"
@@ -143,7 +145,7 @@ using namespace std;
 
 extern FILE *yyin_cs, *yyin_c, *yyin_j, *yyin_jsp, *yyin_vb, *yyin_s1, *yyin_ada, *yyin_pl, *yyin_asp, *yyin_php, *yyin_idl,
             *yyin_vhdl, *yyin_xml, *yyin_jt, *yyin_ht, *yyin_py, *yyin_ay, *yyin_sh, *yyin_tx, *yyin_ft,
-            *yyin_ss, *yyin_rb, *yyin_wb, *yyin_pb;
+            *yyin_ss, *yyin_rb, *yyin_wb, *yyin_pb, *yyin_uc;//, *yyin_mp;
 extern void lexclear_cs();
 extern void lexclear_c();
 extern void lexclear_j();
@@ -168,6 +170,8 @@ extern void lexclear_ss();
 extern void lexclear_rb();
 extern void lexclear_wb();
 extern void lexclear_pb();
+extern void lexclear_uc();
+//extern void lexclear_mmp();
 extern int yylex_cs();
 extern int yylex_c();
 extern int yylex_j();
@@ -192,6 +196,8 @@ extern int yylex_ss();
 extern int yylex_rb();
 extern int yylex_wb();
 extern int yylex_pb();
+extern int yylex_uc();
+//extern int yylex_mmp();
 
 extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
 extern set<int> sloc_cs,operators_cs;
@@ -294,6 +300,14 @@ extern set<unsigned int> operands_wb;
 extern int j_comments_pb,c_comments_pb,cpp_comments_pb,com_loc_pb,nsemi_pb,noperands_pb,noperators_pb;
 extern set<int> sloc_pb,operators_pb;
 extern set<unsigned int> operands_pb;
+
+extern int j_comments_uc,c_comments_uc,cpp_comments_uc,com_loc_uc,nsemi_uc,noperands_uc,noperators_uc,ploc_count_uc;
+extern set<int> sloc_uc,operators_uc;
+extern set<unsigned int> operands_uc;
+
+//extern int j_comments_mmp,c_comments_mmp,cpp_comments_mmp,com_loc_mmp,nsemi_mmp,noperands_mmp,noperators_mmp;
+//extern set<int> sloc_mmp,operators_mmp;
+//extern set<unsigned int> operands_mmp;
 
 extern bool validLicense();
 extern bool validLanguage(Langs l);
@@ -723,6 +737,33 @@ void setMetrics(int sfid, string filename) {
     cpp_com = cpp_comments_pb;
     com_loc = com_loc_pb;
     break;
+
+	case LANG_UC:
+    sloc = sloc_uc.size();                   // Source Lines of Code
+    met.set(MET(PLOC), ploc_count_uc);       // Preprocessor Directive LOC
+
+    met.set(MET(N1), noperators_uc);
+    met.set(MET(N1S), operators_uc.size());
+    met.set(MET(N2), noperands_uc);
+    met.set(MET(N2S), operands_uc.size());
+
+    c_com = c_comments_uc;                   // Comments
+    cpp_com = cpp_comments_uc;
+    com_loc = com_loc_uc;
+    break;
+
+	//case LANG_MMP:
+ //   sloc = sloc_mmp.size();                   // Source Lines of Code
+
+ //   met.set(MET(N1), noperators_mmp);
+ //   met.set(MET(N1S), operators_mmp.size());
+ //   met.set(MET(N2), noperands_mmp);
+ //   met.set(MET(N2S), operands_mmp.size());
+
+ //   c_com = c_comments_mmp;                   // Comments
+ //   cpp_com = cpp_comments_mmp;
+ //   com_loc = com_loc_mmp;
+ //   break;
   }
 
   if (!lang.hasLogicalLines()) met.set(MET(LLOC), sloc);
@@ -799,6 +840,10 @@ void calcDiff(int sfid, string &filename, string &filename2) {
 
     case LANG_PB:
     d = new DiffPowerBuilder(filename2.c_str(), filename.c_str());
+    break;
+
+    case LANG_UC:
+    d = new DiffUc(filename2.c_str(), filename.c_str());
     break;
   }
 
@@ -1299,6 +1344,16 @@ bool analyse(string &filename) {
       lexclear_pb();
       yylex_pb();
       break;
+    case LANG_UC:
+      yyin_uc = src;
+      lexclear_uc();
+      yylex_uc();
+      break;
+    //case LANG_MMP:
+    //  yyin_mmp = src;
+    //  lexclear_mmp();
+    //  yylex_mmp();
+    //  break;
   }
 
   fclose(src);

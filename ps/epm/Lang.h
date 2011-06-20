@@ -24,6 +24,7 @@
  * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
  * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
+ * CAM  20-Jun-2011  10963 : Added UC (UC) and MMP (MP) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG
@@ -37,7 +38,8 @@ enum Langs {
   LANG_S1, LANG_PERL, LANG_PHP,
   LANG_VB, LANG_VHDL, LANG_XML,
   LANG_ASM, LANG_HTML, LANG_JT, LANG_PYTHON,
-  LANG_CSS, LANG_FT, LANG_RUBY, LANG_SH, LANG_TXT, LANG_WB, LANG_PB
+  LANG_CSS, LANG_FT, LANG_RUBY, LANG_SH, LANG_TXT, LANG_WB, LANG_PB,
+  LANG_UC, LANG_MMP
 };
 
 namespace metrics
@@ -102,6 +104,10 @@ namespace metrics
         theLang = LANG_WB;
       } else if (!_stricmp(lang.c_str(), "PB")) {
         theLang = LANG_PB;
+      } else if (!_stricmp(lang.c_str(), "UC")) {
+        theLang = LANG_UC;
+      } else if (!_stricmp(lang.c_str(), "MP")) {
+        theLang = LANG_MMP;
       }
 
       return theLang;
@@ -195,6 +201,8 @@ namespace metrics
         case LANG_TXT:
         case LANG_WB:
         case LANG_PB:
+        case LANG_UC:
+        case LANG_MMP:
           return false;
           break;
       }

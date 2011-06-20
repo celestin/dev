@@ -389,6 +389,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DiffUc.cpp"
+				>
+			</File>
+			<File
 				RelativePath="DiffVB.cpp"
 				>
 				<FileConfiguration
@@ -653,6 +657,10 @@
 			</File>
 			<File
 				RelativePath=".\DiffText.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DiffUc.h"
 				>
 			</File>
 			<File
@@ -1019,6 +1027,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lex.uc.cpp"
+					>
+				</File>
+				<File
 					RelativePath="lex.vb.cpp"
 					>
 					<FileConfiguration
@@ -1169,6 +1181,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.uc.l"
+					>
+				</File>
+				<File
 					RelativePath="lexer.vb.l"
 					>
 				</File>
@@ -1262,6 +1278,10 @@
 				</File>
 				<File
 					RelativePath=".\y.tx.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.uc.h"
 					>
 				</File>
 				<File

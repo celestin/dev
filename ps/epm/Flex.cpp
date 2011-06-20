@@ -25,6 +25,7 @@
  * CAM  26-Mar-09    10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  27-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
+ * CAM  20-Jun-2011  10963 : Added UC (UC) and MMP (MP) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>
@@ -55,6 +56,8 @@ bool bLangSH = false;
 bool bLangTX = false;
 bool bLangWB = false;
 bool bLangPB = false;
+bool bLangUC = false;
+bool bLangMP = false;
 
 #include "LicConfig.h"
 #include "Lang.h"
@@ -109,11 +112,14 @@ bool validLicense() {
   bLangSH = !((lpExitCode & EPM_SH) == 0);
   bLangTX = !((lpExitCode & EPM_TX) == 0);
   bLangWB = !((lpExitCode & EPM_WB) == 0);
-  bLangPB = !((lpExitCode & EPM_WB) == 0);
+  bLangPB = !((lpExitCode & EPM_PB) == 0);
+
+  bLangUC = !((lpExitCode & EPM_UC) == 0);
+  bLangMP = !((lpExitCode & EPM_MP) == 0);
 
   return (bLangCS||bLangCP||bLangJV||bLangVB||bLangS1||bLangAD||bLangPL||bLangAS||bLangPH||
     bLangID||bLangVH||bLangJS||bLangXM||bLangAY||bLangHT||bLangJT||bLangPY||
-    bLangSS||bLangFT||bLangRB||bLangSH||bLangTX||bLangWB||bLangPB);
+    bLangSS||bLangFT||bLangRB||bLangSH||bLangTX||bLangWB||bLangPB||bLangUC||bLangMP);
 }
 
 bool validLanguage(Langs l) {
@@ -142,6 +148,8 @@ bool validLanguage(Langs l) {
     case LANG_TXT:    return bLangTX;
     case LANG_WB:     return bLangWB;
     case LANG_PB:     return bLangPB;
+    case LANG_UC:     return bLangUC;
+    case LANG_MMP:    return bLangMP;
   }
 
   return false;

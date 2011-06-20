@@ -32,9 +32,9 @@ extern void lexclear_ada();
 
 extern int yylex_cs();
 
-extern int j_comments_cs,c_comments_cs,cpp_comments_cs,com_loc_cs,nsemi_cs,noperands_cs,noperators_cs;
-extern set<int> sloc_cs,operators_cs;
-extern vector<char*> operands_cs[255];
+extern int j_comments_pb,c_comments_pb,cpp_comments_pb,com_loc_pb,nsemi_pb,noperands_pb,noperators_pb;
+extern set<int> sloc_pb,operators_pb;
+extern set<unsigned int> operands_pb;
 
 
 Extension.h:

@@ -38,7 +38,6 @@ int j_comments=0;
 int c_comments=0;
 int cpp_comments=0;
 int com_loc=0;
-int prev_com_line=-1;
 
 set<int> sloc;
 set<int> operators;
@@ -180,7 +179,6 @@ void lexclear() {
   BEGIN 0 ;
   noperands=0;
   j_comments=c_comments=cpp_comments=com_loc=0;
-  prev_com_line=-1;
   batch_lineno=nsemi=noperators=0;
 
   sloc.clear();

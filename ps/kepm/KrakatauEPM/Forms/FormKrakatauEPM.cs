@@ -16,6 +16,7 @@
  * CAM  23-Feb-2010  10558 : Enable MetricSet chooser to be cleared.
  * CAM  27-Feb-2010  10583 : Add event to handle formatting.
  * CAM  27-Feb-2010  10582 : Set default directory for opening projects.
+ * CAM  22-Jun-2011  10970 : Included UserGuide in Help menu.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -175,9 +176,8 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       Dispose();
     }
 
-    private void ViewMetricsDefinitions(object sender, EventArgs e)
+    private void ViewPdf(string fname)
     {
-      string fname = "MetricsDefinitions.pdf";
       FileInfo pdf = new FileInfo(fname);
       if (!pdf.Exists)
       {
@@ -188,6 +188,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       }
 
       System.Diagnostics.Process.Start(fname);
+    }
+
+    private void ViewMetricsDefinitions(object sender, EventArgs e)
+    {
+      ViewPdf("MetricsDefinitions.pdf");
+    }
+
+    private void ViewUserGuide(object sender, EventArgs e)
+    {
+      ViewPdf("UserGuideKEPM.pdf");
     }
 
     private void HelpAbout(object sender, EventArgs e)

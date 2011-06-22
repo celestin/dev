@@ -11,6 +11,7 @@
  * CAM  30-May-08    366 : Set font Tahoma on _lsvProjects.
  * CAM  19-Feb-2010  10558 : Added split pane and Results Browser table.
  * CAM  27-Feb-2010  10582 : Added filter for opening projects.
+ * CAM  22-Jun-2011  10970 : Included UserGuide in Help menu.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using SourceCodeMetrics.Krakatau.Kepm.Config;
@@ -54,12 +55,13 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKrakatauEPM));
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this._stsMain = new System.Windows.Forms.StatusStrip();
       this._statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.mainSplit = new System.Windows.Forms.SplitContainer();
+      this._lsvProjects = new SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView();
       this._imlProjects = new System.Windows.Forms.ImageList(this.components);
       this._dgvResults = new System.Windows.Forms.DataGridView();
       this._mnsMain = new System.Windows.Forms.MenuStrip();
@@ -96,7 +98,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._tsbSetAsNewProject = new System.Windows.Forms.ToolStripButton();
       this._tsbAnalyzeProject = new System.Windows.Forms.ToolStripButton();
       this._ofdProj = new System.Windows.Forms.OpenFileDialog();
-      this._lsvProjects = new SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView();
+      this.mniUserGuide = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -167,6 +169,19 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.mainSplit.SplitterDistance = 143;
       this.mainSplit.TabIndex = 1;
       //
+      // _lsvProjects
+      //
+      this._lsvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._lsvProjects.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this._lsvProjects.LargeImageList = this._imlProjects;
+      this._lsvProjects.Location = new System.Drawing.Point(0, 0);
+      this._lsvProjects.Name = "_lsvProjects";
+      this._lsvProjects.ShowItemToolTips = true;
+      this._lsvProjects.Size = new System.Drawing.Size(957, 143);
+      this._lsvProjects.TabIndex = 0;
+      this._lsvProjects.UseCompatibleStateImageBehavior = false;
+      this._lsvProjects.ItemActivate += new System.EventHandler(this.EditProject);
+      //
       // _imlProjects
       //
       this._imlProjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("_imlProjects.ImageStream")));
@@ -180,23 +195,23 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       this._dgvResults.AllowUserToAddRows = false;
       this._dgvResults.AllowUserToDeleteRows = false;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F);
-      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this._dgvResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 8.25F);
+      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this._dgvResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
       this._dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 8.25F);
-      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this._dgvResults.DefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F);
+      dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this._dgvResults.DefaultCellStyle = dataGridViewCellStyle4;
       this._dgvResults.Dock = System.Windows.Forms.DockStyle.Fill;
       this._dgvResults.Location = new System.Drawing.Point(0, 0);
       this._dgvResults.Name = "_dgvResults";
@@ -367,6 +382,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // mniHelp
       //
       this.mniHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniUserGuide,
             this.mniMetricsDefs,
             this.mniHelpAbout});
       this.mniHelp.Name = "mniHelp";
@@ -498,7 +514,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._tsbAnalyzeProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyzeProjectToolbar;
       this._tsbAnalyzeProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbAnalyzeProject.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this._tsbAnalyzeProject.Name = "_tsbAnalyseProject";
+      this._tsbAnalyzeProject.Name = "_tsbAnalyzeProject";
       this._tsbAnalyzeProject.Size = new System.Drawing.Size(36, 36);
       this._tsbAnalyzeProject.Text = "Analyze Project(s)";
       this._tsbAnalyzeProject.Click += new System.EventHandler(this.AnalyzeProject);
@@ -507,18 +523,13 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       //
       this._ofdProj.Filter = "KEPM Projects|*.txt";
       //
-      // _lsvProjects
+      // mniUserGuide
       //
-      this._lsvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
-      this._lsvProjects.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._lsvProjects.LargeImageList = this._imlProjects;
-      this._lsvProjects.Location = new System.Drawing.Point(0, 0);
-      this._lsvProjects.Name = "_lsvProjects";
-      this._lsvProjects.ShowItemToolTips = true;
-      this._lsvProjects.Size = new System.Drawing.Size(957, 143);
-      this._lsvProjects.TabIndex = 0;
-      this._lsvProjects.UseCompatibleStateImageBehavior = false;
-      this._lsvProjects.ItemActivate += new System.EventHandler(this.EditProject);
+      this.mniUserGuide.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.Pdf;
+      this.mniUserGuide.Name = "mniUserGuide";
+      this.mniUserGuide.Size = new System.Drawing.Size(173, 22);
+      this.mniUserGuide.Text = "&User Guide";
+      this.mniUserGuide.Click += new System.EventHandler(this.ViewUserGuide);
       //
       // FormKrakatauEPM
       //
@@ -594,6 +605,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.ToolStripStatusLabel _statusLabel;
     private System.Windows.Forms.DataGridView _dgvResults;
     private System.Windows.Forms.ToolStripComboBox _cmbMetricSets;
+    private System.Windows.Forms.ToolStripMenuItem mniUserGuide;
   }
 }
 

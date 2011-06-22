@@ -134,5 +134,10 @@ flex -i -olex.uc.cpp -8 -f lexer.uc.l
 sed -f sed/uc.sed <lex.uc.cpp >lex.uc.tmp
 move lex.uc.tmp lex.uc.cpp
       
+echo Generating parser... MMP
+flex -i -olex.mmp.cpp -8 -f lexer.mmp.l
+sed -f sed/mmp.sed <lex.mmp.cpp >lex.mmp.tmp
+move lex.mmp.tmp lex.mmp.cpp
+      
 echo.
 

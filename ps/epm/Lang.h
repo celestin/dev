@@ -24,7 +24,7 @@
  * CAM  18-Apr-2009  10421 : State ASP does not have logical lines.  C# script within does, but not enough to warrant.
  * CAM  25-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
- * CAM  20-Jun-2011  10963 : Added UC (UC) and MMP (MP) language support.
+ * CAM  20-Jun-2011  10963 : Added UC (UCode) and MMP (Modular Maths Processer) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef CLASS_LANG

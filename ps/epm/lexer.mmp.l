@@ -3,19 +3,19 @@
  * Copyright (c) 2011 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * UCode parser
+ * Modular Maths Processer parser
  *
  * $Id$
  *
  * Who  When         Why
- * CAM  18-Jun-2011  10963 : File created.
+ * CAM  21-Jun-2011  10964 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 %{
 
 #include <stdio.h>
 #include <string.h>
-#include "y.uc.h"
+#include "y.mmp.h"
 #include "PowerHash.h"
 
 #ifdef WIN32
@@ -32,7 +32,7 @@ using namespace std;
 
 #endif
 
-int uc_lineno=0;
+int mmp_lineno=0;
 int j_comments=0;
 int c_comments=0;
 int cpp_comments=0;
@@ -47,7 +47,7 @@ int nsemi=0 ;           // Number of semi-colons
 int noperators=0 ;      // Total number of operators
 int noperands=0;        // Total number of operands
 
-#define NOTE_SLOC()       sloc.insert(uc_lineno)
+#define NOTE_SLOC()       sloc.insert(mmp_lineno)
 #define STORE_OPERATOR(X) operators.insert(X); noperators++; NOTE_SLOC();
 #define STORE_OPERAND(X)  operands.insert(PowerHash(X)); noperands++; NOTE_SLOC();
 
@@ -84,35 +84,22 @@ SPTAB         [ \t]
 
 "/*"                    {com_loc++; c_comments++; BEGIN COMC;}
 <COMC>"*/"              {BEGIN 0;}
-<COMC>\n                {++com_loc;++uc_lineno;}
+<COMC>\n                {++com_loc;++mmp_lineno;}
 <COMC>.                 {;}
 
 "//"                    {cpp_comments++; BEGIN COMEOL;}
-";;"                    {cpp_comments++; BEGIN COMEOL;}
-
-<COMEOL>\n              { uc_lineno++; com_loc++; BEGIN 0;}
+<COMEOL>\n              {mmp_lineno++; com_loc++; BEGIN 0;}
 <COMEOL>.               {}
 
-^[ \t\v\f]*"#"          {NOTE_SLOC(); BEGIN DEFINE; }
-<DEFINE>[^\\]\n         {NOTE_SLOC(); uc_lineno++; ploc_count++;}
-<DEFINE>\n              {NOTE_SLOC(); uc_lineno++; ploc_count++; BEGIN 0;}
+^[ \t\v\f]*"#"          {NOTE_SLOC(); BEGIN DEFINE;}
+<DEFINE>[^\\]\n         {NOTE_SLOC(); mmp_lineno++; ploc_count++;}
+<DEFINE>\n              {NOTE_SLOC(); mmp_lineno++; ploc_count++; BEGIN 0;}
 <DEFINE>.               {;}
 
 
-\n                      {uc_lineno++;}
+\n                      {mmp_lineno++;}
 
-"begin"                 {STORE_OPERATOR(KEY_BEGIN);}
-"end"                   {STORE_OPERATOR(KEY_END);}
-"reg"                   {STORE_OPERATOR(KEY_REG);}
-"sig"                   {STORE_OPERATOR(KEY_SIG);}
-"alu"                   {STORE_OPERATOR(KEY_ALU);}
-"beq"                   {STORE_OPERATOR(KEY_BEQ);}
-"bge"                   {STORE_OPERATOR(KEY_BGE);}
-"bne"                   {STORE_OPERATOR(KEY_BNE);}
-"br"                    {STORE_OPERATOR(KEY_BR);}
-"br_bclr"               {STORE_OPERATOR(KEY_BR_BCLR);}
-"br_bset"               {STORE_OPERATOR(KEY_BR_BSET);}
-
+";"                     {STORE_OPERATOR(SYM_SEMI);}
 "-"                     {STORE_OPERATOR(SYM_MINUS);}
 "%"                     {STORE_OPERATOR(SYM_PCT);}
 "&"                     {STORE_OPERATOR(SYM_AND);}
@@ -134,6 +121,7 @@ SPTAB         [ \t]
 "{"                     {NOTE_SLOC();}
 "}"                     {NOTE_SLOC();}
 "."                     {NOTE_SLOC();}
+","                     {NOTE_SLOC();}
 
 
 {LETTER}{ALNUM}*        {STORE_OPERAND(yytext);}
@@ -166,7 +154,7 @@ void lexclear() {
   BEGIN 0 ;
   noperands=0;
   j_comments=c_comments=cpp_comments=com_loc=0;
-  ploc_count=uc_lineno=nsemi=noperators=0;
+  ploc_count=mmp_lineno=nsemi=noperators=0;
 
   sloc.clear();
   operators.clear();

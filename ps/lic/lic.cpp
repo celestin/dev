@@ -23,7 +23,7 @@
  * CAM  26-Mar-09    10400 : Added AY/HT/JT/PY (#10400/10401/10402/10403).
  * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
- * CAM  18-Jun-2011  10963 : Added Intel languages UC (UC) and MMP (MP).
+ * CAM  18-Jun-2011  10963 : Added Intel languages UC (UCode) and MMP (Modular Maths Processer).
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "LicConfig.h"

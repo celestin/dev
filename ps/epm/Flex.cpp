@@ -25,7 +25,7 @@
  * CAM  26-Mar-09    10400 : Added Assembler (AY), Python (PY), JavaScript (JT) and HTML (HT).
  * CAM  27-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB) language support.
- * CAM  20-Jun-2011  10963 : Added UC (UC) and MMP (MP) language support.
+ * CAM  20-Jun-2011  10963 : Added UC (UCode) and MMP (Modular Maths Processer) language support.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <windows.h>

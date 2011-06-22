@@ -937,6 +937,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lex.mmp.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\lex.pb.cpp"
 					>
 				</File>
@@ -1145,6 +1149,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\lexer.mmp.l"
+					>
+				</File>
+				<File
 					RelativePath=".\lexer.pb.l"
 					>
 				</File>
@@ -1242,6 +1250,10 @@
 				</File>
 				<File
 					RelativePath=".\y.jt.h"
+					>
+				</File>
+				<File
+					RelativePath=".\y.mmp.h"
 					>
 				</File>
 				<File

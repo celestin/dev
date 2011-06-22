@@ -3,9 +3,9 @@
  * Copyright (c) 2011 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * UC language Diff
+ * UCode language Diff
  *
- * $Id: $
+ * $Id$
  *
  * Who  When         Why
  * CAM  18-Jun-2011  10963 : File created.

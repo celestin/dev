@@ -23,6 +23,7 @@
  * CAM  08-Mar-2010  10602 : Test for correct session variable.
  * CAM  24-Mar-2010  10603 : Added links for castlewood.
  * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
+ * CAM  24-Jun-2011  10978 : Added Google Analytics.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -45,7 +46,16 @@ if (empty($pageTitle)) {
   <link href="relaxatub.css" rel=stylesheet type=text/css>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
-
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24170059-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 <body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 id="<? echo $pageId; ?>">
 
 <table cellspacing=5 cellpadding=0 border=0 width="100%" height="100%">

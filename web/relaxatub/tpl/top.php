@@ -21,7 +21,8 @@
  * CAM  11-Aug-2009  10472 : Added AECC Renovation and Selfbuild button.
  * CAM  01-Mar-2010  10586 : Remove AECC banner.
  * CAM  08-Mar-2010  10602 : Test for correct session variable.
- * CAM  24-Mar-2007  10603 : Added links for castlewood.
+ * CAM  24-Mar-2010  10603 : Added links for castlewood.
+ * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -86,7 +87,10 @@ if ($loggedin) {
       </tr>
       </table></td></tr>
     </table></td>
-    <td class=rxbox valign=top><table cellspacing=0 cellpadding=0 border=0 width="650" height="600">
+    <td valign=top>
+    	<div id="fb-relaxatub"><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=155574457848908&amp;xfbml=1"></script><fb:like href="http://www.facebook.com/?sk=lf#!/pages/Relaxatub/119710291449980" send="true" width="650" show_faces="false" action="recommend" font="arial"></fb:like></div>
+    	<div id="rxbox">
+    	<table cellspacing=0 cellpadding=0 border=0 width="650" height="600">
       <tr>
         <td align=center class="rxtop">
         <div id="rxfeature">

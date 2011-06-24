@@ -21,7 +21,8 @@
  * CAM  11-Aug-2009  10471 : Added tubtype (for Hybrid/Portable).
  * CAM  08-Mar-2010  10588 : Added Message formats and tidied inputs.
  * CAM  12-Mar-2010  10604 : Added Quickship classes.
- * CAM  24-Mar-2007  10603 : Added links for castlewood.
+ * CAM  24-Mar-2010  10603 : Added links for castlewood.
+ * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -159,7 +160,7 @@ p.legal {
   font-size: 16pt;
 }
 
-.rxbox {
+#rxbox {
   border-bottom: #233f91 2px solid;
   border-left:   #233f91 2px solid;
   border-right:  #233f91 2px solid;

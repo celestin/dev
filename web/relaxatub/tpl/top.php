@@ -24,6 +24,7 @@
  * CAM  24-Mar-2010  10603 : Added links for castlewood.
  * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
  * CAM  24-Jun-2011  10978 : Added Google Analytics.
+ * CAM  24-Jun-2011  10978 : Added Google Site Verification.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -40,10 +41,10 @@ if (empty($pageTitle)) {
 <html>
 <head>
   <title><? print $pageTitle; ?></title>
-  <meta name="Description" content="Hot Tubs Aberdeen, Scotland, UK, Spas.  Check out - <? print $pageTitle; ?>">
-  <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh">
-
-  <link href="relaxatub.css" rel=stylesheet type=text/css>
+  <meta name="Description" content="Hot Tubs Aberdeen, Scotland, UK, Spas.  Check out - <? print $pageTitle; ?>" />
+  <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh" />
+  <meta name="google-site-verification" content="bghNnES4HxAdU3Hs8-uocMRfBR_HLOzkTASNRiMmHcg" />
+  <link href="relaxatub.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <script type="text/javascript">

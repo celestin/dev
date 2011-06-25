@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - General FAQ</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - General FAQ">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="../../style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="../../ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../../img/navx/select2.gif";
+    var ImgOff = "../../img/navx/go2.gif";
+    var ImgClick = "../../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
+  //-->
+  </SCRIPT>
+</HEAD>
+
+<Body  bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="7"><img src="../../img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="../../img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="../../img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="../../img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="../../img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="5"><img src="../../img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><a name="#FAQTOP"><h1 class="narr">Frequently Asked Questions</h1></a>
+<li class="narr"><a href="#FAQ001">What is Krakatau Metrics?</a></li>
+<li class="narr"><a href="#FAQ002">How does it work?</a></li>
+<li class="narr"><a href="#FAQ003">How are the metrics calculated?</a></li>
+<li class="narr"><a href="#FAQ004">Why are all these calculations needed?</a></li>
+<li class="narr"><a href="#FAQ005">Why does Krakatau need a database?</a></li>
+<li class="narr"><a href="#FAQ006">How do i know that Krakatau is giving me the correct results?</a></li>
+
+<a name="FAQ001"><h2 class="narr">What is Krakatau Metrics?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau Metrics is a family of source code measurement (metrics) tools.</p>
+
+<a name="FAQ002"><h2 class="narr">How does it work?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau uses Power Software designed C/C++ and Java language parsers to automatically scan source code and report on key parameters and measurements (metrics).</p>
+
+<a name="FAQ003"><h2 class="narr">How are the metrics calculated?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">After scanning the code and extracting the key syntax, Krakatau uses Power Software designed analysers to make further detailed analysis of the code.</p>
+<p class="narr">At this stage information is also stored to in a SQL database. Then a model is created to facilitate the final stage of calculating and displaying the metrics.</p>
+
+<a name="FAQ004"><h2 class="narr">Why are all these calculations needed?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau makes varying levels of measurements. The simplest is LOC and SLOC.</p>
+<p class="narr">However the tool also reports on advanced metrics like LCOM (Lack of Cohesion in Methods) and DIT (Depth of Inheritance Tree) and V(G) (Cyclomatic Complexity).</p>
+<p class="narr">These calculations involve cross referencing and matching of external methods, and other metrics involve tracking depth of inheritanace.</p>
+<p class="narr">For this reason advanced mathematics is required in a professional metrics tool.</p>
+
+<a name="FAQ005"><h2 class="narr">Why does Krakatau need a database?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau is designed for 'real world' use. Many tools will manage a demonstration or a trial with a few hundred thousand lines of code.</p>
+<p class="narr">Krakatau has been tested to millions of lines of code.</p>
+<p class="narr">This is especially important for 'change' metrics where the comparison of two projects doubles the size of the source code under analysis.</p>
+<p class="narr">The database allows Krakatau to scale from a few thousand to millions of lines of source code.</p>
+<p class="narr">This makes Krakatau usable across all your projects now and as they develop in the future.</p>
+
+<a name="FAQ006"><h2 class="narr">How do I know that Krakatau is giving me the correct results?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">We use a number of tests to ensure the validity and integrity of the results.</p>
+
+<p></p></TD>
+      <TD bgcolor="#ffffff" rowspan="5" width="100%"><img src="../../img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 alt="Home" width="80" height="32" src="../../img/nav/home2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 name="B01" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="../../img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="../../img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="../../img/navx/go2.gif"></a></TD></TR><tr><td><table border="0" cellspacing=0 cellpadding=3><tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td class="nav">General FAQ</td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/license/"class="nav">Licensing</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/justify/"class="nav">Justification</a></td></tr></table></td><td bgcolor="#ffffff"><img border="0" src="../../img/f.gif"></td></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="../../img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="../../img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="../../img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="../../img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>16 Mar 2010</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

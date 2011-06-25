@@ -1,0 +1,8 @@
+
+
+  This file merely states that this dir is the Subproject Edition.
+  
+  Inserted at the top of the MSVC project, it distinguishes between
+  Subproject and Standard Editions.
+  
+  CAM 10/10/2001

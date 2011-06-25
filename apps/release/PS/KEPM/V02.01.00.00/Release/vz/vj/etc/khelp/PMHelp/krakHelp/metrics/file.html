@@ -1,0 +1,113 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="steve">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>File Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">File Metrics</h1>
+
+<h3>LOC - Lines Of Code</h3>
+
+<p>The number of lines of code in a file provides a primitive measure of effort taken to
+understand or maintain the contents of that file. </p>
+
+<h3>SLOC - Source Lines Of Code</h3>
+
+<p>This metric measures only the number of lines in a file containing source code.&nbsp;
+SLOC is LOC minus whitespace lines and comment lines. </p>
+
+<h3>NTC - Number of Top-level Classes</h3>
+
+<p>The number of top-level classes in a file should usually not exceed 1.&nbsp; If there
+is more than one top-level class, then this file may be considered particularly unusual or
+complex. </p>
+
+<h3>NTM - Number of Top-level Methods</h3>
+
+<p>Under normal circumstances, it is quite reasonable to have several top-level methods in
+a file. </p>
+
+<h3>N1 - Total Number of Operators</h3>
+
+<p>N1 is the total number of operators used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>N2 - Total Number of Operands</h3>
+
+<p>N2 is the total number of operands used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>n1 - Number of Unique Operators</h3>
+
+<p>n1 is the number of unique operators used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>n2 - Number of Unique Operands</h3>
+
+<p>n2 is the number of unique operands used in a file.&nbsp; This is used as an input to
+the Halstead Software Science metrics. </p>
+
+<h3>N - Halstead Program Length</h3>
+
+<p>N is calculated as N1+N2 and is a general measure of program length for a given file. </p>
+
+<h3>n - Halstead Program Vocabulary</h3>
+
+<p>n is calculated as n1+n2 and is a measure of the number of unique operands and
+operators used in a particular file.&nbsp; This can provide an impression of
+comprehensibility/complexity for that file. </p>
+
+<h3>V - Halstead Program Volume</h3>
+
+<p>V is the program volume metric from the Halstead Software Science metrics.&nbsp; This
+is calculated as V=N*(LOG<sub>2</sub> n). </p>
+
+<h3>D - Halstead Difficulty</h3>
+
+<p>D is the difficulty metric from the Halstead Software Science metrics.&nbsp; This is
+calculated as D=(n1/n2)*(N2/n2). </p>
+
+<h3>E - Halstead Effort</h3>
+
+<p>E is the effort metric from the Halstead Software Science metrics.&nbsp; This is
+calculated as E=D*V. </p>
+
+<h3>AVCALLS - Average Calls</h3>
+
+<p>AVCALLS measures the average number of calls to subordinate logical units from methods
+and functions in a particular file.&nbsp; Therfore, this metric is a measure of FAN-OUT. </p>
+
+<h3>C_COM - C style comments</h3>
+
+<p>This metric measures the number of C style (/* ... */) comments used in a particular
+file.&nbsp; This can help to measure the extent of documentation for a file. </p>
+
+<h3>CPP_COM - C++ style comments</h3>
+
+<p>This metric measures the number of C++ style (// ...) comments used in a particular
+file.&nbsp; This can help to measure the extent of documentation for a file. </p>
+
+<h3>COM_LOC - Comment Lines of Code</h3>
+
+<p>COM_LOC measures the number of lines of code in a file which contain comments.&nbsp;
+Lines containing more than one comment are only counted once.&nbsp; Like C_COM and
+CPP_COM, COM_LOC is a measure of the extent of documentation in a source file. <br>
+&nbsp; </p>
+
+<h3>COM_RAT - Comment Ratio</h3>
+
+<p>This metric measures the ratio of comment lines of code (COM_LOC)&nbsp;to total lines
+of code including whitespace and comments (LOC). </p>
+
+<h3>TCOM_RAT - True Comment Ratio</h3>
+
+<p>This metric measures the ratio of comment lines of code (COM_LOC)&nbsp;to source lines
+of code (excluding whitespace and comments (SLOC).<font SIZE="+1"><a HREF="inte.htm"></a></font>
+</p>
+</body>
+</html>

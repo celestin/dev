@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE toc
+PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN"
+		 "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+<toc version="1.0">
+<tocitem text="Krakatau Metrics" target="top" image="toplevelfolder">
+
+
+	<tocitem text="Introduction" target="krakatau.intro"/>
+
+	<tocitem text="Krakatau Tutorial" target="tut.intro"
+		<tocitem text="Tutorial 1: Project Creation" target="tut.create"/>
+		<tocitem text="Tutorial 2: Applying Metrics" target="tut.apply"/>
+		<tocitem text="Tutorial 3: Comparing Projects" target="tut.compare"/>
+		<tocitem text="Tutorial 4: Viewing Results" target="tut.results">
+			<tocitem text="Metric Values" target="tut.results.values"/>
+			<tocitem text="Histogram" target="tut.results.histo"/>
+		</tocitem>
+		<tocitem text="Tutorial 5: HTML Reports" target="tut.report"/>
+	</tocitem>
+
+	<tocitem text="Creating Projects" target="creation.intro">
+		<tocitem text="Giving your project a name" target="creation.name"/>
+		<tocitem text="Type of Creation" target="creation.type">
+			<tocitem text="Directory Type" target="creation.type.dir"/>
+			<tocitem text="File Type" target="creation.type.files"/>
+			<tocitem text="Import Type" target="creation.type.import"/>
+		</tocitem>
+	</tocitem>
+
+	<tocitem text="Metric Results" target="results.intro">
+		<tocitem text="General Usage" target="results.general"/>
+		<tocitem text="Symbol Tree" target="results.tree">
+			<tocitem text="Single Project" target="results.tree.single"/>
+			<tocitem text="Comparison" target="results.tree.compare"/>
+		</tocitem>
+		<tocitem text="Symbol List" target="results.list">
+			<tocitem text="Selecting Symbols" target="results.list.select"/>
+			<tocitem text="Sorting Symbols" target="results.list.sort"/>
+		</tocitem>
+		<tocitem text="Metric Values" target="results.values">
+			<tocitem text="Comparison Values" target="results.values.compare"/>
+		</tocitem>
+		<tocitem text="Histogram View" target="results.histo"/>
+		<tocitem text="Kiviat View" target="results.kiviat"/>
+	</tocitem>
+
+	<tocitem text="Interpreting Metrics" target="metrics.intro">
+          <tocitem text="Project">
+            <tocitem text="Actual">
+              <tocitem text="C_COM - C style comments" target="metrictutor.mui10113"/>
+              <tocitem text="COM_LOC - Comment lines of code" target="metrictutor.mui10112"/>
+              <tocitem text="COM_RAT - Comments Ratio (Project)" target="metrictutor.mui10510"/>
+              <tocitem text="CPP_COM - C++ sytle comments" target="metrictutor.mui10114"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui10101"/>
+              <tocitem text="NCLASS - Number of Classes" target="metrictutor.mui10513"/>
+              <tocitem text="NFILE - Number of Files" target="metrictutor.mui10514"/>
+              <tocitem text="NMETH - Number of Methods" target="metrictutor.mui10515"/>
+              <tocitem text="NSC - Number of Semicolons" target="metrictutor.mui10109"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui10102"/>
+              <tocitem text="TCOM_RAT - True Comments Ratio (Project)" target="metrictutor.mui10511"/>
+              <tocitem text="WLOC - Whitespace lines of code" target="metrictutor.mui10126"/>
+            </tocitem>
+            <tocitem text="Changed">
+              <tocitem text="ADD_FILE - Number of Files (Added)" target="metrictutor.mui10524"/>
+              <tocitem text="ADD_METH - Number of Methods (Added)" target="metrictutor.mui10530"/>
+              <tocitem text="ADD_SLOC - Source Lines of Code (Added)" target="metrictutor.mui10521"/>
+              <tocitem text="CHG_FILE - Number of Files (Changed)" target="metrictutor.mui10522"/>
+              <tocitem text="CHG_METH - Number of Methods (Changed)" target="metrictutor.mui10528"/>
+              <tocitem text="CHG_SLOC - Source Lines of Code (Changed)" target="metrictutor.mui10519"/>
+              <tocitem text="DEL_FILE - Number of Files (Deleted)" target="metrictutor.mui10523"/>
+              <tocitem text="DEL_METH - Number of Methods (Deleted)" target="metrictutor.mui10529"/>
+              <tocitem text="DEL_SLOC - Source Lines of Code (Deleted)" target="metrictutor.mui10520"/>
+            </tocitem>
+          </tocitem>
+          <tocitem text="Package">
+            <tocitem text="Actual">
+              <tocitem text="NFILE - Number of Files in a Package" target="metrictutor.mui20501"/>
+            </tocitem>
+          </tocitem>
+          <tocitem text="File">
+            <tocitem text="Actual">
+              <tocitem text="C_COM - C style comments" target="metrictutor.mui40113"/>
+              <tocitem text="COM_LOC - Comment lines of code" target="metrictutor.mui40112"/>
+              <tocitem text="COM_RAT - Comments Ratio" target="metrictutor.mui40501"/>
+              <tocitem text="CPP_COM - C++ sytle comments" target="metrictutor.mui40114"/>
+              <tocitem text="J_COM - Java Style comments" target="metrictutor.mui40115"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui40101"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui40102"/>
+              <tocitem text="TCOM_RAT - True Comments Ratio" target="metrictutor.mui40502"/>
+              <tocitem text="WLOC - Whitespace lines of code" target="metrictutor.mui40126"/>
+            </tocitem>
+            <tocitem text="Changed">
+              <tocitem text="ADD_SLOC - Source Lines of Code (Added)" target="metrictutor.mui40508"/>
+              <tocitem text="CHG_SLOC - Source Lines of Code (Changed)" target="metrictutor.mui40506"/>
+              <tocitem text="DEL_SLOC - Source Lines of Code (Deleted)" target="metrictutor.mui40507"/>
+            </tocitem>
+          </tocitem>
+          <tocitem text="Class">
+            <tocitem text="Actual">
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui50101"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui50102"/>
+            </tocitem>
+          </tocitem>
+          <tocitem text="Interface">
+            <tocitem text="Actual">
+              <tocitem text="LOC - Lines of Code" target="metrictutor.mui60101"/>
+            </tocitem>
+          </tocitem>
+          <tocitem text="Method">
+            <tocitem text="Actual">
+              <tocitem text="CONTROL - Number of control statements" target="metrictutor.mui70110"/>
+              <tocitem text="eV(G) - Essential Complexity" target="metrictutor.mui70118"/>
+              <tocitem text="EXEC - Number of executable statements" target="metrictutor.mui70111"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui70101"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui70102"/>
+              <tocitem text="V(G) - Cyclomatic Complexity" target="metrictutor.mui70117"/>
+            </tocitem>
+          </tocitem>
+	</tocitem>
+
+	<tocitem text="Reports" target="reports.intro">
+		<tocitem text="HTML Reports" target="reports.html"/>
+		<tocitem text="Violating Reports" target="reports.viol"/>
+		<tocitem text="CDF Reports" target="reports.cdf"/>
+	</tocitem>
+
+	<tocitem text="Choosing Metrics" target="choose.intro">
+		<tocitem text="Bound Editor" target="choose.editor"/>
+		<tocitem text="Metric Chooser" target="choose.chooser"/>
+	</tocitem>
+
+	<tocitem text="Trouble Shooting" target="trouble.intro"/>
+
+
+</tocitem>
+</toc>

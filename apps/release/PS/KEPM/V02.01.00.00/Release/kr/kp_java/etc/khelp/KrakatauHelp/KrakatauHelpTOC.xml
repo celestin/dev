@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE toc
+	PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN"
+		 "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+<toc version="1.0">
+<tocitem text="Krakatau Metrics" target="top" image="toplevelfolder">
+
+
+	<tocitem text="Introduction" target="krakatau.intro"/>
+
+	<tocitem text="Krakatau Tutorial" target="tut.intro"
+		<tocitem text="Tutorial 1: Project Creation" target="tut.create"/>
+		<tocitem text="Tutorial 2: Applying Metrics" target="tut.apply"/>
+		<tocitem text="Tutorial 3: Viewing Results" target="tut.results">
+			<tocitem text="Metric Values" target="tut.results.values"/>
+			<tocitem text="Histogram" target="tut.results.histo"/>
+		</tocitem>
+		<tocitem text="Tutorial 4: HTML Reports" target="tut.report"/>
+	</tocitem>
+
+	<tocitem text="Creating Projects" target="creation.intro">
+		<tocitem text="Giving your project a name" target="creation.name"/>
+		<tocitem text="Type of Creation" target="creation.type">
+			<tocitem text="Directory Type" target="creation.type.dir"/>
+			<tocitem text="File Type" target="creation.type.files"/>
+			<tocitem text="Import Type" target="creation.type.import"/>
+		</tocitem>
+	</tocitem>
+
+	<tocitem text="Metric Results" target="results.intro">
+		<tocitem text="General Usage" target="results.general"/>
+		<tocitem text="Symbol List" target="results.list">
+			<tocitem text="Selecting Symbols" target="results.list.select"/>
+			<tocitem text="Sorting Symbols" target="results.list.sort"/>
+		</tocitem>
+		<tocitem text="Metric Values" target="results.values"/>
+		<tocitem text="Histogram View" target="results.histo"/>
+		<tocitem text="Kiviat View" target="results.kiviat"/>
+	</tocitem>
+
+        <tocitem text="Interpreting Metrics" target="metrics.intro">
+          <tocitem text="Project">
+              <tocitem text="ACLOC - Average Lines per Class" target="metrictutor.mui10517"/>
+              <tocitem text="AHF - Attribute Hiding Factor" target="metrictutor.mui10502"/>
+              <tocitem text="AIF - Attribute Inheritence Factor" target="metrictutor.mui10504"/>
+              <tocitem text="AMLOC - Average Lines per Method" target="metrictutor.mui10518"/>
+              <tocitem text="AVPATHS - Average Depth of Paths" target="metrictutor.mui10508"/>
+              <tocitem text="C_COM - C style comments" target="metrictutor.mui10113"/>
+              <tocitem text="COM_LOC - Comment lines of code" target="metrictutor.mui10112"/>
+              <tocitem text="COM_RAT - Comments Ratio (Project)" target="metrictutor.mui10510"/>
+              <tocitem text="CPP_COM - C++ sytle comments" target="metrictutor.mui10114"/>
+              <tocitem text="HIER - Hierarchical Depth" target="metrictutor.mui10507"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui10101"/>
+              <tocitem text="MHF - Method Hiding Factor" target="metrictutor.mui10501"/>
+              <tocitem text="MIF - Method Inheritence Factor" target="metrictutor.mui10503"/>
+              <tocitem text="NCLASS - Number of Classes" target="metrictutor.mui10513"/>
+              <tocitem text="NFILE - Number of Files" target="metrictutor.mui10514"/>
+              <tocitem text="NMETH - Number of Methods" target="metrictutor.mui10515"/>
+              <tocitem text="NORC - Number of Root Classes" target="metrictutor.mui10516"/>
+              <tocitem text="NSC - Number of Semicolons" target="metrictutor.mui10109"/>
+              <tocitem text="POF - Polymorphism Factor" target="metrictutor.mui10505"/>
+              <tocitem text="SEIMI - SEI Maintainability Index" target="metrictutor.mui10512"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui10102"/>
+              <tocitem text="TCOM_RAT - True Comments Ratio (Project)" target="metrictutor.mui10511"/>
+              <tocitem text="WLOC - Whitespace lines of code" target="metrictutor.mui10126"/>
+          </tocitem>
+          <tocitem text="Package">
+              <tocitem text="NFILE - Number of Files in a Package" target="metrictutor.mui20501"/>
+          </tocitem>
+          <tocitem text="File">
+              <tocitem text="C_COM - C style comments" target="metrictutor.mui40113"/>
+              <tocitem text="COM_LOC - Comment lines of code" target="metrictutor.mui40112"/>
+              <tocitem text="COM_RAT - Comments Ratio" target="metrictutor.mui40501"/>
+              <tocitem text="CPP_COM - C++ sytle comments" target="metrictutor.mui40114"/>
+              <tocitem text="D - Halstead program Difficulty" target="metrictutor.mui40124"/>
+              <tocitem text="E - Halstead program Effort" target="metrictutor.mui40125"/>
+              <tocitem text="J_COM - Java Style comments" target="metrictutor.mui40115"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui40101"/>
+              <tocitem text="n - Halstead program Vocabulary" target="metrictutor.mui40122"/>
+              <tocitem text="N - Halstead program Length" target="metrictutor.mui40121"/>
+              <tocitem text="n1 - Halstead number of unique operators" target="metrictutor.mui40107"/>
+              <tocitem text="N1 - Halstead total number of operators" target="metrictutor.mui40105"/>
+              <tocitem text="N2 - Halstead total number of operands" target="metrictutor.mui40106"/>
+              <tocitem text="n2 - Halstead number of unique operands" target="metrictutor.mui40108"/>
+              <tocitem text="NTC - Number of Top-level Classes" target="metrictutor.mui40503"/>
+              <tocitem text="NTI - Number of Top-level Interfaces" target="metrictutor.mui40505"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui40102"/>
+              <tocitem text="TCOM_RAT - True Comments Ratio" target="metrictutor.mui40502"/>
+              <tocitem text="V - Halstead program Volume" target="metrictutor.mui40123"/>
+              <tocitem text="WLOC - Whitespace lines of code" target="metrictutor.mui40126"/>
+          </tocitem>
+          <tocitem text="Class">
+              <tocitem text="AC - Attribute Complexity" target="metrictutor.mui50520"/>
+              <tocitem text="CBO - Coupling Between Object classes" target="metrictutor.mui50508"/>
+              <tocitem text="CSA - Class Size (Attributes)" target="metrictutor.mui50501"/>
+              <tocitem text="CSAO - Class Size (Attributes &amp; Operations)" target="metrictutor.mui50503"/>
+              <tocitem text="CSI - Class Specialisation Index" target="metrictutor.mui50516"/>
+              <tocitem text="CSO - Class Size (Operations)" target="metrictutor.mui50502"/>
+              <tocitem text="DIT - Depth of Inheritence Tree" target="metrictutor.mui50506"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui50101"/>
+              <tocitem text="LOCM - Lack Of Cohesion Methods" target="metrictutor.mui50509"/>
+              <tocitem text="NAAC - Number of Attributes Added" target="metrictutor.mui50512"/>
+              <tocitem text="NAIC - Number of Attributes Inherited" target="metrictutor.mui50514"/>
+              <tocitem text="NAOC - Number of Operations Added" target="metrictutor.mui50511"/>
+              <tocitem text="NOIC - Number of Operations Inherited" target="metrictutor.mui50513"/>
+              <tocitem text="NOOC - Number of Operations Overridden" target="metrictutor.mui50510"/>
+              <tocitem text="NPavgC - Average Number of Method Parameters" target="metrictutor.mui50518"/>
+              <tocitem text="NSUB - Number of Sub Classes" target="metrictutor.mui50505"/>
+              <tocitem text="Osavg - Average Operation Size" target="metrictutor.mui50517"/>
+              <tocitem text="PA - Private Attribute Usage" target="metrictutor.mui50519"/>
+              <tocitem text="PPPC - Percentage Public/Protected members" target="metrictutor.mui50504"/>
+              <tocitem text="RFC - Response For Class" target="metrictutor.mui50507"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui50102"/>
+              <tocitem text="WMC - Weighted Methods in Class" target="metrictutor.mui50515"/>
+          </tocitem>
+          <tocitem text="Interface">
+              <tocitem text="ISA - Interface Size (Attributes)" target="metrictutor.mui60501"/>
+              <tocitem text="ISAO - Interface Size (Attributes &amp; Operations)" target="metrictutor.mui60503"/>
+              <tocitem text="ISO - Interface Size (Operations)" target="metrictutor.mui60502"/>
+              <tocitem text="LOC - Lines of Code" target="metrictutor.mui60101"/>
+              <tocitem text="NOCI - Number of Child Interfaces" target="metrictutor.mui60505"/>
+              <tocitem text="PPPC - Percentage Public/Protected members" target="metrictutor.mui60504"/>
+          </tocitem>
+          <tocitem text="Method">
+              <tocitem text="ANION - Adjusted number of I/O nodes" target="metrictutor.mui70104"/>
+              <tocitem text="B - Halstead Bug Prediction" target="metrictutor.mui70127"/>
+              <tocitem text="BRANCH - Number of branching nodes" target="metrictutor.mui70119"/>
+              <tocitem text="CDENS - Control Density" target="metrictutor.mui70505"/>
+              <tocitem text="CONTROL - Number of control statements" target="metrictutor.mui70110"/>
+              <tocitem text="D - Halstead program Difficulty" target="metrictutor.mui70124"/>
+              <tocitem text="E - Halstead program Effort" target="metrictutor.mui70125"/>
+              <tocitem text="eV(G) - Essential Complexity" target="metrictutor.mui70118"/>
+              <tocitem text="EXEC - Number of executable statements" target="metrictutor.mui70111"/>
+              <tocitem text="LOC - Lines of code" target="metrictutor.mui70101"/>
+              <tocitem text="n - Halstead program Vocabulary" target="metrictutor.mui70122"/>
+              <tocitem text="N - Halstead program Length" target="metrictutor.mui70121"/>
+              <tocitem text="n1 - Halstead number of unique operators" target="metrictutor.mui70107"/>
+              <tocitem text="N1 - Halstead total number of operators" target="metrictutor.mui70105"/>
+              <tocitem text="N2 - Halstead total number of operands" target="metrictutor.mui70106"/>
+              <tocitem text="n2 - Halstead number of unique operands" target="metrictutor.mui70108"/>
+              <tocitem text="NEST - Maximum number of levels" target="metrictutor.mui70120"/>
+              <tocitem text="NION - Number of I/O nodes" target="metrictutor.mui70103"/>
+              <tocitem text="NP - Number of Parameters" target="metrictutor.mui70511"/>
+              <tocitem text="NSTAT - Number of Statements" target="metrictutor.mui70510"/>
+              <tocitem text="QCP_CRCT - Quality Criteria Profile (Correctness)" target="metrictutor.mui70508"/>
+              <tocitem text="QCP_MAINT - Quality Criteria Profile (Maintainability)" target="metrictutor.mui70507"/>
+              <tocitem text="QCP_RLBTY - Quality Criteria Profile (Reliability)" target="metrictutor.mui70509"/>
+              <tocitem text="RLOC - Relative Lines of Code" target="metrictutor.mui70502"/>
+              <tocitem text="SLOC - Source lines of code" target="metrictutor.mui70102"/>
+              <tocitem text="V - Halstead program Volume" target="metrictutor.mui70123"/>
+              <tocitem text="V(G) - Cyclomatic Complexity" target="metrictutor.mui70117"/>
+              <tocitem text="V'(G) - Extended Cyclomatic Complexity" target="metrictutor.mui70501"/>
+          </tocitem>
+        </tocitem>
+
+	<tocitem text="Reports" target="reports.intro">
+		<tocitem text="HTML Reports" target="reports.html"/>
+		<tocitem text="Violating Reports" target="reports.viol"/>
+		<tocitem text="CDF Reports" target="reports.cdf"/>
+	</tocitem>
+
+	<tocitem text="Choosing Metrics" target="choose.intro">
+		<tocitem text="Bound Editor" target="choose.editor"/>
+		<tocitem text="Metric Chooser" target="choose.chooser"/>
+	</tocitem>
+
+	<tocitem text="Trouble Shooting" target="trouble.intro"/>
+
+
+</tocitem>
+</toc>

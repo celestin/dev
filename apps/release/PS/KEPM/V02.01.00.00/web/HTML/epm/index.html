@@ -1,0 +1,432 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - Products - Essential Project Manager</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - Products - Essential Project Manager">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="../style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="../ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../img/navx/select2.gif";
+    var ImgOff = "../img/navx/go2.gif";
+    var ImgClick = "../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
+  //-->
+  </SCRIPT>
+    <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>
+  <script Language="JavaScript1.2">
+  <!--
+   function showMetricHelp(relativePath, mttCode, mttName, mttDescription, mttFormula) {
+
+     var desc1 = new String(mttDescription) ;
+     var desc = desc1.replace(/JSAFEQUOT/g, '"') ;
+     desc1 = new String(mttFormula) ;
+     var formula = desc1.replace(/JSAFEQUOT/g, '"') ;
+
+     var helpWin = window.open("", "mhWindow", "width=580,height=350,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ;
+     var doc = helpWin.document;
+     doc.write('<html><head><title>Metric Help - ' + mttName + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n') ;
+     doc.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>') ;
+     doc.write(mttCode + '</b>&nbsp;' + mttName + '</font></td></tr>\n') ;
+     doc.write('<tr><td background="' + relativePath + 'img/top_bev.gif"><img src="' + relativePath + 'img/f.gif"></td></tr><tr><td valign=top class="narr">') ;
+     doc.write(desc + '</td></tr><tr><td valign=top class="narr"><pre>') ;
+     doc.write(formula + '</pre></td></tr><tr><td height="100%" valign=bottom align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>') ;
+     doc.close() ;
+   }
+  //-->
+  </script>
+  <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>
+</HEAD>
+
+<Body  bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="7"><img src="../img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="../img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="../img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="../img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="../img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="../img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="../img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="5"><img src="../img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><TABLE border="0" cellspacing="0" cellpadding="0" width="100%"><TR align=right><TD><table border="0" cellspacing="0" cellpadding="0"><tr valign=center><td width="13"><img border="0" src="../img/navx/tab_sle.gif"></td>
+<td background="../img/navx/tab_sb.gif" class="nav">Overview</td><td width="13"><img border="0" src="../img/navx/tab_sr.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../epm/screenshot.html" class="nav">ScreenShots</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../epm/reports/" class="nav">Reports</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../epm/languages.html" class="nav">Languages</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../epm/faq.html" class="nav">FAQ</a></td><td width="13"><img border="0" src="../img/navx/tab_ure.gif"></td>
+<td><img src="../img/f.gif" width=15></td></tr></table></TD></TR></TABLE>
+<TABLE border=0 cellspacing=0 cellpadding=0 width="100%"><tr>
+<TD><img src="../img/prod/logo_epm.gif"></TD>
+<TD align=center valign=center>&nbsp;</TD>
+</tr></TABLE>
+<table border=0 width="100%" cellspacing=10>
+
+<tr>
+
+<td colspan=2><p class="narr"><b>EPM is the multi-language metrics solution for measuring changed, added and deleted source lines of code</b></p>
+
+<p class="narr" style="text-align:justify">The majority of organisations recognise the importance of
+managing and monitoring their considerable investment in developed source code.
+To do this they measure both the size and the changes to the project and its key
+components. This enables developers and managers to see if there is any unexpected
+or 'rogue' development or simply to compare the progress of development against the
+design and project plan.  It also serves to indicate if any particular source components
+are being changed frequently and this may indicate a design or coding issue.</p></td>
+
+<td align=right valign=middle><a href="screenshot.html"><img src="thumb/c1.gif" border=0></a></td></tr>
+
+<tr>
+
+<td rowspan=2 align=right valign=middle align=center><a href="screenshot.html"><img src="thumb/m2.gif" border=0></a><br>
+<p class="annot">Multi-Language Projects</p>
+<a href="screenshot.html"><img src="thumb/m1.gif" border=0></a></td>
+
+<td><p class="narr" style="text-align:justify">Very often this job is done manually, by an in-house developed utility
+that is not commercially supported or by a similarly unsupported freeware utility.
+PowerSoftware.com believes that this is not an ideal way to protect your investment
+in a source code project that may run into millions of pounds and so we have developed
+a single, professional product with full commercial support to achieve this task for you.
+We have called this product <b>Essential Project Manager</b> (<b>EPM</b>) because it’s an essential tool
+for source code Project Managers.</p>
+
+<div id="hotnew">
+<p>EPM now features <b>churn metrics</b>, giving you the ability to tell at-a-glance how much <i>change has occurred between two projects</i>.  Churn metrics include:
+<ul>
+  <li>CRN_SLOC: Churn Source lines of code: total changed, new and deleted <i>source</i> lines of code.</li>
+  <li>CRN_LLOC: Churn Logical lines of code: total changed, new and deleted <i>logical</i> lines of code.</li>
+  <li>CRN_FILE: Churn Files: total number of changed, new and deleted files.</li>
+</ul>
+</p>
+</div>
+
+<div style="float:left; clear:left;padding: 0 10px; ">
+<table border=0 width="228" class="featurebox" cellpadding=5 cellspacing=0>
+<tr class="featureimg"><td><img width="228" height="81" src="../img/xml1.gif" border=0></td></tr>
+<tr><td><p class="narr" style="text-align:center">Configure EPM to suit your file extensions using
+a simple <a href="epm.xml" target="_blank">XML configuration file</a></p></td></tr>
+</table>
+</div>
+
+<p class="narr" style="text-align:justify"><b>EPM</b> is a command line (batch mode) utility and as such it can be
+integrated into your build process to automatically measure both the size of your source
+code and the number of &quot;new, changed and deleted&quot; lines of source code across the
+entire project and in each individual source file. Of course <b>EPM</b> also shows which files have
+been removed, added and deleted across the project as a whole. It does this by referencing
+the new version of the source code project against the previous or any other prior version
+of your project.</p></td>
+
+<td align=center><a href="epm_chg_ex.pdf"><img src="../img/pdf2.gif" border=0></a><br>
+<a class="narr" href="epm_chg_ex.pdf">Changed SLOC Example</a><br><br>
+
+<a href="UserGuide.pdf"><img src="../img/pdf2.gif" border=0></a><br>
+<a class="narr" href="UserGuide.pdf">View the User Guide</a><br><br>
+
+<a href="MetricsDefinitions.pdf"><img src="../img/pdf2.gif" border=0></a><br>
+<a class="narr" href="MetricsDefinitions.pdf">Metrics Definitions</a><br><br>
+
+<a href="../kepm/ManagementBrief.pdf"><img src="../img/pdf2.gif" border=0></a><br>
+<a class="narr" href="../kepm/ManagementBrief.pdf">Read Management Brief</a></td>
+
+</tr><tr>
+
+<td colspan=2><p class="narr" style="text-align:justify"><b>EPM</b> operates at two levels. In single project (non-comparison) mode it simply
+provides, in a variety of reports for LOC, SLOC and related metrics (Halstead size metrics)
+for the project and for each file.  In comparison mode it provides the &quot;differences&quot;
+and the &quot;changes&quot; in these metrics between the two versions of the project that
+you select. It is in this second, comparison, mode that you will see our unique &quot;changed SLOC&quot;
+metrics that are so useful in indicating the issues mentioned above.</p></td>
+
+</tr><tr>
+
+<td colspan=2><p class="narr">In order for <b>EPM</b> to be a single, industry-standard, solution we have designed
+the product to support multiple languages and the number of supported languages is increasing
+frequently and rapidly.</p>
+
+<p class="narr">Of course the data produced by <b>EPM</b> must be given in a useful format and
+it is therefore provided in CSV, HTML and XML for your further collection,
+analysis and further processing.</p>
+
+<p class="narr">Please take the opportunity to <a href="../download/">download</a>
+and test <b>EPM</b> on your source code today.</p>
+
+</td>
+
+<td valign=middle>
+<div style="width:auto; border: #0066cc 2px solid; padding: 10px">
+<img title="Ada" src="../img/lang/ada.gif">
+<img title="ASP" src="../img/lang/aspx.gif">
+<img title="Assembly" src="../img/lang/asm.png">
+<img title="C++" src="../img/lang/cpp.gif">
+<img title="C#" src="../img/lang/cs.gif">
+<img title="Cascading Style Sheets" src="../img/lang/css.png">
+<img title="IDL" src="../img/lang/idl.gif">
+<img title="HTML" src="../img/lang/html.png">
+<img title="Java" src="../img/lang/java.gif">
+<img title="JavaScript" src="../img/lang/javascript.png">
+<img title="JSP" src="../img/lang/jsp.gif">
+<img title="Oracle PL/SQL" src="../img/lang/ora.gif">
+<img title="PHP" src="../img/lang/php.gif">
+<img title="Perl" src="../img/lang/perl.gif">
+<img title="PowerBuilder" src="../img/lang/powerbuilder.png">
+<img title="Python" src="../img/lang/python.png">
+<img title="Ruby" src="../img/lang/ruby.png">
+<img title="VHDL" src="../img/lang/vhdl.gif">
+<img title="Visual Basic" src="../img/lang/vb.gif">
+<img title="Windows Batch" src="../img/lang/batch.png">
+<img title="XML" src="../img/lang/xml.gif">
+</div>
+</td>
+
+</tr>
+
+</table>
+
+<table border=0 cellspacing=0 cellpadding=0><tr valign=top><td>
+<h3 class="narr">Metrics: Actual values</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','B','Halstead Bug Prediction','This variant of Halstead Effort is a measure of the likelihood of bugs within the project.','(N <i>log</i>n) / 3000');">B</a>
+ | 
+<a href="javascript:showMetricHelp('../','BYTES','Number of bytes','The total number of bytes in all the files in the project.','');">BYTES</a>
+ | 
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the project.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the project.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this project\'s code is to understand.','D = (n1/2) * (N2/n2) <br><br>Where:<br>n1 - the number of distinct operators<br>n2 - the number of distinct operands<br>N1 - the total number of operators <br>N2 - the total number of operands');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this project.','E = D * V');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in the project.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','J_COM','Java style comments','The number of Java style comments  in the project.<br><br>A Java style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/**</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>. E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><font color=JSAFEQUOTFF1111JSAFEQUOT>&nbsp;/**<br>&nbsp;&nbsp;* An interface for handling Application level operations.<br>&nbsp;&nbsp;*<br>&nbsp;&nbsp;*/</font><br>&nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.','');">J_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the total number of semicolons in the project excluding those within comments and string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>LLOC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this project.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this project.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','N = N1 + N2');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the project.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the project.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the project.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the project.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','NFILE','Number of Files','The total number of files in the project.','');">NFILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','PLOC','Preprocessor Directive Lines of Code','The number of preprocessor directive lines in the project, typically those that begin with a #.  Preprocessor Directive LOC is included as part of SLOC and LOC, but identified separately at the project level for clarity.','');">PLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_HTM','Source HTML Lines of Code','The number of lines of code in the project containing HTML.','');">SLOC_HTM</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_NAT','Source Native Lines of Code','The number of lines of code in the project containing Native Source.<br><br>Native Source is code that is native to the main language, used when analysing HTML-generating software.','');">SLOC_NAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_SCR','Source Script Lines of Code','The number of lines of code in the project containing Script.<br><br>Script in this context means Javascript or VBScript used in HTML source, either a HTML file or HTML-generating source.','');">SLOC_SCR</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_TAG','Source Tag Lines of Code','The number of lines of code in the project containing Tags.<br><br>Tags are used in conjuction with HTML-generating software, such as ASP or JSP.','');">SLOC_TAG</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the project.','V = Nlog<SUB>2</SUB>n');">V</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','B','Halstead Bug Prediction','This variant of Halstead Effort is a measure of the likelihood of bugs within the file.','(N <i>log</i>n) / 3000');">B</a>
+ | 
+<a href="javascript:showMetricHelp('../','BYTES','Number of bytes','The total number of bytes in the file.','');">BYTES</a>
+ | 
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the file.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the file.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this file\'s code is to understand.','D = (n1/2) * (N2/n2) <br><br>Where:<br>n1 - the number of distinct operators<br>n2 - the number of distinct operands<br>N1 - the total number of operators <br>N2 - the total number of operands');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this file.','E = D * V');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in this file.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','J_COM','Java style comments','The number of Java style comments in the file.<br><br>A Java style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/**</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>. E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><font color=JSAFEQUOTFF1111JSAFEQUOT>&nbsp;/**<br>&nbsp;&nbsp;* An interface for handling Application level operations.<br>&nbsp;&nbsp;*<br>&nbsp;&nbsp;*/</font><br>&nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.','');">J_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>LLOC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','N = N1 + N2');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','PLOC','Preprocessor Directive Lines of Code','The number of preprocessor directive lines in the file, typically those that begin with a #.  Preprocessor Directive LOC is included as part of SLOC and LOC, but identified separately at the filelevel for clarity.','');">PLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_HTM','Source HTML Lines of Code','The number of lines of code in this file containing HTML.','');">SLOC_HTM</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_NAT','Source Native Lines of Code','The number of lines of code in this file containing Native Source.<br><br>Native Source is code that is native to the main language, used when analysing HTML-generating software.','');">SLOC_NAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_SCR','Source Script Lines of Code','The number of lines of code in this file containing Script.<br><br>Script in this context means Javascript or VBScript used in HTML source, either a HTML file or HTML-generating source.','');">SLOC_SCR</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC_TAG','Source Tag Lines of Code','The number of lines of code in this file containing Tags.<br><br>Tags are used in conjuction with HTML-generating software, such as ASP or JSP.','');">SLOC_TAG</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the file.  Calculated as:','V = Nlog<SUB>2</SUB>n');">V</a>
+</ul>
+</td></tr><tr><td>
+<h3 class="narr">Metrics: Changed</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','ADD_FILE','Number of Files (Added)','Number of Files that have been added between the old project and the new project.<br><br>For example the following would have ADD_FILE=1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=JSAFEQUOT#990000JSAFEQUOT>sourcefile2&#09;&#09;sourcefile2</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>sourcefile3</font>&#09;&#09;<font color=JSAFEQUOT#116611JSAFEQUOT>sourcefile4</font></font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">ADD_FILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','ADD_LLOC','Added Logical Lines of Code','The number of deleted Logical Lines of Code in this project.<br><br>Added logical lines are counted using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.','');">ADD_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','ADD_SLOC','Source Lines of Code (Added)','This gives the total added source lines of code between the old and the new project.<br><br>This is the sum of ADD_SLOC for all changed files plus the SLOC of all files added to the new project','(&#0931; changed file ADD_SLOC ) + (&#0931; SLOC added files)');">ADD_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CHG_FILE','Number of Files (Changed)','Number of Files that have been changed between the old project and the new project.<br><br>For example the following would have CHG_FILE=1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=JSAFEQUOT#990000JSAFEQUOT>sourcefile2&#09;&#09;sourcefile2</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>sourcefile3</font>&#09;&#09;<font color=JSAFEQUOT#116611JSAFEQUOT>sourcefile4</font></font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">CHG_FILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','CHG_LLOC','Changed Logical Lines of Code','The number of changed Logical Lines of Code in this project.<br><br>Changes are measured using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between JSAFEQUOTlinesJSAFEQUOT terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.','');">CHG_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CHG_SLOC','Source Lines of Code (Changed)','The number of lines that have changed between the old project and the new  project.','&#0931; changed file CHG_SLOC');">CHG_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CRN_FILE','Churn Files','Churn metrics give an overall indicator of the total &quot;change&quot; between the new project and the old project.','CRN_FILE = CHG_FILE + DEL_FILE + ADD_FILE');">CRN_FILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','CRN_LLOC','Churn Logical Lines of Code','Churn metrics give an overall indicator of the total &quot;change&quot; in logical lines between the new project and the old project.','CRN_LLOC = CHG_LLOC + DEL_LLOC + ADD_LLOC');">CRN_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CRN_SLOC','Churn Source Lines of Code','Churn metrics give an overall indicator of the total &quot;change&quot; in source lines between the new project and the old project.','CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC');">CRN_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','DEL_FILE','Number of Files (Deleted)','Number of Files that have been deleted between the old project and the new project.<br><br>For example the following would have DEL_FILE=1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><u>Old Project</u>&#09;&#09;<u>New Project</u><br>sourcefile1&#09;&#09;sourcefile1<br><font color=JSAFEQUOT#990000JSAFEQUOT>sourcefile2&#09;&#09;sourcefile2</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>sourcefile3</font>&#09;&#09;<font color=JSAFEQUOT#116611JSAFEQUOT>sourcefile4</font></font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">DEL_FILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','DEL_LLOC','Deleted Logical Lines of Code','The number of deleted Logical Lines of Code in this project.<br><br>Deleted logical lines are counted using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in the file.','');">DEL_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','DEL_SLOC','Source Lines of Code (Deleted)','This gives the total deleted source lines of code between the old and the new project.<br><br>This is the sum of DEL_SLOC for all changed files plus the SLOC of all files deleted from the new project','(&#0931; changed file DEL_SLOC ) + (&#0931; SLOC deleted files)');">DEL_SLOC</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','ADD_LLOC','Added Logical Lines of Code','The number of deleted Logical Lines of Code in this file.<br><br>Added logical lines are counted using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between JSAFEQUOTlinesJSAFEQUOT terminated by semi-colons.<br><br>ADD_LLOC gives you a potentially more accurate estimatation of the extent of added lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.','');">ADD_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','ADD_SLOC','Source Lines of Code (Added)','Number of source lines that have been added between the new file and the old file.<br><br>For example the following would have ADD_SLOC=4.<br><br><u>Old File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br><font color=JSAFEQUOT#000099JSAFEQUOT>void functionB(j) {<br>&#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;j-= 5 ;<br>&#09;&#09;}<br><br>&#09;}<br>}</font><br><br><br><u>New File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;int count=0 ;</font><br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;<font color=JSAFEQUOT#990000JSAFEQUOT>j-= 10 ;</font><br>&#09;&#09;}<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;&#09;while(count&#60;10) {<br>&#09;&#09;&#09;count++ ;<br>&#09;&#09;}</font><br><br>&#09;}<br>}</font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">ADD_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CHG_LLOC','Changed Logical Lines of Code','The number of changed Logical Lines of Code in this file.<br><br>Changes are measured using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>CHG_LLOC gives you a potentially more accurate estimatation of the extent of changed source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.','');">CHG_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CHG_SLOC','Source Lines of Code (Changed)','Number of source lines that have been changed between the new file and the old file.<br><br>For example the following would have CHG_SLOC=1.<br><br><u>Old File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br><font color=JSAFEQUOT#000099JSAFEQUOT>void functionB(j) {<br>&#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;j-= 5 ;<br>&#09;&#09;}<br><br>&#09;}<br>}</font><br><br><br><u>New File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;int count=0 ;</font><br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;<font color=JSAFEQUOT#990000JSAFEQUOT>j-= 10 ;</font><br>&#09;&#09;}<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;&#09;while(count&#60;10) {<br>&#09;&#09;&#09;count++ ;<br>&#09;&#09;}</font><br><br>&#09;}<br>}</font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">CHG_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CRN_LLOC','Churn Logical Lines of Code','Churn metrics give an overall indicator of the total &quot;change&quot; in logical lines between the new file and the old file.','CRN_LLOC = CHG_LLOC + DEL_LLOC + ADD_LLOC');">CRN_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','CRN_SLOC','Churn Source Lines of Code','Churn metrics give an overall indicator of the total &quot;change&quot; in source lines between the new file and the old file.','CRN_SLOC = CHG_SLOC + DEL_SLOC + ADD_SLOC');">CRN_SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','DEL_LLOC','Deleted Logical Lines of Code','The number of deleted Logical Lines of Code in this file.<br><br>Deleted logical lines are counted using Power Software\'s implementation of the GNU diff but instead of comparing lines terminated by newlines, comparison is made between &quot;lines&quot; terminated by semi-colons.<br><br>DEL_LLOC gives you a potentially more accurate estimatation of the extent of deleted lines in your source code, especially where a single &quot;logical line&quot; spans multiple lines in this file.','');">DEL_LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','DEL_SLOC','Source Lines of Code (Deleted)','Number of source lines that have been deleted between the new file and the old file.<br><br>For example the following would have DEL_SLOC=2. (The comment is not a SLOC)<br><br><u>Old File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br><font color=JSAFEQUOT#000099JSAFEQUOT>void functionB(j) {<br>&#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;j-= 5 ;<br>&#09;&#09;}<br><br>&#09;}<br>}</font><br><br><br><u>New File</u><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>void functionA(int k) {<br>&#09;cout &#60;&#60; JSAFEQUOTParameter: JSAFEQUOT &#60;&#60; k &#60;&#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&#09;int i ;<br>&#09;int j=100 ;<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;int count=0 ;</font><br><br>&#09;for (i=0 ; i&#60;10 ; i++) {<br><br>&#09;&#09;// Calling functionA()<br>&#09;&#09;functionA(i) ;<br><br>&#09;&#09;while (j&#62;0) {<br>&#09;&#09;&#09;<font color=JSAFEQUOT#990000JSAFEQUOT>j-= 10 ;</font><br>&#09;&#09;}<br><br><font color=JSAFEQUOT#116611JSAFEQUOT>&#09;&#09;while(count&#60;10) {<br>&#09;&#09;&#09;count++ ;<br>&#09;&#09;}</font><br><br>&#09;}<br>}</font><br><br><u>Color Key</u><br><font color=JSAFEQUOT#116611JSAFEQUOT>Added</font><br><font color=JSAFEQUOT#990000JSAFEQUOT>Changed</font><br><font color=JSAFEQUOT#000099JSAFEQUOT>Deleted</font>','');">DEL_SLOC</a>
+</ul>
+</td></tr></table>
+</TD>
+      <TD bgcolor="#ffffff" rowspan="5" width="100%"><img src="../img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 alt="Home" width="80" height="32" src="../img/nav/home2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 name="B01" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="../img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="../img/navx/go2.gif"></a></TD></TR><tr><td><table border="0" cellspacing=0 cellpadding=3><tr><td>&nbsp;</td><td class="navTitle" colspan=2>Essential Metrics</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td class="nav">Project Manager</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../em/"class="nav">Essential Metrics</a></td></tr>
+<tr><td>&nbsp;</td><td class="navTitle" colspan=2>Krakatau</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kepm/"class="nav">Essential PM</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../pm/"class="nav">Project Manager</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kp/"class="nav">Professional</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kl/"class="nav">Lite</a></td></tr>
+<tr><td>&nbsp;</td><td class="navTitle" colspan=2>Java Tools</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../vz/"class="nav">Visualize it!</a></td></tr></table></td><td bgcolor="#ffffff"><img border="0" src="../img/f.gif"></td></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="../img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="../img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="../img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="../img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="../img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>16 Mar 2010</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

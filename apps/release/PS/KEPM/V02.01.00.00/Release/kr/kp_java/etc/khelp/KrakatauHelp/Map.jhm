@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/map_1_0.dtd">
+
+<map version="1.0">
+	<mapID target="toplevelfolder" url="images/toplevel.gif" />
+
+	<mapID target="top" url="krakHelp/krakatau.html" />
+	<mapID target="krakatau.intro" url="krakHelp/krakatau.html" />
+
+	<mapID target="tut.intro" url="krakHelp/tut/index.html" />
+	<mapID target="tut.create" url="krakHelp/tut/create.html" />
+	<mapID target="tut.apply" url="krakHelp/tut/apply.html" />
+	<mapID target="tut.results" url="krakHelp/tut/results.html" />
+	<mapID target="tut.results.values" url="krakHelp/tut/values.html" />
+	<mapID target="tut.results.histo" url="krakHelp/tut/histo.html" />
+	<mapID target="tut.report" url="krakHelp/tut/report.html" />
+
+	<mapID target="creation.intro" url="krakHelp/create/index.html" />
+	<mapID target="creation.name" url="krakHelp/create/name.html" />
+	<mapID target="creation.type" url="krakHelp/create/type.html" />
+	<mapID target="creation.type.dir" url="krakHelp/create/dir.html" />
+	<mapID target="creation.type.files" url="krakHelp/create/files.html" />
+	<mapID target="creation.type.import" url="krakHelp/create/import.html" />
+
+	<mapID target="results.intro" url="krakHelp/results/index.html" />
+	<mapID target="results.general" url="krakHelp/results/general.html" />
+	<mapID target="results.list" url="krakHelp/results/list.html" />
+	<mapID target="results.list.select" url="krakHelp/results/select.html" />
+	<mapID target="results.list.sort" url="krakHelp/results/sort.html" />
+	<mapID target="results.values" url="krakHelp/results/values-lite.html" />
+	<mapID target="results.histo" url="krakHelp/results/histo.html" />
+	<mapID target="results.kiviat" url="krakHelp/results/kiviat.html" />
+
+	<mapID target="metrics.intro" url="krakHelp/metrics/index.html" />
+	<mapID target="metrics.project" url="krakHelp/metrics/project.html" />
+	<mapID target="metrics.package" url="krakHelp/metrics/package.html" />
+	<mapID target="metrics.file" url="krakHelp/metrics/file.html" />
+	<mapID target="metrics.class" url="krakHelp/metrics/class.html" />
+	<mapID target="metrics.method" url="krakHelp/metrics/method.html" />
+
+	<mapID target="reports.intro" url="krakHelp/reports/index.html" />
+	<mapID target="reports.html" url="krakHelp/reports/html.html" />
+	<mapID target="reports.viol" url="krakHelp/reports/viol.html" />
+	<mapID target="reports.cdf" url="krakHelp/reports/cdf.html" />
+
+	<mapID target="choose.intro" url="krakHelp/choose/index.html" />
+	<mapID target="choose.editor" url="krakHelp/choose/editor.html" />
+	<mapID target="choose.chooser" url="krakHelp/choose/chooser.html" />
+
+	<mapID target="trouble.intro" url="krakHelp/trouble/index.html" />
+
+        <mapID target="metrictutor.mui10517" url="krakHelp/metrictutor/mui10517.html"/>
+        <mapID target="metrictutor.mui10502" url="krakHelp/metrictutor/mui10502.html"/>
+        <mapID target="metrictutor.mui10504" url="krakHelp/metrictutor/mui10504.html"/>
+        <mapID target="metrictutor.mui10518" url="krakHelp/metrictutor/mui10518.html"/>
+        <mapID target="metrictutor.mui10508" url="krakHelp/metrictutor/mui10508.html"/>
+        <mapID target="metrictutor.mui10113" url="krakHelp/metrictutor/mui10113.html"/>
+        <mapID target="metrictutor.mui10112" url="krakHelp/metrictutor/mui10112.html"/>
+        <mapID target="metrictutor.mui10510" url="krakHelp/metrictutor/mui10510.html"/>
+        <mapID target="metrictutor.mui10114" url="krakHelp/metrictutor/mui10114.html"/>
+        <mapID target="metrictutor.mui10507" url="krakHelp/metrictutor/mui10507.html"/>
+        <mapID target="metrictutor.mui10101" url="krakHelp/metrictutor/mui10101.html"/>
+        <mapID target="metrictutor.mui10501" url="krakHelp/metrictutor/mui10501.html"/>
+        <mapID target="metrictutor.mui10503" url="krakHelp/metrictutor/mui10503.html"/>
+        <mapID target="metrictutor.mui10513" url="krakHelp/metrictutor/mui10513.html"/>
+        <mapID target="metrictutor.mui10514" url="krakHelp/metrictutor/mui10514.html"/>
+        <mapID target="metrictutor.mui10515" url="krakHelp/metrictutor/mui10515.html"/>
+        <mapID target="metrictutor.mui10516" url="krakHelp/metrictutor/mui10516.html"/>
+        <mapID target="metrictutor.mui10109" url="krakHelp/metrictutor/mui10109.html"/>
+        <mapID target="metrictutor.mui10505" url="krakHelp/metrictutor/mui10505.html"/>
+        <mapID target="metrictutor.mui10512" url="krakHelp/metrictutor/mui10512.html"/>
+        <mapID target="metrictutor.mui10102" url="krakHelp/metrictutor/mui10102.html"/>
+        <mapID target="metrictutor.mui10511" url="krakHelp/metrictutor/mui10511.html"/>
+        <mapID target="metrictutor.mui10126" url="krakHelp/metrictutor/mui10126.html"/>
+        <mapID target="metrictutor.mui20501" url="krakHelp/metrictutor/mui20501.html"/>
+        <mapID target="metrictutor.mui40113" url="krakHelp/metrictutor/mui40113.html"/>
+        <mapID target="metrictutor.mui40112" url="krakHelp/metrictutor/mui40112.html"/>
+        <mapID target="metrictutor.mui40501" url="krakHelp/metrictutor/mui40501.html"/>
+        <mapID target="metrictutor.mui40114" url="krakHelp/metrictutor/mui40114.html"/>
+        <mapID target="metrictutor.mui40124" url="krakHelp/metrictutor/mui40124.html"/>
+        <mapID target="metrictutor.mui40125" url="krakHelp/metrictutor/mui40125.html"/>
+        <mapID target="metrictutor.mui40115" url="krakHelp/metrictutor/mui40115.html"/>
+        <mapID target="metrictutor.mui40101" url="krakHelp/metrictutor/mui40101.html"/>
+        <mapID target="metrictutor.mui40122" url="krakHelp/metrictutor/mui40122.html"/>
+        <mapID target="metrictutor.mui40121" url="krakHelp/metrictutor/mui40121.html"/>
+        <mapID target="metrictutor.mui40107" url="krakHelp/metrictutor/mui40107.html"/>
+        <mapID target="metrictutor.mui40105" url="krakHelp/metrictutor/mui40105.html"/>
+        <mapID target="metrictutor.mui40106" url="krakHelp/metrictutor/mui40106.html"/>
+        <mapID target="metrictutor.mui40108" url="krakHelp/metrictutor/mui40108.html"/>
+        <mapID target="metrictutor.mui40503" url="krakHelp/metrictutor/mui40503.html"/>
+        <mapID target="metrictutor.mui40505" url="krakHelp/metrictutor/mui40505.html"/>
+        <mapID target="metrictutor.mui40102" url="krakHelp/metrictutor/mui40102.html"/>
+        <mapID target="metrictutor.mui40502" url="krakHelp/metrictutor/mui40502.html"/>
+        <mapID target="metrictutor.mui40123" url="krakHelp/metrictutor/mui40123.html"/>
+        <mapID target="metrictutor.mui40126" url="krakHelp/metrictutor/mui40126.html"/>
+        <mapID target="metrictutor.mui50520" url="krakHelp/metrictutor/mui50520.html"/>
+        <mapID target="metrictutor.mui50508" url="krakHelp/metrictutor/mui50508.html"/>
+        <mapID target="metrictutor.mui50501" url="krakHelp/metrictutor/mui50501.html"/>
+        <mapID target="metrictutor.mui50503" url="krakHelp/metrictutor/mui50503.html"/>
+        <mapID target="metrictutor.mui50516" url="krakHelp/metrictutor/mui50516.html"/>
+        <mapID target="metrictutor.mui50502" url="krakHelp/metrictutor/mui50502.html"/>
+        <mapID target="metrictutor.mui50506" url="krakHelp/metrictutor/mui50506.html"/>
+        <mapID target="metrictutor.mui50101" url="krakHelp/metrictutor/mui50101.html"/>
+        <mapID target="metrictutor.mui50509" url="krakHelp/metrictutor/mui50509.html"/>
+        <mapID target="metrictutor.mui50512" url="krakHelp/metrictutor/mui50512.html"/>
+        <mapID target="metrictutor.mui50514" url="krakHelp/metrictutor/mui50514.html"/>
+        <mapID target="metrictutor.mui50511" url="krakHelp/metrictutor/mui50511.html"/>
+        <mapID target="metrictutor.mui50513" url="krakHelp/metrictutor/mui50513.html"/>
+        <mapID target="metrictutor.mui50510" url="krakHelp/metrictutor/mui50510.html"/>
+        <mapID target="metrictutor.mui50518" url="krakHelp/metrictutor/mui50518.html"/>
+        <mapID target="metrictutor.mui50505" url="krakHelp/metrictutor/mui50505.html"/>
+        <mapID target="metrictutor.mui50517" url="krakHelp/metrictutor/mui50517.html"/>
+        <mapID target="metrictutor.mui50519" url="krakHelp/metrictutor/mui50519.html"/>
+        <mapID target="metrictutor.mui50504" url="krakHelp/metrictutor/mui50504.html"/>
+        <mapID target="metrictutor.mui50507" url="krakHelp/metrictutor/mui50507.html"/>
+        <mapID target="metrictutor.mui50102" url="krakHelp/metrictutor/mui50102.html"/>
+        <mapID target="metrictutor.mui50515" url="krakHelp/metrictutor/mui50515.html"/>
+        <mapID target="metrictutor.mui60501" url="krakHelp/metrictutor/mui60501.html"/>
+        <mapID target="metrictutor.mui60503" url="krakHelp/metrictutor/mui60503.html"/>
+        <mapID target="metrictutor.mui60502" url="krakHelp/metrictutor/mui60502.html"/>
+        <mapID target="metrictutor.mui60101" url="krakHelp/metrictutor/mui60101.html"/>
+        <mapID target="metrictutor.mui60505" url="krakHelp/metrictutor/mui60505.html"/>
+        <mapID target="metrictutor.mui60504" url="krakHelp/metrictutor/mui60504.html"/>
+        <mapID target="metrictutor.mui70104" url="krakHelp/metrictutor/mui70104.html"/>
+        <mapID target="metrictutor.mui70127" url="krakHelp/metrictutor/mui70127.html"/>
+        <mapID target="metrictutor.mui70119" url="krakHelp/metrictutor/mui70119.html"/>
+        <mapID target="metrictutor.mui70505" url="krakHelp/metrictutor/mui70505.html"/>
+        <mapID target="metrictutor.mui70110" url="krakHelp/metrictutor/mui70110.html"/>
+        <mapID target="metrictutor.mui70124" url="krakHelp/metrictutor/mui70124.html"/>
+        <mapID target="metrictutor.mui70125" url="krakHelp/metrictutor/mui70125.html"/>
+        <mapID target="metrictutor.mui70118" url="krakHelp/metrictutor/mui70118.html"/>
+        <mapID target="metrictutor.mui70111" url="krakHelp/metrictutor/mui70111.html"/>
+        <mapID target="metrictutor.mui70101" url="krakHelp/metrictutor/mui70101.html"/>
+        <mapID target="metrictutor.mui70122" url="krakHelp/metrictutor/mui70122.html"/>
+        <mapID target="metrictutor.mui70121" url="krakHelp/metrictutor/mui70121.html"/>
+        <mapID target="metrictutor.mui70107" url="krakHelp/metrictutor/mui70107.html"/>
+        <mapID target="metrictutor.mui70105" url="krakHelp/metrictutor/mui70105.html"/>
+        <mapID target="metrictutor.mui70106" url="krakHelp/metrictutor/mui70106.html"/>
+        <mapID target="metrictutor.mui70108" url="krakHelp/metrictutor/mui70108.html"/>
+        <mapID target="metrictutor.mui70120" url="krakHelp/metrictutor/mui70120.html"/>
+        <mapID target="metrictutor.mui70103" url="krakHelp/metrictutor/mui70103.html"/>
+        <mapID target="metrictutor.mui70511" url="krakHelp/metrictutor/mui70511.html"/>
+        <mapID target="metrictutor.mui70510" url="krakHelp/metrictutor/mui70510.html"/>
+        <mapID target="metrictutor.mui70508" url="krakHelp/metrictutor/mui70508.html"/>
+        <mapID target="metrictutor.mui70507" url="krakHelp/metrictutor/mui70507.html"/>
+        <mapID target="metrictutor.mui70509" url="krakHelp/metrictutor/mui70509.html"/>
+        <mapID target="metrictutor.mui70502" url="krakHelp/metrictutor/mui70502.html"/>
+        <mapID target="metrictutor.mui70102" url="krakHelp/metrictutor/mui70102.html"/>
+        <mapID target="metrictutor.mui70123" url="krakHelp/metrictutor/mui70123.html"/>
+        <mapID target="metrictutor.mui70117" url="krakHelp/metrictutor/mui70117.html"/>
+        <mapID target="metrictutor.mui70501" url="krakHelp/metrictutor/mui70501.html"/>
+</map>

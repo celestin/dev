@@ -1,0 +1,18 @@
+  <Script Language="JavaScript">
+  <!--
+     function linkToCustomerSite(fileName) {myWin=window.open(fileName, "customerWindow", "width=790,height=590,directories=no,location=yes,menubar=yes,resizable=yes,scrollbars=yes,status=no,toolbar=yes") ; }
+
+	 function showQuote(relativePath, title, description) {
+	   var quoteWin = window.open("", "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ;
+	   quoteWin.document.write('<html><head><title>' + title + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n') ;
+	   quoteWin.document.write('<body bgcolor="#ffffff"><basefont face="Arial">\n\t<table border=0 cellspacing=14 cellpadding=0 width="100%" height="100%"><tr><td>') ;
+	   quoteWin.document.write('<table border=0 cellspacing=0 cellpadding=0 width="100%" height="100%"><tr><td>') ;
+	   quoteWin.document.write('<img \n\t\tsrc="' + relativePath + 'img/scrfade.gif"></td></tr><tr><td height="100%" valign=bottom bgcolor="#0077cc">') ;
+	   quoteWin.document.write('<img \n\t\tsrc="' + relativePath + 'img/quote.gif"></td></tr></table></td>\n\t<td width="100%" valign=top>') ;
+	   quoteWin.document.write('<table border=0 cellspacing=1 cellpadding=1 width=450><tr><td><font size=-1><b>' + title + '</b></td></tr>\n\t<tr>') ;
+	   quoteWin.document.write('<td><font size=-1>' + description + ' <a href=javascript:window.close()>close</a></td></tr></table>') ;
+	   quoteWin.document.write('</td></tr></table>\n</body></html>') ;
+	   quoteWin.document.close() ;
+	 }
+  // -->
+  </Script>

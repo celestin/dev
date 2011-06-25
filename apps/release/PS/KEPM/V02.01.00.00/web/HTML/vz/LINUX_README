@@ -1,0 +1,22 @@
+Linux VisualizeIt Installation Instructions
+-------------------------------------------
+ 
+To install VisualizeIt on Linux, firstly download the following files:
+ 
+ VisualizeIt-1.0-0.i386.rpm (size: 1,843,681 bytes)
+ MySQL-3.23.42-1.i386.rpm (size: 6,067,955 bytes)
+ MySQL-client-3.23.42-1.i386.rpm (size: 1,772,747 bytes)
+ j2re-1_4_0-beta2-linux-i386.rpm (size: 20,615,420 bytes)
+ 
+Then install them (as root) in the following order:
+ 
+ 1) MySQL-3.23.42-1.i386.rpm
+ 2) MySQL-client-3.23.42-1.i386.rpm
+ 3) j2re-1_4_0-beta2-linux-i386.rpm
+ 4) VisualizeIt-1.0-0.i386.rpm
+ 
+Once these have been installed, to run VisualizeIt type visualizeit 
+at the shell prompt.
+ 
+Note: Although these have to be installed as root it is not advised 
+to run VisualizeIt as root.

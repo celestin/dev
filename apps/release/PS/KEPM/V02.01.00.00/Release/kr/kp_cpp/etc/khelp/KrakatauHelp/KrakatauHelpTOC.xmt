@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE toc
+	PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN"
+		 "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+<toc version="1.0">
+<tocitem text="Krakatau Metrics" target="top" image="toplevelfolder">
+
+
+	<tocitem text="Introduction" target="krakatau.intro"/>
+
+	<tocitem text="Krakatau Tutorial" target="tut.intro"
+		<tocitem text="Tutorial 1: Project Creation" target="tut.create"/>
+		<tocitem text="Tutorial 2: Applying Metrics" target="tut.apply"/>
+		<tocitem text="Tutorial 3: Viewing Results" target="tut.results">
+			<tocitem text="Metric Values" target="tut.results.values"/>
+			<tocitem text="Histogram" target="tut.results.histo"/>
+		</tocitem>
+		<tocitem text="Tutorial 4: HTML Reports" target="tut.report"/>
+	</tocitem>
+
+	<tocitem text="Creating Projects" target="creation.intro">
+		<tocitem text="Giving your project a name" target="creation.name"/>
+		<tocitem text="Type of Creation" target="creation.type">
+			<tocitem text="Directory Type" target="creation.type.dir"/>
+			<tocitem text="File Type" target="creation.type.files"/>
+			<tocitem text="Import Type" target="creation.type.import"/>
+		</tocitem>
+	</tocitem>
+	
+	<tocitem text="Translation file" target="translation.intro">
+		<tocitem text="Translation Language" target="translation.lang"/>
+		<tocitem text="Project Preferences" target="translation.pref"/>
+	</tocitem>
+
+	<tocitem text="Metric Results" target="results.intro">
+		<tocitem text="General Usage" target="results.general"/>
+		<tocitem text="Symbol List" target="results.list">
+			<tocitem text="Selecting Symbols" target="results.list.select"/>
+			<tocitem text="Sorting Symbols" target="results.list.sort"/>
+		</tocitem>
+		<tocitem text="Metric Values" target="results.values"/>
+		<tocitem text="Histogram View" target="results.histo"/>
+		<tocitem text="Kiviat View" target="results.kiviat"/>
+	</tocitem>
+
+        <tocitem text="Interpreting Metrics" target="metrics.intro">
+INSERT_HERE
+        </tocitem>
+
+	<tocitem text="Reports" target="reports.intro">
+		<tocitem text="HTML Reports" target="reports.html"/>
+		<tocitem text="Violating Reports" target="reports.viol"/>
+		<tocitem text="CDF Reports" target="reports.cdf"/>
+	</tocitem>
+
+	<tocitem text="Choosing Metrics" target="choose.intro">
+		<tocitem text="Bound Editor" target="choose.editor"/>
+		<tocitem text="Metric Chooser" target="choose.chooser"/>
+	</tocitem>
+
+	<tocitem text="Trouble Shooting" target="trouble.intro"/>
+
+
+</tocitem>
+</toc>

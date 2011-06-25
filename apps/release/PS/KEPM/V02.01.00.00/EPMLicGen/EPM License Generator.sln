@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPM License Generator", "EPM License Generator.csproj", "{574F877D-5A0B-4ED6-955A-7C8276F38EB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		Custom|Any CPU = Custom|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		DVD-10|Any CPU = DVD-10|Any CPU
+		DVD-18|Any CPU = DVD-18|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
+		DVD-9|Any CPU = DVD-9|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
+		WebDeployment|Any CPU = WebDeployment|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Custom|Any CPU.ActiveCfg = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Custom|Any CPU.Build.0 = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-10|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-10|Any CPU.Build.0 = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-18|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-18|Any CPU.Build.0 = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-9|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.DVD-9|Any CPU.Build.0 = Debug|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.WebDeployment|Any CPU.ActiveCfg = Release|Any CPU
+		{574F877D-5A0B-4ED6-955A-7C8276F38EB4}.WebDeployment|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

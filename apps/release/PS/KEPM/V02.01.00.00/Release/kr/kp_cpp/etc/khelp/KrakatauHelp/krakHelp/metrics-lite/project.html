@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Project Metrics</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<h1 align="center">Project Metrics</h1>
+
+<h3>LOC - Lines of code</h3>
+Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.
+
+<h3>SLOC - Source lines of code</h3>
+Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; "Testing"<br>  &lt;&lt; " Hello"<br>  &lt;&lt; " there." ;  // This is 3 SLOCs</font>
+
+<h3>NSC - Number of Semicolons</h3>
+A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &lt;&lt; "Hello" &lt;&lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &lt;&lt; "Hello ; World" &lt;&lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.
+
+<h3>COM_LOC - Comment lines of code</h3>
+The total number of comment lines in the project, i.e. <b>C_COM</b> + <b>CPP_COM</b>.
+
+<h3>C_COM - C style comments</h3>
+The number of C style comment lines in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.  E.g.:<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font><br><br>C_COM = 3.
+
+<h3>CPP_COM - C++ sytle comments</h3>
+The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line. E.g.:<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font><br><br>CPP_COM = 2.
+
+<h3>P_COM_RAT - Comments Ratio (Project)</h3>
+The ratio, at project level, of comment lines to lines of code.<br><br><b>COM_LOC</b> / <b>LOC</b>.
+
+<h3>P_TCOM_RAT - True Comments Ratio (Project)</h3>
+The ratio, at project level, of comment lines to <b>source</b> lines of code.<br><br><b>COM_LOC</b> / <b>SLOC</b>.
+
+<h3>NCLASS - Number of Classes</h3>
+The total number of classes in the project.
+
+<h3>NFILE - Number of Files</h3>
+The total number of files in the project.
+
+<h3>NMETH - Number of Methods</h3>
+The total number of methods in the project.<br><br>This count includes class methods and C functions.
+
+</body>
+</html>

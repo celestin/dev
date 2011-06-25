@@ -383,10 +383,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Threading
         /// <param name="pList"></param>
         protected void FireAsync(Delegate dlg, params object[] pList)
         {
+          try
+          {
             if (dlg != null)
             {
-                Target.BeginInvoke(dlg, pList);
+              Target.BeginInvoke(dlg, pList);
             }
+          }
+          catch
+          {
+          }
         }
     }
 }

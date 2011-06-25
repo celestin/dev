@@ -17,10 +17,12 @@
  * CAM  27-Feb-2010  10583 : Add event to handle formatting.
  * CAM  27-Feb-2010  10582 : Set default directory for opening projects.
  * CAM  22-Jun-2011  10970 : Included UserGuide in Help menu.
+ * CAM  25-Jun-2011  10968 : Ensure that when KEPM exits, any EPM processes are killed.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 
@@ -173,7 +175,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
 
     private void ExitKepm(object sender, EventArgs e)
     {
-      Dispose();
+      Close();
     }
 
     private void ViewPdf(string fname)
@@ -297,6 +299,18 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       if (_cmbMetricSets.Text.Length == 0)
       {
         _refreshController.MetricSet = null;
+      }
+    }
+
+    private void CloseApplication(object sender, FormClosingEventArgs e)
+    {
+      foreach (Process p in Process.GetProcesses())
+      {
+        if (p.ProcessName.ToLower().Equals("epm"))
+        {
+          p.Kill();
+          p.WaitForExit();
+        }
       }
     }
   }

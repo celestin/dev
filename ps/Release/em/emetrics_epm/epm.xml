@@ -9,6 +9,9 @@
       <ext name="C++ Header" value="hpp" />
       <ext name="C Header" value="h" />
     </filetype>
+    <filetype name="Seq Source">
+      <ext name="Seq" value="seq" />
+    </filetype>
   </lang>
   <lang name="C#" parser="CS">
     <filetype name="Source">
@@ -160,7 +163,7 @@
       <ext name="VS Workspace" value="dsw" />
     </filetype>
     <filetype name="Textfile">
-      <ext name="CSV" value="cvs" />
+      <ext name="CSV" value="csv" />
       <ext name="Install" value="install" />
       <ext name="Readme" value="readme" />
       <ext name="Text" value="tsv" />
@@ -202,6 +205,16 @@
       <ext name="Function" value="srf" />
       <ext name="Structure" value="srs" />
       <ext name="User object" value="sru" />
+    </filetype>
+  </lang>
+  <lang name="UCode" parser="UC">
+    <filetype name="Source">
+      <ext name="UCode Source" value="uc" />
+    </filetype>
+  </lang>
+  <lang name="Modular Maths Processer" parser="MP">
+    <filetype name="Source">
+      <ext name="MMP Source" value="mmp" />
     </filetype>
   </lang>
 </epm>

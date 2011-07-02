@@ -9,6 +9,7 @@
  * Who  When         Why
  * CAM  13-Jul-2009  10459 : Added new images and file headers.
  * CAM  19-Mar-2010  10610 : Added shortcut icon.
+ * CAM  02-Jul-2011  10980 : Added Google Analytics.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include "db.php"
@@ -47,12 +48,19 @@ include "db.php"
   <Script Language="JavaScript" src="menu.js"></script>
   <Script Language="JavaScript" src="date.js"></script>
   <link rel="shortcut icon" href="dsg.ico" type="image/x-icon" />
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-24317653-1']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
 </head>
 
 <body onLoad="activateMenu(false);" onClick="hideMenu();" background="./img/mb1.gif" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
-
-
-<body leftmargin=0 topmargin=5>
 
 <table border=0 width="100%" cellspacing=0 cellpadding=5>
 

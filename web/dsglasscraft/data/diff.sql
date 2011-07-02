@@ -6,34 +6,31 @@
 -- $Id$
 --
 -- Who  When         Why
--- CAM  19-Mar-2010  10610 : Created diff.
+-- CAM  02-Jul-2011  10981 : Added latest images.
 -- --------------------------------------------------------
 
-UPDATE piece SET cat = 'FISHING' WHERE cat = 'FISH';
-UPDATE category SET cat = 'FISHING' WHERE cat = 'FISH';
+INSERT INTO category (cat, catName, section) VALUES ('RAPTOR', 'raptors', 2);
+INSERT INTO category (cat, catName, section) VALUES ('SAFARI', 'safari', 2);
 
-INSERT INTO category (cat, catName, section) VALUES ('FISH', 'fish', 2);
+UPDATE piece SET cat = 'RAPTOR' WHERE cat = 'OWL';
+UPDATE piece SET cat = 'RAPTOR' WHERE cat = 'EAGLE';
+UPDATE piece SET cat = 'RAPTOR' WHERE piece = 'buzzard1';
+UPDATE piece SET cat = 'RAPTOR' WHERE piece = 'stellar1';
+UPDATE piece SET cat = 'RAPTOR' WHERE piece = 'stellar1';
+DELETE FROM category WHERE cat IN ('OWL','EAGLE');
 
-INSERT INTO piece (piece,cat,name) VALUES ('andean_bear','BEAR','Andean or Spectacled Bear');
-INSERT INTO piece (piece,cat,name) VALUES ('blue_butterfly','BFLY','Blue Butterfly');
-INSERT INTO piece (piece,cat,name) VALUES ('yellow_black_butterfly','BFLY','Yellow & Black Butterfly');
-INSERT INTO piece (piece,cat,name) VALUES ('capercaillie','BIRD','Capercaillie');
-INSERT INTO piece (piece,cat,name) VALUES ('cheetah_running','CAT','Running Cheetah');
-INSERT INTO piece (piece,cat,name) VALUES ('cheetah_walking','CAT','Walking Cheetah');
-INSERT INTO piece (piece,cat,name) VALUES ('clown_fish_anemone','FISH','Clown Fish & Anemone');
-INSERT INTO piece (piece,cat,name) VALUES ('clown_fish_pair','FISH','Pair of Clown Fish');
-INSERT INTO piece (piece,cat,name) VALUES ('fishing_fly','FISHING','Fishing Fly');
-INSERT INTO piece (piece,cat,name) VALUES ('frogs_waterfall','WATER','Frogs & Waterfall');
-INSERT INTO piece (piece,cat,name) VALUES ('golden_damselfish_blue_tang','FISH','Golden Damselfish & Blue Tang');
-INSERT INTO piece (piece,cat,name) VALUES ('golden_damselfish_pair','FISH','Pair of Golden Damselfish');
-INSERT INTO piece (piece,cat,name) VALUES ('golden_damselfish1','FISH','Golden Damselfish 1');
-INSERT INTO piece (piece,cat,name) VALUES ('golden_damselfish2','FISH','Golden Damselfish 2');
-INSERT INTO piece (piece,cat,name) VALUES ('orangutan','PRIMATE','Orang-utan');
-INSERT INTO piece (piece,cat,name) VALUES ('reef_fish','FISH','Reef Fish');
-INSERT INTO piece (piece,cat,name) VALUES ('sea_trout','FISHING','Sea Trout');
-INSERT INTO piece (piece,cat,name) VALUES ('seahorse_amber','FISH','Amber Seahorse');
-INSERT INTO piece (piece,cat,name) VALUES ('seahorse_green','FISH','Green Seahorse');
-INSERT INTO piece (piece,cat,name) VALUES ('seahorse_ruby','FISH','Ruby Seahorse');
-
-UPDATE piece SET cat='FISH' piece='goldfish';
-
+INSERT INTO piece (piece,cat,name) VALUES ('avocet2', 'BIRD', 'Avocet');
+INSERT INTO piece (piece,cat,name) VALUES ('avocet3', 'BIRD', 'Avocet');
+INSERT INTO piece (piece,cat,name) VALUES ('avocets1', 'BIRD', 'Avocets');
+INSERT INTO piece (piece,cat,name) VALUES ('goldfinch1', 'BIRD', 'Goldfinch on Broom');
+INSERT INTO piece (piece,cat,name) VALUES ('osprey1', 'RAPTOR', 'Osprey');
+INSERT INTO piece (piece,cat,name) VALUES ('pheasant1', 'BIRD', 'Pheasant');
+INSERT INTO piece (piece,cat,name) VALUES ('scarlet_macaw2', 'BIRD', 'Scarlet Macaw');
+INSERT INTO piece (piece,cat,name) VALUES ('belted_kingfishers1', 'KFISH', 'Belted Kingfishers');
+INSERT INTO piece (piece,cat,name) VALUES ('lemurs2', 'PRIMATE', 'Ring-tailed Lemur Family');
+INSERT INTO piece (piece,cat,name) VALUES ('bearded_dragon1', 'REPTILE', 'Bearded Dragon');
+INSERT INTO piece (piece,cat,name) VALUES ('zebras1', 'SAFARI', 'Zebras');
+INSERT INTO piece (piece,cat,name) VALUES ('frog7', 'WATER', 'Frog');
+INSERT INTO piece (piece,cat,name) VALUES ('frog8', 'WATER', 'Frog');
+INSERT INTO piece (piece,cat,name) VALUES ('hare1', 'WOODLAND', 'Hare');
+INSERT INTO piece (piece,cat,name) VALUES ('hare2', 'WOODLAND', 'Hare');

@@ -14,6 +14,7 @@
  * CAM  08-Mar-2010  10587 : Updated Quick Ship for 2010.
  * CAM  12-Mar-2010  10605 : Moved colours to common folder.
  * CAM  12-Mar-2010  10604 : Build from database, include Pay Deposit Now.
+ * CAM  03-Jul-2011  10942 : Remove prices.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagequickship";
@@ -32,7 +33,9 @@ include "tpl/top.php";
   <th>Cabinet<br />Colour</th>
   <th>Seats</th>
   <th>Details</th>
-  <th>Price </th>
+<? if (false) { ?>
+  <th>Price</th>
+<? } ?>
 </tr>
 
 <?
@@ -61,6 +64,7 @@ include "tpl/top.php";
   <td><img src="img/col/<? echo $cabinet_colour; ?>.png"></td>
   <td><span id="seats"><? echo $seats; ?></span></td>
   <td><a href="tub.php?tub=<? echo $tub; ?>"><img border=0 src="img/tub/fa/<? echo $tub; ?>.jpg" height="84"></a></td>
+<? if (false) { ?>
   <td>
     <ul id="prices">
       <li>Price&nbsp;<span id="price">&pound;<? echo $price_rrp; ?></span></li>
@@ -72,6 +76,7 @@ include "tpl/top.php";
       <input id="paypalbutton" type="image" src="img/paydepositnowbutton.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
     </form>
   </td>
+<? } ?>
 </tr>
 <?
     }

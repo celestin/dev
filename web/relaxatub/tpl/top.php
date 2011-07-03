@@ -25,6 +25,7 @@
  * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
  * CAM  24-Jun-2011  10978 : Added Google Analytics.
  * CAM  24-Jun-2011  10978 : Added Google Site Verification.
+ * CAM  03-Jul-2011  10983 : Added Find Us On Facebook badge.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -91,6 +92,7 @@ if ($loggedin) {
       <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
       <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linkcontact" class="nav" href="contact.php">contact us</a></td></tr>
+      <tr><td align=center><a target="_blank" href="http://www.facebook.com/pages/Relaxatub/119710291449980"><img src="img/sm/fb.png" width="98" height="30"></a></td></tr>
       <tr><td align=center><table border="0">
       <tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>

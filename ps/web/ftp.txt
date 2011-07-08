@@ -1,17 +1,17 @@
 open ftp.powersoftware.com
-cmckay@powersoftware.com
+ps
 lja30
 asc
 hash
 prompt
 
 lcd W:\Powersoftware.com\cgi-bin
-cd /var/www/cgi-bin/
+cd /public_html/cgi-bin/
 put download.pl
 put template.html
 
 lcd W:\Powersoftware.com\HTML
-cd /var/www/html
+cd /public_html/
 put index.html
 put style.css
 
@@ -59,12 +59,12 @@ mput *.html
 bin
 
 lcd W:\Powersoftware.com\HTML\epm
-cd /var/www/html/epm
+cd /public_html/epm
 put UserGuide.pdf
 put MetricsDefinitions.pdf
 
 lcd W:\Powersoftware.com\HTML\kepm
-cd /var/www/html/kepm
+cd /public_html/kepm
 put UserGuideKEPM.pdf
 put QuickStartGuideKEPM.pdf
 

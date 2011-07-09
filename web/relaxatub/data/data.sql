@@ -13,7 +13,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2011 at 09:06 AM
+-- Generation Time: Jul 09, 2011 at 09:13 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -26,35 +26,30 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table acc
+-- Table structure for table accessory
 --
 
-CREATE TABLE acc (
-  acc int(11) NOT NULL default '0',
-  accName varchar(100) NOT NULL default '',
-  dispOrder int(11) NOT NULL default '0',
-  photo varchar(100) default '0',
-  PRIMARY KEY  (acc)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Accessories';
+CREATE TABLE accessory (
+  accid int(11) NOT NULL auto_increment,
+  pid int(11) NOT NULL,
+  photo varchar(60) character set latin1 NOT NULL,
+  price double NOT NULL,
+  PRIMARY KEY  (accid)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Accessories (Products)' AUTO_INCREMENT=3010 ;
 
 --
--- Dumping data for table acc
+-- Dumping data for table accessory
 --
 
-INSERT INTO acc VALUES (94889, 'Lift''n''Store', 100, '94889.jpg');
-INSERT INTO acc VALUES (95086, 'Slide''n''Store', 110, '95086.jpg');
-INSERT INTO acc VALUES (94888, 'Swingbrella', 120, 'swing1.jpg');
-INSERT INTO acc VALUES (94891, 'Drinks Bar complete with 2 Stools', 130, NULL);
-INSERT INTO acc VALUES (94899, 'Spa Chemical Starter Pack', 140, NULL);
-INSERT INTO acc VALUES (94887, 'Mini Step', 150, NULL);
-INSERT INTO acc VALUES (95091, 'Portable Step', 160, 'portablestep1.jpg');
-INSERT INTO acc VALUES (95046, 'Circular Spa Portable Step', 170, NULL);
-INSERT INTO acc VALUES (94902, '25 sq.ft Filter Element', 180, NULL);
-INSERT INTO acc VALUES (94904, '50 sq.ft Filter Element', 190, NULL);
-INSERT INTO acc VALUES (94952, 'Holiday Tender', 200, NULL);
-INSERT INTO acc VALUES (95070, 'Nu Wood', 210, NULL);
-INSERT INTO acc VALUES (95048, 'Filter Cleaning Cannister', 220, NULL);
-INSERT INTO acc VALUES (94700, 'Spa Wand', 230, NULL);
+INSERT INTO accessory VALUES (3001, 1011, '1011.png', 132);
+INSERT INTO accessory VALUES (3002, 1012, '1012.png', 150);
+INSERT INTO accessory VALUES (3003, 1013, '1013.png', 228);
+INSERT INTO accessory VALUES (3004, 1014, '1014.png', 45);
+INSERT INTO accessory VALUES (3005, 1015, '1015.png', 42);
+INSERT INTO accessory VALUES (3006, 1016, '1016.png', 24);
+INSERT INTO accessory VALUES (3007, 1017, '1017.png', 32);
+INSERT INTO accessory VALUES (3008, 1018, 'af1.png', 85);
+INSERT INTO accessory VALUES (3009, 1019, 'c4326.png', 25);
 
 -- --------------------------------------------------------
 

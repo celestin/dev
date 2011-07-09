@@ -9,50 +9,58 @@
 -- SET PASSWORD FOR 'relaxatub'@'localhost' = OLD_PASSWORD('hazel44');
 -- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
--- version 2.9.2
+-- version 2.10.3
 -- http://www.phpmyadmin.net
--- 
+--
 -- Host: localhost
--- Generation Time: Mar 29, 2010 at 07:07 PM
--- Server version: 5.0.27
--- PHP Version: 4.4.5
--- 
+-- Generation Time: Jul 09, 2011 at 09:06 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
 -- Database: relaxatub_com_-_prod
--- 
+--
 
 -- --------------------------------------------------------
 
--- 
--- Table structure for table accessory
--- 
+--
+-- Table structure for table acc
+--
 
-CREATE TABLE accessory (
-  accid int(11) NOT NULL auto_increment,
-  pid int(11) NOT NULL,
-  photo varchar(60) character set latin1 NOT NULL,
-  price double NOT NULL,
-  PRIMARY KEY  (accid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Accessories (Products)' AUTO_INCREMENT=3010 ;
+CREATE TABLE acc (
+  acc int(11) NOT NULL default '0',
+  accName varchar(100) NOT NULL default '',
+  dispOrder int(11) NOT NULL default '0',
+  photo varchar(100) default '0',
+  PRIMARY KEY  (acc)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Accessories';
 
--- 
--- Dumping data for table accessory
--- 
+--
+-- Dumping data for table acc
+--
 
-INSERT INTO accessory VALUES (3001, 1011, 'na.png', 132);
-INSERT INTO accessory VALUES (3002, 1012, 'na.png', 150);
-INSERT INTO accessory VALUES (3003, 1013, 'na.png', 228);
-INSERT INTO accessory VALUES (3004, 1014, 'na.png', 45);
-INSERT INTO accessory VALUES (3005, 1015, 'na.png', 42);
-INSERT INTO accessory VALUES (3006, 1016, 'na.png', 24);
-INSERT INTO accessory VALUES (3007, 1017, 'na.png', 32);
-INSERT INTO accessory VALUES (3008, 1018, 'af1.png', 85);
-INSERT INTO accessory VALUES (3009, 1019, 'c4326.png', 25);
+INSERT INTO acc VALUES (94889, 'Lift''n''Store', 100, '94889.jpg');
+INSERT INTO acc VALUES (95086, 'Slide''n''Store', 110, '95086.jpg');
+INSERT INTO acc VALUES (94888, 'Swingbrella', 120, 'swing1.jpg');
+INSERT INTO acc VALUES (94891, 'Drinks Bar complete with 2 Stools', 130, NULL);
+INSERT INTO acc VALUES (94899, 'Spa Chemical Starter Pack', 140, NULL);
+INSERT INTO acc VALUES (94887, 'Mini Step', 150, NULL);
+INSERT INTO acc VALUES (95091, 'Portable Step', 160, 'portablestep1.jpg');
+INSERT INTO acc VALUES (95046, 'Circular Spa Portable Step', 170, NULL);
+INSERT INTO acc VALUES (94902, '25 sq.ft Filter Element', 180, NULL);
+INSERT INTO acc VALUES (94904, '50 sq.ft Filter Element', 190, NULL);
+INSERT INTO acc VALUES (94952, 'Holiday Tender', 200, NULL);
+INSERT INTO acc VALUES (95070, 'Nu Wood', 210, NULL);
+INSERT INTO acc VALUES (95048, 'Filter Cleaning Cannister', 220, NULL);
+INSERT INTO acc VALUES (94700, 'Spa Wand', 230, NULL);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table faq
--- 
+--
 
 CREATE TABLE faq (
   faqno int(11) NOT NULL default '0',
@@ -62,9 +70,9 @@ CREATE TABLE faq (
   PRIMARY KEY  (faqno)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='FAQ';
 
--- 
+--
 -- Dumping data for table faq
--- 
+--
 
 INSERT INTO faq VALUES (1, 'advanced design', 'What makes Beachcomber''s Protec Hot Tub so Different?', 'Beachcomber''s Protec Hot Tub is more comfortable, more energy efficient and safter.  These three advantages set Protec apart from all other Hot Tubs.  How do we do it?\n<ul>\n<li class="faqa">First, we move the motor and pump outside the tub cavity.  This creates even more room inside the Protec Hot Tub for you to get comfortable.</li>\n<li class="faqa">It also made it possible to take the second step - insulating all four sides of the Hot Tub (and every other model of portable Beachcomber Hot Tub) just like you would in the most energy efficient home today.  Every nook and cranny is filled with insulation to make Beachcomber''s Protec Hot Tub the most energy efficient Hot Tub available today.</li>\n<li class="faqa">Third, we designed a housing for the pump and motor to do double duty as a step that makes it easier for people to get in and out of the tub safely.  The special housing also makes it easier to access the pump and motor.  We also have an injection system that draws air from the pump and motor housing into mixing ducts, injecting warm air instead of could into the water.  Protec really is something different.</li>\n</ul>');
 INSERT INTO faq VALUES (2, 'guarantee', 'What do you mean by your Guarantee versus the Hot Tub Industry''s Limited Warranty?', 'The industry''s standard Limited Warranty protects the manufacturer and not the customer.  Buying a Hot Tub is a major purchase, but few people understand what can go wrong, and are not as familiar with buying a Hot Tub as they are with other household appliciances.  Beachcomber''s guarantee protects <i>you</i>, the customer, and enables us to protect you after you purchase a Hot Tub.  It is still a young industry and we recommend that you get a guarantee like Beachcomber''s when you buy a Hot Tub, not the industry''s standard Limited Warranty.');
@@ -78,9 +86,9 @@ INSERT INTO faq VALUES (9, 'comfort', 'How important is the depth of the Hot Tub
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table member
--- 
+--
 
 CREATE TABLE member (
   memberid varchar(20) NOT NULL,
@@ -99,17 +107,17 @@ CREATE TABLE member (
   KEY i_email_address (email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Information';
 
--- 
+--
 -- Dumping data for table member
--- 
+--
 
 INSERT INTO member VALUES ('CRAIG', 'Craig', 'McKay', 'craig@southesk.com', '1eebdddd1f688244a5861695cb7c3eba', 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2010-03-08 10:07:51');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table member_type
--- 
+--
 
 CREATE TABLE member_type (
   member_type char(2) NOT NULL,
@@ -119,9 +127,9 @@ CREATE TABLE member_type (
   PRIMARY KEY  (member_type)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Types';
 
--- 
+--
 -- Dumping data for table member_type
--- 
+--
 
 INSERT INTO member_type VALUES ('U', 'User', 'Ability to View all details on the site', 1);
 INSERT INTO member_type VALUES ('N', 'New User', 'No permissions yet - waiting verification', 3);
@@ -129,9 +137,9 @@ INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capab
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table photo
--- 
+--
 
 CREATE TABLE photo (
   photo varchar(100) NOT NULL default '',
@@ -140,9 +148,9 @@ CREATE TABLE photo (
   PRIMARY KEY  (photo)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Photo Album';
 
--- 
+--
 -- Dumping data for table photo
--- 
+--
 
 INSERT INTO photo VALUES ('p001.jpg', 'Aberdeen', NULL);
 INSERT INTO photo VALUES ('p002.jpg', 'Aberdeen', NULL);
@@ -170,12 +178,14 @@ INSERT INTO photo VALUES ('p025.jpg', 'Stonehaven', NULL);
 INSERT INTO photo VALUES ('p026.jpg', 'Bucksburn', NULL);
 INSERT INTO photo VALUES ('p027.jpg', 'Bucksburn', NULL);
 INSERT INTO photo VALUES ('p028.jpg', 'Bucksburn', NULL);
+INSERT INTO photo VALUES ('p029.jpg', 'Inverurie', '');
+INSERT INTO photo VALUES ('p030.jpg', 'Inverurie', '');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table product
--- 
+--
 
 CREATE TABLE product (
   pid int(11) NOT NULL auto_increment,
@@ -184,14 +194,14 @@ CREATE TABLE product (
   ptype char(1) NOT NULL COMMENT 'Product Type: A - Accessory, C - Aftercare, Q - Quickship Tub',
   paypal_button_id varchar(20) default NULL,
   PRIMARY KEY  (pid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=1020 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=1021 ;
 
--- 
+--
 -- Dumping data for table product
--- 
+--
 
-INSERT INTO product VALUES (1001, '321-ISP', '321 (ISP) Portable', 'Q', 'WFAMAAEJHY6J4');
-INSERT INTO product VALUES (1002, '340-ISP', '340 (ISP) Portable', 'Q', 'PHMQ5RXGXWWPJ');
+INSERT INTO product VALUES (1001, '321-LEEP', '321 (LEEP) Portable', 'Q', 'WFAMAAEJHY6J4');
+INSERT INTO product VALUES (1002, '340-LEEP', '340 (LEEP) Portable', 'Q', 'PHMQ5RXGXWWPJ');
 INSERT INTO product VALUES (1003, '350QS-LEEP', '350 (LEEP) Portable', 'Q', 'VF47SDA8FY3TC');
 INSERT INTO product VALUES (1004, '350QS-BHE', '350 (BHE) Hybrid', 'Q', '2C5GJY7YR3SZW');
 INSERT INTO product VALUES (1005, '360QS-LEEP', '360 (LEEP) Portable', 'Q', 'BTNA3DCB6WR5U');
@@ -209,12 +219,13 @@ INSERT INTO product VALUES (1016, 'GLS-851-0508', 'Towel rail', 'A', '5JMCCVTSPM
 INSERT INTO product VALUES (1017, 'GLS-851-0529', 'Solar-powered cabinet illumination', 'A', 'JLB6DYGVPGMBC');
 INSERT INTO product VALUES (1018, 'A-AF1', 'Aquafinesse + free test strips', 'C', '42V7KWHBQ48ZY');
 INSERT INTO product VALUES (1019, 'C-4326', 'Beachcomber C-4326 Filter 25sq.ft.', 'C', 'SCY6S5NWJTYQ4');
+INSERT INTO product VALUES (1020, '578-BHE', '578 (BHE) Hybrid', 'Q', NULL);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table quickship
--- 
+--
 
 CREATE TABLE quickship (
   qsid int(11) NOT NULL auto_increment,
@@ -229,28 +240,29 @@ CREATE TABLE quickship (
   price_rrp double NOT NULL,
   deposit double NOT NULL,
   PRIMARY KEY  (qsid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=2011 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=2012 ;
 
--- 
+--
 -- Dumping data for table quickship
--- 
+--
 
-INSERT INTO quickship VALUES (2001, '321', 1001, 'atlantis', 'bamboo', 'tan', '4 - 5', 321, 'ISP', 4495, 899);
-INSERT INTO quickship VALUES (2002, '340', 1002, 'opal', 'ebony_enviro', 'steel', '5', 340, 'ISP', 4995, 999);
+INSERT INTO quickship VALUES (2001, '321', 1001, 'opal', 'bamboo', 'tan', '4 - 5', 321, 'LEEP', 4495, 899);
+INSERT INTO quickship VALUES (2002, '340', 1002, 'opal', 'ebony_enviro', 'steel', '5', 340, 'LEEP', 4995, 999);
 INSERT INTO quickship VALUES (2003, '350QS', 1003, 'alabaster', 'ebony_enviro', 'steel', '6', 350, 'LEEP', 5625, 1125);
 INSERT INTO quickship VALUES (2004, '350QS', 1004, 'quartzite', 'walnut_enviro', 'tan', '6', 350, 'BHE', 6165, 1233);
-INSERT INTO quickship VALUES (2005, '360QS', 1005, 'quartzite', 'walnut_enviro', 'tan', '6 + 1', 360, 'LEEP', 5625, 1125);
-INSERT INTO quickship VALUES (2006, '360QS', 1006, 'alabaster', 'ebony_enviro', 'steel', '6 + 1', 360, 'BHE', 6165, 1233);
-INSERT INTO quickship VALUES (2007, '380QS', 1007, 'quartzite', 'bamboo', 'tan', '7 + 1', 380, 'BHE', 6695, 1339);
-INSERT INTO quickship VALUES (2008, '550QS', 1008, 'opal', 'ebony_enviro', 'steel', '6 + 2', 550, 'BHE', 7995, 1599);
-INSERT INTO quickship VALUES (2009, '725QS', 1009, 'alabaster', 'walnut_enviro', 'tan', '6 + 1', 725, 'BHE', 8735, 1747);
-INSERT INTO quickship VALUES (2010, '750QS', 1010, 'alabaster', 'walnut_enviro', 'tan', '8 + 1', 750, 'BHE', 11595, 2319);
+INSERT INTO quickship VALUES (2005, '360QS', 1005, 'alabaster', 'walnut_enviro', 'tan', '6 + 1', 360, 'LEEP', 5625, 1125);
+INSERT INTO quickship VALUES (2006, '360QS', 1006, 'palladium', 'ebony_enviro', 'steel', '6 + 1', 360, 'BHE', 6165, 1233);
+INSERT INTO quickship VALUES (2007, '380QS', 1007, 'opal', 'walnut_enviro', 'tan', '7 + 1', 380, 'BHE', 6695, 1339);
+INSERT INTO quickship VALUES (2008, '550QS', 1008, 'quartzite', 'walnut_enviro', 'tan', '6 + 2', 550, 'BHE', 7995, 1599);
+INSERT INTO quickship VALUES (2009, '725QS', 1009, 'alabaster', 'ebony_enviro', 'steel', '6 + 1', 725, 'BHE', 8735, 1747);
+INSERT INTO quickship VALUES (2010, '750QS', 1010, 'palladium', 'ebony_enviro', 'steel', '8 + 1', 750, 'BHE', 11595, 2319);
+INSERT INTO quickship VALUES (2011, '578', 1020, 'palladium', 'ebony_enviro', 'steel', '', 578, 'BHE', 0, 0);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table series
--- 
+--
 
 CREATE TABLE series (
   series int(11) NOT NULL default '0',
@@ -258,9 +270,9 @@ CREATE TABLE series (
   PRIMARY KEY  (series)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Series';
 
--- 
+--
 -- Dumping data for table series
--- 
+--
 
 INSERT INTO series VALUES (300, '300 Series');
 INSERT INTO series VALUES (500, '500 Series');
@@ -268,9 +280,9 @@ INSERT INTO series VALUES (700, '700 Series');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table tub
--- 
+--
 
 CREATE TABLE tub (
   series int(11) default NULL,
@@ -305,9 +317,9 @@ CREATE TABLE tub (
   KEY tub_series (series)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- 
+--
 -- Dumping data for table tub
--- 
+--
 
 INSERT INTO tub VALUES (300, '321', 0, 'Shown in Beachwood', 'beachwood', 'natural_enviro', 'Medium', '4-5', '198 x 86', '916', '193', '1109', '10', '10-46', '2.5', '5 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 320m from a minimum of 5-35 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Adjustable heating and cleaning cycles', 'Tight thermos bottle seal to save energy and money', 'Economical 1 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'Over the past year, our Beachcomber Hot Tub has been in constant use... When I wake up stiff and sore, sitting in my hot tub eases all stiffness and I''m ready to go again.', 'Brenda & Brian Kalyn', 'Purchasing our Beachcomber Hot Tub was one of the best moves we''ve made!  We actually look forward to those cold, snowy nights when we submerge ourselves and enjoy therapeutic qualities of water in our Beachcomber Hot Tub.', 'Janic & Brad Chalmers');
 INSERT INTO tub VALUES (300, '350', 0, 'Shown in Rainforest', 'midnight', 'natural_enviro', 'Large', '6', '203 x 224 x 97', '1419', '295', '1714', '23', '24-86', '3.5', '13 locations selected to enable you to choose the type of therapy for your personalised body massage', 'Customise this 350 from a minimum of 13-64 different types of jetting combinations at no cost', 'High performing, efficient water cleaning system', 'Easy programming for heating and filtering to save money', 'Tight thermos bottle seal to save energy and money', 'Powerful 2 hp pump with stainless steel heater', 'Built to the highest standards available', 'Mood setting and safety for entry and exit', 'A no-fine-print, straightforward customer guarantee', 'I cannot think of any better way of treating a physically and mentally stressed body except with heat, water and the massage action of my Beachcomber Hot Tub.', 'Bill Stephenson', 'We just purchased a Beachcomber - what a fantastic way to relax!  My wife and I work every day and look forward to an evening of total relaxation and a good night''s sleep.  We have a family night twice a week.  The kids love it, and so does my mother, dad, sister, brother, etc.  Keep up the good work.  I tell everyone I can.', 'Terry & Joan Belleau');

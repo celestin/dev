@@ -35,6 +35,10 @@
  * CAM  20-May-2010  10656 : Change email to sales@ (rather than hazel@).
  * CAM  22-May-2010  10626 : Added SmartGrass navigation.
  * CAM  02-Aug-2010  10766 : Added Facebook Share to Tub page.
+ * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
+ * CAM  24-Jun-2011  10978 : Added Google Analytics.
+ * CAM  24-Jun-2011  10978 : Added Google Site Verification.
+ * CAM  03-Jul-2011  10983 : Added Find Us On Facebook badge.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -105,6 +109,7 @@ if ($loggedin) {
       <tr><td align=center class="spaceafter"><a id="linkcastlewood" class="nav" href="castlewood.php">short break with a hot tub</a></td></tr>
       <tr><td align=center class="spaceafter"><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
       <tr><td align=center><a id="linkcontact" class="nav" href="contact.php">contact us</a></td></tr>
+      <tr><td align=center><a target="_blank" href="http://www.facebook.com/pages/Relaxatub/119710291449980"><img src="img/sm/fb.png" width="98" height="30"></a></td></tr>
       <tr><td align=center><table border="0">
       <tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>

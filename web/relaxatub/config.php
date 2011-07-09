@@ -17,7 +17,7 @@ $cfg['Site']['URL']   = "http://www.relaxatub.com";                 // no traili
 $cfg['Site']['Email'] = "customer.service@relaxatub.com";
 $cfg['Site']['Test'] = FALSE;
 
-$cfg['Site']['Db']['Hostname'] = "localhost";
+$cfg['Site']['Db']['Hostname'] = "127.0.0.1";
 $cfg['Site']['Db']['Database'] = "relaxatub_com_-_prod";
 $cfg['Site']['Db']['Username'] = "relaxatub";
 $cfg['Site']['Db']['Password'] = "hazel44";

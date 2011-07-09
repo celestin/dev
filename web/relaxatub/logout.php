@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2010 frontburner.co.uk
  *
  * Logout of the system
  *
@@ -10,9 +10,11 @@
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
  * CAM  08-Mar-2010  10602 : Test for correct session variable.
+ * CAM  30-Mar-2010  10615 : Page is middle aligned.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Log out";
+$pagevalign = "middle";
 include_once 'main.php';
 
 if(isset($_REQUEST['logmeout'])){

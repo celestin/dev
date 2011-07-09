@@ -14,6 +14,7 @@
  * CAM  26-Apr-2008  10261 : Added opening hours.
  * CAM  11-Aug-2009  10469 : Auto-year on copyright.
  * CAM  01-Mar-2010  10586 : Reinstate address and telephone number (new business line).
+ * CAM  29-Mar-2010  10613 : Changed email address to sales@.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagecontact";
@@ -48,7 +49,7 @@ include "tpl/top.php";
       <td valign=top>
         <table border=0 cellspacing=0 cellpadding=4>
         <tr>
-          <td valign=top class="fldlbl">Email</td><td valign=top class="fldtxt"><a href="mailto:hazel@relaxatub.com?subject=Website%20Response">hazel@relaxatub.com</a></td>
+          <td valign=top class="fldlbl">Email</td><td valign=top class="fldtxt"><a href="mailto:sales@relaxatub.com?subject=Website%20Response">sales@relaxatub.com</a></td>
         </tr>
         <tr>
           <td class="fldlbl" valign=top>Opening Hours</td><td class="fldtxt">

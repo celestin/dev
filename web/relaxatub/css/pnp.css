@@ -1,0 +1,108 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Plug'n'Play Page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  01-Apr-2010  10625 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#pnp {
+  text-align: left;
+}
+
+#pnp h2 {
+  margin: 5px 0px 0px 5px;
+  padding: 0px 5px 0px 5px;
+}
+
+#pnp h3 {
+  color: #333399;
+}
+
+#pnp .feature {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #333366;
+}
+
+
+#pnp #barcelona {
+  margin: 0px;
+  padding: 0px 6px 0px 10px;
+  font-size: 11pt;
+  display: inline-block;
+}
+
+#pnp #barcelona img {
+  float: right;
+  margin: 10px 4px 0px 10px;
+  padding: 0px;
+}
+
+#pnp #barcelona h3 {
+  margin: 8px 0px 8px 0px;
+  padding: 0px;
+}
+
+#pnp #barcelona p  {
+  padding: 0px 10px 10px 0px;
+  margin: 0px;
+  font-size: 10pt;
+  text-align: justify;
+}
+
+#pnp #sttropez {
+  margin: 0px;
+  padding: 15px 10px 0px 10px;
+  display: inline-block;
+}
+
+#pnp #sttropez img {
+  float: left;
+  margin: 0px 10px 10px 0px;
+}
+
+#pnp #sttropez h3 {
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+}
+
+#pnp #sttropez p  {
+  padding: 0px 0px 10px 0px;
+  margin: 0px;
+  font-size: 10pt;
+  text-align: justify;
+}
+
+#pnp #comparison {
+  text-align: center;
+}
+
+#pnp #comparison table {
+  width: 70%;
+  margin-left:15%;
+  margin-right:15%;
+  margin-bottom: 10px;
+  border: 1px solid #666699;
+}
+
+#pnp #comparison td,th {
+  border: 1px solid #666699;
+  text-align: center;
+}
+
+#pnp #comparison th {
+  background-color: #666699;
+  color: white;
+}
+
+#pnp #comparison td.label {
+  background-color: #CCCCFF;
+  font-weight: bold;
+}
+

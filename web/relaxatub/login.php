@@ -1,7 +1,7 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2007 frontburner.co.uk
+ * Copyright (c) 2007,2010 frontburner.co.uk
  *
  * Login to the system (including first-time)
  *
@@ -9,9 +9,11 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  30-Mar-2010  10615 : Page is middle aligned.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Login";
+$pagevalign = "middle";
 include_once 'main.php';
 include 'tpl/top.php';
 

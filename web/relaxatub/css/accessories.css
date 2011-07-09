@@ -1,0 +1,42 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Accessories page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  30-Mar-2010  10623 : File created.
+ * CAM  30-Mar-2010  10620 : Added classes for single Accessory view.
+ * CAM  01-Apr-2010  10628 : Moved lbl and val classes to main CSS.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#accessories {
+  margin: 0 0 0 10px;
+}
+
+#accessories h2 {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+#accessories #price {
+  color: #004ed0;
+  font-weight: bold;
+  text-align:right;
+}
+
+#accessory h2 {
+  margin: 0 0 0 0;
+  padding: 0 0 5 8;
+  text-align: left;
+}
+
+#accessory h3 {
+  margin: 0 0 0 0;
+  padding: 0 0 5 8;
+  text-align: left;
+}
+

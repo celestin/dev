@@ -13,43 +13,40 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Mar 12, 2010 at 01:36 PM
+-- Generation Time: Mar 29, 2010 at 07:07 PM
 -- Server version: 5.0.27
 -- PHP Version: 4.4.5
 -- 
 -- Database: relaxatub_com_-_prod
+-- 
+
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table acc
+-- Table structure for table accessory
 -- 
 
-CREATE TABLE acc (
-  acc int(11) NOT NULL default '0',
-  accName varchar(100) NOT NULL default '',
-  dispOrder int(11) NOT NULL default '0',
-  photo varchar(100) default '0',
-  PRIMARY KEY  (acc)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Accessories';
+CREATE TABLE accessory (
+  accid int(11) NOT NULL auto_increment,
+  pid int(11) NOT NULL,
+  photo varchar(60) character set latin1 NOT NULL,
+  price double NOT NULL,
+  PRIMARY KEY  (accid)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Accessories (Products)' AUTO_INCREMENT=3010 ;
 
 -- 
--- Dumping data for table acc
+-- Dumping data for table accessory
 -- 
 
-INSERT INTO acc VALUES (94889, 'Lift''n''Store', 100, '94889.jpg');
-INSERT INTO acc VALUES (95086, 'Slide''n''Store', 110, '95086.jpg');
-INSERT INTO acc VALUES (94888, 'Swingbrella', 120, 'swing1.jpg');
-INSERT INTO acc VALUES (94891, 'Drinks Bar complete with 2 Stools', 130, NULL);
-INSERT INTO acc VALUES (94899, 'Spa Chemical Starter Pack', 140, NULL);
-INSERT INTO acc VALUES (94887, 'Mini Step', 150, NULL);
-INSERT INTO acc VALUES (95091, 'Portable Step', 160, 'portablestep1.jpg');
-INSERT INTO acc VALUES (95046, 'Circular Spa Portable Step', 170, NULL);
-INSERT INTO acc VALUES (94902, '25 sq.ft Filter Element', 180, NULL);
-INSERT INTO acc VALUES (94904, '50 sq.ft Filter Element', 190, NULL);
-INSERT INTO acc VALUES (94952, 'Holiday Tender', 200, NULL);
-INSERT INTO acc VALUES (95070, 'Nu Wood', 210, NULL);
-INSERT INTO acc VALUES (95048, 'Filter Cleaning Cannister', 220, NULL);
-INSERT INTO acc VALUES (94700, 'Spa Wand', 230, NULL);
+INSERT INTO accessory VALUES (3001, 1011, 'na.png', 132);
+INSERT INTO accessory VALUES (3002, 1012, 'na.png', 150);
+INSERT INTO accessory VALUES (3003, 1013, 'na.png', 228);
+INSERT INTO accessory VALUES (3004, 1014, 'na.png', 45);
+INSERT INTO accessory VALUES (3005, 1015, 'na.png', 42);
+INSERT INTO accessory VALUES (3006, 1016, 'na.png', 24);
+INSERT INTO accessory VALUES (3007, 1017, 'na.png', 32);
+INSERT INTO accessory VALUES (3008, 1018, 'af1.png', 85);
+INSERT INTO accessory VALUES (3009, 1019, 'c4326.png', 25);
 
 -- --------------------------------------------------------
 
@@ -187,7 +184,7 @@ CREATE TABLE product (
   ptype char(1) NOT NULL COMMENT 'Product Type: A - Accessory, C - Aftercare, Q - Quickship Tub',
   paypal_button_id varchar(20) default NULL,
   PRIMARY KEY  (pid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=1011 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=1020 ;
 
 -- 
 -- Dumping data for table product
@@ -203,6 +200,15 @@ INSERT INTO product VALUES (1007, '380QS-BHE', '380 (BHE) Hybrid', 'Q', 'ZCPJG2Y
 INSERT INTO product VALUES (1008, '550QS-BHE', '550 (BHE) Hybrid', 'Q', '6FB7ZLDVLF422');
 INSERT INTO product VALUES (1009, '725QS-BHE', '725 (BHE) Hybrid', 'Q', '6YSJU9WDB3DVW');
 INSERT INTO product VALUES (1010, '750QS-BHE', '750 (BHE) Hybrid', 'Q', 'TW2QEB7NXKSRG');
+INSERT INTO product VALUES (1011, 'GLS-851-0504', 'Covermate I', 'A', 'W6Z4UESXUQT22');
+INSERT INTO product VALUES (1012, 'GLS-851-0505', 'Covermate II', 'A', 'G2QZM6589WWW2');
+INSERT INTO product VALUES (1013, 'GLS-851-0507', 'Covermate III', 'A', 'F7ZT8P5KGJ8N2');
+INSERT INTO product VALUES (1014, 'GLS-851-0511', 'Spa caddy', 'A', 'V9EBTTKQDLLCN');
+INSERT INTO product VALUES (1015, 'PLS-40-8027', 'Spa wand (inc skimmer brush and wall mount)', 'A', 'HEMJJDWZ67CRU');
+INSERT INTO product VALUES (1016, 'GLS-851-0508', 'Towel rail', 'A', '5JMCCVTSPM9RS');
+INSERT INTO product VALUES (1017, 'GLS-851-0529', 'Solar-powered cabinet illumination', 'A', 'JLB6DYGVPGMBC');
+INSERT INTO product VALUES (1018, 'A-AF1', 'Aquafinesse + free test strips', 'C', '42V7KWHBQ48ZY');
+INSERT INTO product VALUES (1019, 'C-4326', 'Beachcomber C-4326 Filter 25sq.ft.', 'C', 'SCY6S5NWJTYQ4');
 
 -- --------------------------------------------------------
 

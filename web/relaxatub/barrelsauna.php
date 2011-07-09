@@ -14,6 +14,7 @@
 
 $pageId = "pagebarrelsauna";
 $pageTitle = "Barrel Sauna";
+$pageCss = "barrelsauna";
 include "tpl/top.php";
 ?>
 <div id="barrelsauna">

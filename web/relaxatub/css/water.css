@@ -1,0 +1,92 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Water Page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  01-Apr-2010  10619 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#water {
+  text-align: left;
+}
+
+#water h2 {
+  margin: 0 0 0 0;
+  padding: 0 5 0 5;
+}
+
+
+#water #maximise {
+  margin: 0px;
+  padding: 0px 6px 0px 10px;
+  font-size: 11pt;
+}
+
+#water #maximise img {
+  float: right;
+  margin: 10px 10px 0px 0px;
+  padding: 0px;
+}
+
+#water #maximise h3 {
+  margin: 10px 0px 5px 0px;
+  padding: 0px;
+}
+
+#water #maximise p  {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  font-size: 11pt;
+}
+
+
+#water #customise {
+  margin: 0 0 0 0;
+  margin: 10px 10px 0px 10px;
+}
+
+#water #customise img {
+  float: left;
+  margin: 26px 10px 10px 0px;
+}
+
+#water #customise h3 {
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+}
+
+#water #customise p  {
+  margin: 0px 0px 0px 0px;
+  font-size: 9pt;
+  color: #000033;
+  text-align: justify;
+}
+
+
+#water #cleartech {
+  margin: 0 0 0 0;
+  margin: 10px 10px 0px 10px;
+}
+
+#water #cleartech img {
+  float: right;
+  margin: 26px 10px 10px 0px;
+}
+
+#water #cleartech h3 {
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+}
+
+#water #cleartech p  {
+  margin: 0px 0px 0px 0px;
+  font-size: 11pt;
+  color: #165681;
+}
+
+

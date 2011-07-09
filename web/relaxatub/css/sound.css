@@ -1,0 +1,49 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * QSS page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  30-Mar-2010  10617 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#sound {
+  text-align: left;
+}
+
+#sound h2 {
+  margin: 0 0 0 0;
+  padding: 0 5 10 5;
+}
+
+#sound h3 {
+  margin: 0 0 0 0;
+  padding: 10 5 5 5;
+}
+
+#sound p {
+  padding: 0;
+  font-size: 12pt;
+  
+}
+
+#sound #remote {
+  padding: 0;
+  font-size: 11pt;
+  color: #004ed0;
+  
+}
+
+#sound #caption {
+  padding: 0;
+  font-size: 9pt;
+  text-align: center;
+  font-weight: bold;
+  color: #333333;
+  
+}
+

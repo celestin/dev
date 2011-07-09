@@ -9,60 +9,67 @@
 -- Database Diff
 --
 -- Who  When         Why
--- CAM  12-Mar-2010  10604 : Added product and quickship.
+-- CAM  29-Mar-2010  10620 : Added accessory.
+-- CAM  29-Mar-2010  10622 : Added Harrow's tub pictures.
+-- CAM  30-Mar-2010  10620 : Added accessory images.
+-- CAM  01-Apr-2010  10620 : Added spa caddy accessory image.
 -- --------------------------------------------------------
 
-CREATE TABLE product (
-  pid int(11) NOT NULL auto_increment,
-  pcode varchar(20) NOT NULL,
-  pdescription varchar(100) default NULL,
-  ptype char(1) NOT NULL COMMENT 'Product Type: A - Accessory, C - Aftercare, Q - Quickship Tub',
-  paypal_button_id varchar(20) default NULL,
-  PRIMARY KEY  (pid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=1011 ;
+DROP TABLE acc;
 
 -- 
--- Dumping data for table product
+-- Table structure for table accessory
 -- 
 
-INSERT INTO product VALUES (1001, '321-ISP', '321 (ISP) Portable', 'Q', 'WFAMAAEJHY6J4');
-INSERT INTO product VALUES (1002, '340-ISP', '340 (ISP) Portable', 'Q', 'PHMQ5RXGXWWPJ');
-INSERT INTO product VALUES (1003, '350QS-LEEP', '350 (LEEP) Portable', 'Q', 'VF47SDA8FY3TC');
-INSERT INTO product VALUES (1004, '350QS-BHE', '350 (BHE) Hybrid', 'Q', '2C5GJY7YR3SZW');
-INSERT INTO product VALUES (1005, '360QS-LEEP', '360 (LEEP) Portable', 'Q', 'BTNA3DCB6WR5U');
-INSERT INTO product VALUES (1006, '360QS-BHE', '360 (BHE) Hybrid', 'Q', 'CBHW25HKHZ8VC');
-INSERT INTO product VALUES (1007, '380QS-BHE', '380 (BHE) Hybrid', 'Q', 'ZCPJG2YTBM4UY');
-INSERT INTO product VALUES (1008, '550QS-BHE', '550 (BHE) Hybrid', 'Q', '6FB7ZLDVLF422');
-INSERT INTO product VALUES (1009, '725QS-BHE', '725 (BHE) Hybrid', 'Q', '6YSJU9WDB3DVW');
-INSERT INTO product VALUES (1010, '750QS-BHE', '750 (BHE) Hybrid', 'Q', 'TW2QEB7NXKSRG');
-
-CREATE TABLE quickship (
-  qsid int(11) NOT NULL auto_increment,
-  qscode varchar(20) character set latin1 NOT NULL,
+CREATE TABLE accessory (
+  accid int(11) NOT NULL auto_increment,
   pid int(11) NOT NULL,
-  acrylic_colour varchar(30) character set latin1 NOT NULL,
-  cabinet_colour varchar(30) character set latin1 NOT NULL,
-  heatshield_colour varchar(30) character set latin1 NOT NULL,
-  seats varchar(12) character set latin1 NOT NULL,
-  tub int(11) NOT NULL,
-  tubtype varchar(20) character set latin1 NOT NULL,
-  price_rrp double NOT NULL,
-  deposit double NOT NULL,
-  PRIMARY KEY  (qsid)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Quickship (Products)' AUTO_INCREMENT=2011 ;
+  photo varchar(60) character set latin1 NOT NULL,
+  price double NOT NULL,
+  PRIMARY KEY  (accid)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Accessories (Products)' AUTO_INCREMENT=3010 ;
 
 -- 
--- Dumping data for table quickship
+-- Dumping data
 -- 
 
-INSERT INTO quickship VALUES (2001, '321', 1001, 'atlantis', 'bamboo', 'tan', '4 - 5', 321, 'ISP', 4495, 899);
-INSERT INTO quickship VALUES (2002, '340', 1002, 'opal', 'ebony_enviro', 'steel', '5', 340, 'ISP', 4995, 999);
-INSERT INTO quickship VALUES (2003, '350QS', 1003, 'alabaster', 'ebony_enviro', 'steel', '6', 350, 'LEEP', 5625, 1125);
-INSERT INTO quickship VALUES (2004, '350QS', 1004, 'quartzite', 'walnut_enviro', 'tan', '6', 350, 'BHE', 6165, 1233);
-INSERT INTO quickship VALUES (2005, '360QS', 1005, 'quartzite', 'walnut_enviro', 'tan', '6 + 1', 360, 'LEEP', 5625, 1125);
-INSERT INTO quickship VALUES (2006, '360QS', 1006, 'alabaster', 'ebony_enviro', 'steel', '6 + 1', 360, 'BHE', 6165, 1233);
-INSERT INTO quickship VALUES (2007, '380QS', 1007, 'quartzite', 'bamboo', 'tan', '7 + 1', 380, 'BHE', 6695, 1339);
-INSERT INTO quickship VALUES (2008, '550QS', 1008, 'opal', 'ebony_enviro', 'steel', '6 + 2', 550, 'BHE', 7995, 1599);
-INSERT INTO quickship VALUES (2009, '725QS', 1009, 'alabaster', 'walnut_enviro', 'tan', '6 + 1', 725, 'BHE', 8735, 1747);
-INSERT INTO quickship VALUES (2010, '750QS', 1010, 'alabaster', 'walnut_enviro', 'tan', '8 + 1', 750, 'BHE', 11595, 2319);
+INSERT INTO product VALUES (1011, 'GLS-851-0504', 'Covermate I', 'A', 'W6Z4UESXUQT22');
+INSERT INTO product VALUES (1012, 'GLS-851-0505', 'Covermate II', 'A', 'G2QZM6589WWW2');
+INSERT INTO product VALUES (1013, 'GLS-851-0507', 'Covermate III', 'A', 'F7ZT8P5KGJ8N2');
+INSERT INTO product VALUES (1014, 'GLS-851-0511', 'Spa caddy', 'A', 'V9EBTTKQDLLCN');
+INSERT INTO product VALUES (1015, 'PLS-40-8027', 'Spa wand (inc skimmer brush and wall mount)', 'A', 'HEMJJDWZ67CRU');
+INSERT INTO product VALUES (1016, 'GLS-851-0508', 'Towel rail', 'A', '5JMCCVTSPM9RS');
+INSERT INTO product VALUES (1017, 'GLS-851-0529', 'Solar-powered cabinet illumination', 'A', 'JLB6DYGVPGMBC');
+INSERT INTO product VALUES (1018, 'A-AF1', 'Aquafinesse + free test strips', 'C', '42V7KWHBQ48ZY');
+INSERT INTO product VALUES (1019, 'C-4326', 'Beachcomber C-4326 Filter 25sq.ft.', 'C', 'SCY6S5NWJTYQ4');
+
+
+INSERT INTO accessory VALUES (3001, 1011, 'na.png', 132);
+INSERT INTO accessory VALUES (3002, 1012, 'na.png', 150);
+INSERT INTO accessory VALUES (3003, 1013, 'na.png', 228);
+INSERT INTO accessory VALUES (3004, 1014, 'na.png', 45);
+INSERT INTO accessory VALUES (3005, 1015, 'na.png', 42);
+INSERT INTO accessory VALUES (3006, 1016, 'na.png', 24);
+INSERT INTO accessory VALUES (3007, 1017, 'na.png', 32);
+INSERT INTO accessory VALUES (3008, 1018, 'af1.png', 85);
+INSERT INTO accessory VALUES (3009, 1019, 'c4326.png', 25);
+
+INSERT INTO photo (photo, location, tub)
+VALUES (
+'p029.jpg', 'Inverurie', ''
+), (
+'p030.jpg', 'Inverurie', ''
+);
+
+UPDATE accessory SET photo='1011.png' WHERE pid=1011;
+UPDATE accessory SET photo='1012.png' WHERE pid=1012;
+UPDATE accessory SET photo='1013.png' WHERE pid=1013;
+UPDATE accessory SET photo='na.png' WHERE pid=1014;
+UPDATE accessory SET photo='1015.png' WHERE pid=1015;
+UPDATE accessory SET photo='1016.png' WHERE pid=1016;
+UPDATE accessory SET photo='1017.png' WHERE pid=1017;
+UPDATE accessory SET photo='af1.png' WHERE pid=1018;
+UPDATE accessory SET photo='c4326.png' WHERE pid=1019;
+
+UPDATE accessory SET photo='1014.png' WHERE pid=1014;
 

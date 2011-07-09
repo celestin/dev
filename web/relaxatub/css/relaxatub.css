@@ -1,0 +1,498 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2006,2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  07-Oct-2006  10055 : Added promotion for DIV and P.
+ * CAM  25-Nov-2006  10055 : Added Typical 0% APR.
+ * CAM  29-Mar-2007  10109 : Added h2.
+ * CAM  14-Feb-2008  10243 : Revamped the look and feel.
+ * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  12-Apr-2008  10241 : Added classes for short details.
+ * CAM  17-May-2008  10232 : Added classes for new Quality page.
+ * CAM  20-Aug-2008  10113 : Added classes for H3 and AquaFinesse logo.
+ * CAM  08-Nov-2008  10237 : Added classes for QuickShip.
+ * CAM  08-Nov-2008  10239 : Added classes for BarrelSauna.
+ * CAM  11-Aug-2009  10471 : Added tubtype (for Hybrid/Portable).
+ * CAM  08-Mar-2010  10588 : Added Message formats and tidied inputs.
+ * CAM  12-Mar-2010  10604 : Added Quickship classes.
+ * CAM  24-Mar-2010  10603 : Added links for castlewood.
+ * CAM  29-Mar-2010  10612 : Added more Quickshop classes.
+ * CAM  29-Mar-2010  10614 : Remove old pages.
+ * CAM  29-Mar-2010  10620 : Added Accessories classes.
+ * CAM  29-Mar-2010  10621 : Added Tub Quickship classes.
+ * CAM  30-Mar-2010  10615 : Added Live Well classes.
+ * CAM  01-Apr-2010  10628 : Moved lbl and val classes to main CSS.
+ * CAM  15-May-2010  10625 : Added PNP link classes.
+ * CAM  22-May-2010  10626 : Added SmartGrass classes.
+ * CAM  02-Aug-2010  10766 : Added Facebook Share to Tub page.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  background-color: #D3EAF1;
+}
+
+p {
+  text-align: left;
+}
+
+p, table, td {
+  color: #333333;
+  font-family: Arial, Helvetica;
+  font-size: 9pt;
+  text-decoration: none;
+}
+
+.quality p {
+  color: #004936;
+  font-size: 9pt;
+}
+
+h2 {
+  color: #0052af;
+  font-family: Times New Roman, Serif;
+  font-size: 20pt;
+  font-style: italic;
+  text-decoration: none;
+}
+
+h3 {
+  color: #0052af;
+  font-family: Arial, Helvetica;
+  font-size: 12pt;
+  font-style: italic;
+  text-decoration: none;
+}
+
+#tub #prices h2 {
+  margin: 0 0 0 0;
+  padding: 10 0 5 0;
+}
+
+
+#tub #prices td {
+  font-size: 9pt;
+  color: #233f91;
+  font-weight: normal;
+}
+
+#tub #prices #id {
+  font-size: 11pt;
+  color: #233f91;
+  text-align:center;
+  font-weight: bold;
+}
+
+#tub #prices td#price {
+  color: #004ed0;
+  text-align:right;
+  font-weight: bold;
+  padding: 0px 5px 0px 0px;
+}
+
+#popup {
+  font-family: Arial, Helvetica;
+  font-size: 9pt;
+  border-bottom:    #233f91 2px solid;
+  border-left:      #233f91 2px solid;
+  border-right:     #233f91 2px solid;
+  border-top:       #233f91 2px solid;
+  padding:          8px;
+  background-color: #F7FCFD;
+}
+
+#paypalbutton {
+  border: 0px;
+  padding: 0px;
+}
+
+.infoPoint {
+  cursor: help;
+  position: relative;
+}
+
+div.promotion {
+  background-color: #233f91;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+p.promotion {
+  color: white;
+  font-weight: normal;
+  font-size: 11pt;
+}
+
+p.legal {
+  color: white;
+  font-weight: normal;
+  font-size: 16pt;
+}
+
+#val {
+  color: #004ed0;
+  font-weight: bold;
+}
+
+#lbl {
+  color: #233f91;
+  text-align: right;
+  font-weight: bold;
+}
+
+.rxbox {
+  border-bottom: #233f91 2px solid;
+  border-left:   #233f91 2px solid;
+  border-right:  #233f91 2px solid;
+  border-top:    #233f91 2px solid;
+  background-color: #E2EEF2;
+}
+
+.bcbox {
+  border-bottom: #7C9B93 2px solid;
+  border-left:   #7C9B93 2px solid;
+  border-right:  #7C9B93 2px solid;
+  border-top:    #7C9B93 2px solid;
+  background-color: #F7FCFD;
+}
+
+.thumb {
+  border-bottom: #233f91 2px solid;
+  border-left:   #233f91 2px solid;
+  border-right:  #233f91 2px solid;
+  border-top:    #233f91 2px solid;
+}
+
+.tubnav {
+  border-right:  #066EE2 2px solid;
+}
+
+.phnav {
+  border-top:    #066EE2 2px solid;
+}
+
+.phbox {
+  border-bottom: #7C9B93 2px solid;
+  border-left:   #7C9B93 2px solid;
+  border-right:  #7C9B93 2px solid;
+  border-top:    #7C9B93 2px solid;
+}
+
+.phsel {
+  border-bottom: #066EE2 2px dashed;
+  border-left:   #066EE2 2px dashed;
+  border-right:  #066EE2 2px dashed;
+  border-top:    #066EE2 2px dashed;
+}
+
+.series {
+  border-bottom:  #066EE2 2px solid;
+  background-color: #D3EAF1;
+  font-weight: bold;
+}
+
+.tubname {
+  color: #333399;
+  font-size: 14pt;
+  font-weight: bold;
+  TEXT-ALIGN: right;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 0px;
+}
+
+.bigquot {
+  font-family: Times New Roman, Serif;
+  font-weight: bold;
+}
+
+.custquot {
+  font-style: italic;
+  TEXT-ALIGN: right;
+}
+
+.fldlbl {
+  color: #066EE2;
+  font-weight: bold;
+}
+
+.tubvalue {
+  color: #233f91;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.tubunits {
+  padding-left: 4px;
+  color: #999999;
+  font-weight: bold;
+}
+
+.tubsel {
+  background-color: #F7FCFD;
+}
+
+.tuboth {
+  border-right:  #066EE2 2px solid;
+  background-color: #E2EEF2;
+}
+
+.rxtxt {
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.rxtop {
+  background-color: #233f91;
+  color: white;
+  vertical-align:middle;
+  HEIGHT: 35px;
+}
+
+#AquaFinesseLogo
+{
+  padding-top: 15px;
+}
+
+img.centerheader
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#rxfeature ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+#rxfeature ul li {
+  display: inline;
+}
+
+#rxfeature ul li a
+{
+  font-size: 12pt;
+  text-decoration: none;
+  padding: .2em 1em;
+  color: #fff;
+  background-color: #233f91;
+}
+
+td.fld {
+  color: #4d492f;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+
+/** Message formats. */
+
+p.err {
+  color: #285292;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+p.quest {
+  color: #4d492f;
+  font-size: 11pt;
+}
+
+p.statement {
+  color: #285292;
+  font-size: 11pt;
+}
+
+
+body#pagelivewell a#linklivewell,
+body#pagehybrid a#linkhybrid,
+body#pagesound a#linksound,
+body#pagewater a#linkwater,
+body#pagebuiltforlife a#linkbuiltforlife,
+body#pagefaq a#linkfaq,
+body#pagecontact a#linkcontact,
+body#pagetub300 a#linktub300,
+body#pagetub500 a#linktub500,
+body#pagetub700 a#linktub700,
+body#pagegarden a#linkgarden,
+body#pagesmartgrass a#linksmartgrass,
+body#pagecastlewood a#linkcastlewood,
+body#pageaccessories a#linkaccessories,
+body#pagephoto a#linkphoto,
+body#pagequickship a#linkquickship,
+body#pagepnp a#linkpnp,
+body#pagebarrelsauna a#linkbarrelsauna {
+  color: #fff;
+  background: #6b7b71;
+}
+
+#rxfeature ul li a:hover
+{
+  color: #fff;
+  background-color: #7d8dc6;
+}
+
+.annot {
+  color: 004936;
+  TEXT-ALIGN: center;
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.pgbak {
+  background-color: white;
+}
+
+p.bht {
+  color: #333333;
+  font-family: serif;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.desc {
+  color: #004936;
+  font-size: 13pt;
+}
+
+.desc2, li {
+  color: #004936;
+  font-size: 10pt;
+  TEXT-ALIGN: justify;
+}
+
+.faqno {
+  color: #333333;
+  font-size: 16pt;
+}
+
+.faqsum {
+  color: #233f91;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+.faqq {
+  color: #004936;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.faqa {
+  color: #333333;
+  font-size: 10pt;
+}
+
+.hte2 {
+  color: #233f91;
+  font-size: 7pt;
+  font-weight: bold;
+  TEXT-ALIGN: center;
+}
+
+.hte3 {
+  color: #000000;
+  font-size: 9pt;
+  TEXT-ALIGN: left;
+}
+
+.hte3a {
+  color: #004936;
+  font-size: 9pt;
+  TEXT-ALIGN: left;
+}
+
+.pro {
+  color: #004936;
+  font-size: 11pt;
+  TEXT-ALIGN: left;
+}
+
+h5 {
+  color: #56563B;
+  font-family: Arial, Helvetica;
+  font-size: 10pt;
+  text-decoration: none
+}
+
+
+A {
+  color: #00037f;
+  text-decoration: none;
+}
+A:hover {
+  color: #5aa6e1;
+  text-decoration: underline;
+}
+
+A.nav {
+  font-family: Arial, Helvetica;
+  font-size: 11pt;
+  color: #00037f;
+  text-decoration: none;
+  padding: .3em 1.5em;
+}
+
+.spaceafter {
+  padding: 0px 0px 10px 0px;
+}
+
+A.nav:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #7d8dc6;
+}
+
+.cpyrght {
+  font-family: Tahoma, Arial, Helvetica;
+  font-size: 7pt;
+  color: #333333;
+}
+
+A.cpyrght {
+  font-family: Tahoma, Arial, Helvetica;
+  font-size: 7pt;
+  color: #00037f;
+  text-decoration: none;
+}
+A.cpyrght:hover {
+  color: #5aa6e1;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+input, textarea, select {
+  border: #9999CC 1px solid;
+  color: #000000;
+  font-family: Arial, Helvetica;
+  font-size: 11pt;
+  padding: 4px;
+}
+
+input:hover {
+  border: #9999CC 2px solid;
+  padding: 3px;
+}
+
+input.button {
+  border: #3333CC 2px solid;
+  background-color: #9999CC;
+}
+
+input.button:hover {
+  border: #9999CC 2px solid;
+  background-color: #3333CC;
+  color: white;
+  padding: 4px;
+}

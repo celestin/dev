@@ -1,0 +1,99 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Live Well page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  30-Mar-2010  10623 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#livewell h2 {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+#livewell h3 {
+  margin: 0 0 0 0;
+  padding: 4px 0px 0px 0px;
+  text-align: center;
+}
+
+#livewell #endorphins {
+  color: #23913f;
+  text-align: left;
+}
+
+#livewell #healthreport {
+  text-align:center;
+  color: white;
+  background-color: #233f91;
+  padding: 2px 0px 2px 0px;
+  margin: 0px;
+}
+
+#livewell #stress {
+  color: #233f91;
+  background-color: #D3EAF1;
+  padding: 5px;
+}
+
+#livewell #commoncold {
+  color: black;
+  background-color: #72ca88;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#livewell #temperature {
+  color: black;
+  font-size: 10pt;
+  text-align: justify;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#livewell #livewell3 {
+  background-color: #ffee99;
+  margin:0px;  
+  padding:0px;  
+}
+
+#livewell #livewell2 {
+  background-color: #ffee99;
+  margin:0px;  
+  padding:0px;  
+}
+
+#livewell #livewell2 h3 {
+  margin:10px;  
+  padding:0px;  
+  font-size: 14pt;
+}
+
+#livewell #livewell2 #block1 {
+  background-color: #ffcc33;
+  padding:8px;  
+  margin: 0px;
+}
+
+#livewell #livewell2 #block2 {
+  padding:10px 8px 10px 8px;
+  margin: 0px;
+}
+
+#livewell #beachcomberversusholiday {
+  float:left;
+  margin: 0 10 10 0;
+  padding: 0 0 0 0;
+}
+
+#livewell #candlelady {
+  margin: 12 0 12 11;
+  padding: 0 0 0 0;
+}
+

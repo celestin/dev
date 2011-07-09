@@ -14,16 +14,29 @@
  * CAM  08-Mar-2010  10587 : Updated Quick Ship for 2010.
  * CAM  12-Mar-2010  10605 : Moved colours to common folder.
  * CAM  12-Mar-2010  10604 : Build from database, include Pay Deposit Now.
+ * CAM  29-Mar-2010  10612 : Added free package and improved layout for Pay Deposit & prices.
  * CAM  03-Jul-2011  10942 : Remove prices.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagequickship";
 $pageTitle = "Quick Ship";
+$pageCss = "quickship";
 include "tpl/top.php";
 ?>
 <div id="quickship">
 
-<p>These products can all be shipped quickly - call us for more information 01224 870 959!</p>
+<p>These products can all be shipped quickly &mdash; call us for more information &mdash; <b>01224 870 959</b></p>
+
+<div id="freepack">
+  <p>If you place your deposit online, you will receive a free package worth over <b>&pound;700</b>:</p>
+
+  <ul>
+  <li>Delivery &amp; Installation</li>
+  <li>Lift'n'Store</li>
+  <li>Watercare for four months</li>
+  <li>Drinks tray</li>
+  </ul>
+</div>
 
 <table border=0 cellpadding=0 cellspacing=0 align=center width="100%">
 

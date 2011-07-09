@@ -1,55 +1,73 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2008 Frontburner
+ * Copyright (c) 2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
- * Water page
+ * Water Page
  *
  * $Id$
  *
  * Who  When         Why
- * CAM  18-Jul-2006  File added to source control.
- * CAM  14-Feb-2008  10243 : Highlight link associated with current page.
+ * CAM  01-Apr-2010  10619 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $pageId = "pagewater";
-$pageTitle = "Water";
+$pageTitle = "Water, Jets &amp; ClearTech&trade;";
+$pageCss = "water";
 include "tpl/top.php";
 ?>
-<table border=0 cellpadding=0 cellspacing=8 align=left>
 
-<tr>
+<div id="water">
 
-  <td><img src="img/water2.jpg" width="283" height="500" alt="Benefits of Water"></td>
+  <h2>Water, Jets &amp; ClearTech&trade;</h2>
 
-  <td>&nbsp;</td>
+  <div id="maximise">
+    <img border=0 src="img/wa/jets1.png" alt="Maximised Jetting Power" />
 
-  <td>
-    <p align=center><img src="img/tt/water.gif" width="62" height="22" alt="Benefits of Water"></p>
+    <h3>Maximised Jetting Power</h3>
 
-    <p class="desc">People and water go back a long, long way.</p>
+    <p id="maximise">The biggest difference you will notice with Beachcomber is the incredible AllActive Seating jetting massage therapy.
+    What does this mean?  At the simple touch of a button, all seats in a Beachcomber can be activated at the same time.
+    Most manufacturers today can not make this happen and break up their spas into zones of '3 or 4 massaging seats only' running at the
+    same time thus under-delivering jet massageing for their users.  We took a different approach with our AllActive Seating engineering,
+    and made sure that every person in each of the seats can have the maximum jetting massage power at the same time.</p>
+  </div>
 
-    <p class="desc">The practise of soaking in warm water is centuries old.
-    Many cultures including the Romans used the many benefits
-    of warm water to heal body and mind.  It provided the
-    setting for communication and reflection.</p>
+  <div id="customise">
+    <img border=0 src="img/wa/jets2.png" alt="Maximised Jetting Power" />
 
-    <p class="desc">In ancient Babylon the word for <i>Doctor</i> was &quot;<i>one who knows water</i>&quot;.</p>
+    <h3>Customisation of Jetting Massage</h3>
 
-    <p class="desc">Like the oceans with daily tides up and down, we also have our daily up and downs,
-    called <b>stress</b> and <b>relaxation</b>.</p>
+    <p>Beachcomber's Jetting massage is fully adjustable, providing you with the exact type of massage you need
+    with a simple twist of the jet face.  Whether you are looking for a powerful, invigorating massage or a deep relaxation,
+    with our exclusive massage insert technology you can choose the width of spray, intensity and direction of massage.
+    Our interchangeable flexible massage inserts let you select the exact number of jet you want, from 46 jets in our lowest
+    price model 321, up to 168 jets available in our executive 750 model.  How many jets do you want?  What sort of massage do you
+    want?  What type of water pressure do you like?  With Beachcomber's 30 day in home "Customer Promise", you have the ability
+    to try your hot tub at home for 30 days and then exchange or pick the jet numbers and type of massage you want for free.</p>
+  </div>
 
-    <p class="desc">Change your daily rhythm from stress to relaxation.  Sink into sensory heaven.</p>
+  <? pdfLink("pdf/waterports.pdf", "Read more about Beachcomber's Waterports"); ?>
 
-    <p align=center><img src="img/bcht1.gif" alt="Beachcomber Hot Tubs"></p>
-  </td>
 
-  <td>&nbsp;</td>
+  <div id="cleartech">
+    <img border=0 src="img/wa/cleartechuv1.gif" width="350" height="204" alt="ClearTech&trade; UV" />
+    <h3>How ClearTech&trade; Works</h3>
 
-</tr>
+    <p>As the hot tub water passes through the stainless steel unit, the water is exposed to a
+    specialized, intense UV Lamp. On the beach, UV light can burn your skin; but in this chamber, directed high intensity UV light
+    eliminates 99.9 % of bacteria, viruses and pathogens on contact within one to three seconds. As the water passes through, harmful organisms
+    exposed to the lamp are sterilized. This powerful UV light also destroys chloramines, which creates the familiar, unpleasant odour and smell often
+    found in swimming pools and hot tubs.</p>
+  </div>
 
-</table>
+
+  <? pdfLink("pdf/cleartechuv.pdf", "Read more about ClearTech&trade;"); ?>
+
+  <p />
+
+</div>
 
 <?
   include "tpl/bot.php";

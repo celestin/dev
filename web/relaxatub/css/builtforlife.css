@@ -1,0 +1,63 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Built For Life Page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  31-Mar-2010  10619 : File created.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#builtforlife {
+  text-align: left;
+}
+
+#builtforlife h2 {
+  margin: 0 0 0 0;
+  padding: 0 5 0 5;
+}
+
+#builtforlife h3 {
+  margin: 0 0 0 0;
+  padding: 10 5 5 10;
+}
+
+#builtforlife #builttolast {
+  margin: 0 0 0 0;
+  padding: 0 6 0 10;
+  font-size: 11pt;
+}
+
+#builtforlife #backing {
+  margin: 0 0 0 0;
+  padding: 30 10 0 0;
+}
+
+#builtforlife #rolledlip {
+  margin: 0 0 0 0;
+  padding: 8 10 0 0;
+}
+
+#builtforlife #rolledliptext {
+  margin: 0 0 0 0;
+  padding: 0 0 10 0;
+}
+
+
+#builtforlife #ibeam {
+  margin: 0 0 0 0;
+  padding: 10 0 0 10;
+}
+
+#builtforlife #caption {
+  padding: 0;
+  font-size: 9pt;
+  text-align: center;
+  font-weight: bold;
+  color: #333333;
+  
+}
+

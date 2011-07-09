@@ -1,0 +1,49 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * Relaxatub
+ * Copyright (c) 2010 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Hybrid page Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  30-Mar-2010  10616 : File created.
+ * CAM  31-Mar-2010  10616 : Added hybridlogo.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+#hybrid {
+  text-align: left;
+}
+
+#hybrid h2 {
+  margin: 0 0 0 0;
+  padding: 0 5 5 5;
+}
+
+#hybrid h3 {
+  margin: 0 0 0 0;
+  padding: 10 5 5 5;
+}
+
+#hybrid p {
+  padding: 0 10 0 10;
+}
+
+#hybrid #hybridlogo {
+  padding: 0 10 0 0;
+}
+
+#hybrid #protecbenefits h4 {
+  margin: 0 0 0 0;
+  padding: 2 4 4 2;
+  font-size: 10pt;
+  background-color: #e6d445;
+  text-align: center;
+  color: #333333;
+}
+
+#hybrid #protecbenefits p {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}

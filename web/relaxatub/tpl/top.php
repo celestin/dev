@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Relaxatub
- * Copyright (c) 2006,2009 Frontburner
+ * Copyright (c) 2006,2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Template: Top of every page
@@ -22,10 +22,19 @@
  * CAM  01-Mar-2010  10586 : Remove AECC banner.
  * CAM  08-Mar-2010  10602 : Test for correct session variable.
  * CAM  24-Mar-2010  10603 : Added links for castlewood.
- * CAM  24-Jun-2011  10977 : Added Facebook at top of page.
- * CAM  24-Jun-2011  10978 : Added Google Analytics.
- * CAM  24-Jun-2011  10978 : Added Google Site Verification.
- * CAM  03-Jul-2011  10983 : Added Find Us On Facebook badge.
+ * CAM  29-Mar-2010  10614 : Remove links to old pages.
+ * CAM  29-Mar-2010  10620 : Removed buggy colspan.
+ * CAM  30-Mar-2010  10615 : Added Live Well navigation.
+ * CAM  30-Mar-2010  10623 : Link page-specific CSS if specified.
+ * CAM  30-Mar-2010  10616 : Added Hybrid navigation.
+ * CAM  30-Mar-2010  10617 : Added QSS navigation.
+ * CAM  31-Mar-2010  10619 : Added BuiltForLife navigation.
+ * CAM  31-Mar-2010  10618 : Added Water navigation.
+ * CAM  01-Apr-2010  10628 : Need to think about DOCTYPE declaration.
+ * CAM  15-May-2010  10625 : Added PNP link.
+ * CAM  20-May-2010  10656 : Change email to sales@ (rather than hazel@).
+ * CAM  22-May-2010  10626 : Added SmartGrass navigation.
+ * CAM  02-Aug-2010  10766 : Added Facebook Share to Tub page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'main.php';
@@ -39,13 +48,23 @@ if (empty($pageTitle)) {
 }
 
 ?>
+<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+-->
 <html>
 <head>
   <title><? print $pageTitle; ?></title>
-  <meta name="Description" content="Hot Tubs Aberdeen, Scotland, UK, Spas.  Check out - <? print $pageTitle; ?>" />
-  <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh" />
+  <meta name="Description" content="Hot Tubs Aberdeen, Scotland, UK, Spas.  Check out - <? print $pageTitle; ?>">
+  <meta name="Keywords" content="hot, tubs, hottubs, beachcomber, scotland, uk, spa, spas, aberdeen, glasgow, edinburgh">
   <meta name="google-site-verification" content="bghNnES4HxAdU3Hs8-uocMRfBR_HLOzkTASNRiMmHcg" />
-  <link href="relaxatub.css" rel="stylesheet" type="text/css" />
+  <link href="css/relaxatub.css" rel=stylesheet type=text/css>
+<?
+  if (!empty($pageCss)) {
+?>
+  <link href="css/<? echo $pageCss; ?>.css" rel=stylesheet type=text/css>
+<?
+  }
+?>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <script type="text/javascript">
@@ -69,30 +88,23 @@ if (empty($pageTitle)) {
       <tr><td align=center><a href="index.php"><img width=240 height=90 src="img/relaxatub2.png" border=0 alt="Beachcomber Hot Tubs"></a></td></tr>
 <?
 if ($loggedin) {
-?>      <tr><td align=center><a class="nav" href="logout.php">logout</a></td></tr><?
+?>      <tr><td align=center class="spaceafter"><a class="nav" href="logout.php">logout</a></td></tr><?
 } else {
-?>      <tr><td align=center><a class="nav" href="login.php">login</a></td></tr><?
+?>      <tr><td align=center class="spaceafter"><a class="nav" href="login.php">login</a></td></tr><?
 }
 ?>
-      <tr><td><img src="img/f.gif"></td></tr>
       <tr><td align=center><a id="linktub300" class="nav" href="tub.php?series=300">300</a>
         <a id="linktub500" class="nav" href="tub.php?series=500">500</a>
         <a id="linktub700" class="nav" href="tub.php?series=700">700</a></td></tr>
       <tr><td align=center><a id="linkquickship" class="nav" href="quickship.php">quick ship!</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkphoto" class="nav" href="photo.php">photo album</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center class="spaceafter"><a id="linkpnp" class="nav" href="pnp.php">plug'n'play</a></td></tr>
+      <tr><td align=center class="spaceafter"><a class="nav" id="linkphoto" href="photo.php">photo album</a></td></tr>
       <tr><td align=center><a id="linkaccessories" class="nav" href="accessories.php">accessories</a></td></tr>
       <tr><td align=center><a id="linkgarden" class="nav" href="garden.php">decking ideas</a></td></tr>
-      <tr><td align=center><a id="linkcastlewood" class="nav" href="castlewood.php">short break with a hot tub</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
-      <tr><td align=center><a id="linkprotec" class="nav" href="protec.php">protec</a></td></tr>
-      <tr><td align=center><a id="linkevolution" class="nav" href="evolution.php">hot tub evolution</a></td></tr>
-      <tr><td><img src="img/f.gif"></td></tr>
+      <tr><td align=center><a id="linksmartgrass" class="nav" href="smartgrass.php">smart grass</a></td></tr>
+      <tr><td align=center class="spaceafter"><a id="linkcastlewood" class="nav" href="castlewood.php">short break with a hot tub</a></td></tr>
+      <tr><td align=center class="spaceafter"><a id="linkbarrelsauna" class="nav" href="barrelsauna.php">barrel sauna</a></td></tr>
       <tr><td align=center><a id="linkcontact" class="nav" href="contact.php">contact us</a></td></tr>
-      <tr><td align=center><a target="_blank" href="http://www.facebook.com/pages/Relaxatub/119710291449980"><img src="img/sm/fb.png" width="98" height="30"></a></td></tr>
       <tr><td align=center><table border="0">
       <tr>
         <td><a href="watercare.php"><img width=123 height=92 src="img/af/small.png" border=0 alt="Beachcomber Hot Tubs"></a></td>
@@ -108,16 +120,16 @@ if ($loggedin) {
         <td align=center class="rxtop">
         <div id="rxfeature">
         <ul>
+            <li><a id="linklivewell" href="livewell.php">live well</a></li>
+            <li><a id="linkhybrid" href="hybrid.php">hybrid</a></li>
+            <li><a id="linksound" href="sound.php">sound</a></li>
             <li><a id="linkwater" href="water.php">water</a></li>
-            <li><a id="linkhealth" href="health.php">health &amp; well-being</a></li>
-            <li><a id="linkrelaxation" href="relaxation.php">relaxation</a></li>
-            <li><a id="linkquality" href="quality.php">quality</a></li>
-            <li><a id="linkcomfort" href="comfort.php">comfort</a></li>
+            <li><a id="linkbuiltforlife" href="builtforlife.php">built for life</a></li>
             <li><a id="linkfaq" href="faq.php">faq</a></li>
         </ul>
         </div>
         </td>
-        <td class="rxtop"><a title="Send us an email!" href="mailto:hazel@relaxatub.com?subject=Website%20Response"><img border=0 src="img/icon/mail_write.png"></a></td>
+        <td class="rxtop"><a title="Send us an email!" href="mailto:sales@relaxatub.com?subject=Website%20Response"><img border=0 src="img/icon/mail_write.png"></a></td>
       </tr>
-      <tr><td align=center valign=middle>
+      <tr><td colspan=2 align=center valign=<? if (!empty($pagevalign)) echo $pagevalign; else echo "top"?>>
 

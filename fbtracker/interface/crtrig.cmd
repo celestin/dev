@@ -1,4 +1,5 @@
-mysql -u root -p <crtrig.sql
+mysql -uroot -pCoyote99 <crtrig.sql
+mysql -uroot -pCoyote99 <crfunc.sql
 
 
 

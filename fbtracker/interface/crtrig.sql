@@ -100,6 +100,10 @@ CREATE TRIGGER bugs.fbtracker_bugs_update AFTER UPDATE ON bugs.bugs
     SET evt_trash = (SELECT CASE bugs.bug_status WHEN 'VERIFIED' THEN 1 WHEN 'CLOSED' THEN 1 ELSE 0 END FROM bugs.bugs WHERE bug_id = kimai.kimai_evt.evt_id)
     WHERE EXISTS (SELECT 1 FROM bugs.bugs WHERE bug_id = kimai.kimai_evt.evt_id);
 
+    -- Generate invoices
+
+    CALL kimai.fbtracker_generate_invoice();
+
   END;
 |
 
@@ -177,5 +181,7 @@ CREATE TRIGGER kimai.fbtracker_kimaiclient_udate AFTER UPDATE ON kimai.kimai_knd
 |
 
 delimiter ;
+
+
 
 

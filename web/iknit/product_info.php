@@ -17,6 +17,7 @@
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  09-Dec-2010  10830 : Added Related Products.
  * CAM  10-Jan-2011  10930 : Ensured that Shades with no Patterns show no Patterns.
+ * CAM  28-Jul-2011  11000 : Remove duplicate Leaflet/Shades by grouping.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -329,19 +330,20 @@ function popupWindow(url) {
 <?php
 
   $sql =
-    "SELECT pl.products_id, pdl.products_name, pl.products_image " .
+    "SELECT pl.products_id, MIN(pdl.products_name) products_name, MIN(pl.products_image) products_image " .
     "FROM sirdar_yarn_leaflet_shade sls, products ps, products_description pds, products pl, products_description pdl " .
     "WHERE ps.products_model = sls.shade_code " .
     "AND pl.products_model = sls.leaflet_code " .
     "AND pds.products_id = ps.products_id " .
     "AND pdl.products_id = pl.products_id " .
     "AND LENGTH(ps.products_model)>0 " .
-    "AND ps.products_id=". (int)$HTTP_GET_VARS['products_id'];
+    "AND ps.products_id=". (int)$HTTP_GET_VARS['products_id'] . " " .
+    "GROUP BY pl.products_id";
   add_related_products($sql, "Leaflets where this Shade is explicitly mentioned");
 
 
   $sql =
-    "SELECT pl.products_id, pdl.products_name, pl.products_image " .
+    "SELECT pl.products_id, MIN(pdl.products_name) products_name, MIN(pl.products_image) products_image " .
     "FROM products pl, products_description pdl " .
     "WHERE pdl.products_id = pl.products_id " .
     "AND NOT EXISTS (SELECT 1 FROM sirdar_yarn_leaflet_shade sls, products ps " .
@@ -355,12 +357,13 @@ function popupWindow(url) {
                 "AND ss2.yarn_code = sy.yarn_code " .
                 "AND ps.products_model = ss1.shade_code " .
                 "AND pl.products_model = sls.leaflet_code " .
-                "AND ps.products_id=". (int)$HTTP_GET_VARS['products_id']. ")";
+                "AND ps.products_id=". (int)$HTTP_GET_VARS['products_id']. ") " .
+    "GROUP BY pl.products_id";
   add_related_products($sql, "Leaflets for the all the Shades of this Yarn");
 
 
   $sql =
-    "SELECT ps.products_id, pds.products_name, ps.products_image " .
+    "SELECT ps.products_id, MIN(pds.products_name) products_name, MIN(ps.products_image) products_image " .
     "FROM products ps, products_description pds " .
     "WHERE pds.products_id = ps.products_id " .
     "AND EXISTS (SELECT 1 FROM sirdar_yarn_leaflet_shade sls, products pl, sirdar_yarn_shade ss1, sirdar_yarn_shade ss2 " .
@@ -369,6 +372,7 @@ function popupWindow(url) {
         "AND ss2.yarn_code = ss1.yarn_code " .
         "AND ps.products_model = ss2.shade_code " .
         "AND pl.products_id=". (int)$HTTP_GET_VARS['products_id']. ") " .
+    "GROUP BY ps.products_id " .
     "ORDER BY 2";
   add_related_products($sql, "Shades that may suit this Leaflet");
 

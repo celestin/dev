@@ -11,6 +11,7 @@
  * Who  When         #      Why
  * CAM  28-Oct-2010  10800  File created.
  * CAM  23-Nov-2010  10823  Added Sirdar leaflets
+ * CAM  28-Jul-2011  10998  Include Leaflets and Shades and use all images from Sirdar website.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include 'sirdar.db.php';
@@ -53,6 +54,10 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
       add_status_button($yarn_code, $subtype, $sub_code, 'INC', $status, 'Included').
       add_status_button($yarn_code, $subtype, $sub_code, 'EXC', $status, 'Excluded').
   "</div>";
+}
+
+function background_colour($status) {
+	if ($status == "NEW") return "background-color: orange";
 }
 
 ?>
@@ -265,7 +270,7 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
     $row4 = "";
     $counter = 0;
 
-    $ssql = "SELECT y.style_name, y.yarn_status, y.ply_name, y.yarn_name, y.yarn_code, y.yarn_image, l.leaflet_code, l.leaflet_status, l.leaflet_sirdar_image ".
+    $ssql = "SELECT y.style_name, y.yarn_status, y.ply_name, y.yarn_name, y.yarn_code, y.yarn_image, l.leaflet_code, l.leaflet_status, l.leaflet_image ".
             "FROM sirdar_yarn y, sirdar_yarn_leaflet l ".
             "WHERE y.yarn_code = l.yarn_code ".
             "AND y.style_name='" . $style_name . "' ".
@@ -286,7 +291,7 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
           <tr>
             <td><table border=0  cellpadding=5 cellspacing=0>
               <tr>
-                <td><img height="200" src="../images/sirdar/<? echo $yarn_image;?>"></td>
+                <td><img height="200" src="http://www.sirdar.co.uk/images/products/yarns/<? echo $yarn_image;?>"></td>
                 <td><? echo ajax_status_table($yarn_code, '', $yarn_status, 'None'); ?></td>
                 <td><div id="statusBar"></div></td>
               </tr>
@@ -301,9 +306,9 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
         output_table();
       }
 
-      $row1 .= "<td style=\"font-size:10pt;font-weight:bold;text-align:center;\">$leaflet_code</td>";
+      $row1 .= "<td style=\"font-size:10pt;font-weight:bold;text-align:center;" . background_colour($leaflet_status) . "\">$leaflet_code</td>";
       $row3 .= "<td style=\"font-size:8pt;\">" . ajax_status_table($yarn_code, $leaflet_code, $leaflet_status, 'Leaflet') . "</td>";
-      $row4 .= "<td><img height=\"140\" src=\"$leaflet_sirdar_image\"></td>";
+      $row4 .= "<td><img height=\"140\" src=\"http://www.sirdar.co.uk/images/products/yarns_relateddesigns/$leaflet_image\"></td>\n";
 
       $counter++;
 
@@ -312,7 +317,7 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
     output_table();
     ?></div><?
 
-    if (1==2)
+    if (1==1)
     {
     $counter = 0;
 
@@ -337,8 +342,8 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
           <tr>
             <td><table border=0  cellpadding=5 cellspacing=0>
               <tr>
-                <td><img height="200" src="../images/sirdar/<? echo $yarn_image;?>"></td>
-                <td><? echo ajax_status_table($yarn_code, '', $yarn_status); ?></td>
+                <td><img height="200" src="http://www.sirdar.co.uk/images/products/yarns/<? echo $yarn_image;?>"></td>
+                <td><? echo ajax_status_table($yarn_code, '', $yarn_status, 'Yarn'); ?></td>
                 <td><div id="statusBar"></div></td>
               </tr>
             </table></td
@@ -352,10 +357,10 @@ function ajax_status_table($yarn_code, $sub_code, $status, $subtype) {
         output_table();
       }
 
-      $row1 .= "<td style=\"font-size:8pt;\">$shade_name</td>";
+      $row1 .= "<td style=\"font-size:8pt;" . background_colour($shade_status) . "\">$shade_name</td>";
       $row2 .= "<td style=\"font-size:9pt;\">$shade_code</td>";
       $row3 .= "<td style=\"font-size:8pt;\">" . ajax_status_table($yarn_code, $shade_code, $shade_status, 'Shade') . "</td>";
-      $row4 .= "<td height=\"65\" ><img height=\"60\" src=\"../images/sirdar/$shade_image\"></td>";
+      $row4 .= "<td height=\"65\" ><img height=\"60\" src=\"http://www.sirdar.co.uk/images/products/shades/$shade_image\"></td>\n";
 
       $counter++;
 

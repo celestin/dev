@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  28-Oct-2010  10800  File created.
  * CAM  23-Nov-2010  10823  Added Sirdar leaflets
+ * CAM  28-Jul-2011  10998  Added ChangeDate.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include 'sirdar.db.php';
@@ -33,7 +34,8 @@ if ($sub_type == 'Shade') {
 
 $ssql =
   "UPDATE $table_name ".
-  "SET $status_name='$status' ".
+  "SET $status_name='$status', ".
+  "changedate=NOW() ".
   "WHERE yarn_code='$yarn_code' ";
 
 if ($sub_type == 'Shade') {

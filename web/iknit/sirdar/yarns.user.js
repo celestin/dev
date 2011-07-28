@@ -9,6 +9,7 @@
  * CAM  23-Aug-2010  10776 : Created.
  * CAM  25-Aug-2010  10776 : Added SQL script generation.
  * CAM  23-Nov-2010  10776 : Added leaflets to SQL script generation.
+ * CAM  28-Jul-2011  10998 : Include Leaflets and Shades.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // --------------------------------------------------------------------
@@ -69,14 +70,14 @@ if (linkRef) {
   oRequest.setRequestHeader("User-Agent",navigator.userAgent);
   oRequest.send(null);
 
-  s = oRequest.responseText; 
+  s = oRequest.responseText;
   var sUlText = '<ul class="products_categories_gridlayout yarns_gridlayout">';
   var i = s.indexOf(sUlText);
   s = '<h4>Shades</h4><ul>' + s.substring(i + sUlText.length);  // chop initial part of file
 
   i = s.indexOf('<div class="clear" id="em">');
   s = s.substring(0, i);   // chop end part of file
-  
+
   var colourImageHtml = s;
 
   s = s.replace(/<img src/gi, "<img width=100 src");
@@ -86,7 +87,7 @@ if (linkRef) {
 
   //s = s.replace(/<legend/gi, '<span style="display:none"');
   //s = s.replace(/<\/legend/gi, '</span');
-  
+
 
   // Find the product image div
   allDivs = document.evaluate(
@@ -97,13 +98,13 @@ if (linkRef) {
       null);
 
   thisDiv = allDivs.snapshotItem(0);
-  
+
   var colourFrame = document.createElement('div');
   // Insert a new div *after* the product image
   thisDiv.parentNode.insertBefore(colourFrame, thisDiv.nextSibling);
   colourFrame.innerHTML = s;  // add yarn colours
-  
-  
+
+
   // Get breadtrail to pick out the elements for the database
   breadtrail = document.getElementById('breadcrumbs');
 
@@ -111,12 +112,17 @@ if (linkRef) {
   var yarnStyle, yarnPly, yarnName, yarnImg, yarnCode;
 
   yarnStyle = breadtrail.childNodes[1].title;
-  if (idx == 4) 
+  if (idx == 4)
   {
     yarnPly = breadtrail.childNodes[2].title;
   } else {
     yarnPly = "";
   }
+
+  if (yarnPly == "") {
+  	yarnPly = yarnStyle;
+	}
+
   yarnName = breadtrail.childNodes[idx-1].title;
 
 
@@ -128,7 +134,7 @@ if (linkRef) {
 
   yarnCode = yarnImg.substring(0, yarnImg.indexOf("-")).toUpperCase();
 
-  sSql = 
+  sSql =
     "DELETE FROM sirdar_yarn WHERE yarn_code = '" + yarnCode + "';\n" +
     "DELETE FROM sirdar_yarn_shade WHERE yarn_code = '" + yarnCode + "';\n\n" +
     "INSERT INTO sirdar_yarn (" +
@@ -137,69 +143,69 @@ if (linkRef) {
       "'" + yarnCode + "', '" + yarnName + "', '" + yarnPly + "', '" + yarnStyle + "', '" + yarnImg + "'"+
     ");\n\n";
 
-  
+
   // Now parse colours
   var delimiter = "<p><img src=\"images/products/shades/";
-  var nextColour = colourImageHtml.indexOf(delimiter);  
+  var nextColour = colourImageHtml.indexOf(delimiter);
   var colourImage, colourName, colourCode;
-    
-  while (nextColour >= 0) 
+
+  while (nextColour >= 0)
   {
     colourImageHtml = colourImageHtml.substring(nextColour + delimiter.length);
-    
+
     i = colourImageHtml.indexOf("\"");
     colourImage = colourImageHtml.substring(0, i).toLowerCase();
-    colourCode = colourImage.substring(0, colourImage.indexOf(".")).toUpperCase();    
+    colourCode = colourImage.substring(0, colourImage.indexOf(".")).toUpperCase();
     colourImageHtml = colourImageHtml.substring(i+1);
     colourImageHtml = colourImageHtml.substring(colourImageHtml.indexOf("\"")+1);
-    
+
     i = colourImageHtml.indexOf("\"");
-    colourName = colourImageHtml.substring(0, i);        
+    colourName = colourImageHtml.substring(0, i);
     colourImageHtml = colourImageHtml.substring(i+1);
-        
+
     sSql = sSql +
       "INSERT INTO sirdar_yarn_shade (" +
         "yarn_code, shade_code, shade_name, shade_image"+
       ") VALUES ("+
         "'" + yarnCode + "', '" + colourCode + "', '" + colourName + "', '" + colourImage + "'"+
       ");\n";
-        
+
     nextColour = colourImageHtml.indexOf(delimiter);
   }
-  
-  
+
+
   // Get the Leaflets
   leaflets = document.getElementById("RelatedProducts");
   sLeafSql = "DELETE FROM sirdar_yarn_leaflet WHERE yarn_code = '" + yarnCode + "';\n\n";
 
-  if (leaflets) 
+  if (leaflets)
   {
-    for (i=0; i<leaflets.childNodes.length; i++) 
-    {  
-      if (leaflets.childNodes[i].nodeName == "LI") 
+    for (i=0; i<leaflets.childNodes.length; i++)
+    {
+      if (leaflets.childNodes[i].nodeName == "LI")
       {
         li = leaflets.childNodes[i];
-        
+
         leafletCode = li.childNodes[0].href;
         leafletCode = leafletCode.substring(leafletCode.lastIndexOf("/")+1);
         leafletImage = li.childNodes[0].childNodes[0].src;
         leafletImage = leafletImage.substring(leafletImage.lastIndexOf("/")+1);
-        
+
         sLeafSql +=
           "INSERT INTO sirdar_yarn_leaflet (" +
             "yarn_code, leaflet_code, leaflet_image, leaflet_sirdar_image"+
           ") VALUES ("+
             "'" + yarnCode + "', '" + leafletCode + "', '" + leafletImage + "', 'http://www.sirdar.co.uk/images/products/designs/" + leafletImage + "'"+
-          ");\n";        
-      }    
+          ");\n";
+      }
     }
-  }   
-  
-      
-  // Write SQL  
+  }
+
+
+  // Write SQL
   var sqlFrame = document.createElement('div');
   // Insert a new div *after* the product image
   thisDiv.parentNode.insertBefore(sqlFrame, colourFrame);
-  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sLeafSql + "\n\n\n\n</textarea>";
+  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sSql + "\n\n\n" + sLeafSql + "\n\n\n\n</textarea>";
 }
 

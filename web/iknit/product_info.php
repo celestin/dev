@@ -18,6 +18,7 @@
  * CAM  09-Dec-2010  10830 : Added Related Products.
  * CAM  10-Jan-2011  10930 : Ensured that Shades with no Patterns show no Patterns.
  * CAM  28-Jul-2011  11000 : Remove duplicate Leaflet/Shades by grouping.
+ * CAM  28-Jul-2011  11006 : Produce=>Product.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -212,7 +213,7 @@ function popupWindow(url) {
       $modelNo = $product_info['products_model'];
 ?>
           <tr>
-            <td class="productOptionLabel">Produce Code</td>
+            <td class="productOptionLabel">Product Code</td>
             <td class="productOptionValue"><?php echo $product_info['products_model']; ?></td>
           </tr>
 <?php

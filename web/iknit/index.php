@@ -384,9 +384,6 @@
           <tr>
             <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
           </tr>
-          <tr>
-            <td><?php include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS); ?></td>
-          </tr>
 <?php
     include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
 ?>

@@ -313,3 +313,87 @@ where sys.leaflet_code = p.products_model
 and sys.yarn_code = sy.yarn_code
 AND NOT EXISTS (SELECT 1 FROM products_to_products_extra_fields WHERE products_id = p.products_id and products_extra_fields_id=1);
 
+
+
+
+-- -----------------------
+
+insert into products (products_model, products_image,dataload_gender)
+SELECT shade_code,shade_image,'2011-07-28' FROM sirdar_yarn_shade sys
+WHERE not exists (select 1 from products where products_model = sys.shade_code)
+and shade_status = 'INC'
+
+
+INSERT INTO products_description( products_id, language_id, products_name, products_description, products_viewed )
+SELECT p.products_id, 1, sys.shade_name, sys.shade_name, 1
+FROM products p, sirdar_yarn_shade sys
+WHERE sys.shade_code = p.products_model
+AND dataload_gender = '2011-07-28'
+AND NOT EXISTS (
+  SELECT 1
+  FROM products_description
+  WHERE products_id = p.products_id
+)
+
+INSERT INTO products_to_categories (
+  products_id, categories_id
+)
+select p.products_id, c.categories_id
+from products p, sirdar_yarn sy, sirdar_yarn_shade sys, categories c
+where sys.shade_code = p.products_model
+and sys.yarn_code = sy.yarn_code
+and c.product_code = sy.yarn_code
+and not exists (select 1
+                from products_to_categories
+                where products_id = p.products_id)
+
+INSERT INTO products_to_products_extra_fields (products_id, products_extra_fields_id, products_extra_fields_value)
+SELECT p.products_id, 1, 1
+from products p
+where dataload_gender = '2011-07-28'
+AND NOT EXISTS (SELECT 1 FROM products_to_products_extra_fields WHERE products_id = p.products_id and products_extra_fields_id=1);
+
+-- Leaflets
+
+insert into products (products_model, products_image,dataload_gender)
+SELECT leaflet_code,leaflet_image,'2011-07-28-B' FROM sirdar_yarn_leaflet sys
+WHERE not exists (select 1 from products where products_model = sys.leaflet_code)
+and leaflet_status = 'INC'
+
+INSERT INTO products_description( products_id, language_id, products_name, products_description, products_viewed )
+SELECT p.products_id, 1, CONCAT(sy.yarn_name, ' (', sys.leaflet_code, ')'), NULL, 1
+FROM products p, sirdar_yarn sy, sirdar_yarn_leaflet sys
+WHERE sys.leaflet_code = p.products_model
+AND dataload_gender = '2011-07-28-B'
+AND sys.yarn_code = sy.yarn_code
+AND NOT EXISTS (
+  SELECT 1
+  FROM products_description
+  WHERE products_id = p.products_id
+)
+
+INSERT INTO products_to_categories (
+  products_id, categories_id
+)
+select p.products_id, sys.categories_id
+from products p, sirdar_yarn sy, sirdar_yarn_leaflet sys
+where sys.leaflet_code = p.products_model
+AND dataload_gender = '2011-07-28-B'
+and sys.yarn_code = sy.yarn_code
+and not exists (select 1
+                from products_to_categories
+                where products_id = p.products_id)
+
+INSERT INTO products_to_products_extra_fields (products_id, products_extra_fields_id, products_extra_fields_value)
+SELECT p.products_id, 1, 1
+from products p
+where dataload_gender = '2011-07-28-B'
+AND NOT EXISTS (SELECT 1 FROM products_to_products_extra_fields WHERE products_id = p.products_id and products_extra_fields_id=1);
+
+update products
+set products_status = 1
+WHERE dataload_gender = '2011-07-28-B'
+
+
+
+

@@ -123,7 +123,7 @@ if (${"real_submit"} != "") {
 
   $sMsgText=$s_MessageBody;
 
-  $strEmailTo = "mwmf@btconnect.com";
+  $strEmailTo = "sales@mwmf.co.uk";
 
   if (!$b_name_reqd && !$b_email_reqd) {
     $b_real_submit = true;
@@ -158,7 +158,7 @@ if ($b_real_submit) {
       <td colspan=2>&nbsp;</td>
     </tr><tr>
       <td>England</td>
-      <td class=fld>Email</td><td><a href="mailto:mwmf@btconnect.com">mwmf@btconnect.com</a></td>
+      <td class=fld>Email</td><td><a href="mailto:sales@mwmf.co.uk">sales@mwmf.co.uk</a></td>
     </tr>
   </table></td></tr>
 <?

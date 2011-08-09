@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>MidWest Market Force Ltd - Contact</title>
+  <title>MidWest Market Force - Contact</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <meta name="Description" content="MidWest Market Force Ltd.  Check out - Contact">
   <meta name="keywords" content="coffee,filter machines,coffee filter machines,coffee filter papers,filter papers,coffee filter cones,filter cones,coffee grinders,replacement coffee jugs,replacement filter jugs,basket filter papers,coffee utensils,expresso stove tops,stove top coffee makers,coffee makers,electric hot plates,coffee cones,coffee filters,coffee supplies,coffee suppliers,coffee catering equipment,West Midlands,England,UK">
@@ -267,7 +267,7 @@ if (${"real_submit"} != "") {
 
   $sMsgText=$s_MessageBody;
 
-  $strEmailTo = "mwmf@btconnect.com";
+  $strEmailTo = "sales@mwmf.co.uk";
 
   if (!$b_name_reqd && !$b_email_reqd) {
     $b_real_submit = true;
@@ -302,7 +302,7 @@ if ($b_real_submit) {
       <td colspan=2>&nbsp;</td>
     </tr><tr>
       <td>England</td>
-      <td class=fld>Email</td><td><a href="mailto:mwmf@btconnect.com">mwmf@btconnect.com</a></td>
+      <td class=fld>Email</td><td><a href="mailto:sales@mwmf.co.uk">sales@mwmf.co.uk</a></td>
     </tr>
   </table></td></tr>
 <?
@@ -463,7 +463,7 @@ if ($b_real_submit) {
 </td></tr></table>
 </form>
           </td></tr>
-          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2010 Mid West Market Force Ltd. All rights reserved.<br />
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2011 Mid West Market Force Ltd. All rights reserved.<br />
           Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
           </table>
         </td>

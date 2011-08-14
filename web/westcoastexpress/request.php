@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
- * Copyright (c) 2006 Frontburner
+ * Carried Safely Website
+ * Copyright (c) 2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Request for Quotation Page Context
@@ -14,6 +14,7 @@
  * CAM  11-Aug-2007  10150 : Removed 'Quotation' in the information message.
  * CAM  11-Aug-2007  10150 : Add 'Quotation' back into the information message.
  * CAM  11-Aug-2007  10153 : Added new Title graphic.
+ * CAM  30-Oct-2010  10802 : Added Google Code for Lead Conversion.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request for Quotation";
@@ -72,6 +73,27 @@ if (empty($retry)) {
 } else {
 
   Msg::statement("Thank you - your Request for Quotation has been submitted.");
+
+?>
+<!-- Google Code for Lead Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 999768902;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "O9B8CJL07gEQxobd3AM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/999768902/?label=O9B8CJL07gEQxobd3AM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<?
 
   $em = new EmailMsg('R');
 

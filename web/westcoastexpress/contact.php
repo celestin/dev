@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
+ * Carried Safely Website
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -34,10 +34,10 @@ include 'tpl/top.php';
       <tr><td class="hi">Tel</td><td>01542 839 193</td></tr>
       <tr><td class="hi">Fax</td><td>01542 839 194</td></tr>
       <tr><td class="hi">Mob</td><td>07780 807 202</td></tr>
-      <tr><td class="hi">Email</td><td><a href="mailto:bob@westcoastexpress.net?Subject=West Coast Express">bob@westcoastexpress.net</a></td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:bob@carriedsafely.co.uk?Subject=Carried%20Safely">bob@carriedsafely.co.uk</a></td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/boat1.gif"><br><img src="img/boatsafe3.png"></td>
+    <td align="right"><img src="img/boat2.png"><br><img src="img/boatsafe3.png"></td>
   </tr>
 </table>
 

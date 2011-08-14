@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
+ * Carried Safely Website
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -93,7 +93,7 @@ if ($loggedin && $member->isAdmin()) {
 </table></td>
 
 <td valign="top"><table border=0 cellpadding=5 align=center>
-  <tr><td><img src="img/boat1.gif"></td></tr>
+  <tr><td><img src="img/boat2.png"></td></tr>
   <tr><td><img src="img/boatsafe3.png"></td></tr>
 </table></td></tr></table>
 

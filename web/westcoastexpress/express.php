@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
+ * Carried Safely Website
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -22,7 +22,7 @@ include 'tpl/top.php';
 <table border=0 cellpadding=20 align=center width=400>
   <tr>
     <td>
-      West Coast Express specialises in time-critical
+      Carried Safely specialises in time-critical
       deliveries to all parts of the UK and Europe when
       necessary. With our new 3.5T versatile vehicle we can
       handle awkward loads and still deliver on time.

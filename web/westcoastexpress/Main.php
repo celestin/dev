@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * West Coast Express Website
+ * Carried Safely Website
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -18,16 +18,16 @@
 
 $cfg['Site']['Name']  = "West Coast Express";
 $cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no trailing slash
-$cfg['Site']['Email'] = "waveney77@yahoo.com";
+$cfg['Site']['Email'] = "bob@carriedsafely.co.uk";
 
-if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
+if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
   $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 } else {
-  $cfg['Site']['Dir'] = "/var/www/html/";  // trailing slash
+  $cfg['Site']['Dir'] = "/home/cmckay2/public_html/";  // trailing slash
 }
 
-$cfg['Site']['Db']['Hostname'] = "localhost";
+$cfg['Site']['Db']['Hostname'] = "127.0.0.1";
 $cfg['Site']['Db']['Username'] = "westcoastexpress";
 $cfg['Site']['Db']['Password'] = "bob50";
 $cfg['Site']['Db']['Database'] = "westcoastexpress_net_-_site";

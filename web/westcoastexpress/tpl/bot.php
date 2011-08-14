@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Carried Safely Website
+ * WestCoastExpress Website
  * Copyright (c) 2006 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -11,11 +11,11 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added hidden toolbar navigation.
+ * CAM  14-Aug-2011  Renamed back to Carried Safely.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </tr>
-<tr><td colspan=3 class="cpyrght"><br>Copyright &copy; <? echo strftime("%Y"); ?> Carried Safely Ltd. All rights reserved.<br />
-Carried Safely Ltd is a company registered in Scotland with company number SC371883.<br />Registered Address 76 East Church Street, Buckie, AB56 1LQ.<br />
+<tr><td colspan=3 class="cpyrght"><br>Copyright &copy; <? echo strftime("%Y"); ?> West Coast Express. All rights reserved.<br />
 Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a></td></tr>
 </table></td>
 </tr></table>

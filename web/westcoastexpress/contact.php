@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Carried Safely Website
+ * WestCoastExpress Website
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -12,13 +12,12 @@
  * CAM  13-Apr-2006  File created.
  * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * CAM  11-Aug-2007  10159 : Added Email address.
+ * CAM  14-Aug-2011  11010 : Switched to Ian.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Contact Bob";
+$title = "Contact Ian";
 include 'tpl/top.php';
 ?>
-
-<center><img src="img/title/contact.png"></center>
 
 <table border=0 cellpadding=20 align=center >
   <tr>
@@ -31,10 +30,9 @@ include 'tpl/top.php';
       </ul>
 
       <table border=0 align=center valign=bottom>
-      <tr><td class="hi">Tel</td><td>01542 839 193</td></tr>
-      <tr><td class="hi">Fax</td><td>01542 839 194</td></tr>
-      <tr><td class="hi">Mob</td><td>07780 807 202</td></tr>
-      <tr><td class="hi">Email</td><td><a href="mailto:bob@carriedsafely.co.uk?Subject=Carried%20Safely">bob@carriedsafely.co.uk</a></td></tr>
+      <tr><td class="hi">Tel</td><td>01854 613 426</td></tr>
+      <tr><td class="hi">Mob</td><td>07771 601 597</td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:ian@westcoastexpress.net?Subject=West%20Coast%20Express">ian@westcoastexpress.net</a></td></tr>
       </table>
     </td>
     <td align="right"><img src="img/boat2.png"><br><img src="img/boatsafe3.png"></td>

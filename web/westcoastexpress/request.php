@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Carried Safely Website
+ * WestCoastExpress Website
  * Copyright (c) 2010 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *

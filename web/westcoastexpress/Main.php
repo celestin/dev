@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Carried Safely Website
+ * WestCoastExpress Website
  * Copyright (c) 2006-2007 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
@@ -18,7 +18,7 @@
 
 $cfg['Site']['Name']  = "West Coast Express";
 $cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no trailing slash
-$cfg['Site']['Email'] = "bob@carriedsafely.co.uk";
+$cfg['Site']['Email'] = "ian@westcoastexpress.net";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
   $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";

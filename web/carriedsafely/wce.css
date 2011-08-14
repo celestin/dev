@@ -1,0 +1,252 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * West Coast Express Website
+ * Copyright (c) 2006-2007 Frontburner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * Style Sheet
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  13-Apr-2006  File created.
+ * CAM  31-May-2006  Added anchor class for toolbar navigation.
+ * CAM  21-Dec-2006  10069 : Tidied up photo classes.
+ * CAM  11-Aug-2007  10149 : Added options for Pagination and corrected ImgNav.
+ * CAM  11-Aug-2007  10154 : Added options for Feedback.
+ * CAM  11-Aug-2007  10153 : Removed undergraphic - replaced with Title graphics.
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+body {
+  BACKGROUND-COLOR: #DAE0DE;
+}
+
+p, table, td, input, select, textarea {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 10pt;
+  TEXT-DECORATION: none;
+}
+
+h3 {
+  TEXT-ALIGN: center;
+}
+
+td.slogan {
+  FONT-SIZE: 16pt;
+  BACKGROUND-COLOR: #BB0F18;
+  COLOR: white;
+}
+
+.hi {
+  FONT-WEIGHT: bold;
+  COLOR: #BB0F18;
+}
+
+td.sidered {
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #BB0F18;
+  COLOR: white;
+  PADDING: 6px;
+}
+
+td.sideblue {
+  FONT-SIZE: 12pt;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #006891;
+  COLOR: white;
+  PADDING: 6px;
+}
+
+.news {
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: normal;
+  COLOR: white;
+}
+
+.wcelink {
+  FONT-SIZE: 10pt;
+  FONT-WEIGHT: bold;
+  COLOR: white;
+}
+
+.whitebox {
+  BACKGROUND-COLOR: white;
+}
+
+.bodybox {
+  BACKGROUND-COLOR: white;
+  PADDING: 8px;
+}
+
+.topbanner {
+  /*BORDER-TOP:     #006891 10px solid;*/
+  FONT-SIZE: 8pt;
+  COLOR: white;
+}
+
+.toolbar {
+  BACKGROUND-COLOR: #006891;
+}
+
+.redbanner {
+  BACKGROUND-COLOR: #BB0F18;
+  FONT-SIZE: 8pt;
+  COLOR: white;
+  PADDING: 4px;
+}
+
+.pagebox {
+  BORDER:#999999 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  COLOR: #006891;
+  FONT-WEIGHT: bold;
+}
+
+.pageboxhover {
+  BORDER:#006891 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  BACKGROUND-COLOR: #006891;
+  COLOR: white;
+  FONT-WEIGHT: bold;
+  CURSOR: pointer;
+}
+
+.quote {
+  BACKGROUND-COLOR: #E0E0E0;
+  COLOR: #333333;
+}
+
+.pageboxsel {
+  BORDER:#BB0F18 1px solid;
+  TEXT-ALIGN:center;
+  WIDTH:15px;
+  BACKGROUND-COLOR: #BB0F18;
+  COLOR: white;
+  FONT-WEIGHT: bold;
+}
+
+.bluebox {
+  BORDER-BOTTOM:  #006891 2px solid;
+  BORDER-LEFT:    #006891 2px solid;
+  BORDER-RIGHT:   #006891 2px solid;
+  BORDER-TOP:     #006891 2px solid;
+}
+
+.sep {
+  PADDING-LEFT: 5px;
+  PADDING-RIGHT: 5px;
+  COLOR: #F1F16B;
+  FONT-WEIGHT: bold;
+}
+
+.ti {
+  PADDING-LEFT: 20px;
+  PADDING-BOTTOM: 20px;
+}
+
+
+td.cpyrght {
+  FONT-SIZE: 8pt;
+  COLOR: #333333;
+  TEXT-ALIGN: center;
+}
+
+.fld {
+  COLOR: #006891;
+  FONT-WEIGHT: bold;
+}
+
+.fldmand {
+  COLOR: #BB0F18;
+  FONT-WEIGHT: bold;
+}
+
+/** Image Navigation */
+
+.imgnav img {
+  BORDER: 2px solid #CCCCCC;
+}
+
+.imgnav:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnav:hover {
+  COLOR: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
+.imgnavsel img {
+  BORDER: 2px solid #BB0F18;
+}
+
+.imgnavsel:hover img {
+  BORDER: 2px solid #006891;
+}
+
+.imgnavsel:hover {
+  COLOR: #006891; /* Dummy definition to overcome IE bug */
+  BORDER: 0px;
+  FONT-WEIGHT: bold;
+}
+
+
+/** Navigation */
+
+A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
+  COLOR: white;
+  BORDER-BOTTOM: #F1F16B 1px dashed;
+  FONT-WEIGHT: bold;
+}
+A.nav:hover {
+  COLOR: #F1F16B;
+  FONT-WEIGHT: bold;
+  BORDER-BOTTOM: none;
+  TEXT-DECORATION: underline;
+}
+
+A.tbr,A.tbr:visited,A.tbr:active,A.tbr:link,A.tbr:visited {
+  FONT-SIZE: 7pt;
+  COLOR: white;
+  BORDER-BOTTOM: #F1F16B 1px dashed;
+  FONT-WEIGHT: normal;
+}
+A.tbr:hover {
+  COLOR: #F1F16B;
+  FONT-WEIGHT: normal;
+  BORDER-BOTTOM: none;
+  TEXT-DECORATION: underline;
+}
+
+A,A:visited,A:active,A:link,A:visited {
+  COLOR: #002054;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #497FB1;
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: underline;
+}
+
+/** Message formats */
+
+p.err {
+  COLOR: #BB0F18;
+  FONT-WEIGHT: normal;
+}
+
+p.quest {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+
+p.statement {
+  COLOR: #120966;
+  FONT-WEIGHT: normal;
+}
+

@@ -18,6 +18,7 @@
  * CAM  12-Dec-2010  10833 : Changed RBS WorldPay logo to Google Checkout.
  * CAM  15-Mar-2011  10949 : Removed Checkout button at top right of screen.
  * CAM  16-Aug-2011  10992 : Added Free Postage message.
+ * CAM  16-Aug-2011  11011 : Added Google Logo PNG rather than script.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // check if the 'install' directory exists, and warn of its existence
@@ -65,12 +66,11 @@
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>
   <tr class="header">
     <td valign="middle"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . tep_image(DIR_WS_IMAGES . 'iknit1.png', STORE_NAME) . '</a>'; ?></td>
-    <td align="center" width="100%"><?=tep_image(DIR_WS_IMAGES . 'freepostage.png', 'Free Postage on orders over &pound10')?></td>
+    <td align="center"><?=tep_image(DIR_WS_IMAGES . 'freepostage.png', 'Free Postage on orders over &pound10')?></td>
     <?php
       //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_account.gif', HEADER_TITLE_MY_ACCOUNT) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_SHOPPING_CART) . '">' . tep_image(DIR_WS_IMAGES . 'header_cart.gif', HEADER_TITLE_CART_CONTENTS) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_checkout.gif', HEADER_TITLE_CHECKOUT) . '</a>';
     ?>
-    <td align="right" valign="middle"><a href="<?php echo tep_href_link(FILENAME_SECUREPAYMENT);?>"><div
-    id="googleCheckoutLogo"></div><script src='https://checkout.google.com/buttons/logos?merchant_id=736554632826264&loc=en_GB&f=png'></script></a></td>
+    <td align="center" valign="middle" width="240"><a href="<?php echo tep_href_link(FILENAME_SECUREPAYMENT);?>"><?=tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png', 'Google Checkout')?></td>
   </tr>
 </table>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>

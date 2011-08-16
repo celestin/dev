@@ -16,6 +16,7 @@
  * CAM  13-Jul-2010  10740 : File created.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  12-Dec-2010  10833 : Changed RBS WorldPay text to Google Checkout.
+ * CAM  16-Aug-2011  11011 : Added Google Logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -61,7 +62,7 @@
               <div id="legal">
 
                 <div id="worldpay">
-                  <a href="http://checkout.google.com/buyer/tour.html"><?php echo tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png') ?></a>
+                  <a href="https://checkout.google.com/reviews/merchant/endUserReviews?sellerId=736554632826264"><?php echo tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png') ?></a>
                 </div>
 
                 <p>Our shopping cart is powered by <span id="rbs">Google Checkout</span> &mdash;

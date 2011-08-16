@@ -17,6 +17,7 @@
  * CAM  13-Jul-2010  10740 : Added RBS WorldPay logo and Credit Card logos.
  * CAM  12-Dec-2010  10833 : Changed RBS WorldPay logo to Google Checkout.
  * CAM  15-Mar-2011  10949 : Removed Checkout button at top right of screen.
+ * CAM  16-Aug-2011  10992 : Added Free Postage message.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // check if the 'install' directory exists, and warn of its existence
@@ -63,7 +64,8 @@
 ?>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>
   <tr class="header">
-    <td width="100%" valign="middle"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . tep_image(DIR_WS_IMAGES . 'iknit1.png', STORE_NAME) . '</a>'; ?></td>
+    <td valign="middle"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . tep_image(DIR_WS_IMAGES . 'iknit1.png', STORE_NAME) . '</a>'; ?></td>
+    <td align="center" width="100%"><?=tep_image(DIR_WS_IMAGES . 'freepostage.png', 'Free Postage on orders over &pound10')?></td>
     <?php
       //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_account.gif', HEADER_TITLE_MY_ACCOUNT) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_SHOPPING_CART) . '">' . tep_image(DIR_WS_IMAGES . 'header_cart.gif', HEADER_TITLE_CART_CONTENTS) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_checkout.gif', HEADER_TITLE_CHECKOUT) . '</a>';
     ?>

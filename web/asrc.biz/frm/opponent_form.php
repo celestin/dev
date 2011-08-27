@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * ASRC.biz (Aberdeen Squash Racquets Club)
  *
- * Copyright (c) 2006 Frontburner
+ * Copyright (c) 2006,2011 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Opponent Search Form
@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  08-Jun-2004  File created.
  * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
+ * CAM  27-Aug-2011  11014 : Corrected errors around member variables.
  * * * * * * * * * * * * * * * * * * * * * * * */
 include_once 'Main.php';
 
@@ -34,9 +35,9 @@ if ($retry == NULL) {
       <td><input name="member_name" type="text" id="member_name"></td>
     </tr>
     <tr>
-      <td><input type="hidden" name="book_date" id="book_date" value="<? print $book_date ?>">
-          <input type="hidden" name="court" id="court" value="<? print $court ?>">
-          <input type="hidden" name="slot" id="slot" value="<? print $slot ?>"></td>
+      <td><input type="hidden" name="book_date" id="book_date" value="<?=(isset($book_date)) ? $book_date:""?>">
+          <input type="hidden" name="court" id="court" value="<?=(isset($court)) ? $court:""?>">
+          <input type="hidden" name="slot" id="slot" value="<?=(isset($slot)) ? $slot:""?>"></td>
       <td><input class="button" type="submit" value="Search"><input type="hidden" name="retry" value="1"></td>
     </tr>
   </table>

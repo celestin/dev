@@ -13,7 +13,7 @@
  * CAM  12-Aug-2007  10157 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Unconfirmed Bookings";
+$title = "Unconfirmed Bookings";
 include_once 'Main.php';
 include 'tpl/top.php';
 

@@ -44,9 +44,3 @@ function redirect($url) {
 include_once 'task.php';
 
 ?>
-
-<script language="Javascript">
-  function getObjRef(p_ref) {
-    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
-  }
-</script>

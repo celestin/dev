@@ -15,7 +15,7 @@
  * CAM  12-Aug-2007  10157 : Use Flash/redirect.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Edit User";
+$title = "Edit User";
 include_once 'Main.php';
 include 'tpl/top.php';
 

@@ -13,7 +13,7 @@
  * CAM  24-Aug-2004  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Member Search";
+$title = "Member Search";
 include_once 'Main.php';
 $member = $_SESSION['member_person'];
 include 'tpl/top.php';

@@ -16,7 +16,7 @@
  * CAM  23-Jul-2007  10152 : Correctly handle completely empty system.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Current Courts View";
+$title = "Current Courts View";
 include_once 'Main.php';
 $hide_toolbar = true;
 include 'tpl/top.php';

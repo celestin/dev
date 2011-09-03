@@ -10,7 +10,7 @@
  * CAM  26-Oct-2007  10195 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Email Queue";
+$title = "Email Queue";
 include_once 'Main.php';
 include 'tpl/top.php';
 $alternate=true;

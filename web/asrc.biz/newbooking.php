@@ -28,7 +28,7 @@
 //WHERE b.court = s.court
 //AND b.slot = s.slot
 
-$title = "Aberdeen Squash Racquets Club - New Booking";
+$title = "New Booking";
 include_once 'Main.php';
 include 'tpl/top.php';
 

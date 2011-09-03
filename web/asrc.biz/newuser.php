@@ -13,7 +13,7 @@
  * CAM  19-Mar-2004  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - New User";
+$title = "New User";
 include_once 'Main.php';
 include 'tpl/top.php';
 

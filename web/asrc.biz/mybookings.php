@@ -19,7 +19,7 @@
  * CAM  27-Aug-2011  11014 : Corrected errors around member variables.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Bookings";
+$title = "Bookings";
 include_once 'Main.php';
 include 'tpl/top.php';
 $alternate=true;

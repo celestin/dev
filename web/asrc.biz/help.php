@@ -16,7 +16,7 @@
  * CAM  31-Jul-2007  10147 : Remove Gym, Social and Social Restricted.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Help";
+$title = "Help";
 include 'tpl/top.php';
 ?>
 

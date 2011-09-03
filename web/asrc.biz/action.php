@@ -15,7 +15,7 @@
  * CAM  12-Aug-2007  10157 : Modified wording of Actions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Action";
+$title = "Action";
 include_once 'Main.php';
 include 'tpl/top.php';
 

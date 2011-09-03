@@ -14,7 +14,7 @@
  * CAM  06-Feb-2006  10: Added created_by.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Block Booking";
+$title = "Block Booking";
 include_once 'Main.php';
 include 'tpl/top.php';
 

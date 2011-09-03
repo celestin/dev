@@ -15,7 +15,7 @@
  * CAM  12-Aug-2007  10157 : Use Flash/redirect.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Log out";
+$title = "Log out";
 include_once 'Main.php';
 include 'tpl/top.php';
 

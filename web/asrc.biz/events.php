@@ -12,7 +12,7 @@
  * CAM  15-Nov-2007  10183 : Added Event anchor for linking from footer/emails.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "ASRC Events - Social Noticeboard";
+$title = "Social Noticeboard";
 $events_read = true;
 include 'tpl/top.php';
 

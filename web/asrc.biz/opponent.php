@@ -13,7 +13,7 @@
  * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Opponent Search";
+$title = "Opponent Search";
 include_once 'Main.php';
 $member = $_SESSION['member_person'];
 include 'tpl/top.php';

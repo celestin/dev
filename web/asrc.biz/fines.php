@@ -13,7 +13,7 @@
  * CAM  30-May-2004  4 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Fines";
+$title = "Fines";
 include_once 'Main.php';
 include 'tpl/top.php';
 

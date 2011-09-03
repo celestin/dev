@@ -13,7 +13,7 @@
  * CAM  25-Aug-2004  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Change Password";
+$title = "Change Password";
 include_once 'Main.php';
 include 'tpl/top.php';
 

@@ -15,7 +15,7 @@
  * CAM  29-Jul-2006  10021 : Use Msg::question for logout confirm.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Log out";
+$title = "Log out";
 include_once 'Main.php';
 
 if(isset($_REQUEST['logmeout'])){

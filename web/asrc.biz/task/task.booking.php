@@ -107,4 +107,3 @@ $ssql = "DELETE FROM booking ".
 $sql = mysql_query($ssql);
 
 ?>
-

@@ -13,7 +13,7 @@
  * CAM  31-Aug-2004  File created.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - Home";
+$title = "Home";
 include 'tpl/top.php';
 include 'tpl/home.php';
 include 'tpl/bot.php';

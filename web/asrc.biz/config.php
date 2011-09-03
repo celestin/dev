@@ -53,5 +53,4 @@ if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
   $cfg['Site']['Test'] = TRUE;
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 }
-
 ?>

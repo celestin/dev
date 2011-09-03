@@ -30,7 +30,7 @@ if ($events_read) {
 }
 
 if (empty($title)) {
-  $title = "ASRC Online Booking";
+  $title = "Online Booking";
 }
 
 if (empty($hide_toolbar)) {
@@ -48,10 +48,14 @@ function ToolbarOption($action, $label, $last=false, $class="") {
   ?><td><a href="<? echo $action; ?>" <? echo $class; ?>><? echo $label; ?></a><? echo $sep; ?></td><?
 }
 
-?>
-<head>
-  <title><?php print $title;?></title>
+?><head>
+  <title><?=$cfg['Site']['Name'] . " - " . $title?></title>
   <link href="asrc3.css" rel=stylesheet type="text/css" />
+	<script language="Javascript">
+	  function getObjRef(p_ref) {
+	    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
+	  }
+	</script>
   <script language="Javascript" src="dhtml.js"></script>
   <script language="Javascript" src="date.js"></script>
 </head>

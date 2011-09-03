@@ -14,7 +14,7 @@
  * CAM  22-Jun-2007  10132 : Removed session_register.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - User Administration";
+$title = "User Administration";
 include_once 'Main.php';
 include 'tpl/top.php';
 

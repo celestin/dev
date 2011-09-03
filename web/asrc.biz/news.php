@@ -12,7 +12,7 @@
  * CAM  22-Oct-2007  10182 : Use new item classes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Aberdeen Squash Racquets Club - News";
+$title = "News";
 include_once 'Main.php';
 include 'tpl/top.php';
 

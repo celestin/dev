@@ -15,6 +15,7 @@
  * CAM  11-Aug-2007  10149 : Remove height restriction on table.
  * CAM  11-Aug-2007  10151 : Display a random boattrans image - either 2 or 3.
  * CAM  11-Aug-2007  10154 : Added Feedback option.
+ * CAM  22-Sep-2011  11029 : Changed top right icon, made WCE logo clickable.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -69,8 +70,8 @@ if ($loggedin) {
     </tr>
     <tr>
       <td width=175 align=center><img src="img/boattrans<? echo $boattrans_idx; ?>.jpg"></td>
-      <td colspan=4 class="whitebox" align=center><img src="img/wce1.gif"></td>
-      <td width=175 align=center><img onclick="toogleToolbar();" src="img/parceldel1.jpg"></td>
+      <td colspan=4 class="whitebox" align=center><a href="<?=$cfg['Site']['URL']?>"><img border="0" src="img/wce1.gif"></a></td>
+      <td width=175 align=center><img onclick="toogleToolbar();" src="img/boattrans4.png"></td>
     </tr>
     <tr height=26>
       <td class="redbanner" align=center><a class="nav" href="index.php">BOAT TRANSPORT</a></td>

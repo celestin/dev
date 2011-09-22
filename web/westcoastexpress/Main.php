@@ -14,6 +14,7 @@
  * CAM  21-Dec-2006  10068 : Specify correct paths.
  * CAM  26-Mar-2007  Fixed bug with server paths.
  * CAM  11-Aug-2007  10149 : Added Flash and redirect methods.
+ * CAM  22-Sep-2011  11029 : Added development url.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
@@ -21,6 +22,7 @@ $cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no
 $cfg['Site']['Email'] = "ian@westcoastexpress.net";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
+  $cfg['Site']['URL']   = "http://artificer/westcoastexpress";                 // no trailing slash
   $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 } else {

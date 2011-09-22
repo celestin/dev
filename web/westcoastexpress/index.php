@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  11-Aug-2007  10153 : Added News Items.
+ * CAM  22-Sep-2011  11028 : Changed slogan.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Boat Transport";
@@ -23,7 +24,7 @@ showFlash();
 ?><table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr>
   <td colspan=2 width=700>
-    <h3>No. 1 for Boat Transport in Scotland</h3>
+    <h3>Boat Transport in Scotland</h3>
 
     <p>We pride ourselves in taking personal care of all
     boats we transport whether it is a small dingy or a

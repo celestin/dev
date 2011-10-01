@@ -5,8 +5,8 @@ echo $Id$
 
 set SETUPFILE=setup.exe
 set INSTALLFILE=PowerSoftwareLicGen.exe
-set OUTPUT_PATH=C:\Dev\PS\licensing\EPMLicGen\EPMLicGen\Express\SingleImage\DiskImages\DISK1
-set ICON=C:\Dev\PS\licensing\EPMLicGen\LicenseKey.ico
+set OUTPUT_PATH=C:\Dev\PS\licensing\LicGen\LicGen\Express\SingleImage\DiskImages\DISK1
+set ICON=C:\Dev\PS\licensing\LicGen\LicenseKey.ico
 set ZIPFILE=licgen_303_0000.zip
 
 echo Copying output SETUP.EXE and replacing Icon
@@ -20,4 +20,3 @@ zip %ZIPFILE% %INSTALLFILE%
 echo Deleting temp exe 
 
 del %INSTALLFILE%
-

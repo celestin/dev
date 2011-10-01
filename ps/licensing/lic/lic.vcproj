@@ -106,7 +106,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy /y &quot;C:\Dev\PS\lic\Release\lic.exe&quot; &quot;C:\Dev\PS\epm\Release&quot;"
+				CommandLine="xcopy /y &quot;C:\Dev\PS\licensing\lic\Release\lic.exe&quot; &quot;C:\Dev\PS\epm\Release&quot;"
 			/>
 		</Configuration>
 	</Configurations>

@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPM License Generator", "EPM License Generator.csproj", "{574F877D-5A0B-4ED6-955A-7C8276F38EB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPMLicense", "..\EPMLicensing\EPMLicense\EPMLicense.csproj", "{13404B1A-4A31-45EF-8C1C-B16C89B09577}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPMLicense", "..\EPMLicense\EPMLicense.csproj", "{13404B1A-4A31-45EF-8C1C-B16C89B09577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

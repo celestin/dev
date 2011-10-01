@@ -55,6 +55,7 @@ namespace PowerSoftware.Tools.Licensing.LicGen
       CreateProductOptions();
       RefreshControls();
       _opt = new FormOptions();
+      SetLicenseStyleOptions();
     }
 
     private void RefreshControls()
@@ -102,13 +103,13 @@ namespace PowerSoftware.Tools.Licensing.LicGen
       _chkProdsClassic.Add(chkClassic);
       _txtQtysClassic.Add(txtClassic);
 
-      foreach (Product prod in ProductList.GetFullProductList())
+      foreach (Feature prod in FeatureList.GetFullFeatureList())
       {
         AddProduct(prod);
       }
     }
 
-    private void AddProduct(Product prod)
+    private void AddProduct(Feature prod)
     {
       ArrayList chk = _chkProds;
       ArrayList txt = _txtQtys;
@@ -229,12 +230,54 @@ namespace PowerSoftware.Tools.Licensing.LicGen
       RefreshControls();
     }
 
+    protected void SetLicenseStyleOptions()
+    {
+      optLicFloat.Visible = (!_tsbHeph.Checked);
+      if (_tsbHeph.Checked && optLicFloat.Checked) optLicTimed.Checked = true;
+    }
+
     protected void Generate()
     {
       txtOutput.Text = "";
-      Refresh();
-
       _licenseDat = new FileInfo(_opt.LicenseFilePath + "\\" + LICENSE_FILE);
+
+      if (_tsbHeph.Checked)
+      {
+        HephaestusGenerate();
+      }
+      else
+      {
+        FlexGenerate();
+      }
+    }
+
+    protected void HephaestusGenerate()
+    {
+      LicenseFile lf = new LicenseFile(_licenseDat);
+      if (optLicTimed.Checked)
+      {
+        lf.ExpiryDate = dtpDate.Value;
+      }
+      else if (optLicHost.Checked)
+      {
+        lf.HostName = txtName.Text;
+      }
+
+      foreach (CheckBox chk in _chkProds)
+      {
+        if (chk.Checked && chk.Tag != null && chk.Tag is Feature)
+        {
+          lf.Features.Add((Feature)chk.Tag);
+        }
+      }
+
+      lf.Save();
+      DisplayLicenseFileContents(false);
+    }
+
+    protected void FlexGenerate()
+    {      
+      Refresh();
 
       TextWriter tw = new StreamWriter(_licenseDat.FullName, false);
       tw.WriteLine(LicenseString());
@@ -255,7 +298,13 @@ namespace PowerSoftware.Tools.Licensing.LicGen
         Thread.Sleep(500);
       }
 
-      // Finished LMCRYPT
+      DisplayLicenseFileContents(true);
+      
+      Refresh();
+    }
+
+    protected void DisplayLicenseFileContents(bool chop)
+    {      
       TextReader tr = null;
       tr = new StreamReader(_licenseDat.FullName);
 
@@ -265,22 +314,29 @@ namespace PowerSoftware.Tools.Licensing.LicGen
       while ((line = tr.ReadLine()) != null)
       {
         line = line.Trim();
-        if (line.EndsWith("\\"))
+
+        if (chop)
         {
-          if ((line2 = tr.ReadLine()) != null)
+          if (line.EndsWith("\\"))
           {
-            if (line2.StartsWith(tab))
+            if ((line2 = tr.ReadLine()) != null)
             {
-              line2 = line2.Substring(1, line2.Length - 1);
-              line = line.Substring(0, line.Length - 1) + " " + line2.Trim();
+              if (line2.StartsWith(tab))
+              {
+                line2 = line2.Substring(1, line2.Length - 1);
+                line = line.Substring(0, line.Length - 1) + " " + line2.Trim();
+              }
             }
           }
+          txtOutput.Text += ChopUp(line);
         }
-
-        txtOutput.Text += ChopUp(line);
+        else
+        {
+          txtOutput.Text += line + (char)13 + (char)10;
+        }        
       }
+
       tr.Close();
-      Refresh();
     }
 
     protected string ChopUp(string strLine)
@@ -363,6 +419,11 @@ namespace PowerSoftware.Tools.Licensing.LicGen
         "by Craig McKay <craig.mckay@powersoftware.com> 18-Jun-2011\n\n" +
         "Copyright (c) 2011 PowerSoftware.com", Application.ProductVersion), "About PowerSoftware.com License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void HephaestusStateChanged(object sender, EventArgs e)
+    {
+      SetLicenseStyleOptions();
     }
   }
 }

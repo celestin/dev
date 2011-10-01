@@ -126,6 +126,8 @@
     <None Include="img\wrench.png" />
     <None Include="img\exit.png" />
     <None Include="img\help2.png" />
+    <Content Include="img\shield_green.png" />
+    <Content Include="img\wrench.ico" />
     <Content Include="LicenseKey.ico" />
   </ItemGroup>
   <ItemGroup>

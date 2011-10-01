@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * EPM License Generator (.net)
- * Copyright (c) 2004-2006 SourceCodeMetrics.com
+ * Copyright (c) 2004-2006 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Options dialog
@@ -18,7 +18,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace PowerSoftware.Tools.LicGen
+namespace PowerSoftware.Tools.Licensing.LicGen
 {
   /// <summary>
   /// Summary description for Options.

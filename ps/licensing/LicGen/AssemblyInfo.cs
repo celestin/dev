@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * SCM License Generator
- * Copyright (c) 2006,2008 SourceCodeMetrics.com
+ * Power Software License Generator
+ * Copyright (c) 2006,2008 PowerSoftware.com
  * Author Craig McKay <craig.mckay@powersoftware.com>
  *
  * $Id$

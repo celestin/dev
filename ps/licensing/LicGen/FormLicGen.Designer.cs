@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * SCM License Generator
- * Copyright (c) 2006,2008,2009 SourceCodeMetrics.com
+ * Power Software License Generator
+ * Copyright (c) 2006,2008,2009 PowerSoftware.com
  * Author Craig McKay <craig.mckay@powersoftware.com>
  *
  * $Id$
@@ -15,7 +15,7 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace PowerSoftware.Tools.LicGen
+namespace PowerSoftware.Tools.Licensing.LicGen
 {
   partial class FormLicGen
   {

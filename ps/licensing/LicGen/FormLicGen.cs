@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * SCM License Generator (.net)
- * Copyright (c) 2004,2008,2009 SourceCodeMetrics.com
+ * Power Software License Generator (.net)
+ * Copyright (c) 2004,2008,2009 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
@@ -22,18 +22,17 @@
 using System;
 using System.Drawing;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
-using Microsoft.Win32;
 
-namespace PowerSoftware.Tools.LicGen
+using PowerSoftware.Tools.Licensing.Hephaestus;
+
+namespace PowerSoftware.Tools.Licensing.LicGen
 {
   /// <summary>
-  /// Essential Project Manager License Generator.
+  /// Power Software License Generator.
   /// </summary>
   public partial class FormLicGen : System.Windows.Forms.Form
   {
@@ -41,9 +40,6 @@ namespace PowerSoftware.Tools.LicGen
 
     private string LICENSE_FILE = "license.dat";
     private string FLEXLM = "lmcrypt.exe";
-    //private string WINZIP32 = "C:\\Program Files\\Winzip\\Winzip32.exe ";
-    //private string FRAME_SINGLE = "Select Product";
-    //private string FRAME_FLOAT = "Select Products && Quantities";
     private int MAX_LIC_LINE_LEN = 45;
     private int HORZ_INC = 24;
 
@@ -55,9 +51,6 @@ namespace PowerSoftware.Tools.LicGen
 
     public FormLicGen()
     {
-      //
-      // Required for Windows Form Designer support
-      //
       InitializeComponent();
       CreateProductOptions();
       RefreshControls();
@@ -109,55 +102,18 @@ namespace PowerSoftware.Tools.LicGen
       _chkProdsClassic.Add(chkClassic);
       _txtQtysClassic.Add(txtClassic);
 
-      AddProduct("epmkr", "Krakatau EPM");
-      AddProduct("epmad", "ADA");
-      AddProduct("epmas", "ASP");
-      AddProduct("epmay", "Assembler");
-      AddProduct("epmcp", "C/C++");
-      AddProduct("epmcs", "C# (C Sharp)");
-      AddProduct("epmht", "HTML");
-      AddProduct("epmjv", "Java");
-      AddProduct("epmjt", "JavaScript");
-      AddProduct("epms1", "Oracle PL/SQL");
-      AddProduct("epmpl", "Perl");
-      AddProduct("epmph", "PHP");
-      AddProduct("epmpy", "Python");
-      AddProduct("epmvb", "Visual Basic");
-      AddProduct("epmid", "IDL");
-      AddProduct("epmvh", "VHDL");
-      AddProduct("epmjs", "JSP");
-      AddProduct("epmxm", "XML");
-      AddProduct("epmss", "CSS Stylesheet");
-      AddProduct("epmft", "Fortran");
-      AddProduct("epmrb", "Ruby");
-      AddProduct("epmsh", "Shell Script");
-      AddProduct("epmtx", "Text");
-      AddProduct("epmwb", "Windows Batch File");
-      AddProduct("epmpb", "PowerBuilder");
-      AddProduct("epmuc", "Intel UC");
-      AddProduct("epmmp", "Intel MMC");
-
-      AddProduct("krakatau", "Krakatau GUI", true);
-      AddProduct("cpppm", "Krakatau PM C++", true);
-      AddProduct("javapm", "Krakatau PM Java", true);
-      AddProduct("cpppro", "Krakatau Pro C++", true);
-      AddProduct("javapro", "Krakatau Pro Java", true);
-      AddProduct("cppem", "EM C++", true);
-      AddProduct("javaem", "EM Java", true);
-      AddProduct("javavz", "VizualiseIt! Java", true);
+      foreach (Product prod in ProductList.GetFullProductList())
+      {
+        AddProduct(prod);
+      }
     }
 
-    private void AddProduct(string strName, string strDesc)
-    {
-      AddProduct(strName, strDesc, false);
-    }
-
-    private void AddProduct(string strName, string strDesc, bool classic)
+    private void AddProduct(Product prod)
     {
       ArrayList chk = _chkProds;
       ArrayList txt = _txtQtys;
 
-      if (classic)
+      if (prod.Legacy)
       {
         chk = _chkProdsClassic;
         txt = _txtQtysClassic;
@@ -168,8 +124,9 @@ namespace PowerSoftware.Tools.LicGen
 
       if (cb.Text.Equals("Start"))
       {
-        cb.Text = strName;
-        ToolTip1.SetToolTip(cb, strDesc);
+        cb.Text = prod.Code;
+        ToolTip1.SetToolTip(cb, prod.Name);
+        cb.Tag = prod;
       }
       else
       {
@@ -182,8 +139,9 @@ namespace PowerSoftware.Tools.LicGen
         CheckBox cb1 = (CheckBox)chk[chk.Count - 1];
         TextBox tb1 = (TextBox)txt[txt.Count - 1];
 
-        cb.Text = strName;
-        ToolTip1.SetToolTip(cb, strDesc);
+        cb.Text = prod.Code;
+        ToolTip1.SetToolTip(cb, prod.Name);
+        cb.Tag = prod;
 
         cb.Location = new Point(cb1.Left, cb1.Top + HORZ_INC);
         cb.Size = new Size(cb1.Width, cb1.Height);
@@ -195,10 +153,9 @@ namespace PowerSoftware.Tools.LicGen
         tb.Visible = true;
         tb.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 
-        if (!classic)
+        if (!prod.Legacy)
         {
           this.fmeProds.Height += HORZ_INC;
-          //this.txtOutput.Height += HORZ_INC;
           this.Height += HORZ_INC;
         }
 

@@ -40,7 +40,7 @@
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
     <Compile Include="LicenseFile.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

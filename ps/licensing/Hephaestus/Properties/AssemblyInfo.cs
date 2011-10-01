@@ -1,5 +1,5 @@
 ﻿/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Power Software License Technology
+ * Power Software Hephaestus License Technology
  * Copyright (c) 2011 PowerSoftware.com
  * Author Craig McKay <craig.mckay@powersoftware.com>
  *

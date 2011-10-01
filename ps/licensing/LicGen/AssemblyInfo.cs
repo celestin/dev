@@ -5,8 +5,9 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  27-Sep-08  1000 : Upgraded to include Classic licensing options.
+ * Who  When         Why
+ * CAM  27-Sep-2008  1000 : Upgraded to include Classic licensing options.
+ * CAM  01-Oct-2011  11035 : Include Hephaestus license.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Reflection;
@@ -21,7 +22,8 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("3.3.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]

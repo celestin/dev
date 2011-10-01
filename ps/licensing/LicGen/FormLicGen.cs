@@ -416,7 +416,7 @@ namespace PowerSoftware.Tools.Licensing.LicGen
       MessageBox.Show(this,
         String.Format("PowerSoftware.com License Generator\n" +
         "Version {0}\n\n" +
-        "by Craig McKay <craig.mckay@powersoftware.com> 18-Jun-2011\n\n" +
+        "by Craig McKay <craig.mckay@powersoftware.com> 01-Oct-2011\n\n" +
         "Copyright (c) 2011 PowerSoftware.com", Application.ProductVersion), "About PowerSoftware.com License Generator",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
     }

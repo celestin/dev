@@ -7,12 +7,14 @@
  *
  * Who  When         Why
  * CAM  01-Oct-2011  11035 : File created.
+ * CAM  25-Oct-2011  11037 : Added Valid and Load methods.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using System.Net;
 
 namespace PowerSoftware.Tools.Licensing.Hephaestus
 {
@@ -37,6 +39,14 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
 
   public class LicenseFile
   {
+    protected static readonly string NodePowerSoftwareLicense = "PowerSoftwareLicense";
+    protected static readonly string AttrType = "Type";
+    protected static readonly string AttrExpiryDate = "ExpiryDate";
+    protected static readonly string AttrHostName = "HostName";
+    protected static readonly string NodeFeature = "Feature";
+    protected static readonly string AttrCode = "Code";
+    protected static readonly string AttrSign = "Sign";
+
     private FileInfo _file;
     private LicenseType _licenseType;
     private string _hostName;
@@ -85,10 +95,81 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       set { _features = value; }
     }
 
+    public bool Valid()
+    {
+      switch (this.LicenseType)
+      {
+        case LicenseType.TimedExpiry:
+          return (ExpiryDate > DateTime.Now);
+
+        case LicenseType.HostLocked:
+          return (HostName.ToUpper() == Dns.GetHostName().ToUpper());
+      }
+
+      return false;
+    }
 
     public LicenseFile(FileInfo _file)
     {
       File = _file;
+    }
+
+    public void Load()
+    {
+      XmlDocument doc = new XmlDocument();
+      doc.Load(File.FullName);
+
+      Algorithm alg = new Algorithm(this);
+      FeatureList fullList = FeatureList.GetFullFeatureList();
+
+      XmlAttribute attr = null;
+      string code = String.Empty;
+      string sign = String.Empty;
+
+      foreach (XmlNode node in doc.ChildNodes)
+      {
+        if (node.Name == NodePowerSoftwareLicense)
+        {
+          attr = node.Attributes[AttrType];
+          if (attr != null)
+          {
+            this.LicenseType = LicenseTypes.DetermineLicenseType(attr.Value);
+
+            switch (this.LicenseType)
+            {
+              case LicenseType.TimedExpiry:
+                attr = node.Attributes[AttrExpiryDate];
+                if (attr != null) this.ExpiryDate = DateTime.Parse(attr.Value);
+                break;
+
+              case LicenseType.HostLocked:
+                attr = node.Attributes[AttrHostName];
+                if (attr != null) this.HostName = attr.Value.Trim();
+                break;
+            }
+          }
+
+          foreach (XmlNode featureNode in node.ChildNodes)
+          {
+            if (featureNode.Name.Equals(NodeFeature))
+            {
+              attr = featureNode.Attributes[AttrCode];
+              if (attr != null) code = attr.Value;
+              attr = featureNode.Attributes[AttrSign];
+              if (attr != null) sign = attr.Value;
+
+              Feature masterFeature = fullList.Find(delegate(Feature f) { return f.Code == code; });
+              if (masterFeature != null)
+              {
+                if (alg.Sign(masterFeature) == sign)
+                {
+                  Features.Add(masterFeature);
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     public void Save()
@@ -96,17 +177,17 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       XmlDocument doc = new XmlDocument();
       XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", null, null);
       doc.AppendChild(dec);// Create the root element
-      XmlElement root = doc.CreateElement("PowerSoftwareLicense");
+      XmlElement root = doc.CreateElement(NodePowerSoftwareLicense);
       doc.AppendChild(root);
-      root.SetAttribute("Type", LicenseTypes.LicenseTypeString(this.LicenseType));
+      root.SetAttribute(AttrType, LicenseTypes.LicenseTypeString(this.LicenseType));
 
       if (LicenseType == LicenseType.TimedExpiry)
       {
-        root.SetAttribute("ExpiryDate", this.ExpiryDate.ToString("dd-MMM-yyyy"));
+        root.SetAttribute(AttrExpiryDate, this.ExpiryDate.ToString("dd-MMM-yyyy"));
       }
       else if (LicenseType == LicenseType.HostLocked)
       {
-        root.SetAttribute("HostName", this.HostName);
+        root.SetAttribute(AttrHostName, this.HostName);
       }
 
       XmlElement featureElement;
@@ -114,9 +195,9 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
 
       foreach (Feature feature in Features)
       {
-        featureElement = doc.CreateElement("Feature");
-        featureElement.SetAttribute("Code", feature.Code);
-        featureElement.SetAttribute("Sign", alg.Sign(feature));
+        featureElement = doc.CreateElement(NodeFeature);
+        featureElement.SetAttribute(AttrCode, feature.Code);
+        featureElement.SetAttribute(AttrSign, alg.Sign(feature));
         root.AppendChild(featureElement);
       }
 

@@ -7,9 +7,11 @@
  *
  * Who  When         Why
  * CAM  01-Oct-2011  11035 : File created.
+ * CAM  25-Oct-2011  11037 : File Changed Key to int, added Sum.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace PowerSoftware.Tools.Licensing.Hephaestus
@@ -19,7 +21,7 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
     private string _code;
     private string _name;
     private bool _legacy;
-    private long _key;
+    private int _key;
 
     public string Code
     {
@@ -39,7 +41,7 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       set { _legacy = value; }
     }
 
-    public long Key
+    public int Key
     {
       get { return _key; }
       set { _key = value; }
@@ -52,7 +54,7 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       Legacy = legacy;
     }
 
-    public Feature(string code, string name, long key)
+    public Feature(string code, string name, int key)
       : this(code, name, false)
     {
       Key = key;
@@ -64,6 +66,18 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
     public FeatureList()
       : base()
     {
+    }
+
+    public int Sum()
+    {
+      int rval = 0;
+
+      foreach (Feature feature in this)
+      {
+        rval += feature.Key;
+      }
+
+      return rval;
     }
 
     public static FeatureList GetFullFeatureList()

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hephaestus", "Hephaestus.csproj", "{13404B1A-4A31-45EF-8C1C-B16C89B09577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HephLic", "..\HephLic\HephLic.csproj", "{26BAFB5F-46A6-4387-843E-22E69D5D6FC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{13404B1A-4A31-45EF-8C1C-B16C89B09577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13404B1A-4A31-45EF-8C1C-B16C89B09577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13404B1A-4A31-45EF-8C1C-B16C89B09577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BAFB5F-46A6-4387-843E-22E69D5D6FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BAFB5F-46A6-4387-843E-22E69D5D6FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BAFB5F-46A6-4387-843E-22E69D5D6FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BAFB5F-46A6-4387-843E-22E69D5D6FC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

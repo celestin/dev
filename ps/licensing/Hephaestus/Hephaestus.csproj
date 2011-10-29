@@ -41,6 +41,7 @@
     <Compile Include="Algorithm.cs" />
     <Compile Include="LicenseFile.cs" />
     <Compile Include="Feature.cs" />
+    <Compile Include="LicFileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

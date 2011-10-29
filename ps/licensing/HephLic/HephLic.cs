@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  25-Oct-2011  11037 : File created.
+ * CAM  29-Oct-2011  11037 : Added error handling and moved the helper class to Hephaestus library.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -21,64 +22,25 @@ namespace PowerSoftware.Tools.Licensing.HephLic
 {
   public class HephLic
   {
-    private Stack<DirectoryInfo> _dirs;
-    private FileInfo _licenseFile;
-
-    public Stack<DirectoryInfo> Dirs
-    {
-      get
-      {
-        if (_dirs == null) _dirs = new Stack<DirectoryInfo>();
-        return _dirs;
-      }
-    }
-
-    public FileInfo LicenseFile
-    {
-      get { return _licenseFile; }
-      set { _licenseFile = value; }
-    }
-
-    public HephLic()
-    {
-    }
-
-    public bool FindFile()
-    {
-      FileInfo file;
-
-      while (Dirs.Count > 0)
-      {
-        file = new FileInfo(Path.Combine(Dirs.Pop().FullName, "license.dat"));
-        if (file.Exists)
-        {
-          LicenseFile = file;
-          return true;
-        }
-      }
-
-      return false;
-    }
-
     static int Main(string[] args)
     {
-      HephLic lic = new HephLic();
+      LicFileHelper helper = new LicFileHelper();
 
-      // Look in lic.exe's directory (i.e. installed directory)
-      lic.Dirs.Push(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory);
-
-      // Look in user's home directory
-      lic.Dirs.Push(new DirectoryInfo(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PowerSoftware.com"), "EPM")));
-
-      if (lic.FindFile())
+      if (helper.FindFile())
       {
-        LicenseFile licFile = new LicenseFile(lic.LicenseFile);
-        licFile.Load();
-        //Console.WriteLine(licFile.Features.Sum());
-        return licFile.Features.Sum();
+        try
+        {
+          helper.LicenseFile.Load();
+        }
+        catch
+        {
+          return -1; // Error - not a Hephaestus License
+        }
+
+        return helper.LicenseFile.Features.Sum();  // Licensed features
       }
 
-      return 0;
+      return 0; // Couldn't find a License file
     }
   }
 }

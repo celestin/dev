@@ -22,10 +22,10 @@ using System.IO;
 using System.Collections;
 using Microsoft.Win32;
 
-using SourceCodeMetrics.Krakatau.Kepm.Controls;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Controls;
+using PowerSoftware.Krakatau.Kepm.Projects;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Win32
+namespace PowerSoftware.Krakatau.Kepm.Win32
 {
   /// <summary>
   /// KEPM Preferences - stored in the Windows Registry

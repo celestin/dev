@@ -11,7 +11,7 @@
 
 using System;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Controls
+namespace PowerSoftware.Krakatau.Kepm.Controls
 {
   public partial class ProjectsView
   {

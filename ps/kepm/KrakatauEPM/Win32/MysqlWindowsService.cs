@@ -16,7 +16,7 @@ using System.IO;
 using System.Diagnostics;
 using System.ServiceProcess;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Win32
+namespace PowerSoftware.Krakatau.Kepm.Win32
 {
   public class MysqlWindowsService
   {

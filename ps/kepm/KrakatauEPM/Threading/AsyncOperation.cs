@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.ComponentModel;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Threading
+namespace PowerSoftware.Krakatau.Kepm.Threading
 {
     /// <summary>
     /// Exception thrown by AsyncUtils.AsyncOperation.Start when an

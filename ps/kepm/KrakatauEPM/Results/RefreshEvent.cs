@@ -11,9 +11,9 @@
 
 using System;
 
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Projects;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Results
+namespace PowerSoftware.Krakatau.Kepm.Results
 {
   public class RefreshViewArgs : EventArgs
   {

@@ -42,7 +42,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("EPM 2.1.0.0")]
 [assembly: AssemblyCompany("PowerSoftware.com")]
 [assembly: AssemblyProduct("Krakatau EPM")]
-[assembly: AssemblyCopyright("Copyright (c) 2003,2011 PowerSoftware.com")]
+[assembly: AssemblyCopyright("Copyright (c) 2011 PowerSoftware.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -55,5 +55,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("470af938-2923-4514-9092-ca07a46b5215")]
 
 // Version information for an assembly consists of the following four values:
-[assembly: AssemblyVersion("2.1.0.0")]
-[assembly: AssemblyFileVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.2.0.0")]
+[assembly: AssemblyFileVersion("2.2.0.0")]

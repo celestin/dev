@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Win32
+namespace PowerSoftware.Krakatau.Kepm.Win32
 {
   public enum PopupTip
   {

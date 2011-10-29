@@ -15,7 +15,7 @@ using System;
 using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Projects
+namespace PowerSoftware.Krakatau.Kepm.Projects
 {
   /// <summary>
   /// Arguments class

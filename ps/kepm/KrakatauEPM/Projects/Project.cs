@@ -26,9 +26,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Config;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Projects
+namespace PowerSoftware.Krakatau.Kepm.Projects
 {
   /// <summary>
   /// Representation of an EPM Project.

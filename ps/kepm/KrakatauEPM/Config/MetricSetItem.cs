@@ -13,7 +13,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   /// <summary>
   /// KEPM Visual ListViewItem component.

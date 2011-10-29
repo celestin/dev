@@ -18,13 +18,13 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Database;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
-using SourceCodeMetrics.Krakatau.Kepm.Results;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Database;
+using PowerSoftware.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Results;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   public class RefreshController
   {

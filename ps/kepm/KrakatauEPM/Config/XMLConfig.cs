@@ -23,10 +23,10 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Collections;
 
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   /// <summary>
   /// EPM.XML Configuration Parser.

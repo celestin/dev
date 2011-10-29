@@ -12,10 +12,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Windows.Forms;
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Projects;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class NewProject
   {
@@ -66,35 +66,35 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.lbxExcludedDirectories = new System.Windows.Forms.ListBox();
       this.cmdSelect = new System.Windows.Forms.Button();
       this.SuspendLayout();
-      //
+      // 
       // label1
-      //
+      // 
       this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.Location = new System.Drawing.Point(8, 11);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(100, 24);
       this.label1.TabIndex = 0;
       this.label1.Text = "Project Title";
-      //
+      // 
       // txtTitle
-      //
+      // 
       this.txtTitle.Location = new System.Drawing.Point(112, 8);
       this.txtTitle.Name = "txtTitle";
       this.txtTitle.Size = new System.Drawing.Size(136, 20);
       this.txtTitle.TabIndex = 1;
       this.txtTitle.TextChanged += new System.EventHandler(this.TitleChanged);
-      //
+      // 
       // label2
-      //
+      // 
       this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.Location = new System.Drawing.Point(8, 38);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(100, 24);
       this.label2.TabIndex = 2;
       this.label2.Text = "Snapshot Date";
-      //
+      // 
       // dtpSnapshot
-      //
+      // 
       this.dtpSnapshot.CustomFormat = "dd-MMM-yyyy";
       this.dtpSnapshot.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dtpSnapshot.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -103,33 +103,33 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.dtpSnapshot.Size = new System.Drawing.Size(112, 21);
       this.dtpSnapshot.TabIndex = 4;
       this.dtpSnapshot.ValueChanged += new System.EventHandler(this.SnapshotDateChanged);
-      //
+      // 
       // fbdBase
-      //
+      // 
       this.fbdBase.Description = "Locate the base directory, the starting point in the folder tree, for your projec" +
           "t source files";
       this.fbdBase.ShowNewFolderButton = false;
-      //
+      // 
       // txtBase
-      //
+      // 
       this.txtBase.Location = new System.Drawing.Point(112, 61);
       this.txtBase.Name = "txtBase";
       this.txtBase.Size = new System.Drawing.Size(256, 20);
       this.txtBase.TabIndex = 6;
       this.txtBase.TextChanged += new System.EventHandler(this.BaseDirectoryChanged);
       this.txtBase.Leave += new System.EventHandler(this.LeaveBaseDirectory);
-      //
+      // 
       // label3
-      //
+      // 
       this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.Location = new System.Drawing.Point(8, 64);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(100, 24);
       this.label3.TabIndex = 5;
       this.label3.Text = "Base Directory";
-      //
+      // 
       // cmdBrowse
-      //
+      // 
       this.cmdBrowse.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdBrowse.Location = new System.Drawing.Point(376, 60);
       this.cmdBrowse.Name = "cmdBrowse";
@@ -137,9 +137,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.cmdBrowse.TabIndex = 7;
       this.cmdBrowse.Text = "&Browse";
       this.cmdBrowse.Click += new System.EventHandler(this.BrowseForBaseDirectory);
-      //
+      // 
       // cmdOK
-      //
+      // 
       this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
       this.cmdOK.Enabled = false;
       this.cmdOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,9 +149,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.cmdOK.TabIndex = 8;
       this.cmdOK.Text = "&OK";
       this.cmdOK.Click += new System.EventHandler(this.SaveProjectFileAndClose);
-      //
+      // 
       // cmdCancel
-      //
+      // 
       this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.cmdCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdCancel.Location = new System.Drawing.Point(360, 536);
@@ -159,16 +159,16 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.cmdCancel.Size = new System.Drawing.Size(75, 23);
       this.cmdCancel.TabIndex = 9;
       this.cmdCancel.Text = "&Cancel";
-      //
+      // 
       // clbFileTypes
-      //
+      // 
       this.clbFileTypes.Location = new System.Drawing.Point(112, 149);
       this.clbFileTypes.Name = "clbFileTypes";
       this.clbFileTypes.Size = new System.Drawing.Size(320, 334);
       this.clbFileTypes.TabIndex = 10;
-      //
+      // 
       // cmdSaveAs
-      //
+      // 
       this.cmdSaveAs.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cmdSaveAs.Location = new System.Drawing.Point(376, 496);
       this.cmdSaveAs.Name = "cmdSaveAs";
@@ -176,41 +176,41 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.cmdSaveAs.TabIndex = 14;
       this.cmdSaveAs.Text = "&Save As";
       this.cmdSaveAs.Click += new System.EventHandler(this.ProjectFileSaveAs);
-      //
+      // 
       // txtProj
-      //
+      // 
       this.txtProj.Location = new System.Drawing.Point(112, 496);
       this.txtProj.Name = "txtProj";
       this.txtProj.ReadOnly = true;
       this.txtProj.Size = new System.Drawing.Size(256, 20);
       this.txtProj.TabIndex = 13;
       this.txtProj.TextChanged += new System.EventHandler(this.ProjectFileChanged);
-      //
+      // 
       // label5
-      //
+      // 
       this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label5.Location = new System.Drawing.Point(8, 499);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(100, 24);
       this.label5.TabIndex = 12;
       this.label5.Text = "Project File";
-      //
+      // 
       // sfdProj
-      //
+      // 
       this.sfdProj.DefaultExt = "txt";
       this.sfdProj.Filter = "KEPM Projects|*.txt";
       this.sfdProj.Title = "Save Project File As...";
-      //
+      // 
       // label6
-      //
+      // 
       this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label6.Location = new System.Drawing.Point(256, 10);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(100, 24);
       this.label6.TabIndex = 15;
-      //
+      // 
       // chkFileTypes
-      //
+      // 
       this.chkFileTypes.AutoSize = true;
       this.chkFileTypes.Checked = true;
       this.chkFileTypes.CheckState = System.Windows.Forms.CheckState.Indeterminate;
@@ -222,37 +222,37 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.chkFileTypes.Text = "File Types";
       this.chkFileTypes.UseVisualStyleBackColor = true;
       this.chkFileTypes.CheckedChanged += new System.EventHandler(this.FileTypesChanged);
-      //
+      // 
       // label4
-      //
+      // 
       this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.Location = new System.Drawing.Point(8, 88);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(100, 35);
       this.label4.TabIndex = 17;
       this.label4.Text = "Excluded Directories";
-      //
+      // 
       // lbxExcludedDirectories
-      //
+      // 
       this.lbxExcludedDirectories.FormattingEnabled = true;
       this.lbxExcludedDirectories.Location = new System.Drawing.Point(112, 87);
       this.lbxExcludedDirectories.Name = "lbxExcludedDirectories";
       this.lbxExcludedDirectories.Size = new System.Drawing.Size(256, 56);
       this.lbxExcludedDirectories.TabIndex = 18;
-      //
+      // 
       // cmdSelect
-      //
+      // 
       this.cmdSelect.Enabled = false;
       this.cmdSelect.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cmdSelect.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.directory_selector;
+      this.cmdSelect.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.directory_selector;
       this.cmdSelect.Location = new System.Drawing.Point(376, 88);
       this.cmdSelect.Name = "cmdSelect";
       this.cmdSelect.Size = new System.Drawing.Size(56, 55);
       this.cmdSelect.TabIndex = 19;
       this.cmdSelect.Click += new System.EventHandler(this.SelectExcludedDirectories);
-      //
+      // 
       // NewProject
-      //
+      // 
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.CancelButton = this.cmdCancel;
       this.ClientSize = new System.Drawing.Size(440, 562);

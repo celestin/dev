@@ -18,9 +18,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Config;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// Dialog to maintain Metric Sets.

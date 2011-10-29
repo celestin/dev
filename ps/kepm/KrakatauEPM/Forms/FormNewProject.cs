@@ -23,10 +23,10 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Threading;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Projects;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// New Project Wizard Form.  Takes the user through the steps required to

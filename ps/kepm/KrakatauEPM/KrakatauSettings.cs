@@ -17,9 +17,9 @@ using System;
 using System.IO;
 using System.Collections;
 
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Metrics;
 
-namespace SourceCodeMetrics.Krakatau.Kepm
+namespace PowerSoftware.Krakatau.Kepm
 {
   /// <summary>
   /// KEPM Settings - singleton with global application options.

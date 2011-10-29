@@ -25,12 +25,12 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
-using SourceCodeMetrics.Krakatau.Kepm.Threading;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Threading;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// Analyze Dialog and Action.
@@ -333,7 +333,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     /// <summary>
     /// Return the StdErrReceived and StdOutReceived event data
     /// </summary>
-    private void writeStreamInfo(object sender, SourceCodeMetrics.Krakatau.Kepm.Threading.DataReceivedEventArgs e)
+    private void writeStreamInfo(object sender, PowerSoftware.Krakatau.Kepm.Threading.DataReceivedEventArgs e)
     {
       this.rtbResults.AppendText(e.Text + Environment.NewLine);
     }

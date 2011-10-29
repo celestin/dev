@@ -9,7 +9,7 @@
  * CAM  24-Feb-2010  10558 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Metrics
+namespace PowerSoftware.Krakatau.Kepm.Metrics
 {
   public enum MetricType
   {

@@ -13,9 +13,9 @@
 using System;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   public partial class FormPreferences : Form
   {

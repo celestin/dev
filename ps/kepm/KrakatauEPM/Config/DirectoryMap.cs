@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   public class DirectoryMap : KeyedCollection<string, DirectoryInfo>
   {

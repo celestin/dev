@@ -14,9 +14,9 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Metrics;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   /// <summary>
   /// Representation of Metric Definition in Metric Set.

@@ -24,12 +24,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 
-using SourceCodeMetrics.Krakatau.Kepm.Forms;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
-using SourceCodeMetrics.Krakatau.Kepm.Results;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Forms;
+using PowerSoftware.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Results;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Controls
+namespace PowerSoftware.Krakatau.Kepm.Controls
 {
   /// <summary>
   /// ProjectsView is a ListView to display ProjectItems.

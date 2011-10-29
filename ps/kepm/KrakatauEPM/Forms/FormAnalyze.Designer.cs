@@ -22,12 +22,12 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
-using SourceCodeMetrics.Krakatau.Kepm.Threading;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Threading;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class FormAnalyze
   {

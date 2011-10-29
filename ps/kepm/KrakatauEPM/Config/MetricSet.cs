@@ -12,9 +12,9 @@
 
 using System.Collections.ObjectModel;
 
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Metrics;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   /// <summary>
   /// Collection of Metric Definitions.

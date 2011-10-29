@@ -8,12 +8,12 @@
     <ProjectGuid>{7E20EF1B-4B0E-4DE1-9237-79F37CD05C7A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SourceCodeMetrics.Krakatau.Kepm</RootNamespace>
+    <RootNamespace>PowerSoftware.Krakatau.Kepm</RootNamespace>
     <AssemblyName>KrakatauEPM</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>VolcanoEPM.ico</ApplicationIcon>
-    <StartupObject>SourceCodeMetrics.Krakatau.Kepm.KrakatauEPM</StartupObject>
+    <ApplicationIcon>Kepm.ico</ApplicationIcon>
+    <StartupObject>PowerSoftware.Krakatau.Kepm.KrakatauEPM</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -226,7 +226,14 @@
     <Content Include="img\ms\edit.bmp" />
     <Content Include="img\ms\jar.bmp" />
     <Content Include="img\ms\new.bmp" />
+    <Content Include="Kepm.ico" />
     <Content Include="VolcanoEPM.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\licensing\Hephaestus\Hephaestus.csproj">
+      <Project>{13404B1A-4A31-45EF-8C1C-B16C89B09577}</Project>
+      <Name>Hephaestus</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

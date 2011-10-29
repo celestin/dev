@@ -11,7 +11,7 @@
  * CAM  13-Mar-2010  10597 : Added General section & Never Show PopupTips.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class FormPreferences
   {

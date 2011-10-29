@@ -14,9 +14,9 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Projects;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   public partial class FormDirectoryTreeSelector : Form
   {

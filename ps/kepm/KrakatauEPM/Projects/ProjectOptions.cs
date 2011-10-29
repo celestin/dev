@@ -16,10 +16,10 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Collections;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Projects
+namespace PowerSoftware.Krakatau.Kepm.Projects
 {
   /// <summary>
   /// Utility class to read and write Project Files.

@@ -12,7 +12,7 @@
 using System;
 using System.Drawing;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Results
+namespace PowerSoftware.Krakatau.Kepm.Results
 {
   public enum ChurnStatus
   {

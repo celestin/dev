@@ -22,10 +22,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Metrics;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   /// <summary>
   /// Dialog to edit a Metric Set.

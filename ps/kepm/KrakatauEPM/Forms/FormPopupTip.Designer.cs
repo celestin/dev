@@ -9,7 +9,7 @@
  * CAM  16-Mar-2010  10597 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class FormPopupTip
   {

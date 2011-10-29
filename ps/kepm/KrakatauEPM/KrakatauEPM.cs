@@ -1,13 +1,14 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Krakatau Essential PM (KEPM)
- * Copyright (c) 2008 PowerSoftware.com
+ * Copyright (c) 2011 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  24-May-08   362 : File created (replicating frmMain).
+ * Who  When         Why
+ * CAM  24-May-08    362 : File created (replicating frmMain).
  * CAM  15-Feb-2010  10565 : Use KrakatauSettings for InstallDir.
+ * CAM  15-Feb-2010  11048 : Use Hephaestus licensing.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -15,10 +16,12 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 
-using SourceCodeMetrics.Krakatau.Kepm.Forms;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Tools.Licensing.Hephaestus;
 
-namespace SourceCodeMetrics.Krakatau.Kepm
+using PowerSoftware.Krakatau.Kepm.Forms;
+using PowerSoftware.Krakatau.Kepm.Win32;
+
+namespace PowerSoftware.Krakatau.Kepm
 {
   static class KrakatauEPM
   {
@@ -31,16 +34,35 @@ namespace SourceCodeMetrics.Krakatau.Kepm
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       FormKrakatauEPM app = new FormKrakatauEPM();
+      bool kepmLicensed = false;
 
-      Process p = new Process();
-      p.StartInfo.RedirectStandardOutput = false;
-      p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-      p.StartInfo.UseShellExecute = true;
-      p.StartInfo.FileName = String.Format(@"{0}\lic.exe", KrakatauSettings.Settings.InstallDir);
-      p.Start();
-      p.WaitForExit();
+      LicFileHelper helper = new LicFileHelper(KrakatauSettings.Settings.InstallDir);
+      if (helper.FindFile())
+      {
+        try
+        {
+          // Attempt to validate against a Hephaestus license
 
-      if ((p.ExitCode & 128) == 128)
+          helper.LicenseFile.Load();
+          kepmLicensed = helper.LicenseFile.Features.LicensedFor(Feature.FeatureEpmkr);
+        }
+        catch
+        {
+          // Invalid Hephaestus license, try FLEXlm
+
+          Process p = new Process();
+          p.StartInfo.RedirectStandardOutput = false;
+          p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+          p.StartInfo.UseShellExecute = true;
+          p.StartInfo.FileName = String.Format(@"{0}\lic.exe", helper.LicenseFile.File.DirectoryName);
+          p.Start();
+          p.WaitForExit();
+
+          kepmLicensed = ((p.ExitCode & Feature.FeatureEpmkr.Key) == Feature.FeatureEpmkr.Key);
+        }
+      }
+
+      if (kepmLicensed)
       {
         Application.Run(app);
       }

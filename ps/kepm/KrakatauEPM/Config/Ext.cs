@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Config
+namespace PowerSoftware.Krakatau.Kepm.Config
 {
   /// <summary>
   /// Model of File Extensions.

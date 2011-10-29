@@ -12,7 +12,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Metrics
+namespace PowerSoftware.Krakatau.Kepm.Metrics
 {
   public class Metric : IEquatable<Metric>
   {

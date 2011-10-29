@@ -9,7 +9,7 @@
  * CAM  17-Nov-2009  10502 : File created.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class FormDirectoryTreeSelector
   {

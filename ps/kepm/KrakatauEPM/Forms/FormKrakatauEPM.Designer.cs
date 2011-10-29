@@ -14,12 +14,12 @@
  * CAM  22-Jun-2011  10970 : Included UserGuide in Help menu.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Controls;
-using SourceCodeMetrics.Krakatau.Kepm.Projects;
-using SourceCodeMetrics.Krakatau.Kepm.Win32;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Controls;
+using PowerSoftware.Krakatau.Kepm.Projects;
+using PowerSoftware.Krakatau.Kepm.Win32;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   partial class FormKrakatauEPM
   {
@@ -61,7 +61,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this._stsMain = new System.Windows.Forms.StatusStrip();
       this._statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.mainSplit = new System.Windows.Forms.SplitContainer();
-      this._lsvProjects = new SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView();
+      this._lsvProjects = new PowerSoftware.Krakatau.Kepm.Controls.ProjectsView();
       this._imlProjects = new System.Windows.Forms.ImageList(this.components);
       this._dgvResults = new System.Windows.Forms.DataGridView();
       this._mnsMain = new System.Windows.Forms.MenuStrip();
@@ -248,38 +248,38 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniNewProject
       // 
-      this.mniNewProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.NewProjectMenu;
+      this.mniNewProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.NewProjectMenu;
       this.mniNewProject.Name = "mniNewProject";
-      this.mniNewProject.Size = new System.Drawing.Size(152, 22);
+      this.mniNewProject.Size = new System.Drawing.Size(143, 22);
       this.mniNewProject.Text = "&New Project";
       this.mniNewProject.Click += new System.EventHandler(this.NewProject);
       // 
       // mniOpenProject
       // 
-      this.mniOpenProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.OpenProjectMenu;
+      this.mniOpenProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.OpenProjectMenu;
       this.mniOpenProject.Name = "mniOpenProject";
-      this.mniOpenProject.Size = new System.Drawing.Size(152, 22);
+      this.mniOpenProject.Size = new System.Drawing.Size(143, 22);
       this.mniOpenProject.Text = "&Open Project";
       this.mniOpenProject.Click += new System.EventHandler(this.OpenProject);
       // 
       // mniCloseProject
       // 
-      this.mniCloseProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.CloseProjectMenu;
+      this.mniCloseProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.CloseProjectMenu;
       this.mniCloseProject.Name = "mniCloseProject";
-      this.mniCloseProject.Size = new System.Drawing.Size(152, 22);
+      this.mniCloseProject.Size = new System.Drawing.Size(143, 22);
       this.mniCloseProject.Text = "&Close Project";
       this.mniCloseProject.Click += new System.EventHandler(this.CloseProject);
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(140, 6);
       // 
       // _mnuExit
       // 
-      this._mnuExit.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.Exit;
+      this._mnuExit.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.Exit;
       this._mnuExit.Name = "_mnuExit";
-      this._mnuExit.Size = new System.Drawing.Size(152, 22);
+      this._mnuExit.Size = new System.Drawing.Size(143, 22);
       this._mnuExit.Text = "E&xit";
       this._mnuExit.Click += new System.EventHandler(this.ExitKepm);
       // 
@@ -294,7 +294,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniProjectPrefs
       // 
-      this.mniProjectPrefs.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.ProjectPrefs;
+      this.mniProjectPrefs.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.ProjectPrefs;
       this.mniProjectPrefs.Name = "mniProjectPrefs";
       this.mniProjectPrefs.Size = new System.Drawing.Size(144, 22);
       this.mniProjectPrefs.Text = "&Preferences...";
@@ -302,7 +302,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniProjectAnalyze
       // 
-      this.mniProjectAnalyze.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyzeProjectMenu;
+      this.mniProjectAnalyze.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.AnalyzeProjectMenu;
       this.mniProjectAnalyze.Name = "mniProjectAnalyze";
       this.mniProjectAnalyze.Size = new System.Drawing.Size(144, 22);
       this.mniProjectAnalyze.Text = "&Analyze";
@@ -318,7 +318,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniMetricsSets
       // 
-      this.mniMetricsSets.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.MetricSetMenu;
+      this.mniMetricsSets.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.MetricSetMenu;
       this.mniMetricsSets.Name = "mniMetricsSets";
       this.mniMetricsSets.Size = new System.Drawing.Size(104, 22);
       this.mniMetricsSets.Text = "&Sets...";
@@ -340,7 +340,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
             this.toolStripSeparator4,
             this.mniStartService,
             this.mniStopService});
-      this.mySQLToolStripMenuItem.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.DiagnosticsMysql;
+      this.mySQLToolStripMenuItem.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.DiagnosticsMysql;
       this.mySQLToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this.mySQLToolStripMenuItem.Name = "mySQLToolStripMenuItem";
       this.mySQLToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
@@ -391,7 +391,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniUserGuide
       // 
-      this.mniUserGuide.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.Pdf;
+      this.mniUserGuide.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.Pdf;
       this.mniUserGuide.Name = "mniUserGuide";
       this.mniUserGuide.Size = new System.Drawing.Size(173, 22);
       this.mniUserGuide.Text = "&User Guide";
@@ -399,7 +399,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniMetricsDefs
       // 
-      this.mniMetricsDefs.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.Pdf;
+      this.mniMetricsDefs.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.Pdf;
       this.mniMetricsDefs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this.mniMetricsDefs.Name = "mniMetricsDefs";
       this.mniMetricsDefs.Size = new System.Drawing.Size(173, 22);
@@ -408,7 +408,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // 
       // mniHelpAbout
       // 
-      this.mniHelpAbout.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.HelpAbout;
+      this.mniHelpAbout.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.HelpAbout;
       this.mniHelpAbout.Name = "mniHelpAbout";
       this.mniHelpAbout.Size = new System.Drawing.Size(173, 22);
       this.mniHelpAbout.Text = "&About";
@@ -436,7 +436,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbNewProject
       // 
       this._tsbNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbNewProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.NewProjectToolbar;
+      this._tsbNewProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.NewProjectToolbar;
       this._tsbNewProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbNewProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbNewProject.Name = "_tsbNewProject";
@@ -447,7 +447,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbOpenProject
       // 
       this._tsbOpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbOpenProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.OpenProjectToolbar;
+      this._tsbOpenProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.OpenProjectToolbar;
       this._tsbOpenProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbOpenProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbOpenProject.Name = "_tsbOpenProject";
@@ -458,7 +458,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbCloseProject
       // 
       this._tsbCloseProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbCloseProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.CloseProjectToolbar;
+      this._tsbCloseProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.CloseProjectToolbar;
       this._tsbCloseProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbCloseProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbCloseProject.Name = "_tsbCloseProject";
@@ -474,7 +474,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbMetricSets
       // 
       this._tsbMetricSets.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbMetricSets.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.MetricSetToolbar;
+      this._tsbMetricSets.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.MetricSetToolbar;
       this._tsbMetricSets.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbMetricSets.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbMetricSets.Name = "_tsbMetricSets";
@@ -497,7 +497,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbSetAsOldProject
       // 
       this._tsbSetAsOldProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbSetAsOldProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.SetOldProjectToolbar;
+      this._tsbSetAsOldProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.SetOldProjectToolbar;
       this._tsbSetAsOldProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbSetAsOldProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbSetAsOldProject.Name = "_tsbSetAsOldProject";
@@ -508,7 +508,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbSetAsNewProject
       // 
       this._tsbSetAsNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbSetAsNewProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.SetNewProjectToolbar;
+      this._tsbSetAsNewProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.SetNewProjectToolbar;
       this._tsbSetAsNewProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbSetAsNewProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbSetAsNewProject.Name = "_tsbSetAsNewProject";
@@ -519,7 +519,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       // _tsbAnalyzeProject
       // 
       this._tsbAnalyzeProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this._tsbAnalyzeProject.Image = global::SourceCodeMetrics.Krakatau.Kepm.Properties.Resources.AnalyzeProjectToolbar;
+      this._tsbAnalyzeProject.Image = global::PowerSoftware.Krakatau.Kepm.Properties.Resources.AnalyzeProjectToolbar;
       this._tsbAnalyzeProject.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this._tsbAnalyzeProject.ImageTransparentColor = System.Drawing.Color.Magenta;
       this._tsbAnalyzeProject.Name = "_tsbAnalyzeProject";
@@ -581,7 +581,7 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
     private System.Windows.Forms.ToolStripButton _tsbSetAsNewProject;
     private System.Windows.Forms.ToolStripButton _tsbAnalyzeProject;
     private System.Windows.Forms.ImageList _imlProjects;
-    private SourceCodeMetrics.Krakatau.Kepm.Controls.ProjectsView _lsvProjects;
+    private PowerSoftware.Krakatau.Kepm.Controls.ProjectsView _lsvProjects;
     private System.Windows.Forms.OpenFileDialog _ofdProj;
     private System.Windows.Forms.ToolStripMenuItem mniNewProject;
     private System.Windows.Forms.ToolStripMenuItem mniOpenProject;

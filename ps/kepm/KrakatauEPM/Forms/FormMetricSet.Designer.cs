@@ -9,7 +9,7 @@
  * CAM  24-Feb-2010  10558 : Separated Designer code.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Forms
+namespace PowerSoftware.Krakatau.Kepm.Forms
 {
   public partial class FormMetricSet
   {
@@ -79,9 +79,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.grpChgMet.SuspendLayout();
       this.grpFileMet.SuspendLayout();
       this.SuspendLayout();
-      //
+      // 
       // btnOK
-      //
+      // 
       this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
       this.btnOK.Enabled = false;
       this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,9 +91,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.btnOK.TabIndex = 0;
       this.btnOK.Text = "&OK";
       this.btnOK.Click += new System.EventHandler(this.OkClicked);
-      //
+      // 
       // btnCancel
-      //
+      // 
       this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.Location = new System.Drawing.Point(736, 120);
@@ -102,9 +102,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.btnCancel.TabIndex = 1;
       this.btnCancel.Text = "&Cancel";
       this.btnCancel.Click += new System.EventHandler(this.CancelClicked);
-      //
+      // 
       // txtName
-      //
+      // 
       this.txtName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtName.Location = new System.Drawing.Point(128, 13);
       this.txtName.Name = "txtName";
@@ -112,9 +112,9 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.txtName.TabIndex = 0;
       this.txtName.TextChanged += new System.EventHandler(this.MetricSetNameChanged);
       this.txtName.Leave += new System.EventHandler(this.MetricSetNameLeft);
-      //
+      // 
       // grpChgMet
-      //
+      // 
       this.grpChgMet.Controls.Add(this.chkLower2);
       this.grpChgMet.Controls.Add(this.txtLower2);
       this.grpChgMet.Controls.Add(this.chkMet2);
@@ -127,61 +127,61 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.grpChgMet.TabIndex = 11;
       this.grpChgMet.TabStop = false;
       this.grpChgMet.Text = "Changed Metrics";
-      //
+      // 
       // chkLower2
-      //
+      // 
       this.chkLower2.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkLower2.Location = new System.Drawing.Point(104, 24);
       this.chkLower2.Name = "chkLower2";
       this.chkLower2.Size = new System.Drawing.Size(64, 24);
       this.chkLower2.TabIndex = 10;
       this.chkLower2.Text = "Lower";
-      //
+      // 
       // txtLower2
-      //
+      // 
       this.txtLower2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtLower2.Location = new System.Drawing.Point(168, 25);
       this.txtLower2.Name = "txtLower2";
       this.txtLower2.Size = new System.Drawing.Size(72, 21);
       this.txtLower2.TabIndex = 9;
-      //
+      // 
       // chkMet2
-      //
+      // 
       this.chkMet2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMet2.Location = new System.Drawing.Point(8, 24);
       this.chkMet2.Name = "chkMet2";
       this.chkMet2.Size = new System.Drawing.Size(96, 24);
       this.chkMet2.TabIndex = 7;
       this.chkMet2.Text = "CHG_SLOC";
-      //
+      // 
       // txtUpper2
-      //
+      // 
       this.txtUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtUpper2.Location = new System.Drawing.Point(328, 25);
       this.txtUpper2.Name = "txtUpper2";
       this.txtUpper2.Size = new System.Drawing.Size(72, 21);
       this.txtUpper2.TabIndex = 5;
-      //
+      // 
       // chkUpper2
-      //
+      // 
       this.chkUpper2.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkUpper2.Location = new System.Drawing.Point(264, 24);
       this.chkUpper2.Name = "chkUpper2";
       this.chkUpper2.Size = new System.Drawing.Size(64, 24);
       this.chkUpper2.TabIndex = 8;
       this.chkUpper2.Text = "Upper";
-      //
+      // 
       // label1
-      //
+      // 
       this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.Location = new System.Drawing.Point(16, 16);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(104, 16);
       this.label1.TabIndex = 4;
       this.label1.Text = "Metric Set Name";
-      //
+      // 
       // grpFileMet
-      //
+      // 
       this.grpFileMet.Controls.Add(this.chkLower1);
       this.grpFileMet.Controls.Add(this.txtLower1);
       this.grpFileMet.Controls.Add(this.chkMet1);
@@ -194,60 +194,60 @@ namespace SourceCodeMetrics.Krakatau.Kepm.Forms
       this.grpFileMet.TabIndex = 12;
       this.grpFileMet.TabStop = false;
       this.grpFileMet.Text = "File Metrics";
-      //
+      // 
       // chkLower1
-      //
+      // 
       this.chkLower1.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkLower1.Location = new System.Drawing.Point(104, 24);
       this.chkLower1.Name = "chkLower1";
       this.chkLower1.Size = new System.Drawing.Size(64, 24);
       this.chkLower1.TabIndex = 10;
       this.chkLower1.Text = "Lower";
-      //
+      // 
       // txtLower1
-      //
+      // 
       this.txtLower1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtLower1.Location = new System.Drawing.Point(168, 25);
       this.txtLower1.Name = "txtLower1";
       this.txtLower1.Size = new System.Drawing.Size(72, 21);
       this.txtLower1.TabIndex = 9;
-      //
+      // 
       // chkMet1
-      //
+      // 
       this.chkMet1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.chkMet1.Location = new System.Drawing.Point(8, 24);
       this.chkMet1.Name = "chkMet1";
       this.chkMet1.Size = new System.Drawing.Size(96, 24);
       this.chkMet1.TabIndex = 7;
       this.chkMet1.Text = "LOC";
-      //
+      // 
       // chkUpper1
-      //
+      // 
       this.chkUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F);
       this.chkUpper1.Location = new System.Drawing.Point(264, 24);
       this.chkUpper1.Name = "chkUpper1";
       this.chkUpper1.Size = new System.Drawing.Size(64, 24);
       this.chkUpper1.TabIndex = 8;
       this.chkUpper1.Text = "Upper";
-      //
+      // 
       // txtUpper1
-      //
+      // 
       this.txtUpper1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtUpper1.Location = new System.Drawing.Point(328, 25);
       this.txtUpper1.Name = "txtUpper1";
       this.txtUpper1.Size = new System.Drawing.Size(72, 21);
       this.txtUpper1.TabIndex = 5;
-      //
+      // 
       // stbMsg
-      //
+      // 
       this.stbMsg.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.stbMsg.Location = new System.Drawing.Point(0, 153);
       this.stbMsg.Name = "stbMsg";
       this.stbMsg.Size = new System.Drawing.Size(842, 22);
       this.stbMsg.TabIndex = 13;
-      //
+      // 
       // FormMetricSet
-      //
+      // 
       this.AcceptButton = this.btnOK;
       this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
       this.CancelButton = this.btnCancel;

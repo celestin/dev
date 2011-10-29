@@ -16,11 +16,11 @@ using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-using SourceCodeMetrics.Krakatau.Kepm.Config;
-using SourceCodeMetrics.Krakatau.Kepm.Metrics;
-using SourceCodeMetrics.Krakatau.Kepm.Results;
+using PowerSoftware.Krakatau.Kepm.Config;
+using PowerSoftware.Krakatau.Kepm.Metrics;
+using PowerSoftware.Krakatau.Kepm.Results;
 
-namespace SourceCodeMetrics.Krakatau.Kepm.Database
+namespace PowerSoftware.Krakatau.Kepm.Database
 {
   /// <summary>
   /// Retrieves MySQL data.

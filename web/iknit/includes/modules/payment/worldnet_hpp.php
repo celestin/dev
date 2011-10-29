@@ -1,7 +1,20 @@
 <?php
-/*
-  $
-*/
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * iKnit (iknit.biz)
+ *
+ * osCommerce, Open Source E-Commerce Solutions
+ * http://www.oscommerce.com
+ * Copyright (c) 2007 osCommerce
+ * Released under the GNU General Public License
+ *
+ * Customised by Front Burner
+ * Author Craig McKay <craig@frontburner.co.uk>
+ *
+ * $Id$
+ *
+ * Who  When         Why
+ * CAM  29-Oct-2011  11021 : Fix date bug.
+ * * * * * * * * * * * * * * * * * * * * * * * */
 
 class worldnet_hpp
 {
@@ -45,7 +58,7 @@ class worldnet_hpp
         {
           $check_flag = true;
           break;
-        } 
+        }
         elseif ($check['zone_id'] == $order->billing['zone_id'])
         {
           $check_flag = true;
@@ -97,7 +110,7 @@ class worldnet_hpp
         $terminalid  = MODULE_PAYMENT_WORLDNETHPP_ID;
     	$secret      = MODULE_PAYMENT_WORLDNETHPP_SECRET;
     }
-    
+
 
     mt_srand((double)microtime()*1000000);
 
@@ -154,24 +167,23 @@ class worldnet_hpp
     $orderid      = $_REQUEST['ORDERID']      ;
     $amount       = $_REQUEST['AMOUNT']       ;
     $datetime     = $_REQUEST['DATETIME']     ;
-    
-    
+
     $result       = $_REQUEST['RESULT']       ;
-    
+
     $message      = $_REQUEST['MESSAGE']      ;
-    
+
     $authcode     = $_REQUEST['AUTHCODE']     ;
     $pasref       = $_REQUEST['PASREF']       ;
     $md5hash_post = $_REQUEST['HASH']         ;
     $RESPONSECODE = $_REQUEST['RESPONSECODE'] ;
     $RESPONSETEXT = $_REQUEST['RESPONSETEXT'] ;
 
-    $md5hash_new = md5($terminalid . $orderid . $amount . $datetime . $RESPONSECODE . $RESPONSETEXT . $secret);
-    
+    $md5hash_new = md5($terminalid . $orderid . $amount . preg_replace('/(....-..-..T..)(..)(..)/', '\1:\2:\3', $datetime) . $RESPONSECODE . $RESPONSETEXT . $secret);
+
     //Check to see if hashes match or not
     if ($md5hash_new != $md5hash_post)
     {
-      $payment_error_return = 'payment_error=' . $this->code . '&error=' . TEXT_WORLDNETHPP_HASH_ERROR . '(' . $md5hash_new . ' vs ' . $md5hash_post . ')';
+      $payment_error_return = 'payment_error=' . $this->code . '&error=' . TEXT_WORLDNETHPP_HASH_ERROR . ': (' . $md5hash_new . ' vs ' . $md5hash_post . ')';
       tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
     }
 
@@ -220,17 +232,17 @@ class worldnet_hpp
   function install()
   {
     tep_db_query(
-      "INSERT INTO " . 
-      TABLE_CONFIGURATION . 
+      "INSERT INTO " .
+      TABLE_CONFIGURATION .
       " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added)
-      VALUES 
+      VALUES
       (
-        'Enable WorldNet TPS Module', 
-        'MODULE_PAYMENT_WORLDNETHPP_STATUS', 
-        'True', 
-        'Do you want to accept WorldNet TPS payments?', 
-        '6', 
-        '1', 
+        'Enable WorldNet TPS Module',
+        'MODULE_PAYMENT_WORLDNETHPP_STATUS',
+        'True',
+        'Do you want to accept WorldNet TPS payments?',
+        '6',
+        '1',
         'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
 
     tep_db_query(
@@ -277,16 +289,16 @@ class worldnet_hpp
         now())");
 
     tep_db_query(
-      "INSERT INTO " . 
-      TABLE_CONFIGURATION . 
+      "INSERT INTO " .
+      TABLE_CONFIGURATION .
       " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
-      VALUES 
+      VALUES
       (
-        'First Shared Secret', 
-        'MODULE_PAYMENT_WORLDNETHPP_SECRET', 
-        'Secret', 
+        'First Shared Secret',
+        'MODULE_PAYMENT_WORLDNETHPP_SECRET',
+        'Secret',
         'The Shared Secret provided by WorldNet TPS for the first currency',
-        '6', 
+        '6',
         '7',
         now())");
 
@@ -319,16 +331,16 @@ class worldnet_hpp
         now())");
 
     tep_db_query(
-      "INSERT INTO " . 
-      TABLE_CONFIGURATION . 
+      "INSERT INTO " .
+      TABLE_CONFIGURATION .
       " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
-      VALUES 
+      VALUES
       (
-        'Second Shared Secret', 
-        'MODULE_PAYMENT_WORLDNETHPP_SECRET_2', 
-        'Secret', 
+        'Second Shared Secret',
+        'MODULE_PAYMENT_WORLDNETHPP_SECRET_2',
+        'Secret',
         'The Shared Secret provided by WorldNet TPS for the second currency',
-        '6', 
+        '6',
         '7',
         now())");
 
@@ -347,19 +359,19 @@ class worldnet_hpp
         'tep_cfg_select_option(array(\'Yes\',\'No\'), ', now())");
 
 tep_db_query(
-      "INSERT INTO " . 
-      TABLE_CONFIGURATION . 
+      "INSERT INTO " .
+      TABLE_CONFIGURATION .
       " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
-      VALUES 
+      VALUES
       (
-        'Sort order of display.', 
-        'MODULE_PAYMENT_WORLDNETHPP_SORT_ORDER', 
-        '0', 
-        'Sort order of display. Lowest is displayed first.', 
-        '6', 
+        'Sort order of display.',
+        'MODULE_PAYMENT_WORLDNETHPP_SORT_ORDER',
+        '0',
+        'Sort order of display. Lowest is displayed first.',
+        '6',
         '9',
         now())");
-  
+
     tep_db_query(
       "INSERT INTO " .
       TABLE_CONFIGURATION .

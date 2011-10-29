@@ -18,7 +18,6 @@
     } else {
       $$link = mysql_connect($server, $username, $password);
     }
-
     if ($$link) mysql_select_db($database);
 
     return $$link;
@@ -30,7 +29,7 @@
     return mysql_close($$link);
   }
 
-  function tep_db_error($query, $errno, $error) { 
+  function tep_db_error($query, $errno, $error) {
     die('<font color="#000000"><b>' . $errno . ' - ' . $error . '<br><br>' . $query . '<br><br><small><font color="#ff0000">[TEP STOP]</font></small><br><br></b></font>');
   }
 

@@ -18,10 +18,27 @@
  * CAM  23-May-2011  10961 : Smarter definition of config vars.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
+  define('DB_SERVER', '127.0.0.1');
+  define('USE_PCONNECT', 'false');
+  define('STORE_SESSIONS', 'mysql');
+
   if (strpos(strtolower($_SERVER['SERVER_NAME']), "www.iknit.biz") !== FALSE) {
     define('HTTP_SERVER', 'http://www.iknit.biz');
     define('HTTPS_SERVER', HTTP_SERVER);
     define('DIR_FS_CATALOG', '/home/iknit/public_html/');
+
+	  define('DB_SERVER_USERNAME', 'iknitbiz');
+	  define('DB_SERVER_PASSWORD', 'bill81');
+	  define('DB_DATABASE', 'iknit_biz_site');
+
+  } else if (strpos(strtolower($_SERVER['SERVER_NAME']), "test.iknit.biz") !== FALSE) {
+    define('HTTP_SERVER', 'http://test.iknit.biz');
+    define('HTTPS_SERVER', HTTP_SERVER);
+    define('DIR_FS_CATALOG', '/home/iknit/test_html/');
+
+	  define('DB_SERVER_USERNAME', 'iknit_test');
+	  define('DB_SERVER_PASSWORD', 'iknit_test');
+	  define('DB_DATABASE', 'iknit_biz_test');
   } else {
     $url = 'http://localhost';
     if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
@@ -30,6 +47,10 @@
     define('HTTP_SERVER', $url);
     define('HTTPS_SERVER', $url);
     define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
+
+	  define('DB_SERVER_USERNAME', 'iknitbiz');
+	  define('DB_SERVER_PASSWORD', 'bill81');
+	  define('DB_DATABASE', 'iknit_biz_site');
   }
 
   define('ENABLE_SSL', false);
@@ -51,11 +72,4 @@
   define('DIR_WS_DOWNLOAD_PUBLIC', 'pub/');
   define('DIR_FS_DOWNLOAD', DIR_FS_CATALOG . 'download/');
   define('DIR_FS_DOWNLOAD_PUBLIC', DIR_FS_CATALOG . 'pub/');
-
-  define('DB_SERVER', '127.0.0.1');
-  define('DB_SERVER_USERNAME', 'iknitbiz');
-  define('DB_SERVER_PASSWORD', 'bill81');
-  define('DB_DATABASE', 'iknit_biz_site');
-  define('USE_PCONNECT', 'false');
-  define('STORE_SESSIONS', 'mysql');
 ?>

@@ -19,6 +19,7 @@
  * CAM  15-Mar-2011  10949 : Removed Checkout button at top right of screen.
  * CAM  16-Aug-2011  10992 : Added Free Postage message.
  * CAM  16-Aug-2011  11011 : Added Google Logo PNG rather than script.
+ * CAM  05-Nov-2011  11053 : Need to replace with Worldnet Logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // check if the 'install' directory exists, and warn of its existence
@@ -70,7 +71,11 @@
     <?php
       //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_account.gif', HEADER_TITLE_MY_ACCOUNT) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_SHOPPING_CART) . '">' . tep_image(DIR_WS_IMAGES . 'header_cart.gif', HEADER_TITLE_CART_CONTENTS) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_checkout.gif', HEADER_TITLE_CHECKOUT) . '</a>';
     ?>
-    <td align="center" valign="middle" width="240"><a href="<?php echo tep_href_link(FILENAME_SECUREPAYMENT);?>"><?=tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png', 'Google Checkout')?></td>
+    <td align="center" valign="middle" width="240">&nbsp;
+    	<!--
+    	<a href="<?php echo tep_href_link(FILENAME_SECUREPAYMENT);?>"><?=tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png', 'Google Checkout')?>
+    	-->
+    </td>
   </tr>
 </table>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>

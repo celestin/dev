@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  29-Oct-2011  11021 : Fix date bug.
  * CAM  05-Nov-2011  11057 : Added Customer email to notification.
+ * CAM  05-Nov-2011  11055 : Show full Price including VAT.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class worldnet_hpp
@@ -126,7 +127,13 @@ class worldnet_hpp
     $n=sizeof($order->products);
     $orderString = 'Product Count: ' . $n . '<br /><br />';
     for ($i=0; $i<$n; $i++) {
-        $orderString .= 'Product ID: ' . tep_get_prid($order->products[$i]['id']) . '<br />Model: ' . $order->products[$i]['model'] . '<br />Name: ' . $order->products[$i]['name'] . '<br />Quantity: ' . $order->products[$i]['qty'] . '<br />Price: ' . $order->products[$i]['final_price'] . '<br /><br />';
+	    $orderString .=
+	    'Product ID <b>' . tep_get_prid($order->products[$i]['id']) .
+	    '</b><br />Model <b>' . $order->products[$i]['model'] .
+	    '</b><br />Name <b>' . $order->products[$i]['name'] .
+	    '</b><br />Quantity <b>' . $order->products[$i]['qty'] .
+	    '</b><br />Price <b>' . round(tep_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax'], true), 2) .
+	    '</b><br /><br />';
     }
 
 

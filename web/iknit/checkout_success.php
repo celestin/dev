@@ -16,6 +16,7 @@
  * CAM  29-May-2010  10670 : Call table_header.
  * CAM  01-Jun-2010  10727 : Changed naff surfer to watch/jewellery.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  05-Nov-2011  10952 : Changed CombinedProducts to Wool-related.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -98,7 +99,7 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="4" cellpadding="2">
           <tr>
-            <td valign="top"><?php echo tep_image(DIR_WS_IMAGES . 'combinedproducts.png', HEADING_TITLE); ?></td>
+            <td valign="top"><?php echo tep_image(DIR_WS_IMAGES . 'combinedproducts1.png', HEADING_TITLE); ?></td>
             <td valign="top" class="main"><?php echo tep_draw_separator('pixel_trans.gif', '1', '10'); ?><div align="center" class="pageHeading"><?php echo HEADING_TITLE; ?></div><br><?php echo TEXT_SUCCESS; ?><br><br>
 <?php
   if ($global['global_product_notifications'] != '1') {

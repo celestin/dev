@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  05-Nov-2011  10952 : Changed CombinedProducts to Wool-related.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -92,7 +93,7 @@
   if (isset($HTTP_GET_VARS['action']) && ($HTTP_GET_VARS['action'] == 'success')) {
 ?>
       <tr>
-        <td class="main" align="center"><?php echo tep_image(DIR_WS_IMAGES . 'combinedproducts.png', HEADING_TITLE, '0', '0', 'align="left"') . TEXT_SUCCESS; ?></td>
+        <td class="main" align="center"><?php echo tep_image(DIR_WS_IMAGES . 'combinedproducts1.png', HEADING_TITLE, '0', '0', 'align="left"') . TEXT_SUCCESS; ?></td>
       </tr>
       <tr>
         <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>

@@ -18,6 +18,7 @@
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  11-Dec-2010  10828 : Added display_categories function to separate the main product groups.
  * CAM  21-Jan-2011  10933 : Added Bill's home page text.
+ * CAM  05-Nov-2011  11054 : Added Bill's new home page text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -356,10 +357,20 @@
     "of selling knitting yarn. Stockists of Sirdar, Rico, Patons and Stylecraft ".
     "yarns. We are committed to providing our customers with the lowest possible ".
     "prices with a clear and simple postage policy &mdash; <i>Orders over &pound;10 qualify for free, second-class post</i>.</p>".
-    "<p>Browse through our online catalogue where you will recognise favourites such as ".
-    "Sirdar Snuggly baby yarns, Sirdar Crofter and Escape and also new winners like ".
-    "Indie, Squiggle and Connemara. We do of course stock this seasons most sought ".
-    "after scarf yarn by German company Rico &mdash; Can Can.");
+
+    "<p>Browse through our online catalogue where you will find old favourites such as ".
+		"Sirdar Snuggly baby yarns, Crofter, Escape, Indie and Squiggle, as well as new ".
+		"qualities for Autumn/Winter. New Firefly and Firefly metallic and the beautiful ".
+		"Softspun DK which truly lives up to its name.</p>".
+
+		"<p>We have in stock all the best scarf yarns. Rico Can Can &amp; Loopy (with great new ".
+		"colours), Sirdar's new Shaggy Scarf, Bohemia and Salsa. Woolcraft have just ".
+		"added Tango Ice to their popular Tango and Tango Glitz range. We also have in ".
+		"stock Frilly by SMC from Patons.</p>".
+
+		"<p>Remember we show our stock levels: - You are assured we post out the same day. ".
+		"(Orders received before 4.30 Mon-Fri and 12.00 Sat)</p>");
+
   display_categories("'79'", "Leaflets", "Our Sirdar leaflets and yarn are laid out (we hope) in a way that is easy to ".
     "follow and see quantities and colours all at once. We intend to add products ".
     "from other suppliers and knitting accessories on an ongoing basis.");

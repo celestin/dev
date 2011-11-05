@@ -14,6 +14,7 @@
  *
  * Who  When         Why
  * CAM  29-Oct-2011  11021 : Fix date bug.
+ * CAM  05-Nov-2011  11057 : Added Customer email to notification.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class worldnet_hpp
@@ -100,23 +101,22 @@ class worldnet_hpp
 
     if ($currency == MODULE_PAYMENT_WORLDNETHPP_CURRENCY_2)
     {
-        $my_currency = MODULE_PAYMENT_WORLDNETHPP_CURRENCY_2;
-        $terminalid  = MODULE_PAYMENT_WORLDNETHPP_ID_2;
+      $my_currency = MODULE_PAYMENT_WORLDNETHPP_CURRENCY_2;
+      $terminalid  = MODULE_PAYMENT_WORLDNETHPP_ID_2;
     	$secret      = MODULE_PAYMENT_WORLDNETHPP_SECRET_2;
     }
     else
     {
-        $my_currency = MODULE_PAYMENT_WORLDNETHPP_CURRENCY;
-        $terminalid  = MODULE_PAYMENT_WORLDNETHPP_ID;
+      $my_currency = MODULE_PAYMENT_WORLDNETHPP_CURRENCY;
+      $terminalid  = MODULE_PAYMENT_WORLDNETHPP_ID;
     	$secret      = MODULE_PAYMENT_WORLDNETHPP_SECRET;
     }
-
 
     mt_srand((double)microtime()*1000000);
 
     $datetime = strftime("%d-%m-%Y:%H:%M:%S").":".mt_rand(1, 999);
     $orderid = strftime("%H%M%S"). mt_rand(100000, 999999);
-	$email = $order->customer['email_address'];
+	  $email = $order->customer['email_address'];
     $curr = $my_currency;
 
     $amount = number_format($order->info['total'] * $currencies->get_value($my_currency), $currencies->get_decimal_places($my_currency), '.', '');
@@ -143,7 +143,8 @@ class worldnet_hpp
                              (strlen($order->billing['company']) > 0 ? tep_draw_hidden_field('CUSTOMERCOMPANY', urldecode($order->billing['company'])) : "").
                              tep_draw_hidden_field('CUSTOMERADDRESS',     $order->billing['street_address'] . ', ' . $order->billing['city'] . ', ' . $order->billing['state'] . ', ' . $order->billing['postcode'] . ', ' . $order->billing['country']['title']).
                              tep_draw_hidden_field('CUSTOMERPHONENUMBER', $order->customer['telephone']).
-                             tep_draw_hidden_field('ORDERDETAILS',       $orderString);
+                             tep_draw_hidden_field('CUSTOMEREMAIL',       '<a href="mailto:' . $email . '">' . $email . '</a>').
+                             tep_draw_hidden_field('ORDERDETAILS',        $orderString);
 
     return $process_button_string;
   }

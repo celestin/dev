@@ -17,6 +17,7 @@
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  07-Nov-2010  10818 : Removed jmitchell reference.
  * CAM  10-Jan-2011  10929 : Added VAT number.
+ * CAM  12-Nov-2011  10926 : Added Patterns section to returns.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -89,7 +90,7 @@
             Telephone number: 01467 620277<br />
             Fax number        01467 620277</p>
 
-            <h2>1. INTRODUCTION</h2>
+            <a name="Introduction"></a><h2><h2>1. INTRODUCTION</h2>
             <p>1.1  You will be able to access most areas of this Website without
             registering your details with us. Certain areas of this Website are only
              open to you if you register.</p>
@@ -106,7 +107,7 @@
             <p>1.3 If you have any concerns about material on our site, please contact
             us by email at <a href="mailto:sales@iknit.biz?Subject=Website%20Enquiry">sales@iknit.biz</a>.</p>
 
-            <h2>2. ORDERING FROM US</h2>
+            <a name="Ordering"></a><h2><h2>2. ORDERING FROM US</h2>
             <p>2.1  You are deemed to place an order with us by ordering via our
             online checkout process. As part of our checkout process you will be
             given the opportunity to check your order and to correct any errors. We
@@ -136,7 +137,7 @@
             days of your order. We will not be obliged to pay any additional amount
             as compensation for disappointment.</p>
 
-            <h2>3. PRICING</h2>
+            <a name="Pricing"></a><h2><h2>3. PRICING</h2>
             <p>3.1  All prices include VAT (where applicable) at the current rates.
             We reserve the right to express the price exclusive of VAT, but we shall
             show VAT separately and include it in the total price.</p>
@@ -144,7 +145,7 @@
             and other relevant charges, the appropriate rates are set out in our
             specified pricing structure shown elsewhere on this Website.</p>
 
-            <h2>4. DELIVERY</h2>
+            <a name="Delivery"></a><h2><h2>4. DELIVERY</h2>
             <p>4.1  We will deliver goods ordered by you as soon as possible to the
             address you give us for delivery, but in any event within 5 days of your
              order.</p>
@@ -160,7 +161,7 @@
             10 days of our maximum delivery period of 5 from the date on which you
             ordered the goods.</p>
 
-            <h2>5. LIABILITY</h2>
+            <a name="Liability"></a><h2><h2>5. LIABILITY</h2>
             <p>5.1 If the goods we deliver are not what you ordered or are damaged
             or defective or the delivery is of an incorrect quantity, we shall have
             no liability to you unless you notify us in writing at our contact
@@ -197,8 +198,8 @@
             excluded nor in any way to exclude or limit our liability to you for any
              death or personal injury resulting from our negligence.</p>
 
-            <h2>6. CANCELLATION OF CONTRACTS FOR GOODS AND RETURNS POLICY &#8211; FOR
-            CONSUMERS ONLY </h2>
+            <a name="Returns"></a><h2>6. CANCELLATION OF CONTRACTS FOR GOODS AND RETURNS POLICY &#8211; FOR
+          CONSUMERS ONLY </h2>
             <p>6.1 This section applies to consumers only (and not to businesses or
             other organisations) who order goods</p>
             <p>6.2 If you wish to cancel your order:
@@ -207,9 +208,11 @@
             you; or
             <br>&nbsp;&nbsp;&nbsp;&nbsp;(b) where goods have already been dispatched
              to you, by returning goods to us in accordance with clause 4.2 above.</p>
-            <p>6.3 You can return goods you have ordered from us for any reason at
-            any time within 7 days of receipt for a full refund or exchange. The
-            costs of returning goods to us shall be borne by you.
+            <p>6.3 You can return all goods including damaged or defective patterns
+            	that you have ordered from us for any reason at
+              any time within 7 days of receipt for a full refund or exchange. The
+              costs of returning goods to us shall be borne by you.
+              For clarification: Patterns may only be returned if damaged or defective.
             <br>6.4 Upon receipt of the goods we will give you a full refund of the
             amount paid or an exchange credit as required, less (if for any reason
             the these costs have not been paid by you) the costs of delivery to us.
@@ -221,7 +224,7 @@
             <br>The provisions of this clause 6.5 do not affect your statutory
             rights. </p>
 
-            <h2>7. LICENCE</h2>
+            <a name="Licence"></a><h2><h2>7. LICENCE</h2>
             <p>7.1  You are permitted to print and download extracts from this
             Website for your own use on the following basis:
             <br>&nbsp;&nbsp;&nbsp;&nbsp;(a) no documents or related graphics on this
@@ -248,7 +251,7 @@
 
             <p>7.4 Any rights not expressly granted in these terms are reserved.</p>
 
-            <h2>8. SERVICE ACCESS</h2>
+            <a name="Access"></a><h2><h2>8. SERVICE ACCESS</h2>
             <p>8.1  While we endeavour to ensure that this Website is normally
             available 24 hours a day, we will not be liable if for any reason this
             Website is unavailable at any time or for any period.
@@ -256,7 +259,7 @@
             notice in the case of system failure, maintenance or repair or for
             reasons beyond our control.  </p>
 
-            <h2>9. VISITOR MATERIAL AND CONDUCT</h2>
+            <a name="Conduct"></a><h2><h2>9. VISITOR MATERIAL AND CONDUCT</h2>
             <p>9.1  Other than personally identifiable information, which is covered
             under the <a href="privacy.php">Privacy Policy</a>, any material you transmit
             or post to this Website will be considered non-confidential and
@@ -301,7 +304,7 @@
             <p>9.6 If you notice any content which breaches these conditions,
             please notify us by email to <a href="mailto:sales@iknit.biz?Subject=Website%20Enquiry">sales@iknit.biz</a>.</p>
 
-            <h2>10. LINKS TO AND FROM OTHER WEBSITES</h2>
+            <a name="Links"></a><h2><h2>10. LINKS TO AND FROM OTHER WEBSITES</h2>
             <p>10.1 Links to third party websites on this Website are provided
             solely for your convenience. If you use these links, you leave this
             Website. We have not reviewed all of these third party websites and do
@@ -317,7 +320,7 @@
             of our group companies may suffer or incur as a result of your breach of
              clause 10.2.</p>
 
-            <h2>11. REGISTRATION</h2>
+            <a name="Returns"></a><h2><h2>11. REGISTRATION</h2>
             <p>11.1 To register with www.iknit.biz you must be over 18
             years of age.</p>
 
@@ -334,7 +337,7 @@
             reasonable discretion or if you breach any of your obligations under
             these terms and conditions.</p>
 
-            <h2>12. DISCLAIMER</h2>
+            <a name="Disclaimer"></a><h2><h2>12. DISCLAIMER</h2>
 
             <p>12.1 While we endeavour to ensure that the information on this
             Website is correct, we do not warrant the accuracy and completeness of
@@ -352,7 +355,7 @@
             reasonable care and skill) which but for these terms and conditions
             might have effect in relation to this Website.  </p>
 
-            <h2>13. LIABILITY</h2>
+            <a name="Liability"></a><h2><h2>13. LIABILITY</h2>
             <p>13.1 We, any other party (whether or not involved in creating,
             producing, maintaining or delivering this Website), and any of our group
              companies and the officers, directors, employees, shareholders or
@@ -389,7 +392,7 @@
              and conditions by you, or your use of this Website, or the use by any
             other person using your registration details.</p>
 
-            <h2>14. GOVERNING LAW AND JURISDICTION</h2>
+            <a name="Law"></a><h2><h2>14. GOVERNING LAW AND JURISDICTION</h2>
 
             <p>14.1 These terms and conditions shall be governed by and construed in
              accordance with Scottish law. Disputes arising in connection with these
@@ -408,7 +411,7 @@
             from locations outside the United Kingdom, you do so at your own risk
             and you are responsible for compliance with local laws.</p>
 
-            <h2>15. MISCELLANEOUS</h2>
+            <a name="Miscellaneous"></a><h2><h2>15. MISCELLANEOUS</h2>
             <p>15.1 You may not assign, sub-license or otherwise transfer any of
             your rights under these terms and conditions</p>
 

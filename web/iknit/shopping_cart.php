@@ -17,6 +17,7 @@
  * CAM  29-May-2010  10670 : Call table_header.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  23-May-2011  10961 : Fixes following upgrade to GOOSE.
+ * CAM  12-Nov-2011  10953 : Auto-Update on change of a Qty.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -116,11 +117,7 @@
 
     for ($i=0, $n=sizeof($products); $i < $n; $i++) {
 
-      if (($i/2) == floor($i/2)) {
-        $info_box_contents[] = array('params' => 'class="productListing-even"');
-      } else {
-        $info_box_contents[] = array('params' => 'class="productListing-odd"');
-      }
+      $info_box_contents[] = array('params' => 'class="productListing-' . ((($i % 2) == 0) ? "even" : "odd") . '"');
 
       $cur_row = sizeof($info_box_contents) - 1;
 
@@ -158,7 +155,7 @@
 
       $info_box_contents[$cur_row][] = array('align' => 'center',
                                              'params' => 'class="productListing-data" valign="top"',
-                                             'text' => tep_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="4"') . tep_draw_hidden_field('products_id[]', $products[$i]['id']));
+                                             'text' => tep_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="4" onChange="this.form.submit();" style="text-align:right; padding-right:10px;"') . tep_draw_hidden_field('products_id[]', $products[$i]['id']));
 
       $info_box_contents[$cur_row][] = array('align' => 'right',
                                              'params' => 'class="productListing-data" valign="top"',

@@ -20,24 +20,24 @@
 /**
  * Google Checkout v1.5.0
  * $Id$
- * 
+ *
  * This method is meant to be included in catalog/admin/orders.php.
- * 
+ *
  * TODO(eddavisson): Test!
  */
 chdir("./..");
 require_once(DIR_WS_LANGUAGES . $language . '/modules/payment/googlecheckout.php');
 require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration.php');
 require_once(DIR_FS_CATALOG . '/googlecheckout/library/configuration/google_configuration_keys.php');
-  
+
 $config = new GoogleConfigurationKeys();
 
 $payment_value= MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_TITLE;
 $num_rows = tep_db_num_rows(tep_db_query("select google_order_number from google_orders where orders_id= ". (int)$oID));
 
 if ($num_rows != 0) {
-  $customer_notified = google_checkout_state_change($check_status, $status, $oID, 
-      (@$_POST['notify']=='on'?1:0), 
+  $customer_notified = google_checkout_state_change($check_status, $status, $oID,
+      (@$_POST['notify']=='on'?1:0),
       (@$_POST['notify_comments']=='on'?$comments:''));
 }
 $customer_notified = isset($customer_notified)?$customer_notified:'0';
@@ -48,15 +48,19 @@ if (isset($_POST['notify']) && ($_POST['notify'] == 'on')) {
   }
   $force_email = false;
   $use_cart_messaging = (gc_get_configuration_value($config->useCartMessaging()) == 'True');
-  if ($num_rows != 0 && (strlen(htmlentities(strip_tags($notify_comments))) > GOOGLE_MESSAGE_LENGTH 
+  if ($num_rows != 0 && (strlen(htmlentities(strip_tags($notify_comments))) > GOOGLE_MESSAGE_LENGTH
       && $user_cart_messaging)) {
     $force_email = true;
-    $messageStack->add_session(GOOGLECHECKOUT_WARNING_SYSTEM_EMAIL_SENT, 'warning');          
+    $messageStack->add_session(GOOGLECHECKOUT_WARNING_SYSTEM_EMAIL_SENT, 'warning');
   }
 
   if ($num_rows == 0 || $force_email) {
     // send emails, not a google order or configured to use both messaging systems
-    $email = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" . EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID . "\n" . EMAIL_TEXT_INVOICE_URL . ' ' . tep_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') . "\n" . EMAIL_TEXT_DATE_ORDERED . ' ' . tep_date_long($check_status['date_purchased']) . "\n\n" . $notify_comments . sprintf(EMAIL_TEXT_STATUS_UPDATE, $orders_status_array[$status]);
+    $email = STORE_NAME . " " . EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID . "\n\n" .
+    EMAIL_TEXT_INVOICE_URL . ' ' . tep_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') . "\n" .
+    EMAIL_TEXT_DATE_ORDERED . ' ' . tep_date_long($check_status['date_purchased']) . "\n\n" .
+    $notify_comments . sprintf(EMAIL_TEXT_STATUS_UPDATE, $orders_status_array[$status]);
+
     tep_mail($check_status['customers_name'], $check_status['customers_email_address'], EMAIL_TEXT_SUBJECT, $email, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
     $customer_notified = '1';
     // send extra emails

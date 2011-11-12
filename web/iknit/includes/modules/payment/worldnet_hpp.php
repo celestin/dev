@@ -16,6 +16,7 @@
  * CAM  29-Oct-2011  11021 : Fix date bug.
  * CAM  05-Nov-2011  11057 : Added Customer email to notification.
  * CAM  05-Nov-2011  11055 : Show full Price including VAT.
+ * CAM  12-Nov-2011  11055 : Show full Price to two decimal places (currency).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class worldnet_hpp
@@ -132,7 +133,7 @@ class worldnet_hpp
 	    '</b><br />Model <b>' . $order->products[$i]['model'] .
 	    '</b><br />Name <b>' . $order->products[$i]['name'] .
 	    '</b><br />Quantity <b>' . $order->products[$i]['qty'] .
-	    '</b><br />Price <b>' . round(tep_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax'], true), 2) .
+	    '</b><br />Price <b>' . number_format(tep_add_tax($order->products[$i]['final_price'], $order->products[$i]['tax'], true), 2) .
 	    '</b><br /><br />';
     }
 

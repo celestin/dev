@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  29-May-2010  10670 : Call table_header.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  12-Nov-2011  11061 : Re-ordered the Address fields: Address-City-Postcode-Country-County for optimum user entry.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -233,10 +234,10 @@
       tep_session_register('customer_country_id');
       tep_session_register('customer_zone_id');
 
-// restore cart contents
+      // restore cart contents
       $cart->restore_contents();
 
-// build the message content
+      // build the message content
       $name = $firstname . ' ' . $lastname;
 
       if (ACCOUNT_GENDER == 'true') {
@@ -287,14 +288,6 @@
     <td width="100%" valign="top"><?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onSubmit="return check_form(create_account);"') . tep_draw_hidden_field('action', 'process'); ?><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-<!--
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_image(DIR_WS_IMAGES . 'table_background_account.gif', HEADING_TITLE, HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
-          </tr>
-        </table></td>
--->
       </tr>
       <tr>
         <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
@@ -414,13 +407,20 @@
   }
 ?>
               <tr>
-                <td class="main"><?php echo ENTRY_POST_CODE; ?></td>
-                <td class="main"><?php echo tep_draw_input_field('postcode') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?></td>
-              </tr>
-              <tr>
                 <td class="main"><?php echo ENTRY_CITY; ?></td>
                 <td class="main"><?php echo tep_draw_input_field('city') . '&nbsp;' . (tep_not_null(ENTRY_CITY_TEXT) ? '<span class="inputRequirement">' . ENTRY_CITY_TEXT . '</span>': ''); ?></td>
               </tr>
+
+              <tr>
+                <td class="main"><?php echo ENTRY_POST_CODE; ?></td>
+                <td class="main"><?php echo tep_draw_input_field('postcode') . '&nbsp;' . (tep_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="inputRequirement">' . ENTRY_POST_CODE_TEXT . '</span>': ''); ?></td>
+              </tr>
+
+              <tr>
+                <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
+                <td class="main"><?php echo tep_get_country_list('country', $country, 'onChange="this.form.submit();"') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
+              </tr>
+
 <?php
   if (ACCOUNT_STATE == 'true') {
 ?>
@@ -450,10 +450,6 @@
 <?php
   }
 ?>
-              <tr>
-                <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
-                <td class="main"><?php echo tep_get_country_list('country') . '&nbsp;' . (tep_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="inputRequirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''); ?></td>
-              </tr>
             </table></td>
           </tr>
         </table></td>

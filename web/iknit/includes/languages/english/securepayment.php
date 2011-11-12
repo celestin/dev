@@ -15,10 +15,11 @@
  * Who  When         Why
  * CAM  13-Jul-2010  10740 : File created.
  * CAM  12-Dec-2010  10833 : Changed RBS WorldPay to Google Checkout.
+ * CAM  12-Nov-2011  11053 : Changed Google Checkout to WorldNet.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 define('NAVBAR_TITLE', 'Secure Payment');
-define('HEADING_TITLE', 'Secure Payment powered by Google Checkout');
+define('HEADING_TITLE', 'Secure Payment powered by WorldNet');
 
 define('DIR_PAYMENT_IMAGES', 'payment/');
 

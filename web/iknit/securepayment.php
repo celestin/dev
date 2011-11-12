@@ -17,6 +17,7 @@
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  12-Dec-2010  10833 : Changed RBS WorldPay text to Google Checkout.
  * CAM  16-Aug-2011  11011 : Added Google Logo.
+ * CAM  12-Nov-2011  11053 : Changed Google Checkout text to WorldNet text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -61,15 +62,24 @@
 
               <div id="legal">
 
-                <div id="worldpay">
-                  <a href="https://checkout.google.com/reviews/merchant/endUserReviews?sellerId=736554632826264"><?php echo tep_image(DIR_WS_IMAGES . 'google_checkout_logo.png') ?></a>
-                </div>
+								<p style="text-align: justify;"><img style="float: right; margin-left: 15px;"
+									src="https://www.worldnettps.com/sites/default/files/wnmark-14.jpg" alt="" width="200" height="60" />Security is
+									the Number One issue of concern for online shoppers &mdash; which is why
+									providing the highest levels of online security is the Number One priority for WorldNet.</p>
 
-                <p>Our shopping cart is powered by <span id="rbs">Google Checkout</span> &mdash;
-                a trusted, secure service, giving you <b>peace of mind</b> and enabling you to make your <b>payment quickly and easily</b>.  If you
-                already have a Google account, you can start buying without having to enter any payment details.</p>
+								<p>We aim to give your customers the level of confidence that can only come from knowing their payment information is fully secure.</p>
 
-                <p>Want to read more about <a href="http://checkout.google.com/buyer/tour.html">Google Checkout</a>?
+								<p><img style="float: left; margin-right: 15px;" src="https://www.worldnettps.com/sites/default/files/vlogo.gif" alt=""
+									width="115" height="47" />We take a multi-layered approach to security.  We partner with Verisign, the global
+									leaders in secure encryption, to provide full 256 bit encryption to all of our transactions.</p>
+
+								<p><img style="float: right; margin-left: 5px;" src="https://www.worldnettps.com/sites/default/files/PCIDSS.jpg" alt=""
+									width="185" height="108" />We are certified with Visa &amp; Mastercard to the highest level of the Payment Card Industry
+									Data Security Standard (PCI DSS). We work with Sysnet, an independent Qualified Security Assessor (QSA), who regularly
+									monitor our systems to ensure they are immune to the latest vulnerabilities on the web.</p>
+
+								<p>This multi-layered approach allows us to provide your customers with the highest level of online security, ensuring
+									their payment details are always fully secured, and allowing them to shop online with confidence.</p></div>
               </div>
 
             </td>

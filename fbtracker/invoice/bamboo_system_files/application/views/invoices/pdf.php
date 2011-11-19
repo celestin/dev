@@ -168,21 +168,21 @@ table.stripe td.totals {
       <td><?=nl2br(str_replace(array('\n', '\r'), "\n", $item->work_description))?></td>
       <td class="currency"><?=str_replace('.00', '', $item->quantity)?></td>
       <td class="currency"><?=$this->settings_model->get_setting('currency_symbol') . str_replace('.', $this->config->item('currency_decimal'), $item->amount)?> <? if ($item->taxable == 0){echo '(' . $this->lang->line('invoice_not_taxable') . ')';}?></td>
-      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol') . number_format($item->quantity * $item->amount, 2, $this->config->item('currency_decimal'), '')?></td>
+      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol') . number_format($item->quantity * $item->amount, 2, $this->config->item('currency_decimal'), ',')?></td>
     </tr>
     <?php endforeach;?>
     <tr>
       <td class="nowt" colspan="3" rowspan="3">&nbsp;</td>
       <td class="currency totals">Sub-total</td>
-      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_notax, 2, $this->config->item('currency_decimal'), '')?></td>
+      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_notax, 2, $this->config->item('currency_decimal'), ',')?></td>
     </tr>
     <tr>
       <td class="currency totals"><?=$row->tax1_desc . " (" . number_format($row->tax1_rate, 1) ."%)"?></td>
-      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax - $row->total_notax, 2, $this->config->item('currency_decimal'), '')?></td>
+      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax - $row->total_notax, 2, $this->config->item('currency_decimal'), ',')?></td>
     </tr>
     <tr>
       <td class="currency totals">Total</td>
-      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax, 2, $this->config->item('currency_decimal'), '')?></td>
+      <td class="currency"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax, 2, $this->config->item('currency_decimal'), ',')?></td>
     </tr>
   </table>
 
@@ -199,7 +199,7 @@ table.stripe td.totals {
 		  <td class="fld"><?=$this->lang->line('invoice_invoice')?></td><td><b><?=$row->invoice_number?></b></td>
 		  <td class="fld">Date</td><td><b><?=$date_invoice_issued?></b></td>
 		  <td class="fld">Client</td><td><b><?=$row->client_id?></b>&nbsp;<?=$row->name?></b></td>
-		  <td class="fld">Total</td><td class="total"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax, 2, $this->config->item('currency_decimal'), '')?></td>
+		  <td class="fld">Total</td><td class="total"><?=$this->settings_model->get_setting('currency_symbol').number_format($row->total_with_tax, 2, $this->config->item('currency_decimal'), ',')?></td>
 		</tr>
       </table>
   </div>

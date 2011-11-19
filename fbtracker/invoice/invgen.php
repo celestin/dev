@@ -54,12 +54,12 @@
   </head>
   <body>
     <div id="apps">
-      <div id="fblogo"><img src="../img/fb4.png"></div>
+      <div id="fblogo"><a href=".."><img border="0" src="../img/fb4.png"></a></div>
       <h1>FBtracker</h1>
       <table border=0 width="100%">
 
         <tr>
-          <td><a href="invoice"><img src="../img/bamboo.png"></a></td>
+          <td><a href="."><img src="../img/bamboo.png"></a></td>
 
 					<td><form method="post"><table border=1>
 						<tr>

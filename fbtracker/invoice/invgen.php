@@ -66,8 +66,17 @@
 							<td>Client</td>
 							<td><select name="client_id">
 								  <option value="" SELECTED>&lt;Select client&gt;</option>
-								  <option value="FRED">Fred</option>
-								  <option value="BOB">Bob</option>
+<?
+      	$connection = mysql_pconnect("localhost","bamboo","bamboo", MYSQL_CLIENT_INTERACTIVE) or die ("Couldn't connect to server.");
+				$db = mysql_select_db("bamboo", $connection) or die("Couldn't select database.");
+				$sql =
+					"SELECT id, name FROM bb_clients ".
+					"ORDER BY name ";
+				$result = mysql_query($sql) or die("Error in query.");
+				while ($row = mysql_fetch_array($result)) {
+					?><option value="<?=$row['id']?>"><?=$row['name']?></option><?
+			  }
+?>
 								</select></td>
 							<td><input type="submit" value="Go!"></td>
 					  </tr>
@@ -84,11 +93,10 @@
 
       	$client_id = ""; if (!empty($_POST["client_id"])) $client_id = $_POST["client_id"];
 
-      	$connection = mysql_pconnect("localhost","bamboo","bamboo", MYSQL_CLIENT_INTERACTIVE) or die ("Couldn't connect to server.");
-				$db = mysql_select_db("bamboo", $connection) or die("Couldn't select database.");
-				$result = mysql_query("kimai.fbtracker_generate_client_invoice($client_id)") or die("Error in query.");
-
-				echo "Invoice generated for $client_id";
+				if (!empty($client_id)) {
+					$result = mysql_query("CALL kimai.fbtracker_generate_client_invoice(".$client_id.")") or die(mysql_error());
+					echo "Invoice generated for $client_id";
+				}
 
       	?>
       </div>

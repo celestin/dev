@@ -56,7 +56,7 @@
     <div id="apps">
       <div id="fblogo"><img src="img/fb4.png"></div>
       <h1>FBtracker</h1>
-      <table border=1 width="100%">
+      <table border="0" width="100%">
 
         <tr>
           <td><a href="bugs"><img src="img/buggie.png"></a></td>

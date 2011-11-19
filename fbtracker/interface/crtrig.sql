@@ -4,6 +4,9 @@
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$
+--
+-- Who  When         Why
+-- CAM  19-Nov-2011  11065 : Added extra fields to interface.
 -- ----------------------------------------------------------------------------
 
 
@@ -127,8 +130,8 @@ CREATE TRIGGER kimai.fbtracker_kimaiclient_insert AFTER INSERT ON kimai.kimai_kn
 
     -- Copy Kimai Customers to Bamboo Clients
 
-    INSERT INTO bamboo.bb_clients (id, name, address1, city, postal_code, website, tax_status)
-    SELECT knd_id, knd_name, knd_street, knd_city, knd_zipcode, knd_homepage, 1
+    INSERT INTO bamboo.bb_clients (id, name, address1, city, postal_code, website, tax_status, rate, ratetype)
+    SELECT knd_id, knd_name, knd_street, knd_city, knd_zipcode, knd_homepage, 1, 25, 'H'
     FROM kimai.kimai_knd kk
     WHERE NOT EXISTS (SELECT 1
     FROM bamboo.bb_clients

@@ -26,6 +26,7 @@
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * CAM  25-Nov-2008  10314 : Version 1.12 - New colours/layout (Event edit to follow).
  * CAM  27-Feb-2010  10577 : Version 1.13 - Add new sponsorship.
+ * CAM  03-Dec-2011  11069 : Add new sponsorship and links.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 </td></tr>
@@ -33,13 +34,13 @@
 <td valign=top>
 <div id="sponsors">
   <h3>CLUB SPONSORS</h3>
-  <div class="sponsor-box"><img src="img/ad/oriongroup.jpg" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/twma2.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/monitor2.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/lawrencemilne.jpg" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/mrchips2.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/solutions2.gif" width="168" height="118" alt=""></div>
-  <div class="sponsor-box"><img src="img/ad/atp_international.jpg" width="168" height="118" alt=""></div>
+  <div class="sponsor-box"><a href="http://www.orionjobs.com/"><img border="0" src="img/ad/oriongroup.jpg" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.twma.co.uk/"><img border="0" src="img/ad/twma2.gif" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.mmcs.co.uk/"><img border="0" src="img/ad/monitor2.gif" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.lawrencemilne.com/"><img border="0" src="img/ad/lawrencemilne.jpg" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.aberdeenonline.co.uk/info/4701/"><img border="0" src="img/ad/mrchips2.gif" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.orionjobs.com/"><img border="0" src="img/ad/solutions2.gif" width="168" height="118" alt=""></a></div>
+  <div class="sponsor-box"><a href="http://www.trophiesinternational.com/"><img border="0" src="img/ad/trophies1.png" width="168" height="118" alt=""></a></div>
 </div>
 </td>
 <tr>

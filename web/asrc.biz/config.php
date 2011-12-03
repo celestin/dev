@@ -27,30 +27,11 @@ $cfg['Site']['Db']['Database'] = "asrc_biz_-_site";
 $cfg['Site']['Db']['Username'] = "asrc";
 $cfg['Site']['Db']['Password'] = "fred71";
 
-if (strpos(strtolower($_SERVER['SERVER_NAME']), "king") !== FALSE) {
-  $cfg['Site']['URL']   = "http://king/asrc";
-
-  $cfg['Site']['Db']['Database'] = "asrc";
+if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
+  $cfg['Site']['URL']   = "http://artificer/asrc";
 
   $cfg['Site']['Test'] = TRUE;
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 
-} else if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
-  $cfg['Site']['URL']   = "http://localhost/asrc";
-
-  $cfg['Site']['Db']['Database'] = "asrc";
-
-  $cfg['Site']['Test'] = TRUE;
-  $cfg['Site']['Email'] = "craig@frontburner.co.uk";
-
-} else if (strpos(strtolower($_SERVER['SERVER_NAME']), "southesk") !== FALSE) {
-  $cfg['Site']['URL']   = "http://asrc.southesk.com";
-
-  $cfg['Site']['Db']['Database'] = "southesk_com_-_asrc";
-  $cfg['Site']['Db']['Username'] = "southesk";
-  $cfg['Site']['Db']['Password'] = "psalm45";
-
-  $cfg['Site']['Test'] = TRUE;
-  $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 }
 ?>

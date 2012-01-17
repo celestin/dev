@@ -2,8 +2,8 @@ Options +SymLinksIfOwnerMatch
 RewriteEngine On
 RewriteBase /
 
-RewriteCond %{HTTP_HOST} !^www\.westcoastexpress\.net$ [NC]
-RewriteRule ^(.*)$ http://www.westcoastexpress.net/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\.towingdirect\.co\.uk$ [NC]
+RewriteRule ^(.*)$ http://www.towingdirect.co.uk/$1 [R=301,L]
 
 RewriteCond %{HTTP_USER_AGENT} ^.*[yY]andex.*$ [OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*robot.*$ [OR]

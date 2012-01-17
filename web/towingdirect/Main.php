@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WestCoastExpress Website
- * Copyright (c) 2006-2007 Frontburner
+ * TowingDirect Website
+ * Copyright (c) 2012 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Main page setup
@@ -9,21 +9,16 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  13-Apr-2006  File created.
- * CAM  31-May-2006  Added endsWith and moved getObjRef to ajax.js.
- * CAM  21-Dec-2006  10068 : Specify correct paths.
- * CAM  26-Mar-2007  Fixed bug with server paths.
- * CAM  11-Aug-2007  10149 : Added Flash and redirect methods.
- * CAM  22-Sep-2011  11029 : Added development url.
+ * CAM  17-Jan-2012  11077 : Changed site name.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$cfg['Site']['Name']  = "West Coast Express";
-$cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no trailing slash
-$cfg['Site']['Email'] = "ian@westcoastexpress.net";
+$cfg['Site']['Name']  = "Towing Direct";
+$cfg['Site']['URL']   = "http://www.towingdirect.co.uk";                 // no trailing slash
+$cfg['Site']['Email'] = "sales@towingdirect.co.uk";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
-  $cfg['Site']['URL']   = "http://artificer/westcoastexpress";                 // no trailing slash
-  $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
+  $cfg['Site']['URL']   = "http://artificer/towingdirect";                 // no trailing slash
+  $cfg['Site']['Dir'] = "c:/appserv/www/towingdirect/";
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 } else {
   $cfg['Site']['Dir'] = "/home/cmckay2/public_html/";  // trailing slash

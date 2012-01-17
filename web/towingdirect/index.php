@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WestCoastExpress Website
- * Copyright (c) 2006 Frontburner
+ * TowingDirect Website
+ * Copyright (c) 2012 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Home Page Context
@@ -9,13 +9,10 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  13-Apr-2006  File created.
- * CAM  11-Aug-2007  10153 : Added News Items.
- * CAM  22-Sep-2011  11028 : Changed slogan.
- * CAM  23-Sep-2011  11028 : Changed slogan to include UK.
+ * CAM  17-Jan-2012  11077 : Changed Car logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Boat Transport";
+$title = "Car Transport";
 include 'tpl/top.php';
 
 global $flash;
@@ -25,7 +22,7 @@ showFlash();
 ?><table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr>
   <td colspan=2 width=700>
-    <h3>Boat Transport in Scotland and the UK</h3>
+    <h3>Car Transport in Scotland and the UK</h3>
 
     <p>We pride ourselves in taking personal care of all
     boats we transport whether it is a small dingy or a
@@ -95,7 +92,7 @@ if ($loggedin && $member->isAdmin()) {
 </table></td>
 
 <td valign="top"><table border=0 cellpadding=5 align=center>
-  <tr><td><img src="img/boat2.png"></td></tr>
+  <tr><td><img src="img/cartrans1.png"></td></tr>
   <tr><td><img src="img/boatsafe3.png"></td></tr>
 </table></td></tr></table>
 

@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WestCoastExpress Website
- * Copyright (c) 2006-2007 Frontburner
+ * TowingDirect Website
+ * Copyright (c) 2012 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Contact Page Context
@@ -9,10 +9,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  13-Apr-2006  File created.
- * CAM  11-Aug-2007  10153 : Added new Title graphic.
- * CAM  11-Aug-2007  10159 : Added Email address.
- * CAM  14-Aug-2011  11010 : Switched to Ian.
+ * CAM  17-Jan-2012  11077 : Changed Car logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Contact Ian";
@@ -30,12 +27,12 @@ include 'tpl/top.php';
       </ul>
 
       <table border=0 align=center valign=bottom>
-      <tr><td class="hi">Tel</td><td>01854 613 426</td></tr>
-      <tr><td class="hi">Mob</td><td>07771 601 597</td></tr>
-      <tr><td class="hi">Email</td><td><a href="mailto:ian@westcoastexpress.net?Subject=West%20Coast%20Express">ian@westcoastexpress.net</a></td></tr>
+      <tr><td class="hi">Tel</td><td>01</td></tr>
+      <tr><td class="hi">Mob</td><td>07</td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:sales@towingdirect.co.uk?Subject=Towing%20Direct">sales@towingdirect.co.uk</a></td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/boat2.png"><br><img src="img/boatsafe3.png"></td>
+    <td align="right"><img src="img/cartrans1.png"><br><img src="img/boatsafe3.png"></td>
   </tr>
 </table>
 

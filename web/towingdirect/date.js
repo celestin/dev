@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * WestCoastExpress Website
- * Copyright (c) 2006-2007 Frontburner
+ * TowingDirect Website
+ * Copyright (c) 2012 Front Burner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Javascript - Date validation

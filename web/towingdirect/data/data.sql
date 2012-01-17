@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- West Coast Express
--- Copyright (c) 2006-2007 Frontburner
+-- Copyright (c) 2012 Front Burner
 -- Author Craig McKay <craig@frontburner.co.uk>
 --
 -- $Id$

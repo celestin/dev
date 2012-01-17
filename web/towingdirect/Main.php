@@ -25,9 +25,9 @@ if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
 }
 
 $cfg['Site']['Db']['Hostname'] = "127.0.0.1";
-$cfg['Site']['Db']['Username'] = "westcoastexpress";
-$cfg['Site']['Db']['Password'] = "bob50";
-$cfg['Site']['Db']['Database'] = "westcoastexpress_net_-_site";
+$cfg['Site']['Db']['Username'] = "client128239";
+$cfg['Site']['Db']['Password'] = "loud1tel";
+$cfg['Site']['Db']['Database'] = "client128239_site";
 
 include_once './WEB-INF/inc.php';
 include_once 'db.php';

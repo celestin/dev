@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  17-Jan-2012  11077 : Changed Car logo.
+ * CAM  01-Feb-2012  11083 : Text added.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Car Transport";
@@ -24,13 +25,11 @@ showFlash();
   <td colspan=2 width=700>
     <h3>Car Transport in Scotland and the UK</h3>
 
-    <p>We pride ourselves in taking personal care of all
-    boats we transport whether it is a small dingy or a
-    luxury cabin cruiser. Routes from pick up to
-    destination are carefully chosen to minimise any risk
-    or damage. We can launch or retrieve where possible
-    without any fuss, we get on with it and get the job done
-    to all our customers satisfaction.</p>
+    <p>We know how much your Classic Car means to you therefore we will give you peace of mind that your pride and joy is in 'safe hands'.</p>
+		<p>We will ensure your Vehicle Collection, Transportation and Delivery will be handled personally by an experienced driver.</p>
+		<p>It will be loaded and transported in one operation, no change of vehicle or driver.</p>
+		<p>The journey is exclusive to you, so we can be flexible on times etc (we do not operate back load deals).</p>
+		<p>All our prices are complete.</p>
   </td>
 </tr>
 <tr><td valign=top width=350><table border=0 cellpadding=0 cellspacing=8>

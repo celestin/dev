@@ -3,7 +3,7 @@ RewriteEngine On
 RewriteBase /
 
 RewriteCond %{HTTP_HOST} !^www\.carriedsafely\.co\.uk$ [NC]
-RewriteRule ^(.*)$ http://www.carriedsafely.co.uk/ [R=301,L]
+RewriteRule ^(.*)$ http://www.carriedsafely.co.uk/$1 [R=301,L]
 
 RewriteCond %{HTTP_USER_AGENT} ^.*[yY]andex.*$ [OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*robot.*$ [OR]

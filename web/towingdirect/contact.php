@@ -32,7 +32,7 @@ include 'tpl/top.php';
       <tr><td class="hi">Email</td><td><a href="mailto:sales@towingdirect.co.uk?Subject=Towing%20Direct">sales@towingdirect.co.uk</a></td></tr>
       </table>
     </td>
-    <td align="right"><img src="img/cartrans1.png"><br><img src="img/boatsafe3.png"></td>
+    <td align="center"><img src="img/cartrans1.png"><br><img src="img/carsafe1.png"></td>
   </tr>
 </table>
 

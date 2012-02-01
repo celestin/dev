@@ -8,12 +8,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  13-Apr-2006  File created.
- * CAM  31-May-2006  Added anchor class for toolbar navigation.
- * CAM  21-Dec-2006  10069 : Tidied up photo classes.
- * CAM  11-Aug-2007  10149 : Added options for Pagination and corrected ImgNav.
- * CAM  11-Aug-2007  10154 : Added options for Feedback.
- * CAM  11-Aug-2007  10153 : Removed undergraphic - replaced with Title graphics.
+ * CAM  01-Feb-2012  11077 : Changed colours for new Carried Safely.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -39,13 +34,13 @@ td.slogan {
 
 .hi {
   FONT-WEIGHT: bold;
-  COLOR: #BB0F18;
+  COLOR: #b89f39;
 }
 
 td.sidered {
   FONT-SIZE: 12pt;
   FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #BB0F18;
+  BACKGROUND-COLOR: #e3c033;
   COLOR: white;
   PADDING: 6px;
 }
@@ -53,7 +48,7 @@ td.sidered {
 td.sideblue {
   FONT-SIZE: 12pt;
   FONT-WEIGHT: bold;
-  BACKGROUND-COLOR: #006891;
+  BACKGROUND-COLOR: #e3c033;
   COLOR: white;
   PADDING: 6px;
 }
@@ -86,8 +81,46 @@ td.sideblue {
 }
 
 .toolbar {
-  BACKGROUND-COLOR: #006891;
+  BACKGROUND-COLOR: #e3c033;
 }
+
+.tbshadow {
+  BACKGROUND-COLOR: #999999;
+}
+
+.mnubar {
+	background-color: black;
+}
+
+#mnu {
+	background-color: black;
+}
+
+#mnu ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+#mnu ul li {
+  padding: .5em .5em;
+}
+
+#mnu ul li a
+{
+  font-size: 11pt;
+  text-decoration: none;
+  color: #fff;
+}
+
+#mnu a:hover
+{
+  color: #e3c033;
+}
+
+
 
 .redbanner {
   BACKGROUND-COLOR: #BB0F18;
@@ -100,15 +133,15 @@ td.sideblue {
   BORDER:#999999 1px solid;
   TEXT-ALIGN:center;
   WIDTH:15px;
-  COLOR: #006891;
+  COLOR: #999999;
   FONT-WEIGHT: bold;
 }
 
 .pageboxhover {
-  BORDER:#006891 1px solid;
+  BORDER:#999999 1px solid;
   TEXT-ALIGN:center;
   WIDTH:15px;
-  BACKGROUND-COLOR: #006891;
+  BACKGROUND-COLOR: #999999;
   COLOR: white;
   FONT-WEIGHT: bold;
   CURSOR: pointer;
@@ -120,19 +153,19 @@ td.sideblue {
 }
 
 .pageboxsel {
-  BORDER:#BB0F18 1px solid;
+  BORDER:#e3c033 1px solid;
   TEXT-ALIGN:center;
   WIDTH:15px;
-  BACKGROUND-COLOR: #BB0F18;
-  COLOR: white;
+  BACKGROUND-COLOR: #e3c033;
+  COLOR: black;
   FONT-WEIGHT: bold;
 }
 
 .bluebox {
-  BORDER-BOTTOM:  #006891 2px solid;
-  BORDER-LEFT:    #006891 2px solid;
-  BORDER-RIGHT:   #006891 2px solid;
-  BORDER-TOP:     #006891 2px solid;
+  BORDER-BOTTOM:  #e3c033 2px solid;
+  BORDER-LEFT:    #e3c033 2px solid;
+  BORDER-RIGHT:   #e3c033 2px solid;
+  BORDER-TOP:     #e3c033 2px solid;
 }
 
 .sep {
@@ -155,7 +188,7 @@ td.cpyrght {
 }
 
 .fld {
-  COLOR: #006891;
+  COLOR: #b89f39;
   FONT-WEIGHT: bold;
 }
 
@@ -171,11 +204,11 @@ td.cpyrght {
 }
 
 .imgnav:hover img {
-  BORDER: 2px solid #006891;
+  BORDER: 2px solid #e3c033;
 }
 
 .imgnav:hover {
-  COLOR: #006891; /* Dummy definition to overcome IE bug */
+  COLOR: #e3c033; /* Dummy definition to overcome IE bug */
   BORDER: 0px;
   FONT-WEIGHT: bold;
 }

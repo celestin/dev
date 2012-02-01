@@ -92,7 +92,7 @@ if ($loggedin && $member->isAdmin()) {
 
 <td valign="top"><table border=0 cellpadding=5 align=center>
   <tr><td><img src="img/cartrans1.png"></td></tr>
-  <tr><td><img src="img/boatsafe3.png"></td></tr>
+  <tr><td align=center><img src="img/carsafe1.png"></td></tr>
 </table></td></tr></table>
 
 <?

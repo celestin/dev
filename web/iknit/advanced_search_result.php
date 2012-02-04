@@ -200,7 +200,7 @@
 <!-- body_text //-->
     <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="0">
       <tr>
-        <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+        <td class="pageHeading"><?php echo HEADING_TITLE_2; ?></td>
 <!--
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>

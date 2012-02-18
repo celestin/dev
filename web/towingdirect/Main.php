@@ -10,11 +10,12 @@
  *
  * Who  When         Why
  * CAM  17-Jan-2012  11077 : Changed site name.
+ * CAM  18-Feb-2012  11090 : Corrected details.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$cfg['Site']['Name']  = "Towing Direct";
-$cfg['Site']['URL']   = "http://www.towingdirect.co.uk";                 // no trailing slash
-$cfg['Site']['Email'] = "sales@towingdirect.co.uk";
+$cfg['Site']['Name']  = "Carried Safely";
+$cfg['Site']['URL']   = "http://www.carriedsafely.co.uk";                 // no trailing slash
+$cfg['Site']['Email'] = "bob@carriedsafely.co.uk";
 
 if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
   $cfg['Site']['URL']   = "http://artificer/towingdirect";                 // no trailing slash

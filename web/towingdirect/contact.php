@@ -10,9 +10,10 @@
  *
  * Who  When         Why
  * CAM  17-Jan-2012  11077 : Changed Car logo.
+ * CAM  18-Feb-2012  11090 : Correct details.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Contact Ian";
+$title = "Contact Bob";
 include 'tpl/top.php';
 ?>
 
@@ -23,13 +24,14 @@ include 'tpl/top.php';
       <li>Fully Insured</li>
       <li>Owner Driver</li>
       <li>UK & Europe</li>
-      <li>Each boat individually priced</li>
+      <li>Each vehicle individually priced</li>
       </ul>
 
       <table border=0 align=center valign=bottom>
-      <tr><td class="hi">Tel</td><td>01</td></tr>
-      <tr><td class="hi">Mob</td><td>07</td></tr>
-      <tr><td class="hi">Email</td><td><a href="mailto:sales@towingdirect.co.uk?Subject=Towing%20Direct">sales@towingdirect.co.uk</a></td></tr>
+      <tr><td class="hi">Tel</td><td>01542 839193</td></tr>
+      <tr><td class="hi">Fax</td><td>01542 839194</td></tr>
+      <tr><td class="hi">Mob</td><td>077 80 80 7202</td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:bob@carriedsafely.co.uk?Subject=Carried%20Safely">bob@carriedsafely.co.uk</a></td></tr>
       </table>
     </td>
     <td align="center"><img src="img/cartrans1.png"><br><img src="img/carsafe1.png"></td>

@@ -10,10 +10,11 @@
  *
  * Who  When         Why
  * CAM  23-Jan-2012  11085 : Page created.
- * CAM  01-Feb-2012  11084 : Text added.
+ * CAM  18-Feb-2012  11084 : Text added.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Towing Direct";
+$logo = "td1.png";
 include 'tpl/top.php';
 
 global $flash;
@@ -39,10 +40,22 @@ showFlash();
   </td>
 </tr>
 
-<td valign="top"><table border=0 cellpadding=5 align=center>
-  <tr><td><img src="img/cartrans1.png"></td></tr>
-  <tr><td align=center><img src="img/carsafe1.png"></td></tr>
-</table></td></tr></table>
+<table border=0 cellpadding=20 align=center>
+  <tr>
+    <td>
+      <table border=0 align=center valign=bottom>
+      <tr><td class="hi">Tel</td><td>01542 839193</td></tr>
+      <tr><td class="hi">Fax</td><td>01542 839194</td></tr>
+      <tr><td class="hi">Mob</td><td>077 80 80 7202</td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:bob@towingdirect.co.uk?Subject=Towing%20Direct">bob@towingdirect.co.uk</a></td></tr>
+      </table>
+    </td>
+    <td align="center"><img src="img/yousafe1.png"></td>
+  </tr>
+</table>
+
+
+</td></tr></table>
 
 <?
 include 'tpl/bot.php';

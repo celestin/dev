@@ -12,6 +12,7 @@
  * CAM  17-Jan-2012  11077 : Changed CSS file to TD.css
  * CAM  23-Jan-2012  11085 : Added Towing link
  * CAM  01-Feb-2012  11077 : Changed layout for new Carried Safely.
+ * CAM  18-Feb-2012  11084 : Enabled logo override.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -22,6 +23,10 @@ if (empty($title)) {
   $title = $cfg['Site']['Name'];
 } else {
   $title = $cfg['Site']['Name'] . " - $title";
+}
+
+if (empty($logo)) {
+	$logo = "cs2.png";
 }
 
 $toolbar = "none";
@@ -66,7 +71,7 @@ if ($loggedin) {
     </tr>
     <tr>
       <td width=175 align=center><img src="img/car<? echo $boattrans_idx; ?>.png"></td>
-      <td class="whitebox" align=center><a href="<?=$cfg['Site']['URL']?>"><img border="0" src="img/cs2.png"></a></td>
+      <td class="whitebox" align=center><a href="<?=$cfg['Site']['URL']?>"><img border="0" src="img/<?=$logo?>"></a></td>
       <td width=175 align=center><img onclick="toogleToolbar();" src="img/car4.png"></td>
     </tr>
   </table></td>

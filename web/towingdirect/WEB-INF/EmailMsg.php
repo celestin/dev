@@ -13,6 +13,7 @@
  * CAM  11-Aug-2007  10149 : Ensure Forgotten Passwords send correctly.
  * CAM  11-Aug-2007  10150 : Changed 'Request for Quotation' to 'Confirmation of Request'.
  * CAM  11-Aug-2007  10150 : Changed back to 'Request for Quotation' and set email as though it has come from form filler.
+ * CAM  18-Feb-2012  11082 : Updated Request Form for Carried Safely.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -98,8 +99,8 @@ class EmailMsg {
     "</body></html>$cr";
   }
 
-  function sendRequest($boattype, $boatlength, $boatweight, $boatkeel,
-                       $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
+  function sendRequest($vehiclemake, $vehiclemodel, $vehiclelength, $vehicleweight, $vehiclevalue, $vehiclecondition,
+                       $collectionaddress, $deliveryaddress, $earlydate, $comments,
                        $contactemail, $contactname, $contacttel) {
     global $cfg;
 
@@ -108,15 +109,15 @@ class EmailMsg {
     $cr = "\r\n";
 
     $message = $this->getHTMLStart($subject) .
-      "<tr><td class=fld>Type of Boat                </td><td>" . $boattype . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Length of boat              </td><td>" . $boatlength . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Weight of boat              </td><td>" . $boatweight . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Type of Keel                </td><td>" . $boatkeel . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Location (present position) </td><td>" . $boatloc . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Destination                 </td><td>" . $boatdest . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Vehicle Model               </td><td>" . $vehiclemake . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Vehicle Make                </td><td>" . $vehiclemodel . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Length of Vehicle           </td><td>" . $vehiclelength . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Weight of Vehicle           </td><td>" . $vehicleweight . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Approximate Vehicle Value   </td><td>" . $vehiclevalue . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Condition of Vehicle        </td><td>" . (empty($vehiclecondition) || ($vehiclecondition == "RUNNING")) ? "Running" : "Not running" . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Collection Address          </td><td>" . $collectionaddress . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Delivery Address            </td><td>" . $deliveryaddress . "</td></tr>$cr$cr".
       "<tr><td class=fld>Ealiest preferred date      </td><td>" . $earlydate . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Estimated value             </td><td>" . $estval . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Own trailer?                </td><td>" . $owntrailer . "</td></tr>$cr$cr".
       "<tr><td class=fld>Additional comments         </td><td>" . $comments . "</td></tr>$cr$cr".
       "<tr><td class=fld>Email Address               </td><td>" . $contactemail . "</td></tr>$cr$cr".
       "<tr><td class=fld>Contact Name                </td><td>" . $contactname . "</td></tr>$cr$cr".

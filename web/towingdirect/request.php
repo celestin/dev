@@ -15,6 +15,7 @@
  * CAM  11-Aug-2007  10150 : Add 'Quotation' back into the information message.
  * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * CAM  30-Oct-2010  10802 : Added Google Code for Lead Conversion.
+ * CAM  18-Feb-2012  11082 : Updated Request Form for Carried Safely.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request for Quotation";
@@ -23,16 +24,20 @@ include 'tpl/top.php';
 <center><img style="padding-bottom:5px" src="img/title/rfq.png"></center>
 <?
 
-$retry = NULL;            if (!empty($_POST['retry'])) $retry = $_POST['retry'];
-$boattype = NULL;         if (!empty($_POST['boattype'])) $boattype = $_POST['boattype'];
-$boatlength = NULL;       if (!empty($_POST['boatlength'])) $boatlength = $_POST['boatlength'];
-$boatweight = NULL;       if (!empty($_POST['boatweight'])) $boatweight = $_POST['boatweight'];
-$boatkeel = NULL;         if (!empty($_POST['boatkeel'])) $boatkeel = $_POST['boatkeel'];
-$boatloc = NULL;          if (!empty($_POST['boatloc'])) $boatloc = $_POST['boatloc'];
-$boatdest = NULL;         if (!empty($_POST['boatdest'])) $boatdest = $_POST['boatdest'];
+$retry = NULL;               if (!empty($_POST['retry'])) $retry = $_POST['retry'];
+
+$vehiclemake = NULL;         if (!empty($_POST['vehiclemake'])) $vehiclemake = $_POST['vehiclemake'];
+$vehiclemodel = NULL;        if (!empty($_POST['vehiclemodel'])) $vehiclemodel = $_POST['vehiclemodel'];
+$vehiclelength = NULL;       if (!empty($_POST['vehiclelength'])) $vehiclelength = $_POST['vehiclelength'];
+$vehicleweight = NULL;       if (!empty($_POST['vehicleweight'])) $vehicleweight = $_POST['vehicleweight'];
+$vehiclevalue = NULL;        if (!empty($_POST['vehiclevalue'])) $vehiclevalue = $_POST['vehiclevalue'];
+$vehiclecondition = NULL;    if (!empty($_POST['vehiclecondition'])) $vehiclecondition = $_POST['vehiclecondition'];
+
+$collectionaddress = NULL;   if (!empty($_POST['collectionaddress'])) $collectionaddress = $_POST['collectionaddress'];
+$deliveryaddress = NULL;     if (!empty($_POST['deliveryaddress'])) $deliveryaddress = $_POST['deliveryaddress'];
+
 $earlydate = NULL;        if (!empty($_POST['earlydate'])) $earlydate = $_POST['earlydate'];
 $estval = NULL;           if (!empty($_POST['estval'])) $estval = $_POST['estval'];
-$owntrailer = NULL;       if (!empty($_POST['owntrailer'])) $owntrailer = $_POST['owntrailer'];
 $comments = NULL;         if (!empty($_POST['comments'])) $comments = $_POST['comments'];
 $contactemail = NULL;     if (!empty($_POST['contactemail'])) $contactemail = $_POST['contactemail'];
 $contactname = NULL;      if (!empty($_POST['contactname'])) $contactname = $_POST['contactname'];
@@ -40,26 +45,29 @@ $contacttel = NULL;       if (!empty($_POST['contacttel'])) $contacttel = $_POST
 
 if (empty($retry)) {
   include 'frm/quote.request.php';
-} else if (empty($boatlength)) {
-  Msg::error("Please specify the length of the boat.");
+} else if (empty($vehiclemake)) {
+  Msg::error("Please specify the make of the vehicle.");
   include 'frm/quote.request.php';
-} else if (empty($boatweight)) {
-  Msg::error("Please specify the weight of the boat.");
+} else if (empty($vehiclemodel)) {
+  Msg::error("Please specify the model of the vehicle.");
   include 'frm/quote.request.php';
-} else if (empty($boatloc)) {
-  Msg::error("Please provide details of the boat&#039;s current physical location.");
+} else if (empty($vehiclelength)) {
+  Msg::error("Please specify the length of the vehicle.");
   include 'frm/quote.request.php';
-} else if (empty($boatdest)) {
-  Msg::error("What is the boat&#039;s final destination?");
+} else if (empty($vehicleweight)) {
+  Msg::error("Please specify the weight of the vehicle.");
+  include 'frm/quote.request.php';
+} else if (empty($vehiclevalue)) {
+  Msg::error("Please specify the approximate value of the vehicle.");
+  include 'frm/quote.request.php';
+} else if (empty($collectionaddress)) {
+  Msg::error("Please provide details of the vehicle&#039;s current physical location.");
+  include 'frm/quote.request.php';
+} else if (empty($deliveryaddress)) {
+  Msg::error("What is the vehicle&#039;s final destination?");
   include 'frm/quote.request.php';
 } else if (empty($earlydate)) {
   Msg::error("When is the earliest date we can collect the boat?");
-  include 'frm/quote.request.php';
-} else if (empty($estval)) {
-  Msg::error("What is the current estimated value of the boat (for insurance purposes)?");
-  include 'frm/quote.request.php';
-} else if (empty($owntrailer)) {
-  Msg::error("What is the current estimated value of the boat (for insurance purposes)?");
   include 'frm/quote.request.php';
 } else if (empty($contactemail)) {
   Msg::error("Please provide a contact Email address (or N/A if not available).");
@@ -97,8 +105,8 @@ var google_conversion_value = 0;
 
   $em = new EmailMsg('R');
 
-  $em->sendRequest($boattype, $boatlength, $boatweight, $boatkeel,
-                   $boatloc, $boatdest, $earlydate, $estval, $owntrailer, $comments,
+  $em->sendRequest($vehiclemake, $vehiclemodel, $vehiclelength, $vehicleweight, $vehiclevalue, $vehiclecondition,
+                   $collectionaddress, $deliveryaddress, $earlydate, $comments,
                    $contactemail, $contactname, $contacttel);
 
   echo "<br><br><br><br><br><br>";

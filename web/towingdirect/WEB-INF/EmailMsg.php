@@ -114,7 +114,7 @@ class EmailMsg {
       "<tr><td class=fld>Length of Vehicle           </td><td>" . $vehiclelength . "</td></tr>$cr$cr".
       "<tr><td class=fld>Weight of Vehicle           </td><td>" . $vehicleweight . "</td></tr>$cr$cr".
       "<tr><td class=fld>Approximate Vehicle Value   </td><td>" . $vehiclevalue . "</td></tr>$cr$cr".
-      "<tr><td class=fld>Condition of Vehicle        </td><td>" . (empty($vehiclecondition) || ($vehiclecondition == "RUNNING")) ? "Running" : "Not running" . "</td></tr>$cr$cr".
+      "<tr><td class=fld>Condition of Vehicle        </td><td>" . ((empty($vehiclecondition) || ($vehiclecondition == "RUNNING")) ? "Running" : "Not running") . "</td></tr>$cr$cr".
       "<tr><td class=fld>Collection Address          </td><td>" . $collectionaddress . "</td></tr>$cr$cr".
       "<tr><td class=fld>Delivery Address            </td><td>" . $deliveryaddress . "</td></tr>$cr$cr".
       "<tr><td class=fld>Ealiest preferred date      </td><td>" . $earlydate . "</td></tr>$cr$cr".

@@ -19,6 +19,7 @@
  * CAM  11-Dec-2010  10828 : Added display_categories function to separate the main product groups.
  * CAM  21-Jan-2011  10933 : Added Bill's home page text.
  * CAM  05-Nov-2011  11054 : Added Bill's new home page text.
+ * CAM  26-Feb-2012  11093 : Added Bill's new home page text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -353,23 +354,22 @@
         <td>
               <div id="home">
 <?php
-  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz: a new, online store with almost 60 years experience ".
-    "of selling knitting yarn. Stockists of Sirdar, Rico, Patons and Stylecraft ".
-    "yarns. We are committed to providing our customers with the lowest possible ".
-    "prices with a clear and simple postage policy &mdash; <i>Orders over &pound;10 qualify for free, second-class post</i>.</p>".
 
-    "<p>Browse through our online catalogue where you will find old favourites such as ".
-		"Sirdar Snuggly baby yarns, Crofter, Escape, Indie and Squiggle, as well as new ".
-		"qualities for Autumn/Winter. New Firefly and Firefly metallic and the beautiful ".
-		"Softspun DK which truly lives up to its name.</p>".
+  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz. Our online yarn store has just celebrated its 1<sup>st</sup> Anniversary although we have almost ".
+    "60 years experience of selling knitting yarn. Stockists of Sirdar, Patons, Stylecraft & Woolcraft yarns. ".
+	"We are committed to providing our customers with the lowest possible prices combined with great service.</p>".
 
-		"<p>We have in stock all the best scarf yarns. Rico Can Can &amp; Loopy (with great new ".
-		"colours), Sirdar's new Shaggy Scarf, Bohemia and Salsa. Woolcraft have just ".
-		"added Tango Ice to their popular Tango and Tango Glitz range. We also have in ".
-		"stock Frilly by SMC from Patons.</p>".
+	"<p>Our postage policy is clear &amp; simple too &mdash; Orders over &pound;10.00 are delivered FREE by second class post.
+	Orders are posted out the same day (received before 4.30pm Mon-Fri &amp; 12.00am Sat).  We also show our stock levels so you know we have what you order.</p>".
 
-		"<p>Remember we show our stock levels: - You are assured we post out the same day. ".
-		"(Orders received before 4.30 Mon-Fri and 12.00 Sat)</p>");
+    "<p>Browse through our online catalogue where you will find a good selection of Sirdar yarns including old favourites such as the ".
+	"<a href=\"index.php?cPath=1_32_35\">Sirdar Snuggly Baby</a> range. ".
+    "We also stock all the best scarf yarns such as <a href=\"index.php?cPath=1_105_106\">Rico Can Can</a> &amp; <a href=\"index.php?cPath=1_105_122\">Can Can Glitz</a>, ".
+	"<a href=\"index.php?cPath=1_105_112\">Loopy</a>, <a href=\"index.php?cPath=1_119_120\">Patons Frilly</a>, <a href=\"index.php?cPath=1_119_133\">Argentina</a> ".
+	"&amp; <a href=\"index.php?cPath=1_119_131\">Castagnette</a> Scarf yarns and the ".
+	"<a href=\"index.php?cPath=1_114_123\">Tango Ice</a> & <a href=\"index.php?cPath=1_114_115\">Glitz</a> from Woolcraft.</p>".
+
+    "<p>New yarns for Spring/Summer are arriving now along with new colours & leaflets designs in existing qualities.</p>");
 
   display_categories("'79'", "Leaflets", "Our Sirdar leaflets and yarn are laid out (we hope) in a way that is easy to ".
     "follow and see quantities and colours all at once. We intend to add products ".

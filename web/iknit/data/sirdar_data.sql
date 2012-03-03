@@ -1,1240 +1,2658 @@
-CREATE TABLE sirdar_yarn (
+-- phpMyAdmin SQL Dump
+-- version 3.4.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 03, 2012 at 10:40 AM
+-- Server version: 5.0.92
+-- PHP Version: 5.2.9
+
+
+--
+-- Database: iknit_biz_site
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table sirdar_yarn
+--
+
+CREATE TABLE IF NOT EXISTS sirdar_yarn (
   yarn_code varchar(30) NOT NULL default '',
+  yarn_status varchar(30) NOT NULL default 'NEW',
   yarn_name varchar(60) NOT NULL,
   ply_name varchar(60) default NULL,
   style_name varchar(60) default NULL,
   yarn_image varchar(250) default NULL,
+  ply_cat int(11) default NULL,
+  style_cat int(11) default NULL,
+  yarn_cat int(11) default NULL,
+  weight int(11) default NULL,
+  pa_weight int(11) default NULL,
+  pa_needle int(11) default NULL,
+  pe_yard varchar(100) default NULL,
+  pe_blend varchar(100) default NULL,
+  yarn_desc text NOT NULL,
+  changedate date default NULL,
   PRIMARY KEY  (yarn_code)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Sirdar Yarns';
 
-CREATE TABLE sirdar_yarn_shade (
+--
+-- Dumping data for table sirdar_yarn
+--
+
+INSERT INTO sirdar_yarn (yarn_code, yarn_status, yarn_name, ply_name, style_name, yarn_image, ply_cat, style_cat, yarn_cat, weight, pa_weight, pa_needle, pe_yard, pe_blend, yarn_desc, changedate) VALUES
+('F072', 'INC', 'Snuggly 2 Ply', '2 ply/Quick Knit', 'Baby', 'f072-large.jpg', 37, 35, 49, 50, 1, 9, '462m/505y', '55% Nylon, 45% Acrylic', 'A fine, classic pure white yarn that is wonderful for tiny baby knits and delicate shawls. Easy care, Snuggly 2 ply will keep its quality through machine washing and tumble drying.', NULL),
+('F077', 'EXC', 'Snuggly QK ', '2 ply/Quick Knit', 'Baby', 'f077-large.jpg', 37, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F073', 'INC', 'Snuggly 3 Ply 50g', '3 ply', 'Baby', 'f073-large.jpg', 38, 35, 50, 50, 1, 9, '301m/329y', '55% Nylon, 45% Acrylic', 'We have delicate pastel baby shades in this classic 3 Ply yarn that is wonderful for making beautiful shawls. Snuggly 3 Ply will keep its quality through machine washing and tumble drying.', NULL),
+('F070', 'INC', 'Snuggly 3 Ply 100g', '3 ply', 'Baby', 'f070-large.jpg', 38, 35, 51, 100, 2, 9, '602m/658y', '55% Nylon, 45% Acrylic', 'This 100g ball is the perfect yarn for shawl knitting in classic baby white. Snuggly 3 Ply will keep its quality through machine washing and tumble drying.', NULL),
+('F074', 'INC', 'Snuggly 4 Ply 50g', '4 ply', 'Baby', 'f074-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F083', 'INC', 'Snuggly 4 Ply 100g', '4 ply', 'Baby', 'f083-large.jpg', 39, 35, 53, 100, 2, 9, '452m/494y', '55% Nylon, 45% Acrylic', 'Our classic 4 Ply baby yarn is the perfect yarn for shawl knitting and comes in classic white and cream in the 100g ball. Snuggly 4 Ply will keep its quality through machine washing and tumble drying.', NULL),
+('F118', 'EXC', 'Baby Bonus 4 Ply', '4 ply', 'Baby', 'f118-large.jpg', 39, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F086', 'INC', 'Snuggly Baby Crofter Dk', 'DK', 'Baby', 'f086-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F023', 'INC', 'Snuggly Snowflake Dk', 'DK', 'Baby', 'f023-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F010', 'INC', 'Summer Stripes Dk', 'Fashion', 'Fashion', 'f010-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F085', 'INC', 'Snuggly White Whispers Dk', 'DK', 'Baby', 'f085-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F096', 'INC', 'Snuggly Kisses Dk', 'DK', 'Baby', 'f096-large.jpg', 40, 35, 56, 50, 1, 11, '165m/179y', '55% Nylon, 45% Acrylic', 'Snuggly Kisses Dk is a gorgeously soft double knitting baby yarn with a delicate stripe effect that appear as you knit. This pretty yarn comes in a beautiful palette of soft, toning shades and makes adorable knits for little ones. Kisses Dk will knit to all Sirdar baby double knitting patterns.', NULL),
+('F069', 'EXC', 'Baby Bonus Lustre Dk', 'DK', 'Baby', 'f069-large.jpg', 40, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F071', 'INC', 'Snuggly Baby Bamboo Dk', 'DK', 'Baby', 'f071-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F075', 'INC', 'Snuggly Dk 50g', 'DK', 'Baby', 'f075-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F081', 'INC', 'Snuggly Dk 100g', 'DK', 'Baby', 'f081-large.jpg', 40, 35, 59, 100, 2, 11, '330m/358y', '55% Nylon, 45% Acrylic', 'Snuggly is the UK''s favourite baby yarn and is perfect quality yarn for soft and gentle baby hand knits. Our most popular shades of Snuggly Dk come in a generous 100g ball. Snuggly Dk will keep its quality through machine washing and tumble drying.', NULL),
+('F082', 'EXC', 'Snuggly Pearls Dk', 'DK', 'Baby', 'f082-large.jpg', 40, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F014', 'EXC', 'Baby Bonus Dk', 'DK', 'Baby', 'f014-large.jpg', 40, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F022', 'EXC', 'Supersoft Aran', 'Aran', 'Baby', 'f022-large.jpg', 41, 35, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F047', 'INC', 'Baby Snowball', 'Fashion', 'Baby', 'f047-large.jpg', 42, 35, 60, 50, 1, 12, '25m/27y', '100% Polyester', 'Snuggly Baby Snowball is the softest, cuddliest yarn imaginable &mdash; and creates the cutest baby hand knits and blankets for girls and boys. The yarn has lots of soft and cosy ?snowballs'' and is just so quick and easy to knit on 6 &frac12; mm needles. It comes in the gentlest shades of ice cream and snow white - or gently frosted colours with pretty pink, trendy lilac, blue or green.', NULL),
+('F050', 'INC', 'Snuggly Tiny Tots Dk', 'Fashion', 'Baby', 'f050-large.jpg', 42, 35, 61, 50, 1, 11, '137m/150y', '90% Acrylic, 10% Polyester', 'This popular standard Dk yarn with a coloured nep adds real texture to baby hand knits. The colours range from pretty pinks to modern stones and browns. Snuggly Tiny Tots Dk will keep its quality through machine washing and tumble drying.', NULL),
+('F017', 'INC', 'Snuggly Snowdrops Chunky', 'Chunky', 'Baby', 'f017-large.jpg', 43, 35, 62, 50, 1, 13, '80m/88y', '60% Acrylic, 40% Polyester', 'Snuggly Snowdrops Chunky is a soft and cosy baby yarn scattered with tiny white ?snowdrops'' and comes in a fabulous range of snow white, cosy cream, biscuit and four pretty baby pastels &mdash; pink, lilac, mint and blue. You can create fabulously quick baby knits using 6mm needles with Snowdrops Chunky &mdash; it is perfect for pretty little cardies, trendy little hats and adorable baby blankets. This cosy baby yarn comes in a blend of 60% acrylic and 40% polyester, making it and machine washable and easy care.', NULL),
+('F084', 'INC', 'Snuggly Snowflake Chunky', 'Chunky', 'Baby', 'f084-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-21'),
+('F051', 'EXC', 'Country Style 4 Ply', '4 ply', 'Classics', 'f051-large.jpg', 44, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F065', 'EXC', 'Luxury Soft Cotton 4 Ply', '4 ply', 'Classics', 'f065-large.jpg', 44, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F120', 'EXC', 'Bonus Toytime Dk', 'DK', 'Classics', 'f120-large.jpg', 45, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F026', 'INC', 'Crofter Dk', 'DK', 'Classics', 'f026-large.jpg', 45, 36, 64, 50, 1, 11, '170m/184y', '60% Acrylic, 25% Cotton, 15% Wool', 'Crofter Dk is a beautifully soft, standard Dk yarn that has an incredible Fair Isle effect spray dyed onto the yarn - so the yarn knits as normal and the beautiful Fair Isle effect appears as you knit. You get the look of Fair Isle without the hard work!', NULL),
+('F006', 'EXC', 'Balmoral Dk', 'DK', 'Classics', 'f006-large.jpg', 45, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F063', 'INC', 'Click Dk', 'DK', 'Classics', 'f063-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-25'),
+('F009', 'EXC', 'Country Style Dk', 'DK', 'Classics', 'f009-large.jpg', 45, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F039', 'EXC', 'Wash ''n'' Wear Double Crepe Dk', 'DK', 'Classics', 'f039-large.jpg', 45, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F016', 'INC', 'Denim Tweed Dk', 'DK', 'Classics', 'f016-large.jpg', 45, 36, 66, 50, 1, 11, '170m/184y', '60% Acrylic, 25% Cotton, 15% Wool', 'This hugely popular classic Dk yarn makes great casual knits for all the family. Denim Tweed''s cotton, wool and acrylic blend will keep its quality through repeated machine washing.', NULL),
+('F013', 'EXC', 'Bonus Dk', 'DK', 'Classics', 'f013-large.jpg', 45, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F033', 'EXC', 'Denim Aran', 'Aran', 'Classics', 'f033-large.jpg', 46, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F119', 'EXC', 'Bonus Aran 400g with Wool', 'Aran', 'Classics', 'f119-large.jpg', 46, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F037', 'EXC', 'Click Aran with Wool', 'Aran', 'Classics', 'f037-large.jpg', 46, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F087', 'INC', 'Crofter Chunky', 'Chunky', 'Classics', 'f087-large.jpg', 47, 36, 67, 50, 1, 12, '78m/86y', '60% Acrylic, 25% Cotton, 15% Wool', 'Crofter Chunky is a beautifully soft, standard Chunky yarn that has an incredible Fair Isle effect spray dyed onto the yarn - so the yarn knits as normal and the beautiful Fair Isle effect appears as you knit. You get the look of Fair Isle without the hard work!', NULL),
+('F045', 'INC', 'Click Chunky with Wool', 'Chunky', 'Classics', 'f045-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-25'),
+('F058', 'EXC', 'Bonus Baby Changes DK - New Yarn', 'DK', 'Baby', 'f058-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-21'),
+('F032', 'EXC', 'Denim Chunky', 'Chunky', 'Classics', 'f032-large.jpg', 47, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F060', 'EXC', 'Bonus Chunky', 'Chunky', 'Classics', 'f060-large.jpg', 47, 36, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F025', 'INC', 'Denim Ultra', 'Super Chunky', 'Classics', 'f025-large.jpg', 48, 36, 69, 100, 2, 4, '75m/82y', '60% Acrylic, 25% Cotton, 15% Wool', 'This very popular Super Chunky yarn is quick to knit and creates stylish jackets and knitted coats. Denim Ultra''s cotton, wool and acrylic blend will keep its quality through repeated machine washing.', NULL),
+('F042', 'INC', 'Connemara Chunky', 'Fashion', 'Fashion', 'f042-large.jpg', 33, 33, 70, 50, 1, 12, '75m/81y', '51% Wool, 49% Acrylic', 'Inspired by the wistful and romantic west coast of Ireland, Connemara chunky is a breathtaking, softly coloured tweed effect yarn. It comes in 6 hushed shades with misty blues, gentle heathers and natural smoky browns &mdash; a beautiful palette of tweedy colours for men, women and girls.  Connemara is a true chunky yarn that knits on 6&frac12; mm needles and can be knitted to all our chunky patterns. It comes in a beautifully natural, wool rich blend of 51% wool 49% acrylic, in a conventional 50g ball. Connemara''s gorgeous tweedy colours look fabulous knitted into the simplest stocking stitch, cables and textures.', NULL),
+('F062', 'INC', 'Indie', 'Fashion', 'Fashion', 'f062-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-25'),
+('F027', 'NEW', 'Bohemia - New Yarn', 'Fashion', 'Fashion', 'f027-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F003', 'INC', 'Snuggly Baby Speckle DK - New Yarn', 'DK', 'Baby', 'f003-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-23'),
+('F001', 'NEW', 'Spellbound Scarf - New Yarn', 'Fashion', 'Fashion', 'f001-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F053', 'EXC', 'Flirt Dk', 'Fashion', 'Fashion', 'f053-large.jpg', 33, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F091', 'INC', 'Snowball', 'Fashion', 'Fashion', 'f091-large.jpg', 33, 33, 72, 200, 6, 14, '40m/43y', '100% Polyester', 'Sirdar Snowball makes THE softest, THE quickest and THE most irresistibly cosy scarf! This super-sized pom pom yarn is really quick to knit and creates a scarf that''s out of this world. It''s the over-sized fluffy pom poms that make this yarn just so soft to wear!  You can knit or crochet a women''s scarf from one ball or create two smaller scarves for girls. All you need is a pair of 8mm needles &mdash; it''s only 5 stitches wide. Or you can knit 2 smaller scarves for girls (cast on 4 sts and knit 100 cm which is half the ball), either way they''re incredibly quick to make. We have put ALL the instructions on how to knit the Snowball scarf on the inside of the ball band so you don''t even need to buy a pattern!', NULL),
+('F055', 'EXC', 'One Hour Scarf', 'Fashion', 'Fashion', 'f055-large.jpg', 33, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F041', 'EXC', 'Persia Chunky', 'Fashion', 'Fashion', 'f041-large.jpg', 33, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F038', 'INC', 'Escape Chunky', 'Fashion', 'Fashion', 'f038-large.jpg', 33, 33, 73, 50, 1, 12, '65m/71y', '51% Wool, 49% Acrylic', 'Escape Chunky is a gloriously vibrant, multi-coloured yarn that creates a wonderful colour change effect as you knit. It comes in a beautifully soft, wool rich blend and is machine washable. This yarn knits to our standard chunky tension and will knit to all Sirdar chunky patterns.', NULL),
+('F052', 'INC', 'Nomad', 'Fashion', 'Fashion', 'f052-large.jpg', 33, 33, 74, 50, 1, 3, '140m/153y', '60% Wool, 25% Alpaca, 15% Nylon', 'Nomad is our new, incredibly light and textured yarn made from a blend of 60% beautifully soft wool, 25% alpaca and 15% nylon &mdash; and has been created in a subtle palette of 6 gentle shades inspired by the natural winter landscape. With soft greys and three easy to wear neutrals &mdash; our Nomad shades are beautiful, natural and expensive-looking colours.', NULL),
+('F046', 'EXC', 'Tweedie Chunky', 'Fashion', 'Fashion', 'f046-large.jpg', 33, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F040', 'EXC', 'Big Softie', 'Fashion', 'Fashion', 'f040-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-21'),
+('F049', 'INC', 'Escape Dk', 'Fashion', 'Fashion', 'f049-large.jpg', 33, 33, 75, 50, 1, 11, '110m/120y', '51% Wool, 49% Acrylic', 'A gloriously rich, multi-coloured yarn that creates wonderfully subtle stripes as you knit. Escape Dk comes in a beautifully soft, wool rich blend and is machine washable. Escape Dk will knit to all Sirdar Dk patterns.', NULL),
+('F028', 'INC', 'Calico Dk', 'Fashion', 'Fashion', 'f028-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F012', 'EXC', 'Eco Wool Dk', 'Fashion', 'Fashion', 'f012-large.jpg', 33, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F005', 'INC', 'Yo Yo', 'Fashion', 'Fashion', 'f005-large.jpg', 33, 33, 76, 400, 7, 10, '880m/962y', '74% Acrylic, 14% Wool, 12% Polyester', 'Yo&mdash;Yo is a soft and light boucle texture yarn with a generous colour phasing that comes in a huge 400g ball. Incredibly, you can knit a woman''s garment from just one ball.', NULL),
+('F095', 'EXC', 'Funky Fur', 'Fashion', 'Fashion', 'f095-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-21'),
+('F034', 'INC', 'Squiggle Super Chunky', 'Fashion', 'Fashion', 'f034-large.jpg', 33, 33, 77, 50, 1, 4, '40m/43y', '51% Wool, 49% Acrylic', 'Squiggle super chunky is a fabulously colourful yarn that comes in a gorgeous range of jolly colour twist shades for women and girls. Squiggle is a cosy blend of 51% wool and 49% acrylic, which is machine washable and easy care. Squiggle super chunky comes in a conventional 50g ball and knits on 10mm needles. This fabulous yarn is easy and fun to knit and is great for quick projects and the ideal yarn for beginners to use.', NULL),
+('F100', 'INC', 'Firefly / Firefly Metallic', 'Fashion', 'Fashion', 'f100-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F035', 'INC', 'Salsa', 'Fashion', 'Fashion', 'f035-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('F011', 'EXC', 'Hayfield Bonus Aran Tweed', 'Aran', 'Classics', 'f011-large.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2012-02-21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table sirdar_yarn_leaflet
+--
+
+CREATE TABLE IF NOT EXISTS sirdar_yarn_leaflet (
+  yarn_code varchar(30) NOT NULL default '',
+  leaflet_code varchar(30) NOT NULL default '',
+  leaflet_status varchar(30) NOT NULL default 'NEW',
+  import_status varchar(30) NOT NULL default 'NEW',
+  cat varchar(30) default NULL,
+  subcat varchar(30) default NULL,
+  categories_id int(11) default NULL,
+  leaflet_image varchar(250) NOT NULL,
+  leaflet_sirdar_image varchar(250) default NULL,
+  needle_size varchar(120) default NULL,
+  shades_tables varchar(4000) default NULL,
+  changedate date default NULL,
+  PRIMARY KEY  (yarn_code,leaflet_code),
+  KEY idx_leaflet_cat_subcat (cat,subcat)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Sirdar Yarn Leaflets';
+
+--
+-- Dumping data for table sirdar_yarn_leaflet
+--
+
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F072', '3851', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', NULL, '3851_col.jpg', NULL, '4mm', '<table class="yarn_shade">\r\n                <caption>Circular Shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>51 1/4 x 51 1/4in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 2 Ply - Shade 251</th>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Square Shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>36x36in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 2 Ply - Shade 251</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F073', '3421', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', NULL, '3421_col.jpg', NULL, 'None specified', '<table class="yarn_shade">\r\n                <caption>matinee coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>14in 36cm</td>\r\n                  <td>16in 41cm</td>\r\n                  <td>18in 46cm</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 251</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>bonnet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>11in 28cm</td>\r\n                  <td>12in 30cm</td>\r\n                  <td>13in 33cm</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 251</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>bootees</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>3in 8cm</td>\r\n                  <td>3 1/2in 9cm</td>\r\n                  <td>4in 10cm</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 251</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>45in 114cm</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 251</th>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F073', '3029', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '3029_col.jpg', NULL, '3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Cardigan with Plain Sleeves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Prem</td>\r\n                  <td>Prem</td>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 321</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigans with Lacy Sleeves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Prem</td>\r\n                  <td>Prem</td>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 302</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 3 Ply 50g - Shade 320</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F074', '1891', 'NEW', 'NEW', NULL, NULL, NULL, '1891_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1891_col.jpg', NULL, NULL, NULL),
+('F074', '1890', 'NEW', 'NEW', NULL, NULL, NULL, '1890_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1890_col.jpg', NULL, NULL, NULL),
+('F074', '1881', 'NEW', 'NEW', NULL, NULL, NULL, '1881_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1881_col.jpg', NULL, NULL, NULL),
+('F074', '1880', 'NEW', 'NEW', NULL, NULL, NULL, '1880_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1880_col.jpg', NULL, NULL, NULL),
+('F074', '1879', 'NEW', 'NEW', NULL, NULL, NULL, '1879_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1879_col.jpg', NULL, NULL, NULL),
+('F074', '1821', 'NEW', 'NEW', NULL, NULL, NULL, '1821_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1821_col.jpg', NULL, NULL, NULL),
+('F074', '1820', 'NEW', 'NEW', NULL, NULL, NULL, '1820_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1820_col.jpg', NULL, NULL, NULL),
+('F074', '1819', 'NEW', 'NEW', NULL, NULL, NULL, '1819_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1819_col.jpg', NULL, NULL, NULL),
+('F074', '1818', 'NEW', 'NEW', NULL, NULL, NULL, '1818_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1818_col.jpg', NULL, NULL, NULL),
+('F074', '1787', 'NEW', 'NEW', NULL, NULL, NULL, '1787_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1787_col.jpg', NULL, NULL, NULL),
+('F074', '1786', 'NEW', 'NEW', NULL, NULL, NULL, '1786_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1786_col.jpg', NULL, NULL, NULL),
+('F074', '1770', 'NEW', 'NEW', NULL, NULL, NULL, '1770_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1770_col.jpg', NULL, NULL, NULL),
+('F074', '1750', 'NEW', 'NEW', NULL, NULL, NULL, '1750_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1750_col.jpg', NULL, NULL, NULL),
+('F074', '1748', 'NEW', 'NEW', NULL, NULL, NULL, '1748_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1748_col.jpg', NULL, NULL, NULL),
+('F074', '1747', 'NEW', 'NEW', NULL, NULL, NULL, '1747_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1747_col.jpg', NULL, NULL, NULL),
+('F074', '1742', 'NEW', 'NEW', NULL, NULL, NULL, '1742_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1742_col.jpg', NULL, NULL, NULL),
+('F074', '1719', 'NEW', 'NEW', NULL, NULL, NULL, '1719_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1719_col.jpg', NULL, NULL, NULL),
+('F074', '1718', 'NEW', 'NEW', NULL, NULL, NULL, '1718_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1718_col.jpg', NULL, NULL, NULL),
+('F074', '1207', 'NEW', 'NEW', NULL, NULL, NULL, '1207_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1207_col.jpg', NULL, NULL, NULL),
+('F074', '1206', 'NEW', 'NEW', NULL, NULL, NULL, '1206_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1206_col.jpg', NULL, NULL, NULL),
+('F074', '1205', 'NEW', 'NEW', NULL, NULL, NULL, '1205_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1205_col.jpg', NULL, NULL, '2011-07-28'),
+('F074', '1990', 'NEW', 'NEW', NULL, NULL, NULL, '1990_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1990_col.jpg', NULL, NULL, NULL),
+('F074', '1989', 'NEW', 'NEW', NULL, NULL, NULL, '1989_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1989_col.jpg', NULL, NULL, NULL),
+('F074', '1988', 'NEW', 'NEW', NULL, NULL, NULL, '1988_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1988_col.jpg', NULL, NULL, NULL),
+('F074', '1949', 'NEW', 'NEW', NULL, NULL, NULL, '1949_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1949_col.jpg', NULL, NULL, NULL),
+('F074', '1948', 'NEW', 'NEW', NULL, NULL, NULL, '1948_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1948_col.jpg', NULL, NULL, NULL),
+('F083', '3967', 'EXC', 'NEW', NULL, NULL, NULL, '3967_col.jpg', NULL, NULL, NULL, NULL),
+('F083', '3130', 'EXC', 'NEW', NULL, NULL, NULL, '3130_col.jpg', NULL, NULL, NULL, NULL),
+('F083', '1769', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1769_col.jpg', NULL, '3 1/4mm, cable needle', '<table class="yarn_shade">\r\n                <caption>slipover</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 4 Ply 50g - Shade 388</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>v neck sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 4 Ply 50g - Shade 258</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>sweater with collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly 4 Ply 50g - Shade 237</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F083', '1741', 'EXC', 'NEW', NULL, NULL, NULL, '1741_col.jpg', NULL, NULL, NULL, NULL),
+('F083', '1740', 'EXC', 'NEW', NULL, NULL, NULL, '1740_col.jpg', NULL, NULL, NULL, NULL),
+('F074', '1676', 'NEW', 'NEW', NULL, NULL, NULL, '1676_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1676_col.jpg', NULL, NULL, NULL),
+('F074', '1666', 'NEW', 'NEW', NULL, NULL, NULL, '1666_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1666_col.jpg', NULL, NULL, NULL),
+('F074', '1665', 'NEW', 'NEW', NULL, NULL, NULL, '1665_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1665_col.jpg', NULL, NULL, NULL),
+('F074', '1662', 'NEW', 'NEW', NULL, NULL, NULL, '1662_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1662_col.jpg', NULL, NULL, NULL),
+('F074', '1643', 'NEW', 'NEW', NULL, NULL, NULL, '1643_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1643_col.jpg', NULL, NULL, NULL),
+('F074', '1642', 'NEW', 'NEW', NULL, NULL, NULL, '1642_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1642_col.jpg', NULL, NULL, NULL),
+('F074', '1633', 'NEW', 'NEW', NULL, NULL, NULL, '1633_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1633_col.jpg', NULL, NULL, NULL),
+('F074', '1599', 'NEW', 'NEW', NULL, NULL, NULL, '1599_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1599_col.jpg', NULL, NULL, NULL),
+('F074', '1598', 'NEW', 'NEW', NULL, NULL, NULL, '1598_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1598_col.jpg', NULL, NULL, NULL),
+('F074', '1576', 'NEW', 'NEW', NULL, NULL, NULL, '1576_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1576_col.jpg', NULL, NULL, NULL),
+('F074', '1575', 'NEW', 'NEW', NULL, NULL, NULL, '1575_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1575_col.jpg', NULL, NULL, NULL),
+('F074', '1522', 'NEW', 'NEW', NULL, NULL, NULL, '1522_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1522_col.jpg', NULL, NULL, NULL),
+('F074', '1520', 'NEW', 'NEW', NULL, NULL, NULL, '1520_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1520_col.jpg', NULL, NULL, NULL),
+('F074', '3983', 'NEW', 'NEW', NULL, NULL, NULL, '3983_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3983_col.jpg', NULL, NULL, NULL),
+('F074', '3982', 'NEW', 'NEW', NULL, NULL, NULL, '3982_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3982_col.jpg', NULL, NULL, NULL),
+('F074', '3941', 'NEW', 'NEW', NULL, NULL, NULL, '3941_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3941_col.jpg', NULL, NULL, NULL),
+('F074', '3930', 'NEW', 'NEW', NULL, NULL, NULL, '3930_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3930_col.jpg', NULL, NULL, NULL),
+('F074', '3920', 'NEW', 'NEW', NULL, NULL, NULL, '3920_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3920_col.jpg', NULL, NULL, NULL),
+('F074', '3882', 'NEW', 'NEW', NULL, NULL, NULL, '3882_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3882_col.jpg', NULL, NULL, NULL),
+('F074', '3761', 'NEW', 'NEW', NULL, NULL, NULL, '3761_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3761_col.jpg', NULL, NULL, NULL),
+('F074', '3149', 'NEW', 'NEW', NULL, NULL, NULL, '3149_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3149_col.jpg', NULL, NULL, NULL),
+('F074', '3066', 'NEW', 'NEW', NULL, NULL, NULL, '3066_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3066_col.jpg', NULL, NULL, NULL),
+('F083', '1672', 'EXC', 'NEW', NULL, NULL, NULL, '1672_col.jpg', NULL, NULL, NULL, NULL),
+('F086', '1200', 'EXC', 'NEW', NULL, NULL, NULL, '1200_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1200_col.jpg', NULL, NULL, '2011-07-28'),
+('F086', '1999', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1999_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1999_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 158</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 159</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F086', '1998', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1998_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1998_col.jpg', '4mm, 3 1/4mm, Cable Needle, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 161</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Shawl Collar Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 157</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F086', '1997', 'EXC', 'NEW', NULL, NULL, NULL, '1997_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1997_col.jpg', NULL, NULL, '2011-07-28'),
+('F086', '1967', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1967_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1967_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan with Contrast Border</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 mths</td>\r\n                  <td>6-7 mths</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 219</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 154</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Plain Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1966', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1966_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1966_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 155</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 155</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1965', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1965_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1965_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 157</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 157</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1964', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1964_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1964_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Patterned Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 156</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Yoke Patterned Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 157</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1963', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1963_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1963_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Jacket with Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Jacket with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 156</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1962', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1962_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1962_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Jacket with Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 155</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Jacket with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1947', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1947_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1947_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan with Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1946', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', 92, '1946_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1946_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Tank Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 154</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 153</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1933', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1933_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1933_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 154</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1932', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1932_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1932_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1931', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1931_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1931_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Ballet Cardie</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Ballet Cardie</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1930', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1930_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1930_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Pull on Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 150</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 153</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Slouchy Pull on Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1929', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1929_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1929_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 154</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 151</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1928', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1928_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1928_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Shawl Collared Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Hooded Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 153</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F086', '1927', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', 92, '1927_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1927_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 153</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F086', '1926', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1926_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1926_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Shawl Collared Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Turn Back Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24 x 30in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Crofter Dk - Shade 152</th>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F023', '1245', 'INC', 'COMPLETE', 'Fun Knits', NULL, 84, '1245_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1245_col.jpg', '3mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Ted The Bear</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>16in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 631</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 642</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1244', 'INC', 'COMPLETE', 'Fun Knits', NULL, 84, '1244_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1244_col.jpg', '3mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Patch The Puppy</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>16in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 631</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 642</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1243', 'INC', 'COMPLETE', 'Fun Knits', NULL, 84, '1243_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1243_col.jpg', '3mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Flopsy The Bunny</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>16in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 630</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 649</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1951', 'EXC', 'NEW', NULL, NULL, NULL, '1951_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1951_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1950', 'EXC', 'NEW', NULL, NULL, NULL, '1950_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1950_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1935', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1935_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1935_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 407</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 651</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 650</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F023', '1922', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1922_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1922_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 643</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 651</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 645</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F023', '1921', 'EXC', 'NEW', NULL, NULL, NULL, '1921_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1921_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1872', 'EXC', 'NEW', NULL, NULL, NULL, '1872_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1872_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1871', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1871_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1871_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Plain Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 649</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan with contrast boarders</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 644</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 649</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F023', '1870', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1870_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1870_col.jpg', '4mm, 3 1/4mm', '<tabale class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 648</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 642</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1854', 'EXC', 'NEW', NULL, NULL, NULL, '1854_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1854_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1853', 'EXC', 'NEW', NULL, NULL, NULL, '1853_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1853_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1852', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1852_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1852_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Flower Shoes</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 644</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Plain Shoes</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 645</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Garter Stitch Bootees</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 646</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Stocking Stitch Bootees</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 642</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1851', 'EXC', 'NEW', NULL, NULL, NULL, '1851_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1851_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1850', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1850_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1850_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 644</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 647</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F023', '1849', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1849_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1849_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Duffle Coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 646</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Mittens</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowflake Dk - Shade 646</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">25g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F023', '1848', 'EXC', 'NEW', NULL, NULL, NULL, '1848_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1848_col.jpg', NULL, NULL, '2011-07-28'),
+('F023', '1847', 'EXC', 'NEW', NULL, NULL, NULL, '1847_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1847_col.jpg', NULL, NULL, '2011-07-28'),
+('F010', '9424', 'INC', 'COMPLETE', 'Womens', 'Tops', 103, '9424_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9424_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>3/4 Sleeved Bolero</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 317</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Bolero</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 310</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9423', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9423_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9423_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 313</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 311</th>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9422', 'INC', 'COMPLETE', 'Womens', 'Sweaters', 102, '9422_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9422_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Sweater with short turnback cuffs</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 312</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Sweater with 3/4 sleeves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 315</th>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9421', 'INC', 'COMPLETE', 'Womens', 'Tops', 103, '9421_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9421_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 314</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9420', 'INC', 'COMPLETE', 'Womens', 'Tops', 103, '9420_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9420_col.jpg', '4mm, 3 1/4mm, 4mm Circular Needle', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Shrug</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>46/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 310</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9419', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9419_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9419_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>3/4 Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 316</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 317</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9418', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9418_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9418_col.jpg', '4 1/2mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 315</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 314</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F010', '9417', 'INC', 'COMPLETE', 'Womens', 'Jackets', 101, '9417_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9417_col.jpg', '4 1/2mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 312</th>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td>18</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>3/4 Sleeved Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Summer Stripes Dk - Shade 313</th>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1235', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1235_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1235_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Girl''s Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 194</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Boy''s Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 190</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1234', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1234_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1234_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 192</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Shawl Collar Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 191</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1233', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1233_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1233_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 193</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 196</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1232', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1232_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1232_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 190</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 191</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Shoes</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 190</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1231', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1231_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1231_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 195</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Flat Collared Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 192</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 192</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1230', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1230_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1230_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan </caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 196</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Beret</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table>', '2011-07-28');
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F085', '1229', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1229_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1229_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-9 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 194</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 192</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Bonnet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 192</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F085', '1228', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1228_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1228_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 193</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24 3/4 x 30 3/4"</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly White Whispers Dk - Shade 193</th>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F096', '1992', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1992_col.jpg', NULL, '4mm, 3 1/4mm ', '  <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 760</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mth</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 759</th>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F096', '1991', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1991_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle  ', '  <table class="yarn_shade">                 <caption>V Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 750</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Shawl Collar Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 759</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F096', '1908', 'EXC', 'NEW', NULL, NULL, NULL, '1908_col.jpg', NULL, NULL, NULL, NULL),
+('F096', '1907', 'EXC', 'NEW', NULL, NULL, NULL, '1907_col.jpg', NULL, NULL, NULL, NULL),
+('F096', '1906', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1906_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', ' <table class="yarn_shade">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 750</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Tank</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 757</th>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F096', '1905', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1905_col.jpg', NULL, '4mm, 3 1/4mm  ', '  <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 750</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 758</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F096', '1904', 'EXC', 'NEW', NULL, NULL, NULL, '1904_col.jpg', NULL, NULL, NULL, NULL),
+('F096', '1903', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', NULL, '1903_col.jpg', NULL, '4mm, 3 1/4mm ', '4mm, 3 1/4mm  <table class="yarn_shade">                 <caption>Entrelac Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>25 1/4 x 31 1/2in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 757</th>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Leaf-Square Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24 1/4 x 30 1/4in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Kisses Dk - Shade 758</th>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F096', '1856', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1856_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Jacket with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 755</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Jacket with Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 756</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1855', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1855_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 750</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 755</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1842', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1842_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 750</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 752</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1841', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1841_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Bootees</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24 x 30 in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1840', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1840_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>V Neck Cardigan </caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 751</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1839', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', NULL, '1839_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Tank</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 753</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 751</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1838', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1838_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 752</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 751</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F096', '1837', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1837_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 752</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1217', 'EXC', 'NEW', NULL, NULL, NULL, '1217_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1217_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1216', 'EXC', 'NEW', NULL, NULL, NULL, '1216_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1216_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1215', 'EXC', 'NEW', NULL, NULL, NULL, '1215_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1215_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1214', 'EXC', 'NEW', NULL, NULL, NULL, '1214_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1214_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1958', 'EXC', 'NEW', NULL, NULL, NULL, '1958_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1958_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1957', 'EXC', 'NEW', NULL, NULL, NULL, '1957_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1957_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1956', 'EXC', 'NEW', NULL, NULL, NULL, '1956_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1956_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1955', 'EXC', 'NEW', NULL, NULL, NULL, '1955_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1955_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1954', 'EXC', 'NEW', NULL, NULL, NULL, '1954_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1954_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1953', 'EXC', 'NEW', NULL, NULL, NULL, '1953_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1953_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1952', 'EXC', 'NEW', NULL, NULL, NULL, '1952_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1952_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1920', 'EXC', 'NEW', NULL, NULL, NULL, '1920_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1920_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1919', 'EXC', 'NEW', NULL, NULL, NULL, '1919_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1919_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1918', 'EXC', 'NEW', NULL, NULL, NULL, '1918_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1918_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1917', 'EXC', 'NEW', NULL, NULL, NULL, '1917_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1917_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1916', 'EXC', 'NEW', NULL, NULL, NULL, '1916_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1916_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1915', 'EXC', 'NEW', NULL, NULL, NULL, '1915_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1915_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1893', 'EXC', 'NEW', NULL, NULL, NULL, '1893_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1893_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1892', 'EXC', 'NEW', NULL, NULL, NULL, '1892_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1892_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1869', 'EXC', 'NEW', NULL, NULL, NULL, '1869_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1869_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1868', 'EXC', 'NEW', NULL, NULL, NULL, '1868_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1868_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1867', 'EXC', 'NEW', NULL, NULL, NULL, '1867_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1867_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1866', 'EXC', 'NEW', NULL, NULL, NULL, '1866_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1866_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1865', 'EXC', 'NEW', NULL, NULL, NULL, '1865_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1865_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1864', 'EXC', 'NEW', NULL, NULL, NULL, '1864_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1864_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1834', 'EXC', 'NEW', NULL, NULL, NULL, '1834_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1834_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1833', 'EXC', 'NEW', NULL, NULL, NULL, '1833_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1833_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1832', 'EXC', 'NEW', NULL, NULL, NULL, '1832_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1832_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1831', 'EXC', 'NEW', NULL, NULL, NULL, '1831_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1831_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1830', 'EXC', 'NEW', NULL, NULL, NULL, '1830_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1830_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1823', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1823_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1823_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 149</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 150</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1822', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1822_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1822_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 149</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 150</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Tank</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 131</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 150</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1806', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1806_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1806_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 147</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 132</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1805', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1805_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1805_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 148</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 145</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1804', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1804_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1804_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 145</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 146</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1802', 'EXC', 'NEW', NULL, NULL, NULL, '1802_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1802_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1801', 'EXC', 'NEW', NULL, NULL, NULL, '1801_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1801_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1800', 'EXC', 'NEW', NULL, NULL, NULL, '1800_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1800_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1778', 'EXC', 'NEW', NULL, NULL, NULL, '1778_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1778_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1777', 'EXC', 'NEW', NULL, NULL, NULL, '1777_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1777_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1754', 'EXC', 'NEW', NULL, NULL, NULL, '1754_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1754_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1753', 'EXC', 'NEW', NULL, NULL, NULL, '1753_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1753_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1752', 'EXC', 'NEW', NULL, NULL, NULL, '1752_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1752_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1734', 'EXC', 'NEW', NULL, NULL, NULL, '1734_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1734_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1733', 'EXC', 'NEW', NULL, NULL, NULL, '1733_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1733_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1732', 'EXC', 'NEW', NULL, NULL, NULL, '1732_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1732_col.jpg', NULL, NULL, '2011-07-28'),
+('F071', '1730', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1730_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1730_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 133</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Baby Bamboo Dk - Shade 137</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '2255', 'INC', 'NEW', NULL, NULL, NULL, '2255_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2255_col.jpg', NULL, NULL, '2012-02-21'),
+('F071', '2242', 'EXC', 'NEW', NULL, NULL, NULL, '2242_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2242_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9288', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', 104, '9288_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9288_col.jpg', '4mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 730</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F028', '9287', 'EXC', 'NEW', NULL, NULL, NULL, '9287_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9287_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9286', 'EXC', 'NEW', NULL, NULL, NULL, '9286_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9286_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9162', 'EXC', 'NEW', NULL, NULL, NULL, '9162_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9162_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9159', 'EXC', 'NEW', NULL, NULL, NULL, '9159_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9159_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9158', 'EXC', 'NEW', NULL, NULL, NULL, '9158_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9158_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9157', 'EXC', 'NEW', NULL, NULL, NULL, '9157_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9157_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9156', 'EXC', 'NEW', NULL, NULL, NULL, '9156_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9156_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9155', 'EXC', 'NEW', NULL, NULL, NULL, '9155_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9155_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9154', 'EXC', 'NEW', NULL, NULL, NULL, '9154_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9154_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9011', 'EXC', 'NEW', NULL, NULL, NULL, '9011_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9011_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9010', 'EXC', 'NEW', NULL, NULL, NULL, '9010_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9010_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9009', 'EXC', 'NEW', NULL, NULL, NULL, '9009_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9009_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9008', 'EXC', 'NEW', NULL, NULL, NULL, '9008_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9008_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9007', 'EXC', 'NEW', NULL, NULL, NULL, '9007_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9007_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9006', 'EXC', 'NEW', NULL, NULL, NULL, '9006_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9006_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9005', 'EXC', 'NEW', NULL, NULL, NULL, '9005_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9005_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9004', 'EXC', 'NEW', NULL, NULL, NULL, '9004_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9004_col.jpg', NULL, NULL, '2011-07-28');
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F028', '2289', 'INC', 'COMPLETE', 'Children', 'Cardigans', 93, '2289_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2289_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26in</td>\r\n                  <td>28/30in</td>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 722</th>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cropped Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26in</td>\r\n                  <td>28/30in</td>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 730</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F071', '1218', 'EXC', 'NEW', NULL, NULL, NULL, '1218_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1218_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1738', 'EXC', 'NEW', NULL, NULL, NULL, '1738_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1738_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1739', 'EXC', 'NEW', NULL, NULL, NULL, '1739_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1739_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1749', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1749_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1749_col.jpg', '4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>v neck jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 389</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>jacket with collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 379</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>jacket with hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1816', 'EXC', 'NEW', NULL, NULL, NULL, '1816_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1816_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1815', 'EXC', 'NEW', NULL, NULL, NULL, '1815_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1815_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1814', 'EXC', 'NEW', NULL, NULL, NULL, '1814_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1814_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1813', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1813_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1813_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Jacket with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 240</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 353</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 379</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Jacket With Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 240</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 353</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 379</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1812', 'EXC', 'NEW', NULL, NULL, NULL, '1812_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1812_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1811', 'EXC', 'NEW', NULL, NULL, NULL, '1811_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1811_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1785', 'EXC', 'NEW', NULL, NULL, NULL, '1785_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1785_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1784', 'EXC', 'NEW', NULL, NULL, NULL, '1784_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1784_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1783', 'EXC', 'NEW', NULL, NULL, NULL, '1783_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1783_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1782', 'EXC', 'NEW', NULL, NULL, NULL, '1782_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1782_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1781', 'EXC', 'NEW', NULL, NULL, NULL, '1781_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1781_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1780', 'EXC', 'NEW', NULL, NULL, NULL, '1780_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1780_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1776', 'EXC', 'NEW', NULL, NULL, NULL, '1776_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1776_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1768', 'EXC', 'NEW', NULL, NULL, NULL, '1768_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1768_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1767', 'EXC', 'NEW', NULL, NULL, NULL, '1767_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1767_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1766', 'EXC', 'NEW', NULL, NULL, NULL, '1766_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1766_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1765', 'EXC', 'NEW', NULL, NULL, NULL, '1765_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1765_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1764', 'EXC', 'NEW', NULL, NULL, NULL, '1764_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1764_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1763', 'EXC', 'NEW', NULL, NULL, NULL, '1763_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1763_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1762', 'EXC', 'NEW', NULL, NULL, NULL, '1762_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1762_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1761', 'EXC', 'NEW', NULL, NULL, NULL, '1761_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1761_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1817', 'EXC', 'NEW', NULL, NULL, NULL, '1817_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1817_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1857', 'EXC', 'NEW', NULL, NULL, NULL, '1857_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1857_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1858', 'INC', 'COMPLETE', 'Babies', 'Coats & Ponchos', 88, '1858_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1858_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 409</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 mths</td>\r\n                  <td>2-3 mths</td>\r\n                  <td>4-5 mths</td>\r\n                  <td>6-7 mths</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 409</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1859', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', 92, '1859_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1859_col.jpg', '3 1/4mm, 4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Tank Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 410</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 ys</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 411</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1860', 'EXC', 'NEW', NULL, NULL, NULL, '1860_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1860_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1861', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1861_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1861_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Jacket With Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 410</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Jacket With Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 411</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1862', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1862_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1862_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 408</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Collared Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 409</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1241', 'EXC', 'NEW', NULL, NULL, NULL, '1241_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1241_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1240', 'EXC', 'NEW', NULL, NULL, NULL, '1240_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1240_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1239', 'EXC', 'NEW', NULL, NULL, NULL, '1239_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1239_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1238', 'EXC', 'NEW', NULL, NULL, NULL, '1238_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1238_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1237', 'EXC', 'NEW', NULL, NULL, NULL, '1237_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1237_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1236', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1236_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1236_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 420</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 422</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>22 1/2 x 28 1/4"</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 420</th>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F075', '1981', 'EXC', 'NEW', NULL, NULL, NULL, '1981_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1981_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1980', 'EXC', 'NEW', NULL, NULL, NULL, '1980_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1980_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1979', 'EXC', 'NEW', NULL, NULL, NULL, '1979_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1979_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1978', 'EXC', 'NEW', NULL, NULL, NULL, '1978_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1978_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1977', 'EXC', 'NEW', NULL, NULL, NULL, '1977_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1977_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1976', 'EXC', 'NEW', NULL, NULL, NULL, '1976_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1976_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1945', 'EXC', 'NEW', NULL, NULL, NULL, '1945_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1945_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1944', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1944_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1944_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Long Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 404</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Short Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 320</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F075', '1899', 'EXC', 'NEW', NULL, NULL, NULL, '1899_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1899_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1898', 'EXC', 'NEW', NULL, NULL, NULL, '1898_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1898_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1897', 'EXC', 'NEW', NULL, NULL, NULL, '1897_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1897_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1896', 'INC', 'COMPLETE', 'Babies', 'Sweaters', 91, '1896_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1896_col.jpg', '4mm, 3 1/4mm, Cable Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 412</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 412</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24x30 in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 412</th>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1895', 'EXC', 'NEW', NULL, NULL, NULL, '1895_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1895_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1894', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1894_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1894_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 224</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 413</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 224</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 414</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Beret and Shoes</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 224</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 344</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels', NULL),
+('F075', '1889', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', 87, '1889_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1889_col.jpg', '4mm, 3 1/4mm, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 303</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table>', NULL),
+('F075', '1888', 'EXC', 'NEW', NULL, NULL, NULL, '1888_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1888_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1887', 'EXC', 'NEW', NULL, NULL, NULL, '1887_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1887_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1242', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1242_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1242_col.jpg', '4mm, 3 1/4mm, Cable Needle, 3 1/4mm Circular Needle', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>T-Bag Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 421</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Pull On Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 422</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Bonnet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 423</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 420</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 421</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 423</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F075', '2223', 'EXC', 'NEW', NULL, NULL, NULL, '2223_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2223_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '2222', 'EXC', 'NEW', NULL, NULL, NULL, '2222_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2222_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '2221', 'EXC', 'NEW', NULL, NULL, NULL, '2221_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2221_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '2220', 'EXC', 'NEW', NULL, NULL, NULL, '2220_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2220_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '2062', 'EXC', 'NEW', NULL, NULL, NULL, '2062_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2062_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '2057', 'EXC', 'NEW', NULL, NULL, NULL, '2057_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2057_col.jpg', NULL, NULL, '2011-07-28'),
+('F074', '3047', 'NEW', 'NEW', NULL, NULL, NULL, '3047_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3047_col.jpg', NULL, NULL, NULL),
+('F074', '3045', 'NEW', 'NEW', NULL, NULL, NULL, '3045_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3045_col.jpg', NULL, NULL, NULL),
+('F074', '3028', 'NEW', 'NEW', NULL, NULL, NULL, '3028_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3028_col.jpg', NULL, NULL, NULL),
+('F074', '3027', 'NEW', 'NEW', NULL, NULL, NULL, '3027_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3027_col.jpg', NULL, NULL, NULL),
+('F074', '3025', 'NEW', 'NEW', NULL, NULL, NULL, '3025_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3025_col.jpg', NULL, NULL, NULL),
+('F074', '3007', 'NEW', 'NEW', NULL, NULL, NULL, '3007_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3007_col.jpg', NULL, NULL, NULL),
+('F075', '1600', 'EXC', 'NEW', NULL, NULL, NULL, '1600_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1600_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1579', 'EXC', 'NEW', NULL, NULL, NULL, '1579_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1579_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1578', 'EXC', 'NEW', NULL, NULL, NULL, '1578_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1578_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1568', 'EXC', 'NEW', NULL, NULL, NULL, '1568_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1568_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1557', 'EXC', 'NEW', NULL, NULL, NULL, '1557_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1557_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1518', 'EXC', 'NEW', NULL, NULL, NULL, '1518_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1518_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1517', 'EXC', 'NEW', NULL, NULL, NULL, '1517_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1517_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1516', 'EXC', 'NEW', NULL, NULL, NULL, '1516_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1516_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3974', 'EXC', 'NEW', NULL, NULL, NULL, '3974_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3974_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3957', 'EXC', 'NEW', NULL, NULL, NULL, '3957_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3957_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3956', 'EXC', 'NEW', NULL, NULL, NULL, '3956_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3956_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3949', 'EXC', 'NEW', NULL, NULL, NULL, '3949_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3949_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3948', 'EXC', 'NEW', NULL, NULL, NULL, '3948_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3948_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3946', 'EXC', 'NEW', NULL, NULL, NULL, '3946_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3946_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3945', 'EXC', 'NEW', NULL, NULL, NULL, '3945_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3945_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3898', 'EXC', 'NEW', NULL, NULL, NULL, '3898_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3898_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3839', 'EXC', 'NEW', NULL, NULL, NULL, '3839_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3839_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3836', 'EXC', 'NEW', NULL, NULL, NULL, '3836_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3836_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3806', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', 90, '3806_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3806_col.jpg', '4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24 x 30 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Pillowcase</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12 x 12 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F075', '3653', 'EXC', 'NEW', NULL, NULL, NULL, '3653_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3653_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3266', 'EXC', 'NEW', NULL, NULL, NULL, '3266_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3266_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3191', 'EXC', 'NEW', NULL, NULL, NULL, '3191_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3191_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3174', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', 90, '3174_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3174_col.jpg', '3mm crochet hook, 4mm crochet hook', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Motif shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>28 1/4 x 37 3/4 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 252</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 321</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Zig Zag Pram blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>19 3/4 x 24 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 252</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 321</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Zig Zag Shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>39 x 39 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 252</th>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Motif Pram Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>19 x 23 3/4 in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 252</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 321</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F075', '3173', 'EXC', 'NEW', NULL, NULL, NULL, '3173_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3173_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3172', 'EXC', 'NEW', NULL, NULL, NULL, '3172_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3172_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3110', 'EXC', 'NEW', NULL, NULL, NULL, '3110_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3110_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3109', 'EXC', 'NEW', NULL, NULL, NULL, '3109_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3109_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3108', 'EXC', 'NEW', NULL, NULL, NULL, '3108_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3108_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3105', 'EXC', 'NEW', NULL, NULL, NULL, '3105_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3105_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3104', 'EXC', 'NEW', NULL, NULL, NULL, '3104_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3104_col.jpg', NULL, NULL, '2011-07-28');
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F075', '3086', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', 90, '3086_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3086_col.jpg', '8mm crochet hook', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Basket Weave Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>19 x 24 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Ribbon edge Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>17 1/4 x 24 1/2 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 212</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Plain Colour Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>18 x 24 inches</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Striped Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>20 x 24 cm </td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 224</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '3084', 'EXC', 'NEW', NULL, NULL, NULL, '3084_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3084_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3083', 'EXC', 'NEW', NULL, NULL, NULL, '3083_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3083_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3044', 'EXC', 'NEW', NULL, NULL, NULL, '3044_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3044_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '3043', 'EXC', 'NEW', NULL, NULL, NULL, '3043_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/3043_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1625', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1625_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1625_col.jpg', '4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>A. plain hat</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>B. helmet with ribbed edgings</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 251</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>C. garter stitch helmet</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>D. hat with garter stitch turnback</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 303</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>E. square hat</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>F. beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 219</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1721', 'EXC', 'NEW', NULL, NULL, NULL, '1721_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1721_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1720', 'EXC', 'NEW', NULL, NULL, NULL, '1720_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1720_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1711', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1711_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1711_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>pull on lace hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 392</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>pull on hat with roll edges</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 350</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 354</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>cable hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Wash ''n'' Wear Double Crepe Dk - Shade 340</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>striped hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 353</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Wa', NULL),
+('F075', '1710', 'EXC', 'NEW', NULL, NULL, NULL, '1710_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1710_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1709', 'EXC', 'NEW', NULL, NULL, NULL, '1709_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1709_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1708', 'EXC', 'NEW', NULL, NULL, NULL, '1708_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1708_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1697', 'EXC', 'NEW', NULL, NULL, NULL, '1697_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1697_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1695', 'EXC', 'NEW', NULL, NULL, NULL, '1695_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1695_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1674', 'EXC', 'NEW', NULL, NULL, NULL, '1674_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1674_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1673', 'EXC', 'NEW', NULL, NULL, NULL, '1673_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1673_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1668', 'EXC', 'NEW', NULL, NULL, NULL, '1668_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1668_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1648', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', 90, '1648_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1648_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>18in</td>\r\n                  <td>20in</td>\r\n                  <td>22in</td>\r\n                  <td>24in</td>\r\n                  <td>24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 237</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Roll Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>18in</td>\r\n                  <td>20in</td>\r\n                  <td>22in</td>\r\n                  <td>24in</td>\r\n                  <td>24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 237</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>18in</td>\r\n                  <td>20in</td>\r\n                  <td>22in</td>\r\n                  <td>24in</td>\r\n                  <td>24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 237</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>x 16in 18in x 24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 237</th>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F075', '1647', 'EXC', 'NEW', NULL, NULL, NULL, '1647_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1647_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1646', 'EXC', 'NEW', NULL, NULL, NULL, '1646_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1646_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1645', 'EXC', 'NEW', NULL, NULL, NULL, '1645_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1645_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1644', 'EXC', 'NEW', NULL, NULL, NULL, '1644_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1644_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1629', 'EXC', 'NEW', NULL, NULL, NULL, '1629_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1629_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1722', 'EXC', 'NEW', NULL, NULL, NULL, '1722_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1722_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1723', 'EXC', 'NEW', NULL, NULL, NULL, '1723_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1723_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1736', 'EXC', 'NEW', NULL, NULL, NULL, '1736_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1736_col.jpg', NULL, NULL, '2011-07-28'),
+('F075', '1737', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1737_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1737_col.jpg', '3 1/4mm, 4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td>7-8 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 383</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 385</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td>7-8 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Dk 50g - Shade 383</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F082', '3908', 'EXC', 'NEW', NULL, NULL, NULL, '3908_col.jpg', NULL, NULL, NULL, NULL),
+('F082', '3906', 'EXC', 'NEW', NULL, NULL, NULL, '3906_col.jpg', NULL, NULL, NULL, NULL),
+('F082', '3012', 'EXC', 'NEW', NULL, NULL, NULL, '3012_col.jpg', NULL, NULL, NULL, NULL),
+('F082', '3011', 'EXC', 'NEW', NULL, NULL, NULL, '3011_col.jpg', NULL, NULL, NULL, NULL),
+('F082', '3009', 'EXC', 'NEW', NULL, NULL, NULL, '3009_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1987', 'EXC', 'NEW', NULL, NULL, NULL, '1987_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1986', 'EXC', 'NEW', NULL, NULL, NULL, '1986_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1985', 'EXC', 'NEW', NULL, NULL, NULL, '1985_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1984', 'EXC', 'NEW', NULL, NULL, NULL, '1984_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1983', 'EXC', 'NEW', NULL, NULL, NULL, '1983_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1982', 'EXC', 'NEW', NULL, NULL, NULL, '1982_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1914', 'EXC', 'NEW', NULL, NULL, NULL, '1914_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1913', 'EXC', 'NEW', NULL, NULL, NULL, '1913_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1912', 'EXC', 'NEW', NULL, NULL, NULL, '1912_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1911', 'EXC', 'NEW', NULL, NULL, NULL, '1911_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1910', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1910_col.jpg', NULL, '4mm, 3 1/4mm', '  <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Tiny Tots Dk - Shade 922</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Tiny Tots Dk - Shade 921</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F050', '1909', 'EXC', 'NEW', NULL, NULL, NULL, '1909_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1886', 'EXC', 'NEW', NULL, NULL, NULL, '1886_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1885', 'EXC', 'NEW', NULL, NULL, NULL, '1885_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1878', 'EXC', 'NEW', NULL, NULL, NULL, '1878_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1877', 'EXC', 'NEW', NULL, NULL, NULL, '1877_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1876', 'EXC', 'NEW', NULL, NULL, NULL, '1876_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1875', 'EXC', 'NEW', NULL, NULL, NULL, '1875_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1874', 'NEW', 'NEW', NULL, NULL, NULL, '1874_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1873', 'NEW', 'NEW', NULL, NULL, NULL, '1873_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1829', 'NEW', 'NEW', NULL, NULL, NULL, '1829_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1828', 'NEW', 'NEW', NULL, NULL, NULL, '1828_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1827', 'NEW', 'NEW', NULL, NULL, NULL, '1827_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1826', 'NEW', 'NEW', NULL, NULL, NULL, '1826_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1825', 'NEW', 'NEW', NULL, NULL, NULL, '1825_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1824', 'NEW', 'NEW', NULL, NULL, NULL, '1824_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1791', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1791_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>Shawl Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 936</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 934</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1790', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1790_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>Flat Collared Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 957</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Hoodie Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 935</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 940</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1789', 'EXC', 'NEW', NULL, NULL, NULL, '1789_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1788', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1788_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 957</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Tank</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 935</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 957</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1756', 'EXC', 'NEW', NULL, NULL, NULL, '1756_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1755', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1755_col.jpg', NULL, '4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 938</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1746', 'NEW', 'NEW', NULL, NULL, NULL, '1746_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1744', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1744_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>V neck cardigan </caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 942</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>shawl neck cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 939</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1743', 'INC', 'COMPLETE', 'Babies', 'Coats & Ponchos', NULL, '1743_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 940</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1728', 'EXC', 'NEW', NULL, NULL, NULL, '1728_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1724', 'EXC', 'NEW', NULL, NULL, NULL, '1724_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1712', 'EXC', 'NEW', NULL, NULL, NULL, '1712_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1682', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', NULL, '1682_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>16in</td>\r\n                  <td>18in</td>\r\n                  <td>20in</td>\r\n                  <td>22in</td>\r\n                  <td>24in</td>\r\n                  <td>24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 976</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>blanket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>18 x 24in</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 976</th>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>to fit average size babies head for age group</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 976</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1657', 'EXC', 'NEW', NULL, NULL, NULL, '1657_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '3102', 'NEW', 'NEW', NULL, NULL, NULL, '3102_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '3101', 'NEW', 'NEW', NULL, NULL, NULL, '3101_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '3100', 'NEW', 'NEW', NULL, NULL, NULL, '3100_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '1799', 'NEW', 'NEW', NULL, NULL, NULL, '1799_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '1798', 'NEW', 'NEW', NULL, NULL, NULL, '1798_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '1796', 'NEW', 'NEW', NULL, NULL, NULL, '1796_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '1795', 'NEW', 'NEW', NULL, NULL, NULL, '1795_col.jpg', NULL, NULL, NULL, NULL),
+('F014', '3124', 'EXC', 'NEW', NULL, NULL, NULL, '3124_col.jpg', NULL, NULL, NULL, NULL),
+('F014', '3123', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '3123_col.jpg', NULL, '3 1/4mm, 3 3/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>doll poncho</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 959</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>doll trousers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 958</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>doll 2 colour hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 958</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 959</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>doll sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 957</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>doll plain hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 957</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>doll scarf</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>12-14 in</td>\r\n                  <td>15-18 in</td>\r\n                  <td>19-22 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Baby Bonus Dk - Shade 955</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F014', '3120', 'EXC', 'NEW', NULL, NULL, NULL, '3120_col.jpg', NULL, NULL, NULL, NULL),
+('F014', '3119', 'EXC', 'NEW', NULL, NULL, NULL, '3119_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2302', 'EXC', 'NEW', NULL, NULL, NULL, '2302_col.jpg', NULL, NULL, NULL, '2011-07-28'),
+('F022', '2301', 'EXC', 'NEW', NULL, NULL, NULL, '2301_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2300', 'EXC', 'NEW', NULL, NULL, NULL, '2300_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2287', 'EXC', 'NEW', NULL, NULL, NULL, '2287_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2286', 'EXC', 'NEW', NULL, NULL, NULL, '2286_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2285', 'EXC', 'NEW', NULL, NULL, NULL, '2285_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2284', 'EXC', 'NEW', NULL, NULL, NULL, '2284_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2283', 'EXC', 'NEW', NULL, NULL, NULL, '2283_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2282', 'EXC', 'NEW', NULL, NULL, NULL, '2282_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2265', 'EXC', 'NEW', NULL, NULL, NULL, '2265_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2264', 'EXC', 'NEW', NULL, NULL, NULL, '2264_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2263', 'EXC', 'NEW', NULL, NULL, NULL, '2263_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2262', 'EXC', 'NEW', NULL, NULL, NULL, '2262_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2261', 'EXC', 'NEW', NULL, NULL, NULL, '2261_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2260', 'EXC', 'NEW', NULL, NULL, NULL, '2260_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2259', 'EXC', 'NEW', NULL, NULL, NULL, '2259_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2250', 'EXC', 'NEW', NULL, NULL, NULL, '2250_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2247', 'EXC', 'NEW', NULL, NULL, NULL, '2247_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2231', 'EXC', 'NEW', NULL, NULL, NULL, '2231_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2230', 'EXC', 'NEW', NULL, NULL, NULL, '2230_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2229', 'EXC', 'NEW', NULL, NULL, NULL, '2229_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2228', 'EXC', 'NEW', NULL, NULL, NULL, '2228_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2227', 'EXC', 'NEW', NULL, NULL, NULL, '2227_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2226', 'EXC', 'NEW', NULL, NULL, NULL, '2226_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2225', 'INC', 'COMPLETE', 'Children', 'Sweaters', NULL, '2225_col.jpg', NULL, '4mm, 5mm', ' <table class="yarn_shade">                 <caption>sweater with zip neck</caption>                 <tbody><tr>                   <th>Size</th>                   <td>1-2 yrs</td>                   <td>3-4 yrs</td>                   <td>5-6 yrs</td>                   <td>7-8 yrs</td>                   <td>9-10 yrs</td>                   <td>11-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Supersoft Aran - Shade 879</th>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>sweater with round neck</caption>                 <tbody><tr>                   <th>Size</th>                   <td>1-2 yrs</td>                   <td>3-4 yrs</td>                   <td>5-6 yrs</td>                   <td>7-8 yrs</td>                   <td>9-10 yrs</td>                   <td>11-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Supersoft Aran - Shade 877</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F022', '2224', 'EXC', 'NEW', NULL, NULL, NULL, '2224_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2219', 'EXC', 'NEW', NULL, NULL, NULL, '2219_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1846', 'EXC', 'NEW', NULL, NULL, NULL, '1846_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1845', 'EXC', 'NEW', NULL, NULL, NULL, '1845_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1844', 'EXC', 'NEW', NULL, NULL, NULL, '1844_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1843', 'EXC', 'NEW', NULL, NULL, NULL, '1843_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1760', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1760_col.jpg', NULL, '5mm', '<table class="yarn_shade">\r\n                <caption>jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 881</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 881</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F022', '2306', 'EXC', 'NEW', NULL, NULL, NULL, '2306_col.jpg', NULL, NULL, NULL, '2011-07-28'),
+('F022', '2305', 'EXC', 'NEW', NULL, NULL, NULL, '2305_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2304', 'EXC', 'NEW', NULL, NULL, NULL, '2304_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '2303', 'EXC', 'NEW', NULL, NULL, NULL, '2303_col.jpg', NULL, NULL, NULL, NULL),
+('F074', '1902', 'NEW', 'NEW', NULL, NULL, NULL, '1902_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1902_col.jpg', NULL, NULL, NULL),
+('F074', '1901', 'NEW', 'NEW', NULL, NULL, NULL, '1901_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1901_col.jpg', NULL, NULL, NULL),
+('F074', '1900', 'NEW', 'NEW', NULL, NULL, NULL, '1900_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1900_col.jpg', NULL, NULL, NULL),
+('F083', '1641', 'EXC', 'NEW', NULL, NULL, NULL, '1641_col.jpg', NULL, NULL, NULL, NULL),
+('F096', '1836', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1836_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 754</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F096', '1835', 'INC', 'COMPLETE', 'Babies', 'Coats & Ponchos', NULL, '1835_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 754</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Kisses Dk - Shade 750</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F071', '1219', 'EXC', 'NEW', NULL, NULL, NULL, '1219_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1219_col.jpg', NULL, NULL, '2011-07-28'),
+('F082', '1690', 'EXC', 'NEW', NULL, NULL, NULL, '1690_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1583', 'EXC', 'NEW', NULL, NULL, NULL, '1583_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1562', 'EXC', 'NEW', NULL, NULL, NULL, '1562_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1561', 'EXC', 'NEW', NULL, NULL, NULL, '1561_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1560', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1560_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 957</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Hooded Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 960</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Jacket with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Tiny Tots Dk - Shade 958</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F050', '1515', 'EXC', 'NEW', NULL, NULL, NULL, '1515_col.jpg', NULL, NULL, NULL, NULL),
+('F050', '1513', 'EXC', 'NEW', NULL, NULL, NULL, '1513_col.jpg', NULL, NULL, NULL, NULL),
+('F099', '1793', 'NEW', 'NEW', NULL, NULL, NULL, '1793_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '1759', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1759_col.jpg', NULL, '5mm, cable needle', '<table class="yarn_shade LastDesing">\r\n                <caption>hooded jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 872</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 880</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F022', '1727', 'EXC', 'NEW', NULL, NULL, NULL, '1727_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '8371', 'EXC', 'NEW', NULL, NULL, NULL, '8371_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '3190', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '3190_col.jpg', NULL, '4mm, 5mm', '<table class="yarn_shade">\r\n                <caption>Round neck cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 843</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Cardigan with collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 843</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigan with hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-3 mths</td>\r\n                  <td>3-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-4 yrs</td>\r\n                  <td>5-6 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Supersoft Aran - Shade 843</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F022', '3189', 'EXC', 'NEW', NULL, NULL, NULL, '3189_col.jpg', NULL, NULL, NULL, NULL),
+('F022', '3183', 'EXC', 'NEW', NULL, NULL, NULL, '3183_col.jpg', NULL, NULL, NULL, NULL),
+('F047', '1201', 'EXC', 'NEW', NULL, NULL, NULL, '1201_col.jpg', NULL, NULL, NULL, NULL),
+('F047', '1202', 'EXC', 'NEW', NULL, NULL, NULL, '1202_col.jpg', NULL, NULL, NULL, NULL),
+('F047', '1203', 'EXC', 'NEW', NULL, NULL, NULL, '1203_col.jpg', NULL, NULL, NULL, NULL),
+('F047', '1204', 'EXC', 'NEW', NULL, NULL, NULL, '1204_col.jpg', NULL, NULL, NULL, NULL),
+('F047', '1943', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', NULL, '1943_col.jpg', NULL, '6 1/2mm', '  <table class="yarn_shade">                 <caption>Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 102</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 105</th>                   <td>2</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1942', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1942_col.jpg', NULL, '6 1/2mm, 4mm', '  <table class="yarn_shade">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 251</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 100</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>18x24in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 251</th>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 100</th>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1941', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', NULL, '1941_col.jpg', NULL, '6 1/2mm ', ' <table class="yarn_shade">                 <caption>Pull-on Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 102</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Pull-on Hat with Turnback</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 101</th>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Helmet</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 104</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Helmet with Front Flap</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 103</th>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1940', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1940_col.jpg', NULL, '6 1/2mm', '  <table class="yarn_shade">                 <caption>Long Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 101</th>                   <td>2</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-4 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 102</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1939', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1939_col.jpg', NULL, '6 1/2mm, 3 1/4mm, 4mm', '  <table class="yarn_shade">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 216</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 103</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6/7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 216</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 103</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Bootees</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 216</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 103</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1938', 'INC', 'COMPLETE', 'Babies', 'Waistcoats & Tanks', NULL, '1938_col.jpg', NULL, '6 1/2mm, 3 1/4mm', '  <table class="yarn_shade">                 <caption>Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 403</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 104</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 303</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 101</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1937', 'INC', 'COMPLETE', 'Babies', 'Coats & Ponchos', NULL, '1937_col.jpg', NULL, '6 1/2mm', '  <table class="yarn_shade">                 <caption>Poncho</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 105</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 105</th>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F047', '1936', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', NULL, '1936_col.jpg', NULL, '6 1/2mm, 3 1/4mm', '  <table class="yarn_shade">                 <caption>Plain Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24 x 30in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 100</th>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Blanket with Ribbed Border</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24x30in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 251</th>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 104</th>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Blanket with Border and Ribbon</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24x30in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 251</th>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 102</th>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Striped Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24x28 1/4in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Dk 50g - Shade 251</th>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 100</th>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Baby Snowball - Shade 103</th>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F050', '1501', 'EXC', 'NEW', NULL, NULL, NULL, '1501_col.jpg', NULL, NULL, NULL, NULL),
+('F017', '1996', 'EXC', 'NEW', NULL, NULL, NULL, '1996_col.jpg', NULL, NULL, NULL, NULL),
+('F017', '1995', 'EXC', 'NEW', NULL, NULL, NULL, '1995_col.jpg', NULL, NULL, NULL, NULL),
+('F017', '1994', 'EXC', 'NEW', NULL, NULL, NULL, '1994_col.jpg', NULL, NULL, NULL, NULL),
+('F017', '1993', 'EXC', 'NEW', NULL, NULL, NULL, '1993_col.jpg', NULL, NULL, NULL, NULL),
+('F017', '1975', 'INC', 'COMPLETE', 'Babies', 'Coats & Ponchos', NULL, '1975_col.jpg', NULL, '5 1/2mm', '  <table class="yarn_shade">                 <caption>Short Duffle Coat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 350</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Long Duffle Coat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>3-4 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 354</th>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F017', '1974', 'INC', 'COMPLETE', 'Babies', 'Shawls & Blankets', NULL, '1974_col.jpg', NULL, '6mm, 5mm, Cable Needle', '  <table class="yarn_shade">                 <caption>Square Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24 3/4 x 30 in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 356</th>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Plain Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24 x 30 in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 351</th>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cable Blanket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24 x 30 in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 354</th>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F017', '1973', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1973_col.jpg', NULL, '6mm, 5mm', ' <table class="yarn_shade">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 356</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>8</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Bootees</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 356</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F017', '1972', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1972_col.jpg', NULL, '6mm, 5mm', ' <table class="yarn_shade">                 <caption>Shawl Collar Bolero</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 357</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Round Neck Bolero</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 355</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F017', '1971', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1971_col.jpg', NULL, '6mm, 5mm', ' <table class="yarn_shade">                 <caption>Round Neck Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 355</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cardigan with Collar</caption>                 <tbody><tr>                   <th>Size</th>                   <td>0-6 mths</td>                   <td>6-12 mths</td>                   <td>1-2 yrs</td>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Snuggly Snowdrops Chunky - Shade 352</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F017', '1970', 'INC', 'COMPLETE', 'Babies', 'Sweaters', NULL, '1970_col.jpg', NULL, '6mm, 5mm', '<table class="yarn_shade">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 351</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 351</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F017', '1969', 'INC', 'COMPLETE', 'Babies', 'Hats Bootees Mitts & Layettes', 89, '1969_col.jpg', NULL, '6mm, 5mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Girls Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 355</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Girls Pull On Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 352</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Boys Helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 353</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Boys Slouchy Pull On Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 354</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F017', '1968', 'INC', 'COMPLETE', 'Babies', 'Cardigans & Jackets', NULL, '1968_col.jpg', NULL, '6mm, 5mm, 5mm Circular Needle', '<table class="yarn_shade">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 357</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>0-6 mths</td>\r\n                  <td>6-12 mths</td>\r\n                  <td>1-2 yrs</td>\r\n                  <td>2-3 yrs</td>\r\n                  <td>4-5 yrs</td>\r\n                  <td>6-7 yrs</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Snuggly Snowdrops Chunky - Shade 353</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F084', '1349', 'EXC', 'NEW', NULL, NULL, NULL, '1349_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1349_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1348', 'INC', 'NEW', NULL, NULL, NULL, '1348_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1348_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1287', 'EXC', 'NEW', NULL, NULL, NULL, '1287_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1287_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1286', 'INC', 'NEW', NULL, NULL, NULL, '1286_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1286_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1285', 'INC', 'NEW', NULL, NULL, NULL, '1285_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1285_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1251', 'INC', 'NEW', NULL, NULL, NULL, '1251_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1251_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1250', 'INC', 'NEW', NULL, NULL, NULL, '1250_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1250_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1249', 'INC', 'NEW', NULL, NULL, NULL, '1249_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1249_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1248', 'INC', 'NEW', NULL, NULL, NULL, '1248_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1248_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1247', 'INC', 'NEW', NULL, NULL, NULL, '1247_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1247_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1246', 'INC', 'NEW', NULL, NULL, NULL, '1246_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1246_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1961', 'INC', 'NEW', NULL, NULL, NULL, '1961_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1961_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1960', 'INC', 'NEW', NULL, NULL, NULL, '1960_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1960_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1959', 'INC', 'NEW', NULL, NULL, NULL, '1959_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1959_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1924', 'INC', 'NEW', NULL, NULL, NULL, '1924_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1924_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1923', 'INC', 'NEW', NULL, NULL, NULL, '1923_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1923_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1884', 'INC', 'NEW', NULL, NULL, NULL, '1884_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1884_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1882', 'INC', 'NEW', NULL, NULL, NULL, '1882_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1882_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1775', 'INC', 'NEW', NULL, NULL, NULL, '1775_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1775_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1774', 'INC', 'NEW', NULL, NULL, NULL, '1774_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1774_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1772', 'INC', 'NEW', NULL, NULL, NULL, '1772_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1772_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1771', 'INC', 'NEW', NULL, NULL, NULL, '1771_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1771_col.jpg', NULL, NULL, '2012-02-21'),
+('F058', '1322', 'EXC', 'NEW', NULL, NULL, NULL, '1322_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1322_col.jpg', NULL, NULL, '2012-02-21'),
+('F058', '1321', 'EXC', 'NEW', NULL, NULL, NULL, '1321_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1321_col.jpg', NULL, NULL, '2012-02-21'),
+('F058', '1320', 'EXC', 'NEW', NULL, NULL, NULL, '1320_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1320_col.jpg', NULL, NULL, '2012-02-21'),
+('F058', '1319', 'EXC', 'NEW', NULL, NULL, NULL, '1319_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1319_col.jpg', NULL, NULL, '2012-02-21'),
+('F003', '1361', 'INC', 'NEW', NULL, NULL, NULL, '1361_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1361_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1360', 'INC', 'NEW', NULL, NULL, NULL, '1360_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1360_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1359', 'INC', 'NEW', NULL, NULL, NULL, '1359_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1359_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1358', 'INC', 'NEW', NULL, NULL, NULL, '1358_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1358_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1357', 'INC', 'NEW', NULL, NULL, NULL, '1357_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1357_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1356', 'INC', 'NEW', NULL, NULL, NULL, '1356_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1356_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1355', 'INC', 'NEW', NULL, NULL, NULL, '1355_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1355_col.jpg', NULL, NULL, '2012-02-23'),
+('F003', '1354', 'INC', 'NEW', NULL, NULL, NULL, '1354_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1354_col.jpg', NULL, NULL, '2012-02-23');
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F051', '9349', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9349_col.jpg', NULL, '3 1/4mm, 2 3/4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 606</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 606</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F051', '9348', 'EXC', 'NEW', NULL, NULL, NULL, '9348_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '9280', 'EXC', 'NEW', NULL, NULL, NULL, '9280_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '9279', 'EXC', 'NEW', NULL, NULL, NULL, '9279_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '9236', 'EXC', 'NEW', NULL, NULL, NULL, '9236_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '9235', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9235_col.jpg', NULL, '3 1/4mm, 2 3/4mm', '<table class="yarn_shade">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 606</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 607</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F051', '8775', 'EXC', 'NEW', NULL, NULL, NULL, '8775_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '8755', 'EXC', 'NEW', NULL, NULL, NULL, '8775_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '8596', 'EXC', 'NEW', NULL, NULL, NULL, '8596_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '8526', 'EXC', 'NEW', NULL, NULL, NULL, '8526_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '8524', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8524_col.jpg', NULL, '3 1/4mm, 2 3/4mm', '<table class="yarn_shade">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 411</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 428</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 411</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 428</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F051', '8439', 'EXC', 'NEW', NULL, NULL, NULL, '8439_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '8397', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8397_col.jpg', NULL, '2 3/4 circular needle, 3?mm', '<table class="yarn_shade">\r\n                <caption>round neck cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32in</td>\r\n                  <td>34in</td>\r\n                  <td>36in</td>\r\n                  <td>38in</td>\r\n                  <td>40in</td>\r\n                  <td>42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style 4 Ply - Shade 526</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V neck cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32in</td>\r\n                  <td>34in</td>\r\n                  <td>36in</td>\r\n                  <td>38in</td>\r\n                  <td>40in</td>\r\n                  <td>42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Wash N Wear 4 Ply  - Shade 247</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F051', '8311', 'EXC', 'NEW', NULL, NULL, NULL, '8311_col.jpg', NULL, NULL, NULL, NULL),
+('F051', '5983', 'EXC', 'NEW', NULL, NULL, NULL, '5983_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '9305', 'EXC', 'NEW', NULL, NULL, NULL, '9305_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '9304', 'EXC', 'NEW', NULL, NULL, NULL, '9304_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '9303', 'EXC', 'NEW', NULL, NULL, NULL, '9303_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '9034', 'EXC', 'NEW', NULL, NULL, NULL, '9034_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '9033', 'EXC', 'NEW', NULL, NULL, NULL, '9033_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '8981', 'EXC', 'NEW', NULL, NULL, NULL, '8981_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '8980', 'EXC', 'NEW', NULL, NULL, NULL, '8980_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '8906', 'EXC', 'NEW', NULL, NULL, NULL, '8906_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '8389', 'EXC', 'NEW', NULL, NULL, NULL, '8389_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '2241', 'EXC', 'NEW', NULL, NULL, NULL, '2241_col.jpg', NULL, NULL, NULL, NULL),
+('F065', '2218', 'EXC', 'NEW', NULL, NULL, NULL, '2218_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0921', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0921_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0920', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0920_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0919', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0919_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0918', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0918_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0917', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0917_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0916', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0916_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0915', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0915_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0914', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0914_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0913', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0913_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0912', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0912_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0911', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0911_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0910', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0910_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0909', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0909_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0908', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0908_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0907', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0907_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0906', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0906_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0905', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0905_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0904', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0904_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0903', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0903_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0902', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0902_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0901', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0901_col.jpg', NULL, NULL, NULL, NULL),
+('F120', '0900', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '0900_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9377', 'EXC', 'NEW', NULL, NULL, NULL, '9377_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9376', 'EXC', 'NEW', NULL, NULL, NULL, '9376_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9375', 'EXC', 'NEW', NULL, NULL, NULL, '9375_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '2311', 'INC', 'COMPLETE', 'Children', 'Sweaters', NULL, '2311_col.jpg', NULL, '4mm, 3 1/4mm', ' <table class="yarn_shade">                 <caption>Round Neck Sweater Dress</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 63</th>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cowl Neck Sweater Dress</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 62</th>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F026', '9339', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9339_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Ribbed Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 45</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>3x3 Ribbed Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 44</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Cabled Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 43</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Mistake Ribbed Turnback Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 48</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9338', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9338_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Ribbed Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4/6 yrs</td>\r\n                  <td>7/9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 44</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Ankle Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 43</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Diagonal Pattern Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 45</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cabled Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 52</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9337', 'EXC', 'NEW', NULL, NULL, NULL, '9337_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '2292', 'EXC', 'NEW', NULL, NULL, NULL, '2292_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9252', 'EXC', 'NEW', NULL, NULL, NULL, '9252_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9251', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9251_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 48</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/36</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 47</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9250', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9250_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 59</th>\r\n                  <td>5</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Polo Neck Gilet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 48</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9249', 'EXC', 'NEW', NULL, NULL, NULL, '9249_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9248', 'EXC', 'NEW', NULL, NULL, NULL, '9248_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9191', 'EXC', 'NEW', NULL, NULL, NULL, '9191_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9190', 'EXC', 'NEW', NULL, NULL, NULL, '9190_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9189', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9189_col.jpg', NULL, '4mm, 3 1/4mm ', ' <table class="yarn_shade">                 <caption>Beret</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Woman</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 60</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Ribbed Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Woman</td>                   <td>Man</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 50</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Hat with Earflaps</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Woman</td>                   <td>Man</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 59</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Slouchy Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Woman</td>                   <td>Man</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 58</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F026', '9137', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9137_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle', '<table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 57</th>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9136', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9136_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 50</th>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sleeveless Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 55</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9135', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9135_col.jpg', NULL, '4 1/2mm, 4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 56</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 57</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Leg Warmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 50</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Wrist Warmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 51</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9134', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9134_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 53</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 51</th>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9133', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9133_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">\r\n                <caption>Crew Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 56</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 57</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sweater with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Dk - Shade 54</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F026', '9132', 'EXC', 'NEW', NULL, NULL, NULL, '9132_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9131', 'EXC', 'NEW', NULL, NULL, NULL, '9131_col.jpg', NULL, NULL, NULL, NULL),
+('F026', '9130', 'INC', 'COMPLETE', 'Mens', 'Tank Tops', NULL, '9130_col.jpg', NULL, '4mm, 3 1/4mm ', '  <table class="yarn_shade">                 <caption>Tank Top</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26</td>                   <td>28/30</td>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 56</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26</td>                   <td>28/30</td>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 50</th>                   <td>4</td>                   <td>5</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F026', '2276', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2276_col.jpg', NULL, '4mm, 3 1/4mm ', ' <table class="yarn_shade">                 <caption>Shawl Collared Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 46</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Round Neck Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 49</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F026', '2267', 'INC', 'COMPLETE', 'Children', 'Sweaters', NULL, '2267_col.jpg', NULL, '4mm, 3 1/4mm  ', '  <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 58</th>                   <td>2</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Sleeveless Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 60</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F026', '2256', 'INC', 'COMPLETE', 'Children', 'Sweaters', NULL, '2256_col.jpg', NULL, '4mm, 3 1/4mm', ' <table class="yarn_shade LastDesing">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Crofter Dk - Shade 50</th>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F006', '9226', 'EXC', 'NEW', NULL, NULL, NULL, '9226_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9225', 'EXC', 'NEW', NULL, NULL, NULL, '9225_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9224', 'EXC', 'NEW', NULL, NULL, NULL, '9224_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9115', 'EXC', 'NEW', NULL, NULL, NULL, '9115_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9113', 'EXC', 'NEW', NULL, NULL, NULL, '9113_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9112', 'EXC', 'NEW', NULL, NULL, NULL, '9112_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9109', 'EXC', 'NEW', NULL, NULL, NULL, '9109_col.jpg', NULL, NULL, NULL, NULL),
+('F006', '9108', 'EXC', 'NEW', NULL, NULL, NULL, '9108_col.jpg', NULL, NULL, NULL, NULL),
+('F063', '9523', 'EXC', 'NEW', NULL, NULL, NULL, '9523_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9523_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9522', 'EXC', 'NEW', NULL, NULL, NULL, '9522_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9522_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9521', 'EXC', 'NEW', NULL, NULL, NULL, '9521_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9521_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '2345', 'EXC', 'NEW', NULL, NULL, NULL, '2345_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2345_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9444', 'INC', 'NEW', NULL, NULL, NULL, '9444_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9444_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9443', 'EXC', 'NEW', NULL, NULL, NULL, '9443_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9443_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9442', 'INC', 'NEW', NULL, NULL, NULL, '9442_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9442_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9412', 'EXC', 'NEW', NULL, NULL, NULL, '9412_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9412_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9411', 'EXC', 'NEW', NULL, NULL, NULL, '9411_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9411_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9410', 'EXC', 'NEW', NULL, NULL, NULL, '9410_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9410_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9409', 'EXC', 'NEW', NULL, NULL, NULL, '9409_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9409_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9324', 'INC', 'NEW', NULL, NULL, NULL, '9324_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9324_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9323', 'INC', 'NEW', NULL, NULL, NULL, '9323_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9323_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9322', 'EXC', 'NEW', NULL, NULL, NULL, '9322_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9322_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9228', 'INC', 'NEW', NULL, NULL, NULL, '9228_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9228_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9227', 'INC', 'NEW', NULL, NULL, NULL, '9227_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9227_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9165', 'EXC', 'NEW', NULL, NULL, NULL, '9165_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9165_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9164', 'EXC', 'NEW', NULL, NULL, NULL, '9164_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9164_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9163', 'EXC', 'NEW', NULL, NULL, NULL, '9163_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9163_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '9019', 'EXC', 'NEW', NULL, NULL, NULL, '9019_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9019_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '8960', 'EXC', 'NEW', NULL, NULL, NULL, '8960_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8960_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '8959', 'EXC', 'NEW', NULL, NULL, NULL, '8959_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8959_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '8954', 'EXC', 'NEW', NULL, NULL, NULL, '8954_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8954_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '2291', 'EXC', 'NEW', NULL, NULL, NULL, '2291_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2291_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '2272', 'INC', 'NEW', NULL, NULL, NULL, '2272_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2272_col.jpg', NULL, NULL, '2012-02-21'),
+('F063', '2234', 'NEW', 'NEW', NULL, NULL, NULL, '2234_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2234_col.jpg', NULL, NULL, NULL),
+('F009', '9366', 'EXC', 'NEW', NULL, NULL, NULL, '9366_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9365', 'EXC', 'NEW', NULL, NULL, NULL, '9365_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9364', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9364_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Batwing Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 609</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '2294', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2294_col.jpg', NULL, '4mm, 4mm Circular Needle', ' <table class="yarn_shade LastDesing">                 <caption>Shrug</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Country Style Dk - Shade 609</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F009', '9278', 'EXC', 'NEW', NULL, NULL, NULL, '9278_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9277', 'EXC', 'NEW', NULL, NULL, NULL, '9277_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9223', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9223_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 604</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F009', '9222', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9222_col.jpg', NULL, '4mm, 3 1/4mm, Circular Needle', '<table class="yarn_shade LastDesing">\r\n                <caption>Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 603</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '9167', 'EXC', 'NEW', NULL, NULL, NULL, '9167_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9166', 'EXC', 'NEW', NULL, NULL, NULL, '9166_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9096', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9096_col.jpg', NULL, '3 1/4 mm, 4mm  ', '<table class="yarn_shade">                 <caption>Long Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>48/50 in</td>                   <td>52/54 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Country Style Dk - Shade 597</th>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>48/50 in</td>                   <td>52/54 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Country Style Dk - Shade 596</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F009', '9095', 'EXC', 'NEW', NULL, NULL, NULL, '9095_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '9013', 'EXC', 'NEW', NULL, NULL, NULL, '9013_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8883', 'EXC', 'NEW', NULL, NULL, NULL, '8883_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8752', 'EXC', 'NEW', NULL, NULL, NULL, '8752_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8750', 'EXC', 'NEW', NULL, NULL, NULL, '8750_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8621', 'EXC', 'NEW', NULL, NULL, NULL, '8621_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8579', 'EXC', 'NEW', NULL, NULL, NULL, '8579_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8521', 'EXC', 'NEW', NULL, NULL, NULL, '8521_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8436', 'EXC', 'NEW', NULL, NULL, NULL, '8436_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8434', 'EXC', 'NEW', NULL, NULL, NULL, '8434_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8433', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8433_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 527</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 527</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '8432', 'EXC', 'NEW', NULL, NULL, NULL, '8432_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '8429', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '8429_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade LastDesing">\r\n                <caption>sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>38in</td>\r\n                  <td>40in</td>\r\n                  <td>42in</td>\r\n                  <td>44in</td>\r\n                  <td>46in</td>\r\n                  <td>48in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 500</th>\r\n                  <td>9</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '8417', 'EXC', 'NEW', NULL, NULL, NULL, '8417_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '5989', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '5989_col.jpg', NULL, '3 1/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>round neck sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 504</th>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V neck sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 504</th>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '5840', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '5840_col.jpg', NULL, '3 1/4mm, 3 3/4mm, 4mm', '<table class="yarn_shade">\r\n                <caption>stocking stitch</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 446</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>ribbed hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 436</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>stocking stitched helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 437</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>ribbed helmet</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Wash ''n'' Wear Double Crepe Dk - Shade 276</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>mitts</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Wash ''n'' Wear Double Crepe Dk - Shade 276</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>gloves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>1-2 yrs</td>\r\n                  <td>3-6 yrs</td>\r\n                  <td>7-10 yrs</td>\r\n                  <td>Lady</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 437</th>', NULL),
+('F009', '5595', 'EXC', 'NEW', NULL, NULL, NULL, '5595_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '5076', 'EXC', 'NEW', NULL, NULL, NULL, '5076_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '5067', 'EXC', 'NEW', NULL, NULL, NULL, '5067_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '4132', 'INC', 'COMPLETE', 'Fun Knits', NULL, NULL, '4132_col.jpg', NULL, '3mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Dickensian Mice</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>6 in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 402</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 404</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 409</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 412</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 417</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Country Style Dk - Shade 571</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F009', '2271', 'EXC', 'NEW', NULL, NULL, NULL, '2271_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '2233', 'EXC', 'NEW', NULL, NULL, NULL, '2233_col.jpg', NULL, NULL, NULL, NULL),
+('F009', '2174', 'EXC', 'NEW', NULL, NULL, NULL, '2174_col.jpg', NULL, NULL, NULL, NULL),
+('F028', '9408', 'EXC', 'NEW', NULL, NULL, NULL, '9408_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9408_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9407', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9407_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9407_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Short Sleeved Bolero</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 732</th>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>3/4 Sleeved Bolero</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 734</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F028', '9406', 'EXC', 'NEW', NULL, NULL, NULL, '9406_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9406_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9405', 'EXC', 'NEW', NULL, NULL, NULL, '9405_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9405_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9404', 'EXC', 'NEW', NULL, NULL, NULL, '9404_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9404_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9403', 'EXC', 'NEW', NULL, NULL, NULL, '9403_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9403_col.jpg', NULL, NULL, '2011-07-28'),
+('F028', '9290', 'INC', 'COMPLETE', 'Womens', 'Tops', 103, '9290_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9290_col.jpg', '4mm, 3 1/4mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>3/4 Sleeve Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 718</th>\r\n                  <td>3</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Capped Sleeve Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Calico Dk - Shade 728</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F039', '9370', 'EXC', 'NEW', NULL, NULL, NULL, '9370_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9369', 'EXC', 'NEW', NULL, NULL, NULL, '9369_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9368', 'EXC', 'NEW', NULL, NULL, NULL, '9368_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9367', 'EXC', 'NEW', NULL, NULL, NULL, '9367_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9276', 'EXC', 'NEW', NULL, NULL, NULL, '9276_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9275', 'EXC', 'NEW', NULL, NULL, NULL, '9275_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9218', 'EXC', 'NEW', NULL, NULL, NULL, '9218_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9217', 'EXC', 'NEW', NULL, NULL, NULL, '9217_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9169', 'EXC', 'NEW', NULL, NULL, NULL, '9169_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9168', 'EXC', 'NEW', NULL, NULL, NULL, '9168_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9093', 'EXC', 'NEW', NULL, NULL, NULL, '9093_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '9012', 'EXC', 'NEW', NULL, NULL, NULL, '9012_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '8962', 'EXC', 'NEW', NULL, NULL, NULL, '8962_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '8961', 'EXC', 'NEW', NULL, NULL, NULL, '8961_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '8447', 'EXC', 'NEW', NULL, NULL, NULL, '8447_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '5818', 'EXC', 'NEW', NULL, NULL, NULL, '5818_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '5486', 'EXC', 'NEW', NULL, NULL, NULL, '5486_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '5065', 'EXC', 'NEW', NULL, NULL, NULL, '5065_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '5063', 'EXC', 'NEW', NULL, NULL, NULL, '5063_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '5052', 'EXC', 'NEW', NULL, NULL, NULL, '5052_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '4979', 'EXC', 'NEW', NULL, NULL, NULL, '4979_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '4335', 'EXC', 'NEW', NULL, NULL, NULL, '4335_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '4193', 'EXC', 'NEW', NULL, NULL, NULL, '4193_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '2270', 'EXC', 'NEW', NULL, NULL, NULL, '2270_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '2236', 'EXC', 'NEW', NULL, NULL, NULL, '2236_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '2175', 'EXC', 'NEW', NULL, NULL, NULL, '2175_col.jpg', NULL, NULL, NULL, NULL),
+('F039', '2081', 'EXC', 'NEW', NULL, NULL, NULL, '2081_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9300', 'EXC', 'NEW', NULL, NULL, NULL, '9300_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9299', 'EXC', 'NEW', NULL, NULL, NULL, '9299_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9296', 'EXC', 'NEW', NULL, NULL, NULL, '9296_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9295', 'EXC', 'NEW', NULL, NULL, NULL, '9295_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9294', 'EXC', 'NEW', NULL, NULL, NULL, '9294_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9293', 'EXC', 'NEW', NULL, NULL, NULL, '9293_col.jpg', NULL, NULL, NULL, NULL),
+('F012', '9292', 'EXC', 'NEW', NULL, NULL, NULL, '9292_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9374', 'EXC', 'NEW', NULL, NULL, NULL, '9374_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9373', 'EXC', 'NEW', NULL, NULL, NULL, '9373_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9372', 'EXC', 'NEW', NULL, NULL, NULL, '9372_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9371', 'EXC', 'NEW', NULL, NULL, NULL, '9371_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9242', 'EXC', 'NEW', NULL, NULL, NULL, '9242_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9241', 'EXC', 'NEW', NULL, NULL, NULL, '9241_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9240', 'EXC', 'NEW', NULL, NULL, NULL, '9240_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9105', 'EXC', 'NEW', NULL, NULL, NULL, '9105_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9104', 'EXC', 'NEW', NULL, NULL, NULL, '9104_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9103', 'EXC', 'NEW', NULL, NULL, NULL, '9103_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '9003', 'EXC', 'NEW', NULL, NULL, NULL, '9003_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8946', 'EXC', 'NEW', NULL, NULL, NULL, '8946_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8945', 'EXC', 'NEW', NULL, NULL, NULL, '8945_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8944', 'EXC', 'NEW', NULL, NULL, NULL, '8944_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8581', 'EXC', 'NEW', NULL, NULL, NULL, '8581_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8445', 'EXC', 'NEW', NULL, NULL, NULL, '8445_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '8318', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8318_col.jpg', NULL, '3 1/4mm, 4mm', NULL, NULL),
+('F016', '5764', 'EXC', 'NEW', NULL, NULL, NULL, '5764_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '3143', 'EXC', 'NEW', NULL, NULL, NULL, '3143_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '2238', 'EXC', 'NEW', NULL, NULL, NULL, '2238_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '2210', 'EXC', 'NEW', NULL, NULL, NULL, '2210_col.jpg', NULL, NULL, NULL, NULL),
+('F016', '2176', 'EXC', 'NEW', NULL, NULL, NULL, '2176_col.jpg', NULL, NULL, NULL, NULL),
+('F094', '9302', 'NEW', 'NEW', NULL, NULL, NULL, '9302_col.jpg', NULL, NULL, NULL, NULL),
+('F094', '9301', 'NEW', 'NEW', NULL, NULL, NULL, '9301_col.jpg', NULL, NULL, NULL, NULL),
+('F094', '2290', 'NEW', 'NEW', NULL, NULL, NULL, '2290_col.jpg', NULL, NULL, NULL, NULL),
+('F013', '5792', 'EXC', 'NEW', NULL, NULL, NULL, '5792_col.jpg', NULL, NULL, NULL, NULL),
+('F013', '3122', 'EXC', 'NEW', NULL, NULL, NULL, '3122_col.jpg', NULL, NULL, NULL, NULL),
+('F013', '3072', 'EXC', 'NEW', NULL, NULL, NULL, '3072_col.jpg', NULL, NULL, NULL, NULL),
+('F033', '9247', 'EXC', 'NEW', NULL, NULL, NULL, '9247_col.jpg', NULL, NULL, NULL, NULL),
+('F033', '9246', 'EXC', 'NEW', NULL, NULL, NULL, '9246_col.jpg', NULL, NULL, NULL, NULL),
+('F033', '9146', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9146_col.jpg', NULL, '5mm, 4mm ', ' <table class="yarn_shade LastDesing">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26</td>                   <td>28/30</td>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Aran - Shade 507</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">100g balls</td>                 </tr>                 <tr>                   <th>Denim Aran - Shade 649</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F033', '9145', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9145_col.jpg', NULL, '5mm, 4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Long Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Small</td>\r\n                  <td>Medium</td>\r\n                  <td>Large</td>\r\n                  <td>X Large</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 502</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Small</td>\r\n                  <td>Medium</td>\r\n                  <td>Large</td>\r\n                  <td>X Large</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 508</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F033', '8728', 'EXC', 'NEW', NULL, NULL, NULL, '8728_col.jpg', NULL, NULL, NULL, NULL),
+('F033', '8586', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8586_col.jpg', NULL, '4mm, 5mm', '<table class="yarn_shade">\r\n                <caption>jacket with zip</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26in</td>\r\n                  <td>28/30in</td>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 635</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>jacket with buttons</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26in</td>\r\n                  <td>28/30in</td>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 620</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F033', '8420', 'EXC', 'NEW', NULL, NULL, NULL, '8420_col.jpg', NULL, NULL, NULL, NULL),
+('F033', '5047', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '5047_col.jpg', NULL, '5mm, 4mm', '<table class="yarn_shade">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 649</th>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Aran - Shade 507</th>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F033', '2235', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2235_col.jpg', NULL, '4mm, 5mm', ' <table class="yarn_shade">                 <caption>cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>3-4 yrs</td>                   <td>5-6 yrs</td>                   <td>7-8 yrs</td>                   <td>9-10 yrs</td>                   <td>11-12 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Denim Aran - Shade 648</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>3-4 yrs</td>                   <td>5-6 yrs</td>                   <td>7-8 yrs</td>                   <td>9-10 yrs</td>                   <td>11-12 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Denim Aran - Shade 508</th>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F033', '2112', 'EXC', 'NEW', NULL, NULL, NULL, '2112_col.jpg', NULL, NULL, NULL, NULL),
+('F119', '9220', 'EXC', 'NEW', NULL, NULL, NULL, '9220_col.jpg', NULL, NULL, NULL, NULL),
+('F119', '9219', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9219_col.jpg', NULL, '5mm, 4mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Bonus Aran 400g with Wool - Shade 867</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">400g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Bonus Aran 400g with Wool - Shade 868</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">400g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sweater with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Bonus Aran 400g with Wool - Shade 869</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">400g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F119', '8486', 'EXC', 'NEW', NULL, NULL, NULL, '8486_col.jpg', NULL, NULL, NULL, NULL),
+('F119', '8485', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8485_col.jpg', NULL, '4mm, 5mm', '<table class="yarn_shade">\r\n                <caption>round neck cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Bonus Aran 400g with Wool - Shade 962</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">400g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>cardigan with collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>44/46in</td>\r\n                  <td>48/50in</td>\r\n                  <td>52/54in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Bonus Aran 400g with Wool - Shade 872</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">400g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F119', '8362', 'EXC', 'NEW', NULL, NULL, NULL, '8362_col.jpg', NULL, NULL, NULL, NULL),
+('F119', '2274', 'EXC', 'NEW', NULL, NULL, NULL, '2274_col.jpg', NULL, NULL, NULL, NULL),
+('F119', '2126', 'EXC', 'NEW', NULL, NULL, NULL, '2126_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9342', 'EXC', 'NEW', NULL, NULL, NULL, '9342_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9341', 'EXC', 'NEW', NULL, NULL, NULL, '9341_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9340', 'EXC', 'NEW', NULL, NULL, NULL, '9340_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9260', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9260_col.jpg', NULL, '5mm, 4mm', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Click Aran with Wool - Shade 115</th>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>V Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Click Aran with Wool - Shade 123</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F037', '9254', 'EXC', 'NEW', NULL, NULL, NULL, '9254_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9253', 'EXC', 'NEW', NULL, NULL, NULL, '9253_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9233', 'EXC', 'NEW', NULL, NULL, NULL, '9233_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9121', 'EXC', 'NEW', NULL, NULL, NULL, '9121_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9120', 'EXC', 'NEW', NULL, NULL, NULL, '9120_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9088', 'EXC', 'NEW', NULL, NULL, NULL, '9088_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9087', 'EXC', 'NEW', NULL, NULL, NULL, '9087_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9086', 'EXC', 'NEW', NULL, NULL, NULL, '9086_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9085', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9085_col.jpg', NULL, '4mm, 5mm ', ' <table class="yarn_shade">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Click Aran with Wool - Shade 161</th>                   <td>7</td>                   <td>9</td>                   <td>11</td>                   <td>14</td>                   <td>15</td>                   <td>17</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Slipover</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Click Aran with Wool - Shade 128</th>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F037', '9084', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9084_col.jpg', NULL, '4mm, 5mm', '<table class="yarn_shade">                 <caption>Round Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Click Aran with Wool - Shade 162</th>                   <td>7</td>                   <td>10</td>                   <td>12</td>                   <td>14</td>                   <td>17</td>                   <td>19</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>V Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Click Aran with Wool - Shade 161</th>                   <td>7</td>                   <td>10</td>                   <td>12</td>                   <td>14</td>                   <td>16</td>                   <td>19</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F037', '9073', 'EXC', 'NEW', NULL, NULL, NULL, '9073_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9072', 'EXC', 'NEW', NULL, NULL, NULL, '9072_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '9071', 'EXC', 'NEW', NULL, NULL, NULL, '9071_col.jpg', NULL, NULL, NULL, NULL),
+('F037', '2275', 'EXC', 'NEW', NULL, NULL, NULL, '2275_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9381', 'EXC', 'NEW', NULL, NULL, NULL, '9381_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9380', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9380_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 55</th>\r\n                  <td>5</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Roll Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 54</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9379', 'EXC', 'NEW', NULL, NULL, NULL, '9379_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9378', 'EXC', 'NEW', NULL, NULL, NULL, '9378_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9336', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9336_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 45</th>\r\n                  <td>8</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td>18</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Polo Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 43</th>\r\n                  <td>9</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td>19</td>\r\n                  <td>21</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9335', 'EXC', 'NEW', NULL, NULL, NULL, '9335_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9334', 'EXC', 'NEW', NULL, NULL, NULL, '9334_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9333', 'EXC', 'NEW', NULL, NULL, NULL, '9333_col.jpg', NULL, NULL, NULL, NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F087', '9259', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9259_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Shawl Collar Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 47</th>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td>17</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Round Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 46</th>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td>18</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9258', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9258_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>V Neck Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 49</th>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Polo Neck Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 46</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9257', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9257_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 48</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9209', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9209_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Jacket with Long Sleeves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 52</th>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>11</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Jacket with Short Sleeves</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 59</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>9</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9208', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9208_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 52</th>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9207', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9207_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Ribbed Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 53</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Neck Warmer</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Woman</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 59</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Hat with Earflaps</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 60</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Moss Stitch Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 52</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9206', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9206_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Plain Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 50</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Ribbed Socks</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td>Man</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 59</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Legwarmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 53</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Wristwarmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Woman</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Crofter Chunky - Shade 61</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F087', '9205', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9205_col.jpg', NULL, '6 1/2mm, 5 1/2mm ', '<table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Crofter Chunky - Shade 60</th>                   <td>9</td>                   <td>10</td>                   <td>12</td>                   <td>13</td>                   <td>14</td>                   <td>16</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F087', '9204', 'EXC', 'NEW', NULL, NULL, NULL, '9204_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9203', 'EXC', 'NEW', NULL, NULL, NULL, '9203_col.jpg', NULL, NULL, NULL, NULL),
+('F087', '9202', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9202_col.jpg', NULL, '6 1/2mm, 5 1/2mm ', ' <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Crofter Chunky - Shade 50</th>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td>14</td>                   <td>15</td>                   <td>17</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F045', '9527', 'EXC', 'NEW', NULL, NULL, NULL, '9527_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9527_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9526', 'EXC', 'NEW', NULL, NULL, NULL, '9526_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9526_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9525', 'EXC', 'NEW', NULL, NULL, NULL, '9525_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9525_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9524', 'EXC', 'NEW', NULL, NULL, NULL, '9524_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9524_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2347', 'EXC', 'NEW', NULL, NULL, NULL, '2347_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2347_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2346', 'EXC', 'NEW', NULL, NULL, NULL, '2346_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2346_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9501', 'INC', 'NEW', NULL, NULL, NULL, '9501_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9501_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9500', 'EXC', 'NEW', NULL, NULL, NULL, '9500_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9500_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2342', 'INC', 'NEW', NULL, NULL, NULL, '2342_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2342_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9393', 'EXC', 'NEW', NULL, NULL, NULL, '9393_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9393_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9392', 'EXC', 'NEW', NULL, NULL, NULL, '9392_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9392_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9391', 'EXC', 'NEW', NULL, NULL, NULL, '9391_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9391_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9390', 'EXC', 'NEW', NULL, NULL, NULL, '9390_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9390_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9344', 'INC', 'NEW', NULL, NULL, NULL, '9344_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9344_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9343', 'EXC', 'NEW', NULL, NULL, NULL, '9343_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9343_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2293', 'INC', 'NEW', NULL, NULL, NULL, '2293_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2293_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9261', 'INC', 'NEW', NULL, NULL, NULL, '9261_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9261_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9230', 'INC', 'NEW', NULL, NULL, NULL, '9230_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9230_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9229', 'INC', 'NEW', NULL, NULL, NULL, '9229_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9229_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9118', 'EXC', 'NEW', NULL, NULL, NULL, '9118_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9118_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9061', 'INC', 'NEW', NULL, NULL, NULL, '9061_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9061_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9060', 'INC', 'NEW', NULL, NULL, NULL, '9060_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9060_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9058', 'INC', 'NEW', NULL, NULL, NULL, '9058_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9058_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '9057', 'EXC', 'NEW', NULL, NULL, NULL, '9057_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9057_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8940', 'INC', 'NEW', NULL, NULL, NULL, '8940_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8940_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8939', 'INC', 'NEW', NULL, NULL, NULL, '8939_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8939_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8938', 'EXC', 'NEW', NULL, NULL, NULL, '8938_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8938_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8937', 'INC', 'NEW', NULL, NULL, NULL, '8937_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8937_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8936', 'EXC', 'NEW', NULL, NULL, NULL, '8936_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8936_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8831', 'INC', 'NEW', NULL, NULL, NULL, '8831_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8831_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8829', 'EXC', 'NEW', NULL, NULL, NULL, '8829_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8829_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8816', 'EXC', 'NEW', NULL, NULL, NULL, '8816_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8816_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8748', 'EXC', 'NEW', NULL, NULL, NULL, '8748_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8748_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8747', 'EXC', 'NEW', NULL, NULL, NULL, '8747_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8747_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8745', 'INC', 'NEW', NULL, NULL, NULL, '8745_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8745_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '8742', 'EXC', 'NEW', NULL, NULL, NULL, '8742_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/8742_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2279', 'EXC', 'NEW', NULL, NULL, NULL, '2279_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2279_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2278', 'EXC', 'NEW', NULL, NULL, NULL, '2278_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2278_col.jpg', NULL, NULL, '2012-02-21'),
+('F045', '2273', 'INC', 'NEW', NULL, NULL, NULL, '2273_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2273_col.jpg', NULL, NULL, '2012-02-21'),
+('F032', '9245', 'EXC', 'NEW', NULL, NULL, NULL, '9245_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '9244', 'EXC', 'NEW', NULL, NULL, NULL, '9244_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '9243', 'EXC', 'NEW', NULL, NULL, NULL, '9243_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '9140', 'EXC', 'NEW', NULL, NULL, NULL, '9140_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '9117', 'EXC', 'NEW', NULL, NULL, NULL, '9117_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '9116', 'EXC', 'NEW', NULL, NULL, NULL, '9116_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '8590', 'EXC', 'NEW', NULL, NULL, NULL, '8590_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '8458', 'EXC', 'NEW', NULL, NULL, NULL, '8458_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '8457', 'EXC', 'NEW', NULL, NULL, NULL, '8457_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '2254', 'EXC', 'NEW', NULL, NULL, NULL, '2254_col.jpg', NULL, NULL, NULL, NULL),
+('F032', '2189', 'EXC', 'NEW', NULL, NULL, NULL, '2189_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9352', 'EXC', 'NEW', NULL, NULL, NULL, '9352_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9351', 'EXC', 'NEW', NULL, NULL, NULL, '9351_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9350', 'EXC', 'NEW', NULL, NULL, NULL, '9350_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9239', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9239_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Ultra - Shade 650</th>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Ultra - Shade 508</th>\r\n                  <td>4</td>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F025', '9238', 'EXC', 'NEW', NULL, NULL, NULL, '9238_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9237', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9237_col.jpg', NULL, '10mm, 8mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Ultra - Shade 656</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Ultra - Shade 507</th>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F025', '9139', 'EXC', 'NEW', NULL, NULL, NULL, '9139_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9138', 'EXC', 'NEW', NULL, NULL, NULL, '9138_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9102', 'EXC', 'NEW', NULL, NULL, NULL, '9102_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '9101', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9101_col.jpg', NULL, '10mm, 8mm', ' <table class="yarn_shade">                 <caption>Long Sleeved Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 655</th>                   <td>7</td>                   <td>7</td>                   <td>7</td>                   <td>8</td>                   <td>8</td>                   <td>8</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>3/4 Sleeved Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 656</th>                   <td>6</td>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td>7</td>                   <td>7</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F025', '9002', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9002_col.jpg', NULL, '10mm ', ' <table class="yarn_shade LastDesing">                 <caption>long sleeved jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32in</td>                   <td>34in</td>                   <td>36in</td>                   <td>38in</td>                   <td>40in</td>                   <td>42in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 652</th>                   <td>8</td>                   <td>8</td>                   <td>9</td>                   <td>9</td>                   <td>9</td>                   <td>10</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F025', '9001', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9001_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>long jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32in</td>                   <td>34in</td>                   <td>36in</td>                   <td>38in</td>                   <td>40in</td>                   <td>42in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 654</th>                   <td>8</td>                   <td>9</td>                   <td>9</td>                   <td>10</td>                   <td>10</td>                   <td>11</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>short jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32in</td>                   <td>34in</td>                   <td>36in</td>                   <td>38in</td>                   <td>40in</td>                   <td>42in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 652</th>                   <td>7</td>                   <td>8</td>                   <td>8</td>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F025', '8951', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '8951_col.jpg', NULL, '10mm', '<table class="yarn_shade">\r\n                <caption>short squared coat</caption>\r\n                <tbody><tr><td class="DesignYarnSizeMessage">Sorry no size information found for this design.</td>\r\n              </tr></tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>long squared coat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34in</td>\r\n                  <td>36/38in</td>\r\n                  <td>40/42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Ultra - Shade 650</th>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F025', '8950', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '8950_col.jpg', NULL, '10mm', '<table class="yarn_shade LastDesing">\r\n                <caption>sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32in</td>\r\n                  <td>34in</td>\r\n                  <td>36in</td>\r\n                  <td>38in</td>\r\n                  <td>40in</td>\r\n                  <td>42in</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Denim Chunky - Shade 649</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td class="SizeLabels">100g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F025', '8949', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8949_col.jpg', NULL, '10mm, 8mm', ' <table class="yarn_shade LastDesing">                 <caption>jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>26/28in</td>                   <td>30/32in</td>                   <td>34/36in</td>                   <td>38/40in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 648</th>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">100g balls</td>                 </tr>                 <tr>                   <th>Denim Ultra - Shade 650</th>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">100g balls</td>                 </tr>               </tbody></table>', NULL),
+('F025', '8850', 'EXC', 'NEW', NULL, NULL, NULL, '8850_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '8849', 'EXC', 'NEW', NULL, NULL, NULL, '8849_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '8593', 'EXC', 'NEW', NULL, NULL, NULL, '8593_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '8591', 'EXC', 'NEW', NULL, NULL, NULL, '8591_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '8440', 'EXC', 'NEW', NULL, NULL, NULL, '8440_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '8411', 'EXC', 'NEW', NULL, NULL, NULL, '8411_col.jpg', NULL, NULL, NULL, NULL),
+('F025', '5903', 'EXC', 'NEW', NULL, NULL, NULL, '5903_col.jpg', NULL, NULL, NULL, NULL),
+('F034', '2313', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2313_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 608</th>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>7</td>                   <td>9</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 605</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F034', '9389', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9389_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">\r\n                <caption>2 Colour Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 604</th>\r\n                  <td>7</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 605</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Plain Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 605</th>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F034', '2312', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2312_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 604</th>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td>11</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 603</th>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F034', '9360', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9360_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 602</th>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F034', '9359', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9359_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 606</th>\r\n                  <td>11</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Shawl Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 608</th>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td>17</td>\r\n                  <td>17</td>\r\n                  <td>19</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F034', '9358', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9358_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">\r\n                <caption>Cowl Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 607</th>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td>16</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 608</th>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F034', '9357', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9357_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 600</th>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Squiggle Super Chunky - Shade 606</th>\r\n                  <td>7</td>\r\n                  <td>9</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F034', '2310', 'INC', 'COMPLETE', 'Children', 'Gilets & Waistcoats', NULL, '2310_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>Short Sleeved Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26in</td>                   <td>28/30in</td>                   <td>32/34in</td>                   <td>36/38in</td>                   <td>40/42in</td>                   <td>44/46in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 608</th>                   <td>6</td>                   <td>7</td>                   <td>9</td>                   <td>10</td>                   <td>12</td>                   <td>13</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Sleeveless Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26in</td>                   <td>28/30in</td>                   <td>32/34in</td>                   <td>36/38in</td>                   <td>40/42in</td>                   <td>44/46in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 606</th>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td>9</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F034', '2309', 'INC', 'COMPLETE', 'Children', 'Scarves Hats & Gloves', NULL, '2309_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>Hat with Ribbed Turnback</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 606</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Square Hat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 603</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Hat with Flower</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 600</th>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 603</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Hat with Earflaps</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 600</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F034', '2308', 'INC', 'COMPLETE', 'Children', 'Gilets & Waistcoats', NULL, '2308_col.jpg', NULL, '10mm, 8mm ', ' <table class="yarn_shade">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 603</th>                   <td>9</td>                   <td>11</td>                   <td>12</td>                   <td>13</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 602</th>                   <td>8</td>                   <td>9</td>                   <td>11</td>                   <td>12</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F034', '2307', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2307_col.jpg', NULL, '10mm, 8mm', '<table class="yarn_shade">                 <caption>Round Neck Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26in</td>                   <td>28/30in</td>                   <td>32/34in</td>                   <td>36/38in</td>                   <td>40/42in</td>                   <td>44/46in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 600</th>                   <td>8</td>                   <td>10</td>                   <td>13</td>                   <td>14</td>                   <td>16</td>                   <td>18</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Hooded Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26in</td>                   <td>28/30in</td>                   <td>32/34in</td>                   <td>36/38in</td>                   <td>40/42in</td>                   <td>44/46in</td>                   <td> </td>                 </tr>                 <tr>                   <th>Squiggle Super Chunky - Shade 603</th>                   <td>9</td>                   <td>12</td>                   <td>15</td>                   <td>16</td>                   <td>18</td>                   <td>21</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F042', '9384', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9384_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 356</th>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9383', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9383_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Mittens</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Adult</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 353</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Fingerless Mittens</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Adult</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 357</th>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>T Bag Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Adult</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 356</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Slouchy Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Adult</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 355</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9382', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9382_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 356</th>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 357</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9313', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9313_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Beret</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Women''s</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 354</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Pull on Hat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Women''s</td>\r\n                  <td>Men''s</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 350</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade">\r\n                <caption>Wrist Warmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Women''s</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 353</th>\r\n                  <td>1</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Leg Warmers</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>4-6 yrs</td>\r\n                  <td>7-9 yrs</td>\r\n                  <td>10-12 yrs</td>\r\n                  <td>Women''s</td>\r\n                  <td> </td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 352</th>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9312', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9312_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Long Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 353</th>\r\n                  <td>4</td>\r\n                  <td>9</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Sleeved Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 352</th>\r\n                  <td>6</td>\r\n                  <td>7</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9311', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9311_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Long Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 355</th>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td>15</td>\r\n                  <td>16</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Short Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 351</th>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9310', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9310_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 354</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>13</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 350</th>\r\n                  <td>5</td>\r\n                  <td>6</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9309', 'EXC', 'NEW', NULL, NULL, NULL, '9309_col.jpg', NULL, NULL, NULL, NULL),
+('F042', '9308', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9308_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade">\r\n                <caption>Round Neck Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 352</th>\r\n                  <td>6</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>14</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sweater with Hood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 353</th>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td>16</td>\r\n                  <td>18</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F042', '9307', 'EXC', 'NEW', NULL, NULL, NULL, '9307_col.jpg', NULL, NULL, NULL, NULL),
+('F042', '9306', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9306_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Short Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 354</th>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Long Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Connemara Chunky - Shade 350</th>\r\n                  <td>10</td>\r\n                  <td>10</td>\r\n                  <td>11</td>\r\n                  <td>11</td>\r\n                  <td>12</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F062', '9543', 'INC', 'NEW', NULL, NULL, NULL, '9543_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9543_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9542', 'EXC', 'NEW', NULL, NULL, NULL, '9542_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9542_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9541', 'INC', 'NEW', NULL, NULL, NULL, '9541_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9541_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '2349', 'INC', 'NEW', NULL, NULL, NULL, '2349_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2349_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9458', 'EXC', 'NEW', NULL, NULL, NULL, '9458_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9458_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9457', 'INC', 'NEW', NULL, NULL, NULL, '9457_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9457_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9456', 'INC', 'NEW', NULL, NULL, NULL, '9456_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9456_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9455', 'INC', 'NEW', NULL, NULL, NULL, '9455_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9455_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9454', 'INC', 'NEW', NULL, NULL, NULL, '9454_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9454_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '2331', 'INC', 'NEW', NULL, NULL, NULL, '2331_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2331_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9402', 'INC', 'NEW', NULL, NULL, NULL, '9402_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9402_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9401', 'INC', 'NEW', NULL, NULL, NULL, '9401_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9401_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9400', 'INC', 'NEW', NULL, NULL, NULL, '9400_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9400_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9321', 'INC', 'NEW', NULL, NULL, NULL, '9321_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9321_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9320', 'INC', 'NEW', NULL, NULL, NULL, '9320_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9320_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9319', 'INC', 'NEW', NULL, NULL, NULL, '9319_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9319_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9318', 'INC', 'NEW', NULL, NULL, NULL, '9318_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9318_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9317', 'INC', 'NEW', NULL, NULL, NULL, '9317_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9317_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9316', 'INC', 'NEW', NULL, NULL, NULL, '9316_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9316_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9315', 'INC', 'NEW', NULL, NULL, NULL, '9315_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9315_col.jpg', NULL, NULL, '2012-02-21'),
+('F062', '9314', 'INC', 'NEW', NULL, NULL, NULL, '9314_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9314_col.jpg', NULL, NULL, '2012-02-21'),
+('F040', '9385', 'NEW', 'NEW', NULL, NULL, NULL, '9385_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9385_col.jpg', NULL, NULL, NULL),
+('F040', '9356', 'NEW', 'NEW', NULL, NULL, NULL, '9356_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9356_col.jpg', NULL, NULL, NULL),
+('F040', '9355', 'NEW', 'NEW', NULL, NULL, NULL, '9355_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9355_col.jpg', NULL, NULL, NULL),
+('F040', '9354', 'NEW', 'NEW', NULL, NULL, NULL, '9354_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9354_col.jpg', NULL, NULL, NULL),
+('F040', '9353', 'NEW', 'NEW', NULL, NULL, NULL, '9353_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9353_col.jpg', NULL, NULL, NULL),
+('F040', '9267', 'NEW', 'NEW', NULL, NULL, NULL, '9267_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9267_col.jpg', NULL, NULL, NULL),
+('F040', '9196', 'NEW', 'NEW', NULL, NULL, NULL, '9196_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9196_col.jpg', NULL, NULL, NULL),
+('F040', '9056', 'NEW', 'NEW', NULL, NULL, NULL, '9056_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9056_col.jpg', NULL, NULL, NULL),
+('F040', '9054', 'NEW', 'NEW', NULL, NULL, NULL, '9054_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9054_col.jpg', NULL, NULL, NULL),
+('F040', '9053', 'NEW', 'NEW', NULL, NULL, NULL, '9053_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9053_col.jpg', NULL, NULL, NULL),
+('F040', '2268', 'NEW', 'NEW', NULL, NULL, NULL, '2268_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2268_col.jpg', NULL, NULL, NULL),
+('F095', '2356', 'NEW', 'NEW', NULL, NULL, NULL, '2356_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2356_col.jpg', NULL, NULL, NULL),
+('F095', '9575', 'NEW', 'NEW', NULL, NULL, NULL, '9575_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9575_col.jpg', NULL, NULL, NULL),
+('F095', '9574', 'NEW', 'NEW', NULL, NULL, NULL, '9574_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9574_col.jpg', NULL, NULL, NULL),
+('F095', '9573', 'NEW', 'NEW', NULL, NULL, NULL, '9573_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9573_col.jpg', NULL, NULL, NULL),
+('F053', '9274', 'EXC', 'NEW', NULL, NULL, NULL, '9274_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9273', 'EXC', 'NEW', NULL, NULL, NULL, '9273_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9272', 'EXC', 'NEW', NULL, NULL, NULL, '9272_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9271', 'EXC', 'NEW', NULL, NULL, NULL, '9271_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9270', 'EXC', 'NEW', NULL, NULL, NULL, '9270_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9269', 'EXC', 'NEW', NULL, NULL, NULL, '9269_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '9268', 'EXC', 'NEW', NULL, NULL, NULL, '9268_col.jpg', NULL, NULL, NULL, NULL),
+('F053', '2281', 'EXC', 'NEW', NULL, NULL, NULL, '2281_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9329', 'EXC', 'NEW', NULL, NULL, NULL, '9329_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9327', 'EXC', 'NEW', NULL, NULL, NULL, '9327_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9328', 'EXC', 'NEW', NULL, NULL, NULL, '9328_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9188', 'EXC', 'NEW', NULL, NULL, NULL, '9188_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9187', 'EXC', 'NEW', NULL, NULL, NULL, '9187_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9186', 'EXC', 'NEW', NULL, NULL, NULL, '9186_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9185', 'EXC', 'NEW', NULL, NULL, NULL, '9185_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9184', 'EXC', 'NEW', NULL, NULL, NULL, '9184_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9183', 'EXC', 'NEW', NULL, NULL, NULL, '9183_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9182', 'EXC', 'NEW', NULL, NULL, NULL, '9182_col.jpg', NULL, NULL, NULL, NULL),
+('F041', '9181', 'EXC', 'NEW', NULL, NULL, NULL, '9181_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9347', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9347_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>V Neck Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 179</th>\r\n                  <td>13</td>\r\n                  <td>14</td>\r\n                  <td>16</td>\r\n                  <td>18</td>\r\n                  <td>20</td>\r\n                  <td>21</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Cardigan with Collar</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 184</th>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td>19</td>\r\n                  <td>20</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9346', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9346_col.jpg', NULL, '6 1/2mm, 5 1/2mm, Cable Needle', '<table class="yarn_shade LastDesing">\r\n                <caption>Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 178</th>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>15</td>\r\n                  <td>17</td>\r\n                  <td>18</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9345', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9345_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 179</th>\r\n                  <td>17</td>\r\n                  <td>18</td>\r\n                  <td>21</td>\r\n                  <td>24</td>\r\n                  <td>26</td>\r\n                  <td>27</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9256', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9256_col.jpg', NULL, '6 1/2mm, 6mm', '<table class="yarn_shade LastDesing">\r\n                <caption>Kimono Jacket</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>48/50</td>\r\n                  <td>52/54</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 198</th>\r\n                  <td>12</td>\r\n                  <td>13</td>\r\n                  <td>16</td>\r\n                  <td>18</td>\r\n                  <td>20</td>\r\n                  <td>21</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9255', 'EXC', 'NEW', NULL, NULL, NULL, '9255_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9216', 'EXC', 'NEW', NULL, NULL, NULL, '9216_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9215', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9215_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>V Neck Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 194</th>\r\n                  <td>5</td>\r\n                  <td>7</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Polo Neck Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 195</th>\r\n                  <td>5</td>\r\n                  <td>8</td>\r\n                  <td>9</td>\r\n                  <td>10</td>\r\n                  <td>12</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9214', 'EXC', 'NEW', NULL, NULL, NULL, '9214_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9213', 'EXC', 'NEW', NULL, NULL, NULL, '9213_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9212', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9212_col.jpg', NULL, '6 1/2mm, 5 1/2mm', '<table class="yarn_shade">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 196</th>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>13</td>\r\n                  <td>16</td>\r\n                  <td>17</td>\r\n                  <td>20</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Sweater</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>24/26</td>\r\n                  <td>28/30</td>\r\n                  <td>32/34</td>\r\n                  <td>36/38</td>\r\n                  <td>40/42</td>\r\n                  <td>44/46</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Chunky - Shade 183</th>\r\n                  <td>8</td>\r\n                  <td>10</td>\r\n                  <td>13</td>\r\n                  <td>16</td>\r\n                  <td>17</td>\r\n                  <td>20</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F038', '9211', 'EXC', 'NEW', NULL, NULL, NULL, '9211_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '9210', 'EXC', 'NEW', NULL, NULL, NULL, '9210_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '2277', 'EXC', 'NEW', NULL, NULL, NULL, '2277_col.jpg', NULL, NULL, NULL, NULL),
+('F038', '2269', 'INC', 'COMPLETE', 'Children', 'Scarves Hats & Gloves', NULL, '2269_col.jpg', NULL, '6 1/2mm, 5 1/2mm  ', '<table class="yarn_shade">                 <caption>Mittens</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Chunky - Shade 194</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Plain Leg Warmers</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Chunky - Shade 193</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Scarf</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Chunky - Shade 192</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Ribbed Leg Warmers</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Chunky - Shade 194</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9332', 'EXC', 'NEW', NULL, NULL, NULL, '9332_col.jpg', NULL, NULL, NULL, NULL),
+('F052', '9331', 'EXC', 'NEW', NULL, NULL, NULL, '9331_col.jpg', NULL, NULL, NULL, NULL),
+('F052', '9330', 'EXC', 'NEW', NULL, NULL, NULL, '9330_col.jpg', NULL, NULL, NULL, NULL),
+('F052', '9177', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9177_col.jpg', NULL, '4 1/2mm, 5 1/2mm ', ' <table class="yarn_shade">                 <caption>Waistcoat with Collar</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 13</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>V Neck Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 12</th>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9176', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9176_col.jpg', NULL, '5 1/2mm, 4 1/2mm  ', ' <table class="yarn_shade">                 <caption>Plain Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 14</th>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Jacket with Contrast Collar</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 14</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 15</th>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9175', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9175_col.jpg', NULL, '5 1/2mm, 4 1/2mm  ', '<table class="yarn_shade">                 <caption>Round Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 10</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Polo Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 13</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 14</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 15</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9174', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9174_col.jpg', NULL, '5 1/2mm, 4 1/2mm, 4 1/2mm Circular Needle', '  <table class="yarn_shade">                 <caption>Short Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 10</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 11</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 12</th>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Long Sleeved Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 10</th>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9173', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9173_col.jpg', NULL, '5 1/2mm, 6 1/2mm ', ' <table class="yarn_shade">                 <caption>Cardigan with Scarf</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 13</th>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td>9</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cardigan without Scarf</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 10</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL);
+INSERT INTO sirdar_yarn_leaflet (yarn_code, leaflet_code, leaflet_status, import_status, cat, subcat, categories_id, leaflet_image, leaflet_sirdar_image, needle_size, shades_tables, changedate) VALUES
+('F052', '9172', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9172_col.jpg', NULL, '5 1/2mm, 4 1/2mm  ', '  <table class="yarn_shade">                 <caption>Short Top</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 11</th>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Long Top</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 12</th>                   <td>5</td>                   <td>5</td>                   <td>6</td>                   <td>6</td>                   <td>7</td>                   <td>7</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9171', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9171_col.jpg', NULL, '5 1/2mm ', ' <table class="yarn_shade">                 <caption>Striped Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 13</th>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td>5</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 14</th>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 15</th>                   <td>3</td>                   <td>3</td>                   <td>3</td>                   <td>4</td>                   <td>4</td>                   <td>4</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Plain Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 15</th>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td>11</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F052', '9170', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9170_col.jpg', NULL, '5 1/2mm, 4 1/2mm ', ' <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>small</td>                   <td>medium</td>                   <td>large</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Nomad - Shade 10</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 11</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 12</th>                   <td>2</td>                   <td>3</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>                 <tr>                   <th>Nomad - Shade 14</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F031', '9152', 'NEW', 'NEW', NULL, NULL, NULL, '9152_col.jpg', NULL, NULL, NULL, NULL),
+('F031', '2258', 'NEW', 'NEW', NULL, NULL, NULL, '2258_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9194', 'EXC', 'NEW', NULL, NULL, NULL, '9194_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9193', 'EXC', 'NEW', NULL, NULL, NULL, '9193_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9192', 'EXC', 'NEW', NULL, NULL, NULL, '9192_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9070', 'EXC', 'NEW', NULL, NULL, NULL, '9070_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9069', 'EXC', 'NEW', NULL, NULL, NULL, '9069_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9068', 'EXC', 'NEW', NULL, NULL, NULL, '9068_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9067', 'EXC', 'NEW', NULL, NULL, NULL, '9067_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9066', 'EXC', 'NEW', NULL, NULL, NULL, '9066_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9065', 'EXC', 'NEW', NULL, NULL, NULL, '9065_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9064', 'EXC', 'NEW', NULL, NULL, NULL, '9064_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9063', 'EXC', 'NEW', NULL, NULL, NULL, '9063_col.jpg', NULL, NULL, NULL, NULL),
+('F046', '9062', 'EXC', 'NEW', NULL, NULL, NULL, '9062_col.jpg', NULL, NULL, NULL, NULL),
+('F040', '9533', 'NEW', 'NEW', NULL, NULL, NULL, '9533_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9533_col.jpg', NULL, NULL, NULL),
+('F040', '9532', 'NEW', 'NEW', NULL, NULL, NULL, '9532_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9532_col.jpg', NULL, NULL, NULL),
+('F040', '9531', 'NEW', 'NEW', NULL, NULL, NULL, '9531_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9531_col.jpg', NULL, NULL, NULL),
+('F040', '9530', 'NEW', 'NEW', NULL, NULL, NULL, '9530_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9530_col.jpg', NULL, NULL, NULL),
+('F040', '9447', 'NEW', 'NEW', NULL, NULL, NULL, '9447_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9447_col.jpg', NULL, NULL, NULL),
+('F040', '9446', 'NEW', 'NEW', NULL, NULL, NULL, '9446_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9446_col.jpg', NULL, NULL, NULL),
+('F040', '9445', 'NEW', 'NEW', NULL, NULL, NULL, '9445_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9445_col.jpg', NULL, NULL, NULL),
+('F040', '9388', 'NEW', 'NEW', NULL, NULL, NULL, '9388_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9388_col.jpg', NULL, NULL, NULL),
+('F040', '9387', 'NEW', 'NEW', NULL, NULL, NULL, '9387_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9387_col.jpg', NULL, NULL, NULL),
+('F040', '9386', 'NEW', 'NEW', NULL, NULL, NULL, '9386_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9386_col.jpg', NULL, NULL, NULL),
+('F049', '9363', 'EXC', 'NEW', NULL, NULL, NULL, '9363_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9362', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9362_col.jpg', NULL, '4 1/2mm', '<table class="yarn_shade">\r\n                <caption>Fan and Feather Wrap</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Woman</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Dk - Shade 178</th>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="yarn_shade LastDesing">\r\n                <caption>Ribby Snood</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>Woman</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Escape Dk - Shade 179</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', NULL),
+('F049', '9361', 'EXC', 'NEW', NULL, NULL, NULL, '9361_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9264', 'EXC', 'NEW', NULL, NULL, NULL, '9264_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9263', 'EXC', 'NEW', NULL, NULL, NULL, '9263_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9262', 'EXC', 'NEW', NULL, NULL, NULL, '9262_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9180', 'INC', 'COMPLETE', 'Womens', 'Tops', NULL, '9180_col.jpg', NULL, '4mm, 3 1/4mm, 3 1/4mm Circular Needle  ', '  <table class="yarn_shade">                 <caption>V Neck Top</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 192</th>                   <td>7</td>                   <td>8</td>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td>13</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cowl Neck Top</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 193</th>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td>12</td>                   <td>13</td>                   <td>14</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9179', 'INC', 'COMPLETE', 'Mens', 'Sweaters', NULL, '9179_col.jpg', NULL, '4mm, 3 1/4mm ', ' <table class="yarn_shade">                 <caption>Round Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>44</td>                   <td>46</td>                   <td>48</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 182</th>                   <td>12</td>                   <td>12</td>                   <td>13</td>                   <td>14</td>                   <td>14</td>                   <td>15</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>V Neck Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>44</td>                   <td>46</td>                   <td>48</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 186</th>                   <td>12</td>                   <td>12</td>                   <td>13</td>                   <td>14</td>                   <td>14</td>                   <td>15</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9178', 'EXC', 'NEW', NULL, NULL, NULL, '9178_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '9128', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', NULL, '9128_col.jpg', NULL, '4mm, 3 1/4mm, Cable Needle ', ' <table class="yarn_shade LastDesing">                 <caption>Waistcoat</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26</td>                   <td>28/30</td>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 180</th>                   <td>5</td>                   <td>6</td>                   <td>8</td>                   <td>9</td>                   <td>10</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9127', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9127_col.jpg', NULL, '4mm, 3 1/4mm, 3 1/4mm Circular Needle  ', ' <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 188</th>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td>13</td>                   <td>16</td>                   <td>17</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9081', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9081_col.jpg', NULL, '3 1/4 mm, 4mm  ', '<table class="yarn_shade LastDesing">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32 in</td>                   <td>34 in</td>                   <td>36 in</td>                   <td>38 in</td>                   <td>40 in</td>                   <td>42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 180</th>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td>12</td>                   <td>13</td>                   <td>14</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9080', 'INC', 'COMPLETE', 'Womens', 'Sweaters', NULL, '9080_col.jpg', NULL, '3 1/4 mm, 4mm, 8mm  ', '<table class="yarn_shade LastDesing">                 <caption>Sweater</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32 in</td>                   <td>34 in</td>                   <td>36 in</td>                   <td>38 in</td>                   <td>40 in</td>                   <td>42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 181</th>                   <td>10</td>                   <td>11</td>                   <td>11</td>                   <td>12</td>                   <td>13</td>                   <td>13</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9079', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9079_col.jpg', NULL, '3 1/4 mm, 4mm  ', '<table class="yarn_shade">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 180</th>                   <td>8</td>                   <td>10</td>                   <td>13</td>                   <td>14</td>                   <td>15</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 186</th>                   <td>8</td>                   <td>10</td>                   <td>13</td>                   <td>14</td>                   <td>15</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9078', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9078_col.jpg', NULL, '3 1/4 mm, 4mm  ', '<table class="yarn_shade">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 185</th>                   <td>6</td>                   <td>9</td>                   <td>11</td>                   <td>12</td>                   <td>14</td>                   <td>16</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>24/26 in</td>                   <td>28/30 in</td>                   <td>32/34 in</td>                   <td>36/38 in</td>                   <td>40/42 in</td>                   <td>44/46 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 184</th>                   <td>6</td>                   <td>9</td>                   <td>11</td>                   <td>12</td>                   <td>14</td>                   <td>16</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9077', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9077_col.jpg', NULL, '4mm', '4mm  <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32 in</td>                   <td>34 in</td>                   <td>36 in</td>                   <td>38 in</td>                   <td>40 in</td>                   <td>42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 182</th>                   <td>9</td>                   <td>9</td>                   <td>9</td>                   <td>10</td>                   <td>11</td>                   <td>12</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9076', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9076_col.jpg', NULL, '4mm', '<table class="yarn_shade LastDesing">                 <caption>9076</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32 in</td>                   <td>34 in</td>                   <td>36 in</td>                   <td>38 in</td>                   <td>40 in</td>                   <td>42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 183</th>                   <td>13</td>                   <td>15</td>                   <td>16</td>                   <td>17</td>                   <td>18</td>                   <td>19</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9075', 'INC', 'COMPLETE', 'Womens', 'Accessories', NULL, '9075_col.jpg', NULL, '3 1/4 mm, 4mm', '  <table class="yarn_shade">                 <caption>Cabled Beret A</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 183</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Plain Beret B</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 185</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade">                 <caption>Ribbed Beret C</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 180</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Tuck Stitch Beret D</caption>                 <tbody><tr>                   <th>Size</th>                   <td>4-6 yrs</td>                   <td>7-9 yrs</td>                   <td>10-12 yrs</td>                   <td>Adult</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 187</th>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td>3</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '9074', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9074_col.jpg', NULL, '3 1/4 mm, 4mm', '  <table class="yarn_shade LastDesing">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32 in</td>                   <td>34 in</td>                   <td>36 in</td>                   <td>38 in</td>                   <td>40 in</td>                   <td>42 in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 187</th>                   <td>9</td>                   <td>10</td>                   <td>11</td>                   <td>11</td>                   <td>12</td>                   <td>13</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F049', '2280', 'EXC', 'NEW', NULL, NULL, NULL, '2280_col.jpg', NULL, NULL, NULL, NULL),
+('F049', '2266', 'INC', 'COMPLETE', 'Children', 'Cardigans', NULL, '2266_col.jpg', NULL, '4mm, 3 1/4mm', '<table class="yarn_shade">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 190</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>2-3 yrs</td>                   <td>4-5 yrs</td>                   <td>6-7 yrs</td>                   <td>8-9 yrs</td>                   <td>10-11 yrs</td>                   <td>12-13 yrs</td>                   <td> </td>                 </tr>                 <tr>                   <th>Escape Dk - Shade 194</th>                   <td>3</td>                   <td>4</td>                   <td>5</td>                   <td>6</td>                   <td>7</td>                   <td>8</td>                   <td class="SizeLabels">50g balls</td>                 </tr>               </tbody></table>', NULL),
+('F028', '9289', 'EXC', 'NEW', NULL, NULL, NULL, '9289_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9289_col.jpg', NULL, NULL, '2011-07-28'),
+('F012', '9291', 'EXC', 'NEW', NULL, NULL, NULL, '9291_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '9201', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '9201_col.jpg', NULL, '4 1/2mm, 3 3/4mm, 3 3/4mm Circular Needle  ', '  <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Yo Yo - Shade 19</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">400g balls</td>                 </tr>               </tbody></table>', NULL),
+('F005', '9200', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '9200_col.jpg', NULL, '4 1/2mm ', ' <table class="yarn_shade">                 <caption>V Neck Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Yo Yo - Shade 18</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">400g balls</td>                 </tr>               </tbody></table><table class="yarn_shade LastDesing">                 <caption>Round Neck Cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32/34</td>                   <td>36/38</td>                   <td>40/42</td>                   <td>44/46</td>                   <td>48/50</td>                   <td>52/54</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Yo Yo - Shade 19</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">400g balls</td>                 </tr>               </tbody></table>', NULL),
+('F005', '9126', 'EXC', 'NEW', NULL, NULL, NULL, '9126_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '9083', 'EXC', 'NEW', NULL, NULL, NULL, '9083_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '9082', 'EXC', 'NEW', NULL, NULL, NULL, '9082_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '9000', 'EXC', 'NEW', NULL, NULL, NULL, '9000_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '8927', 'EXC', 'NEW', NULL, NULL, NULL, '8927_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '8926', 'EXC', 'NEW', NULL, NULL, NULL, '8926_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '8844', 'INC', 'COMPLETE', 'Womens', 'Cardigans', NULL, '8844_col.jpg', NULL, '3?mm, 3?mm circular neeedle, 4?mm', ' <table class="yarn_shade LastDesing">                 <caption>cardigan</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32in</td>                   <td>34in</td>                   <td>36in</td>                   <td>38in</td>                   <td>40in</td>                   <td>42in</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Yo Yo - Shade 5</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">400g balls</td>                 </tr>               </tbody></table>', NULL),
+('F005', '8843', 'EXC', 'NEW', NULL, NULL, NULL, '8843_col.jpg', NULL, NULL, NULL, NULL),
+('F005', '8768', 'INC', 'COMPLETE', 'Womens', 'Jackets', NULL, '8768_col.jpg', NULL, '4 1/2mm, 3 3/4mm, Circular Needle', '  <table class="yarn_shade LastDesing">                 <caption>Jacket</caption>                 <tbody><tr>                   <th>Size</th>                   <td>32</td>                   <td>34</td>                   <td>36</td>                   <td>38</td>                   <td>40</td>                   <td>42</td>                   <td>inches</td>                 </tr>                 <tr>                   <th>Yo Yo - Shade 6</th>                   <td>1</td>                   <td>1</td>                   <td>1</td>                   <td>2</td>                   <td>2</td>                   <td>2</td>                   <td class="SizeLabels">400g balls</td>                 </tr>               </tbody></table>', NULL),
+('F005', '8601', 'EXC', 'NEW', NULL, NULL, NULL, '8601_col.jpg', NULL, NULL, NULL, NULL),
+('F100', '9470', 'INC', 'COMPLETE', 'Womens', 'Waistcoats', 104, '9470_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9470_col.jpg', '8mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 151</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Waistcoat</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 181</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F100', '9475', 'INC', 'COMPLETE', 'Womens', 'Accessories', 99, '9475_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9475_col.jpg', '10mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Small Shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>48</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 154</th>\r\n                  <td>1</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Large Shawl</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>54 1/2</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 152</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Wrap</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>53 1/2</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 176</th>\r\n                  <td>2</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F100', '9474', 'INC', 'COMPLETE', 'Womens', 'Tops', 103, '9474_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9474_col.jpg', '7mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Short Sleeved Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 177</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Sleeveless Top</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 153</th>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td>5</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F100', '9473', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9473_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9473_col.jpg', '7mm', '<table class="\r\n					yarn_shade\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 178</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table><table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Cardigan</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 152</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F100', '9472', 'EXC', 'NEW', NULL, NULL, NULL, '9472_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9472_col.jpg', NULL, NULL, '2011-07-28'),
+('F100', '9471', 'INC', 'COMPLETE', 'Womens', 'Cardigans', 100, '9471_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9471_col.jpg', '8mm', '<table class="\r\n					yarn_shade LastDesing\r\n				">\r\n                <caption>Tie-Front Bolero</caption>\r\n                <tbody><tr>\r\n                  <th>Size</th>\r\n                  <td>32</td>\r\n                  <td>34</td>\r\n                  <td>36</td>\r\n                  <td>38</td>\r\n                  <td>40</td>\r\n                  <td>42</td>\r\n                  <td>inches</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 155</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n                <tr>\r\n                  <th>Firefly / Firefly Metallic - Shade 179</th>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>3</td>\r\n                  <td>4</td>\r\n                  <td>4</td>\r\n                  <td class="SizeLabels">50g balls</td>\r\n                </tr>\r\n              </tbody></table>', '2011-07-28'),
+('F077', 'DMY-1000', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F070', 'DMY-1001', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F118', 'DMY-1002', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F069', 'DMY-1003', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F081', 'DMY-1004', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F060', 'DMY-1005', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F091', 'DMY-1006', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F055', 'DMY-1007', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F095', '2357', 'NEW', 'NEW', NULL, NULL, NULL, '2357_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2357_col.jpg', NULL, NULL, NULL),
+('F035', 'DMY-1009', 'EXC', 'NEW', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
+('F084', '1351', 'EXC', 'NEW', NULL, NULL, NULL, '1351_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1351_col.jpg', NULL, NULL, '2012-02-21'),
+('F084', '1350', 'INC', 'NEW', NULL, NULL, NULL, '1350_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/1350_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '9572', 'EXC', 'NEW', NULL, NULL, NULL, '9572_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9572_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '9571', 'EXC', 'NEW', NULL, NULL, NULL, '9571_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9571_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '9570', 'EXC', 'NEW', NULL, NULL, NULL, '9570_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9570_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '9569', 'EXC', 'NEW', NULL, NULL, NULL, '9569_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9569_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '9568', 'EXC', 'NEW', NULL, NULL, NULL, '9568_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/9568_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '2355', 'EXC', 'NEW', NULL, NULL, NULL, '2355_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2355_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '2354', 'EXC', 'NEW', NULL, NULL, NULL, '2354_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2354_col.jpg', NULL, NULL, '2012-02-21'),
+('F011', '2353', 'EXC', 'NEW', NULL, NULL, NULL, '2353_col.jpg', 'http://www.sirdar.co.uk/images/products/designs/2353_col.jpg', NULL, NULL, '2012-02-21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table sirdar_yarn_leaflet_shade
+--
+
+CREATE TABLE IF NOT EXISTS sirdar_yarn_leaflet_shade (
+  leaflet_shade_id int(11) NOT NULL auto_increment,
+  yarn_code varchar(30) NOT NULL,
+  leaflet_code varchar(30) NOT NULL,
+  shade_code varchar(30) NOT NULL,
+  shade_desc varchar(120) NOT NULL,
+  PRIMARY KEY  (leaflet_shade_id)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Sirdar Yarn Leaflet Shades' AUTO_INCREMENT=598 ;
+
+--
+-- Dumping data for table sirdar_yarn_leaflet_shade
+--
+
+INSERT INTO sirdar_yarn_leaflet_shade (leaflet_shade_id, yarn_code, leaflet_code, shade_code, shade_desc) VALUES
+(1, 'F050', '1560', 'F050-0957', 'Snuggly Tiny Tots Dk - Shade 957'),
+(2, 'F050', '1560', 'F050-0958', 'Snuggly Tiny Tots Dk - Shade 958'),
+(3, 'F075', '1625', 'F075-0251', 'Snuggly Dk 50g - Shade 251'),
+(4, 'F075', '1625', 'F075-0303', 'Snuggly Dk 50g - Shade 303'),
+(5, 'F075', '1625', 'F075-0219', 'Snuggly Dk 50g - Shade 219'),
+(6, 'F075', '1648', 'F075-0403', 'Snuggly Dk 50g - Shade 237'),
+(7, 'F050', '1682', 'F050-0976', 'Snuggly Tiny Tots Dk - Shade 976'),
+(8, 'F071', '1730', 'F071-0133', 'Snuggly Baby Bamboo Dk - Shade 133'),
+(9, 'F074', '1706', 'F074-0302', 'Snuggly 4 Ply 50g - Shade 302'),
+(10, 'F075', '1707', 'F075-0344', 'Snuggly 4 Ply 50g - Shade 344'),
+(11, 'F075', '1711', 'F075-0350', 'Snuggly Dk 50g - Shade 350'),
+(12, 'F075', '1711', 'F075-0354', 'Snuggly Dk 50g - Shade 354'),
+(13, 'F075', '1711', 'F075-0353', 'Snuggly Dk 50g - Shade 353'),
+(15, 'F075', '1737', '', 'Snuggly Dk 50g - Shade 383'),
+(16, 'F075', '1737', '', 'Snuggly Dk 50g - Shade 385'),
+(17, 'F050', '1743', '', 'Snuggly Tiny Tots Dk - Shade 940'),
+(18, 'F050', '1744', '', 'Snuggly Tiny Tots Dk - Shade 942'),
+(19, 'F050', '1744', '', 'Snuggly Tiny Tots Dk - Shade 939'),
+(20, 'F075', '1749', '', 'Snuggly Dk 50g - Shade 389'),
+(21, 'F075', '1749', '', 'Snuggly Dk 50g - Shade 379'),
+(22, 'F075', '1749', 'F075-0344', 'Snuggly Dk 50g - Shade 344'),
+(23, 'F050', '1755', '', 'Snuggly Tiny Tots Dk - Shade 938'),
+(24, 'F022', '1759', '', 'Supersoft Aran - Shade 872'),
+(25, 'F022', '1759', '', 'Supersoft Aran - Shade 880'),
+(26, 'F022', '1760', '', 'Supersoft Aran - Shade 881'),
+(27, 'F083', '1769', '', 'Snuggly 4 Ply 50g - Shade 388'),
+(28, 'F083', '1769', '', 'Snuggly 4 Ply 50g - Shade 258'),
+(29, 'F083', '1769', '', 'Snuggly 4 Ply 50g - Shade 237'),
+(30, 'F084', '1771', 'F084-0633', 'Snuggly Snowflake Chunky - Shade 633'),
+(31, 'F084', '1771', '', 'Snuggly Dk 50g - Shade 237'),
+(32, 'F084', '1771', 'F084-0635', 'Snuggly Snowflake Chunky - Shade 635'),
+(33, 'F084', '1771', 'F084-0631', 'Snuggly Snowflake Chunky - Shade 631'),
+(34, 'F084', '1771', 'F084-0634', 'Snuggly Snowflake Chunky - Shade 634'),
+(35, 'F084', '1772', 'F084-0637', 'Snuggly Snowflake Chunky - Shade 637'),
+(36, 'F084', '1772', '', 'Snuggly Dk 50g - Shade 254'),
+(37, 'F084', '1773', 'F084-0633', 'Snuggly Snowflake Chunky - Shade 633'),
+(38, 'F084', '1773', 'F084-0635', 'Snuggly Snowflake Chunky - Shade 635'),
+(39, 'F084', '1774', 'F084-0634', 'Snuggly Snowflake Chunky - Shade 634'),
+(40, 'F084', '1775', 'F084-0637', 'Snuggly Snowflake Chunky - Shade 637'),
+(41, 'F084', '1775', 'F084-0635', 'Snuggly Snowflake Chunky - Shade 635'),
+(42, 'F084', '1775', 'F084-0630', 'Snuggly Snowflake Chunky - Shade 630'),
+(43, 'F050', '1788', 'F050-0957', 'Snuggly Tiny Tots Dk - Shade 957'),
+(44, 'F050', '1788', 'F050-0935', 'Snuggly Tiny Tots Dk - Shade 935'),
+(45, 'F050', '1790', 'F050-0957', 'Snuggly Tiny Tots Dk - Shade 957'),
+(46, 'F050', '1790', 'F050-0935', 'Snuggly Tiny Tots Dk - Shade 935'),
+(47, 'F050', '1790', '', 'Snuggly Tiny Tots Dk - Shade 940'),
+(48, 'F050', '1791', 'F050-0936', 'Snuggly Tiny Tots Dk - Shade 936'),
+(49, 'F050', '1791', 'F050-0934', 'Snuggly Tiny Tots Dk - Shade 934'),
+(587, 'F023', '1852', 'F023-0645', 'Snuggly Snowflake Dk - Shade 645'),
+(586, 'F023', '1852', 'F023-0644', 'Snuggly Snowflake Dk - Shade 644'),
+(52, 'F071', '1805', 'F071-0148', 'Snuggly Baby Bamboo Dk - Shade 148'),
+(585, 'F023', '1849', 'F023-0646', 'Snuggly Snowflake Dk - Shade 646'),
+(54, 'F071', '1806', '', 'Snuggly Baby Bamboo Dk - Shade 147'),
+(55, 'F071', '1806', 'F071-0132', 'Snuggly Baby Bamboo Dk - Shade 132'),
+(56, 'F075', '1813', 'F075-0240', 'Snuggly Dk 50g - Shade 240'),
+(57, 'F075', '1813', 'F075-0353', 'Snuggly Dk 50g - Shade 353'),
+(58, 'F075', '1813', '', 'Snuggly Dk 50g - Shade 379'),
+(59, 'F071', '1822', 'F071-0149', 'Snuggly Baby Bamboo Dk - Shade 149'),
+(60, 'F071', '1822', 'F071-0150', 'Snuggly Baby Bamboo Dk - Shade 150'),
+(61, 'F071', '1822', 'F071-0131', 'Snuggly Baby Bamboo Dk - Shade 131'),
+(62, 'F071', '1822', 'F071-0150', 'Snuggly Baby Bamboo Dk - Shade 150'),
+(63, 'F071', '1823', 'F071-0149', 'Snuggly Baby Bamboo Dk - Shade 149'),
+(64, 'F071', '1823', 'F071-0150', 'Snuggly Baby Bamboo Dk - Shade 150'),
+(65, 'F096', '1835', 'F096-0754', 'Snuggly Kisses Dk - Shade 754'),
+(66, 'F096', '1835', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(67, 'F096', '1836', 'F096-0754', 'Snuggly Kisses Dk - Shade 754'),
+(68, 'F096', '1837', 'F096-0752', 'Snuggly Kisses Dk - Shade 752'),
+(69, 'F096', '1838', 'F096-0752', 'Snuggly Kisses Dk - Shade 752'),
+(70, 'F096', '1838', 'F096-0751', 'Snuggly Kisses Dk - Shade 751'),
+(71, 'F096', '1839', 'F096-0753', 'Snuggly Kisses Dk - Shade 753'),
+(72, 'F096', '1839', 'F096-0751', 'Snuggly Kisses Dk - Shade 751'),
+(73, 'F096', '1840', 'F096-0753', 'Snuggly Kisses Dk - Shade 753'),
+(74, 'F096', '1840', 'F096-0751', 'Snuggly Kisses Dk - Shade 751'),
+(75, 'F096', '1841', 'F096-0753', 'Snuggly Kisses Dk - Shade 753'),
+(76, 'F096', '1842', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(77, 'F096', '1842', 'F096-0752', 'Snuggly Kisses Dk - Shade 752'),
+(78, 'F023', '1850', 'F023-0644', 'Snuggly Snowflake Dk - Shade 644'),
+(79, 'F023', '1850', 'F023-0647', 'Snuggly Snowflake Dk - Shade 647'),
+(80, 'F096', '1855', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(81, 'F096', '1855', 'F096-0755', 'Snuggly Kisses Dk - Shade 755'),
+(82, 'F062', '9402', 'F062-0158', 'Indie - Shade 158'),
+(83, 'F062', '9402', 'F062-0159', 'Indie - Shade 159'),
+(84, 'F062', '9401', 'F062-0158', 'Indie - Shade 158'),
+(85, 'F062', '9401', 'F062-0159', 'Indie - Shade 159'),
+(86, 'F062', '9400', 'F062-0158', 'Indie - Shade 158'),
+(87, 'F062', '9400', 'F062-0159', 'Indie - Shade 159'),
+(88, 'F034', '9389', 'F034-0604', 'Squiggle Super Chunky - Shade 604'),
+(89, 'F034', '9389', 'F034-0605', 'Squiggle Super Chunky - Shade 605'),
+(90, 'F042', '9384', 'F042-0356', 'Connemara Chunky - Shade 356'),
+(91, 'F042', '9383', 'F042-0353', 'Connemara Chunky - Shade 353'),
+(92, 'F042', '9383', 'F042-0357', 'Connemara Chunky - Shade 357'),
+(93, 'F042', '9383', 'F042-0356', 'Connemara Chunky - Shade 356'),
+(94, 'F042', '9383', 'F042-0355', 'Connemara Chunky - Shade 355'),
+(95, 'F042', '9382', 'F042-0356', 'Connemara Chunky - Shade 356'),
+(96, 'F042', '9382', 'F042-0357', 'Connemara Chunky - Shade 357'),
+(97, 'F025', '8950', 'F025-0649', 'Denim Chunky - Shade 649'),
+(98, 'F025', '8951', 'F025-0650', 'Denim Ultra - Shade 650'),
+(99, 'F063', '8957', '', 'Click Dk - Shade 127'),
+(100, 'F017', '1968', 'F017-0357', 'Snuggly Snowdrops Chunky - Shade 357'),
+(101, 'F017', '1968', 'F017-0353', 'Snuggly Snowdrops Chunky - Shade 353'),
+(102, 'F017', '1970', 'F017-0351', 'Snuggly Snowdrops Chunky - Shade 351'),
+(103, 'F073', '3421', 'F073-0251', 'Snuggly 3 Ply 50g - Shade 251'),
+(104, 'F072', '3851', 'F072-0251', 'Snuggly 2 Ply - Shade 251'),
+(105, 'F075', '3956', 'F075-0224', 'Snuggly Dk 50g - Shade 224'),
+(106, 'F075', '3956', 'F075-0344', 'Snuggly Dk 50g - Shade 344'),
+(107, 'F075', '3956', 'F075-0347', 'Snuggly Dk 50g - Shade 347'),
+(108, 'F026', '9133', 'F026-0056', 'Crofter Dk - Shade 56'),
+(109, 'F026', '9133', 'F026-0057', 'Crofter Dk - Shade 57'),
+(110, 'F026', '9133', 'F026-0054', 'Crofter Dk - Shade 54'),
+(111, 'F026', '9134', 'F026-0053', 'Crofter Dk - Shade 53'),
+(112, 'F026', '9134', 'F026-0051', 'Crofter Dk - Shade 51'),
+(113, 'F026', '9135', 'F026-0056', 'Crofter Dk - Shade 56'),
+(114, 'F026', '9135', 'F026-0057', 'Crofter Dk - Shade 57'),
+(115, 'F026', '9135', 'F026-0050', 'Crofter Dk - Shade 50'),
+(116, 'F026', '9135', 'F026-0051', 'Crofter Dk - Shade 51'),
+(117, 'F026', '9136', 'F026-0050', 'Crofter Dk - Shade 50'),
+(118, 'F026', '9136', 'F026-0055', 'Crofter Dk - Shade 55'),
+(119, 'F026', '9137', 'F026-0057', 'Crofter Dk - Shade 57'),
+(120, 'F033', '9145', 'F033-0502', 'Denim Aran - Shade 502'),
+(121, 'F033', '9145', 'F033-0508', 'Denim Aran - Shade 508'),
+(122, 'F096', '1856', 'F096-0755', 'Snuggly Kisses Dk - Shade 755'),
+(123, 'F096', '1856', 'F096-0756', 'Snuggly Kisses Dk - Shade 756'),
+(124, 'F075', '1858', 'F075-0409', 'Snuggly Dk 50g - Shade 409'),
+(590, 'F084', '1960', 'F084-0631', 'Snuggly Snowflake Chunky - Shade 631'),
+(127, 'F009', '5840', '', 'Country Style Dk - Shade 446'),
+(128, 'F009', '5840', '', 'Country Style Dk - Shade 436'),
+(129, 'F009', '5840', '', 'Country Style Dk - Shade 437'),
+(130, 'F009', '5840', '', 'Wash ''n'' Wear Double Crepe Dk - Shade 276'),
+(131, 'F009', '5840', '', 'Wash ''n'' Wear Double Crepe Dk - Shade 211'),
+(132, 'F009', '5989', '', 'Country Style Dk - Shade 504'),
+(133, 'F051', '8397', '', 'Country Style 4 Ply - Shade 526'),
+(134, 'F051', '8397', '', 'Wash N Wear 4 Ply - Shade 247'),
+(135, 'F009', '8429', 'F009-0500', 'Country Style Dk - Shade 500'),
+(136, 'F073', '3029', 'F073-0321', 'Snuggly 3 Ply 50g - Shade 321'),
+(137, 'F073', '3029', 'F073-0302', 'Snuggly 3 Ply 50g - Shade 302'),
+(138, 'F073', '3029', 'F073-0320', 'Snuggly 3 Ply 50g - Shade 320'),
+(139, 'F075', '3086', 'F075-0212', 'Snuggly Dk 50g - Shade 212'),
+(140, 'F075', '3086', 'F075-0251', 'Snuggly Dk 50g - Shade 251'),
+(141, 'F075', '3086', 'F075-0224', 'Snuggly Dk 50g - Shade 224'),
+(142, 'F084', '3116', 'F084-0403', 'Snuggly Snowflake Chunky - Shade 403'),
+(143, 'F014', '3123', '', 'Baby Bonus Dk - Shade 959'),
+(144, 'F014', '3123', '', 'Baby Bonus Dk - Shade 958'),
+(145, 'F014', '3123', '', 'Baby Bonus Dk - Shade 957'),
+(146, 'F014', '3123', '', 'Baby Bonus Dk - Shade 955'),
+(147, 'F022', '3190', '', 'Supersoft Aran - Shade 843'),
+(148, 'F009', '4132', 'F009-0402', 'Country Style Dk - Shade 402'),
+(149, 'F009', '4132', '', 'Country Style Dk - Shade 404'),
+(150, 'F009', '4132', 'F009-0409', 'Country Style Dk - Shade 409'),
+(151, 'F009', '4132', 'F009-0412', 'Country Style Dk - Shade 412'),
+(152, 'F009', '4132', 'F009-0417', 'Country Style Dk - Shade 417'),
+(153, 'F009', '4132', '', 'Country Style Dk - Shade 571'),
+(154, 'F033', '5047', '', 'Denim Aran - Shade 649'),
+(155, 'F033', '5047', 'F033-0507', 'Denim Aran - Shade 507'),
+(156, 'F009', '8433', 'F009-0527', 'Country Style Dk - Shade 527'),
+(157, 'F119', '8485', 'F119-0962', 'Bonus Aran 400g with Wool - Shade 962'),
+(158, 'F119', '8485', 'F119-0872', 'Bonus Aran 400g with Wool - Shade 872'),
+(159, 'F051', '8524', 'F051-0411', 'Country Style 4 Ply - Shade 411'),
+(160, 'F051', '8524', 'F051-0428', 'Country Style 4 Ply - Shade 428'),
+(161, 'F033', '8586', '', 'Denim Aran - Shade 635'),
+(162, 'F033', '8586', '', 'Denim Aran - Shade 620'),
+(163, 'F045', '8745', 'F045-0146', 'Click Chunky with Wool - Shade 146'),
+(164, 'F045', '8745', 'F045-0147', 'Click Chunky with Wool - Shade 147'),
+(165, 'F087', '9380', 'F087-0055', 'Crofter Chunky - Shade 55'),
+(166, 'F087', '9380', 'F087-0054', 'Crofter Chunky - Shade 54'),
+(167, 'F009', '9364', 'F009-0609', 'Country Style Dk - Shade 609'),
+(168, 'F049', '9362', 'F049-0178', 'Escape Dk - Shade 178'),
+(169, 'F049', '9362', 'F049-0179', 'Escape Dk - Shade 179'),
+(170, 'F034', '9360', 'F034-0602', 'Squiggle Super Chunky - Shade 602'),
+(171, 'F034', '9359', 'F034-0606', 'Squiggle Super Chunky - Shade 606'),
+(172, 'F034', '9359', 'F034-0608', 'Squiggle Super Chunky - Shade 608'),
+(173, 'F034', '9358', 'F034-0607', 'Squiggle Super Chunky - Shade 607'),
+(174, 'F034', '9358', 'F034-0608', 'Squiggle Super Chunky - Shade 608'),
+(175, 'F034', '9357', 'F034-0600', 'Squiggle Super Chunky - Shade 600'),
+(176, 'F034', '9357', 'F034-0606', 'Squiggle Super Chunky - Shade 606'),
+(177, 'F051', '9349', 'F051-0606', 'Country Style 4 Ply - Shade 606'),
+(178, 'F038', '9347', 'F038-0179', 'Escape Chunky - Shade 179'),
+(179, 'F038', '9347', 'F038-0184', 'Escape Chunky - Shade 184'),
+(180, 'F038', '9346', 'F038-0178', 'Escape Chunky - Shade 178'),
+(181, 'F038', '9345', 'F038-0179', 'Escape Chunky - Shade 179'),
+(182, 'F026', '9339', 'F026-0045', 'Crofter Dk - Shade 45'),
+(183, 'F026', '9339', 'F026-0044', 'Crofter Dk - Shade 44'),
+(184, 'F026', '9339', 'F026-0043', 'Crofter Dk - Shade 43'),
+(185, 'F026', '9339', 'F026-0048', 'Crofter Dk - Shade 48'),
+(186, 'F026', '9338', 'F026-0044', 'Crofter Dk - Shade 44'),
+(187, 'F026', '9338', 'F026-0043', 'Crofter Dk - Shade 43'),
+(188, 'F026', '9338', 'F026-0045', 'Crofter Dk - Shade 45'),
+(189, 'F026', '9338', 'F026-0052', 'Crofter Dk - Shade 52'),
+(190, 'F087', '9336', 'F087-0045', 'Crofter Chunky - Shade 45'),
+(191, 'F087', '9336', 'F087-0043', 'Crofter Chunky - Shade 43'),
+(192, 'F063', '9324', 'F063-0167', 'Click Dk - Shade 167'),
+(193, 'F063', '9323', 'F063-0169', 'Click Dk - Shade 169'),
+(194, 'F063', '9323', 'F063-0121', 'Click Dk - Shade 121'),
+(195, 'F062', '9321', 'F062-0156', 'Indie - Shade 156'),
+(196, 'F062', '9320', 'F062-0150', 'Indie - Shade 150'),
+(197, 'F062', '9320', 'F062-0156', 'Indie - Shade 156'),
+(198, 'F062', '9319', 'F062-0151', 'Indie - Shade 151'),
+(199, 'F062', '9319', 'F062-0153', 'Indie - Shade 153'),
+(200, 'F062', '9318', 'F062-0150', 'Indie - Shade 150'),
+(201, 'F062', '9318', 'F062-0152', 'Indie - Shade 152'),
+(202, 'F062', '9317', 'F062-0155', 'Indie - Shade 155'),
+(203, 'F062', '9317', 'F062-0157', 'Indie - Shade 157'),
+(204, 'F062', '9316', 'F062-0154', 'Indie - Shade 154'),
+(205, 'F062', '9315', 'F062-0155', 'Indie - Shade 155'),
+(206, 'F062', '9315', 'F062-0151', 'Indie - Shade 151'),
+(207, 'F062', '9315', 'F062-0154', 'Indie - Shade 154'),
+(208, 'F062', '9315', 'F062-0152', 'Indie - Shade 152'),
+(209, 'F062', '9314', 'F062-0151', 'Indie - Shade 151'),
+(210, 'F062', '9314', 'F062-0150', 'Indie - Shade 150'),
+(211, 'F062', '9314', 'F062-0153', 'Indie - Shade 153'),
+(212, 'F062', '9314', 'F062-0157', 'Indie - Shade 157'),
+(213, 'F042', '9313', 'F042-0354', 'Connemara Chunky - Shade 354'),
+(214, 'F042', '9313', 'F042-0350', 'Connemara Chunky - Shade 350'),
+(215, 'F042', '9313', 'F042-0353', 'Connemara Chunky - Shade 353'),
+(216, 'F042', '9313', 'F042-0352', 'Connemara Chunky - Shade 352'),
+(217, 'F042', '9312', 'F042-0353', 'Connemara Chunky - Shade 353'),
+(218, 'F042', '9312', 'F042-0352', 'Connemara Chunky - Shade 352'),
+(219, 'F042', '9311', 'F042-0355', 'Connemara Chunky - Shade 355'),
+(220, 'F042', '9311', 'F042-0351', 'Connemara Chunky - Shade 351'),
+(221, 'F042', '9310', 'F042-0354', 'Connemara Chunky - Shade 354'),
+(222, 'F042', '9310', 'F042-0350', 'Connemara Chunky - Shade 350'),
+(223, 'F042', '9308', 'F042-0352', 'Connemara Chunky - Shade 352'),
+(224, 'F042', '9308', 'F042-0353', 'Connemara Chunky - Shade 353'),
+(225, 'F042', '9306', 'F042-0354', 'Connemara Chunky - Shade 354'),
+(226, 'F042', '9306', 'F042-0350', 'Connemara Chunky - Shade 350'),
+(227, 'F086', '1967', '', 'Snuggly Dk 50g - Shade 219'),
+(228, 'F086', '1967', 'F086-0154', 'Snuggly Baby Crofter Dk - Shade 154'),
+(229, 'F086', '1967', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(230, 'F037', '9260', 'F037-0115', 'Click Aran with Wool - Shade 115'),
+(231, 'F037', '9260', 'F037-0123', 'Click Aran with Wool - Shade 123'),
+(232, 'F087', '9259', 'F087-0047', 'Crofter Chunky - Shade 47'),
+(233, 'F087', '9259', 'F087-0046', 'Crofter Chunky - Shade 46'),
+(234, 'F087', '9258', 'F087-0049', 'Crofter Chunky - Shade 49'),
+(235, 'F087', '9258', 'F087-0046', 'Crofter Chunky - Shade 46'),
+(236, 'F075', '1861', 'F075-0410', 'Snuggly Dk 50g - Shade 410'),
+(237, 'F075', '1861', '', 'Snuggly Dk 50g - Shade 411'),
+(238, 'F086', '1966', '', 'Snuggly Dk 50g - Shade 344'),
+(239, 'F086', '1966', 'F086-0155', 'Snuggly Baby Crofter Dk - Shade 155'),
+(240, 'F086', '1965', '', 'Snuggly Dk 50g - Shade 344'),
+(241, 'F086', '1965', 'F086-0157', 'Snuggly Baby Crofter Dk - Shade 157'),
+(242, 'F086', '1964', 'F086-0156', 'Snuggly Baby Crofter Dk - Shade 156'),
+(243, 'F086', '1963', 'F086-0152', 'Snuggly Baby Crofter Dk - Shade 152'),
+(244, 'F086', '1963', 'F086-0156', 'Snuggly Baby Crofter Dk - Shade 156'),
+(245, 'F087', '9257', 'F087-0048', 'Crofter Chunky - Shade 48'),
+(246, 'F038', '9256', 'F038-0198', 'Escape Chunky - Shade 198'),
+(247, 'F026', '9251', 'F026-0048', 'Crofter Dk - Shade 48'),
+(248, 'F026', '9251', 'F026-0047', 'Crofter Dk - Shade 47'),
+(249, 'F026', '9250', 'F026-0059', 'Crofter Dk - Shade 59'),
+(250, 'F026', '9250', 'F026-0048', 'Crofter Dk - Shade 48'),
+(251, 'F086', '1933', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(252, 'F086', '1933', 'F086-0154', 'Snuggly Baby Crofter Dk - Shade 154'),
+(253, 'F086', '1946', 'F086-0154', 'Snuggly Baby Crofter Dk - Shade 154'),
+(254, 'F086', '1946', 'F086-0153', 'Snuggly Baby Crofter Dk - Shade 153'),
+(255, 'F086', '1947', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(256, 'F086', '1947', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(257, 'F086', '1962', 'F086-0155', 'Snuggly Baby Crofter Dk - Shade 155'),
+(258, 'F086', '1962', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(259, 'F086', '1930', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(260, 'F086', '1930', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(261, 'F086', '1930', 'F086-0153', 'Snuggly Baby Crofter Dk - Shade 153'),
+(262, 'F086', '1930', 'F086-0152', 'Snuggly Baby Crofter Dk - Shade 152'),
+(263, 'F086', '1931', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(264, 'F086', '1931', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(265, 'F086', '1932', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(266, 'F086', '1932', 'F086-0150', 'Snuggly Baby Crofter Dk - Shade 150'),
+(267, 'F025', '9239', 'F025-0650', 'Denim Ultra - Shade 650'),
+(268, 'F025', '9239', 'F025-0508', 'Denim Ultra - Shade 508'),
+(269, 'F025', '9237', 'F025-0656', 'Denim Ultra - Shade 656'),
+(270, 'F025', '9237', 'F025-0507', 'Denim Ultra - Shade 507'),
+(271, 'F051', '9235', 'F051-0606', 'Country Style 4 Ply - Shade 606'),
+(272, 'F051', '9235', 'F051-0607', 'Country Style 4 Ply - Shade 607'),
+(273, 'F045', '9230', 'F045-0112', 'Click Chunky with Wool - Shade 112'),
+(274, 'F045', '9230', 'F045-0110', 'Click Chunky with Wool - Shade 110'),
+(275, 'F045', '9229', 'F045-0112', 'Click Chunky with Wool - Shade 112'),
+(276, 'F045', '9229', 'F045-0111', 'Click Chunky with Wool - Shade 111'),
+(277, 'F045', '9229', 'F045-0110', 'Click Chunky with Wool - Shade 110'),
+(278, 'F063', '9228', 'F063-0112', 'Click Dk - Shade 112'),
+(279, 'F063', '9228', 'F063-0111', 'Click Dk - Shade 111'),
+(280, 'F063', '9227', 'F063-0112', 'Click Dk - Shade 112'),
+(281, 'F063', '9227', 'F063-0111', 'Click Dk - Shade 111'),
+(282, 'F063', '9227', 'F063-0110', 'Click Dk - Shade 110'),
+(283, 'F009', '9223', 'F009-0604', 'Country Style Dk - Shade 604'),
+(284, 'F023', '1870', 'F023-0648', 'Snuggly Snowflake Dk - Shade 648'),
+(285, 'F023', '1870', 'F023-0642', 'Snuggly Snowflake Dk - Shade 642'),
+(286, 'F023', '1871', 'F023-0649', 'Snuggly Snowflake Dk - Shade 649'),
+(287, 'F023', '1871', 'F023-0644', 'Snuggly Snowflake Dk - Shade 644'),
+(288, 'F096', '1903', 'F096-0757', 'Snuggly Kisses Dk - Shade 757'),
+(289, 'F096', '1903', 'F096-0758', 'Snuggly Kisses Dk - Shade 758'),
+(290, 'F096', '1905', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(291, 'F096', '1905', 'F096-0758', 'Snuggly Kisses Dk - Shade 758'),
+(292, 'F096', '1906', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(293, 'F096', '1906', 'F096-0757', 'Snuggly Kisses Dk - Shade 757'),
+(294, 'F023', '1922', 'F023-0643', 'Snuggly Snowflake Dk - Shade 643'),
+(295, 'F023', '1922', 'F023-0651', 'Snuggly Snowflake Dk - Shade 651'),
+(296, 'F023', '1922', 'F023-0645', 'Snuggly Snowflake Dk - Shade 645'),
+(297, 'F086', '1928', 'F086-0152', 'Snuggly Baby Crofter Dk - Shade 152'),
+(298, 'F086', '1928', 'F086-0153', 'Snuggly Baby Crofter Dk - Shade 153'),
+(299, 'F086', '1929', 'F086-0154', 'Snuggly Baby Crofter Dk - Shade 154'),
+(300, 'F086', '1929', 'F086-0151', 'Snuggly Baby Crofter Dk - Shade 151'),
+(301, 'F023', '1935', '', 'Snuggly Dk 50g - Shade 407'),
+(302, 'F023', '1935', 'F023-0651', 'Snuggly Snowflake Dk - Shade 651'),
+(303, 'F023', '1935', '', 'Snuggly Dk 50g - Shade 212'),
+(304, 'F023', '1935', 'F023-0650', 'Snuggly Snowflake Dk - Shade 650'),
+(305, 'F096', '1991', 'F096-0750', 'Snuggly Kisses Dk - Shade 750'),
+(306, 'F096', '1991', 'F096-0759', 'Snuggly Kisses Dk - Shade 759'),
+(307, 'F096', '1992', 'F096-0760', 'Snuggly Kisses Dk - Shade 760'),
+(308, 'F096', '1992', 'F096-0759', 'Snuggly Kisses Dk - Shade 759'),
+(309, 'F009', '9222', 'F009-0603', 'Country Style Dk - Shade 603'),
+(310, 'F119', '9219', 'F119-0867', 'Bonus Aran 400g with Wool - Shade 867'),
+(311, 'F119', '9219', 'F119-0868', 'Bonus Aran 400g with Wool - Shade 868'),
+(312, 'F119', '9219', 'F119-0869', 'Bonus Aran 400g with Wool - Shade 869'),
+(313, 'F038', '9215', 'F038-0194', 'Escape Chunky - Shade 194'),
+(314, 'F038', '9215', 'F038-0195', 'Escape Chunky - Shade 195'),
+(315, 'F038', '9212', 'F038-0196', 'Escape Chunky - Shade 196'),
+(316, 'F038', '9212', 'F038-0183', 'Escape Chunky - Shade 183'),
+(317, 'F087', '9209', 'F087-0052', 'Crofter Chunky - Shade 52'),
+(318, 'F087', '9209', 'F087-0059', 'Crofter Chunky - Shade 59'),
+(319, 'F087', '9208', 'F087-0052', 'Crofter Chunky - Shade 52'),
+(320, 'F087', '9207', 'F087-0053', 'Crofter Chunky - Shade 53'),
+(321, 'F087', '9207', 'F087-0059', 'Crofter Chunky - Shade 59'),
+(322, 'F087', '9207', 'F087-0060', 'Crofter Chunky - Shade 60'),
+(323, 'F087', '9207', 'F087-0052', 'Crofter Chunky - Shade 52'),
+(324, 'F087', '9206', 'F087-0050', 'Crofter Chunky - Shade 50'),
+(325, 'F087', '9206', 'F087-0059', 'Crofter Chunky - Shade 59'),
+(326, 'F087', '9206', 'F087-0053', 'Crofter Chunky - Shade 53'),
+(327, 'F087', '9206', 'F087-0061', 'Crofter Chunky - Shade 61'),
+(328, 'F075', '1862', 'F075-0408', 'Snuggly Dk 50g - Shade 408'),
+(329, 'F075', '1862', 'F075-0409', 'Snuggly Dk 50g - Shade 409'),
+(330, 'F075', '1889', 'F075-0303', 'Snuggly Dk 50g - Shade 303'),
+(331, 'F075', '1889', 'F075-0259', 'Snuggly Dk 50g - Shade 259'),
+(332, 'F075', '1894', 'F075-0224', 'Snuggly Dk 50g - Shade 224'),
+(333, 'F075', '1894', 'F075-0344', 'Snuggly Dk 50g - Shade 344'),
+(334, 'F075', '1894', 'F075-0413', 'Snuggly Dk 50g - Shade 413'),
+(335, 'F075', '1894', 'F075-0414', 'Snuggly Dk 50g - Shade 414'),
+(336, 'F075', '1896', 'F075-0412', 'Snuggly Dk 50g - Shade 412'),
+(338, 'F050', '1910', 'F050-0922', 'Snuggly Tiny Tots Dk - Shade 922'),
+(339, 'F050', '1910', 'F050-0921', 'Snuggly Tiny Tots Dk - Shade 921'),
+(340, 'F086', '1926', 'F086-0152', 'Snuggly Baby Crofter Dk - Shade 152'),
+(341, 'F086', '1927', 'F086-0152', 'Snuggly Baby Crofter Dk - Shade 152'),
+(342, 'F086', '1927', 'F086-0153', 'Snuggly Baby Crofter Dk - Shade 153'),
+(343, 'F047', '1936', 'F047-0100', 'Baby Snowball - Shade 100'),
+(344, 'F047', '1936', '', 'Snuggly Dk 50g - Shade 251'),
+(345, 'F047', '1936', 'F047-0104', 'Baby Snowball - Shade 104'),
+(346, 'F047', '1936', 'F047-0102', 'Baby Snowball - Shade 102'),
+(347, 'F047', '1936', 'F047-0103', 'Baby Snowball - Shade 103'),
+(348, 'F047', '1937', 'F047-0105', 'Baby Snowball - Shade 105'),
+(349, 'F047', '1938', '', 'Snuggly Dk 50g - Shade 403'),
+(350, 'F047', '1938', '', 'Snuggly Dk 50g - Shade 303'),
+(351, 'F047', '1938', 'F047-0104', 'Baby Snowball - Shade 104'),
+(352, 'F047', '1938', 'F047-0101', 'Baby Snowball - Shade 101'),
+(353, 'F084', '1882', 'F084-0403', 'Snuggly Snowflake Chunky - Shade 403'),
+(354, 'F084', '1884', '', 'Snuggly Dk 50g - Shade 393'),
+(355, 'F084', '1884', 'F084-0645', 'Snuggly Snowflake Chunky - Shade 645'),
+(356, 'F084', '1923', 'F084-0652', 'Snuggly Snowflake Chunky - Shade 652'),
+(357, 'F084', '1923', 'F084-0635', 'Snuggly Snowflake Chunky - Shade 635'),
+(358, 'F084', '1924', 'F084-0644', 'Snuggly Snowflake Chunky - Shade 644'),
+(359, 'F084', '1924', 'F084-0645', 'Snuggly Snowflake Chunky - Shade 645'),
+(360, 'F084', '1924', 'F084-0650', 'Snuggly Snowflake Chunky - Shade 650'),
+(361, 'F084', '1924', 'F084-0632', 'Snuggly Snowflake Chunky - Shade 632'),
+(362, 'F084', '1924', 'F084-0636', 'Snuggly Snowflake Chunky - Shade 636'),
+(363, 'F084', '1924', 'F084-0651', 'Snuggly Snowflake Chunky - Shade 651'),
+(364, 'F084', '1925', 'F084-0650', 'Snuggly Snowflake Chunky - Shade 650'),
+(365, 'F084', '1925', 'F084-0651', 'Snuggly Snowflake Chunky - Shade 651'),
+(366, 'F084', '1934', '', 'Snuggly Dk 50g - Shade 350'),
+(367, 'F084', '1934', 'F084-0650', 'Snuggly Snowflake Chunky - Shade 650'),
+(368, 'F047', '1939', '', 'Snuggly Dk 50g - Shade 216'),
+(369, 'F047', '1939', 'F047-0103', 'Baby Snowball - Shade 103'),
+(370, 'F047', '1940', 'F047-0101', 'Baby Snowball - Shade 101'),
+(371, 'F047', '1940', 'F047-0102', 'Baby Snowball - Shade 102'),
+(372, 'F047', '1941', 'F047-0102', 'Baby Snowball - Shade 102'),
+(373, 'F047', '1941', 'F047-0101', 'Baby Snowball - Shade 101'),
+(374, 'F047', '1941', 'F047-0104', 'Baby Snowball - Shade 104'),
+(375, 'F047', '1941', 'F047-0103', 'Baby Snowball - Shade 103'),
+(376, 'F047', '1942', '', 'Snuggly Dk 50g - Shade 251'),
+(377, 'F047', '1942', 'F047-0100', 'Baby Snowball - Shade 100'),
+(378, 'F047', '1943', 'F047-0102', 'Baby Snowball - Shade 102'),
+(379, 'F047', '1943', 'F047-0105', 'Baby Snowball - Shade 105'),
+(380, 'F084', '1959', 'F084-0653', 'Snuggly Snowflake Chunky - Shade 653'),
+(381, 'F084', '1959', 'F084-0645', 'Snuggly Snowflake Chunky - Shade 645'),
+(382, 'F084', '1960', '', 'Snuggly Dk 50g - Shade 350'),
+(383, 'F084', '1960', 'F084-0654', 'Snuggly Snowflake Chunky - Shade 654'),
+(384, 'F084', '1961', '', 'Snuggly Dk 50g - Shade 350'),
+(385, 'F084', '1961', 'F084-0654', 'Snuggly Snowflake Chunky - Shade 654'),
+(386, 'F017', '1971', 'F017-0355', 'Snuggly Snowdrops Chunky - Shade 355'),
+(387, 'F017', '1971', 'F017-0352', 'Snuggly Snowdrops Chunky - Shade 352'),
+(388, 'F017', '1972', 'F017-0357', 'Snuggly Snowdrops Chunky - Shade 357'),
+(389, 'F017', '1972', 'F017-0355', 'Snuggly Snowdrops Chunky - Shade 355'),
+(390, 'F017', '1973', 'F017-0356', 'Snuggly Snowdrops Chunky - Shade 356'),
+(391, 'F017', '1974', 'F017-0356', 'Snuggly Snowdrops Chunky - Shade 356'),
+(392, 'F017', '1974', 'F017-0351', 'Snuggly Snowdrops Chunky - Shade 351'),
+(393, 'F017', '1974', 'F017-0354', 'Snuggly Snowdrops Chunky - Shade 354'),
+(394, 'F017', '1975', 'F017-0350', 'Snuggly Snowdrops Chunky - Shade 350'),
+(395, 'F017', '1975', 'F017-0354', 'Snuggly Snowdrops Chunky - Shade 354'),
+(396, 'F022', '2225', '', 'Supersoft Aran - Shade 879'),
+(397, 'F022', '2225', 'F022-0877', 'Supersoft Aran - Shade 877'),
+(398, 'F033', '2235', '', 'Denim Aran - Shade 648'),
+(399, 'F033', '2235', 'F033-0508', 'Denim Aran - Shade 508'),
+(400, 'F026', '2256', 'F026-0050', 'Crofter Dk - Shade 50'),
+(401, 'F049', '2266', 'F049-0190', 'Escape Dk - Shade 190'),
+(402, 'F049', '2266', 'F049-0194', 'Escape Dk - Shade 194'),
+(403, 'F026', '2267', 'F026-0058', 'Crofter Dk - Shade 58'),
+(404, 'F026', '2267', 'F026-0060', 'Crofter Dk - Shade 60'),
+(405, 'F038', '2269', 'F038-0194', 'Escape Chunky - Shade 194'),
+(406, 'F038', '2269', 'F038-0193', 'Escape Chunky - Shade 193'),
+(407, 'F038', '2269', 'F038-0192', 'Escape Chunky - Shade 192'),
+(408, 'F063', '2272', 'F063-0111', 'Click Dk - Shade 111'),
+(409, 'F063', '2272', 'F063-0110', 'Click Dk - Shade 110'),
+(410, 'F026', '2276', 'F026-0046', 'Crofter Dk - Shade 46'),
+(411, 'F026', '2276', 'F026-0049', 'Crofter Dk - Shade 49'),
+(412, 'F009', '2294', 'F009-0609', 'Country Style Dk - Shade 609'),
+(413, 'F034', '2307', 'F034-0600', 'Squiggle Super Chunky - Shade 600'),
+(414, 'F034', '2307', 'F034-0603', 'Squiggle Super Chunky - Shade 603'),
+(415, 'F034', '2308', 'F034-0603', 'Squiggle Super Chunky - Shade 603'),
+(416, 'F034', '2308', 'F034-0602', 'Squiggle Super Chunky - Shade 602'),
+(417, 'F034', '2309', 'F034-0606', 'Squiggle Super Chunky - Shade 606'),
+(418, 'F034', '2309', 'F034-0603', 'Squiggle Super Chunky - Shade 603'),
+(419, 'F034', '2309', 'F034-0600', 'Squiggle Super Chunky - Shade 600'),
+(420, 'F034', '2310', 'F034-0608', 'Squiggle Super Chunky - Shade 608'),
+(421, 'F034', '2310', 'F034-0606', 'Squiggle Super Chunky - Shade 606'),
+(422, 'F026', '2311', '', 'Crofter Dk - Shade 63'),
+(423, 'F026', '2311', '', 'Crofter Dk - Shade 62'),
+(424, 'F034', '2312', 'F034-0604', 'Squiggle Super Chunky - Shade 604'),
+(425, 'F034', '2312', 'F034-0603', 'Squiggle Super Chunky - Shade 603'),
+(426, 'F034', '2313', 'F034-0608', 'Squiggle Super Chunky - Shade 608'),
+(427, 'F034', '2313', 'F034-0605', 'Squiggle Super Chunky - Shade 605'),
+(428, 'F045', '8746', 'F045-0142', 'Click Chunky with Wool - Shade 142'),
+(429, 'F045', '8746', 'F045-0146', 'Click Chunky with Wool - Shade 146'),
+(430, 'F005', '8768', 'F005-0006', 'Yo Yo - Shade 6'),
+(431, 'F005', '8844', '', 'Yo Yo - Shade 5'),
+(432, 'F045', '8940', '', 'Click Chunky with Wool - Shade 157'),
+(433, 'F045', '8940', '', 'Click Chunky with Wool - Shade 158'),
+(434, 'F045', '8940', '', 'Click Chunky with Wool - Shade 155'),
+(435, 'F025', '8949', 'F025-0648', 'Denim Ultra - Shade 648'),
+(436, 'F025', '8949', 'F025-0650', 'Denim Ultra - Shade 650'),
+(437, 'F045', '8989', '', 'Click Chunky with Wool - Shade 156'),
+(438, 'F045', '8989', 'F045-0146', 'Click Chunky with Wool - Shade 146'),
+(439, 'F025', '9001', '', 'Denim Ultra - Shade 654'),
+(440, 'F025', '9001', '', 'Denim Ultra - Shade 652'),
+(441, 'F025', '9002', '', 'Denim Ultra - Shade 652'),
+(442, 'F045', '9058', '', 'Click Chunky with Wool - Shade 128'),
+(443, 'F045', '9061', 'F045-0129', 'Click Chunky with Wool - Shade 129'),
+(444, 'F045', '9061', 'F045-0131', 'Click Chunky with Wool - Shade 131'),
+(445, 'F049', '9074', 'F049-0187', 'Escape Dk - Shade 187'),
+(446, 'F049', '9075', 'F049-0183', 'Escape Dk - Shade 183'),
+(447, 'F049', '9075', 'F049-0185', 'Escape Dk - Shade 185'),
+(448, 'F049', '9075', 'F049-0180', 'Escape Dk - Shade 180'),
+(449, 'F049', '9075', 'F049-0187', 'Escape Dk - Shade 187'),
+(450, 'F049', '9076', 'F049-0183', 'Escape Dk - Shade 183'),
+(451, 'F049', '9077', 'F049-0182', 'Escape Dk - Shade 182'),
+(452, 'F049', '9078', 'F049-0185', 'Escape Dk - Shade 185'),
+(453, 'F049', '9078', 'F049-0184', 'Escape Dk - Shade 184'),
+(454, 'F049', '9079', 'F049-0180', 'Escape Dk - Shade 180'),
+(455, 'F049', '9079', 'F049-0186', 'Escape Dk - Shade 186'),
+(456, 'F049', '9080', 'F049-0181', 'Escape Dk - Shade 181'),
+(457, 'F049', '9081', 'F049-0180', 'Escape Dk - Shade 180'),
+(458, 'F037', '9084', 'F037-0162', 'Click Aran with Wool - Shade 162'),
+(459, 'F037', '9084', 'F037-0161', 'Click Aran with Wool - Shade 161'),
+(460, 'F037', '9085', 'F037-0161', 'Click Aran with Wool - Shade 161'),
+(461, 'F037', '9085', 'F037-0128', 'Click Aran with Wool - Shade 128'),
+(462, 'F009', '9096', 'F009-0597', 'Country Style Dk - Shade 597'),
+(463, 'F009', '9096', 'F009-0596', 'Country Style Dk - Shade 596'),
+(464, 'F025', '9101', 'F025-0655', 'Denim Ultra - Shade 655'),
+(465, 'F025', '9101', 'F025-0656', 'Denim Ultra - Shade 656'),
+(466, 'F049', '9127', 'F049-0188', 'Escape Dk - Shade 188'),
+(467, 'F049', '9128', 'F049-0180', 'Escape Dk - Shade 180'),
+(468, 'F026', '9130', 'F026-0056', 'Crofter Dk - Shade 56'),
+(469, 'F026', '9130', 'F026-0050', 'Crofter Dk - Shade 50'),
+(470, 'F033', '9146', 'F033-0507', 'Denim Aran - Shade 507'),
+(471, 'F033', '9146', '', 'Denim Aran - Shade 649'),
+(472, 'F052', '9170', 'F052-0010', 'Nomad - Shade 10'),
+(473, 'F052', '9170', 'F052-0011', 'Nomad - Shade 11'),
+(474, 'F052', '9170', 'F052-0012', 'Nomad - Shade 12'),
+(475, 'F052', '9170', 'F052-0014', 'Nomad - Shade 14'),
+(476, 'F052', '9171', 'F052-0013', 'Nomad - Shade 13'),
+(477, 'F052', '9171', 'F052-0014', 'Nomad - Shade 14'),
+(478, 'F052', '9171', 'F052-0015', 'Nomad - Shade 15'),
+(479, 'F052', '9172', 'F052-0011', 'Nomad - Shade 11'),
+(480, 'F052', '9172', 'F052-0012', 'Nomad - Shade 12'),
+(481, 'F052', '9173', 'F052-0013', 'Nomad - Shade 13'),
+(482, 'F052', '9173', 'F052-0010', 'Nomad - Shade 10'),
+(483, 'F052', '9174', 'F052-0010', 'Nomad - Shade 10'),
+(484, 'F052', '9174', 'F052-0011', 'Nomad - Shade 11'),
+(485, 'F052', '9174', 'F052-0012', 'Nomad - Shade 12'),
+(486, 'F052', '9175', 'F052-0010', 'Nomad - Shade 10'),
+(487, 'F052', '9175', 'F052-0013', 'Nomad - Shade 13'),
+(488, 'F052', '9175', 'F052-0014', 'Nomad - Shade 14'),
+(489, 'F052', '9175', 'F052-0015', 'Nomad - Shade 15'),
+(490, 'F052', '9176', 'F052-0014', 'Nomad - Shade 14'),
+(491, 'F052', '9176', 'F052-0015', 'Nomad - Shade 15'),
+(492, 'F052', '9177', 'F052-0013', 'Nomad - Shade 13'),
+(493, 'F052', '9177', 'F052-0012', 'Nomad - Shade 12'),
+(494, 'F049', '9179', 'F049-0182', 'Escape Dk - Shade 182'),
+(495, 'F049', '9179', 'F049-0186', 'Escape Dk - Shade 186'),
+(496, 'F049', '9180', 'F049-0192', 'Escape Dk - Shade 192'),
+(497, 'F049', '9180', 'F049-0193', 'Escape Dk - Shade 193'),
+(498, 'F026', '9189', 'F026-0060', 'Crofter Dk - Shade 60'),
+(499, 'F026', '9189', 'F026-0050', 'Crofter Dk - Shade 50'),
+(500, 'F026', '9189', 'F026-0059', 'Crofter Dk - Shade 59'),
+(501, 'F026', '9189', 'F026-0058', 'Crofter Dk - Shade 58'),
+(502, 'F005', '9200', 'F005-0018', 'Yo Yo - Shade 18'),
+(503, 'F005', '9200', 'F005-0019', 'Yo Yo - Shade 19'),
+(504, 'F005', '9201', 'F005-0019', 'Yo Yo - Shade 19'),
+(505, 'F087', '9202', 'F087-0050', 'Crofter Chunky - Shade 50'),
+(506, 'F087', '9205', 'F087-0060', 'Crofter Chunky - Shade 60'),
+(507, 'F085', '1228', 'F085-0193', 'Snuggly White Whispers Dk - Shade 193'),
+(508, 'F085', '1229', 'F085-0194', 'Snuggly White Whispers Dk - Shade 194'),
+(509, 'F085', '1229', 'F085-0192', 'Snuggly White Whispers Dk - Shade 192'),
+(510, 'F085', '1230', 'F085-0196', 'Snuggly White Whispers Dk - Shade 196'),
+(511, 'F085', '1231', 'F085-0195', 'Snuggly White Whispers Dk - Shade 195'),
+(512, 'F085', '1231', 'F085-0192', 'Snuggly White Whispers Dk - Shade 192'),
+(513, 'F085', '1232', 'F085-0190', 'Snuggly White Whispers Dk - Shade 190'),
+(514, 'F085', '1232', 'F085-0191', 'Snuggly White Whispers Dk - Shade 191'),
+(515, 'F100', '9475', 'F100-0154', 'Firefly / Firefly Metallic - Shade 154'),
+(516, 'F100', '9475', 'F100-0152', 'Firefly / Firefly Metallic - Shade 152'),
+(517, 'F100', '9475', 'F100-0176', 'Firefly / Firefly Metallic - Shade 176'),
+(518, 'F100', '9474', 'F100-0177', 'Firefly / Firefly Metallic - Shade 177'),
+(519, 'F100', '9474', 'F100-0153', 'Firefly / Firefly Metallic - Shade 153'),
+(520, 'F100', '9473', 'F100-0178', 'Firefly / Firefly Metallic - Shade 178'),
+(521, 'F100', '9473', 'F100-0152', 'Firefly / Firefly Metallic - Shade 152'),
+(522, 'F100', '9471', 'F100-0155', 'Firefly / Firefly Metallic - Shade 155'),
+(523, 'F100', '9471', 'F100-0179', 'Firefly / Firefly Metallic - Shade 179'),
+(524, 'F085', '1233', 'F085-0193', 'Snuggly White Whispers Dk - Shade 193'),
+(525, 'F085', '1233', 'F085-0196', 'Snuggly White Whispers Dk - Shade 196'),
+(526, 'F100', '9470', 'F100-0151', 'Firefly / Firefly Metallic - Shade 151'),
+(527, 'F100', '9470', 'F100-0181', 'Firefly / Firefly Metallic - Shade 181'),
+(528, 'F010', '9424', 'F010-0317', 'Summer Stripes Dk - Shade 317'),
+(529, 'F010', '9424', 'F010-0310', 'Summer Stripes Dk - Shade 310'),
+(530, 'F010', '9423', 'F010-0313', 'Summer Stripes Dk - Shade 313'),
+(531, 'F010', '9423', 'F010-0311', 'Summer Stripes Dk - Shade 311'),
+(532, 'F010', '9422', 'F010-0312', 'Summer Stripes Dk - Shade 312'),
+(533, 'F010', '9422', 'F010-0315', 'Summer Stripes Dk - Shade 315'),
+(534, 'F010', '9421', 'F010-0314', 'Summer Stripes Dk - Shade 314'),
+(535, 'F085', '1234', 'F085-0192', 'Snuggly White Whispers Dk - Shade 192'),
+(536, 'F085', '1234', 'F085-0191', 'Snuggly White Whispers Dk - Shade 191'),
+(537, 'F085', '1235', 'F085-0194', 'Snuggly White Whispers Dk - Shade 194'),
+(538, 'F085', '1235', 'F085-0190', 'Snuggly White Whispers Dk - Shade 190'),
+(539, 'F075', '1236', 'F075-0420', 'Snuggly Dk 50g - Shade 420'),
+(540, 'F075', '1236', 'F075-0422', 'Snuggly Dk 50g - Shade 422'),
+(541, 'F075', '1944', 'F075-0404', 'Snuggly Dk 50g - Shade 404'),
+(542, 'F086', '1999', 'F086-0158', 'Snuggly Baby Crofter Dk - Shade 158'),
+(543, 'F086', '1999', 'F086-0159', 'Snuggly Baby Crofter Dk - Shade 159'),
+(544, 'F028', '2289', '', 'Calico Dk - Shade 722'),
+(545, 'F028', '2289', 'F028-0730', 'Calico Dk - Shade 730'),
+(546, 'F075', '3174', 'F075-0212', 'Snuggly Dk 50g - Shade 212'),
+(547, 'F075', '3174', 'F075-0252', 'Snuggly Dk 50g - Shade 252'),
+(548, 'F075', '3174', 'F075-0321', 'Snuggly Dk 50g - Shade 321'),
+(549, 'F075', '3806', 'F075-0251', 'Snuggly Dk 50g - Shade 251'),
+(550, 'F028', '9288', 'F028-0730', 'Calico Dk - Shade 730'),
+(551, 'F028', '9290', 'F028-0718', 'Calico Dk - Shade 718'),
+(552, 'F028', '9290', 'F028-0728', 'Calico Dk - Shade 728'),
+(553, 'F028', '9407', 'F028-0732', 'Calico Dk - Shade 732'),
+(554, 'F028', '9407', 'F028-0734', 'Calico Dk - Shade 734'),
+(555, 'F010', '9417', 'F010-0312', 'Summer Stripes Dk - Shade 312'),
+(556, 'F010', '9417', 'F010-0313', 'Summer Stripes Dk - Shade 313'),
+(557, 'F010', '9418', 'F010-0315', 'Summer Stripes Dk - Shade 315'),
+(558, 'F010', '9418', 'F010-0314', 'Summer Stripes Dk - Shade 314'),
+(559, 'F010', '9419', 'F010-0316', 'Summer Stripes Dk - Shade 316'),
+(560, 'F010', '9419', 'F010-0317', 'Summer Stripes Dk - Shade 317'),
+(561, 'F010', '9420', 'F010-0310', 'Summer Stripes Dk - Shade 310'),
+(562, 'F075', '1242', 'F075-0421', 'Snuggly Dk 50g - Shade 421'),
+(563, 'F075', '1242', 'F075-0422', 'Snuggly Dk 50g - Shade 422'),
+(564, 'F075', '1242', 'F075-0423', 'Snuggly Dk 50g - Shade 423'),
+(565, 'F075', '1242', 'F075-0420', 'Snuggly Dk 50g - Shade 420'),
+(566, 'F023', '1243', 'F023-0630', 'Snuggly Snowflake Dk - Shade 630'),
+(567, 'F023', '1243', '', 'Snuggly Snowflake Dk - Shade 649'),
+(568, 'F023', '1244', 'F023-0631', 'Snuggly Snowflake Dk - Shade 631'),
+(569, 'F023', '1244', 'F023-0642', 'Snuggly Snowflake Dk - Shade 642'),
+(570, 'F023', '1245', 'F023-0631', 'Snuggly Snowflake Dk - Shade 631'),
+(571, 'F023', '1245', 'F023-0642', 'Snuggly Snowflake Dk - Shade 642'),
+(572, 'F084', '1246', 'F084-0655', 'Snuggly Snowflake Chunky - Shade 655'),
+(573, 'F084', '1246', 'F084-0657', 'Snuggly Snowflake Chunky - Shade 657'),
+(574, 'F084', '1246', 'F084-0656', 'Snuggly Snowflake Chunky - Shade 656'),
+(575, 'F084', '1246', 'F084-0658', 'Snuggly Snowflake Chunky - Shade 658'),
+(576, 'F084', '1247', 'F084-0655', 'Snuggly Snowflake Chunky - Shade 655'),
+(577, 'F084', '1247', 'F084-0658', 'Snuggly Snowflake Chunky - Shade 658'),
+(578, 'F084', '1249', 'F084-0655', 'Snuggly Snowflake Chunky - Shade 655'),
+(579, 'F084', '1249', 'F084-0656', 'Snuggly Snowflake Chunky - Shade 656'),
+(580, 'F084', '1251', 'F084-0655', 'Snuggly Snowflake Chunky - Shade 655'),
+(581, 'F084', '1251', 'F084-0634', 'Snuggly Snowflake Chunky - Shade 634'),
+(582, 'F084', '1251', 'F084-0635', 'Snuggly Snowflake Chunky - Shade 635'),
+(583, 'F075', '1711', '', 'Snuggly Dk 50g - Shade 392'),
+(584, 'F071', '1730', '', 'Snuggly Baby Bamboo Dk - Shade 137'),
+(588, 'F023', '1852', 'F023-0646', 'Snuggly Snowflake Dk - Shade 646'),
+(589, 'F023', '1852', 'F023-0642', 'Snuggly Snowflake Dk - Shade 642'),
+(591, 'F086', '1964', 'F086-0157', 'Snuggly Baby Crofter Dk - Shade 157'),
+(592, 'F017', '1969', 'F017-0355', 'Snuggly Snowdrops Chunky - Shade 355'),
+(593, 'F017', '1969', 'F017-0352', 'Snuggly Snowdrops Chunky - Shade 352'),
+(594, 'F017', '1969', 'F017-0353', 'Snuggly Snowdrops Chunky - Shade 353'),
+(595, 'F017', '1969', 'F017-0354', 'Snuggly Snowdrops Chunky - Shade 354'),
+(596, 'F086', '1998', 'F086-0161', 'Snuggly Baby Crofter Dk - Shade 161'),
+(597, 'F086', '1998', 'F086-0157', 'Snuggly Baby Crofter Dk - Shade 157');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table sirdar_yarn_shade
+--
+
+CREATE TABLE IF NOT EXISTS sirdar_yarn_shade (
   yarn_code varchar(30) NOT NULL default '',
   shade_code varchar(30) NOT NULL default '',
+  shade_status varchar(30) NOT NULL default 'NEW',
   shade_name varchar(60) NOT NULL,
   shade_image varchar(250) NOT NULL,
+  changedate date default NULL,
   PRIMARY KEY  (yarn_code,shade_code)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Sirdar Yarn Shades';
 
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F072';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F072';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F072', 'Snuggly 2 Ply', '2 ply/Quick Knit', 'Baby', 'f072-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F072', 'F072-0251', 'White', 'f072-0251.jpg');
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F077';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F077';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F077', 'Snuggly QK ', '2 ply/Quick Knit', 'Baby', 'f077-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F077', 'F077-0251', 'White', 'f077-0251.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F073';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F073';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F073', 'Snuggly 3 Ply 50g', '3 ply', 'Baby', 'f073-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F073', 'F073-0251', 'White', 'f073-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F073', 'F073-0302', 'Pearly Pink', 'f073-0302.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F073', 'F073-0320', 'Pastel Lemon', 'f073-0320.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F073', 'F073-0321', 'Pastel Blue', 'f073-0321.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F073', 'F073-0303', 'Cream', 'f073-0303.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F070';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F070';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F070', 'Snuggly 3 Ply 100g', '3 ply', 'Baby', 'f070-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F070', 'F070-0251', 'White', 'f070-0251.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F074';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F074';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F074', 'Snuggly 4 Ply 50g', '4 ply', 'Baby', 'f074-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0267', 'Stawberry Mousse', 'f074-0267.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0326', 'Denim', 'f074-0326.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0268', 'Blueberry Mousse', 'f074-0268.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0302', 'Pearly Pink', 'f074-0302.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0320', 'Pastel Lemon', 'f074-0320.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0304', 'Pearly Green', 'f074-0304.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0321', 'Pastel Blue', 'f074-0321.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0219', 'Lilac', 'f074-0219.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0212', 'Petal Pink', 'f074-0212.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0394', 'Hyacinth Mix', 'f074-0394.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0303', 'Cream', 'f074-0303.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0251', 'White', 'f074-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0257', 'Cherub Pink', 'f074-0257.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0265', 'Speckle', 'f074-0265.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0403', 'Wobble', 'f074-0403.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0406', 'Blink', 'f074-0406.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0408', 'Sugar Cookie', 'f074-0408.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0410', 'Chuckle', 'f074-0410.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0405', 'Bubble', 'f074-0405.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F074', 'F074-0407', 'Toddle', 'f074-0407.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F083';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F083';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F083', 'Snuggly 4 Ply 100g', '4 ply', 'Baby', 'f083-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F083', 'F083-0251', 'White', 'f083-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F083', 'F083-0303', 'Cream', 'f083-0303.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F118';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F118';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F118', 'Baby Bonus 4 Ply', '4 ply', 'Baby', 'f118-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0851', 'Baby Pink', 'f118-0851.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0852', 'Baby Lemon', 'f118-0852.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0853', 'Baby Mint', 'f118-0853.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0854', 'Baby Blue', 'f118-0854.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0855', 'Baby Cream', 'f118-0855.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F118', 'F118-0856', 'Baby White', 'f118-0856.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F086';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F086';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F086', 'Snuggly Baby Crofter Dk', 'DK', 'Baby', 'f086-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0155', 'Pinkie', 'f086-0155.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0156', 'Hamish', 'f086-0156.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0157', 'Dougal', 'f086-0157.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0150', 'Bonnie', 'f086-0150.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0151', 'Keltie', 'f086-0151.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0152', 'Scottie', 'f086-0152.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0153', 'Hickory', 'f086-0153.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F086', 'F086-0154', 'Nessie', 'f086-0154.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F023';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F023';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F023', 'Snuggly Snowflake Dk', 'DK', 'Baby', 'f023-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0653', 'Bright Purple', 'f023-0653.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0654', 'Bright Pink', 'f023-0654.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0630', 'Milky', 'f023-0630.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0631', 'Creamy', 'f023-0631.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0642', 'Beige', 'f023-0642.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0643', 'Lime', 'f023-0643.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0644', 'Pink', 'f023-0644.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0645', 'Lilac', 'f023-0645.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0646', 'Aqua', 'f023-0646.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0647', 'Lemon', 'f023-0647.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0648', 'Iced Blue', 'f023-0648.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0649', 'Angel Pink', 'f023-0649.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0650', 'Candy Pink', 'f023-0650.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F023', 'F023-0651', 'Spearmint', 'f023-0651.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F096';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F096';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F096', 'Snuggly Kisses Dk', 'DK', 'Baby', 'f096-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0758', 'Princess Pink', 'f096-0758.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0757', 'Doodle', 'f096-0757.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0754', 'Bonbon', 'f096-0754.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0752', 'Giddy', 'f096-0752.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0753', 'Skippy', 'f096-0753.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0750', 'Hushed', 'f096-0750.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0751', 'Twiggy', 'f096-0751.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0755', 'Patter Pink', 'f096-0755.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F096', 'F096-0756', 'Twinkle', 'f096-0756.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F069';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F069';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F069', 'Baby Bonus Lustre Dk', 'DK', 'Baby', 'f069-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0856', 'Baby White', 'f069-0856.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0855', 'Baby Cream', 'f069-0855.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0854', 'Baby Blue', 'f069-0854.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0852', 'Baby Lemon', 'f069-0852.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0851', 'Baby Pink', 'f069-0851.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F069', 'F069-0850', 'Baby Lilac', 'f069-0850.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F071';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F071';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F071', 'Snuggly Baby Bamboo Dk', 'DK', 'Baby', 'f071-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0159', 'Jack In A Box', 'f071-0159.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0160', 'Paintbox Pink', 'f071-0160.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0162', 'Toy Box Red', 'f071-0162.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0161', 'Baby Berries', 'f071-0161.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0132', 'Putty', 'f071-0132.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0133', 'Willow', 'f071-0133.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0134', 'Babe', 'f071-0134.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0131', 'Cream', 'f071-0131.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0140', 'Minky', 'f071-0140.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0148', 'Coo', 'f071-0148.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0145', 'Happy', 'f071-0145.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0149', 'Scooter Blue', 'f071-0149.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0150', 'Dungaree Denim', 'f071-0150.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0153', 'Jellybaby', 'f071-0153.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0154', 'Poppy', 'f071-0154.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0126', 'Rocking Horse', 'f071-0126.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0127', 'Skittle', 'f071-0127.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0128', 'Tigger', 'f071-0128.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0129', 'Banjo Blue', 'f071-0129.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0130', 'Wigwam', 'f071-0130.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0155', 'Limey', 'f071-0155.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0158', 'Rinky Dinky Pink', 'f071-0158.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0156', 'Sailboat', 'f071-0156.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F071', 'F071-0157', 'Yellow Submarine', 'f071-0157.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F075';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F075';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F075', 'Snuggly Dk 50g', 'DK', 'Baby', 'f075-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0416', 'Baby Bear', 'f075-0416.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0418', 'Duckling', 'f075-0418.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0419', 'Choo Choo Train', 'f075-0419.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0417', 'Little Frog', 'f075-0417.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0344', 'Oatmeal', 'f075-0344.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0240', 'Stonewash', 'f075-0240.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0353', 'Indigo Mix', 'f075-0353.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0224', 'Light Navy', 'f075-0224.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0251', 'White', 'f075-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0320', 'Pastel Lemon', 'f075-0320.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0350', 'Spicy Pink', 'f075-0350.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0347', 'Brick Red', 'f075-0347.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0242', 'Flamenco', 'f075-0242.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0354', 'Bluebell Mix', 'f075-0354.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0326', 'Denim', 'f075-0326.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0213', 'Angelica', 'f075-0213.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0212', 'Petal Pink', 'f075-0212.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0219', 'Lilac', 'f075-0219.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0216', 'Sky', 'f075-0216.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0303', 'Cream', 'f075-0303.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0302', 'Pearly Pink', 'f075-0302.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0321', 'Pastel Blue', 'f075-0321.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0304', 'Pearly Green', 'f075-0304.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0252', 'Lemon', 'f075-0252.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0372', 'Cherub', 'f075-0372.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0255', 'Mellow Pink', 'f075-0255.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0254', 'Clover', 'f075-0254.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0261', 'Playful Pink', 'f075-0261.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0260', 'Summer Lime', 'f075-0260.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0259', 'Daisy', 'f075-0259.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0265', 'Speckle', 'f075-0265.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0268', 'Blueberry Mousse', 'f075-0268.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0267', 'Strawberry Mousse', 'f075-0267.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0312', 'Black', 'f075-0312.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0403', 'Wobble', 'f075-0403.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0404', 'Blush Baby', 'f075-0404.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0405', 'Bubble', 'f075-0405.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0406', 'Blink', 'f075-0406.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0407', 'Toddle', 'f075-0407.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0408', 'Sugar Cookie', 'f075-0408.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0409', 'Twinkle Toes', 'f075-0409.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0410', 'Chuckle', 'f075-0410.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0414', 'Elf', 'f075-0414.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0413', 'Engine Red', 'f075-0413.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0415', 'Pixie', 'f075-0415.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F075', 'F075-0412', 'Soldier Blue', 'f075-0412.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F081';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F081';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F081', 'Snuggly Dk 100g', 'DK', 'Baby', 'f081-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F081', 'F081-0251', 'White', 'f081-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F081', 'F081-0303', 'Cream', 'f081-0303.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F082';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F082';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F082', 'Snuggly Pearls Dk', 'DK', 'Baby', 'f082-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F082', 'F082-0251', 'White', 'f082-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F082', 'F082-0303', 'Cream', 'f082-0303.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F082', 'F082-0302', 'Pearly Pink', 'f082-0302.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F014';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F014';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F014', 'Baby Bonus Dk', 'DK', 'Baby', 'f014-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0850', 'Baby Lilac', 'f014-0850.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0851', 'Baby Pink', 'f014-0851.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0852', 'Baby Lemon', 'f014-0852.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0853', 'Baby Mint', 'f014-0853.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0854', 'Baby Blue', 'f014-0854.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0855', 'Baby Cream', 'f014-0855.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F014', 'F014-0856', 'Baby White', 'f014-0856.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F022';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F022';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F022', 'Supersoft Aran', 'Aran', 'Baby', 'f022-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0823', 'Chestnut', 'f022-0823.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0824', 'Red Poppy', 'f022-0824.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0825', 'Mustard', 'f022-0825.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0826', 'Minty', 'f022-0826.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0831', 'Cream', 'f022-0831.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0859', 'Oatmeal', 'f022-0859.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0870', 'Denim', 'f022-0870.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0830', 'White', 'f022-0830.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0844', 'Pretty Blue', 'f022-0844.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0842', 'Pretty Pink', 'f022-0842.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0878', 'Cargo', 'f022-0878.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0877', 'Riverblue', 'f022-0877.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0876', 'Ming', 'f022-0876.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0882', 'Baby Blush', 'f022-0882.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0885', 'Jellybabe', 'f022-0885.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0886', 'Sweetie', 'f022-0886.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0887', 'Dolly', 'f022-0887.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0888', 'Pip', 'f022-0888.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0890', 'Lollipop', 'f022-0890.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0891', 'Plummy', 'f022-0891.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0892', 'Peeka Blue', 'f022-0892.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0893', 'Grassy', 'f022-0893.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0828', 'Nougat', 'f022-0828.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0827', 'Marina', 'f022-0827.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F022', 'F022-0829', 'Buster Blue', 'f022-0829.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F047';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F047';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F047', 'Baby Snowball', 'Fashion', 'Baby', 'f047-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0100', 'Snowman', 'f047-0100.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0101', 'Ice Cream', 'f047-0101.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0102', 'Frostie Pink', 'f047-0102.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0103', 'Frostie Blue', 'f047-0103.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0104', 'Frostie Lime', 'f047-0104.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F047', 'F047-0105', 'Frostie Lilac', 'f047-0105.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F050';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F050';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F050', 'Snuggly Tiny Tots Dk', 'Fashion', 'Baby', 'f050-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0985', 'Grey Bunny', 'f050-0985.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0986', 'Little Bee', 'f050-0986.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0987', 'Little Duck', 'f050-0987.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0988', 'Pink Pony', 'f050-0988.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0948', 'Candy', 'f050-0948.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0945', 'Soft Pink', 'f050-0945.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0958', 'Oatmeal', 'f050-0958.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0957', 'Stone', 'f050-0957.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0976', 'Crystal Blue', 'f050-0976.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0941', 'Indigo', 'f050-0941.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0936', 'Pink Pearl', 'f050-0936.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0935', 'Oyster Blue', 'f050-0935.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0934', 'Damson', 'f050-0934.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0929', 'Hush', 'f050-0929.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0933', 'Cosy', 'f050-0933.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0930', 'Bliss', 'f050-0930.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0928', 'Tender', 'f050-0928.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0931', 'Coy', 'f050-0931.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0932', 'Snug', 'f050-0932.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0924', 'Domino', 'f050-0924.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0925', 'Smoothie', 'f050-0925.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0926', 'Crumbly', 'f050-0926.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0927', 'Hedgehog', 'f050-0927.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0920', 'Baby Green', 'f050-0920.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0921', 'Baby Peach', 'f050-0921.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0922', 'Baby Pink', 'f050-0922.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F050', 'F050-0923', 'Baby Blue', 'f050-0923.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F017';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F017';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F017', 'Snuggly Snowdrops Chunky', 'Chunky', 'Baby', 'f017-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0350', 'Snow White', 'f017-0350.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0354', 'Sugar Puffs', 'f017-0354.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0353', 'Minty Fizz', 'f017-0353.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0351', 'Cream Puffs', 'f017-0351.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0352', 'Lemon Drops', 'f017-0352.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0355', 'Lilac Fizz', 'f017-0355.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0356', 'Bluebells', 'f017-0356.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F017', 'F017-0357', 'Candy Pops', 'f017-0357.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F084';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F084';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F084', 'Snuggly Snowflake Chunky', 'Chunky', 'Baby', 'f084-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0653', 'Bright Purple', 'f084-0653.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0654', 'Bright Pink', 'f084-0654.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0630', 'Milky', 'f084-0630.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0631', 'Creamy', 'f084-0631.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0636', 'Rosy Cheeks', 'f084-0636.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0632', 'Berry', 'f084-0632.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0637', 'Cuddle Plum', 'f084-0637.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0633', 'Snuggle Blue', 'f084-0633.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0635', 'Rusk', 'f084-0635.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0634', 'Teddy', 'f084-0634.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F023-0645', 'Lilac', 'f023-0645.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0403', 'Rainbow Spray', 'f084-0403.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0643', 'Lime', 'f084-0643.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0644', 'Pink', 'f084-0644.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0645', 'Lilac', 'f084-0645.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0647', 'Lemon', 'f084-0647.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0650', 'Candy Pink', 'f084-0650.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0652', 'Lagoon', 'f084-0652.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F084', 'F084-0651', 'Spearmint', 'f084-0651.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F051';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F051';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F051', 'Country Style 4 Ply', '4 ply', 'Classics', 'f051-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0605', 'Hollyhock', 'f051-0605.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0606', 'Crocus', 'f051-0606.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0607', 'Anemone', 'f051-0607.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0501', 'Magenta', 'f051-0501.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0428', 'Sage Green', 'f051-0428.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0527', 'Rosehip', 'f051-0527.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0441', 'Light Navy', 'f051-0441.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0417', 'Black', 'f051-0417.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0411', 'Cream', 'f051-0411.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0412', 'White', 'f051-0412.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0460', 'Thistle', 'f051-0460.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0404', 'Parchment', 'f051-0404.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F051', 'F051-0429', 'Lupin', 'f051-0429.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F065';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F065';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F065', 'Luxury Soft Cotton 4 Ply', '4 ply', 'Classics', 'f065-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0652', 'White', 'f065-0652.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0653', 'Vanilla Cream', 'f065-0653.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0656', 'Walnut', 'f065-0656.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0664', 'Bermuda Blue', 'f065-0664.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0657', 'Sage', 'f065-0657.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0659', 'Lilac Blossom', 'f065-0659.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0661', 'Pretty Pink', 'f065-0661.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0663', 'Raspberry', 'f065-0663.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F065', 'F065-0660', 'Calico', 'f065-0660.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F120';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F120';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F120', 'Bonus Toytime Dk', 'DK', 'Classics', 'f120-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0832', 'Shocking Pink', 'f120-0832.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0836', 'Airforce Blue', 'f120-0836.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0838', 'Silver Grey', 'f120-0838.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0839', 'Bottle Green', 'f120-0839.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0884', 'Neon', 'f120-0884.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0886', 'Bright Green', 'f120-0886.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0888', 'Peaches', 'f120-0888.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0889', 'Stone', 'f120-0889.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0916', 'Emerald', 'f120-0916.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0947', 'Chocolate', 'f120-0947.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0961', 'White', 'f120-0961.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0965', 'Black', 'f120-0965.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0969', 'Bluebell', 'f120-0969.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0971', 'Navy', 'f120-0971.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0977', 'Signal Red', 'f120-0977.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0978', 'Sunflower', 'f120-0978.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0979', 'Royal', 'f120-0979.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0981', 'Bright Orange', 'f120-0981.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F120', 'F120-0992', 'Pink', 'f120-0992.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F026';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F026';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F026', 'Crofter Dk', 'DK', 'Classics', 'f026-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0042', 'Skerry', 'f026-0042.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0045', 'Seagrass', 'f026-0045.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0044', 'Hebrides', 'f026-0044.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0043', 'Iona', 'f026-0043.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0050', 'Bracken', 'f026-0050.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0051', 'Shetland', 'f026-0051.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0052', 'Thistle', 'f026-0052.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0053', 'Hound Dog', 'f026-0053.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0054', 'Fairisle', 'f026-0054.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0055', 'Plaid', 'f026-0055.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0056', 'Hedgerow', 'f026-0056.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0057', 'Granary', 'f026-0057.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0058', 'Moorland', 'f026-0058.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0059', 'Rambler Rose', 'f026-0059.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0060', 'Loganberry', 'f026-0060.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0046', 'Heathery', 'f026-0046.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0047', 'Skye', 'f026-0047.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0048', 'Munroe', 'f026-0048.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F026', 'F026-0049', 'Plumage', 'f026-0049.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F006';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F006';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F006', 'Balmoral Dk', 'DK', 'Classics', 'f006-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0472', 'Corgi', 'f006-0472.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0473', 'Pheasant', 'f006-0473.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0478', 'Wedgwood', 'f006-0478.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0477', 'Taffeta', 'f006-0477.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0481', 'Royal Velvet', 'f006-0481.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0484', 'Butler Black', 'f006-0484.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0470', 'Glamis Cream', 'f006-0470.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0471', 'Sandringham', 'f006-0471.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0476', 'Damask', 'f006-0476.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0475', 'Polo Pink', 'f006-0475.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0479', 'Deersalker', 'f006-0479.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0480', 'Buckingham Blue', 'f006-0480.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0485', 'Banquet Red', 'f006-0485.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0486', 'Highlander', 'f006-0486.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F006', 'F006-0487', 'Windsor Purple', 'f006-0487.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F063';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F063';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F063', 'Click Dk', 'DK', 'Classics', 'f063-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0167', 'Peppercorn', 'f063-0167.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0169', 'Wild Cherry', 'f063-0169.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0168', 'Woodland', 'f063-0168.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0147', 'Loom Blue', 'f063-0147.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0133', 'Watermill', 'f063-0133.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0128', 'Tarn', 'f063-0128.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0132', 'Fern', 'f063-0132.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0142', 'Lamb', 'f063-0142.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0144', 'Downy', 'f063-0144.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0129', 'Cobble', 'f063-0129.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0131', 'Heather', 'f063-0131.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0137', 'Blueberry', 'f063-0137.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0130', 'Cranberry', 'f063-0130.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0138', 'Black Sheep', 'f063-0138.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0125', 'Lavender', 'f063-0125.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0123', 'Deep Blue', 'f063-0123.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0120', 'Bracken', 'f063-0120.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0121', 'Harbour', 'f063-0121.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0122', 'Kilt', 'f063-0122.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0119', 'Flinty', 'f063-0119.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0117', 'Pistachio', 'f063-0117.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0112', 'Wild', 'f063-0112.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0110', 'Verve', 'f063-0110.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F063', 'F063-0111', 'Blazer', 'f063-0111.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F009';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F009';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F009', 'Country Style Dk', 'DK', 'Classics', 'f009-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0608', 'Oakleaf', 'f009-0608.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0609', 'Pillarbox', 'f009-0609.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0610', 'Village Green', 'f009-0610.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0429', 'Lupin', 'f009-0429.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0529', 'Heather', 'f009-0529.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0423', 'Dusky Pink', 'f009-0423.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0402', 'Cherry  ', 'f009-0402.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0412', 'White', 'f009-0412.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0527', 'Rosehip', 'f009-0527.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0418', 'Garnet', 'f009-0418.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0500', 'Hazel', 'f009-0500.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0530', 'Chocolate  ', 'f009-0530.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0434', 'Silver Cloud', 'f009-0434.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0408', 'Greystone', 'f009-0408.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0409', 'Naturelle', 'f009-0409.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0417', 'Black', 'f009-0417.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0411', 'Cream', 'f009-0411.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0502', 'Gemini', 'f009-0502.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0501', 'Magenta', 'f009-0501.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0441', 'Light Navy', 'f009-0441.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0595', 'Highland Burn', 'f009-0595.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0591', 'Wild Thistle', 'f009-0591.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0589', 'Mountain Ash', 'f009-0589.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0593', 'Cowslip', 'f009-0593.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0596', 'Berber', 'f009-0596.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0598', 'Donegal', 'f009-0598.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0597', 'Hopsack', 'f009-0597.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0599', 'Apples', 'f009-0599.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0600', 'Dewberry', 'f009-0600.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0601', 'Flutter', 'f009-0601.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0602', 'Soft Teal', 'f009-0602.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0603', 'Dark Purple', 'f009-0603.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F009', 'F009-0604', 'Damson', 'f009-0604.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F039';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F039';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F039', 'Wash ''n'' Wear Double Crepe Dk', 'DK', 'Classics', 'f039-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0361', 'Coffee', 'f039-0361.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0362', 'Rustic Rose', 'f039-0362.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0363', 'Spearmint', 'f039-0363.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0251', 'White', 'f039-0251.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0239', 'Cream', 'f039-0239.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0327', 'Atlantic  ', 'f039-0327.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0283', 'Beige', 'f039-0283.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0259', 'Starling', 'f039-0259.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0260', 'Oatmeal Nep', 'f039-0260.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0282', 'Silver Cloud', 'f039-0282.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0318', 'Duck Egg', 'f039-0318.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0264', 'Hydrangea Blue', 'f039-0264.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0300', 'Original Denim', 'f039-0300.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0224', 'Light Navy', 'f039-0224.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0326', 'Dusky Pink', 'f039-0326.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0315', 'Blush Pink', 'f039-0315.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0275', 'Black', 'f039-0275.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0278', 'Cherry', 'f039-0278.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0242', 'Flamenco', 'f039-0242.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0209', 'Watery', 'f039-0209.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0210', 'Zest', 'f039-0210.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0358', 'Cassis', 'f039-0358.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0359', 'Kir', 'f039-0359.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F039', 'F039-0360', 'Parsley', 'f039-0360.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F016';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F016';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F016', 'Denim Tweed Dk', 'DK', 'Classics', 'f016-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0508', 'Ivory Cream', 'f016-0508.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0507', 'Starling', 'f016-0507.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0502', 'Denim Blue', 'f016-0502.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0644', 'Vintage', 'f016-0644.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0649', 'Nutmeg Marl', 'f016-0649.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0648', 'Plum Duff', 'f016-0648.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0651', 'Lavender', 'f016-0651.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0652', 'Hazelnut', 'f016-0652.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0653', 'Blue Suede', 'f016-0653.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0655', 'Bakery', 'f016-0655.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F016', 'F016-0656', 'Aspen Blue', 'f016-0656.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F013';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F013';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F013', 'Bonus Dk', 'DK', 'Classics', 'f013-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0836', 'Airforce Blue', 'f013-0836.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0833', 'Classic Red', 'f013-0833.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0834', 'Green', 'f013-0834.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0835', 'Merlot', 'f013-0835.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0987', 'Starling', 'f013-0987.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0964', 'Oatmeal', 'f013-0964.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0947', 'Chocolate', 'f013-0947.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0984', 'Cerise', 'f013-0984.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0971', 'Navy', 'f013-0971.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0994', 'Denim  ', 'f013-0994.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0963', 'Flesh Tone', 'f013-0963.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0993', 'Aran', 'f013-0993.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0957', 'Primrose', 'f013-0957.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0961', 'White', 'f013-0961.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0958', 'Iced Pink', 'f013-0958.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0959', 'Lilac', 'f013-0959.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0906', 'Velvet Plum', 'f013-0906.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0960', 'Powder Blue', 'f013-0960.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0956', 'Mint  ', 'f013-0956.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0992', 'Pink', 'f013-0992.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0969', 'Bluebell', 'f013-0969.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0979', 'Royal', 'f013-0979.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0944', 'Cupid', 'f013-0944.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0998', 'Turquoise', 'f013-0998.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0977', 'Signal Red', 'f013-0977.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0904', 'Orchard', 'f013-0904.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0965', 'Black', 'f013-0965.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0891', 'Rustic Red', 'f013-0891.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0916', 'Emerald', 'f013-0916.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0978', 'Sunflower', 'f013-0978.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0981', 'Bright Orange', 'f013-0981.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0886', 'Bright Green', 'f013-0886.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0887', 'Bright Pink', 'f013-0887.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0840', 'Purple', 'f013-0840.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0841', 'Claret', 'f013-0841.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0842', 'Alpine', 'f013-0842.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0843', 'Copper', 'f013-0843.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0882', 'Lime', 'f013-0882.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0884', 'Neon', 'f013-0884.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0885', 'Electra', 'f013-0885.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0839', 'Bottle Green', 'f013-0839.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0838', 'Charcoal', 'f013-0838.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0828', 'Bright Purple', 'f013-0828.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0829', 'Petrol', 'f013-0829.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0930', 'Sandstorm', 'f013-0930.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F013', 'F013-0931', 'Stormcloud', 'f013-0931.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F033';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F033';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F033', 'Denim Aran', 'Aran', 'Classics', 'f033-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F033', 'F033-0508', 'Ivory Cream', 'f033-0508.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F033', 'F033-0507', 'Starling', 'f033-0507.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F033', 'F033-0502', 'Denim Blue', 'f033-0502.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F119';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F119';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F119', 'Bonus Aran 400g with Wool', 'Aran', 'Classics', 'f119-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0847', 'Eau de Nil', 'f119-0847.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0842', 'Alpine', 'f119-0842.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0830', 'Deep Red', 'f119-0830.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0831', 'Millstone Tweed', 'f119-0831.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0965', 'Black', 'f119-0965.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0994', 'Denim  ', 'f119-0994.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0950', 'Cherry', 'f119-0950.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0962', 'Ivory Cream', 'f119-0962.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0931', 'Stormcloud', 'f119-0931.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0930', 'Sandstorm', 'f119-0930.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0934', 'Green Heather', 'f119-0934.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0933', 'Blue Heather', 'f119-0933.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0932', 'Soft Blue', 'f119-0932.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0936', 'Light Natural', 'f119-0936.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0905', 'Tudor Rose', 'f119-0905.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0929', 'Glen Coe', 'f119-0929.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0872', 'Barley', 'f119-0872.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0871', 'Purple Heather', 'f119-0871.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0870', 'Rose Brown', 'f119-0870.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0867', 'Lilac Tweed', 'f119-0867.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0868', 'Island Tweed', 'f119-0868.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0869', 'Granite Tweed', 'f119-0869.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0995', 'Navy', 'f119-0995.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0996', 'Violet', 'f119-0996.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F119', 'F119-0997', 'Celtic Grey', 'f119-0997.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F037';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F037';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F037', 'Click Aran with Wool', 'Aran', 'Classics', 'f037-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0142', 'Lamb', 'f037-0142.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0162', 'Shepherd', 'f037-0162.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0144', 'Downy', 'f037-0144.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0151', 'Rustique', 'f037-0151.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0161', 'Crofter', 'f037-0161.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0147', 'Loom Blue', 'f037-0147.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0128', 'Tarn', 'f037-0128.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0127', 'Spruce', 'f037-0127.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0136', 'Foxglove', 'f037-0136.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0148', 'Bud', 'f037-0148.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0113', 'Rush', 'f037-0113.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0110', 'Verve', 'f037-0110.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0115', 'Cove Blue', 'f037-0115.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F037', 'F037-0123', 'Deep Blue', 'f037-0123.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F087';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F087';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F087', 'Crofter Chunky', 'Chunky', 'Classics', 'f087-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0042', 'Skerry', 'f087-0042.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0045', 'Seagrass', 'f087-0045.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0044', 'Hebrides', 'f087-0044.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0043', 'Iona', 'f087-0043.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0050', 'Bracken', 'f087-0050.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0052', 'Thistle', 'f087-0052.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0053', 'Hound Dog', 'f087-0053.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0059', 'Rambler Rose', 'f087-0059.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0060', 'Loganberry', 'f087-0060.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0061', 'Misty Moor', 'f087-0061.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0046', 'Heathery', 'f087-0046.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0047', 'Skye', 'f087-0047.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0048', 'Munroe', 'f087-0048.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F087', 'F087-0049', 'Plumage', 'f087-0049.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F045';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F045';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F045', 'Click Chunky with Wool', 'Chunky', 'Classics', 'f045-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0167', 'Peppercorn', 'f045-0167.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0169', 'Wild Cherry', 'f045-0169.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0166', 'Winter Violet', 'f045-0166.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0168', 'Woodland', 'f045-0168.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0144', 'Downy', 'f045-0144.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0151', 'Rustique', 'f045-0151.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0147', 'Loom Blue', 'f045-0147.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0146', 'Bloom', 'f045-0146.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0142', 'Lamb', 'f045-0142.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0143', 'Duffler', 'f045-0143.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0141', 'Indy', 'f045-0141.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0148', 'Bud', 'f045-0148.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0160', 'Flock', 'f045-0160.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F063-0128', 'Tarn', 'f063-0128.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0138', 'Black Sheep', 'f045-0138.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0131', 'Heather', 'f045-0131.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0130', 'Cranberry', 'f045-0130.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0129', 'Cobble', 'f045-0129.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0132', 'Fern', 'f045-0132.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0112', 'Wild', 'f045-0112.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0110', 'Verve', 'f045-0110.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0111', 'Blazer', 'f045-0111.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0163', 'Really Red', 'f045-0163.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0164', 'Botany Blue', 'f045-0164.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F045', 'F045-0165', 'Marine Blue', 'f045-0165.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F032';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F032';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F032', 'Denim Chunky', 'Chunky', 'Classics', 'f032-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F032', 'F032-0502', 'Denim Blue', 'f032-0502.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F032', 'F032-0507', 'Starling', 'f032-0507.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F032', 'F032-0508', 'Ivory Cream', 'f032-0508.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F032', 'F032-0644', 'Vintage', 'f032-0644.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F060';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F060';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F060', 'Bonus Chunky', 'Chunky', 'Classics', 'f060-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0930', 'Sandstorm', 'f060-0930.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0936', 'Light Natural', 'f060-0936.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0828', 'Bright Purple', 'f060-0828.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0829', 'Petrol', 'f060-0829.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0987', 'Starling', 'f060-0987.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0993', 'Aran', 'f060-0993.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0977', 'Signal Red', 'f060-0977.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0971', 'Navy', 'f060-0971.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0961', 'White', 'f060-0961.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0965', 'Black', 'f060-0965.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0845', 'Thomas Blue', 'f060-0845.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0846', 'Raspberry', 'f060-0846.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0847', 'Eau de Nil', 'f060-0847.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0892', 'Antique Rose', 'f060-0892.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0851', 'Pastel Pink', 'f060-0851.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0852', 'Pastel Lemon', 'f060-0852.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0854', 'Pastel Blue', 'f060-0854.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0873', 'Floss', 'f060-0873.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0876', 'Firecracker', 'f060-0876.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0884', 'Neon', 'f060-0884.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0885', 'Electra', 'f060-0885.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F060', 'F060-0931', 'Stormcloud', 'f060-0931.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F025';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F025';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F025', 'Denim Ultra', 'Super Chunky', 'Classics', 'f025-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0657', 'Red Flare', 'f025-0657.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0658', 'Union Green', 'f025-0658.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0508', 'Ivory Cream', 'f025-0508.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0507', 'Starling', 'f025-0507.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0636', 'Walnut', 'f025-0636.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0645', 'Madder Pink', 'f025-0645.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0502', 'Denim Blue', 'f025-0502.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0644', 'Vintage', 'f025-0644.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0637', 'Seaspray', 'f025-0637.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0649', 'Nutmeg Marl', 'f025-0649.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0650', 'Husky Grey', 'f025-0650.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0648', 'Plum Duff', 'f025-0648.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0653', 'Blue Suede', 'f025-0653.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0655', 'Bakery', 'f025-0655.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F025', 'F025-0656', 'Aspen Blue', 'f025-0656.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F042';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F042';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F042', 'Connemara Chunky', '', 'Fashion', 'f042-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0350', 'Wheatsheaf', 'f042-0350.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0351', 'Carrow Brown', 'f042-0351.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0352', 'Homestead', 'f042-0352.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0353', 'Wayfarer', 'f042-0353.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0354', 'Heartland', 'f042-0354.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F042', 'F042-0355', 'Hornpipe', 'f042-0355.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F062';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F062';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F062', 'Indie', '', 'Fashion', 'f062-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0150', 'Apache', 'f062-0150.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0151', 'Navajo', 'f062-0151.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0152', 'Arizona', 'f062-0152.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0153', 'Pioneer', 'f062-0153.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0154', 'Montana', 'f062-0154.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0155', 'Prairie', 'f062-0155.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0156', 'Little Bighorn', 'f062-0156.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F062', 'F062-0157', 'Crazy Horse', 'f062-0157.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F053';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F053';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F053', 'Flirt Dk', '', 'Fashion', 'f053-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0220', 'White Diamonds', 'f053-0220.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0221', 'Champers', 'f053-0221.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0222', 'Slinky Silver', 'f053-0222.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0223', 'Burnished Bronze', 'f053-0223.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0224', 'Rouge', 'f053-0224.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0225', 'Hypnotic', 'f053-0225.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0226', 'Sassy Black', 'f053-0226.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0227', 'Creme', 'f053-0227.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0228', 'Cosmopolitan', 'f053-0228.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F053', 'F053-0229', 'Flirtini', 'f053-0229.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F091';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F091';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F091', 'Snowball', '', 'Fashion', 'f091-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0001', 'Snow White', 'f091-0001.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0002', 'Bunny Tail', 'f091-0002.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0003', 'Hot Pink', 'f091-0003.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0004', 'Glamour Red', 'f091-0004.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0005', 'Berry', 'f091-0005.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0006', 'Rosie Pink', 'f091-0006.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0007', 'Vivid Violet', 'f091-0007.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0008', 'Neon Blue', 'f091-0008.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0009', 'Black Velvet', 'f091-0009.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0010', 'Magpie', 'f091-0010.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0011', 'Tutti Frutti', 'f091-0011.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F091', 'F091-0012', 'Leopard', 'f091-0012.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F055';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F055';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F055', 'One Hour Scarf', '', 'Fashion', 'f055-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0402', 'Bambi', 'f055-0402.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0409', 'Dream Green', 'f055-0409.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0403', 'Dashing Red', 'f055-0403.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0405', 'Black Jack', 'f055-0405.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0408', 'Igloo', 'f055-0408.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0407', 'Polar Bear', 'f055-0407.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0401', 'Boogie Woogie', 'f055-0401.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F055', 'F055-0400', 'Velvetina', 'f055-0400.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F041';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F041';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F041', 'Persia Chunky', '', 'Fashion', 'f041-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0400', 'Byzantine', 'f041-0400.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0399', 'Empire Red', 'f041-0399.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0401', 'Sultan', 'f041-0401.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0390', 'Moscow', 'f041-0390.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0391', 'Vladimir', 'f041-0391.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0392', 'Karenina', 'f041-0392.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0393', 'Black Russian', 'f041-0393.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0394', 'Pavlova', 'f041-0394.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0395', 'Ottoman', 'f041-0395.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0396', 'Imperial', 'f041-0396.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0397', 'Faberge', 'f041-0397.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F041', 'F041-0398', 'Beluga', 'f041-0398.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F038';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F038';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F038', 'Escape Chunky', '', 'Fashion', 'f038-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0179', 'Endeavour', 'f038-0179.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0178', 'Loud', 'f038-0178.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0184', 'Tranquil', 'f038-0184.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0195', 'Tease', 'f038-0195.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0196', 'Forbidden', 'f038-0196.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0192', 'Luscious', 'f038-0192.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0193', 'Fever', 'f038-0193.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0194', 'Temptation', 'f038-0194.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0183', 'Euphoria', 'f038-0183.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0180', 'Fury', 'f038-0180.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0187', 'Ecstasy', 'f038-0187.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0197', 'Ravishing', 'f038-0197.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F038', 'F038-0198', 'Destiny', 'f038-0198.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F052';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F052';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F052', 'Nomad', '', 'Fashion', 'f052-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0016', 'Katmandu', 'f052-0016.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0010', 'Alaska', 'f052-0010.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0011', 'Elk', 'f052-0011.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0012', 'Tibet', 'f052-0012.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0013', 'Himalaya', 'f052-0013.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0014', 'Tundra', 'f052-0014.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F052', 'F052-0015', 'Reindeer', 'f052-0015.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F046';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F046';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F046', 'Tweedie Chunky', '', 'Fashion', 'f046-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0280', 'Buckwheat', 'f046-0280.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0281', 'Truffle', 'f046-0281.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0282', 'Wood Pigeon', 'f046-0282.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0283', 'Grouse', 'f046-0283.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0284', 'Roasted Berry', 'f046-0284.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0285', 'Cedar', 'f046-0285.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0286', 'Fleck', 'f046-0286.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F046', 'F046-0287', 'Mallard', 'f046-0287.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F040';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F040';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F040', 'Big Softie', '', 'Fashion', 'f040-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0345', 'Vivid', 'f040-0345.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0346', 'Bling Blue', 'f040-0346.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0347', 'Wink Pink', 'f040-0347.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0348', 'Jazzy', 'f040-0348.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0330', 'Meringue', 'f040-0330.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0331', 'Muffin', 'f040-0331.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0333', 'Souffle', 'f040-0333.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0335', 'Blancmange', 'f040-0335.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0332', 'Marshmallow', 'f040-0332.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0334', 'Cupcake', 'f040-0334.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0336', 'Foam', 'f040-0336.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0337', 'Teddy', 'f040-0337.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0338', 'Kitten', 'f040-0338.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0339', 'Cherry Pie', 'f040-0339.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0340', 'Flossie', 'f040-0340.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0341', 'Mitten', 'f040-0341.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0342', 'Muffler', 'f040-0342.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0344', 'Boho', 'f040-0344.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F040', 'F040-0343', 'Puffball', 'f040-0343.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F049';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F049';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F049', 'Escape Dk', '', 'Fashion', 'f049-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0179', 'Endeavour', 'f049-0179.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0178', 'Loud', 'f049-0178.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0186', 'Innocence', 'f049-0186.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0182', 'Vibe', 'f049-0182.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0184', 'Tranquil', 'f049-0184.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0183', 'Euphoria', 'f049-0183.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0181', 'Fervour', 'f049-0181.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0180', 'Fury', 'f049-0180.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0187', 'Ecstasy', 'f049-0187.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0185', 'Passion', 'f049-0185.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0188', 'Smoulder', 'f049-0188.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0189', 'Desire', 'f049-0189.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0190', 'Freespirit', 'f049-0190.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0191', 'Fascination', 'f049-0191.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0192', 'Luscious', 'f049-0192.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0193', 'Fever', 'f049-0193.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0194', 'Temptation', 'f049-0194.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0200', 'Frolic', 'f049-0200.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0197', 'Ravishing', 'f049-0197.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F049', 'F049-0199', 'Vivacious', 'f049-0199.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F028';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F028';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F028', 'Calico Dk', '', 'Fashion', 'f028-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0728', 'Bandana', 'f028-0728.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0729', 'Oasis', 'f028-0729.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0730', 'Panama Pink', 'f028-0730.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0731', 'South Beach', 'f028-0731.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0723', 'Cotton White', 'f028-0723.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0721', 'Linen', 'f028-0721.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0724', 'Muslin', 'f028-0724.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0727', 'Lime Canvas', 'f028-0727.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0725', 'Washed Gingham', 'f028-0725.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0720', 'Chambray', 'f028-0720.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0717', 'Clamdigger', 'f028-0717.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0718', 'Splash', 'f028-0718.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0719', 'Bikini', 'f028-0719.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0714', 'Amber', 'f028-0714.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0716', 'Spicy', 'f028-0716.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F028', 'F028-0715', 'Lobster', 'f028-0715.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F012';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F012';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F012', 'Eco Wool Dk', '', 'Fashion', 'f012-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0200', 'Ecru', 'f012-0200.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0201', 'Natural', 'f012-0201.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0202', 'Clay', 'f012-0202.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0203', 'Earth', 'f012-0203.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0204', 'Flint', 'f012-0204.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0205', 'Cobblestones', 'f012-0205.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F012', 'F012-0206', 'Shale', 'f012-0206.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F005';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F005';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F005', 'Yo Yo', '', 'Fashion', 'f005-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0002', 'Plume', 'f005-0002.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0001', 'Smokey', 'f005-0001.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0018', 'Sable', 'f005-0018.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0019', 'Peacock', 'f005-0019.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0006', 'Moss', 'f005-0006.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0017', 'Fudge', 'f005-0017.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F005', 'F005-0015', 'Storm Cloud', 'f005-0015.jpg');
-
-
-
-
-DELETE FROM sirdar_yarn WHERE yarn_code = 'F095';
-DELETE FROM sirdar_yarn_shade WHERE yarn_code = 'F095';
-
-INSERT INTO sirdar_yarn (yarn_code, yarn_name, ply_name, style_name, yarn_image) VALUES ('F095', 'Funky Fur', '', 'Fashion', 'f095-large.jpg');
-
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0533', 'Angel Pink', 'f095-0533.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0512', 'White', 'f095-0512.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0511', 'Cream', 'f095-0511.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0550', 'Latte', 'f095-0550.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0549', 'Walnut', 'f095-0549.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0548', 'Chocolate', 'f095-0548.jpg');
-INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_name, shade_image) VALUES ('F095', 'F095-0510', 'Jet Black', 'f095-0510.jpg');
-
-
-
-
+--
+-- Dumping data for table sirdar_yarn_shade
+--
+
+INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_status, shade_name, shade_image, changedate) VALUES
+('F072', 'F072-0251', 'INC', 'White', 'f072-0251.jpg', NULL),
+('F077', 'F077-0251', 'NEW', 'White', 'f077-0251.jpg', NULL),
+('F073', 'F073-0251', 'INC', 'White', 'f073-0251.jpg', NULL),
+('F073', 'F073-0302', 'INC', 'Pearly Pink', 'f073-0302.jpg', NULL),
+('F073', 'F073-0320', 'NEW', 'Pastel Lemon', 'f073-0320.jpg', NULL),
+('F073', 'F073-0321', 'INC', 'Pastel Blue', 'f073-0321.jpg', NULL),
+('F073', 'F073-0303', 'INC', 'Cream', 'f073-0303.jpg', NULL),
+('F070', 'F070-0251', 'INC', 'White', 'f070-0251.jpg', NULL),
+('F074', 'F074-0212', 'NEW', 'Petal Pink', 'f074-0212.jpg', NULL),
+('F074', 'F074-0303', 'INC', 'Cream', 'f074-0303.jpg', NULL),
+('F074', 'F074-0406', 'NEW', 'Blink', 'f074-0406.jpg', NULL),
+('F074', 'F074-0408', 'INC', 'Sugar Cookie', 'f074-0408.jpg', NULL),
+('F074', 'F074-0251', 'INC', 'White', 'f074-0251.jpg', NULL),
+('F074', 'F074-0403', 'NEW', 'Wobble', 'f074-0403.jpg', NULL),
+('F074', 'F074-0304', 'INC', 'Pearly Green', 'f074-0304.jpg', NULL),
+('F074', 'F074-0321', 'INC', 'Pastel Blue', 'f074-0321.jpg', NULL),
+('F074', 'F074-0219', 'INC', 'Lilac', 'f074-0219.jpg', NULL),
+('F074', 'F074-0320', 'INC', 'Pastel Lemon', 'f074-0320.jpg', NULL),
+('F074', 'F074-0420', 'INC', 'Lolly', 'f074-0420.jpg', NULL),
+('F074', 'F074-0419', 'INC', 'Choo Choo Train', 'f074-0419.jpg', NULL),
+('F074', 'F074-0302', 'INC', 'Pearly Pink', 'f074-0302.jpg', NULL),
+('F083', 'F083-0251', 'INC', 'White', 'f083-0251.jpg', NULL),
+('F083', 'F083-0303', 'EXC', 'Cream', 'f083-0303.jpg', NULL),
+('F118', 'F118-0851', 'EXC', 'Baby Pink', 'f118-0851.jpg', NULL),
+('F118', 'F118-0852', 'EXC', 'Baby Lemon', 'f118-0852.jpg', NULL),
+('F118', 'F118-0853', 'EXC', 'Baby Mint', 'f118-0853.jpg', NULL),
+('F118', 'F118-0854', 'EXC', 'Baby Blue', 'f118-0854.jpg', NULL),
+('F118', 'F118-0855', 'EXC', 'Baby Cream', 'f118-0855.jpg', NULL),
+('F118', 'F118-0856', 'EXC', 'Baby White', 'f118-0856.jpg', NULL),
+('F086', 'F086-0161', 'INC', 'Maisie', 'f086-0161.jpg', NULL),
+('F086', 'F086-0160', 'INC', 'Lillie', 'f086-0160.jpg', NULL),
+('F086', 'F086-0158', 'INC', 'Florrie', 'f086-0158.jpg', NULL),
+('F086', 'F086-0159', 'INC', 'Tilly', 'f086-0159.jpg', NULL),
+('F086', 'F086-0152', 'INC', 'Scottie', 'f086-0152.jpg', NULL),
+('F086', 'F086-0151', 'INC', 'Keltie', 'f086-0151.jpg', NULL),
+('F086', 'F086-0150', 'INC', 'Bonnie', 'f086-0150.jpg', NULL),
+('F023', 'F023-0642', 'INC', 'Beige', 'f023-0642.jpg', NULL),
+('F023', 'F023-0630', 'INC', 'Milky', 'f023-0630.jpg', NULL),
+('F023', 'F023-0631', 'INC', 'Creamy', 'f023-0631.jpg', NULL),
+('F023', 'F023-0651', 'INC', 'Spearmint', 'f023-0651.jpg', NULL),
+('F023', 'F023-0650', 'INC', 'Candy Pink', 'f023-0650.jpg', NULL),
+('F023', 'F023-0648', 'EXC', 'Iced Blue', 'f023-0648.jpg', '2011-07-28'),
+('F023', 'F023-0647', 'EXC', 'Lemon', 'f023-0647.jpg', '2011-07-28'),
+('F023', 'F023-0646', 'INC', 'Aqua', 'f023-0646.jpg', NULL),
+('F023', 'F023-0645', 'INC', 'Lilac', 'f023-0645.jpg', NULL),
+('F023', 'F023-0644', 'INC', 'Pink', 'f023-0644.jpg', NULL),
+('F023', 'F023-0643', 'EXC', 'Lime', 'f023-0643.jpg', '2011-07-28'),
+('F096', 'F096-0758', 'INC', 'Princess Pink', 'f096-0758.jpg', NULL),
+('F096', 'F096-0757', 'INC', 'Doodle', 'f096-0757.jpg', NULL),
+('F096', 'F096-0754', 'INC', 'Bonbon', 'f096-0754.jpg', NULL),
+('F096', 'F096-0752', 'INC', 'Giddy', 'f096-0752.jpg', NULL),
+('F096', 'F096-0753', 'INC', 'Skippy', 'f096-0753.jpg', NULL),
+('F096', 'F096-0750', 'INC', 'Hushed', 'f096-0750.jpg', NULL),
+('F096', 'F096-0751', 'INC', 'Twiggy', 'f096-0751.jpg', NULL),
+('F096', 'F096-0755', 'INC', 'Patter Pink', 'f096-0755.jpg', NULL),
+('F096', 'F096-0756', 'INC', 'Twinkle', 'f096-0756.jpg', NULL),
+('F069', 'F069-0856', 'NEW', 'Baby White', 'f069-0856.jpg', NULL),
+('F069', 'F069-0855', 'NEW', 'Baby Cream', 'f069-0855.jpg', NULL),
+('F069', 'F069-0854', 'NEW', 'Baby Blue', 'f069-0854.jpg', NULL),
+('F069', 'F069-0852', 'NEW', 'Baby Lemon', 'f069-0852.jpg', NULL),
+('F069', 'F069-0851', 'NEW', 'Baby Pink', 'f069-0851.jpg', NULL),
+('F069', 'F069-0850', 'NEW', 'Baby Lilac', 'f069-0850.jpg', NULL),
+('F071', 'F071-0157', 'INC', 'Yellow Submarine', 'f071-0157.jpg', NULL),
+('F071', 'F071-0122', 'EXC', 'Groovy Green', 'f071-0122.jpg', '2011-07-28'),
+('F071', 'F071-0123', 'EXC', 'Yummy Yellow', 'f071-0123.jpg', '2011-07-28'),
+('F071', 'F071-0124', 'EXC', 'Perky Pink', 'f071-0124.jpg', '2011-07-28'),
+('F071', 'F071-0125', 'EXC', 'Flip Flop', 'f071-0125.jpg', '2011-07-28'),
+('F071', 'F071-0132', 'EXC', 'Putty', 'f071-0132.jpg', '2011-07-28'),
+('F071', 'F071-0133', 'INC', 'Willow', 'f071-0133.jpg', NULL),
+('F071', 'F071-0134', 'EXC', 'Babe', 'f071-0134.jpg', '2011-07-28'),
+('F071', 'F071-0131', 'INC', 'Cream', 'f071-0131.jpg', NULL),
+('F071', 'F071-0148', 'INC', 'Coo', 'f071-0148.jpg', '2011-07-28'),
+('F071', 'F071-0126', 'EXC', 'Rocking Horse', 'f071-0126.jpg', '2011-07-28'),
+('F071', 'F071-0127', 'EXC', 'Skittle', 'f071-0127.jpg', '2011-07-28'),
+('F071', 'F071-0128', 'EXC', 'Tigger', 'f071-0128.jpg', '2011-07-28'),
+('F071', 'F071-0129', 'EXC', 'Banjo Blue', 'f071-0129.jpg', '2011-07-28'),
+('F071', 'F071-0130', 'EXC', 'Wigwam', 'f071-0130.jpg', '2011-07-28'),
+('F071', 'F071-0155', 'EXC', 'Limey', 'f071-0155.jpg', '2011-07-28'),
+('F071', 'F071-0158', 'EXC', 'Rinky Dinky Pink', 'f071-0158.jpg', '2011-07-28'),
+('F071', 'F071-0156', 'EXC', 'Sailboat', 'f071-0156.jpg', '2011-07-28'),
+('F075', 'F075-0404', 'EXC', 'Blush Baby', 'f075-0404.jpg', '2011-07-28'),
+('F075', 'F075-0420', 'INC', 'Lolly', 'f075-0420.jpg', NULL),
+('F075', 'F075-0421', 'EXC', 'Lime Juice', 'f075-0421.jpg', '2011-07-28'),
+('F075', 'F075-0422', 'EXC', 'Sweet Pea', 'f075-0422.jpg', '2011-07-28'),
+('F075', 'F075-0423', 'EXC', 'Honey', 'f075-0423.jpg', '2011-07-28'),
+('F075', 'F075-0344', 'INC', 'Oatmeal', 'f075-0344.jpg', NULL),
+('F075', 'F075-0240', 'EXC', 'Stonewash', 'f075-0240.jpg', '2011-07-28'),
+('F075', 'F075-0353', 'EXC', 'Indigo Mix', 'f075-0353.jpg', '2011-07-28'),
+('F075', 'F075-0224', 'INC', 'Light Navy', 'f075-0224.jpg', NULL),
+('F075', 'F075-0251', 'INC', 'White', 'f075-0251.jpg', NULL),
+('F075', 'F075-0320', 'INC', 'Pastel Lemon', 'f075-0320.jpg', NULL),
+('F075', 'F075-0350', 'INC', 'Spicy Pink', 'f075-0350.jpg', NULL),
+('F075', 'F075-0347', 'EXC', 'Brick Red', 'f075-0347.jpg', '2011-07-28'),
+('F075', 'F075-0242', 'INC', 'Flamenco', 'f075-0242.jpg', NULL),
+('F075', 'F075-0354', 'EXC', 'Bluebell Mix', 'f075-0354.jpg', '2011-07-28'),
+('F075', 'F075-0326', 'INC', 'Denim', 'f075-0326.jpg', NULL),
+('F075', 'F075-0213', 'EXC', 'Angelica', 'f075-0213.jpg', '2011-07-28'),
+('F075', 'F075-0212', 'INC', 'Petal Pink', 'f075-0212.jpg', NULL),
+('F075', 'F075-0219', 'INC', 'Lilac', 'f075-0219.jpg', NULL),
+('F075', 'F075-0216', 'EXC', 'Sky', 'f075-0216.jpg', '2011-07-28'),
+('F075', 'F075-0303', 'INC', 'Cream', 'f075-0303.jpg', NULL),
+('F075', 'F075-0302', 'INC', 'Pearly Pink', 'f075-0302.jpg', NULL),
+('F075', 'F075-0321', 'INC', 'Pastel Blue', 'f075-0321.jpg', NULL),
+('F075', 'F075-0304', 'INC', 'Pearly Green', 'f075-0304.jpg', NULL),
+('F075', 'F075-0252', 'INC', 'Lemon', 'f075-0252.jpg', NULL),
+('F075', 'F075-0372', 'EXC', 'Cherub', 'f075-0372.jpg', '2011-07-28'),
+('F075', 'F075-0255', 'EXC', 'Mellow Pink', 'f075-0255.jpg', '2011-07-28'),
+('F075', 'F075-0254', 'INC', 'Clover', 'f075-0254.jpg', NULL),
+('F075', 'F075-0260', 'EXC', 'Summer Lime', 'f075-0260.jpg', '2011-07-28'),
+('F075', 'F075-0259', 'EXC', 'Daisy', 'f075-0259.jpg', '2011-07-28'),
+('F075', 'F075-0265', 'INC', 'Speckle', 'f075-0265.jpg', '2011-07-28'),
+('F075', 'F075-0268', 'EXC', 'Blueberry Mousse', 'f075-0268.jpg', '2011-07-28'),
+('F075', 'F075-0267', 'INC', 'Strawberry Mousse', 'f075-0267.jpg', '2011-07-28'),
+('F075', 'F075-0312', 'EXC', 'Black', 'f075-0312.jpg', '2011-07-28'),
+('F075', 'F075-0403', 'INC', 'Wobble', 'f075-0403.jpg', NULL),
+('F081', 'F081-0251', 'INC', 'White', 'f081-0251.jpg', NULL),
+('F081', 'F081-0303', 'NEW', 'Cream', 'f081-0303.jpg', NULL),
+('F082', 'F082-0251', 'NEW', 'White', 'f082-0251.jpg', NULL),
+('F082', 'F082-0303', 'NEW', 'Cream', 'f082-0303.jpg', NULL),
+('F082', 'F082-0302', 'NEW', 'Pearly Pink', 'f082-0302.jpg', NULL),
+('F014', 'F014-0850', 'NEW', 'Baby Lilac', 'f014-0850.jpg', NULL),
+('F014', 'F014-0851', 'NEW', 'Baby Pink', 'f014-0851.jpg', NULL),
+('F014', 'F014-0852', 'NEW', 'Baby Lemon', 'f014-0852.jpg', NULL),
+('F014', 'F014-0853', 'NEW', 'Baby Mint', 'f014-0853.jpg', NULL),
+('F014', 'F014-0854', 'NEW', 'Baby Blue', 'f014-0854.jpg', NULL),
+('F014', 'F014-0855', 'NEW', 'Baby Cream', 'f014-0855.jpg', NULL),
+('F014', 'F014-0856', 'NEW', 'Baby White', 'f014-0856.jpg', NULL),
+('F022', 'F022-0823', 'NEW', 'Chestnut', 'f022-0823.jpg', NULL),
+('F022', 'F022-0824', 'NEW', 'Red Poppy', 'f022-0824.jpg', NULL),
+('F022', 'F022-0825', 'NEW', 'Mustard', 'f022-0825.jpg', NULL),
+('F022', 'F022-0826', 'NEW', 'Minty', 'f022-0826.jpg', NULL),
+('F022', 'F022-0831', 'NEW', 'Cream', 'f022-0831.jpg', NULL),
+('F022', 'F022-0859', 'NEW', 'Oatmeal', 'f022-0859.jpg', NULL),
+('F022', 'F022-0870', 'NEW', 'Denim', 'f022-0870.jpg', NULL),
+('F022', 'F022-0830', 'NEW', 'White', 'f022-0830.jpg', NULL),
+('F022', 'F022-0844', 'NEW', 'Pretty Blue', 'f022-0844.jpg', NULL),
+('F022', 'F022-0842', 'NEW', 'Pretty Pink', 'f022-0842.jpg', NULL),
+('F022', 'F022-0878', 'NEW', 'Cargo', 'f022-0878.jpg', NULL),
+('F022', 'F022-0877', 'NEW', 'Riverblue', 'f022-0877.jpg', NULL),
+('F022', 'F022-0876', 'NEW', 'Ming', 'f022-0876.jpg', NULL),
+('F022', 'F022-0882', 'NEW', 'Baby Blush', 'f022-0882.jpg', NULL),
+('F022', 'F022-0885', 'NEW', 'Jellybabe', 'f022-0885.jpg', NULL),
+('F022', 'F022-0886', 'NEW', 'Sweetie', 'f022-0886.jpg', NULL),
+('F022', 'F022-0887', 'NEW', 'Dolly', 'f022-0887.jpg', NULL),
+('F022', 'F022-0888', 'NEW', 'Pip', 'f022-0888.jpg', NULL),
+('F022', 'F022-0890', 'NEW', 'Lollipop', 'f022-0890.jpg', NULL),
+('F022', 'F022-0891', 'NEW', 'Plummy', 'f022-0891.jpg', NULL),
+('F022', 'F022-0892', 'NEW', 'Peeka Blue', 'f022-0892.jpg', NULL),
+('F022', 'F022-0893', 'NEW', 'Grassy', 'f022-0893.jpg', NULL),
+('F022', 'F022-0828', 'NEW', 'Nougat', 'f022-0828.jpg', NULL),
+('F022', 'F022-0827', 'NEW', 'Marina', 'f022-0827.jpg', NULL),
+('F022', 'F022-0829', 'NEW', 'Buster Blue', 'f022-0829.jpg', NULL),
+('F047', 'F047-0100', 'INC', 'Snowman', 'f047-0100.jpg', NULL),
+('F047', 'F047-0101', 'INC', 'Ice Cream', 'f047-0101.jpg', NULL),
+('F047', 'F047-0102', 'INC', 'Frostie Pink', 'f047-0102.jpg', NULL),
+('F047', 'F047-0103', 'INC', 'Frostie Blue', 'f047-0103.jpg', NULL),
+('F047', 'F047-0104', 'INC', 'Frostie Lime', 'f047-0104.jpg', NULL),
+('F047', 'F047-0105', 'INC', 'Frostie Lilac', 'f047-0105.jpg', NULL),
+('F050', 'F050-0985', 'EXC', 'Grey Bunny', 'f050-0985.jpg', NULL),
+('F050', 'F050-0986', 'EXC', 'Little Bee', 'f050-0986.jpg', NULL),
+('F050', 'F050-0987', 'EXC', 'Little Duck', 'f050-0987.jpg', NULL),
+('F050', 'F050-0988', 'INC', 'Pink Pony', 'f050-0988.jpg', '2012-02-21'),
+('F050', 'F050-0948', 'INC', 'Candy', 'f050-0948.jpg', NULL),
+('F050', 'F050-0945', 'INC', 'Soft Pink', 'f050-0945.jpg', NULL),
+('F050', 'F050-0958', 'INC', 'Oatmeal', 'f050-0958.jpg', NULL),
+('F050', 'F050-0957', 'INC', 'Stone', 'f050-0957.jpg', NULL),
+('F050', 'F050-0976', 'INC', 'Crystal Blue', 'f050-0976.jpg', NULL),
+('F050', 'F050-0941', 'INC', 'Indigo', 'f050-0941.jpg', NULL),
+('F050', 'F050-0936', 'INC', 'Pink Pearl', 'f050-0936.jpg', NULL),
+('F050', 'F050-0935', 'INC', 'Oyster Blue', 'f050-0935.jpg', NULL),
+('F050', 'F050-0934', 'EXC', 'Damson', 'f050-0934.jpg', NULL),
+('F050', 'F050-0929', 'INC', 'Hush', 'f050-0929.jpg', NULL),
+('F050', 'F050-0933', 'INC', 'Cosy', 'f050-0933.jpg', NULL),
+('F050', 'F050-0930', 'EXC', 'Bliss', 'f050-0930.jpg', NULL),
+('F050', 'F050-0928', 'INC', 'Tender', 'f050-0928.jpg', NULL),
+('F050', 'F050-0931', 'INC', 'Coy', 'f050-0931.jpg', NULL),
+('F050', 'F050-0932', 'INC', 'Snug', 'f050-0932.jpg', NULL),
+('F050', 'F050-0924', 'EXC', 'Domino', 'f050-0924.jpg', NULL),
+('F050', 'F050-0925', 'EXC', 'Smoothie', 'f050-0925.jpg', NULL),
+('F050', 'F050-0926', 'EXC', 'Crumbly', 'f050-0926.jpg', NULL),
+('F050', 'F050-0927', 'EXC', 'Hedgehog', 'f050-0927.jpg', NULL),
+('F050', 'F050-0920', 'EXC', 'Baby Green', 'f050-0920.jpg', NULL),
+('F050', 'F050-0921', 'EXC', 'Baby Peach', 'f050-0921.jpg', NULL),
+('F050', 'F050-0922', 'INC', 'Baby Pink', 'f050-0922.jpg', NULL),
+('F050', 'F050-0923', 'EXC', 'Baby Blue', 'f050-0923.jpg', NULL),
+('F017', 'F017-0350', 'INC', 'Snow White', 'f017-0350.jpg', NULL),
+('F017', 'F017-0354', 'INC', 'Sugar Puffs', 'f017-0354.jpg', NULL),
+('F017', 'F017-0353', 'INC', 'Minty Fizz', 'f017-0353.jpg', NULL),
+('F017', 'F017-0351', 'INC', 'Cream Puffs', 'f017-0351.jpg', NULL),
+('F017', 'F017-0352', 'EXC', 'Lemon Drops', 'f017-0352.jpg', NULL),
+('F017', 'F017-0355', 'INC', 'Lilac Fizz', 'f017-0355.jpg', NULL),
+('F017', 'F017-0356', 'INC', 'Bluebells', 'f017-0356.jpg', NULL),
+('F017', 'F017-0357', 'INC', 'Candy Pops', 'f017-0357.jpg', NULL),
+('F084', 'F084-0706', 'EXC', '', 'f084-0706.jpg', '2012-02-21'),
+('F084', 'F084-0707', 'INC', '', 'f084-0707.jpg', '2012-02-21'),
+('F084', 'F084-0630', 'INC', 'Milky', 'f084-0630.jpg', '2012-02-21'),
+('F084', 'F084-0631', 'INC', 'Creamy', 'f084-0631.jpg', '2012-02-21'),
+('F084', 'F084-0636', 'INC', 'Rosy Cheeks', 'f084-0636.jpg', '2012-02-21'),
+('F084', 'F084-0632', 'INC', 'Berry', 'f084-0632.jpg', '2012-02-21'),
+('F084', 'F084-0637', 'INC', 'Cuddle Plum', 'f084-0637.jpg', '2012-02-21'),
+('F084', 'F084-0633', 'INC', 'Snuggle Blue', 'f084-0633.jpg', '2012-02-21'),
+('F084', 'F084-0634', 'INC', 'Teddy', 'f084-0634.jpg', '2012-02-21'),
+('F084', 'F084-0704', 'INC', '', 'f084-0704.jpg', '2012-02-21'),
+('F084', 'F084-0705', 'INC', '', 'f084-0705.jpg', '2012-02-21'),
+('F051', 'F051-0605', 'NEW', 'Hollyhock', 'f051-0605.jpg', NULL),
+('F051', 'F051-0606', 'NEW', 'Crocus', 'f051-0606.jpg', NULL),
+('F051', 'F051-0607', 'NEW', 'Anemone', 'f051-0607.jpg', NULL),
+('F051', 'F051-0501', 'NEW', 'Magenta', 'f051-0501.jpg', NULL),
+('F051', 'F051-0428', 'NEW', 'Sage Green', 'f051-0428.jpg', NULL),
+('F051', 'F051-0527', 'NEW', 'Rosehip', 'f051-0527.jpg', NULL),
+('F051', 'F051-0441', 'NEW', 'Light Navy', 'f051-0441.jpg', NULL),
+('F051', 'F051-0417', 'NEW', 'Black', 'f051-0417.jpg', NULL),
+('F051', 'F051-0411', 'NEW', 'Cream', 'f051-0411.jpg', NULL),
+('F051', 'F051-0412', 'NEW', 'White', 'f051-0412.jpg', NULL),
+('F051', 'F051-0460', 'NEW', 'Thistle', 'f051-0460.jpg', NULL),
+('F051', 'F051-0404', 'NEW', 'Parchment', 'f051-0404.jpg', NULL),
+('F051', 'F051-0429', 'NEW', 'Lupin', 'f051-0429.jpg', NULL),
+('F065', 'F065-0652', 'NEW', 'White', 'f065-0652.jpg', NULL),
+('F065', 'F065-0653', 'NEW', 'Vanilla Cream', 'f065-0653.jpg', NULL),
+('F065', 'F065-0656', 'NEW', 'Walnut', 'f065-0656.jpg', NULL),
+('F065', 'F065-0664', 'NEW', 'Bermuda Blue', 'f065-0664.jpg', NULL),
+('F065', 'F065-0657', 'NEW', 'Sage', 'f065-0657.jpg', NULL),
+('F065', 'F065-0659', 'NEW', 'Lilac Blossom', 'f065-0659.jpg', NULL),
+('F065', 'F065-0661', 'NEW', 'Pretty Pink', 'f065-0661.jpg', NULL),
+('F065', 'F065-0663', 'NEW', 'Raspberry', 'f065-0663.jpg', NULL),
+('F065', 'F065-0660', 'NEW', 'Calico', 'f065-0660.jpg', NULL),
+('F120', 'F120-0832', 'NEW', 'Shocking Pink', 'f120-0832.jpg', NULL),
+('F120', 'F120-0836', 'NEW', 'Airforce Blue', 'f120-0836.jpg', NULL),
+('F120', 'F120-0838', 'NEW', 'Silver Grey', 'f120-0838.jpg', NULL),
+('F120', 'F120-0839', 'NEW', 'Bottle Green', 'f120-0839.jpg', NULL),
+('F120', 'F120-0884', 'NEW', 'Neon', 'f120-0884.jpg', NULL),
+('F120', 'F120-0886', 'NEW', 'Bright Green', 'f120-0886.jpg', NULL),
+('F120', 'F120-0888', 'NEW', 'Peaches', 'f120-0888.jpg', NULL),
+('F120', 'F120-0889', 'NEW', 'Stone', 'f120-0889.jpg', NULL),
+('F120', 'F120-0916', 'NEW', 'Emerald', 'f120-0916.jpg', NULL),
+('F120', 'F120-0947', 'NEW', 'Chocolate', 'f120-0947.jpg', NULL),
+('F120', 'F120-0961', 'NEW', 'White', 'f120-0961.jpg', NULL),
+('F120', 'F120-0965', 'NEW', 'Black', 'f120-0965.jpg', NULL),
+('F120', 'F120-0969', 'NEW', 'Bluebell', 'f120-0969.jpg', NULL),
+('F120', 'F120-0971', 'NEW', 'Navy', 'f120-0971.jpg', NULL),
+('F120', 'F120-0977', 'NEW', 'Signal Red', 'f120-0977.jpg', NULL),
+('F120', 'F120-0978', 'NEW', 'Sunflower', 'f120-0978.jpg', NULL),
+('F120', 'F120-0979', 'NEW', 'Royal', 'f120-0979.jpg', NULL),
+('F120', 'F120-0981', 'NEW', 'Bright Orange', 'f120-0981.jpg', NULL),
+('F120', 'F120-0992', 'NEW', 'Pink', 'f120-0992.jpg', NULL),
+('F026', 'F026-0042', 'EXC', 'Skerry', 'f026-0042.jpg', NULL),
+('F026', 'F026-0045', 'EXC', 'Seagrass', 'f026-0045.jpg', NULL),
+('F026', 'F026-0044', 'INC', 'Hebrides', 'f026-0044.jpg', NULL),
+('F026', 'F026-0043', 'EXC', 'Iona', 'f026-0043.jpg', NULL),
+('F026', 'F026-0050', 'INC', 'Bracken', 'f026-0050.jpg', NULL),
+('F026', 'F026-0051', 'INC', 'Shetland', 'f026-0051.jpg', NULL),
+('F026', 'F026-0052', 'INC', 'Thistle', 'f026-0052.jpg', NULL),
+('F026', 'F026-0053', 'INC', 'Hound Dog', 'f026-0053.jpg', NULL),
+('F026', 'F026-0054', 'INC', 'Fairisle', 'f026-0054.jpg', NULL),
+('F026', 'F026-0055', 'INC', 'Plaid', 'f026-0055.jpg', NULL),
+('F026', 'F026-0056', 'EXC', 'Hedgerow', 'f026-0056.jpg', NULL),
+('F026', 'F026-0057', 'INC', 'Granary', 'f026-0057.jpg', NULL),
+('F026', 'F026-0058', 'INC', 'Moorland', 'f026-0058.jpg', NULL),
+('F026', 'F026-0059', 'INC', 'Rambler Rose', 'f026-0059.jpg', NULL),
+('F026', 'F026-0060', 'INC', 'Loganberry', 'f026-0060.jpg', NULL),
+('F026', 'F026-0046', 'INC', 'Heathery', 'f026-0046.jpg', NULL),
+('F026', 'F026-0047', 'INC', 'Skye', 'f026-0047.jpg', NULL),
+('F026', 'F026-0048', 'INC', 'Munroe', 'f026-0048.jpg', NULL),
+('F026', 'F026-0049', 'EXC', 'Plumage', 'f026-0049.jpg', NULL),
+('F006', 'F006-0472', 'NEW', 'Corgi', 'f006-0472.jpg', NULL),
+('F006', 'F006-0473', 'NEW', 'Pheasant', 'f006-0473.jpg', NULL),
+('F006', 'F006-0478', 'NEW', 'Wedgwood', 'f006-0478.jpg', NULL),
+('F006', 'F006-0477', 'NEW', 'Taffeta', 'f006-0477.jpg', NULL),
+('F006', 'F006-0481', 'NEW', 'Royal Velvet', 'f006-0481.jpg', NULL),
+('F006', 'F006-0484', 'NEW', 'Butler Black', 'f006-0484.jpg', NULL),
+('F006', 'F006-0470', 'NEW', 'Glamis Cream', 'f006-0470.jpg', NULL),
+('F006', 'F006-0471', 'NEW', 'Sandringham', 'f006-0471.jpg', NULL),
+('F006', 'F006-0476', 'NEW', 'Damask', 'f006-0476.jpg', NULL),
+('F006', 'F006-0475', 'NEW', 'Polo Pink', 'f006-0475.jpg', NULL),
+('F006', 'F006-0479', 'NEW', 'Deersalker', 'f006-0479.jpg', NULL),
+('F006', 'F006-0480', 'NEW', 'Buckingham Blue', 'f006-0480.jpg', NULL),
+('F006', 'F006-0485', 'NEW', 'Banquet Red', 'f006-0485.jpg', NULL),
+('F006', 'F006-0486', 'NEW', 'Highlander', 'f006-0486.jpg', NULL),
+('F006', 'F006-0487', 'NEW', 'Windsor Purple', 'f006-0487.jpg', NULL),
+('F063', 'F063-0168', 'INC', 'Woodland', 'f063-0168.jpg', '2012-02-21'),
+('F063', 'F063-0188', 'EXC', '', 'f063-0188.jpg', '2012-02-21'),
+('F063', 'F063-0189', 'NEW', '', 'f063-0189.jpg', NULL),
+('F063', 'F063-0190', 'EXC', '', 'f063-0190.jpg', '2012-02-21'),
+('F063', 'F063-0191', 'EXC', '', 'f063-0191.jpg', '2012-02-21'),
+('F063', 'F063-0128', 'INC', 'Tarn', 'f063-0128.jpg', '2012-02-21'),
+('F063', 'F063-0144', 'EXC', 'Downy', 'f063-0144.jpg', '2012-02-21'),
+('F063', 'F063-0129', 'EXC', 'Cobble', 'f063-0129.jpg', '2012-02-21'),
+('F063', 'F063-0131', 'EXC', 'Heather', 'f063-0131.jpg', '2012-02-21'),
+('F063', 'F063-0137', 'EXC', 'Blueberry', 'f063-0137.jpg', '2012-02-21'),
+('F063', 'F063-0130', 'EXC', 'Cranberry', 'f063-0130.jpg', '2012-02-21'),
+('F063', 'F063-0120', 'EXC', 'Bracken', 'f063-0120.jpg', '2012-02-21'),
+('F063', 'F063-0119', 'EXC', 'Flinty', 'f063-0119.jpg', '2012-02-21'),
+('F063', 'F063-0112', 'INC', 'Wild', 'f063-0112.jpg', '2012-02-21'),
+('F063', 'F063-0110', 'INC', 'Verve', 'f063-0110.jpg', '2012-02-21'),
+('F063', 'F063-0111', 'INC', 'Blazer', 'f063-0111.jpg', '2012-02-21'),
+('F063', 'F063-0167', 'INC', 'Peppercorn', 'f063-0167.jpg', '2012-02-21'),
+('F063', 'F063-0169', 'INC', 'Wild Cherry', 'f063-0169.jpg', '2012-02-21'),
+('F009', 'F009-0608', 'NEW', 'Oakleaf', 'f009-0608.jpg', NULL),
+('F009', 'F009-0609', 'NEW', 'Pillarbox', 'f009-0609.jpg', NULL),
+('F009', 'F009-0610', 'NEW', 'Village Green', 'f009-0610.jpg', NULL),
+('F009', 'F009-0429', 'NEW', 'Lupin', 'f009-0429.jpg', NULL),
+('F009', 'F009-0529', 'NEW', 'Heather', 'f009-0529.jpg', NULL),
+('F009', 'F009-0423', 'NEW', 'Dusky Pink', 'f009-0423.jpg', NULL),
+('F009', 'F009-0402', 'NEW', 'Cherry  ', 'f009-0402.jpg', NULL),
+('F009', 'F009-0412', 'NEW', 'White', 'f009-0412.jpg', NULL),
+('F009', 'F009-0527', 'NEW', 'Rosehip', 'f009-0527.jpg', NULL),
+('F009', 'F009-0418', 'NEW', 'Garnet', 'f009-0418.jpg', NULL),
+('F009', 'F009-0500', 'NEW', 'Hazel', 'f009-0500.jpg', NULL),
+('F009', 'F009-0530', 'NEW', 'Chocolate  ', 'f009-0530.jpg', NULL),
+('F009', 'F009-0434', 'NEW', 'Silver Cloud', 'f009-0434.jpg', NULL),
+('F009', 'F009-0408', 'NEW', 'Greystone', 'f009-0408.jpg', NULL),
+('F009', 'F009-0409', 'NEW', 'Naturelle', 'f009-0409.jpg', NULL),
+('F009', 'F009-0417', 'NEW', 'Black', 'f009-0417.jpg', NULL),
+('F009', 'F009-0411', 'NEW', 'Cream', 'f009-0411.jpg', NULL),
+('F009', 'F009-0502', 'NEW', 'Gemini', 'f009-0502.jpg', NULL),
+('F009', 'F009-0501', 'NEW', 'Magenta', 'f009-0501.jpg', NULL),
+('F009', 'F009-0441', 'NEW', 'Light Navy', 'f009-0441.jpg', NULL),
+('F009', 'F009-0595', 'NEW', 'Highland Burn', 'f009-0595.jpg', NULL),
+('F009', 'F009-0591', 'NEW', 'Wild Thistle', 'f009-0591.jpg', NULL),
+('F009', 'F009-0589', 'NEW', 'Mountain Ash', 'f009-0589.jpg', NULL),
+('F009', 'F009-0593', 'NEW', 'Cowslip', 'f009-0593.jpg', NULL),
+('F009', 'F009-0596', 'NEW', 'Berber', 'f009-0596.jpg', NULL),
+('F009', 'F009-0598', 'NEW', 'Donegal', 'f009-0598.jpg', NULL),
+('F009', 'F009-0597', 'NEW', 'Hopsack', 'f009-0597.jpg', NULL),
+('F009', 'F009-0599', 'NEW', 'Apples', 'f009-0599.jpg', NULL),
+('F009', 'F009-0600', 'NEW', 'Dewberry', 'f009-0600.jpg', NULL),
+('F009', 'F009-0601', 'NEW', 'Flutter', 'f009-0601.jpg', NULL),
+('F009', 'F009-0602', 'NEW', 'Soft Teal', 'f009-0602.jpg', NULL),
+('F009', 'F009-0603', 'NEW', 'Dark Purple', 'f009-0603.jpg', NULL),
+('F009', 'F009-0604', 'NEW', 'Damson', 'f009-0604.jpg', NULL),
+('F039', 'F039-0361', 'NEW', 'Coffee', 'f039-0361.jpg', NULL),
+('F039', 'F039-0362', 'NEW', 'Rustic Rose', 'f039-0362.jpg', NULL),
+('F039', 'F039-0363', 'NEW', 'Spearmint', 'f039-0363.jpg', NULL),
+('F039', 'F039-0251', 'NEW', 'White', 'f039-0251.jpg', NULL),
+('F039', 'F039-0239', 'NEW', 'Cream', 'f039-0239.jpg', NULL),
+('F039', 'F039-0327', 'NEW', 'Atlantic  ', 'f039-0327.jpg', NULL),
+('F039', 'F039-0283', 'NEW', 'Beige', 'f039-0283.jpg', NULL),
+('F039', 'F039-0259', 'NEW', 'Starling', 'f039-0259.jpg', NULL),
+('F039', 'F039-0260', 'NEW', 'Oatmeal Nep', 'f039-0260.jpg', NULL),
+('F039', 'F039-0282', 'NEW', 'Silver Cloud', 'f039-0282.jpg', NULL),
+('F039', 'F039-0318', 'NEW', 'Duck Egg', 'f039-0318.jpg', NULL),
+('F039', 'F039-0264', 'NEW', 'Hydrangea Blue', 'f039-0264.jpg', NULL),
+('F039', 'F039-0300', 'NEW', 'Original Denim', 'f039-0300.jpg', NULL),
+('F039', 'F039-0224', 'NEW', 'Light Navy', 'f039-0224.jpg', NULL),
+('F039', 'F039-0326', 'NEW', 'Dusky Pink', 'f039-0326.jpg', NULL),
+('F039', 'F039-0315', 'NEW', 'Blush Pink', 'f039-0315.jpg', NULL),
+('F039', 'F039-0275', 'NEW', 'Black', 'f039-0275.jpg', NULL),
+('F039', 'F039-0278', 'NEW', 'Cherry', 'f039-0278.jpg', NULL),
+('F039', 'F039-0242', 'NEW', 'Flamenco', 'f039-0242.jpg', NULL),
+('F039', 'F039-0209', 'NEW', 'Watery', 'f039-0209.jpg', NULL),
+('F039', 'F039-0210', 'NEW', 'Zest', 'f039-0210.jpg', NULL),
+('F039', 'F039-0358', 'NEW', 'Cassis', 'f039-0358.jpg', NULL),
+('F039', 'F039-0359', 'NEW', 'Kir', 'f039-0359.jpg', NULL),
+('F039', 'F039-0360', 'NEW', 'Parsley', 'f039-0360.jpg', NULL),
+('F016', 'F016-0508', 'EXC', 'Ivory Cream', 'f016-0508.jpg', NULL),
+('F016', 'F016-0507', 'EXC', 'Starling', 'f016-0507.jpg', NULL),
+('F016', 'F016-0502', 'INC', 'Denim Blue', 'f016-0502.jpg', NULL),
+('F016', 'F016-0644', 'INC', 'Vintage', 'f016-0644.jpg', NULL),
+('F016', 'F016-0649', 'EXC', 'Nutmeg Marl', 'f016-0649.jpg', NULL),
+('F016', 'F016-0648', 'EXC', 'Plum Duff', 'f016-0648.jpg', NULL),
+('F016', 'F016-0651', 'INC', 'Lavender', 'f016-0651.jpg', NULL),
+('F016', 'F016-0652', 'INC', 'Hazelnut', 'f016-0652.jpg', NULL),
+('F016', 'F016-0653', 'INC', 'Blue Suede', 'f016-0653.jpg', NULL),
+('F016', 'F016-0655', 'EXC', 'Bakery', 'f016-0655.jpg', NULL),
+('F016', 'F016-0656', 'EXC', 'Aspen Blue', 'f016-0656.jpg', NULL),
+('F013', 'F013-0836', 'NEW', 'Airforce Blue', 'f013-0836.jpg', NULL),
+('F013', 'F013-0833', 'NEW', 'Classic Red', 'f013-0833.jpg', NULL),
+('F013', 'F013-0834', 'NEW', 'Green', 'f013-0834.jpg', NULL),
+('F013', 'F013-0835', 'NEW', 'Merlot', 'f013-0835.jpg', NULL),
+('F013', 'F013-0987', 'NEW', 'Starling', 'f013-0987.jpg', NULL),
+('F013', 'F013-0964', 'NEW', 'Oatmeal', 'f013-0964.jpg', NULL),
+('F013', 'F013-0947', 'NEW', 'Chocolate', 'f013-0947.jpg', NULL),
+('F013', 'F013-0984', 'NEW', 'Cerise', 'f013-0984.jpg', NULL),
+('F013', 'F013-0971', 'NEW', 'Navy', 'f013-0971.jpg', NULL),
+('F013', 'F013-0994', 'NEW', 'Denim  ', 'f013-0994.jpg', NULL),
+('F013', 'F013-0963', 'NEW', 'Flesh Tone', 'f013-0963.jpg', NULL),
+('F013', 'F013-0993', 'NEW', 'Aran', 'f013-0993.jpg', NULL),
+('F013', 'F013-0957', 'NEW', 'Primrose', 'f013-0957.jpg', NULL),
+('F013', 'F013-0961', 'NEW', 'White', 'f013-0961.jpg', NULL),
+('F013', 'F013-0958', 'NEW', 'Iced Pink', 'f013-0958.jpg', NULL),
+('F013', 'F013-0959', 'NEW', 'Lilac', 'f013-0959.jpg', NULL),
+('F013', 'F013-0906', 'NEW', 'Velvet Plum', 'f013-0906.jpg', NULL),
+('F013', 'F013-0960', 'NEW', 'Powder Blue', 'f013-0960.jpg', NULL),
+('F013', 'F013-0956', 'NEW', 'Mint  ', 'f013-0956.jpg', NULL),
+('F013', 'F013-0992', 'NEW', 'Pink', 'f013-0992.jpg', NULL),
+('F013', 'F013-0969', 'NEW', 'Bluebell', 'f013-0969.jpg', NULL),
+('F013', 'F013-0979', 'NEW', 'Royal', 'f013-0979.jpg', NULL),
+('F013', 'F013-0944', 'NEW', 'Cupid', 'f013-0944.jpg', NULL),
+('F013', 'F013-0998', 'NEW', 'Turquoise', 'f013-0998.jpg', NULL),
+('F013', 'F013-0977', 'NEW', 'Signal Red', 'f013-0977.jpg', NULL),
+('F013', 'F013-0904', 'NEW', 'Orchard', 'f013-0904.jpg', NULL),
+('F013', 'F013-0965', 'NEW', 'Black', 'f013-0965.jpg', NULL),
+('F013', 'F013-0891', 'NEW', 'Rustic Red', 'f013-0891.jpg', NULL),
+('F013', 'F013-0916', 'NEW', 'Emerald', 'f013-0916.jpg', NULL),
+('F013', 'F013-0978', 'NEW', 'Sunflower', 'f013-0978.jpg', NULL),
+('F013', 'F013-0981', 'NEW', 'Bright Orange', 'f013-0981.jpg', NULL),
+('F013', 'F013-0886', 'NEW', 'Bright Green', 'f013-0886.jpg', NULL),
+('F013', 'F013-0887', 'NEW', 'Bright Pink', 'f013-0887.jpg', NULL),
+('F013', 'F013-0840', 'NEW', 'Purple', 'f013-0840.jpg', NULL),
+('F013', 'F013-0841', 'NEW', 'Claret', 'f013-0841.jpg', NULL),
+('F013', 'F013-0842', 'NEW', 'Alpine', 'f013-0842.jpg', NULL),
+('F013', 'F013-0843', 'NEW', 'Copper', 'f013-0843.jpg', NULL),
+('F013', 'F013-0882', 'NEW', 'Lime', 'f013-0882.jpg', NULL),
+('F013', 'F013-0884', 'NEW', 'Neon', 'f013-0884.jpg', NULL),
+('F013', 'F013-0885', 'NEW', 'Electra', 'f013-0885.jpg', NULL),
+('F013', 'F013-0839', 'NEW', 'Bottle Green', 'f013-0839.jpg', NULL),
+('F013', 'F013-0838', 'NEW', 'Charcoal', 'f013-0838.jpg', NULL),
+('F013', 'F013-0828', 'NEW', 'Bright Purple', 'f013-0828.jpg', NULL),
+('F013', 'F013-0829', 'NEW', 'Petrol', 'f013-0829.jpg', NULL),
+('F013', 'F013-0930', 'NEW', 'Sandstorm', 'f013-0930.jpg', NULL),
+('F013', 'F013-0931', 'NEW', 'Stormcloud', 'f013-0931.jpg', NULL),
+('F033', 'F033-0508', 'NEW', 'Ivory Cream', 'f033-0508.jpg', NULL),
+('F033', 'F033-0507', 'NEW', 'Starling', 'f033-0507.jpg', NULL),
+('F033', 'F033-0502', 'NEW', 'Denim Blue', 'f033-0502.jpg', NULL),
+('F119', 'F119-0847', 'NEW', 'Eau de Nil', 'f119-0847.jpg', NULL),
+('F119', 'F119-0842', 'NEW', 'Alpine', 'f119-0842.jpg', NULL),
+('F119', 'F119-0830', 'NEW', 'Deep Red', 'f119-0830.jpg', NULL),
+('F119', 'F119-0831', 'NEW', 'Millstone Tweed', 'f119-0831.jpg', NULL),
+('F119', 'F119-0965', 'NEW', 'Black', 'f119-0965.jpg', NULL),
+('F119', 'F119-0994', 'NEW', 'Denim  ', 'f119-0994.jpg', NULL),
+('F119', 'F119-0950', 'NEW', 'Cherry', 'f119-0950.jpg', NULL),
+('F119', 'F119-0962', 'NEW', 'Ivory Cream', 'f119-0962.jpg', NULL),
+('F119', 'F119-0931', 'NEW', 'Stormcloud', 'f119-0931.jpg', NULL),
+('F119', 'F119-0930', 'NEW', 'Sandstorm', 'f119-0930.jpg', NULL),
+('F119', 'F119-0934', 'NEW', 'Green Heather', 'f119-0934.jpg', NULL),
+('F119', 'F119-0933', 'NEW', 'Blue Heather', 'f119-0933.jpg', NULL),
+('F119', 'F119-0932', 'NEW', 'Soft Blue', 'f119-0932.jpg', NULL),
+('F119', 'F119-0936', 'NEW', 'Light Natural', 'f119-0936.jpg', NULL),
+('F119', 'F119-0905', 'NEW', 'Tudor Rose', 'f119-0905.jpg', NULL),
+('F119', 'F119-0929', 'NEW', 'Glen Coe', 'f119-0929.jpg', NULL),
+('F119', 'F119-0872', 'NEW', 'Barley', 'f119-0872.jpg', NULL),
+('F119', 'F119-0871', 'NEW', 'Purple Heather', 'f119-0871.jpg', NULL),
+('F119', 'F119-0870', 'NEW', 'Rose Brown', 'f119-0870.jpg', NULL),
+('F119', 'F119-0867', 'NEW', 'Lilac Tweed', 'f119-0867.jpg', NULL),
+('F119', 'F119-0868', 'NEW', 'Island Tweed', 'f119-0868.jpg', NULL),
+('F119', 'F119-0869', 'NEW', 'Granite Tweed', 'f119-0869.jpg', NULL),
+('F119', 'F119-0995', 'NEW', 'Navy', 'f119-0995.jpg', NULL),
+('F119', 'F119-0996', 'NEW', 'Violet', 'f119-0996.jpg', NULL),
+('F119', 'F119-0997', 'NEW', 'Celtic Grey', 'f119-0997.jpg', NULL),
+('F037', 'F037-0142', 'NEW', 'Lamb', 'f037-0142.jpg', NULL),
+('F037', 'F037-0162', 'NEW', 'Shepherd', 'f037-0162.jpg', NULL),
+('F037', 'F037-0144', 'NEW', 'Downy', 'f037-0144.jpg', NULL),
+('F037', 'F037-0151', 'NEW', 'Rustique', 'f037-0151.jpg', NULL),
+('F037', 'F037-0161', 'NEW', 'Crofter', 'f037-0161.jpg', NULL),
+('F037', 'F037-0147', 'NEW', 'Loom Blue', 'f037-0147.jpg', NULL),
+('F037', 'F037-0128', 'NEW', 'Tarn', 'f037-0128.jpg', NULL),
+('F037', 'F037-0127', 'NEW', 'Spruce', 'f037-0127.jpg', NULL),
+('F037', 'F037-0136', 'NEW', 'Foxglove', 'f037-0136.jpg', NULL),
+('F037', 'F037-0148', 'NEW', 'Bud', 'f037-0148.jpg', NULL),
+('F037', 'F037-0113', 'NEW', 'Rush', 'f037-0113.jpg', NULL),
+('F037', 'F037-0110', 'NEW', 'Verve', 'f037-0110.jpg', NULL),
+('F037', 'F037-0115', 'NEW', 'Cove Blue', 'f037-0115.jpg', NULL),
+('F037', 'F037-0123', 'NEW', 'Deep Blue', 'f037-0123.jpg', NULL),
+('F087', 'F087-0042', 'EXC', 'Skerry', 'f087-0042.jpg', NULL),
+('F087', 'F087-0045', 'INC', 'Seagrass', 'f087-0045.jpg', NULL),
+('F087', 'F087-0044', 'INC', 'Hebrides', 'f087-0044.jpg', NULL),
+('F087', 'F087-0043', 'EXC', 'Iona', 'f087-0043.jpg', NULL),
+('F087', 'F087-0050', 'INC', 'Bracken', 'f087-0050.jpg', NULL),
+('F087', 'F087-0052', 'INC', 'Thistle', 'f087-0052.jpg', NULL),
+('F087', 'F087-0053', 'INC', 'Hound Dog', 'f087-0053.jpg', NULL),
+('F087', 'F087-0059', 'INC', 'Rambler Rose', 'f087-0059.jpg', NULL),
+('F087', 'F087-0060', 'INC', 'Loganberry', 'f087-0060.jpg', NULL),
+('F087', 'F087-0061', 'INC', 'Misty Moor', 'f087-0061.jpg', NULL),
+('F087', 'F087-0046', 'INC', 'Heathery', 'f087-0046.jpg', NULL),
+('F087', 'F087-0047', 'INC', 'Skye', 'f087-0047.jpg', NULL),
+('F087', 'F087-0048', 'INC', 'Munroe', 'f087-0048.jpg', NULL),
+('F087', 'F087-0049', 'EXC', 'Plumage', 'f087-0049.jpg', NULL),
+('F045', 'F045-0169', 'INC', 'Wild Cherry', 'f045-0169.jpg', '2012-02-21'),
+('F045', 'F063-0128', 'INC', 'Tarn', 'f063-0128.jpg', '2012-02-21'),
+('F045', 'F045-0131', 'INC', 'Heather', 'f045-0131.jpg', '2012-02-21'),
+('F045', 'F045-0129', 'INC', 'Cobble', 'f045-0129.jpg', '2012-02-21'),
+('F045', 'F045-0112', 'INC', 'Wild', 'f045-0112.jpg', '2012-02-21'),
+('F045', 'F045-0110', 'INC', 'Verve', 'f045-0110.jpg', '2012-02-21'),
+('F045', 'F045-0111', 'INC', 'Blazer', 'f045-0111.jpg', '2012-02-21'),
+('F045', 'F045-0163', 'EXC', 'Really Red', 'f045-0163.jpg', '2012-02-21'),
+('F045', 'F045-0165', 'INC', 'Marine Blue', 'f045-0165.jpg', '2012-02-21'),
+('F045', 'F045-0167', 'INC', 'Peppercorn', 'f045-0167.jpg', '2012-02-21'),
+('F045', 'F045-0119', 'EXC', '', 'f045-0119.jpg', '2012-02-21'),
+('F045', 'F045-0185', 'EXC', '', 'f045-0185.jpg', '2012-02-21'),
+('F045', 'F045-0186', 'EXC', '', 'f045-0186.jpg', '2012-02-21'),
+('F045', 'F045-0187', 'EXC', '', 'f045-0187.jpg', '2012-02-21'),
+('F045', 'F045-0144', 'EXC', 'Downy', 'f045-0144.jpg', '2012-02-21'),
+('F045', 'F045-0151', 'EXC', 'Rustique', 'f045-0151.jpg', '2012-02-21'),
+('F045', 'F045-0146', 'INC', 'Bloom', 'f045-0146.jpg', '2012-02-21'),
+('F045', 'F045-0142', 'EXC', 'Lamb', 'f045-0142.jpg', '2012-02-21'),
+('F045', 'F045-0141', 'INC', 'Indy', 'f045-0141.jpg', '2012-02-21'),
+('F045', 'F045-0160', 'EXC', 'Flock', 'f045-0160.jpg', '2012-02-21'),
+('F032', 'F032-0502', 'NEW', 'Denim Blue', 'f032-0502.jpg', NULL),
+('F032', 'F032-0507', 'NEW', 'Starling', 'f032-0507.jpg', NULL),
+('F032', 'F032-0508', 'NEW', 'Ivory Cream', 'f032-0508.jpg', NULL),
+('F032', 'F032-0644', 'NEW', 'Vintage', 'f032-0644.jpg', NULL),
+('F060', 'F060-0930', 'NEW', 'Sandstorm', 'f060-0930.jpg', NULL),
+('F060', 'F060-0936', 'NEW', 'Light Natural', 'f060-0936.jpg', NULL),
+('F060', 'F060-0828', 'NEW', 'Bright Purple', 'f060-0828.jpg', NULL),
+('F060', 'F060-0829', 'NEW', 'Petrol', 'f060-0829.jpg', NULL),
+('F060', 'F060-0987', 'NEW', 'Starling', 'f060-0987.jpg', NULL),
+('F060', 'F060-0993', 'NEW', 'Aran', 'f060-0993.jpg', NULL),
+('F060', 'F060-0977', 'NEW', 'Signal Red', 'f060-0977.jpg', NULL),
+('F060', 'F060-0971', 'NEW', 'Navy', 'f060-0971.jpg', NULL),
+('F060', 'F060-0961', 'NEW', 'White', 'f060-0961.jpg', NULL),
+('F060', 'F060-0965', 'NEW', 'Black', 'f060-0965.jpg', NULL),
+('F060', 'F060-0845', 'NEW', 'Thomas Blue', 'f060-0845.jpg', NULL),
+('F060', 'F060-0846', 'NEW', 'Raspberry', 'f060-0846.jpg', NULL),
+('F060', 'F060-0847', 'NEW', 'Eau de Nil', 'f060-0847.jpg', NULL),
+('F060', 'F060-0892', 'NEW', 'Antique Rose', 'f060-0892.jpg', NULL),
+('F060', 'F060-0851', 'NEW', 'Pastel Pink', 'f060-0851.jpg', NULL),
+('F060', 'F060-0852', 'NEW', 'Pastel Lemon', 'f060-0852.jpg', NULL),
+('F060', 'F060-0854', 'NEW', 'Pastel Blue', 'f060-0854.jpg', NULL),
+('F060', 'F060-0873', 'NEW', 'Floss', 'f060-0873.jpg', NULL),
+('F060', 'F060-0876', 'NEW', 'Firecracker', 'f060-0876.jpg', NULL),
+('F060', 'F060-0884', 'NEW', 'Neon', 'f060-0884.jpg', NULL),
+('F060', 'F060-0885', 'NEW', 'Electra', 'f060-0885.jpg', NULL),
+('F060', 'F060-0931', 'NEW', 'Stormcloud', 'f060-0931.jpg', NULL),
+('F025', 'F025-0657', 'EXC', 'Red Flare', 'f025-0657.jpg', NULL),
+('F025', 'F025-0658', 'EXC', 'Union Green', 'f025-0658.jpg', NULL),
+('F025', 'F025-0508', 'EXC', 'Ivory Cream', 'f025-0508.jpg', NULL),
+('F025', 'F025-0507', 'EXC', 'Starling', 'f025-0507.jpg', NULL),
+('F025', 'F025-0636', 'EXC', 'Walnut', 'f025-0636.jpg', NULL),
+('F025', 'F025-0645', 'INC', 'Madder Pink', 'f025-0645.jpg', NULL),
+('F025', 'F025-0502', 'EXC', 'Denim Blue', 'f025-0502.jpg', NULL),
+('F025', 'F025-0644', 'EXC', 'Vintage', 'f025-0644.jpg', NULL),
+('F025', 'F025-0637', 'EXC', 'Seaspray', 'f025-0637.jpg', NULL),
+('F025', 'F025-0649', 'EXC', 'Nutmeg Marl', 'f025-0649.jpg', NULL),
+('F025', 'F025-0650', 'INC', 'Husky Grey', 'f025-0650.jpg', NULL),
+('F025', 'F025-0648', 'INC', 'Plum Duff', 'f025-0648.jpg', NULL),
+('F025', 'F025-0653', 'INC', 'Blue Suede', 'f025-0653.jpg', NULL),
+('F025', 'F025-0655', 'EXC', 'Bakery', 'f025-0655.jpg', NULL),
+('F025', 'F025-0656', 'EXC', 'Aspen Blue', 'f025-0656.jpg', NULL),
+('F042', 'F042-0350', 'INC', 'Wheatsheaf', 'f042-0350.jpg', NULL),
+('F042', 'F042-0351', 'INC', 'Carrow Brown', 'f042-0351.jpg', NULL),
+('F042', 'F042-0352', 'INC', 'Homestead', 'f042-0352.jpg', NULL),
+('F042', 'F042-0353', 'INC', 'Wayfarer', 'f042-0353.jpg', NULL),
+('F042', 'F042-0354', 'INC', 'Heartland', 'f042-0354.jpg', NULL),
+('F042', 'F042-0355', 'INC', 'Hornpipe', 'f042-0355.jpg', NULL),
+('F062', 'F062-0155', 'INC', 'Prairie', 'f062-0155.jpg', '2012-02-21'),
+('F062', 'F062-0154', 'INC', 'Montana', 'f062-0154.jpg', '2012-02-21'),
+('F062', 'F062-0153', 'INC', 'Pioneer', 'f062-0153.jpg', '2012-02-21'),
+('F062', 'F062-0152', 'INC', 'Arizona', 'f062-0152.jpg', '2012-02-21'),
+('F062', 'F062-0151', 'INC', 'Navajo', 'f062-0151.jpg', '2012-02-21'),
+('F062', 'F062-0150', 'INC', 'Apache', 'f062-0150.jpg', '2012-02-21'),
+('F062', 'F062-0167', 'INC', '', 'f062-0167.jpg', '2012-02-21'),
+('F062', 'F062-0166', 'INC', '', 'f062-0166.jpg', '2012-02-21'),
+('F053', 'F053-0220', 'NEW', 'White Diamonds', 'f053-0220.jpg', NULL),
+('F053', 'F053-0221', 'NEW', 'Champers', 'f053-0221.jpg', NULL),
+('F053', 'F053-0222', 'NEW', 'Slinky Silver', 'f053-0222.jpg', NULL),
+('F053', 'F053-0223', 'NEW', 'Burnished Bronze', 'f053-0223.jpg', NULL),
+('F053', 'F053-0224', 'NEW', 'Rouge', 'f053-0224.jpg', NULL),
+('F053', 'F053-0225', 'NEW', 'Hypnotic', 'f053-0225.jpg', NULL),
+('F053', 'F053-0226', 'NEW', 'Sassy Black', 'f053-0226.jpg', NULL),
+('F053', 'F053-0227', 'NEW', 'Creme', 'f053-0227.jpg', NULL),
+('F053', 'F053-0228', 'NEW', 'Cosmopolitan', 'f053-0228.jpg', NULL),
+('F053', 'F053-0229', 'NEW', 'Flirtini', 'f053-0229.jpg', NULL),
+('F091', 'F091-0001', 'EXC', 'Snow White', 'f091-0001.jpg', NULL),
+('F091', 'F091-0002', 'EXC', 'Bunny Tail', 'f091-0002.jpg', NULL),
+('F091', 'F091-0003', 'INC', 'Hot Pink', 'f091-0003.jpg', NULL),
+('F091', 'F091-0004', 'EXC', 'Glamour Red', 'f091-0004.jpg', NULL),
+('F091', 'F091-0005', 'INC', 'Berry', 'f091-0005.jpg', NULL),
+('F091', 'F091-0006', 'INC', 'Rosie Pink', 'f091-0006.jpg', NULL),
+('F091', 'F091-0007', 'EXC', 'Vivid Violet', 'f091-0007.jpg', NULL),
+('F091', 'F091-0008', 'INC', 'Neon Blue', 'f091-0008.jpg', NULL),
+('F091', 'F091-0009', 'EXC', 'Black Velvet', 'f091-0009.jpg', NULL),
+('F091', 'F091-0010', 'INC', 'Magpie', 'f091-0010.jpg', NULL),
+('F091', 'F091-0011', 'EXC', 'Tutti Frutti', 'f091-0011.jpg', NULL),
+('F091', 'F091-0012', 'EXC', 'Leopard', 'f091-0012.jpg', NULL),
+('F055', 'F055-0402', 'NEW', 'Bambi', 'f055-0402.jpg', NULL),
+('F055', 'F055-0409', 'NEW', 'Dream Green', 'f055-0409.jpg', NULL),
+('F055', 'F055-0403', 'NEW', 'Dashing Red', 'f055-0403.jpg', NULL),
+('F055', 'F055-0405', 'NEW', 'Black Jack', 'f055-0405.jpg', NULL),
+('F055', 'F055-0408', 'NEW', 'Igloo', 'f055-0408.jpg', NULL),
+('F055', 'F055-0407', 'NEW', 'Polar Bear', 'f055-0407.jpg', NULL),
+('F055', 'F055-0401', 'NEW', 'Boogie Woogie', 'f055-0401.jpg', NULL),
+('F055', 'F055-0400', 'NEW', 'Velvetina', 'f055-0400.jpg', NULL),
+('F041', 'F041-0400', 'NEW', 'Byzantine', 'f041-0400.jpg', NULL),
+('F041', 'F041-0399', 'NEW', 'Empire Red', 'f041-0399.jpg', NULL),
+('F041', 'F041-0401', 'NEW', 'Sultan', 'f041-0401.jpg', NULL),
+('F041', 'F041-0390', 'NEW', 'Moscow', 'f041-0390.jpg', NULL),
+('F041', 'F041-0391', 'NEW', 'Vladimir', 'f041-0391.jpg', NULL),
+('F041', 'F041-0392', 'NEW', 'Karenina', 'f041-0392.jpg', NULL),
+('F041', 'F041-0393', 'NEW', 'Black Russian', 'f041-0393.jpg', NULL),
+('F041', 'F041-0394', 'NEW', 'Pavlova', 'f041-0394.jpg', NULL),
+('F041', 'F041-0395', 'NEW', 'Ottoman', 'f041-0395.jpg', NULL),
+('F041', 'F041-0396', 'NEW', 'Imperial', 'f041-0396.jpg', NULL),
+('F041', 'F041-0397', 'NEW', 'Faberge', 'f041-0397.jpg', NULL),
+('F041', 'F041-0398', 'NEW', 'Beluga', 'f041-0398.jpg', NULL),
+('F038', 'F038-0179', 'EXC', 'Endeavour', 'f038-0179.jpg', NULL),
+('F038', 'F038-0178', 'INC', 'Loud', 'f038-0178.jpg', NULL),
+('F038', 'F038-0184', 'INC', 'Tranquil', 'f038-0184.jpg', NULL),
+('F038', 'F038-0195', 'INC', 'Tease', 'f038-0195.jpg', NULL),
+('F038', 'F038-0196', 'EXC', 'Forbidden', 'f038-0196.jpg', NULL),
+('F038', 'F038-0192', 'INC', 'Luscious', 'f038-0192.jpg', NULL),
+('F038', 'F038-0193', 'EXC', 'Fever', 'f038-0193.jpg', NULL),
+('F038', 'F038-0194', 'EXC', 'Temptation', 'f038-0194.jpg', NULL),
+('F038', 'F038-0183', 'EXC', 'Euphoria', 'f038-0183.jpg', NULL),
+('F038', 'F038-0180', 'INC', 'Fury', 'f038-0180.jpg', NULL),
+('F038', 'F038-0187', 'EXC', 'Ecstasy', 'f038-0187.jpg', NULL),
+('F038', 'F038-0197', 'EXC', 'Ravishing', 'f038-0197.jpg', NULL),
+('F038', 'F038-0198', 'EXC', 'Destiny', 'f038-0198.jpg', NULL),
+('F052', 'F052-0016', 'NEW', 'Katmandu', 'f052-0016.jpg', NULL),
+('F052', 'F052-0010', 'INC', 'Alaska', 'f052-0010.jpg', NULL),
+('F052', 'F052-0011', 'INC', 'Elk', 'f052-0011.jpg', NULL),
+('F052', 'F052-0012', 'INC', 'Tibet', 'f052-0012.jpg', NULL),
+('F052', 'F052-0013', 'INC', 'Himalaya', 'f052-0013.jpg', NULL),
+('F052', 'F052-0014', 'INC', 'Tundra', 'f052-0014.jpg', NULL),
+('F052', 'F052-0015', 'INC', 'Reindeer', 'f052-0015.jpg', NULL),
+('F046', 'F046-0280', 'NEW', 'Buckwheat', 'f046-0280.jpg', NULL),
+('F046', 'F046-0281', 'NEW', 'Truffle', 'f046-0281.jpg', NULL),
+('F046', 'F046-0282', 'NEW', 'Wood Pigeon', 'f046-0282.jpg', NULL),
+('F046', 'F046-0283', 'NEW', 'Grouse', 'f046-0283.jpg', NULL),
+('F046', 'F046-0284', 'NEW', 'Roasted Berry', 'f046-0284.jpg', NULL),
+('F046', 'F046-0285', 'NEW', 'Cedar', 'f046-0285.jpg', NULL),
+('F046', 'F046-0286', 'NEW', 'Fleck', 'f046-0286.jpg', NULL),
+('F046', 'F046-0287', 'NEW', 'Mallard', 'f046-0287.jpg', NULL),
+('F040', 'F040-0331', 'NEW', 'Muffin', 'f040-0331.jpg', NULL),
+('F040', 'F040-0330', 'NEW', 'Meringue', 'f040-0330.jpg', NULL),
+('F040', 'F040-0321', 'NEW', '', 'f040-0321.jpg', NULL),
+('F040', 'F040-0319', 'NEW', '', 'f040-0319.jpg', NULL),
+('F040', 'F040-0320', 'NEW', '', 'f040-0320.jpg', NULL),
+('F040', 'F040-0342', 'NEW', 'Muffler', 'f040-0342.jpg', NULL),
+('F040', 'F040-0344', 'NEW', 'Boho', 'f040-0344.jpg', NULL),
+('F040', 'F040-0343', 'NEW', 'Puffball', 'f040-0343.jpg', NULL),
+('F040', 'F040-0341', 'NEW', 'Mitten', 'f040-0341.jpg', NULL),
+('F040', 'F040-0340', 'NEW', 'Flossie', 'f040-0340.jpg', NULL),
+('F040', 'F040-0339', 'NEW', 'Cherry Pie', 'f040-0339.jpg', NULL),
+('F040', 'F040-0338', 'NEW', 'Kitten', 'f040-0338.jpg', NULL),
+('F040', 'F040-0332', 'NEW', 'Marshmallow', 'f040-0332.jpg', NULL),
+('F040', 'F040-0335', 'NEW', 'Blancmange', 'f040-0335.jpg', NULL),
+('F049', 'F049-0179', 'EXC', 'Endeavour', 'f049-0179.jpg', NULL),
+('F049', 'F049-0178', 'INC', 'Loud', 'f049-0178.jpg', NULL),
+('F049', 'F049-0186', 'INC', 'Innocence', 'f049-0186.jpg', NULL),
+('F049', 'F049-0182', 'INC', 'Vibe', 'f049-0182.jpg', NULL),
+('F049', 'F049-0184', 'INC', 'Tranquil', 'f049-0184.jpg', NULL),
+('F049', 'F049-0183', 'INC', 'Euphoria', 'f049-0183.jpg', NULL),
+('F049', 'F049-0181', 'INC', 'Fervour', 'f049-0181.jpg', NULL),
+('F049', 'F049-0180', 'INC', 'Fury', 'f049-0180.jpg', NULL),
+('F049', 'F049-0187', 'INC', 'Ecstasy', 'f049-0187.jpg', NULL),
+('F049', 'F049-0185', 'INC', 'Passion', 'f049-0185.jpg', NULL),
+('F049', 'F049-0188', 'INC', 'Smoulder', 'f049-0188.jpg', NULL),
+('F049', 'F049-0189', 'EXC', 'Desire', 'f049-0189.jpg', NULL),
+('F049', 'F049-0190', 'INC', 'Freespirit', 'f049-0190.jpg', NULL),
+('F049', 'F049-0191', 'EXC', 'Fascination', 'f049-0191.jpg', NULL),
+('F049', 'F049-0192', 'EXC', 'Luscious', 'f049-0192.jpg', NULL),
+('F049', 'F049-0193', 'INC', 'Fever', 'f049-0193.jpg', NULL),
+('F049', 'F049-0194', 'INC', 'Temptation', 'f049-0194.jpg', NULL),
+('F049', 'F049-0200', 'EXC', 'Frolic', 'f049-0200.jpg', NULL),
+('F049', 'F049-0197', 'EXC', 'Ravishing', 'f049-0197.jpg', NULL),
+('F049', 'F049-0199', 'EXC', 'Vivacious', 'f049-0199.jpg', NULL),
+('F028', 'F028-0719', 'INC', 'Bikini', 'f028-0719.jpg', NULL),
+('F028', 'F028-0718', 'EXC', 'Splash', 'f028-0718.jpg', '2011-07-28'),
+('F028', 'F028-0732', 'INC', 'Miami', 'f028-0732.jpg', NULL),
+('F028', 'F028-0733', 'EXC', 'Banana', 'f028-0733.jpg', '2011-07-28'),
+('F028', 'F028-0734', 'INC', 'Parasol', 'f028-0734.jpg', '2011-07-28'),
+('F028', 'F028-0735', 'EXC', 'Shrimp', 'f028-0735.jpg', '2011-07-28'),
+('F028', 'F028-0723', 'INC', 'Cotton White', 'f028-0723.jpg', NULL),
+('F028', 'F028-0721', 'INC', 'Linen', 'f028-0721.jpg', NULL),
+('F028', 'F028-0724', 'INC', 'Muslin', 'f028-0724.jpg', NULL),
+('F028', 'F028-0727', 'EXC', 'Lime Canvas', 'f028-0727.jpg', '2011-07-28'),
+('F028', 'F028-0725', 'INC', 'Washed Gingham', 'f028-0725.jpg', NULL),
+('F028', 'F028-0717', 'INC', 'Clamdigger', 'f028-0717.jpg', NULL),
+('F012', 'F012-0200', 'NEW', 'Ecru', 'f012-0200.jpg', NULL),
+('F012', 'F012-0201', 'NEW', 'Natural', 'f012-0201.jpg', NULL),
+('F012', 'F012-0202', 'NEW', 'Clay', 'f012-0202.jpg', NULL),
+('F012', 'F012-0203', 'NEW', 'Earth', 'f012-0203.jpg', NULL),
+('F012', 'F012-0204', 'NEW', 'Flint', 'f012-0204.jpg', NULL),
+('F012', 'F012-0205', 'NEW', 'Cobblestones', 'f012-0205.jpg', NULL),
+('F012', 'F012-0206', 'NEW', 'Shale', 'f012-0206.jpg', NULL),
+('F005', 'F005-0002', 'INC', 'Plume', 'f005-0002.jpg', NULL),
+('F005', 'F005-0001', 'EXC', 'Smokey', 'f005-0001.jpg', NULL),
+('F005', 'F005-0018', 'INC', 'Sable', 'f005-0018.jpg', NULL),
+('F005', 'F005-0019', 'INC', 'Peacock', 'f005-0019.jpg', NULL),
+('F005', 'F005-0006', 'INC', 'Moss', 'f005-0006.jpg', NULL),
+('F005', 'F005-0017', 'INC', 'Fudge', 'f005-0017.jpg', NULL),
+('F005', 'F005-0015', 'INC', 'Storm Cloud', 'f005-0015.jpg', NULL),
+('F095', 'F095-0563', 'NEW', '', 'f095-0563.jpg', NULL),
+('F095', 'F095-0564', 'NEW', '', 'f095-0564.jpg', NULL),
+('F095', 'F095-0560', 'NEW', '', 'f095-0560.jpg', NULL),
+('F095', 'F095-0561', 'NEW', '', 'f095-0561.jpg', NULL),
+('F095', 'F095-0562', 'NEW', '', 'f095-0562.jpg', NULL),
+('F096', 'F096-0760', 'INC', 'Sunshine', 'f096-0760.jpg', NULL),
+('F096', 'F096-0759', 'INC', 'Chirpy', 'f096-0759.jpg', NULL),
+('F034', 'F034-0600', 'EXC', 'Kinky Pink', 'f034-0600.jpg', NULL),
+('F034', 'F034-0602', 'EXC', 'Applejack', 'f034-0602.jpg', NULL),
+('F042', 'F042-0357', 'INC', 'Irish Rose', 'f042-0357.jpg', NULL),
+('F042', 'F042-0356', 'INC', 'Sweet Meadow', 'f042-0356.jpg', NULL),
+('F034', 'F034-0603', 'EXC', 'Funkadelic', 'f034-0603.jpg', NULL),
+('F034', 'F034-0606', 'EXC', 'Splatter', 'f034-0606.jpg', NULL),
+('F034', 'F034-0605', 'INC', 'Busy Lizzie', 'f034-0605.jpg', NULL),
+('F034', 'F034-0604', 'INC', 'Dizzy Rascal', 'f034-0604.jpg', NULL),
+('F034', 'F034-0608', 'EXC', 'Hazy Fantazy', 'f034-0608.jpg', NULL),
+('F034', 'F034-0607', 'EXC', 'Honky Tonk', 'f034-0607.jpg', NULL),
+('F062', 'F062-0164', 'INC', '', 'f062-0164.jpg', '2012-02-21'),
+('F062', 'F062-0165', 'INC', '', 'f062-0165.jpg', '2012-02-21'),
+('F087', 'F087-0054', 'INC', 'Fairisle', 'f087-0054.jpg', NULL),
+('F087', 'F087-0055', 'INC', 'Plaid', 'f087-0055.jpg', NULL),
+('F087', 'F087-0066', 'INC', 'Faroe', 'f087-0066.jpg', NULL),
+('F087', 'F087-0067', 'INC', 'Jura', 'f087-0067.jpg', NULL),
+('F100', 'F100-0150', 'INC', '', 'f100-0150.jpg', NULL),
+('F100', 'F100-0151', 'INC', '', 'f100-0151.jpg', NULL),
+('F100', 'F100-0152', 'INC', '', 'f100-0152.jpg', NULL),
+('F100', 'F100-0153', 'INC', '', 'f100-0153.jpg', NULL),
+('F100', 'F100-0154', 'INC', '', 'f100-0154.jpg', NULL),
+('F100', 'F100-0155', 'INC', '', 'f100-0155.jpg', NULL),
+('F100', 'F100-0176', 'INC', '', 'f100-0176.jpg', NULL),
+('F100', 'F100-0177', 'INC', '', 'f100-0177.jpg', NULL),
+('F100', 'F100-0178', 'INC', '', 'f100-0178.jpg', NULL),
+('F100', 'F100-0179', 'INC', '', 'f100-0179.jpg', NULL),
+('F100', 'F100-0180', 'INC', '', 'f100-0180.jpg', NULL),
+('F100', 'F100-0181', 'INC', '', 'f100-0181.jpg', NULL),
+('F035', 'F035-0001', 'INC', '', 'f035-0001.jpg', NULL),
+('F035', 'F035-0002', 'INC', '', 'f035-0002.jpg', NULL),
+('F035', 'F035-0003', 'INC', '', 'f035-0003.jpg', NULL),
+('F035', 'F035-0004', 'INC', '', 'f035-0004.jpg', NULL),
+('F035', 'F035-0006', 'INC', '', 'f035-0006.jpg', NULL),
+('F035', 'F035-0007', 'INC', '', 'f035-0007.jpg', NULL),
+('F035', 'F035-0008', 'INC', '', 'f035-0008.jpg', NULL),
+('F035', 'F035-0009', 'INC', '', 'f035-0009.jpg', NULL),
+('F035', 'F035-0010', 'INC', '', 'f035-0010.jpg', NULL),
+('F035', 'F035-0011', 'INC', '', 'f035-0011.jpg', NULL),
+('F086', 'F086-0153', 'INC', 'Hickory', 'f086-0153.jpg', NULL),
+('F086', 'F086-0154', 'INC', 'Nessie', 'f086-0154.jpg', NULL),
+('F086', 'F086-0155', 'INC', 'Pinkie', 'f086-0155.jpg', NULL),
+('F086', 'F086-0156', 'INC', 'Hamish', 'f086-0156.jpg', NULL),
+('F086', 'F086-0157', 'INC', 'Dougal', 'f086-0157.jpg', NULL),
+('F075', 'F075-0405', 'EXC', 'Bubble', 'f075-0405.jpg', '2011-07-28'),
+('F075', 'F075-0407', 'EXC', 'Toddle', 'f075-0407.jpg', '2011-07-28'),
+('F075', 'F075-0408', 'INC', 'Sugar Cookie', 'f075-0408.jpg', NULL),
+('F075', 'F075-0409', 'INC', 'Twinkle Toes', 'f075-0409.jpg', '2011-07-28'),
+('F075', 'F075-0414', 'EXC', 'Elf', 'f075-0414.jpg', '2011-07-28'),
+('F075', 'F075-0413', 'INC', 'Engine Red', 'f075-0413.jpg', '2011-07-28'),
+('F075', 'F075-0415', 'INC', 'Pixie', 'f075-0415.jpg', '2011-07-28'),
+('F075', 'F075-0412', 'INC', 'Soldier Blue', 'f075-0412.jpg', NULL),
+('F075', 'F075-0416', 'EXC', 'Baby Bear', 'f075-0416.jpg', '2011-07-28'),
+('F075', 'F075-0418', 'EXC', 'Duckling', 'f075-0418.jpg', '2011-07-28'),
+('F075', 'F075-0419', 'INC', 'Choo Choo Train', 'f075-0419.jpg', '2011-07-28'),
+('F075', 'F075-0417', 'EXC', 'Little Frog', 'f075-0417.jpg', '2011-07-28'),
+('F074', 'F074-0410', 'INC', 'Chuckle', 'f074-0410.jpg', NULL),
+('F074', 'F074-0405', 'NEW', 'Bubble', 'f074-0405.jpg', NULL),
+('F074', 'F074-0267', 'NEW', 'Stawberry Mousse', 'f074-0267.jpg', NULL),
+('F074', 'F074-0326', 'NEW', 'Denim', 'f074-0326.jpg', NULL),
+('F074', 'F074-0268', 'NEW', 'Blueberry Mousse', 'f074-0268.jpg', NULL),
+('F084', 'F084-0653', 'INC', 'Bright Purple', 'f084-0653.jpg', '2012-02-21'),
+('F084', 'F084-0652', 'INC', 'Lagoon', 'f084-0652.jpg', '2012-02-21'),
+('F084', 'F084-0647', 'INC', 'Lemon', 'f084-0647.jpg', '2012-02-21'),
+('F084', 'F084-0645', 'INC', 'Lilac', 'f084-0645.jpg', '2012-02-21'),
+('F084', 'F084-0644', 'INC', 'Pink', 'f084-0644.jpg', '2012-02-21'),
+('F084', 'F084-0643', 'NEW', 'Lime', 'f084-0643.jpg', NULL),
+('F084', 'F084-0403', 'INC', 'Rainbow Spray', 'f084-0403.jpg', '2012-02-21'),
+('F084', 'F023-0645', 'INC', 'Lilac', 'f023-0645.jpg', '2012-02-21'),
+('F023', 'F023-0653', 'EXC', 'Bright Purple', 'f023-0653.jpg', '2011-07-28'),
+('F023', 'F023-0654', 'EXC', 'Bright Pink', 'f023-0654.jpg', '2011-07-28'),
+('F010', 'F010-0310', 'INC', 'Tequilla Sunrise', 'f010-0310.jpg', '2011-07-28'),
+('F010', 'F010-0311', 'INC', 'Pina Colada', 'f010-0311.jpg', '2011-07-28'),
+('F010', 'F010-0312', 'INC', 'Oasis', 'f010-0312.jpg', '2011-07-28'),
+('F010', 'F010-0313', 'INC', 'Acapulco', 'f010-0313.jpg', '2011-07-28'),
+('F010', 'F010-0314', 'INC', 'Margarita', 'f010-0314.jpg', '2011-07-28'),
+('F010', 'F010-0315', 'INC', 'Sombrero', 'f010-0315.jpg', '2011-07-28'),
+('F010', 'F010-0316', 'INC', 'Tropicana', 'f010-0316.jpg', '2011-07-28'),
+('F010', 'F010-0317', 'INC', 'Calypso', 'f010-0317.jpg', '2011-07-28'),
+('F085', 'F085-0190', 'INC', 'Whisper of White', 'f085-0190.jpg', '2011-07-28'),
+('F085', 'F085-0191', 'INC', 'Whisper of Mint', 'f085-0191.jpg', '2011-07-28'),
+('F085', 'F085-0192', 'INC', 'Whisper of Blue', 'f085-0192.jpg', '2011-07-28'),
+('F085', 'F085-0193', 'INC', 'Whisper of Pink', 'f085-0193.jpg', '2011-07-28'),
+('F085', 'F085-0194', 'EXC', 'Whisper of Peach', 'f085-0194.jpg', '2011-07-28'),
+('F085', 'F085-0195', 'EXC', 'Whisper of Lemon', 'f085-0195.jpg', '2011-07-28'),
+('F085', 'F085-0196', 'EXC', 'Whisper of Lilac', 'f085-0196.jpg', '2011-07-28'),
+('F071', 'F071-0159', 'EXC', 'Jack In A Box', 'f071-0159.jpg', '2011-07-28'),
+('F071', 'F071-0160', 'EXC', 'Paintbox Pink', 'f071-0160.jpg', '2011-07-28'),
+('F071', 'F071-0162', 'EXC', 'Toy Box Red', 'f071-0162.jpg', '2011-07-28'),
+('F071', 'F071-0161', 'EXC', 'Baby Berries', 'f071-0161.jpg', '2011-07-28'),
+('F028', 'F028-0714', 'EXC', 'Amber', 'f028-0714.jpg', '2011-07-28'),
+('F028', 'F028-0716', 'EXC', 'Spicy', 'f028-0716.jpg', '2011-07-28'),
+('F028', 'F028-0728', 'EXC', 'Bandana', 'f028-0728.jpg', '2011-07-28'),
+('F028', 'F028-0729', 'INC', 'Oasis', 'f028-0729.jpg', NULL),
+('F028', 'F028-0730', 'INC', 'Panama Pink', 'f028-0730.jpg', NULL),
+('F028', 'F028-0731', 'INC', 'South Beach', 'f028-0731.jpg', NULL),
+('F011', 'F011-0929', 'EXC', '', 'f011-0929.jpg', '2012-02-21'),
+('F011', 'F011-0930', 'EXC', '', 'f011-0930.jpg', '2012-02-21'),
+('F011', 'F011-0931', 'EXC', '', 'f011-0931.jpg', '2012-02-21');
+INSERT INTO sirdar_yarn_shade (yarn_code, shade_code, shade_status, shade_name, shade_image, changedate) VALUES
+('F011', 'F011-0796', 'EXC', '', 'f011-0796.jpg', '2012-02-21'),
+('F011', 'F011-0797', 'EXC', '', 'f011-0797.jpg', '2012-02-21'),
+('F011', 'F011-0798', 'EXC', '', 'f011-0798.jpg', '2012-02-21'),
+('F011', 'F011-0799', 'EXC', '', 'f011-0799.jpg', '2012-02-21'),
+('F011', 'F011-0800', 'EXC', '', 'f011-0800.jpg', '2012-02-21'),
+('F062', 'F062-0156', 'INC', 'Little Bighorn', 'f062-0156.jpg', '2012-02-21'),
+('F062', 'F062-0157', 'INC', 'Crazy Horse', 'f062-0157.jpg', '2012-02-21'),
+('F062', 'F062-0159', 'INC', 'Phoenix', 'f062-0159.jpg', '2012-02-21'),
+('F062', 'F062-0158', 'INC', 'Nevada', 'f062-0158.jpg', '2012-02-21'),
+('F062', 'F062-0160', 'INC', '', 'f062-0160.jpg', '2012-02-21'),
+('F062', 'F062-0161', 'INC', '', 'f062-0161.jpg', '2012-02-21'),
+('F062', 'F062-0162', 'INC', '', 'f062-0162.jpg', '2012-02-21'),
+('F062', 'F062-0163', 'INC', '', 'f062-0163.jpg', '2012-02-21'),
+('F040', 'F040-0345', 'NEW', 'Vivid', 'f040-0345.jpg', NULL),
+('F040', 'F040-0346', 'NEW', 'Bling Blue', 'f040-0346.jpg', NULL),
+('F040', 'F040-0347', 'NEW', 'Wink Pink', 'f040-0347.jpg', NULL),
+('F040', 'F040-0348', 'NEW', 'Jazzy', 'f040-0348.jpg', NULL),
+('F040', 'F040-0326', 'NEW', 'Moose', 'f040-0326.jpg', NULL),
+('F040', 'F040-0327', 'NEW', 'Beany', 'f040-0327.jpg', NULL),
+('F040', 'F040-0328', 'NEW', 'Chilli', 'f040-0328.jpg', NULL),
+('F040', 'F040-0329', 'NEW', 'Top Banana', 'f040-0329.jpg', NULL),
+('F040', 'F040-0322', 'NEW', '', 'f040-0322.jpg', NULL),
+('F040', 'F040-0323', 'NEW', '', 'f040-0323.jpg', NULL),
+('F040', 'F040-0324', 'NEW', '', 'f040-0324.jpg', NULL),
+('F040', 'F040-0325', 'NEW', '', 'f040-0325.jpg', NULL),
+('F027', 'F027-0295', 'NEW', '', 'f027-0295.jpg', NULL),
+('F027', 'F027-0294', 'NEW', '', 'f027-0294.jpg', NULL),
+('F027', 'F027-0293', 'NEW', '', 'f027-0293.jpg', NULL),
+('F027', 'F027-0292', 'NEW', '', 'f027-0292.jpg', NULL),
+('F027', 'F027-0291', 'NEW', '', 'f027-0291.jpg', NULL),
+('F027', 'F027-0290', 'NEW', '', 'f027-0290.jpg', NULL),
+('F095', 'F095-0565', 'NEW', '', 'f095-0565.jpg', NULL),
+('F095', 'F095-0533', 'NEW', 'Angel Pink', 'f095-0533.jpg', NULL),
+('F095', 'F095-0512', 'NEW', 'White', 'f095-0512.jpg', NULL),
+('F095', 'F095-0511', 'NEW', 'Cream', 'f095-0511.jpg', NULL),
+('F095', 'F095-0549', 'NEW', 'Walnut', 'f095-0549.jpg', NULL),
+('F095', 'F095-0548', 'NEW', 'Chocolate', 'f095-0548.jpg', NULL),
+('F095', 'F095-0510', 'NEW', 'Jet Black', 'f095-0510.jpg', NULL),
+('F063', 'F063-0174', 'EXC', 'Woodpecker', 'f063-0174.jpg', '2012-02-21'),
+('F063', 'F063-0175', 'EXC', 'Blue Spruce', 'f063-0175.jpg', '2012-02-21'),
+('F063', 'F063-0176', 'EXC', 'Shale', 'f063-0176.jpg', '2012-02-21'),
+('F063', 'F063-0181', 'EXC', '', 'f063-0181.jpg', '2012-02-21'),
+('F063', 'F063-0182', 'INC', '', 'f063-0182.jpg', '2012-02-21'),
+('F063', 'F063-0183', 'INC', '', 'f063-0183.jpg', '2012-02-21'),
+('F063', 'F063-0184', 'INC', '', 'f063-0184.jpg', '2012-02-21'),
+('F045', 'F045-0166', 'INC', 'Winter Violet', 'f045-0166.jpg', '2012-02-21'),
+('F045', 'F045-0168', 'INC', 'Woodland', 'f045-0168.jpg', '2012-02-21'),
+('F045', 'F045-0170', 'EXC', 'Canvas', 'f045-0170.jpg', '2012-02-21'),
+('F045', 'F045-0171', 'INC', 'Blueberry', 'f045-0171.jpg', '2012-02-21'),
+('F045', 'F045-0172', 'INC', 'Loganberry', 'f045-0172.jpg', '2012-02-21'),
+('F045', 'F045-0173', 'EXC', 'Deep Blue', 'f045-0173.jpg', '2012-02-21'),
+('F045', 'F045-0177', 'EXC', '', 'f045-0177.jpg', '2012-02-21'),
+('F045', 'F045-0178', 'INC', '', 'f045-0178.jpg', '2012-02-21'),
+('F045', 'F045-0179', 'INC', '', 'f045-0179.jpg', '2012-02-21'),
+('F045', 'F045-0180', 'EXC', '', 'f045-0180.jpg', '2012-02-21'),
+('F084', 'F084-0654', 'INC', 'Bright Pink', 'f084-0654.jpg', '2012-02-21'),
+('F084', 'F084-0655', 'INC', 'Rosy Red', 'f084-0655.jpg', '2012-02-21'),
+('F084', 'F084-0656', 'INC', 'Boat Blue', 'f084-0656.jpg', '2012-02-21'),
+('F084', 'F084-0657', 'INC', 'Turquoise', 'f084-0657.jpg', '2012-02-21'),
+('F084', 'F084-0658', 'INC', 'Party Pink', 'f084-0658.jpg', '2012-02-21'),
+('F084', 'F084-0701', 'INC', '', 'f084-0701.jpg', '2012-02-21'),
+('F084', 'F084-0702', 'INC', '', 'f084-0702.jpg', '2012-02-21'),
+('F084', 'F084-0703', 'INC', '', 'f084-0703.jpg', '2012-02-21'),
+('F058', 'F058-0560', 'EXC', '', 'f058-0560.jpg', '2012-02-21'),
+('F058', 'F058-0561', 'EXC', '', 'f058-0561.jpg', '2012-02-21'),
+('F058', 'F058-0562', 'EXC', '', 'f058-0562.jpg', '2012-02-21'),
+('F058', 'F058-0563', 'EXC', '', 'f058-0563.jpg', '2012-02-21'),
+('F058', 'F058-0564', 'EXC', '', 'f058-0564.jpg', '2012-02-21'),
+('F058', 'F058-0565', 'EXC', '', 'f058-0565.jpg', '2012-02-21'),
+('F003', 'F003-0120', 'INC', '', 'f003-0120.jpg', '2012-02-23'),
+('F003', 'F003-0121', 'INC', '', 'f003-0121.jpg', '2012-02-23'),
+('F003', 'F003-0122', 'INC', '', 'f003-0122.jpg', '2012-02-23'),
+('F003', 'F003-0123', 'INC', '', 'f003-0123.jpg', '2012-02-23'),
+('F003', 'F003-0124', 'INC', '', 'f003-0124.jpg', '2012-02-23'),
+('F003', 'F003-0125', 'INC', '', 'f003-0125.jpg', '2012-02-23'),
+('F003', 'F003-0126', 'INC', '', 'f003-0126.jpg', '2012-02-23'),
+('F003', 'F003-0127', 'INC', '', 'f003-0127.jpg', '2012-02-23'),
+('F001', 'F001-0010', 'NEW', '', 'f001-0010.jpg', NULL),
+('F001', 'F001-0011', 'NEW', '', 'f001-0011.jpg', NULL),
+('F001', 'F001-0012', 'NEW', '', 'f001-0012.jpg', NULL),
+('F001', 'F001-0013', 'NEW', '', 'f001-0013.jpg', NULL);

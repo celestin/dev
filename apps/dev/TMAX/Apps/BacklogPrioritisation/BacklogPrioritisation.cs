@@ -17,17 +17,17 @@ using FrontBurner.Tmax.Apps.BacklogPrioritisation.Forms;
 
 namespace FrontBurner.Tmax.Apps.BacklogPrioritisation
 {
-    static class BacklogPrioritisation
+  static class BacklogPrioritisation
+  {
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main()
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartCentre());
-        }
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new StartCentre());
     }
+  }
 }

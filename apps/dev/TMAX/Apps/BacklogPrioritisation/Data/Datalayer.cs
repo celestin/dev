@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -19,47 +20,77 @@ namespace FrontBurner.Tmax.Apps.BacklogPrioritisation.Data
 {
   public class Datalayer
   {
-    public Datalayer()
+    private static Datalayer _instance;
+    private OleDbConnection _conn;
+    private string _site;
+
+    private Datalayer()
     {
     }
 
-    public void TestConnection()
+    public static Datalayer Instance
     {
-      OleDbConnection conn = new OleDbConnection();
-      conn.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+      get
+      {
+        if (_instance == null) _instance = new Datalayer();
+        return _instance;
+      }
+    }
+
+    public string Site
+    {
+      get
+      {
+        if (_site == null) GetConfig();
+        return _site;
+      }
+    }
+
+    protected void GetConfig()
+    {
+      string sSQL = "SELECT Site FROM Config";
+      OleDbCommand cmd = new OleDbCommand(sSQL, _conn);
+      OleDbDataReader dr = null;
+
+      dr = cmd.ExecuteReader();
+      if (dr.Read())
+      {
+        _site = dr["Site"].ToString();
+      }
+
+      dr.Close();
+      dr.Dispose();
+      cmd.Dispose();
+    }
+
+    public void Open()
+    {
+      _conn = new OleDbConnection();
+      _conn.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
         @"Data Source=.\Data\BacklogPrioritisation.mdb;Persist Security Info=True";
 
       try
       {
-        conn.Open();
-
-        string strSQL = "SELECT * FROM V_Progress";
-        OleDbCommand cmd = new OleDbCommand(strSQL, conn);
-        OleDbDataReader dr = null;
-        try
-        {
-          dr = cmd.ExecuteReader();
-          while (dr.Read() == true)
-          {
-            //MessageBox.Show(dr["AssessmentStatus"].ToString());
-          }
-        }
-        catch (Exception e)
-        {
-        }
-        finally
-        {
-          dr.Close();
-        }
+        _conn.Open();
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
-      finally
-      {
-        conn.Close();
-      }
     }
+
+    public DataSet GetProgressSummary()
+    {
+      string sSQL = "SELECT * FROM V_Progress";
+      OleDbCommand cmd = new OleDbCommand(sSQL, _conn);
+      OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+      DataSet ds = new DataSet();
+      da.Fill(ds, "Progress");
+
+      cmd.Dispose();
+      da.Dispose();
+      return ds;
+    }
+
   }
 }

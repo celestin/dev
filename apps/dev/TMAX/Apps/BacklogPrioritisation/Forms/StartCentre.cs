@@ -10,6 +10,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
+using System.Data;  
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
@@ -24,13 +25,49 @@ namespace FrontBurner.Tmax.Apps.BacklogPrioritisation.Forms
     {
       InitializeComponent();
 
-      Datalayer dl = new Datalayer();
-      dl.TestConnection();
+      Datalayer dl = Datalayer.Instance;
+      dl.Open();
 
-      priorityChart.Series[0].Points[0].Color = Color.Blue;
-      priorityChart.Series[0].Points[1].Color = Color.Green;
-      priorityChart.Series[0].Points[2].Color = Color.Orange;
-      priorityChart.Series[0].Points[3].Color = Color.RosyBrown;
+      lblSite.Text = String.Format("{0} Workorder Backlog Prioritisation", dl.Site);
+
+      DataPointCollection pc = progressPie.Series[0].Points;
+      DataPoint p = null;
+      Button b = null;
+
+      DataSet prog = dl.GetProgressSummary();
+      foreach (DataRow row in prog.Tables["Progress"].Rows)
+      {
+        switch (AssessmentStatuses.GetStatus(row["AssessmentStatus"].ToString()))
+        {            
+          case AssessmentStatus.New:
+            p = pc[0];
+            p.Color = Color.Orange;
+            b = btnNew;
+            break;
+          case AssessmentStatus.Completed:
+            p = pc[1];
+            p.Color = Color.SeaGreen;
+            b = btnComp;
+            break;
+          case AssessmentStatus.Cancelled:
+            p = pc[2];
+            p.Color = Color.Crimson;
+            b = btnCan;
+            break;
+        }
+        p.AxisLabel = row["Description"].ToString();
+        p.YValues[0] = double.Parse(row["WoCount"].ToString());
+        b.Text = p.AxisLabel;
+        b.BackColor = p.Color;
+      }
+
+      progressPie.Invalidate();
+      progressPie.Update();
+
+      priorityChart.Series[0].Points[0].Color = Color.PaleTurquoise;
+      priorityChart.Series[0].Points[1].Color = Color.MediumAquamarine;
+      priorityChart.Series[0].Points[2].Color = Color.Teal;
+      priorityChart.Series[0].Points[3].Color = Color.DarkSlateGray;
     }
 
     private void ProgressStatusSelected(object sender, MouseEventArgs e)
@@ -71,6 +108,21 @@ namespace FrontBurner.Tmax.Apps.BacklogPrioritisation.Forms
     private void mnuExit_Click(object sender, EventArgs e)
     {
       this.Close();
+    }
+
+    private void btnNew_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnComp_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnCan_Click(object sender, EventArgs e)
+    {
+
     }
 
   }

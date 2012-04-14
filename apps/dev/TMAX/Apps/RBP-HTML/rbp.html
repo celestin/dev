@@ -63,6 +63,12 @@
     return (new Array(tmaxCharWidth)).join("=") + "\r\n";
   }
 
+  function flagValue(lbl, flagName) {
+    var flag=document.getElementById(flagName);
+    if (flag.checked) return lbl + "\r\n";
+    return "";
+  }
+
   function copyToClipboard() {
     if (window.clipboardData && clipboardData.setData) {
       var txtPriority=document.getElementById("txtPriority");
@@ -101,7 +107,12 @@
         fieldValue("Equipment Constraints", txtEquipmentConstraints) +
         fieldValue("Supporting Info Folder", txtSupportingInfoFolder) +
         separatorLine() +
-        "bools\r\n" +
+        flagValue("Defect Tag Fitted", "flagDefectTagFitted") +
+        flagValue("Scaffolding Required", "flagScaffoldingRequired") +
+        flagValue("Vendor Required", "flagVendorRequired") +
+        flagValue("Crane Required", "flagCraneRequired") +
+        flagValue("Isolations Required", "flagIsolationsRequired") +
+        flagValue("Annual TAR Required", "flagAnnualTarRequired") +
         separatorLine() +
         "Workorder MIRQ Reasoning\r\n\r\n\r\n" +
         "Workorder Cancelled Reasoning\r\n\r\n\r\n" +
@@ -217,12 +228,6 @@
     background-color: #eaffb1;
   }
 
-  /**
-  input:hover, textarea:hover {
-    border: 2px solid #a6ce39;
-  }
-  */
-
   .required, input:focus.required, textarea:focus.required {
     border: 2px solid #f26331;
     background-color: #ffcfbe;
@@ -240,6 +245,10 @@
     background-color: #ffcfbe;
     color: #943615;
     font-size: 12pt;
+  }
+
+  .radio, .radio:focus {
+    border: 0px;
   }
 
   .hdr {
@@ -453,7 +462,6 @@
     <td class="tlred">1</td>
     <td class="tlred">1</td>
   </tr>
-
 </table>
 
 <table border="0" cellpadding="5" cellspacing="0">
@@ -502,6 +510,48 @@
   <tr>
     <td><label for="txtSupportingInfoFolder">Supporting Info Folder</label><span class="help" onmouseover="showHelp('txtSupportingInfoFolder');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
     <td colspan="4"><textarea name="Copy and paste a shared drive path specific to this workorder with addional information such as marked-up P&amp;ID's, photos, etc." rows="4" cols="84" id="txtSupportingInfoFolder"></textarea></td>
+  </tr>
+
+  <tr>
+    <td>Defect Tag Fitted?</td>
+    <td>
+      <input class="radio" type="radio" name="flagDefectTagFitted" id="flagDefectTagFitted" value="Yes"><label for="flagDefectTagFitted">Yes</label>
+      <input class="radio" type="radio" name="flagDefectTagFitted" id="flagDefectTagFittedNo" value="No"><label for="flagDefectTagFittedNo">No</label>
+    </td>
+
+    <td>Scaffolding Required?</td>
+    <td>
+      <input class="radio" type="radio" name="flagScaffoldingRequired" id="flagScaffoldingRequired" value="Yes"><label for="flagScaffoldingRequired">Yes</label>
+      <input class="radio" type="radio" name="flagScaffoldingRequired" id="flagScaffoldingRequiredNo" value="No"><label for="flagScaffoldingRequiredNo">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Vendor Required?</td>
+    <td>
+      <input class="radio" type="radio" name="flagVendorRequired" id="flagVendorRequired" value="Yes"><label for="flagVendorRequired">Yes</label>
+      <input class="radio" type="radio" name="flagVendorRequired" id="flagVendorRequiredNo" value="No"><label for="flagVendorRequiredNo">No</label>
+    </td>
+
+    <td>Crane Required?</td>
+    <td>
+      <input class="radio" type="radio" name="flagCraneRequired" id="flagCraneRequired" value="Yes"><label for="flagCraneRequired">Yes</label>
+      <input class="radio" type="radio" name="flagCraneRequired" id="flagCraneRequiredNo" value="No"><label for="flagCraneRequiredNo">No</label>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Isolations Required?</td>
+    <td>
+      <input class="radio" type="radio" name="flagIsolationsRequired" id="flagIsolationsRequired" value="Yes"><label for="flagIsolationsRequired">Yes</label>
+      <input class="radio" type="radio" name="flagIsolationsRequired" id="flagIsolationsRequiredNo" value="No"><label for="flagIsolationsRequiredNo">No</label>
+    </td>
+
+    <td>Annual TAR Required?</td>
+    <td>
+      <input class="radio" type="radio" name="flagAnnualTarRequired" id="flagAnnualTarRequired" value="Yes"><label for="flagAnnualTarRequired">Yes</label>
+      <input class="radio" type="radio" name="flagAnnualTarRequired" id="flagAnnualTarRequiredNo" value="No"><label for="flagAnnualTarRequiredNo">No</label>
+    </td>
   </tr>
 
   <tr height="100">

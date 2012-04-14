@@ -49,11 +49,44 @@
 
   $product_check_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
   $product_check = tep_db_fetch_array($product_check_query);
+
+	$sql =
+	  "SELECT p.products_id, p.groupid, pd.products_name, pd.products_description, p.products_model, ".
+	  "p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, ".
+	  "p.products_date_added, p.products_date_available, p.manufacturers_id, ".
+	  "m.manufacturers_name, m.guarantee_years ".
+	  "FROM " . TABLE_PRODUCTS . " p " .
+	  "INNER JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd " .
+	  "ON pd.products_id = p.products_id ".
+	  "LEFT JOIN ". TABLE_MANUFACTURERS . " m ".
+	  "ON m.manufacturers_id = p.manufacturers_id ".
+	  "WHERE p.products_status = '1' ".
+	  "AND p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' ".
+	  "AND pd.language_id = '" . (int)$languages_id . "'";
+
+	$product_info_query = tep_db_query($sql);
+	$product_info = tep_db_fetch_array($product_info_query);
+	$modelNo = $product_info['products_id'];
+
+	tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
+
+	if ($new_price = tep_get_products_special_price($product_info['products_id'])) {
+	  $products_price = '<s>' . $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) . '</s> <span class="productSpecialPrice">' . $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id'])) . '</span>';
+	} else {
+	  $products_price = $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id']));
+	}
+
+	$products_name = $product_info['products_name'];
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
+<meta property="og:title" content="<?=$products_name?>" />
+<meta property="og:type" content="product" />
+<meta property="og:image" content="<?=DIR_WS_IMAGES . $groupproducts["products_image"]?>" />
+<meta property="og:site_name" content="iKnit" />
+<meta property="fb:admins" content="100000698830508" />
 <title><?php echo TITLE; ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo CONFIG_STYLESHEET; ?>">
@@ -106,33 +139,6 @@ function popupWindow(url) {
       </tr>
 <?php
   } else {
-    $sql =
-      "SELECT p.products_id, p.groupid, pd.products_name, pd.products_description, p.products_model, ".
-      "p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, ".
-      "p.products_date_added, p.products_date_available, p.manufacturers_id, ".
-      "m.manufacturers_name, m.guarantee_years ".
-      "FROM " . TABLE_PRODUCTS . " p " .
-      "INNER JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd " .
-      "ON pd.products_id = p.products_id ".
-      "LEFT JOIN ". TABLE_MANUFACTURERS . " m ".
-      "ON m.manufacturers_id = p.manufacturers_id ".
-      "WHERE p.products_status = '1' ".
-      "AND p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' ".
-      "AND pd.language_id = '" . (int)$languages_id . "'";
-
-    $product_info_query = tep_db_query($sql);
-    $product_info = tep_db_fetch_array($product_info_query);
-    $modelNo = $product_info['products_id'];
-
-    tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
-
-    if ($new_price = tep_get_products_special_price($product_info['products_id'])) {
-      $products_price = '<s>' . $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) . '</s> <span class="productSpecialPrice">' . $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id'])) . '</span>';
-    } else {
-      $products_price = $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id']));
-    }
-
-    $products_name = $product_info['products_name'];
 ?>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -430,7 +436,7 @@ function popupWindow(url) {
       <tr>
         <td><table border="0" width="100%" cellspacing="1" cellpadding="2" class="infoBox">
           <tr class="infoBoxContents">
-            <td><table border="1" width="100%" cellspacing="0" cellpadding="2">
+            <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
               <tr>
 
                 <td>
@@ -438,7 +444,7 @@ function popupWindow(url) {
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
-						  <div class="fb-like" data-href="<?=tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)?>" data-send="true" data-width="460" data-show-faces="false"></div>
+                          <div class="fb-like" data-send="true" data-width="460" data-show-faces="false"></div>
                         </td>
                       </tr>
                     </table>

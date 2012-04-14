@@ -6,6 +6,7 @@
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Risk Based Prioritisation
   // Copyright (c) 2012 Talisman Energy UK Ltd
+  // $Id$
   // Author Craig McKay
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   var tdLhood = null;
@@ -13,6 +14,10 @@
   var sPear = '';
   var iSeverity = 0;
   var sLhood = '';
+  var cursor = {x:0, y:0};
+  var txtHelp = null;
+  var bHidingHelp = false;
+  var tmaxCharWidth = 80;
 
   var rr = new Array();
   rr['A1'] = 4;  rr['B1'] = 4;  rr['C1'] = 3;  rr['D1'] = 3;  rr['E1'] = 2;
@@ -21,20 +26,88 @@
   rr['A4'] = 3;  rr['B4'] = 2;  rr['C4'] = 2;  rr['D4'] = 1;  rr['E4'] = 1;
   rr['A5'] = 2;  rr['B5'] = 2;  rr['C5'] = 1;  rr['D5'] = 1;  rr['E5'] = 1;
 
-  function copyToClipboard() {
-    if (window.clipboardData && clipboardData.setData)
-    {
-	  var txtRisk=document.getElementById("txtRisk");
-	  var txtJust=document.getElementById("txtJust");
-	  var txtMit=document.getElementById("txtMit");
+  function validateField(txt, txtSingle) {
+    if (txt.value.length < 1) {
+      if (txtSingle == null || txt == txtSingle) txt.className = "required";
+      return false;
+    }
+    txt.className = "";
+    return true;
+  }
 
-	  var s = "=================================================================================\r\n" +
-	    "Risk Ranking  | " + txtRisk.value + "\r\n" +
-		"Justification | " + txtJust.value + "\r\n" +
-		"Mitigation    | " + txtMit.value + "\r\n" +
-		  "=================================================================================\r\n";
+  function validateFields(txt) {
+    var btnCopy=document.getElementById("btnCopy");
+    var allValid = true;
+
+    if (!validateField(txtDefectFound, txt)) allValid = false;
+    if (!validateField(txtEquipmentFunction, txt)) allValid = false;
+    if (!validateField(txtMitigationStepsTaken, txt)) allValid = false;
+    if (!validateField(txtJustificationForPriority, txt)) allValid = false;
+
+    if (!allValid) {
+      btnCopy.className = "buttonreq";
+      btnCopy.value = "Enter all mandatory fields";
+    } else {
+      btnCopy.className = "button";
+      btnCopy.value = "Copy all details for Long Text";
+    }
+
+    return allValid;
+  }
+
+  function fieldValue(lbl, txt) {
+    return "---" + lbl + (new Array(tmaxCharWidth - String(lbl).length - 3)).join("-") + "\r\n" + txt.value + "\r\n\r\n";
+  }
+
+  function separatorLine() {
+    return (new Array(tmaxCharWidth)).join("=") + "\r\n";
+  }
+
+  function copyToClipboard() {
+    if (window.clipboardData && clipboardData.setData) {
+      var txtPriority=document.getElementById("txtPriority");
+      var txtRisk=document.getElementById("txtRisk");
+      var txtTS=document.getElementById("txtTS");
+      var txtTF=document.getElementById("txtTF");
+
+      var txtDefectFound=document.getElementById("txtDefectFound");
+      var txtEquipmentFunction=document.getElementById("txtEquipmentFunction");
+      var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
+      var txtJustificationForPriority=document.getElementById("txtJustificationForPriority");
+      var txtSuggestedFixRequired=document.getElementById("txtSuggestedFixRequired");
+      var txtResourcesRequired=document.getElementById("txtResourcesRequired");
+      var txtLocationAccessIssues=document.getElementById("txtLocationAccessIssues");
+      var txtHseConsiderations=document.getElementById("txtHseConsiderations");
+      var txtEquipmentConstraints=document.getElementById("txtEquipmentConstraints");
+      var txtSupportingInfoFolder=document.getElementById("txtSupportingInfoFolder");
+      var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
+
+      if (!validateFields()) return;
+
+      var s = separatorLine() +
+        "Risk Ranking " + txtRisk.value + "       " +
+        "Priority " + txtPriority.value + "        " +
+        "Target Window " + txtTS.value + " to " + txtTF.value + "\r\n" +
+        separatorLine() +
+        fieldValue("Defect Found", txtDefectFound) +
+        fieldValue("Equipment Function", txtEquipmentFunction) +
+        fieldValue("Mitigation Steps Taken", txtMitigationStepsTaken) +
+        fieldValue("Justification for Priority", txtJustificationForPriority) +
+        separatorLine() +
+        fieldValue("Suggested Fix Required", txtSuggestedFixRequired) +
+        fieldValue("Manning, Material, Tools, Isolations Required", txtResourcesRequired) +
+        fieldValue("Location / Access Issues", txtLocationAccessIssues) +
+        fieldValue("Health, Safety & Environmental Considerations", txtHseConsiderations) +
+        fieldValue("Equipment Constraints", txtEquipmentConstraints) +
+        fieldValue("Supporting Info Folder", txtSupportingInfoFolder) +
+        separatorLine() +
+        "bools\r\n" +
+        separatorLine() +
+        "Workorder MIRQ Reasoning\r\n\r\n\r\n" +
+        "Workorder Cancelled Reasoning\r\n\r\n\r\n" +
+        separatorLine();
       clipboardData.setData("Text", s);
-	}
+    }
   }
 
   function getDate(iAddDays) {
@@ -83,16 +156,90 @@
     if (tdLhood != null) tdLhood.className = "lhood";
     td.className = "lhoodsel";
 
-	sLhood = lhood;
-
+    sLhood = lhood;
     tdLhood = td;
-	calcPriority();
+
+    calcPriority();
   }
 
+  function getMouseXY(e) {
+    e = e || window.event;
+    if (e.pageX || e.pageY) {
+      cursor.x = e.pageX;
+      cursor.y = e.pageY;
+    } else {
+      var de = document.documentElement;
+      var b = document.body;
+      cursor.x = e.clientX + (de.scrollLeft || b.scrollLeft) - (de.clientLeft || 0);
+      cursor.y = e.clientY + (de.scrollTop || b.scrollTop) - (de.clientTop || 0);
+    }
+  }
+
+  function showHelp(id) {
+    var txt=document.getElementById(id);
+
+    if (txtHelp != txt) {
+      bHidingHelp = false;
+      divHelp.style.display = "inline";
+      divHelp.style.top = (cursor.y - 20) + "px";
+      divHelp.style.left = (cursor.x + 20) + "px";
+      divHelp.textContent = txt.name;
+      txtHelp = txt;
+    }
+  }
+
+  function hideHelp() {
+    bHidingHelp = true;
+    setTimeout("reallyHideHelp()", 300);
+  }
+
+  function reallyHideHelp() {
+    if (bHidingHelp) divHelp.style.display = "none";
+    bHidingHelp = false;
+    txtHelp = null;
+  }
+
+  document.onmousemove = getMouseXY;
 </script>
 <style>
   body, p, a, td, th, h1 {
     font-family: "Arial";
+  }
+
+  input, textarea {
+    border: 2px solid #fdba12;
+    background-color: #ffffcc;
+    padding: 6px;
+  }
+
+  input:focus, textarea:focus {
+    border: 2px solid #a6ce39;
+    background-color: #eaffb1;
+  }
+
+  /**
+  input:hover, textarea:hover {
+    border: 2px solid #a6ce39;
+  }
+  */
+
+  .required, input:focus.required, textarea:focus.required {
+    border: 2px solid #f26331;
+    background-color: #ffcfbe;
+  }
+
+  .button, .button:focus {
+    border: 2px solid #a6ce39;
+    background-color: #eaffb1;
+    color: #536e0b;
+    font-size: 12pt;
+  }
+
+  .buttonreq, .buttonreq:focus {
+    border: 2px solid #f26331;
+    background-color: #ffcfbe;
+    color: #943615;
+    font-size: 12pt;
   }
 
   .hdr {
@@ -130,7 +277,6 @@
     background-color: #587bbd;
   }
 
-
   .consd {
     font-size: 9pt;
     text-align: center;
@@ -146,7 +292,6 @@
     color: white;
     background-color: #77005d;
   }
-
 
   .review {
     font-size: 12pt;
@@ -172,6 +317,23 @@
   .tlred {
     background-color: #f26331;
     text-align: center;
+  }
+
+  .help {
+    background-color: #587bbd;
+    color: white;
+    margin-left: 5px;
+  }
+
+  #help {
+    border: 2px solid #52aaed;
+    background-color: #52c9ed;
+    display:none;
+    position:absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 600px;
   }
 
 </style>
@@ -278,7 +440,6 @@
     <td class="tlred">1</td>
   </tr>
 
-
   <tr height="75">
     <td class="consd" onClick="setPearSeverity(this, 'P', 5);return true;">Fatality.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 5);return true;">Massive Impact.<br />Widespread Chronic Effect.</td>
@@ -297,48 +458,68 @@
 
 <table border="0" cellpadding="5" cellspacing="0">
   <tr>
-    <td>Priority</td><td><input name="txtPriority" id="txtPriority" size=4 value="" readonly="readonly"></td>
-    <td>Risk&nbsp;Ranking</td><td width="120"><input name="txtRisk" id="txtRisk" size=8 value="" readonly="readonly"></td>
-	<td><input type="button" value="Copy Risk" onClick="copyToClipboard();"></td>
-	<td>Target Start</td><td><input name="txtTS" id="txtTS" size="8" value="" readonly="readonly"></td>
-	<td>Target Finish</td><td><input name="txtTF" id="txtTF" size="8" value="" readonly="readonly"></td>
-  </tr><tr>
-    <td>Justification</td><td colspan="8"><textarea rows="4" cols="100" name="txtJust" id="txtJust"></textarea></td>
+    <td width="200"><label for="txtPriority">Priority</label>&nbsp;<input id="txtPriority" size=4 value="" readonly="readonly"></td>
+    <td width="200"><label for="txtRisk">Risk&nbsp;Ranking</label>&nbsp;<input id="txtRisk" size=8 value="" readonly="readonly"></td>
+  	<td width="200"><label for="txtTS">Target Start</label>&nbsp;<input id="txtTS" size="8" value="" readonly="readonly"></td>
+  	<td width="200" align="right"><label for="txtTF">Target Finish</label>&nbsp;<input id="txtTF" size="8" value="" readonly="readonly"></td>
   </tr>
-  <tr><td>Mitigation</td><td colspan="8"><textarea rows="4" cols="100" name="txtMit" id="txtMit"></textarea></td></tr>
-  <tr><td>Defect Found</td><td colspan="8"><textarea rows="4" cols="100" name="txtMit" id="txtMit"></textarea></td></tr>
-  <tr><td>Defect Tag Fitted (add help icon)</td><td colspan="8"><textarea rows="4" cols="100" name="txtMit" id="txtMit"></textarea></td></tr>
+  <tr>
+    <td><label for="txtDefectFound">Defect Found</label><span class="help" onmouseover="showHelp('txtDefectFound');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Brief description of the defect found, including as much detail as practicable." rows="4" cols="84" id="txtDefectFound" onblur="validateFields(this);return true;"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtEquipmentFunction">Equipment Function</label><span class="help" onmouseover="showHelp('txtEquipmentFunction');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Additional information about the function of the equipment not immediately obvious from the tag/description to help identification.  For example, &quot;Manually operated discharge valve on P-6090&quot;." rows="4" cols="84" id="txtEquipmentFunction" onblur="validateFields(this);return true;"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtMitigationStepsTaken">Mitigation Steps Taken</label><span class="help" onmouseover="showHelp('txtMitigationStepsTaken');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Actions taken to reduce the likelihood of the potential consequence occuring." rows="4" cols="84" id="txtMitigationStepsTaken" onblur="validateFields(this);return true;"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtJustificationForPriority">Justification for Priority</label><span class="help" onmouseover="showHelp('txtJustificationForPriority');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Short description of the credible scenario discussed and the likelihood of this occurring." rows="4" cols="84" id="txtJustificationForPriority" onblur="validateFields(this);return true;"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtSuggestedFixRequired">Suggested Fix Required</label><span class="help" onmouseover="showHelp('txtSuggestedFixRequired');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="If known at the point of raising the workorder, a brief description of the suggested fix." rows="4" cols="84" id="txtSuggestedFixRequired"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtResourcesRequired">Manning, Material, Tools, Isolations</label><span class="help" onmouseover="showHelp('txtResourcesRequired');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="If known at the point of raising the workorder, a brief description of the resources required." rows="4" cols="84" id="txtResourcesRequired"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtLocationAccessIssues">Location / Access Issues</label><span class="help" onmouseover="showHelp('txtLocationAccessIssues');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Brief description of where the defect is and any specific access requirements." rows="4" cols="84" id="txtLocationAccessIssues"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtHseConsiderations">Health, Safety &amp; Environmental Considerations</label><span class="help" onmouseover="showHelp('txtHseConsiderations');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Detail any HS&amp;E factors that may help in the preparation of the work." rows="4" cols="84" id="txtHseConsiderations"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtEquipmentConstraints">Equipment Constraints</label><span class="help" onmouseover="showHelp('txtEquipmentConstraints');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="If known at the point of raising the workorder, a brief description of equipment availability or other constraints.  For example, &quot;P6090A (Standby) requires run up in order to repair P6090B (duty)&quot;." rows="4" cols="84" id="txtEquipmentConstraints"></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="txtSupportingInfoFolder">Supporting Info Folder</label><span class="help" onmouseover="showHelp('txtSupportingInfoFolder');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td colspan="4"><textarea name="Copy and paste a shared drive path specific to this workorder with addional information such as marked-up P&amp;ID's, photos, etc." rows="4" cols="84" id="txtSupportingInfoFolder"></textarea></td>
+  </tr>
 
-
-
-DEFECT FOUND:  
-
-DEFECT TAG FITTED: Yes/No
-
-EQUIPMENT FUNCTION: 
-
-MITIGATION/CORRECTION STEPS TAKEN: 
-
-SUGGESTED FIX REQUIRED: 
-
-MANNING, MATERIAL, TOOLS,  ISOLATIONS ETC REQUIRED. : 
-
-LOCATION/ACCESS ISSUES: 
-
-HEALTH, SAFETY & ENVIRONMENTAL CONSIDERATIONS: 
-
-JUSTIFICATION FOR WORK ORDER PRIORITISATION  RANKING: 
-
-CONSTRAINTS (i.e. Shutdown Req? / Equipment availability etc): 
-
-OTHER INFO (i.e. any attachments such as P&ID’s/Drawings/Photos/Sketches etc): 
-
-W/O MIRQ REASONING (To be completed by review team only):
-
-W/O CANCELLED REASONING (To be completed by review team only):
-
-
+  <tr height="100">
+    <td colspan="4" align="right" valign="top"><input class="button" type="button" id="btnCopy" value="Copy all details for Long Text" onClick="copyToClipboard();"></td>
+  </tr>
 </table>
 
 </body>
+<div id="help">
+</div>
+<script language="Javascript">
+var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor != '') {
+         var elem = document.getElementById(labels[i].htmlFor);
+         if (elem) elem.label = labels[i];
+    }
+}
+var divHelp=document.getElementById("help");
+</script>
 </html>

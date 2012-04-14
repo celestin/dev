@@ -19,6 +19,7 @@
  * CAM  10-Jan-2011  10930 : Ensured that Shades with no Patterns show no Patterns.
  * CAM  28-Jul-2011  11000 : Remove duplicate Leaflet/Shades by grouping.
  * CAM  28-Jul-2011  11006 : Produce=>Product.
+ * CAM  14-Apr-2012  11106 : Added Facebook Like to Product page.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -429,7 +430,7 @@ function popupWindow(url) {
       <tr>
         <td><table border="0" width="100%" cellspacing="1" cellpadding="2" class="infoBox">
           <tr class="infoBoxContents">
-            <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td><table border="1" width="100%" cellspacing="0" cellpadding="2">
               <tr>
 
                 <td>
@@ -437,13 +438,7 @@ function popupWindow(url) {
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
-                          <a href="http://delicious.com/save" onclick="window.open('http://delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"><img
-                            border=0 src="http://static.delicious.com/img/delicious.small.gif" height="12" width="12" alt="Delicious" /></a>
-                          <a href="http://delicious.com/save" onclick="window.open('http://delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">Bookmark <?php echo $modelNo; ?></a>
-                        </td>
-
-                        <td>
-                          <a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+						  <div class="fb-like" data-href="<?=tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)?>" data-send="true" data-width="460" data-show-faces="false"></div>
                         </td>
                       </tr>
                     </table>

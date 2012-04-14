@@ -21,6 +21,7 @@
  * CAM  16-Aug-2011  11011 : Added Google Logo PNG rather than script.
  * CAM  05-Nov-2011  11053 : Need to replace with Worldnet Logo.
  * CAM  12-Nov-2011  11053 : Replaced with Worldnet Logo.
+ * CAM  14-Apr-2012  11106 : Added Facebook Plugin.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // check if the 'install' directory exists, and warn of its existence
@@ -65,15 +66,25 @@
     echo $messageStack->output('header');
   }
 ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>
   <tr class="header">
-    <td valign="middle"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . tep_image(DIR_WS_IMAGES . 'iknit1.png', STORE_NAME) . '</a>'; ?></td>
+    <td valign="middle" rowspan="2"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . tep_image(DIR_WS_IMAGES . 'iknit1.png', STORE_NAME) . '</a>'; ?></td>
     <td align="center"><?=tep_image(DIR_WS_IMAGES . 'freepostage.png', 'Free Postage on orders over &pound10')?></td>
     <?php
       //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_account.gif', HEADER_TITLE_MY_ACCOUNT) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_SHOPPING_CART) . '">' . tep_image(DIR_WS_IMAGES . 'header_cart.gif', HEADER_TITLE_CART_CONTENTS) . '</a>&nbsp;&nbsp;<a href="' . tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') . '">' . tep_image(DIR_WS_IMAGES . 'header_checkout.gif', HEADER_TITLE_CHECKOUT) . '</a>';
     ?>
-    <td align="center" valign="middle" width="240"><a href="<?=tep_href_link(FILENAME_SECUREPAYMENT)?>"><img src='https://www.worldnettps.com/permanent/logos/branding/Secure payments by WorldNet3.png' alt='Secure payments by WorldNet' /></a>
-    </td>
+    <td align="center" valign="middle" width="240" rowspan="2"><a href="<?=tep_href_link(FILENAME_SECUREPAYMENT)?>"><img src='https://www.worldnettps.com/permanent/logos/branding/Secure payments by WorldNet3.png' alt='Secure payments by WorldNet' /></a></td>
+  </tr>
+  <tr class="header" height="50">
+    <td><div class="fb-like" data-href="http://www.facebook.com/iknitbiz" data-send="true" data-width="445" data-show-faces="false" data-font="segoe ui"></div></td>
   </tr>
 </table>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>

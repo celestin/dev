@@ -26,6 +26,9 @@
   rr['A4'] = 3;  rr['B4'] = 2;  rr['C4'] = 2;  rr['D4'] = 1;  rr['E4'] = 1;
   rr['A5'] = 2;  rr['B5'] = 2;  rr['C5'] = 1;  rr['D5'] = 1;  rr['E5'] = 1;
 
+  var helpText = new Array();
+  helpText['txtDefectFound'] = "Brief description of the defect found, including as much detail as practicable.";
+
   function validateField(txt, txtSingle) {
     if (txt.value.length < 1) {
       if (txtSingle == null || txt == txtSingle) txt.className = "required";
@@ -56,6 +59,7 @@
   }
 
   function fieldValue(lbl, txt) {
+    //if (txt.value.length == 0) return "";
     return "---" + lbl + (new Array(tmaxCharWidth - String(lbl).length - 3)).join("-") + "\r\n" + txt.value + "\r\n\r\n";
   }
 
@@ -194,7 +198,13 @@
       divHelp.style.display = "inline";
       divHelp.style.top = (cursor.y - 20) + "px";
       divHelp.style.left = (cursor.x + 20) + "px";
-      divHelp.textContent = txt.name;
+
+      var hasInnerText = (document.getElementsByTagName("body")[0].innerText != undefined) ? true : false;
+      if (hasInnerText) {
+        divHelp.innerText = txt.name;
+      } else {
+        divHelp.textContent = txt.name;
+      }
       txtHelp = txt;
     }
   }
@@ -215,6 +225,12 @@
 <style>
   body, p, a, td, th, h1 {
     font-family: "Arial";
+  }
+
+  h1 {
+    font-size: 18pt;
+    color: #333333;
+    text-align: center;
   }
 
   input, textarea {
@@ -252,7 +268,7 @@
   }
 
   .hdr {
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: bold;
     text-align: center;
   }
@@ -348,19 +364,20 @@
 </style>
 </head>
 <body>
+<h1>Risk-Based Prioritisation - Pilot</h1>
 <table border="1" cellpadding="1" cellspacing="0">
 
   <tr>
     <td class="hdr" colspan="4">Consequence</td>
-    <td class="hdr" rowspan="4">Severity</td>
-    <td class="hdr" colspan="5">Likelihood<br />of Consequence Occuring</td>
+    <td class="hdr" rowspan="4" width="75">S<br />e<br />v<br />e<br />r<br />i<br />t<br />y</td>
+    <td class="hdr" colspan="5">Likelihood<br />of Consequence Occuring.</td>
   </tr>
 
   <tr>
-    <td class="desc" width="110">People<br />Safety</td>
-    <td class="desc" width="110">Environmental</td>
-    <td class="desc" width="110">Asset</td>
-    <td class="desc" width="110">Reputation</td>
+    <td class="desc" width="110px">People<br />Safety</td>
+    <td class="desc" width="110px">Environmental</td>
+    <td class="desc" width="110px">Asset</td>
+    <td class="desc" width="110px">Reputation</td>
 
     <td class="desc" width="75">&gt; 12 months</td>
     <td class="desc" width="75">3 to 12 months</td>
@@ -395,7 +412,7 @@
     <td class="consd" onClick="setPearSeverity(this, 'P', 1);return true;">Slight Injury or Health Effect.<br />Non Reportable Injury.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 1);return true;">Slight Impact.</td>
     <td class="consd" onClick="setPearSeverity(this, 'A', 1);return true;">Slight Damage.<br />Slight Deferment.<br />&lt;&pound;100k</td>
-    <td class="consd" onClick="setPearSeverity(this, 'R', 1);return true;">Scrutiny from Internal Auditor &mdash; ICP Action.</td>
+    <td class="consd" onClick="setPearSeverity(this, 'R', 1);return true;">Scrutiny from Internal Auditor &mdash;<br /> ICP Action.</td>
 
     <td class="code">1</td>
     <td class="tlgreen">4</td>
@@ -409,7 +426,7 @@
     <td class="consd" onClick="setPearSeverity(this, 'P', 2);return true;">Minor Injury or Health Effect.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 2);return true;">Minor Impact.<br />Localised Effect Temporary Containment.</td>
     <td class="consd" onClick="setPearSeverity(this, 'A', 2);return true;">Minor Damage.<br />Minor Deferment.<br />&gt;&pound;100k &lt;&pound;1m</td>
-    <td class="consd" onClick="setPearSeverity(this, 'R', 2);return true;">Internal Reputation Impact &mdash; Internal Company Investigation.</td>
+    <td class="consd" onClick="setPearSeverity(this, 'R', 2);return true;">Internal Reputation Impact &mdash;<br /> Internal Company Investigation.</td>
 
     <td class="code">2</td>
     <td class="tlgreen">4</td>
@@ -423,7 +440,7 @@
     <td class="consd" onClick="setPearSeverity(this, 'P', 3);return true;">Moderate Health Effect Serious Injury.<br />Lost Time Incident.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 3);return true;">Moderate Impact.<br />Recoverable Environmental Loss.</td>
     <td class="consd" onClick="setPearSeverity(this, 'A', 3);return true;">Moderate Damage.<br />Moderate Deferment.<br />&gt;&pound;1m &lt;&pound;10m</td>
-    <td class="consd" onClick="setPearSeverity(this, 'R', 3);return true;">Local Reputation Impact &mdash; External Regulatory Body &mdash; Improvement Notice</td>
+    <td class="consd" onClick="setPearSeverity(this, 'R', 3);return true;">Local Reputation Impact &mdash;<br /> External Regulatory Body &mdash;<br /> Improvement Notice</td>
 
 
     <td class="code">3</td>
@@ -438,7 +455,7 @@
     <td class="consd" onClick="setPearSeverity(this, 'P', 4);return true;">Major Health Effect.<br />Multiple Serious Injuries.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 4);return true;">Major Impact.<br />Severe Damage Resulting in Permanent Effect.</td>
     <td class="consd" onClick="setPearSeverity(this, 'A', 4);return true;">Major Damage.<br />Major Deferment.<br />&gt;&pound;10m &lt;&pound;30m</td>
-    <td class="consd" onClick="setPearSeverity(this, 'R', 4);return true;">National Reputaion Impact &mdash; External Regulatory Body &mdash; Prohibition Notice.</td>
+    <td class="consd" onClick="setPearSeverity(this, 'R', 4);return true;">National Reputaion Impact &mdash;<br /> External Regulatory Body &mdash;<br /> Prohibition Notice.</td>
 
 
     <td class="code">4</td>
@@ -453,7 +470,7 @@
     <td class="consd" onClick="setPearSeverity(this, 'P', 5);return true;">Fatality.</td>
     <td class="consd" onClick="setPearSeverity(this, 'E', 5);return true;">Massive Impact.<br />Widespread Chronic Effect.</td>
     <td class="consd" onClick="setPearSeverity(this, 'A', 5);return true;">Massive Damage.<br />Massive Deferment.<br />&gt;&pound;30m</td>
-    <td class="consd" onClick="setPearSeverity(this, 'R', 5);return true;">International Reputation Impact &mdash; External Regulatory Body &mdash; Prosecution.</td>
+    <td class="consd" onClick="setPearSeverity(this, 'R', 5);return true;">International Reputation Impact &mdash;<br /> External Regulatory Body &mdash;<br /> Prosecution.</td>
 
     <td class="code">5</td>
     <td class="tlamb">2</td>

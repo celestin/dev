@@ -2,8 +2,8 @@ Options +SymLinksIfOwnerMatch
 RewriteEngine On
 RewriteBase /
 
-RewriteCond %{HTTP_HOST} !^www\.iknit\.biz$ [NC]
-RewriteRule ^(.*)$ http://www.iknit.biz/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\.loviesyarn\.com$ [NC]
+RewriteRule ^(.*)$ http://www.loviesyarn.com/$1 [R=301,L]
 
 RewriteCond %{HTTP_USER_AGENT} ^.*[yY]andex.*$ [OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*robot.*$ [OR]

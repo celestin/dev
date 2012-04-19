@@ -70,14 +70,14 @@
           <div id="legal">
             <p>Welcome to the <strong>Lovie&rsquo;s Yarns</strong> website terms
             and conditions for use. These Terms and Conditions apply to the use of
-            this website at <strong>www.LoviesYarns.com</strong>. By accessing
-             the website www.LoviesYarns.com and/or placing
+            this website at <strong>www.LoviesYarn.com</strong>. By accessing
+             the website www.LoviesYarn.com and/or placing
             an order, you agree to be bound by these terms and conditions.</p><p>
 
             </p><p>Using this website indicates that you accept these terms
             regardless of whether or not you choose to register with us or order
             from us.  If you do not accept these terms, do not use this website.</p>
-            <p>The <strong>www.LoviesYarns.com</strong> website is operated by Bill Lovie trading as loviesyarn.com.
+            <p>The <strong>www.LoviesYarn.com</strong> website is operated by Bill Lovie trading as loviesyarn.com.
 
             <p>Our VAT registration number is 266 0622 66.</p>
             <p>Our contact details are as follows:<br>
@@ -322,7 +322,7 @@
              clause 10.2.</p>
 
             <a name="Returns"></a><h2><h2>11. REGISTRATION</h2>
-            <p>11.1 To register with www.LoviesYarns.com you must be over 18
+            <p>11.1 To register with www.LoviesYarn.com you must be over 18
             years of age.</p>
 
             <p>11.2 Each registration is for a single user only, whether or not

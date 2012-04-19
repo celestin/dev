@@ -87,7 +87,7 @@
   <tr class="header" height="50">
     <td>
     <!--
-    <div class="fb-like" data-href="http://www.facebook.com/loviesyarns" data-send="true" data-width="445" data-show-faces="false" data-font="segoe ui"></div>
+    <div class="fb-like" data-href="http://www.facebook.com/loviesyarn" data-send="true" data-width="445" data-show-faces="false" data-font="segoe ui"></div>
     -->
     </td>
   </tr>

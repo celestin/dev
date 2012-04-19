@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * iKnit (iknit.biz)
+ * iKnit (loviesyarns.com)
  *
  * osCommerce, Open Source E-Commerce Solutions
  * http://www.oscommerce.com
@@ -13,9 +13,10 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
+ * CAM  10-Aug-2010  10770 : Updated for loviesyarns.com.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  05-Nov-2011  10952 : Changed CombinedProducts to Wool-related.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -121,7 +122,7 @@
 
             <table border="0" cellspacing="1" cellpadding="6">
 
-              <tr><td>&nbsp;</td><td><strong>iKnit.biz</strong><td></tr>
+              <tr><td>&nbsp;</td><td><strong>Lovie&rsquo;s Yarns</strong><td></tr>
               <tr><td valign="top" class="lbl">address</td><td>36, West High Street,<br />
               Inverurie,<br />
               Aberdeenshire,<br />
@@ -129,7 +130,7 @@
               </tr>
               <tr><td valign="top" class="lbl">tel</td><td>01467 620277</td></tr>
               <tr><td valign="top" class="lbl">fax</td><td>01467 620277</td></tr>
-              <tr><td valign="top" class="lbl">email</td><td><a href="mailto:sales@iknit.biz?Subject=Website%20Enquiry">sales@iknit.biz</a></td></tr>
+              <tr><td valign="top" class="lbl">email</td><td><a href="mailto:sales@loviesyarns.com?Subject=Website%20Enquiry">sales@loviesyarns.com</a></td></tr>
 
             </table>
 

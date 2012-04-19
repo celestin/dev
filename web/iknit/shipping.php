@@ -16,6 +16,7 @@
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  10-Jan-2011  10928 : Reworded postage.
+ * CAM  19-Apr-2012  11115 : Fixed Pound symbols.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -71,14 +72,14 @@
                 <p>Orders are usually despatched same day or day after your order has been received
                 (in stock items only), so please allow 3 to 4 working days, depending on the speed of Royal Mail.</p>
 
-                <p>All orders under £50 will be sent by <b>Royal Mail Second Class</b>.</p>
+                <p>All orders under &pound;50 will be sent by <b>Royal Mail Second Class</b>.</p>
 
-                <p>Orders over £50 will be sent <b>Royal Mail First Class</b>, using the <a href="http://www.royalmail.com/portal/rm/personal?pageId=tab_track_rm&catId=500185&mediaId=83900761">Track and Trace system</a>, and we will email this tracking number on despatch of your goods.</p>
+                <p>Orders over &pound;50 will be sent <b>Royal Mail First Class</b>, using the <a href="http://www.royalmail.com/portal/rm/personal?pageId=tab_track_rm&catId=500185&mediaId=83900761">Track and Trace system</a>, and we will email this tracking number on despatch of your goods.</p>
 
                 <h2>Delivery Costs</h2>
                 <ul>
-                <li>Orders up to £10 &mdash; <b>&pound;2.50</b></li>
-                <li>Orders over £10 &mdash; <b>free of charge</b></li>
+                <li>Orders up to &pound;10 &mdash; <b>&pound;2.50</b></li>
+                <li>Orders over &pound;10 &mdash; <b>free of charge</b></li>
                 </ul>
 
                 <h2>Return Policy</h2>

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  27-Aug-2011  10925  Created file.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 error_reporting(E_ALL ^ E_NOTICE);
@@ -105,7 +106,7 @@ function show_errors() {
   		    <th>Barcode</th>
   		    <th>Qty</th>
   		    <th>EPOS Name</th>
-  		    <th>iKnit Product Selector</th>
+  		    <th>Lovie&rsquo;s Yarn Product Selector</th>
   		  </tr><?
 
 	  for($r=3; $r < $rows; $r++) {

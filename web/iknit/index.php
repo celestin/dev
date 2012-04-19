@@ -20,6 +20,7 @@
  * CAM  21-Jan-2011  10933 : Added Bill's home page text.
  * CAM  05-Nov-2011  11054 : Added Bill's new home page text.
  * CAM  26-Feb-2012  11093 : Added Bill's new home page text.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -355,7 +356,7 @@
               <div id="home">
 <?php
 
-  display_categories("'105','32'", "Yarns", "Welcome to iknit.biz. Our online yarn store has just celebrated its 1<sup>st</sup> Anniversary although we have almost ".
+  display_categories("'105','32'", "Yarns", "Welcome to LoviesYarn.com. Our online yarn store has just celebrated its 1<sup>st</sup> Anniversary although we have almost ".
     "60 years experience of selling knitting yarn. Stockists of Sirdar, Patons, Stylecraft & Woolcraft yarns. ".
 	"We are committed to providing our customers with the lowest possible prices combined with great service.</p>".
 

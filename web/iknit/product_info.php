@@ -21,6 +21,7 @@
  * CAM  28-Jul-2011  11006 : Produce=>Product.
  * CAM  14-Apr-2012  11106 : Added Facebook Like to Product page.
  * CAM  14-Apr-2012  11110 : Change Product Title page to include Product Name
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -88,7 +89,7 @@
 <meta property="og:image" content="<?=DIR_WS_IMAGES . $groupproducts["products_image"]?>" />
 <meta property="og:site_name" content="iKnit" />
 <meta property="fb:admins" content="100000698830508" />
-<title><?="iKnit - ".$products_name?></title>
+<title><?="Lovie&rsquo;s Yarn - ".$products_name?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo CONFIG_STYLESHEET; ?>">
 <link rel="shortcut icon" href="<?php echo CONFIG_FAVICON; ?>" type="image/vnd.microsoft.icon" />

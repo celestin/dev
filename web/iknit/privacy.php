@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -67,8 +68,8 @@
 
               <div id="legal">
 
-                <p>iKnit.biz is committed to preserving the privacy of all
-                visitors to our website at www.iknit.biz.  Please read the
+                <p>LoviesYarn.com is committed to preserving the privacy of all
+                visitors to our website at www.LoviesYarn.com.  Please read the
                 following privacy policy to understand how we use and protect the
                 information that you provide to us.</p>
 
@@ -86,7 +87,7 @@
 
                 <h2>INFORMATION THAT WE COLLECT FROM YOU</h2>
                 <p>When you visit, register or order products or services on
-                www.iknit.biz you may be asked to provide certain
+                www.LoviesYarn.com you may be asked to provide certain
                 information about yourself including your name, contact details and
                 credit or debit card information. </p>
 
@@ -130,7 +131,7 @@
                 about products and services which may be of interest to you.  They may
                 contact you by e-mail.  If you change your mind about being contacted by
                  these companies in the future, please let us know at
-                sales@iknit.biz.</p>
+                sales@loviesyarn.com.</p>
 
                 <p>You agree that we may disclose your identity and contact details to
                 (1) any third party who claims to us that any material posted or
@@ -173,7 +174,7 @@
                 <p>You are entitled to see the personal information held about you and
                 you may ask us to make any necessary changes to ensure that it is
                 accurate and kept up to date.  If you wish to do this, please contact us
-                 at sales@iknit.biz.  We are entitled by law to charge a
+                 at sales@loviesyarn.com.  We are entitled by law to charge a
                 fee of £10 to meet our costs in providing you with details of the
                 information we hold about you.</p>
 
@@ -185,7 +186,7 @@
                 <h2>CONTACT</h2>
                 <p>All comments, queries and requests relating to our use of your
                 information are welcomed and should be addressed to
-                <a href="mailto:sales@iknit.biz?Subject=Website%20Enquiry">sales@iknit.biz</a>.</p>
+                <a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">sales@loviesyarn.com</a>.</p>
 
               </div>
 

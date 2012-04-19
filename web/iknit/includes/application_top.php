@@ -16,6 +16,7 @@
  * CAM  07-Aug-2010  10768 : Changed to iknit.
  * CAM  30-Oct-2010  10800 : Widened screen.
  * CAM  02-Nov-2010  10808 : Added FWR Security.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // start the timer for the page parse time log
@@ -45,9 +46,9 @@
   define('PROJECT_VERSION', 'osCommerce Online Merchant v2.2 RC2a');
 
   // Stylesheet name
-  define('CONFIG_STYLESHEET', 'iknit.css');
+  define('CONFIG_STYLESHEET', 'loviesyarn.css');
   // Favourite Icon name
-  define('CONFIG_FAVICON', 'iknit.ico');
+  define('CONFIG_FAVICON', 'loviesyarn.ico');
 
 // some code to solve compatibility issues
   require(DIR_WS_FUNCTIONS . 'compatibility.php');

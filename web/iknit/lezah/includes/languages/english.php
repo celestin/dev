@@ -16,6 +16,7 @@
  * CAM  28-Apr-2010  10639 : Added Product Extra Fields (http://www.oscommerce.com/community/contributions,2202)
  * CAM  15-Jul-2010  10750 : Changed 'Tax' to 'VAT'.
  * CAM  15-Jul-2010  10751 : Changed Admin site title to J.Mitchell & Son.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // look in your $PATH_LOCALE/locale directory for available locales..
@@ -48,7 +49,7 @@ define('HTML_PARAMS','dir="ltr" lang="en"');
 define('CHARSET', 'iso-8859-1');
 
 // page title
-define('TITLE', 'iKnit Administration');
+define('TITLE', 'Lovie&rsquo;s Yarn Administration');
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');

@@ -15,6 +15,7 @@
  * Who  When         Why
  * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
+ * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -60,7 +61,7 @@
               <div id="legal">
 
                 <p>Customer satisfaction is the most important part of our business. If you have any queries, then please contact us by
-                <a href="mailto:sales@iknit.biz?Subject=Website%20Enquiry">email</a> or telephone 01467 620277.</p>
+                <a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">email</a> or telephone 01467 620277.</p>
 
                 <p><b>Bill Lovie</b></p>
 

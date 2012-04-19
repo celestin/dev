@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Lovie&rsquo;s Yarns (loviesyarns.com)
+ * Lovie's Yarns (loviesyarn.com)
  *
  * osCommerce, Open Source E-Commerce Solutions
  * http://www.oscommerce.com
@@ -13,7 +13,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  10-Aug-2010  10770 : Updated for loviesyarns.com.
+ * CAM  10-Aug-2010  10770 : Updated for iKnit.biz.
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  07-Nov-2010  10818 : Removed jmitchell reference.
  * CAM  10-Jan-2011  10929 : Added VAT number.
@@ -77,7 +77,7 @@
             </p><p>Using this website indicates that you accept these terms
             regardless of whether or not you choose to register with us or order
             from us.  If you do not accept these terms, do not use this website.</p>
-            <p>The <strong>www.LoviesYarns.com</strong> website is operated by Bill Lovie trading as loviesyarns.com.
+            <p>The <strong>www.LoviesYarns.com</strong> website is operated by Bill Lovie trading as loviesyarn.com.
 
             <p>Our VAT registration number is 266 0622 66.</p>
             <p>Our contact details are as follows:<br>
@@ -87,7 +87,7 @@
               Aberdeenshire,<br />
               AB51 3QR.<br />
 
-            General email:    <a href="mailto:sales@loviesyarns.com?Subject=Website%20Enquiry">sales@loviesyarns.com</a><br />
+            General email:    <a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">sales@loviesyarn.com</a><br />
             Telephone number: 01467 620277<br />
             Fax number        01467 620277</p>
 
@@ -106,7 +106,7 @@
             this Website.</p>
 
             <p>1.3 If you have any concerns about material on our site, please contact
-            us by email at <a href="mailto:sales@loviesyarns.com?Subject=Website%20Enquiry">sales@loviesyarns.com</a>.</p>
+            us by email at <a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">sales@loviesyarn.com</a>.</p>
 
             <a name="Ordering"></a><h2><h2>2. ORDERING FROM US</h2>
             <p>2.1  You are deemed to place an order with us by ordering via our
@@ -205,7 +205,7 @@
             other organisations) who order goods</p>
             <p>6.2 If you wish to cancel your order:
             <br>&nbsp;&nbsp;&nbsp;&nbsp;(a) you can notify us by email to
-            sales@loviesyarns.com before we have dispatched the goods to
+            sales@loviesyarn.com before we have dispatched the goods to
             you; or
             <br>&nbsp;&nbsp;&nbsp;&nbsp;(b) where goods have already been dispatched
              to you, by returning goods to us in accordance with clause 4.2 above.</p>
@@ -303,7 +303,7 @@
             that the site and your content may be accessed by children.</p>
 
             <p>9.6 If you notice any content which breaches these conditions,
-            please notify us by email to <a href="mailto:sales@loviesyarns.com?Subject=Website%20Enquiry">sales@loviesyarns.com</a>.</p>
+            please notify us by email to <a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">sales@loviesyarn.com</a>.</p>
 
             <a name="Links"></a><h2><h2>10. LINKS TO AND FROM OTHER WEBSITES</h2>
             <p>10.1 Links to third party websites on this Website are provided

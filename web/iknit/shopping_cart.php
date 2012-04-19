@@ -1,6 +1,6 @@
 ﻿<?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * iKnit (iknit.biz)
+ * Lovie's Yarns (loviesyarn.com)
  *
  * osCommerce, Open Source E-Commerce Solutions
  * http://www.oscommerce.com

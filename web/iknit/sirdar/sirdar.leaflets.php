@@ -23,6 +23,8 @@ include 'sirdar.db.php';
 <?
     $ssql = "SELECT leaflet_sirdar_image ".
             "FROM sirdar_yarn_leaflet ".
+            "WHERE leaflet_status='INC' ".
+            "AND import_status= 'NEW' ".
             "ORDER BY yarn_code, leaflet_code ";
     $sql = mysql_query($ssql) or die (mysql_error());
     while ($row = mysql_fetch_array($sql)) {

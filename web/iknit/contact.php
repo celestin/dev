@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * iKnit (loviesyarns.com)
+ * Lovie's Yarns (loviesyarn.com)
  *
  * osCommerce, Open Source E-Commerce Solutions
  * http://www.oscommerce.com
@@ -13,7 +13,7 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  10-Aug-2010  10770 : Updated for loviesyarns.com.
+ * CAM  10-Aug-2010  10770 : Updated for iKnit
  * CAM  30-Oct-2010  10805 : Added Google Analytics.
  * CAM  05-Nov-2011  10952 : Changed CombinedProducts to Wool-related.
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
@@ -130,7 +130,7 @@
               </tr>
               <tr><td valign="top" class="lbl">tel</td><td>01467 620277</td></tr>
               <tr><td valign="top" class="lbl">fax</td><td>01467 620277</td></tr>
-              <tr><td valign="top" class="lbl">email</td><td><a href="mailto:sales@loviesyarns.com?Subject=Website%20Enquiry">sales@loviesyarns.com</a></td></tr>
+              <tr><td valign="top" class="lbl">email</td><td><a href="mailto:sales@loviesyarn.com?Subject=Website%20Enquiry">sales@loviesyarn.com</a></td></tr>
 
             </table>
 

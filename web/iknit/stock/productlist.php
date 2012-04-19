@@ -1,6 +1,6 @@
 <?
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * EPOS Interface - iKnit
+ * EPOS Interface - Lovie's Yarns (loviesyarn.com)
  * Copyright (c) 2011 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *

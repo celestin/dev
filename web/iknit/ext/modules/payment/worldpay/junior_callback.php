@@ -1,6 +1,6 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * iKnit (iknit.biz)
+ * Lovie's Yarns (loviesyarn.com)
  *
  * UPDATED 04-12-2009
  * Deprecated $HTTP_POST_VARS replaced with $_POST to enable callback on all platforms/php versions.

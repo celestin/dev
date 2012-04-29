@@ -14,6 +14,7 @@
  *
  * Who  When         Why
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
+ * CAM  29-Apr-2012  11116 : Images not displaying - missing DIR_WS_CATALOG definition.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   define('DB_SERVER', '127.0.0.1');
@@ -24,6 +25,7 @@
     define('HTTP_SERVER', 'http://www.loviesyarn.com');
     define('HTTPS_SERVER', HTTP_SERVER);
     define('DIR_FS_CATALOG', '/home/loviesya/public_html/');
+    define('DIR_WS_CATALOG', '/');
 
 	  define('DB_SERVER_USERNAME', 'iknitbiz');
 	  define('DB_SERVER_PASSWORD', 'bill81');

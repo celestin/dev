@@ -22,5 +22,32 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tmax")]
+        public string OraUsername {
+            get {
+                return ((string)(this["OraUsername"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tmax")]
+        public string OraPassword {
+            get {
+                return ((string)(this["OraPassword"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("artificer")]
+        public string OraTNS {
+            get {
+                return ((string)(this["OraTNS"]));
+            }
+        }
     }
 }

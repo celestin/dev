@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
+using System.Data;
 using System.Data.OracleClient;
 
 
@@ -31,11 +32,11 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Data
     {
       int rval = -1;
 
-      // Setup connection string to access local Oracle 9
-      con.ConnectionString = String.Format("Data Source={0};User ID={1}; Password={2}", tns, id, password);
-
-      // Open the connection
-      con.Open();
+      if (con.State != System.Data.ConnectionState.Open)
+      {
+        con.ConnectionString = String.Format("Data Source={0};User ID={1}; Password={2}", tns, id, password);
+        con.Open();
+      }
 
       // Create and execute the query
       OracleCommand cmd = new OracleCommand("select count(*) loccount from locations", con);
@@ -50,27 +51,44 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Data
       return rval;
     }
 
-    public string LocationClass(string location)
+    public DataTable LocationClass(string location)
     {
-      string rval = String.Empty;
       string s = String.Format(
-        "select l.location, l.description locdescription, lo.failurecode, " +
+        "select l.location, l.description locdescription, lo.failurecode eqclasscode, f.description eqclassdesc, " +
         "l.classstructureid, csl.classificationid, ac.description classdescription " +
-        "from locations l, locoper lo, classstructlink csl, assetclass ac " +
+        "from locations l, locoper lo, failurecode f, classstructlink csl, assetclass ac " +
         "where lo.location = l.location " +
+        "and f.failurecode = lo.failurecode " +
         "and csl.classstructureid (+)= l.classstructureid " +
         "and ac.classificationid = csl.classificationid " +
         "and l.location = '{0}'", location);
 
       OracleCommand cmd = new OracleCommand(s, con);
-      OracleDataReader reader = cmd.ExecuteReader();
+      //OracleDataReader reader = cmd.ExecuteReader();
 
-      // Iterate through the DataReader and display row
-      if (reader.Read())
-      {
-        rval = reader[2].ToString();
-      }
+      OracleDataAdapter da = new OracleDataAdapter(cmd);
+      DataTable rval = new DataTable();
+      da.Fill(rval);
+      return rval;
+    }
 
+    public DataTable LocationAttributes(string location, string classid)
+    {
+      string s = String.Format(
+        "select ls.assetattrid, ls.displaysequence, aa.description, " +
+        "decode(aa.datatype, 'ALN', ls.alnvalue, cast(ls.numvalue as varchar2(100))) attrvalue " +
+        "from locationspec ls, assetattribute aa " +
+        "where aa.assetattrid = ls.assetattrid " +
+        "and ls.location = '{0}' " +
+        "and ls.classstructureid = '{1}' " +
+        "order by ls.displaysequence", location, classid);
+      //MessageBox.Show(s);
+      OracleCommand cmd = new OracleCommand(s, con);
+      //OracleDataReader reader = cmd.ExecuteReader();
+
+      OracleDataAdapter da = new OracleDataAdapter(cmd);
+      DataTable rval = new DataTable();
+      da.Fill(rval);
       return rval;
     }
   }

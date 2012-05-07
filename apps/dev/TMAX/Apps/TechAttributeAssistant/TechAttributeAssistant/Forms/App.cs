@@ -26,6 +26,11 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Forms
     public App()
     {
       InitializeComponent();
+
+      dataGridView1.DataSource = bindingSource1;
+
+      lblLocationDesc.Text = lblEqClassCode.Text = lblEqClassDesc.Text = 
+        lblSpecCode.Text = lblSpecDesc.Text = String.Empty;
     }
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,11 +53,6 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Forms
       }
     }
 
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-
-    }
-
     private void tsbRetrieve_Click(object sender, EventArgs e)
     {
       Datalayer d = Datalayer.Instance;
@@ -61,12 +61,36 @@ namespace FrontBurner.Tmax.Apps.TechAttributeAssistant.Forms
         Properties.Settings s = Properties.Settings.Default;
 
         statusLabel.Text = String.Format("Locations {0}", d.Open(s.OraUsername, s.OraPassword, s.OraTNS));
-        lblEqClassCode.Text = d.LocationClass(txtLocation.Text);
+        txtLocation.Text = txtLocation.Text.ToUpper();
+        DataTable dt = d.LocationClass(txtLocation.Text);
+
+        if (dt.Rows.Count > 0)
+        {
+          DataRow row = dt.Rows[0];
+          lblLocationDesc.Text = row["locdescription"].ToString();
+          lblEqClassCode.Text = row["eqclasscode"].ToString();
+          lblEqClassDesc.Text = row["eqclassdesc"].ToString();
+          lblSpecCode.Text = row["classificationid"].ToString();
+          lblSpecDesc.Text = row["classdescription"].ToString();
+
+          DataTable ds = d.LocationAttributes(txtLocation.Text, row["classstructureid"].ToString());
+          bindingSource1.DataSource = ds;
+          dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+        else
+        {
+          statusLabel.Text = String.Format("There is no Location {0}", txtLocation.Text);
+        }
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
+    }
+
+    private void tsbExit_Click(object sender, EventArgs e)
+    {
+      Application.Exit();
     }
   }
 }

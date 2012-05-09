@@ -8,6 +8,10 @@
   // Copyright (c) 2012 Talisman Energy UK Ltd
   // $Id$
   // Author Craig McKay
+  //
+  // Who  When         Why
+  // CAM  16-Apr-2012  11114 : Correct Help Text on IE6+ and show Title (including Pilot).
+  // CAM  09-May-2012  11118 : Add Clear fields button and Talisman Energy text.
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   var tdLhood = null;
   var tdConsd = null;
@@ -256,6 +260,13 @@
     font-size: 12pt;
   }
 
+  .buttonclear, .buttonclear:focus {
+    border: 2px solid #cacaca;
+    background-color: #f1f1f1;
+    color: #666666;
+    font-size: 12pt;
+  }
+
   .buttonreq, .buttonreq:focus {
     border: 2px solid #f26331;
     background-color: #ffcfbe;
@@ -271,6 +282,7 @@
     font-size: 12pt;
     font-weight: bold;
     text-align: center;
+    color: #333333;
   }
 
   .desc {
@@ -361,16 +373,41 @@
     width: 600px;
   }
 
+  .rbptitle {
+    font-size: 18pt;
+    color: #333333;
+  }
+
+  .tlmtitletop, .tlmtitlebot {
+    font-family: "Verdana", san-serif;
+  }
+
+  .tlmtitletop {
+    font-weight: bold;
+    font-size: 14pt;
+    border-bottom: 2px solid #00b285;
+  }
+
+  .tlmtitlebot {
+    font-size: 12pt;
+  }
+
 </style>
 </head>
 <body>
-<h1>Risk-Based Prioritisation - Pilot</h1>
+<table border="0">
+  <tr>
+    <td width="815" class="rbptitle">Risk-Based Prioritisation</td>
+    <td width="100" align="center"><span class="tlmtitletop">TALISMAN</span><br /><span class="tlmtitlebot">E N E R G Y</span></td>
+  </tr>
+</table>
+
 <table border="1" cellpadding="1" cellspacing="0">
 
   <tr>
     <td class="hdr" colspan="4">Consequence</td>
     <td class="hdr" rowspan="4" width="75">S<br />e<br />v<br />e<br />r<br />i<br />t<br />y</td>
-    <td class="hdr" colspan="5">Likelihood<br />of Consequence Occuring.</td>
+    <td class="hdr" colspan="5">Likelihood<br />of Consequence Occuring</td>
   </tr>
 
   <tr>
@@ -572,7 +609,8 @@
   </tr>
 
   <tr height="100">
-    <td colspan="4" align="right" valign="top"><input class="button" type="button" id="btnCopy" value="Copy all details for Long Text" onClick="copyToClipboard();"></td>
+    <td colspan="2" align="right" valign="top"><input class="buttonclear" type="button" id="btnClear" value="Clear form" onClick="top.location.reload();"></td>
+    <td colspan="2" align="right" valign="top"><input class="button" type="button" id="btnCopy" value="Copy all details for Long Text" onClick="copyToClipboard();"></td>
   </tr>
 </table>
 

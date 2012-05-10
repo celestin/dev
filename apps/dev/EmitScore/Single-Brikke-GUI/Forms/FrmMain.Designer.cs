@@ -49,7 +49,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._sslRegister = new System.Windows.Forms.ToolStripStatusLabel();
       this._sslRace = new System.Windows.Forms.ToolStripStatusLabel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this._btnTest = new System.Windows.Forms.Button();
       this._btnRegister = new System.Windows.Forms.Button();
       this._btnRace = new System.Windows.Forms.Button();
       this._dgvResults = new System.Windows.Forms.DataGridView();
@@ -59,9 +58,12 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.totalPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.nettPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.totalTimeSecondsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this._bdsReportTotal = new System.Windows.Forms.BindingSource(this.components);
       this._mnsMain = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mniFileNew = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+      this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mniFileSave = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
       this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +77,9 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mniHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
       this._tspMain = new System.Windows.Forms.ToolStrip();
+      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
       this._tsbSave = new System.Windows.Forms.ToolStripButton();
+      this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbExit = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this._tsbLocations = new System.Windows.Forms.ToolStripButton();
@@ -93,7 +97,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.groupResultTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter();
       this.reportGroupResultTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ReportGroupResultTableAdapter();
       this.ReportGroupTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ReportGroupTableAdapter();
-      this._bdsReportTotal = new System.Windows.Forms.BindingSource(this.components);
       ((System.ComponentModel.ISupportInitialize)(this._emitReader)).BeginInit();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -103,12 +106,12 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this._dgvResults)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._dataSet)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsReportTotal)).BeginInit();
       this._mnsMain.SuspendLayout();
       this._tspMain.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsConfig)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsDefaultCategory)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this._bdsReportTotal)).BeginInit();
       this.SuspendLayout();
       // 
       // _emitReader
@@ -177,7 +180,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tableLayoutPanel1.Controls.Add(this._emitReader, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this._btnTest, 3, 0);
       this.tableLayoutPanel1.Controls.Add(this._btnRegister, 1, 0);
       this.tableLayoutPanel1.Controls.Add(this._btnRace, 2, 0);
       this.tableLayoutPanel1.Controls.Add(this._dgvResults, 0, 1);
@@ -190,18 +192,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.tableLayoutPanel1.Size = new System.Drawing.Size(709, 300);
       this.tableLayoutPanel1.TabIndex = 4;
       // 
-      // _btnTest
-      // 
-      this._btnTest.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this._btnTest.Location = new System.Drawing.Point(582, 38);
-      this._btnTest.Name = "_btnTest";
-      this._btnTest.Size = new System.Drawing.Size(75, 23);
-      this._btnTest.TabIndex = 3;
-      this._btnTest.Text = "Test";
-      this._btnTest.UseVisualStyleBackColor = true;
-      this._btnTest.Visible = false;
-      this._btnTest.Click += new System.EventHandler(this.btnTest_Click);
-      // 
       // _btnRegister
       // 
       this._btnRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -212,7 +202,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._btnRegister.TabIndex = 1;
       this._btnRegister.Text = "Register mode";
       this._btnRegister.UseVisualStyleBackColor = true;
-      this._btnRegister.Click += new System.EventHandler(this._btnRegister_Click);
+      this._btnRegister.Click += new System.EventHandler(this.ToggleRegister);
       // 
       // _btnRace
       // 
@@ -224,7 +214,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._btnRace.TabIndex = 2;
       this._btnRace.Text = "Race mode";
       this._btnRace.UseVisualStyleBackColor = true;
-      this._btnRace.Click += new System.EventHandler(this._btnRace_Click);
+      this._btnRace.Click += new System.EventHandler(this.ToggleRace);
       // 
       // _dgvResults
       // 
@@ -284,7 +274,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.categoryIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.categoryIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
       this.categoryIdDataGridViewTextBoxColumn.ValueMember = "Category.CategoryId";
-      this.categoryIdDataGridViewTextBoxColumn.Width = 93;
+      this.categoryIdDataGridViewTextBoxColumn.Width = 92;
       // 
       // _dataSet
       // 
@@ -298,7 +288,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.totalPointsDataGridViewTextBoxColumn.HeaderText = "Total Points";
       this.totalPointsDataGridViewTextBoxColumn.Name = "totalPointsDataGridViewTextBoxColumn";
       this.totalPointsDataGridViewTextBoxColumn.ReadOnly = true;
-      this.totalPointsDataGridViewTextBoxColumn.Width = 110;
+      this.totalPointsDataGridViewTextBoxColumn.Width = 109;
       // 
       // nettPointsDataGridViewTextBoxColumn
       // 
@@ -307,7 +297,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.nettPointsDataGridViewTextBoxColumn.HeaderText = "Nett Points";
       this.nettPointsDataGridViewTextBoxColumn.Name = "nettPointsDataGridViewTextBoxColumn";
       this.nettPointsDataGridViewTextBoxColumn.ReadOnly = true;
-      this.nettPointsDataGridViewTextBoxColumn.Width = 105;
+      this.nettPointsDataGridViewTextBoxColumn.Width = 104;
       // 
       // totalTimeSecondsDataGridViewTextBoxColumn
       // 
@@ -316,7 +306,12 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.totalTimeSecondsDataGridViewTextBoxColumn.HeaderText = "Total Time";
       this.totalTimeSecondsDataGridViewTextBoxColumn.Name = "totalTimeSecondsDataGridViewTextBoxColumn";
       this.totalTimeSecondsDataGridViewTextBoxColumn.ReadOnly = true;
-      this.totalTimeSecondsDataGridViewTextBoxColumn.Width = 105;
+      this.totalTimeSecondsDataGridViewTextBoxColumn.Width = 104;
+      // 
+      // _bdsReportTotal
+      // 
+      this._bdsReportTotal.DataMember = "ReportGroup";
+      this._bdsReportTotal.DataSource = this._dataSet;
       // 
       // _mnsMain
       // 
@@ -335,6 +330,8 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mniFileNew,
+            this.toolStripSeparator7,
+            this.summaryToolStripMenuItem,
             this.mniFileSave,
             this.toolStripSeparator3,
             this.mniExit});
@@ -347,30 +344,43 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.mniFileNew.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.NewSmall;
       this.mniFileNew.Name = "mniFileNew";
-      this.mniFileNew.Size = new System.Drawing.Size(127, 24);
+      this.mniFileNew.Size = new System.Drawing.Size(152, 24);
       this.mniFileNew.Text = "&New";
-      this.mniFileNew.Click += new System.EventHandler(this.mniFileNew_Click);
+      this.mniFileNew.Click += new System.EventHandler(this.ClearResultData);
+      // 
+      // toolStripSeparator7
+      // 
+      this.toolStripSeparator7.Name = "toolStripSeparator7";
+      this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+      // 
+      // summaryToolStripMenuItem
+      // 
+      this.summaryToolStripMenuItem.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.SummarySmall;
+      this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
+      this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+      this.summaryToolStripMenuItem.Text = "S&ummary";
+      this.summaryToolStripMenuItem.Click += new System.EventHandler(this.SaveSummaryReport);
       // 
       // mniFileSave
       // 
       this.mniFileSave.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.SaveSmall;
       this.mniFileSave.Name = "mniFileSave";
-      this.mniFileSave.Size = new System.Drawing.Size(127, 24);
+      this.mniFileSave.Size = new System.Drawing.Size(152, 24);
       this.mniFileSave.Text = "&Save";
-      this.mniFileSave.Click += new System.EventHandler(this.mniFileSave_Click);
+      this.mniFileSave.Click += new System.EventHandler(this.SaveFullReport);
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(124, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
       // 
       // mniExit
       // 
       this.mniExit.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.ExitSmall;
       this.mniExit.Name = "mniExit";
-      this.mniExit.Size = new System.Drawing.Size(127, 24);
+      this.mniExit.Size = new System.Drawing.Size(152, 24);
       this.mniExit.Text = "E&xit";
-      this.mniExit.Click += new System.EventHandler(this.mniExit_Click);
+      this.mniExit.Click += new System.EventHandler(this.ExitApplication);
       // 
       // configureToolStripMenuItem
       // 
@@ -390,43 +400,43 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.mniComPort.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.wrench;
       this.mniComPort.Name = "mniComPort";
-      this.mniComPort.Size = new System.Drawing.Size(183, 24);
+      this.mniComPort.Size = new System.Drawing.Size(167, 24);
       this.mniComPort.Text = "COM &Port...";
-      this.mniComPort.Click += new System.EventHandler(this.mniComPort_Click);
+      this.mniComPort.Click += new System.EventHandler(this.ShowConfig);
       // 
       // toolStripSeparator2
       // 
       this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
+      this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
       // 
       // mniLocations
       // 
       this.mniLocations.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.LocationSmall;
       this.mniLocations.Name = "mniLocations";
-      this.mniLocations.Size = new System.Drawing.Size(183, 24);
+      this.mniLocations.Size = new System.Drawing.Size(167, 24);
       this.mniLocations.Text = "&Locations...";
-      this.mniLocations.Click += new System.EventHandler(this.mniLocations_Click);
+      this.mniLocations.Click += new System.EventHandler(this.ShowLocations);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
       // 
       // mniCategories
       // 
       this.mniCategories.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.CategorySmall;
       this.mniCategories.Name = "mniCategories";
-      this.mniCategories.Size = new System.Drawing.Size(183, 24);
+      this.mniCategories.Size = new System.Drawing.Size(167, 24);
       this.mniCategories.Text = "&Categories...";
-      this.mniCategories.Click += new System.EventHandler(this.mniCategories_Click);
+      this.mniCategories.Click += new System.EventHandler(this.ShowCategories);
       // 
       // mniGroups
       // 
       this.mniGroups.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.GroupSmall;
       this.mniGroups.Name = "mniGroups";
-      this.mniGroups.Size = new System.Drawing.Size(183, 24);
+      this.mniGroups.Size = new System.Drawing.Size(167, 24);
       this.mniGroups.Text = "&Groups...";
-      this.mniGroups.Click += new System.EventHandler(this.mniGroups_Click);
+      this.mniGroups.Click += new System.EventHandler(this.ShowGroups);
       // 
       // helpToolStripMenuItem
       // 
@@ -441,16 +451,18 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.mniHelpAbout.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.HelpAboutSmall;
       this.mniHelpAbout.Name = "mniHelpAbout";
-      this.mniHelpAbout.Size = new System.Drawing.Size(152, 24);
+      this.mniHelpAbout.Size = new System.Drawing.Size(136, 24);
       this.mniHelpAbout.Text = "&About...";
-      this.mniHelpAbout.Click += new System.EventHandler(this.mniHelpAbout_Click);
+      this.mniHelpAbout.Click += new System.EventHandler(this.HelpAbout);
       // 
       // _tspMain
       // 
       this._tspMain.Dock = System.Windows.Forms.DockStyle.None;
       this._tspMain.ImageScalingSize = new System.Drawing.Size(48, 48);
       this._tspMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
             this._tsbSave,
+            this.toolStripSeparator6,
             this.tsbExit,
             this.toolStripSeparator4,
             this._tsbLocations,
@@ -459,8 +471,18 @@ namespace FrontBurner.Apps.EmitScore.Forms
             this._tsbGroups});
       this._tspMain.Location = new System.Drawing.Point(3, 27);
       this._tspMain.Name = "_tspMain";
-      this._tspMain.Size = new System.Drawing.Size(284, 55);
+      this._tspMain.Size = new System.Drawing.Size(342, 55);
       this._tspMain.TabIndex = 1;
+      // 
+      // toolStripButton1
+      // 
+      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.toolStripButton1.Image = global::FrontBurner.Apps.EmitScore.Properties.Resources.SummaryLarge;
+      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.toolStripButton1.Name = "toolStripButton1";
+      this.toolStripButton1.Size = new System.Drawing.Size(52, 52);
+      this.toolStripButton1.Text = "toolStripButton1";
+      this.toolStripButton1.Click += new System.EventHandler(this.SaveSummaryReport);
       // 
       // _tsbSave
       // 
@@ -470,7 +492,12 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._tsbSave.Name = "_tsbSave";
       this._tsbSave.Size = new System.Drawing.Size(52, 52);
       this._tsbSave.Text = "Save Report";
-      this._tsbSave.Click += new System.EventHandler(this._tsbSave_Click);
+      this._tsbSave.Click += new System.EventHandler(this.SaveFullReport);
+      // 
+      // toolStripSeparator6
+      // 
+      this.toolStripSeparator6.Name = "toolStripSeparator6";
+      this.toolStripSeparator6.Size = new System.Drawing.Size(6, 55);
       // 
       // tsbExit
       // 
@@ -480,7 +507,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.tsbExit.Name = "tsbExit";
       this.tsbExit.Size = new System.Drawing.Size(52, 52);
       this.tsbExit.Text = "Exit";
-      this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
+      this.tsbExit.Click += new System.EventHandler(this.ExitApplication);
       // 
       // toolStripSeparator4
       // 
@@ -495,7 +522,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._tsbLocations.Name = "_tsbLocations";
       this._tsbLocations.Size = new System.Drawing.Size(52, 52);
       this._tsbLocations.Text = "Edit Locations";
-      this._tsbLocations.Click += new System.EventHandler(this._tsbLocations_Click);
+      this._tsbLocations.Click += new System.EventHandler(this.ShowLocations);
       // 
       // toolStripSeparator5
       // 
@@ -510,7 +537,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._tsbCategories.Name = "_tsbCategories";
       this._tsbCategories.Size = new System.Drawing.Size(52, 52);
       this._tsbCategories.Text = "Edit Categories";
-      this._tsbCategories.Click += new System.EventHandler(this.tsbCategories_Click);
+      this._tsbCategories.Click += new System.EventHandler(this.ShowCategories);
       // 
       // _tsbGroups
       // 
@@ -520,13 +547,13 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._tsbGroups.Name = "_tsbGroups";
       this._tsbGroups.Size = new System.Drawing.Size(52, 52);
       this._tsbGroups.Text = "Edit Groups";
-      this._tsbGroups.Click += new System.EventHandler(this.tsbGroups_Click);
+      this._tsbGroups.Click += new System.EventHandler(this.ShowGroups);
       // 
       // _tmrStatus
       // 
       this._tmrStatus.Enabled = true;
       this._tmrStatus.Interval = 5000;
-      this._tmrStatus.Tick += new System.EventHandler(this._tmrStatus_Tick);
+      this._tmrStatus.Tick += new System.EventHandler(this.StatusTick);
       // 
       // _bdsGroup
       // 
@@ -571,11 +598,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.ReportGroupTableAdapter.ClearBeforeFill = true;
       // 
-      // _bdsReportTotal
-      // 
-      this._bdsReportTotal.DataMember = "ReportGroup";
-      this._bdsReportTotal.DataSource = this._dataSet;
-      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -600,6 +622,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.tableLayoutPanel1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this._dgvResults)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._dataSet)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this._bdsReportTotal)).EndInit();
       this._mnsMain.ResumeLayout(false);
       this._mnsMain.PerformLayout();
       this._tspMain.ResumeLayout(false);
@@ -607,7 +630,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
       ((System.ComponentModel.ISupportInitialize)(this._bdsGroup)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsConfig)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsDefaultCategory)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this._bdsReportTotal)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -652,7 +674,6 @@ namespace FrontBurner.Apps.EmitScore.Forms
     private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.LocationTableAdapter locationTableAdapter;
     private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter groupResultTableAdapter;
     private System.Windows.Forms.ToolStripButton _tsbSave;
-    private System.Windows.Forms.Button _btnTest;
     private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem mniHelpAbout;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -665,6 +686,10 @@ namespace FrontBurner.Apps.EmitScore.Forms
     private System.Windows.Forms.DataGridViewTextBoxColumn totalTimeSecondsDataGridViewTextBoxColumn;
     private FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ReportGroupTableAdapter ReportGroupTableAdapter;
     private System.Windows.Forms.BindingSource _bdsReportTotal;
+    private System.Windows.Forms.ToolStripButton toolStripButton1;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+    private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
   }
 }
 

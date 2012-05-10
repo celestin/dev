@@ -169,4 +169,10 @@
   <data name="HelpAboutSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\menu\help2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SummaryLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\tb\certificate_view.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SummarySmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\menu\certificate_view.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

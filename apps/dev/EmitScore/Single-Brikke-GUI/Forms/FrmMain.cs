@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  07-May-2009  10444 : Changed to Front Burner.
+ * CAM  10-May-2012  11095 : Added Summary Report, consolidated actions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -34,7 +35,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
 
     private void EmitReader_GetNextBadge(object sender, AxEmitEpt.__EptReading_GetNextBadgeEvent e)
     {
-      if (_processing) return;      
+      if (_processing) return;
 
       lock (_semaphore)
       {
@@ -174,31 +175,55 @@ namespace FrontBurner.Apps.EmitScore.Forms
       }
     }
 
-    protected void ShowConfig()
-    {
-      FrmConfig config = new FrmConfig();
-      config.ShowDialog();
-    }
-
-    protected void ShowLocations()
-    {
-      FrmLocations locations = new FrmLocations();
-      locations.ShowDialog();
-    }
-
-    protected void ShowCategories()
+    private void ShowCategories(object sender, EventArgs e)
     {
       FrmCategories cats = new FrmCategories();
       cats.ShowDialog();
     }
 
-    protected void ShowGroups()
+    private void ShowGroups(object sender, EventArgs e)
     {
       FrmGroups groups = new FrmGroups();
       groups.ShowDialog();
     }
 
-    protected void ClearResultData()
+    private void ShowLocations(object sender, EventArgs e)
+    {
+      FrmLocations locations = new FrmLocations();
+      locations.ShowDialog();
+    }
+
+    private void ShowConfig(object sender, EventArgs e)
+    {
+      FrmConfig config = new FrmConfig();
+      config.ShowDialog();
+    }
+
+    private void ToggleRegister(object sender, EventArgs e)
+    {
+      ToggleButtons(false);
+    }
+
+    private void ToggleRace(object sender, EventArgs e)
+    {
+      ToggleButtons(true);
+    }
+
+    private void StatusTick(object sender, EventArgs e)
+    {
+      lock (_semaphore)
+      {
+        groupTableAdapter.Fill(_dataSet.Group);
+        _sslRegister.Text = String.Format("{0} groups registered.",
+          _dataSet.Group.Rows.Count);
+
+        ReportGroupTableAdapter.Fill(_dataSet.ReportGroup);
+        _dgvResults.Refresh();
+      }
+    }
+
+
+    private void ClearResultData(object sender, EventArgs e)
     {
       if (MessageBox.Show("This will remove all Groups and Race results.\n" +
         "COM Port, Locations and Categories will be left alone.\n\n" +
@@ -222,7 +247,8 @@ namespace FrontBurner.Apps.EmitScore.Forms
         groupResultTableAdapter.Update(_dataSet.GroupResult);
       }
     }
-    protected void ExportReport()
+
+    private void SaveFullReport(object sender, EventArgs e)
     {
       ReportGroupTableAdapter reportGroupTableAdapter = new ReportGroupTableAdapter();
       ReportGroupResultTableAdapter reportGroupResultTableAdapter = new ReportGroupResultTableAdapter();
@@ -238,114 +264,41 @@ namespace FrontBurner.Apps.EmitScore.Forms
         report.Save(true);
         report.Launch();
       }
-      catch (Exception e)
+      catch (Exception ex)
       {
-        MessageBox.Show(e.StackTrace.ToString(), e.Message, MessageBoxButtons.OK);
+        MessageBox.Show(ex.StackTrace.ToString(), ex.Message, MessageBoxButtons.OK);
       }
     }
 
-    private void mniExit_Click(object sender, EventArgs e)
+    private void SaveSummaryReport(object sender, EventArgs e)
     {
-      this.Dispose();
-    }
+      ReportGroupTableAdapter reportGroupTableAdapter = new ReportGroupTableAdapter();
+      ReportGroupResultTableAdapter reportGroupResultTableAdapter = new ReportGroupResultTableAdapter();
 
-    private void tsbExit_Click(object sender, EventArgs e)
-    {
-      this.Dispose();
-    }
+      reportGroupTableAdapter.Fill(_dataSet.ReportGroup);
+      reportGroupResultTableAdapter.Fill(_dataSet.ReportGroupResult);
+      categoryTableAdapter.Fill(_dataSet.Category);
 
-    private void tsbGroups_Click(object sender, EventArgs e)
-    {
-      ShowGroups();
-    }
-
-    private void mniGroups_Click(object sender, EventArgs e)
-    {
-      ShowGroups();
-    }
-
-    private void _btnRegister_Click(object sender, EventArgs e)
-    {
-      ToggleButtons(false);
-    }
-
-    private void _btnRace_Click(object sender, EventArgs e)
-    {
-      ToggleButtons(true);
-    }
-
-    private void _tmrStatus_Tick(object sender, EventArgs e)
-    {
-      lock (_semaphore)
+      try
       {
-        groupTableAdapter.Fill(_dataSet.Group);
-        _sslRegister.Text = String.Format("{0} groups registered.",
-          _dataSet.Group.Rows.Count);
-
-        ReportGroupTableAdapter.Fill(_dataSet.ReportGroup);
-        _dgvResults.Refresh();
+        EmitSummaryReport report = new EmitSummaryReport(_dataSet);
+        report.Save(true);
+        report.Launch();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.StackTrace.ToString(), ex.Message, MessageBoxButtons.OK);
       }
     }
 
-    private void mniCategories_Click(object sender, EventArgs e)
+    private void ExitApplication(object sender, EventArgs e)
     {
-      ShowCategories();
+      this.Dispose();
     }
-
-    private void tsbCategories_Click(object sender, EventArgs e)
-    {
-      ShowCategories();
-    }
-
-    private void _tsbLocations_Click(object sender, EventArgs e)
-    {
-      ShowLocations();
-    }
-
-    private void mniLocations_Click(object sender, EventArgs e)
-    {
-      ShowLocations();
-    }
-
-    private void mniComPort_Click(object sender, EventArgs e)
-    {
-      ShowConfig();
-    }
-
-    private void mniFileNew_Click(object sender, EventArgs e)
-    {
-      ClearResultData();
-    }
-
-    private void mniFileSave_Click(object sender, EventArgs e)
-    {
-      ExportReport();
-    }
-
-    private void _tsbSave_Click(object sender, EventArgs e)
-    {
-      ExportReport();
-    }
-
-    private void mniHelpAbout_Click(object sender, EventArgs e)
+    private void HelpAbout(object sender, EventArgs e)
     {
       FrmHelpAbout helpAbout = new FrmHelpAbout();
       helpAbout.ShowDialog();
-    }
-
-    private void btnTest_Click(object sender, EventArgs e)
-    {
-      //SwipeList list = new SwipeList();
-      //DateTime time = Swipe.CreateBaseDate();
-      //time = time.AddHours(5);
-      //time = time.AddMinutes(31);
-      //list.TotalPoints = 1000;
-      //list.TotalTime = time;
-      //list.AdjustPoints();
-      //MessageBox.Show(String.Format("{0:HH:mm} {1}", time, list.NettPoints));
-
-      FrmNewGroup newGroup = new FrmNewGroup(484356);
-      newGroup.ShowDialog();
     }
 
     private void _dgvResults_DataError(object sender, DataGridViewDataErrorEventArgs e)

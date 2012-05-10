@@ -97,6 +97,10 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.groupResultTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.GroupResultTableAdapter();
       this.reportGroupResultTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ReportGroupResultTableAdapter();
       this.ReportGroupTableAdapter = new FrontBurner.Apps.EmitScore.Data.EmitScoreDataSetTableAdapters.ReportGroupTableAdapter();
+      this.lblLastGroupTitle = new System.Windows.Forms.Label();
+      this.lblGroupName = new System.Windows.Forms.Label();
+      this.lblNettPoints = new System.Windows.Forms.Label();
+      this.lblTime = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this._emitReader)).BeginInit();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -116,11 +120,13 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       // _emitReader
       // 
+      this._emitReader.Dock = System.Windows.Forms.DockStyle.Fill;
       this._emitReader.Enabled = true;
       this._emitReader.Location = new System.Drawing.Point(3, 3);
       this._emitReader.Name = "_emitReader";
       this._emitReader.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_emitReader.OcxState")));
-      this._emitReader.Size = new System.Drawing.Size(157, 89);
+      this.tableLayoutPanel1.SetRowSpan(this._emitReader, 4);
+      this._emitReader.Size = new System.Drawing.Size(114, 94);
       this._emitReader.TabIndex = 0;
       this._emitReader.GetNextBadge += new AxEmitEpt.@__EptReading_GetNextBadgeEventHandler(this.EmitReader_GetNextBadge);
       // 
@@ -134,11 +140,11 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // toolStripContainer1.ContentPanel
       // 
       this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(709, 300);
+      this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(822, 316);
       this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
       this.toolStripContainer1.Name = "toolStripContainer1";
-      this.toolStripContainer1.Size = new System.Drawing.Size(709, 404);
+      this.toolStripContainer1.Size = new System.Drawing.Size(822, 420);
       this.toolStripContainer1.TabIndex = 1;
       this.toolStripContainer1.Text = "toolStripContainer1";
       // 
@@ -155,49 +161,57 @@ namespace FrontBurner.Apps.EmitScore.Forms
             this._sslRace});
       this._stsMain.Location = new System.Drawing.Point(0, 0);
       this._stsMain.Name = "_stsMain";
-      this._stsMain.Size = new System.Drawing.Size(709, 22);
+      this._stsMain.Size = new System.Drawing.Size(822, 22);
       this._stsMain.TabIndex = 0;
       // 
       // _sslRegister
       // 
       this._sslRegister.Name = "_sslRegister";
-      this._sslRegister.Size = new System.Drawing.Size(347, 17);
+      this._sslRegister.Size = new System.Drawing.Size(403, 17);
       this._sslRegister.Spring = true;
       this._sslRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // _sslRace
       // 
       this._sslRace.Name = "_sslRace";
-      this._sslRace.Size = new System.Drawing.Size(347, 17);
+      this._sslRace.Size = new System.Drawing.Size(403, 17);
       this._sslRace.Spring = true;
       this._sslRace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // tableLayoutPanel1
       // 
       this.tableLayoutPanel1.ColumnCount = 4;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.lblTime, 3, 3);
+      this.tableLayoutPanel1.Controls.Add(this.lblNettPoints, 3, 2);
+      this.tableLayoutPanel1.Controls.Add(this.lblGroupName, 3, 1);
       this.tableLayoutPanel1.Controls.Add(this._emitReader, 0, 0);
       this.tableLayoutPanel1.Controls.Add(this._btnRegister, 1, 0);
       this.tableLayoutPanel1.Controls.Add(this._btnRace, 2, 0);
-      this.tableLayoutPanel1.Controls.Add(this._dgvResults, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this._dgvResults, 0, 4);
+      this.tableLayoutPanel1.Controls.Add(this.lblLastGroupTitle, 3, 0);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+      this.tableLayoutPanel1.RowCount = 5;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(709, 300);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 316);
       this.tableLayoutPanel1.TabIndex = 4;
       // 
       // _btnRegister
       // 
       this._btnRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
       this._btnRegister.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._btnRegister.Location = new System.Drawing.Point(190, 25);
+      this._btnRegister.Location = new System.Drawing.Point(145, 25);
       this._btnRegister.Name = "_btnRegister";
+      this.tableLayoutPanel1.SetRowSpan(this._btnRegister, 4);
       this._btnRegister.Size = new System.Drawing.Size(150, 50);
       this._btnRegister.TabIndex = 1;
       this._btnRegister.Text = "Register mode";
@@ -208,8 +222,9 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this._btnRace.Anchor = System.Windows.Forms.AnchorStyles.None;
       this._btnRace.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this._btnRace.Location = new System.Drawing.Point(367, 25);
+      this._btnRace.Location = new System.Drawing.Point(345, 25);
       this._btnRace.Name = "_btnRace";
+      this.tableLayoutPanel1.SetRowSpan(this._btnRace, 4);
       this._btnRace.Size = new System.Drawing.Size(150, 50);
       this._btnRace.TabIndex = 2;
       this._btnRace.Text = "Race mode";
@@ -251,7 +266,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._dgvResults.Name = "_dgvResults";
       this._dgvResults.ReadOnly = true;
       this._dgvResults.RowTemplate.Height = 26;
-      this._dgvResults.Size = new System.Drawing.Size(703, 194);
+      this._dgvResults.Size = new System.Drawing.Size(816, 210);
       this._dgvResults.TabIndex = 4;
       this._dgvResults.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this._dgvResults_DataError);
       // 
@@ -322,7 +337,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
             this.helpToolStripMenuItem});
       this._mnsMain.Location = new System.Drawing.Point(0, 0);
       this._mnsMain.Name = "_mnsMain";
-      this._mnsMain.Size = new System.Drawing.Size(709, 27);
+      this._mnsMain.Size = new System.Drawing.Size(822, 27);
       this._mnsMain.TabIndex = 0;
       this._mnsMain.Text = "menuStrip1";
       // 
@@ -598,11 +613,59 @@ namespace FrontBurner.Apps.EmitScore.Forms
       // 
       this.ReportGroupTableAdapter.ClearBeforeFill = true;
       // 
+      // lblLastGroupTitle
+      // 
+      this.lblLastGroupTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lblLastGroupTitle.AutoSize = true;
+      this.lblLastGroupTitle.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblLastGroupTitle.ForeColor = System.Drawing.Color.SteelBlue;
+      this.lblLastGroupTitle.Location = new System.Drawing.Point(596, 3);
+      this.lblLastGroupTitle.Name = "lblLastGroupTitle";
+      this.lblLastGroupTitle.Size = new System.Drawing.Size(149, 19);
+      this.lblLastGroupTitle.TabIndex = 5;
+      this.lblLastGroupTitle.Text = "Last Group Home";
+      // 
+      // lblGroupName
+      // 
+      this.lblGroupName.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lblGroupName.AutoSize = true;
+      this.lblGroupName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblGroupName.ForeColor = System.Drawing.Color.Firebrick;
+      this.lblGroupName.Location = new System.Drawing.Point(605, 28);
+      this.lblGroupName.Name = "lblGroupName";
+      this.lblGroupName.Size = new System.Drawing.Size(132, 19);
+      this.lblGroupName.TabIndex = 6;
+      this.lblGroupName.Text = "Last Group Name";
+      // 
+      // lblNettPoints
+      // 
+      this.lblNettPoints.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lblNettPoints.AutoSize = true;
+      this.lblNettPoints.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblNettPoints.ForeColor = System.Drawing.Color.Firebrick;
+      this.lblNettPoints.Location = new System.Drawing.Point(604, 53);
+      this.lblNettPoints.Name = "lblNettPoints";
+      this.lblNettPoints.Size = new System.Drawing.Size(134, 19);
+      this.lblNettPoints.TabIndex = 7;
+      this.lblNettPoints.Text = "Last Group Points";
+      // 
+      // lblTime
+      // 
+      this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lblTime.AutoSize = true;
+      this.lblTime.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblTime.ForeColor = System.Drawing.Color.Firebrick;
+      this.lblTime.Location = new System.Drawing.Point(607, 78);
+      this.lblTime.Name = "lblTime";
+      this.lblTime.Size = new System.Drawing.Size(127, 19);
+      this.lblTime.TabIndex = 8;
+      this.lblTime.Text = "Last Group Time";
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(709, 404);
+      this.ClientSize = new System.Drawing.Size(822, 420);
       this.Controls.Add(this.toolStripContainer1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this._mnsMain;
@@ -620,6 +683,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this._stsMain.ResumeLayout(false);
       this._stsMain.PerformLayout();
       this.tableLayoutPanel1.ResumeLayout(false);
+      this.tableLayoutPanel1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this._dgvResults)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._dataSet)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this._bdsReportTotal)).EndInit();
@@ -690,6 +754,10 @@ namespace FrontBurner.Apps.EmitScore.Forms
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
+    private System.Windows.Forms.Label lblGroupName;
+    private System.Windows.Forms.Label lblLastGroupTitle;
+    private System.Windows.Forms.Label lblTime;
+    private System.Windows.Forms.Label lblNettPoints;
   }
 }
 

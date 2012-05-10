@@ -54,6 +54,7 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.ForeColor = System.Drawing.Color.SteelBlue;
       this.label1.Location = new System.Drawing.Point(119, 3);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(134, 33);
@@ -97,20 +98,20 @@ namespace FrontBurner.Apps.EmitScore.Forms
       this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.label3.AutoSize = true;
       this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(87, 77);
+      this.label3.Location = new System.Drawing.Point(80, 77);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(198, 16);
+      this.label3.Size = new System.Drawing.Size(211, 16);
       this.label3.TabIndex = 2;
-      this.label3.Text = "Copyright (c) 2009 Front Burner Ltd";
+      this.label3.Text = "Copyright (c) 2012 Front Burner Ltd";
       // 
       // label4
       // 
       this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(56, 107);
+      this.label4.Location = new System.Drawing.Point(45, 107);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(260, 16);
+      this.label4.Size = new System.Drawing.Size(281, 16);
       this.label4.TabIndex = 3;
       this.label4.Text = "Author Craig McKay <craig@frontburner.co.uk>";
       // 

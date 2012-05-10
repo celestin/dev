@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  07-May-2009  10444 : Changed to Front Burner.
  * CAM  10-May-2012  11095 : Added Summary Report, consolidated actions.
+ * CAM  10-May-2012  11095 : Added Last Group Home.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -137,6 +138,8 @@ namespace FrontBurner.Apps.EmitScore.Forms
           groupTableAdapter.Update(groupRow);
           groupRow.AcceptChanges();
 
+          LastGroupHome(groupRow.GroupName, groupRow.NettPoints, groupRow.TotalTime);
+
           MessageBox.Show(String.Format("Group {0} - {1} results received.",
             groupRow.GroupId, groupRow.GroupName), "Results Received",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -153,6 +156,8 @@ namespace FrontBurner.Apps.EmitScore.Forms
       groupTableAdapter.Fill(_dataSet.Group);
       ToggleButtons(false);
 
+      LastGroupHome(String.Empty, 0, DateTime.Now);
+
       EmitScoreDataSet.LocationDataTable location = _dataSet.Location;
       _locationMap = location.BuildLocationMap();
 
@@ -160,6 +165,21 @@ namespace FrontBurner.Apps.EmitScore.Forms
       _emitReader.ComPrt = short.Parse(config.Rows[0][config.ComPortColumn].ToString());
       _emitReader.Unit = short.Parse(config.Rows[0][config.EmitUnitColumn].ToString());
       _emitReader.StartComm();
+    }
+
+    protected void LastGroupHome(string groupName, long nettPoints, DateTime time)
+    {
+      if (groupName.Equals(String.Empty))
+      {
+        lblLastGroupTitle.Text = lblGroupName.Text = lblNettPoints.Text = lblTime.Text = String.Empty;
+      }
+      else
+      {
+        lblLastGroupTitle.Text = "Last Group Home";
+        lblGroupName.Text = groupName;
+        lblNettPoints.Text = String.Format("Nett Points {0}", nettPoints);
+        lblTime.Text = String.Format("Total Time {0:H:mm:ss}", time);
+      }
     }
 
     protected void ToggleButtons(bool showRegister)

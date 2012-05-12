@@ -16,6 +16,7 @@
  * CAM  25-Nov-2010  10823 : Added classes for Sirdar Leaflets.
  * CAM  09-Dec-2010  10830 : Added Related Products.
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
+ * CAM  12-May-2012  11119 : Reskinning.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 p, body, td, a, h1, h2, h3, h4, input, select {
@@ -29,7 +30,7 @@ p, body, td, a, h1, h2, h3, h4, input, select {
 .orderEdit { font-family : Arial, sans-serif; font-size : 10px; color: #70d250; text-decoration: underline; }
 
 BODY {
-  background: #88bee0;
+  background: #bfbfbf;
   /*background-image: url("images/bg2.jpg");*/
   color: #000000;
   margin: 0px;
@@ -46,7 +47,7 @@ A {
 }
 
 A:hover {
-  color: #ee2229;
+  color: #c71d64;
   text-decoration: underline;
 }
 
@@ -64,7 +65,7 @@ TR.headerNavigation {
 
 TD.headerNavigation {
   font-size: 10px;
-  background: #ee2229;
+  background: #c71d64;
   color: #f9c620;
   font-weight : bold;
   height: 20px;
@@ -103,19 +104,22 @@ TD.headerInfo {
 }
 
 TR.footer {
-  background: #f9c625;
-  height: 20px;
+  height: 25px;
 }
 
 TD.footer {
-  font-size: 10px;
-  background: #f9c625;
-  color: black;
-  font-weight: bold;
+  font-size: 12px;
+  color: #545454;
+  padding: 5px;
+  border-top: 1px solid #cacaca;
+  background: white;
 }
 
 .infoBox {
-  background: #00b04c;
+  background: white;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
 }
 
 .infoBoxContents {
@@ -138,7 +142,8 @@ TD.footer {
 TD.infoBoxHeading {
   font-size: 11px;
   font-weight: bold;
-  background: #00b04c;
+  background: #c71d64;
+  background: url("images/tbhdr.png") 0 0 transparent;
   color: #ffffff;
 }
 
@@ -187,14 +192,14 @@ A.pageResults {
   color: black;
   padding: 2px 8px 2px 8px;
   margin: 0px;
-  border: 1px solid #00b04c;
+  border: 1px solid #cacaca;
   background: #b3ffd4;
   height: 20px;
 }
 
 A.pageResults:hover {
   color: #330000;
-  background: #00b04c;
+  background: #c71d64;
   text-decoration: none;
 }
 
@@ -711,3 +716,18 @@ text-align : center;
 /* EOF Product Listing classes for Sirdar Leaflets [#10823] */
 
 
+#contentbox{
+background: url("images/freepostage2.png") no-repeat scroll 0 0 transparent;
+width: 550px;
+height:140px;
+padding:0px;
+overflow:auto;
+}
+
+#fblike {
+  padding-top:105px;
+  padding-left:10px;
+}
+
+.wholecontent {
+}

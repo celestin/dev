@@ -17,6 +17,7 @@
  * CAM  10-Jan-2011  10928 : Better config options for development environments.
  * CAM  23-May-2011  10961 : Smarter definition of config vars.
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
+ * CAM  12-May-2012  11119 : Local settings.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   define('DB_SERVER', '127.0.0.1');
@@ -41,9 +42,9 @@
 	  define('DB_SERVER_PASSWORD', 'iknit_test');
 	  define('DB_DATABASE', 'loviesya_biz_test');
   } else {
-    $url = 'http://localhost';
+    $url = 'http://artificer';
     if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
-    $url .= '/iknit';
+    $url .= '/loviesyarn';
 
     define('HTTP_SERVER', $url);
     define('HTTPS_SERVER', $url);

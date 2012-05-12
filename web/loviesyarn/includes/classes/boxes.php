@@ -14,6 +14,7 @@
  *
  * Who  When         Why
  * CAM  29-May-2010  10647 : Changed from Product List to Grid
+ * CAM  12-May-2012  11119 : Reskin boxes.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   class tableBox {
@@ -107,29 +108,34 @@
     function infoBoxHeading($contents, $left_corner = true, $right_corner = true, $right_arrow = false) {
       $this->table_cellpadding = '0';
 
-      if ($left_corner == true) {
-        $left_corner = tep_image(DIR_WS_IMAGES . 'infobox/corner_left.png');
-      } else {
-        $left_corner = tep_image(DIR_WS_IMAGES . 'infobox/corner_right_left.png');
-      }
-      if ($right_arrow == true) {
-        $right_arrow = '<a href="' . $right_arrow . '">' . tep_image(DIR_WS_IMAGES . 'infobox/arrow_right.png', ICON_ARROW_RIGHT) . '</a>';
-      } else {
-        $right_arrow = '';
-      }
-      if ($right_corner == true) {
-        $right_corner = $right_arrow . tep_image(DIR_WS_IMAGES . 'infobox/corner_right.png');
-      } else {
-        $right_corner = $right_arrow . tep_draw_separator('pixel_trans.gif', '11', '14');
-      }
+      //if ($left_corner == true) {
+      //  $left_corner = tep_image(DIR_WS_IMAGES . 'infobox/corner_left.png');
+      //} else {
+      //  $left_corner = tep_image(DIR_WS_IMAGES . 'infobox/corner_right_left.png');
+      //}
+      // if ($right_arrow == true) {
+        // $right_arrow = '<a href="' . $right_arrow . '">' . tep_image(DIR_WS_IMAGES . 'infobox/arrow_right.png', ICON_ARROW_RIGHT) . '</a>';
+      // } else {
+        // $right_arrow = '';
+      // }
+      //if ($right_corner == true) {
+      //  $right_corner = $right_arrow . tep_image(DIR_WS_IMAGES . 'infobox/corner_right.png');
+      //} else {
+      //  $right_corner = $right_arrow . tep_draw_separator('pixel_trans.gif', '11', '14');
+      //}
 
-      $info_box_contents = array();
-      $info_box_contents[] = array(array('params' => 'height="14" class="infoBoxHeading"',
-                                         'text' => $left_corner),
-                                   array('params' => 'width="100%" height="14" class="infoBoxHeading"',
-                                         'text' => $contents[0]['text']),
-                                   array('params' => 'height="14" class="infoBoxHeading" nowrap',
-                                         'text' => $right_corner));
+      // $info_box_contents = array();
+      // $info_box_contents[] = array(array('params' => 'height="14" class="infoBoxHeading"',
+                                         // 'text' => $left_corner),
+                                   // array('params' => 'width="100%" height="14" class="infoBoxHeading"',
+                                         // 'text' => $contents[0]['text']),
+                                   // array('params' => 'height="14" class="infoBoxHeading" nowrap',
+                                         // 'text' => $right_corner));
+
+      $corner = tep_draw_separator('pixel_trans.gif', '11', '20');
+      $info_box_contents[] = array(array('params' => 'height="20" class="infoBoxHeading"', 'text' => $corner),
+                                   array('params' => 'width="100%" height="25" class="infoBoxHeading"', 'text' => $contents[0]['text']),
+                                   array('params' => 'height="20" class="infoBoxHeading" nowrap', 'text' => $corner));
 
       $this->tableBox($info_box_contents, true);
     }

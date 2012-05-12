@@ -14,20 +14,15 @@
  *
  * Who  When         Why
  * CAM  29-May-2010  10670 : Call table_header.
+ * CAM  12-May-2012  11119 : Changed the footer text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require(DIR_WS_INCLUDES . 'counter.php');
 ?>
 <?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>
   <tr class="footer">
-    <td class="footer">&nbsp;&nbsp;<?php echo strftime(DATE_FORMAT_LONG); ?>&nbsp;&nbsp;</td>
-    <td align="right" class="footer">&nbsp;&nbsp;<?php echo $counter_now . ' ' . FOOTER_TEXT_REQUESTS_SINCE . ' ' . $counter_startdate_formatted; ?>&nbsp;&nbsp;</td>
-  </tr>
-</table>
-<br>
-<?php require(DIR_WS_INCLUDES . 'table_header_top.php'); ?>
-  <tr>
-    <td align="center" class="smallText"><?php echo FOOTER_TEXT_BODY; ?></td>
+    <td class="footer"><?=FOOTER_TEXT_CPY?></td>
+    <td align="right" class="footer"><?=FOOTER_TEXT_BODY?></td>
   </tr>
 </table>
 <?php

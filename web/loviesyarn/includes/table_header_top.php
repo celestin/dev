@@ -14,7 +14,8 @@
  *
  * Who  When         Why
  * CAM  30-Oct-2010  10800 : Widened screen.
+ * CAM  12-May-2012  11119 : Removed padding.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 
-<table border="0" width="1105" cellspacing="0" cellpadding="1" align="center">
+<table border="0" width="1105" cellspacing="0" cellpadding="0" align="center" class="wholecontent">

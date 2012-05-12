@@ -19,6 +19,7 @@
  * CAM  02-Jun-2010  10729 : Added About Us, Jewellery Care and Birthstones.
  * CAM  13-Jul-2010  10740 : Added alt text for RBS WorldPay and Credit Card logos.
  * CAM  29-Jul-2010  10762 : Changed "Top" to "Home".
+ * CAM  12-May-2012  11119 : Separated Copyright and Powered/Designed attribution.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // look in your $PATH_LOCALE/locale directory for available locales
@@ -331,5 +332,6 @@ define('TEXT_CCVAL_ERROR_INVALID_DATE', 'The expiry date entered for the credit 
 define('TEXT_CCVAL_ERROR_INVALID_NUMBER', 'The credit card number entered is invalid. Please check the number and try again.');
 define('TEXT_CCVAL_ERROR_UNKNOWN_CARD', 'The first four digits of the number entered are: %s. If that number is correct, we do not accept that type of credit card. If it is wrong, please try again.');
 
-define('FOOTER_TEXT_BODY', 'Copyright &copy; ' . date('Y') . ' <a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . STORE_NAME . '</a><br>Powered by <a href="http://www.oscommerce.com" target="_blank">osCommerce</a> customised by <a href="http://frontburner.co.uk">Front Burner</a>');
+define('FOOTER_TEXT_CPY', 'Copyright &copy; ' . date('Y') . ' <a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . STORE_NAME . '</a>');
+define('FOOTER_TEXT_BODY', 'Powered by <a href="http://www.frontburner.co.uk/">Front Burner</a> designed by <a href="http://www.techconcept.co.uk/">Tech Concept</a>');
 ?>

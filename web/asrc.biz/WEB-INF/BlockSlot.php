@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  19-Jan-2006  9 : File created.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -101,7 +102,7 @@ class BlockSlot {
     $href .= "\">";
 
     if ($this->court>0) {
-      $href .= "Court " . $this->courtName . ", ";
+      $href .= $this->courtName . ", ";
     }
 
     $href .= $this->getStartTime();

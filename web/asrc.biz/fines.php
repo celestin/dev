@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  30-May-2004  4 : File created.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Fines";
@@ -76,11 +77,14 @@ if ($member->isAdmin()) {
   <th>Action</th>
 </tr>
 <?
-    $ssql = "SELECT b.book_date, s.start_time, b.court, b.slot, b.opponentid, b.charge, ".
+    $ssql = "SELECT b.book_date, s.start_time, b.court, COALESCE(c.shortname, c.court) courtname, b.slot, b.opponentid, b.charge, ".
             "DATE_FORMAT(b.book_date,'%d %b %Y') book_date_disp,".
             "TIME_FORMAT(s.start_time,'%H:%i') start_time_fmt ".
-            "FROM booking b inner join slot s on b.court = s.court and b.slot = s.slot ".
-            "WHERE b.status = 'X' ".
+	          "FROM booking b, court c, slot s ".
+	          "WHERE c.court = b.court ".
+            "AND s.court = b.court ".
+	          "AND s.slot = b.slot ".
+            "AND b.status = 'X' ".
             "AND b.memberid = '$memberid' ".
             "ORDER BY 1,2";
 
@@ -103,7 +107,7 @@ if ($member->isAdmin()) {
       print "<tr>".
         "<td class=bc>$book_date_disp</td>".
         "<td class=bc>$start_time_fmt</td>".
-        "<td class=bc>$court</td>".
+        "<td class=bc>$courtname</td>".
         "<td class=bc title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>".
         "<td class=br>£$charge</td>".
         "<td><a href=\"". ActionUtil::url("C", $book_date, $court, $slot) . "\">confirm</a></td>".

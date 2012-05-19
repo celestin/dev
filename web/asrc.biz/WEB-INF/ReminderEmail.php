@@ -8,6 +8,7 @@
  *
  * Who  When         Why
  * CAM  26-Oct-2007  10195 : File derived from EmailMsg.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -57,6 +58,13 @@ class ReminderEmail extends EmailMsg {
   var $court;
 
   /**
+  * Court Name.
+  * @private
+  * @type string
+  */
+  var $courtname;
+
+  /**
   * Opponent Member
   * @private
   * @type String
@@ -78,6 +86,9 @@ class ReminderEmail extends EmailMsg {
     $this->memberId = $memberId;
     $this->opponentId = $opponentId;
     $this->behalf = $behalf;
+
+    $crt = new Court($court);
+    $this->courtname = $crt->desc;
 
     if ($emailType == 'N') {
       $this->typeDesc = "Notification";
@@ -124,7 +135,7 @@ class ReminderEmail extends EmailMsg {
     $message = $this->getTop($title) .
             "<tr><td class=fld>Booking on </td><td>" . $this->bookDate . "</td></tr>$cr".
             "<tr><td class=fld>At </td><td>" . $this->startTime . "</td></tr>$cr".
-            "<tr><td class=fld>On Court </td><td>" . $this->court . "</td></tr>$cr";
+            "<tr><td class=fld>On </td><td>" . $this->courtname . "</td></tr>$cr";
 
             if ($this->behalf) {
               $message .= "<tr><td class=fld>For you </td><td>" . $oppPerson->toHtmlString(true) . "</td></tr>$cr".
@@ -135,7 +146,7 @@ class ReminderEmail extends EmailMsg {
                 $message .= "<tr><td class=fld>With </td><td>" . $oppPerson->toHtmlString(true) . "</td></tr>$cr";
               }
             }
-            
+
     $message .= $this->getBottom();
 
     mail($to,$subject,$message,$this->getHeaders($cc));

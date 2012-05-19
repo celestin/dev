@@ -20,6 +20,7 @@
  * CAM  26-Oct-2007  10195 : Use new ReminderEmail class.
  * CAM  15-Nov-2007  10156 : Check for Coach privs - extend bookable days.
  * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -207,7 +208,7 @@ if (empty($memberOrig)) {
   print "</table>";
 } else if (!$court) {
   if ($member->isAdmin()) {
-    Msg::question("What Court would " . $memberOrig->getFirstname() . " like to play on");
+    Msg::question("Which Court would " . $memberOrig->getFirstname() . " like to play on");
   } else {
     Msg::question("Which Court would you like to play on, " . $memberOrig->getFirstname());
   }
@@ -224,11 +225,13 @@ if (empty($memberOrig)) {
   }
   print "</table>";
 } else if (empty($confirm)) {
+  $crt = new Court($court);
+
+  $phrase = ", you want";
   if ($member->isAdmin()) {
-    Msg::question("So, " . $memberOrig->getFirstname() . " wants to book Court " . $court . " for " . $book_time . " on " . $book_date);
-  } else {
-    Msg::question("So, " . $memberOrig->getFirstname() . ", you want to book Court " . $court . " for " . $book_time . " on " . $book_date);
+    $phrase = " wants";
   }
+  Msg::question("So, " . $memberOrig->getFirstname() . "$phrase to book " . $crt->desc . " for $book_time on $book_date");
 
   $s = "<a href=\"newbooking.php?book_date=$book_date" .
        "&book_time=" . urlencode($book_time) .

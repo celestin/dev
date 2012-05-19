@@ -17,6 +17,7 @@
  * CAM  22-Jun-2007  10130 : Added Key to Colour-coding.
  * CAM  25-Jun-2007  10129 : Colour alternate rows.
  * CAM  27-Aug-2011  11014 : Corrected errors around member variables.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Bookings";
@@ -97,12 +98,13 @@ if (isset($member) && $member->isAdmin()) {
 	  $ssql = "SELECT DATE_FORMAT(b.book_date,'%a') book_day,".
 	                 "DATE_FORMAT(b.book_date,'%d %b') book_date_disp,".
 	                 "DATE_FORMAT(b.book_date,'%Y-%m-%d') book_date,".
-	                 "s.duration,b.court,b.opponentid,".
+	                 "s.duration, COALESCE(c.shortname, c.court) courtname,b.opponentid,".
 	                 "TIME_FORMAT(s.start_time,'%H:%i') start_time_fmt, ".
 	                 "b.memberid, b.court, b.slot, b.confirm_date ".
-	          "FROM booking b, slot s ".
-	          "WHERE b.court = s.court ".
-	          "AND b.slot = s.slot ".
+	          "FROM booking b, court c, slot s ".
+	          "WHERE c.court = b.court ".
+            "AND s.court = b.court ".
+	          "AND s.slot = b.slot ".
 	          "AND b.status = 'O' ";
 	  if (!$member->isAdmin()) {
 	    $ssql .= "AND b.memberid='" . $member->getID() . "' ";
@@ -142,7 +144,7 @@ if (isset($member) && $member->isAdmin()) {
 	      "<td class=$rowclass>$book_date_disp</td>".
 	      "<td class=$rowclass>$start_time</td>".
 	      "<td class=$rowclass>$duration</td>".
-	      "<td class=$rowclass>$court</td>";
+	      "<td class=$rowclass>$courtname</td>";
 
 	    if ($member->isAdmin()) {
 	      $tupMember = Person::getPerson($memberid);
@@ -192,14 +194,15 @@ if (isset($member) && $member->isAdmin()) {
   $ssql = "SELECT DATE_FORMAT(b.book_date,'%a') book_day,".
                  "DATE_FORMAT(b.book_date,'%d %b') book_date_disp,".
                  "DATE_FORMAT(b.book_date,'%Y-%m-%d') book_date,".
-                 "s.duration,b.court,b.memberid opponentid,".
+                 "s.duration, COALESCE(c.shortname, c.court) courtname,b.memberid opponentid,".
                  "TIME_FORMAT(s.start_time,'%H:%i') start_time_fmt, ".
                  "b.memberid, b.court, b.slot, b.confirm_date ".
-          "FROM booking b, slot s ".
-          "WHERE b.court = s.court ".
-          "AND b.slot = s.slot ".
-          "AND b.status = 'O' ".
-          "AND b.opponentid='" . $member->getID() . "' ";
+	          "FROM booking b, court c, slot s ".
+	          "WHERE c.court = b.court ".
+            "AND s.court = b.court ".
+	          "AND s.slot = b.slot ".
+            "AND b.status = 'O' ".
+            "AND b.opponentid='" . $member->getID() . "' ";
 
   $ssql .= "ORDER BY b.book_date, s.start_time";
 
@@ -221,7 +224,7 @@ if (isset($member) && $member->isAdmin()) {
       "<td class=bc>$book_date_disp</td>".
       "<td class=bc>$start_time_fmt</td>".
       "<td class=bc>$duration</td>".
-      "<td class=bc>$court</td>";
+      "<td class=bc>$courtname</td>";
 
     print "<td class=bc title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>";
     print "</tr>";

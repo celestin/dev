@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -23,6 +24,13 @@ include_once 'Main.php';
 * @public
 */
 class Court extends Tuple {
+
+  /**
+  * Short name.
+  * @private
+  * @type string
+  */
+  var $shortname;
 
   /**
   * Cutoff Hour.
@@ -47,10 +55,20 @@ class Court extends Tuple {
   */
   var $courtCutoff = NULL;
 
-  function Court($id, $desc, $cutoff) {
+  function Court($id, $desc='', $cutoff='') {
     $this->id = $id;
-    $this->desc = $desc;
-    $this->cutoff = $cutoff;
+
+    if ($desc=='') {
+      $sql = mysql_query("SELECT name,shortname,week_cutoff FROM court WHERE court=$id");
+      if ($row = mysql_fetch_array($sql)) {
+        $this->desc = $row[0];
+        $this->shortname = $row[1];
+        $this->cutoff = $row[2];
+      }
+    } else {
+      $this->desc = $desc;
+      $this->cutoff = $cutoff;
+    }
 
     //$this->getSlots();
   }

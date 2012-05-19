@@ -14,6 +14,7 @@
  * CAM  08-Feb-2007  10097 : Include Courts 1-3.
  * CAM  25-Jun-2007  10129 : Corrected join SQL.
  * CAM  23-Jul-2007  10152 : Correctly handle completely empty system.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Current Courts View";
@@ -42,13 +43,14 @@ if ($book_date==NULL) {
 ?><table cellspacing=0 cellpadding=5 border=1>
 <tr>
   <th with=50>time</th>
-  <th width=150>Court 1</th>
-  <th width=150>Court 2</th>
-  <th width=150>Court 3</th>
-  <th width=150>Court 4</th>
-  <th width=150>Court 5</th>
-  <th width=150>Court 6</th>
-  <th width=150>Court 7</th>
+<?
+  $ssql = "SELECT name FROM court ORDER BY court";
+  $sql = mysql_query($ssql) or die (mysql_error());
+
+  while ($row = mysql_fetch_array($sql)) {
+    ?><th width="150"><?=$row[0]?></th><?
+  }
+?>
 </tr><?
 
   $ssql = "SELECT MIN(x.start_time_first) start_time_first, ".

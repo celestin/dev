@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  20-Mar-2004  File created.
+ * CAM  19-May-2012  11122 : Xodus Group Court naming.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -122,7 +123,7 @@ class Slot {
     $href .= "\">";
 
     if ($this->court>0) {
-      $href .= "Court " . $this->courtName . ", ";
+      $href .= $this->courtName . ", ";
     }
 
     $href .= $this->getStartTime();

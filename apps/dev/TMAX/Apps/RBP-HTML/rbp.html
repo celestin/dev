@@ -12,6 +12,7 @@
   // Who  When         Why
   // CAM  16-Apr-2012  11114 : Correct Help Text on IE6+ and show Title (including Pilot).
   // CAM  09-May-2012  11118 : Add Clear fields button and Talisman Energy text.
+  // CAM  23-May-2012  11125 : Add |Materials Status| and ensure the mandatory long texts are RED from the start
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   var tdLhood = null;
   var tdConsd = null;
@@ -64,7 +65,7 @@
 
   function fieldValue(lbl, txt) {
     //if (txt.value.length == 0) return "";
-    return "---" + lbl + (new Array(tmaxCharWidth - String(lbl).length - 3)).join("-") + "\r\n" + txt.value + "\r\n\r\n";
+    return "--- " + lbl.toUpperCase() + " " + (new Array(tmaxCharWidth - String(lbl).length - 5)).join("-") + "\r\n" + txt.value + "\r\n\r\n";
   }
 
   function separatorLine() {
@@ -79,23 +80,6 @@
 
   function copyToClipboard() {
     if (window.clipboardData && clipboardData.setData) {
-      var txtPriority=document.getElementById("txtPriority");
-      var txtRisk=document.getElementById("txtRisk");
-      var txtTS=document.getElementById("txtTS");
-      var txtTF=document.getElementById("txtTF");
-
-      var txtDefectFound=document.getElementById("txtDefectFound");
-      var txtEquipmentFunction=document.getElementById("txtEquipmentFunction");
-      var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
-      var txtJustificationForPriority=document.getElementById("txtJustificationForPriority");
-      var txtSuggestedFixRequired=document.getElementById("txtSuggestedFixRequired");
-      var txtResourcesRequired=document.getElementById("txtResourcesRequired");
-      var txtLocationAccessIssues=document.getElementById("txtLocationAccessIssues");
-      var txtHseConsiderations=document.getElementById("txtHseConsiderations");
-      var txtEquipmentConstraints=document.getElementById("txtEquipmentConstraints");
-      var txtSupportingInfoFolder=document.getElementById("txtSupportingInfoFolder");
-      var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
-
       if (!validateFields()) return;
 
       var s = separatorLine() +
@@ -124,6 +108,8 @@
         separatorLine() +
         "Workorder MIRQ Reasoning\r\n\r\n\r\n" +
         "Workorder Cancelled Reasoning\r\n\r\n\r\n" +
+        separatorLine() +
+        "Material Status\r\n\r\n\r\n" +
         separatorLine();
       clipboardData.setData("Text", s);
     }
@@ -629,5 +615,24 @@ for (var i = 0; i < labels.length; i++) {
     }
 }
 var divHelp=document.getElementById("help");
+
+var txtPriority=document.getElementById("txtPriority");
+var txtRisk=document.getElementById("txtRisk");
+var txtTS=document.getElementById("txtTS");
+var txtTF=document.getElementById("txtTF");
+
+var txtDefectFound=document.getElementById("txtDefectFound");
+var txtEquipmentFunction=document.getElementById("txtEquipmentFunction");
+var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
+var txtJustificationForPriority=document.getElementById("txtJustificationForPriority");
+var txtSuggestedFixRequired=document.getElementById("txtSuggestedFixRequired");
+var txtResourcesRequired=document.getElementById("txtResourcesRequired");
+var txtLocationAccessIssues=document.getElementById("txtLocationAccessIssues");
+var txtHseConsiderations=document.getElementById("txtHseConsiderations");
+var txtEquipmentConstraints=document.getElementById("txtEquipmentConstraints");
+var txtSupportingInfoFolder=document.getElementById("txtSupportingInfoFolder");
+var txtMitigationStepsTaken=document.getElementById("txtMitigationStepsTaken");
+
+validateFields(null);
 </script>
 </html>

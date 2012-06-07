@@ -12,6 +12,7 @@
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Fill out the page.
  * CAM  11-Aug-2007  10153 : Use Flash to report logout.
+ * CAM  07-Jun-2012  11126 : Remove errors with deprecated PHP session functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Log out";
@@ -27,7 +28,7 @@ if(!isset($_REQUEST['logmeout'])){
   echo "<center>Are you sure you want to logout?</center><br />";
   echo "<center><a href=logout.php?logmeout>Yes</a> | <a href=index.php>No</a>";
 } else {
-  if(!session_is_registered('memberid')){
+  if(!isset($_SESSION['memberid'])){
     session_start();
     storeFlash("You are now logged out!");
     redirect("index.php");

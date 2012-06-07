@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  17-Jan-2012  11077 : Changed site name.
  * CAM  18-Feb-2012  11090 : Corrected details.
+ * CAM  07-Jun-2012  11126 : Remove errors with deprecated PHP session functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Carried Safely";
@@ -38,10 +39,10 @@ function storeFlash($flash) {
 }
 
 function showFlash() {
-  if (session_is_registered('flash')) {
+  if (isset($_SESSION['flash'])) {
     $flash = $_SESSION['flash'];
     if (!empty($flash)) Msg::error($flash);
-    session_unregister('flash');
+    unset($_SESSION['flash']);
   }
 }
 
@@ -68,5 +69,4 @@ session_start();
 error_reporting(E_ALL);
 
 include_once 'task.php';
-
 ?>

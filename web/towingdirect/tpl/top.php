@@ -13,11 +13,12 @@
  * CAM  23-Jan-2012  11085 : Added Towing link
  * CAM  01-Feb-2012  11077 : Changed layout for new Carried Safely.
  * CAM  18-Feb-2012  11084 : Enabled logo override.
+ * CAM  07-Jun-2012  11126 : Remove errors with deprecated PHP session functions.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('westcoastexpress_net'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['memberid']) && isset($_SESSION['westcoastexpress_net']));
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];

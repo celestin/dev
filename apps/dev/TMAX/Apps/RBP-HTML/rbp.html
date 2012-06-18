@@ -13,6 +13,7 @@
   // CAM  16-Apr-2012  11114 : Correct Help Text on IE6+ and show Title (including Pilot).
   // CAM  09-May-2012  11118 : Add Clear fields button and Talisman Energy text.
   // CAM  23-May-2012  11125 : Add |Materials Status| and ensure the mandatory long texts are RED from the start
+  // CAM  18-Jun-2012  11127 : Add Yes/No to Flags.
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   var tdLhood = null;
   var tdConsd = null;
@@ -74,7 +75,11 @@
 
   function flagValue(lbl, flagName) {
     var flag=document.getElementById(flagName);
-    if (flag.checked) return lbl + "\r\n";
+    if (flag.checked) return lbl + " - Yes\r\n";
+
+    flag=document.getElementById(flagName + "No");
+    if (flag.checked) return lbl + " - No\r\n";
+
     return "";
   }
 

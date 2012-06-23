@@ -11,6 +11,7 @@
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
  * CAM  17-Dec-2006  10068 : Enable uploading of new photos.
+ * CAM  07-Jun-2012  11126 : Remove preceding slashes on paths.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Register";
@@ -145,8 +146,8 @@ if (empty($uplfilename)) {
   include 'frm/file.upload.php';
 } else {
 
-  $fulldir = $cfg['Site']['Dir'] . "/img/ph/f/";
-  $thumbdir = $cfg['Site']['Dir'] . "/img/ph/t/";
+  $fulldir = $cfg['Site']['Dir'] . "img/ph/f/";
+  $thumbdir = $cfg['Site']['Dir'] . "img/ph/t/";
   $uploadbase = basename($_FILES['uplfile']['name']);
   $fullfile = $fulldir . $uploadbase;
   $thumbfile = $thumbdir . $uploadbase;

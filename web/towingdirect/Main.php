@@ -23,7 +23,7 @@ if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
   $cfg['Site']['Dir'] = "c:/appserv/www/towingdirect/";
   $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 } else {
-  $cfg['Site']['Dir'] = "/home/cmckay2/public_html/";  // trailing slash
+  $cfg['Site']['Dir'] = "/var/www/vhosts/towingdirect.co.uk/httpdocs/";  // trailing slash
 }
 
 $cfg['Site']['Db']['Hostname'] = "127.0.0.1";

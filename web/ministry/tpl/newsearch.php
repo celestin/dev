@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
- * Ministry Search Engine
- * Copyright (c) 2007 frontburner.co.uk
+ * Good Teaching
+ * Copyright (c) 2012 Front Burner
  *
  * New Search Wizard
  *
@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
+ * CAM  29-Jul-2012  11129 : Updated goodteaching.org/ebook for Kindle Touch.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 
@@ -25,12 +26,31 @@
 
 ?></td></tr>
 <tr>
-  <td><? echo ActionUtil::linkButton('keyword.php', 'Search by Keyword', 'keywordbutton', 'keywordbuttonhover');?></td>
+  <td align="right"><? echo ActionUtil::linkButton('keyword.php', 'Search by Keyword', 'keywordbutton', 'keywordbuttonhover');?></td>
   <td class="toolTip">Interested in ministry relating to one or more specific words?</td>
 </tr><tr>
-  <td valign=middle><? echo ActionUtil::linkButton('scripture.php', 'Search by Scripture Reference', 'scripturebutton', 'scripturebuttonhover');?></td>
+  <td align="right" valign=middle><? echo ActionUtil::linkButton('scripture.php', 'Search by Scripture Reference', 'scripturebutton', 'scripturebuttonhover');?></td>
   <td class="toolTip">Looking for ministry on a particular passage of Scripture?</td>
 </tr>
 
-</table>
+<tr>
+	<td>
+		<table border="0" cellpadding=5 cellspacing=0>
+			<tr>
+				<td><a href="http://goodteaching.org/ebook"><img border="0" src="ebook/kindletouch.png"></a></td>
+				<td><a href="http://goodteaching.org/ebook"><img border="0" src="ebook/apple.png"></a></td>
+		  </tr>
+			<tr>
+				<td align="center">Kindle</td>
 
+				<td align="center">Apple</td>
+		  </tr>
+
+		</table>
+  </td>
+  <td class="toolTip">
+  	Want to read the ministry on your ereader?<br />
+  	<a href="http://goodteaching.org/ebook">http://goodteaching.org/ebook</a>
+  </td>
+</tr>
+</table>

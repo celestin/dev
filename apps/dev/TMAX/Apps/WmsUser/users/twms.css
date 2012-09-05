@@ -8,6 +8,7 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  05-Sep-2012  11128 : User saving and editing.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -125,6 +126,11 @@ td.cat {
   FONT-WEIGHT: bold
 }
 
+.saveok {
+  BACKGROUND-COLOR: #a6ce39;
+  TEXT-ALIGN: right;
+}
+
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   COLOR: #FFFFFF;
@@ -155,7 +161,6 @@ input.button {
   BORDER:           #497FB1 1px solid;
   COLOR:            #FFFFFF;
   FONT-SIZE: 8pt;
-  FONT-WEIGHT: bold;
   PADDING-BOTTOM: 2px;
   PADDING-LEFT:   1px;
   PADDING-RIGHT:  1px;

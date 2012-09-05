@@ -8,12 +8,11 @@
  * $Id$
  *
  * Who  When         Why
- * CAM  27-Dec-2005  File created.
- * CAM  07-Mar-2010  10601 : Reference the correct default stylesheet.
- * CAM  08-Mar-2010  10602 : Test for correct session variable.
+ * CAM  05-Sep-2012  11128 : Added menu options and getObjRef.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
+
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
 
@@ -29,6 +28,11 @@ if (empty($title)) {
   <title><? echo $title;?></title>
   <link href="twms.css" rel=stylesheet type="text/css" />
   <script language="Javascript" src="date.js"></script>
+  <script language="Javascript">
+    function getObjRef(p_ref) {
+      return document.all ? document.all[p_ref] : document.getElementById(p_ref);
+    }
+  </script>
 </head>
 
 <body topmargin=0 leftmargin=0>
@@ -60,6 +64,10 @@ if (empty($title)) {
             if ($member->isAdmin()) {
 ?>
             <td><a class="nav" href="verify.php">verify</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="identify.php">identify</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="identify.php?site=12&username=CLYOTL&cid=4f542e00cc3fcb76186c26627169ae19">identify CLY</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="upload_tmax.php">upload TMAX</a><span class="sep">|</sep></td>
+            <td><a class="nav" href="upload_ad.php">upload AD</a><span class="sep">|</sep></td>
 <?
             }
 ?>

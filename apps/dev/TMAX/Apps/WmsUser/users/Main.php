@@ -9,12 +9,17 @@
  *
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
+ * CAM  05-Sep-2012  11128 : Moved getObjRef to top.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "Talisman WMS Users";
 $cfg['Site']['URL']   = "http://www.talismanwms.com/users";                 // no trailing slash
 $cfg['Site']['Email'] = "craig@frontburner.co.uk";
 //$cfg['Site']['Dir']   = "/home/virtual/site215/fst/var/www/cc/";  // trailing slash
+
+if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
+  $cfg['Site']['URL']   = "http://artificer/twms/users";
+}
 
 $cfg['Site']['Db']['Hostname'] = "127.0.0.1";
 $cfg['Site']['Db']['Username'] = "wms_users";
@@ -33,15 +38,15 @@ function fldmand($value) {
   echo (!empty($retry) && empty($value)) ? "fldmand" : "fld";
 }
 
+function redirect($url) {
+?>
+<script language="javascript">top.location.href="<? echo $url; ?>";</script>
+<?
+}
+
 session_start();
 error_reporting(E_ALL);
 
 include_once 'task.php';
 
 ?>
-
-<script language="Javascript">
-  function getObjRef(p_ref) {
-    return document.all ? document.all[p_ref] : document.getElementById(p_ref);
-  }
-</script>

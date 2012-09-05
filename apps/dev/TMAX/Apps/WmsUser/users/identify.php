@@ -28,6 +28,10 @@ $loggedin = (session_is_registered('member_person') && session_is_registered('Ta
     saveSiteChange(username, site.options[site.selectedIndex].value, row);
   }
 
+  function validate_workemail(txt) {
+    if (txt.value.indexOf("@") < 0) txt.value += "@talisman-energy.com";
+  }
+
   function change_site_reveal(rowid_main, rowid_site, username, button) {
     var row_main = getObjRef(rowid_main);
     var row_site = getObjRef(rowid_site);
@@ -64,14 +68,47 @@ $loggedin = (session_is_registered('member_person') && session_is_registered('Ta
     xmlhttp.send();
   }
 
-  function confirm_user_reveal(rowid_main, rowid_user, username, button) {
+  function confirm_user(rowid_user, rowid_user2, username, button) {
+    var row_user = getObjRef(rowid_user);
+    var row_user2 = getObjRef(rowid_user2);
+    var fname_txt = getObjRef(username + "_fname2");
+    var lname_txt = getObjRef(username + "_lname2");
+    var workemail_txt = getObjRef(username + "_workemail");
+    var jobtitle = getObjRef(username + "_jobtitle");
+    var jtcom_txt = getObjRef(username + "_jtcom");
+
+    button.style.display="none";
+
+    if (window.XMLHttpRequest) {
+      xmlhttp=new XMLHttpRequest();
+    } else {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        row_user.style.display = "none";
+        row_user2.style.display = "none";
+        //alert(xmlhttp.responseText);
+      }
+    }
+    var url = "saveconfirm.php?username=" + username + "&jt=" + (jobtitle.options[jobtitle.selectedIndex].value) +
+      "&fname=" + encodeURIComponent(fname_txt.value) + "&lname=" + encodeURIComponent(lname_txt.value) +
+      "&workemail=" + encodeURIComponent(workemail_txt.value) + "&jtcom=" + encodeURIComponent(jtcom_txt.value);
+
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
+  }
+
+  function confirm_user_reveal(rowid_main, rowid_user, rowid_user2, username, button) {
     var row_main = getObjRef(rowid_main);
     var row_user = getObjRef(rowid_user);
+    var row_user2 = getObjRef(rowid_user2);
 
     row_main.style.display="none";
     row_user.style.display="inline";
-
-    //saveSiteChange(username, site.options[site.selectedIndex].value, row);
+    row_user2.style.display="inline";
   }
 
   function saveSiteChange(username, site, row)
@@ -113,9 +150,17 @@ if ($loggedin) {
   exit();
 }
 
-function inputBox($username, $id, $value) {
+function inputBox($username, $id, $value, $size=20, $validate=false) {
   $fid = $username . "_" . $id;
-  echo "<input id=\"$fid\" name=\"$fid\" value=\"$value\" size=\"20\">";
+  $rval = "<input id=\"$fid\" name=\"$fid\" value=\"$value\" size=\"$size\" ";
+
+  if ($validate) {
+    $rval .= "onblur=\"validate_" . strtolower($id) . "(this);\" ";
+  }
+
+  $rval .= ">";
+
+  echo $rval;
 }
 
 function jobTitleCombo($username, $id, $job_title) {
@@ -192,7 +237,7 @@ if (empty($site)) {
     "select username, first_name, last_name, work_email, company, job_title, job_title_comments, site ".
     "from usr ".
     "where status='Init' ".
-    (empty($site) ? "and site in ('00','80','81') ": "and site='$site' ").
+    (empty($site) ? "and site in ('00','80','81','83') ": "and site='$site' ").
     "and site <> '82' ".
     "order by job_title, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());
@@ -201,6 +246,8 @@ if (empty($site)) {
     $rowid_main = $row[0] . "_a";
     $rowid_site = $row[0] . "_b";
     $rowid_user = $row[0] . "_c";
+    $rowid_user2 = $row[0] . "_d";
+    $jtcom = $row[0] . "_jtcom";
 ?>
     <tr id="<?=$rowid_main?>">
       <td><?=nvhtml($row[0])?></td>
@@ -208,7 +255,7 @@ if (empty($site)) {
       <td><?=nvhtml($row[2])?></td>
       <td><?=nvhtml($row[5])?></td>
       <td><input type="button" class="button" onclick="change_site_reveal('<?=$rowid_main?>','<?=$rowid_site?>','<?=$row[0]?>',this);return false;" value="Change Site"></td>
-      <td><input type="button" class="button" onclick="confirm_user_reveal('<?=$rowid_main?>','<?=$rowid_user?>','<?=$row[0]?>',this);return false;" value="Confirm User"></td>
+      <td><input type="button" class="button" onclick="confirm_user_reveal('<?=$rowid_main?>','<?=$rowid_user?>','<?=$rowid_user2?>','<?=$row[0]?>',this);return false;" value="Confirm User"></td>
     </tr>
 
     <tr id="<?=$rowid_site?>" style="display:none">
@@ -221,13 +268,20 @@ if (empty($site)) {
     </tr>
 
     <tr id="<?=$rowid_user?>" style="display:none">
-      <td><b><?=nvhtml($row[0])?></b></td>
-      <td><?=inputBox($row[0], "_fname", $row[1])?></td>
-      <td><?=inputBox($row[0], "_lname", $row[2])?></td>
-      <td><?=nvhtml($row[5])?></td>
-      <td colspan="3">NEW USER</td>
+      <td rowspan="2"><b><?=nvhtml($row[0])?></b></td>
+      <td><?=inputBox($row[0], "fname2", $row[1])?></td>
+      <td><?=inputBox($row[0], "lname2", $row[2])?></td>
+      <td><?=jobTitleCombo($row[0], "jobtitle", $row[5], true)?></td>
+
+      <td colspan="2"><input type="button" class="button" onclick="confirm_user('<?=$rowid_user?>','<?=$rowid_user2?>','<?=$row[0]?>',this);return false;" value="Confirm User"></td>
     </tr>
-<?
+
+    <tr id="<?=$rowid_user2?>" style="display:none">
+      <td colspan="2" valign="top"><b>Email</b><br /><?=inputBox($row[0], "workemail", $row[3], 45, true)?></td>
+      <td colspan="3"><b>Job Title Comments</b> (e.g. 5th Week resp.)<br /><textarea cols="70" rows="5" id="<?=$jtcom?>" name="<?=$jtcom?>"><?=$row[6]?></textarea></td>
+    </tr>
+
+    <?
   }
 
 ?>
@@ -247,11 +301,11 @@ if (empty($site)) {
 
 <?
   $ssql =
-    "select username, first_name, last_name ".
+    "select username, first_name, last_name, site ".
     "from usr ".
     "where status='Init' ".
-    "and site IS NULL ".
-    "order by last_name, first_name";
+    (empty($site) ? "and (site IS NULL OR site NOT IN ('00','80','81','83')) ": "and site IS NULL ").
+    "order by site, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());
 
   while ($row = mysql_fetch_array($sql)) {
@@ -261,7 +315,7 @@ if (empty($site)) {
       <td><?=nvhtml($row[0])?></td>
       <td><?=nvhtml($row[1])?></td>
       <td><?=nvhtml($row[2])?></td>
-      <td id="<?=$rowid?>"><?=siteCombo($row[0], "unknown_site", $site, false)?></td>
+      <td id="<?=$rowid?>"><?=siteCombo($row[0], "unknown_site", $row[3], false)?></td>
       <td><input type="button" onclick="confirm_site('<?=$row[0]?>','<?=$rowid?>','<?=$row[0]?>_unknown_site',this);return false;" value="Change Site"></td>
     </tr>
 <?

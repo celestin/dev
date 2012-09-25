@@ -51,19 +51,35 @@ var tabCn = tab.childNodes;
 var needleSize = "";
 
 var s = "*\n";
-for (i=tabCn.length-1; i>=0; i--) 
+for (i=tabCn.length-1; i>=0; i--)
 {
-  if (tabCn[i].nodeName == "DL") 
-  {   
-    var cells = tabCn[i].getElementsByTagName("dd");   
+  if (tabCn[i].nodeName == "DL")
+  {
+    var cells = tabCn[i].getElementsByTagName("dd");
     if (cells.length > 0) needleSize = cells[0].innerHTML;
-  }  
+  }
   if ((tabCn[i].nodeName != "TABLE")/* && (tabCn[i].nodeName != "DL")*/)
   {
     tab.removeChild(tabCn[i]);
-  }  
+  }
 }
 
-//needleSize = needleSize.replace("¼", " 1/4").replace("¾", " 3/4");
+var productId = "";
+var p=0;
+var related = document.getElementById('RelatedProducts');
+var imgs = related.getElementsByTagName("img");
+for (i=0; i<imgs.length; i++)
+{
+  p = imgs[i].src.indexOf('products/navigation/');
+  if (p >= 0)
+  {
+    productId = imgs[i].src.substr(p + 20, imgs[i].src.length);
+    p = productId.indexOf('-');
+    if (p >= 0)
+    {
+      productId = productId.substr(0, p);
+    }
+  }
+}
 
-colourFrame.innerHTML = "<textarea cols='60' rows='8'>" + needleSize + "\n\n" + tab.innerHTML + "</textarea>";
+colourFrame.innerHTML = "<h2>" + productId + "</h2><textarea cols='60' rows='8'>" + needleSize + "\n\n" + tab.innerHTML + "</textarea>";

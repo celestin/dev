@@ -134,14 +134,14 @@ if (linkRef) {
 
   yarnCode = yarnImg.substring(0, yarnImg.indexOf("-")).toUpperCase();
 
-  sSql =
+  sSql = "";/*
     "DELETE FROM sirdar_yarn WHERE yarn_code = '" + yarnCode + "';\n" +
     "DELETE FROM sirdar_yarn_shade WHERE yarn_code = '" + yarnCode + "';\n\n" +
     "INSERT INTO sirdar_yarn (" +
       "yarn_code, yarn_name, ply_name, style_name, yarn_image"+
     ") VALUES ("+
       "'" + yarnCode + "', '" + yarnName + "', '" + yarnPly + "', '" + yarnStyle + "', '" + yarnImg + "'"+
-    ");\n\n";
+    ");\n\n";*/
 
 
   // Now parse colours
@@ -164,10 +164,10 @@ if (linkRef) {
     colourImageHtml = colourImageHtml.substring(i+1);
 
     sSql = sSql +
-      "INSERT INTO sirdar_yarn_shade (" +
-        "yarn_code, shade_code, shade_name, shade_image"+
+      "REPLACE INTO sirdar_yarn_shade (" +
+        "yarn_code, shade_code, shade_name, shade_image, shade_status"+
       ") VALUES ("+
-        "'" + yarnCode + "', '" + colourCode + "', '" + colourName + "', '" + colourImage + "'"+
+        "'" + yarnCode + "', '" + colourCode + "', '" + colourName + "', '" + colourImage + "', 'INC'"+
       ");\n";
 
     nextColour = colourImageHtml.indexOf(delimiter);
@@ -176,7 +176,7 @@ if (linkRef) {
 
   // Get the Leaflets
   leaflets = document.getElementById("RelatedProducts");
-  sLeafSql = "DELETE FROM sirdar_yarn_leaflet WHERE yarn_code = '" + yarnCode + "';\n\n";
+  sLeafSql = ""; //"DELETE FROM sirdar_yarn_leaflet WHERE yarn_code = '" + yarnCode + "';\n\n";
 
   if (leaflets)
   {
@@ -206,6 +206,6 @@ if (linkRef) {
   var sqlFrame = document.createElement('div');
   // Insert a new div *after* the product image
   thisDiv.parentNode.insertBefore(sqlFrame, colourFrame);
-  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sSql + "\n\n\n" + sLeafSql + "\n\n\n\n</textarea>";
+  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sSql + /*"\n\n\n" + sLeafSql +*/ "\n\n\n\n</textarea>";
 }
 

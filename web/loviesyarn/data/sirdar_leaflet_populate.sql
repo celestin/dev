@@ -356,7 +356,7 @@ AND NOT EXISTS (SELECT 1 FROM products_to_products_extra_fields WHERE products_i
 -- Leaflets
 
 insert into products (products_model, products_image,dataload_gender)
-SELECT leaflet_code,leaflet_image,'2012-03-03-A' FROM sirdar_yarn_leaflet sys
+SELECT leaflet_code,leaflet_image,'2012-09-25-A' FROM sirdar_yarn_leaflet sys
 WHERE not exists (select 1 from products where products_model = sys.leaflet_code)
 and leaflet_status = 'INC'
 
@@ -364,7 +364,7 @@ INSERT INTO products_description( products_id, language_id, products_name, produ
 SELECT p.products_id, 1, CONCAT(sy.yarn_name, ' (', sys.leaflet_code, ')'), NULL, 1
 FROM products p, sirdar_yarn sy, sirdar_yarn_leaflet sys
 WHERE sys.leaflet_code = p.products_model
-AND dataload_gender = '2012-03-03-A'
+AND dataload_gender = '2012-09-25-A'
 AND sys.yarn_code = sy.yarn_code
 AND NOT EXISTS (
   SELECT 1
@@ -378,7 +378,7 @@ INSERT INTO products_to_categories (
 select p.products_id, sys.categories_id
 from products p, sirdar_yarn sy, sirdar_yarn_leaflet sys
 where sys.leaflet_code = p.products_model
-AND dataload_gender = '2012-03-03-A'
+AND dataload_gender = '2012-09-25-A'
 and sys.yarn_code = sy.yarn_code
 and not exists (select 1
                 from products_to_categories
@@ -387,12 +387,12 @@ and not exists (select 1
 INSERT INTO products_to_products_extra_fields (products_id, products_extra_fields_id, products_extra_fields_value)
 SELECT p.products_id, 1, 1
 from products p
-where dataload_gender = '2012-03-03-A'
+where dataload_gender = '2012-09-25-A'
 AND NOT EXISTS (SELECT 1 FROM products_to_products_extra_fields WHERE products_id = p.products_id and products_extra_fields_id=1);
 
 update products
 set products_status = 1
-WHERE dataload_gender = '2012-03-03-A'
+WHERE dataload_gender = '2012-09-25-A'
 
 
 

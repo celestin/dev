@@ -17,6 +17,7 @@
  * CAM  30-Oct-2010  10800 : Widened screen.
  * CAM  02-Nov-2010  10808 : Added FWR Security.
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
+ * CAM  25-Sep-2012  11132 : Updated to Ben's Lovie's Yarn logo for FAVICON.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 // start the timer for the page parse time log
@@ -48,7 +49,7 @@
   // Stylesheet name
   define('CONFIG_STYLESHEET', 'loviesyarn.css');
   // Favourite Icon name
-  define('CONFIG_FAVICON', 'loviesyarn.ico');
+  define('CONFIG_FAVICON', 'loviesyarn3.ico');
 
 // some code to solve compatibility issues
   require(DIR_WS_FUNCTIONS . 'compatibility.php');

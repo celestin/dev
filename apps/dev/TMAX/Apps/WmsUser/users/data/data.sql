@@ -14,7 +14,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2012 at 06:56 PM
+-- Generation Time: Oct 06, 2012 at 10:24 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -32,7 +32,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE company (
   company varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`company`)
+  PRIMARY KEY  (company)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -91,7 +91,7 @@ INSERT INTO company VALUES ('Xodus');
 CREATE TABLE job_title (
   job_title varchar(50) NOT NULL,
   security_group varchar(50) default NULL,
-  PRIMARY KEY  (`job_title`)
+  PRIMARY KEY  (job_title)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -233,8 +233,8 @@ CREATE TABLE member (
   dob date NOT NULL default '0000-00-00',
   signup_date datetime NOT NULL default '0000-00-00 00:00:00',
   last_login datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`memberid`),
-  KEY i_email_address (`email_address`)
+  PRIMARY KEY  (memberid),
+  KEY i_email_address (email_address)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Information';
 
 --
@@ -254,7 +254,7 @@ CREATE TABLE member_type (
   type_name varchar(50) default NULL,
   comments varchar(255) default NULL,
   disp_order int(11) NOT NULL default '0',
-  PRIMARY KEY  (`member_type`)
+  PRIMARY KEY  (member_type)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='User Types';
 
 --
@@ -274,7 +274,7 @@ INSERT INTO member_type VALUES ('A', 'Administrator', 'Full Administrative capab
 CREATE TABLE site (
   Site varchar(255) NOT NULL default '',
   SiteFullName varchar(50) default NULL,
-  PRIMARY KEY  (`Site`)
+  PRIMARY KEY  (Site)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -322,7 +322,7 @@ CREATE TABLE usr (
   cnf_username varchar(50) default NULL,
   cnf_fullname varchar(50) default NULL,
   cnf_datetime datetime default NULL,
-  PRIMARY KEY  (`username`)
+  PRIMARY KEY  (username)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1324,7 +1324,7 @@ INSERT INTO usr VALUES ('PRONALDSON', 'Init', '3', 'Peter', 'Ronaldson', 'SUPERV
 INSERT INTO usr VALUES ('PROWLEY', 'Init', NULL, 'Paul', 'Rowley', 'ENQUIRY', 'PROWLEY@talisman-energy.com', NULL, 'Proces Limited', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PSCROGGIE', 'Init', NULL, 'Philip', 'Scroggie', 'MAC_INV', 'pscroggie@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PSDIPUB', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('PSEBBORN', 'Init', '14', 'Phil', 'Sebborn', 'SUPERVISOR', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
+INSERT INTO usr VALUES ('PSEBBORN', 'Init', '00', 'Phil', 'Sebborn', 'SUPERVISOR', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PSMITH', 'Init', '16', 'Paul', 'Smith', 'TECHNICIAN', NULL, NULL, 'Sparrows', 'CRANE OP', NULL, 111687, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PURCHTLM', 'System', '82', NULL, NULL, 'PURCHTLM', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PURCHTLMX', 'System', '82', NULL, NULL, 'PURCHTLMX', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1763,7 +1763,7 @@ INSERT INTO usr VALUES ('ASMITH', 'Init', '12', 'Andrew', 'Smith', 'SUPERVISOR',
 INSERT INTO usr VALUES ('ASIMPSON', 'Init', '00', 'Andrew', 'Simpson', 'TECHAUTH', 'asimpson@talisman-energy.com', NULL, 'Talisman Energy', 'ROTATING EQUIPMENT ENGINEER', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ASIM', 'Init', '1', 'Alistair', 'Sim', 'SUPERVISOR', 'ASIM@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ASHTONS', 'Init', NULL, 'Sarah', 'Ashton', 'ACCENTURE', 'ASHTONS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('ASHEIKH', 'Init', '14', 'Adam', 'Sheikh', 'OIE', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
+INSERT INTO usr VALUES ('ASHEIKH', 'Init', '83', 'Adam', 'Sheikh', 'OIE', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ASHEELA', 'Init', NULL, 'Aswathy', 'Sheela', 'ENQUIRY', 'ASHEELA@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ASHAW', 'Init', '1', 'Tony', 'Shaw', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'MECH SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ASCOTT', 'Init', '10', 'Alan', 'Scott', 'SUPERVISOR', 'ascott@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1818,7 +1818,7 @@ INSERT INTO usr VALUES ('ALYALL', 'Init', '14', 'Alan', 'Lyall', 'TECHNICIAN', '
 INSERT INTO usr VALUES ('ALUFF', 'Init', NULL, 'Adam', 'Luff', 'ENQUIRY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ALOWRIE', 'Init', NULL, 'Andrew', 'Lowrie', 'TECHNICIAN', 'ALOWRIE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ALOCKHART', 'Init', '2', 'Alasdair', 'Lockhart', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'TECH', 'TRAINEE ', 948258, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('ALLENM', 'Init', '15', 'Mark', 'Allen', 'SUPERVISOR', 'ALLENM@talisman-energy.com', NULL, 'Talisman Energy', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('ALLENM', 'Init', '00', 'Mark', 'Allen', 'SUPERVISOR', 'ALLENM@talisman-energy.com', NULL, 'Talisman Energy', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ALISTAIRT', 'Init', '1', 'Alistair', 'Thomson', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'INST TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ALISTAIRS', 'Init', NULL, 'Alistair', 'Scott', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ALINDSAY', 'Init', '1', 'Alan', 'Lindsay', 'SUPERVISOR', 'ALINDSAY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

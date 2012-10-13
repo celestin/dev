@@ -42,51 +42,45 @@ function show_summary_table($errorcount, $matchnochange, $matchupdate) {
 function process_matches() {
 	global $data;
 
-  if (!empty($data)) {
-
+	if (!empty($data)) {
 		$sht=0;
-	  $rows = $data->rowcount($sheet_index=$sht);
+		$rows = $data->rowcount($sheet_index=$sht);
 
-	  $errorcount = 0;
-	  $matchnochange = 0;
-	  $matchupdate = 0;
+		$errorcount = 0;
+		$matchnochange = 0;
+		$matchupdate = 0;
 
-	  for($r=2; $r < $rows; $r++) {
+		for($r=2; $r < $rows; $r++) {
 
 			$username = strtoupper($data->val($r,8,$sht));
-	  	$first_name = $data->val($r,2,$sht);
-	  	$last_name = $data->val($r,3,$sht);
-	  	$email_address = $data->val($r,4,$sht);
+			$first_name = $data->val($r,2,$sht);
+			$last_name = $data->val($r,3,$sht);
+			$email_address = $data->val($r,4,$sht);
 
-        $sql = "select status, first_name, last_name, work_email from usr where username='$username'";
+			$sql = "select status, first_name, last_name, work_email from usr where username='$username'";
 
-        $res = mysql_query($sql) or die (mysql_error());
-        if ($row = mysql_fetch_array($res)) {
-        	$status = ($row[0]);
+			$res = mysql_query($sql) or die (mysql_error());
+			if ($row = mysql_fetch_array($res)) {
+				$status = ($row[0]);
 
-        	if (($status != "Init") || (!empty($row[1]))) {
-	        	$matchnochange++;
-        	} else {
+				if (($status != "Init") || (!empty($row[1]))) {
+					$matchnochange++;
+				} else {
+					$sql = "update usr set first_name='$first_name', last_name='$last_name', work_email='$email_address' where username='$username'";
+					mysql_query($sql);
+				//echo "$username : $first_name<br>";
+					$matchupdate++;
+				}
 
-        		$sql = "update usr set first_name='$first_name', last_name='$last_name', work_email='$email_address' where username='$username'";
-        		mysql_query($sql);
-            //echo "$username : $first_name<br>";
-
-	        	$matchupdate++;
-        	}
-
-        } else {
-        	$errorcount++;
-        }
-    }
+			} else {
+				$errorcount++;
+			}
+		}
 
 		show_summary_table($errorcount, $matchnochange, $matchupdate);
 	}
 }
-
-
 ?>
-
 	<form enctype="multipart/form-data" action="upload_ad.php" method="POST">
 		<table border="0" cellspacing="5" cellpadding="5">
 			<tr><td><input type="hidden" name="MAX_FILE_SIZE" value="10000000" />Choose a file to
@@ -95,8 +89,6 @@ function process_matches() {
 				<tr><td><input type="submit" value="Upload File" /></td></tr>
     </table>
   </form>
-
-
 <?php
 
   if (empty($filename)) {
@@ -109,8 +101,6 @@ function process_matches() {
   	echo "<h1>Process File</h1>";
   	process_matches();
   }
-
-
 ?>
 <div id="searchresults" style="display:none;position:absolute"></div>
 <div id="prodselect" style="background:#EEEEEE;padding:20px;display:none;position:absolute">
@@ -121,5 +111,4 @@ function process_matches() {
 	<input type="button" value="Cancel" onclick="cancelproduct();">
 </div>
 <?
-
 include 'tpl/bot.php';

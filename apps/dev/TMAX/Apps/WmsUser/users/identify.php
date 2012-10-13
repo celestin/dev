@@ -10,13 +10,78 @@
  * Who  When         Why
  * CAM  08-Jul-2012  File created.
  * CAM  05-Sep-2012  11128 : User saving and editing.
+ * CAM  13-Oct-2012  11128 : Enable Identify by Supervisor, first requesting 'login' of Firstname/Surname.
  * * * * * * * * * * * * * * * * * * * * * * * */
+
+include_once 'Main.php';
+$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
+$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+
+$site = NULL;        if (!empty($_GET['site'])) $site = $_GET['site'];
+$username = NULL;    if (!empty($_GET['username'])) $username = $_GET['username'];
+$cid = NULL;         if (!empty($_GET['cid'])) $cid = $_GET['cid'];
+$firstname = NULL;   if (!empty($_GET['firstname'])) $firstname = $_GET['firstname'];
+$lastname = NULL;    if (!empty($_GET['lastname'])) $lastname = $_GET['lastname'];
+
+$member_override = "";
+$firstname_override = "";
+$lastname_override = "";
+$site_override = "";
+
+$showlogin = FALSE;
+
+if ($loggedin) {
+  $username = $member->id;
+  if ($member->isAdmin()) {
+    $site = "";
+  } else {
+    $site = $_SESSION['siteid'];
+  }
+} else if (md5($site . $username) == $cid) {
+  if ((strlen($firstname) < 2) || (strlen($lastname) < 2)) {
+	$showlogin = TRUE;
+  } else {
+    $member_override = $username;
+    $firstname_override = $firstname;
+    $lastname_override = $lastname;
+	$site_override = $site;
+  }
+} else {
+  redirect($cfg['Site']['URL']);
+  exit();
+}
 
 $title = "Identify Users";
 include 'tpl/top.php';
 $member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
 $loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
 
+  if ($showlogin) {
+?>
+  <h3><?=$username?>, please provide your name to identify users for Site <?=$site?></h3>
+
+  <form action="identify.php" method="get">
+  <table border="1">
+    <tr>
+	  <td>First name</td>
+	  <td>Last name</td>
+	  <td>
+	    <input type="hidden" id="site" name="site" value="<?=$site?>" size="20">
+	    <input type="hidden" id="username" name="username" value="<?=$username?>" size="20">
+	    <input type="hidden" id="cid" name="cid" value="<?=$cid?>" size="20">
+	  </td>
+    </tr>
+	<tr>
+	  <td><input id="firstname" name="firstname" value="<?=$firstname?>" size="20"></td>
+	  <td><input id="lastname" name="lastname" value="<?=$lastname?>" size="20"></td>
+	  <td><input type="submit" class="button" value="Continue"></td>
+    </tr>
+  </form>
+<?
+    exit();
+  } else {
+  	if (!empty($cid)) redirect($cfg['Site']['URL'] . "/identify.php");
+  }
 ?>
 <script language="Javascript">
   function confirm_site(username, rowid, sitecombo, button) {
@@ -29,7 +94,7 @@ $loggedin = (session_is_registered('member_person') && session_is_registered('Ta
   }
 
   function validate_workemail(txt) {
-    if (txt.value.indexOf("@") < 0) txt.value += "@talisman-energy.com";
+    if ((txt.value.indexOf("@") < 0) && (txt.value.length > 0)) txt.value += "@talisman-energy.com";
   }
 
   function change_site_reveal(rowid_main, rowid_site, username, button) {
@@ -76,6 +141,11 @@ $loggedin = (session_is_registered('member_person') && session_is_registered('Ta
     var workemail_txt = getObjRef(username + "_workemail");
     var jobtitle = getObjRef(username + "_jobtitle");
     var jtcom_txt = getObjRef(username + "_jtcom");
+
+	if ((workemail_txt.value.length < 1) || (workemail_txt.value.indexOf('@') < 0) || (jobtitle.selectedIndex == 0)) {
+	  alert('Please specify a valid Email address and Job Title.');
+	  return;
+	}
 
     button.style.display="none";
 
@@ -131,25 +201,6 @@ $loggedin = (session_is_registered('member_person') && session_is_registered('Ta
 </script>
 <?
 
-function nvhtml($value) {
-  if (empty($value)) return "&nbsp;";
-  return $value;
-}
-
-$site = NULL;      if (!empty($_GET['site'])) $site = $_GET['site'];
-$username = NULL;  if (!empty($_GET['username'])) $username = $_GET['username'];
-$cid = NULL;       if (!empty($_GET['cid'])) $cid = $_GET['cid'];
-
-if ($loggedin) {
-  if ($member->isAdmin()) {
-    $site = "";
-    $username = $member->id;
-  }
-} else if (md5($site . $username) != $cid) {
-  redirect($cfg['Site']['URL']);
-  exit();
-}
-
 function inputBox($username, $id, $value, $size=20, $validate=false) {
   $fid = $username . "_" . $id;
   $rval = "<input id=\"$fid\" name=\"$fid\" value=\"$value\" size=\"$size\" ";
@@ -166,6 +217,8 @@ function inputBox($username, $id, $value, $size=20, $validate=false) {
 function jobTitleCombo($username, $id, $job_title) {
   $fid = $username . "_" . $id;
   $html = "<select id=\"$fid\" name=\"$fid\">";
+
+  $html .= "<option " . (empty($job_title) ? "SELECTED " : "") . "value=\"<NONE>\">&lt;Select Job Title&gt;</option>";
 
   $ssql =
     "SELECT job_title ".
@@ -207,21 +260,24 @@ function siteCombo($username, $id, $site, $addUnknown) {
   return $html;
 }
 
-?>
-<h1>Identification of Users for Site <?=$site?> by <?=$username?></h1>
-
-<?
 if (empty($site)) {
 ?>
-<h2>Users normally working in the office (including Apps support) or Third-Party</h2>
+<h2>Users normally working in the office (including Apps support), Third-Party or Dales Base</h2>
 <?
 } else {
 ?>
-<h2>Users normally on an offshore rota on <?=$site?></h2>
+<h2>Users normally on an offshore rota on <?=$_SESSION['siteshortname']?></h2>
+<p>We believe the users below are normally on an offshore rota on <?=$_SESSION['siteshortname']?> (based on the workorders they have created/edited).
+<ul>
+<li>If the user is not associated with <?=$_SESSION['siteshortname']?>, please click <b>Change Site</b>, select the correct site (or UNKNOWN).  Click Change Site again
+to remove the user from the list.</li>
+<li>Click <b>Confirm User</b> to confirm that the user is on <?=$_SESSION['siteshortname']?>, and then enter the GENERIC email address for the role and select
+the user's job title from the list.  If there is not an exact match for job title, type some brief job title comments.  Click Confirm User again to confirm
+and remove from the list.
+</ul></p>
 <?
 }
 ?>
-<p>Please check and update all details</p>
 
 <table border="1" cellpadding="2" cellspacing="0">
   <tr>
@@ -237,7 +293,7 @@ if (empty($site)) {
     "select username, first_name, last_name, work_email, company, job_title, job_title_comments, site ".
     "from usr ".
     "where status='Init' ".
-    (empty($site) ? "and site in ('00','80','81','83') ": "and site='$site' ").
+    (empty($site) ? "and site in ('00','80','81','83','84') ": "and site='$site' ").
     "and site <> '82' ".
     "order by job_title, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());
@@ -288,8 +344,14 @@ if (empty($site)) {
 </table>
 
 <h2>Users whose site is not known</h2>
-<p>Please mark those who are normally on an offshore rota on <?=$site?></p>
-
+<?
+if (!empty($site)) {
+?>
+<p>Please click <b>Change Site</b> for those who are normally on an offshore rota on <?=$_SESSION['siteshortname']?>.
+<br/>Or, if you know they are associated with another site, please select that site from the dropdown and click Change Site.</p>
+<?
+}
+?>
 <table border="1" cellpadding="0" cellspacing="0">
   <tr>
     <th>Username</th>
@@ -304,7 +366,8 @@ if (empty($site)) {
     "select username, first_name, last_name, site ".
     "from usr ".
     "where status='Init' ".
-    (empty($site) ? "and (site IS NULL OR site NOT IN ('00','80','81','83')) ": "and site IS NULL ").
+    //(empty($site) ? "and (site IS NULL OR site NOT IN ('00','80','81','83','84')) ": "and site IS NULL ").
+	"and site IS NULL ".
     "order by site, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());
 
@@ -315,8 +378,8 @@ if (empty($site)) {
       <td><?=nvhtml($row[0])?></td>
       <td><?=nvhtml($row[1])?></td>
       <td><?=nvhtml($row[2])?></td>
-      <td id="<?=$rowid?>"><?=siteCombo($row[0], "unknown_site", $row[3], false)?></td>
-      <td><input type="button" onclick="confirm_site('<?=$row[0]?>','<?=$rowid?>','<?=$row[0]?>_unknown_site',this);return false;" value="Change Site"></td>
+      <td id="<?=$rowid?>"><?=siteCombo($row[0], "unknown_site", $site, false)?></td>
+      <td><input type="button" class="button" onclick="confirm_site('<?=$row[0]?>','<?=$rowid?>','<?=$row[0]?>_unknown_site',this);return false;" value="Change Site"></td>
     </tr>
 <?
   }

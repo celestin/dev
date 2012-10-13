@@ -9,10 +9,16 @@
  * Who  When         Why
  * CAM  27-Dec-2005  File created.
  * CAM  05-Sep-2012  11128 : User saving and editing.
+ * CAM  13-Oct-2012  11128 : Changed colours to suit Talisman.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
   BACKGROUND-COLOR: #D8D8D8;
+}
+
+#logo {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 p, table, td, input, select, textarea {
@@ -23,13 +29,13 @@ p, table, td, input, select, textarea {
 }
 
 th {
-  BACKGROUND-COLOR: #CCDDFF;
-  COLOR: #000000;
+  BACKGROUND-COLOR: #67ed93;
+  COLOR: #003535;
   FONT-WEIGHT: bold;
 }
 
 .fld {
-  COLOR: #003B9C;
+  COLOR: #2ba366;
   FONT-WEIGHT: bold;
 }
 
@@ -92,25 +98,24 @@ td.sub {
 }
 
 .thinBox {
-  BACKGROUND-COLOR: #003B9C;
-  BORDER-BOTTOM: #497FB1 2px solid;
+  BACKGROUND-COLOR: #2ba366;
 }
 
 .topnav {
-  BACKGROUND-COLOR: #002054;
+  BACKGROUND-COLOR: #003535;
   COLOR: #497FB1;
   FONT-WEIGHT: bold;
 }
 
 .sep {
-  COLOR: #497FB1;
+  COLOR: #2ba366;
   FONT-WEIGHT: bold;
   PADDING-LEFT:   4px;
   PADDING-RIGHT:  4px;
 }
 
 .title {
-  COLOR: #CCCCFF;
+  COLOR: white;
 }
 
 .cpyrght {
@@ -133,31 +138,31 @@ td.cat {
 
 A.nav,A.nav:visited,A.nav:active,A.nav:link,A.nav:visited {
   FONT-FAMILY: Tahoma, Arial, Helvetica;
-  COLOR: #FFFFFF;
+  COLOR: white;
   FONT-SIZE: 8pt;
   TEXT-DECORATION: none;
   FONT-WEIGHT: bold;
 }
 A.nav:hover {
-  COLOR: #92B5F0;
+  COLOR: #22d579;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }
 
 A,A:visited,A:active,A:link,A:visited {
-  COLOR: #002054;
+  COLOR: #003535;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: none;
 }
 A:hover {
-  COLOR: #497FB1;
+  COLOR: #2ba366;
   FONT-WEIGHT: bold;
   TEXT-DECORATION: underline;
 }
 
 
 input.button {
-  BACKGROUND-COLOR: #003B9C;
+  BACKGROUND-COLOR: #2ba366;
   BORDER:           #497FB1 1px solid;
   COLOR:            #FFFFFF;
   FONT-SIZE: 8pt;

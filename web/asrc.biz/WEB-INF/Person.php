@@ -13,6 +13,7 @@
  * CAM  22-Jun-2007  10130 : Added getClass.
  * CAM  23-Oct-2007  10182 : Added getBookingsDescription.
  * CAM  15-Nov-2007  10156 : Added User Privs - C01:Coach and E01:EventEditor.
+ * CAM  13-Oct-2012  11135 : Removed erroring use of get_class.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -296,7 +297,7 @@ class Person extends Tuple {
   function getClass() {
     $mtype = "";
 
-    if (get_class($this->membertype) !== FALSE) {
+    if (gettype($this->membertype) == "object") {
       $mtype = $this->membertype->getID();
     } else {
       $mtype = $this->membertype;

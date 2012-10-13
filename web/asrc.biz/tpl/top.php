@@ -18,11 +18,12 @@
  * CAM  25-Nov-2008  10314 : New colours/layout in line with new asrc.co.uk.
  * CAM  25-Nov-2008  10314 : CSS file renamed to ensure proper reload.
  * CAM  27-Feb-2010  10577 : Added new sponsorship logos.
+ * CAM  13-Oct-2012  11135 : Removed session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = session_is_registered('memberid');
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = isset($_SESSION['memberid']);
 
 global $events_read;
 if ($events_read) {

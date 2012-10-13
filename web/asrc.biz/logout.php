@@ -13,6 +13,7 @@
  * CAM  19-Mar-2004  File created.
  * CAM  25-Apr-2006  14 : Show Courts View on logout.
  * CAM  29-Jul-2006  10021 : Use Msg::question for logout confirm.
+ * CAM  13-Oct-2012  11135 : Removed session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Log out";
@@ -28,7 +29,7 @@ if(!isset($_REQUEST['logmeout'])){
   Msg::question("Are you sure you want to log out");
   echo "<center><a href=logout.php?logmeout>Yes</a> | <a href=index.php>No</a>";
 } else {
-  if(!session_is_registered('memberid')){
+  if(!isset($_SESSION['memberid'])){
     Msg::error("You are now logged out!");
 ?>
 <script language="javascript">top.location.href="courtsview.php";</script>

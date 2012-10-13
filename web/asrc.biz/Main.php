@@ -14,6 +14,7 @@
  * CAM  08-Feb-2007  10097 : Include config.
  * CAM  25-Jun-2007  10133 : Changed includes to be consistent with other systems.
  * CAM  12-Aug-2007  10157 : Added Flash and Redirect methods.
+ * CAM  13-Oct-2012  11135 : Removed session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once dirname(__FILE__).'/config.php';
@@ -28,7 +29,7 @@ function storeFlash($flash) {
 }
 
 function showFlash() {
-  if (session_is_registered('flash')) {
+  if (isset($_SESSION['flash'])) {
     $flash = $_SESSION['flash'];
     if (!empty($flash)) Msg::statement($flash);
     session_unregister('flash');

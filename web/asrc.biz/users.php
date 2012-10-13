@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  29-Jul-2006  10021 : File added.
  * CAM  22-Jun-2007  10132 : Removed session_register.
+ * CAM  13-Oct-2012  11135 : Removed session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "User Administration";
@@ -33,7 +34,7 @@ $ftr = new Filter($filter_id, $filter_parent, $filter_fname, $filter_lname, $fil
 if ($ftr->isFiltered()) {
   $_SESSION['filter'] = $ftr;
 } else {
-  if (session_is_registered('filter')) $ftr = $_SESSION['filter'];
+  if (isset($_SESSION['filter'])) $ftr = $_SESSION['filter'];
 }
 
 ?>

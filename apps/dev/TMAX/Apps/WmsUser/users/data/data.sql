@@ -15,7 +15,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 13, 2012 at 05:57 PM
+-- Generation Time: Oct 14, 2012 at 01:08 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -249,8 +249,9 @@ CREATE TABLE member (
 -- Dumping data for table member
 --
 
-INSERT INTO member VALUES ('CMCKAY', 'Craig', 'McKay', 'cmckay@talisman-energy.com', '1eebdddd1f688244a5861695cb7c3eba', NULL, 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2012-10-13 17:55:21');
+INSERT INTO member VALUES ('CMCKAY', 'Craig', 'McKay', 'cmckay@talisman-energy.com', '1eebdddd1f688244a5861695cb7c3eba', NULL, 1, 'A', '0', 1, '1975-09-13', '0000-00-00 00:00:00', '2012-10-14 13:04:50');
 INSERT INTO member VALUES ('CLAMTL', 'Claymore', 'MTL', 'clamtl@talisman-energy.com', '', '2', 0, 'S', '', 2, '0000-00-00', '0000-00-00 00:00:00', '2012-10-09 18:10:04');
+INSERT INTO member VALUES ('VBAIKIE', 'Vanessa', 'Baikie', 'VBAIKIE@talisman-energy.com', '', '10', 0, 'S', '', 2, '0000-00-00', '0000-00-00 00:00:00', '2012-10-14 12:15:42');
 
 -- --------------------------------------------------------
 
@@ -377,7 +378,7 @@ INSERT INTO usr VALUES ('CAMPBELLN', 'Init', NULL, 'Niall', 'Campbell', 'TECHNIC
 INSERT INTO usr VALUES ('CARGO1', 'System', '82', NULL, NULL, 'CARGO1', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('CARGO2', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('CARLAS', 'Init', '1', 'Carla', 'Samuel', 'SUPERUSER', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('CARROLLC', 'Init', NULL, 'Chris', 'Carroll', 'FLO_SUPV', 'carrollc@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('CARROLLC', 'Init', '10', 'Chris', 'Carroll', 'FLO_SUPV', 'carrollc@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('CBALDOCK', 'Init', '12', 'Chris', 'Baldock', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'CONTROL ROOM OPERATOR', NULL, 5421, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('CBARBER', 'Init', '15', 'Carl', 'Barber', 'SUPERVISOR', 'MONMECH@talisman-energy.com', NULL, 'WGPSN', 'MECH TECH', NULL, 5901, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('CBARNSLEY', 'Init', '16', 'Chris', 'Barnsley', 'SUPERVISOR', 'AUKPRODSUPV@talisman-energy.com', NULL, 'Talisman Energy', 'PROD SUPERVISOR', NULL, 811265, 'Y', NULL, NULL, NULL);
@@ -489,7 +490,7 @@ INSERT INTO usr VALUES ('DBENDREY', 'Init', NULL, 'Dave', 'Bendrey', 'ENQUIRY', 
 INSERT INTO usr VALUES ('DBENNETT', 'Init', '14', 'David', 'Bennett', 'TECHNICIAN', 'DBENNETT@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DBOOTH', 'Init', '2', 'Daniel', 'Booth', 'MATSMAN', 'DBOOTH@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DBRENNAN', 'Init', '2', 'Dean', 'Brennan', 'TECHNICIAN', 'DBRENNAN@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('DBRUCE', 'Init', NULL, 'David', 'Bruce', 'FLO_SUPER', 'DBruce@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('DBRUCE', 'Init', '10', 'David', 'Bruce', 'FLO_SUPER', 'DBruce@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DBUDGE', 'Init', '12', 'Daniel', 'Budge', 'SUPERVISOR', 'CLYOTL@talisman-energy.com', NULL, 'Talisman Energy', 'OTL', NULL, 143304, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DCHRISTON', 'Init', '1', 'Dave', 'Christon', 'SUPERVISOR', 'DCHRISTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DCID', 'Init', '11', 'Dougie', 'Cid', 'SUPERVISOR', 'BUCMECHSUPV@talisman-energy.com', NULL, 'Talisman Energy', 'MECH SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
@@ -513,7 +514,7 @@ INSERT INTO usr VALUES ('DGORDON', 'Init', '1', 'Dave', 'Gordon', 'MATSMAN', NUL
 INSERT INTO usr VALUES ('DGRANT', 'Init', '1', 'Dereck', 'Grant', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DGRAVIER', 'Init', '5', 'Daniel', 'Gravier', 'TECHNICIAN', 'TAROPSCO@talisman-energy.com', NULL, 'Talisman Energy', 'OPERATIONS CO-ORDINATOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DGREIG', 'Init', NULL, 'Dawn', 'Greig', 'BUC_PURCH', 'buchanad@talisman.co.uk', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('DGUTHRIE', 'Init', NULL, 'David', 'Guthrie', 'FLO_READONLY', 'dguthrie@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('DGUTHRIE', 'Init', '10', 'David', 'Guthrie', 'FLO_READONLY', 'dguthrie@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DGUYAN', 'Init', '11', 'Derek', 'Guyan', 'SUPERVISOR', 'BUCELECSUPV@talisman-energy.com', NULL, 'Talisman Energy', 'ELEC SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DHARRIS', 'Confirmed', '00', 'David', 'Harris', 'ENQUIRY', 'DHARRIS@talisman-energy.com', NULL, NULL, 'ENGINEER', 'Spares Analyst', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-05 18:15:24');
 INSERT INTO usr VALUES ('DHENNESSEY', 'Init', '15', 'David', 'Hennessey', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'PLATER NON-WORKING FOREMAN', NULL, 52291, 'Y', NULL, NULL, NULL);
@@ -605,7 +606,7 @@ INSERT INTO usr VALUES ('DWHITE', 'Init', NULL, 'David', 'White', 'TECHNICIAN', 
 INSERT INTO usr VALUES ('DWHYTE', 'Init', '5', 'Dave', 'Whyte', 'SUPERVISOR', 'DWhyte@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DWILLIAMS', 'Init', '2', 'Denis', 'Williams', 'TECHNICIAN', 'DWILLIAMS2@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('DWILSON', 'Init', '1', 'Drew', 'Wilson', 'OIE', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('DWOOD', 'Init', NULL, 'David', 'Wood', 'FLO_READONLY', 'DWOOD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('DWOOD', 'Init', '10', 'David', 'Wood', 'FLO_READONLY', 'DWOOD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('EBISSET', 'Init', '12', 'Euan', 'Bisset', 'DRILLING', NULL, NULL, 'Odfjell', 'MAINTENANCE', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('EBUNNETT', 'Init', '17', 'Eddie', 'Bunnett', 'TECHNICIAN', NULL, NULL, 'SGS', 'METERING ENGINEER', 'Onshore Metering Support Eng', NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ECROCKET', 'Init', '2', 'Eddie', 'Crocket', 'TECHNICIAN', 'ECROCKET@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -626,7 +627,7 @@ INSERT INTO usr VALUES ('EMURDOCH', 'Init', NULL, 'Euan', 'Murdoch', 'ENQUIRY', 
 INSERT INTO usr VALUES ('ENQUIRY', 'System', '82', NULL, NULL, 'ENQUIRY', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('EOBROIN', 'Confirmed', '00', 'Emer', 'O''Broin', 'SUPERUSER', 'EOBROIN@talisman-energy.com', NULL, 'WGPSN', 'WMS TECHNICIAN', 'Part-time', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-05 18:09:39');
 INSERT INTO usr VALUES ('EROBERTS', 'Init', NULL, 'Evan', 'Roberts', 'ENQUIRY', 'EROBERTS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('ESAUNDERS', 'Init', '1', 'Eric', 'Saunders', 'FLO_WHSE', 'esaunders@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('ESAUNDERS', 'Init', '10', 'Eric', 'Saunders', 'FLO_WHSE', 'esaunders@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ESPENCE', 'Init', '10', 'Eddie', 'Spence', 'FLO_TECHNICIAN', 'ESpence@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ESTARK', 'Init', '00', 'Elaine', 'Stark', 'MATACC', 'ESTARK@talisman-energy.com', NULL, 'Accenture', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ESUTHERLAND', 'Init', '10', 'Eoin', 'Sutherland', 'FLO_READONLY', 'ESUTHERLAND@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -645,7 +646,7 @@ INSERT INTO usr VALUES ('FBALSILLIE', 'Init', '1', 'Fraser', 'Balsillie', 'OIE',
 INSERT INTO usr VALUES ('FBOYNE', 'Init', NULL, 'Fiona', 'Boyne', 'MAC_PURCH', 'FBOYNE@talisman-energy.com', NULL, 'Orion', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FCOVENTRY', 'Init', NULL, 'Fiona', 'Coventry', 'CARGO1', 'FCOVENTRY@talisman-energy.com', NULL, 'ASCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FHAMILTON', 'Init', '1', 'Frank', 'Hamilton', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'HSE', NULL, 137192, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('FHOLVAST', 'Init', NULL, 'Fred', 'Holvast', 'FLO_READONLY', 'FHOLVAST@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('FHOLVAST', 'Init', '10', 'Fred', 'Holvast', 'FLO_READONLY', 'FHOLVAST@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FHUNTER', 'Init', NULL, 'Fiona', 'Hunter', 'TECHNICIAN', 'FHUNTER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FLETCHERR', 'Init', '17', 'Rob', 'Fletcher', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'ELEC TECH', NULL, 226510, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FLINT', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -730,7 +731,7 @@ INSERT INTO usr VALUES ('GMCINTYRE', 'Init', '10', 'Gareth', 'McIntyre', 'TECHNI
 INSERT INTO usr VALUES ('GMCROBBIE', 'Init', '1', 'Geoff', 'McRobbie', 'DRILLING', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GMORGAN', 'Init', '14', 'Gavin', 'Morgan', 'MATSMAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GMORRICE', 'Init', '1', 'Gavin', 'Morrice', 'SUPERVISOR', 'GMORRICE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('GMUSGRAVE', 'Init', NULL, NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('GMUSGRAVE', 'Init', '10', NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GOCCTEAM', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GOCPLANN', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GOCSUPP', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -765,7 +766,7 @@ INSERT INTO usr VALUES ('GRIFFITHSC', 'Init', NULL, 'Colin', 'Griffiths', 'ENQUI
 INSERT INTO usr VALUES ('GRMANO', 'Confirmed', '80', 'Gollahalli Ramachandrappa', 'Manohara', 'ENQUIRY', 'GRMANO@talisman-energy.com', NULL, 'Accenture', 'ACCENTURE SUPPORT', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-27 21:16:56');
 INSERT INTO usr VALUES ('GROBSON', 'Init', '11', 'Geoff', 'Robson', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GSANGSTER', 'Init', '1', 'George', 'Sangster', 'MATSMAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('GSAUNDERS', 'Init', NULL, NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('GSAUNDERS', 'Init', '10', NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GSCOLLAY', 'Init', '1', 'Gavin', 'Scollay', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'MECH SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GSHARP', 'Init', '1', 'George', 'Sharp', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'ELEC SUPERVISOR', NULL, 107713, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('GSINCLAIR', 'Init', '10', 'Gary', 'Sinclair', 'FLO_TECHNICIAN', NULL, NULL, NULL, 'INSPECTION TL', NULL, NULL, 'Y', NULL, NULL, NULL);
@@ -807,7 +808,7 @@ INSERT INTO usr VALUES ('HWEST', 'Init', 'BH', 'Helen', 'West', 'SUPERVISOR', NU
 INSERT INTO usr VALUES ('HYEAMAN', 'Init', '15', 'Hayley', 'Yeaman', 'TECHNICIAN', 'MONMECH@talisman-energy.com', NULL, 'WGPSN', 'MECH TECH', NULL, 735081, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IABEL', 'Init', NULL, 'Ian', 'Abel', 'TECHNICIAN', 'ian.abel@greenray.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IAINMCP', 'Init', NULL, 'Iain', 'McPherson', 'MATSMAN', 'IAINMCP@talisman-energy.com', NULL, 'Orion', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('IANCAMPBELL', 'Init', NULL, 'Ian', 'Campbell', 'FLO_READONLY', 'IANCAMPBELL@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('IANCAMPBELL', 'Init', '10', 'Ian', 'Campbell', 'FLO_READONLY', 'IANCAMPBELL@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IANH', 'Init', '12', 'Ian', 'Henderson', 'DRILLING', NULL, NULL, 'Odfjell', 'MAINTENANCE', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IANT', 'Init', 'BH', 'Ian', 'Tratthen', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'INST TECH', NULL, 240027, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IBANNISTER', 'Init', 'BH', 'Ian', 'Bannister', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
@@ -863,7 +864,7 @@ INSERT INTO usr VALUES ('JAMESR', 'Init', '2', 'James', 'Robertson', 'CARGO1', '
 INSERT INTO usr VALUES ('JAMESS', 'Init', '5', 'James', 'Smith', 'MATSMAN', NULL, NULL, 'Sparrows', 'CRANE OP', NULL, 220748, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JAMIESONM', 'Confirmed', '00', 'Murray', 'Jamieson', 'SUPERUSER', 'JAMIESONM@talisman-energy.com', NULL, 'WGPSN', 'WMS TECHNICIAN', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-05 18:52:46');
 INSERT INTO usr VALUES ('JASPERI', 'Init', '16', 'Ian', 'Jasper', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'CRO', NULL, 785698, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('JBAILLIE', 'Init', NULL, 'James', 'Baillie', 'FLO_READONLY', 'JBAILLIE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('JBAILLIE', 'Init', '10', 'James', 'Baillie', 'FLO_READONLY', 'JBAILLIE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JBAIRSTOW', 'Init', NULL, 'John', 'Bairstow', 'ENQUIRY', 'jbairstow@talisman-energy.com', NULL, 'Talisman Energy', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JBAKER', 'Init', '15', 'James', 'Baker', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JBANKS', 'Init', NULL, 'Jim', 'Banks', 'SUPERVISOR', 'JBANKS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -984,7 +985,7 @@ INSERT INTO usr VALUES ('JWALLACE', 'Init', '2', 'Jock', 'Wallace', 'SUPERVISOR'
 INSERT INTO usr VALUES ('JWARD', 'Init', '3', NULL, NULL, 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JWATT', 'Init', '11', 'James', 'Watt', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JWILLIAMSON', 'Init', NULL, 'James', 'Williamson', 'PURCHTLM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('JWWOOD', 'Init', NULL, 'John White', 'Wood', 'FLO_TECHNICIAN', 'JWWOOD@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('JWWOOD', 'Init', '10', 'John White', 'Wood', 'FLO_TECHNICIAN', 'JWWOOD@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JZROMBKOWS', 'Init', NULL, 'Jakub', 'Zrombkowski', 'TECHNICIAN', 'JZROMBKOWS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KALZAWAI', 'Init', NULL, 'Khaled', 'Alzawai', 'ENQUIRY', 'khaled.alzawai@cangroup.net', NULL, 'CAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KBARROW', 'Init', '5', 'Kevin', 'Barrow', 'SUPERVISOR', 'KBARROW@talisman-energy.com', NULL, 'Genesis', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1008,7 +1009,7 @@ INSERT INTO usr VALUES ('KENNYSCOTT', 'Init', '1', 'Kenny', 'Scott', 'SUPERVISOR
 INSERT INTO usr VALUES ('KERRA', 'Init', NULL, 'Anthony', 'Kerr', 'TECHNICIAN', 'anthony.kerr@sparrowsoffshore.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KERRJ', 'Init', 'BH', 'Jim', 'Kerr', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'MARINE SUPERVISOR', NULL, 165301, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KEVINF', 'Init', '14', 'Kevin', 'Finnegan', 'TECHNICIAN', 'KEVINF@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('KEVINMACLEOD', 'Init', NULL, 'Kevin', 'MacLeod', 'FLO_READONLY', 'KEVINMACLEOD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('KEVINMACLEOD', 'Init', '10', 'Kevin', 'MacLeod', 'FLO_READONLY', 'KEVINMACLEOD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KGILBERT', 'Init', '10', 'Kirsty', 'Gilbert', 'FLO_SUPER', NULL, NULL, NULL, 'TECHNICAL ASSISTANT', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('KGRIEVE', 'Confirmed', '00', 'Karl', 'Grieve', 'SUPERVISOR', 'kgrieve@talisman-energy.com', NULL, 'Talisman Energy', 'ROTATING EQUIPMENT ENGINEER', 'Turbine RE Engineer', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-06 07:38:26');
 INSERT INTO usr VALUES ('KHOPKIRK', 'Init', 'BH', 'Kenny', 'Hopkirk', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'MECH TECH', NULL, 774664, 'Y', NULL, NULL, NULL);
@@ -1258,7 +1259,7 @@ INSERT INTO usr VALUES ('NFENTON', 'Init', '16', 'Nick', 'Fenton', 'OIE', NULL, 
 INSERT INTO usr VALUES ('NFULLER', 'Init', '00', 'Niall', 'Fuller', 'MAC_PURCH', 'nfuller@talisman-energy.com', NULL, 'WGPSN', 'MAINTENANCE', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NGALLOWAY', 'Init', '17', 'Neil', 'Galloway', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'MECH SUPERVISOR', 'Ops Co', 202837, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NGIBSON', 'Confirmed', '00', 'Neil', 'Gibson', 'MAC_INV', 'NGIBSON@talisman-energy.com', NULL, 'Roevin', 'BUYER', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-05 18:30:15');
-INSERT INTO usr VALUES ('NGORDON', 'Init', NULL, 'Neil', 'Gordon', 'FLO_READONLY', 'NGordon@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('NGORDON', 'Init', '10', 'Neil', 'Gordon', 'FLO_READONLY', 'NGordon@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NHEDLEY', 'Init', '11', 'Neil', 'Hedley', 'SUPERVISOR', 'bucprodsupv@talisman-energy.com', NULL, 'Talisman Energy', 'PROD SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NHUTCHINSON', 'Init', '2', 'Neil', 'Hutchinson', 'TECHNICIAN', 'NHUTCHINSON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NHUTCHISON', 'Init', '1', 'Neil', 'Hutchison', 'CARGO1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1273,7 +1274,7 @@ INSERT INTO usr VALUES ('NMACKIN', 'Init', 'BH', 'Neil', 'Mackin', 'SUPERVISOR',
 INSERT INTO usr VALUES ('NMANNING', 'Init', '14', 'Nick', 'Manning', 'TECHNICIAN', 'ARBINST@talisman-energy.com', NULL, 'WGPSN', 'INST TECH', NULL, 884509, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NMCMAHON', 'Confirmed', '81', 'Nikolas', 'McMahon', 'ENQUIRY', 'nik.mcmahon@imorph.co.uk', NULL, NULL, 'TRAINER', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-05 18:03:51');
 INSERT INTO usr VALUES ('NMORRISON', 'Init', NULL, 'Nicola', 'Morrison', 'BUC_PURCH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('NRODDA', 'Init', '10', 'Neil', 'Rodda', 'SUPERVISOR', 'NRODDA@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('NRODDA', 'Init', '1', 'Neil', 'Rodda', 'SUPERVISOR', 'NRODDA@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NROSS', 'Init', '1', 'Nick', 'Ross', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'HVAC TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NRUNCIE', 'Init', '15', 'Neil', 'Runcie', 'TECHNICIAN', 'MONPRDOP@talisman-energy.com', NULL, 'WGPSN', 'PROD OPERATOR', NULL, 104650, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('NSIMPSON', 'Init', '1', 'Nicol', 'Simpson', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'OPS TECH', NULL, 109304, 'Y', NULL, NULL, NULL);
@@ -1332,7 +1333,7 @@ INSERT INTO usr VALUES ('PHUTCHINSON', 'Init', '2', 'Peter', 'Hutchinson', 'TECH
 INSERT INTO usr VALUES ('PIVOT', 'System', '82', NULL, NULL, 'EXCEL', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PJAFFRAY', 'Init', '12', 'Paul', 'Jaffray', 'SUPERVISOR', 'PJAFFRAY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PKEITH', 'Init', '84', 'Paul', 'Keith', 'CARGO1', 'PKEITH@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('PKEMP', 'Init', NULL, 'Philip', 'Kemp', 'FLO_READONLY', 'PKEMP@talisman-energy.com', NULL, 'Aker Solutions', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('PKEMP', 'Init', '10', 'Philip', 'Kemp', 'FLO_READONLY', 'PKEMP@talisman-energy.com', NULL, 'Aker Solutions', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PKENNEDY', 'Init', '17', 'Paul', 'Kennedy', 'MATSMAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PKIDD', 'Confirmed', '00', 'Peter', 'Kidd', 'MAC_INV', 'PKIDD@talisman-energy.com', NULL, NULL, 'MAINTENANCE', 'Inventory', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-27 21:19:36');
 INSERT INTO usr VALUES ('PLAWRENCE', 'Init', '1', 'Peter', 'Lawrence', 'TECHNICIAN', 'plawrence@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1373,7 +1374,7 @@ INSERT INTO usr VALUES ('RBAIGRIE', 'Init', NULL, 'Robert', 'Baigrie', 'CARGO1',
 INSERT INTO usr VALUES ('RBEVAN', 'Init', '1', 'Richard', 'Bevan', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'OTL', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RBOWEN', 'Init', '1', 'Richard', 'Bowen', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'TELECOMMS TECH', NULL, 153247, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RBOWES', 'Init', '2', 'Richard', 'Bowes', 'TECHNICIAN', NULL, NULL, 'WGPSN', NULL, NULL, 11579, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('RCALLAGHER', 'Init', NULL, 'Roy', 'Callagher', 'FLO_READONLY', 'RCALLAGHER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('RCALLAGHER', 'Init', '10', 'Roy', 'Callagher', 'FLO_READONLY', 'RCALLAGHER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RCAMPBELL', 'Init', '15', 'Rick', 'Campbell', 'SUPERVISOR', 'MONTELEC@talisman-energy.com', NULL, 'WGPSN', 'TELECOMMS TECH', NULL, 229373, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RCHALMERS', 'Init', NULL, 'Ryan', 'Chalmers', 'TECHNICIAN', 'RCHALMERS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RCHARLTON', 'Init', '12', 'Ronnie', 'Charlton', 'DRILLING', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
@@ -1420,7 +1421,7 @@ INSERT INTO usr VALUES ('RMCCLUNG', 'Init', '1', 'Robert', 'McClung', 'SUPERVISO
 INSERT INTO usr VALUES ('RMEECHAN', 'Init', '2', 'R', 'Meechan', 'TECHNICIAN', 'CLAELECTECH@talisman-energy.com', NULL, 'WGPSN', 'ELEC TECH', NULL, 81869, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RMERRIFIELD', 'Init', '2', 'Richard', 'Merrifield', 'DRILLING', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RMISHRA', 'Confirmed', '80', 'Rachita', 'Mishra', 'ACCENTURE', 'RMISHRA@talisman-energy.com', NULL, NULL, 'ACCENTURE SUPPORT', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-27 21:20:14');
-INSERT INTO usr VALUES ('RMOWAT', 'Init', NULL, 'Robbie', 'Mowat', 'FLO_TECHNICIAN', 'rmowat@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('RMOWAT', 'Init', '10', 'Robbie', 'Mowat', 'FLO_TECHNICIAN', 'rmowat@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RMURRAY', 'Init', '12', 'Raymond', 'Murray', 'DRILLING', NULL, NULL, 'Odfjell', 'DRILLING', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RNIVEN', 'Init', '2', 'Robert', 'Niven', 'TECHNICIAN', 'CLAELECTECH@talisman-energy.com', NULL, 'WGPSN', 'ELEC TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RNOBLE', 'Init', '17', 'Richard', 'Noble', 'DRILLING', NULL, NULL, 'Sodexo', 'MOTORMAN', NULL, 918811, 'Y', NULL, NULL, NULL);
@@ -1441,20 +1442,20 @@ INSERT INTO usr VALUES ('RPOWELL', 'Init', '5', 'Ross', 'Powell', 'TECHNICIAN', 
 INSERT INTO usr VALUES ('RRAGHUNATH', 'Init', NULL, 'Raghunath', 'Reddy', 'ENQUIRY', 'RRAGHUNATH@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RRATHY', 'Init', NULL, 'Raj', 'Rathy', 'ENQUIRY', 'RRATHY@talisman-energy.com', NULL, 'WGPSN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RRAYNER', 'Init', NULL, 'Rodney', 'Rayner', 'SUPERVISOR', 'RRAYNER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('RROBSON', 'Init', NULL, 'Roger', 'Robson', 'FLO_READONLY', 'RRobson@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('RROBSON', 'Init', '10', 'Roger', 'Robson', 'FLO_READONLY', 'RRobson@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RSHIRANDAM', 'Init', NULL, 'Roozbeh', 'Shirandami', 'ENQUIRY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RSIMMONS', 'Init', '2', 'Robert', 'Simmons', 'TECHNICIAN', 'CLAINSTECH@talisman-energy.com', NULL, 'WGPSN', 'INST TECH', NULL, 1090074, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RSIVARAJAN', 'Confirmed', '00', 'Ray', 'Sivarajan', 'TECHNICIAN', 'RSIVARAJAN@talisman-energy.com', NULL, 'Talisman Energy', 'INSPECTION ENG', 'Pipelines Engineer (CAN)', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-27 21:36:10');
 INSERT INTO usr VALUES ('RSTEPHEN', 'Init', '15', 'Robert', 'Stephen', 'TECHNICIAN', 'AUKMEDIC@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RSTRINGFELLOW', 'Init', '16', 'Robin', 'Stringfellow', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RSUTHERLAND', 'Init', '2', 'Rab', 'Sutherland', 'SUPERVISOR', NULL, NULL, 'RBG', NULL, NULL, 116620, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('RTEMPLE', 'Init', NULL, 'Roy', 'Temple', 'FLO_READONLY', 'RTEMPLE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('RTEMPLE', 'Init', '10', 'Roy', 'Temple', 'FLO_READONLY', 'RTEMPLE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RTURNER', 'Init', '17', 'Richard', 'Turner', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'TELECOMMS TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RUSSELLA', 'Init', '15', 'Alec', 'Russell', 'TECHNICIAN', NULL, NULL, 'CAN', NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RUSSELLC', 'Init', '12', 'Colin', 'Russell', 'DRILLING', NULL, NULL, 'Odfjell', 'DRILLING', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RVALENTINE', 'Init', '15', 'Robert', 'Valentine', 'SUPERVISOR', 'MONINST@talisman-energy.com', NULL, 'WGPSN', 'INST TECH', NULL, 243880, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RWADSWORTH', 'Init', '17', 'Ryan', 'Wadsworth', 'SUPERVISOR', NULL, NULL, 'WGPSN', NULL, NULL, 231544, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('RWESTON', 'Init', NULL, NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('RWESTON', 'Init', '10', NULL, NULL, 'FLO_TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RWILKIESON', 'Init', '11', 'Richard', 'Wilkieson', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RWOODS', 'Init', '10', 'Raymond', 'Woods', 'TECHNICIAN', 'RWOODS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('RYANMORRIS', 'Init', '1', 'Ryan', 'Morrison', 'CARGO1', 'RYANMORRIS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1484,12 +1485,12 @@ INSERT INTO usr VALUES ('SCHEWASUWA', 'Init', NULL, 'Saksith', 'Chewasuwan', 'EN
 INSERT INTO usr VALUES ('SCHEYNE', 'Init', 'BH', 'Stuart', 'Cheyne', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOLLIER', 'Init', NULL, 'Stephen', 'Collier', 'ENQUIRY', 'Stephen.Collier@woodgroup.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOLSTON', 'Init', '2', 'Scott', 'Colston', 'TECHNICIAN', 'SCOLSTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SCONWAY', 'Init', NULL, 'Steven', 'Conway', 'FLO_READONLY', 'SCONWAY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SCONWAY', 'Init', '10', 'Steven', 'Conway', 'FLO_READONLY', 'SCONWAY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOTTCAMPB', 'Deleted', NULL, 'Scott', 'Campbell', NULL, 'SCOTTCAMPB@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOTTF', 'Init', NULL, 'Scott', 'Fraser', 'ACCENTURE', 'SCOTTF@talisman-energy.com', NULL, 'Orion', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOTTI', 'Init', 'BH', 'Iain', 'Scott', 'SUPERVISOR', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCOTTREID', 'Init', '1', 'Scott', 'Reid', 'TECHNICIAN', 'SCOTTREID@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SCOUSER', 'Init', NULL, 'Stuart', 'Couser', 'FLO_READONLY', 'SCOUSER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SCOUSER', 'Init', '10', 'Stuart', 'Couser', 'FLO_READONLY', 'SCOUSER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCURRIE', 'Init', '1', 'Steven', 'Currie', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'ELEC TECH', NULL, 27277, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SDAVIDSON', 'Init', '2', 'Stewart', 'Davidson', 'SUPERVISOR', 'CLASAFSUP@talisman-energy.com', NULL, 'Talisman Energy', 'HSE ADVISOR', NULL, 28316, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SDAVIDSON2', 'Init', NULL, 'Steven', 'Davidson', 'ADVANCED', 'steven.davidson@woodgroup.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1502,7 +1503,7 @@ INSERT INTO usr VALUES ('SEGDELL', 'Init', '14', 'Sean', 'Egdell', 'TECHNICIAN',
 INSERT INTO usr VALUES ('SFORDYCE', 'Init', NULL, '-', 'Fordyce', 'ENQUIRY', 'SFORDYCE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SGENT', 'Init', '15', 'Simon', 'Gent', 'TECHNICIAN', 'MONINST@talisman-energy.com', NULL, 'WGPSN', 'INST TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SGODDARD', 'Init', '3', 'Steven', 'Goddard', 'DRILLING', NULL, NULL, 'Odfjell', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SGRANT', 'Init', NULL, NULL, NULL, 'FLO_SUPV', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SGRANT', 'Init', '10', NULL, NULL, 'FLO_SUPV', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SHARRY', 'Init', 'BH', 'Steven', 'Harry', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SHARVEY', 'Init', '10', 'Sarah', 'Harvey', 'FLO_SUPV', 'SHARVEY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SHAUNS', 'Deleted', NULL, 'Shaun', 'Simpson', NULL, 'SHAUNS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1512,7 +1513,7 @@ INSERT INTO usr VALUES ('SHERBERT', 'Init', 'BH', 'Stephen', 'Herbert', 'TECHNIC
 INSERT INTO usr VALUES ('SHERON', 'Init', 'BH', 'Stuart', 'Heron', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SHRINATHT', 'Confirmed', '80', 'Shrinath', 'Tammanashastri', 'ACCENTURE', 'shrinath.shastri@accenture.com', NULL, 'Accenture', 'ACCENTURE SUPPORT', NULL, NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-27 21:17:10');
 INSERT INTO usr VALUES ('SHUTTON', 'Init', NULL, 'Scott', 'Hutton', 'TECHNICIAN', 'SHUTTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SIGURDS', 'Init', NULL, 'Sigurd', 'Smith', 'FLO_TECHNICIAN', 'SIGURDS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SIGURDS', 'Init', '10', 'Sigurd', 'Smith', 'FLO_TECHNICIAN', 'SIGURDS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SILUORE', 'Init', NULL, 'Sylvestor', 'Iluore', 'TECHNICIAN', 'Sylvester.Iluore@cangroup.net', NULL, 'CAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SIMONS', 'Init', NULL, 'Simon', 'Scott', 'TECHNICIAN', 'simon.scott@ies-ltd.co.uk', NULL, 'VMOG', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SIMONT', 'Init', 'BH', 'Simon', 'Thompson', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'MARINE SUPERVISOR', NULL, 119381, 'Y', NULL, NULL, NULL);
@@ -1552,7 +1553,7 @@ INSERT INTO usr VALUES ('SMULPETRE', 'Init', '16', 'Stuart', 'Mulpetre', 'TECHNI
 INSERT INTO usr VALUES ('SNICOL', 'Init', '12', 'Sean', 'Nicol', 'DRILLING', NULL, NULL, 'Odfjell', 'DRILLING', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SNIXON', 'Init', '16', 'Scott', 'Nixon', 'TECHNICIAN', 'SNIXON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SNORRIE', 'Init', '2', 'Scott', 'Norrie', 'TECHNICIAN', 'CLAHVAC@talisman-energy.com', NULL, 'WGPSN', 'HVAC TECH', NULL, 250410, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SONEILL', 'Init', NULL, 'Steven', 'O''Neill', 'FLO_READONLY', 'SONEILL@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SONEILL', 'Init', '10', 'Steven', 'O''Neill', 'FLO_READONLY', 'SONEILL@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SPADALA', 'Init', '1', 'Sudhir', 'Padala', 'OIE', 'sudhir.padala@lr.org', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SPAREPART', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SPEACE', 'Init', '11', 'Stuart', 'Peace', 'TECHNICIAN', 'SPEACE@talisman-energy.com', NULL, 'Talisman Energy', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1570,7 +1571,7 @@ INSERT INTO usr VALUES ('SSIMON', 'Confirmed', '81', 'Simon', 'Smith', 'ENQUIRY'
 INSERT INTO usr VALUES ('SSINCLAIR', 'Init', '16', 'Scott', 'Sinclair', 'SUPERVISOR', 'SSINCLAIR@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SSLEIGH', 'Init', '2', 'Steve', 'Sleigh', 'SUPERVISOR', 'CLASAFSUP@talisman-energy.com', NULL, 'WGPSN', 'HSE ADVISOR', NULL, 196679, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SSMEETON', 'Init', '17', 'Sam', 'Smeeton', 'OIE', NULL, NULL, 'CAN', 'OIE', NULL, NULL, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SSPENCE', 'Init', NULL, 'Scott', 'Spence', 'FLO_TECHNICIAN', 'SSPENCE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SSPENCE', 'Init', '10', 'Scott', 'Spence', 'FLO_TECHNICIAN', 'SSPENCE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SSRINIVAS', 'Deleted', NULL, 'Shwetha', 'Srinivas', NULL, 'shwetha.srinivas@accenture-aberdeen.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SSTEPHENS', 'Init', '16', 'Sean', 'Stephens', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'OIL OPERATIOR', NULL, 114205, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SSTEVE', 'Init', 'BH', 'Steve', 'Stewart', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1714,12 +1715,12 @@ INSERT INTO usr VALUES ('WOOTTONM', 'Init', '2', 'Martin', 'Wootton', 'SUPERVISO
 INSERT INTO usr VALUES ('WRIGHTM', 'Init', '15', 'Mark', 'Wright', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('WRUSSELL', 'Init', NULL, 'Wilson', 'Russell', 'ENQUIRY', 'WRUSSELL@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('WSHEARSMITH', 'Init', '2', 'William', 'Shearsmith', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('WSINCLAIR', 'Init', NULL, 'Willie', 'Sinclair', 'FLO_SUPV', 'WSINCLAIR@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('WSINCLAIR', 'Init', '10', 'Willie', 'Sinclair', 'FLO_SUPV', 'WSINCLAIR@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('WTURNBULL', 'Init', '15', 'Wayne', 'Turnbull', 'TECHNICIAN', 'MONELEC@talisman-energy.com', NULL, 'WGPSN', 'ELEC TECH', NULL, 121944, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('WWEST', 'Init', '1', 'William', 'West', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'MECH TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('YOUNGM', 'Deleted', NULL, 'Michael', 'Young', NULL, 'YOUNGM@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('YOUNGN', 'Deleted', '5', 'Neil', 'Young', NULL, 'TAROTL@talisman-energy.com', NULL, 'Talisman Energy', 'OTL', NULL, NULL, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('BTAIT', 'Init', NULL, 'Brian', 'Tait', 'FLO_TECHNICIAN', 'btait@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('BTAIT', 'Init', '10', 'Brian', 'Tait', 'FLO_TECHNICIAN', 'btait@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BSUTHERLAND', 'Confirmed', '00', 'Blair', 'Sutherland', 'ENQUIRY', 'BSUTHERLAND@talisman-energy.com', NULL, NULL, 'APPS SUPPORT', 'IT Business Analyst - Maintenance', NULL, NULL, 'CMCKAY', 'Craig McKay', '2012-09-10 11:01:00');
 INSERT INTO usr VALUES ('BSTABLES', 'Init', '2', 'Brian', 'Stables', 'TECHNICIAN', 'BSTABLES@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BROWNJ', 'Init', '5', 'Jamie', 'Brown', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'INST TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
@@ -1735,7 +1736,7 @@ INSERT INTO usr VALUES ('BOYLEC', 'Init', 'BH', 'Craig', 'Boyle', 'TECHNICIAN', 
 INSERT INTO usr VALUES ('BPATTISON', 'Init', '15', 'Billy', 'Pattison', 'TECHNICIAN', 'MONMECH@talisman-energy.com', NULL, 'WGPSN', 'MECH TECH', NULL, 93901, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BOWMANJ', 'Init', '2', 'Jules', 'Bowman', 'SUPERVISOR', 'CLASAFSUP@talisman-energy.com', NULL, 'Talisman Energy', 'HSE ADVISOR', NULL, 11721, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BOWLERC', 'Init', NULL, 'Craig', 'Bowler', 'TECHNICIAN', 'BOWLERC@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('BONNERD', 'Init', NULL, 'Doug', 'Bonner', 'FLO_READONLY', 'BONNERD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('BONNERD', 'Init', '10', 'Doug', 'Bonner', 'FLO_READONLY', 'BONNERD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BO_RESTORE', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BO_REPOSITORY', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BO_MAXIMO', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1759,7 +1760,7 @@ INSERT INTO usr VALUES ('BHORNE', 'Init', '10', 'Bryon', 'Horne', 'FLO_SUPV', NU
 INSERT INTO usr VALUES ('BFYFE', 'Init', '1', 'Bradley', 'Fyfe', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BEVANS', 'Init', NULL, 'Bev', 'Evans', 'SUPERVISOR', 'BEVANS@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BENTAYLOR', 'Init', '1', 'Ben', 'Taylor', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'MECH TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('BELDER', 'Init', NULL, 'Bill', 'Elder', 'FLO_READONLY', 'BELDER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('BELDER', 'Init', '10', 'Bill', 'Elder', 'FLO_READONLY', 'BELDER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BELLJ', 'Init', '17', 'John', 'Bell', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'MECH SUPERVISOR', NULL, 869057, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BECKA', 'Init', NULL, 'Adam', 'Beck', 'TECHNICIAN', 'BECKA@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('BEATRI_LIVE', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1807,7 +1808,7 @@ INSERT INTO usr VALUES ('AROBERTSON', 'Init', NULL, 'Andrew', 'Robertson', 'ENQU
 INSERT INTO usr VALUES ('AROBBIE', 'Init', '17', 'Andy', 'Robbie', 'TECHNICIAN', NULL, NULL, 'WGPSN', 'INST TECH', NULL, 101629, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ARIDLEY', 'Init', '1', 'Andy', 'Ridley', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'OPS SUPERVISOR', NULL, 236193, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ARICHARDS', 'Init', '12', 'Alan', 'Richards', 'DRILLING', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('ARENDALL', 'Init', NULL, 'Andrew', 'Rendall', 'FLO_TECHNICIAN', 'arendall@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('ARENDALL', 'Init', '10', 'Andrew', 'Rendall', 'FLO_TECHNICIAN', 'arendall@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ARCHIVE', 'System', '82', NULL, NULL, NULL, NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ARBSKN', 'Init', '14', 'SKN', 'Electrical', 'TECHNICIAN', 'ARBSKN@talisman-energy.com', NULL, 'SKN', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ARAINFORTH', 'Init', '17', 'Andy', 'Rainforth', 'MATSMAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1892,7 +1893,7 @@ INSERT INTO usr VALUES ('AFARRUGIA', 'Init', '12', 'Andrew', 'Farrugia', 'TECHNI
 INSERT INTO usr VALUES ('AEVERETT', 'Init', '1', 'Alan', 'Everett', 'SUPERVISOR', NULL, NULL, 'WGPSN', 'INST TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('AESSIEN', 'Init', '83', 'Aniekan', 'Essien', 'ENQUIRY', 'Aniekan.Essien@gl-group.com', NULL, 'GL Noble Denton', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('AEATON', 'Init', '12', 'Alex', 'Eaton', 'SUPERVISOR', NULL, NULL, 'Talisman Energy', 'ELEC SUPERVISOR', NULL, 208774, 'Y', NULL, NULL, NULL);
-INSERT INTO usr VALUES ('AEASTON', 'Init', NULL, 'Alan', 'Easton', 'FLO_READONLY', 'AEASTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('AEASTON', 'Init', '10', 'Alan', 'Easton', 'FLO_READONLY', 'AEASTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ADVANCED', 'System', '82', NULL, NULL, 'ADVANCED', NULL, NULL, NULL, 'SYSTEM', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ADURWARD', 'Init', '11', 'Alan', 'Durward', 'BUC_MAN', NULL, NULL, 'Talisman Energy', 'MARINE SUPERVISOR', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ADUNCAN', 'Init', '2', 'Alan', 'Duncan', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1920,7 +1921,7 @@ INSERT INTO usr VALUES ('ABATHGATE', 'Init', '1', 'Andy', 'Bathgate', 'CARGO1', 
 INSERT INTO usr VALUES ('ABARTON', 'Init', '3', 'Alan', 'Barton', 'TECHNICIAN', 'ABARTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ABARNETT', 'Init', '17', 'Andrew', 'Barnett', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('ABARKER', 'Init', '11', 'Allister', 'Barker', 'SUPERVISOR', 'ABARKER@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('ABANKS', 'Init', '12', 'Alan', 'Banks', 'FLO_TECHNICIAN', 'abanks@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('ABANKS', 'Init', '10', 'Alan', 'Banks', 'FLO_TECHNICIAN', 'abanks@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('AAVEYARD', 'Init', '1', 'Andrew', 'Aveyard', 'SUPERVISOR', 'AAVEYARD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('AANKORNE', 'Init', '11', 'Alistair', 'Ankorne', 'SUPERVISOR', 'BUCMECHTECH@talisman-energy.com', NULL, NULL, 'MECH TECH', NULL, NULL, 'Y', NULL, NULL, NULL);
 INSERT INTO usr VALUES ('AANDERSON', 'Init', '12', 'Andrew', 'Anderson', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1985,7 +1986,7 @@ INSERT INTO usr VALUES ('SOURABHJAIN', 'Init', NULL, 'Sourabh', 'Jain', 'ENQUIRY
 INSERT INTO usr VALUES ('TAYLORD', 'Init', NULL, 'David', 'Taylor', 'ENQUIRY', 'david.taylor2@woodgroup.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('TBOULTON', 'Init', NULL, 'Tim', 'Boulton', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('TGRAVES', 'Init', NULL, 'Trevor', 'Graves', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('WGRIEVE', 'Init', NULL, 'Willie', 'Grieve', 'FLO_SUPV', 'WGrieve@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('WGRIEVE', 'Init', '10', 'Willie', 'Grieve', 'FLO_SUPV', 'WGrieve@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FARRELLD', 'Init', NULL, 'David', 'Farrell', 'ENQUIRY', 'FARRELLD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('JWINTON', 'Init', NULL, 'Josh', 'Winton', 'ENQUIRY', 'JWINTON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('MOTOOLE', 'Init', '83', NULL, NULL, 'ENQUIRY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -2011,7 +2012,7 @@ INSERT INTO usr VALUES ('EMMERSONB', 'Init', NULL, 'Ben', 'Emmerson', 'TECHNICIA
 INSERT INTO usr VALUES ('FORBESM', 'Init', NULL, 'Michael', 'Forbes', 'TECHNICIAN', 'TARPROD@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FOXJ', 'Init', NULL, 'Jamie', 'Fox', 'TECHNICIAN', 'FOXJ@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('FRASERM', 'Init', NULL, 'Mark', 'Fraser', 'TECHNICIAN', 'FRASERM@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('GHAMILTON', 'Init', NULL, 'Graeme', 'Hamilton', 'FLO_READONLY', 'ghamilton@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('GHAMILTON', 'Init', '10', 'Graeme', 'Hamilton', 'FLO_READONLY', 'ghamilton@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IANRAE', 'Init', NULL, 'Ian', 'Rae', 'TECHNICIAN', 'IANRAE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IBROWNIE', 'Init', NULL, 'Ian', 'Brownie', 'TECHNICIAN', 'IBROWNIE@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('IMULHOLLAND', 'Init', NULL, 'Ian', 'Mulholland', 'TECHNICIAN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -2073,7 +2074,7 @@ INSERT INTO usr VALUES ('NANDERSON', 'Init', NULL, 'Niall', 'Anderson', 'MAC_PUR
 INSERT INTO usr VALUES ('PMEECHAN', 'Init', NULL, 'Paul', 'Meechan', 'TECHNICIAN', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('PTHOMSON', 'Init', NULL, 'Peter', 'Thomson', 'MTL', 'PTHOMSON@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SCHEDULER', 'Init', NULL, NULL, NULL, 'SCHEDULER', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO usr VALUES ('SJESSEN', 'Init', NULL, 'Sarah', 'Jessen', 'FLO_SUPV', 'SJESSEN@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO usr VALUES ('SJESSEN', 'Init', '10', 'Sarah', 'Jessen', 'FLO_SUPV', 'SJESSEN@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('SREILLY', 'Init', NULL, 'Sean', 'Reilly', 'ENQUIRY', 'SREILLY@talisman-energy.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('WORKPREP', 'Init', NULL, NULL, NULL, 'WORKPREP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO usr VALUES ('YLAWSON', 'Init', NULL, 'Yuen', 'Lawson', 'CARGO1', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

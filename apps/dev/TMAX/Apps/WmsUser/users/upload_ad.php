@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  05-Sep-2012  11128 : Created AD uploader.
+ * CAM  14-Oct-2012  11138 : Ensure First/Last names with apostrophes save correctly.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 error_reporting(E_ALL ^ E_NOTICE);
@@ -38,6 +39,9 @@ function show_summary_table($errorcount, $matchnochange, $matchupdate) {
   	?><tr><td>Total Matches</td><td align="right"><?=($matchupdate + $matchnochange)?></td></tr><?
   ?></table><?
 }
+function sqltext($text) {
+  return str_replace("'", "\'", $text);
+}
 
 function process_matches() {
 	global $data;
@@ -53,8 +57,8 @@ function process_matches() {
 		for($r=2; $r < $rows; $r++) {
 
 			$username = strtoupper($data->val($r,8,$sht));
-			$first_name = $data->val($r,2,$sht);
-			$last_name = $data->val($r,3,$sht);
+			$first_name = sqltext($data->val($r,2,$sht));
+			$last_name = sqltext($data->val($r,3,$sht));
 			$email_address = $data->val($r,4,$sht);
 
 			$sql = "select status, first_name, last_name, work_email from usr where username='$username'";

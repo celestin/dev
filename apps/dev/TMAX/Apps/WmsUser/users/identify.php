@@ -11,11 +11,12 @@
  * CAM  08-Jul-2012  File created.
  * CAM  05-Sep-2012  11128 : User saving and editing.
  * CAM  13-Oct-2012  11128 : Enable Identify by Supervisor, first requesting 'login' of Firstname/Surname.
+ * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['member_person']) && isset($_SESSION['Talisman WMS Users']));
 
 $site = NULL;        if (!empty($_GET['site'])) $site = $_GET['site'];
 $username = NULL;    if (!empty($_GET['username'])) $username = $_GET['username'];
@@ -53,8 +54,8 @@ if ($loggedin) {
 
 $title = "Identify Users";
 include 'tpl/top.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['member_person']) && isset($_SESSION['Talisman WMS Users']));
 
   if ($showlogin) {
 ?>

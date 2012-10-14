@@ -9,10 +9,11 @@
  *
  * Who  When         Why
  * CAM  05-Sep-2012  11128 : User saving and editing.
+ * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
 
 $username = "";  if (!empty($_GET['username'])) $username = $_GET['username'];
 $fname = "";  if (!empty($_GET['fname'])) $fname = $_GET['fname'];

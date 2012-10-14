@@ -9,19 +9,41 @@
  *
  * Who  When         Why
  * CAM  08-Oct-2012  11128 : File created.
+ * CAM  14-Oct-2012  11136 : Reduced size of Search input boxes, stored Filter in session and added Security Group.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Search Users";
 include 'tpl/top.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['member_person']) && isset($_SESSION['Talisman WMS Users']));
 
-$search_status = NULL;        if (!empty($_POST['search_status'])) $search_status = $_POST['search_status'];
-$search_site = NULL;          if (!empty($_POST['search_site'])) $search_site = $_POST['search_site'];
-$search_jobtitle = NULL;      if (!empty($_POST['search_jobtitle'])) $search_jobtitle = $_POST['search_jobtitle'];
-$search_username = NULL;      if (!empty($_POST['search_username'])) $search_username = $_POST['search_username'];
-$search_firstname = NULL;     if (!empty($_POST['search_firstname'])) $search_firstname = $_POST['search_firstname'];
-$search_lastname = NULL;      if (!empty($_POST['search_lastname'])) $search_lastname = $_POST['search_lastname'];
+$search_status = NULL;        
+if (!empty($_SESSION['search_status1'])) $search_status = $_SESSION['search_status1'];
+if (!empty($_POST['search_status'])) { $search_status = $_POST['search_status']; $_SESSION['search_status1'] = $search_status;}
+
+$search_site = NULL;          
+if (!empty($_SESSION['search_site1'])) $search_site = $_SESSION['search_site1'];
+if (!empty($_POST['search_site'])) { $search_site = $_POST['search_site']; $_SESSION['search_site1'] = $search_site;}
+
+$search_jobtitle = NULL;      
+if (!empty($_SESSION['search_jobtitle1'])) $search_jobtitle = $_SESSION['search_jobtitle1'];
+if (!empty($_POST['search_jobtitle'])) { $search_jobtitle = $_POST['search_jobtitle']; $_SESSION['search_jobtitle1'] = $search_jobtitle;}
+
+$search_username = NULL;      
+if (!empty($_SESSION['search_username1'])) $search_username = $_SESSION['search_username1'];
+if (!empty($_POST['search_username'])) { $search_username = $_POST['search_username']; $_SESSION['search_username1'] = $search_username;}
+
+$search_firstname = NULL;     
+if (!empty($_SESSION['search_firstname1'])) $search_firstname = $_SESSION['search_firstname1'];
+if (!empty($_POST['search_firstname'])) { $search_firstname = $_POST['search_firstname']; $_SESSION['search_firstname1'] = $search_firstname;}
+
+$search_lastname = NULL;      
+if (!empty($_SESSION['search_lastname1'])) $search_lastname = $_SESSION['search_lastname1'];
+if (!empty($_POST['search_lastname'])) { $search_lastname = $_POST['search_lastname']; $_SESSION['search_lastname1'] = $search_lastname;}
+
+$search_group = NULL;         
+if (isset($_SESSION['search_group1'])) $search_group = $_SESSION['search_group1']; 
+if (!empty($_POST['search_group'])) { $search_group = $_POST['search_group']; $_SESSION['search_group1'] = $search_group; }
 
 ?>
 <script language="Javascript">
@@ -63,6 +85,7 @@ function searchCombo($fieldName, $currentValue, $table, $codeField, $descField, 
     <th>Username</th>
     <th>First name</th>
     <th>Last name</th>
+    <th>Group</th>
     <th>Job Title</th>
     <th>Action</th>
   </tr>
@@ -70,23 +93,29 @@ function searchCombo($fieldName, $currentValue, $table, $codeField, $descField, 
   <tr>
     <td><? searchCombo('search_status', $search_status, 'status', 'status', 'status', 'disporder'); ?></td>
     <td><? searchCombo('search_site', $search_site, 'site', 'site', 'sitefullname', 'sitefullname'); ?></td>
-    <td><input size="20" id="search_username" name="search_username" value="<?=$search_username?>"></td>
-    <td><input size="20" id="search_firstname" name="search_firstname" value="<?=$search_firstname?>"></td>
-    <td><input size="20" id="search_lastname" name="search_lastname" value="<?=$search_lastname?>"></td>
+    <td><input size="8" id="search_username" name="search_username" value="<?=$search_username?>"></td>
+    <td><input size="8" id="search_firstname" name="search_firstname" value="<?=$search_firstname?>"></td>
+    <td><input size="8" id="search_lastname" name="search_lastname" value="<?=$search_lastname?>"></td>
+    <td><input size="8" id="search_group" name="search_group" value="<?=$search_group?>"></td>
     <td><? searchCombo('search_jobtitle', $search_jobtitle, 'job_title', 'job_title', 'job_title', 'job_title'); ?></td>
     <td align="center"><input class="button" type="submit" value="Go!"></td>
   </tr>
   
 <?
   $filter = "";  
-  if (!empty($search_status))     $filter .= (empty($filter) ? "": "AND ") . "u.status='".$search_status."' ";
+  if (!empty($search_status)) {
+	$filter .= (empty($filter) ? "": "AND ") . "u.status='".$search_status."' ";
+  } else {
+	$filter .= (empty($filter) ? "": "AND ") . "u.status<>'System' ";
+  }
   if (!empty($search_site))       $filter .= (empty($filter) ? "": "AND ") . "u.site='".$search_site."' ";
   if (!empty($search_jobtitle))   $filter .= (empty($filter) ? "": "AND ") . "u.job_title='".$search_jobtitle."' ";
   if (!empty($search_username))   $filter .= (empty($filter) ? "": "AND ") . "u.username LIKE '%".$search_username."%' ";
   if (!empty($search_firstname))  $filter .= (empty($filter) ? "": "AND ") . "u.first_name LIKE '%".$search_firstname."%' ";
   if (!empty($search_lastname))   $filter .= (empty($filter) ? "": "AND ") . "u.last_name LIKE '%".$search_lastname."%' ";
+  if (!empty($search_group))      $filter .= (empty($filter) ? "": "AND ") . "u.current_group LIKE '%".$search_group."%' ";
 
-  $where = "WHERE ";  
+  $where = "WHERE ";  	
   if (empty($filter)) {
 	$where .= " u.username IS NULL ";
   } else {
@@ -94,7 +123,7 @@ function searchCombo($fieldName, $currentValue, $table, $codeField, $descField, 
   }
 
   $ssql =
-    "SELECT u.status, s.SiteFullName, u.username, u.first_name, u.last_name, u.job_title ".
+    "SELECT u.status, s.SiteFullName, u.username, u.first_name, u.last_name, u.current_group, u.job_title ".
     "FROM usr u ".
     "LEFT OUTER JOIN site s ON s.site = u.site ".
 	$where .
@@ -110,6 +139,7 @@ function searchCombo($fieldName, $currentValue, $table, $codeField, $descField, 
       <td><?=nvhtml($row[3])?></td>
       <td><?=nvhtml($row[4])?></td>
       <td><?=nvhtml($row[5])?></td>
+      <td><?=nvhtml($row[6])?></td>
       <td align="center"><?
 	  if ($member->isAdmin()) {
 	    ?><a href="edituser.php?username=<?=$row[2]?>"><img border="0" src="img/edit.png"></a><?

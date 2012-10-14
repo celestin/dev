@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  05-Sep-2012  11128 : Added menu options and getObjRef.
  * CAM  13-Oct-2012  11128 : Added member 'override' and additional menu options.
+ * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -37,8 +38,8 @@ if (!empty($member_override)) {
 	mysql_query("UPDATE member SET last_login=now() WHERE memberid='$username'");
 }
 
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['member_person']) && isset($_SESSION['Talisman WMS Users']));
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];

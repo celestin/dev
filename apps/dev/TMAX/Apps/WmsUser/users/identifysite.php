@@ -9,12 +9,13 @@
  *
  * Who  When         Why
  * CAM  08-Oct-2012  11128 : File created.
+ * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Identify Site";
 include 'tpl/top.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('member_person') && session_is_registered('Talisman WMS Users'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['member_person']) && isset($_SESSION['Talisman WMS Users']));
 
 ?>
 <script language="Javascript">

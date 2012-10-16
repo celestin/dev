@@ -12,6 +12,7 @@
  * CAM  05-Sep-2012  11128 : User saving and editing.
  * CAM  13-Oct-2012  11128 : Enable Identify by Supervisor, first requesting 'login' of Firstname/Surname.
  * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
+ * CAM  16-Oct-2012  11139 : Show Site underneath Email when Confirming users (as a prompt for Admin users to change site if not correct).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -294,8 +295,8 @@ and remove from the list.
     "select username, first_name, last_name, work_email, company, job_title, job_title_comments, site ".
     "from usr ".
     "where status='Init' ".
-    (empty($site) ? "and site in ('00','80','81','83','84') ": "and site='$site' ").
-    "and site <> '82' ".
+    (empty($site) ? "and site in ('00','80','81','83','84','85','86') ": "and site='$site' ").
+    "and site <> '82' ". // System
     "order by job_title, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());
 
@@ -305,6 +306,8 @@ and remove from the list.
     $rowid_user = $row[0] . "_c";
     $rowid_user2 = $row[0] . "_d";
     $jtcom = $row[0] . "_jtcom";
+
+    $s = Site::getSite($row[7]);
 ?>
     <tr id="<?=$rowid_main?>">
       <td><?=nvhtml($row[0])?></td>
@@ -334,7 +337,9 @@ and remove from the list.
     </tr>
 
     <tr id="<?=$rowid_user2?>" style="display:none">
-      <td colspan="2" valign="top"><b>Email</b><br /><?=inputBox($row[0], "workemail", $row[3], 45, true)?></td>
+      <td colspan="2" valign="top"><b>Email</b><br /><?=inputBox($row[0], "workemail", $row[3], 45, true)?><?
+      if ($s != NULL) echo "<br /><br /><b>".$s->shortname."</b>";
+      ?></td>
       <td colspan="3"><b>Job Title Comments</b> (e.g. 5th Week resp.)<br /><textarea cols="70" rows="5" id="<?=$jtcom?>" name="<?=$jtcom?>"><?=$row[6]?></textarea></td>
     </tr>
 
@@ -367,7 +372,6 @@ if (!empty($site)) {
     "select username, first_name, last_name, site ".
     "from usr ".
     "where status='Init' ".
-    //(empty($site) ? "and (site IS NULL OR site NOT IN ('00','80','81','83','84')) ": "and site IS NULL ").
 	"and site IS NULL ".
     "order by site, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());

@@ -10,6 +10,7 @@
  * CAM  27-Dec-2005  File created.
  * CAM  05-Sep-2012  11128 : User saving and editing.
  * CAM  13-Oct-2012  11128 : Changed colours to suit Talisman.
+ * CAM  16-Oct-2012  11140 : Added num.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 body {
@@ -83,6 +84,10 @@ td.sub {
   BACKGROUND-COLOR: #3C6C9E;
   FONT-FAMILY: Tahoma, Arial, Helvetica;
   FONT-WEIGHT: bold
+}
+
+td.num {
+  text-align: right;
 }
 
 .navBg {

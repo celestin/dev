@@ -11,6 +11,7 @@
  * CAM  05-Sep-2012  11128 : Added menu options and getObjRef.
  * CAM  13-Oct-2012  11128 : Added member 'override' and additional menu options.
  * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
+ * CAM  14-Oct-2012  11142 : Widened window.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -67,7 +68,7 @@ function nvhtml($value) {
 <body topmargin=0 leftmargin=0>
 
 <table border=0 cellpadding=0 cellspacing=0 align=center>
-<tr><td><table border="0" cellpadding=0 cellspacing=0 width="1000" height="600" class=outerBox>
+<tr><td><table border="0" cellpadding=0 cellspacing=0 width="1100" height="600" class=outerBox>
   <tr><td align="center"><img src="img/TalismanLogo-100.jpg" id="logo"></td></tr>
 
   <tr>

@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  29-Jul-2007  File created.
  * CAM  29-Jul-2012  11129 : Updated goodteaching.org/ebook for Kindle Touch.
+ * CAM  20-Oct-2012  11143 : Updated goodteaching.org/ebook for Kindle Paperwhite and Fire.
  * * * * * * * * * * * * * * * * * * * * * * * */
 ?>
 
@@ -37,7 +38,7 @@
 	<td>
 		<table border="0" cellpadding=5 cellspacing=0>
 			<tr>
-				<td><a href="http://goodteaching.org/ebook"><img border="0" src="ebook/kindletouch.png"></a></td>
+				<td><a href="http://goodteaching.org/ebook"><img border="0" src="ebook/kindlepw.png"></a></td>
 				<td><a href="http://goodteaching.org/ebook"><img border="0" src="ebook/apple.png"></a></td>
 		  </tr>
 			<tr>

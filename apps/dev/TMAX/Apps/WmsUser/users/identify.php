@@ -12,7 +12,7 @@
  * CAM  05-Sep-2012  11128 : User saving and editing.
  * CAM  13-Oct-2012  11128 : Enable Identify by Supervisor, first requesting 'login' of Firstname/Surname.
  * CAM  14-Oct-2012  11136 : Replaced deprecated session_is_registered call.
- * CAM  16-Oct-2012  11139 : Show Site underneath Email when Confirming users (as a prompt for Admin users to change site if not correct).
+ * CAM  21-Oct-2012  11144 : Added Riverside House.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -295,7 +295,7 @@ and remove from the list.
     "select username, first_name, last_name, work_email, company, job_title, job_title_comments, site ".
     "from usr ".
     "where status='Init' ".
-    (empty($site) ? "and site in ('00','80','81','83','84','85','86') ": "and site='$site' ").
+    (empty($site) ? "and site in ('00','80','81','83','84','85','86','87') ": "and site='$site' ").
     "and site <> '82' ". // System
     "order by job_title, last_name, first_name";
   $sql = mysql_query($ssql) or die (mysql_error());

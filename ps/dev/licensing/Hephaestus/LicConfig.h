@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * FLEXlm License Verifier
- * Copyright 2004,2009 PowerSoftware.com
+ * Hephaestus License Verifier
+ * Copyright 2012 PowerSoftware.com
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Configure the various licensing options
@@ -22,6 +22,7 @@
  * CAM  24-Jun-2009  10449 : Added CSS Stylesheet (SS), Fortran (FT), Ruby (RB), Shell Script (SH), Text (TX) and Windows Batch File (WB).
  * CAM  10-Dec-2009  10508 : Added PowerBuilder (PB).
  * CAM  18-Jun-2011  10963 : Added Intel languages UC (UCode) and MMP (Modular Maths Processer).
+ * CAM  10-Nov-2012  11146 : Moved to Hephaestus folder.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define LICENSE_VERSION "1.0"

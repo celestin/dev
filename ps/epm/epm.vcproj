@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/Zm512 "
 				Optimization="0"
-				AdditionalIncludeDirectories="..\lic;C:\Dev\MySQL\5.1\include;..\xerces\Build\Win32\VC9\Debug;..\xerces\src"
+				AdditionalIncludeDirectories="..\licensing\lic;C:\Dev\MySQL\5.1\include;..\xerces\Build\Win32\VC9\Debug;..\xerces\src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

@@ -46,6 +46,12 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       Dirs.Push(new DirectoryInfo(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PowerSoftware.com"), "EPM")));
     }
 
+    public LicFileHelper(DirectoryInfo knownDir)
+      : this()
+    {
+      Dirs.Push(knownDir);
+    }
+
     public bool FindFile()
     {
       FileInfo file;

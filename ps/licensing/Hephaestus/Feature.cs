@@ -18,6 +18,43 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
 {
   public class Feature
   {
+    public static readonly Feature FeatureEpmkr = new Feature("epmkr", "Krakatau EPM", 128);
+    public static readonly Feature FeatureEpmad = new Feature("epmad", "ADA", 32);
+    public static readonly Feature FeatureEpmas = new Feature("epmas", "ASP", 256);
+    public static readonly Feature FeatureEpmay = new Feature("epmay", "Assembler", 16384);
+    public static readonly Feature FeatureEpmcp = new Feature("epmcp", "C/C++", 2);
+    public static readonly Feature FeatureEpmcs = new Feature("epmcs", "C# (C Sharp)", 1);
+    public static readonly Feature FeatureEpmht = new Feature("epmht", "HTML", 32768);
+    public static readonly Feature FeatureEpmjv = new Feature("epmjv", "Java", 4);
+    public static readonly Feature FeatureEpmjt = new Feature("epmjt", "JavaScript", 65536);
+    public static readonly Feature FeatureEpms1 = new Feature("epms1", "Oracle PL/SQL", 16);
+    public static readonly Feature FeatureEpmpl = new Feature("epmpl", "Perl", 64);
+    public static readonly Feature FeatureEpmph = new Feature("epmph", "PHP", 512);
+    public static readonly Feature FeatureEpmpy = new Feature("epmpy", "Python", 131072);
+    public static readonly Feature FeatureEpmvb = new Feature("epmvb", "Visual Basic", 8);
+    public static readonly Feature FeatureEpmid = new Feature("epmid", "IDL", 1024);
+    public static readonly Feature FeatureEpmvh = new Feature("epmvh", "VHDL", 2048);
+    public static readonly Feature FeatureEpmjs = new Feature("epmjs", "JSP", 4096);
+    public static readonly Feature FeatureEpmxm = new Feature("epmxm", "XML", 8192);
+    public static readonly Feature FeatureEpmss = new Feature("epmss", "CSS Stylesheet", 262144);
+    public static readonly Feature FeatureEpmft = new Feature("epmft", "Fortran", 524288);
+    public static readonly Feature FeatureEpmrb = new Feature("epmrb", "Ruby", 1048576);
+    public static readonly Feature FeatureEpmsh = new Feature("epmsh", "Shell Script", 2097152);
+    public static readonly Feature FeatureEpmtx = new Feature("epmtx", "Text", 4194304);
+    public static readonly Feature FeatureEpmwb = new Feature("epmwb", "Windows Batch File", 8388608);
+    public static readonly Feature FeatureEpmpb = new Feature("epmpb", "PowerBuilder", 16777216);
+    public static readonly Feature FeatureEpmuc = new Feature("epmuc", "Intel UC", 33554432);
+    public static readonly Feature FeatureEpmmp = new Feature("epmmp", "Intel MMC", 67108864);
+
+    public static readonly Feature FeatureKrakatau = new Feature("krakatau", "Krakatau GUI", true);
+    public static readonly Feature FeatureCpppm = new Feature("cpppm", "Krakatau PM C++", true);
+    public static readonly Feature FeatureJavapm = new Feature("javapm", "Krakatau PM Java", true);
+    public static readonly Feature FeatureCpppro = new Feature("cpppro", "Krakatau Pro C++", true);
+    public static readonly Feature FeatureJavapro = new Feature("javapro", "Krakatau Pro Java", true);
+    public static readonly Feature FeatureCppem = new Feature("cppem", "EM C++", true);
+    public static readonly Feature FeatureJavaem = new Feature("javaem", "EM Java", true);
+    public static readonly Feature FeatureJavavz = new Feature("javavz", "VizualiseIt! Java", true);
+
     private string _code;
     private string _name;
     private bool _legacy;
@@ -78,6 +115,15 @@ namespace PowerSoftware.Tools.Licensing.Hephaestus
       }
 
       return rval;
+    }
+
+    public bool LicensedFor(Feature feature)
+    {
+      foreach (Feature f in this)
+      {
+        if (f.Code.Equals(feature.Code)) return true;
+      }
+      return false;
     }
 
     public static FeatureList GetFullFeatureList()

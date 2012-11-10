@@ -1,0 +1,16 @@
+if ($FORM{'klsolcppv2'} eq 'y') { $selprod.=&input_field('hidden', 'klsolcppv2', 1) ; }
+if ($FORM{'klwincppv2'} eq 'y') { $selprod.=&input_field('hidden', 'klwincppv2', 1) ; }
+if ($FORM{'klsoljavav2'} eq 'y') { $selprod.=&input_field('hidden', 'klsoljavav2', 1) ; }
+if ($FORM{'klwinjavav2'} eq 'y') { $selprod.=&input_field('hidden', 'klwinjavav2', 1) ; }
+if ($FORM{'kpsolcppv2'} eq 'y') { $selprod.=&input_field('hidden', 'kpsolcppv2', 1) ; }
+if ($FORM{'kpwincppv2'} eq 'y') { $selprod.=&input_field('hidden', 'kpwincppv2', 1) ; }
+if ($FORM{'kpsoljavav2'} eq 'y') { $selprod.=&input_field('hidden', 'kpsoljavav2', 1) ; }
+if ($FORM{'kpwinjavav2'} eq 'y') { $selprod.=&input_field('hidden', 'kpwinjavav2', 1) ; }
+if ($FORM{'pmsolcppv2'} eq 'y') { $selprod.=&input_field('hidden', 'pmsolcppv2', 1) ; }
+if ($FORM{'pmwincppv2'} eq 'y') { $selprod.=&input_field('hidden', 'pmwincppv2', 1) ; }
+if ($FORM{'pmsoljavav2'} eq 'y') { $selprod.=&input_field('hidden', 'pmsoljavav2', 1) ; }
+if ($FORM{'pmwinjavav2'} eq 'y') { $selprod.=&input_field('hidden', 'pmwinjavav2', 1) ; }
+if ($FORM{'optsolaris'} eq 'y') { $selprod.=&input_field('hidden', 'optsolaris', 1) ; }
+if ($FORM{'optwin'} eq 'y') { $selprod.=&input_field('hidden', 'optwin', 1) ; }
+if ($FORM{'vzsoljava'} eq 'y') { $selprod.=&input_field('hidden', 'vzsoljava', 1) ; }
+if ($FORM{'vzwinjava'} eq 'y') { $selprod.=&input_field('hidden', 'vzwinjava', 1) ; }

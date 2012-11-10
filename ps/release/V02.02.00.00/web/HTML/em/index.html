@@ -1,0 +1,645 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - Products - Essential Metrics</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - Products - Essential Metrics">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="../style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="../ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../img/navx/select2.gif";
+    var ImgOff = "../img/navx/go2.gif";
+    var ImgClick = "../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
+  //-->
+  </SCRIPT>
+    <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>
+  <script Language="JavaScript1.2">
+  <!--
+   function showMetricHelp(relativePath, mttCode, mttName, mttDescription, mttFormula) {
+
+     var desc1 = new String(mttDescription) ;
+     var desc = desc1.replace(/JSAFEQUOT/g, '"') ;
+     desc1 = new String(mttFormula) ;
+     var formula = desc1.replace(/JSAFEQUOT/g, '"') ;
+
+     var helpWin = window.open("", "mhWindow", "width=580,height=350,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ;
+     var doc = helpWin.document;
+     doc.write('<html><head><title>Metric Help - ' + mttName + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n') ;
+     doc.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>') ;
+     doc.write(mttCode + '</b>&nbsp;' + mttName + '</font></td></tr>\n') ;
+     doc.write('<tr><td background="' + relativePath + 'img/top_bev.gif"><img src="' + relativePath + 'img/f.gif"></td></tr><tr><td valign=top class="narr">') ;
+     doc.write(desc + '</td></tr><tr><td valign=top class="narr"><pre>') ;
+     doc.write(formula + '</pre></td></tr><tr><td height="100%" valign=bottom align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>') ;
+     doc.close() ;
+   }
+  //-->
+  </script>
+  <Script Language="JavaScript">
+  <!--
+   function showFlash(fileName, product, title, sourcepage, winWidth, winHeight) {
+
+     var shotWin = window.open("", "flashWindow", "width="+(winWidth+40)+",height="+(winHeight+40)+",directories=no,location=no,menubar=no,resizable=no,scrollbars=yes,status=no,toolbar=no") ;
+
+     shotWin.document.write('<html><head><title>' + title + '</title></head><body>') ;
+     shotWin.document.write('<form method="post"') ;
+     shotWin.document.write(' action="/flash.php"') ;
+     shotWin.document.write(' name="flashform"><input type="hidden" name="ftitle" value="' + title + '"><input') ;
+     shotWin.document.write(' type="hidden" name="product" value="' + product + '"><input') ;
+     shotWin.document.write(' type="hidden" name="sourcepage" value="' + sourcepage + '"><input') ;
+     shotWin.document.write(' type="hidden" name="fwidth" value=' + winWidth + '><input') ;
+     shotWin.document.write(' type="hidden" name="fheight" value=' + winHeight + '><input') ;
+     shotWin.document.write(' type="hidden" name="ffile" value="' + fileName + '"></form></body></html>') ;
+     shotWin.document.close() ;
+
+     var flashForm = shotWin.document.flashform ;
+     flashForm.submit() ;
+   }
+  // -->
+  </Script>
+</HEAD>
+
+<Body  bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="7"><img src="../img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="../img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="../img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="../img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="../img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="../img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="../img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="5"><img src="../img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><TABLE border="0" cellspacing="0" cellpadding="0" width="100%"><TR align=right><TD><table border="0" cellspacing="0" cellpadding="0"><tr valign=center><td width="13"><img border="0" src="../img/navx/tab_sle.gif"></td>
+<td background="../img/navx/tab_sb.gif" class="nav">Overview</td><td width="13"><img border="0" src="../img/navx/tab_sr.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../em/screenshot.html" class="nav">ScreenShots</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../em/reports/" class="nav">Reports</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../em/languages.html" class="nav">Languages</a></td><td width="13"><img border="0" src="../img/navx/tab_ur.gif"></td>
+<td background="../img/navx/tab_ub.gif" class="nav"><a href="../em/faq.html" class="nav">FAQ</a></td><td width="13"><img border="0" src="../img/navx/tab_ure.gif"></td>
+<td><img src="../img/f.gif" width=15></td></tr></table></TD></TR></TABLE>
+<TABLE border=0 cellspacing=0 cellpadding=0 width="100%"><tr>
+<TD><img src="../img/prod/logo_em.gif"></TD>
+<TD align=center valign=center>&nbsp;</TD>
+</tr></TABLE>
+<FORM action="/cgi-bin/www.power-soft.co.uk/detailsem.pl" method=post>
+<table border=0 cellspacing=0 cellpadding=2 width="100%"><tr valign=center>
+<td class="narr" width="65%"><b>Essential Metrics is a command line metrics tool for C/C++ and Java software projects.</b></td>
+
+<td align=right><table border=0 cellspacing=0 cellpadding=5 align=center>
+  <tr>
+    <td align=right><a href="javaScript:showFlash('/em/emetrics.swf','Essential Metrics','Essential Metrics Demo', 'EM Product', 770, 500);"><img src="../img/flash_off.png" width=30 height=30 onmouseover="this.src='../img/flash_on.png';" onmouseout="this.src='../img/flash_off.png';" border=0></a></td>
+    <td class="narr"><a href="javaScript:showFlash('/em/emetrics.swf','Essential Metrics','Essential Metrics Demo', 'EM Product', 770, 500);">View Flash Demo</a></td>
+    <td class="narr"><a href="UserGuideEmetrics.pdf"><img src="../img/pdf2.gif" border=0></a></td>
+    <td><a class="narr" href="UserGuideEmetrics.pdf">View the User Guide</a></td>
+  </tr>
+</table></td>
+
+<td class="narr" valign=center><input type=hidden name="fromscr01" value="1"><!--<input
+type=image src="../img/cart.gif"></td><td class="narr" width="10%">Buy Online</td>--></tr><table></form>
+
+<table border=0 width="100%" cellspacing=15><tr valign=top><td>
+
+<table border=0><tr valign=center><td class="narr"><b>Why use Essential Metrics?</b></td></tr><tr>
+<td class="narr">Use Essential Metrics to:</td></tr></table>
+
+<ul>
+<li class="narr">To comply with software quality standards</li>
+<li class="narr">Move towards CMM and ISO/ANSI approval</li>
+<li class="narr">Collect and measure important source code parameters</li>
+<li class="narr">Improve the support and quality of your source code</li>
+<li class="narr">Document your Files, Classes, Methods and other symbols</li>
+<li class="narr">Reduce maintenance overhead</li>
+<li class="narr">Produce better source code - increase sales, reduce costs, protect your investment!</li>
+</ul>
+</td><td valign=top>
+
+<table border=0><tr valign=center><td class="narr"><b>Who would use Essential Metrics?</b></td></tr></table>
+
+<ul>
+<li class="narr">Software Quality Experts</li>
+<li class="narr">Project Managers</li>
+<li class="narr">Software Testing Experts</li>
+<li class="narr">Configuration Managers</li>
+<li class="narr">Anyone interested in source code metrics</li>
+</ul>
+</td></tr>
+
+<tr><td colspan=2>
+
+<table border=0 width="100%"><tr><td>
+
+<table border=0><tr valign=center><td class="narr"><b>What about existing tools? Why would I buy Essential Metrics?</b></td></tr><tr>
+<td class="narr">Buy Essential Metrics because:</td></tr></table>
+
+<ul>
+<li class="narr">Essential Metrics is a powerful, fully featured command line (batch) metrics tool</li>
+<li class="narr">Essential Metrics is scalable to millions of lines of source</li>
+<li class="narr">Essential Metrics utilises an SQL database engine</li>
+<li class="narr">Essential Metrics measures all popular and important metrics</li>
+<li class="narr">Essential Metrics has great reports including HTML and CSV</li>
+<li class="narr">Essential Metrics is backed by Power Software</li>
+<li class="narr">Essential Metrics is compact, easy to use and simple to integrate into your batch processes</li>
+<li class="narr">Essential Metrics offers a low entry point and fully-featured FlexLM floating licenses</li>
+<li class="narr">Essential Metrics can be upgraded to the advanced Krakatau range of graphical source code measurement
+including <a href="/pm/">Krakatau Project Manager</a>, the 'changed' SLOC tool</li>
+</ul>
+
+<td align=right><table border=0 cellpadding=4><tr><td><a href="screenshot.html"><img src="thumb/a01.gif" border=0></a></td></tr></table></td>
+</tr></table>
+
+</td>
+
+</tr>
+
+</table>
+<table border=0 cellspacing=0 cellpadding=0><tr valign=top><td>
+<h3 class="narr">C/C++ Metrics: Line Counting metrics</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','AVPATHS','Average Depth of Paths','AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.','');">AVPATHS</a>
+ | 
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the project.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the project.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_RAT','Comments Ratio (Project)','The ratio of comment lines to lines of code.','COM_LOC / LOC');">COM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in the project.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the total number of semicolons in the project excluding those within comments and string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>LLOC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NFILE','Number of Files','The total number of files in the project.','');">NFILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','NMETH','Number of Methods','The total number of methods in the project.<br><br>This count includes class methods and C functions.','');">NMETH</a>
+ | 
+<a href="javascript:showMetricHelp('../','SEIMI','SEI Maintainability Index','The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href=JSAFEQUOThttp://www.sei.cmu.edu/activities/str/descriptions/mitmpm.htmlJSAFEQUOT>http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.','');">SEIMI</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','TCOM_RAT','True Comments Ratio (Project)','The ratio, at project level, of comment lines to <b>source</b> lines of code.','COM_LOC / SLOC');">TCOM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','WLOC','Whitespace lines of code','Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.','LOC - (SLOC + COM_LOC)');">WLOC</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the file.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the file.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_RAT','Comments Ratio','The ratio of comment lines to lines of code.','COM_LOC / LOC');">COM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in this file.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>LLOC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','TCOM_RAT','True Comments Ratio','The ratio, for this file, of comment lines to source lines of code.','COM_LOC / SLOC');">TCOM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','WLOC','Whitespace lines of code','Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.','LOC - (SLOC + COM_LOC)');">WLOC</a>
+<li class="narr"><b>Class</b></li>
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','TLOC','Total Lines of Code','TLOC is LOC for the class and the LOC for each method.','');">TLOC</a>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','ANION','Adjusted number of I/O nodes','Adjusted number of I/O nodes','');">ANION</a>
+ | 
+<a href="javascript:showMetricHelp('../','BRANCH','Number of branching nodes','BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face=JSAFEQUOTCourier NewJSAFEQUOT>break</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>continue</font> and <font face=JSAFEQUOTCourier NewJSAFEQUOT>goto</font> calls.','');">BRANCH</a>
+ | 
+<a href="javascript:showMetricHelp('../','CDENS','Control Density','CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.','');">CDENS</a>
+ | 
+<a href="javascript:showMetricHelp('../','CONTROL','Number of control statements','A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face=JSAFEQUOTCourier NewJSAFEQUOT>if</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>else</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>while</font>, <br><font face=JSAFEQUOTCourier NewJSAFEQUOT>switch</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>case</font>, etc.) causes this count to be incremented by 1.','');">CONTROL</a>
+ | 
+<a href="javascript:showMetricHelp('../','EXEC','Number of executable statements','A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.','');">EXEC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating JSAFEQUOTlogical lines of codeJSAFEQUOT.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>NSC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NION','Number of I/O nodes','Number of I/O nodes','');">NION</a>
+ | 
+<a href="javascript:showMetricHelp('../','NP','Number of Parameters','A count of the number of Parameters a method takes.','');">NP</a>
+ | 
+<a href="javascript:showMetricHelp('../','NSTAT','Number of Statements','NSTAT = CONTROL + EXEC.','');">NSTAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','RLOC','Relative Lines of Code','RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.','');">RLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+</ul>
+</td><td>
+<h3 class="narr">Java Metrics: Line Counting metrics</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','ACLOC','Average Lines per Class','This metric gives the average Class size in terms of LOC.',' (&#931; Class LOC) / NCLASS');">ACLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','AVPATHS','Average Depth of Paths','AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.','');">AVPATHS</a>
+ | 
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the project.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the project.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_RAT','Comments Ratio (Project)','The ratio of comment lines to lines of code.','COM_LOC / LOC');">COM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in the project.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LLOC','Logical Lines of Code','A count of the total number of semicolons in the project excluding those within comments and string literals.  This is useful for approximating &quot;logical lines of code&quot;.  E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>cout &lt;&lt; JSAFEQUOTHelloJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font> /* output ; return */<br>cout &lt;&lt; JSAFEQUOTHello ; WorldJSAFEQUOT &lt;&lt; endl <font color=JSAFEQUOTFF1111JSAFEQUOT>;</font></font><br><br>LLOC = 2.','');">LLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NFILE','Number of Files','The total number of files in the project.','');">NFILE</a>
+ | 
+<a href="javascript:showMetricHelp('../','NMETH','Number of Methods','The total number of methods in the project.<br><br>This count includes class methods and C functions.','');">NMETH</a>
+ | 
+<a href="javascript:showMetricHelp('../','SEIMI','SEI Maintainability Index','The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href=JSAFEQUOThttp://www.sei.cmu.edu/activities/str/descriptions/mitmpm.htmlJSAFEQUOT>http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.','');">SEIMI</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','TCOM_RAT','True Comments Ratio (Project)','The ratio, at project level, of comment lines to <b>source</b> lines of code.','COM_LOC / SLOC');">TCOM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','WLOC','Whitespace lines of code','Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.','LOC - (SLOC + COM_LOC)');">WLOC</a>
+<li class="narr"><b>Package</b></li>
+<a href="javascript:showMetricHelp('../','NFILE','Number of Files in a Package','The total number of files in the package.','');">NFILE</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','C_COM','C style comments','The number of C style comments in the file.<br><br>A C style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/*</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>/* This is a useful<br>variable here for<br>many purposes */</font></font>','');">C_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_LOC','Comment lines of code','The total number of lines of comment in the file.','');">COM_LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','COM_RAT','Comments Ratio','The ratio of comment lines to lines of code.','COM_LOC / LOC');">COM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','EOL_COM','To End-of-Line comments','The number of to end-of-line comment lines in this file.<br><br>This type of comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>//</font> and finishes at the end of the line.<br><br>In the following example EOL_COM=2.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i = 0 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Index variable</font><br>float pi = 3.14 ; <font color=JSAFEQUOTFF1111JSAFEQUOT>// Handy pi variable</font><br>char star = \'*\' ;</font>','');">EOL_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','J_COM','Java style comments','The number of Java style comments in the file.<br><br>A Java style comment begins <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>/**</font> and ends <font face=JSAFEQUOTCourier NewJSAFEQUOT color=JSAFEQUOTFF1111JSAFEQUOT>*/</font>. E.g.:<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT><font color=JSAFEQUOTFF1111JSAFEQUOT>&nbsp;/**<br>&nbsp;&nbsp;* An interface for handling Application level operations.<br>&nbsp;&nbsp;*<br>&nbsp;&nbsp;*/</font><br>&nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.','');">J_COM</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in JSAFEQUOTlogicalJSAFEQUOT lines, see NSC.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','TCOM_RAT','True Comments Ratio','The ratio, for this file, of comment lines to source lines of code.','COM_LOC / SLOC');">TCOM_RAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','WLOC','Whitespace lines of code','Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.','LOC - (SLOC + COM_LOC)');">WLOC</a>
+<li class="narr"><b>Class</b></li>
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+<li class="narr"><b>Interface</b></li>
+<a href="javascript:showMetricHelp('../','LOC','Lines of Code','Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.','');">LOC</a>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','ANION','Adjusted number of I/O nodes','Adjusted number of I/O nodes','');">ANION</a>
+ | 
+<a href="javascript:showMetricHelp('../','BRANCH','Number of branching nodes','BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face=JSAFEQUOTCourier NewJSAFEQUOT>break</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>continue</font> and <font face=JSAFEQUOTCourier NewJSAFEQUOT>goto</font> calls.','');">BRANCH</a>
+ | 
+<a href="javascript:showMetricHelp('../','CDENS','Control Density','CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.','');">CDENS</a>
+ | 
+<a href="javascript:showMetricHelp('../','CONTROL','Number of control statements','A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face=JSAFEQUOTCourier NewJSAFEQUOT>if</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>else</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>while</font>, <br><font face=JSAFEQUOTCourier NewJSAFEQUOT>switch</font>, <font face=JSAFEQUOTCourier NewJSAFEQUOT>case</font>, etc.) causes this count to be incremented by 1.','');">CONTROL</a>
+ | 
+<a href="javascript:showMetricHelp('../','EXEC','Number of executable statements','A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.','');">EXEC</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOC','Lines of code','Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.','');">LOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NEST','Maximum number of levels','NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>for (int i=0; i<5; i++)<br>&nbsp;if(i<2)<br>&nbsp;&nbsp;if(i>0)<br>&nbsp;&nbsp;&nbsp;j=3 ;<br>&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;j=4 ;<br>&nbsp;else<br>&nbsp;&nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.','');">NEST</a>
+ | 
+<a href="javascript:showMetricHelp('../','NION','Number of I/O nodes','Number of I/O nodes','');">NION</a>
+ | 
+<a href="javascript:showMetricHelp('../','NP','Number of Parameters','A count of the number of Parameters a method takes.','');">NP</a>
+ | 
+<a href="javascript:showMetricHelp('../','NSTAT','Number of Statements','NSTAT = CONTROL + EXEC.','');">NSTAT</a>
+ | 
+<a href="javascript:showMetricHelp('../','RLOC','Relative Lines of Code','RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.','');">RLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','SLOC','Source lines of code','Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>int i=0; float j=0; // This is 1 SLOC<br><br>cout &lt;&lt; JSAFEQUOTTestingJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT HelloJSAFEQUOT<br>  &lt;&lt; JSAFEQUOT there.JSAFEQUOT ;  // This is 3 SLOCs</font>','');">SLOC</a>
+</ul>
+</td></tr><tr><td>
+<h3 class="narr">C/C++ Metrics: Complexity metrics</h3>
+<ul>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','eV(G)','Essential Complexity','Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.','');">eV(G)</a>
+ | 
+<a href="javascript:showMetricHelp('../','V(G)','Cyclomatic Complexity','Cyclomatic Complexity (v(G)) is a measure of the complexity of the method\'s decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.','');">V(G)</a>
+ | 
+<a href="javascript:showMetricHelp('../','V\'(G)','Extended Cyclomatic Complexity','V\'(G) = OC / V(G)<br><br>V\'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.','');">V'(G)</a>
+</ul>
+</td><td>
+<h3 class="narr">Java Metrics: Complexity metrics</h3>
+<ul>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','eV(G)','Essential Complexity','Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.','');">eV(G)</a>
+ | 
+<a href="javascript:showMetricHelp('../','V(G)','Cyclomatic Complexity','Cyclomatic Complexity (v(G)) is a measure of the complexity of the method\'s decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.','');">V(G)</a>
+ | 
+<a href="javascript:showMetricHelp('../','V\'(G)','Extended Cyclomatic Complexity','V\'(G) = OC / V(G)<br><br>V\'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.','');">V'(G)</a>
+</ul>
+</td></tr><tr><td>
+<h3 class="narr">C/C++ Metrics: Halstead metrics</h3>
+<ul>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this file\'s code is to understand.','D = (n1/2) * (N2/n2) <br><br>Where:<br>n1 - the number of distinct operators<br>n2 - the number of distinct operands<br>N1 - the total number of operators <br>N2 - the total number of operands');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this file.','E = D * V');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','N = N1 + N2');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the file.  Calculated as:','V = Nlog<SUB>2</SUB>n');">V</a>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','B','Halstead Bug Prediction','This variant of Halstead Effort is a measure of the likelihood of bugs within the method.','E<sup>2/3</sup> / 3000');">B</a>
+ | 
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this method\'s code is to understand.','');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this method.','');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n','');">V</a>
+</ul>
+</td><td>
+<h3 class="narr">Java Metrics: Halstead metrics</h3>
+<ul>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this file\'s code is to understand.','D = (n1/2) * (N2/n2) <br><br>Where:<br>n1 - the number of distinct operators<br>n2 - the number of distinct operands<br>N1 - the total number of operators <br>N2 - the total number of operands');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this file.','E = D * V');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','N = N1 + N2');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','n = n1 + n2');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the file.  Calculated as:','V = Nlog<SUB>2</SUB>n');">V</a>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','B','Halstead Bug Prediction','This variant of Halstead Effort is a measure of the likelihood of bugs within the method.','E<sup>2/3</sup> / 3000');">B</a>
+ | 
+<a href="javascript:showMetricHelp('../','D','Halstead program Difficulty','A measure of how difficult this method\'s code is to understand.','');">D</a>
+ | 
+<a href="javascript:showMetricHelp('../','E','Halstead program Effort','Effort = Difficulty * Volume for this method.','');">E</a>
+ | 
+<a href="javascript:showMetricHelp('../','n','Halstead program Vocabulary','Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands','');">n</a>
+ | 
+<a href="javascript:showMetricHelp('../','N','Halstead program Length','Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands','');">N</a>
+ | 
+<a href="javascript:showMetricHelp('../','N1','Halstead total number of operators','The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n1','Halstead number of unique operators','The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n1</a>
+ | 
+<a href="javascript:showMetricHelp('../','n2','Halstead number of unique operands','The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">n2</a>
+ | 
+<a href="javascript:showMetricHelp('../','N2','Halstead total number of operands','The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.','');">N2</a>
+ | 
+<a href="javascript:showMetricHelp('../','V','Halstead program Volume','Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n','');">V</a>
+</ul>
+</td></tr><tr><td>
+<h3 class="narr">C/C++ Metrics: Object-Oriented metrics</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','ACLOC','Average Lines per Class','This metric gives the average Class size in terms of LOC.',' (&#931; Class LOC) / NCLASS');">ACLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','AHF','Attribute Hiding Factor','AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.','AttributesVisible / TotalAttributes');">AHF</a>
+ | 
+<a href="javascript:showMetricHelp('../','AIF','Attribute Inheritence Factor','Inherited Attributes is the sum of NAIC for each class in the project.','&#931 NAIC');">AIF</a>
+ | 
+<a href="javascript:showMetricHelp('../','AMLOC','Average Lines per Method','This metric gives the average Method size in terms of LOC.',' (&#931; Method LOC)  / NMETH');">AMLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','HIER','Hierarchical Depth','Hierarchical Depth','');">HIER</a>
+ | 
+<a href="javascript:showMetricHelp('../','MHF','Method Hiding Factor','MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.','MethodsVisible / TotalMethods');">MHF</a>
+ | 
+<a href="javascript:showMetricHelp('../','MIF','Method Inheritence Factor','The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.','InheritedMethods / NMETH');">MIF</a>
+ | 
+<a href="javascript:showMetricHelp('../','NCLASS','Number of Classes','The total number of classes in the project.','');">NCLASS</a>
+ | 
+<a href="javascript:showMetricHelp('../','NORC','Number of Root Classes','NORC is a count of the number root classes for a project.','');">NORC</a>
+ | 
+<a href="javascript:showMetricHelp('../','POF','Polymorphism Factor','Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.','(&#0931; NOOC) / (&#0931;(NOAC*NOCC))');">POF</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','NTC','Number of Top-level Classes','A count of the number of Top-level Classes in the file.','');">NTC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NTM','Number of Top-level Methods','A count of the number of Top-level Methods  (i.e. functions, or non-class methods) in the file.','');">NTM</a>
+<li class="narr"><b>Class</b></li>
+<a href="javascript:showMetricHelp('../','CBO','Coupling Between Object classes','Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.','');">CBO</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSA','Class Size (Attributes)','The number of attributes of a class.','');">CSA</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSAO','Class Size (Attributes & Operations)','The total number of attributes and operations for a class.','');">CSAO</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSI','Class Specialisation Index','(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.','');">CSI</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSO','Class Size (Operations)','The number of operations for a class.','');">CSO</a>
+ | 
+<a href="javascript:showMetricHelp('../','DIT','Depth of Inheritence Tree','From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.','');">DIT</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOCM','Lack Of Cohesion Methods','This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.','&#931;');">LOCM</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAAC','Number of Attributes Added','NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.','');">NAAC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAIC','Number of Attributes Inherited','NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.','');">NAIC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAOC','Number of Operations Added','NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.','');">NAOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NOIC','Number of Operations Inherited','NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.','');">NOIC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NOOC','Number of Operations Overridden','NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.','');">NOOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NPavgC','Average Number of Method Parameters','NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.','');">NPavgC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NSUB','Number of Sub Classes','NSUB is a count of the number of immediate sub-classes of a class.','');">NSUB</a>
+ | 
+<a href="javascript:showMetricHelp('../','Osavg','Average Operation Size','For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.','');">Osavg</a>
+ | 
+<a href="javascript:showMetricHelp('../','PA','Private Attribute Usage','PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.','');">PA</a>
+ | 
+<a href="javascript:showMetricHelp('../','PPPC','Percentage Public/Protected members','PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.','');">PPPC</a>
+ | 
+<a href="javascript:showMetricHelp('../','RFC','Response For Class','RFC is the number of methods in a class, plus the number of distinct methods called by those methods.','');">RFC</a>
+ | 
+<a href="javascript:showMetricHelp('../','WMC','Weighted Methods in Class','WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.','');">WMC</a>
+<li class="narr"><b>Method</b></li>
+<a href="javascript:showMetricHelp('../','NEST','Maximum number of levels','NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face=JSAFEQUOTCourier NewJSAFEQUOT>for (int i=0; i<5; i++)<br>&nbsp;if(i<2)<br>&nbsp;&nbsp;if(i>0)<br>&nbsp;&nbsp;&nbsp;j=3 ;<br>&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;j=4 ;<br>&nbsp;else<br>&nbsp;&nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.','');">NEST</a>
+</ul>
+</td><td>
+<h3 class="narr">Java Metrics: Object-Oriented metrics</h3>
+<ul>
+<li class="narr"><b>Project</b></li>
+<a href="javascript:showMetricHelp('../','AHF','Attribute Hiding Factor','AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.','AttributesVisible / TotalAttributes');">AHF</a>
+ | 
+<a href="javascript:showMetricHelp('../','AIF','Attribute Inheritence Factor','Inherited Attributes is the sum of NAIC for each class in the project.','&#931 NAIC');">AIF</a>
+ | 
+<a href="javascript:showMetricHelp('../','AMLOC','Average Lines per Method','This metric gives the average Method size in terms of LOC.',' (&#931; Method LOC)  / NMETH');">AMLOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','HIER','Hierarchical Depth','Hierarchical Depth','');">HIER</a>
+ | 
+<a href="javascript:showMetricHelp('../','MHF','Method Hiding Factor','MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.','MethodsVisible / TotalMethods');">MHF</a>
+ | 
+<a href="javascript:showMetricHelp('../','MIF','Method Inheritence Factor','The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.','InheritedMethods / NMETH');">MIF</a>
+ | 
+<a href="javascript:showMetricHelp('../','NCLASS','Number of Classes','The total number of classes in the project.','');">NCLASS</a>
+ | 
+<a href="javascript:showMetricHelp('../','NORC','Number of Root Classes','NORC is a count of the number root classes for a project.','');">NORC</a>
+ | 
+<a href="javascript:showMetricHelp('../','POF','Polymorphism Factor','Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.','(&#0931; NOOC) / (&#0931;(NOAC*NOCC))');">POF</a>
+<li class="narr"><b>File</b></li>
+<a href="javascript:showMetricHelp('../','NTC','Number of Top-level Classes','A count of the number of Top-level Classes in the file.','');">NTC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NTI','Number of Top-level Interfaces','A count of the number of Top-level Interfaces in the file.','');">NTI</a>
+<li class="narr"><b>Class</b></li>
+<a href="javascript:showMetricHelp('../','CBO','Coupling Between Object classes','Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.','');">CBO</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSA','Class Size (Attributes)','The number of attributes of a class.','');">CSA</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSAO','Class Size (Attributes & Operations)','The total number of attributes and operations for a class.','');">CSAO</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSI','Class Specialisation Index','(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.','');">CSI</a>
+ | 
+<a href="javascript:showMetricHelp('../','CSO','Class Size (Operations)','The number of operations for a class.','');">CSO</a>
+ | 
+<a href="javascript:showMetricHelp('../','DIT','Depth of Inheritence Tree','From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.','');">DIT</a>
+ | 
+<a href="javascript:showMetricHelp('../','LOCM','Lack Of Cohesion Methods','This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.','&#931;');">LOCM</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAAC','Number of Attributes Added','NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.','');">NAAC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAIC','Number of Attributes Inherited','NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.','');">NAIC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NAOC','Number of Operations Added','NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.','');">NAOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NOIC','Number of Operations Inherited','NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.','');">NOIC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NOOC','Number of Operations Overridden','NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.','');">NOOC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NPavgC','Average Number of Method Parameters','NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.','');">NPavgC</a>
+ | 
+<a href="javascript:showMetricHelp('../','NSUB','Number of Sub Classes','NSUB is a count of the number of immediate sub-classes of a class.','');">NSUB</a>
+ | 
+<a href="javascript:showMetricHelp('../','Osavg','Average Operation Size','For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.','');">Osavg</a>
+ | 
+<a href="javascript:showMetricHelp('../','PA','Private Attribute Usage','PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.','');">PA</a>
+ | 
+<a href="javascript:showMetricHelp('../','PPPC','Percentage Public/Protected members','PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.','');">PPPC</a>
+ | 
+<a href="javascript:showMetricHelp('../','RFC','Response For Class','RFC is the number of methods in a class, plus the number of distinct methods called by those methods.','');">RFC</a>
+ | 
+<a href="javascript:showMetricHelp('../','WMC','Weighted Methods in Class','WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.','');">WMC</a>
+<li class="narr"><b>Interface</b></li>
+<a href="javascript:showMetricHelp('../','ISA','Interface Size (Attributes)','The number of attributes of an interface.','');">ISA</a>
+ | 
+<a href="javascript:showMetricHelp('../','ISAO','Interface Size (Attributes & Operations)','The total number of attributes and operations for an interface.','');">ISAO</a>
+ | 
+<a href="javascript:showMetricHelp('../','ISO','Interface Size (Operations)','The number of operations for an interface.','');">ISO</a>
+ | 
+<a href="javascript:showMetricHelp('../','NOCI','Number of Child Interfaces','NOCC is a count of the number of immediate sub-interfaces of an interface.','');">NOCI</a>
+ | 
+<a href="javascript:showMetricHelp('../','PPPC','Percentage Public/Protected members','PPPC is simply the percentage of public and protected members of an interface in respective to all members of the interface.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.','');">PPPC</a>
+</ul>
+</td></tr></table>
+</TD>
+      <TD bgcolor="#ffffff" rowspan="5" width="100%"><img src="../img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 alt="Home" width="80" height="32" src="../img/nav/home2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 name="B01" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="../img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="../img/navx/go2.gif"></a></TD></TR><tr><td><table border="0" cellspacing=0 cellpadding=3><tr><td>&nbsp;</td><td class="navTitle" colspan=2>Essential Metrics</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../epm/"class="nav">Project Manager</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td class="nav">Essential Metrics</td></tr>
+<tr><td>&nbsp;</td><td class="navTitle" colspan=2>Krakatau</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kepm/"class="nav">Essential PM</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../pm/"class="nav">Project Manager</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kp/"class="nav">Professional</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../kl/"class="nav">Lite</a></td></tr>
+<tr><td>&nbsp;</td><td class="navTitle" colspan=2>Java Tools</td></tr>
+<tr><td>&nbsp;</td><td><img src="../img/f.gif" width=3 height=0></td><td><a href="../vz/"class="nav">Visualize it!</a></td></tr></table></td><td bgcolor="#ffffff"><img border="0" src="../img/f.gif"></td></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="../img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="../img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="../img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../img/navx/thin2.gif"><a class="nav" href="../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="../img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="../img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>08 Jul 2011</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

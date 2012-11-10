@@ -1,0 +1,88 @@
+body, p, table, td {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  TEXT-DECORATION: none;
+}
+
+.val {
+  TEXT-ALIGN: right;
+}
+
+
+.pageTitle {
+  COLOR: #F5C135;
+  FONT-SIZE: 11pt;
+  FONT-WEIGHT: bold;
+}
+
+.itemTitle {
+  COLOR: #666666;
+  FONT-WEIGHT: bold;
+}
+
+.metHead {
+  COLOR: #666666;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #DDEEFF;
+}
+
+.metCode {
+  COLOR: #666666;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #FFFFDD;
+}
+
+.diffAdd {
+  COLOR: white;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #33CC33;
+}
+
+.diffChg {
+  COLOR: white;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #FF6666;
+}
+
+.diffDel {
+  COLOR: white;
+  FONT-WEIGHT: bold;
+  BACKGROUND-COLOR: #3333DD;
+}
+
+
+A, A:visited, A:active, A:link {
+  COLOR: #0066CC;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold
+}
+A:hover {
+  COLOR: black;
+}
+
+A.top, A.top:visited, A.top:active, A.top:link {
+  COLOR: white;
+  TEXT-DECORATION: none;
+  FONT-WEIGHT: bold
+}
+A.top:hover {
+  COLOR: #F5C135;
+}
+
+
+.r1 {
+  BACKGROUND-COLOR: #DDEEFF;
+}
+
+.r2 {
+  BACKGROUND-COLOR: #FFFFDD;
+}
+
+body.pstext {
+  COLOR: white;
+  BACKGROUND-COLOR: #0066CC;
+  FONT-FAMILY: Verdana, Arial, Helvetica;
+  FONT-SIZE: 8pt;
+  TEXT-ALIGN: center;
+}

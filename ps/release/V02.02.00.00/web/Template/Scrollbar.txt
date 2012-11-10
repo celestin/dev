@@ -1,0 +1,4 @@
+ scrollbar-face-color: #0077cc; scrollbar-shadow-color: #3366cc; 
+ scrollbar-highlight-color: #0077cc; scrollbar-3dlight-color: #000000; 
+ scrollbar-darkshadow-color: #000000; scrollbar-track-color: #c0c0c0; 
+ scrollbar-arrow-color: #ffffff

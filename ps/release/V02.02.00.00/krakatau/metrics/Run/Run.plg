@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Run - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1110.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "c:\Program Files\flexlm\v7.2\machind" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Dev\PS\legacy\metrics\Run\Run.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1110.tmp" 
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1111.tmp" with contents
+[
+lmgr_md.lib wsock32.lib lm_new.obj netapi32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Krakatau.pdb" /machine:I386 /nodefaultlib:"libcmt.lib" /out:"Release\Krakatau.exe" /libpath:"c:\Program Files\flexlm\v7.2\i86_n3" 
+.\Release\Run.obj
+.\Release\StdAfx.obj
+.\Release\Run.res
+]
+Creating command line "link.exe @C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1111.tmp"
+<h3>Output Window</h3>
+Compiling...
+Run.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1113.bat" with contents
+[
+@echo off
+copy "C:\Dev\PS\legacy\metrics\Run\Release\Krakatau.exe" "C:\Program Files\Power Software\Krakatau PM (C++)"
+]
+Creating command line "C:\DOCUME~1\CRAIG~1.FRO\LOCALS~1\Temp\RSP1113.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+Krakatau.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

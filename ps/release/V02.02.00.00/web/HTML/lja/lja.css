@@ -1,0 +1,103 @@
+
+body, p, table, td {
+  COLOR: black; 
+  FONT-FAMILY: "sans-serif"; 
+  TEXT-DECORATION: none ; 
+}
+
+h1 {
+  FONT-FAMILY: "serif"; 
+  font-style: italic; 
+  color: white;
+}
+
+h3,h4 {
+  color: #565132;
+}
+
+p.lja {
+  FONT-FAMILY: "serif"; 
+  font-size: 150%;
+  color: white;
+}
+
+p.spanel {
+  color: white;
+}
+
+A {
+  COLOR: #0077cc; 
+  TEXT-DECORATION: none
+  bgcolor: black ;
+}
+A:visited {
+  COLOR: #0077CC; 
+  TEXT-DECORATION: none
+}
+
+A:hover {
+  COLOR: #0F036C; 
+  TEXT-DECORATION: none;
+  BORDER-BOTTOM: #E93941 1px dashed;
+}
+A:active {
+  COLOR: #0077CC; 
+  TEXT-DECORATION: none
+}
+A:link {
+  COLOR: #0077cc; 
+  TEXT-DECORATION: none
+}
+
+
+A.spanel {
+  COLOR: #FCDC08; 
+  TEXT-DECORATION: none
+  bgcolor: white ;
+}
+A.spanel:visited {
+  COLOR: #FCDC08; 
+  TEXT-DECORATION: none
+}
+
+A.spanel:hover {
+  COLOR: white; 
+  TEXT-DECORATION: none;
+  BORDER-BOTTOM: #FCDC08 1px solid;
+}
+A.spanel:active {
+  COLOR: #FCDC08; 
+  TEXT-DECORATION: none
+}
+A.spanel:link {
+  COLOR: #FCDC08s; 
+  TEXT-DECORATION: none
+}
+
+
+.scmblue {
+  BACKGROUND-COLOR: #0F036C;
+}
+
+.box {
+  BORDER-TOP:     black 2px solid;
+  BORDER-LEFT:    black 2px solid;
+  BORDER-BOTTOM:  black 2px solid;
+  BORDER-RIGHT:   black 2px solid;
+}
+
+.nav {
+  BORDER-TOP:     #FCDC08 2px solid;
+  BORDER-BOTTOM:  #FCDC08 2px solid;
+  BORDER-RIGHT:   #FCDC08 2px solid;
+  BORDER-LEFT:    #FCDC08 2px solid;
+}
+
+.spanel {
+  BACKGROUND-COLOR: #B40404;  
+}
+
+.tpanel {
+  BACKGROUND-COLOR: #B40404;  
+}
+

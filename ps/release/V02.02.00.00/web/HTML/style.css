@@ -1,0 +1,232 @@
+
+body, p, table, td, ul {
+  COLOR: #333333;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+p.annot {
+  COLOR: #666666;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 7pt;
+  TEXT-ALIGN: center;
+}
+
+body.psTitle, p.psTitle, table.psTitle, td.psTitle {
+  COLOR: #ffffff;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 18pt;
+  TEXT-DECORATION: none;
+}
+
+td.navTitle {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+  font-weight: bold;
+}
+
+.narr {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+  font-weight: normal;
+}
+
+.fldlbl {
+  FONT-WEIGHT: bold;
+}
+
+.hotnew {
+  COLOR: #FF5511;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+  TEXT-DECORATION: none;
+}
+
+#hotnew p {
+  COLOR: #e83d0f;
+  FONT-SIZE: 11pt;
+}
+
+#hotnew li {
+  COLOR: #e83d0f;
+  FONT-SIZE: 11pt;
+}
+
+p.sourceCode {
+  COLOR: #000000;
+  FONT-FAMILY: Courier New, monospaced;
+  FONT-SIZE: 9pt;
+  font-weight: normal;
+}
+
+h1.narr {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 12pt;
+  font-weight: bold;
+}
+
+h2.narr {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 11pt;
+  font-weight: bold;
+  font-style: italic;
+}
+
+h3.narr {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 10pt;
+  font-weight: bold;
+}
+
+h2.exec {
+  COLOR: #444444;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 12pt;
+  font-weight: bold;
+  font-style: italic;
+}
+
+h3.exec {
+  COLOR: #444444;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 10pt;
+  font-weight: bold;
+}
+
+p.exec {
+  COLOR: #000000;
+  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+  FONT-SIZE: 8pt;
+}
+
+p.narr, table.narr, td.narr, li.narr {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+}
+
+
+p.fldok, table.fldok, td.fldok, li.fldok {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+  font-weight: bold;
+}
+
+
+p.fldbad, table.fldbad, td.fldbad, li.fldbad {
+  COLOR: #DD1111;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 9pt;
+  font-weight: bold;
+}
+
+
+td.dlProduct {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 11pt;
+  font-weight: bold;
+}
+
+td.dlVersion {
+  COLOR: #000000;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 10pt;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.featureimg {
+  BACKGROUND-COLOR:  #FFCC33;
+}
+
+.featurebox {
+  BORDER-TOP:     #FFEE90 3px solid;
+  BORDER-LEFT:    #FFDD61 3px solid;
+  BORDER-RIGHT:   #EAA923 3px solid;
+  BORDER-BOTTOM:  #D58612 3px solid;
+}
+
+ul.psbullet {
+  margin: 0 0 10px 30px;
+  padding:0;
+  font-size: 9pt;
+  list-style-image: url(http://www.powersoftware.com/img/psbullet.gif);
+}
+
+
+A, A:visited, A:active, A:link {
+  COLOR: #055197;
+  TEXT-DECORATION: none;
+}
+A:hover {
+  COLOR: #0077cc;
+  TEXT-DECORATION: underline;
+}
+
+body.nav, p.nav, table.nav, td.nav {
+  COLOR: #111166;
+  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+  FONT-SIZE: 8pt;
+  TEXT-DECORATION: none;
+}
+
+
+A.nav, A.nav:visited, A.nav:active, A.nav:link {
+  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+  FONT-SIZE: 8pt;
+  COLOR: #FFFFFF;
+  TEXT-DECORATION: none
+  bgcolor: black;
+}
+A.nav:hover {
+  COLOR: F5C135;
+  TEXT-DECORATION: none;
+}
+
+A.hotnew, A.hotnew:visited, A.hotnew:active, A.hotnew:link {
+  COLOR: #D3120D;
+}
+A.hotnew:hover {
+  COLOR: #FF5511;
+}
+
+A.news         { COLOR: #0055FF; }
+A.news:visited { COLOR: #0055FF; }
+A.news:hover   {
+  COLOR: #0077cc;
+  text-decoration: underline;
+}
+A.news:active  { COLOR: #0055FF; }
+A.news:link    { COLOR: #0055FF; }
+
+
+h1.quote {
+  COLOR: #aaaaaa;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 12pt;
+  font-weight: bold;
+  font-style: italic;
+}
+
+body.frametext, p.frametext, table.frametext, td.frametext {
+  COLOR: #FFFFFF;
+  FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+  FONT-SIZE: 8pt;
+}
+
+.slogan {
+  COLOR: #CCCCFF;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  FONT-SIZE: 11pt;
+  font-style: italic;
+  font-weight: bold;
+}
+

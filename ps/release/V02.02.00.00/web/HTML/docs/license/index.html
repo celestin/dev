@@ -1,0 +1,1047 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - Licensing</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - Licensing">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="../../style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="../../ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../../img/navx/select2.gif";
+    var ImgOff = "../../img/navx/go2.gif";
+    var ImgClick = "../../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
+  //-->
+  </SCRIPT>
+  <link rel=File-List href="./lm_files/filelist.xml">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title> </title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Stephen J Webster</o:Author>
+  <o:LastAuthor>Stephen J Webster</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>4428</o:TotalTime>
+  <o:LastPrinted>2002-01-18T16:59:00Z</o:LastPrinted>
+  <o:Created>2002-01-22T15:53:00Z</o:Created>
+  <o:LastSaved>2002-01-22T15:53:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>852</o:Words>
+  <o:Characters>4860</o:Characters>
+  <o:Company>Power Software</o:Company>
+  <o:Lines>40</o:Lines>
+  <o:Paragraphs>9</o:Paragraphs>
+  <o:CharactersWithSpaces>5968</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+  {font-family:Times;
+  panose-1:2 2 6 3 5 4 5 2 3 4;
+  mso-font-charset:0;
+  mso-generic-font-family:roman;
+  mso-font-pitch:variable;
+  mso-font-signature:536902279 -2147483648 8 0 511 0;}
+@font-face
+  {font-family:Helvetica;
+  panose-1:2 11 6 4 2 2 2 2 2 4;
+  mso-font-charset:0;
+  mso-generic-font-family:swiss;
+  mso-font-pitch:variable;
+  mso-font-signature:536902279 -2147483648 8 0 511 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {mso-style-parent:"";
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+h1
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:12.0pt;
+  margin-right:0cm;
+  margin-bottom:3.0pt;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:1;
+  font-size:16.0pt;
+  font-family:Helvetica;
+  mso-bidi-font-family:Arial;
+  color:gray;
+  mso-font-kerning:16.0pt;}
+h2
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:12.0pt;
+  margin-right:0cm;
+  margin-bottom:3.0pt;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:2;
+  font-size:14.0pt;
+  font-family:Helvetica;
+  mso-bidi-font-family:Arial;
+  color:gray;
+  font-style:italic;}
+h3
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:3;
+  font-size:13.0pt;
+  mso-bidi-font-size:10.0pt;
+  font-family:Helvetica;
+  mso-fareast-font-family:"Courier New";
+  mso-bidi-font-family:"Courier New";
+  color:gray;
+  mso-bidi-font-weight:normal;}
+h5
+  {mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  text-align:center;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:5;
+  font-size:24.0pt;
+  mso-bidi-font-size:12.0pt;
+  font-family:"Times New Roman";
+  font-weight:normal;}
+p.MsoIndex1, li.MsoIndex1, div.MsoIndex1
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:12.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex2, li.MsoIndex2, div.MsoIndex2
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex3, li.MsoIndex3, div.MsoIndex3
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:36.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex4, li.MsoIndex4, div.MsoIndex4
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:48.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex5, li.MsoIndex5, div.MsoIndex5
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:60.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex6, li.MsoIndex6, div.MsoIndex6
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:72.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex7, li.MsoIndex7, div.MsoIndex7
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:84.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex8, li.MsoIndex8, div.MsoIndex8
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:96.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex9, li.MsoIndex9, div.MsoIndex9
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:108.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-12.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:12.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:36.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:48.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:60.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:72.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:84.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:96.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+  {margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  tab-stops:center 207.65pt right 415.3pt;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+  {margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  tab-stops:center 207.65pt right 415.3pt;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoIndexHeading, li.MsoIndexHeading, div.MsoIndexHeading
+  {mso-style-next:"Index 1";
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoTof, li.MsoTof, div.MsoTof
+  {mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-24.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+code
+  {mso-ascii-font-family:"Courier New";
+  mso-fareast-font-family:"Courier New";
+  mso-hansi-font-family:"Courier New";
+  mso-bidi-font-family:"Courier New";}
+p.Figure, li.Figure, div.Figure
+  {mso-style-name:Figure;
+  mso-style-update:auto;
+  mso-style-parent:"Table of Figures";
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-24.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:Times;
+  mso-fareast-font-family:"Times New Roman";
+  mso-bidi-font-family:"Times New Roman";
+  font-style:italic;
+  mso-bidi-font-style:normal;}
+@page Section1
+  {size:595.3pt 841.9pt;
+  margin:89.85pt 90.0pt 89.85pt 90.0pt;
+  mso-header-margin:35.4pt;
+  mso-footer-margin:35.4pt;
+  mso-header:url("./lm_files/header.htm") h1;
+  mso-paper-source:0;}
+div.Section1
+  {page:Section1;}
+-->
+</style>
+</HEAD>
+
+<Body  bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="7"><img src="../../img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="../../img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="../../img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="../../img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="../../img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="5"><img src="../../img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><div class=Section1>
+
+<br><br><br>
+
+<h5><b>Krakatau Suite<o:p></o:p></b></h5>
+
+<h5><b>Licensing Details<o:p></o:p></b></h5>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><span style='font-size:20.0pt;mso-bidi-font-size:12.0pt'>Table
+of Contents<o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><a name="_Toc536003549"></a><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style="mso-spacerun: yes"> </span>TOC \o
+&quot;1-3&quot; \h \z <span style='mso-element:field-separator'></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span><a href="#_Toc536425839"><span
+style='mso-bookmark:_Toc536003549'>Licensing Models</span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425839
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800330039000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425840"><span style='mso-bookmark:_Toc536003549'>Host
+Locked Licensing</span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425840
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425841"><span style='mso-bookmark:_Toc536003549'>Information
+Required</span><span style='mso-bookmark:_Toc536003549'><span style='color:
+windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425841
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425842"><span style='mso-bookmark:_Toc536003549'><span
+style='mso-bidi-font-size:13.0pt'>Solaris</span></span><span style='mso-bookmark:
+_Toc536003549'><span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425842
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340032000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425843"><span style='mso-bookmark:_Toc536003549'><span
+style='mso-bidi-font-size:13.0pt'>Windows</span></span><span style='mso-bookmark:
+_Toc536003549'><span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425843
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340033000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425844"><span style='mso-bookmark:_Toc536003549'>Installation</span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425844
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340034000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425845"><span style='mso-bookmark:_Toc536003549'>Floating
+License Server</span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425845
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340035000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425846"><span style='mso-bookmark:_Toc536003549'>Information
+Required</span><span style='mso-bookmark:_Toc536003549'><span style='color:
+windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425846
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>5<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340036000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425847"><span style='mso-bookmark:_Toc536003549'>Installation</span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425847
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>5<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340037000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425848"><span style='mso-bookmark:_Toc536003549'>Already
+Using FLEXlm?</span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425848
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340038000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425849"><span style='mso-bookmark:_Toc536003549'><span
+style='mso-bidi-font-size:13.0pt'>Solaris</span></span><span style='mso-bookmark:
+_Toc536003549'><span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425849
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800340039000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425850"><span style='mso-bookmark:_Toc536003549'><span
+style='mso-bidi-font-size:13.0pt'>Windows</span></span><span style='mso-bookmark:
+_Toc536003549'><span style='color:windowtext;display:none;mso-hide:screen;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425850
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800350030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span style='mso-bookmark:
+_Toc536003549'></span><a href="#_Toc536425851"><span style='mso-bookmark:_Toc536003549'>FAQ</span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'> PAGEREF _Toc536425851
+\h </span></span><span style='mso-bookmark:_Toc536003549'><span
+style='color:windowtext;text-decoration:none;text-underline:none'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'>6<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330036003400320035003800350031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'></span></a><span style='mso-bookmark:_Toc536003549'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bookmark:_Toc536003549'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc536003549'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc536003549'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<span style='mso-bookmark:_Toc536003549'><a name="_Toc536425839"><h1>Licensing
+Models</h1></a></span>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>At Power Software we provides two main ways of licensing our
+products:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536003550"></a><a name="_Toc536425840"><span style='mso-bookmark:
+_Toc536003550'><h1>Host Locked Licensing</h1></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This is the most straightforward way to license one a
+product, the product is then “locked” to a computer and will only be able to be
+run on that computer. This type of licensing is easily set-up and is
+particularly useful if only one member of team will be using the product.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536003551"></a><a name="_Toc536425841"><span style='mso-bookmark:
+_Toc536003551'><h2>Information Required</h2></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To generate the license, all that is required is the
+hostname of the machine that product on will be running on. You can obtain your
+hostname as follows:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425842"><h3>Solaris</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Execute the command uname –a, this will give a results as
+follows:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>SunOS MyHost 5.7 Generic_106541-02 sun4u sparc SUNW,Ultra-1</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Your hostname will be in place of MyHost in the above line.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425843"><h3>Windows</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Within Control Panel-&gt;System you will find the hostname
+of your machine.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536003552"></a><a name="_Toc536425844"><span style='mso-bookmark:
+_Toc536003552'><h2>Installation</h2></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>We will then send you a license, which will have the
+following format:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>FEATURE krakatau KRAKATAU 1.0 permanent \ </p>
+
+<p class=MsoNormal>uncounted HOSTID=HOSTNAME=MyHost \ </p>
+
+<p class=MsoNormal>SIGN=1089A906702C</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To install this license run the:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><span style="mso-spacerun:
+yes"> </span>“Start-&gt;Programs-&gt;PRODUCT NAME-&gt;Install License” </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>command, which will present you with a dialog, copy (CTRL+C)
+and paste (CTRL+V) the 3 lines of the license into the dialog.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>You are now able to run the product with the new license.</p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc536003553"></a><a name="_Toc536425845"><span style='mso-bookmark:
+_Toc536003553'><h1>Floating License Server</h1></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The idea of a floating license server is to have a central
+computer, which can give individual users a license on request.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The floating license server model works as follows: firstly
+a license server is purchased and then the required amount of client licenses
+are purchased. For example if 10 licenses of Krakatau Professional was required
+then that would be 1 license server and 10 Krakatau Professional Floating
+Client licenses.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./lm_files/image001.gif">
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Figure 1: Floating Licenses</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This type of licensing has several advantages. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Since a license is not locked to the hostname of a computer,
+users can access a floating license from any machine. This is useful for two
+reasons, firstly if a user has more than one machine that they with to run the
+product on then they are not required to get multiple licenses. Secondly, since
+the license server is controlling the licenses – multiple users can access a
+single license (not concurrently however). </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Another advantage of the license server approach is that
+individual client licenses are more cost effective than host-locked licenses.
+So although initially a license server has to be purchased, if sufficient
+numbers of client licenses are bought immediately it becomes less expensive.
+And, even if initially the floating server approach is more, future expansion
+becomes much easier and less expensive than purchasing large quantities of
+host-locked licenses. For exact price comparisons please go to our website (<a
+href="http://www.powersoftware.com/">http://www.powersoftware.com/</a>) or
+contact us at <a href="mailto:objects@powersoftware.com">objects@powersoftware.com</a>.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>As well as the above points, once a Floating License server
+has been set up it leads to easier maintenance of products. If all licenses are
+handled by a central License Server then adding new licenses and, indeed,
+checking the number and type of current licenses becomes significantly less
+problematic.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536003554"></a><a name="_Toc536425846"><span style='mso-bookmark:
+_Toc536003554'><h2>Information Required</h2></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The only information that is required for floating licensing
+is the hostname of the server machine and the number of licenses required.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>See the section Information Required for Host Locked
+licenses for details on how to obtain the hostname of your machine.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536003555"></a><a name="_Toc536425847"><span style='mso-bookmark:
+_Toc536003555'><h2>Installation</h2></span></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>As our license server we user the industry standard FLEXlm,
+the first step to installing a license server is to download the latest server
+from the FLEXlm website. To do this go to <a href="http://www.globetrotter.com/">http://www.globetrotter.com/</a>,
+follow the link for End-User downloads and download the lmgrd server for your
+platform. Note: this is not required for host-locked licenses.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>It should be noted that since our we use FLEXlm, the above
+link provides access to a large amount of information that is relevant to the
+installation of our license server, of particular relevance is the FLEXlm End
+Users Guide.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>We will send you the license and a vendor daemon. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The license will be similar to the following format:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>SERVER MyHost Any</p>
+
+<p class=MsoNormal>VENDOR KRAKATAU</p>
+
+<p class=MsoNormal>FEATURE krakatau KRAKATAU 1.0 permanent 2 \ </p>
+
+<p class=MsoNormal>SIGN=C13253B056C0</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To use the license take this and copy from the beginning of
+the first line (which will contain the word SERVER) to the end of the last line
+(which will contain SIGN= and then a generated number) and save it as a text
+file on the machine that you will be using as the server.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>For example, you may save it as:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Solaris:<span style='mso-tab-count:2'> </span>/FLEXlm/psoftware.dat</p>
+
+<p class=MsoNormal>Windows:<span style='mso-tab-count:2'> </span>c:\flexlm\psoftware.dat</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The vendor daemon must also be saved on the server machine.
+We recommend that the vendor daemon be saved to the same location as the lmgrd
+(as downloaded from FLEXlm) this avoids any difficulty in the server locating
+the daemon.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Note: on Solaris: the name of our vendor daemon is:
+KRAKATAU, on Windows it is krakatau.exe.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Once the above has been done, the server can be run by
+executing the following command:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>lmgrd -c <i>license_file_path</i> -l <i>debug_log_path </i></p>
+
+<p class=MsoIndexHeading><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>where <i>license_file_path</i> is the full path to the
+license file and <i>debug_log_path</i> is the full path to the debug log file. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425848"><h2>Already Using FLEXlm?</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>If you are currently using FLEXlm and want to add one of our
+products to the same server you must set an environment variable as follows.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425849"><h3>Solaris</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Create a environment variable called LM_LICENSE_FILE which
+contains the path to all of the necessary licenses. The paths should be
+separated by a colon (:).</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>setenv LM_LICENSE_FILE
+/FLEXlm/license1.dat:/FLEXlm/license2.dat</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425850"><h3>Windows</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Create a environment variable (within Control
+Panel-&gt;System) called LM_LICENSE_FILE which contains the path to all of the
+necessary licenses. The paths should be separated by a semi-colon (;).</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc536425851"><h1>FAQ</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+<br><br><br><br><br>
+</div></TD>
+      <TD bgcolor="#ffffff" rowspan="5" width="100%"><img src="../../img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 alt="Home" width="80" height="32" src="../../img/nav/home2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 name="B01" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="../../img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="../../img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="../../img/navx/go2.gif"></a></TD></TR><tr><td><table border="0" cellspacing=0 cellpadding=3><tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/faq/"class="nav">General FAQ</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td class="nav">Licensing</td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/justify/"class="nav">Justification</a></td></tr></table></td><td bgcolor="#ffffff"><img border="0" src="../../img/f.gif"></td></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="../../img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="../../img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="../../img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="../../img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>08 Jul 2011</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

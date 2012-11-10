@@ -1,0 +1,1631 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Power Software - Justification</title>
+  <meta name="Description" content="Power Software, Krakatau Software Metrics.  Check out - Justification">
+  <meta name="Keywords" content="rsm,command line metrics,batch mode metrics,comprehension,relationships,documentation,source,code,visualizeit,reverse,engineering,software,metrics,cpp,java,metric,krakatau,clearcase,clear,case,visual,studio">
+  <link href="../../style.css" rel=stylesheet type=text/css>
+
+  <link rel="icon" type="image/png" href="../../ps_favicon.png" />
+
+  <SCRIPT Language="JavaScript">
+  <!-- hide
+    var browserOK=false; var sensImage; var curImage; var nSensImages = 0;
+    var ImgOn = "../../img/navx/select2.gif";
+    var ImgOff = "../../img/navx/go2.gif";
+    var ImgClick = "../../img/navx/go2.gif";
+    function furtherInfo(fileName) {myWin=window.open(fileName, "displayWindow", "width=630,height=470,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no"); }
+    browserOK = true;  sensImage = new Array();
+     sensImage[nSensImages++] = "B01" ;
+     sensImage[nSensImages++] = "B06" ;
+     sensImage[nSensImages++] = "B12" ;
+     sensImage[nSensImages++] = "B09" ;
+     sensImage[nSensImages++] = "B02" ;
+     sensImage[nSensImages++] = "B04" ;
+    function on( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgOn; }
+    function click( imageName ) { if (browserOK) for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) if ( sensImage[i] != imageName ) document.images[sensImage[i]].src = ImgOff; else document.images[imageName].src = ImgClick; }
+    function off() { if (browserOK) { for (i = 0; i < nSensImages; i++) if (document.images[sensImage[i]] != null) document.images[sensImage[i]].src = ImgOff; } }
+  //-->
+  </SCRIPT>
+  <link rel=File-List href="./just_files/filelist.xml">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Management Overview</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Stephen J Webster</o:Author>
+  <o:LastAuthor>Stephen J Webster</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>1596</o:TotalTime>
+  <o:LastPrinted>2002-01-16T17:46:00Z</o:LastPrinted>
+  <o:Created>2002-01-23T11:05:00Z</o:Created>
+  <o:LastSaved>2002-01-23T11:05:00Z</o:LastSaved>
+  <o:Pages>16</o:Pages>
+  <o:Words>1770</o:Words>
+  <o:Characters>10091</o:Characters>
+  <o:Company>Power Software</o:Company>
+  <o:Lines>84</o:Lines>
+  <o:Paragraphs>20</o:Paragraphs>
+  <o:CharactersWithSpaces>12392</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+  {font-family:Times;
+  panose-1:2 2 6 3 5 4 5 2 3 4;
+  mso-font-charset:0;
+  mso-generic-font-family:roman;
+  mso-font-format:other;
+  mso-font-pitch:variable;
+  mso-font-signature:3 0 0 0 1 0;}
+@font-face
+  {font-family:Helvetica;
+  panose-1:2 11 6 4 2 2 2 2 2 4;
+  mso-font-charset:0;
+  mso-generic-font-family:swiss;
+  mso-font-format:other;
+  mso-font-pitch:variable;
+  mso-font-signature:3 0 0 0 1 0;}
+@font-face
+  {font-family:"Arial\, Helvetica\, sans-serif";
+  panose-1:0 0 0 0 0 0 0 0 0 0;
+  mso-font-alt:"Times New Roman";
+  mso-font-charset:0;
+  mso-generic-font-family:roman;
+  mso-font-format:other;
+  mso-font-pitch:auto;
+  mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+  {mso-style-parent:"";
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+h1
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:12.0pt;
+  margin-right:0cm;
+  margin-bottom:3.0pt;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:1;
+  font-size:16.0pt;
+  font-family:Helvetica;
+  mso-bidi-font-family:Arial;
+  color:gray;
+  mso-font-kerning:16.0pt;}
+h2
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:12.0pt;
+  margin-right:0cm;
+  margin-bottom:3.0pt;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:2;
+  font-size:14.0pt;
+  font-family:Helvetica;
+  mso-bidi-font-family:Arial;
+  color:gray;
+  font-style:italic;}
+h3
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:12.0pt;
+  margin-right:0cm;
+  margin-bottom:3.0pt;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:3;
+  font-size:13.0pt;
+  font-family:Helvetica;
+  mso-bidi-font-family:Arial;
+  color:gray;}
+h4
+  {mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:4;
+  font-size:24.0pt;
+  mso-bidi-font-size:12.0pt;
+  font-family:"Times New Roman";
+  font-weight:normal;}
+h5
+  {mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  text-align:center;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:5;
+  font-size:24.0pt;
+  mso-bidi-font-size:12.0pt;
+  font-family:"Times New Roman";
+  font-weight:normal;}
+h6
+  {mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  text-align:center;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:6;
+  font-size:28.0pt;
+  mso-bidi-font-size:12.0pt;
+  font-family:"Times New Roman";
+  font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+  {mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  page-break-after:avoid;
+  mso-outline-level:7;
+  font-size:20.0pt;
+  mso-bidi-font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:12.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:36.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:48.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:60.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:72.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:84.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:96.0pt;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+  {margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  tab-stops:center 207.65pt right 415.3pt;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+  {margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  tab-stops:center 207.65pt right 415.3pt;
+  font-size:12.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";}
+p.MsoTof, li.MsoTof, div.MsoTof
+  {mso-style-update:auto;
+  mso-style-next:Normal;
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:0cm;
+  margin-left:24.0pt;
+  margin-bottom:.0001pt;
+  text-indent:-24.0pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  font-family:Times;
+  mso-fareast-font-family:"Times New Roman";
+  mso-bidi-font-family:"Times New Roman";}
+p.exec, li.exec, div.exec
+  {mso-style-name:exec;
+  margin-right:0cm;
+  mso-margin-top-alt:auto;
+  mso-margin-bottom-alt:auto;
+  margin-left:0cm;
+  mso-pagination:widow-orphan;
+  font-size:8.0pt;
+  font-family:"Arial\, Helvetica\, sans-serif";
+  mso-fareast-font-family:"Times New Roman";
+  mso-bidi-font-family:"Times New Roman";
+  color:black;}
+p.Figure, li.Figure, div.Figure
+  {mso-style-name:Figure;
+  mso-style-update:auto;
+  mso-style-parent:"";
+  margin:0cm;
+  margin-bottom:.0001pt;
+  mso-pagination:widow-orphan;
+  font-size:12.0pt;
+  mso-bidi-font-size:10.0pt;
+  font-family:"Times New Roman";
+  mso-fareast-font-family:"Times New Roman";
+  font-style:italic;
+  mso-bidi-font-style:normal;}
+@page Section1
+  {size:595.3pt 841.9pt;
+  margin:89.85pt 90.0pt 89.85pt 90.0pt;
+  mso-header-margin:35.4pt;
+  mso-footer-margin:35.4pt;
+  mso-page-numbers:0;
+  mso-title-page:yes;
+  mso-header:url("./just_files/header.htm") h1;
+  mso-even-footer:url("./just_files/header.htm") ef1;
+  mso-footer:url("./just_files/header.htm") f1;
+  mso-paper-source:0;}
+div.Section1
+  {page:Section1;}
+ /* List Definitions */
+@list l0
+  {mso-list-id:795683480;
+  mso-list-type:hybrid;
+  mso-list-template-ids:1868099102 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+  {mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-18.0pt;}
+@list l1
+  {mso-list-id:1422990427;
+  mso-list-type:hybrid;
+  mso-list-template-ids:556974298 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+  {mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-18.0pt;}
+@list l2
+  {mso-list-id:1426655070;
+  mso-list-type:hybrid;
+  mso-list-template-ids:-1537027184 142095468 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+  {mso-level-number-format:alpha-lower;
+  mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-36.0pt;}
+@list l3
+  {mso-list-id:1506556614;
+  mso-list-type:hybrid;
+  mso-list-template-ids:-621518956 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+  {mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-18.0pt;}
+@list l4
+  {mso-list-id:2075152956;
+  mso-list-type:hybrid;
+  mso-list-template-ids:-131307920 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+  {mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-18.0pt;}
+@list l5
+  {mso-list-id:2096512583;
+  mso-list-type:hybrid;
+  mso-list-template-ids:-2117958996 142095468 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+  {mso-level-number-format:alpha-lower;
+  mso-level-tab-stop:36.0pt;
+  mso-level-number-position:left;
+  text-indent:-36.0pt;}
+ol
+  {margin-bottom:0cm;}
+ul
+  {margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</HEAD>
+
+<Body  bgcolor="#ffffff" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0>
+
+  <TABLE border="0" bgcolor="#0066cc" width="100%" cellspacing=0 cellpadding=0>
+    <TR valign=top>
+      <TD rowspan="7"><img src="../../img/f.gif" width="20"></TD>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+      <TD rowspan="3"><img src="../../img/f.gif" width="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130"><img src="../../img/loz02.gif"></TD>
+      <TD colspan="2" width="100%" align=right>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+          <tr>
+            <td width="100%"><p class="slogan" align="center">Welcome to the home of Krakatau Essential Project Manager<br>Measuring churn metrics, changed source lines of code &amp; changed logical lines of code</p></td>
+            <td><img src="../../img/krakmet02.gif"></td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR valign=top>
+      <TD colspan="3"><img src="../../img/f.gif" height="20"></TD>
+    </TR>
+    <TR valign=top>
+      <TD width="130" ><img src="../../img/f.gif" height="2"></TD>
+      <TD bgcolor="#ffffff" rowspan="5"><img src="../../img/f.gif" height="30"></TD>
+      <TD bgcolor="#ffffff" rowspan="4"
+      width="100%"><div class=Section1>
+
+<h3><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></h3>
+
+<br><br><br>
+
+<h5><b>Krakatau Suite<o:p></o:p></b></h5>
+
+<h5><b>Management Overview<o:p></o:p></b></h5>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><span style='font-size:20.0pt;mso-bidi-font-size:12.0pt'>Table
+of Contents<o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>TOC \o &quot;1-3&quot; \h \z <span style='mso-element:field-separator'></span><![endif]--><span
+class=MsoHyperlink><a href="#_Toc535835265">Introduction<span style='color:
+windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835265 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>2</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200360035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835266">Getting Started<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835266 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>3</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200360036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835267">Output<span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835267 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200360037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835268">Graphical Environment<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835268 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200360038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835269">Viewing Symbols<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835269 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200360039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835270">Graphical Comparison<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835270 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>6</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835271">Setting Bounds<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835271 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>8</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835272">Reports<span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835272 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>9</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835273">HTML<span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835273 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>9</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835274">XML<span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835274 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>10</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc3 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835275">CSV<span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835275 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>10</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835276">Tools in the Krakatau Suite<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835276 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>12</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835277">Krakatau Professional<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835277 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>12</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835278">Krakatau Project Manager<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835278 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>12</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc2 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835279">Essential Metrics<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835279 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>14</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200370039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoToc1 style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835280">Architecture<span style='color:
+windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835280 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>15</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><o:p></o:p></p>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoHeading7>Table of Figures</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>TOC \h \z \t &quot;Figure&quot; \c <span style='mso-element:field-separator'></span><![endif]--><span
+class=MsoHyperlink><a href="#_Toc535835281">Figure 1: Project Creation<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835281 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>3</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835282">Figure 2: File/Class &amp; Method
+Lists<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835282 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835283">Figure 3: Graphical Metric View<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835283 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>6</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835284">Figure 4: Kiviat Diagram<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835284 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>7</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835285">Figure 5: Bounds Selection<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835285 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>8</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835286">Figure 6: HTML Report<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835286 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>9</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835287">Figure 7: XML Report<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835287 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>10</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835288">Figure 8: CSV Report<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835288 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>11</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835289">Figure 9: Pie Chart<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835289 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>11</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200380039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835290">Figure 10: Changed Source Lines of
+Code<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835290 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>13</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200390030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835291">Figure 12: Multiple Page HTML
+Report<span style='color:windowtext;display:none;mso-hide:screen;text-decoration:
+none;text-underline:none'><span style='mso-tab-count:1 dotted'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835291 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>14</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200390031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof style='tab-stops:right dotted 414.8pt'><span
+class=MsoHyperlink><a href="#_Toc535835292">Figure 13: Design Overview<span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc535835292 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>15</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003500330035003800330035003200390032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoTof><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835265"><h1>Introduction</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>‘Every manufacturing process must control the quality of its
+products and processes’.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>In order to control any process you must be able to measure
+it. Krakatau Metrics from Power Software aims to bring control to the complex
+and investment-intensive manufacturing process of software engineering. By
+automatically measuring your source code we are able to tell you exact
+information about the size, complexity and maintainability of one of your most
+expensive and important assets. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Drawing on many years of experience Power Software has
+designed and manufactured a complete range of software metrics tools. The
+Krakatau Metric Suite covers all aspects of the software metrics from simple
+size metrics, LOC &amp; SLOC to complex object-oriented metrics. Changes in
+source code are also covered in the Project Manager tool.</p>
+
+<p class=MsoToc1><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The aim of the Krakatau Suite is to allow software
+professionals to improve quality and robustness through the application of
+easy-to-use, non-intrusive metric tools.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image001.gif">
+
+<p class=MsoNormal align=center style='text-align:center'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image002.gif">
+
+<p class=MsoNormal align=center style='text-align:center'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image003.gif">
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>For further information about Krakatau Professional,
+Krakatau Project Manager, Essential Metrics and VisualizeIt! please visit <a
+href="http://www.powersoftware.com/">http://www.powersoftware.com/</a> or
+contact us at objects@powersoftware.com.</p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835266"><h1>Getting Started</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Metrics can be used on either C/C++ or Java source
+code.</p>
+
+<p class=MsoNormal>The principles of loading the source code are the same for
+both languages.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Source code can be loaded in these ways</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoToc1 style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><![endif]>Create a directory-structure based</p>
+
+<ol style='margin-top:0cm' start=2 type=1>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Create
+     a project containing all of the files in a directory</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Select
+     individual files to be added to a project</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Import
+     files from a third party tool</li>
+</ol>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Examples are shown in the figure below:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image004.gif">
+
+<p class=Figure><a name="_Toc535737866"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></a></p>
+
+<span style='mso-bookmark:_Toc535737866'><a name="_Toc535835281"><p class=Figure>Figure
+1: Project Creation</p></a></span>
+
+<p class=MsoTof><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This project creation can be accomplished quickly and simply
+– thereafter one mouse click starts Krakatau generating metric information for
+the given project. This ease of and non-intrusiveness has seen many users move
+from more cumbersome metric applications to Krakatau. </p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835267"><h1>Output</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835268"><h2>Graphical Environment</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The benefits of a graphical environment are numerous. In
+Krakatau we provide an intuitive graphical environment that shows all the
+results in a simple yet powerful format.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>As well as showing absolute values of metrics for
+directories, files, classes, methods (and in Java packages and interfaces) we
+provide the ability to </p>
+
+<p class=MsoToc1><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<ol style='margin-top:0cm' start=1 type=1>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo6;tab-stops:list 36.0pt'>View
+     all Symbols (files, classes, methods etc.)</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo6;tab-stops:list 36.0pt'>Compare
+     all these graphically by a given metric e.g. size (LOC or SLOC)</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo6;tab-stops:list 36.0pt'>Set
+     upper and lower bounds to show ‘out of bounds’ symbols</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo6;tab-stops:list 36.0pt'>View
+     these results in bar charts or kiviat diagrams</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo6;tab-stops:list 36.0pt'>Export
+     the results for further analysis and presentation</li>
+</ol>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835269"><h2>Viewing Symbols</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>As can be seen in figure 2, the graphical interface allows
+the user to view the symbols that are contained within their project. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image005.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835282"><p class=Figure>Figure 2: File/Class &amp; Method Lists</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>The tabs (figure 2) highlight the two main ways of
+navigating the contents of a project. The “Project” tab gives a containment
+tree, which allows symbols to be expanded to show their children. For example,
+it may show the functions or classes contained within a file.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The other tabs (file, class etc.) give a list of symbols of
+that type. This is especially usefully for comparing symbols against each other
+to view their metric values side by side.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<b><i><span style='font-size:14.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-ansi-language:EN-GB;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></i></b>
+
+<a name="_Toc535835270"><h2>Graphical Comparison</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The user interface gives two graphical views, which can be
+used to visually compare metric values for symbols.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The first type of graph (figure 3) is the Histogram view.
+This graph allows the selection of multiple symbols and shows the metric values
+for the symbols side by side. This gives a visual way of comparing metric
+values for symbols.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image006.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835283"><p class=Figure>Figure 3: Graphical Metric View</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>The other type of graph is the Kiviat (figure 4). Kiviats
+show which symbols are violating given metric bounds.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image007.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835284"><p class=Figure>Figure 4: Kiviat Diagram</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This type of graph allows the selection of multiple symbols,
+which shows whether the average of a range of symbols are violating the metric
+bounds.</p>
+
+<b><i><span style='font-size:14.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-ansi-language:EN-GB;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></i></b>
+
+<a name="_Toc535835271"><h2>Setting Bounds</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Another valuable feature of the Krakatau Graphical
+Environment is the ability to set bounds for selected metrics.<span
+style="mso-spacerun: yes">  </span>For example the lower bound for LOC could be
+set to 29 (figure 5). After this has been done, all symbols, which have LOC
+less than 29 will be flagged. Similarly upper bounds can be set on symbols.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image008.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835285"><p class=Figure>Figure 5: Bounds Selection</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<b><i><span style='font-size:14.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-ansi-language:EN-GB;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></i></b>
+
+<a name="_Toc535835272"><h2>Reports</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>It is important to present the results in a way that matches
+each project needs.</p>
+
+<p class=MsoNormal>Krakatau Metrics allows the user to export all the data in
+the following popular formats.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835273"><h3>HTML</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The HTML reports all feature navigation links in the header
+and footer (figure 6). They are produced with two or three clicks and are
+immediately usable. These are ideally suited for publishing on a company
+intranet.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image009.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835286"><p class=Figure>Figure 6: HTML Report</p></a>
+
+<b><span style='font-size:13.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-ansi-language:EN-GB;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835274"><h3>XML<</h3>/a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The XML reporting facility allows the user to take the
+metric information from a project and manipulate the results as they please.
+Either using XSL to transform the results into a custom-made web page or to
+take into another application and perform further analysis. XML reports are
+available in Essential Metrics.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image010.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835287"><p class=Figure>Figure 7: XML Report</p></a>
+
+<a name="_Toc535835275"><h3>CSV</h3></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To allow the user to manipulate, or import the results into
+another application, the comma-separated report is provided. Figure 8 shows
+output from Krakatau Professional in Microsoft Excel.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='mso-special-character:line-break;
+page-break-before:always'>
+</span>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image011.gif">
+
+<p class=Figure><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835288"><p class=Figure>Figure 8: CSV Report</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This allows the ability to perform further calculations
+based on the metric values. Another common use of exporting the data could to
+generate graphs. This can be illustrated by the pie chart (figure 9), which was
+populated by values exported via CSV to Microsoft Excel. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image012.gif">
+
+<a name="_Toc535835289"><p class=Figure>Figure 9: Pie Chart</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835276"><h1>Tools in the Krakatau Suite</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Power Software offers three Metrics tools to address the
+following requirements</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835277"><h2>Krakatau Professional</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Professional is the most comprehensive,
+commercially supported source code metrics tool for C/C++ and Java projects.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Professional is scalable to millions of source
+lines of code and has over 70 source code measurements including Halstead size
+metrics, complexity and advanced object-oriented metrics.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Metrics can be collected at the command line or using our
+specially designed GUI featuring histograms, kiviat diagrams and numerical
+reports.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Violating metrics reports can be created by setting upper
+and lower bounds and all metrics can be sorted and selected/deselected.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Output is to html (for intranets) or CDF/CSV (for
+spreadsheets or PC anaylsis applications).</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Professional is aimed at the <i>File, Class, and
+Method</i> (Java also <i>Interface and Package</i>) level metrics.</p>
+
+<a name="_Toc535835278"><h2>Krakatau Project Manager</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Project Manager is the only source code metrics
+tool that compares two C/C++ or Java projects and shows changed, deleted and
+added source lines of code between the projects. These changed metrics give
+essential information about developer activity and can be used to pinpoint
+problem areas in your source code projects.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau Project Manager was designed and specified by our
+customers and is ideal for use with leading CMVC tools.</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>Krakatau PM also shows all the 'differences' in the metrics
+between releases. Krakatau PM is aimed primarily at <i>Project and File</i>
+(Java also <i>Package</i>) level metrics. Single project metrics are also
+provided.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Krakatau PM also includes a wide range of source code
+metrics like complexity, Halstead size metrics and numerous LOC metrics.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The CHG_SLOC, ADD_SLOC and DEL_SLOC metrics are unique to
+Power Software and Krakatau PM.</p>
+
+<p class=MsoNormal>Figure 10 shows an example of the widely required CHG_SLOC
+metric, at File level. CHG_SLOC is the number of changed source lines of code
+(for project or file) between versions of a project</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image013.gif">
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835290"><p class=Figure>Figure 10: Changed Source Lines of Code</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>As well as calculating the Changed Metrics, Krakatau PM also
+highlights the difference in metrics (figure 11) between the two projects. That
+is, for example, if lines have been added to a file from one version to another,
+then LOC will be a positive number. Similarly if lines have been removed, LOC
+will be a negative number. These differences are shown for all of the metrics
+that Krakatau PM calculates.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image014.gif">
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Figure>Figure 11: Metric Differences</p>
+
+<b><i><span style='font-size:14.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-ansi-language:EN-GB;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'>
+</span></i></b>
+
+<a name="_Toc535835279"><h2>Essential Metrics</h2></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Essential Metrics is an advanced command line metrics tool
+for C/C++ and Java software projects.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Invoked directly at the command line, Essential Metrics
+delivers numerous popular metrics and allows these to be reported using CSV,
+HTML and XML.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Essential Metrics is ideal for inclusion in your batch/build
+process for automated metric results.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Essential Metrics also has extensive reporting facilities.
+Figure 12 shows a multiple page HTML “Symbol” report. This type of report gives
+a alphabetically sorted list of files, classes etc and for each Symbol shows
+all of the metrics calculated.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image015.gif">
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<a name="_Toc535835291"><p class=Figure>Figure 12: Multiple Page HTML Report</p></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<b><span style='font-size:16.0pt;font-family:Helvetica;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:gray;mso-font-kerning:16.0pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<a name="_Toc535835280"><h1>Architecture</h1></a>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>In designing the architecture of the Krakatau Metrics range
+we considered the following</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>a.<span style='mso-tab-count:1'>         </span>Many
+projects have large source code often millions of lines of code (LOC).</p>
+
+<p class=MsoNormal>b.<span style='mso-tab-count:1'>         </span>Projects are
+interested in a variety of different measurements.</p>
+
+<p class=MsoNormal>c.<span style='mso-tab-count:1'>         </span>Projects
+often require new or unique metrics.</p>
+
+<p class=MsoNormal>d.<span style='mso-tab-count:1'>         </span>A graphical
+environment and a command line (batch) tool was required.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The following diagram shows the principles of the
+architecture</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<img src="./just_files/image016.gif">
+
+<p class=Figure><a name="_Toc535737865"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></a></p>
+
+<span style='mso-bookmark:_Toc535737865'><a name="_Toc535835292"><p class=Figure>Figure
+13: Design Overview</p></a></span>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Notes</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The architecture is designed to work with any SQL database</p>
+
+<p class=MsoNormal>New metrics can be added with relative ease</p>
+
+<p class=MsoNormal>Krakatau Professional provides OO metrics based on
+cross-referencing methods</p>
+
+<p class=MsoNormal>Krakatau PM compares two projects to give comparative
+measurements</p>
+
+<p class=MsoNormal>The graphical environment and reports are written in Java
+and easy to upgrade</p>
+
+<p class=MsoNormal>The code parsers are optimised for scalability and speed</p>
+<br><br><br><br><br>
+</div></TD>
+      <TD bgcolor="#ffffff" rowspan="5" width="100%"><img src="../../img/f.gif" height=1></TD>
+    </TR>
+        <TR valign=top>
+      <TD colspan="2" width="160"><TABLE border="0" cellspacing=0 cellpadding=0><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 alt="Home" width="80" height="32" src="../../img/nav/home2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../" onMouseOut="off()"
+               onMouseOver="on('B01')" onClick="click('B01')"><img border=0 name="B01" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 alt="Products" width="80" height="32" src="../../img/nav/prod2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../products/" onMouseOut="off()"
+               onMouseOver="on('B06')" onClick="click('B06')"><img border=0 name="B06" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 alt="Online Documents" width="80" height="32" src="../../img/nav/doc2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../docs/" onMouseOut="off()"
+               onMouseOver="on('B12')" onClick="click('B12')"><img border=0 name="B12" src="../../img/navx/go2.gif"></a></TD></TR><tr><td><table border="0" cellspacing=0 cellpadding=3><tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/faq/"class="nav">General FAQ</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td><a href="../../docs/license/"class="nav">Licensing</a></td></tr>
+<tr><td>&nbsp;</td><td><img src="../../img/f.gif" width=3 height=0></td><td class="nav">Justification</td></tr></table></td><td bgcolor="#ffffff"><img border="0" src="../../img/f.gif"></td></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 alt="Customers" width="80" height="32" src="../../img/nav/cust2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../customers/" onMouseOut="off()"
+               onMouseOver="on('B09')" onClick="click('B09')"><img border=0 name="B09" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 alt="Download" width="80" height="32" src="../../img/nav/down2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../download/" onMouseOut="off()"
+               onMouseOver="on('B02')" onClick="click('B02')"><img border=0 name="B02" src="../../img/navx/go2.gif"></a></TD></TR><TR valign=top><TD width="130" background="../../img/navx/thin2.gif"><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 alt="Contact" width="80" height="32" src="../../img/nav/cont2_but.gif"></a></TD><TD width="30" valign=center><a class="nav" href="../../contact/" onMouseOut="off()"
+               onMouseOver="on('B04')" onClick="click('B04')"><img border=0 name="B04" src="../../img/navx/go2.gif"></a></TD></TR></TABLE></TD>
+    </TR>
+    <TR>
+      <TD width="130" class="frametext" align=center valign=bottom>Last Updated<BR>
+      <B>08 Jul 2011</B><BR><BR>Copyright &copy; 2009 <span style="font-size:9px">PowerSoftware.com</span><BR><BR></TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

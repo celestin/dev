@@ -1,0 +1,18 @@
+Here is an update on Krakatau Metrics and news from Power Software.
+ 
+Power Software's flagship product is Krakatau Project Manager (PM). 
+Project Manager measures 'Changed, Added and Deleted' SLOC (Source Lines of Code).
+This information tells Project Managers, Team Leaders and Configuration Managers how the source code is changing between projects, releases or versions. This is important information and can identify any unapproved or unexpected changes to the source base. It also useful with respect to the amount of change and where these changes are taking place. Please try the flash demonstration on this page.
+http://www.powersoftware.com/pm/
+
+Krakatau Professional is Power Software's advanced software measurement system reporting over 70 source code metrics. Many data analysis views are available such as bar chats, kiveat diagrams, histograms. Metrics bounds can be set and Violating Metrics symbols can be viewed in a Violation or an Alarm report. HTML and CSV output is available.
+http://www.powersoftware.com/kp/
+
+Visualize it! is a new tool from Power Software for Java professionals. Visualize it! is great for understanding unfamiliar Java code and can be used to explore and understand any large or small Java project.
+Visualize it! makes maximum use of Java technology and features powerful 2D and 3d views of source code.
+Please run the Flash presentation.
+http://www.powersoftware.com/vz/
+ 
+
+This message has been sent to our existing customers and all parties who expressed interest in this calendar year.
+If you wish to be removed please contact remove@powersoftware.com

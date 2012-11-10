@@ -1,0 +1,72 @@
+SOURCECODEMETRICS.COM – SOFTWARE LICENSE AGREEMENT
+
+PLEASE READ THE FOLLOWING TERMS AND CONDITIONS CAREFULLY BEFORE DOWNLOADING OR INSTALLING THE SOFTWARE ON YOUR COMPUTER.  
+DOWNLOADING OR INSTALLING OF THE SOFTWARE INDICATES YOUR ACCEPTANCE OF THE TERMS AND CONDITIONS OF THIS LICENSE.  IF YOU DO NOT AGREE WITH THEM, YOU SHOULD NOT DOWNLOAD OR INSTALL THE SOFTWARE.
+
+1. DEFINITIONS.
+
+1.1 "software"	means the binary, machine-readable distribution of; EPM, KEPM, Krakatau PM, Krakatau Professional, Essential Metrics, PowerSoftware and PowerSoftware.com. 
+
+1.2 "documentation"	means the information distributed with the software whether in binary or hard copy form.
+
+1.3 "object code"	refers to the binary, machine-readable statement of the software.
+
+1.4 "Scots law"	refers to the laws of Scotland.
+
+1.5 "Agreement"	refers to this document 
+
+2. LICENSE TO USE.  
+
+The software is copyright SourceCodeMetrics.com. Ltd
+
+a.      You are granted a nonexclusive and non-transferable license to download (if you are retrieving the software from a website), install and use the software in machine-readable, object code form only, together with accompanying user documentation, only on a "per seat" basis-that is, you may install the software on a single computer to be used by a single user at any one time.  You are not authorized to use the software concurrently on two or more computers or in a networked environment without separate authorization from SourceCodeMetrics.com and the payment of applicable license fees.
+
+b.      You may make one copy of the software in machine-readable, object code form solely for backup purposes.  You may, for your internal use only, make copies of the printed or on-line versions of the user documentation, provided that you reproduce all proprietary rights notices included therein.
+
+c.      You agree not to transfer, electronically-transmit, rent or lease your copy of the software or copy (except as permitted in paragraph b. above), modify, create derivative works of, decompile, disassemble, or otherwise reverse engineer that software program, in whole or in part.  Furthermore, you agree not to sell, distribute, assign, sublicense or create derivative works of the documentation.
+
+d.      You agree and certify that the software will not be exported or re-exported.  Notwithstanding the foregoing, neither the software nor any other technical data received, may be downloaded or otherwise exported or re-exported (i) into (or to a national or resident of) any country to which the United Nations has embargoed goods.  By downloading or using the software, you are agreeing to the foregoing, and you are representing and warranting that you are not located in, under the control of, or a national or resident of any such country or on any such embargo list.
+
+e.      The availability of the software via websites shall not be deemed to constitute advertising in such countries where such form, manner or method of advertising is prohibited by the laws of that foreign country.
+
+
+3. TERMINATION.  
+
+This license is effective until terminated.  You may terminate this license at any time by (i) deleting the software, and other data made available or supplied to you, residing in electronic form, (ii) destroying all tangible copies of the software and the accompanying documentation, and (iii) certifying in writing, upon request, that you have taken all of the foregoing actions.  This license will also automatically terminate immediately, without notice if you fail to comply with any term or condition set forth herein.  This license will terminate if maintenance is not renewed within 60 days of the annual expiry date.
+
+
+4. LIMITED WARRANTY. 
+
+EXCEPT AS SPECIFIED IN THIS LICENSE, THE SOFTWARE IS PROVIDED AND LICENSED "AS IS," WITHOUT WARRANTY OF ANY KIND, AND ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT, ARE EXCLUDED.
+
+
+5. EVALUATION COPY.  
+
+If the copy of the software is being used by you for evaluation purposes, you should be aware that this copy will operate for no longer than the specified evaluation period.  As such, you are responsible for backing up all of your work created in connection with your use of such software.  
+
+SourceCodeMetrics.com Ltd WILL NOT BE LIABLE FOR ANY LOSS OF DATA OR INFORMATION ON ACCOUNT OF THE USE OF AN EVALUATION OR PURCHASED COPY OF THE SOFTWARE.
+
+6. LIMITATION OF LIABILITY.  
+
+IN NO EVENT WILL SourceCodeMetrics.com Ltd BE LIABLE TO YOU FOR ANY DAMAGES, INCLUDING LOST REVENUES, PROFITS, DATA OR OTHER INFORMATION, OR FOR ANY SPECIAL, INDIRECT, INCIDENTAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  
+
+SourceCodeMetrics.com Ltd SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO THE LICENSEE UNDER THE LAW OF TORT, CONTRACT OR OTHERWISE FOR ANY LOSS OF PROFITS (WHICH, FOR THE AVOIDANCE OF DOUBT, DO NOT INCLUDE FEES DUE AND PAYABLE HEREUNDER) OR CONTRACTS OR ANY INDIRECT OR CONSEQUENTIAL LOSS OR DAMAGE, HOWSOEVER CAUSED WHETHER ARISING OUT OF OR IN CONNECTION WITH THE POSSESION, USE OR DISTRIBUTION UNDER LICENSE OF THE SOFTWARE
+
+The Licensee shall indemnify SourceCodeMetrics.com Ltd without limitation against any liability that the latter party may incur arising from death or personal injury caused by negligence.
+
+7. FORCE MAJEURE.  
+
+SourceCodeMetrics.com Ltd shall not be liable for any delay in meeting or failure to meet any obligation under this Agreement due to any cause outside its reasonable control, including, without limitation, strikes, lock-outs, Acts of God, war, riot, malicious acts of damage, fire, acts of any government authority, failure of the public electricity supply, failure or delay on the part of any subcontractor beyond the subcontractor's reasonable control.
+
+8. GOVERNING LAW.  
+
+The terms of this license shall be construed in accordance with the laws of Scotland.
+
+9. ENTIRE AGREEMENT.  
+
+This license shall constitute the entire agreement between us with respect to the subject matter hereof and supersedes any prior agreements or understandings between us, whether written or oral, with respect hereto.  No modification to this license shall be of any force or effect unless made in writing signed by each party.  You agree that you have not relied on any representation in entering into this license other than those set out herein.
+
+NOTICE: Contractor/manufacturer is SourceCodeMetrics.com Ltd, Suite 5, 6 Mayfield Gardens, Aberdeen, UK, AB15 7YZ.  Copyright: 1997 Power Software: (c) 2006 SourceCodeMetrics.com Ltd. All Rights Reserved.  
+EPM, KEPM, Krakatau Professional, Krakatau PM, Essential Metrics, Power Software, PowerSoftware.com and SourceCodeMetrics.com are trademarks of SourceCodeMetrics.com Ltd.
+PowerSoftware and PowerSoftware.com are trading styles of SourceCodeMetrics.com
+

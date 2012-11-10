@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: batch - Win32 CPP Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP3DF.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "c:\mysql\include" /I "C:\Program Files\flexlm\v7.2\machind" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "LANGUAGE_CPP" /D "PM" /Fo"CPP_Debug/" /Fd"CPP_Debug/" /FD /GZ /c 
+"J:\metrics\batch\batch.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP3DF.tmp" 
+Creating temporary file "C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP3E0.tmp" with contents
+[
+mysqlclient.lib libmySQL.lib zlib.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"CPP_Debug/emetrics.pdb" /debug /machine:I386 /nodefaultlib:"MSVCRTD" /out:"CPP_Debug/emetrics.exe" /pdbtype:sept /libpath:"c:\mysql\lib\debug" /libpath:"C:\Program Files\flexlm\v7.2\i86_n3" 
+.\CPP_Debug\batch.obj
+.\CPP_Debug\OurSQL.obj
+.\CPP_Debug\report.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\STEPHE~1.SAL\LOCALS~1\Temp\RSP3E0.tmp"
+<h3>Output Window</h3>
+Compiling...
+batch.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+emetrics.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

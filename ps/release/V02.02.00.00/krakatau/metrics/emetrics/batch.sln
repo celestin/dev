@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "emetrics", "batch.vcproj", "{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CPP Debug|Win32 = CPP Debug|Win32
+		CPP Release|Win32 = CPP Release|Win32
+		Java Release|Win32 = Java Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.CPP Debug|Win32.ActiveCfg = CPP Debug|Win32
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.CPP Debug|Win32.Build.0 = CPP Debug|Win32
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.CPP Release|Win32.ActiveCfg = CPP Release|Win32
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.CPP Release|Win32.Build.0 = CPP Release|Win32
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.Java Release|Win32.ActiveCfg = Java Release|Win32
+		{C4A87ECF-BD5A-4EC9-8324-6319E61CACF3}.Java Release|Win32.Build.0 = Java Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

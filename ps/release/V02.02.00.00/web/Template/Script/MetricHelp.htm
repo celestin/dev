@@ -1,0 +1,21 @@
+  <script Language="JavaScript1.2">
+  <!--
+   function showMetricHelp(relativePath, mttCode, mttName, mttDescription, mttFormula) {
+
+     var desc1 = new String(mttDescription) ;
+     var desc = desc1.replace(/JSAFEQUOT/g, '"') ;
+     desc1 = new String(mttFormula) ;
+     var formula = desc1.replace(/JSAFEQUOT/g, '"') ;
+
+     var helpWin = window.open("", "mhWindow", "width=580,height=350,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no") ;
+     var doc = helpWin.document;
+     doc.write('<html><head><title>Metric Help - ' + mttName + '</title><link href="' + relativePath + 'style.css" rel=stylesheet type=text/css></head>\n\n') ;
+     doc.write('<body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 rightmargin=0 bgcolor="#ffffff"><basefont face="Arial">\n<center>\n\t<table border=0 cellspacing=0 cellpadding=5 width="100%" height="100%"><tr><td bgcolor="0077cc" class="narr"><font color="ffffff"><b>') ;
+     doc.write(mttCode + '</b>&nbsp;' + mttName + '</font></td></tr>\n') ;
+     doc.write('<tr><td background="' + relativePath + 'img/top_bev.gif"><img src="' + relativePath + 'img/f.gif"></td></tr><tr><td valign=top class="narr">') ;
+     doc.write(desc + '</td></tr><tr><td valign=top class="narr"><pre>') ;
+     doc.write(formula + '</pre></td></tr><tr><td height="100%" valign=bottom align=center class="narr"><a href="javascript:window.close();">close</a></td></tr></table>\n</body></html>') ;
+     doc.close() ;
+   }
+  //-->
+  </script>

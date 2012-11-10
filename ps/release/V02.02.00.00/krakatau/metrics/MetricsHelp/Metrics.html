@@ -1,0 +1,2639 @@
+<html><body>
+<h1>Essential Metrics for C/C++</h1>
+
+<h2>Method</h2>
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h3>V'(G) - Extended Cyclomatic Complexity</h3>
+<h3></h3>
+<p>V'(G) = OC / V(G)<br><br>V'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.</p>
+
+<h2>File</h2>
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this file's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this file.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the file.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h2>Method</h2>
+<h3>B - Halstead Bug Prediction</h3>
+<h3></h3>
+<p>This variant of Halstead Effort is a measure of the likelihood of bugs within the method.</p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this method's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this method.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h2>Project</h2>
+<h3>AVPATHS - Average Depth of Paths</h3>
+<h3></h3>
+<p>AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.</p>
+
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SEIMI - SEI Maintainability Index</h3>
+<h3></h3>
+<p>The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href="http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html">http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TLOC - Total Lines of Code</h3>
+<h3></h3>
+<p>TLOC is LOC for the class and the LOC for each method.</p>
+
+<h2>Method</h2>
+<h3>ANION - Adjusted number of I/O nodes</h3>
+<h3></h3>
+<p>Adjusted number of I/O nodes</p>
+
+<h3>BRANCH - Number of branching nodes</h3>
+<h3></h3>
+<p>BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face="Courier New">break</font>, <font face="Courier New">continue</font> and <font face="Courier New">goto</font> calls.</p>
+
+<h3>CDENS - Control Density</h3>
+<h3></h3>
+<p>CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.</p>
+
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>NION - Number of I/O nodes</h3>
+<h3></h3>
+<p>Number of I/O nodes</p>
+
+<h3>NP - Number of Parameters</h3>
+<h3></h3>
+<p>A count of the number of Parameters a method takes.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>NSTAT - Number of Statements</h3>
+<h3></h3>
+<p>NSTAT = CONTROL + EXEC.</p>
+
+<h3>RLOC - Relative Lines of Code</h3>
+<h3></h3>
+<p>RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Project</h2>
+<h3>ACLOC - Average Lines per Class</h3>
+<h3></h3>
+<p>This metric gives the average Class size in terms of LOC.</p>
+
+<h3>AHF - Attribute Hiding Factor</h3>
+<h3></h3>
+<p>AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.</p>
+
+<h3>AIF - Attribute Inheritence Factor</h3>
+<h3></h3>
+<p>Inherited Attributes is the sum of NAIC for each class in the project.</p>
+
+<h3>AMLOC - Average Lines per Method</h3>
+<h3></h3>
+<p>This metric gives the average Method size in terms of LOC.</p>
+
+<h3>HIER - Hierarchical Depth</h3>
+<h3></h3>
+<p>Hierarchical Depth</p>
+
+<h3>MHF - Method Hiding Factor</h3>
+<h3></h3>
+<p>MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.</p>
+
+<h3>MIF - Method Inheritence Factor</h3>
+<h3></h3>
+<p>The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NORC - Number of Root Classes</h3>
+<h3></h3>
+<p>NORC is a count of the number root classes for a project.</p>
+
+<h3>POF - Polymorphism Factor</h3>
+<h3></h3>
+<p>Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.</p>
+
+<h2>File</h2>
+<h3>NTC - Number of Top-level Classes</h3>
+<h3></h3>
+<p>A count of the number of Top-level Classes in the file.</p>
+
+<h3>NTM - Number of Top-level Methods</h3>
+<h3></h3>
+<p>A count of the number of Top-level Methods  (i.e. functions, or non-class methods) in the file.</p>
+
+<h2>Class</h2>
+<h3>CBO - Coupling Between Object classes</h3>
+<h3></h3>
+<p>Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.</p>
+
+<h3>CSA - Class Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of a class.</p>
+
+<h3>CSAO - Class Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for a class.</p>
+
+<h3>CSI - Class Specialisation Index</h3>
+<h3></h3>
+<p>(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.</p>
+
+<h3>CSO - Class Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for a class.</p>
+
+<h3>DIT - Depth of Inheritence Tree</h3>
+<h3></h3>
+<p>From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.</p>
+
+<h3>LCOM - Lack of Cohesion Methods</h3>
+<h3></h3>
+<p>This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.</p>
+
+<h3>NAAC - Number of Attributes Added</h3>
+<h3></h3>
+<p>NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.</p>
+
+<h3>NAIC - Number of Attributes Inherited</h3>
+<h3></h3>
+<p>NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.</p>
+
+<h3>NAOC - Number of Operations Added</h3>
+<h3></h3>
+<p>NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.</p>
+
+<h3>NOIC - Number of Operations Inherited</h3>
+<h3></h3>
+<p>NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.</p>
+
+<h3>NOOC - Number of Operations Overridden</h3>
+<h3></h3>
+<p>NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.</p>
+
+<h3>NPavgC - Average Number of Method Parameters</h3>
+<h3></h3>
+<p>NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.</p>
+
+<h3>NSUB - Number of Sub Classes</h3>
+<h3></h3>
+<p>NSUB is a count of the number of immediate sub-classes of a class.</p>
+
+<h3>Osavg - Average Operation Size</h3>
+<h3></h3>
+<p>For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.</p>
+
+<h3>PA - Private Attribute Usage</h3>
+<h3></h3>
+<p>PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h3>RFC - Response For Class</h3>
+<h3></h3>
+<p>RFC is the number of methods in a class, plus the number of distinct methods called by those methods.</p>
+
+<h3>WMC - Weighted Methods in Class</h3>
+<h3></h3>
+<p>WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.</p>
+
+<h2>Method</h2>
+<h3>NEST - Maximum number of levels</h3>
+<h3></h3>
+<p>NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face="Courier New">for (int i=0; i<5; i++)<br>&amp;nbsp;if(i<2)<br>&amp;nbsp;&amp;nbsp;if(i>0)<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=3 ;<br>&amp;nbsp;&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=4 ;<br>&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h3>V'(G) - Extended Cyclomatic Complexity</h3>
+<h3></h3>
+<p>V'(G) = OC / V(G)<br><br>V'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.</p>
+
+<h2>File</h2>
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this file's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this file.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the file.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h2>Method</h2>
+<h3>B - Halstead Bug Prediction</h3>
+<h3></h3>
+<p>This variant of Halstead Effort is a measure of the likelihood of bugs within the method.</p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this method's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this method.</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h2>Project</h2>
+<h3>ACLOC - Average Lines per Class</h3>
+<h3></h3>
+<p>This metric gives the average Class size in terms of LOC.</p>
+
+<h3>AVPATHS - Average Depth of Paths</h3>
+<h3></h3>
+<p>AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.</p>
+
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SEIMI - SEI Maintainability Index</h3>
+<h3></h3>
+<p>The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href="http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html">http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Interface</h2>
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h2>Method</h2>
+<h3>ANION - Adjusted number of I/O nodes</h3>
+<h3></h3>
+<p>Adjusted number of I/O nodes</p>
+
+<h3>BRANCH - Number of branching nodes</h3>
+<h3></h3>
+<p>BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face="Courier New">break</font>, <font face="Courier New">continue</font> and <font face="Courier New">goto</font> calls.</p>
+
+<h3>CDENS - Control Density</h3>
+<h3></h3>
+<p>CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.</p>
+
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>NEST - Maximum number of levels</h3>
+<h3></h3>
+<p>NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face="Courier New">for (int i=0; i<5; i++)<br>&amp;nbsp;if(i<2)<br>&amp;nbsp;&amp;nbsp;if(i>0)<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=3 ;<br>&amp;nbsp;&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=4 ;<br>&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.</p>
+
+<h3>NION - Number of I/O nodes</h3>
+<h3></h3>
+<p>Number of I/O nodes</p>
+
+<h3>NP - Number of Parameters</h3>
+<h3></h3>
+<p>A count of the number of Parameters a method takes.</p>
+
+<h3>NSTAT - Number of Statements</h3>
+<h3></h3>
+<p>NSTAT = CONTROL + EXEC.</p>
+
+<h3>RLOC - Relative Lines of Code</h3>
+<h3></h3>
+<p>RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Project</h2>
+<h3>AHF - Attribute Hiding Factor</h3>
+<h3></h3>
+<p>AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.</p>
+
+<h3>AIF - Attribute Inheritence Factor</h3>
+<h3></h3>
+<p>Inherited Attributes is the sum of NAIC for each class in the project.</p>
+
+<h3>AMLOC - Average Lines per Method</h3>
+<h3></h3>
+<p>This metric gives the average Method size in terms of LOC.</p>
+
+<h3>HIER - Hierarchical Depth</h3>
+<h3></h3>
+<p>Hierarchical Depth</p>
+
+<h3>MHF - Method Hiding Factor</h3>
+<h3></h3>
+<p>MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.</p>
+
+<h3>MIF - Method Inheritence Factor</h3>
+<h3></h3>
+<p>The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NORC - Number of Root Classes</h3>
+<h3></h3>
+<p>NORC is a count of the number root classes for a project.</p>
+
+<h3>POF - Polymorphism Factor</h3>
+<h3></h3>
+<p>Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.</p>
+
+<h2>File</h2>
+<h3>NTC - Number of Top-level Classes</h3>
+<h3></h3>
+<p>A count of the number of Top-level Classes in the file.</p>
+
+<h3>NTI - Number of Top-level Interfaces</h3>
+<h3></h3>
+<p>A count of the number of Top-level Interfaces in the file.</p>
+
+<h2>Class</h2>
+<h3>CBO - Coupling Between Object classes</h3>
+<h3></h3>
+<p>Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.</p>
+
+<h3>CSA - Class Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of a class.</p>
+
+<h3>CSAO - Class Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for a class.</p>
+
+<h3>CSI - Class Specialisation Index</h3>
+<h3></h3>
+<p>(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.</p>
+
+<h3>CSO - Class Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for a class.</p>
+
+<h3>DIT - Depth of Inheritence Tree</h3>
+<h3></h3>
+<p>From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.</p>
+
+<h3>LCOM - Lack of Cohesion Methods</h3>
+<h3></h3>
+<p>This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.</p>
+
+<h3>NAAC - Number of Attributes Added</h3>
+<h3></h3>
+<p>NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.</p>
+
+<h3>NAIC - Number of Attributes Inherited</h3>
+<h3></h3>
+<p>NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.</p>
+
+<h3>NAOC - Number of Operations Added</h3>
+<h3></h3>
+<p>NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.</p>
+
+<h3>NOIC - Number of Operations Inherited</h3>
+<h3></h3>
+<p>NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.</p>
+
+<h3>NOOC - Number of Operations Overridden</h3>
+<h3></h3>
+<p>NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.</p>
+
+<h3>NPavgC - Average Number of Method Parameters</h3>
+<h3></h3>
+<p>NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.</p>
+
+<h3>NSUB - Number of Sub Classes</h3>
+<h3></h3>
+<p>NSUB is a count of the number of immediate sub-classes of a class.</p>
+
+<h3>Osavg - Average Operation Size</h3>
+<h3></h3>
+<p>For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.</p>
+
+<h3>PA - Private Attribute Usage</h3>
+<h3></h3>
+<p>PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h3>RFC - Response For Class</h3>
+<h3></h3>
+<p>RFC is the number of methods in a class, plus the number of distinct methods called by those methods.</p>
+
+<h3>WMC - Weighted Methods in Class</h3>
+<h3></h3>
+<p>WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.</p>
+
+<h2>Interface</h2>
+<h3>ISA - Interface Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of an interface.</p>
+
+<h3>ISAO - Interface Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for an interface.</p>
+
+<h3>ISO - Interface Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for an interface.</p>
+
+<h3>NOCI - Number of Child Interfaces</h3>
+<h3></h3>
+<p>NOCC is a count of the number of immediate sub-interfaces of an interface.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of an interface in respective to all members of the interface.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h1>Krakatau kbatch for C/C++</h1>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Interface</h2>
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h1>Krakatau Lite for C/C++</h1>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Interface</h2>
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h1>Krakatau Professional for C/C++</h1>
+
+<h2>Project</h2>
+<h3>ACLOC - Average Lines per Class</h3>
+<h3></h3>
+<p>This metric gives the average Class size in terms of LOC.</p>
+
+<h3>AHF - Attribute Hiding Factor</h3>
+<h3></h3>
+<p>AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.</p>
+
+<h3>AIF - Attribute Inheritence Factor</h3>
+<h3></h3>
+<p>Inherited Attributes is the sum of NAIC for each class in the project.</p>
+
+<h3>AMLOC - Average Lines per Method</h3>
+<h3></h3>
+<p>This metric gives the average Method size in terms of LOC.</p>
+
+<h3>AVPATHS - Average Depth of Paths</h3>
+<h3></h3>
+<p>AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.</p>
+
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>HIER - Hierarchical Depth</h3>
+<h3></h3>
+<p>Hierarchical Depth</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>MHF - Method Hiding Factor</h3>
+<h3></h3>
+<p>MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.</p>
+
+<h3>MIF - Method Inheritence Factor</h3>
+<h3></h3>
+<p>The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NORC - Number of Root Classes</h3>
+<h3></h3>
+<p>NORC is a count of the number root classes for a project.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>POF - Polymorphism Factor</h3>
+<h3></h3>
+<p>Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.</p>
+
+<h3>SEIMI - SEI Maintainability Index</h3>
+<h3></h3>
+<p>The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href="http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html">http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this file's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this file.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>NTC - Number of Top-level Classes</h3>
+<h3></h3>
+<p>A count of the number of Top-level Classes in the file.</p>
+
+<h3>NTM - Number of Top-level Methods</h3>
+<h3></h3>
+<p>A count of the number of Top-level Methods  (i.e. functions, or non-class methods) in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the file.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>CBO - Coupling Between Object classes</h3>
+<h3></h3>
+<p>Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.</p>
+
+<h3>CSA - Class Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of a class.</p>
+
+<h3>CSAO - Class Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for a class.</p>
+
+<h3>CSI - Class Specialisation Index</h3>
+<h3></h3>
+<p>(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.</p>
+
+<h3>CSO - Class Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for a class.</p>
+
+<h3>DIT - Depth of Inheritence Tree</h3>
+<h3></h3>
+<p>From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.</p>
+
+<h3>LCOM - Lack of Cohesion Methods</h3>
+<h3></h3>
+<p>This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>NAAC - Number of Attributes Added</h3>
+<h3></h3>
+<p>NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.</p>
+
+<h3>NAIC - Number of Attributes Inherited</h3>
+<h3></h3>
+<p>NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.</p>
+
+<h3>NAOC - Number of Operations Added</h3>
+<h3></h3>
+<p>NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.</p>
+
+<h3>NOIC - Number of Operations Inherited</h3>
+<h3></h3>
+<p>NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.</p>
+
+<h3>NOOC - Number of Operations Overridden</h3>
+<h3></h3>
+<p>NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.</p>
+
+<h3>NPavgC - Average Number of Method Parameters</h3>
+<h3></h3>
+<p>NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.</p>
+
+<h3>NSUB - Number of Sub Classes</h3>
+<h3></h3>
+<p>NSUB is a count of the number of immediate sub-classes of a class.</p>
+
+<h3>Osavg - Average Operation Size</h3>
+<h3></h3>
+<p>For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.</p>
+
+<h3>PA - Private Attribute Usage</h3>
+<h3></h3>
+<p>PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h3>RFC - Response For Class</h3>
+<h3></h3>
+<p>RFC is the number of methods in a class, plus the number of distinct methods called by those methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TLOC - Total Lines of Code</h3>
+<h3></h3>
+<p>TLOC is LOC for the class and the LOC for each method.</p>
+
+<h3>WMC - Weighted Methods in Class</h3>
+<h3></h3>
+<p>WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.</p>
+
+<h2>Method</h2>
+<h3>ANION - Adjusted number of I/O nodes</h3>
+<h3></h3>
+<p>Adjusted number of I/O nodes</p>
+
+<h3>B - Halstead Bug Prediction</h3>
+<h3></h3>
+<p>This variant of Halstead Effort is a measure of the likelihood of bugs within the method.</p>
+
+<h3>BRANCH - Number of branching nodes</h3>
+<h3></h3>
+<p>BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face="Courier New">break</font>, <font face="Courier New">continue</font> and <font face="Courier New">goto</font> calls.</p>
+
+<h3>CDENS - Control Density</h3>
+<h3></h3>
+<p>CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.</p>
+
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this method's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this method.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>NEST - Maximum number of levels</h3>
+<h3></h3>
+<p>NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face="Courier New">for (int i=0; i<5; i++)<br>&amp;nbsp;if(i<2)<br>&amp;nbsp;&amp;nbsp;if(i>0)<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=3 ;<br>&amp;nbsp;&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=4 ;<br>&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.</p>
+
+<h3>NION - Number of I/O nodes</h3>
+<h3></h3>
+<p>Number of I/O nodes</p>
+
+<h3>NP - Number of Parameters</h3>
+<h3></h3>
+<p>A count of the number of Parameters a method takes.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>NSTAT - Number of Statements</h3>
+<h3></h3>
+<p>NSTAT = CONTROL + EXEC.</p>
+
+<h3>QCP_CRCT - Quality Criteria Profile (Correctness)</h3>
+<h3></h3>
+<p>QCP_CRCT = D + control + executable + (2*cyclomatic)</p>
+
+<h3>QCP_MAINT - Quality Criteria Profile (Maintainability)</h3>
+<h3></h3>
+<p>QCP_MAINT = (3*N) + executable + control + nest + (2*cyclomatic) + branch</p>
+
+<h3>QCP_RLBTY - Quality Criteria Profile (Reliability)</h3>
+<h3></h3>
+<p>QCP_RLBTY = N + (2*nest) + (3*cyclomatic) + branch + control + executable</p>
+
+<h3>RLOC - Relative Lines of Code</h3>
+<h3></h3>
+<p>RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h3>V'(G) - Extended Cyclomatic Complexity</h3>
+<h3></h3>
+<p>V'(G) = OC / V(G)<br><br>V'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.</p>
+
+<h2>Project</h2>
+<h3>ACLOC - Average Lines per Class</h3>
+<h3></h3>
+<p>This metric gives the average Class size in terms of LOC.</p>
+
+<h3>AHF - Attribute Hiding Factor</h3>
+<h3></h3>
+<p>AttributesVisible is calculated by summing the visibility (i.e. private=1, public=0,<br>protected=InheritenceTreeSize/NumClasses) of each attribute in respect to the other<br>classes in the project.</p>
+
+<h3>AIF - Attribute Inheritence Factor</h3>
+<h3></h3>
+<p>Inherited Attributes is the sum of NAIC for each class in the project.</p>
+
+<h3>AMLOC - Average Lines per Method</h3>
+<h3></h3>
+<p>This metric gives the average Method size in terms of LOC.</p>
+
+<h3>AVPATHS - Average Depth of Paths</h3>
+<h3></h3>
+<p>AVPATHS is calculated by counting the number and size of all paths from all methods,<br>and then dividing that number by the number of methods which had other method calls.  <br><br>In other words, the average depth of paths from methods that have path at all.</p>
+
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>HIER - Hierarchical Depth</h3>
+<h3></h3>
+<p>Hierarchical Depth</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>MHF - Method Hiding Factor</h3>
+<h3></h3>
+<p>MethodsVisible is calculated by summing the visibility (i.e. private=1, public=0, protected=InheritenceTreeSize/NumClasses) of each method in respect to the other classes in the project.</p>
+
+<h3>MIF - Method Inheritence Factor</h3>
+<h3></h3>
+<p>The ratio of inherited methods to the total number of methods.<br><br>InheritedMethods is a sum of NOIC (No. of Operations Inherited) for each class.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NORC - Number of Root Classes</h3>
+<h3></h3>
+<p>NORC is a count of the number root classes for a project.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>POF - Polymorphism Factor</h3>
+<h3></h3>
+<p>Polymorphism Factor can be used to measure the extent to which classes within the project are polymorphic.</p>
+
+<h3>SEIMI - SEI Maintainability Index</h3>
+<h3></h3>
+<p>The SEI MI is a measure of the maintainability of the project, as described by the Software Engineering Institute: <a href="http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html">http://www.sei.cmu.edu/activities/str/descriptions/mitmpm.html</a>.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this file's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this file.</p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this file is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this file is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the file.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the file.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the file.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the file.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>NTC - Number of Top-level Classes</h3>
+<h3></h3>
+<p>A count of the number of Top-level Classes in the file.</p>
+
+<h3>NTI - Number of Top-level Interfaces</h3>
+<h3></h3>
+<p>A count of the number of Top-level Interfaces in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the file.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>AC - Attribute Complexity</h3>
+<h3></h3>
+<p>Not currently calculated.</p>
+
+<h3>CBO - Coupling Between Object classes</h3>
+<h3></h3>
+<p>Calculated by totalling the number of unique types of attribute within each class.  The count only includes user-defined object types.  The larger this number, the greater coupling between object classes.</p>
+
+<h3>CSA - Class Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of a class.</p>
+
+<h3>CSAO - Class Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for a class.</p>
+
+<h3>CSI - Class Specialisation Index</h3>
+<h3></h3>
+<p>(NOOC * DIT) / TotalMethods<br> <br>NOOC = No. of Operations overridden.<br>DIT = Depth of Inheritance Tree - From the current class, traces up entire inheritence heirarchy counting which route is the longest.</p>
+
+<h3>CSO - Class Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for a class.</p>
+
+<h3>DIT - Depth of Inheritence Tree</h3>
+<h3></h3>
+<p>From the current class, traces up entire inheritence heirarchy counting which route is the longest.  The value for DIT is stored against the current class, so for the root class DIT=1, first-level subclasses DIT=2, and so on.</p>
+
+<h3>LCOM - Lack of Cohesion Methods</h3>
+<h3></h3>
+<p>This metric quantifies how much intercourse the methods of a class <br>have with the member variables of that class.  <br><br>LOCM is calculated by building a list of member variables and a <br>count of the number of references to each variable (usage) in <br>all methods of this class.  <br><br>Then, a sum of the ratios of usage / TotalMethods is calculated.  <br><br>Finally, LOCM is returned as this SumOfRatios / TotalAttributes.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>NAAC - Number of Attributes Added</h3>
+<h3></h3>
+<p>NAAC is a count of the number of new Attributes that a class has in respect to its immediate super-class.  For a root class, NAAC == CSA.</p>
+
+<h3>NAIC - Number of Attributes Inherited</h3>
+<h3></h3>
+<p>NAIC is a count of the number of Attributes that a class has inherited from its super-classes.  For a root class, NAIC == 0.</p>
+
+<h3>NAOC - Number of Operations Added</h3>
+<h3></h3>
+<p>NOAC is a count of the number of new Operations that a class has in respect to its immediate super-class.  For a root class, NAOC == CSO.</p>
+
+<h3>NOIC - Number of Operations Inherited</h3>
+<h3></h3>
+<p>NOIC is a count of the number of Operations that a class has inherited from its super-classes.  For a root class, NOIC == 0.</p>
+
+<h3>NOOC - Number of Operations Overridden</h3>
+<h3></h3>
+<p>NOOC is a count of the number of Operations that a class has overridden.  For a root class, NOOC == CSO.</p>
+
+<h3>NPavgC - Average Number of Method Parameters</h3>
+<h3></h3>
+<p>NPavgC = TotalNP / NumMethods.<br><br>The average number of parameters per method.  This metric, if over 10, would indicate that too much information is being passed into methods, and that more attributes should be added to the class.</p>
+
+<h3>NSUB - Number of Sub Classes</h3>
+<h3></h3>
+<p>NSUB is a count of the number of immediate sub-classes of a class.</p>
+
+<h3>Osavg - Average Operation Size</h3>
+<h3></h3>
+<p>For a class, Osavg = WMC / NumMethods<br><br>OSavg is a measure of the complexity of a class.  Classes with OSavg greater than 10 should perhaps be redesigned.</p>
+
+<h3>PA - Private Attribute Usage</h3>
+<h3></h3>
+<p>PA is the sum of all references to distinct private attributes within all methods of a class. <br><br>As a guideline, if this number is lower than NumMethods, perhaps parameters and local variables are being overused, and the class methods could be work more closely with the class attributes.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of a class in respective to all members of the class.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h3>RFC - Response For Class</h3>
+<h3></h3>
+<p>RFC is the number of methods in a class, plus the number of distinct methods called by those methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>WMC - Weighted Methods in Class</h3>
+<h3></h3>
+<p>WMC is the sum of the Cyclomatic complexity for all methods in the class.  This number reflects the complexity of the class, and will be affected not only by the V(g) of each method but also the number of methods.  <br><br>Classes with WMC larger than <b>100</b> should perhaps be redesigned.</p>
+
+<h2>Interface</h2>
+<h3>ISA - Interface Size (Attributes)</h3>
+<h3></h3>
+<p>The number of attributes of an interface.</p>
+
+<h3>ISAO - Interface Size (Attributes & Operations)</h3>
+<h3></h3>
+<p>The total number of attributes and operations for an interface.</p>
+
+<h3>ISO - Interface Size (Operations)</h3>
+<h3></h3>
+<p>The number of operations for an interface.</p>
+
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h3>NOCI - Number of Child Interfaces</h3>
+<h3></h3>
+<p>NOCC is a count of the number of immediate sub-interfaces of an interface.</p>
+
+<h3>PPPC - Percentage Public/Protected members</h3>
+<h3></h3>
+<p>PPPC is simply the percentage of public and protected members of an interface in respective to all members of the interface.  I.e.:<br><br>PPPC = PublicProtectedMembers / CSAO.</p>
+
+<h2>Method</h2>
+<h3>ANION - Adjusted number of I/O nodes</h3>
+<h3></h3>
+<p>Adjusted number of I/O nodes</p>
+
+<h3>B - Halstead Bug Prediction</h3>
+<h3></h3>
+<p>This variant of Halstead Effort is a measure of the likelihood of bugs within the method.</p>
+
+<h3>BRANCH - Number of branching nodes</h3>
+<h3></h3>
+<p>BRANCH calculates the number of abnormal exits within a method.  <br>Specifically, a count of the number of <font face="Courier New">break</font>, <font face="Courier New">continue</font> and <font face="Courier New">goto</font> calls.</p>
+
+<h3>CDENS - Control Density</h3>
+<h3></h3>
+<p>CDENS = CONTROL / NSTAT<br><br>Control Density represents the percentage of control statements in the code.</p>
+
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>D - Halstead program Difficulty</h3>
+<h3></h3>
+<p>A measure of how difficult this method's code is to understand.</p>
+
+<h3>E - Halstead program Effort</h3>
+<h3></h3>
+<p>Effort = Difficulty * Volume for this method.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>N - Halstead program Length</h3>
+<h3></h3>
+<p>Halstead program Length (N) for this method is calculated as N1 + N2.<br><br>N1 = Total number of Operators<br>N2 = Total number of Operands</p>
+
+<h3>n - Halstead program Vocabulary</h3>
+<h3></h3>
+<p>Halstead program Vocabulary (n) for this method is calculated as n1 + n2.<br><br>n1 = Number unique or distinct Operators<br>n2 = Number unique or distinct Operands</p>
+
+<h3>N1 - Halstead total number of operators</h3>
+<h3></h3>
+<p>The total number of operators in the method.<br><br>N1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n1 - Halstead number of unique operators</h3>
+<h3></h3>
+<p>The number of unique or distinct operators in the method.<br><br>n1 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>N2 - Halstead total number of operands</h3>
+<h3></h3>
+<p>The total number of operands in the method.<br><br>N2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>n2 - Halstead number of unique operands</h3>
+<h3></h3>
+<p>The number of unique or distinct operands in the method.<br><br>n2 is part of the Halstead set, and of little interest on its own.  When combined with the other Halstead fundamental metrics, it can be used to determine Volume, Difficult, Effort and Cyclomatic complexity.</p>
+
+<h3>NEST - Maximum number of levels</h3>
+<h3></h3>
+<p>NEST indicates the maxium number of nests of like constructs with the method.<br><br><font face="Courier New">for (int i=0; i<5; i++)<br>&amp;nbsp;if(i<2)<br>&amp;nbsp;&amp;nbsp;if(i>0)<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=3 ;<br>&amp;nbsp;&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;j=4 ;<br>&amp;nbsp;else<br>&amp;nbsp;&amp;nbsp;j++ ;</font><br><br>NEST = 2 because there is an <b>if</b> within an <b>if</b>.</p>
+
+<h3>NION - Number of I/O nodes</h3>
+<h3></h3>
+<p>Number of I/O nodes</p>
+
+<h3>NP - Number of Parameters</h3>
+<h3></h3>
+<p>A count of the number of Parameters a method takes.</p>
+
+<h3>NSTAT - Number of Statements</h3>
+<h3></h3>
+<p>NSTAT = CONTROL + EXEC.</p>
+
+<h3>QCP_CRCT - Quality Criteria Profile (Correctness)</h3>
+<h3></h3>
+<p>QCP_CRCT = D + control + executable + (2*cyclomatic)</p>
+
+<h3>QCP_MAINT - Quality Criteria Profile (Maintainability)</h3>
+<h3></h3>
+<p>QCP_MAINT = (3*N) + executable + control + nest + (2*cyclomatic) + branch</p>
+
+<h3>QCP_RLBTY - Quality Criteria Profile (Reliability)</h3>
+<h3></h3>
+<p>QCP_RLBTY = N + (2*nest) + (3*cyclomatic) + branch + control + executable</p>
+
+<h3>RLOC - Relative Lines of Code</h3>
+<h3></h3>
+<p>RLOC = MethodLOC / ClassLOC<br><br>A measure of the size of this method, relative to the total class size.  A RLOC value greater than <b>0.6</b> may indicate bad design - that a method should be split into two or three methods.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V - Halstead program Volume</h3>
+<h3></h3>
+<p>Halstead Volume for the method.  Calculated as:<br><br>V = Nlog<SUB>2</SUB>n</p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h3>V'(G) - Extended Cyclomatic Complexity</h3>
+<h3></h3>
+<p>V'(G) = OC / V(G)<br><br>V'(G) provides a complexity ratio, based the operational complexity and cyclomatic complexity of a method.</p>
+
+<h1>Krakatau Project Manager for C/C++</h1>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this method excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h2>Project</h2>
+<h3>ADD_FILE - Number of Files (Added)</h3>
+<h3></h3>
+<p>Number of Files that have been added between the old project and the new project.<br><br>For example the following would have ADD_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>ADD_METH - Number of Methods (Added)</h3>
+<h3></h3>
+<p>This gives the total number of added methods between the old and the new project.</p>
+
+<h3>ADD_SLOC - Source Lines of Code (Added)</h3>
+<h3></h3>
+<p>This gives the total added source lines of code between the old and the new project.<br><br>This is the sum of ADD_SLOC for all changed files plus the SLOC of all files added to the new project</p>
+
+<h3>CHG_FILE - Number of Files (Changed)</h3>
+<h3></h3>
+<p>Number of Files that have been changed between the old project and the new project.<br><br>For example the following would have CHG_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>CHG_METH - Number of Methods (Changed)</h3>
+<h3></h3>
+<p>This gives the total number of changed methods between the old and the new project.</p>
+
+<h3>CHG_SLOC - Source Lines of Code (Changed)</h3>
+<h3></h3>
+<p>The number of lines that have changed between the old project and the new  project.</p>
+
+<h3>DEL_FILE - Number of Files (Deleted)</h3>
+<h3></h3>
+<p>Number of Files that have been deleted between the old project and the new project.<br><br>For example the following would have DEL_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>DEL_METH - Number of Methods (Deleted)</h3>
+<h3></h3>
+<p>This gives the total number of deleted methods between the old and the new project.</p>
+
+<h3>DEL_SLOC - Source Lines of Code (Deleted)</h3>
+<h3></h3>
+<p>This gives the total deleted source lines of code between the old and the new project.<br><br>This is the sum of DEL_SLOC for all changed files plus the SLOC of all files deleted from the new project</p>
+
+<h2>File</h2>
+<h3>ADD_SLOC - Source Lines of Code (Added)</h3>
+<h3></h3>
+<p>Number of source lines that have been added between the new file and the old file.<br><br>For example the following would have ADD_SLOC=4.<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>CHG_SLOC - Source Lines of Code (Changed)</h3>
+<h3></h3>
+<p>Number of source lines that have been changed between the new file and the old file.<br><br>For example the following would have CHG_SLOC=1.<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>DEL_SLOC - Source Lines of Code (Deleted)</h3>
+<h3></h3>
+<p>Number of source lines that have been deleted between the new file and the old file.<br><br>For example the following would have DEL_SLOC=2. (The comment is not a SLOC)<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the number of semicolons in this file excluding those within comments and <br>string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Interface</h2>
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+<h2>Project</h2>
+<h3>ADD_FILE - Number of Files (Added)</h3>
+<h3></h3>
+<p>Number of Files that have been added between the old project and the new project.<br><br>For example the following would have ADD_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>ADD_METH - Number of Methods (Added)</h3>
+<h3></h3>
+<p>This gives the total number of added methods between the old and the new project.</p>
+
+<h3>ADD_SLOC - Source Lines of Code (Added)</h3>
+<h3></h3>
+<p>This gives the total added source lines of code between the old and the new project.<br><br>This is the sum of ADD_SLOC for all changed files plus the SLOC of all files added to the new project</p>
+
+<h3>CHG_FILE - Number of Files (Changed)</h3>
+<h3></h3>
+<p>Number of Files that have been changed between the old project and the new project.<br><br>For example the following would have CHG_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>CHG_METH - Number of Methods (Changed)</h3>
+<h3></h3>
+<p>This gives the total number of changed methods between the old and the new project.</p>
+
+<h3>CHG_SLOC - Source Lines of Code (Changed)</h3>
+<h3></h3>
+<p>The number of lines that have changed between the old project and the new  project.</p>
+
+<h3>DEL_FILE - Number of Files (Deleted)</h3>
+<h3></h3>
+<p>Number of Files that have been deleted between the old project and the new project.<br><br>For example the following would have DEL_FILE=1.<br><br><font face="Courier New"><u>Old Project</u>&amp;#09;&amp;#09;<u>New Project</u><br>sourcefile1&amp;#09;&amp;#09;sourcefile1<br><font color="#990000">sourcefile2&amp;#09;&amp;#09;sourcefile2</font><br><font color="#000099">sourcefile3</font>&amp;#09;&amp;#09;<font color="#116611">sourcefile4</font></font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>DEL_METH - Number of Methods (Deleted)</h3>
+<h3></h3>
+<p>This gives the total number of deleted methods between the old and the new project.</p>
+
+<h3>DEL_SLOC - Source Lines of Code (Deleted)</h3>
+<h3></h3>
+<p>This gives the total deleted source lines of code between the old and the new project.<br><br>This is the sum of DEL_SLOC for all changed files plus the SLOC of all files deleted from the new project</p>
+
+<h2>File</h2>
+<h3>ADD_SLOC - Source Lines of Code (Added)</h3>
+<h3></h3>
+<p>Number of source lines that have been added between the new file and the old file.<br><br>For example the following would have ADD_SLOC=4.<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>CHG_SLOC - Source Lines of Code (Changed)</h3>
+<h3></h3>
+<p>Number of source lines that have been changed between the new file and the old file.<br><br>For example the following would have CHG_SLOC=1.<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h3>DEL_SLOC - Source Lines of Code (Deleted)</h3>
+<h3></h3>
+<p>Number of source lines that have been deleted between the new file and the old file.<br><br>For example the following would have DEL_SLOC=2. (The comment is not a SLOC)<br><br><u>Old File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br><font color="#000099">void functionB(j) {<br>&amp;#09;//Unused function<br>}</font><br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;j-= 5 ;<br>&amp;#09;&amp;#09;}<br><br>&amp;#09;}<br>}</font><br><br><br><u>New File</u><br><font face="Courier New">void functionA(int k) {<br>&amp;#09;cout &amp;#60;&amp;#60; "Parameter: " &amp;#60;&amp;#60; k &amp;#60;&amp;#60; endl ;<br>}<br><br>int main(int argc, char **argv) {<br><br>&amp;#09;int i ;<br>&amp;#09;int j=100 ;<br><br><font color="#116611">&amp;#09;int count=0 ;</font><br><br>&amp;#09;for (i=0 ; i&amp;#60;10 ; i++) {<br><br>&amp;#09;&amp;#09;// Calling functionA()<br>&amp;#09;&amp;#09;functionA(i) ;<br><br>&amp;#09;&amp;#09;while (j&amp;#62;0) {<br>&amp;#09;&amp;#09;&amp;#09;<font color="#990000">j-= 10 ;</font><br>&amp;#09;&amp;#09;}<br><br><font color="#116611">&amp;#09;&amp;#09;while(count&amp;#60;10) {<br>&amp;#09;&amp;#09;&amp;#09;count++ ;<br>&amp;#09;&amp;#09;}</font><br><br>&amp;#09;}<br>}</font><br><br><u>Color Key</u><br><font color="#116611">Added</font><br><font color="#990000">Changed</font><br><font color="#000099">Deleted</font></p>
+
+<h2>Project</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the project.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the project.</p>
+
+<h3>COM_RAT - Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the project.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in the project, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the project.</p>
+
+<h3>NCLASS - Number of Classes</h3>
+<h3></h3>
+<p>The total number of classes in the project.</p>
+
+<h3>NFILE - Number of Files</h3>
+<h3></h3>
+<p>The total number of files in the project.</p>
+
+<h3>NMETH - Number of Methods</h3>
+<h3></h3>
+<p>The total number of methods in the project.<br><br>This count includes class methods and C functions.</p>
+
+<h3>NSC - Number of Semicolons</h3>
+<h3></h3>
+<p>A count of the total number of semicolons in the project excluding those within comments <br>and string literals.  This is useful for approximating "logical lines of code".  E.g.:<br><br><font face="Courier New">cout &amp;lt;&amp;lt; "Hello" &amp;lt;&amp;lt; endl <font color="FF1111">;</font> /* output ; return */<br>cout &amp;lt;&amp;lt; "Hello ; World" &amp;lt;&amp;lt; endl <font color="FF1111">;</font></font><br><br>NSC = 2.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in the project, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio (Project)</h3>
+<h3></h3>
+<p>The ratio, at project level, of comment lines to <b>source</b> lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the project containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Package</h2>
+<h3>NFILE - Number of Files in a Package</h3>
+<h3></h3>
+<p>The total number of files in the package.</p>
+
+<h2>File</h2>
+<h3>C_COM - C style comments</h3>
+<h3></h3>
+<p>The number of C style comments in the file.<br><br>A C style comment begins <font face="Courier New" color="FF1111">/*</font> and ends <font face="Courier New" color="FF1111">*/</font>.<br><br>In the following example C_COM = 1.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">/* This is a useful<br>variable here for<br>many purposes */</font></font></p>
+
+<h3>COM_LOC - Comment lines of code</h3>
+<h3></h3>
+<p>The total number of lines of comment in the file.</p>
+
+<h3>COM_RAT - Comments Ratio</h3>
+<h3></h3>
+<p>The ratio of comment lines to lines of code.</p>
+
+<h3>CPP_COM - C++ style comments</h3>
+<h3></h3>
+<p>The number of C++ style comment lines in the file.<br><br>A C++ style comment begins <font face="Courier New" color="FF1111">//</font> until the end of the line.<br><br>In the following example CPP_COM=2.<br><br><font face="Courier New">int i = 0 ; <font color="FF1111">// Index variable</font><br>float pi = 3.14 ; <font color="FF1111">// Handy pi variable</font><br>char star = '*' ;</font></p>
+
+<h3>J_COM - Java style comments</h3>
+<h3></h3>
+<p>The number of Java style comments in the file.<br><br>A Java style comment begins <font face="Courier New" color="FF1111">/**</font> and ends <font face="Courier New" color="FF1111">*/</font>. E.g.:<br><br><font face="Courier New"><font color="FF1111">&amp;nbsp;/**<br>&amp;nbsp;&amp;nbsp;* An interface for handling Application level operations.<br>&amp;nbsp;&amp;nbsp;*<br>&amp;nbsp;&amp;nbsp;*/</font><br>&amp;nbsp;public interface ApplicationHandler {</font><br><br>J_COM = 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this file, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the file.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this file, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br>If you are interested in "logical" lines, see NSC.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>TCOM_RAT - True Comments Ratio</h3>
+<h3></h3>
+<p>The ratio, for this file, of comment lines to source lines of code.</p>
+
+<h3>WLOC - Whitespace lines of code</h3>
+<h3></h3>
+<p>Whitespace lines of code is the number of lines in the file containing solely whitespace - the difference between total lines and source+comment lines.</p>
+
+<h2>Class</h2>
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this class, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the class.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this class, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h2>Interface</h2>
+<h3>LOC - Lines of Code</h3>
+<h3></h3>
+<p>Number of Lines in this interface, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the interface.</p>
+
+<h2>Method</h2>
+<h3>CONTROL - Number of control statements</h3>
+<h3></h3>
+<p>A count of the number of control statements in the method.  <br><br>Every occurance of a control keyword (such as <font face="Courier New">if</font>, <font face="Courier New">else</font>, <font face="Courier New">while</font>, <br><font face="Courier New">switch</font>, <font face="Courier New">case</font>, etc.) causes this count to be incremented by 1.</p>
+
+<h3>eV(G) - Essential Complexity</h3>
+<h3></h3>
+<p>Essential Complexity (ev(G)) is a measure of the degree to which this<br>method contains unstructured constructs. This metric measures the <br>degree of structuredness and the quality of the code. It is used to <br>predict the maintenance effort and to help in the modularization process.</p>
+
+<h3>EXEC - Number of executable statements</h3>
+<h3></h3>
+<p>A count of the number of executable statements in the method.  <br><br>Every statement that is not a control statement (see <b>CONTROL</b>) causes <br>this count to be incremented by 1.</p>
+
+<h3>LOC - Lines of code</h3>
+<h3></h3>
+<p>Number of Lines in this method, including source, whitespace and comments.<br><br>Effectively, a count of the number of newlines in the method.</p>
+
+<h3>SLOC - Source lines of code</h3>
+<h3></h3>
+<p>Number of Source lines in this method, excluding whitespace and comments.<br><br>This is not a count of semicolons or distinct statements, but a count of <br>physical lines that contain source code.<br><br><font face="Courier New">int i=0; float j=0; // This is 1 SLOC<br><br>cout &amp;lt;&amp;lt; "Testing"<br>  &amp;lt;&amp;lt; " Hello"<br>  &amp;lt;&amp;lt; " there." ;  // This is 3 SLOCs</font></p>
+
+<h3>V(G) - Cyclomatic Complexity</h3>
+<h3></h3>
+<p>Cyclomatic Complexity (v(G)) is a measure of the complexity of the method's decision<br>structure. It is the number of linearly independent paths and therefore, the minimum <br>number of paths that should be tested.<br><br>A v(G) value greater than 7 may indicate an overly complex method.</p>
+
+</body></html>

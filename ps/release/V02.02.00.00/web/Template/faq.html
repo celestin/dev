@@ -1,0 +1,35 @@
+<a name="#FAQTOP"><h1 class="narr">Frequently Asked Questions</h1></a>
+<li class="narr"><a href="#FAQ001">What is Krakatau Metrics?</a></li>
+<li class="narr"><a href="#FAQ002">How does it work?</a></li>
+<li class="narr"><a href="#FAQ003">How are the metrics calculated?</a></li>
+<li class="narr"><a href="#FAQ004">Why are all these calculations needed?</a></li>
+<li class="narr"><a href="#FAQ005">Why does Krakatau need a database?</a></li>
+<li class="narr"><a href="#FAQ006">How do i know that Krakatau is giving me the correct results?</a></li>
+
+<a name="FAQ001"><h2 class="narr">What is Krakatau Metrics?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau Metrics is a family of source code measurement (metrics) tools.</p>
+
+<a name="FAQ002"><h2 class="narr">How does it work?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau uses Power Software designed C/C++ and Java language parsers to automatically scan source code and report on key parameters and measurements (metrics).</p>
+
+<a name="FAQ003"><h2 class="narr">How are the metrics calculated?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">After scanning the code and extracting the key syntax, Krakatau uses Power Software designed analysers to make further detailed analysis of the code.</p>
+<p class="narr">At this stage information is also stored to in a SQL database. Then a model is created to facilitate the final stage of calculating and displaying the metrics.</p>
+
+<a name="FAQ004"><h2 class="narr">Why are all these calculations needed?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau makes varying levels of measurements. The simplest is LOC and SLOC.</p>
+<p class="narr">However the tool also reports on advanced metrics like LCOM (Lack of Cohesion in Methods) and DIT (Depth of Inheritance Tree) and V(G) (Cyclomatic Complexity).</p>
+<p class="narr">These calculations involve cross referencing and matching of external methods, and other metrics involve tracking depth of inheritanace.</p>
+<p class="narr">For this reason advanced mathematics is required in a professional metrics tool.</p>
+
+<a name="FAQ005"><h2 class="narr">Why does Krakatau need a database?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">Krakatau is designed for 'real world' use. Many tools will manage a demonstration or a trial with a few hundred thousand lines of code.</p>
+<p class="narr">Krakatau has been tested to millions of lines of code.</p>
+<p class="narr">This is especially important for 'change' metrics where the comparison of two projects doubles the size of the source code under analysis.</p>
+<p class="narr">The database allows Krakatau to scale from a few thousand to millions of lines of source code.</p>
+<p class="narr">This makes Krakatau usable across all your projects now and as they develop in the future.</p>
+
+<a name="FAQ006"><h2 class="narr">How do I know that Krakatau is giving me the correct results?&nbsp;<a href="#FAQTOP"><img border=0 src="../../img/faqtop.gif" alt="Top of FAQ"></a></h1>
+<p class="narr">We use a number of tests to ensure the validity and integrity of the results.</p>
+
+<p></p>

@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<title>Translation Language Specification</title>
+</head>
+
+<body>
+
+<h1>Translation Language Specification</h1>
+
+<h2>Format</h1>
+
+<p>The translation file should be a text file, expressions are free form and can span multiple lines;
+whitespace is ignored.</p>
+
+<h2>Valid Expressions</h1>
+
+<pre>replace &#39;x&#39; with &#39;y&#39; ;
+replace from &#39;x1&#39; to &#39;x2&#39; with &#39;y&#39; ;
+replace from &#39;x1&#39; to &#39;x2&#39; with &#39;y1&#39; to &#39;y2&#39; ;
+
+replace_parenthesis &#39;f&#39; with &#39;g&#39; ;
+replace_parenthesis &#39;f&#39; with &#39;g1&#39; to &#39;g2&#39; ;</pre>
+
+<h2>Comments</h1>
+
+<p>Comments begin <b>#</b> until the the end of the line.</p>
+
+
+<h1>replace Command</h1>
+
+<p>The replace command in its simplest form changes one word (string of
+characters without whitespace) to any string of characters.</p>
+
+<pre>replace &#39;DECISION_CASE&#39; with &#39;case&#39; ;</pre>
+
+<p>However, if you have start and end words that you wish to replace
+with others, and preserve the string in between, you can use:</p>
+
+<pre>replace from &#39;cout&#39; to &#39;endl&#39; with  &#39;cout << &quot;[&quot;&#39; to &#39; &quot;]&quot; << endl&#39; ;</pre>
+
+<p>The above would take:</p>
+<pre>cout << &quot;Hello world!&quot; << endl ;</pre>
+
+<p>and replace it with:</p>
+<pre>cout << &quot;[&quot; << &quot;Hello world!&quot; << &quot;]&quot; << endl ;</pre>
+
+
+<p>You can also replace start and end words, and the code between them,
+with a single fixed string of characters, e.g.:<p>
+
+<pre>replace from &#39;cout&#39; to &#39;endl&#39; with &#39;//No output&#39; ;</pre>
+
+
+<h1>replace_parenthesis Command</h1>
+
+<p>The replace_parenthesis command locates the first open parenthesis
+after the specified identifier and then locates the closing parenthesis.
+Everything in between these parentheses is stored so that it may be put
+back, if required.</p>
+
+<p>For example:</p>
+
+<pre>replace_parenthesis &#39;BEGIN_COM_MAP&#39; with &#39;BEGIN_COM_MAP(&#39; to &#39;) ;&#39; ;</pre>
+
+<p>applied to the line:</p>
+
+<pre>BEGIN_COM_MAP    ( a, b, (3*c) )</pre>
+
+<p>would result in:</p>
+<pre>BEGIN_COM_MAP( a, b, (3*c) ) ;</pre>
+
+<p>ATL defines often are not closed with a semi-colon (because the semi-colon
+appears in the actual define) and are therefore not syntactically correct.
+The command above would replace the syntax exactly, add add the important
+semi-colon.  Another option would be to delete the entire call:</p>
+
+<pre>replace_parenthesis &#39;BEGIN_COM_MAP&#39; with &#39;&#39; ;</pre>
+
+<p>A similar effect could be achieved using the simple replace command:</p>
+
+<pre>replace &#39;BEGIN_COM_MAP&#39; with &#39;// BEGIN_COM_MAP&#39; ;</pre>
+
+<p>This would, however, mean that the comments ratio was affected and would
+only allow for calls that spanned only 1 line.  To multi-line comment
+out the above, you could use:</p>
+
+<pre>replace_parenthesis &#39;BEGIN_COM_MAP&#39; with &#39;/* BEGIN_COM_MAP(&#39; to &#39;) */&#39; ;</pre>
+
+</body>
+</html>

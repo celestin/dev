@@ -1,0 +1,16 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=
+Create Tagfile=0
+[Files]
+0=Template\Download.htm
+1=Template\HOME.HTM
+2=Template\Product\epm.html
+3=Template\Product\kepm.html
+4=cgi-bin\download.pl

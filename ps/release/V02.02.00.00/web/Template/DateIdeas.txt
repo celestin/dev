@@ -1,0 +1,9 @@
+          <td bgcolor=0077cc align=right valign=center><table border=0><tr
+            valign=center><td width="100%"><font color="#FFFFFF"><script language="JavaScript">
+              var td = new Date() ;
+              document.write(td.toLocaleString()) ;
+            </script></font></td>
+            <td><img src="./img/krakmet02.gif"><img src="./img/f.gif" width=15></td>
+            </tr></table></td>
+
+

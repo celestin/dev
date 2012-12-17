@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FrontBurner.Tmax.Apps.TechAttributeAssistant.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OraUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">tmax</Value>
+    </Setting>
+    <Setting Name="OraPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">tmax</Value>
+    </Setting>
+    <Setting Name="OraTNS" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">artificer</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

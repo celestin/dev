@@ -14,11 +14,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Maintenance Build Review")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The Maintenance Build Review tool enables us to compare the results of a maintenance build with the data currently mastered in TMAX.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Talisman Energy UK Ltd")]
+[assembly: AssemblyCompany("Talisman Sinopec Energy UK Ltd")]
 [assembly: AssemblyProduct("Maintenance Build Review")]
-[assembly: AssemblyCopyright("Copyright © Front Burner 2012")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

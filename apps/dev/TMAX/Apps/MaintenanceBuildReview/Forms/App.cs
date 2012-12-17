@@ -15,19 +15,31 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.IO;  
 using System.Windows.Forms;
 
 using FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data;
+using FrontBurner.Tmax.Apps.MaintenanceBuildReview.Tree;
 
 namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
 {
   public partial class App : Form
   {
+    private HierarchyTree _hierarchyTree;
+
+    public HierarchyTree HierarchyTree
+    {
+      get { return _hierarchyTree; }
+      set { _hierarchyTree = value; }
+    }
+
     public App()
     {
       InitializeComponent();
       AlignHorizontalSplits();
       SetColors();
+
+      HierarchyTree = new HierarchyTree(trvHierarchy, cmsHierarchy);
     }
 
     private void SetColors()
@@ -36,20 +48,28 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       lblHierarchy.BackColor = lblLocation.BackColor = lblMaintenance.BackColor = lblWorkorders.BackColor = resultsGreen;      
     }
 
-    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    private void OpenAccessDatabase(object sender, EventArgs e)
     {
-      Application.Exit();
+      ofdAccessDb.Title = "Select Access Database containing Maintenance Build Review";
+
+      if (ofdAccessDb.ShowDialog() == DialogResult.OK)
+      {
+        FileInfo db = new FileInfo(ofdAccessDb.FileName);
+        if (db.Exists)
+        {
+          if (!AccessDatalayer.Instance.Open(db))
+          {
+            MessageBox.Show("Could not open Database!");
+            return;
+          }
+
+          this.Text = "Maintenance Build Review - " + Config.Instance.RootDescription;
+          HierarchyTree.Populate();
+        }
+      }
     }
 
-    private void tsbCount_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void tsbRetrieve_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void tsbExit_Click(object sender, EventArgs e)
+    private void ExitApplication(object sender, EventArgs e)
     {
       Application.Exit();
     }
@@ -66,19 +86,19 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
 
     private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
     {
-      ActiveControl = treeView1;
+      ActiveControl = trvHierarchy;
     }
 
     private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
     {
       AlignHorizontalSplits();
-      ActiveControl = treeView1;
+      ActiveControl = trvHierarchy;
     }
 
     private void splitContainer3_SplitterMoved(object sender, SplitterEventArgs e)
     {
       splitContainer2.SplitterDistance = splitContainer3.SplitterDistance;
-      ActiveControl = treeView1;
+      ActiveControl = trvHierarchy;
     }
 
     private void splitContainer1_Paint(object sender, PaintEventArgs e)
@@ -129,6 +149,107 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
         e.Graphics.FillEllipse(SystemBrushes.ControlLight,
             new Rectangle(p, new Size(3, 3)));
       }
+    }
+
+    private void HierarchyTreeExpandAll(object sender, EventArgs e)
+    {
+      trvHierarchy.Nodes[0].ExpandAll();
+    }
+
+    private void HierarchyTreeCollapseAll(object sender, EventArgs e)
+    {
+      trvHierarchy.Nodes[0].Collapse();
+    }
+
+    private void FindLocation(object sender, EventArgs e)
+    {
+      FindLocation();
+    }
+
+    private void tstFindLocation_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (e.KeyChar == (char)Keys.Return) FindLocation();
+    }
+
+    private void FindLocation()
+    {      
+      if (trvHierarchy.Nodes.Count < 1) return;
+      if (tstFindLocation.Text.Length < 1) return;
+
+      LocNode startNode = (LocNode)trvHierarchy.SelectedNode;
+      if (startNode == null) startNode = (LocNode)trvHierarchy.Nodes[0];
+
+      FindLocation(startNode, tstFindLocation.Text);
+    }
+
+    private bool FindLocation(LocNode node, string findText)
+    {
+      if (node.Location.Match(findText))
+      {
+        trvHierarchy.SelectedNode = node;
+        return true;
+      }
+
+      foreach (LocNode child in node.Nodes)
+      {
+        if (FindLocation(child, findText)) return true;
+      }
+
+      return false;
+    }
+
+    private void LocationNodeSelected(object sender, TreeViewEventArgs e)
+    {
+      tabLocation.SelectedIndex = 0;
+      LocNode node = (LocNode)e.Node;
+      Location loc = node.Location;
+
+      txtLocation.Text = loc.Code;
+      txtStatus.Text = ActionStatuses.ToString(loc.ActionStatus);
+      ShowChangeableValue(loc.Description, txtDescriptionNew, txtDescriptionCurr);
+      ShowChangeableValue(loc.Parent, txtParentNew, txtParentCurr);
+    }
+
+    private void ShowChangeableValue(Changeable c, TextBox txtNew, TextBox txtCurr)
+    {
+      txtNew.Text = c.NewValue;
+      txtCurr.Text = c.CurrentValue;
+    }
+
+    private void HierarchyMouseClick(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right)
+      {
+        Point pt = new Point(e.X, e.Y);
+        trvHierarchy.PointToClient(pt);
+
+        TreeNode Node = trvHierarchy.GetNodeAt(pt);
+        if (Node != null)
+        {
+          if (Node.Bounds.Contains(pt))
+          {
+            trvHierarchy.SelectedNode = Node;
+          }
+        }
+      }
+    }
+
+    private void CopyLocationValue(object sender, EventArgs e)
+    {
+      LocNode node = (LocNode)trvHierarchy.SelectedNode;
+      Clipboard.Clear();
+      Clipboard.SetText(node.Location.Code);
+    }
+
+    private void HelpAbout(object sender, EventArgs e)
+    {
+      AboutMbr about = new AboutMbr();
+      about.ShowDialog();
+    }
+
+    private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

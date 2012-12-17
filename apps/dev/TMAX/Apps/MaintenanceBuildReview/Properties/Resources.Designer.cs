@@ -60,9 +60,51 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap exit {
+        internal static System.Drawing.Bitmap CollapseAll {
             get {
-                object obj = ResourceManager.GetObject("exit", resourceCulture);
+                object obj = ResourceManager.GetObject("CollapseAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Exit {
+            get {
+                object obj = ResourceManager.GetObject("Exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ExpandAll {
+            get {
+                object obj = ResourceManager.GetObject("ExpandAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap FindNext {
+            get {
+                object obj = ResourceManager.GetObject("FindNext", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Help {
+            get {
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MsAccess {
+            get {
+                object obj = ResourceManager.GetObject("MsAccess", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap TalismanHelpAbout {
+            get {
+                object obj = ResourceManager.GetObject("TalismanHelpAbout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

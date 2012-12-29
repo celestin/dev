@@ -16,6 +16,7 @@
  * CAM  01-Nov-07    320 : Correct issue with theMultiLine in getLineSC.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  09-Jul-2009  10457 : Allow extra space at the end of getLineCR.currline for the null terminator.
+ * CAM  29-Dec-2012  11147 : Bug in Ada comments - tested and committed to move to hg.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAda.h"
@@ -190,7 +191,7 @@ void DiffAda::getLineCR(FILE *input, char *&currline)
               }
             default:
               {
-                retval[retLength] = '/';
+                retval[retLength] = '-';
                 retLength++;
                 retval[retLength] = *c;
                 retLength++;

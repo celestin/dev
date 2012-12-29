@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  01-Apr-2012  11104 : Created.
+ * CAM  29-Dec-2012  11104 : Added translation and description methods.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -35,6 +36,30 @@ namespace FrontBurner.Tmax.Apps.BacklogPrioritisation.Data
       else if (text == CancelledStatus) return AssessmentStatus.Cancelled;
 
       return AssessmentStatus.New;
+    }
+
+    public static string GetStatusCode(AssessmentStatus status)
+    {
+      switch (status)
+      {
+        case AssessmentStatus.Completed:
+          return CompletedStatus;
+        case AssessmentStatus.Cancelled:
+          return CancelledStatus;
+      }
+      return NewStatus;
+    }
+
+    public static string GetStatusDescription(AssessmentStatus status)
+    {
+      switch (status)
+      {
+        case AssessmentStatus.Completed:
+          return "Completed";
+        case AssessmentStatus.Cancelled:
+          return "Cancelled";
+      }
+      return "New";
     }
   }
 }

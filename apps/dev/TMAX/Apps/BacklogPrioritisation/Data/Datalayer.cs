@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  31-Mar-2012  11104 : Created.
+ * CAM  29-Dec-2012  11104 : Added Priority Summary.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -92,5 +93,19 @@ namespace FrontBurner.Tmax.Apps.BacklogPrioritisation.Data
       return ds;
     }
 
+    public DataSet GetPrioritySummary(AssessmentStatus status)
+    {
+      string sSQL = "SELECT WOPriority, WoCount " +
+        "FROM V_Priority " +
+        "WHERE AssessmentStatus='" + AssessmentStatuses.GetStatusCode(status) + "'";
+      OleDbCommand cmd = new OleDbCommand(sSQL, _conn);
+      OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+      DataSet ds = new DataSet();
+      da.Fill(ds, "Priority");
+
+      cmd.Dispose();
+      da.Dispose();
+      return ds;
+    }
   }
 }

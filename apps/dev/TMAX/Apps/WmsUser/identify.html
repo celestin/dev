@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Windows Username</title>
+</head>
+<body>
+<script type="text/javascript">
+    var WinNetwork = new ActiveXObject("WScript.Network");
+    alert(WinNetwork.UserName); 
+	
+	var wshell = new ActiveXObject("WScript.Shell");
+	alert(wshell.ExpandEnvironmentStrings("%USERNAME%"));
+
+</script>
+</body>
+</html>

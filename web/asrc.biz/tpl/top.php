@@ -19,6 +19,7 @@
  * CAM  25-Nov-2008  10314 : CSS file renamed to ensure proper reload.
  * CAM  27-Feb-2010  10577 : Added new sponsorship logos.
  * CAM  13-Oct-2012  11135 : Removed session_is_registered.
+ * CAM  10-Feb-2013  11155 : Updated ASRC logo.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
@@ -66,70 +67,8 @@ function ToolbarOption($action, $label, $last=false, $class="") {
 <table border=0 cellpadding=0 cellspacing=0 width="100%">
 <tr><td align="center"><table border=0 cellpadding=0 cellspacing=0>
 <tr><td><table id="main" border=0 cellpadding=2 cellspacing=0 bgcolor="white">
-<tr><td colspan=3>
-<div id="header">
-      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="574" height="74" class="header-left" id="FlashID">
-              <param name="movie" value="img/ad/orion_574x74.swf" />
-              <param name="quality" value="high" />
-              <param name="wmode" value="opaque" />
-              <param name="swfversion" value="8.0.35.0" />
-              <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
-              <param name="expressinstall" value="Scripts/expressInstall.swf" />
-              <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
-              <!--[if !IE]>-->
-              <object type="application/x-shockwave-flash" data="img/ad/orion_574x74.swf" width="574" height="74">
-                <!--<![endif]-->
-                <param name="quality" value="high" />
-                <param name="wmode" value="opaque" />
-                <param name="swfversion" value="8.0.35.0" />
-                <param name="expressinstall" value="Scripts/expressInstall.swf" />
-                <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
-                <div>
-                  <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
-                  <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
-                  </div>
-                <!--[if !IE]>-->
-                </object>
-              <!--<![endif]-->
-          </object>
-      <img class="header-right" alt="" src="img/ad/league.gif">
-</div>
-<table id="asrc-logo" bgcolor="black" width="984" height="159" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td colspan="5"><img src="img/logo/spacer.gif" width="717" height="57" alt=""></td>
-    <td rowspan="5"><img src="img/logo/Racquet.gif" width="24" height="158" alt=""></td>
-    <td rowspan="3"><img src="img/logo/Ball.gif" width="95" height="108" alt=""></td>
-    <td rowspan="5"><img src="img/logo/Racquet-05.gif" width="148" height="158" alt=""></td>
-  </tr>
-  <tr>
-    <td rowspan="4"><img src="img/logo/spacer.gif" width="22" height="101" alt=""></td>
-    <td rowspan="3"><img src="img/logo/Logo.gif" width="66" height="78" alt=""></td>
-    <td colspan="3"><img src="img/logo/spacer.gif" width="629" height="14" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/logo/Aberdeen.gif" width="148" height="37" alt=""></td>
-    <td colspan="2"><img src="img/logo/spacer.gif" width="481" height="37" alt=""></td>
-  </tr>
-  <tr>
-    <td colspan="2"><img src="img/logo/SRC.gif" width="242" height="27" alt=""></td>
-    <td rowspan="2"><img src="img/logo/spacer.gif" width="387" height="50" alt=""></td>
-    <td rowspan="2"><img src="img/logo/Racquet-13.gif" width="95" height="50" alt=""></td>
-  </tr>
-  <tr>
-    <td colspan="3"><img src="img/logo/spacer.gif" width="308" height="23" alt=""></td>
-  </tr>
-  <tr>
-    <td><img src="img/logo/spacer.gif" width="22" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="66" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="148" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="94" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="387" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="24" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="95" height="1" alt=""></td>
-    <td><img src="img/logo/spacer.gif" width="148" height="1" alt=""></td>
-  </tr>
-</table>
-</td></tr>
+<tr><td colspan=3><img src="img\logo\asrc_logo.jpg"></td>
+</tr>
 
 <tr>
 <td valign=top><table border=0 cellpadding=0 cellspacing=0 width="800" height="480" class="outerBox">

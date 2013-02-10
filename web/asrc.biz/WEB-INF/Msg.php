@@ -28,7 +28,7 @@ class Msg {
   * @public
   * @returns String
   */
-  function question($quest) {
+  public static function question($quest) {
     print "<p class=\"quest\">$quest?</p>";
   }
 
@@ -38,7 +38,7 @@ class Msg {
   * @public
   * @returns String
   */
-  function statement($statement) {
+  public static function statement($statement) {
     print "<p class=\"statement\">$statement</p>";
   }
 
@@ -48,7 +48,7 @@ class Msg {
   * @public
   * @returns String
   */
-  function error($err) {
+  public static function error($err) {
     print "<p class=\"err\">$err</p>";
   }
 }

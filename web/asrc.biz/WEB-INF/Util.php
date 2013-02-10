@@ -20,7 +20,7 @@ class Util {
   * @public
   * @return String
   */
-  function displayToSqlDate($displayDate) {
+  public static function displayToSqlDate($displayDate) {
     return date("Y-m-d", strtotime($displayDate));
   }
 
@@ -30,7 +30,7 @@ class Util {
   * @public
   * @return String
   */
-  function textToSql($text) {
+  public static function textToSql($text) {
     $ret = str_replace("'", "'", $text);
     $ret = str_replace("£", "&pound;", $ret);
     return $ret;
@@ -42,7 +42,7 @@ class Util {
   * @public
   * @return String
   */
-  function textBoxToHtml($text) {
+  public static function textBoxToHtml($text) {
     $rval = str_replace("\n", "<br>", $text);
     return $rval;
   }
@@ -63,7 +63,7 @@ class Util {
   * @public
   * @return int
   */
-  function myWeekday($date) {
+  public static function myWeekday($date) {
     $dow = (date("w", strtotime($date)) - 1);
     if ($dow == -1) $dow = 6;
     return $dow;
@@ -75,7 +75,7 @@ class Util {
   * @public
   * @returns int
   */
-  function myNextday($day) {
+  public static function myNextday($day) {
     $dow = $day+1;
     if ($dow > 6) $dow = 0;
     return $dow;

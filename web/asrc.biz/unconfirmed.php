@@ -11,6 +11,7 @@
  *
  * Who  When         Why
  * CAM  12-Aug-2007  10157 : File created.
+ * CAM  17-Feb-2013  11158 : Added bulk confirmation checkboxes and action. 
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Unconfirmed Bookings";
@@ -26,9 +27,23 @@ if (!$member->isAdmin()) {
   redirect("mybookings.php");
 }
 
+// Handle any bulk confirmations
+$bulk = NULL;       if (!empty($_POST['bulk'])) $bulk = $_POST['bulk'];
+for ($i = 0; $i < count($bulk); $i++) {
+  $b = explode("|", $bulk[$i]);
+  
+  $ssql = "UPDATE booking ".
+          "SET confirm_date = NOW(), confirm_user = '" . $member->getID() . "', status = 'C' ".
+          "WHERE book_date='" . $b[0] . "' ".
+          "AND court='" . $b[1] . "' ".
+          "AND slot='" . $b[2] . "' ";
+  $sql = mysql_query($ssql) or die (mysql_error());
+}
+
 ?>
 
 <p><b>Unconfirmed Bookings</b></p>
+<form method="POST">
 <table cellspacing=0 cellpadding=0 width="100%" border=0>
 <tr><td valign=top><table border=1 cellspacing=0 cellpadding=2>
 <tr>
@@ -38,6 +53,7 @@ if (!$member->isAdmin()) {
   <th>Member</th>
   <th>Opponent</th>
   <th>Action</th>
+  <th>Bulk</th>
 </tr>
 <?
     $ssql = "SELECT b.book_date, s.start_time, b.court, b.slot, b.memberid, b.opponentid, b.charge, ".
@@ -71,11 +87,14 @@ if (!$member->isAdmin()) {
         "<td class=bc>$court</td>".
         "<td class=bc title=\"" . $tupMember->toString(true) . "\">" . $tupMember->getDesc() . "</td>".
         "<td class=bc title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>".
-        "<td><a href=\"". ActionUtil::url("C", $book_date, $court, $slot) . "\">confirm</a></td>".
+        "<td align=\"center\"><a href=\"". ActionUtil::url("C", $book_date, $court, $slot) . "\">confirm</a></td>".
+        "<td align=\"center\"><input type=\"checkbox\" id=\"bulk[]\" name=\"bulk[]\" value=\"". $book_date . "|" . $court . "|" . $slot . "\"></td>".
       "</tr>";
     }
 ?>
+<tr><td colspan="5">&nbsp;</td><td colspan=2><input type="submit" value="bulk confirm"></td></tr>
 </table></td></tr></table>
+</form>
 <?
 
 include 'tpl/bot.php';

@@ -44,10 +44,10 @@
   } else {
     $url = 'http://localhost';
     if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
-    $url .= '/iknit';
+    $url .= '/fb/loviesyarn';
 
     define('HTTP_SERVER', $url);
-    define('DIR_FS_CATALOG', 'c:/appserv/www/iknit/');
+    define('DIR_FS_CATALOG', 'C:/Dev/FB/web/loviesyarn/');
     define('DIR_WS_CATALOG', '../');
 
 	  define('DB_SERVER_USERNAME', 'iknitbiz');

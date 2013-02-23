@@ -134,14 +134,16 @@ if (linkRef) {
 
   yarnCode = yarnImg.substring(0, yarnImg.indexOf("-")).toUpperCase();
 
-  sSql = "";/*
-    "DELETE FROM sirdar_yarn WHERE yarn_code = '" + yarnCode + "';\n" +
-    "DELETE FROM sirdar_yarn_shade WHERE yarn_code = '" + yarnCode + "';\n\n" +
-    "INSERT INTO sirdar_yarn (" +
+
+    //"DELETE FROM sirdar_yarn WHERE yarn_code = '" + yarnCode + "';\n" +
+    //"DELETE FROM sirdar_yarn_shade WHERE yarn_code = '" + yarnCode + "';\n\n"
+
+  sSql =
+    "INSERT IGNORE INTO sirdar_yarn (" +
       "yarn_code, yarn_name, ply_name, style_name, yarn_image"+
     ") VALUES ("+
       "'" + yarnCode + "', '" + yarnName + "', '" + yarnPly + "', '" + yarnStyle + "', '" + yarnImg + "'"+
-    ");\n\n";*/
+    ");\n\n";
 
 
   // Now parse colours
@@ -164,10 +166,10 @@ if (linkRef) {
     colourImageHtml = colourImageHtml.substring(i+1);
 
     sSql = sSql +
-      "REPLACE INTO sirdar_yarn_shade (" +
+      "INSERT IGNORE INTO sirdar_yarn_shade (" +
         "yarn_code, shade_code, shade_name, shade_image, shade_status"+
       ") VALUES ("+
-        "'" + yarnCode + "', '" + colourCode + "', '" + colourName + "', '" + colourImage + "', 'INC'"+
+        "'" + yarnCode + "', '" + colourCode + "', '" + colourName + "', '" + colourImage + "', 'NEW'"+
       ");\n";
 
     nextColour = colourImageHtml.indexOf(delimiter);
@@ -180,6 +182,7 @@ if (linkRef) {
 
   if (leaflets)
   {
+
     for (i=0; i<leaflets.childNodes.length; i++)
     {
       if (leaflets.childNodes[i].nodeName == "LI")
@@ -192,7 +195,7 @@ if (linkRef) {
         leafletImage = leafletImage.substring(leafletImage.lastIndexOf("/")+1);
 
         sLeafSql +=
-          "INSERT INTO sirdar_yarn_leaflet (" +
+          "INSERT IGNORE INTO sirdar_yarn_leaflet (" +
             "yarn_code, leaflet_code, leaflet_image, leaflet_sirdar_image"+
           ") VALUES ("+
             "'" + yarnCode + "', '" + leafletCode + "', '" + leafletImage + "', 'http://www.sirdar.co.uk/images/products/designs/" + leafletImage + "'"+
@@ -206,6 +209,6 @@ if (linkRef) {
   var sqlFrame = document.createElement('div');
   // Insert a new div *after* the product image
   thisDiv.parentNode.insertBefore(sqlFrame, colourFrame);
-  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sSql + /*"\n\n\n" + sLeafSql +*/ "\n\n\n\n</textarea>";
+  sqlFrame.innerHTML = "<textarea cols='60' rows='8'>" + sSql + "\n" + sLeafSql + "\n\n</textarea>";
 }
 

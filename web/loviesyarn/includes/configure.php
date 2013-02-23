@@ -42,13 +42,13 @@
 	  define('DB_SERVER_PASSWORD', 'iknit_test');
 	  define('DB_DATABASE', 'loviesya_biz_test');
   } else {
-    $url = 'http://artificer';
+    $url = 'http://localhost';
     if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
-    $url .= '/loviesyarn';
+    $url .= '/fb/loviesyarn';
 
     define('HTTP_SERVER', $url);
     define('HTTPS_SERVER', $url);
-    define('DIR_FS_CATALOG', 'c:/appserv/www/loviesya/');
+    define('DIR_FS_CATALOG', 'C:/Dev/FB/web/loviesyarn/');
 
 	  define('DB_SERVER_USERNAME', 'iknitbiz');
 	  define('DB_SERVER_PASSWORD', 'bill81');

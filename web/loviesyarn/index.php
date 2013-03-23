@@ -61,7 +61,6 @@
     $number_of_small_categories = tep_db_num_rows($small_categories_query);
     $smallCatsPerRow = (MAX_DISPLAY_CATEGORIES_PER_ROW*2);
 
-
     if ($number_of_small_categories > 0) {
 ?>
   <div id="homeCategory">
@@ -75,7 +74,10 @@
         $rows++;
         $cPath_new = tep_get_path($small_categories['categories_id']);
         $width = (int)(100 / $smallCatsPerRow) . '%';
-        echo '                <td align="center" class="smallText" width="' . $width . '" valign="top"><a href="' . tep_href_link(FILENAME_DEFAULT, $cPath_new) . '">' . tep_image(DIR_WS_IMAGES . $small_categories['categories_image'], $small_categories['categories_name'], (HEADING_IMAGE_WIDTH/2), 0) . '</a></td>' . "\n";
+        ?><td align="center" class="smallText" width="<?=$width?>" valign="top">
+        <a href="<?=tep_href_link(FILENAME_DEFAULT, $cPath_new)?>">
+        <?=tep_image(DIR_WS_IMAGES . $small_categories['categories_image'], $small_categories['categories_name'], (HEADING_IMAGE_WIDTH/2), 0)?>
+        </a></td><?
         if ((($rows / $smallCatsPerRow) == floor($rows / $smallCatsPerRow)) && ($rows != $number_of_small_categories)) {
     ?>
       <tr></tr>
@@ -103,6 +105,14 @@
 <?php include(FILENAME_ANALYTICS); ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 <!-- header_eof //-->
@@ -374,6 +384,10 @@
   "<a href=\"index.php?cPath=1_138\">Katia</a>, ".
   "<a href=\"index.php?cPath=1_114\">Woolcraft</a> and ".
   "<a href=\"index.php?cPath=1_119\">Patons/SMC</a>. Pompoms & Sparkle are in for this winter in a big way!</p>");
+
+?>
+<div class="fb-like-box" data-href="https://www.facebook.com/loviesyarn" data-width="700" data-height="400" data-show-faces="false" data-stream="true" data-header="false"></div>
+<?
 
   display_categories("'79'", "Leaflets", "Our Sirdar leaflets and yarn are laid out (we hope) in a way that is easy to ".
     "follow and see quantities and colours all at once. Thanks for looking and we hope you enjoy browsing on our site.");

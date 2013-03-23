@@ -269,6 +269,7 @@ function background_colour($status) {
     $row3 = "";
     $row4 = "";
     $counter = 0;
+    $prev_yarn_name="";
 
     $ssql = "SELECT y.style_name, y.yarn_status, y.ply_name, y.yarn_name, y.yarn_code, y.yarn_image, l.leaflet_code, l.leaflet_status, l.leaflet_image ".
             "FROM sirdar_yarn y, sirdar_yarn_leaflet l ".

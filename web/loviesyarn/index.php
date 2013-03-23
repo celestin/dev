@@ -22,6 +22,7 @@
  * CAM  26-Feb-2012  11093 : Added Bill's new home page text.
  * CAM  19-Apr-2012  11115 : Renamed to Lovie's Yarn.
  * CAM  25-Sep-2012  11132 : Added Bill's new home page text.
+ * CAM  23-Mar-2013  11169 : Added Bill's new home page text.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
   require('includes/application_top.php');
@@ -367,23 +368,33 @@
               <div id="home">
 <?php
 
-  display_categories("'105','32'", "Yarns", "Welcome to LoviesYarn.com. We are a main Sirdar stockist with almost 60 years experience of selling knitting yarn. ".
+  display_categories("'105','32'", "Yarns", "Welcome to LoviesYarn.com. We are a main Sirdar ".
+    "stockist celebrating 60 years&rsquo; experience of selling knitting yarn. ".
 	"We are committed to providing our customers with the lowest possible prices combined with great service.</p>".
 
-	"<p>Our postage policy is clear &amp; simple too &mdash; Orders over &pound;10.00 are delivered FREE by second class post.
-	Orders are posted out the same day (received before 4.30pm Mon-Fri &amp; 12.00am Sat).  We also show our stock levels so you know we have what you order.</p>".
+    "<p>Browse through our online catalogue, updated with all the new Sirdar cotton based yarns for this season:- ".
+    "<a href=\"index.php?cPath=1_32_33_153\">Americana</a>, a printed yarn with a casual summer vibe. ".
+    "<a href=\"index.php?cPath=1_32_33_154\">Ella</a>, with a glimmer of sparkle. ".
+    "New colours in old favourites ".
+    "<a href=\"index.php?cPath=1_32_36_45_111\">Calico</a> and ".
+    "<a href=\"index.php?cPath=1_32_33_109\">Summer Stripes</a>.</p>".
 
-  "<p>Browse through our online catalogue, updated with all the new Sirdar yarns for this winter:- ".
-  "<a href=\"index.php?cPath=1_32_33_146\">Montana DK</a> with its bold colour prints, ".
-  "<a href=\"index.php?cPath=1_32_33_148\">Folksong Chunky</a>, a gorgeous yarn that is beautiful to knit with and ".
-  "<a href=\"index.php?cPath=1_32_33_147\">Faroe Superchunky</a> which comes in a range of gently blended colours. ".
-  "There are also new colours and designs all through the existing qualities from the Uk's favourite Snuggly Baby range to the bestselling and dramatic Indie.</p>".
+    "<p>There are also new colours and designs all through the existing qualities from the UK's favourite ".
+    "<a href=\"index.php?cPath=1_32_35_40\">Snuggly Baby range</a>. ".
+    "<a href=\"index.php?cPath=1_32_35_40_155\">Snuggly Baby Cotton DK</a> is a brand new 100% natural fibre baby yarn ".
+    "which is so gentle next to babies&rsquo; skin.</p>".
 
-  "<p>There is also an ever increasing selection of scarf yarns from ".
-  "<a href=\"index.php?cPath=1_105\">Rico</a>, ".
-  "<a href=\"index.php?cPath=1_138\">Katia</a>, ".
-  "<a href=\"index.php?cPath=1_114\">Woolcraft</a> and ".
-  "<a href=\"index.php?cPath=1_119\">Patons/SMC</a>. Pompoms & Sparkle are in for this winter in a big way!</p>");
+    "<p>We still have a large selection of scarf yarns from ".
+    "<a href=\"index.php?cPath=1_105\">Rico</a>, ".
+    "<a href=\"index.php?cPath=1_138\">Katia</a>, ".
+    "<a href=\"index.php?cPath=1_114\">Woolcraft</a> and ".
+    "<a href=\"index.php?cPath=1_119\">Patons/SMC</a> and the new ".
+    "Ribbon yarns <a href=\"index.php?cPath=1_114_156\">Adore</a> &amp; ".
+    "<a href=\"index.php?cPath=1_114_152\">Desire</a>.</p>".
+
+    "<p>Our postage policy is clear &amp; simple too &mdash; Orders over &pound;10.00 are delivered FREE by second class post. ".
+    "Orders are posted out the same day (received before 4.30pm Mon-Fri &amp; 12.00am Sat).  ".
+    "We also show our stock levels so you know we have what you order.</p>");
 
 ?>
 <div class="fb-like-box" data-href="https://www.facebook.com/loviesyarn" data-width="700" data-height="400" data-show-faces="false" data-stream="true" data-header="false"></div>

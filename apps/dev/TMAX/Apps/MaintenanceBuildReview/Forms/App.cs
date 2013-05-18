@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
+ * CAM  18-May-2013  11172 : Added call to ExtractMaximo form.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -67,6 +68,12 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
           HierarchyTree.Populate();
         }
       }
+    }
+
+    private void ExtractMaximoData(object sender, EventArgs e)
+    {
+      ExtractMaximo em = new ExtractMaximo();
+      em.Show();
     }
 
     private void ExitApplication(object sender, EventArgs e)
@@ -245,11 +252,6 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
     {
       AboutMbr about = new AboutMbr();
       about.ShowDialog();
-    }
-
-    private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-
     }
   }
 }

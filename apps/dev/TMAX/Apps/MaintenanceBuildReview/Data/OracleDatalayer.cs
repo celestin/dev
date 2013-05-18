@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
+ * CAM  18-May-2013  11172 : Moved Connection to public accessor to enable use from ValidateDatalayer.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -22,12 +23,17 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
 {
   public class OracleDatalayer
   {
-    private OracleConnection con;
+    private OracleConnection _con;
     private static OracleDatalayer _layer;
+
+    public OracleConnection Connection
+    {
+      get { return _con; }
+    }
 
     private OracleDatalayer()
     {
-      con = new OracleConnection();
+      _con = new OracleConnection();
     }
 
     public static OracleDatalayer Instance
@@ -39,27 +45,15 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
       }
     }
 
-    public int Open(string id, string password, string tns)
+    public void Open(string id, string password, string tns)
     {
       int rval = -1;
 
-      if (con.State != System.Data.ConnectionState.Open)
+      if (Connection.State != System.Data.ConnectionState.Open)
       {
-        con.ConnectionString = String.Format("Data Source={0};User ID={1}; Password={2}", tns, id, password);
-        con.Open();
+        Connection.ConnectionString = String.Format("Data Source={0};User ID={1}; Password={2}", tns, id, password);
+        Connection.Open();
       }
-
-      // Create and execute the query
-      OracleCommand cmd = new OracleCommand("select count(*) loccount from locations", con);
-      OracleDataReader reader = cmd.ExecuteReader();
-
-      // Iterate through the DataReader and display row
-      if (reader.Read())
-      {
-        rval = int.Parse(reader[0].ToString());
-      }
-
-      return rval;
     }
 
     public DataTable LocationClass(string location)
@@ -74,7 +68,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
         "and ac.classificationid = csl.classificationid " +
         "and l.location = '{0}'", location);
 
-      OracleCommand cmd = new OracleCommand(s, con);
+      OracleCommand cmd = new OracleCommand(s, Connection);
       //OracleDataReader reader = cmd.ExecuteReader();
 
       OracleDataAdapter da = new OracleDataAdapter(cmd);
@@ -94,7 +88,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
         "and ls.classstructureid = '{1}' " +
         "order by ls.displaysequence", location, classid);
       //MessageBox.Show(s);
-      OracleCommand cmd = new OracleCommand(s, con);
+      OracleCommand cmd = new OracleCommand(s, Connection);
       //OracleDataReader reader = cmd.ExecuteReader();
 
       OracleDataAdapter da = new OracleDataAdapter(cmd);

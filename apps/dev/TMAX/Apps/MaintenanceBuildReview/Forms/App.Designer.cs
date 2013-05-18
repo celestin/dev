@@ -86,6 +86,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.extractMaximoDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -670,6 +671,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       // 
       this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openDatabaseToolStripMenuItem,
+            this.extractMaximoDataToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
       this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -681,21 +683,30 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       this.openDatabaseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openDatabaseToolStripMenuItem.Image")));
       this.openDatabaseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this.openDatabaseToolStripMenuItem.Name = "openDatabaseToolStripMenuItem";
-      this.openDatabaseToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
+      this.openDatabaseToolStripMenuItem.Size = new System.Drawing.Size(189, 30);
       this.openDatabaseToolStripMenuItem.Text = "&Open Database";
       this.openDatabaseToolStripMenuItem.Click += new System.EventHandler(this.OpenAccessDatabase);
+      // 
+      // extractMaximoDataToolStripMenuItem
+      // 
+      this.extractMaximoDataToolStripMenuItem.Image = global::FrontBurner.Tmax.Apps.MaintenanceBuildReview.Properties.Resources.export1;
+      this.extractMaximoDataToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this.extractMaximoDataToolStripMenuItem.Name = "extractMaximoDataToolStripMenuItem";
+      this.extractMaximoDataToolStripMenuItem.Size = new System.Drawing.Size(189, 30);
+      this.extractMaximoDataToolStripMenuItem.Text = "&Extract Maximo data";
+      this.extractMaximoDataToolStripMenuItem.Click += new System.EventHandler(this.ExtractMaximoData);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
       // 
       // exitToolStripMenuItem
       // 
       this.exitToolStripMenuItem.Image = global::FrontBurner.Tmax.Apps.MaintenanceBuildReview.Properties.Resources.Exit;
       this.exitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(189, 30);
       this.exitToolStripMenuItem.Text = "E&xit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitApplication);
       // 
@@ -927,6 +938,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
     private System.Windows.Forms.ContextMenuStrip cmsHierarchy;
     private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
     private System.Windows.Forms.OpenFileDialog ofdAccessDb;
+    private System.Windows.Forms.ToolStripMenuItem extractMaximoDataToolStripMenuItem;
   }
 }
 

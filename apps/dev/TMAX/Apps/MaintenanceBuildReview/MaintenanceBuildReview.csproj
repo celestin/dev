@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DCF07B7-475F-4BE5-9178-19E89C019788}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -52,6 +52,7 @@
     <Compile Include="Data\Location.cs" />
     <Compile Include="Data\Changeable.cs" />
     <Compile Include="Data\OracleDatalayer.cs" />
+    <Compile Include="Data\ValidateDatalayer.cs" />
     <Compile Include="Forms\AboutMbr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,13 +65,25 @@
     <Compile Include="Forms\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ExtractMaximo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExtractMaximo.Designer.cs">
+      <DependentUpon>ExtractMaximo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaintenanceBuildReview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutMbr.resx">
       <DependentUpon>AboutMbr.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\App.resx">
       <DependentUpon>App.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExtractMaximo.resx">
+      <DependentUpon>ExtractMaximo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,6 +127,7 @@
     <None Include="Images\Toolbar\navigate_plus.png" />
     <None Include="Images\Toolbar\navigate_minus.png" />
     <None Include="Images\TalismanLogo-HelpAbout.png" />
+    <None Include="Images\Toolbar\export1.png" />
     <Content Include="worker.ico" />
     <None Include="Images\Toolbar\exit.png" />
   </ItemGroup>

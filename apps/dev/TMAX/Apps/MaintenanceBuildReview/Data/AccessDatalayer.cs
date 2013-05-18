@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
+ * CAM  18-May-2013  11172 : Renamed Connection for consistency.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -39,8 +40,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
     #region AccessDatalayer Members
     private OleDbConnection _con;
 
-
-    public OleDbConnection Con
+    public OleDbConnection Connection
     {
       get { return _con; }
     }
@@ -55,16 +55,16 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
 
       try
       {
-        if (Con.State != System.Data.ConnectionState.Open)
+        if (Connection.State != System.Data.ConnectionState.Open)
         {
-          Con.ConnectionString = String.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};User Id=admin;Password=;", accessFile.FullName);
-          Con.Open();
+          Connection.ConnectionString = String.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};User Id=admin;Password=;", accessFile.FullName);
+          Connection.Open();
           // \HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Jet\4.0\Engines\Jet 3.x\MaxBufferSize
           // http://support.microsoft.com/default.aspx?scid=kb;en-us;248014
         }
 
         // Create and execute the query
-        OleDbCommand cmd = new OleDbCommand("Select RootCode,RootDescription From MBR_CONFIG", Con);
+        OleDbCommand cmd = new OleDbCommand("Select RootCode,RootDescription From MBR_CONFIG", Connection);
         OleDbDataReader reader = cmd.ExecuteReader();
 
         // Iterate through the DataReader and display row
@@ -88,7 +88,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
     {
       LocationCollection rval = new LocationCollection();
 
-      if (Con.State != System.Data.ConnectionState.Open) return rval;
+      if (Connection.State != System.Data.ConnectionState.Open) return rval;
 
       try
       {
@@ -100,7 +100,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
           "m.SCE, r.SCE, "+
           "m.ECE, r.ECE, "+
           "m.PCE, r.PCE "+
-          "FROM MAX_LOCATIONS AS m RIGHT JOIN ODL_Location AS r ON m.LOCATION = r.LOCATION", Con);
+          "FROM MAX_LOCATIONS AS m RIGHT JOIN MBC_Location AS r ON m.LOCATION = r.LOCATION", Connection);
         OleDbDataReader reader = cmd.ExecuteReader();
 
         // Iterate through the DataReader and display row

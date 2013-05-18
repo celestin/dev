@@ -20,7 +20,7 @@
 ////
 // Redirect to another page or site
   function tep_redirect($url) {
-    if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) { 
+    if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
       tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
     }
 
@@ -58,7 +58,7 @@
   }
 
   function tep_sanitize_string($string) {
-    $string = ereg_replace(' +', ' ', trim($string));
+    $string = preg_replace('/ +/', ' ', trim($string));
 
     return preg_replace("/[<>]/", '_', $string);
   }
@@ -594,7 +594,7 @@
     $search_str = trim(strtolower($search_str));
 
 // Break up $search_str on whitespace; quoted string will be reconstructed later
-    $pieces = split('[[:space:]]+', $search_str);
+    $pieces = explode('[[:space:]]+', $search_str);
     $objects = array();
     $tmpstring = '';
     $flag = '';

@@ -2,7 +2,9 @@ Options +SymLinksIfOwnerMatch
 RewriteEngine On
 RewriteBase /
 
+RewriteCond %{HTTP_HOST} !^localhost$ [NC]
 RewriteCond %{HTTP_HOST} !^www\.loviesyarn\.com$ [NC]
+RewriteCond %{HTTP_HOST} ^(.+)$ [NC]
 RewriteRule ^(.*)$ http://www.loviesyarn.com/$1 [R=301,L]
 
 RewriteCond %{HTTP_USER_AGENT} ^.*[yY]andex.*$ [OR]

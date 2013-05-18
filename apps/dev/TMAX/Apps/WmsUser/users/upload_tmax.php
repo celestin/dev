@@ -17,8 +17,11 @@ $title = "Upload TMAX Users";
 require_once 'excel_reader2.php';
 include 'tpl/top.php';
 
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
 $filename = (!empty($_FILES['adfile']['tmp_name'])) ? $_FILES['adfile']['tmp_name'] : "";
 $validfile = FALSE;
+
+echo $member->firstname;
 
 if (!empty($filename)) {
   $data = new Spreadsheet_Excel_Reader($filename);
@@ -39,44 +42,66 @@ function show_summary_table($insertcount, $matchupdate, $deletes) {
 }
 
 function process_matches() {
-	global $data;
+	global $data, $member;
 
   if (!empty($data)) {
 
-		$sht=0;
-	  $rows = $data->rowcount($sheet_index=$sht);
+	$sht=0;
+	$rows = $data->rowcount($sheet_index=$sht);
 
-	  $insertcount = 0;
-	  $deletes = 0;
-	  $matchupdate = 0;
+	$insertcount = 0;
+	$deletes = 0;
+	$matchupdate = 0;
 
     $sql = "update usr set current_group=null";
     mysql_query($sql) or die (mysql_error());
 
-	  for($r=2; $r < $rows; $r++) {
+	for($r=2; $r < $rows; $r++) {
 
-			$username = strtoupper($data->val($r,1,$sht));
-	  	$security_group = $data->val($r,2,$sht);
+		$username = strtoupper($data->val($r,1,$sht));
+	  $security_group = $data->val($r,2,$sht);
+	  $fullname = $data->val($r,3,$sht);
+	  $first_name = $data->val($r,4,$sht);
+	  $last_name = $data->val($r,5,$sht);
+	  $job_title = strtoupper($data->val($r,6,$sht));
+	  $site = $data->val($r,7,$sht);
+	  $work_email = $data->val($r,8,$sht);
 
-      $sql = "select status from usr where username='$username'";
-      $res = mysql_query($sql) or die (mysql_error());
-      if ($row = mysql_fetch_array($res)) {
-        $status = $row[0];
-        $statussql = "";
-        if ($status == "Deleted" || empty($status)) {
-          $statussql = ", status='$status'";
-        }
+    $conf_details = "";
 
-        $sql = "update usr set current_group='$security_group' $statussql where username='$username'";
-        //echo "<li>$sql</li>";
-        mysql_query($sql);
-        $matchupdate++;
-      } else {
-        $sql = "insert into usr (username, current_group, status) values ('$username','$security_group','Init')";
-        mysql_query($sql);
-        $insertcount++;
-      }
+     if (!empty($fullname) && !empty($first_name) && !empty($last_name) && 
+          !empty($job_title) && !empty($site) && !empty($work_email)) {
+      // New details to confirm from LABOR record in Maximo
+      $conf_details = ", site='$site', first_name='$first_name', last_name='$last_name', work_email='$work_email', job_title='$job_title' ".
+        ", status='Confirmed' ".
+        ", cnf_username='TMAX' ".
+        ", cnf_fullname='" . $member->firstname . " " . $member->lastname . "' ".
+        ", cnf_datetime=NOW() ";
+    }         
+    
+    $sql = "select status from usr where username='$username'";
+    $res = mysql_query($sql) or die (mysql_error());
+    if ($row = mysql_fetch_array($res)) {
+      $status = $row[0];
+      $statussql = "";
+      
+      //if ($status == "Deleted" || empty($status)) {
+        // Preserve Deleted items
+        //$statussql = ", status='$status'";
+      //} else 
+      if ($status == "Confirmed") $conf_details = "";
+
+      $sql = "update usr set current_group='$security_group' $conf_details where username='$username'";
+      mysql_query($sql);
+      $matchupdate++;
+    } else {
+      $sql = "insert into usr (username, current_group, status) values ('$username','$security_group','Init')";
+      mysql_query($sql);
+      $sql = "update usr set current_group='$security_group' $conf_details where username='$username'";
+      mysql_query($sql);
+      $insertcount++;
     }
+  }
 
     $sql = "update usr set status='Deleted' where current_group is null and status<>'System'";
     $res = mysql_query($sql) or die (mysql_error());

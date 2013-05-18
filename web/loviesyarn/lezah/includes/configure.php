@@ -44,15 +44,15 @@
   } else {
     $url = 'http://localhost';
     if ($_SERVER['SERVER_PORT'] != 80) $url .= ':' . $_SERVER['SERVER_PORT'];
-    $url .= '/fb/loviesyarn';
+    $url .= '/~craig/fb/web/loviesyarn';
 
     define('HTTP_SERVER', $url);
-    define('DIR_FS_CATALOG', 'C:/Dev/FB/web/loviesyarn/');
-    define('DIR_WS_CATALOG', '../');
+    define('HTTPS_SERVER', $url);
+    define('DIR_FS_CATALOG', '/Users/craig/Sites/fb/web/loviesyarn');
 
-	  define('DB_SERVER_USERNAME', 'iknitbiz');
-	  define('DB_SERVER_PASSWORD', 'bill81');
-	  define('DB_DATABASE', 'iknit_biz_site');
+    define('DB_SERVER_USERNAME', 'iknitbiz');
+	define('DB_SERVER_PASSWORD', 'bill81');
+    define('DB_DATABASE', 'iknit_biz_site');
   }
 
   define('DIR_FS_ADMIN', DIR_FS_CATALOG . 'lezah/');

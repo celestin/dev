@@ -18,6 +18,7 @@
  * CAM  25-Jun-2007  10129 : Colour alternate rows.
  * CAM  27-Aug-2011  11014 : Corrected errors around member variables.
  * CAM  19-May-2012  11122 : Xodus Group Court naming.
+ * CAM  17-Feb-2013  11159 : Increased cancellation time to 4hrs.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Bookings";
@@ -153,7 +154,7 @@ if (isset($member) && $member->isAdmin()) {
 
 	    print "<td class=" . $tupOpponent->getClass() . " title=\"" . $tupOpponent->toString(true) . "\">" . $tupOpponent->getDesc() . "</td>";
 
-	    if (empty($confirm_date) && (strtotime("$book_date $start_time_fmt") - time()) > 1800) {
+	    if (empty($confirm_date) && (strtotime("$book_date $start_time_fmt") - time()) > 14400) {
 	      print "<td class=$rowclass><a href=\"". ActionUtil::url('X', $book_date, $court, $slot) . "\">cancel</a></td>";
 	    } else {
 	      print "<td class=$rowclass>&nbsp</td>";

@@ -12,6 +12,7 @@
  * Who  When         Why
  * CAM  23-Jun-2004  File created.
  * CAM  30-May-2004  4 : Added Paying of Fines.
+ * CAM  17-Feb-2013  11162 : Added visibility and static keywords for strict OO PHP.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -29,7 +30,7 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function getDesc($action) {
+  public static function getDesc($action) {
     if ($action == 'C') return "Confirm";
     if ($action == 'X') return "Cancel";
     if ($action == 'P') return "Pay All";
@@ -41,7 +42,7 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function url($action, $book_date, $court, $slot, $proceed='') {
+  public static function url($action, $book_date, $court, $slot, $proceed='') {
     $rval = "action.php?action=$action&book_date=$book_date&court=$court&slot=$slot";
 
     if (!empty($proceed)) {
@@ -57,7 +58,7 @@ class ActionUtil {
   * @public
   * @returns String
   */
-  function urlPay($action, $memberid, $proceed='') {
+  public static function urlPay($action, $memberid, $proceed='') {
     $rval = "action.php?action=$action&memberid=$memberid";
 
     if (!empty($proceed)) {
@@ -66,6 +67,5 @@ class ActionUtil {
 
     return $rval;
   }
-
 }
 ?>

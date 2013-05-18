@@ -14,6 +14,7 @@
  * CAM  23-Oct-2007  10182 : Added getBookingsDescription.
  * CAM  15-Nov-2007  10156 : Added User Privs - C01:Coach and E01:EventEditor.
  * CAM  13-Oct-2012  11135 : Removed erroring use of get_class.
+ * CAM  17-Feb-2013  11162 : Added visibility and static keywords for strict OO PHP.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -98,7 +99,7 @@ class Person extends Tuple {
   * @public
   * @returns Object
   */
-  function setFirstname($firstname) {
+  public function setFirstname($firstname) {
     $this->firstname = $firstname;
   }
 
@@ -108,7 +109,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function getFirstname() {
+  public function getFirstname() {
     if ($this->blockbooker) return "$this->firstname $this->lastname";
     return $this->firstname;
   }
@@ -120,7 +121,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function setLastname($lastname) {
+  public function setLastname($lastname) {
     $this->lastname = $lastname;
   }
 
@@ -130,7 +131,7 @@ class Person extends Tuple {
   * @public
   * @returns String
   */
-  function getLastname() {
+  public function getLastname() {
     return $this->lastname;
   }
 
@@ -141,7 +142,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function setEmail($email) {
+  public function setEmail($email) {
     $this->email = $email;
   }
 
@@ -151,7 +152,7 @@ class Person extends Tuple {
   * @public
   * @returns String
   */
-  function getEmail() {
+  public function getEmail() {
     return $this->email;
   }
 
@@ -172,7 +173,7 @@ class Person extends Tuple {
   * @public
   * @returns String
   */
-  function isAdmin() {
+  public function isAdmin() {
     return $this->admin;
   }
 
@@ -182,7 +183,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function setMembershipType($membertype) {
+  public function setMembershipType($membertype) {
     $this->membertype = $membertype;
   }
 
@@ -192,7 +193,7 @@ class Person extends Tuple {
   * @public
   * @returns Tuple
   */
-  function getMembershipType() {
+  public function getMembershipType() {
     return $this->membertype;
   }
 
@@ -204,7 +205,7 @@ class Person extends Tuple {
   * @public
   * @returns boolean
   */
-  function isBlockBooker() {
+  public function isBlockBooker() {
     return $this->blockbooker;
   }
 
@@ -214,7 +215,7 @@ class Person extends Tuple {
   * @public
   * @returns boolean
   */
-  function isCoach() {
+  public function isCoach() {
     return $this->coach;
   }
 
@@ -224,7 +225,7 @@ class Person extends Tuple {
   * @public
   * @returns boolean
   */
-  function isEventEditor() {
+  public function isEventEditor() {
     return $this->eventeditor;
   }
 
@@ -240,7 +241,7 @@ class Person extends Tuple {
   * @public
   * @returns
   */
-  function Person($id='', $firstname='', $lastname='', $email='', $dob='', $admin=false, $membertype='', $blockbooker=FALSE, $privs='') {
+  public function Person($id='', $firstname='', $lastname='', $email='', $dob='', $admin=false, $membertype='', $blockbooker=FALSE, $privs='') {
     $this->id = $id;
     $this->desc = $firstname . " " . $lastname;
     $this->firstname = $firstname;
@@ -255,7 +256,7 @@ class Person extends Tuple {
     $this->eventeditor = (strpos(strtoupper($privs), "E01") !== FALSE);
   }
 
-  function getPerson($memberid) {
+  public static function getPerson($memberid) {
     $per = mysql_query("SELECT m.*, mt.type_name ".
                        "FROM member m, member_type mt ".
                        "WHERE m.member_type = mt.member_type ".
@@ -276,7 +277,7 @@ class Person extends Tuple {
     return new Person($memberid, "Unknown", "User", "", "", 0, "Z", 0);
   }
 
-  function toHtmlString($showID=false) {
+  public function toHtmlString($showID=false) {
     $rval = parent::toHtmlString($showID);
 
     $mt = $this->getMembershipType();
@@ -286,7 +287,7 @@ class Person extends Tuple {
     return $rval;
   }
 
-  function getBookingsDescription() {
+  public function getBookingsDescription() {
     $bookDesc = "";
     if (!$this->admin) {
       $bookDesc = "my ";
@@ -294,7 +295,7 @@ class Person extends Tuple {
     return $bookDesc . "bookings";
   }
 
-  function getClass() {
+  public function getClass() {
     $mtype = "";
 
     if (gettype($this->membertype) == "object") {

@@ -21,6 +21,7 @@
  * CAM  15-Nov-2007  10156 : Check for Coach privs - extend bookable days.
  * CAM  25-Nov-2008  10314 : Ensure button displays in new colours/layout in line with new asrc.co.uk.
  * CAM  19-May-2012  11122 : Xodus Group Court naming.
+ * CAM  17-Feb-2013  11162 : Ensure that Coaches can book 15 days ahead. 
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 //SELECT concat(book_date, ' ', start_time) start_time,
@@ -135,7 +136,7 @@ if (empty($memberOrig)) {
     if ($member->isAdmin()) {
       $daysAhead = 15;
     } else if ($member->isCoach()) {
-      $daysAhead = 9;
+      $daysAhead = 15;
     }
 
     for ($i=0; $i<$daysAhead; $i++) {

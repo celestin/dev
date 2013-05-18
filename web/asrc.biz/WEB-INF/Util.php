@@ -10,6 +10,7 @@
  * CAM  05-Apr-2004  File created.
  * CAM  09-Aug-2007  10157 : Added myNextday to calculate the next MySQL weekday ordinal.
  * CAM  23-Oct-2007  10182 : Added textToSql and textBoxToHtml.
+ * CAM  17-Feb-2013  11162 : Added visibility and static keywords for strict OO PHP.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 class Util {
@@ -53,7 +54,7 @@ class Util {
   * @public
   * @return Timestamp
   */
-  function strToTimestamp($time) {
+  public static function strToTimestamp($time) {
     return strtotime("1-Jan-2004 " . $time);
   }
 

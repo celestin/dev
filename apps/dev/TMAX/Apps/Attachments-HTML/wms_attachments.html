@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>WMS (TMAX) Attachments</title>
+<script language="Javascript">
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  // WMS Attachments
+  // Copyright (c) 2013 Talisman Sinopec Energy UK Ltd
+  // $Id$
+  // Author Craig McKay
+  //
+  // Who  When         Why
+  // CAM  22-May-2013  11173 : First draft.
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  var tdLhood = null;
+  var tdConsd = null;
+  var sPear = '';
+  var iSeverity = 0;
+  var sLhood = '';
+  var cursor = {x:0, y:0};
+  var txtHelp = null;
+  var bHidingHelp = false;
+  var tmaxCharWidth = 80;
+
+  var helpText = new Array();
+  helpText['cmbSite'] = "Brief description of the defect found, including as much detail as practicable.";
+
+  function setAttachmentDateNow() {
+    var now = new Date();
+    var d = now.getDate();
+    var m = now.getMonth() + 1;
+    var y = now.getFullYear();
+    txtAttachmentDate.value = '' + y + (m<=9 ? '0' + m : m) + (d <= 9 ? '0' + d : d);
+  }
+  
+  function validateField(txt, txtSingle) {
+    if (txt.value.length < 1) {
+      if (txtSingle == null || txt == txtSingle) txt.className = "required";
+      return false;
+    }
+    txt.className = "";
+    return true;
+  }
+
+  function validateFields(txt) {
+    var btnCopy=document.getElementById("btnCopy");
+    var allValid = true;
+
+    if (!validateField(cmbSite, txt)) allValid = false;
+    if (!validateField(cmbAttachmentType, txt)) allValid = false;
+    if (!validateField(txtAttachmentDate, txt)) allValid = false;
+    if (!validateField(txtLocation, txt)) allValid = false;
+    if (!validateField(txtWorkorder, txt)) allValid = false;
+
+    if (!allValid) {
+      btnCopy.className = "buttonreq";
+      btnCopy.value = "Enter all mandatory fields";
+    } else {
+      btnCopy.className = "button";
+      btnCopy.value = "Copy details to new Email";
+    }
+
+    return allValid;
+  }
+
+  function fieldValue(lbl, txt) {
+    //if (txt.value.length == 0) return "";
+    return "--- " + lbl.toUpperCase() + " " + (new Array(tmaxCharWidth - String(lbl).length - 5)).join("-") + "\r\n" + txt.value + "\r\n\r\n";
+  }
+
+  function separatorLine() {
+    return (new Array(tmaxCharWidth)).join("=") + "\r\n";
+  }
+
+  function flagValue(lbl, flagName) {
+    var flag=document.getElementById(flagName);
+    if (flag.checked) return lbl + " - Yes\r\n";
+
+    flag=document.getElementById(flagName + "No");
+    if (flag.checked) return lbl + " - No\r\n";
+
+    return "";
+  }
+  
+  function urlSafe(txt) {
+    txt = txt.replace(" ", "%20");
+    txt = txt.replace(/(\r\n|\n|\r)/gm, "%0D");
+    return txt;
+  }
+
+  function copyToClipboard() {
+    if (window.clipboardData && clipboardData.setData) {
+      if (!validateFields()) return;
+      
+      var cimageDocType = cmbAttachmentType.value.substr(0, 2);
+      var emailAddr = "wms.attachments@talisman-sinopec.com";
+      var typeDesc = "WMS%20Attachment";
+      if (cmbAttachmentType.value == "CT-PSV") {
+        emailAddr = "psv.update@talisman-sinopec.com";
+        typeDesc = "PSV%20Re-certification";
+      }
+      
+      var s = "mailto:" + emailAddr + "?Subject=" + typeDesc +
+          "%20|%20Site%20" + cmbSite.value +
+          "%20|%20Location%20" + txtLocation.value +
+          "%20|%20Workorder%20" + txtWorkorder.value +
+          "%20|%20Date%20" + txtAttachmentDate.value +
+          "&body=Site:%20" + cmbSite.value +
+          "%0DDocument%20Number:%20" + cmbSite.value + "-" + cimageDocType + "-" + txtAttachmentDate.value + "-GE-001" +
+          "%0DDoc%20Type:%20" + cimageDocType +
+          "%0DWorks%20No:%20" + txtAttachmentDate.value + 
+          "%0DTMAX Location:%20" + txtLocation.value +
+          "%0DTMAX Workorder:%20" + txtWorkorder.value;
+       
+       if (txtComments.value.length > 0) {
+        s+= "%0D%0DComments%0D" + urlSafe(txtComments.value);
+      }
+      
+      s+= urlSafe("\n\n_____________________________________________________________\n" +
+        "Now attach your scanned PDF file to this email.\n" +
+        "If you have a scanned file emailed from a copier, you can drag the attachment from that email to this one.");
+          
+      location.href = s;
+/*
+      var s = separatorLine() +
+        "Risk Ranking " + txtRisk.value + "       " +
+        "Priority " + txtPriority.value + "        " +
+        "Target Window " + txtTS.value + " to " + txtTF.value + "\r\n" +
+        separatorLine() +
+        fieldValue("Defect Found", txtDefectFound) +
+        fieldValue("Equipment Function", txtAttachmentDate) +
+        fieldValue("Mitigation Steps Taken", txtComments) +
+        fieldValue("Justification for Priority", txtJustificationForPriority) +
+        separatorLine() +
+        fieldValue("Suggested Fix Required", txtSuggestedFixRequired) +
+        fieldValue("Manning, Material, Tools, Isolations Required", txtResourcesRequired) +
+        fieldValue("Location / Access Issues", txtLocationAccessIssues) +
+        fieldValue("Health, Safety & Environmental Considerations", txtHseConsiderations) +
+        fieldValue("Equipment Constraints", txtEquipmentConstraints) +
+        fieldValue("Supporting Info Folder", txtSupportingInfoFolder) +
+        separatorLine() +
+        flagValue("Defect Tag Fitted", "flagDefectTagFitted") +
+        flagValue("Scaffolding Required", "flagScaffoldingRequired") +
+        flagValue("Vendor Required", "flagVendorRequired") +
+        flagValue("Crane Required", "flagCraneRequired") +
+        flagValue("Isolations Required", "flagIsolationsRequired") +
+        flagValue("Annual TAR Required", "flagAnnualTarRequired") +
+        separatorLine() +
+        "Workorder MIRQ Reasoning\r\n\r\n\r\n" +
+        "Workorder Cancelled Reasoning\r\n\r\n\r\n" +
+        separatorLine() +
+        "Material Status\r\n\r\n\r\n" +
+        separatorLine();
+      clipboardData.setData("Text", s);
+     */
+    }
+  }
+
+  function getDate(iAddDays) {
+	var now = new Date();
+	if (iAddDays > 0) now = new Date(now.getTime() + (iAddDays*24*60*60*1000));
+	return ('0' + now.getDate()).slice(-2) + '/'
+             + ('0' + (now.getMonth()+1)).slice(-2) + '/'
+             + now.getFullYear();
+  }
+
+  function getMouseXY(e) {
+    e = e || window.event;
+    if (e.pageX || e.pageY) {
+      cursor.x = e.pageX;
+      cursor.y = e.pageY;
+    } else {
+      var de = document.documentElement;
+      var b = document.body;
+      cursor.x = e.clientX + (de.scrollLeft || b.scrollLeft) - (de.clientLeft || 0);
+      cursor.y = e.clientY + (de.scrollTop || b.scrollTop) - (de.clientTop || 0);
+    }
+  }
+
+  function showHelp(id) {
+    var txt=document.getElementById(id);
+
+    if (txtHelp != txt) {
+      bHidingHelp = false;
+      divHelp.style.display = "inline";
+      divHelp.style.top = (cursor.y - 20) + "px";
+      divHelp.style.left = (cursor.x + 20) + "px";
+
+      var hasInnerText = (document.getElementsByTagName("body")[0].innerText != undefined) ? true : false;
+      if (hasInnerText) {
+        divHelp.innerText = txt.name;
+      } else {
+        divHelp.textContent = txt.name;
+      }
+      txtHelp = txt;
+    }
+  }
+
+  function hideHelp() {
+    bHidingHelp = true;
+    setTimeout("reallyHideHelp()", 300);
+  }
+
+  function reallyHideHelp() {
+    if (bHidingHelp) divHelp.style.display = "none";
+    bHidingHelp = false;
+    txtHelp = null;
+  }
+
+  document.onmousemove = getMouseXY;
+</script>
+<style>
+  body, p, a, td, th, h1 {
+    font-family: "Arial";
+  }
+
+  h1 {
+    font-size: 18pt;
+    color: #333333;
+    text-align: center;
+  }
+
+  input, textarea, select {
+    border: 2px solid #fdba12;
+    background-color: #ffffcc;
+    padding: 6px;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border: 2px solid #a6ce39;
+    background-color: #eaffb1;
+  }
+
+  .required, input:focus.required, textarea:focus.required, select:focus.required {
+    border: 2px solid #f26331;
+    background-color: #ffcfbe;
+  }
+
+  .button, .button:focus {
+    border: 2px solid #a6ce39;
+    background-color: #eaffb1;
+    color: #536e0b;
+    font-size: 12pt;
+  }
+
+  .buttonclear, .buttonclear:focus {
+    border: 2px solid #cacaca;
+    background-color: #f1f1f1;
+    color: #666666;
+    font-size: 12pt;
+  }
+
+  .buttonreq, .buttonreq:focus {
+    border: 2px solid #f26331;
+    background-color: #ffcfbe;
+    color: #943615;
+    font-size: 12pt;
+  }
+
+  .radio, .radio:focus {
+    border: 0px;
+  }
+
+  .hdr {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    color: #333333;
+  }
+
+  .desc {
+    font-size: 10pt;
+    text-align: center;
+  }
+
+  .code {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .lhood {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .lhood:hover {
+    background-color: #a4b9e1;
+  }
+
+  .lhoodsel {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #587bbd;
+  }
+
+  .consd {
+    font-size: 9pt;
+    text-align: center;
+  }
+
+  .consd:hover {
+    background-color: #d69cc9;
+  }
+
+  .consdsel {
+    font-size: 9pt;
+    text-align: center;
+    color: white;
+    background-color: #77005d;
+  }
+
+  .review {
+    font-size: 12pt;
+    background-color: #52c9ed;
+    text-align: center;
+  }
+
+  .tlgreen {
+    background-color: #a6ce39;
+    text-align: center;
+  }
+
+  .tlyell {
+    background-color: #FFFF00;
+    text-align: center;
+  }
+
+  .tlamb {
+    background-color: #fdba12;
+    text-align: center;
+  }
+
+  .tlred {
+    background-color: #f26331;
+    text-align: center;
+  }
+
+  .help {
+    background-color: #587bbd;
+    color: white;
+    margin-left: 5px;
+  }
+
+  #help {
+    border: 2px solid #52aaed;
+    background-color: #52c9ed;
+    display:none;
+    position:absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 600px;
+  }
+
+  .rbptitle {
+    font-size: 18pt;
+    color: #333333;
+  }
+
+  .tlmtitletop, .tlmtitlebot {
+    font-family: "Verdana", san-serif;
+    text-align: center;
+  }
+
+  .tlmtitletop {
+    font-weight: bold;
+    font-size: 14pt;
+    border-bottom: 2px solid #00b285;
+  }
+
+  .tlmtitlebot {
+    font-size: 12pt;
+  }
+
+</style>
+</head>
+<body>
+<table border="0" cellpadding="1" cellspacing="0">
+  <tr>
+    <td width="815" rowspan="2" class="rbptitle">WMS (TMAX) Attachments</td>
+    <td width="100" class="tlmtitletop">TALISMAN</td>
+  <tr>
+    <td class="tlmtitlebot">E N E R G Y</td>
+  </tr>
+</table>
+
+<table border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td><label for="cmbSite">Site</label><span class="help" onmouseover="showHelp('cmbSite');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><select name="Please select the Site to which the attachment relates, to enable DCC to create it correctly." rows="4" cols="84" id="cmbSite" onblur="validateFields(this);return true;">
+      <option value="">&lt;Choose Site&gt;</option>
+      <option value="PIP">Piper</option>
+      <option value="SAL">Saltire</option>
+      <option value="CLA">Claymore</option>
+      <option value="TAR">Tartan</option>
+      <option value="FLO">Flotta</option>
+      <option value="BUC">Buchan</option>
+      <option value="ROS">Bleo Holm</option>
+      <option value="CLY">Clyde</option>
+      <option value="MON">Montrose</option>
+      <option value="ARB">Arbroath</option>
+      <option value="FUL">Fulmar</option>
+      <option value="AUK">Auk</option>
+    </select></td>
+  </tr>
+    <td><label for="cmbAttachmentType">Attachment Type</label><span class="help" onmouseover="showHelp('cmbAttachmentType');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><select name="Select the type of attachment: Certificate for PSV Re-certs and Report for any other document." rows="4" cols="84" id="cmbAttachmentType" onblur="validateFields(this);return true;">
+      <option value="">&lt;Choose Type&gt;</option>
+      <option value="CT-PSV">PSV Re-certification</option>
+      <option value="CT">Certificate</option>
+      <option value="RP">Report</option>
+    </select></td>
+  </tr>  
+  <tr>
+    <td><label for="txtAttachmentDate">Attachment Date</label><span class="help" onmouseover="showHelp('txtAttachmentDate');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><input name="The date associated with the docment, e.g. PSV Re-certification date, or Report date." size="12" id="txtAttachmentDate" onblur="validateFields(this);return true;"> Format <b>YYYYMMDD</b></td>
+  </tr>
+  <tr>
+    <td><label for="txtLocation">TMAX Location</label><span class="help" onmouseover="showHelp('txtLocation');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><input name="Full TMAX Location (e.g. &quot;5-02-P400A&quot;)" size="24" id="txtLocation" onblur="validateFields(this);return true;"></b></td>
+  </tr>
+  <tr>
+    <td><label for="txtWorkorder">TMAX Workorder</label><span class="help" onmouseover="showHelp('txtWorkorder');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><input name="TMAX Workorder Number" size="16" id="txtWorkorder" onblur="validateFields(this);return true;"></b></td>
+  </tr>
+  <tr>
+    <td><label for="txtComments">Comments</label><span class="help" onmouseover="showHelp('txtComments');return true;" onmouseout="hideHelp();return true;">&nbsp;?&nbsp;</span></td>
+    <td><textarea name="Any comments you would like to make about the attachment." rows="4" cols="84" id="txtComments" onblur="validateFields(this);return true;"></textarea></td>
+  </tr>
+
+  <tr height="100">
+    <td colspan="2" align="right" valign="top">
+      <input class="buttonclear" type="button" id="btnClear" value="Clear form" onClick="top.location.reload();">
+      <input class="button" type="button" id="btnCopy" value="Copy details to new Email" onClick="copyToClipboard();">
+    </td>
+  </tr>
+</table>
+
+</body>
+<div id="help">
+</div>
+<script language="Javascript">
+var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor != '') {
+         var elem = document.getElementById(labels[i].htmlFor);
+         if (elem) elem.label = labels[i];
+    }
+}
+var divHelp=document.getElementById("help");
+
+var txtPriority=document.getElementById("txtPriority");
+var txtRisk=document.getElementById("txtRisk");
+var txtTS=document.getElementById("txtTS");
+var txtTF=document.getElementById("txtTF");
+
+var cmbSite=document.getElementById("cmbSite");
+var cmbAttachmentType=document.getElementById("cmbAttachmentType");
+var txtAttachmentDate=document.getElementById("txtAttachmentDate");
+var txtLocation=document.getElementById("txtLocation");
+var txtWorkorder=document.getElementById("txtWorkorder");
+var txtComments=document.getElementById("txtComments");
+
+setAttachmentDateNow();
+
+validateFields(null);
+</script>
+</html>

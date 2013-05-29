@@ -11,6 +11,7 @@
   //
   // Who  When         Why
   // CAM  22-May-2013  11173 : First draft.
+  // CAM  29-May-2013  11173 : Added Checklist and title within body.
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   var tdLhood = null;
   var tdConsd = null;
@@ -94,18 +95,24 @@
       
       var cimageDocType = cmbAttachmentType.value.substr(0, 2);
       var emailAddr = "wms.attachments@talisman-sinopec.com";
-      var typeDesc = "WMS%20Attachment";
+      var typeDesc = "Report";
+      
       if (cmbAttachmentType.value == "CT-PSV") {
         emailAddr = "psv.update@talisman-sinopec.com";
         typeDesc = "PSV%20Re-certification";
+      } else if (cmbAttachmentType.value == "CT-CHK") {
+        typeDesc = "Checklist";
+      } else if (cmbAttachmentType.value == "CT") {
+        typeDesc = "Certificate";
       }
-      
+       
       var s = "mailto:" + emailAddr + "?Subject=" + typeDesc +
           "%20|%20Site%20" + cmbSite.value +
           "%20|%20Location%20" + txtLocation.value +
           "%20|%20Workorder%20" + txtWorkorder.value +
           "%20|%20Date%20" + txtAttachmentDate.value +
-          "&body=Site:%20" + cmbSite.value +
+          "&body=NEW%20" + typeDesc.toUpperCase() + "%20ATTACHMENT%20FOR%20TMAX%0D" +
+          "%0DSite:%20" + cmbSite.value +
           "%0DDocument%20Number:%20" + cmbSite.value + "-" + cimageDocType + "-" + txtAttachmentDate.value + "-GE-001" +
           "%0DDoc%20Type:%20" + cimageDocType +
           "%0DWorks%20No:%20" + txtAttachmentDate.value + 
@@ -121,38 +128,6 @@
         "If you have a scanned file emailed from a copier, you can drag the attachment from that email to this one.");
           
       location.href = s;
-/*
-      var s = separatorLine() +
-        "Risk Ranking " + txtRisk.value + "       " +
-        "Priority " + txtPriority.value + "        " +
-        "Target Window " + txtTS.value + " to " + txtTF.value + "\r\n" +
-        separatorLine() +
-        fieldValue("Defect Found", txtDefectFound) +
-        fieldValue("Equipment Function", txtAttachmentDate) +
-        fieldValue("Mitigation Steps Taken", txtComments) +
-        fieldValue("Justification for Priority", txtJustificationForPriority) +
-        separatorLine() +
-        fieldValue("Suggested Fix Required", txtSuggestedFixRequired) +
-        fieldValue("Manning, Material, Tools, Isolations Required", txtResourcesRequired) +
-        fieldValue("Location / Access Issues", txtLocationAccessIssues) +
-        fieldValue("Health, Safety & Environmental Considerations", txtHseConsiderations) +
-        fieldValue("Equipment Constraints", txtEquipmentConstraints) +
-        fieldValue("Supporting Info Folder", txtSupportingInfoFolder) +
-        separatorLine() +
-        flagValue("Defect Tag Fitted", "flagDefectTagFitted") +
-        flagValue("Scaffolding Required", "flagScaffoldingRequired") +
-        flagValue("Vendor Required", "flagVendorRequired") +
-        flagValue("Crane Required", "flagCraneRequired") +
-        flagValue("Isolations Required", "flagIsolationsRequired") +
-        flagValue("Annual TAR Required", "flagAnnualTarRequired") +
-        separatorLine() +
-        "Workorder MIRQ Reasoning\r\n\r\n\r\n" +
-        "Workorder Cancelled Reasoning\r\n\r\n\r\n" +
-        separatorLine() +
-        "Material Status\r\n\r\n\r\n" +
-        separatorLine();
-      clipboardData.setData("Text", s);
-     */
     }
   }
 
@@ -412,6 +387,7 @@
       <option value="">&lt;Choose Type&gt;</option>
       <option value="CT-PSV">PSV Re-certification</option>
       <option value="CT">Certificate</option>
+      <option value="CT-CHK">Checklist</option>
       <option value="RP">Report</option>
     </select></td>
   </tr>  

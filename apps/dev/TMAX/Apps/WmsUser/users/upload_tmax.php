@@ -67,12 +67,15 @@ function process_matches() {
 	  $site = $data->val($r,7,$sht);
 	  $work_email = $data->val($r,8,$sht);
 
+    $upd_details = "";
     $conf_details = "";
 
      if (!empty($fullname) && !empty($first_name) && !empty($last_name) && 
           !empty($job_title) && !empty($site) && !empty($work_email)) {
       // New details to confirm from LABOR record in Maximo
-      $conf_details = ", site='$site', first_name='$first_name', last_name='$last_name', work_email='$work_email', job_title='$job_title' ".
+      $upd_details = ", site='$site', first_name='$first_name', last_name='$last_name', work_email='$work_email', job_title='$job_title' ";
+        
+      $conf_details =   
         ", status='Confirmed' ".
         ", cnf_username='TMAX' ".
         ", cnf_fullname='" . $member->firstname . " " . $member->lastname . "' ".
@@ -91,7 +94,7 @@ function process_matches() {
       //} else 
       if ($status == "Confirmed") $conf_details = "";
 
-      $sql = "update usr set current_group='$security_group' $conf_details where username='$username'";
+      $sql = "update usr set current_group='$security_group' $upd_details $conf_details where username='$username'";
       mysql_query($sql);
       $matchupdate++;
     } else {

@@ -169,33 +169,44 @@ $b_name_reqd = false;
 $b_email_reqd = false;
 $b_real_submit = false;
 
-if (${"real_submit"} != "") {
-  $sSubject=trim(${"subject"});
+$real_submit = NULL;      if (!empty($_POST["real_submit"]))     $real_submit = $_POST["real_submit"];
+$sSubject = NULL;         if (!empty($_POST["subject"]))         $sSubject = $_POST["subject"];
+$s_contact = NULL;        if (!empty($_POST["contact"]))         $s_contact = $_POST["contact"];
+$s_email = NULL;          if (!empty($_POST["email"]))           $s_email = $_POST["email"];
+$s_Tele_Day = NULL;       if (!empty($_POST["Tele_Day"]))        $s_Tele_Day = $_POST["Tele_Day"];
+$s_Tele_Eve = NULL;       if (!empty($_POST["Tele_Eve"]))        $s_Tele_Eve = $_POST["Tele_Eve"];
+$s_name = NULL;           if (!empty($_POST["name"]))            $s_name = $_POST["name"];
+$s_add1 = NULL;           if (!empty($_POST["add1"]))            $s_add1 = $_POST["add1"];
+$s_add2 = NULL;           if (!empty($_POST["add2"]))            $s_add2 = $_POST["add2"];
+$s_town = NULL;           if (!empty($_POST["town"]))            $s_town = $_POST["town"];
+$s_county = NULL;         if (!empty($_POST["county"]))          $s_county = $_POST["county"];
+$s_postcde = NULL;        if (!empty($_POST["postcde"]))         $s_postcde = $_POST["postcde"];
+$Q1 = NULL;               if (!empty($_POST["Q1"]))              $Q1 = $_POST["Q1"];
+$Q3 = NULL;               if (!empty($_POST["Q3"]))              $Q1 = $_POST["Q3"];
+$Q4 = NULL;               if (!empty($_POST["Q4"]))              $Q1 = $_POST["Q4"];
+$Q5 = NULL;               if (!empty($_POST["Q5"]))              $Q1 = $_POST["Q5"];
+$Q6 = NULL;               if (!empty($_POST["Q6"]))              $Q1 = $_POST["Q6"];
+$Q7 = NULL;               if (!empty($_POST["Q7"]))              $Q1 = $_POST["Q7"];
+$A1 = NULL;               if (!empty($_POST["A1"]))              $A1 = $_POST["A1"];
+$A2 = NULL;               if (!empty($_POST["A2"]))              $A2 = $_POST["A2"];
+$A3 = NULL;               if (!empty($_POST["A3"]))              $A3 = $_POST["A3"];
+$A4 = NULL;               if (!empty($_POST["A4"]))              $A4 = $_POST["A4"];
+$A5 = NULL;               if (!empty($_POST["A5"]))              $A5 = $_POST["A5"];
+$A6 = NULL;               if (!empty($_POST["A6"]))              $A6 = $_POST["A6"];
+$A7 = NULL;               if (!empty($_POST["A7"]))              $A7 = $_POST["A7"];
+$s_machine = NULL;        if (!empty($_POST["machine"]))         $s_machine = $_POST["machine"];
+$s_modelno = NULL;        if (!empty($_POST["modelno"]))         $s_modelno = $_POST["modelno"];
 
-  $s_contact=${"contact"};
-  if ($s_contact=="") {
-    $b_name_reqd = true;
-  }
+if (!empty($real_submit)) {
+  if (empty($s_contact)) $b_name_reqd = true;
 
-  $s_email=${"email"};
-  if ($s_email=="") {
+  if (empty($s_email)) {
     $theEmail="No email address supplied";
     $b_email_reqd = true;
   } else {
     $theEmail=$s_email;
   }
 
-  /* Telephone Details */
-  $s_Tele_Day=${"Tele_Day"};
-  $s_Tele_Eve=${"Tele_Eve"};
-
-  /* Postal address */
-  $s_name=${"name"};
-  $s_add1=${"add1"};
-  $s_add2=${"add2"};
-  $s_town=${"town"};
-  $s_county=${"county"};
-  $s_postcde=${"postcde"};
 
   $s_MessageBody=$s_MessageBody."Name: ".$s_contact."\n";
   $s_MessageBody=$s_MessageBody."Email address: ".$s_email."\n";
@@ -216,65 +227,38 @@ if (${"real_submit"} != "") {
 
   /*Request Q & A from the email form*/
 
-  $Q1=${"Q1"};
-  $A1=${"A1"};
-
   if ($A1!="") {
     $s_MessageBody=$s_MessageBody.$Q1." ".$A1."\n\n";
   }
-
-
-  $A2=${"A2"};
 
   if ($A2!="") {
     $s_MessageBody=$s_MessageBody.$A2."\n\n";
   }
 
-  $s_machine=${"machine"};
-  $s_modelno=${"modelno"};
-
   if ($s_machine != "" || $s_modelno != "") {
     $s_MessageBody=$s_MessageBody."I require information on the following Replacement Jug:\nMachine Name: ".$s_machine."\nModel No: ".$s_modelno."\n\n";
   }
-
-  $Q3=${"Q3"};
-  $A3=${"A3"};
 
   if ($A3!="") {
     $s_MessageBody=$s_MessageBody.$Q3." ".$A3."\n\n";
   }
 
-
-  $A4=${"A4"};
-
   if ($A4!="") {
     $s_MessageBody=$s_MessageBody.$A4."\n\n";
   }
-
-
-  $Q5=${"Q5"};
-  $A5=${"A5"};
 
   if ($A5!="") {
     $s_MessageBody=$s_MessageBody.$Q5." ".$A5."\n\n";
   }
 
-
-  $A6=${"A6"};
-
   if ($A6!="") {
     $s_MessageBody=$s_MessageBody.$A6."\n\n";
   }
-
-
-  $Q7=${"Q7"};
-  $A7=${"A7"};
 
   if ($A7!="") {
     $s_MessageBody=$s_MessageBody.$Q7."\n";
     $s_MessageBody=$s_MessageBody.$A7."\n\n";
   }
-
 
   $sMsgText=$s_MessageBody;
 
@@ -386,7 +370,8 @@ if ($b_real_submit) {
             <option selected value="">Select one of the following:</option>
             <option>Melitta Look Range</option>
             <option>Melitta Aromaboy Range</option>
-            <option>Ufesa Coffee Machine</option>
+            <option>Santos</option>
+            <option>Tristart</option>
             <option>Hand Grinders</option>
             <option>Electric Grinders</option>
           </select>
@@ -419,9 +404,9 @@ if ($b_real_submit) {
             <option selected value="">Select one of the following:</option>
             <option>Filtropa Filter Papers</option>
             <option>Basket Filters</option>
-            <option>Shrink wrapped filter papers</option>
-            <option>Large Round filter papers</option>
-            <option>Melitta Filter papers</option>
+            <option>Shrink wrapped Filter papers</option>
+            <option>Large Round Filter papers</option>
+            <option>Polywrapped Filter papers</option>
           </select>
    </td>
  </tr>
@@ -438,8 +423,8 @@ if ($b_real_submit) {
             <option selected value="">Select one of the following:</option>
             <option>Filter cones</option>
             <option>Express Coffee Makers</option>
-            <option>Filter Paper Holder</option>
-            <option>Hot Plates</option>
+            <option>Coffee Accessories</option>
+            <option>Tea Accessories</option>
             <option>Creamers/ Frothers</option>
             <option>Coffee Spoons</option>
             <option>Cocoa shakers</option>
@@ -474,7 +459,7 @@ if ($b_real_submit) {
 </td></tr></table>
 </form>
           </td></tr>
-          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2012 Mid West Market Force Ltd. All rights reserved.<br />
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2013 MidWest Market Force Ltd. All rights reserved.<br />
           Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
           </table>
         </td>

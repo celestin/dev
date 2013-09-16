@@ -28,6 +28,7 @@
  * CAM  08-Oct-2010  10793 : Version 2.0.0.0.   EPM 2.0.0.0.
  * CAM  16-Jun-2011  10967 : Version 2.0.0.1.   EPM 2.0.0.0.
  * CAM  25-Jun-2011  10976 : Version 2.1.0.0.   EPM 2.1.0.0.
+ * CAM  16-Sep-2013  11180 : Version 2.3.0.0.   EPM 2.3.0.0.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System.Reflection;
@@ -39,10 +40,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Krakatau EPM")]
 [assembly: AssemblyDescription("Krakatau Essential Project Manager")]
-[assembly: AssemblyConfiguration("EPM 2.1.0.0")]
+[assembly: AssemblyConfiguration("EPM 2.3.0.0")]
 [assembly: AssemblyCompany("PowerSoftware.com")]
 [assembly: AssemblyProduct("Krakatau EPM")]
-[assembly: AssemblyCopyright("Copyright (c) 2011 PowerSoftware.com")]
+[assembly: AssemblyCopyright("Copyright (c) 2013 PowerSoftware.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -55,5 +56,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("470af938-2923-4514-9092-ca07a46b5215")]
 
 // Version information for an assembly consists of the following four values:
-[assembly: AssemblyVersion("2.2.0.0")]
-[assembly: AssemblyFileVersion("2.2.0.0")]
+[assembly: AssemblyVersion("2.3.0.0")]
+[assembly: AssemblyFileVersion("2.3.0.0")]

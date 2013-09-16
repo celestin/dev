@@ -1315,6 +1315,10 @@
 			</Filter>
 		</Filter>
 		<File
+			RelativePath="..\..\..\..\PS\kepm\KrakatauEPM\Volcano.ico"
+			>
+		</File>
+		<File
 			RelativePath="..\kepm\KrakatauEPM\Volcano.ico"
 			>
 		</File>

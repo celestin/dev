@@ -17,6 +17,7 @@
  * CAM  25-Oct-07   319 : Correct leak in getLine*.
  * CAM  22-Apr-08   355 : Corrected C++-style comments within C-style comments issue.
  * CAM  09-Jul-2009  10457 : Allow extra space at the end of getLineCR.currline for the null terminator.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffCpp.h"
@@ -153,10 +154,7 @@ void DiffCpp::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
+          skip = !skip;
 
           retval[retLength] = *c;
           retLength++;
@@ -296,12 +294,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (skip) {
-            skip = false;
-          } else {
-            skip = true;
-          }
-          retval[b++] = nc;
+          skip = !skip;
           break;
         }
       case ';':
@@ -313,6 +306,7 @@ void DiffCpp::getLineSC(FILE *input, char *&currline)
             if (debugon) cout << '[' << currline << ']' << endl;
             return;
           }
+          break;
         }
       case '\n':
         {

@@ -13,6 +13,7 @@
  * CAM  01-Nov-07    321 : Correct issue with theMultiLine in getLineSC.
  * CAM  24-Apr-08    358 : Corrected compiler warnings moving to VS2008 (from VC++6).
  * CAM  18-Apr-2009  10421 : Do not parse logical lines (getLineSC).
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffASP.h"
@@ -146,10 +147,7 @@ void DiffASP::getLineCR(FILE *input, char *&currline)
       {
         case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
+          skip = !skip;
 
           retval[retLength] = *c;
           retLength++;

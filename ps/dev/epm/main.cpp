@@ -98,6 +98,7 @@
  * CAM  22-Sep-2010  10648 : Converted from string operands to PowerHashed.
  * CAM  20-Jun-2011  10963 : Added UC (UCode) [and MMP (Modular Maths Processer) commented out] language support.
  * CAM  20-Jun-2011  10964 : Added MMP (Modular Maths Processer) language support.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Diff.h"
@@ -1412,7 +1413,7 @@ int main(int argc, char* argv[]) {
   GetEpmVersion(epmVersion, 1024);
 
   cout << "\nEssential Project Manager (EPM) Version " << epmVersion << "\n"
-       << "Copyright (c) 2004,2009 PowerSoftware.com.  All rights reserved.\n\n"
+       << "Copyright (c) 2004,2013 PowerSoftware.com.  All rights reserved.\n\n"
        << "Includes our unique Changed Logical Lines of Code (LLOC) metrics\n" << endl;
 
   CreateUserCopyEpmConfig();

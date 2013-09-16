@@ -10,6 +10,7 @@
  * Who  When         Why
  * CAM  15-Jul-2009  10451 : File created.
  * CAM  29-Jul-2009  10464 : Corrected handling of exclamation marks within strings.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffFortran.h"
@@ -132,11 +133,7 @@ void DiffFortran::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
-
+          skip = !skip;
           retval[retLength] = *c;
           retLength++;
 

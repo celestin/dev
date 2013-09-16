@@ -7,11 +7,12 @@
  *
  * $Id$
  *
- * Who  When       Why
- * CAM  18-Mar-06   212 : File created.
- * CAM  18-Jul-06   272 : Implement CHG,DEL,ADD LLOC.
- * CAM  25-Oct-07   319 : Correct leak in getLine*.
- * CAM  24-Apr-08   358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * Who  When         Why
+ * CAM  18-Mar-06      212 : File created.
+ * CAM  18-Jul-06      272 : Implement CHG,DEL,ADD LLOC.
+ * CAM  25-Oct-07      319 : Correct leak in getLine*.
+ * CAM  24-Apr-08      358 : Corrected compiler warnings moving to VS2008 (from VC++6).
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffVB.h"
@@ -134,11 +135,7 @@ void DiffVB::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
-
+          skip = !skip;
           retval[retLength] = *c;
           retLength++;
 

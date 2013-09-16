@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  14-Apr-2009  10402 : File created.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffAsm.h"
@@ -132,10 +133,7 @@ void DiffAsm::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
+          skip = !skip;
 
           retval[retLength] = *c;
           retLength++;

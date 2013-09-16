@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  18-Jun-2011  10963 : File created.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffUc.h"
@@ -145,11 +146,7 @@ void DiffUc::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
-
+          skip = !skip;
           retval[retLength++] = *c;
           c++;
           i++;
@@ -311,12 +308,7 @@ void DiffUc::getLineSC(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (skip) {
-            skip = false;
-          } else {
-            skip = true;
-          }
-          retval[b++] = nc;
+          skip = !skip;
           break;
         }
       case ';':
@@ -328,6 +320,7 @@ void DiffUc::getLineSC(FILE *input, char *&currline)
             if (debugon) cout << '[' << currline << ']' << endl;
             return;
           }
+          break;
         }
       case '\n':
         {

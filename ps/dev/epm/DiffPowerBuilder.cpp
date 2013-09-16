@@ -9,6 +9,7 @@
  *
  * Who  When         Why
  * CAM  10-Dec-2009  10508 : File created.
+ * CAM  16-Sep-2013  11148 : Skip logic and breaks to ensure getLineSC operates correctly.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "DiffPowerBuilder.h"
@@ -145,11 +146,7 @@ void DiffPowerBuilder::getLineCR(FILE *input, char *&currline)
       {
       case '"':
         {
-          if (!skip)
-            skip = true;
-          else
-            skip = false;
-
+          skip = !skip;
           retval[retLength] = *c;
           retLength++;
 

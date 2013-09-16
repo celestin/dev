@@ -5,9 +5,9 @@ echo $Id$
 
 set SETUPFILE=setup.exe
 set INSTALLFILE=KrakatauEpmSetup.exe
-set OUTPUT_PATH=C:\Dev\PS\Release\em\emetrics_kepm\Express\SingleImage\DiskImages\DISK1
-set ICON=C:\Dev\PS\Release\em\Common\VolcanoEPM.ico
-set ZIPFILE=kepm_202_0000.zip
+set OUTPUT_PATH=C:\Dev\FB\ps\dev\Release\em\emetrics_kepm\Express\SingleImage\DiskImages\DISK1
+set ICON=C:\Dev\FB\ps\dev\Release\em\common\VolcanoEPM.ico
+set ZIPFILE=kepm_203_0000.zip
 
 echo Copying output SETUP.EXE and replacing Icon
 

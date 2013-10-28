@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FrontBurner.Tmax.Apps.EworkManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OraUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">metastorm</Value>
+    </Setting>
+    <Setting Name="OraPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">metastorm</Value>
+    </Setting>
+    <Setting Name="OraTNS" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">wizard</Value>
+    </Setting>
+    <Setting Name="EworkCrDbPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Talisman\ework\eworkCR.mdb</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

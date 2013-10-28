@@ -51,6 +51,7 @@
     <Compile Include="Data\Config.cs" />
     <Compile Include="Data\Location.cs" />
     <Compile Include="Data\Changeable.cs" />
+    <Compile Include="Data\MbrState.cs" />
     <Compile Include="Data\OracleDatalayer.cs" />
     <Compile Include="Data\ValidateDatalayer.cs" />
     <Compile Include="Forms\AboutMbr.cs">
@@ -72,6 +73,7 @@
       <DependentUpon>ExtractMaximo.cs</DependentUpon>
     </Compile>
     <Compile Include="MaintenanceBuildReview.cs" />
+    <Compile Include="Process\LongDescriptionProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutMbr.resx">
       <DependentUpon>AboutMbr.cs</DependentUpon>

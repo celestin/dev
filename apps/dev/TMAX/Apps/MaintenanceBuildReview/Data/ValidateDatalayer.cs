@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  18-May-2013  11172 : Created.
+ * CAM  28-Oct-2013  11172 : Added Progress handling.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -27,6 +28,26 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
     #region Singleton Members
     private static ValidateDatalayer _layer;
     private string _insertSql;
+
+    private int _maximumRows;
+    private int _currentRow;
+    private string _currentTableName;
+
+    public int MaximumRows
+    {
+      get { return _maximumRows; }
+      set { _maximumRows = value; }
+    }
+    public int CurrentRow
+    {
+      get { return _currentRow; }
+      set { _currentRow = value; }
+    }
+    public string CurrentTableName
+    {
+      get { return _currentTableName; }
+      set { _currentTableName = value; }
+    }
 
     public static ValidateDatalayer Instance
     {
@@ -65,7 +86,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
       }
       catch (OleDbException oe)
       {
-        MessageBox.Show(oe.Message);
+        MessageBox.Show(oe.Message + "\n" + oe.InnerException, "Error Opening Access Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return false;
       }
 
@@ -84,7 +105,9 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
       {
         OleDbCommand cmd = new OleDbCommand(
           "SELECT count(*) FROM [Object] " +
-          "WHERE ObjectSource='MAX' AND ExtractSql IS NOT NULL", Connection);
+          "WHERE ObjectSource='MAX' " +
+          "AND ExtractSql IS NOT NULL " + 
+          "AND Active = True", Connection);
         OleDbDataReader reader = cmd.ExecuteReader();
         if (reader.Read())
         {
@@ -94,7 +117,10 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
 
         cmd = new OleDbCommand(
           "SELECT ObjectName,ExtractSql,KeyColumns FROM [Object] " +
-          "WHERE ObjectSource='MAX' AND ExtractSql IS NOT NULL", Connection);
+          "WHERE ObjectSource='MAX' " +
+          "AND ExtractSql IS NOT NULL " +
+          "AND Active = True " + 
+          "ORDER BY ObjectName", Connection);
         reader = cmd.ExecuteReader();
 
         // Iterate through the DataReader and display row
@@ -105,6 +131,11 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
           tableName = reader[0].ToString();
           extractSql = reader[1].ToString();
           keyColumns = reader[2].ToString();
+
+          tslStatus.Text = String.Format("Extracting table {0} ({1} of {2})", tableName, tspExtract.Value, tspExtract.Maximum);
+
+          extractSql = extractSql.Replace("{SITECODE}", Config.Instance.SiteCode);
+          extractSql = extractSql.Replace("{ROOTCODE}", Config.Instance.RootCode);
 
           OracleCommand oraCmd = new OracleCommand(extractSql, OracleDatalayer.Instance.Connection);
           OracleDataReader oraRdr = oraCmd.ExecuteReader();
@@ -126,16 +157,25 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
               }
               else
               {
-                columns[i] = string.Format("'{0}'", oraRdr.GetValue(i).ToString());
+                string sqlSafeValue = oraRdr.GetValue(i).ToString();
+                sqlSafeValue = sqlSafeValue.Replace("'", "''");
+                columns[i] = string.Format("'{0}'", sqlSafeValue);
               }
               i++;
             }
 
             using (OleDbCommand cmd2 = AccessDatalayer.Instance.Connection.CreateCommand())
             {
-              cmd2.CommandType = CommandType.Text;
-              cmd2.CommandText = String.Format(_insertSql, String.Join(",", columns));
-              cmd2.ExecuteNonQuery();
+              try
+              {
+                cmd2.CommandType = CommandType.Text;
+                cmd2.CommandText = String.Format(_insertSql, String.Join(",", columns));
+                cmd2.ExecuteNonQuery();
+              }
+              catch (Exception exc)
+              {
+                MessageBox.Show(exc.Message + "\n" + cmd2.CommandText, "Error Inserting to Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              }
             }
           }
 
@@ -150,9 +190,9 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
         tslStatus.Text = "Extract complete.";
 
       }
-      catch (OleDbException oe)
+      catch (Exception exc)
       {
-        MessageBox.Show(oe.Message);
+        MessageBox.Show(exc.Message + "\n" + extractSql, "Error Extracting Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -213,10 +253,76 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
       i = 0;
       foreach (DataRow dr in schemaTable.Rows)
       {
-        columns[i++] = dr["ColumnName"].ToString();
+        columns[i++] = "[" + dr["ColumnName"].ToString() + "]";
       }
       _insertSql = String.Format("INSERT INTO {0} ({1}) {2}", tableName, String.Join(",", columns), "VALUES ({0})");
     }
+
+    public void LongDescriptionCheck()
+    {
+      string prevTableName = null;  
+      long ldkey = 0;
+      string sql = null;
+      OracleCommand oraCmd = null;
+      OracleDataReader oraRdr = null;
+      OracleParameter ldkeyParam = null;
+
+      CurrentRow = 0;
+
+      try
+      {
+        OracleCommand oraCmdLd = new OracleCommand("Select count(*) From LongDescription", OracleDatalayer.Instance.Connection);
+        OracleDataReader oraRdrLd = oraCmdLd.ExecuteReader();
+        if (oraRdrLd.Read())
+        {
+          MaximumRows = int.Parse(oraRdrLd[0].ToString());
+        }
+        oraRdrLd.Close();
+
+        oraCmdLd = new OracleCommand("Select LdOwnertable, Ldkey From LongDescription Order By LdOwnertable", OracleDatalayer.Instance.Connection);
+        oraRdrLd = oraCmdLd.ExecuteReader();
+
+        // Iterate through the DataReader and display row
+        while (oraRdrLd.Read())
+        {
+          CurrentRow++;
+
+          CurrentTableName = oraRdrLd[0].ToString();
+          ldkey = long.Parse(oraRdrLd[1].ToString());
+
+          if (CurrentTableName != prevTableName)
+          {
+            // New prepared statement
+            sql = String.Format("SELECT count(*) FROM {0} WHERE ldkey= :ldkey", CurrentTableName);
+            oraCmd = new OracleCommand(sql, OracleDatalayer.Instance.Connection);
+            ldkeyParam = oraCmd.Parameters.Add(":ldkey", OracleType.Int32);
+            oraCmd.Prepare();
+          }
+
+          ldkeyParam.Value = ldkey;
+          oraRdr = oraCmd.ExecuteReader();
+          if (oraRdr.Read())
+          {
+            if (int.Parse(oraRdr[0].ToString()) == 0)
+            {
+              MessageBox.Show("No rows for " + sql);
+            }
+          }
+
+          oraRdr.Close();
+          oraRdr.Dispose();
+          prevTableName = CurrentTableName;
+        }
+
+        oraRdrLd.Close();
+        oraCmdLd.Dispose();
+      }
+      catch (Exception exc)
+      {
+        MessageBox.Show(exc.Message + "\n" + sql, "Error Extracting Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
     #endregion
   }
 }

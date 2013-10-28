@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
  * CAM  18-May-2013  11172 : Added call to ExtractMaximo form.
+ * CAM  28-Oct-2013  11172 : Improved MSAccess checks when opening db.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -58,14 +59,18 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
         FileInfo db = new FileInfo(ofdAccessDb.FileName);
         if (db.Exists)
         {
-          if (!AccessDatalayer.Instance.Open(db))
+          MbrState state = AccessDatalayer.Instance.Open(db);
+
+          if (state == MbrState.Invalid)
           {
             MessageBox.Show("Could not open Database!");
             return;
           }
-
-          this.Text = "Maintenance Build Review - " + Config.Instance.RootDescription;
-          HierarchyTree.Populate();
+          else if (state == MbrState.OK)
+          {
+            this.Text = "Maintenance Build Review - " + Config.Instance.RootDescription;
+            HierarchyTree.Populate();
+          }
         }
       }
     }

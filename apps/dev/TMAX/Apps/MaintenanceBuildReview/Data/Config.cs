@@ -7,6 +7,7 @@
  *
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
+ * CAM  28-Oct-2013  11172 : Added Site Code.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -31,6 +32,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
     private bool _reviewDataActive;
     private string _rootCode;
     private string _rootDescription;
+    private string _siteCode;
 
     public bool ReviewDataActive
     {
@@ -48,6 +50,12 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
     {
       get { return _rootDescription; }
       set { _rootDescription = value; }
+    }
+
+    public string SiteCode
+    {
+      get { return _siteCode; }
+      set { _siteCode = value; }
     }
 
     private Config()

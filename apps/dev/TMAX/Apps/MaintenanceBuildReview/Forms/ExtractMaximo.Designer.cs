@@ -39,26 +39,29 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtractMaximo));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+      this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+      this.tspExtract = new System.Windows.Forms.ToolStripProgressBar();
+      this.tslStatus = new System.Windows.Forms.ToolStripLabel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.label1 = new System.Windows.Forms.Label();
       this.txtValidateDb = new System.Windows.Forms.TextBox();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
       this.tsbExtract = new System.Windows.Forms.ToolStripButton();
       this.tsbSetValidateDb = new System.Windows.Forms.ToolStripButton();
+      this.tspLongDesc = new System.Windows.Forms.ToolStripButton();
       this.tsbClose = new System.Windows.Forms.ToolStripButton();
       this.ofdValidateDb = new System.Windows.Forms.OpenFileDialog();
-      this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-      this.tslStatus = new System.Windows.Forms.ToolStripLabel();
-      this.tspExtract = new System.Windows.Forms.ToolStripProgressBar();
+      this.updateTimer = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
+      this.toolStrip2.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.toolStrip1.SuspendLayout();
-      this.toolStrip2.SuspendLayout();
       this.SuspendLayout();
       // 
       // toolStripContainer1
@@ -82,6 +85,28 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       // toolStripContainer1.TopToolStripPanel
       // 
       this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+      // 
+      // toolStrip2
+      // 
+      this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+      this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tspExtract,
+            this.tslStatus});
+      this.toolStrip2.Location = new System.Drawing.Point(3, 0);
+      this.toolStrip2.Name = "toolStrip2";
+      this.toolStrip2.Size = new System.Drawing.Size(456, 25);
+      this.toolStrip2.TabIndex = 0;
+      // 
+      // tspExtract
+      // 
+      this.tspExtract.Name = "tspExtract";
+      this.tspExtract.Size = new System.Drawing.Size(400, 22);
+      // 
+      // tslStatus
+      // 
+      this.tslStatus.Name = "tslStatus";
+      this.tslStatus.Size = new System.Drawing.Size(42, 22);
+      this.tslStatus.Text = "Ready.";
       // 
       // tableLayoutPanel1
       // 
@@ -125,10 +150,11 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbExtract,
             this.tsbSetValidateDb,
+            this.tspLongDesc,
             this.tsbClose});
       this.toolStrip1.Location = new System.Drawing.Point(3, 0);
       this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new System.Drawing.Size(221, 25);
+      this.toolStrip1.Size = new System.Drawing.Size(320, 25);
       this.toolStrip1.TabIndex = 0;
       // 
       // tsbExtract
@@ -151,6 +177,18 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       this.tsbSetValidateDb.Text = "Set Validate Database";
       this.tsbSetValidateDb.Click += new System.EventHandler(this.SetValidateDatabase);
       // 
+      // tspLongDesc
+      // 
+      this.tspLongDesc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.tspLongDesc.Enabled = false;
+      this.tspLongDesc.Image = ((System.Drawing.Image)(resources.GetObject("tspLongDesc.Image")));
+      this.tspLongDesc.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tspLongDesc.Name = "tspLongDesc";
+      this.tspLongDesc.Size = new System.Drawing.Size(99, 22);
+      this.tspLongDesc.Text = "LongDesc Check";
+      this.tspLongDesc.ToolTipText = "Long Description Check";
+      this.tspLongDesc.Click += new System.EventHandler(this.LongDescriptionCheck);
+      // 
       // tsbClose
       // 
       this.tsbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -165,27 +203,9 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       // 
       this.ofdValidateDb.Filter = "Microsoft Access Databases|*.mdb";
       // 
-      // toolStrip2
+      // updateTimer
       // 
-      this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-      this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspExtract,
-            this.tslStatus});
-      this.toolStrip2.Location = new System.Drawing.Point(3, 0);
-      this.toolStrip2.Name = "toolStrip2";
-      this.toolStrip2.Size = new System.Drawing.Size(487, 25);
-      this.toolStrip2.TabIndex = 0;
-      // 
-      // tslStatus
-      // 
-      this.tslStatus.Name = "tslStatus";
-      this.tslStatus.Size = new System.Drawing.Size(42, 22);
-      this.tslStatus.Text = "Ready.";
-      // 
-      // tspExtract
-      // 
-      this.tspExtract.Name = "tspExtract";
-      this.tspExtract.Size = new System.Drawing.Size(400, 22);
+      this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
       // 
       // ExtractMaximo
       // 
@@ -203,12 +223,12 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
       this.toolStripContainer1.TopToolStripPanel.PerformLayout();
       this.toolStripContainer1.ResumeLayout(false);
       this.toolStripContainer1.PerformLayout();
+      this.toolStrip2.ResumeLayout(false);
+      this.toolStrip2.PerformLayout();
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
       this.toolStrip1.ResumeLayout(false);
       this.toolStrip1.PerformLayout();
-      this.toolStrip2.ResumeLayout(false);
-      this.toolStrip2.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -227,5 +247,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
     private System.Windows.Forms.ToolStrip toolStrip2;
     private System.Windows.Forms.ToolStripLabel tslStatus;
     private System.Windows.Forms.ToolStripProgressBar tspExtract;
+    private System.Windows.Forms.ToolStripButton tspLongDesc;
+    private System.Windows.Forms.Timer updateTimer;
   }
 }

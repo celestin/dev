@@ -8,6 +8,7 @@
  * Who  When         Why
  * CAM  17-Dec-2012  11149 : Created.
  * CAM  18-May-2013  11172 : Renamed Connection for consistency.
+ * CAM  28-Oct-2013  11172 : Improved MSAccess connection handling.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
@@ -49,9 +50,9 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
       _con = new OleDbConnection();
     }
 
-    public bool Open(FileInfo accessFile)
+    public MbrState Open(FileInfo accessFile)
     {
-      if (!accessFile.Exists) return false;
+      if (!accessFile.Exists) return MbrState.Invalid;
 
       try
       {
@@ -64,7 +65,7 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
         }
 
         // Create and execute the query
-        OleDbCommand cmd = new OleDbCommand("Select RootCode,RootDescription From MBR_CONFIG", Connection);
+        OleDbCommand cmd = new OleDbCommand("Select RootCode,RootDescription,SiteCode From MBR_CONFIG", Connection);
         OleDbDataReader reader = cmd.ExecuteReader();
 
         // Iterate through the DataReader and display row
@@ -73,17 +74,35 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data
           Config cfg = Config.Instance;
           cfg.RootCode = reader[0].ToString();
           cfg.RootDescription = reader[1].ToString();
+          cfg.SiteCode = reader[2].ToString();
           cfg.ReviewDataActive = true;
         }
       }
       catch (OleDbException oe)
       {
         MessageBox.Show(oe.Message);
-        return false;
+        return MbrState.Invalid;
       }
 
-      return true;
+      try
+      {
+        // Create and execute the query
+        OleDbCommand cmd = new OleDbCommand("Select * FROM MAX_LOCATIONS AS m RIGHT JOIN MBC_Location AS r ON m.LOCATION = r.LOCATION", Connection);
+        OleDbDataReader reader = cmd.ExecuteReader();
+
+        // Iterate through the DataReader and display row
+        if (reader.Read())
+        {
+        }
+      }
+      catch (OleDbException oe)
+      {
+        return MbrState.Empty;
+      }
+
+      return MbrState.OK;
     }
+
     public LocationCollection GetLocations()
     {
       LocationCollection rval = new LocationCollection();

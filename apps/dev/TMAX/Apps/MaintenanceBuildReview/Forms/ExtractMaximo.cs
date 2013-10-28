@@ -7,23 +7,29 @@
  *
  * Who  When         Why
  * CAM  18-May-2013  11172 : Created.
+ * CAM  28-Oct-2013  11172 : Added LongDescription checks (no longer required).
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Threading;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
 using FrontBurner.Tmax.Apps.MaintenanceBuildReview.Data;
+using FrontBurner.Tmax.Apps.MaintenanceBuildReview.Process;
 
 namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
 {
   public partial class ExtractMaximo : Form
   {
+    private LongDescriptionProcess _ldp;
+    private Thread _process;
+
     public ExtractMaximo()
     {
       InitializeComponent();
@@ -77,6 +83,32 @@ namespace FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms
         ValidateDb = ofdValidateDb.FileName;
       }
 
+    }
+
+    private void LongDescriptionCheck(object sender, EventArgs e)
+    {
+      updateTimer.Enabled = false;
+
+      _ldp = new LongDescriptionProcess(new FileInfo(this.ValidateDb));
+      _process = new Thread(_ldp.Execute);
+      _process.IsBackground = true;
+      _process.Start();
+
+      updateTimer.Enabled = true;
+    }
+
+    private void updateTimer_Tick(object sender, EventArgs e)
+    {
+      if (_process.IsAlive)
+      {
+        tspExtract.Maximum = _ldp.MaximumRows;
+        tspExtract.Value = _ldp.CurrentRow;
+        tslStatus.Text = _ldp.CurrentTableName + ": " + _ldp.CurrentRow + " row of " + _ldp.MaximumRows;
+      }
+      else
+      {
+        updateTimer.Enabled = false;
+      }
     }
   }
 }

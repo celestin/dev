@@ -43,13 +43,12 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.tspSnapshot = new System.Windows.Forms.ToolStripProgressBar();
+      this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.label1 = new System.Windows.Forms.Label();
       this.txtEworkCrDb = new System.Windows.Forms.TextBox();
       this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-      this.tsbTakeNewSnapshot = new System.Windows.Forms.ToolStripButton();
-      this.tsbExit = new System.Windows.Forms.ToolStripButton();
-      this.tsbSetEworkCrDb = new System.Windows.Forms.ToolStripButton();
       this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmTakeSnapshot = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,10 +65,14 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
       this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.ofdAccessDb = new System.Windows.Forms.OpenFileDialog();
       this.ofdEworkCrDb = new System.Windows.Forms.OpenFileDialog();
-      this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
       this.updateTimer = new System.Windows.Forms.Timer(this.components);
-      this.tspSnapshot = new System.Windows.Forms.ToolStripProgressBar();
-      this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
+      this.tsbTakeNewSnapshot = new System.Windows.Forms.ToolStripButton();
+      this.tsbExit = new System.Windows.Forms.ToolStripButton();
+      this.tsbSetEworkCrDb = new System.Windows.Forms.ToolStripButton();
+      this.tsbEmailAssignments = new System.Windows.Forms.ToolStripButton();
+      this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+      this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -113,6 +116,17 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Size = new System.Drawing.Size(1019, 22);
       this.statusStrip1.TabIndex = 0;
+      // 
+      // tspSnapshot
+      // 
+      this.tspSnapshot.Name = "tspSnapshot";
+      this.tspSnapshot.Size = new System.Drawing.Size(500, 16);
+      // 
+      // tslStatus
+      // 
+      this.tslStatus.Name = "tslStatus";
+      this.tslStatus.Size = new System.Drawing.Size(42, 17);
+      this.tslStatus.Text = "Ready.";
       // 
       // tableLayoutPanel1
       // 
@@ -158,42 +172,15 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
       this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
       this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbTakeNewSnapshot,
+            this.tsbEmailAssignments,
+            this.toolStripSeparator5,
             this.tsbExit,
+            this.toolStripSeparator6,
             this.tsbSetEworkCrDb});
       this.toolStrip1.Location = new System.Drawing.Point(3, 0);
       this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new System.Drawing.Size(354, 31);
+      this.toolStrip1.Size = new System.Drawing.Size(532, 31);
       this.toolStrip1.TabIndex = 1;
-      // 
-      // tsbTakeNewSnapshot
-      // 
-      this.tsbTakeNewSnapshot.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.Snapshot;
-      this.tsbTakeNewSnapshot.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this.tsbTakeNewSnapshot.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbTakeNewSnapshot.Name = "tsbTakeNewSnapshot";
-      this.tsbTakeNewSnapshot.Size = new System.Drawing.Size(137, 28);
-      this.tsbTakeNewSnapshot.Text = "Take new Snapshot";
-      this.tsbTakeNewSnapshot.Click += new System.EventHandler(this.TakeNewSnapshot);
-      // 
-      // tsbExit
-      // 
-      this.tsbExit.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.Exit;
-      this.tsbExit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbExit.Name = "tsbExit";
-      this.tsbExit.Size = new System.Drawing.Size(53, 28);
-      this.tsbExit.Text = "Exit";
-      this.tsbExit.Click += new System.EventHandler(this.ExitApplication);
-      // 
-      // tsbSetEworkCrDb
-      // 
-      this.tsbSetEworkCrDb.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.MsAccess;
-      this.tsbSetEworkCrDb.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this.tsbSetEworkCrDb.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbSetEworkCrDb.Name = "tsbSetEworkCrDb";
-      this.tsbSetEworkCrDb.Size = new System.Drawing.Size(152, 28);
-      this.tsbSetEworkCrDb.Text = "Set EworkCR Database";
-      this.tsbSetEworkCrDb.Click += new System.EventHandler(this.SetEworkCrDatabase);
       // 
       // statusLabel
       // 
@@ -304,24 +291,63 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
       // 
       this.ofdEworkCrDb.Filter = "Microsoft Access Databases|*.mdb";
       // 
-      // bindingSource1
-      // 
-      this.bindingSource1.AllowNew = false;
-      // 
       // updateTimer
       // 
       this.updateTimer.Tick += new System.EventHandler(this.UpdateTimerTick);
       // 
-      // tspSnapshot
+      // tsbTakeNewSnapshot
       // 
-      this.tspSnapshot.Name = "tspSnapshot";
-      this.tspSnapshot.Size = new System.Drawing.Size(500, 16);
+      this.tsbTakeNewSnapshot.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.Snapshot;
+      this.tsbTakeNewSnapshot.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this.tsbTakeNewSnapshot.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbTakeNewSnapshot.Name = "tsbTakeNewSnapshot";
+      this.tsbTakeNewSnapshot.Size = new System.Drawing.Size(137, 28);
+      this.tsbTakeNewSnapshot.Text = "Take new Snapshot";
+      this.tsbTakeNewSnapshot.Click += new System.EventHandler(this.TakeNewSnapshot);
       // 
-      // tslStatus
+      // tsbExit
       // 
-      this.tslStatus.Name = "tslStatus";
-      this.tslStatus.Size = new System.Drawing.Size(42, 17);
-      this.tslStatus.Text = "Ready.";
+      this.tsbExit.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.Exit;
+      this.tsbExit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbExit.Name = "tsbExit";
+      this.tsbExit.Size = new System.Drawing.Size(53, 28);
+      this.tsbExit.Text = "Exit";
+      this.tsbExit.Click += new System.EventHandler(this.ExitApplication);
+      // 
+      // tsbSetEworkCrDb
+      // 
+      this.tsbSetEworkCrDb.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.MsAccess;
+      this.tsbSetEworkCrDb.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this.tsbSetEworkCrDb.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbSetEworkCrDb.Name = "tsbSetEworkCrDb";
+      this.tsbSetEworkCrDb.Size = new System.Drawing.Size(152, 28);
+      this.tsbSetEworkCrDb.Text = "Set EworkCR Database";
+      this.tsbSetEworkCrDb.Click += new System.EventHandler(this.SetEworkCrDatabase);
+      // 
+      // tsbEmailAssignments
+      // 
+      this.tsbEmailAssignments.Image = global::FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.mail_forward;
+      this.tsbEmailAssignments.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+      this.tsbEmailAssignments.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbEmailAssignments.Name = "tsbEmailAssignments";
+      this.tsbEmailAssignments.Size = new System.Drawing.Size(135, 28);
+      this.tsbEmailAssignments.Text = "Email Assignments";
+      this.tsbEmailAssignments.Click += new System.EventHandler(this.EmailAssignments);
+      // 
+      // bindingSource1
+      // 
+      this.bindingSource1.AllowNew = false;
+      // 
+      // toolStripSeparator5
+      // 
+      this.toolStripSeparator5.Name = "toolStripSeparator5";
+      this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
+      // 
+      // toolStripSeparator6
+      // 
+      this.toolStripSeparator6.Name = "toolStripSeparator6";
+      this.toolStripSeparator6.Size = new System.Drawing.Size(6, 31);
       // 
       // App
       // 
@@ -382,6 +408,9 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
     private System.Windows.Forms.Timer updateTimer;
     private System.Windows.Forms.ToolStripProgressBar tspSnapshot;
     private System.Windows.Forms.ToolStripStatusLabel tslStatus;
+    private System.Windows.Forms.ToolStripButton tsbEmailAssignments;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     
   }
 }

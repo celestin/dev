@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="EworkManager.cs" />
     <Compile Include="Process\EworkExtractProcess.cs" />
+    <Compile Include="Process\EmailHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutEworkManager.resx">
       <DependentUpon>AboutEworkManager.cs</DependentUpon>
@@ -119,6 +120,7 @@
     <None Include="Images\Toolbar\export1.png" />
     <None Include="Images\Toolbar\camera1.png" />
     <None Include="Images\Toolbar\camera.png" />
+    <None Include="Images\Toolbar\mail_forward.png" />
     <Content Include="users2.ico" />
     <None Include="Images\Toolbar\exit.png" />
   </ItemGroup>

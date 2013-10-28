@@ -38,7 +38,7 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
 
     public string TruncateSql
     {
-      get { return "TRUNCATE TABLE " + _tableName; }
+      get { return "DELETE FROM " + _tableName; }
     }
   }
 

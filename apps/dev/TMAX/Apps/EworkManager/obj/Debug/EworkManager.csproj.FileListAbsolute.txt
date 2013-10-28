@@ -1,0 +1,10 @@
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\EworkManager.csproj.GenerateResource.Cache
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\FrontBurner.Tmax.Apps.EworkManager.Forms.App.resources
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\bin\Debug\EworkManager.exe.config
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\bin\Debug\EworkManager.exe
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\bin\Debug\EworkManager.pdb
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\FrontBurner.Tmax.Apps.EworkManager.Properties.Resources.resources
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\EworkManager.exe
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\EworkManager.pdb
+C:\Dev\FB\apps\dev\TMAX\Apps\EworkManager\obj\Debug\FrontBurner.Tmax.Apps.EworkManager.Forms.AboutEworkManager.resources

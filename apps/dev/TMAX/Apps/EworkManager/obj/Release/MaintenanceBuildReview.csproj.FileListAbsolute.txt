@@ -1,0 +1,11 @@
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\bin\Release\MaintenanceBuildReview.exe.config
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\bin\Release\MaintenanceBuildReview.exe
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\bin\Release\MaintenanceBuildReview.pdb
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\ResolveAssemblyReference.cache
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms.AboutMbr.resources
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms.App.resources
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\FrontBurner.Tmax.Apps.MaintenanceBuildReview.Properties.Resources.resources
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\MaintenanceBuildReview.csproj.GenerateResource.Cache
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\MaintenanceBuildReview.exe
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\MaintenanceBuildReview.pdb
+C:\Dev\FB\apps\dev\TMAX\Apps\MaintenanceBuildReview\obj\Release\FrontBurner.Tmax.Apps.MaintenanceBuildReview.Forms.ExtractMaximo.resources

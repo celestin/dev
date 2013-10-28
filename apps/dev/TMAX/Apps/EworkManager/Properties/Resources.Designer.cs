@@ -81,6 +81,13 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap mail_forward {
+            get {
+                object obj = ResourceManager.GetObject("mail_forward", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap MsAccess {
             get {
                 object obj = ResourceManager.GetObject("MsAccess", resourceCulture);

@@ -121,5 +121,16 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Forms
         tsbTakeNewSnapshot.Enabled = true;
       }
     }
+
+    private void EmailAssignments(object sender, EventArgs e)
+    {
+      FileInfo db = new FileInfo(Properties.Settings.Default.EworkCrDbPath);
+      EcrState state = AccessDatalayer.Instance.Open(db);
+      if (state == EcrState.OK)
+      {
+        EmailHelper email = new EmailHelper();
+        AccessDatalayer.Instance.EmailAssignments(email);
+      }
+    }
   }
 }

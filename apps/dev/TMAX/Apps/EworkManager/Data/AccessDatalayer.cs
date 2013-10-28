@@ -21,6 +21,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.OracleClient;
 
+using FrontBurner.Tmax.Apps.EworkManager.Process;
 
 namespace FrontBurner.Tmax.Apps.EworkManager.Data
 {
@@ -89,7 +90,7 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
         if (Connection.State == System.Data.ConnectionState.Open)
         {
           Connection.Close();
-         }
+        }
       }
       catch (OleDbException oe)
       {
@@ -98,8 +99,8 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
       }
 
       return EcrState.OK;
-    }   
-    
+    }
+
     #endregion
 
     #region Snapshot
@@ -131,13 +132,27 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
       OracleDataReader oraRdr;
 
       OleDbCommand cmd;
-      OleDbDataReader reader;
+      DataTable schemaTable;
+
+      int postWeight = 200;
+
       Queries qs = new Queries();
       qs.Add(new EWorkStatusQuery());
       qs.Add(new EWorkEventQuery());
       qs.Add(new EWorkAlertQuery());
 
-      MaximumRows = CurrentRow = 0;
+      List<string> post = new List<string>();
+      post.Add("[00 Delete removed Ework]");
+      post.Add("[01 Update changed Ework]");
+      post.Add("[02 Append new Ework]");
+      post.Add("[03 Create new Snapshot]");
+      post.Add("[04 Copy Snapshot]");
+      post.Add("[05a Delete Unrelated Alerts]");
+      //post.Add("[05b Delete Alerts for Non AD Users]");
+      post.Add("[05c Delete Alerts for Disabled AD Users]");
+
+      MaximumRows = (post.Count * postWeight);
+      CurrentRow = 0;
       CurrentTableName = "";
 
       foreach (Query q in qs)
@@ -154,7 +169,13 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
         oraRdr.Close();
       }
 
+      foreach (Query q in qs)
+      {
+        CurrentTableName = "Truncating " + q.TableName;
 
+        cmd = new OleDbCommand(q.TruncateSql, Connection);
+        cmd.ExecuteNonQuery();
+      }
 
       CurrentRow = 0;
 
@@ -163,113 +184,60 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
         CurrentTableName = "Retrieving " + q.TableName;
 
         oraCmd = new OracleCommand(q.DataSql, OracleDatalayer.Instance.Connection);
-
         oraRdr = oraCmd.ExecuteReader();
+        schemaTable = oraRdr.GetSchemaTable();
+        CreateInsertSql(q.TableName, schemaTable);  // Prepare the INSERT SQL that will be used for each row
+
         while (oraRdr.Read())
         {
           CurrentRow++;
+
+          #region Insert into MS-Access
+
+          string[] columns = new string[schemaTable.Rows.Count];
+          int i = 0;
+
+          foreach (DataRow dr in schemaTable.Rows)
+          {
+            if (oraRdr.IsDBNull(i))
+            {
+              columns[i] = "NULL";
+            }
+            else
+            {
+              string sqlSafeValue = oraRdr.GetValue(i).ToString();
+              sqlSafeValue = sqlSafeValue.Replace("'", "''");
+              columns[i] = string.Format("'{0}'", sqlSafeValue);
+            }
+            i++;
+          }
+
+          using (OleDbCommand cmd2 = AccessDatalayer.Instance.Connection.CreateCommand())
+          {
+            try
+            {
+              cmd2.CommandType = CommandType.Text;
+              cmd2.CommandText = String.Format(_insertSql, String.Join(",", columns));
+              cmd2.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+              MessageBox.Show(exc.Message + "\n" + cmd2.CommandText, "Error Inserting to Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          }
+          #endregion
         }
         oraRdr.Close();
       }
-    }
 
-    public void Extract(ToolStripLabel tslStatus, ToolStripProgressBar tspExtract)
-    {
-      string tableName = null;
-      string extractSql = null;
-      string keyColumns = null;
-
-      tslStatus.Text = "Extract started.";
-
-      try
+      foreach (string q in post)
       {
-        OleDbCommand cmd = new OleDbCommand(
-          "SELECT count(*) FROM [Object] " +
-          "WHERE ObjectSource='MAX' " +
-          "AND ExtractSql IS NOT NULL " +
-          "AND Active = True", Connection);
-        OleDbDataReader reader = cmd.ExecuteReader();
-        if (reader.Read())
-        {
-          tspExtract.Maximum = int.Parse(reader[0].ToString());
-        }
-        reader.Close();
+        CurrentRow += postWeight;
+        CurrentTableName = "Running housekeeping " + q;
 
-        cmd = new OleDbCommand(
-          "SELECT ObjectName,ExtractSql,KeyColumns FROM [Object] " +
-          "WHERE ObjectSource='MAX' " +
-          "AND ExtractSql IS NOT NULL " +
-          "AND Active = True " +
-          "ORDER BY ObjectName", Connection);
-        reader = cmd.ExecuteReader();
-
-        // Iterate through the DataReader and display row
-        while (reader.Read())
-        {
-          tspExtract.Increment(1);
-
-          tableName = reader[0].ToString();
-          extractSql = reader[1].ToString();
-          keyColumns = reader[2].ToString();
-
-          tslStatus.Text = String.Format("Extracting table {0} ({1} of {2})", tableName, tspExtract.Value, tspExtract.Maximum);
-
-          OracleCommand oraCmd = new OracleCommand(extractSql, OracleDatalayer.Instance.Connection);
-          OracleDataReader oraRdr = oraCmd.ExecuteReader();
-          DataTable schemaTable = oraRdr.GetSchemaTable();
-
-          CreateTableFromReader(tableName, schemaTable, keyColumns); // Create the new table, and its primary key
-          CreateInsertSql(tableName, schemaTable);  // Prepare the INSERT SQL that will be used for each row
-
-          while (oraRdr.Read())
-          {
-            string[] columns = new string[schemaTable.Rows.Count];
-            int i = 0;
-
-            foreach (DataRow dr in schemaTable.Rows)
-            {
-              if (oraRdr.IsDBNull(i))
-              {
-                columns[i] = "NULL";
-              }
-              else
-              {
-                string sqlSafeValue = oraRdr.GetValue(i).ToString();
-                sqlSafeValue = sqlSafeValue.Replace("'", "''");
-                columns[i] = string.Format("'{0}'", sqlSafeValue);
-              }
-              i++;
-            }
-
-            using (OleDbCommand cmd2 = AccessDatalayer.Instance.Connection.CreateCommand())
-            {
-              try
-              {
-                cmd2.CommandType = CommandType.Text;
-                cmd2.CommandText = String.Format(_insertSql, String.Join(",", columns));
-                cmd2.ExecuteNonQuery();
-              }
-              catch (Exception exc)
-              {
-                MessageBox.Show(exc.Message + "\n" + cmd2.CommandText, "Error Inserting to Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
-              }
-            }
-          }
-
-          oraRdr.Close();
-          oraRdr.Dispose();
-          oraCmd.Dispose();
-        }
-
-        reader.Close();
-        cmd.Dispose();
-
-        tslStatus.Text = "Extract complete.";
-
-      }
-      catch (Exception exc)
-      {
-        MessageBox.Show(exc.Message + "\n" + extractSql, "Error Extracting Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        cmd = new OleDbCommand(q, Connection);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.ExecuteNonQuery();
       }
     }
 
@@ -335,7 +303,60 @@ namespace FrontBurner.Tmax.Apps.EworkManager.Data
       _insertSql = String.Format("INSERT INTO {0} ({1}) {2}", tableName, String.Join(",", columns), "VALUES ({0})");
     }
 
+    #endregion
 
+    #region Email
+    public void EmailAssignments(EmailHelper email)
+    {
+      string prevEmailTo="";
+      string emailTo;
+      string firstName;
+      string wmsPriority;
+      string wmsCategory;
+      string siteId;
+      string folderName;
+      string description;
+      string wmsComments;
+      double wmsEffort;
+      long efolderId;
+ 
+      using (OleDbCommand cmd = AccessDatalayer.Instance.Connection.CreateCommand())
+      {
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = "SELECT Person.Email, Person.Firstname, EworkItem.WmsPriority, EworkItem.WmsCategory, " +
+          "EworkItem.SiteId, EworkItem.FolderName, EworkItem.Description, EworkItem.WmsComments, " +
+          "EworkItem.WmsEffort, EworkItem.EfolderId " +
+          "FROM Person INNER JOIN EworkItem ON Person.PersonId = EworkItem.WmsAssignedTo " +
+          "WHERE (((Person.WmsCore)=True) AND ((EworkItem.EworkStatus)=\"06 WMS Team for Action\")) " +
+          "ORDER BY Person.Email, EworkItem.WmsPriority, EworkItem.WmsCategory ";
+        OleDbDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+          emailTo = ""; if (!reader.IsDBNull(0)) emailTo = reader.GetString(0);
+          firstName = ""; if (!reader.IsDBNull(1)) firstName = reader.GetString(1);
+          wmsPriority = ""; if (!reader.IsDBNull(2)) wmsPriority = reader.GetString(2); 
+          wmsCategory = ""; if (!reader.IsDBNull(3)) wmsCategory = reader.GetString(3); 
+          siteId = ""; if (!reader.IsDBNull(4)) siteId = reader.GetString(4); 
+          folderName = ""; if (!reader.IsDBNull(5)) folderName = reader.GetString(5);
+          description = ""; if (!reader.IsDBNull(6)) description = reader.GetString(6);
+          wmsComments = ""; if (!reader.IsDBNull(7)) wmsComments = reader.GetString(7); 
+          wmsEffort = 0; if (!reader.IsDBNull(8)) wmsEffort = double.Parse(reader.GetValue(8).ToString());
+          efolderId = 0; if (!reader.IsDBNull(9)) efolderId = long.Parse(reader.GetValue(9).ToString()); 
+          
+          if (prevEmailTo != emailTo)
+          {
+            if (prevEmailTo.Length > 0) email.SendAssignments();
+            email.PrepareAssignments(emailTo, firstName);
+          }
+
+          email.AddAssignment(efolderId, folderName, wmsPriority, wmsCategory, siteId, description, wmsComments, wmsEffort);
+
+          prevEmailTo = emailTo;
+        }
+
+        email.SendAssignments();
+      }
+    }
     #endregion
   }
 }

@@ -142,7 +142,7 @@
 <td colspan=2><a class=nav href="../misc/">Miscellaneous Accessories</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/paper.png"></td>
-<td colspan=2><a class=nav href="../filters/papers/">Filter Papers & Descalers</a></td>
+<td colspan=2><a class=nav href="../filters/papers/">Filter Papers</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/phonebox.png"></td>
 <td class=sel colspan=2><b>Contact</b></td>
@@ -459,7 +459,7 @@ if ($b_real_submit) {
 </td></tr></table>
 </form>
           </td></tr>
-          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2013 MidWest Market Force Ltd. All rights reserved.<br />
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2014 MidWest Market Force Ltd. All rights reserved.<br />
           Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
           </table>
         </td>

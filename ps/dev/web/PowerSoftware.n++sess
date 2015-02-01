@@ -1,0 +1,14 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="6">
+            <File firstVisibleLine="113" xOffset="0" scrollWidth="2086" startPos="4903" endPos="4903" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\Template\Download.htm" />
+            <File firstVisibleLine="5" xOffset="0" scrollWidth="2037" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\Template\HOME.HTM" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1328" startPos="6159" endPos="6166" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\Template\Product\epm.html" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="2065" startPos="593" endPos="593" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\Template\Product\kepm.html" />
+            <File firstVisibleLine="321" xOffset="0" scrollWidth="2499" startPos="16579" endPos="16579" selMode="0" lang="Perl" encoding="-1" filename="W:\Powersoftware.com\cgi-bin\download.pl" />
+            <File firstVisibleLine="50" xOffset="0" scrollWidth="1771" startPos="5795" endPos="5795" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\cgi-bin\template.html" />
+            <File firstVisibleLine="37" xOffset="0" scrollWidth="1764" startPos="2968" endPos="2968" selMode="0" lang="HTML" encoding="-1" filename="W:\Powersoftware.com\Template\Standard.htm" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+/* $Id: initialize.php 1049 2009-08-23 11:46:37Z craig $ */
 // Make sure register globals is turned off.  As of v4.0, Issue-Tracker
 // will no longer function correctly with it turned on.  If you have
 // other applications that require it to work, then you can create a

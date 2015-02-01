@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: indexes.sql 1049 2009-08-23 11:46:37Z craig $
 
 -- Create Indexes
 CREATE INDEX idx_events_issueid ON events (issueid);

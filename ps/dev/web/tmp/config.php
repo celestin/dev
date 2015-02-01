@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+/* $Id: config.php 1049 2009-08-23 11:46:37Z craig $ */
 /**
  * Database Server Data
  * Example:

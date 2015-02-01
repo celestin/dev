@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: data.sql 1049 2009-08-23 11:46:37Z craig $
 
 -- Default Statuses
 INSERT INTO statuses (status,status_type) VALUES('Registered',1);

@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: schema.txt 1049 2009-08-23 11:46:37Z craig $
 
 CREATE TABLE configuration (
 	variable VARCHAR(32) NOT NULL,

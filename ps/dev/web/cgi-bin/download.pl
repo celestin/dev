@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+use Captcha::reCAPTCHA;
+
 # Mail settings
 $mailprog = '/usr/sbin/sendmail' ;
 $recipient = 'download@powersoftware.com' ;
@@ -48,6 +50,23 @@ foreach $pair (@pairs)
 # If the comments are blank, then give a "blank form" response
 &blank_response unless ($FORM{'name'} && $FORM{'email'} && $FORM{'company'} && $FORM{'phone'});
 
+
+my $c = Captcha::reCAPTCHA->new;
+my $challenge = param 'recaptcha_challenge_field';
+my $response = param 'recaptcha_response_field';
+
+# Verify submission
+my $result = $c->check_answer(
+	"6LcojucSAAAAAOnxj2ne6p7JfrzNpOAYKlz_iDPR", $ENV{'REMOTE_ADDR'},
+	$challenge, $response
+);
+
+if ( $result->{is_valid} ) {
+	print "Yes!";
+} else {
+	# Error
+	print "No";
+}
 
 # Initialise code for "active page" which contains the real links for downloading
 
@@ -239,7 +258,7 @@ print MAIL "------------------------------------------------------------\n";
 
 # Essential Metrics
 
-  if ($FORM{'emsolcppv12'}||$FORM{'emsoljavav12'}||$FORM{'emwincppv1'}||$FORM{'emwinjavav1'}||$FORM{'emwinepm'}||$FORM{'emwinkepm'}||$FORM{'emwincpppmv1'}||$FORM{'emwinjavapmv1'})
+  if ($FORM{'emsolcppv12'}||$FORM{'emsoljavav12'}||$FORM{'emwincppv1'}||$FORM{'emwinjavav1'}||$FORM{'emwincpppmv1'}||$FORM{'emwinjavapmv1'})
   { $actpage.="<p class=\"narr\"><b>Essential Metrics</b><br>" ;
 
     if ($FORM{'emsolcppv12'} eq 'y') {
@@ -262,8 +281,8 @@ print MAIL "------------------------------------------------------------\n";
       $products.= "Essential Metrics Java (Windows NT/2000/XP/2003) Version 1.00.003\n"; }
 
     if ($FORM{'emwinkepm'} eq 'y') {
-      $actpage.="<a href=/download/em/kepm_201_0000.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 2.1.0.0</b></a><br>\n";
-      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 2.1.0.0\n";
+      $actpage.="<a href=/download/em/kepm_202_0000.zip>Krakatau Essential ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/<span class=hotnew>Vista</span>) <b>Version 2.2.0.0</b></a><br>\n";
+      $products.= "Krakatau Essential PM ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista) Version 2.2.0.0\n";
     }
 
     if ($FORM{'emwincpppmv1'} eq 'y')
@@ -272,6 +291,20 @@ print MAIL "------------------------------------------------------------\n";
     if ($FORM{'emwinjavapmv1'} eq 'y')
     { $actpage.="<a href=/download/em/emetrics_java_pm_100.zip>Essential Metrics PM Edition Java (Windows 95/98/NT/2000) <b>Version 1.0</b></a><br>\n";
       $products.= "Essential Metrics PM Edition Java (Windows 95/98/NT/2000) Version 1.0\n"; }
+
+    $actpage.="</p>" ; }
+
+
+    # Krakatau Essential Project Manager
+
+  if ($FORM{'emwinepm'}||$FORM{'emwinkepm'})
+  { $actpage.="<p class=\"narr\"><b>Krakatau Essential Project Manager</b><br>" ;
+
+
+    if ($FORM{'emwinkepm'} eq 'y') {
+      $actpage.="<a href=/download/em/kepm_203_0000.zip><b>KEPM</b> ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista/7<span class=hotnew>Windows 8</span>) <b>Version 2.3.0.0</b></a><br>\n";
+      $products.= "KEPM | ADA Assembly ASP C# C/C++ CSS Fortran IDL HTML Java JavaScript JSP MMP Perl PHP PL/SQL PowerBuilder Python Ruby ShellScript Textfiles UCode VB6 / VB.NET / VBScript VHDL WindowsBatch and XML (Windows NT/2000/XP/2003/Vista/7/Windows 8) Version 2.3.0.0\n";
+    }
 
     $actpage.="</p>" ; }
 
@@ -313,11 +346,11 @@ close (MAIL);
 
 # Vista / Windows 7 message
 
-$actpage .= "<h2 class=\"narr\">Installing on Vista or Windows 7?</h2>\n";
+$actpage .= "<h2 class=\"narr\">Installing on Windows Vista, Windows 7 or Windows 8?</h2>\n";
 $actpage .= "<p class=\"narr\">Please read the <a href=\"http://www.powersoftware.com/kepm/QuickStartGuideKEPM.pdf\">Quick Start Guide</a>.</p>\n";
 $actpage .= "<p class=\"narr\">Be sure that you right-click on the KrakatauEpmSetup.exe and choose <b>Run as administrator</b>.</p>\n";
 $actpage .= "<p class=\"narr\">Why?  If you don't, MySQL won't be properly registered and the service won't be started.</p>\n";
-$actpage .= "<img src=\"../img/Vista-Win7-RunAsAdministrator.jpg\">\n";
+$actpage .= "<img src=\"../img/Win8-RunAsAdministrator.png\">\n";
 
 $page=&get_file_contents($newfile) ;
 $page=~s/$separator\s*/$actpage/ ;

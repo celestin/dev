@@ -459,7 +459,7 @@ if ($b_real_submit) {
 </td></tr></table>
 </form>
           </td></tr>
-          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2014 MidWest Market Force Ltd. All rights reserved.<br />
+          <tr><td align=center valign=bottom class=cpyrght>Copyright &copy; 2016 MidWest Market Force Ltd. All rights reserved.<br />
           Site designed and maintained by <a href="http://www.frontburner.co.uk/">frontburner.co.uk</a>&nbsp;|&nbsp;<a href="mailto:webmaster@frontburner.co.uk">Webmaster</a></td></tr>
           </table>
         </td>

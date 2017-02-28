@@ -120,29 +120,29 @@
 <tr><td width=15><img width=28 src="../img/m/bean.png"></td>
 <td colspan=2><a class=nav href="../">Home</a></td>
 </tr>
-<tr><td width=15><img width=28 src="../img/m/coffee_machine.png"></td>
-<td colspan=2><a class=nav href="../coffee/machines/">Coffee Machines</a></td>
+<tr><td width=15><img width=28 src="../img/m/paper.png"></td>
+<td colspan=2><a class=nav href="../filters/papers/">Filter Papers</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/coffee_grinder.png"></td>
 <td colspan=2><a class=nav href="../coffee/grinders/">Coffee Grinders</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/manual_systems.png"></td>
-<td colspan=2><a class=nav href="../manual/">Manual Systems</a></td>
-</tr>
-<tr><td width=15><img width=28 src="../img/m/manual_espresso.png"></td>
-<td colspan=2><a class=nav href="../espresso/">Manual Espresso Machines</a></td>
+<td colspan=2><a class=nav href="../manual/">Cafetieres / Slow brew and replacement glass</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/jug.png"></td>
 <td colspan=2><a class=nav href="../jugs/">Jugs & Glassware</a></td>
 </tr>
+<tr><td width=15><img width=28 src="../img/m/manual_espresso.png"></td>
+<td colspan=2><a class=nav href="../espresso/">Stove-top Espresso makers</a></td>
+</tr>
 <tr><td width=15><img width=28 src="../img/m/cone.png"></td>
 <td colspan=2><a class=nav href="../filters/cones/">Filter Cones</a></td>
 </tr>
-<tr><td width=15><img width=28 src="../img/m/misc.png"></td>
-<td colspan=2><a class=nav href="../misc/">Miscellaneous Accessories</a></td>
+<tr><td width=15><img width=28 src="../img/m/coffee_machine.png"></td>
+<td colspan=2><a class=nav href="../coffee/machines/">Coffee Machines</a></td>
 </tr>
-<tr><td width=15><img width=28 src="../img/m/paper.png"></td>
-<td colspan=2><a class=nav href="../filters/papers/">Filter Papers</a></td>
+<tr><td width=15><img width=28 src="../img/m/misc.png"></td>
+<td colspan=2><a class=nav href="../misc/">Coffee and tea accessories</a></td>
 </tr>
 <tr><td width=15><img width=28 src="../img/m/phonebox.png"></td>
 <td class=sel colspan=2><b>Contact</b></td>
@@ -233,10 +233,6 @@ if (!empty($real_submit)) {
 
   if ($A2!="") {
     $s_MessageBody=$s_MessageBody.$A2."\n\n";
-  }
-
-  if ($s_machine != "" || $s_modelno != "") {
-    $s_MessageBody=$s_MessageBody."I require information on the following Replacement Jug:\nMachine Name: ".$s_machine."\nModel No: ".$s_modelno."\n\n";
   }
 
   if ($A3!="") {
@@ -382,20 +378,6 @@ if ($b_real_submit) {
    <td>I would like further information on the full Grinder/Machine range</td>
    <td><input type="checkbox" name="A2" value="I would like further information on the full Grinder/Machine range."></td>
  </tr>
-
- <tr>
-   <td>I require specific information on a Replacement Jug</td>
-   <td><table border=0 width="100%">
-         <tr>
-           <td>Machine Name</td><td>Model No.</td>
-         </tr><tr>
-           <td><input type="text" name="machine" size="10" value="<? print $s_machine; ?>"></td>
-           <td><input type="text" name="modelno" size="10" value="<? print $s_modelno; ?>"></td>
-         </tr>
-       </table>
-   </td>
- </tr>
-
 
  <tr>
    <td class=fld>Filter Papers (Wholesale Provision Only)</td>

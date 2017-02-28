@@ -80,10 +80,6 @@ if (!empty($real_submit)) {
     $s_MessageBody=$s_MessageBody.$A2."\n\n";
   }
 
-  if ($s_machine != "" || $s_modelno != "") {
-    $s_MessageBody=$s_MessageBody."I require information on the following Replacement Jug:\nMachine Name: ".$s_machine."\nModel No: ".$s_modelno."\n\n";
-  }
-
   if ($A3!="") {
     $s_MessageBody=$s_MessageBody.$Q3." ".$A3."\n\n";
   }
@@ -227,20 +223,6 @@ if ($b_real_submit) {
    <td>I would like further information on the full Grinder/Machine range</td>
    <td><input type="checkbox" name="A2" value="I would like further information on the full Grinder/Machine range."></td>
  </tr>
-
- <tr>
-   <td>I require specific information on a Replacement Jug</td>
-   <td><table border=0 width="100%">
-         <tr>
-           <td>Machine Name</td><td>Model No.</td>
-         </tr><tr>
-           <td><input type="text" name="machine" size="10" value="<? print $s_machine; ?>"></td>
-           <td><input type="text" name="modelno" size="10" value="<? print $s_modelno; ?>"></td>
-         </tr>
-       </table>
-   </td>
- </tr>
-
 
  <tr>
    <td class=fld>Filter Papers (Wholesale Provision Only)</td>

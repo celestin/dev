@@ -20,9 +20,7 @@
 
 $title = "Request for Quotation";
 include 'tpl/top.php';
-require_once('recaptchalib.php');
 
-$privatekey = "6Lcd--kSAAAAADHhaIkMyPFD4MUQQQf5SPrcZVaT";
 ?>
 <center><img style="padding-bottom:5px" src="img/title/rfq.png"></center>
 <?
@@ -75,11 +73,26 @@ if (empty($retry)) {
   Msg::error("Please provide a Contact Telephone (Landline or Mobile) number.");
   include 'frm/quote.request.php';
 } else {
-  $resp = recaptcha_check_answer ($privatekey,
-  								  $_SERVER["REMOTE_ADDR"],
-								  $_POST["recaptcha_challenge_field"],
-								  $_POST["recaptcha_response_field"]);
-  if (!$resp->is_valid) {
+	$sender_name = stripslashes($contactname);
+	$sender_email = stripslashes($contactemail);
+	$sender_message = stripslashes($comments);
+	$response = $_POST["g-recaptcha-response"];
+	$url = 'https://www.google.com/recaptcha/api/siteverify';
+	$data = array(
+		'secret' => '6Lcd--kSAAAAADHhaIkMyPFD4MUQQQf5SPrcZVaT',
+		'response' => $_POST["g-recaptcha-response"]
+	);
+	$options = array(
+		'http' => array (
+			'method' => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+	$context  = stream_context_create($options);
+	$verify = file_get_contents($url, false, $context);
+	$captcha_success=json_decode($verify);
+  
+  if (!$captcha_success->success) {
     Msg::error("The Captcha wasn&rsquo;t entered correctly - please try again. (" . $resp->error . ")");
     include 'frm/quote.request.php';
     exit();

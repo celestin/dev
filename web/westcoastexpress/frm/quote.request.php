@@ -62,17 +62,8 @@ global $boattype, $boatlength, $boatweight, $boatkeel,
 <tr><td class="<? f_mand($contacttel); ?>">Contact Tel</td><td><input name="contacttel" size="40" value="<? echo $contacttel; ?>" /></td></tr>
 
 <tr><td>&nbsp;</td><td>
-<script type="text/javascript"
-     src="http://www.google.com/recaptcha/api/challenge?k=6Lcd--kSAAAAACbDAmV8KgbA9t4b3_lmurLxdmqA">
-  </script>
-  <noscript>
-     <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lcd--kSAAAAACbDAmV8KgbA9t4b3_lmurLxdmqA"
-         height="300" width="500" frameborder="0"></iframe><br>
-     <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-     </textarea>
-     <input type="hidden" name="recaptcha_response_field"
-         value="manual_challenge">
-  </noscript>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <div class="g-recaptcha" data-sitekey="6Lcd--kSAAAAACbDAmV8KgbA9t4b3_lmurLxdmqA"></div>
 </td></tr>
 
 <tr><td align=center colspan=2>

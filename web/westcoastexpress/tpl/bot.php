@@ -12,7 +12,12 @@
  * CAM  13-Apr-2006  File created.
  * CAM  31-May-2006  Added hidden toolbar navigation.
  * CAM  14-Aug-2011  Renamed back to Carried Safely.
+ * CAM  09-Nov-2013  11040 : Set timezone.
  * * * * * * * * * * * * * * * * * * * * * * * */
+
+ date_default_timezone_set('Europe/London');
+
+
 ?>
 </tr>
 <tr><td colspan=3 class="cpyrght"><br>Copyright &copy; <? echo strftime("%Y"); ?> West Coast Express. All rights reserved.<br />

@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  13-Apr-2006  File created.
+ * CAM  09-Nov-2013  11040 : Added static modifiers.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
@@ -199,7 +200,7 @@ class Person extends Tuple {
     $this->membertype = $membertype;
   }
 
-  function getPerson($memberid) {
+  static function getPerson($memberid) {
     $per = mysql_query("SELECT m.*, mt.type_name ".
                        "FROM member m, member_type mt ".
                        "WHERE m.member_type = mt.member_type ".

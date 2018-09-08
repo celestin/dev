@@ -10,6 +10,7 @@
  *
  * Who  When         Why
  * CAM  10-May-2006  File created.
+ * CAM  09-Nov-2013  11040 : Added Captcha check.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once "db.php";
@@ -59,6 +60,20 @@ global $boattype, $boatlength, $boatweight, $boatkeel,
 <tr><td class="<? f_mand($contactemail); ?>">Email Address</td><td><input name="contactemail" size="40" value="<? echo $contactemail; ?>" /></td></tr>
 <tr><td class="<? f_mand($contactname); ?>">Contact Name</td><td><input name="contactname" size="40" value="<? echo $contactname; ?>" /></td></tr>
 <tr><td class="<? f_mand($contacttel); ?>">Contact Tel</td><td><input name="contacttel" size="40" value="<? echo $contacttel; ?>" /></td></tr>
+
+<tr><td>&nbsp;</td><td>
+<script type="text/javascript"
+     src="http://www.google.com/recaptcha/api/challenge?k=6Lcd--kSAAAAACbDAmV8KgbA9t4b3_lmurLxdmqA">
+  </script>
+  <noscript>
+     <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lcd--kSAAAAACbDAmV8KgbA9t4b3_lmurLxdmqA"
+         height="300" width="500" frameborder="0"></iframe><br>
+     <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+     </textarea>
+     <input type="hidden" name="recaptcha_response_field"
+         value="manual_challenge">
+  </noscript>
+</td></tr>
 
 <tr><td align=center colspan=2>
   <input class="button" type=submit value="Send Request">

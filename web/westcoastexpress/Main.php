@@ -15,6 +15,7 @@
  * CAM  26-Mar-2007  Fixed bug with server paths.
  * CAM  11-Aug-2007  10149 : Added Flash and redirect methods.
  * CAM  22-Sep-2011  11029 : Added development url.
+ * CAM  09-Nov-2013  11040 : Removed deprecated session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
@@ -30,8 +31,8 @@ if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
 }
 
 $cfg['Site']['Db']['Hostname'] = "127.0.0.1";
-$cfg['Site']['Db']['Username'] = "westcoastexpress";
-$cfg['Site']['Db']['Password'] = "bob50";
+$cfg['Site']['Db']['Username'] = "cmckay2_user";
+$cfg['Site']['Db']['Password'] = "zO)]Fv-9o)Tv@.QM]f";
 $cfg['Site']['Db']['Database'] = "westcoastexpress_net_-_site";
 
 include_once './WEB-INF/inc.php';
@@ -42,7 +43,7 @@ function storeFlash($flash) {
 }
 
 function showFlash() {
-  if (session_is_registered('flash')) {
+  if (isset($_SESSION['flash'])) {
     $flash = $_SESSION['flash'];
     if (!empty($flash)) Msg::error($flash);
     session_unregister('flash');

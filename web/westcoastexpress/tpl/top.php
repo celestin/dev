@@ -16,11 +16,12 @@
  * CAM  11-Aug-2007  10151 : Display a random boattrans image - either 2 or 3.
  * CAM  11-Aug-2007  10154 : Added Feedback option.
  * CAM  22-Sep-2011  11029 : Changed top right icon, made WCE logo clickable.
+ * CAM  09-Nov-2013  11040 : Removed deprecated session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 include_once 'Main.php';
-$member = NULL;  if (session_is_registered('member_person')) $member = $_SESSION['member_person'];
-$loggedin = (session_is_registered('memberid') && session_is_registered('westcoastexpress_net'));
+$member = NULL;  if (isset($_SESSION['member_person'])) $member = $_SESSION['member_person'];
+$loggedin = (isset($_SESSION['memberid']) && isset($_SESSION['westcoastexpress_net']));
 
 if (empty($title)) {
   $title = $cfg['Site']['Name'];

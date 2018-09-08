@@ -15,10 +15,14 @@
  * CAM  11-Aug-2007  10150 : Add 'Quotation' back into the information message.
  * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * CAM  30-Oct-2010  10802 : Added Google Code for Lead Conversion.
+ * CAM  09-Nov-2013  11040 : Removed deprecated session_is_registered.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $title = "Request for Quotation";
 include 'tpl/top.php';
+require_once('recaptchalib.php');
+
+$privatekey = "6Lcd--kSAAAAADHhaIkMyPFD4MUQQQf5SPrcZVaT";
 ?>
 <center><img style="padding-bottom:5px" src="img/title/rfq.png"></center>
 <?
@@ -71,6 +75,15 @@ if (empty($retry)) {
   Msg::error("Please provide a Contact Telephone (Landline or Mobile) number.");
   include 'frm/quote.request.php';
 } else {
+  $resp = recaptcha_check_answer ($privatekey,
+  								  $_SERVER["REMOTE_ADDR"],
+								  $_POST["recaptcha_challenge_field"],
+								  $_POST["recaptcha_response_field"]);
+  if (!$resp->is_valid) {
+    Msg::error("The Captcha wasn&rsquo;t entered correctly - please try again. (" . $resp->error . ")");
+    include 'frm/quote.request.php';
+    exit();
+  }
 
   Msg::statement("Thank you - your Request for Quotation has been submitted.");
 

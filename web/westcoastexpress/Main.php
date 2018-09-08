@@ -16,24 +16,28 @@
  * CAM  11-Aug-2007  10149 : Added Flash and redirect methods.
  * CAM  22-Sep-2011  11029 : Added development url.
  * CAM  09-Nov-2013  11040 : Removed deprecated session_is_registered.
+ * CAM  08-Sep-2018  20180908 Switched to Terry.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
 $cfg['Site']['Name']  = "West Coast Express";
 $cfg['Site']['URL']   = "http://www.westcoastexpress.net";                 // no trailing slash
-$cfg['Site']['Email'] = "ian@westcoastexpress.net";
-
-if (strpos(strtolower($_SERVER['SERVER_NAME']), "artificer") !== FALSE) {
-  $cfg['Site']['URL']   = "http://artificer/westcoastexpress";                 // no trailing slash
-  $cfg['Site']['Dir'] = "c:/appserv/www/westcoastexpress/";
-  $cfg['Site']['Email'] = "craig@frontburner.co.uk";
-} else {
+$cfg['Site']['Email'] = "terrysmith641@hotmail.co.uk";
   $cfg['Site']['Dir'] = "/home/cmckay2/public_html/";  // trailing slash
-}
 
 $cfg['Site']['Db']['Hostname'] = "127.0.0.1";
 $cfg['Site']['Db']['Username'] = "cmckay2_user";
 $cfg['Site']['Db']['Password'] = "zO)]Fv-9o)Tv@.QM]f";
 $cfg['Site']['Db']['Database'] = "westcoastexpress_net_-_site";
+
+if (strpos(strtolower($_SERVER['SERVER_NAME']), "localhost") !== FALSE) {
+  $cfg['Site']['URL']   = "http://localhost/fb/westcoastexpress/";                 // no trailing slash
+  $cfg['Site']['Dir'] = "C:/Dev/FB/web/westcoastexpress/";
+  $cfg['Site']['Email'] = "craig@frontburner.co.uk";
+
+  $cfg['Site']['Db']['Hostname'] = "wizard";
+  $cfg['Site']['Db']['Username'] = "westcoastexpress";
+  $cfg['Site']['Db']['Password'] = "westcoastexpress";
+}
 
 include_once './WEB-INF/inc.php';
 include_once 'db.php';

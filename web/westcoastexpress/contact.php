@@ -1,7 +1,7 @@
 <?php
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * WestCoastExpress Website
- * Copyright (c) 2006-2007 Frontburner
+ * Copyright (c) 2006-2018 Frontburner
  * Author Craig McKay <craig@frontburner.co.uk>
  *
  * Contact Page Context
@@ -13,9 +13,10 @@
  * CAM  11-Aug-2007  10153 : Added new Title graphic.
  * CAM  11-Aug-2007  10159 : Added Email address.
  * CAM  14-Aug-2011  11010 : Switched to Ian.
+ * CAM  08-Sep-2018  20180908 Switched to Terry.
  * * * * * * * * * * * * * * * * * * * * * * * */
 
-$title = "Contact Ian";
+$title = "Contact Terry";
 include 'tpl/top.php';
 ?>
 
@@ -30,9 +31,9 @@ include 'tpl/top.php';
       </ul>
 
       <table border=0 align=center valign=bottom>
-      <tr><td class="hi">Tel</td><td>01854 613 426</td></tr>
-      <tr><td class="hi">Mob</td><td>07771 601 597</td></tr>
-      <tr><td class="hi">Email</td><td><a href="mailto:ian@westcoastexpress.net?Subject=West%20Coast%20Express">ian@westcoastexpress.net</a></td></tr>
+      <!--<tr><td class="hi">Tel</td><td>01</td></tr>-->
+      <tr><td class="hi">Mob</td><td>07884 251 498</td></tr>
+      <tr><td class="hi">Email</td><td><a href="mailto:terrysmith641@hotmail.co.uk?Subject=West%20Coast%20Express">terrysmith641@hotmail.co.uk</a></td></tr>
       </table>
     </td>
     <td align="right"><img src="img/boat2.png"><br><img src="img/boatsafe3.png"></td>
